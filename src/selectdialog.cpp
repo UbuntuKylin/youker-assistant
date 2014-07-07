@@ -30,6 +30,9 @@ SelectDialog::SelectDialog(QSettings *mSettings, QWidget *parent) :
 {
     ui->setupUi(this);
     weatherdispather = new WeatherDB;
+    connect(weatherdispather, SIGNAL(send_yahoo_city_id(QString)), this, SLOT(deal_with_yahoo_city_id(QString)));
+    connect(weatherdispather, SIGNAL(ready_to_get_cities_info(QStringList)), this, SLOT(deal_with_yahoo_cities(QStringList)));
+
     this->setAttribute(Qt::WA_DeleteOnClose);//防止内存泄漏
     this->setWindowFlags(Qt::FramelessWindowHint);
 
@@ -149,39 +152,7 @@ void SelectDialog::on_searchBtn_clicked()
 {
     QString yahoo_str = ui->comboBox->currentText();
     if(!yahoo_str.isEmpty()) {
-        QStringList listname = weatherdispather->search_city_names_qt(yahoo_str);
-        QStringList geonameidList = weatherdispather->get_geonameid_list_qt();
-        QStringList latitudeList = weatherdispather->get_latitude_list_qt();
-        QStringList longitudeList = weatherdispather->get_longitude_list_qt();
-//        ("纽约, 纽约州, 美国", "Brooklyn, 纽约州, 美国", "Borough of Queens, 纽约州, 美国", "Manhattan, 纽约州, 美国", "奥尔巴尼, 纽约州, 美国", "Jamaica, 纽约州, 美国", "The Bronx, 纽约州, 美国", "锡拉丘兹, 纽约州, 美国", "水牛城, 纽约州, 美国", "羅徹斯特, 纽约州, 美国")
-//        ("5128581", "5110302", "5133273", "5125771", "5106834", "5122520", "5110266", "5140405", "5110629", "5134086")
-//        ("40.71427", "40.6501", "40.68149", "40.78343", "42.65258", "40.69149", "40.84985", "43.04812", "42.88645", "43.15478")
-//        ("-74.00597", "-73.94958", "-73.83652", "-73.96625", "-73.75623", "-73.80569", "-73.86641", "-76.14742", "-78.87837", "-77.61556")
-        if(!listname.isEmpty()) {
-            flag = true;
-            ui->comboBox->clear();
-            ui->comboBox->clearEditText();
-            ui->comboBox->addItems(listname);
-            selectCity = "";
-            selectCity = ui->comboBox->currentText();
-            int len = listname.length();
-            if(len == geonameidList.length()) {
-                for (int i=0; i < len; i++) {
-                    yahooInfo[listname[i]] = geonameidList[i];
-                    latInfo[listname[i]] = latitudeList[i];
-                    lonInfo[listname[i]] = longitudeList[i];
-                }
-             }
-        }
-        else {
-            //"警告:               没有找到该城市，请重新输入城市名字！
-            ui->comboBox->clear();
-            ui->comboBox->clearEditText();
-            QMessageBox::warning(NULL,
-                                 tr("Warning:"),
-                                 tr("The city was not be found, please input the city name again!"),
-                                 QMessageBox::Ok);
-        }
+        /*QStringList listname = */weatherdispather->search_city_names_qt(yahoo_str);
     }
 }
 
@@ -194,7 +165,8 @@ void SelectDialog::on_okButton_clicked()
 {
     if(flag) {
         flag = false;
-        QString currentCity = ui->comboBox->currentText();
+        currentCity.clear();
+        currentCity = ui->comboBox->currentText();
         if(!currentCity.isEmpty()) {
             if(selectCity != currentCity) {
                 //警告：        请输入城市名字，点击＇查找＇按钮进行查找！
@@ -204,25 +176,15 @@ void SelectDialog::on_okButton_clicked()
                                      QMessageBox::Ok);
             }
             else {
-                QString cityId;
                 QString lat = "NA";
                 QString lon = "NA";
                 QString tmpId = yahooInfo[currentCity].toString();
                 lat = latInfo[currentCity].toString();
                 lon = lonInfo[currentCity].toString();
-                QString lat_lon;
-                lat_lon.append(lat);
-                lat_lon.append(lon);
-                cityId = weatherdispather->get_yahoo_city_id_qt(tmpId);
-                if(!cityId.isEmpty()) {
-                    pSettings->beginGroup("weather");
-                    pSettings->setValue("cityId", cityId);
-                    pSettings->setValue("cityName", currentCity);
-                    pSettings->setValue("latLon", lat_lon);
-                    pSettings->endGroup();
-                    pSettings->sync();
-                    emit readyToUpdateWeatherForWizard();
-                }
+                cur_lat_lon.clear();
+                cur_lat_lon.append(lat);
+                cur_lat_lon.append(lon);
+                weatherdispather->get_yahoo_city_id_qt(tmpId);
             }
         }
         this->hide();
@@ -232,6 +194,59 @@ void SelectDialog::on_okButton_clicked()
         QMessageBox::warning(NULL,
                              tr("Warning:"),
                              tr("Please input city name and click 'search' button to find!"),
+                             QMessageBox::Ok);
+    }
+}
+
+void SelectDialog::deal_with_yahoo_city_id(QString cityId) {
+    if(!cityId.isEmpty() && !currentCity.isEmpty() && !cur_lat_lon.isEmpty()) {
+        pSettings->beginGroup("weather");
+        pSettings->setValue("cityId", cityId);
+        pSettings->setValue("cityName", currentCity);
+        pSettings->setValue("latLon", cur_lat_lon);
+        pSettings->endGroup();
+        pSettings->sync();
+        emit readyToUpdateWeatherForWizard();
+    }
+    else if(cityId.isEmpty() && !currentCity.isEmpty() && !cur_lat_lon.isEmpty()) {
+        QMessageBox::warning(NULL,
+                             tr("Warning:"),
+                             tr("Change the city failed!"),
+                             QMessageBox::Ok);
+    }
+}
+
+void SelectDialog::deal_with_yahoo_cities(QStringList cities) {
+//        ("纽约, 纽约州, 美国", "Brooklyn, 纽约州, 美国", "Borough of Queens, 纽约州, 美国", "Manhattan, 纽约州, 美国", "奥尔巴尼, 纽约州, 美国", "Jamaica, 纽约州, 美国", "The Bronx, 纽约州, 美国", "锡拉丘兹, 纽约州, 美国", "水牛城, 纽约州, 美国", "羅徹斯特, 纽约州, 美国")
+//        ("5128581", "5110302", "5133273", "5125771", "5106834", "5122520", "5110266", "5140405", "5110629", "5134086")
+//        ("40.71427", "40.6501", "40.68149", "40.78343", "42.65258", "40.69149", "40.84985", "43.04812", "42.88645", "43.15478")
+//        ("-74.00597", "-73.94958", "-73.83652", "-73.96625", "-73.75623", "-73.80569", "-73.86641", "-76.14742", "-78.87837", "-77.61556")
+    if(!cities.isEmpty()) {
+        QStringList geonameidList = weatherdispather->get_geonameid_list_qt();
+        QStringList latitudeList = weatherdispather->get_latitude_list_qt();
+        QStringList longitudeList = weatherdispather->get_longitude_list_qt();
+        flag = true;
+        ui->comboBox->clear();
+        ui->comboBox->clearEditText();
+        ui->comboBox->addItems(cities);
+        selectCity = "";
+        selectCity = ui->comboBox->currentText();
+        int len = cities.length();
+        if(len == geonameidList.length()) {
+            for (int i=0; i < len; i++) {
+                yahooInfo[cities[i]] = geonameidList[i];
+                latInfo[cities[i]] = latitudeList[i];
+                lonInfo[cities[i]] = longitudeList[i];
+            }
+         }
+    }
+    else {
+        //"警告:               没有找到该城市，请重新输入城市名字！
+        ui->comboBox->clear();
+        ui->comboBox->clearEditText();
+        QMessageBox::warning(NULL,
+                             tr("Warning:"),
+                             tr("The city was not be found, please input the city name again!"),
                              QMessageBox::Ok);
     }
 }

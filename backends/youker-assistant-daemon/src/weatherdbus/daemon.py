@@ -35,7 +35,7 @@ from urllib import urlencode
 from xml.dom.minidom import parseString
 import json
 import locale
-
+import threading
 from weather.database import Database
 
 INTERFACE = "com.ubuntukylin.weather"
@@ -85,9 +85,12 @@ class WeatherDaemon(dbus.service.Object):
 
 
     #---------------------------------------------------------yahoo------------------------
+    # a dbus signal
+    @dbus.service.signal(INTERFACE, signature='s')
+    def trans_yahoo_city_id(self, cityId):
+        pass
 
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
-    def get_yahoo_city_id(self, geonameId):
+    def real_get_yahoo_city_id(self, geonameId):
         #""" Get Yahoo id from geonameid """
         #print geonameId#1816670
         yahoo_id = ''
@@ -118,11 +121,13 @@ class WeatherDaemon(dbus.service.Object):
             displayed_city_name = u', '.join((city['name'],
                                               city['countryName']))
         else:
+            self.trans_yahoo_city_id("error")
             return
         #print displayed_city_name#Beijing, Beijing, China
         woeid_result = pywapi.get_woeid_from_yahoo(displayed_city_name)
         #print woeid_result#{'count': 1, 0: (u'2151330', u'Beijing, Beijing, China')}
         if 'error' in woeid_result:
+            self.trans_yahoo_city_id("error")
             return
         else:
         # only look at the the first woeid result
@@ -134,6 +139,7 @@ class WeatherDaemon(dbus.service.Object):
         try:
             handler = urllib2.urlopen(url)
         except urllib2.URLError:
+            self.trans_yahoo_city_id("error")
             return
         content_type = handler.info().dict['content-type']
         try:
@@ -150,6 +156,7 @@ class WeatherDaemon(dbus.service.Object):
             guid_value = dom.getElementsByTagName('guid')[0].firstChild.nodeValue
         except (AttributeError, IndexError):
             dom.unlink()
+            self.trans_yahoo_city_id("error")
             return
         p = re.compile('([^_]*)_')
         m = p.match(guid_value)
@@ -158,7 +165,13 @@ class WeatherDaemon(dbus.service.Object):
         except AttributeError:
             print "No yahoo id via woeid. "
         dom.unlink()
-        return yahoo_id
+        self.trans_yahoo_city_id(yahoo_id)
+#        return yahoo_id
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def get_yahoo_city_id(self, geonameId):
+        t = threading.Thread(target = self.real_get_yahoo_city_id, args = (geonameId,))
+        t.start()
 
     # geonameid
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
@@ -175,8 +188,12 @@ class WeatherDaemon(dbus.service.Object):
     def get_latitude_list(self):
         return self.__latList
 
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
-    def search_city_names(self, search_string):
+    # a dbus signal
+    @dbus.service.signal(INTERFACE, signature='as')
+    def trans_yahoo_cities(self, cities):
+        pass
+
+    def real_search_city_names(self, search_string):
         try:
             (localeName, encode) = locale.getdefaultlocale()
             if localeName is not None:
@@ -224,4 +241,11 @@ class WeatherDaemon(dbus.service.Object):
                 self.__lonList.append(unicode(city['lng']))
         except urllib2.URLError:
             print "error"
-        return self.__cities
+        self.trans_yahoo_cities(self.__cities)
+#        return self.__cities
+
+#    @dbus.service.method(INTERFACE, in_signature='s', out_signature='as')
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def search_city_names(self, search_string):
+        t = threading.Thread(target = self.real_search_city_names, args = (search_string,))
+        t.start()

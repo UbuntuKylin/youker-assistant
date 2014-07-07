@@ -42,7 +42,7 @@ public:
     QStringList search_city_table_qt(QString province);
 
     //得到yahoo城市列表
-    QStringList search_city_names_qt(QString search_name);
+    /*QStringList */void search_city_names_qt(QString search_name);
     //得到对应yahoo城市列表的geonameid列表
     QStringList get_geonameid_list_qt();
     //得到经度
@@ -50,7 +50,15 @@ public:
     //得到纬度
     QStringList get_latitude_list_qt();
     //得到可以获取天气数据的id
-    QString get_yahoo_city_id_qt(QString geonameid);
+    /*QString */void get_yahoo_city_id_qt(QString geonameid);
+
+public slots:
+    void handler_access_yahoo_city_id(QString cityId);
+    void handler_access_yahoo_cities(QStringList cities);
+
+signals:
+    void send_yahoo_city_id(QString cityId);
+    void ready_to_get_cities_info(QStringList cities);
 };
 
 #endif // WEATHERDB_H

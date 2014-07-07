@@ -23,7 +23,7 @@ HomePage::HomePage(QWidget *parent)
     :QWidget(parent)
 {
     this->setWindowTitle("Youker Assistant");
-    this->setAutoFillBackground(false);
+//    this->setAutoFillBackground(false);
     this->setWindowOpacity(1);
     this->setWindowFlags(Qt::FramelessWindowHint);
 

@@ -1930,12 +1930,12 @@ p, li { white-space: pre-wrap; }
         <translation>更换字体</translation>
     </message>
     <message>
-        <location filename="../kfontdialog.cpp" line="276"/>
+        <location filename="../kfontdialog.cpp" line="285"/>
         <source>Tips</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="../kfontdialog.cpp" line="277"/>
+        <location filename="../kfontdialog.cpp" line="286"/>
         <source>You haven&apos;t change the font, please choose the font!</source>
         <translation>您还没有更换字体，请选择字体进行更换！</translation>
     </message>
@@ -3102,12 +3102,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="118"/>
+        <location filename="../main.cpp" line="116"/>
         <source>starting....</source>
         <translation>优客助手正在启动中....</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="120"/>
+        <location filename="../main.cpp" line="118"/>
         <source>loading module data....</source>
         <translation>正在加载模块数据....</translation>
     </message>
@@ -3336,14 +3336,20 @@ p, li { white-space: pre-wrap; }
         <translation>选择城市</translation>
     </message>
     <message>
-        <location filename="../selectdialog.cpp" line="181"/>
-        <location filename="../selectdialog.cpp" line="202"/>
-        <location filename="../selectdialog.cpp" line="233"/>
+        <location filename="../selectdialog.cpp" line="174"/>
+        <location filename="../selectdialog.cpp" line="195"/>
+        <location filename="../selectdialog.cpp" line="213"/>
+        <location filename="../selectdialog.cpp" line="248"/>
         <source>Warning:</source>
         <translation>警告：</translation>
     </message>
     <message>
-        <location filename="../selectdialog.cpp" line="182"/>
+        <location filename="../selectdialog.cpp" line="214"/>
+        <source>Change the city failed!</source>
+        <translation>切换城市失败！</translation>
+    </message>
+    <message>
+        <location filename="../selectdialog.cpp" line="249"/>
         <source>The city was not be found, please input the city name again!</source>
         <translation>没有找到该城市，请重新输入城市名字！</translation>
     </message>
@@ -3352,8 +3358,8 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">请输入合适的城市名字后点击“查找”按钮进行查找！</translation>
     </message>
     <message>
-        <location filename="../selectdialog.cpp" line="203"/>
-        <location filename="../selectdialog.cpp" line="234"/>
+        <location filename="../selectdialog.cpp" line="175"/>
+        <location filename="../selectdialog.cpp" line="196"/>
         <source>Please input city name and click &apos;search&apos; button to find!</source>
         <translation>请输入合适的城市名字后点击“查找”按钮进行查找！</translation>
     </message>

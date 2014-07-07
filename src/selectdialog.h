@@ -50,6 +50,9 @@ private slots:
     void on_quitButton_clicked();
     void on_okButton_clicked();
 
+    void deal_with_yahoo_city_id(QString cityId);
+    void deal_with_yahoo_cities(QStringList cities);
+
 private:
     Ui::SelectDialog *ui;
     QSettings *pSettings;
@@ -60,6 +63,8 @@ private:
     bool flag;
     //保存用户选中的城市名，方便没有点击确定按钮，重新输入城市名字后判断flag
     QString selectCity;
+    QString currentCity;
+    QStringList cur_lat_lon;
     QMap<QString, QVariant> yahooInfo;
     QMap<QString, QVariant> latInfo;
     QMap<QString, QVariant> lonInfo;

@@ -25,6 +25,8 @@ WeatherDB::WeatherDB(QObject *parent) :
                                "/",
                                "com.ubuntukylin.weather",
                                QDBusConnection::sessionBus());
+    QObject::connect(weatheriface, SIGNAL(trans_yahoo_city_id(QString)), this, SLOT(handler_access_yahoo_city_id(QString)));
+    QObject::connect(weatheriface, SIGNAL(trans_yahoo_cities(QStringList)), this, SLOT(handler_access_yahoo_cities(QStringList)));
 }
 
 WeatherDB::~WeatherDB() {
@@ -39,9 +41,10 @@ void WeatherDB::exit_qt() {
     weatheriface->call("exit");
 }
 
-QStringList WeatherDB::search_city_names_qt(QString search_name) {
-    QDBusReply<QStringList> reply = weatheriface->call("search_city_names", search_name);
-    return reply.value();
+/*QStringList */void WeatherDB::search_city_names_qt(QString search_name) {
+    weatheriface->call("search_city_names", search_name);
+//    QDBusReply<QStringList> reply = weatheriface->call("search_city_names", search_name);
+//    return reply.value();
 }
 
 QStringList WeatherDB::get_geonameid_list_qt() {
@@ -59,9 +62,23 @@ QStringList WeatherDB::get_latitude_list_qt() {
     return reply.value();
 }
 
-QString WeatherDB::get_yahoo_city_id_qt(QString geonameid) {
-    QDBusReply<QString> reply = weatheriface->call("get_yahoo_city_id", geonameid);
-    return reply.value();
+void WeatherDB::get_yahoo_city_id_qt(QString geonameid) {
+    weatheriface->call("get_yahoo_city_id", geonameid);
+//    QDBusReply<QString> reply = weatheriface->call("get_yahoo_city_id", geonameid);
+//    return reply.value();
+}
+
+void WeatherDB::handler_access_yahoo_city_id(QString cityId) {
+    if (cityId == "error" || cityId.isEmpty()) {
+        emit this->send_yahoo_city_id("");
+    }
+    else {
+        emit this->send_yahoo_city_id(cityId);
+    }
+}
+
+void WeatherDB::handler_access_yahoo_cities(QStringList cities) {
+    emit this->ready_to_get_cities_info(cities);
 }
 //-------------------------
 

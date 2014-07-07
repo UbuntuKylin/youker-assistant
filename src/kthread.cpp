@@ -56,6 +56,9 @@ void KThread::run() {
     else if(methodName == "get_current_weather") {
         iface->call("get_current_weather", fileFlag);
     }
+    else if(methodName == "get_current_yahoo_weather") {
+        iface->call("get_current_yahoo_weather", list, fileFlag);
+    }
     //扫描
     else if(methodName == "onekey_scan_function") {
         iface->call("onekey_scan_function", list);
