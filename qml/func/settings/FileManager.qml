@@ -21,7 +21,7 @@ Rectangle {
     id: filemanagerpage
     width: parent.width
     height: 476
-    color: "#e4f2fc"
+//    color: "#e4f2fc"
 
     property string actiontitle: qsTr("File Manager")//文件管理器
     property string actiontext: qsTr("Manage the Nautilus file manager.")//管理Nautilus文件管理器

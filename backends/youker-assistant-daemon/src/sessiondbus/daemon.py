@@ -54,6 +54,7 @@ from sysinfo import Sysinfo
 from camera.capture import Capture
 #from weather.weatherinfo import WeatherInfo
 from weather.yahoo import YahooWeather
+from common import get_ip
 from piston_mini_client import APIError
 import httplib2
 from weather.piston import WeatherPistonAPI
@@ -103,6 +104,11 @@ class SessionDaemon(dbus.service.Object):
         #    path = os.path.dirname(path)
         if os.path.isdir(root_path):
             os.system("xdg-open '%s' &" % root_path)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_ip_address(self):
+        ip_addr = get_ip()
+        return ip_addr
 
     # True: has camera, False: no camera
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')

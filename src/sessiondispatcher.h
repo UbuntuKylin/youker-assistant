@@ -43,6 +43,8 @@ public:
     //打开文件夹
     Q_INVOKABLE void open_folder_qt(QString path);
 
+    Q_INVOKABLE QString get_ip_address_qt();
+
     Q_INVOKABLE bool judge_camera_qt();
     Q_INVOKABLE void call_camera_qt();
     QMap<QString, QVariant> batteryInfo;
@@ -216,7 +218,7 @@ public:
 
     /*-------------------fonts of beauty-------------------*/
     Q_INVOKABLE void restore_default_font_signal(QString flag);
-    Q_INVOKABLE void show_font_dialog(QString flag);
+    Q_INVOKABLE void show_font_dialog(QString flag, QString current_font);
     Q_INVOKABLE QString show_folder_dialog();
     Q_INVOKABLE QString get_font_qt();
     Q_INVOKABLE bool set_font_qt_default(QString font);

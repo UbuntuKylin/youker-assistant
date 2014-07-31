@@ -21,7 +21,7 @@ Rectangle {
     id: touchpadsetpage
     width: parent.width
     height: 476
-    color: "#e4f2fc"
+//    color: "#e4f2fc"
 
     property string scrollbars_mode: ""
     property string touchscrolling_mode: ""

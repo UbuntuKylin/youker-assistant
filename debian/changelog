@@ -1,3 +1,9 @@
+youker-assistant (1.1.1-0ubuntu1) trusty; urgency=low
+
+  * Add IP Address.
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 31 Jul 2014 10:34:34 +0800
+
 youker-assistant (1.1.0-0ubuntu1) trusty; urgency=low
 
   * Perfect for parameter when checkbox checked.

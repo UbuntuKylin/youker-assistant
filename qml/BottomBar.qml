@@ -70,6 +70,14 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        var ip_addr = sessiondispatcher.get_ip_address_qt();
+        if (ip_addr === '') {
+            ip.visible = false;
+        }
+        else {
+            ip.visible = true;
+            ip.text = qsTr("IP: ") + ip_addr;
+        }
     }
     Row {
         anchors {
@@ -85,6 +93,13 @@ Rectangle {
             color: "white"
             font.pixelSize: 12
             text: qsTr("main version:") + bottombar.version//主版本：
+        }
+        Text {
+            id: ip
+            anchors.verticalCenter: parent.verticalCenter
+            color: "skyblue"
+            visible: false
+            font.pixelSize: 12
         }
     }
 

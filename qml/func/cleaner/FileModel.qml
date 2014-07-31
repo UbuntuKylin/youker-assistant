@@ -20,7 +20,7 @@ import "../common" as Common
 Rectangle {
     id:filepage
     width: parent.width; height: 437
-    color: "#e4f2fc"
+//    color: "#e4f2fc"
 
     property string title: qsTr("Quickly find large files")//快速找出大文件
     property string description: qsTr("Range:1M-20480M; 1GB = 1024MB")//大小范围为1M-20480M；1GB = 1024MB

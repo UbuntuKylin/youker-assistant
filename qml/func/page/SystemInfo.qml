@@ -25,10 +25,10 @@ Rectangle {
     property string current_flag: "computer"
 
     //背景
-    Image {
-        source: "../../img/skin/bg-middle.png"
-        anchors.fill: parent
-    }
+//    Image {
+//        source: "../../img/skin/bg-middle.png"
+//        anchors.fill: parent
+//    }
 
     function currentChanged(curIndex) {
         content.currentChanged(curIndex);

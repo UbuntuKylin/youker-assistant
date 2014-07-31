@@ -236,10 +236,10 @@ Rectangle {
         }
     }
     //背景
-    Image {
-        source: "../../img/skin/bg-left.png"
-        anchors.fill: parent
-    }
+//    Image {
+//        source: "../../img/skin/bg-left.png"
+//        anchors.fill: parent
+//    }
 
     Row {
         id: myrow

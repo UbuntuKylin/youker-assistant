@@ -24,7 +24,7 @@
 
 extern QString selectedFont;
 
-KFontDialog::KFontDialog(QSettings *mSettings, QString flag, QWidget *parent) :
+KFontDialog::KFontDialog(QSettings *mSettings, QString flag, QString cur_font, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::KFontDialog)
 {
@@ -68,7 +68,8 @@ KFontDialog::KFontDialog(QSettings *mSettings, QString flag, QWidget *parent) :
     ui->sampleEdit->setAlignment(Qt::AlignCenter);
     pSettings = mSettings;
     fontFlag = flag;
-    getInitFont();//得到初始字体
+//    getInitFont();//得到初始字体
+    ui->curFontText->setText(cur_font);//得到初始字体
     familymodel = new QStringListModel;
     stylemodel = new QStringListModel;
     sizemodel = new QStringListModel;
@@ -92,37 +93,37 @@ KFontDialog::~KFontDialog()
     }
 }
 
-void KFontDialog::getInitFont() {
-    pSettings->beginGroup("font");
-    QString fontStr;
-    if(fontFlag == "font") {
-        //font
-        fontStr = pSettings->value("currentfont").toString();
-    }
-    else if(fontFlag == "desktopfont") {
-        //desktopfont
-        fontStr = pSettings->value("desktopfont").toString();
-    }
-    else if(fontFlag == "monospacefont") {
-        //monospacefont
-        fontStr = pSettings->value("monospacefont").toString();
-    }
-    else if(fontFlag == "documentfont") {
-        //documentfont
-        fontStr = pSettings->value("documentfont").toString();
-    }
-    else if(fontFlag == "titlebarfont") {
-        //titlebarfont
-        fontStr = pSettings->value("titlebarfont").toString();
-    }
-    else if(fontFlag == "fcitxfont")
-    {
-        fontStr = pSettings->value("fcitxfont").toString();
-    }
-    pSettings->endGroup();
-    pSettings->sync();
-    ui->curFontText->setText(fontStr);
-}
+//void KFontDialog::getInitFont() {
+//    pSettings->beginGroup("font");
+//    QString fontStr;
+//    if(fontFlag == "font") {
+//        //font
+//        fontStr = pSettings->value("currentfont").toString();
+//    }
+//    else if(fontFlag == "desktopfont") {
+//        //desktopfont
+//        fontStr = pSettings->value("desktopfont").toString();
+//    }
+//    else if(fontFlag == "monospacefont") {
+//        //monospacefont
+//        fontStr = pSettings->value("monospacefont").toString();
+//    }
+//    else if(fontFlag == "documentfont") {
+//        //documentfont
+//        fontStr = pSettings->value("documentfont").toString();
+//    }
+//    else if(fontFlag == "titlebarfont") {
+//        //titlebarfont
+//        fontStr = pSettings->value("titlebarfont").toString();
+//    }
+//    else if(fontFlag == "fcitxfont")
+//    {
+//        fontStr = pSettings->value("fcitxfont").toString();
+//    }
+//    pSettings->endGroup();
+//    pSettings->sync();
+//    ui->curFontText->setText(fontStr);
+//}
 
 void KFontDialog::initDialog() {
     //列出所有字体的名字

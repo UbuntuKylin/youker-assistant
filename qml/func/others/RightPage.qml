@@ -74,10 +74,10 @@ Rectangle {
         }
     }
     //背景
-    Image {
-        source: "../../img/skin/bg-right.png"
-        anchors.fill: parent
-    }
+    //    Image {
+    //        source: "../../img/skin/bg-right.png"
+    //        anchors.fill: parent
+    //    }
 
     Rectangle {
         id: offline

@@ -26,10 +26,10 @@ Item {
 //        color: "white"
 
         //背景
-        Image {
-            source: "../../img/skin/bg-middle.png"
-            anchors.fill: parent
-        }
+//        Image {
+//            source: "../../img/skin/bg-middle.png"
+//            anchors.fill: parent
+//        }
         //更新列表
         function updateList() {
             funcmodel.clear();//清空

@@ -19,7 +19,7 @@ import "../common" as Common
 Rectangle {
     id:cachepage
     width: parent.width; height: 437
-    color: "#e4f2fc"
+//    color: "#e4f2fc"
 
     property string title: qsTr("Deep cleaning up the system cache")//深度清理系统缓存
     property string description: qsTr("Deep cleaning up the system cache, to save disk space")//深度清理系统缓存，节省磁盘空间！

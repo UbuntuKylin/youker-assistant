@@ -21,7 +21,7 @@ Rectangle {
     id: windowmanagerpage
     width: parent.width
     height: 476
-    color: "#e4f2fc"
+//    color: "#e4f2fc"
 
     property string position_mode: ""
     property int wheel_current_index//当前的索引

@@ -21,7 +21,7 @@ Rectangle {
     id: bootimagepage
     width: parent.width
     height: 476
-    color: "#e4f2fc"
+//    color: "#e4f2fc"
 
     property int scrollbar_z:0
     property int lisv_height: 250

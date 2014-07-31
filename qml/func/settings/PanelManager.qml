@@ -21,7 +21,7 @@ Rectangle {
     id: panelmanagerpage
     width: parent.width
     height: 476
-    color: "#e4f2fc"
+//    color: "#e4f2fc"
 
     property int blur_mode
 

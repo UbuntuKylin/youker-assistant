@@ -23,7 +23,7 @@ import "./InfoGroup.js" as InfoGroup
 Rectangle {
     id: home; width: parent.width; height: 476
 //    color: "transparent"
-    color: "#e4f2fc"
+//    color: "#e4f2fc"
     property bool firstFlag: false
     property bool secondFlag: false
     property bool thirdFlag: false

@@ -21,7 +21,7 @@ Rectangle {
     id: launcherthemepage
     width: parent.width
     height: 476
-    color: "#e4f2fc"
+//    color: "#e4f2fc"
 
     property bool first_slider_value: false //系统初始化时会使value的值为32（最小值），需要过滤掉
     property bool first_transparency_value: false //系统初始化时会使value的值为0.2（最小值），需要过滤掉

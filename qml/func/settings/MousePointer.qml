@@ -21,7 +21,7 @@ Rectangle {
     id: mousepointerpage
     width: parent.width
     height: 476
-    color: "#e4f2fc"
+//    color: "#e4f2fc"
 
     property int cursor_size: 24
     property int default_index//系统默认主题的索引

@@ -21,7 +21,7 @@ Rectangle {
     property bool on: true
     width: parent.width
     height: 476
-    color: "#e4f2fc"
+//    color: "#e4f2fc"
 
     property string current_font: "Helvetica"
     property string desktop_font: "Helvetica"
@@ -261,7 +261,7 @@ Rectangle {
                     width: 250
                     height: 29
                     fontsize: 13
-                    onClicked: sessiondispatcher.show_font_dialog("font");
+                    onClicked: sessiondispatcher.show_font_dialog("font", fontBtn.text);
                 }
             }
 
@@ -312,7 +312,7 @@ Rectangle {
                     width: 250
                     height: 29
                     fontsize: 13
-                    onClicked: sessiondispatcher.show_font_dialog("desktopfont");
+                    onClicked: sessiondispatcher.show_font_dialog("desktopfont", desktopfontBtn.text);
                 }
             }
 
@@ -362,7 +362,7 @@ Rectangle {
                     width: 250
                     height: 29
                     fontsize: 13
-                    onClicked: sessiondispatcher.show_font_dialog("monospacefont");
+                    onClicked: sessiondispatcher.show_font_dialog("monospacefont", monofontBtn.text);
                 }
             }
 
@@ -412,7 +412,7 @@ Rectangle {
                     width: 250
                     height: 29
                     fontsize: 13
-                    onClicked: sessiondispatcher.show_font_dialog("documentfont");
+                    onClicked: sessiondispatcher.show_font_dialog("documentfont", docufontBtn.text);
                 }
             }
 
@@ -462,7 +462,7 @@ Rectangle {
                     width: 250
                     height: 29
                     fontsize: 13
-                    onClicked: sessiondispatcher.show_font_dialog("titlebarfont");
+                    onClicked: sessiondispatcher.show_font_dialog("titlebarfont", titlefontBtn.text);
                 }
             }
 

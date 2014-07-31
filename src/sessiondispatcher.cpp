@@ -214,6 +214,11 @@ void SessionDispatcher::open_folder_qt(QString path) {
     sessioniface->call("open_folder", path);
 }
 
+QString SessionDispatcher::get_ip_address_qt() {
+    QDBusReply<QString> reply = sessioniface->call("get_ip_address");
+    return reply.value();
+}
+
 void SessionDispatcher::download_kysoft_cloud_conf_qt() {
     sessioniface->call("download_kysoft_cloud_conf");
 }
@@ -1356,8 +1361,8 @@ void SessionDispatcher::restore_default_font_signal(QString flag) {
     emit notifyFontStyleToQML(flag); //font_style
 }
 
-void SessionDispatcher::show_font_dialog(QString flag) {
-    KFontDialog *fontDialog = new KFontDialog(mSettings, flag, 0);
+void SessionDispatcher::show_font_dialog(QString flag, QString current_font) {
+    KFontDialog *fontDialog = new KFontDialog(mSettings, flag, current_font, 0);
     fontDialog->exec();
     if(!selectedFont.isEmpty()) {
         if(flag == "font") {

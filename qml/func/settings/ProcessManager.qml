@@ -20,7 +20,7 @@ import "../common" as Common
 Rectangle {
     id: processpage
     width: parent.width; height: 476
-    color: "#e4f2fc"
+//    color: "#e4f2fc"
     SystemPalette {id: syspal}
     property string processId//记录鼠标所在那行的进程号，以便自动刷新时重新定位到原来那行
     property bool flag: true//判断选中当前用户还是全部用户，当前用户为true，全部用户为false

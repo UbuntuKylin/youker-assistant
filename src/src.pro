@@ -1,6 +1,24 @@
 TEMPLATE = app
+LANGUAGE = C++
 TARGET = youker-assistant
 QT += core gui phonon declarative dbus xml
+
+CONFIG += qt \
+    warn_on \
+    release
+INCLUDEPATH += .
+
+#指定uic命令将.ui文件转化成ui_*.h文件的存放的目录
+UI_DIR += $$PWD/../tmp/
+
+#指定rcc命令将.qrc文件转换成qrc_*.h文件的存放目录
+RCC_DIR += $$PWD/../tmp/
+
+#指定moc命令将含Q_OBJECT的头文件转换成标准.h文件的存放目录
+MOC_DIR += $$PWD/../tmp/
+
+#指定目标文件(obj)的存放目录
+#OBJECTS_DIR += $$PWD/../tmp/
 
 CONFIG(debug,debug|release){
     message(debug)
