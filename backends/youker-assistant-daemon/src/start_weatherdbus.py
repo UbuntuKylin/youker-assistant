@@ -16,13 +16,19 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
+import os, sys
 import dbus
 import signal
 import dbus.mainloop.glib
 from gi.repository import GObject
+from single import SingleInstance
 #import gobject
 
 if __name__ == '__main__':
+    myapp = SingleInstance("/tmp/youker-assistant-weatherdbus-%d.pid" % os.getuid())
+    if myapp.is_already_running():
+        print "Another instance of this weatherdbus is already running"
+        sys.exit("Another instance of this weatherdbus is already running")
     from weatherdbus.daemon import WeatherDaemon
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
     # init GLib/GObject

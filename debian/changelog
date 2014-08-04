@@ -1,8 +1,13 @@
-youker-assistant (1.1.1-0ubuntu1) trusty; urgency=low
+youker-assistant (1.1.2-0ubuntu1) trusty; urgency=low
 
-  * Add IP Address.
+  * Add IP Address and pid file.
+  * Adjust the widget of system settings.
+  * Change the background color.
+  * Display the slidershow according to different users.
+  * Modify debian/postinst and debian/postrm.
+  * Display the current font style when clicked the change button.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 31 Jul 2014 10:34:34 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 04 Aug 2014 15:58:26 +0800
 
 youker-assistant (1.1.0-0ubuntu1) trusty; urgency=low
 

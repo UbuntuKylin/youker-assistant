@@ -73,6 +73,7 @@ BAT_FILE = "/sys/class/power_supply/BAT0/uevent"
 class SessionDaemon(dbus.service.Object):
     def __init__ (self, mainloop):
         #self.wizardconf = Wizard()
+        self.ip_addr = None
         self.cloudconf = CloudConfig(self)
         self.sysconf = Sysinfo()
         self.desktopconf = Desktop()
@@ -105,10 +106,19 @@ class SessionDaemon(dbus.service.Object):
         if os.path.isdir(root_path):
             os.system("xdg-open '%s' &" % root_path)
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def real_get_ip_address(self):
+        self.ip_addr = get_ip()
+        if self.ip_addr not in (False, None, {}, '', '[]', "['']"):
+            self.access_weather('ip_addr', 'kobe')
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def get_ip_address(self):
-        ip_addr = get_ip()
-        return ip_addr
+        t = threading.Thread(target = self.real_get_ip_address)
+        t.start()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def show_ip_address(self):
+        return self.ip_addr
 
     # True: has camera, False: no camera
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')

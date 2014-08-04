@@ -214,8 +214,12 @@ void SessionDispatcher::open_folder_qt(QString path) {
     sessioniface->call("open_folder", path);
 }
 
-QString SessionDispatcher::get_ip_address_qt() {
-    QDBusReply<QString> reply = sessioniface->call("get_ip_address");
+void SessionDispatcher::get_ip_address_qt() {
+    sessioniface->call("get_ip_address");
+}
+
+QString SessionDispatcher::show_ip_address_qt() {
+    QDBusReply<QString> reply = sessioniface->call("show_ip_address");
     return reply.value();
 }
 
@@ -391,6 +395,10 @@ void SessionDispatcher::accord_flag_access_weather(QString key, QString value) {
     else if(key == "yahoo" && value == "kobe") {
         get_current_yahoo_weather_dict_qt();
         emit startUpdateForecastWeahter("yahoo");
+    }
+    else if(key == "ip_addr" && value == "kobe") {
+        QString ip_addr = this->show_ip_address_qt();
+        emit startShowIPAddress(ip_addr);
     }
 }
 

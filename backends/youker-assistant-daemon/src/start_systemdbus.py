@@ -15,13 +15,19 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
-import os
+import os, sys
 import signal
 import dbus
 import dbus.mainloop.glib
 from gi.repository import GObject
+from single import SingleInstance
 #import gobject
+
 if __name__ == '__main__':
+    myapp = SingleInstance("/tmp/youker-assistant-systemdbus-%d.pid" % os.getuid())
+    if myapp.is_already_running():
+        print "Another instance of this systemdbus is already running"
+        sys.exit("Another instance of this systemdbus is already running")
     os.environ["TERM"] = "xterm"
     os.environ["PATH"] = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/X11R6/bin"
     os.environ["DEBIAN_FRONTEND"] = "noninteractive"

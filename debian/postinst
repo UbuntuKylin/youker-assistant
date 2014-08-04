@@ -1,8 +1,8 @@
 #!/bin/sh
 
 set -e
-
 #DEBHELPER#
-
-echo "start postinst..."
-chmod 0777 /var/lib/youker-assistant-daemon/youker-assistant-start.ini
+initfolder=$HOME"/.cache/youker-assistant/"
+if [ -d "$initfolder" ]; then
+	rm -rf $initfolder
+fi

@@ -21,6 +21,11 @@
 #include <QDir>
 #include <QTranslator>
 
+#include <unistd.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <pwd.h>
+
 #include "toolkits.h"
 #include "systemdispatcher.h"
 #include "sessiondispatcher.h"
@@ -34,6 +39,12 @@
 #include "qtmenu.h"
 #include "qcursorarea.h"
 #include "homepage.h"
+
+#define BUFF_SIZE (512)
+char filePath[BUFF_SIZE] = {0};
+
+#define LOCKFILE "/tmp/youker-assistant-%d.pid"
+#define LOCKMODE (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)
 
 
 void registerTypes() {
@@ -51,12 +62,45 @@ void registerTypes() {
     qmlRegisterType<QCursorArea>("CursorAreaType", 0, 1, "CursorArea");
 }
 
+int make_pid_file() {
+    char buf[16];
+    struct flock fl;
+    snprintf(filePath, BUFF_SIZE, LOCKFILE, getuid());
+
+    int fd = open(filePath, O_RDWR|O_CREAT, LOCKMODE);
+    if (fd < 0) {
+        printf("Can not open %s: %s.\n", filePath, strerror(errno));
+        return -1;
+    }
+
+    fl.l_type = F_WRLCK;
+    fl.l_start = 0;
+    fl.l_whence = SEEK_SET;
+    fl.l_len = 0;
+
+    if (fcntl(fd, F_SETLK, &fl) < 0) {
+        printf("Can not lock %s: %s.\n", filePath, strerror(errno));
+        close(fd);
+        return -1;
+    }
+
+    ftruncate(fd, 0);
+    sprintf(buf, "%d\n", getpid());
+    write(fd, buf, strlen(buf));
+    close(fd);
+    return 0;
+}
+
 int main(int argc, char** argv)
 {
     //单程序运行处理
     QtSingleApplication app(argc, argv);
     if (app.isRunning())
         return 0;
+
+    if (make_pid_file()) {
+        exit(1);
+    }
 
     //编码处理
     QTextCodec::setCodecForTr(QTextCodec::codecForLocale());
@@ -86,12 +130,16 @@ int main(int argc, char** argv)
 
     bool flag = false;
     QSettings * mSettings;
-    QString filePath =  "/var/lib/youker-assistant-daemon/youker-assistant-start.ini";
+    QString filePath = QDir::homePath() + "/.cache/youker-assistant/youker-assistant-start.ini";
+
+    struct passwd *pwd;
+    pwd = getpwuid(getuid());
 
     mSettings = new QSettings(filePath, QSettings::IniFormat);
     mSettings->setIniCodec("UTF-8");
     mSettings->beginGroup("firststart");
-    flag = mSettings->value("flag").toBool();
+    flag = mSettings->value(pwd->pw_name).toBool();
+//    flag = mSettings->value("flag").toBool();
     mSettings->endGroup();
     mSettings->sync();
 
@@ -120,21 +168,23 @@ int main(int argc, char** argv)
     homePage.setup();
     if(flag) {
         splash->finish(&homePage);
+        //显示主界面，并结束启动画面
+        homePage.showPage();
+        delete splash;
+    }
+    else {
+        splash->finish(&homePage);
         delete splash;
         slider = new SliderShow();
         mSettings->beginGroup("firststart");
-        mSettings->setValue("flag", "0");
+//        mSettings->setValue("flag", "0");
+        mSettings->setValue(pwd->pw_name, "1");
         mSettings->endGroup();
         mSettings->sync();
         if(slider->exec() == QDialog::Accepted) {
              homePage.showPage();
         }
-    }
-    else {
-        splash->finish(&homePage);
-        //显示主界面，并结束启动画面
-        homePage.showPage();
-        delete splash;
+        delete slider;
     }
     delete mSettings;
     return app.exec();

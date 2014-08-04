@@ -25,7 +25,7 @@ Rectangle {
     width: 850
     height: 26
     color: "transparent"
-    property string version: "V1.1.0"
+    property string version: "V1.1.2"
 
     SessionDispatcher { id: sessiondispatcher }
     Toolkits{ id: toolkits }
@@ -33,6 +33,16 @@ Rectangle {
     Connections
     {
         target: sessiondispatcher
+        onStartShowIPAddress: {
+            if (ip_addr === '') {
+                iprow.visible = false;
+            }
+            else {
+                iprow.visible = true;
+                ip.text = ip_addr;
+            }
+        }
+
         onTellDownloadCloudConfToQML: {
             if(download == "download_norun") {
 //                root.downcloud = false;
@@ -70,36 +80,45 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        var ip_addr = sessiondispatcher.get_ip_address_qt();
-        if (ip_addr === '') {
-            ip.visible = false;
-        }
-        else {
-            ip.visible = true;
-            ip.text = qsTr("IP: ") + ip_addr;
-        }
+        sessiondispatcher.get_ip_address_qt();
     }
     Row {
+        id: versionrow
         anchors {
             left: parent.left
             leftMargin: 10
             verticalCenter: parent.verticalCenter
         }
-        spacing: 5
+        spacing: 2
         Image {
             source: "./img/icons/arrowhead.png"
+            width: 18; height: 18
         }
         Text {
             color: "white"
             font.pixelSize: 12
             text: qsTr("main version:") + bottombar.version//主版本：
         }
+    }
+    Row {
+        id: iprow
+        visible: false
+        anchors {
+            left: versionrow.right
+            leftMargin: 20
+            verticalCenter: parent.verticalCenter
+        }
+        spacing: 2
+        Image {
+            source: "./img/icons/ip.png"
+            width: 18; height: 18
+        }
         Text {
             id: ip
             anchors.verticalCenter: parent.verticalCenter
-            color: "skyblue"
-            visible: false
+            color: "white"
             font.pixelSize: 12
+            text: ""
         }
     }
 
@@ -151,8 +170,6 @@ Rectangle {
                     }
                 }
             }
-
-
         }
         Row {
             AnimatedImage {//动态图片

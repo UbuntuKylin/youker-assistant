@@ -1,8 +1,43 @@
 #!/bin/sh
-
-if [ "$1" = "purge" ] ; then
-	rm -rf /var/lib/youker-assistant-daemon/
-	ps ax |grep youker-assistant | awk '{print $1}' |xargs kill -9
+curID=`id -u`
+pidfile1="/tmp/youker-assistant-"${curID}".pid"
+pidfile2="/tmp/youker-assistant-sessiondbus-"${curID}".pid"
+pidfile3="/tmp/youker-assistant-weatherdbus-"${curID}".pid"
+pidfile4="/tmp/youker-assistant-systemdbus-0.pid"
+initfolder=$HOME"/.cache/youker-assistant/"
+ukfolder="/var/lib/youker-assistant-daemon/"
+if [ "$1" = "upgrade" ] ; then
+	if [ -e "$pidfile1" ]; then
+        	kill -9 `cat $pidfile1`
+	fi
+	if [ -e "$pidfile2" ]; then
+        	kill -9 `cat $pidfile2`
+	fi
+	if [ -e "$pidfile3" ]; then
+        	kill -9 `cat $pidfile3`
+	fi
+	if [ -e "$pidfile4" ]; then
+        	kill -9 `cat $pidfile4`
+	fi
+	echo "upgrade........"
+elif [ "$1" = "remove" ] || [ "$1" = "purge" ] ; then
+        if [ -e "$pidfile1" ]; then
+                kill -9 `cat $pidfile1`
+        fi
+        if [ -e "$pidfile2" ]; then
+                kill -9 `cat $pidfile2`
+        fi
+        if [ -e "$pidfile3" ]; then
+                kill -9 `cat $pidfile3`
+        fi
+        if [ -e "$pidfile4" ]; then
+                kill -9 `cat $pidfile4`
+        fi
+        if [ -d "$ukfolder" ]; then
+                rm -rf $ukfolder
+        fi
+	if [ -d "$initfolder" ]; then
+		rm -rf $initfolder
+	fi
 fi
-
 #DEBHELPER#

@@ -43,7 +43,8 @@ public:
     //打开文件夹
     Q_INVOKABLE void open_folder_qt(QString path);
 
-    Q_INVOKABLE QString get_ip_address_qt();
+    Q_INVOKABLE void get_ip_address_qt();
+    Q_INVOKABLE QString show_ip_address_qt();
 
     Q_INVOKABLE bool judge_camera_qt();
     Q_INVOKABLE void call_camera_qt();
@@ -339,6 +340,8 @@ public:
 signals:
     void finishScanWork(QString msg);
     void isScanning(QString msg);
+
+    void startShowIPAddress(QString ip_addr);
 
     void notifyFontStyleToQML(QString font_style);
     void startChangeQMLCity();//发送开始更换QML城市
