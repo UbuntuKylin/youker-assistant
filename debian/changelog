@@ -6,8 +6,9 @@ youker-assistant (1.1.2-0ubuntu1) trusty; urgency=low
   * Display the slidershow according to different users.
   * Modify debian/postinst and debian/postrm.
   * Display the current font style when clicked the change button.
+  * Add pingback function.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 04 Aug 2014 15:58:26 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 05 Aug 2014 17:24:56 +0800
 
 youker-assistant (1.1.0-0ubuntu1) trusty; urgency=low
 

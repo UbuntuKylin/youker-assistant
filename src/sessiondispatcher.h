@@ -310,6 +310,9 @@ public:
     Q_INVOKABLE QString get_free_memory_qt();
     Q_INVOKABLE QStringList get_network_flow_total_qt();
 
+    //-------------pinback
+    bool submit_uk_pingback();
+
     /*-------------------weather-------------------*/
     Q_INVOKABLE void get_current_weather_qt();
     void get_current_weather_dict_qt();//当天天气数据获取完成后，通过该函数返回其获取的值给currentInfo

@@ -215,6 +215,15 @@ void SessionDispatcher::open_folder_qt(QString path) {
 }
 
 void SessionDispatcher::get_ip_address_qt() {
+    //first pinback
+    bool result = this->submit_uk_pingback();
+    if(result) {
+        qDebug() << "pingback success....";
+    }
+    else {
+        qDebug() << "pingback failed....";
+    }
+    //then get ip
     sessioniface->call("get_ip_address");
 }
 
@@ -1725,6 +1734,11 @@ QString SessionDispatcher::get_free_memory_qt() {
 
 QStringList SessionDispatcher::get_network_flow_total_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("get_network_flow_total");
+    return reply.value();
+}
+
+bool SessionDispatcher::submit_uk_pingback() {
+    QDBusReply<bool> reply = sessioniface->call("submit_uk_pingback");
     return reply.value();
 }
 

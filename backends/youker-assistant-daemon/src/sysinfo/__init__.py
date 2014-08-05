@@ -55,7 +55,7 @@ class Sysinfo:
         self.CURRENT_USER = 'k'
         self.HOME_DIRECTORY = 'l'
         self.SHELL = 'm'
-        self.LANGUAGE = 'n'     
+        self.LANGUAGE = 'n'
 
     def get_sys_msg(self):
         CLIPS_DICT = {}
@@ -64,8 +64,22 @@ class Sysinfo:
         CLIPS_DICT['desktopenvironment'] = self.get_desktop()
         CLIPS_DICT['hostname'], CLIPS_DICT['platform'] = self.get_systeminfo()
         CLIPS_DICT['cpu'], CLIPS_DICT['ram'] = self.get_hardwareinfo()
-        CLIPS_DICT['currrent_user']
+#        CLIPS_DICT['machine_id'] = self.get_machine_id()
         return CLIPS_DICT
+
+#    def get_machine_id(self):
+#        fpath = '/var/lib/dbus/machine-id'
+#        if(os.path.exists(fpath) and os.path.isfile(fpath)):
+#            f = open(fpath, 'r')
+#            id = f.read()
+#            f.close()
+#            id = id.replace('\n','')
+#            if(id == ''):
+#                return 'unknown'
+#            else:
+#                return id
+#        else:
+#            return 'unknown'
 
     def get_userinfo(self):
         dict = {}

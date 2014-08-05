@@ -54,12 +54,18 @@ from sysinfo import Sysinfo
 from camera.capture import Capture
 #from weather.weatherinfo import WeatherInfo
 from weather.yahoo import YahooWeather
-from common import get_ip
+from common import *
 from piston_mini_client import APIError
 import httplib2
 from weather.piston import WeatherPistonAPI
 MySever = ("http://service.ubuntukylin.com:8001/weather/api/1.0/")
 WeatherPistonAPI.default_service_root = MySever
+
+from piston_remoter import PingBackPistonAPI
+#PingBackSever = ("http://service.ubuntukylin.com:8001/youker-assistant/")
+#PingBackPistonAPI.default_service_root = PingBackSever
+PINGBACK_SERVER = "http://service.ubuntukylin.com:8001/youker-assistant/"
+
 from appcollections.monitorball.monitor_ball import MonitorBall
 log = logging.getLogger('SessionDaemon')
 #from slider.wizard import Wizard
@@ -74,6 +80,7 @@ class SessionDaemon(dbus.service.Object):
     def __init__ (self, mainloop):
         #self.wizardconf = Wizard()
         self.ip_addr = None
+#        self.sysinfo = {}
         self.cloudconf = CloudConfig(self)
         self.sysconf = Sysinfo()
         self.desktopconf = Desktop()
@@ -87,6 +94,7 @@ class SessionDaemon(dbus.service.Object):
         self.yahooconf = YahooWeather(self)
 #        self.weatherconf = WeatherInfo(self)
         self.server = WeatherPistonAPI(service_root=MySever)
+        self.premoter = PingBackPistonAPI(service_root=PINGBACK_SERVER)
 #        self.capturemode = Capture()
         self.daemonsame = cleaner.SearchTheSame()
         self.daemonlarge = cleaner.ManageTheLarge()
@@ -1117,6 +1125,14 @@ class SessionDaemon(dbus.service.Object):
 #    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
 #    def get_forecast_dict(self):
 #        return self.weatherconf.get_forecast_dict()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def submit_uk_pingback(self):
+        machine_id = get_machine_id()
+        version_youker_assistant = get_uk_version()
+        distro, version_os  = get_distro_info()
+        pingback = self.premoter.submit_pingback_main(machine_id, distro, version_os, version_youker_assistant)
+        return pingback
 
     def real_get_current_weather(self, cityId):
         self.weather_data = self.server.get_cma_observe_weather(cityId)

@@ -22,7 +22,7 @@
 ratings and reviews API, plus a few helper classes.
 """
 
-import sys
+import os, sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 from urllib import quote_plus
@@ -44,32 +44,24 @@ PUBLIC_API_SCHEME = 'http'
 AUTHENTICATED_API_SCHEME = 'https'
 
 
-class WeatherPistonAPI(PistonAPI):
+class PingbackmainRequest(PistonSerializable):
+    _atts = ('machine', 'distro', 'version_os', 'version_youker_assistant')
+
+
+class PingBackPistonAPI(PistonAPI):
     """A client for talking to the reviews and ratings API.
 
     If you pass no arguments into the constructor it will try to connect to
     localhost:8000 so you probably want to at least pass in the
     ``service_root`` constructor argument.
     """
-    default_service_observe = 'observe'
-    default_service_forecast3d = 'forecast3d'
-    default_service_forecast6d = 'forecast6d'
     default_content_type = 'application/x-www-form-urlencoded'
 
-    @validate_pattern('cityid', r'[0-9a-z+-.:/]+', required=False)
     @returns_json
-    def get_cma_observe_weather(self, cityid):
-        url = '%s/%s/' % (self.default_service_observe, cityid)
-        return self._get(url, scheme=PUBLIC_API_SCHEME)
-
-    @validate_pattern('cityid', r'[0-9a-z+-.:/]+', required=False)
-    @returns_json
-    def get_cma_forecast3d_weather(self, cityid):
-        url = '%s/%s/' % (self.default_service_forecast3d, cityid)
-        return self._get(url, scheme=PUBLIC_API_SCHEME)
-
-    @validate_pattern('cityid', r'[0-9a-z+-.:/]+', required=False)
-    @returns_json
-    def get_cma_forecast6d_weather(self, cityid):
-        url = '%s/%s/' % (self.default_service_forecast6d, cityid)
-        return self._get(url, scheme=PUBLIC_API_SCHEME)
+    def submit_pingback_main(self, machine, distro, version_os, version_youker_assistant):
+        postdata = PingbackmainRequest()
+        postdata.machine = machine
+        postdata.distro = distro
+        postdata.version_os = version_os
+        postdata.version_youker_assistant = version_youker_assistant
+        return self._post('pingbackmain/', data=postdata, scheme=PUBLIC_API_SCHEME, content_type='application/json')

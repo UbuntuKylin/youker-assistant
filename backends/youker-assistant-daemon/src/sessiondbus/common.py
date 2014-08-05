@@ -22,6 +22,49 @@
 
 import os, sys
 import urllib2
+import platform
+
+VERSION = "1.1.2"
+
+def get_distro_info():
+    ufpath = '/etc/ubuntukylin-release'
+    if(os.path.exists(ufpath) and os.path.isfile(ufpath)):
+        uf = open(ufpath)
+        lines = uf.readlines()
+        rtn = []
+        for line in lines:
+            kv = line.split('=')
+            if (kv[0] == 'DISTRIB_ID'):
+                v = kv[1]
+                rtn.append(v[:-1])
+            if (kv[0] == 'DISTRIB_RELEASE'):
+                v = kv[1]
+                rtn.append(v[:-1])
+        uf.close()
+        return rtn
+    else:
+        dist = platform.dist()
+        distname = dist[0]
+        distversion = dist[1]
+        return [distname, distversion]
+
+def get_machine_id():
+    fpath = '/var/lib/dbus/machine-id'
+    if(os.path.exists(fpath) and os.path.isfile(fpath)):
+        f = open(fpath, 'r')
+        id = f.read()
+        f.close()
+        id = id.replace('\n','')
+        if(id == ''):
+            return 'unknown'
+        else:
+            return id
+    else:
+        return 'unknown'
+
+# youker-assistant version
+def get_uk_version():
+    return VERSION
 
 def get_ip_again():
     ret = ''
