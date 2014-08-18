@@ -153,7 +153,7 @@ Rectangle {
                 }
                 Text {
                     id: devicetext
-                    text: ""//sessiondispatcher.getSingleInfo("desktopenvironment")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }

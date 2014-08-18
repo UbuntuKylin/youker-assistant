@@ -196,7 +196,9 @@ Rectangle {
                     }
                     Text {
                         text: deviceNameText
-                        width: 500
+                        width: 480
+                        elide: Text.ElideRight
+//                        elide: Text.ElideMiddle
                         font.pixelSize: 14
                         wrapMode: Text.WordWrap
                         color: "#7a7a7a"
@@ -216,6 +218,8 @@ Rectangle {
                     }
                     Text {
                         text: inUseNameText
+                        width: 480
+                        elide: Text.ElideRight
                         visible: (inUseNameText == "") ? false : true
                         font.pixelSize: 14
                         color: "#7a7a7a"
@@ -235,6 +239,8 @@ Rectangle {
                     }
                     Text {
                         text: existNameText
+                        width: 480
+                        elide: Text.ElideRight
                         visible: (existNameText == "") ? false : true
                         font.pixelSize: 14
                         color: "#7a7a7a"

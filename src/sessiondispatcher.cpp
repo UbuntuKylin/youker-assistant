@@ -214,15 +214,16 @@ void SessionDispatcher::open_folder_qt(QString path) {
     sessioniface->call("open_folder", path);
 }
 
+
 void SessionDispatcher::get_ip_address_qt() {
     //first pinback
     bool result = this->submit_uk_pingback();
-    if(result) {
-        qDebug() << "pingback success....";
-    }
-    else {
-        qDebug() << "pingback failed....";
-    }
+//    if(result) {
+//        qDebug() << "pingback success....";
+//    }
+//    else {
+//        qDebug() << "pingback failed....";
+//    }
     //then get ip
     sessioniface->call("get_ip_address");
 }
@@ -1734,6 +1735,11 @@ QString SessionDispatcher::get_free_memory_qt() {
 
 QStringList SessionDispatcher::get_network_flow_total_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("get_network_flow_total");
+    return reply.value();
+}
+
+QString SessionDispatcher::judge_desktop_is_unity_qt() {
+    QDBusReply<QString> reply = sessioniface->call("judge_desktop_is_unity");
     return reply.value();
 }
 

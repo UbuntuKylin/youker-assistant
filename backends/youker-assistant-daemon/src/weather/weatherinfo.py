@@ -19,26 +19,9 @@ import os, sys
 import threading
 import urllib2, urllib
 import json
-from base import PROJECT_ROOT_DIRECTORY, PROJECT_ROOT_DIRECTORY, WEATHER_URL, WEATHER_URL1, WEATHER_URL2, PM25_URL, TOKEN
+from base import PROJECT_ROOT_DIRECTORY, PROJECT_ROOT_DIRECTORY, WEATHER_URL, WEATHER_URL1, WEATHER_URL2
 
 CHN_CITY_LIST_FILE = '/usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/weather/locations.txt'
-
-class Getpmdata:
-    def get_url(self, cityplace):
-        url = PM25_URL + cityplace + TOKEN
-        return url
-
-    def get_data(self, url):
-        request = urllib2.Request(url, headers={'User-Agent ' : 'Magic Browser'})
-        f = urllib2.urlopen(request)
-        json_data = f.read()
-        f.close()
-        python_data = json.loads(json_data)
-        if isinstance(python_data,dict):
-            python_need_data = python_data
-        else:
-            python_need_data = python_data[-1]
-        return python_need_data
 
 class WeatherInfo(threading.Thread):
     def __init__(self, sessionDaemon):
@@ -60,13 +43,6 @@ class WeatherInfo(threading.Thread):
         cityIdStr = str(cityId)
         self.location_id = cityIdStr
         threading.Thread(target=self.get_weather_from_nmc, args=(0,), name='CurrrentWeather').start()
-
-    # Get PM2.5 information from website
-    def getPM25Info(self, cityId):
-        cityIdStr = str(cityId)
-        cityName = self.get_location_from_cityid(cityIdStr)
-        cityName = cityName.split(',')[2]
-        threading.Thread(target=self.get_pm, args=(cityName,), name='PM25').start()
 
     # Update weather and forecast
     def updateCurrentWeather(self, cityId):
@@ -97,32 +73,6 @@ class WeatherInfo(threading.Thread):
             #print >> fp1, e
             return {}
         #fp1.close()
-
-    def get_pm(self, cityplace):
-        try:
-            #fp = open("/tmp/pm25.txt", "w")
-            #print >> fp, "--------------"
-            ob = Getpmdata()
-            url = ob.get_url(cityplace)
-            pmdata = ob.get_data(url)
-            #print >> fp, pmdata
-            #return pmdata
-            if pmdata.has_key('aqi') and pmdata.has_key('quality'):
-                self.pmData = pmdata['quality'] + '(' +  str(pmdata['aqi']) + ')'
-                #print >> fp, self.pmData
-            else:
-                #print >> fp, "11111"
-                self.pmData = "N/A"
-            self.sessionDaemon.access_weather('pm25', 'kobe')
-        except Exception as e:
-            #print >> fp, "2222"
-            #print >> fp, e
-            self.pmData = "N/A"
-        #fp.close()
-
-    #according to get_pm get pm25 data when it run over.
-    def get_pm25_str(self):
-        return self.pmData
 
     def get_weather_from_nmc(self, method = 0):
         """

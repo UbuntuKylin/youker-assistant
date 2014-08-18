@@ -35,7 +35,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tabAbout">
     <attribute name="title">
@@ -83,7 +83,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>V1.1.2</string>
+      <string>V1.2.0</string>
      </property>
     </widget>
     <widget class="QTextEdit" name="textEdit">

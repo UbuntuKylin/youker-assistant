@@ -1,4 +1,4 @@
-youker-assistant (1.1.2-0ubuntu1) trusty; urgency=low
+youker-assistant (1.2.0-0ubuntu1) trusty; urgency=low
 
   * Add IP Address and pid file.
   * Adjust the widget of system settings.
@@ -7,8 +7,10 @@ youker-assistant (1.1.2-0ubuntu1) trusty; urgency=low
   * Modify debian/postinst and debian/postrm.
   * Display the current font style when clicked the change button.
   * Add pingback function.
+  * Modify Driver info page(LP: #1267374).
+  * Add judgment of the Desktop.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 05 Aug 2014 17:24:56 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 18 Aug 2014 15:00:04 +0800
 
 youker-assistant (1.1.0-0ubuntu1) trusty; urgency=low
 

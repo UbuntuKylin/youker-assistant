@@ -42,6 +42,9 @@ import re
 import json
 import locale
 
+import datetime
+HOME = os.path.expandvars('$HOME')
+
 
 from beautify.desktop import Desktop
 from beautify.unity import Unity
@@ -1126,13 +1129,71 @@ class SessionDaemon(dbus.service.Object):
 #    def get_forecast_dict(self):
 #        return self.weatherconf.get_forecast_dict()
 
+    # is Unity or not
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def judge_desktop_is_unity(self):
+        dekstop = ''
+        try:
+            dekstop = os.getenv('XDG_CURRENT_DESKTOP')
+        except Exception as e:
+            pass
+        return dekstop
+
+    # -------------------------pingback-------------------------
+    def get_last_time(self):
+        time_text = None
+        usrPath = os.path.join(HOME, '.config/ubuntukylin/youker-assistant/pingback.time')
+        if os.path.exists(usrPath):
+            fp = open(usrPath)
+            try:
+                time_text = fp.read( ).replace('\n', '')
+            finally:
+                fp.close()
+        return time_text
+
+    def set_last_time(self, time_text):
+        abs_path = os.path.join(HOME, '.config/ubuntukylin/youker-assistant')
+        if not os.path.isdir(abs_path):
+            os.makedirs(abs_path)
+        usrPath = os.path.join(abs_path, 'pingback.time')
+        fp = open(usrPath, 'w')
+        fp.write(time_text)
+        fp.close()
+
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
     def submit_uk_pingback(self):
-        machine_id = get_machine_id()
-        version_youker_assistant = get_uk_version()
-        distro, version_os  = get_distro_info()
-        pingback = self.premoter.submit_pingback_main(machine_id, distro, version_os, version_youker_assistant)
-        return pingback
+        last_time = self.get_last_time()
+        now_time = datetime.datetime.now()
+        if last_time in (None, ''):
+            version_youker_assistant = get_uk_version()
+            distro, version_os  = get_distro_info()
+            try:
+                pingback = self.premoter.submit_pingback_main(distro, version_os, version_youker_assistant)
+            except Exception as e:
+                print 'pingback failed...'
+                print e
+            if pingback:
+                self. set_last_time(now_time.strftime('%Y-%m-%d'))#'%Y-%m-%d %H:%M:%S'
+            return pingback
+        else:
+            last_time = datetime.datetime.strptime(last_time, '%Y-%m-%d')
+            now_time = now_time.strftime('%Y-%m-%d')
+            now_time = datetime.datetime.strptime(now_time, '%Y-%m-%d')
+#            myseconds = (now_time - last_time).seconds
+            delta = now_time - last_time#两个日期相隔的天数
+            if (delta.days > 0):
+                version_youker_assistant = get_uk_version()
+                distro, version_os  = get_distro_info()
+                try:
+                    pingback = self.premoter.submit_pingback_main(distro, version_os, version_youker_assistant)
+                except Exception as e:
+                    print 'pingback failed...'
+                    print e
+                if pingback:
+                    self. set_last_time(now_time.strftime('%Y-%m-%d'))
+                return pingback
+            else:
+                return False
 
     def real_get_current_weather(self, cityId):
         self.weather_data = self.server.get_cma_observe_weather(cityId)
@@ -1143,6 +1204,7 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def get_current_weather(self, cityId):
         t = threading.Thread(target = self.real_get_current_weather, args = (cityId,))
+        t.setDaemon(True)
         t.start()
 #        self.weatherconf.getCurrentWeather(cityId)
 
@@ -1150,25 +1212,6 @@ class SessionDaemon(dbus.service.Object):
     def get_current_weather_dict(self):
         return self.weather_data
 #        return self.weatherconf.get_current_weather_dict()
-
-    # get current PM2.5
-#    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
-#    def get_current_pm25(self, cityId):
-#        self.weatherconf.getPM25Info(cityId)
-
-#    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
-#    def get_pm25_str(self):
-#        return self.weatherconf.get_pm25_str()
-
-    # update weather data
-#    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
-#    def update_weather_data(self, cityId):
-#        return self.weatherconf.updateCurrentWeather(cityId)
-
-    # get cityid from citynamegetPM25Info
-#    @dbus.service.method(INTERFACE, in_signature='s', out_signature='s')
-#    def get_city_id(self, cityName):
-#        return self.weatherconf.getCityId(cityName)
 
     # get current day's weather from yahoo 0.3.3
     @dbus.service.method(INTERFACE, in_signature='ass', out_signature='')

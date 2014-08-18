@@ -49,7 +49,6 @@ Item {
                 }
             }
 
-
             Common.Label {
                 id: label
                 text: qsTr("Default toolkits")//默认工具箱

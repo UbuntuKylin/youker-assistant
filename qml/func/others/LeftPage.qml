@@ -266,7 +266,8 @@ Rectangle {
             id: mycolumn
             Text {
                 id: text0
-                width: leftbar.width-180
+                elide: Text.ElideRight//add by kobe: 超出设定宽度时用...显示
+                width:leftbar.width-180
                 text: qsTr("Quick clean up system junks, saving disk space and improving the system efficiency !")//一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！
                 font.bold: true
                 wrapMode: Text.WordWrap

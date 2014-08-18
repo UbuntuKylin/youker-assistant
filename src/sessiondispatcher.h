@@ -40,6 +40,7 @@ public:
     Q_INVOKABLE void show_slider_qt();
     //退出前的准备工作
     void ready_exit_normally();
+
     //打开文件夹
     Q_INVOKABLE void open_folder_qt(QString path);
 
@@ -309,6 +310,8 @@ public:
     Q_INVOKABLE QString get_used_memory_qt();
     Q_INVOKABLE QString get_free_memory_qt();
     Q_INVOKABLE QStringList get_network_flow_total_qt();
+
+    Q_INVOKABLE QString judge_desktop_is_unity_qt();
 
     //-------------pinback
     bool submit_uk_pingback();

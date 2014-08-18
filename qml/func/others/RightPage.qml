@@ -280,6 +280,14 @@ Rectangle {
                 Qt.openUrlExternally("http://www.ubuntukylin.com/ukylin/forum.php");
             }
         }
+//        Text {
+//            id: helplabel
+//            width: 50
+//            height: 25
+//            textFormat: Text.RichText
+//            text:  qsTr("<a href=\"http://www.ubuntukylin.com/ukylin/forum.php\">Forum Help</a>")
+//            onLinkActivated: { Qt.openUrlExternally(link); }
+//        }
         Common.StyleButton {
             id: versionlabel
             wordname: qsTr("Features")//新版本特性

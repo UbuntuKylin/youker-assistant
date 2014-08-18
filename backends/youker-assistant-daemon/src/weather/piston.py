@@ -52,24 +52,10 @@ class WeatherPistonAPI(PistonAPI):
     ``service_root`` constructor argument.
     """
     default_service_observe = 'observe'
-    default_service_forecast3d = 'forecast3d'
-    default_service_forecast6d = 'forecast6d'
     default_content_type = 'application/x-www-form-urlencoded'
 
     @validate_pattern('cityid', r'[0-9a-z+-.:/]+', required=False)
     @returns_json
     def get_cma_observe_weather(self, cityid):
         url = '%s/%s/' % (self.default_service_observe, cityid)
-        return self._get(url, scheme=PUBLIC_API_SCHEME)
-
-    @validate_pattern('cityid', r'[0-9a-z+-.:/]+', required=False)
-    @returns_json
-    def get_cma_forecast3d_weather(self, cityid):
-        url = '%s/%s/' % (self.default_service_forecast3d, cityid)
-        return self._get(url, scheme=PUBLIC_API_SCHEME)
-
-    @validate_pattern('cityid', r'[0-9a-z+-.:/]+', required=False)
-    @returns_json
-    def get_cma_forecast6d_weather(self, cityid):
-        url = '%s/%s/' % (self.default_service_forecast6d, cityid)
         return self._get(url, scheme=PUBLIC_API_SCHEME)

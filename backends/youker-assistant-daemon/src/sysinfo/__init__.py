@@ -64,22 +64,7 @@ class Sysinfo:
         CLIPS_DICT['desktopenvironment'] = self.get_desktop()
         CLIPS_DICT['hostname'], CLIPS_DICT['platform'] = self.get_systeminfo()
         CLIPS_DICT['cpu'], CLIPS_DICT['ram'] = self.get_hardwareinfo()
-#        CLIPS_DICT['machine_id'] = self.get_machine_id()
         return CLIPS_DICT
-
-#    def get_machine_id(self):
-#        fpath = '/var/lib/dbus/machine-id'
-#        if(os.path.exists(fpath) and os.path.isfile(fpath)):
-#            f = open(fpath, 'r')
-#            id = f.read()
-#            f.close()
-#            id = id.replace('\n','')
-#            if(id == ''):
-#                return 'unknown'
-#            else:
-#                return id
-#        else:
-#            return 'unknown'
 
     def get_userinfo(self):
         dict = {}
@@ -134,14 +119,19 @@ class Sysinfo:
                         'pantheon': 'elementary OS (Luna)',
                         'Lubutu': 'LXDE',
         }
-        desktop = os.getenv('DESKTOP_SESSION')
-        if desktop in desktop_dict:
-            return desktop_dict[desktop]
-        else:
-            if desktop:
-                return 'Unknown (%s)' % desktop
+        try:
+            desktop_name = os.getenv('XDG_CURRENT_DESKTOP')
+            return desktop_name
+        except Exception as e:
+            print e
+            desktop = os.getenv('DESKTOP_SESSION')
+            if desktop in desktop_dict:
+                return desktop_dict[desktop]
             else:
-                return 'Unknown'
+                if desktop:
+                    return 'Unknown (%s)' % desktop
+                else:
+                    return 'Unknown'
 
 
     def get_systeminfo(self):

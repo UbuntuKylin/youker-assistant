@@ -24,7 +24,7 @@ import os, sys
 import urllib2
 import platform
 
-VERSION = "1.1.2"
+VERSION = "1.2.0"
 
 def get_distro_info():
     ufpath = '/etc/ubuntukylin-release'
@@ -48,19 +48,19 @@ def get_distro_info():
         distversion = dist[1]
         return [distname, distversion]
 
-def get_machine_id():
-    fpath = '/var/lib/dbus/machine-id'
-    if(os.path.exists(fpath) and os.path.isfile(fpath)):
-        f = open(fpath, 'r')
-        id = f.read()
-        f.close()
-        id = id.replace('\n','')
-        if(id == ''):
-            return 'unknown'
-        else:
-            return id
-    else:
-        return 'unknown'
+#def get_machine_id():
+#    fpath = '/var/lib/dbus/machine-id'
+#    if(os.path.exists(fpath) and os.path.isfile(fpath)):
+#        f = open(fpath, 'r')
+#        id = f.read()
+#        f.close()
+#        id = id.replace('\n','')
+#        if(id == ''):
+#            return 'unknown'
+#        else:
+#            return id
+#    else:
+#        return 'unknown'
 
 # youker-assistant version
 def get_uk_version():

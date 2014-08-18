@@ -140,6 +140,13 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        if (sessiondispatcher.judge_desktop_is_unity_qt() == "Unity") {
+            toolboxpositon.visible = false;
+        }
+        else {
+            toolboxpositon.visible = true;
+        }
+
         windowmanagerpage.position_mode = sessiondispatcher.get_window_button_align_qt();
         if (sessiondispatcher.get_menus_have_icons_qt()) {
             menuswitcher.switchedOn = true;
@@ -286,6 +293,7 @@ Rectangle {
         }
         z: 11
         Row {
+            id: toolboxpositon
             spacing: 230
             Row {
                 id: workmode
