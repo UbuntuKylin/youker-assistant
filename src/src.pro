@@ -94,7 +94,11 @@ HEADERS += homepage.h \
     yprocess.h \
     devicemanager.h \
     kfontdialog.h \
-    aboutdialog.h
+    aboutdialog.h \
+    commonobject.h \
+    clounddispatcher.h \
+    monitordispatcher.h \
+    acceleratedispatcher.h
 
 SOURCES += main.cpp \
     homepage.cpp \
@@ -135,7 +139,11 @@ SOURCES += main.cpp \
     yprocess.cpp \
     devicemanager.cpp \
     kfontdialog.cpp \
-    aboutdialog.cpp
+    aboutdialog.cpp \
+    commonobject.cpp \
+    clounddispatcher.cpp \
+    monitordispatcher.cpp \
+    acceleratedispatcher.cpp
 
 RESOURCES += pixmap.qrc
 

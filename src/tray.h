@@ -23,8 +23,8 @@
 #include <QAction>
 #include "ui_tray.h"
 #include "suspensionframe.h"
-#include "systemdispatcher.h"
-#include "sessiondispatcher.h"
+#include "acceleratedispatcher.h"
+#include "monitordispatcher.h"
 #include "aboutdialog.h"
 
 class Tray: public QWidget, private Ui::Tray
@@ -45,8 +45,8 @@ public:
 private:
     QPoint dragPos;
     SuspensionFrame *frame;
-    SystemDispatcher *dispather;
-    SessionDispatcher *sedispather;
+    AccelerateDispatcher *speeddispather;
+    MonitorDispatcher *monitordispather;
     QString cpu_value;
     QString up_speed;
     QString down_speed;

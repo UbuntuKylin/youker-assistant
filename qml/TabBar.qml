@@ -15,7 +15,7 @@
  */
 
 import QtQuick 1.1
-import SessionType 0.1
+import CommonType 0.1
 
 Rectangle {
     id: toolwidget
@@ -24,7 +24,7 @@ Rectangle {
     color: "transparent"
     state: "Home"
 
-    SessionDispatcher { id: sessiondispatcher }
+    CommonObject { id: commonobject}
 
     Row {
         id: tool_line

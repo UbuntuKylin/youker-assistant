@@ -17,11 +17,9 @@
 #define SESSIONDISPATCHER_H
 
 #include <QObject>
+#include <QtDBus>
 #include <QDBusInterface>
 #include <QDBusConnection>
-#include <QApplication>
-#include <QString>
-#include <QDeclarativeView>
 #include "quibo.h"
 #include "modaldialog.h"
 #include "httpauth.h"
@@ -44,8 +42,8 @@ public:
     //打开文件夹
     Q_INVOKABLE void open_folder_qt(QString path);
 
-    Q_INVOKABLE void get_ip_address_qt();
-    Q_INVOKABLE QString show_ip_address_qt();
+//    Q_INVOKABLE void get_ip_address_qt();
+//    Q_INVOKABLE QString show_ip_address_qt();
 
     Q_INVOKABLE bool judge_camera_qt();
     Q_INVOKABLE void call_camera_qt();
@@ -303,21 +301,12 @@ public:
     Q_INVOKABLE int get_thumbnail_cache_time_qt();
     Q_INVOKABLE void set_thumbnail_cache_size_qt(int size);
     Q_INVOKABLE int get_thumbnail_cache_size_qt();
-
-    /*-------------------monitorball-------------------*/
-    Q_INVOKABLE double get_cpu_percent_qt();
-    Q_INVOKABLE QString get_total_memory_qt();
-    Q_INVOKABLE QString get_used_memory_qt();
-    Q_INVOKABLE QString get_free_memory_qt();
-    Q_INVOKABLE QStringList get_network_flow_total_qt();
-
     Q_INVOKABLE QString judge_desktop_is_unity_qt();
 
     //-------------pinback
     bool submit_uk_pingback();
+    bool access_server_pingback();
 
-    /*-------------------weather-------------------*/
-    Q_INVOKABLE void get_current_weather_qt();
     void get_current_weather_dict_qt();//当天天气数据获取完成后，通过该函数返回其获取的值给currentInfo
 
     QMap<QString, QVariant> currentInfo;
@@ -336,19 +325,11 @@ public:
     Q_INVOKABLE void change_maincheckbox_status(QString status);
     //一键清理扫描
     Q_INVOKABLE void onekey_scan_function_qt(QStringList selectedList);
-
-    //金山快盘云配置
-    Q_INVOKABLE void download_kysoft_cloud_conf_qt();
-    Q_INVOKABLE void upload_kysoft_cloud_conf_qt();
-
     Q_INVOKABLE void let_detail_info_page_to_update_data(QString infoFlag);
 
 signals:
     void finishScanWork(QString msg);
     void isScanning(QString msg);
-
-    void startShowIPAddress(QString ip_addr);
-
     void notifyFontStyleToQML(QString font_style);
     void startChangeQMLCity();//发送开始更换QML城市
     void startUpdateForecastWeahter(QString flag);//发送开始更换六天天气预报
@@ -388,23 +369,16 @@ signals:
     //告诉QML界面，标题栏控制按钮位置发生变化了，准备改变优客助手自身的控制按钮位置
     void startChangeControlBtnPosition(QString position);
 
-    //把下载和使用云端配置的情况告诉QML
-    void tellDownloadCloudConfToQML(QString download);
-    //把上传配置到云端的情况告诉QML
-    void tellUploadCloudConfToQML(QString upload);
-
-    //告诉QML确认云配置操作
-//    void tellQMLCloudConfirm();
-
     void tellQMLHistoryNumber(QString flag, int num);
     void tellQMLLargeFileList(QStringList filelist);
 
     void tellDetailPageUpdateData(QString infoFlag);
 
-
     //返回主页面信号
     void backToHomePage(int index);//0412
 public slots:
+    Q_INVOKABLE void get_current_weather_qt();
+
     void verify_user_and_password(QString user, QString pwd);
     void handle_data_after_login_success(QString id, /*QString level, */QString name, QString score);
     void handle_data_after_search_success(/*QString level, */QString score);
@@ -420,8 +394,6 @@ public slots:
 
     //更换城市槽函数
     void handler_change_city();
-    //更换自动更新天气周期槽函数
-//    void handler_change_rate(int rate);
 
     //接收缓存信号，把数据动态堆加到model中
     void handler_append_cache_data_to_model(QString flag, QString path, QString fileFlag, QString sizeValue);//data_transmit_by_cache(self, flag0, path, flag1, size):
@@ -454,11 +426,6 @@ public slots:
 
     //接受标题栏控制按钮位置改变
     void handler_change_titlebar_position(QString position);
-
-    //接收下载和使用云端配置的信号
-    void handler_download_cloud_conf(QString download);
-    //接收上传配置到云端时的信号
-    void handler_upload_cloud_conf(QString upload);
     void handlerHistoryNumber(QString flag, int num);
     void handlerLargeFileList(QStringList filelist);
 
@@ -468,18 +435,12 @@ public slots:
 private:
     int mainwindow_width;
     int mainwindow_height;
-
-    //皮肤对话框对象
-//    SkinsWidget *skin_widget;
-//    SkinCenter *skinCenter;
-
     QSettings * mSettings;
     QSettings * default_Settings;
-//    QString initCityId;
     HttpAuth *httpauth;
-
     int waitTime;//超时重试次数
     QTimer *timer;
+    QTimer *updatetimer;
     bool loginOK;
     NewCharacter *slidershow; //新版特性界面
     SelectDialog *selectDialog;

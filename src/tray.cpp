@@ -21,19 +21,19 @@ Tray::Tray(QWidget *parent)
     : QWidget(parent)
 {
     setupUi(this);
-    dispather = new SystemDispatcher;
-    sedispather = new SessionDispatcher;
+    speeddispather = new AccelerateDispatcher();
+    monitordispather = new MonitorDispatcher();
     ratio_sus = 0;
-    double trans_cpu = sedispather->get_cpu_percent_qt();
+    double trans_cpu = monitordispather->get_cpu_percent_qt();
     cpu_value = QString::number(trans_cpu, 'f', 0);
-    used_memory = sedispather->get_used_memory_qt().toDouble();
-    free_memory = sedispather->get_free_memory_qt();
-    total_size = sedispather->get_total_memory_qt().toDouble();
+    used_memory = monitordispather->get_used_memory_qt().toDouble();
+    free_memory = monitordispather->get_free_memory_qt();
+    total_size = monitordispather->get_total_memory_qt().toDouble();
     double size = used_memory / total_size;
     ratio = QString::number(size, 'f', 2);
     double trans = ratio.toDouble() * 100;
     ratio = QString::number(trans,'f',0);
-    total_speed = sedispather->get_network_flow_total_qt();
+    total_speed = monitordispather->get_network_flow_total_qt();
 
     this->setWindowOpacity(1.0);
     icon = QIcon(":/pixmap/image/icon.png");
@@ -68,11 +68,11 @@ Tray::~Tray() {
     if(frame != NULL) {
         delete frame;
     }
-    if(dispather != NULL) {
-        delete dispather;
+    if(speeddispather != NULL) {
+        delete speeddispather;
     }
-    if(sedispather != NULL) {
-        delete sedispather;
+    if(monitordispather != NULL) {
+        delete monitordispather;
     }
     if(aboutDlg != NULL) {
         delete aboutDlg;
@@ -80,7 +80,7 @@ Tray::~Tray() {
 }
 
 void Tray::updateData() {
-    QStringList current_speed = sedispather->get_network_flow_total_qt();
+    QStringList current_speed = monitordispather->get_network_flow_total_qt();
     double up_before = 0.0;
     double down_before = 0.0;
     if(!total_speed.isEmpty()) {
@@ -111,10 +111,10 @@ void Tray::updateData() {
         down_speed = QString("%1%2").arg(QString::number((float)down_final/1024,'f',2)).arg("M/s");
     }
 
-    double trans_cpu = sedispather->get_cpu_percent_qt();
+    double trans_cpu = monitordispather->get_cpu_percent_qt();
     cpu_value = QString::number(trans_cpu, 'f', 0);
-    used_memory = sedispather->get_used_memory_qt().toDouble();
-    free_memory = sedispather->get_free_memory_qt();
+    used_memory = monitordispather->get_used_memory_qt().toDouble();
+    free_memory = monitordispather->get_free_memory_qt();
     double size = used_memory / total_size;
     ratio = QString::number(size, 'f', 2);
     double trans = ratio.toDouble() * 100;
@@ -129,7 +129,7 @@ void Tray::updateData() {
 }
 
 void Tray::startMemoryAccelerate() {
-    dispather->cleanup_memory_qt();
+    speeddispather->cleanup_memory_qt();
     updateData();
 }
 

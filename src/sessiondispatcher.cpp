@@ -16,21 +16,14 @@
 
 #include "sessiondispatcher.h"
 #include <QDebug>
-#include <QVariant>
-#include <QProcessEnvironment>
-#include <QtDBus>
-#include <QObject>
-#include <QString>
-#include "warningdialog.h"
 #include <QDesktopWidget>
-#include <QDeclarativeContext>
 #include <QFontDialog>
 #include <QFileDialog>
+#include "warningdialog.h"
 #include "kthread.h"
 #include "util.h"
 #include "kfontdialog.h"
 #include "logindialog.h"
-#include "math.h"
 #include "messengerproxy.h"
 
 QString selectedFont;
@@ -60,8 +53,10 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     slidershow = new NewCharacter();
 
     //超时计时器
-    timer=new QTimer(this);
+    timer = new QTimer(this);
     loginOK = false;
+
+    updatetimer = new QTimer(this);
 
     //handler_change_titlebar_position
     QObject::connect(sessioniface, SIGNAL(change_titlebar_position(QString)), this, SLOT(handler_change_titlebar_position(QString)));
@@ -86,10 +81,6 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(sessioniface, SIGNAL(data_transmit_by_cookies(QString, QString, QString)), this, SLOT(handler_append_cookies_to_model(QString,QString,QString)));
     QObject::connect(sessioniface, SIGNAL(cookies_transmit_complete(QString)), this, SLOT(handler_cookies_scan_over(QString)));
 
-    //cloud conf
-    QObject::connect(sessioniface, SIGNAL(upload_cloud_conf_signal(QString)), this, SLOT(handler_upload_cloud_conf(QString)));
-    QObject::connect(sessioniface, SIGNAL(download_cloud_conf_signal(QString)), this, SLOT(handler_download_cloud_conf(QString)));
-
     //login
     QObject::connect(httpauth, SIGNAL(response(/*QString,*/QString,QString,QString)), this, SLOT(handle_data_after_login_success(/*QString,*/QString,QString,QString)));
     QObject::connect(httpauth, SIGNAL(refresh(/*QString,*/QString)), this, SLOT(handle_data_after_search_success(/*QString,*/QString)));
@@ -103,6 +94,9 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(MessengerProxy::get_instance_object(), SIGNAL(getHomeBackIndex(int)), this, SLOT(handlerBackToHomePage(int)));
     selectDialog = new SelectDialog(mSettings, 0);
     connect(selectDialog, SIGNAL(readyToUpdateWeatherForWizard()), this, SLOT(handler_change_city()));
+
+    connect(updatetimer,SIGNAL(timeout()),this,SLOT(get_current_weather_qt()));
+    updatetimer->start(60000*15);
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -127,6 +121,15 @@ SessionDispatcher::~SessionDispatcher() {
     if (timer != NULL) {
         delete timer;
     }
+
+    disconnect(updatetimer,SIGNAL(timeout()),this,SLOT(get_current_weather_qt()));
+    if(updatetimer->isActive()) {
+        updatetimer->stop();
+    }
+    if (updatetimer != NULL) {
+        delete updatetimer;
+    }
+
 
     this->exit_qt();
     if (sessioniface != NULL) {
@@ -212,43 +215,6 @@ void SessionDispatcher::handlerLargeFileList(QStringList filelist) {
 
 void SessionDispatcher::open_folder_qt(QString path) {
     sessioniface->call("open_folder", path);
-}
-
-
-void SessionDispatcher::get_ip_address_qt() {
-    //first pinback
-    bool result = this->submit_uk_pingback();
-//    if(result) {
-//        qDebug() << "pingback success....";
-//    }
-//    else {
-//        qDebug() << "pingback failed....";
-//    }
-    //then get ip
-    sessioniface->call("get_ip_address");
-}
-
-QString SessionDispatcher::show_ip_address_qt() {
-    QDBusReply<QString> reply = sessioniface->call("show_ip_address");
-    return reply.value();
-}
-
-void SessionDispatcher::download_kysoft_cloud_conf_qt() {
-    sessioniface->call("download_kysoft_cloud_conf");
-}
-
-void SessionDispatcher::upload_kysoft_cloud_conf_qt() {
-    sessioniface->call("upload_kysoft_cloud_conf");
-}
-
-//接收下载和使用云端配置的信号
-void SessionDispatcher::handler_download_cloud_conf(QString download) {
-    emit this->tellDownloadCloudConfToQML(download);
-}
-
-//接收上传配置到云端时的信号
-void SessionDispatcher::handler_upload_cloud_conf(QString upload) {
-    emit this->tellUploadCloudConfToQML(upload);
 }
 
 //准发发送信号告诉优客助手自己去改变自身的标题栏控制按钮位置
@@ -405,10 +371,6 @@ void SessionDispatcher::accord_flag_access_weather(QString key, QString value) {
     else if(key == "yahoo" && value == "kobe") {
         get_current_yahoo_weather_dict_qt();
         emit startUpdateForecastWeahter("yahoo");
-    }
-    else if(key == "ip_addr" && value == "kobe") {
-        QString ip_addr = this->show_ip_address_qt();
-        emit startShowIPAddress(ip_addr);
     }
 }
 
@@ -1712,32 +1674,6 @@ int SessionDispatcher::get_thumbnail_cache_size_qt() {
     return reply.value();
 }
 
-//-----------------------monitorball------------------------
-double SessionDispatcher::get_cpu_percent_qt() {
-    QDBusReply<double> reply = sessioniface->call("get_cpu_percent");
-    return reply.value();
-}
-
-QString SessionDispatcher::get_total_memory_qt() {
-    QDBusReply<QString> reply = sessioniface->call("get_total_memory");
-    return reply.value();
-}
-
-QString SessionDispatcher::get_used_memory_qt() {
-    QDBusReply<QString> reply = sessioniface->call("get_used_memory");
-    return reply.value();
-}
-
-QString SessionDispatcher::get_free_memory_qt() {
-    QDBusReply<QString> reply = sessioniface->call("get_free_memory");
-    return reply.value();
-}
-
-QStringList SessionDispatcher::get_network_flow_total_qt() {
-    QDBusReply<QStringList> reply = sessioniface->call("get_network_flow_total");
-    return reply.value();
-}
-
 QString SessionDispatcher::judge_desktop_is_unity_qt() {
     QDBusReply<QString> reply = sessioniface->call("judge_desktop_is_unity");
     return reply.value();
@@ -1748,18 +1684,31 @@ bool SessionDispatcher::submit_uk_pingback() {
     return reply.value();
 }
 
+bool SessionDispatcher::access_server_pingback() {
+    QDBusReply<bool> reply = sessioniface->call("access_server_pingback");
+    return reply.value();
+}
+
 void SessionDispatcher::get_current_weather_qt() {
-    QString initCityId = this->getCityIdInfo();
-    bool flag = Util::id_exists_in_location_file(initCityId);
-    if(flag) {//获取中国气象局数据
-        QStringList tmplist;
-        KThread *thread = new KThread(tmplist, sessioniface, "get_current_weather", initCityId);
-        thread->start();
+    bool result = this->access_server_pingback();
+    if(result) {
+        qDebug() << "link weather server success....";
+        QString initCityId = this->getCityIdInfo();
+        bool flag = Util::id_exists_in_location_file(initCityId);
+        if(flag) {//获取中国气象局数据
+            QStringList tmplist;
+            KThread *thread = new KThread(tmplist, sessioniface, "get_current_weather", initCityId);
+            thread->start();
+        }
+        else {//获取雅虎气象数据
+            QStringList latlon = this->getLatandLon();
+            KThread *thread = new KThread(latlon, sessioniface, "get_current_yahoo_weather", initCityId);
+            thread->start();
+        }
+        this->submit_uk_pingback();
     }
-    else {//获取雅虎气象数据
-        QStringList latlon = this->getLatandLon();
-        KThread *thread = new KThread(latlon, sessioniface, "get_current_yahoo_weather", initCityId);
-        thread->start();
+    else {
+        qDebug() << "link weather server failed....";
     }
 }
 

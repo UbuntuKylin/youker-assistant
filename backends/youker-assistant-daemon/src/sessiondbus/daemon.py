@@ -65,9 +65,12 @@ MySever = ("http://service.ubuntukylin.com:8001/weather/api/1.0/")
 WeatherPistonAPI.default_service_root = MySever
 
 from piston_remoter import PingBackPistonAPI
-#PingBackSever = ("http://service.ubuntukylin.com:8001/youker-assistant/")
+#PingBackSever = ("http://servicPingBackPistonAPIe.ubuntukylin.com:8001/youker-assistant/")
 #PingBackPistonAPI.default_service_root = PingBackSever
 PINGBACK_SERVER = "http://service.ubuntukylin.com:8001/youker-assistant/"
+
+from piston_remoter import ServerPingBackAPI
+WEATHER_SERVER = "http://service.ubuntukylin.com:8001/weather/"
 
 from appcollections.monitorball.monitor_ball import MonitorBall
 log = logging.getLogger('SessionDaemon')
@@ -98,6 +101,7 @@ class SessionDaemon(dbus.service.Object):
 #        self.weatherconf = WeatherInfo(self)
         self.server = WeatherPistonAPI(service_root=MySever)
         self.premoter = PingBackPistonAPI(service_root=PINGBACK_SERVER)
+        self.weatherping = ServerPingBackAPI(service_root=WEATHER_SERVER)
 #        self.capturemode = Capture()
         self.daemonsame = cleaner.SearchTheSame()
         self.daemonlarge = cleaner.ManageTheLarge()
@@ -1159,6 +1163,11 @@ class SessionDaemon(dbus.service.Object):
         fp = open(usrPath, 'w')
         fp.write(time_text)
         fp.close()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def access_server_pingback(self):
+            pingback = self.weatherping.access_server_pingback()
+            return pingback
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
     def submit_uk_pingback(self):

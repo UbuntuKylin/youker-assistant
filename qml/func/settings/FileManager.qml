@@ -31,53 +31,53 @@ Rectangle {
     property bool first_cache_size: false
 
     //使用云配置后，控件状态根据配置发生相应的变化
-    Connections
-    {
-        target: sessiondispatcher
-        onTellDownloadCloudConfToQML: {
-            if(download == "location_replace_pathbar") {
-                if (sessiondispatcher.get_location_replace_pathbar_qt()) {
-                    pathbarswitcher.switchedOn = true;
-                }
-                else {
-                    pathbarswitcher.switchedOn = false;
-                }
-            }
-            else if(download == "auto_mount_media") {
-                if (sessiondispatcher.get_auto_mount_media_qt()) {
-                    mediaswitcher.switchedOn = true;
-                }
-                else {
-                    mediaswitcher.switchedOn = false;
-                }
-            }
-            else if(download == "auto_open_folder") {
-                if (sessiondispatcher.get_auto_open_folder_qt()) {
-                    folderswitcher.switchedOn = true;
-                }
-                else {
-                    folderswitcher.switchedOn = false;
-                }
-            }
-            else if(download == "prompt_autorun_programs") {
-                if (sessiondispatcher.get_prompt_autorun_programs_qt()) {
-                    programsswitcher.switchedOn = true;
-                }
-                else {
-                    programsswitcher.switchedOn = false;
-                }
-            }
-            else if(download == "thumbnail_icon_size") {
-                iconsizeslider.value = sessiondispatcher.get_thumbnail_icon_size_qt();
-            }
-            else if(download == "thumbnail_cache_time") {
-                cachetimeslider.value = sessiondispatcher.get_thumbnail_cache_time_qt();
-            }
-            else if(download == "thumbnail_cache_size") {
-                maxcacheslider.value = sessiondispatcher.get_thumbnail_cache_size_qt();
-            }
-        }
-    }
+//    Connections
+//    {
+//        target: sessiondispatcher
+//        onTellDownloadCloudConfToQML: {
+//            if(download == "location_replace_pathbar") {
+//                if (sessiondispatcher.get_location_replace_pathbar_qt()) {
+//                    pathbarswitcher.switchedOn = true;
+//                }
+//                else {
+//                    pathbarswitcher.switchedOn = false;
+//                }
+//            }
+//            else if(download == "auto_mount_media") {
+//                if (sessiondispatcher.get_auto_mount_media_qt()) {
+//                    mediaswitcher.switchedOn = true;
+//                }
+//                else {
+//                    mediaswitcher.switchedOn = false;
+//                }
+//            }
+//            else if(download == "auto_open_folder") {
+//                if (sessiondispatcher.get_auto_open_folder_qt()) {
+//                    folderswitcher.switchedOn = true;
+//                }
+//                else {
+//                    folderswitcher.switchedOn = false;
+//                }
+//            }
+//            else if(download == "prompt_autorun_programs") {
+//                if (sessiondispatcher.get_prompt_autorun_programs_qt()) {
+//                    programsswitcher.switchedOn = true;
+//                }
+//                else {
+//                    programsswitcher.switchedOn = false;
+//                }
+//            }
+//            else if(download == "thumbnail_icon_size") {
+//                iconsizeslider.value = sessiondispatcher.get_thumbnail_icon_size_qt();
+//            }
+//            else if(download == "thumbnail_cache_time") {
+//                cachetimeslider.value = sessiondispatcher.get_thumbnail_cache_time_qt();
+//            }
+//            else if(download == "thumbnail_cache_size") {
+//                maxcacheslider.value = sessiondispatcher.get_thumbnail_cache_size_qt();
+//            }
+//        }
+//    }
 
     Component.onCompleted: {
         if (sessiondispatcher.get_location_replace_pathbar_qt()) {

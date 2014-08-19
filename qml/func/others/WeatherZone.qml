@@ -201,11 +201,12 @@ Rectangle {
             }
         }
     }
-    Timer{
-        id: updateTime
-        interval: 60 * 10000;running: true;repeat: true
-        onTriggered: {
-            sessiondispatcher.get_current_weather_qt();
-        }
-    }
+//    Timer{
+//        id: updateTime
+//        interval: 600000;running: true;repeat: true
+//        onTriggered: {
+//            sessiondispatcher.get_current_weather_qt();
+////            console.log(Qt.formatDateTime(new Date(), "dddd\nyyyy-MM-dd\n-MMM-\nhh-mm-ss"));
+//        }
+//    }
 }

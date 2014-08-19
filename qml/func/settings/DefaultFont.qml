@@ -62,60 +62,60 @@ Rectangle {
             }
         }
 
-        onTellDownloadCloudConfToQML: {//使用云配置后，控件状态根据配置发生相应的变化
-            if(download == "default_font") {
-                fontBtn.text = sessiondispatcher.get_font_qt();
-            }
-            else if(download == "desktop_font") {
-                desktopfontBtn.text = sessiondispatcher.get_desktop_font_qt();
-            }
-            else if(download == "document_font") {
-                docufontBtn.text = sessiondispatcher.get_document_font_qt();
-            }
-            else if(download == "monospace_font") {
-                monofontBtn.text = sessiondispatcher.get_monospace_font_qt();
-            }
-            else if(download == "window_title_font") {
-                titlefontBtn.text = sessiondispatcher.get_window_title_font_qt();
-            }
-            else if(download == "font_zoom") {
-                slider.value = sessiondispatcher.get_font_zoom_qt();
-            }
-            else if(download == "font_hinting") {
-                var smooth_list = sessiondispatcher.get_smooth_style_list_qt();
-                var cur_smooth = sessiondispatcher.get_smooth_style_qt();
-                var new_list = new Array();
-                for(var m=0; m < smooth_list.length; m++) {
-                    if(smooth_list[m] !== cur_smooth) {
-                        new_list.push(smooth_list[m]);
-                    }
-                }
-                new_list.unshift(cur_smooth);
-                for(var j=0; j < new_list.length; j++) {
-                    if (cur_smooth === new_list[j]) {
-                        smoothcombo.selectedIndex  = j;
-                        break;
-                    }
-                }
-            }
-            else if(download == "font_antialiasing") {
-                var antialiasinglist = sessiondispatcher.get_antialiasing_style_list_qt();
-                var current_antialiasing = sessiondispatcher.get_antialiasing_style_qt();
-                var new_list2 = new Array();
-                for(var x=0; x < antialiasinglist.length; x++) {
-                    if(antialiasinglist[x] !== current_antialiasing) {
-                        new_list2.push(antialiasinglist[x]);
-                    }
-                }
-                new_list2.unshift(current_antialiasing);
-                for(var y=0; y < new_list2.length; y++) {
-                    if (current_antialiasing === new_list2[y]) {
-                        antialiasingcombo.selectedIndex = y;
-                        break;
-                    }
-                }
-            }
-        }
+//        onTellDownloadCloudConfToQML: {//使用云配置后，控件状态根据配置发生相应的变化
+//            if(download == "default_font") {
+//                fontBtn.text = sessiondispatcher.get_font_qt();
+//            }
+//            else if(download == "desktop_font") {
+//                desktopfontBtn.text = sessiondispatcher.get_desktop_font_qt();
+//            }
+//            else if(download == "document_font") {
+//                docufontBtn.text = sessiondispatcher.get_document_font_qt();
+//            }
+//            else if(download == "monospace_font") {
+//                monofontBtn.text = sessiondispatcher.get_monospace_font_qt();
+//            }
+//            else if(download == "window_title_font") {
+//                titlefontBtn.text = sessiondispatcher.get_window_title_font_qt();
+//            }
+//            else if(download == "font_zoom") {
+//                slider.value = sessiondispatcher.get_font_zoom_qt();
+//            }
+//            else if(download == "font_hinting") {
+//                var smooth_list = sessiondispatcher.get_smooth_style_list_qt();
+//                var cur_smooth = sessiondispatcher.get_smooth_style_qt();
+//                var new_list = new Array();
+//                for(var m=0; m < smooth_list.length; m++) {
+//                    if(smooth_list[m] !== cur_smooth) {
+//                        new_list.push(smooth_list[m]);
+//                    }
+//                }
+//                new_list.unshift(cur_smooth);
+//                for(var j=0; j < new_list.length; j++) {
+//                    if (cur_smooth === new_list[j]) {
+//                        smoothcombo.selectedIndex  = j;
+//                        break;
+//                    }
+//                }
+//            }
+//            else if(download == "font_antialiasing") {
+//                var antialiasinglist = sessiondispatcher.get_antialiasing_style_list_qt();
+//                var current_antialiasing = sessiondispatcher.get_antialiasing_style_qt();
+//                var new_list2 = new Array();
+//                for(var x=0; x < antialiasinglist.length; x++) {
+//                    if(antialiasinglist[x] !== current_antialiasing) {
+//                        new_list2.push(antialiasinglist[x]);
+//                    }
+//                }
+//                new_list2.unshift(current_antialiasing);
+//                for(var y=0; y < new_list2.length; y++) {
+//                    if (current_antialiasing === new_list2[y]) {
+//                        antialiasingcombo.selectedIndex = y;
+//                        break;
+//                    }
+//                }
+//            }
+//        }
     }
 
     Component.onCompleted: {

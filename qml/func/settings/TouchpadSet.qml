@@ -29,46 +29,46 @@ Rectangle {
     property string actiontext: qsTr("By setting the relevant properties of your touchpad, make the operation more convenient.")//通过调整您触摸板的相关设置，使操作更加便捷。
 
     //使用云配置后，控件状态根据配置发生相应的变化
-    Connections
-    {
-        target: sessiondispatcher
-        onTellDownloadCloudConfToQML: {
-            if(download == "touchpad_enable") {
-                if (sessiondispatcher.get_touchpad_enable_qt()) {
-                    touchpadswitcher.switchedOn = true;
-                }
-                else {
-                    touchpadswitcher.switchedOn = false;
-                }
-            }
-            else if(download == "touch_horizontal_scrolling") {
-                if (sessiondispatcher.get_touchscrolling_use_horizontal_qt()) {
-                    horizontalswitcher.switchedOn = true;
-                }
-                else {
-                    horizontalswitcher.switchedOn = false;
-                }
-            }
-            else if(download == "type_scroll_bar") {
-                touchpadsetpage.scrollbars_mode = sessiondispatcher.get_scrollbars_mode_qt();
-                if (touchpadsetpage.scrollbars_mode == "overlay-auto") {
-                    overlay.checked = true;
-                }
-                else if(touchpadsetpage.scrollbars_mode == "normal") {
-                    legacy.checked = true;
-                }
-            }
-            else if(download == "touchpad_scrolling_mode") {
-                touchpadsetpage.touchscrolling_mode = sessiondispatcher.get_touchscrolling_mode_qt();
-                if (touchpadsetpage.touchscrolling_mode == "edge-scrolling") {
-                    edge.checked = true;
-                }
-                else if(touchpadsetpage.touchscrolling_mode == "two-finger-scrolling") {
-                    twofinger.checked = true;
-                }
-            }
-        }
-    }
+//    Connections
+//    {
+//        target: sessiondispatcher
+//        onTellDownloadCloudConfToQML: {
+//            if(download == "touchpad_enable") {
+//                if (sessiondispatcher.get_touchpad_enable_qt()) {
+//                    touchpadswitcher.switchedOn = true;
+//                }
+//                else {
+//                    touchpadswitcher.switchedOn = false;
+//                }
+//            }
+//            else if(download == "touch_horizontal_scrolling") {
+//                if (sessiondispatcher.get_touchscrolling_use_horizontal_qt()) {
+//                    horizontalswitcher.switchedOn = true;
+//                }
+//                else {
+//                    horizontalswitcher.switchedOn = false;
+//                }
+//            }
+//            else if(download == "type_scroll_bar") {
+//                touchpadsetpage.scrollbars_mode = sessiondispatcher.get_scrollbars_mode_qt();
+//                if (touchpadsetpage.scrollbars_mode == "overlay-auto") {
+//                    overlay.checked = true;
+//                }
+//                else if(touchpadsetpage.scrollbars_mode == "normal") {
+//                    legacy.checked = true;
+//                }
+//            }
+//            else if(download == "touchpad_scrolling_mode") {
+//                touchpadsetpage.touchscrolling_mode = sessiondispatcher.get_touchscrolling_mode_qt();
+//                if (touchpadsetpage.touchscrolling_mode == "edge-scrolling") {
+//                    edge.checked = true;
+//                }
+//                else if(touchpadsetpage.touchscrolling_mode == "two-finger-scrolling") {
+//                    twofinger.checked = true;
+//                }
+//            }
+//        }
+//    }
 
     Component.onCompleted: {
         touchpadsetpage.scrollbars_mode = sessiondispatcher.get_scrollbars_mode_qt();

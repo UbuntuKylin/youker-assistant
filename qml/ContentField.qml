@@ -22,8 +22,6 @@ import SystemType 0.1
 import ProcessType 0.1
 import DeviceType 0.1
 
-//import UbuntuI18nType 0.1
-
 import "./func/common" as Common
 import "./func/settings" as SysSettings
 import "./func/page" as HomeView
@@ -42,8 +40,6 @@ Rectangle {
     Toolkits{ id: toolkits }
     ProcessManager { id: processmanager }
     DeviceManager { id: devicemanager }
-
-//    UbuntuI18n {id: i18n}
 
     //当用户点击工具栏图标时，接收信号返回当前页面所属的主页面
     Connections

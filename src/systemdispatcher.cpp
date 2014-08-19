@@ -15,11 +15,7 @@
  */
 #include "systemdispatcher.h"
 #include <QDebug>
-#include <QVariant>
-#include <QProcessEnvironment>
 #include <QtDBus>
-#include <QObject>
-#include <QString>
 #include <QFileDialog>
 #include <QMap>
 #include <QMessageBox>
@@ -303,11 +299,6 @@ void SystemDispatcher::restore_sound_file_qt(QString targetfile) {
 
 void SystemDispatcher::restore_all_sound_file_qt(QString soundtheme) {
     systemiface->call("restore_all_sound_file", soundtheme);
-}
-
-//-----------------------monitorball------------------------
-void SystemDispatcher::cleanup_memory_qt() {
-    systemiface->call("cleanup_memory");
 }
 
 //-----------------------others------------------------

@@ -19,9 +19,6 @@
 #include <QObject>
 #include <QDBusInterface>
 #include <QDBusConnection>
-#include <QApplication>
-#include <QString>
-#include <QDeclarativeView>
 #include <QSound>
 #include "util.h"
 
@@ -73,11 +70,6 @@ public:
     //-----------------------------------------------
 
     Q_INVOKABLE bool set_cursor_theme_with_root_qt(QString theme);
-
-    //-----------------------monitorball------------------------
-    //一键加速
-    Q_INVOKABLE void cleanup_memory_qt();
-    //-----------------------------------------------
 
     //-----------------------others------------------------
     Q_INVOKABLE void custom_plymouth_bg_qt(QString plymouthName);

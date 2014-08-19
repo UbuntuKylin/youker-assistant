@@ -29,6 +29,8 @@
 #include "toolkits.h"
 #include "systemdispatcher.h"
 #include "sessiondispatcher.h"
+#include "commonobject.h"
+#include "clounddispatcher.h"
 #include "processmanager.h"
 #include "devicemanager.h"
 #include "slidershow.h"
@@ -51,6 +53,8 @@ void registerTypes() {
     qmlRegisterType<Toolkits>("ToolkitsType", 0, 1, "Toolkits");
     qmlRegisterType<SessionDispatcher>("SessionType", 0, 1, "SessionDispatcher");
     qmlRegisterType<SystemDispatcher>("SystemType", 0, 1, "SystemDispatcher");
+    qmlRegisterType<CommonObject>("CommonType", 0, 1, "CommonObject");
+    qmlRegisterType<CloundDispatcher>("CloundType", 0, 1, "CloundDispatcher");
     qmlRegisterType<ProcessManager>("ProcessType", 0, 1, "ProcessManager");
     qmlRegisterType<DeviceManager>("DeviceType", 0, 1, "DeviceManager");
     qmlRegisterType<QmlAudio>("AudioType", 0, 1, "QmlAudio");

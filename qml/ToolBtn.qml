@@ -28,7 +28,7 @@ Rectangle {
     property string path: "./img/en/title/"
 
     Component.onCompleted: {
-        if(sessiondispatcher.get_locale_version() == "zh_CN") {
+        if(commonobject.get_locale_version() == "zh_CN") {
             menulogo.path = "./img/zh_CN/title/";
         }
         else {

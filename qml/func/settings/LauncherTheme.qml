@@ -32,23 +32,23 @@ Rectangle {
     ListModel { id: backgroundchoices }
 
     //使用云配置后，控件状态根据配置发生相应的变化
-    Connections
-    {
-        target: sessiondispatcher
-        onTellDownloadCloudConfToQML: {
-            if(download == "launcher_autohide") {
-                if (sessiondispatcher.get_launcher_autohide_qt()) {
-                    launcherswitcher.switchedOn = true;
-                }
-                else {
-                    launcherswitcher.switchedOn = false;
-                }
-            }
-            else if(download == "launcher_icon_size") {
-                slider.value = sessiondispatcher.get_launcher_icon_size_qt();
-            }
-        }
-    }
+//    Connections
+//    {
+//        target: sessiondispatcher
+//        onTellDownloadCloudConfToQML: {
+//            if(download == "launcher_autohide") {
+//                if (sessiondispatcher.get_launcher_autohide_qt()) {
+//                    launcherswitcher.switchedOn = true;
+//                }
+//                else {
+//                    launcherswitcher.switchedOn = false;
+//                }
+//            }
+//            else if(download == "launcher_icon_size") {
+//                slider.value = sessiondispatcher.get_launcher_icon_size_qt();
+//            }
+//        }
+//    }
 
     Component.onCompleted: {
         if (sessiondispatcher.get_launcher_autohide_qt()) {

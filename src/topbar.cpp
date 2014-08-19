@@ -33,7 +33,7 @@ TopBar::TopBar(QWidget *parent)
     title_layout->addWidget(min_button, 0, Qt::AlignTop);
     title_layout->addStretch();
     title_layout->setSpacing(0);
-    title_layout->setContentsMargins(0, 0, 5, 0);
+    title_layout->setContentsMargins(3, 5, 5, 0);
     setLayout(title_layout);
     setFixedHeight(29);
 }

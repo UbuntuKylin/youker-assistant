@@ -1,4 +1,4 @@
-youker-assistant (1.2.0-0ubuntu1) trusty; urgency=low
+youker-assistant (1.2.0-0ubuntu1) utopic; urgency=low
 
   * Add IP Address and pid file.
   * Adjust the widget of system settings.

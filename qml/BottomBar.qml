@@ -16,7 +16,7 @@
  */
 
 import QtQuick 1.1
-import SessionType 0.1
+import CloundType 0.1
 import ToolkitsType 0.1
 import "./func/common" as Common
 
@@ -27,12 +27,12 @@ Rectangle {
     color: "transparent"
     property string version: "V1.2.0"
 
-    SessionDispatcher { id: sessiondispatcher }
+    CloundDispatcher {  id: clounddispatcher  }
     Toolkits{ id: toolkits }
 
     Connections
     {
-        target: sessiondispatcher
+        target: clounddispatcher
         onStartShowIPAddress: {
             if (ip_addr === '') {
                 iprow.visible = false;
@@ -48,13 +48,13 @@ Rectangle {
 //                root.downcloud = false;
                 downloaddynamic.paused = true;
                 downloaddynamic.playing = false;
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The kuaipan4uk is not running!"));
+                clounddispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The kuaipan4uk is not running!"));
             }
             else if(download == "download_notconf") {
 //                root.downcloud = false;
                 downloaddynamic.paused = true;
                 downloaddynamic.playing = false;
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Not found the cloud configuration!"));
+                clounddispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Not found the cloud configuration!"));
             }
             else if(download == "download_ok") {
 //                root.downcloud = false;
@@ -68,7 +68,7 @@ Rectangle {
 //                root.upcloud = false;
                 uploaddynamic.paused = true;
                 uploaddynamic.playing = false;
-                sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The kuaipan4uk is not running!"));
+                clounddispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The kuaipan4uk is not running!"));
             }
             else if(upload == "upload_ok") {
 //                root.upcloud = false;
@@ -80,7 +80,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        sessiondispatcher.get_ip_address_qt();
+        clounddispatcher.get_ip_address_qt();
     }
     Row {
         id: versionrow
@@ -163,10 +163,10 @@ Rectangle {
                 width: b1.width
                 height: 20
                 onClicked: {
-                    if(sessiondispatcher.showConfirmDialog(qsTr("Tips:"), qsTr("It will use the Kingsoft disk cloud configuration!"))) {
+                    if(clounddispatcher.showConfirmDialog(qsTr("Tips:"), qsTr("It will use the Kingsoft disk cloud configuration!"))) {
                         downloaddynamic.playing = true;
                         downloaddynamic.paused = false;
-                        sessiondispatcher.download_kysoft_cloud_conf_qt();
+                        clounddispatcher.download_kysoft_cloud_conf_qt();
                     }
                 }
             }
@@ -194,10 +194,10 @@ Rectangle {
                 width: b2.width
                 height: 20
                 onClicked: {
-                    if(sessiondispatcher.showConfirmDialog(qsTr("Tips:"), qsTr("It will upload configuration to the Kingsoft disk cloud!"))) {
+                    if(clounddispatcher.showConfirmDialog(qsTr("Tips:"), qsTr("It will upload configuration to the Kingsoft disk cloud!"))) {
                         uploaddynamic.playing = true;
                         uploaddynamic.paused = false;
-                        sessiondispatcher.upload_kysoft_cloud_conf_qt();
+                        clounddispatcher.upload_kysoft_cloud_conf_qt();
                     }
                 }
             }
