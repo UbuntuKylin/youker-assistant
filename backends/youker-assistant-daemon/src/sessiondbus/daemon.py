@@ -45,6 +45,11 @@ import locale
 import datetime
 HOME = os.path.expandvars('$HOME')
 
+import mechanize
+import cookielib
+import random
+from BeautifulSoup import BeautifulSoup
+
 
 from beautify.desktop import Desktop
 from beautify.unity import Unity
@@ -86,6 +91,12 @@ class SessionDaemon(dbus.service.Object):
     def __init__ (self, mainloop):
         #self.wizardconf = Wizard()
         self.ip_addr = None
+        self.distrowatch = []
+#        self.rank_list = []
+#        self.os_list = []
+#        self.today_hit_list = []
+#        self.img_list = []
+#        self.yestoday_hit_list = []
 #        self.sysinfo = {}
         self.cloudconf = CloudConfig(self)
         self.sysconf = Sysinfo()
@@ -125,6 +136,81 @@ class SessionDaemon(dbus.service.Object):
         self.ip_addr = get_ip()
         if self.ip_addr not in (False, None, {}, '', '[]', "['']"):
             self.access_weather('ip_addr', 'kobe')
+
+    #-----------------------------distrowatch rank-----------------------------
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def get_distrowatch_url(self, URL):
+        self.distrowatch = []
+        rank_list = []
+        os_list = []
+        today_hit_list = []
+        img_list = []
+        yestoday_hit_list = []
+        br = mechanize.Browser()
+        # Cookie Jar
+        cj = cookielib.LWPCookieJar()
+        br.set_cookiejar(cj)
+        # Browser options
+        br.set_handle_equiv(True)
+        br.set_handle_gzip(True)
+        #br.set_handle_gzip(False)
+        br.set_handle_redirect(True)
+        br.set_handle_referer(True)
+        br.set_handle_robots(False)
+        # Follows refresh 0 but not hangs on refresh > 0
+        br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
+        index = random.randint(0, LEN_AGENT-1)
+        br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Ubuntu/3.0.1-1.fc9 Firefox/3.0.1')]
+#        br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Ubuntu/3.0.1-1.fc9 Firefox/3.0.1'), ('Accept-Language', 'zh-CN,zh;q=0.8,en;q=0.6')]
+        r = br.open(URL)
+        html = r.read()
+        p = re.compile('<[^>]+>')
+        soup = BeautifulSoup(html)
+        spiderContents_rank = soup.findAll(name="th", attrs={"class":"phr1"})
+        spiderContents_os = soup.findAll(name="td", attrs={"class":"phr2"})
+        spiderContents_hit = soup.findAll(name="td", attrs={"class":"phr3"})
+        for i in range(0, len(spiderContents_rank)):
+            # print spiderContents_rank[i]#<th class="phr1">96</th>
+            try:
+                result = p.sub("", str(spiderContents_rank[i]))
+                rank_list.append(result)
+                # bb = spiderContents[i].findAll('img', id = 'src')
+                # print pa.sub("", str(spiderContents[i]))
+                # print bb#[<img src="images/other/alevel.png" alt="=" title="Yesterday: 155" />]
+            except Exception, e:
+                rank_list.append('')
+            try:
+                result = p.sub("", str(spiderContents_os[i]))
+                os_list.append(result)
+            except Exception, e:
+                os_list[i].append('')
+            try:
+                result = p.sub("", str(spiderContents_hit[i]))
+                today_hit_list.append(result)
+            except Exception, e:
+                today_hit_list.append('')
+            #<td class="phr3" title="Yesterday: 156">156<img src="images/other/alevel.png" alt="=" title="Yesterday: 156" /></td>
+            start_pos = str(spiderContents_hit[i]).find("src=")
+            end_pos = str(spiderContents_hit[i]).find("alt=")
+            img_path = ''
+            img_path = str(spiderContents_hit[i])[start_pos+5:end_pos]
+            img_path = img_path.replace('\"', '').replace(' ', '')
+            yestoday_hit_last_pos = str(spiderContents_hit[i]).find('Yesterday:',start_pos)
+            yestoday_hit_str = str(spiderContents_hit[i])[yestoday_hit_last_pos+10:]
+            yestoday_hit_num = 0
+            yestoday_hit_num = int(filter(str.isdigit, yestoday_hit_str))
+            img_list.append(img_path)
+            yestoday_hit_list.append(str(yestoday_hit_num))
+        for i in range(0, len(rank_list)):
+            line = "%s-%s-%s-%s-%s" % (rank_list[i], os_list[i], today_hit_list[i], img_list[i], yestoday_hit_list[i])
+            self.distrowatch.append(line)
+        print self.distrowatch
+        return
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_distrowatch_info(self):
+        return self.distrowatch
+
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def get_ip_address(self):

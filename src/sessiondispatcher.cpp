@@ -97,6 +97,9 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
     connect(updatetimer,SIGNAL(timeout()),this,SLOT(get_current_weather_qt()));
     updatetimer->start(60000*15);
+
+    this->get_distrowatch_url_qt("http://distrowatch.com/");
+    qDebug() << this->get_distrowatch_info_qt();
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -216,6 +219,19 @@ void SessionDispatcher::handlerLargeFileList(QStringList filelist) {
 void SessionDispatcher::open_folder_qt(QString path) {
     sessioniface->call("open_folder", path);
 }
+
+//distrowatch rank
+void SessionDispatcher::get_distrowatch_url_qt(QString url) {
+    sessioniface->call("get_distrowatch_url", url);
+}
+
+QStringList SessionDispatcher::get_distrowatch_info_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("get_distrowatch_info");
+    qDebug() << "get_distrowatch_info_qt->";
+    qDebug() << reply.value();
+    return reply.value();
+}
+
 
 //准发发送信号告诉优客助手自己去改变自身的标题栏控制按钮位置
 void SessionDispatcher::handler_change_titlebar_position(QString position) {

@@ -25,6 +25,31 @@ import urllib2
 import platform
 
 VERSION = "1.2.0"
+str_agent = []
+LEN_AGENT = 10
+
+str_agent.append('Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; Media Center PC 6.0; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET4.0C)')
+
+str_agent.append('Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; msn OptimizedIE8;ZHCN)')
+
+str_agent.append('Mozilla/5.0 (X11; Linux x86_64; rv:2.2a1pre) Gecko/20110324 Firefox/4.2a1pre')
+
+str_agent.append('Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:2.0b8pre) Gecko/20101213 Firefox/4.0b8pre')
+
+str_agent.append('Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; InfoPath.2; Alexa Toolbar)')
+
+str_agent.append('Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.53 Safari/534.30')
+
+str_agent.append('Mozilla/5.0 (X11; U;Linux i686; zh-CN;rv:1.2.3.4) Gecko/')
+
+str_agent.append('Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; InfoPath.2; Alexa Toolbar; SE 2.X MetaSr 1.0)')
+
+str_agent.append('Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/532.4 (KHTML, like Gecko) Maxthon/3.0.6.27 Safari/532.4')
+
+str_agent.append('Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/34.0.1847.116 Chrome/34.0.1847.116 Safari/537.36')
+
+ubuntukylin_distrowatch = 'http://distrowatch.com/table.php?distribution=ubuntukylin'
+distrowatch = 'http://distrowatch.com/'
 
 def get_distro_info():
     ufpath = '/etc/ubuntukylin-release'

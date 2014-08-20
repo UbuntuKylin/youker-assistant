@@ -249,6 +249,15 @@ Rectangle {
         Item {
             id: views
             width: parent.width
+
+
+//            ListView {
+//                focus: true
+//                id: distrowatch
+//                anchors.fill: parent
+//                model: listModel
+//                delegate: Others.InfoDelegate {}
+
             GridView {
                 id: gridView
                 anchors.fill: parent
