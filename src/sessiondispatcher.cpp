@@ -97,9 +97,6 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
     connect(updatetimer,SIGNAL(timeout()),this,SLOT(get_current_weather_qt()));
     updatetimer->start(60000*15);
-
-    this->get_distrowatch_url_qt("http://distrowatch.com/");
-    qDebug() << this->get_distrowatch_info_qt();
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -221,16 +218,42 @@ void SessionDispatcher::open_folder_qt(QString path) {
 }
 
 //distrowatch rank
-void SessionDispatcher::get_distrowatch_url_qt(QString url) {
-    sessioniface->call("get_distrowatch_url", url);
+QString SessionDispatcher::get_distrowatch_url_qt() {
+    QDBusReply<QString> reply = sessioniface->call("get_distrowatch_url");
+    return reply.value();
 }
 
 QStringList SessionDispatcher::get_distrowatch_info_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("get_distrowatch_info");
-    qDebug() << "get_distrowatch_info_qt->";
-    qDebug() << reply.value();
     return reply.value();
 }
+
+void SessionDispatcher::get_ubuntukylin_distrowatch_info_qt() {
+    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_ubuntukylin_distrowatch_info");
+    if (reply.isValid()) {
+        QMap<QString, QVariant> value = reply.value();
+        distrowatchInfo.clear();
+        distrowatchInfo = value;
+//        qDebug() << "lallalala";
+//        qDebug() << distrowatchInfo;
+        /*QMap(("architecture", QVariant(QString, "i386,x86_64") ) ( "basedon" ,  QVariant(QString, "Debian,Ubuntu") )
+         * ( "category" ,  QVariant(QString, "Desktop,LiveMedium") )
+         *  ( "description" ,  QVariant(QString, "Ubuntu Kylin is an official Ubuntu subproject whose goal is to create a variant of Ubuntu that is more suitable for Chinese users using the Simplified Chinese writing system. The project provides a delicate, thoughtful and fully customised Chinese user experience out-of-the-box by providing a desktop user interface localised into Simplified Chinese and with software generally preferred by many Chinese users.") )
+         * ( "desktop" ,  QVariant(QString, "Unity") )
+         * ( "lastupdate" ,  QVariant(QString, "Thursday 17 July 2014 04:51 GMT") ) ( "origin" ,  QVariant(QString, "China") )
+         *  ( "ostype" ,  QVariant(QString, "Linux") ) ( "popularity" ,  QVariant(QString, "71(211") ) ( "status" ,  QVariant(QString, "Active") ) )  */
+    }
+    else {
+        qDebug() << "get ubuntukylin distrowatchInfo failed!";
+    }
+}
+
+QString SessionDispatcher::getDistrowatchSingleInfo(QString key) {
+    QVariant info = distrowatchInfo.value(key);
+    return info.toString();
+}
+
+
 
 
 //准发发送信号告诉优客助手自己去改变自身的标题栏控制按钮位置

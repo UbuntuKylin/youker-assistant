@@ -73,6 +73,14 @@ Rectangle {
             else if(flag == "ProcessManager") {
                 pageStack.push(Qt.resolvedUrl("../settings/ProcessManager.qml"));
             }
+            else if (flag == "CameraCapture") {
+                if (sessiondispatcher.judge_camera_qt()) {
+                    pageStack.push(Qt.resolvedUrl("../settings/CameraCapture.qml"));
+                }
+                else {
+                    toolkits.alertMSG(qsTr("No found camera!"));
+                }
+            }
             //kobe:选中项深色块移动
             scaleMe.GridView.view.currentIndex = index;
         }

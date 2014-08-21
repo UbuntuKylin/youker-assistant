@@ -42,8 +42,11 @@ public:
     //打开文件夹
     Q_INVOKABLE void open_folder_qt(QString path);
 
-    Q_INVOKABLE void get_distrowatch_url_qt(QString url);
+    Q_INVOKABLE QString get_distrowatch_url_qt();
     Q_INVOKABLE QStringList get_distrowatch_info_qt();
+    QMap<QString, QVariant> distrowatchInfo;
+    Q_INVOKABLE void get_ubuntukylin_distrowatch_info_qt();
+    Q_INVOKABLE QString getDistrowatchSingleInfo(QString key);
 
     Q_INVOKABLE bool judge_camera_qt();
     Q_INVOKABLE void call_camera_qt();

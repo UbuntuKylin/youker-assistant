@@ -119,6 +119,7 @@ class SessionDaemon(dbus.service.Object):
         self.daemonunneed = cleaner.CleanTheUnneed()
         self.daemonoldkernel = cleaner.CleanTheOldkernel()
         self.daemoncache = cleaner.CleanTheCache()
+        self.init_mechanize()
         bus_name = dbus.service.BusName(INTERFACE, bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
@@ -138,34 +139,93 @@ class SessionDaemon(dbus.service.Object):
             self.access_weather('ip_addr', 'kobe')
 
     #-----------------------------distrowatch rank-----------------------------
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
-    def get_distrowatch_url(self, URL):
+    def init_mechanize(self):
+        # Browser
+        self.br = mechanize.Browser()
+        # Cookie Jar
+        cj = cookielib.LWPCookieJar()
+        self.br.set_cookiejar(cj)
+
+        # Browser options
+        self.br.set_handle_equiv(True)
+        self.br.set_handle_gzip(True)
+        #self.br.set_handle_gzip(False)
+        self.br.set_handle_redirect(True)
+        self.br.set_handle_referer(True)
+        self.br.set_handle_robots(False)
+        self.br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
+        index = random.randint(0, LEN_AGENT-1)
+        # br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Ubuntu/3.0.1-1.fc9 Firefox/3.0.1'), ('Accept-Language', 'zh-CN,zh;q=0.8,en;q=0.6')]
+        self.br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Ubuntu/3.0.1-1.fc9 Firefox/3.0.1')]
+
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_ubuntukylin_distrowatch_info(self):
+        r = self.br.open(ubuntukylin_distrowatch)
+        html = r.read()
+        soup = BeautifulSoup(html)
+        contents = soup.findAll(name="td", attrs={"class":"TablesTitle"})
+        p = re.compile('<[^>]+>')
+        ubuntukylin_list = dict()
+        try:
+            result = p.sub(" ", str(contents))
+            aa = result.split('\n')
+            # print len(aa)
+            for i in range(0, len(aa)):
+                if 'Last Update:' in aa[i]:
+                    start_pos = str(aa[i]).find("Last Update:")
+                    ubuntukylin_list['lastupdate'] = str(aa[i])[(start_pos+13):].rstrip()
+                elif 'OS Type:' in aa[i] and 'Based on:' in aa[i] and 'Origin:' in aa[i]:
+                    pos1 = str(aa[i]).find("OS Type:")
+                    pos2 = str(aa[i]).find("Based on:")
+                    pos3 = str(aa[i]).find("Origin:")
+                    ubuntukylin_list['ostype'] = str(aa[i])[(pos1+8):pos2].replace(' ', '')
+                    ubuntukylin_list['basedon'] = str(aa[i])[(pos2+9):pos3].replace(' ', '')
+                    ubuntukylin_list['origin'] = str(aa[i])[(pos3+7):].replace(' ', '')
+                elif 'Architecture:' in aa[i] and 'Desktop:' in aa[i] and 'Category:' in aa[i] and 'Status:' in aa[i] and 'Popularity:' in aa[i] and 'hits per day' in aa[i]:
+                    pos1 = str(aa[i]).find("Architecture:")
+                    pos2 = str(aa[i]).find("Desktop:")
+                    pos3 = str(aa[i]).find("Category:")
+                    pos4 = str(aa[i]).find("Status:")
+                    pos5 = str(aa[i]).find("Popularity:")
+                    pos6 = str(aa[i]).find("hits per day")
+                    ubuntukylin_list['architecture'] = str(aa[i])[(pos1+13):pos2].replace(' ', '')
+                    ubuntukylin_list['desktop'] = str(aa[i])[(pos2+8):pos3].replace(' ', '')
+                    ubuntukylin_list['category'] = str(aa[i])[(pos3+9):pos4].replace(' ', '')
+                    ubuntukylin_list['status'] = str(aa[i])[(pos4+7):pos5].replace(' ', '')
+                    ubuntukylin_list['popularity'] = str(aa[i])[(pos5+11):pos6].replace(' ', '')
+                elif i==6:
+                    ubuntukylin_list['description'] = aa[i]
+        except Exception, e:
+            print 'exception->', e
+        return ubuntukylin_list
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_distrowatch_url(self):
         self.distrowatch = []
+        update_rate = 'Last 6 months'
         rank_list = []
         os_list = []
         today_hit_list = []
         img_list = []
         yestoday_hit_list = []
-        br = mechanize.Browser()
-        # Cookie Jar
-        cj = cookielib.LWPCookieJar()
-        br.set_cookiejar(cj)
-        # Browser options
-        br.set_handle_equiv(True)
-        br.set_handle_gzip(True)
-        #br.set_handle_gzip(False)
-        br.set_handle_redirect(True)
-        br.set_handle_referer(True)
-        br.set_handle_robots(False)
-        # Follows refresh 0 but not hangs on refresh > 0
-        br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
-        index = random.randint(0, LEN_AGENT-1)
-        br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Ubuntu/3.0.1-1.fc9 Firefox/3.0.1')]
-#        br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Ubuntu/3.0.1-1.fc9 Firefox/3.0.1'), ('Accept-Language', 'zh-CN,zh;q=0.8,en;q=0.6')]
-        r = br.open(URL)
+        r = self.br.open(distrowatch)
         html = r.read()
         p = re.compile('<[^>]+>')
         soup = BeautifulSoup(html)
+        spiderContents = soup.findAll(name="option", attrs={"selected":"selected"})
+        if len(spiderContents) > 1:
+            try:
+                result = p.sub("", str(spiderContents[1]))
+                update_rate = result
+            except Exception, e:
+                pass
+        else:
+            try:
+                result = p.sub("", str(spiderContents[0]))
+                update_rate = result
+            except Exception, e:
+                pass
         spiderContents_rank = soup.findAll(name="th", attrs={"class":"phr1"})
         spiderContents_os = soup.findAll(name="td", attrs={"class":"phr2"})
         spiderContents_hit = soup.findAll(name="td", attrs={"class":"phr3"})
@@ -202,10 +262,10 @@ class SessionDaemon(dbus.service.Object):
             img_list.append(img_path)
             yestoday_hit_list.append(str(yestoday_hit_num))
         for i in range(0, len(rank_list)):
-            line = "%s-%s-%s-%s-%s" % (rank_list[i], os_list[i], today_hit_list[i], img_list[i], yestoday_hit_list[i])
+            line = "%s+%s+%s+%s+%s+%s" % (rank_list[i], os_list[i], os_list[i].replace(' ', '').replace('-', '').lower(), today_hit_list[i], img_list[i], yestoday_hit_list[i])
             self.distrowatch.append(line)
-        print self.distrowatch
-        return
+#        print self.distrowatch
+        return update_rate
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def get_distrowatch_info(self):

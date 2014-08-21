@@ -103,7 +103,7 @@ Item {
         }
         Text {
             id: b9
-            text: qsTr("搜索和面板")//Dash & Panel
+            text: qsTr("Dash & Panel")//搜索和面板
             visible: false
         }
         Text {
@@ -346,7 +346,7 @@ Item {
                 sizeHover: 14
                 sizePressed: 14
                 height: 20
-                wordname: qsTr("搜索和面板"); width: b9.width//Dash & Panel
+                wordname: qsTr("Dash & Panel"); width: b9.width//搜索和面板
                 onClicked: {
 //                    pageStack.push(panelmanagerpage);
                     pageStack.push(Qt.resolvedUrl("../settings/PanelManager.qml"));

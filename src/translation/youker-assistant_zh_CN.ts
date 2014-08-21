@@ -17,8 +17,12 @@
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="86"/>
+        <source>V1.2.0</source>
+        <translation>V1.2.0</translation>
+    </message>
+    <message>
         <source>V1.1.0</source>
-        <translation>V1.1.0</translation>
+        <translation type="obsolete">V1.1.0</translation>
     </message>
     <message>
         <source>V1.0.2</source>
@@ -358,59 +362,59 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>BottomBar</name>
     <message>
-        <location filename="../../qml/BottomBar.qml" line="41"/>
-        <location filename="../../qml/BottomBar.qml" line="47"/>
-        <location filename="../../qml/BottomBar.qml" line="61"/>
-        <location filename="../../qml/BottomBar.qml" line="132"/>
-        <location filename="../../qml/BottomBar.qml" line="165"/>
+        <location filename="../../qml/BottomBar.qml" line="51"/>
+        <location filename="../../qml/BottomBar.qml" line="57"/>
+        <location filename="../../qml/BottomBar.qml" line="71"/>
+        <location filename="../../qml/BottomBar.qml" line="166"/>
+        <location filename="../../qml/BottomBar.qml" line="197"/>
         <source>Tips:</source>
         <translation>友情提示：</translation>
     </message>
     <message>
-        <location filename="../../qml/BottomBar.qml" line="41"/>
-        <location filename="../../qml/BottomBar.qml" line="61"/>
+        <location filename="../../qml/BottomBar.qml" line="51"/>
+        <location filename="../../qml/BottomBar.qml" line="71"/>
         <source>The kuaipan4uk is not running!</source>
         <translation>快盘没有运行！</translation>
     </message>
     <message>
-        <location filename="../../qml/BottomBar.qml" line="47"/>
+        <location filename="../../qml/BottomBar.qml" line="57"/>
         <source>Not found the cloud configuration!</source>
         <translation>没有发现云配置文件！</translation>
     </message>
     <message>
-        <location filename="../../qml/BottomBar.qml" line="53"/>
+        <location filename="../../qml/BottomBar.qml" line="63"/>
         <source>Download OK!</source>
         <translation>使用完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/BottomBar.qml" line="67"/>
+        <location filename="../../qml/BottomBar.qml" line="77"/>
         <source>Upload OK!</source>
         <translation>上传完成！</translation>
     </message>
     <message>
-        <location filename="../../qml/BottomBar.qml" line="87"/>
+        <location filename="../../qml/BottomBar.qml" line="100"/>
         <source>main version:</source>
         <translation>主版本：</translation>
     </message>
     <message>
-        <location filename="../../qml/BottomBar.qml" line="100"/>
-        <location filename="../../qml/BottomBar.qml" line="122"/>
+        <location filename="../../qml/BottomBar.qml" line="134"/>
+        <location filename="../../qml/BottomBar.qml" line="156"/>
         <source>Use Cloud</source>
         <translation>使用云配置</translation>
     </message>
     <message>
-        <location filename="../../qml/BottomBar.qml" line="105"/>
-        <location filename="../../qml/BottomBar.qml" line="155"/>
+        <location filename="../../qml/BottomBar.qml" line="139"/>
+        <location filename="../../qml/BottomBar.qml" line="187"/>
         <source>Save Cloud</source>
         <translation>保存云配置</translation>
     </message>
     <message>
-        <location filename="../../qml/BottomBar.qml" line="132"/>
+        <location filename="../../qml/BottomBar.qml" line="166"/>
         <source>It will use the Kingsoft disk cloud configuration!</source>
         <translation>该操作将使用金山快盘云配置来设置系统配置！</translation>
     </message>
     <message>
-        <location filename="../../qml/BottomBar.qml" line="165"/>
+        <location filename="../../qml/BottomBar.qml" line="197"/>
         <source>It will upload configuration to the Kingsoft disk cloud!</source>
         <translation>该操作将会把本地配置上传到金山快盘云端！</translation>
     </message>
@@ -1325,6 +1329,29 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>DistrowatchTitle</name>
+    <message>
+        <location filename="../../qml/func/others/DistrowatchTitle.qml" line="31"/>
+        <source>Rank</source>
+        <translation>名次</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/DistrowatchTitle.qml" line="47"/>
+        <source>Distribution</source>
+        <translation>发行</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/DistrowatchTitle.qml" line="63"/>
+        <source>T.H</source>
+        <translation>今日点击</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/DistrowatchTitle.qml" line="79"/>
+        <source>Y.H</source>
+        <translation>昨日点击</translation>
+    </message>
+</context>
+<context>
     <name>DocumentFont</name>
     <message>
         <source>Document font settings</source>
@@ -1427,7 +1454,7 @@ p, li { white-space: pre-wrap; }
         <translation>多媒体音频控制器：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/DriveInfo.qml" line="261"/>
+        <location filename="../../qml/func/info/DriveInfo.qml" line="267"/>
         <source>Device Driver Info</source>
         <translation>设备驱动信息</translation>
     </message>
@@ -1930,12 +1957,12 @@ p, li { white-space: pre-wrap; }
         <translation>更换字体</translation>
     </message>
     <message>
-        <location filename="../kfontdialog.cpp" line="285"/>
+        <location filename="../kfontdialog.cpp" line="286"/>
         <source>Tips</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="../kfontdialog.cpp" line="286"/>
+        <location filename="../kfontdialog.cpp" line="287"/>
         <source>You haven&apos;t change the font, please choose the font!</source>
         <translation>您还没有更换字体，请选择字体进行更换！</translation>
     </message>
@@ -2114,22 +2141,22 @@ p, li { white-space: pre-wrap; }
         <translation>正在清理软件中心缓存：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="270"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="271"/>
         <source>Quick clean up system junks, saving disk space and improving the system efficiency !</source>
         <translation>一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="401"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="402"/>
         <source>(Scan to:  </source>
         <translation>(正在扫描：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="478"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="479"/>
         <source>Cleanup Garbage</source>
         <translation>清理系统中的垃圾</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="676"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="677"/>
         <source>Clean up the Cookies, including surfing and shopping records</source>
         <translation>清理系统中的 Cookies，包含上网、购物、游戏等记录</translation>
     </message>
@@ -2138,7 +2165,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="279"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="280"/>
         <source>To help you quick clean up the Cookies, garbage, traces and plug-ins in your system</source>
         <translation>一键帮您清理系统中的 Cookies、垃圾、痕迹和插件</translation>
     </message>
@@ -2147,7 +2174,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">扫描到：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="380"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="381"/>
         <source>Quick Cleanup</source>
         <translation>一键清理项目</translation>
     </message>
@@ -2156,46 +2183,46 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">清理系统中的垃圾</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="491"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="492"/>
         <source>Clean up system junk files, free disk space</source>
         <translation>清理系统中的垃圾文件，释放磁盘空间</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="501"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="516"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="593"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="609"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="686"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="702"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="502"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="517"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="594"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="610"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="687"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="703"/>
         <source>Unfinished</source>
         <translation>未完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="508"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="600"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="693"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="509"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="601"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="694"/>
         <source>Completed</source>
         <translation>已完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="512"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="605"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="698"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="513"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="606"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="699"/>
         <source>Exception occurred</source>
         <translation>出现异常</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="570"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="571"/>
         <source>Delete History</source>
         <translation>清理历史记录</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="583"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="584"/>
         <source>Clean up the historical records, to protect your privacy</source>
         <translation>清理上网时留下的历史记录，保护您的个人隐私</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="663"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="664"/>
         <source>Cleanup Cookies</source>
         <translation>清理 Cookies</translation>
     </message>
@@ -3102,12 +3129,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="116"/>
+        <location filename="../main.cpp" line="168"/>
         <source>starting....</source>
         <translation>优客助手正在启动中....</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="118"/>
+        <location filename="../main.cpp" line="170"/>
         <source>loading module data....</source>
         <translation>正在加载模块数据....</translation>
     </message>
@@ -3123,61 +3150,61 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>RightPage</name>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="33"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="62"/>
         <source>Network Error!</source>
         <translation>网络错误！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="36"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="65"/>
         <source>No User!</source>
         <translation>没有该用户！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="39"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="68"/>
         <source>Password Wrong!</source>
         <translation>密码错误！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="42"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="71"/>
         <source>Login Failed!</source>
         <translation>登录失败！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="62"/>
         <source>DeadpixelTest</source>
-        <translation>坏点检测</translation>
+        <translation type="obsolete">坏点检测</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="63"/>
         <source>DesktopIcon</source>
-        <translation>桌面图标</translation>
+        <translation type="obsolete">桌面图标</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="64"/>
         <source>BootAnimation</source>
-        <translation>开机动画</translation>
+        <translation type="obsolete">开机动画</translation>
     </message>
     <message>
         <source>SysSounds</source>
         <translation type="obsolete">系统声音</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="66"/>
         <source>MousePointer</source>
-        <translation>鼠标指针</translation>
+        <translation type="obsolete">鼠标指针</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="67"/>
         <source>Touchpad</source>
-        <translation>触摸板</translation>
+        <translation type="obsolete">触摸板</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="131"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="202"/>
         <source>Logging...</source>
         <translation>正在登录...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="294"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="717"/>
+        <source>Hits per day </source>
+        <translation>每日点击次数 </translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="977"/>
         <source>Feedback</source>
         <translation>问题反馈</translation>
     </message>
@@ -3186,32 +3213,107 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">用户名：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="193"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="264"/>
         <source>Level:</source>
         <translation>等级：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="204"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="275"/>
         <source>Score:</source>
         <translation>经验值：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="163"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="234"/>
         <source>Logout</source>
         <translation>注销</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="65"/>
-        <source>Camera</source>
-        <translation>摄像头</translation>
+        <location filename="../../qml/func/others/RightPage.qml" line="29"/>
+        <source>Active</source>
+        <translation>活跃发展中</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="276"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="30"/>
+        <source>China</source>
+        <translation>中国</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation type="obsolete">摄像头</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="354"/>
+        <source>DistroWatch Ranking</source>
+        <translation>DistroWatch受欢迎程度排名</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="366"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="383"/>
+        <source>Details</source>
+        <translation>详情</translation>
+    </message>
+    <message>
+        <source>Hits per day:</source>
+        <translation type="obsolete">每日点击次数：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="730"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="748"/>
+        <source>Hide</source>
+        <translation>隐藏</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="764"/>
+        <source>Last Update:</source>
+        <translation>最后更新：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="783"/>
+        <source>OS Type:</source>
+        <translation>发行归类：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="801"/>
+        <source>Based on:</source>
+        <translation>基于何种发行：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="819"/>
+        <source>Origin: </source>
+        <translation>来源：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="837"/>
+        <source>Architecture:</source>
+        <translation>处理器架构：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="856"/>
+        <source>Desktop:</source>
+        <translation>桌面：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="875"/>
+        <source>Category:</source>
+        <translation>类型：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="893"/>
+        <source>Status:</source>
+        <translation>状态：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="911"/>
+        <source>Popularity:</source>
+        <translation>受欢迎程度排名：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="951"/>
         <source>Forum Help</source>
         <translation>论坛求助</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="285"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="968"/>
         <source>Features</source>
         <translation>新版本特性</translation>
     </message>
@@ -3367,9 +3469,17 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1388"/>
+        <location filename="../sessiondispatcher.cpp" line="1412"/>
         <source>Select folder</source>
         <translation>选择文件夹</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsDelegate</name>
+    <message>
+        <location filename="../../qml/func/others/SettingsDelegate.qml" line="81"/>
+        <source>No found camera!</source>
+        <translation>没有找到可用的摄像头！</translation>
     </message>
 </context>
 <context>
@@ -3894,6 +4004,11 @@ p, li { white-space: pre-wrap; }
         <translation>任务管理器</translation>
     </message>
     <message>
+        <location filename="../../qml/func/page/SystemBox.qml" line="39"/>
+        <source>Camera</source>
+        <translation>摄像头</translation>
+    </message>
+    <message>
         <location filename="../../qml/func/page/SystemBox.qml" line="55"/>
         <source>Default toolkits</source>
         <translation>默认工具箱</translation>
@@ -3943,7 +4058,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SystemDispatcher</name>
     <message>
-        <location filename="../systemdispatcher.cpp" line="349"/>
+        <location filename="../systemdispatcher.cpp" line="340"/>
         <source>Select the boot animation</source>
         <translation>选择开机动画</translation>
     </message>
@@ -3952,17 +4067,17 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">图像文件  (*.png)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="349"/>
+        <location filename="../systemdispatcher.cpp" line="340"/>
         <source>Image Files (*.png *.jpg *.gif)</source>
         <translation>图像文件  (*.png *.jpg *.gif)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="354"/>
+        <location filename="../systemdispatcher.cpp" line="345"/>
         <source>Select music</source>
         <translation>选择音乐</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="354"/>
+        <location filename="../systemdispatcher.cpp" line="345"/>
         <source>Audio Files (*.ogg *.wav *.mp3 *.wma)</source>
         <translation>音频文件 (*.ogg *.wav *.mp3 *.wma)</translation>
     </message>
@@ -4061,12 +4176,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SystemSet</name>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="51"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="33"/>
         <source>You can perform a full range of customized systems based on personal preferences!</source>
         <translation>您可以根据个人喜好对系统进行全方位的定制！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="79"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="147"/>
         <source> Personalize</source>
         <translation>个性化</translation>
     </message>
@@ -4075,8 +4190,8 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">窗口主题</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="91"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="121"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="86"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="201"/>
         <source>IconSetting</source>
         <translation>图标配置</translation>
     </message>
@@ -4085,20 +4200,20 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">GTK主题</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="96"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="129"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="90"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="224"/>
         <source>MousePointer</source>
         <translation>鼠标指针</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="101"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="137"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="94"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="247"/>
         <source>SoundEffect</source>
         <translation>声音效果</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="106"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="145"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="98"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="270"/>
         <source>BootAnimation</source>
         <translation>开机动画</translation>
     </message>
@@ -4107,53 +4222,53 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Unity</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="86"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="113"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="82"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="178"/>
         <source>ThemeSetting</source>
         <translation>主题设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="169"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="295"/>
         <source> Desktop</source>
         <translation>桌面</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="176"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="193"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="102"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="326"/>
         <source>Custom Launcher</source>
         <translation>自定义启动器</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="181"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="199"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="106"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="349"/>
         <source>Dash &amp; Panel</source>
         <translation>搜索和面板</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="186"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="206"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="111"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="372"/>
         <source>Window</source>
         <translation>窗口</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="230"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="397"/>
         <source> Fonts</source>
         <translation>字体</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="237"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="244"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="115"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="428"/>
         <source>DefaultFont</source>
         <translation>默认字体设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="317"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="531"/>
         <source> Others</source>
         <translation>杂项</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="324"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="331"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="127"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="562"/>
         <source>File manager</source>
         <translation>文件管理器</translation>
     </message>
@@ -4166,19 +4281,19 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">窗口标题栏字体设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="268"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="453"/>
         <source> System options</source>
         <translation>系统选项</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="275"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="287"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="119"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="484"/>
         <source>Touchpad</source>
         <translation>触摸板设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="280"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="294"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="123"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="507"/>
         <source>Dead pixel test</source>
         <translation>坏点检测</translation>
     </message>
@@ -4676,9 +4791,8 @@ p, li { white-space: pre-wrap; }
         <translation>天气</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="30"/>
         <source>Wind</source>
-        <translation>风力</translation>
+        <translation type="obsolete">风力</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/WeatherZone.qml" line="31"/>
@@ -4690,14 +4804,12 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">当前温度（℃）</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="33"/>
         <source>Temperature range</source>
-        <translation>温度范围</translation>
+        <translation type="obsolete">温度范围</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="34"/>
         <source>Humidity</source>
-        <translation>湿度</translation>
+        <translation type="obsolete">湿度</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/WeatherZone.qml" line="100"/>
@@ -4705,7 +4817,7 @@ p, li { white-space: pre-wrap; }
         <translation>城市</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="168"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="145"/>
         <source>N/A</source>
         <translation>未知</translation>
     </message>
@@ -4729,29 +4841,24 @@ p, li { white-space: pre-wrap; }
         <translation>当前温度：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="57"/>
         <source>Temperature range:</source>
-        <translation>温度范围：</translation>
+        <translation type="obsolete">温度范围：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="58"/>
         <source>Humidity:</source>
-        <translation>湿度：</translation>
+        <translation type="obsolete">湿度：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="68"/>
         <source>Wind:</source>
-        <translation>风力：</translation>
+        <translation type="obsolete">风力：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="70"/>
         <source>Sunrise:</source>
-        <translation>日出：</translation>
+        <translation type="obsolete">日出：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="71"/>
         <source>Sunset:</source>
-        <translation>日落：</translation>
+        <translation type="obsolete">日落：</translation>
     </message>
     <message>
         <source>Changsha</source>
@@ -4807,29 +4914,26 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">更新完毕！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="174"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="151"/>
         <source>AQI:N/A</source>
         <translation>空气质量指数：未知</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="180"/>
+        <location filename="../../qml/func/others/WeatherZone.qml" line="157"/>
         <source>Temperature:N/A</source>
         <translation>温度：未知</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="186"/>
         <source>Humidity:N/A</source>
-        <translation>湿度：未知</translation>
+        <translation type="obsolete">湿度：未知</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="192"/>
         <source>Temperature range:N/A</source>
-        <translation>温度范围：未知</translation>
+        <translation type="obsolete">温度范围：未知</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/WeatherZone.qml" line="198"/>
         <source>Wind:N/A</source>
-        <translation>风力：未知</translation>
+        <translation type="obsolete">风力：未知</translation>
     </message>
 </context>
 <context>
@@ -4916,57 +5020,57 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">窗口控制按钮位置：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="246"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="253"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="305"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="313"/>
         <source>Window control btn position:</source>
         <translation>窗口控制按钮位置：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="315"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="323"/>
         <source>Left Side</source>
         <translation>左边</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="329"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="337"/>
         <source>Right Side</source>
         <translation>右边</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="351"/>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="419"/>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="473"/>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="522"/>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="571"/>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="620"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="359"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="427"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="481"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="530"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="579"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="628"/>
         <source>Restore</source>
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="393"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="401"/>
         <source>Menu with icons: </source>
         <translation>菜单项旁显示图标：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="451"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="459"/>
         <source>Titlebar mouse wheel action:</source>
         <translation>标题栏鼠标滚轮动作：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="500"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="508"/>
         <source>Titlebar double-click action:</source>
         <translation>标题栏双击动作：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="549"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="557"/>
         <source>Titlebar middle-click action:</source>
         <translation>标题栏中键动作：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/WindowManager.qml" line="598"/>
+        <location filename="../../qml/func/settings/WindowManager.qml" line="606"/>
         <source>Titlebar right-click action:</source>
         <translation>标题栏右键动作：</translation>
     </message>
