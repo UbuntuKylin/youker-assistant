@@ -15,86 +15,142 @@
  */
 import QtQuick 1.1
 
-Item {
+//Item {
+//    id: btn
+//    signal clicked
+//    signal exited
+//    signal entered
+//    property string text : ""
+//    property string hoverimage: "green.png"
+//    property string fontcolor: "white"
+//    property int fontsize: 12
+
+//    SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
+
+//    Text {
+//        id: displaytext
+//        color: btn.fontcolor
+//        anchors.centerIn: parent//buttonImage
+//        font.family: "Helvetica"
+//        font.pixelSize: fontsize
+//        text: btn.text
+//    }
+
+//    MouseArea {
+//        id: mouseRegion
+//        anchors.fill: parent//buttonImage
+//        hoverEnabled: true
+//        onEntered: {
+//            displaytext.color = "#f2390e";
+//            displaytext.text = qsTr("Click to change font");//点击更换字体
+//            btn.entered();
+//        }
+//        onPressed: {
+//            displaytext.color = btn.fontcolor;
+//            displaytext.text = btn.text;
+//        }
+//        //要判断松开是鼠标位置
+//        onReleased: {
+//            displaytext.color = btn.fontcolor;
+//            displaytext.text = btn.text;
+//        }
+//        onExited: {
+//            displaytext.color = btn.fontcolor;
+//            displaytext.text = btn.text;
+//            btn.exited();
+//        }
+//        onClicked: {
+//            btn.clicked();
+//        }
+//    }
+//}
+
+
+Rectangle
+{
     id: btn
+    width: 58
+    height: 29
     signal clicked
-    signal exited
-    signal entered
     property string text : ""
-    property string hoverimage: "green.png"
-    property string fontcolor: "white"
-    property int fontsize: 12
 
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
+    color: "transparent"
+    property string wordname: ""
+    property string stateText: qsTr("Click to change font")//点击更换字体
 
-//    BorderImage {
-//        id: buttonImage
-//        source: "../../img/icons/" + btn.hoverimage
-//        width: btn.width; height: btn.height
-//    }
-//    BorderImage {
-//        id: pressed
-//        opacity: 0
-//        source: "../../img/icons/unselect.png"
-//        width: btn.width; height: btn.height
-//    }
-//    Image {
-//        id: btnImg
-//        anchors.fill: parent
-//        source: ""
-//    }
+    property int sizeCurrent: 12
+    property int sizeNormal
+    property int sizeHover
+    property int sizePressed
+
+    state:"normal"
 
     Text {
-        id: displaytext
-        color: btn.fontcolor
-        anchors.centerIn: parent//buttonImage
-        font.family: "Helvetica"
-        font.pixelSize: fontsize
+        id: showBtn
+        anchors.centerIn: parent
+        color: "#086794"
         text: btn.text
-        style: Text.Sunken
-        styleColor: "#AAAAAA"
+        font {
+            family: "Helvetica"
+            pixelSize: sizeCurrent
+        }
     }
 
-//    FontTip {
-//        id: fontTip
-//        z:11
-//        anchors.centerIn: parent
-//        visible: false//mouseArea.pressed
-//    }
-
-    MouseArea {
-        id: mouseRegion
-        anchors.fill: parent//buttonImage
+    MouseArea
+    {
         hoverEnabled: true
-        onEntered: {
-            displaytext.color = "red";
-            displaytext.text = qsTr("Click to change font");//点击更换字体
-            btn.entered();
-//            btnImg.source = "../../img/toolWidget/highlight.png"
-
-//            fontTip.showText = qsTr("Click to change font");//点击更换字体
-//            fontTip.visible = true;
-        }
-        onPressed: {
-//            btnImg.source = "../../img/toolWidget/highlight.png"
-//            displaytext.text = qsTr("点击更换字体");
-        }
-        //要判断松开是鼠标位置
-        onReleased: {
-//            fontTip.visible = false;
-//            displaytext.text = btn.text;
-        }
-
-        onExited: {
-            displaytext.color = btn.fontcolor;
-            displaytext.text = btn.text;
-            btn.exited();
-//            btnImg.source = ""
-//            fontTip.visible = false;
-        }
-
-        onClicked: {
+        anchors.fill: parent
+        onEntered: btn.state == "pressed" ? btn.state = "pressed" : btn.state = "hover"
+        onExited: btn.state == "pressed" ? btn.state = "pressed" : btn.state = "normal"
+        onPressed: btn.state = "pressed"
+        onReleased:
+        {
+            btn.state = "normal";
             btn.clicked();
         }
     }
+
+    states:
+    [
+        State{
+            name:"hover"
+            PropertyChanges {
+                target: showBtn
+                text: btn.stateText
+                font.pixelSize: sizeHover
+                color: "#f2390e"
+            }
+            PropertyChanges {
+                target: btn
+                sizeCurrent: sizeHover
+            }
+        },
+        State {
+            name: "normal"
+            PropertyChanges {
+                target: showBtn
+                text: btn.text
+                font.pixelSize: sizeNormal
+                color: "#00a0e9"
+            }
+            PropertyChanges {
+                target: btn
+                sizeCurrent: sizeNormal
+            }
+        },
+        State {
+            name: "pressed"
+            PropertyChanges {
+                target: showBtn
+                text: btn.text
+                font.pixelSize: sizePressed
+                color: "#f5960d"
+            }
+            PropertyChanges {
+                target: btn
+                sizeCurrent: sizePressed
+            }
+        }
+    ]
 }

@@ -24,7 +24,7 @@ Rectangle {
 //    color: "#e4f2fc"
 
     property bool first_slider_value: false //系统初始化时会使value的值为32（最小值），需要过滤掉
-    property bool first_transparency_value: false //系统初始化时会使value的值为0.2（最小值），需要过滤掉
+//    property bool first_transparency_value: false //系统初始化时会使value的值为0.2（最小值），需要过滤掉
     property string actiontitle: qsTr("Launcher settings")//启动器设置
     property string actiontext: qsTr("Setting the Launcher display mode, Icon size.")//设置启动器的显示模式、图标尺寸。
     property int default_bg_index//系统默认图标背景模式的索引
@@ -359,16 +359,18 @@ Rectangle {
                     id: opacityslider
                     value: sessiondispatcher.get_launcher_transparency_qt()
                     onValueChanged: {
-                        if(launcherthemepage.first_transparency_value ){  //系统初始化时会使value的值为0.2（最小值），需要过滤掉
-                            sessiondispatcher.set_launcher_transparency_qt(opacityslider.value);
-                        }
-                        if(slider.value == 0.2) { //系统初始化时会使value的值为0.2（最小值），需要过滤掉
-                            launcherthemepage.first_transparency_value = true;
-                        }
+                        sessiondispatcher.set_launcher_transparency_qt(opacityslider.value);
+//                        if(launcherthemepage.first_transparency_value ){//系统初始化时会使value的值为0.2（最小值），需要过滤掉
+//                            sessiondispatcher.set_launcher_transparency_qt(opacityslider.value);
+//                        }
+//                        if(slider.value == 0.2) { //系统初始化时会使value的值为0.2（最小值），需要过滤掉
+//                            console.log("22222222222222");
+//                            launcherthemepage.first_transparency_value = true;
+//                        }
                     }
                     width: 170
-                    maximumValue: 8.0
-                    minimumValue: 0.2
+                    maximumValue: 1.0
+                    minimumValue: 0.0
                     stepSize: 0.1
                     animated: true
                 }

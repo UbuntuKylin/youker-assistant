@@ -50,9 +50,6 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     distrowatch_Settings = new QSettings(YOUKER_COMPANY_SETTING, DISTROWATCH_SETTING_FILE_NAME_SETTING);
     distrowatch_Settings->setIniCodec("UTF-8");
 
-//    this->get_default_all_distrowatch();
-//    this->get_default_ubuntukylin_distrowatch();
-
     //初始化QSetting配置文件
     initConfigFile();
 
@@ -229,16 +226,33 @@ void SessionDispatcher::open_folder_qt(QString path) {
 }
 
 //distrowatch rank
+
+void SessionDispatcher::set_default_all_distrowatch(QString key, QString value) {
+    distrowatch_Settings->beginGroup("all");
+    distrowatch_Settings->setValue(key, value);
+    distrowatch_Settings->endGroup();
+}
+
+void SessionDispatcher::set_default_ubuntukylin_distrowatch(QString key, QString value) {
+    distrowatch_Settings->beginGroup("ubuntukylin");
+    distrowatch_Settings->setValue(key, value);
+    distrowatch_Settings->endGroup();
+}
+
+
 QString SessionDispatcher::get_distrowatch_url_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_distrowatch_url");
-//    qDebug() << "yyyyyyyyyyyyyy";
-//    qDebug() << reply.value();
     return reply.value();
 }
 
 QStringList SessionDispatcher::get_distrowatch_info_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("get_distrowatch_info");
-    return reply.value();
+    QStringList result = reply.value();
+    for (int i=0; i<result.length(); i++) {
+        QString num = QString("NO%1").arg(result.at(i).split("+").at(0));
+        this->set_default_all_distrowatch(num, result.at(i));
+    }
+    return result;
 }
 
 bool SessionDispatcher::get_ubuntukylin_distrowatch_info_qt() {
@@ -250,15 +264,13 @@ bool SessionDispatcher::get_ubuntukylin_distrowatch_info_qt() {
         QMap<QString, QVariant> value = reply.value();
         distrowatchInfo.clear();
         distrowatchInfo = value;
+        QMap<QString, QVariant>::iterator it;
+        for ( it = distrowatchInfo.begin(); it != distrowatchInfo.end(); ++it ) {
+            if (it.key() != "description") {
+                this->set_default_ubuntukylin_distrowatch(it.key(), it.value().toString());
+            }
+        }
         return true;
-//        qDebug() << "lallalala";
-//        qDebug() << distrowatchInfo;
-        /*QMap(("architecture", QVariant(QString, "i386,x86_64") ) ( "basedon" ,  QVariant(QString, "Debian,Ubuntu") )
-         * ( "category" ,  QVariant(QString, "Desktop,LiveMedium") )
-         *  ( "description" ,  QVariant(QString, "Ubuntu Kylin is an official Ubuntu subproject whose goal is to create a variant of Ubuntu that is more suitable for Chinese users using the Simplified Chinese writing system. The project provides a delicate, thoughtful and fully customised Chinese user experience out-of-the-box by providing a desktop user interface localised into Simplified Chinese and with software generally preferred by many Chinese users.") )
-         * ( "desktop" ,  QVariant(QString, "Unity") )
-         * ( "lastupdate" ,  QVariant(QString, "Thursday 17 July 2014 04:51 GMT") ) ( "origin" ,  QVariant(QString, "China") )
-         *  ( "ostype" ,  QVariant(QString, "Linux") ) ( "popularity" ,  QVariant(QString, "71(211") ) ( "status" ,  QVariant(QString, "Active") ) )  */
     }
     else {
         qDebug() << "get ubuntukylin distrowatchInfo failed!";
@@ -304,6 +316,8 @@ void SessionDispatcher::get_default_ubuntukylin_distrowatch() {
 //    qDebug() << "this is default ubuntukylin value.......";
 //    qDebug() << distrowatchInfo;
 }
+
+
 
 //准发发送信号告诉优客助手自己去改变自身的标题栏控制按钮位置
 void SessionDispatcher::handler_change_titlebar_position(QString position) {
@@ -1538,8 +1552,6 @@ void SessionDispatcher::set_default_system_qt(QString flag) {
     }
 }
 
-
-
 bool SessionDispatcher::set_touchpad_enable_qt(bool flag) {
     QDBusReply<bool> reply = sessioniface->call("set_touchpad_enable", flag);
     return reply.value();
@@ -1768,7 +1780,14 @@ QString SessionDispatcher::judge_desktop_is_unity_qt() {
 }
 
 bool SessionDispatcher::submit_uk_pingback() {
-    QDBusReply<bool> reply = sessioniface->call("submit_uk_pingback");
+    mSettings->beginGroup("weather");
+    QString city = mSettings->value("cityName").toString();
+    if(city.isEmpty()) {
+        city = QString("N/A");
+    }
+    mSettings->endGroup();
+    mSettings->sync();
+    QDBusReply<bool> reply = sessioniface->call("submit_uk_pingback", city);
     return reply.value();
 }
 
@@ -1780,7 +1799,6 @@ bool SessionDispatcher::access_server_pingback() {
 void SessionDispatcher::get_current_weather_qt() {
     bool result = this->access_server_pingback();
     if(result) {
-        qDebug() << "link weather server success....";
         QString initCityId = this->getCityIdInfo();
         bool flag = Util::id_exists_in_location_file(initCityId);
         if(flag) {//获取中国气象局数据

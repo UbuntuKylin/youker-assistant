@@ -24,7 +24,7 @@ Rectangle {
 //    color: "#e4f2fc"
 
     property string actiontitle: qsTr("File Manager")//文件管理器
-    property string actiontext: qsTr("Manage the Nautilus file manager.")//管理Nautilus文件管理器
+    property string actiontext: qsTr("Manage the Nautilus file manager. Tip: the cache time or cache size been setted to -1, it will disable cleaning.")//管理Nautilus文件管理器。注意：如果缩略图缓存时间或尺寸被设置为-1，缩略图将不会被清理。
 
     property bool first_icon_size: false
     property bool first_cache_time: false

@@ -255,12 +255,12 @@ Rectangle {
                 }
                 Common.FontButton {
                     id: fontBtn
-                    hoverimage: "fontbtn.png"
-                    fontcolor: "#086794"
+                    sizeNormal: 12
+                    sizeHover: 14
+                    sizePressed: 14
                     text: sessiondispatcher.get_font_qt()
                     width: 250
                     height: 29
-                    fontsize: 13
                     onClicked: sessiondispatcher.show_font_dialog("font", fontBtn.text);
                 }
             }
@@ -306,12 +306,12 @@ Rectangle {
                 }
                 Common.FontButton {
                     id: desktopfontBtn
-                    hoverimage: "fontbtn.png"
                     text: sessiondispatcher.get_desktop_font_qt()
-                    fontcolor: "#086794"
+                    sizeNormal: 12
+                    sizeHover: 14
+                    sizePressed: 14
                     width: 250
                     height: 29
-                    fontsize: 13
                     onClicked: sessiondispatcher.show_font_dialog("desktopfont", desktopfontBtn.text);
                 }
             }
@@ -356,12 +356,12 @@ Rectangle {
                 }
                 Common.FontButton {
                     id: monofontBtn
-                    hoverimage: "fontbtn.png"
                     text: sessiondispatcher.get_monospace_font_qt()
-                    fontcolor: "#086794"
+                    sizeNormal: 12
+                    sizeHover: 14
+                    sizePressed: 14
                     width: 250
                     height: 29
-                    fontsize: 13
                     onClicked: sessiondispatcher.show_font_dialog("monospacefont", monofontBtn.text);
                 }
             }
@@ -406,12 +406,12 @@ Rectangle {
                 }
                 Common.FontButton {
                     id: docufontBtn
-                    hoverimage: "fontbtn.png"
                     text: defaultfontpage.document_font
-                    fontcolor: "#086794"
+                    sizeNormal: 12
+                    sizeHover: 14
+                    sizePressed: 14
                     width: 250
                     height: 29
-                    fontsize: 13
                     onClicked: sessiondispatcher.show_font_dialog("documentfont", docufontBtn.text);
                 }
             }
@@ -456,12 +456,12 @@ Rectangle {
                 }
                 Common.FontButton {
                     id: titlefontBtn
-                    hoverimage: "fontbtn.png"
                     text: defaultfontpage.titlebar_font
-                    fontcolor: "#086794"
                     width: 250
+                    sizeNormal: 12
+                    sizeHover: 14
+                    sizePressed: 14
                     height: 29
-                    fontsize: 13
                     onClicked: sessiondispatcher.show_font_dialog("titlebarfont", titlefontBtn.text);
                 }
             }

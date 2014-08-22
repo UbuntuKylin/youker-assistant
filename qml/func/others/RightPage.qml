@@ -129,13 +129,8 @@ Rectangle {
 
         //set new data
         rightbar.update_rate = sessiondispatcher.get_distrowatch_url_qt();
-        if (rightbar.update_rate == "") {
-            console.log("distrowatche all failed.....");
-        }
-        else {
-            console.log("distrowatche all success....");
+        if (rightbar.update_rate != "") {
             result = sessiondispatcher.get_distrowatch_info_qt();
-    //        console.log(result);
             rightbar.distrowatch_num = result.length;
             listModel.clear();//清空
             for(var i=0; i < result.length; i++) {
@@ -450,7 +445,7 @@ Rectangle {
 //        }
 
         Rectangle{
-            width: parent.width-10; height: 210
+            width: parent.width-8; height: 210
             clip:true
             Component{
                 id:distrowatchdelegate
@@ -470,11 +465,40 @@ Rectangle {
                             width: 15
                             anchors.verticalCenter: parent.verticalCenter
                             text: rank
-                            color: distrowatchdelegate.ListView.isCurrentItem ? "white" : "black"//选中时字体为白色，未选中时为黑色
+//                            color: distrowatchdelegate.ListView.isCurrentItem ? "white" : "black"//选中时字体为白色，未选中时为黑色
+                            color: {
+                                if (rank == "1") {
+                                    "#f2390e"
+                                }
+                                else if (rank == "2") {
+                                    "#f26e0d"
+                                }
+                                else if (rank == "3") {
+                                    "#f5960d"
+                                }
+                                else {
+                                    "black"
+                                }
+                            }
+
                             font {
                                 family: "Helvetica"
-                                pixelSize: 12
+                                pixelSize: {
+                                    if (rank == "1") {
+                                        18
+                                    }
+                                    else if (rank == "2") {
+                                        16
+                                    }
+                                    else if (rank == "3") {
+                                        14
+                                    }
+                                    else {
+                                        12
+                                    }
+                                }
                             }
+
                         }
                         Image {
                             id: icon
@@ -763,10 +787,6 @@ Rectangle {
                 var popularity = sessiondispatcher.getDistrowatchSingleInfo("popularity");
                 var popularityList=  popularity.split("(");
                 popularityText.text = popularityList[0] + "( " + qsTr("Hits per day ") + popularityList[1] + " )";//每日点击次数
-                console.log("successs1111111...")
-            }
-            else {
-                console.log("failed1111111...")
             }
         }
 

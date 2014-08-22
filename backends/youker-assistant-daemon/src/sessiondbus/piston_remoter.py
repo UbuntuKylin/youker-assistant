@@ -45,7 +45,7 @@ AUTHENTICATED_API_SCHEME = 'https'
 
 
 class PingbackmainRequest(PistonSerializable):
-    _atts = ('distro', 'version_os', 'version_youker_assistant')
+    _atts = ('distro', 'version_os', 'version_youker_assistant', 'city')
 
 
 class PingBackPistonAPI(PistonAPI):
@@ -58,16 +58,16 @@ class PingBackPistonAPI(PistonAPI):
     default_content_type = 'application/x-www-form-urlencoded'
 
     @returns_json
-    def submit_pingback_main(self, distro, version_os, version_youker_assistant):
+    def submit_pingback_main(self, distro, version_os, version_youker_assistant, city):
         postdata = PingbackmainRequest()
         postdata.distro = distro
         postdata.version_os = version_os
         postdata.version_youker_assistant = version_youker_assistant
+        postdata.city = city
         return self._post('pingbackmain/', data=postdata, scheme=PUBLIC_API_SCHEME, content_type='application/json')
 
 class ServerPingBackAPI(PistonAPI):
     default_content_type = 'application/x-www-form-urlencoded'
-
 
     @returns_json
     def access_server_pingback(self):

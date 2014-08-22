@@ -115,7 +115,7 @@ class Unity:
             'launcher-opacity', 'double')
 
     # 'min'    : 0.2, # TODO : Check these min max. Most prolly wrong.
-    # 'max'    : 8.0, # But fine since they are ignored anyway.
+    # 'max'    : 1.0, # But fine since they are ignored anyway.
     # 'ticks'  : [(0.666, Gtk.PositionType.BOTTOM, None)]
     def set_launcher_transparency(self, opacity):
         return gsettings.set('org.compiz.unityshell',

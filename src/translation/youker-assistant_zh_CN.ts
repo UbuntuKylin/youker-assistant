@@ -744,49 +744,6 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>ChangeCityDialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="obsolete">对话框</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Change Cities&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;更换城市&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;City List:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;城市列表：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">取消</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="obsolete">确定</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Clicking the &amp;quot;configure&amp;quot; button on the main interface, setting the city name.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;默认配置三个城市，点击“首页”上的“配置”按钮添加城市名称。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Three cities to be set by default, Clicking the &amp;quot;configure&amp;quot; button on the main interface, setting the city name.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;默认配置三个城市，点击“首页”上的“配置”按钮添加城市名称。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Warning:</source>
-        <translation type="obsolete">警告：</translation>
-    </message>
-    <message>
-        <source>Cannot find the city!</source>
-        <translation type="obsolete">没有找到对应城市！</translation>
-    </message>
-    <message>
-        <source>The configuration file is not found!</source>
-        <translation type="obsolete">没有找到配置文件！</translation>
-    </message>
-</context>
-<context>
     <name>ComputerInfo</name>
     <message>
         <location filename="../../qml/func/info/ComputerInfo.qml" line="49"/>
@@ -1352,41 +1309,6 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>DocumentFont</name>
-    <message>
-        <source>Document font settings</source>
-        <translation type="obsolete">文档字体设置</translation>
-    </message>
-    <message>
-        <source>According to personal preferences to set document fonts, click the &apos;Restore&apos; button, can be restored to the state before the font settings.</source>
-        <translation type="obsolete">根据个人喜好设置文档字体，单击＂恢复默认＂按钮，可以将对应的字体恢复到设置前状态。</translation>
-    </message>
-    <message>
-        <source>Completed!</source>
-        <translation type="obsolete">已完成！</translation>
-    </message>
-    <message>
-        <source>Document font: </source>
-        <translation type="obsolete">文档字体：</translation>
-    </message>
-    <message>
-        <source>Change fonts</source>
-        <translation type="obsolete">更换字体</translation>
-    </message>
-    <message>
-        <source>Restore</source>
-        <translation type="obsolete">恢复默认</translation>
-    </message>
-    <message>
-        <source>Tips:</source>
-        <translation type="obsolete">友情提示：</translation>
-    </message>
-    <message>
-        <source>Your system&apos;s document font is the default font!</source>
-        <translation type="obsolete">您系统的文档字体已经为默认字体！</translation>
-    </message>
-</context>
-<context>
     <name>DriveInfo</name>
     <message>
         <location filename="../../qml/func/info/DriveInfo.qml" line="29"/>
@@ -1488,176 +1410,6 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>FcitxBar</name>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">取消</translation>
-    </message>
-    <message>
-        <source>Previous</source>
-        <translation type="obsolete">上一步</translation>
-    </message>
-    <message>
-        <source>Next</source>
-        <translation type="obsolete">下一步</translation>
-    </message>
-</context>
-<context>
-    <name>FcitxConfigtool</name>
-    <message>
-        <source>Input Method Configuration</source>
-        <translation type="obsolete">输入法配置</translation>
-    </message>
-    <message>
-        <source>&apos;&lt;&lt;&apos; &apos;&gt;&gt;&apos; button to add/remove input method, &apos;▲&apos; &apos;▼&apos; buttons to adjust the input method priority, click &apos;Next&apos; to continue Settings, click &apos;Cancel&apos; to exit the setup wizard.</source>
-        <translation type="obsolete">＇&lt;&lt;＇和＇&gt;&gt;＇按钮添加/删除输入法，＇▲＇和＇▼＇按钮调整输入法优先级，点击＂下一步＂继续设置，点击＂取消＂退出设置向导。</translation>
-    </message>
-    <message>
-        <source>&apos;&lt;&lt;&apos; &apos;&gt;&gt;&apos; button to add/remove input method, Up Arrow and Down Arrow keys to adjust the input method priority, click &apos;Next&apos; to continue Settings, click &apos;Cancel&apos; to exit the setup wizard.</source>
-        <translation type="obsolete">＇&lt;&lt;＇和＇&gt;&gt;＇按钮添加/删除输入法，＇▲＇和＇▼＇按钮调整输入法优先级，点击＂下一步＂继续设置，点击＂取消＂退出设置向导。</translation>
-    </message>
-    <message>
-        <source>Current input method list</source>
-        <translation type="obsolete">当前输入法列表</translation>
-    </message>
-    <message>
-        <source>Available input method list</source>
-        <translation type="obsolete">可用输入法列表</translation>
-    </message>
-    <message>
-        <source>Switch input method</source>
-        <translation type="obsolete">输入法切换</translation>
-    </message>
-</context>
-<context>
-    <name>FcitxConfigtoolFont</name>
-    <message>
-        <source>Personalized Configuration</source>
-        <translation type="obsolete">个性化配置</translation>
-    </message>
-    <message>
-        <source>Global configuration according to personal habits, click &apos;Next&apos; to continue Settings, click &apos;Cancel&apos; to exit the setup wizard.</source>
-        <translation type="obsolete">根据个人习惯进行全局配置，点击＂下一步＂继续设置，点击＂取消＂退出设置向导。</translation>
-    </message>
-    <message>
-        <source>Display settings</source>
-        <translation type="obsolete">显示设置</translation>
-    </message>
-    <message>
-        <source>Candidate list: </source>
-        <translation type="obsolete">候选词列表：</translation>
-    </message>
-    <message>
-        <source>Horizontal display</source>
-        <translation type="obsolete">横向显示</translation>
-    </message>
-    <message>
-        <source>Vertical display</source>
-        <translation type="obsolete">竖向显示</translation>
-    </message>
-    <message>
-        <source>Candidate Word Number: </source>
-        <translation type="obsolete">候选词个数：</translation>
-    </message>
-    <message>
-        <source>Hotkey</source>
-        <translation type="obsolete">快捷键</translation>
-    </message>
-    <message>
-        <source>Trigger Input Method: </source>
-        <translation type="obsolete">切换输入法：</translation>
-    </message>
-    <message>
-        <source>Please press the combination keys</source>
-        <translation type="obsolete">请按下要设置的组合键</translation>
-    </message>
-    <message>
-        <source>Prev Page: </source>
-        <translation type="obsolete">上一页：</translation>
-    </message>
-    <message>
-        <source>Next Page: </source>
-        <translation type="obsolete">下一页：</translation>
-    </message>
-</context>
-<context>
-    <name>FcitxConfigtoolKey</name>
-    <message>
-        <source>Appearance Configuration</source>
-        <translation type="obsolete">外观配置</translation>
-    </message>
-    <message>
-        <source>According to personal preferences to set input method skin, click &apos;Previous&apos; to return to the personalized configuration.</source>
-        <translation type="obsolete">可以设置自己喜欢的皮肤，点击＂应用＂完成设置, 点击＂上一步＂返回个性化配置。</translation>
-    </message>
-    <message>
-        <source>Completed</source>
-        <translation type="obsolete">已完成</translation>
-    </message>
-    <message>
-        <source>Skin settings</source>
-        <translation type="obsolete">皮肤设置</translation>
-    </message>
-    <message>
-        <source>Using skin</source>
-        <translation type="obsolete">使用皮肤</translation>
-    </message>
-    <message>
-        <source>Change fonts</source>
-        <translation type="obsolete">更换字体</translation>
-    </message>
-    <message>
-        <source>Size</source>
-        <translation type="obsolete">大小</translation>
-    </message>
-    <message>
-        <source>Font settings</source>
-        <translation type="obsolete">字体设置</translation>
-    </message>
-</context>
-<context>
-    <name>FcitxThreeBar</name>
-    <message>
-        <source>Home</source>
-        <translation type="obsolete">返回主页</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">取消</translation>
-    </message>
-    <message>
-        <source>Previous</source>
-        <translation type="obsolete">上一步</translation>
-    </message>
-    <message>
-        <source>Apply</source>
-        <translation type="obsolete">应用</translation>
-    </message>
-</context>
-<context>
-    <name>FcitxWarnDialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="obsolete">对话框</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">取消</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;温馨提示：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to exit the wizardï¼</source>
-        <translation type="obsolete">您确定退出输入法配置向导？</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to exit the wizard ?</source>
-        <translation type="obsolete">您确定退出输入法配置向导？</translation>
-    </message>
-</context>
-<context>
     <name>FileManager</name>
     <message>
         <location filename="../../qml/func/settings/FileManager.qml" line="26"/>
@@ -1665,13 +1417,17 @@ p, li { white-space: pre-wrap; }
         <translation>文件管理器</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileManager.qml" line="27"/>
         <source>Manage the Nautilus file manager.</source>
-        <translation>管理Nautilus文件管理器</translation>
+        <translation type="obsolete">管理Nautilus文件管理器</translation>
     </message>
     <message>
         <source>File manage and control</source>
         <translation type="obsolete">文件管理控制</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/FileManager.qml" line="27"/>
+        <source>Manage the Nautilus file manager. Tip: the cache time or cache size been setted to -1, it will disable cleaning.</source>
+        <translation>管理Nautilus文件管理器。提示：如果缩略图缓存时间或尺寸被设置为-1，缩略图将不会被清理。</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/FileManager.qml" line="129"/>
@@ -1837,7 +1593,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>FontButton</name>
     <message>
-        <location filename="../../qml/func/common/FontButton.qml" line="71"/>
+        <location filename="../../qml/func/common/FontButton.qml" line="80"/>
         <source>Click to change font</source>
         <translation>点击更换字体</translation>
     </message>
@@ -1996,8 +1752,8 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/settings/LauncherTheme.qml" line="212"/>
         <location filename="../../qml/func/settings/LauncherTheme.qml" line="265"/>
         <location filename="../../qml/func/settings/LauncherTheme.qml" line="323"/>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="383"/>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="444"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="385"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="446"/>
         <source>Restore</source>
         <translation>恢复默认</translation>
     </message>
@@ -2017,7 +1773,7 @@ p, li { white-space: pre-wrap; }
         <translation>启动器透明度：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/LauncherTheme.qml" line="409"/>
+        <location filename="../../qml/func/settings/LauncherTheme.qml" line="411"/>
         <source>Icon Background:</source>
         <translation>图标背景：</translation>
     </message>
@@ -2232,45 +1988,6 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>LocationDialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="obsolete">对话框</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Please enter a city name or pinyin to search&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;请输入城市中文名或者拼音进行查找&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="obsolete">确定</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">取消</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Please enter a city name to search&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;请输入城市名字去查找&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation type="obsolete">查找</translation>
-    </message>
-    <message>
-        <source>Warning:</source>
-        <translation type="obsolete">警告：</translation>
-    </message>
-    <message>
-        <source>Please input city name and click &apos;find&apos; button to find!</source>
-        <translation type="obsolete">请输入合适的城市名字后点击“查找”按钮进行查找！</translation>
-    </message>
-    <message>
-        <source>Please input city name and click &apos;search&apos; button to find!</source>
-        <translation type="obsolete">请输入合适的城市名字后点击“查找”按钮进行查找！</translation>
-    </message>
-</context>
-<context>
     <name>LoginDialog</name>
     <message>
         <location filename="../logindialog.ui" line="14"/>
@@ -2411,53 +2128,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/info/MemoryInfo.qml" line="190"/>
         <source>Memory Info</source>
         <translation>内存条信息</translation>
-    </message>
-</context>
-<context>
-    <name>MessageDialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="obsolete">对话框</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="obsolete">确定</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add kuaipan cloud conf&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;添加快盘云配置&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add file and window manager&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;增加文件和窗口管理器&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remember user account info&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;保留用户帐号信息&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Access Yahoo weather info&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;增加雅虎天气信息显示&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Login with Ubuntu Kylin forum account&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;使用Ubuntu Kylin论坛帐号登录&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cleanup thumbnail and  configfile&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;清理缩略图和配置文件&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add CD-ROM and Audio Info&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;添加光驱和音频设备信息&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Add Device basic Info&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;添加设备驱动的基本信息&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Modify system cleaner&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;优化系统清理模块&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -3150,22 +2820,22 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>RightPage</name>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="62"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="67"/>
         <source>Network Error!</source>
         <translation>网络错误！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="65"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="70"/>
         <source>No User!</source>
         <translation>没有该用户！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="68"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="73"/>
         <source>Password Wrong!</source>
         <translation>密码错误！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="71"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="76"/>
         <source>Login Failed!</source>
         <translation>登录失败！</translation>
     </message>
@@ -3194,17 +2864,18 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">触摸板</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="202"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="229"/>
         <source>Logging...</source>
         <translation>正在登录...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="717"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="774"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="789"/>
         <source>Hits per day </source>
         <translation>每日点击次数 </translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="977"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="1050"/>
         <source>Feedback</source>
         <translation>问题反馈</translation>
     </message>
@@ -3213,27 +2884,27 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">用户名：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="264"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="291"/>
         <source>Level:</source>
         <translation>等级：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="275"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="302"/>
         <source>Score:</source>
         <translation>经验值：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="234"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="261"/>
         <source>Logout</source>
         <translation>注销</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="29"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="27"/>
         <source>Active</source>
         <translation>活跃发展中</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="30"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="28"/>
         <source>China</source>
         <translation>中国</translation>
     </message>
@@ -3242,13 +2913,13 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">摄像头</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="354"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="381"/>
         <source>DistroWatch Ranking</source>
         <translation>DistroWatch受欢迎程度排名</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="366"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="383"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="393"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="410"/>
         <source>Details</source>
         <translation>详情</translation>
     </message>
@@ -3257,136 +2928,65 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">每日点击次数：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="730"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="748"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="803"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="821"/>
         <source>Hide</source>
         <translation>隐藏</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="764"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="837"/>
         <source>Last Update:</source>
         <translation>最后更新：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="783"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="856"/>
         <source>OS Type:</source>
         <translation>发行归类：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="801"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="874"/>
         <source>Based on:</source>
         <translation>基于何种发行：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="819"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="892"/>
         <source>Origin: </source>
         <translation>来源：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="837"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="910"/>
         <source>Architecture:</source>
         <translation>处理器架构：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="856"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="929"/>
         <source>Desktop:</source>
         <translation>桌面：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="875"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="948"/>
         <source>Category:</source>
         <translation>类型：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="893"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="966"/>
         <source>Status:</source>
         <translation>状态：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="911"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="984"/>
         <source>Popularity:</source>
         <translation>受欢迎程度排名：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="951"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="1024"/>
         <source>Forum Help</source>
         <translation>论坛求助</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="968"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="1041"/>
         <source>Features</source>
         <translation>新版本特性</translation>
-    </message>
-    <message>
-        <source>Report Bugs</source>
-        <translation type="obsolete">Bug提交</translation>
-    </message>
-</context>
-<context>
-    <name>RightPage-org</name>
-    <message>
-        <source>Network Error!</source>
-        <translation type="obsolete">网络错误！</translation>
-    </message>
-    <message>
-        <source>No User!</source>
-        <translation type="obsolete">没有该用户！</translation>
-    </message>
-    <message>
-        <source>Password Wrong!</source>
-        <translation type="obsolete">密码错误！</translation>
-    </message>
-    <message>
-        <source>Login Failed!</source>
-        <translation type="obsolete">登录失败！</translation>
-    </message>
-    <message>
-        <source>DeadpixelTest</source>
-        <translation type="obsolete">坏点检测</translation>
-    </message>
-    <message>
-        <source>DesktopIcon</source>
-        <translation type="obsolete">桌面图标</translation>
-    </message>
-    <message>
-        <source>BootAnimation</source>
-        <translation type="obsolete">开机动画</translation>
-    </message>
-    <message>
-        <source>SysSounds</source>
-        <translation type="obsolete">系统声音</translation>
-    </message>
-    <message>
-        <source>MousePointer</source>
-        <translation type="obsolete">鼠标指针</translation>
-    </message>
-    <message>
-        <source>Logging...</source>
-        <translation type="obsolete">正在登录...</translation>
-    </message>
-    <message>
-        <source>Name:</source>
-        <translation type="obsolete">用户名：</translation>
-    </message>
-    <message>
-        <source>Level:</source>
-        <translation type="obsolete">等级：</translation>
-    </message>
-    <message>
-        <source>Score:</source>
-        <translation type="obsolete">经验值：</translation>
-    </message>
-    <message>
-        <source>Logout</source>
-        <translation type="obsolete">注销</translation>
-    </message>
-    <message>
-        <source>Forum Help</source>
-        <translation type="obsolete">论坛求助</translation>
-    </message>
-    <message>
-        <source>Features</source>
-        <translation type="obsolete">新版本特性</translation>
     </message>
     <message>
         <source>Report Bugs</source>
@@ -3469,7 +3069,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1412"/>
+        <location filename="../sessiondispatcher.cpp" line="1475"/>
         <source>Select folder</source>
         <translation>选择文件夹</translation>
     </message>
@@ -3480,191 +3080,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/others/SettingsDelegate.qml" line="81"/>
         <source>No found camera!</source>
         <translation>没有找到可用的摄像头！</translation>
-    </message>
-</context>
-<context>
-    <name>SkinsWidget</name>
-    <message>
-        <source>skin 1</source>
-        <translation type="obsolete">皮肤 1</translation>
-    </message>
-    <message>
-        <source>skin 2</source>
-        <translation type="obsolete">皮肤 2</translation>
-    </message>
-    <message>
-        <source>skin 3</source>
-        <translation type="obsolete">皮肤 3</translation>
-    </message>
-    <message>
-        <source>skin 4</source>
-        <translation type="obsolete">皮肤 4</translation>
-    </message>
-    <message>
-        <source>skin 5</source>
-        <translation type="obsolete">皮肤 5</translation>
-    </message>
-    <message>
-        <source>skin 6</source>
-        <translation type="obsolete">皮肤 6</translation>
-    </message>
-    <message>
-        <source>skin 7</source>
-        <translation type="obsolete">皮肤 7</translation>
-    </message>
-    <message>
-        <source>skin 8</source>
-        <translation type="obsolete">皮肤 8</translation>
-    </message>
-    <message>
-        <source>skin 9</source>
-        <translation type="obsolete">皮肤 9</translation>
-    </message>
-    <message>
-        <source>skin 10</source>
-        <translation type="obsolete">皮肤 10</translation>
-    </message>
-    <message>
-        <source>Youker Skin Center</source>
-        <translation type="obsolete">优客皮肤中心</translation>
-    </message>
-    <message>
-        <source>Home</source>
-        <translation type="obsolete">首页</translation>
-    </message>
-    <message>
-        <source>Previous</source>
-        <translation type="obsolete">上一页</translation>
-    </message>
-    <message>
-        <source>Next</source>
-        <translation type="obsolete">下一页</translation>
-    </message>
-    <message>
-        <source>Last</source>
-        <translation type="obsolete">末页</translation>
-    </message>
-</context>
-<context>
-    <name>SoftWareRecommend</name>
-    <message>
-        <source>WPS For Ubuntu Kylin,  the best office software in the Linux system.</source>
-        <translation type="obsolete">WPS For Ubuntu Kylin，Linux 系统上最好用的办公软件。</translation>
-    </message>
-    <message>
-        <source>Details</source>
-        <translation type="obsolete">详细</translation>
-    </message>
-    <message>
-        <source>WineQQ,  the best version of QQ in the Linux system.</source>
-        <translation type="obsolete">WineQQ，Linux系统上最好用的QQ版本。</translation>
-    </message>
-    <message>
-        <source>Recommendations</source>
-        <translation type="obsolete">推荐金榜单</translation>
-    </message>
-</context>
-<context>
-    <name>SoftwarePage</name>
-    <message>
-        <source>Progress: </source>
-        <translation type="obsolete">进度：</translation>
-    </message>
-    <message>
-        <source> itmes need to be updated,  the number of completed updates is: </source>
-        <translation type="obsolete">个项目需要更新，已完成个数：</translation>
-    </message>
-    <message>
-        <source>Download</source>
-        <translation type="obsolete">开始下载</translation>
-    </message>
-    <message>
-        <source>Downloading...</source>
-        <translation type="obsolete">正在下载安装包...</translation>
-    </message>
-    <message>
-        <source>Downloaded</source>
-        <translation type="obsolete">下载完成</translation>
-    </message>
-    <message>
-        <source>Start</source>
-        <translation type="obsolete">开始</translation>
-    </message>
-    <message>
-        <source>In progress: </source>
-        <translation type="obsolete">正在进行：</translation>
-    </message>
-    <message>
-        <source>If it takes too long to update, there may be network problems, you can click the &apos;back&apos; button in the upper left hand corner to exit the interface.</source>
-        <translation type="obsolete">如果太长时间没有更新完毕，这可能是网络问题，您可以点击左上角的 “返回” 按钮退出该界面。</translation>
-    </message>
-    <message>
-        <source>If it takes too long to update,  there may be network problems,  you can click the ‘back’ button in the upper left hand corner to exit the interface.</source>
-        <translation type="obsolete">如果太长时间没有更新完毕，这可能是网络问题，您可以点击左上角的“返回”按钮退出该界面。</translation>
-    </message>
-    <message>
-        <source>Updating software source,  please be patient,  there will pop-up prompt information automatically after the update completed.</source>
-        <translation type="obsolete">正在更新软件源，请耐心等待，软件源更新完成后会自动弹出提示信息。</translation>
-    </message>
-    <message>
-        <source>Software operation schedule</source>
-        <translation type="obsolete">软件操作进度</translation>
-    </message>
-    <message>
-        <source>If the software is installed successfully, you can search the Chinese or English keywords in Dash and start it .</source>
-        <translation type="obsolete">如果软件安装成功，则可以通过软件的中文/英文名关键字在Dash中搜索并启动软件。</translation>
-    </message>
-    <message>
-        <source>Operation completed!</source>
-        <translation type="obsolete">软件操作完成！</translation>
-    </message>
-    <message>
-        <source>If the software is installed successfully,  you can enter the keywords from the Chinese/English name of the software in Dash to searching and starting the software.</source>
-        <translation type="obsolete">如果软件安装成功，则可以通过软件的中文/英文名关键字在Dash中搜索并启动软件。</translation>
-    </message>
-    <message>
-        <source>Uninstall</source>
-        <translation type="obsolete">立即卸载</translation>
-    </message>
-    <message>
-        <source>Access web</source>
-        <translation type="obsolete">进入网页</translation>
-    </message>
-    <message>
-        <source>Access webpage</source>
-        <translation type="obsolete">进入网页</translation>
-    </message>
-    <message>
-        <source>Install</source>
-        <translation type="obsolete">立即安装</translation>
-    </message>
-    <message>
-        <source>Download Address</source>
-        <translation type="obsolete">下载地址</translation>
-    </message>
-    <message>
-        <source>Upgrade</source>
-        <translation type="obsolete">立即升级</translation>
-    </message>
-    <message>
-        <source>N/A</source>
-        <translation type="obsolete">未发现</translation>
-    </message>
-    <message>
-        <source>Software operation completed!</source>
-        <translation type="obsolete">软件操作完成！</translation>
-    </message>
-    <message>
-        <source>Back</source>
-        <translation type="obsolete">返回</translation>
-    </message>
-    <message>
-        <source>Detailed Info</source>
-        <translation type="obsolete">详细信息</translation>
-    </message>
-    <message>
-        <source>Software introduction</source>
-        <translation type="obsolete">软件介绍</translation>
     </message>
 </context>
 <context>
@@ -3752,78 +3167,11 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>SourceDialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="obsolete">对话框</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">取消</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="obsolete">确定</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translatorcomment>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;友情提示：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translatorcomment>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>You need to add Ubuntu Kylin software source, or the software recommended feature will not be available. Click &apos;OK&apos; to add the software source, click &apos;Cancel&apos; to give up!</source>
-        <translation type="obsolete">您需要添加 Ubuntu Kylin 软件源，否则软件推荐功能将无法使用。点击＂确定＂按钮添加软件源，点击＂取消＂按钮放弃添加！</translation>
-    </message>
-</context>
-<context>
     <name>StatusImage</name>
     <message>
         <location filename="../../qml/func/common/StatusImage.qml" line="23"/>
         <source>Unfinished</source>
         <translation>未完成</translation>
-    </message>
-</context>
-<context>
-    <name>StatusWidget</name>
-    <message>
-        <source>Tips:</source>
-        <translation type="obsolete">友情提示：</translation>
-    </message>
-    <message>
-        <source>The kuaipan4uk is not running!</source>
-        <translation type="obsolete">快盘没有运行！</translation>
-    </message>
-    <message>
-        <source>Not found the cloud configuration!</source>
-        <translation type="obsolete">没有发现云配置文件！</translation>
-    </message>
-    <message>
-        <source>Download OK!</source>
-        <translation type="obsolete">使用完毕！</translation>
-    </message>
-    <message>
-        <source>Upload OK!</source>
-        <translation type="obsolete">上传完成！</translation>
-    </message>
-    <message>
-        <source>main version:</source>
-        <translation type="obsolete">主版本：</translation>
-    </message>
-    <message>
-        <source>Use Cloud</source>
-        <translation type="obsolete">使用云配置</translation>
-    </message>
-    <message>
-        <source>Save Cloud</source>
-        <translation type="obsolete">保存云配置</translation>
-    </message>
-    <message>
-        <source>It will use the Kingsoft disk cloud configuration!</source>
-        <translation type="obsolete">该操作将使用金山快盘云配置来设置系统配置！</translation>
-    </message>
-    <message>
-        <source>It will upload configuration to the Kingsoft disk cloud!</source>
-        <translation type="obsolete">该操作将会把本地配置上传到金山快盘云端！</translation>
     </message>
 </context>
 <context>
@@ -4312,41 +3660,6 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>TitlebarFont</name>
-    <message>
-        <source>Titlebar font settings</source>
-        <translation type="obsolete">标题栏字体设置</translation>
-    </message>
-    <message>
-        <source>According to personal preferences to set titlebar fonts, click the &apos;Restore&apos; button, can be restored to the state before the font settings.</source>
-        <translation type="obsolete">根据个人喜好设置标题栏字体，单击＂恢复默认＂按钮，可以将对应的字体恢复到设置前状态。</translation>
-    </message>
-    <message>
-        <source>Completed</source>
-        <translation type="obsolete">已完成</translation>
-    </message>
-    <message>
-        <source>Titlebar font: </source>
-        <translation type="obsolete">标题栏字体：</translation>
-    </message>
-    <message>
-        <source>Change fonts</source>
-        <translation type="obsolete">更换字体</translation>
-    </message>
-    <message>
-        <source>Restore</source>
-        <translation type="obsolete">恢复默认</translation>
-    </message>
-    <message>
-        <source>Tips: </source>
-        <translation type="obsolete">友情提示：</translation>
-    </message>
-    <message>
-        <source>Your system&apos;s titlebar font is the default font!</source>
-        <translation type="obsolete">您系统的窗体标题栏字体已经为默认字体！</translation>
-    </message>
-</context>
-<context>
     <name>ToolBar</name>
     <message>
         <location filename="../../qml/func/bars/ToolBar.qml" line="52"/>
@@ -4684,29 +3997,6 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>UpdateDialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="obsolete">对话框</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="obsolete">确定</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Service reminder:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;服务提醒：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">取消</translation>
-    </message>
-    <message>
-        <source>The software was not found, please try to update the software sources.</source>
-        <translation type="obsolete">没有找到该软件，请尝试更新软件源。</translation>
-    </message>
-</context>
-<context>
     <name>WarningDialog</name>
     <message>
         <location filename="../warningdialog.ui" line="14"/>
@@ -4722,57 +4012,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../warningdialog.ui" line="84"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;友情提示：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-</context>
-<context>
-    <name>WeatherForecast</name>
-    <message>
-        <source>Getting six days weather forecast data from CMA, providing reference information for users to travel.</source>
-        <translation type="obsolete">获取中国气象局的六天天气预报数据，为用户出行提供参考。</translation>
-    </message>
-    <message>
-        <source>Getting weather forecast data from CMA/Yahoo, providing reference information for users to travel.</source>
-        <translation type="obsolete">获取中国气象局/雅虎的天气预报数据，为用户出行提供参考。</translation>
-    </message>
-    <message>
-        <source>[ The weather forecast has stopped updating, please wait interface update. ]</source>
-        <translation type="obsolete">[ 天气预报接口已经停止更新数据，请等待接口更新后再使用。 ]</translation>
-    </message>
-    <message>
-        <source>Sunday</source>
-        <translation type="obsolete">星期日</translation>
-    </message>
-    <message>
-        <source>Monday</source>
-        <translation type="obsolete">星期一</translation>
-    </message>
-    <message>
-        <source>Tuesday</source>
-        <translation type="obsolete">星期二</translation>
-    </message>
-    <message>
-        <source>Wednesday</source>
-        <translation type="obsolete">星期三</translation>
-    </message>
-    <message>
-        <source>Thursday</source>
-        <translation type="obsolete">星期四</translation>
-    </message>
-    <message>
-        <source>Friday</source>
-        <translation type="obsolete">星期五</translation>
-    </message>
-    <message>
-        <source>Saturday</source>
-        <translation type="obsolete">星期六</translation>
-    </message>
-    <message>
-        <source> o&apos;clock release</source>
-        <translation type="obsolete">时  发布</translation>
-    </message>
-    <message>
-        <source>hour release</source>
-        <translation type="obsolete">时  发布</translation>
     </message>
 </context>
 <context>
@@ -5073,85 +4312,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/settings/WindowManager.qml" line="606"/>
         <source>Titlebar right-click action:</source>
         <translation>标题栏右键动作：</translation>
-    </message>
-</context>
-<context>
-    <name>WizardDialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="obsolete">对话框</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Weather Configuration&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;天气配置&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Automatic update cycle:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;自动更新周期：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Location:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;地点：&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a name=&quot;w_98&quot;/&gt;minute&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a name=&quot;w_98&quot;/&gt;分钟&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a name=&quot;w_98&quot;/&gt;minutes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a name=&quot;w_98&quot;/&gt;分钟&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Add City</source>
-        <translation type="obsolete">添加城市</translation>
-    </message>
-    <message>
-        <source>Delete City</source>
-        <translation type="obsolete">删除城市</translation>
-    </message>
-    <message>
-        <source>Back</source>
-        <translation type="obsolete">返回</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Automatic update cycle: 60 &lt;a name=&quot;w_98&quot;/&gt;minutes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;自动更新周期： 60 &lt;a name=&quot;w_98&quot;/&gt;分钟&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Finish</source>
-        <translation type="obsolete">完成</translation>
-    </message>
-    <message utf8="true">
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Temperature unit: ℃&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;温度单位： ℃&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Data: CMA/Yahoo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;数据来源：中国气象局 / 雅虎&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wind speed unit: Beaufort number&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;风速单位：蒲福级&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Data: CMA&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;数据来源：中国气象局&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Data: China Meteorological Administration&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;数据来源：中国气象局&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Warning:</source>
-        <translation type="obsolete">警告：</translation>
-    </message>
-    <message>
-        <source>The city already exists, please click on the &apos;[Change City]&apos; button!</source>
-        <translation type="obsolete">该城市已经存在，请点击 ’[更换城市]‘ 按钮！</translation>
-    </message>
-    <message>
-        <source>The configuration file is not found!</source>
-        <translation type="obsolete">没有找到配置文件！</translation>
     </message>
 </context>
 </TS>

@@ -394,8 +394,8 @@ class SessionDaemon(dbus.service.Object):
     def get_largefile_list(self, filelist):
         pass
 
-    def tell_widget_largefile_list(self, filelist):
-        self.get_largefile_list(filelist)
+#    def tell_widget_largefile_list(self, filelist):
+#        self.get_largefile_list(filelist)
 
     @dbus.service.signal(INTERFACE, signature='si')
     def get_history_number(self, flag, num):
@@ -448,12 +448,20 @@ class SessionDaemon(dbus.service.Object):
     #    self.scan_complete_msg('large')
     #    return tmp_list
 
+    def real_scan_large_files(self, size, path):
+        filelist = self.daemonlarge.get_scan_result(size, path)
+        # start to send the over signal to UI
+        self.get_largefile_list(filelist)
+
     @dbus.service.method(INTERFACE, in_signature='is', out_signature='')
     def scan_of_large(self, size, path):
-        tmp_list = self.daemonlarge.get_scan_result(size, path)
+        t = threading.Thread(target = self.real_scan_large_files, args=(size, path))
+        t.start()
+#        tmp_list = self.daemonlarge.get_scan_result(size, path)
         #self.scan_complete_msg('large')
         #return tmp_list
-        self.tell_widget_largefile_list(tmp_list)
+#        self.get_largefile_list(filelist)
+#        self.tell_widget_largefile_list(tmp_list)
 
     # the function of clean the cookies records
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
@@ -1332,15 +1340,15 @@ class SessionDaemon(dbus.service.Object):
             pingback = self.weatherping.access_server_pingback()
             return pingback
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
-    def submit_uk_pingback(self):
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
+    def submit_uk_pingback(self, cityname):
         last_time = self.get_last_time()
         now_time = datetime.datetime.now()
         if last_time in (None, ''):
             version_youker_assistant = get_uk_version()
             distro, version_os  = get_distro_info()
             try:
-                pingback = self.premoter.submit_pingback_main(distro, version_os, version_youker_assistant)
+                pingback = self.premoter.submit_pingback_main(distro, version_os, version_youker_assistant, cityname)
             except Exception as e:
                 print 'pingback failed...'
                 print e
@@ -1357,7 +1365,7 @@ class SessionDaemon(dbus.service.Object):
                 version_youker_assistant = get_uk_version()
                 distro, version_os  = get_distro_info()
                 try:
-                    pingback = self.premoter.submit_pingback_main(distro, version_os, version_youker_assistant)
+                    pingback = self.premoter.submit_pingback_main(distro, version_os, version_youker_assistant, cityname)
                 except Exception as e:
                     print 'pingback failed...'
                     print e

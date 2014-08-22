@@ -49,6 +49,8 @@ public:
     Q_INVOKABLE QString getDistrowatchSingleInfo(QString key);
     Q_INVOKABLE QStringList get_default_all_distrowatch();
     Q_INVOKABLE void get_default_ubuntukylin_distrowatch();
+    void set_default_all_distrowatch(QString key, QString value);
+    void set_default_ubuntukylin_distrowatch(QString key, QString value);
 
     Q_INVOKABLE bool judge_camera_qt();
     Q_INVOKABLE void call_camera_qt();
