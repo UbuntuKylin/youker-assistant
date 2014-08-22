@@ -17,10 +17,33 @@ var logoNames = ["3COM", "ABIT", "ACER", "A-DATA", "ADATA", "AEXEA", "ALI", "AMD
                              "TONGFANG", "TOSHIBA", "TOYOTA", "TP-LINK", "TRANSMETA", "TRUST", "TSSTCORP", "T&W", "TYAN", "UMC",
                              "UNIKA", "VIA", "VIMICRO", "VIRTUALBOX", "WDC", "WINBOND", "XFX", "YESTON", "ZOTAC", "ZTE"];
 
+
+var distrowatchNames = ["mint", "ubuntu", "debian", "mageia", "fedora", "suse", "arch", "elementary", "zorin", "centos",
+                             "puppy", "lubuntu", "manjaro", "kali", "lxle", "bodhi", "pclinuxos", "xubuntu", "crunchbang", "ultimate",
+                             "androidx86", "freebsd", "robolinux", "sparky", "simplicity", "tails", "redhat", "deepin", "slackware","ubuntugnome",
+                             "lite", "steamos", "kubuntu", "openmandriva", "ghostbsd", "antix", "pinguy", "smartos", "salix", "sabayon",
+                             "solydxk", "tinycore", "peppermint", "knoppix", "makulu", "wattos", "pcbsd", "antergos", "netrunner", "chakra",
+                             "nixos", "gentoo", "ubuntustudio", "voyager", "openelec", "clonezilla", "scientific", "elive", "slitaz", "kaos",
+                             "gobo", "vector", "oracle", "dragonflybsd", "porteus", "clearos", "alpine", "mandriva","gparted", "siduction",
+                             "ubuntukylin", "tanglu", "damnsmall", "slackel", "zenwalk", "kwheezy", "archbang", "4mlinux", "parsix", "avlinux",
+                             "zentyal", "openbsd", "trisquel", "reactos", "backbox", "point", "wifislax", "freenas", "musix", "zevenos",
+                             "mepis", "bridge", "dreamstudio", "solaris", "sle", "rosa", "legacy", "emmabuntus", "korora", "greenie"];
+
 function judgeName(name) {
 
     for (var i = 0; i < logoNames.length; i++) {
         if(logoNames[i] == name) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+function judgeDistrowatchName(name) {
+
+    for (var i = 0; i < distrowatchNames.length; i++) {
+        if(distrowatchNames[i] == name) {
             return true;
         }
     }

@@ -16,6 +16,7 @@
 
 import QtQuick 1.1
 import "../common" as Common
+import "../common/InfoGroup.js" as InfoGroup
 
 //右边栏
 Rectangle {
@@ -23,11 +24,15 @@ Rectangle {
 
     property int distrowatch_num:0
     property string update_rate
-
-
-
     property string activetext : qsTr("Active")//活跃发展中
     property string country : qsTr("China")//中国
+
+    function split_last_str(str)
+    {
+        var need_str = str;
+        need_str = need_str.substr(need_str.lastIndexOf("/") + 1, need_str.length - need_str.lastIndexOf("/"));
+        return need_str;
+    }
 
     function transTitle(str) {
         //去掉前后空格
@@ -85,21 +90,10 @@ Rectangle {
         }
     }
 
-    //更新列表
-//    function updateList() {
-//        clearModel.clear();//清空
-//        clearModel.append({"icon": "../../img/icons/checkscreen.png", "name": qsTr("DeadpixelTest"), "flag": "CheckScreen"});//坏点检测
-//        clearModel.append({"icon": "../../img/icons/iconbeauty.png", "name": qsTr("DesktopIcon"), "flag": "Desktopicon"});//桌面图标
-//        clearModel.append({"icon": "../../img/icons/bootanimation.png", "name": qsTr("BootAnimation"), "flag": "BootAnimation"});//开机动画
-//        clearModel.append({"icon": "../../img/icons/camera.png", "name": qsTr("Camera"), "flag": "CameraCapture"});//摄像头
-//        clearModel.append({"icon": "../../img/icons/mouse.png", "name": qsTr("MousePointer"), "flag": "MousePointer"});//鼠标指针
-//        clearModel.append({"icon": "../../img/icons/touchpad.png", "name": qsTr("Touchpad"), "flag": "TouchpadSet"});//触摸板
-//    }
-
-    function addList() {
-        var result = sessiondispatcher.get_distrowatch_info_qt();
-//        console.log(result);
-        /*6+openSUSE+opensuse+1141+images/other/adown.png+1142,7+Arch+arch+1100+images/other/adown.png+1101,8+elementary+elementary+1061+images/other/aup.png+1060,9+Zorin+zorin+1018+images/other/aup.png+1016,10+CentOS+centos+906+images/other/aup.png+904,11+Puppy+puppy+804+images/other/aup.png+802,12+Lubuntu+lubuntu+795+images/other/aup.png+794,13+Manjaro+manjaro+742+images/other/adown.png+743,14+Kali+kali+699+images/other/adown.png+700,15+LXLE+lxle+688+images/other/adown.png+690,16+Bodhi+bodhi+663+images/other/aup.png+662,17+PCLinuxOS+pclinuxos+657+images/other/aup.png+650,18+Xubuntu+xubuntu+612+images/other/adown.png+613,19+CrunchBang+crunchbang+578+images/other/adown.png+579,20+Ultimate+ultimate+572+images/other/alevel.png+572,21+Android-x86+androidx86+565+images/other/adown.png+573,22+FreeBSD+freebsd+558+images/other/adown.png+560,23+Robolinux+robolinux+537+images/other/aup.png+533,24+SparkyLinux+sparkylinux+526+images/other/adown.png+527,25+Simplicity+simplicity+507+images/other/alevel.png+507,26+Tails+tails+500+images/other/alevel.png+500,27+Red Hat+redhat+486+images/other/alevel.png+486,28+Deepin+deepin+465+images/other/alevel.png+465,29+Slackware+slackware+437+images/other/alevel.png+437,30+Ubuntu GNOME+ubuntugnome+433+images/other/alevel.png+433,31+Lite+lite+416+images/other/alevel.png+416,32+SteamOS+steamos+411+images/other/alevel.png+411,33+Kubuntu+kubuntu+402+images/other/alevel.png+402,34+OpenMandriva+openmandriva+394+images/other/adown.png+395,35+GhostBSD+ghostbsd+386+images/other/alevel.png+386,36+antiX+antix+383+images/other/alevel.png+383,37+Pinguy+pinguy+381+images/other/alevel.png+381,38+SmartOS+smartos+374+images/other/alevel.png+374,39+Salix+salix+372+images/other/alevel.png+372,40+Sabayon+sabayon+361+images/other/alevel.png+361,41+SolydXK+solydxk+357+images/other/adown.png+358,42+Tiny Core+tinycore+353+images/other/alevel.png+353,43+Peppermint+peppermint+345+images/other/alevel.png+345,44+KNOPPIX+knoppix+344+images/other/alevel.png+344,45+MakuluLinux+makululinux+325+images/other/adown.png+327,46+wattOS+wattos+324+images/other/alevel.png+324,47+PC-BSD+pcbsd+317+images/other/adown.png+318,48+Antergos+antergos+308+images/other/alevel.png+308,49+Netrunner+netrunner+307+images/other/aup.png+306,50+Chakra+chakra+304+images/other/alevel.png+304,51+NixOS+nixos+299+images/other/adown.png+307,52+Gentoo+gentoo+295+images/other/adown.png+296,53+Ubuntu Studio+ubuntustudio+276+images/other/alevel.png+276,54+Voyager+voyager+274+images/other/alevel.png+274,55+OpenELEC+openelec+274+images/other/alevel.png+274,56+Clonezilla+clonezilla+272+images/other/alevel.png+272,57+Scientific+scientific+270+images/other/aup.png+268,58+Elive+elive+261+images/other/aup.png+259,59+SliTaz+slitaz+254+images/other/adown.png+260,60+KaOS+kaos+249+images/other/aup.png+243,61+GoboLinux+gobolinux+249+images/other/alevel.png+249,62+Vector+vector+244+images/other/alevel.png+244,63+Oracle+oracle+239+images/other/alevel.png+239,64+DragonFly+dragonfly+237+images/other/alevel.png+237,65+Porteus+porteus+231+images/other/adown.png+232,66+ClearOS+clearos+224+images/other/alevel.png+224,67+Alpine+alpine+222+images/other/alevel.png+222,68+Mandriva+mandriva+220+images/other/alevel.png+220,69+GParted+gparted+213+images/other/alevel.png+213,70+siduction+siduction+212+images/other/alevel.png+212,71+Ubuntu Kylin+ubuntukylin+211+images/other/alevel.png+211,72+Tanglu+tanglu+207+images/other/adown.png+211,73+Damn Small+damnsmall+201+images/other/alevel.png+201,74+Slackel+slackel+200+images/other/adown.png+203,75+Zenwalk+zenwalk+198+images/other/adown.png+201,76+Kwheezy+kwheezy+196+images/other/alevel.png+196,77+ArchBang+archbang+193+images/other/adown.png+194,78+4MLinux+4mlinux+193+images/other/aup.png+192,79+Parsix+parsix+192+images/other/aup.png+183,80+AV Linux+avlinux+189+images/other/alevel.png+189,81+Zentyal+zentyal+186+images/other/alevel.png+186,82+OpenBSD+openbsd+186+images/other/alevel.png+186,83+Trisquel+trisquel+184+images/other/alevel.png+184,84+ReactOS+reactos+183+images/other/adown.png+184,85+BackBox+backbox+182+images/other/alevel.png+182,86+Point+point+179+images/other/alevel.png+179,87+Wifislax+wifislax+178+images/other/alevel.png+178,88+FreeNAS+freenas+175+images/other/adown.png+176,89+Musix+musix+173+images/other/alevel.png+173,90+ZevenOS+zevenos+172+images/other/alevel.png+172,91+MEPIS+mepis+168+images/other/adown.png+169,92+Bridge+bridge+167+images/other/adown.png+191,93+DreamStudio+dreamstudio+166+images/other/alevel.png+166,94+Solaris+solaris+165+images/other/alevel.png+165,95+SUSE+suse+165+images/other/alevel.png+165,96+ROSA+rosa+158+images/other/alevel.png+158,97+Legacy+legacy+157+images/other/alevel.png+157,98+Emmabuntüs+emmabuntüs+157+images/other/aup.png+156,99+Korora+korora+155+images/other/alevel.png+155,100+Greenie+greenie+154+images/other/alevel.png+154*/
+    function setDistrowatchData() {
+        //set default value
+        var img_source = "";
+        var result = sessiondispatcher.get_default_all_distrowatch();
         rightbar.distrowatch_num = result.length;
         listModel.clear();//清空
         for(var i=0; i < result.length; i++) {
@@ -107,6 +101,9 @@ Rectangle {
             var os_image = "";
             if (splitlist[2] == "opensuse") {
                 os_image = "suse";
+            }
+            else if (splitlist[2] == "suse") {
+                os_image = "sle";
             }
             else if (splitlist[2] == "sparkylinux") {
                 os_image = "sparky";
@@ -126,22 +123,57 @@ Rectangle {
             else {
                 os_image = splitlist[2];
             }
-            listModel.append({"rank": splitlist[0], "os": splitlist[1], "os_img": os_image, "today_hit": splitlist[3], "rank_img": splitlist[4],  "yestoday_hit": splitlist[5]});
+            img_source = InfoGroup.judgeDistrowatchName(os_image) ? ("../../img/distrowatch/" + os_image +".png") : ("../../img/distrowatch/default.png");
+            listModel.append({"rank": splitlist[0], "os": splitlist[1], "os_img": img_source, "today_hit": splitlist[3], "rank_img": "../../img/distrowatch/" + rightbar.split_last_str(splitlist[4]),  "yestoday_hit": splitlist[5]});
+        }
+
+        //set new data
+        rightbar.update_rate = sessiondispatcher.get_distrowatch_url_qt();
+        if (rightbar.update_rate == "") {
+            console.log("distrowatche all failed.....");
+        }
+        else {
+            console.log("distrowatche all success....");
+            result = sessiondispatcher.get_distrowatch_info_qt();
+    //        console.log(result);
+            rightbar.distrowatch_num = result.length;
+            listModel.clear();//清空
+            for(var i=0; i < result.length; i++) {
+                var splitlist = result[i].split("+");
+                var os_image = "";
+                if (splitlist[2] == "opensuse") {
+                    os_image = "suse";
+                }
+                else if (splitlist[2] == "suse") {
+                    os_image = "sle";
+                }
+                else if (splitlist[2] == "sparkylinux") {
+                    os_image = "sparky";
+                }
+                else if (splitlist[2] == "makululinux") {
+                    os_image = "makulu";
+                }
+                else if (splitlist[2] == "gobolinux") {
+                    os_image = "gobo";
+                }
+                else if (splitlist[2] == "dragonfly") {
+                    os_image = "dragonflybsd";
+                }
+                else if (splitlist[2] == "emmabuntüs") {
+                    os_image = "emmabuntus";
+                }
+                else {
+                    os_image = splitlist[2];
+                }
+                listModel.append({"rank": splitlist[0], "os": splitlist[1], "os_img": "http://distrowatch.com/images/yvzhuwbpy/" + os_image +".png", "today_hit": splitlist[3], "rank_img": "http://distrowatch.com/" + splitlist[4],  "yestoday_hit": splitlist[5]});
+            }
         }
     }
-
-//    ListModel {
-//        id: clearModel
-//        Component.onCompleted: {
-//            rightbar.updateList();
-//        }
-//    }
 
     ListModel {
         id: listModel
         Component.onCompleted: {
-            rightbar.update_rate = sessiondispatcher.get_distrowatch_url_qt();
-            rightbar.addList();
+            rightbar.setDistrowatchData();
         }
     }
     //背景
@@ -448,7 +480,7 @@ Rectangle {
                             id: icon
                             width: 28; height: 28
 //                            width: 90; height: 87
-                            source: "http://distrowatch.com/images/yvzhuwbpy/" + os_img +".png"
+                            source: os_img//"http://distrowatch.com/images/yvzhuwbpy/" + os_img +".png"
                             anchors.verticalCenter: parent.verticalCenter
 //                            MouseArea
 //                            {
@@ -498,7 +530,7 @@ Rectangle {
                         }
                         Image {
                             width: 7; height: 7
-                            source: "http://distrowatch.com/" + rank_img
+                            source: rank_img//"http://distrowatch.com/" + rank_img
                             anchors.verticalCenter: parent.verticalCenter
                         }
 
@@ -703,7 +735,8 @@ Rectangle {
         Behavior on width { NumberAnimation { easing.type: Easing.OutSine ; duration: 250 } }
 
         Component.onCompleted: {
-            sessiondispatcher.get_ubuntukylin_distrowatch_info_qt();
+            //set default value
+            sessiondispatcher.get_default_ubuntukylin_distrowatch();
             lastupdateText.text = sessiondispatcher.getDistrowatchSingleInfo("lastupdate");
             ostypeText.text = sessiondispatcher.getDistrowatchSingleInfo("ostype");
             basedonText.text = sessiondispatcher.getDistrowatchSingleInfo("basedon");
@@ -715,13 +748,33 @@ Rectangle {
             var popularity = sessiondispatcher.getDistrowatchSingleInfo("popularity");
             var popularityList=  popularity.split("(");
             popularityText.text = popularityList[0] + "( " + qsTr("Hits per day ") + popularityList[1] + " )";//每日点击次数
+
+            // set new data
+            var result = sessiondispatcher.get_ubuntukylin_distrowatch_info_qt();
+            if (result) {
+                lastupdateText.text = sessiondispatcher.getDistrowatchSingleInfo("lastupdate");
+                ostypeText.text = sessiondispatcher.getDistrowatchSingleInfo("ostype");
+                basedonText.text = sessiondispatcher.getDistrowatchSingleInfo("basedon");
+                originText.text = rightbar.transTitle(sessiondispatcher.getDistrowatchSingleInfo("origin"));
+                architectureText.text = sessiondispatcher.getDistrowatchSingleInfo("architecture");
+                desktopText.text = sessiondispatcher.getDistrowatchSingleInfo("desktop");
+                categoryText.text = sessiondispatcher.getDistrowatchSingleInfo("category");
+                statusText.text = rightbar.transTitle(sessiondispatcher.getDistrowatchSingleInfo("status"));
+                var popularity = sessiondispatcher.getDistrowatchSingleInfo("popularity");
+                var popularityList=  popularity.split("(");
+                popularityText.text = popularityList[0] + "( " + qsTr("Hits per day ") + popularityList[1] + " )";//每日点击次数
+                console.log("successs1111111...")
+            }
+            else {
+                console.log("failed1111111...")
+            }
         }
 
         Image {
             id: ukIcon
             visible: ukrect.showFlag
             width: 90; height: 87
-            source: "http://distrowatch.com/images/yvzhuwbpy/ubuntukylin.png"
+            source: "../../img/distrowatch/ubuntukylin.png"    //"http://distrowatch.com/images/yvzhuwbpy/ubuntukylin.png"
             anchors.horizontalCenter: parent.horizontalCenter
         }
         Text {

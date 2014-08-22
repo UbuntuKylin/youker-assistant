@@ -20,6 +20,7 @@
 #include <QMap>
 const QString YOUKER_COMPANY_SETTING = "ubuntukylin/youker-assistant";
 const QString YOUKER_SETTING_FILE_NAME_SETTING = "youker-assistant";
+const QString DISTROWATCH_SETTING_FILE_NAME_SETTING = "distrowatch";
 const QString LSB_RELEASE = "/etc/lsb-release";
 const QString DEFAULT_UBUNTUKYLIN_SETTING = "/var/lib/youker-assistant-daemon/ubuntukylin-default-settings.ini";
 

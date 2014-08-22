@@ -9,8 +9,9 @@ youker-assistant (1.2.0-0ubuntu1) utopic; urgency=low
   * Add pingback function.
   * Modify Driver info page(LP: #1267374).
   * Add judgment of the Desktop.
+  * Add DistroWatch ranking.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 18 Aug 2014 15:00:04 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 22 Aug 2014 12:42:52 +0800
 
 youker-assistant (1.1.0-0ubuntu1) trusty; urgency=low
 

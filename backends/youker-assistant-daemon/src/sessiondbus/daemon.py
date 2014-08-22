@@ -139,7 +139,18 @@ class SessionDaemon(dbus.service.Object):
             self.access_weather('ip_addr', 'kobe')
 
     #-----------------------------distrowatch rank-----------------------------
+    def copy_distrowatch_default_conf(self):
+        distrowatch_path = HOME + '/.config/ubuntukylin/youker-assistant/distrowatch.conf'
+        if not os.path.exists(distrowatch_path):
+            srcFile = '/var/lib/youker-assistant-daemon/distrowatch.conf'
+            if not os.path.exists(srcFile):
+                print "error with distrowatch file"
+                return
+            open(distrowatch_path, "wb").write(open(srcFile, "rb").read())
+
     def init_mechanize(self):
+        #copy distrowatch default file
+        self.copy_distrowatch_default_conf()
         # Browser
         self.br = mechanize.Browser()
         # Cookie Jar
@@ -161,9 +172,12 @@ class SessionDaemon(dbus.service.Object):
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_ubuntukylin_distrowatch_info(self):
-        r = self.br.open(ubuntukylin_distrowatch)
-        html = r.read()
-        soup = BeautifulSoup(html)
+        try:
+            r = self.br.open(ubuntukylin_distrowatch)
+            html = r.read()
+            soup = BeautifulSoup(html)
+        except Exception as e:
+            return None
         contents = soup.findAll(name="td", attrs={"class":"TablesTitle"})
         p = re.compile('<[^>]+>')
         ubuntukylin_list = dict()
@@ -209,10 +223,13 @@ class SessionDaemon(dbus.service.Object):
         today_hit_list = []
         img_list = []
         yestoday_hit_list = []
-        r = self.br.open(distrowatch)
-        html = r.read()
+        try:
+            r = self.br.open(distrowatch)
+            html = r.read()
+            soup = BeautifulSoup(html)
+        except Exception as e:
+            return None
         p = re.compile('<[^>]+>')
-        soup = BeautifulSoup(html)
         spiderContents = soup.findAll(name="option", attrs={"selected":"selected"})
         if len(spiderContents) > 1:
             try:

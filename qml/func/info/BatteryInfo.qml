@@ -16,7 +16,7 @@
 
 import QtQuick 1.1
 import "../common" as Common
-import "./InfoGroup.js" as InfoGroup
+import "../common/InfoGroup.js" as InfoGroup
 
 Rectangle {
     id: home

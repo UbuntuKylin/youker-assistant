@@ -45,8 +45,10 @@ public:
     Q_INVOKABLE QString get_distrowatch_url_qt();
     Q_INVOKABLE QStringList get_distrowatch_info_qt();
     QMap<QString, QVariant> distrowatchInfo;
-    Q_INVOKABLE void get_ubuntukylin_distrowatch_info_qt();
+    Q_INVOKABLE bool get_ubuntukylin_distrowatch_info_qt();
     Q_INVOKABLE QString getDistrowatchSingleInfo(QString key);
+    Q_INVOKABLE QStringList get_default_all_distrowatch();
+    Q_INVOKABLE void get_default_ubuntukylin_distrowatch();
 
     Q_INVOKABLE bool judge_camera_qt();
     Q_INVOKABLE void call_camera_qt();
@@ -440,6 +442,7 @@ private:
     int mainwindow_height;
     QSettings * mSettings;
     QSettings * default_Settings;
+    QSettings * distrowatch_Settings;
     HttpAuth *httpauth;
     int waitTime;//超时重试次数
     QTimer *timer;

@@ -17,7 +17,7 @@
 import QtQuick 1.1
 import "../common" as Common
 import "../bars" as Bars
-import "./InfoGroup.js" as InfoGroup
+import "../common/InfoGroup.js" as InfoGroup
 
 Rectangle {
     id: home; width: parent.width; height: 476

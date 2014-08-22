@@ -47,6 +47,12 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     default_Settings = new QSettings(DEFAULT_UBUNTUKYLIN_SETTING, QSettings::IniFormat);
     default_Settings->setIniCodec("UTF-8");
 
+    distrowatch_Settings = new QSettings(YOUKER_COMPANY_SETTING, DISTROWATCH_SETTING_FILE_NAME_SETTING);
+    distrowatch_Settings->setIniCodec("UTF-8");
+
+//    this->get_default_all_distrowatch();
+//    this->get_default_ubuntukylin_distrowatch();
+
     //初始化QSetting配置文件
     initConfigFile();
 
@@ -145,6 +151,11 @@ SessionDispatcher::~SessionDispatcher() {
         delete default_Settings;
     }
 
+    distrowatch_Settings->sync();
+    if (distrowatch_Settings != NULL) {
+        delete distrowatch_Settings;
+    }
+
     if (slidershow != NULL) {
         delete slidershow;
     }
@@ -220,6 +231,8 @@ void SessionDispatcher::open_folder_qt(QString path) {
 //distrowatch rank
 QString SessionDispatcher::get_distrowatch_url_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_distrowatch_url");
+//    qDebug() << "yyyyyyyyyyyyyy";
+//    qDebug() << reply.value();
     return reply.value();
 }
 
@@ -228,12 +241,16 @@ QStringList SessionDispatcher::get_distrowatch_info_qt() {
     return reply.value();
 }
 
-void SessionDispatcher::get_ubuntukylin_distrowatch_info_qt() {
+bool SessionDispatcher::get_ubuntukylin_distrowatch_info_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_ubuntukylin_distrowatch_info");
     if (reply.isValid()) {
+        if (reply.value().empty()) {
+            return false;
+        }
         QMap<QString, QVariant> value = reply.value();
         distrowatchInfo.clear();
         distrowatchInfo = value;
+        return true;
 //        qDebug() << "lallalala";
 //        qDebug() << distrowatchInfo;
         /*QMap(("architecture", QVariant(QString, "i386,x86_64") ) ( "basedon" ,  QVariant(QString, "Debian,Ubuntu") )
@@ -245,6 +262,7 @@ void SessionDispatcher::get_ubuntukylin_distrowatch_info_qt() {
     }
     else {
         qDebug() << "get ubuntukylin distrowatchInfo failed!";
+        return false;
     }
 }
 
@@ -253,8 +271,39 @@ QString SessionDispatcher::getDistrowatchSingleInfo(QString key) {
     return info.toString();
 }
 
+QStringList SessionDispatcher::get_default_all_distrowatch() {
+    QStringList value_list;
+    QString rank;
+    distrowatch_Settings->beginGroup("all");
+    for (int i=1; i<101; i++) {
+        rank = QString("NO%1").arg(i);
+        value_list.append(distrowatch_Settings->value(rank).toString());
+    }
+    distrowatch_Settings->endGroup();
+    distrowatch_Settings->sync();
+//    qDebug() << "this is all default value.......";
+//    qDebug() << value_list;
+    return value_list;
+}
 
-
+void SessionDispatcher::get_default_ubuntukylin_distrowatch() {
+    distrowatchInfo.clear();
+    distrowatch_Settings->beginGroup("ubuntukylin");
+    distrowatchInfo.insert("architecture", distrowatch_Settings->value("architecture").toString());
+    distrowatchInfo.insert("basedon", distrowatch_Settings->value("basedon").toString());
+    distrowatchInfo.insert("category", distrowatch_Settings->value("category").toString());
+    distrowatchInfo.insert("desktop", distrowatch_Settings->value("desktop").toString());
+    distrowatchInfo.insert("lastupdate", distrowatch_Settings->value("lastupdate").toString());
+    distrowatchInfo.insert("origin", distrowatch_Settings->value("origin").toString());
+    distrowatchInfo.insert("ostype", distrowatch_Settings->value("ostype").toString());
+    distrowatchInfo.insert("popularity", distrowatch_Settings->value("popularity").toString());
+    distrowatchInfo.insert("status", distrowatch_Settings->value("status").toString());
+    distrowatchInfo.insert("update_rate", distrowatch_Settings->value("update_rate").toString());
+    distrowatch_Settings->endGroup();
+    distrowatch_Settings->sync();
+//    qDebug() << "this is default ubuntukylin value.......";
+//    qDebug() << distrowatchInfo;
+}
 
 //准发发送信号告诉优客助手自己去改变自身的标题栏控制按钮位置
 void SessionDispatcher::handler_change_titlebar_position(QString position) {
