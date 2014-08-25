@@ -150,7 +150,7 @@ class SessionDaemon(dbus.service.Object):
 
         # Browser options
         self.br.set_handle_equiv(True)
-        self.br.set_handle_gzip(True)
+#        self.br.set_handle_gzip(True)
         #self.br.set_handle_gzip(False)
         self.br.set_handle_redirect(True)
         self.br.set_handle_referer(True)

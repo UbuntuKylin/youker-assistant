@@ -177,11 +177,6 @@ Rectangle {
             rightbar.setDistrowatchData();
         }
     }
-    //背景
-    //    Image {
-    //        source: "../../img/skin/bg-right.png"
-    //        anchors.fill: parent
-    //    }
 
     Rectangle {
         id: offline
@@ -347,29 +342,6 @@ Rectangle {
         width: parent.width - 4
     }
 
-//    Common.ScrollArea {
-//        frame:false
-//        anchors{
-//            top: splitbar.bottom
-//            topMargin: 5
-//            left:parent.left
-//            leftMargin: 5
-//        }
-//        width: parent.width - 8; height: 230
-//        Item {
-//            width: parent.width
-//            height: rightbar.distrowatch_num * 20//列表长度
-//            ListView {
-//                focus: true
-//                id: distrowatch
-//                anchors.fill: parent
-//                model: listModel
-//                delegate: DistrowatchDelegate {}
-//                cacheBuffer: 1000
-//            }
-//        }
-//    }
-
     Row {
         id: distrowatchname
         anchors {
@@ -390,8 +362,6 @@ Rectangle {
             font.pixelSize: 12
         }
     }
-
-
 
     Text {
         id: widthText
@@ -417,8 +387,7 @@ Rectangle {
         onClicked: {
             ukrect.showFlag = true;
         }
-    }//更改鼠标指针
-
+    }
 
     DistrowatchTitle {
         id: distrowatchtitle
@@ -441,15 +410,6 @@ Rectangle {
             left: parent.left
             leftMargin: 5
         }
-
-//        Text{
-//            width: parent.width - 20
-//            text: qsTr("DistroWatch Rank:")//DistroWatch国际排名：
-//            font.bold:true
-//            color: "#383838"
-//            font.pointSize: 10
-//        }
-
         Rectangle{
             width: parent.width-8; height: 210
             clip:true
@@ -512,30 +472,6 @@ Rectangle {
 //                            width: 90; height: 87
                             source: os_img//"http://distrowatch.com/images/yvzhuwbpy/" + os_img +".png"
                             anchors.verticalCenter: parent.verticalCenter
-//                            MouseArea
-//                            {
-//                                hoverEnabled: true
-//                                anchors.fill: parent
-//                                onEntered: {
-//                                    distrowatchView.spacing = 10;
-//                                    degegateRow.spacing = 1;
-//                                    distrowatchItem.height = rightbar.distrowatch_num * 30 + (rightbar.distrowatch_num - 1) * 10;
-//                                    ranktext.font.pixelSize = 15;
-//                                    icon.width = 50;
-//                                    icon.height = 50;
-//                                }
-//                                onPressed: {}
-//                                onReleased: {}
-//                                onExited: {
-//                                    distrowatchView.spacing = 0;
-//                                    degegateRow.spacing = 5;
-//                                    distrowatchItem.height = rightbar.distrowatch_num * 30;
-//                                    ranktext.font.pixelSize = 12;
-//                                    icon.width = 28;
-//                                    icon.height = 28;
-//                                }
-//                                onClicked: {}
-//                            }
                         }
                         Text {
                             anchors.verticalCenter: parent.verticalCenter
@@ -598,7 +534,7 @@ Rectangle {
                         anchors.fill: parent
                         model:listModel
                         delegate: distrowatchdelegate
-//                        highlight: Rectangle{width: 530;height: 30 ; color: "lightsteelblue"}
+//                        highlight: Rectangle{width: parent.width;height: 30 ; color: "lightsteelblue"}
                         focus:true
                         spacing: 0
                     }
@@ -607,158 +543,15 @@ Rectangle {
         }
     }
 
-//    Column{//DistroWatch框
-//        spacing: 5
-//        width: parent.width
-//        anchors {
-//            top: splitbar.bottom
-//            topMargin: 5
-//            left: parent.left
-//            leftMargin: 5
-//        }
-
-//        Text{
-//            width: parent.width - 20
-//            text: qsTr("DistroWatch Rank:")//DistroWatch国际排名：
-//            font.bold:true
-//            color: "#383838"
-//            font.pointSize: 10
-//        }
-
-//        Rectangle{
-//            width: parent.width-10; height: 210
-//            clip:true
-//            Component{
-//                id:cdelegat
-//                Item{
-//                    id:wrapper
-//                    width: parent.width-10; height: 30//220
-//                    Row {
-//                        anchors{
-//                            verticalCenter: parent.verticalCenter
-//                        }
-//                        spacing: 5
-//                        Text {
-//                            width: 15
-//                            anchors.verticalCenter: parent.verticalCenter
-//                            text: rank
-//                            color: cdelegat.ListView.isCurrentItem ? "white" : "black"//选中时字体为白色，未选中时为黑色
-//                            font {
-//                                family: "Helvetica"
-//                                pixelSize: 12
-//                            }
-//                        }
-//                        Image {
-//                            id: icon
-//                            width: 35; height: 30
-////                            width: 90; height: 87
-//                            source: "http://distrowatch.com/images/yvzhuwbpy/" + os_img +".png"
-//                            anchors.verticalCenter: parent.verticalCenter
-//                        }
-//                        Text {
-//                            anchors.verticalCenter: parent.verticalCenter
-//                            text: os
-//                            width: 80
-//                            color: cdelegat.ListView.isCurrentItem ? "white" : "black"//选中时字体为白色，未选中时为黑色
-//                            font {
-//                                family: "Helvetica"
-//                                pixelSize: 10
-//                            }
-//                        }
-
-//                        Text {
-//                            anchors.verticalCenter: parent.verticalCenter
-//                            text: today_hit
-//                            width: 25
-//                            color: cdelegat.ListView.isCurrentItem ? "white" : "black"//选中时字体为白色，未选中时为黑色
-//                            font {
-//                                family: "Helvetica"
-//                                pixelSize: 12
-//                            }
-//                        }
-//                        Image {
-//                            width: 7; height: 7
-//                            source: "http://distrowatch.com/" + rank_img
-//                            anchors.verticalCenter: parent.verticalCenter
-//                        }
-
-//                        Text {
-//                            anchors.verticalCenter: parent.verticalCenter
-//                            text: yestoday_hit
-//                            width: 25
-//                            color: cdelegat.ListView.isCurrentItem ? "white" : "black"//选中时字体为白色，未选中时为黑色
-//                            font {
-//                                family: "Helvetica"
-//                                pixelSize: 12
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//            Common.ScrollArea {
-//                frame:false
-//                anchors{
-//                    top:parent.top
-//                    topMargin: 1
-//                    left:parent.left
-//                    leftMargin: 1
-//                }
-//                height: parent.height-1
-//                width: parent.width-1
-//                Item {
-//                    width: parent.width
-//                    height: rightbar.distrowatch_num * 30 //列表长度
-//                    //垃圾清理显示内容
-//                    ListView{
-//                        anchors.fill: parent
-//                        model:listModel
-//                        delegate: cdelegat
-////                        highlight: Rectangle{width: 530;height: 30 ; color: "lightsteelblue"}
-//                        focus:true
-//                    }
-//                }//Item
-//            }//ScrollArea
-//        }
-//    }
-
-
-//    Column {
-//        width: parent.width
-//        height: 200
-//        anchors {
-//            top: splitbar.bottom
-//            topMargin: 5
-//            left: parent.left
-//            leftMargin: 5
-//        }
-//        Item {
-//            id: views
-//            width: parent.width
-//            GridView {
-//                id: gridView
-//                anchors.fill: parent
-//                model: clearModel
-//                delegate: ToolsDelegate {}
-//                cellWidth: (parent.width-20)/3; cellHeight: cellWidth
-//                cacheBuffer: 1000
-//                focus: true
-//            }
-//        }
-//    }
-
-
     Rectangle {
-//    BorderImage {
         id: ukrect
         property bool showFlag: false
         color: "#e4f2fc"
-//        source: "../../img/skin/bg-right.png"
         width: showFlag ? parent.width-4 : 0
-        height: 350//scrollArea.height + 40
+        height: 350
         anchors{
             right: parent.right
             rightMargin: 2
-//            top: splitbar.bottom
             top: parent.top
             topMargin: 100
         }
