@@ -63,8 +63,6 @@ public:
     //退出登录
     Q_INVOKABLE void logout_ubuntukylin_account();
 
-
-
     //得到SessionDbus的验证值，可以通过其判断该服务是否正在运行
     Q_INVOKABLE QString get_session_daemon_qt();
     //扫描浏览器历史记录
@@ -86,7 +84,6 @@ public:
     Q_INVOKABLE void package_scan_function_qt(QStringList argList);
     Q_INVOKABLE QStringList get_cache_arglist(int i);
     Q_INVOKABLE QStringList get_package_arglist(int i);
-    //扫描旧内核安装包
     //扫描浏览器缓存时的参数获取
     Q_INVOKABLE QStringList get_browser_cache_arglist();
 
@@ -100,10 +97,6 @@ public:
     Q_INVOKABLE void showWarningDialog(QString title, QString content);
     //弹出确认对话框
     Q_INVOKABLE bool showConfirmDialog(QString title, QString content);
-
-    void set_page_num(int num);
-    Q_INVOKABLE int get_page_num();
-    int page_num;
 
     //得到安装操作系统的语言版本
     Q_INVOKABLE QString get_locale_version();
@@ -127,28 +120,9 @@ public:
     Q_INVOKABLE void restore_uk_default_setting(QString key, QString name);
 
     /*-------------------get and set default value-------------------*/
-    //获取和设置字体默认值:theme.py
-    Q_INVOKABLE QString get_default_theme_sring_qt(QString flag/*QString schema, QString key*/);
-    Q_INVOKABLE double get_default_theme_double_qt(QString schema, QString key);
-    Q_INVOKABLE void set_default_theme_qt(QString flag/*QString schema, QString key, QString type*/);
-    //获取和设置字体默认值:desktop.py
-    Q_INVOKABLE bool get_default_desktop_bool_qt(QString schema, QString key);
-    Q_INVOKABLE void set_default_desktop_qt(QString flag);
     //获取和设置字体默认值:sound.py
     Q_INVOKABLE QString get_default_sound_string_qt(QString flag/*QString schema, QString key*/);
-    Q_INVOKABLE void set_default_sound_qt(QString flag);
-    //获取和设置字体默认值:unity.py
-    Q_INVOKABLE int get_default_unity_qt(QString name, QString key);
-    Q_INVOKABLE void set_default_unity_qt(QString flag, int value);
     Q_INVOKABLE void set_default_launcher_have_showdesktopicon_qt();
-    //获取和设置字体默认值:system.py
-    Q_INVOKABLE QString get_default_system_sring_qt(QString flag);
-    Q_INVOKABLE bool get_default_system_bool_qt(QString schema, QString key);
-    Q_INVOKABLE void set_default_system_qt(QString flag);
-    Q_INVOKABLE void set_default_filemanager_qt(QString flag);
-
-
-
 
     /*-------------------desktop of beauty-------------------*/
     Q_INVOKABLE bool set_show_desktop_icons_qt(bool flag);
@@ -169,8 +143,6 @@ public:
     Q_INVOKABLE int get_launcher_icon_size_qt();
     Q_INVOKABLE bool set_launcher_have_showdesktopicon_qt(bool flag);
     Q_INVOKABLE bool get_launcher_have_showdesktopicon_qt();
-
-
 
     // for v1.1.0
     //透明度
@@ -204,7 +176,6 @@ public:
     Q_INVOKABLE bool set_show_power_time_qt(bool flag);
     Q_INVOKABLE bool get_show_power_percentage_qt();
     Q_INVOKABLE bool set_show_power_percentage_qt(bool flag);
-
 
     /*-------------------theme of beauty-------------------*/
     Q_INVOKABLE QStringList get_themes_qt();
@@ -252,7 +223,6 @@ public:
     Q_INVOKABLE QString get_antialiasing_style_qt();
     Q_INVOKABLE bool set_antialiasing_style_qt(QString style);
 
-
     /*-------------------scrollbars of beauty-------------------*/
     Q_INVOKABLE bool set_scrollbars_mode_overlay_qt();
     Q_INVOKABLE bool set_scrollbars_mode_legacy_qt();
@@ -285,7 +255,6 @@ public:
     Q_INVOKABLE QStringList get_titlebar_right_qt();
     Q_INVOKABLE QString get_current_titlebar_right_qt();
     Q_INVOKABLE void set_titlebar_right_qt(QString value);
-
 
     /*-------------------sound of beauty-------------------*/
     Q_INVOKABLE void set_login_music_enable_qt(bool flag);
@@ -343,7 +312,6 @@ signals:
     void showKeyandData(QString key, QString value);//根据天气的key显示对应的数据
     //改变主checkbox的状态
     void startChangeMaincheckboxStatus(QString status);
-
     //把cache扫描结果告诉QML
     void appendContentToCacheModel(QString flag, QString path, QString fileFlag, QString sizeValue);
     //cache扫描完后告诉QML
@@ -352,18 +320,12 @@ signals:
     void appendPackageContentToCacheModel(QString flag, QString pkgName, QString description, QString sizeValue);
     //package和old kernel扫描完后告诉QML
     void tellQMLPackageOver();
-    //把largest file扫描结果告诉QML
-    void appendLargestContentToModel(QString sizeValue, QString path);
-    //largest file扫描完后告诉QML
-    void tellQMLLargestOver();
     //把cookies扫描结果告诉QML
     void appendCookiesContentToModel(QString flag, QString domain, QString num);
     //cookies扫描完后告诉QML
     void tellQMLCookiesOver(QString cookiesFlag);
-
     //把一键扫描的总数告诉QML
     void tellScanResultToQML(QString flag, QString msg);
-
     //显示登录动态图片
     void showLoginAnimatedImage();
     //更新登录状态
@@ -372,23 +334,18 @@ signals:
     void refreshUserInfo(QString level, QString score);
     //登录失败
     void loginFailedStatus(int status);
-
     //告诉QML界面，标题栏控制按钮位置发生变化了，准备改变优客助手自身的控制按钮位置
     void startChangeControlBtnPosition(QString position);
-
     void tellQMLHistoryNumber(QString flag, int num);
     void tellQMLLargeFileList(QStringList filelist);
-
     void tellDetailPageUpdateData(QString infoFlag);
-
     //返回主页面信号
     void backToHomePage(int index);//0412
 public slots:
     Q_INVOKABLE void get_current_weather_qt();
-
     void verify_user_and_password(QString user, QString pwd);
-    void handle_data_after_login_success(QString id, /*QString level, */QString name, QString score);
-    void handle_data_after_search_success(/*QString level, */QString score);
+    void handle_data_after_login_success(QString id, QString name, QString score);
+    void handle_data_after_search_success(QString score);
     void handle_data_when_login_failed(int status);
     //获取天气预报槽函数
     void accord_flag_access_weather(QString key, QString value);
@@ -398,30 +355,20 @@ public slots:
     void handler_scan_process(QString msg);
     //扫描的总数
     void handler_total_data_transmit(QString flag, QString msg);
-
     //更换城市槽函数
     void handler_change_city();
-
     //接收缓存信号，把数据动态堆加到model中
     void handler_append_cache_data_to_model(QString flag, QString path, QString fileFlag, QString sizeValue);//data_transmit_by_cache(self, flag0, path, flag1, size):
     //接收cache扫描完后的信号
     void handler_cache_scan_over(QString flag);
-
     //接收package和old kernel信号，把数据动态堆加到model中
     void handler_append_package_data_to_model(QString flag, QString pkgName, QString description, QString sizeValue);
     //接收package和old kernel扫描完后的信号
     void handler_package_scan_over();
-
-    //接收largest file信号，把数据动态堆加到model中
-    void handler_append_largest_file_to_model(QString sizeValue, QString path);
-    //接收largest file扫描完后的信号
-    void handler_largest_scan_over();
-
     //接收cookies信号，把数据动态堆加到model中
     void handler_append_cookies_to_model(QString flag, QString domain, QString num);
     //接收cookies扫描完后的信号
     void handler_cookies_scan_over(QString cookiesFlag);
-
     //连接服务器
     void connectHttpServer();
     //处理连接服务器失败的时候
@@ -430,12 +377,10 @@ public slots:
     void searchCurrentInfo();
     //根据积分计算用户等级
     QString score_count_level(int score);
-
     //接受标题栏控制按钮位置改变
     void handler_change_titlebar_position(QString position);
     void handlerHistoryNumber(QString flag, int num);
     void handlerLargeFileList(QStringList filelist);
-
     //返回主页面槽函数
     void handlerBackToHomePage(int index);//0412
 

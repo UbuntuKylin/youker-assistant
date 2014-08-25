@@ -11,7 +11,7 @@ youker-assistant (1.2.0-0ubuntu1) utopic; urgency=low
   * Make launcher transparency setting do work(LP: #1358672).
   * Find large files with thread(LP: #1358992).
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 22 Aug 2014 17:04:55 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 25 Aug 2014 09:27:13 +0800
 
 youker-assistant (1.1.0-0ubuntu1) trusty; urgency=low
 

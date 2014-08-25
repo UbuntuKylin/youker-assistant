@@ -120,6 +120,9 @@ Rectangle {
             else if (splitlist[2] == "emmabuntüs") {
                 os_image = "emmabuntus";
             }
+            else if (splitlist[2] == "symphonyos") {
+                os_image = "symphony";
+            }
             else {
                 os_image = splitlist[2];
             }
@@ -156,6 +159,9 @@ Rectangle {
                 }
                 else if (splitlist[2] == "emmabuntüs") {
                     os_image = "emmabuntus";
+                }
+                else if (splitlist[2] == "symphonyos") {
+                    os_image = "symphony";
                 }
                 else {
                     os_image = splitlist[2];

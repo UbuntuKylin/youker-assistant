@@ -153,28 +153,28 @@ class YahooWeather(threading.Thread):
         #fp.close()
         return self.weatherData
 
-    def get_yahoo_forecast_dict(self):
-        self.forecastData.clear()
-        self.forecastData['city'] = self.get_city()
-        self.forecastData['time'] = self.get_release_time()
-        for i in range(len(self.yahoo_result['forecasts'])):
-            high = '---'
-            low = '---'
-            temp = '---'
-            if 'code' in self.yahoo_result['forecasts'][i]:
-                self.forecastData['code%s' %(str(i))] = self.yahoo_result['forecasts'][i]['code']
-            if 'text' in self.yahoo_result['forecasts'][i]:
-                self.forecastData['text%s' %(str(i))] = self.yahoo_result['forecasts'][i]['text']
-            if 'high' in self.yahoo_result['forecasts'][i] \
-                and 'low' in self.yahoo_result['forecasts'][i]:
-                high = self.yahoo_result['forecasts'][i]['high']
-                low = self.yahoo_result['forecasts'][i]['low']
-                self.forecastData['temp%s' %(str(i))] = "%s %s ~ %s %s" % (low, self._unit, high, self._unit)
-            if 'date' in self.yahoo_result['forecasts'][i]:
-                self.forecastData['date%s' %(str(i))] = self.yahoo_result['forecasts'][i]['date']
-            if 'day' in self.yahoo_result['forecasts'][i]:
-                self.forecastData['day%s' %(str(i))] = self.yahoo_result['forecasts'][i]['day']
-        return self.forecastData
+#    def get_yahoo_forecast_dict(self):
+#        self.forecastData.clear()
+#        self.forecastData['city'] = self.get_city()
+#        self.forecastData['time'] = self.get_release_time()
+#        for i in range(len(self.yahoo_result['forecasts'])):
+#            high = '---'
+#            low = '---'
+#            temp = '---'
+#            if 'code' in self.yahoo_result['forecasts'][i]:
+#                self.forecastData['code%s' %(str(i))] = self.yahoo_result['forecasts'][i]['code']
+#            if 'text' in self.yahoo_result['forecasts'][i]:
+#                self.forecastData['text%s' %(str(i))] = self.yahoo_result['forecasts'][i]['text']
+#            if 'high' in self.yahoo_result['forecasts'][i] \
+#                and 'low' in self.yahoo_result['forecasts'][i]:
+#                high = self.yahoo_result['forecasts'][i]['high']
+#                low = self.yahoo_result['forecasts'][i]['low']
+#                self.forecastData['temp%s' %(str(i))] = "%s %s ~ %s %s" % (low, self._unit, high, self._unit)
+#            if 'date' in self.yahoo_result['forecasts'][i]:
+#                self.forecastData['date%s' %(str(i))] = self.yahoo_result['forecasts'][i]['date']
+#            if 'day' in self.yahoo_result['forecasts'][i]:
+#                self.forecastData['day%s' %(str(i))] = self.yahoo_result['forecasts'][i]['day']
+#        return self.forecastData
 
     def get_code(self):
         if 'error' in self.yahoo_result:

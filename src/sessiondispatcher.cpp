@@ -36,7 +36,6 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
                                "/",
                                "com.ubuntukylin.session",
                                QDBusConnection::sessionBus());
-    page_num = 0;
     this->mainwindow_width = 850;
     this->mainwindow_height = 600;
 
@@ -76,17 +75,13 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(sessioniface, SIGNAL(data_transmit_by_package(QString, QString, QString, QString)), this, SLOT(handler_append_package_data_to_model(QString,QString,QString,QString)));
     QObject::connect(sessioniface, SIGNAL(package_transmit_complete()), this, SLOT(handler_package_scan_over()));
 
-    //Largest file
-//    QObject::connect(sessioniface, SIGNAL(data_transmit_by_large(QString, QString)), this, SLOT(handler_append_largest_file_to_model(QString,QString)));
-//    QObject::connect(sessioniface, SIGNAL(large_transmit_complete()), this, SLOT(handler_largest_scan_over()));
-
     //cookies
     QObject::connect(sessioniface, SIGNAL(data_transmit_by_cookies(QString, QString, QString)), this, SLOT(handler_append_cookies_to_model(QString,QString,QString)));
     QObject::connect(sessioniface, SIGNAL(cookies_transmit_complete(QString)), this, SLOT(handler_cookies_scan_over(QString)));
 
     //login
-    QObject::connect(httpauth, SIGNAL(response(/*QString,*/QString,QString,QString)), this, SLOT(handle_data_after_login_success(/*QString,*/QString,QString,QString)));
-    QObject::connect(httpauth, SIGNAL(refresh(/*QString,*/QString)), this, SLOT(handle_data_after_search_success(/*QString,*/QString)));
+    QObject::connect(httpauth, SIGNAL(response(QString,QString,QString)), this, SLOT(handle_data_after_login_success(QString,QString,QString)));
+    QObject::connect(httpauth, SIGNAL(refresh(QString)), this, SLOT(handle_data_after_search_success(QString)));
     QObject::connect(httpauth, SIGNAL(error(int)), this, SLOT(handle_data_when_login_failed(int)));
     QObject::connect(httpauth, SIGNAL(failedCommunicate()), this, SLOT(resetTimerStatus()));
     QObject::connect(httpauth, SIGNAL(successCommunicate()), this, SLOT(searchCurrentInfo()));
@@ -226,7 +221,6 @@ void SessionDispatcher::open_folder_qt(QString path) {
 }
 
 //distrowatch rank
-
 void SessionDispatcher::set_default_all_distrowatch(QString key, QString value) {
     distrowatch_Settings->beginGroup("all");
     distrowatch_Settings->setValue(key, value);
@@ -293,8 +287,6 @@ QStringList SessionDispatcher::get_default_all_distrowatch() {
     }
     distrowatch_Settings->endGroup();
     distrowatch_Settings->sync();
-//    qDebug() << "this is all default value.......";
-//    qDebug() << value_list;
     return value_list;
 }
 
@@ -313,10 +305,7 @@ void SessionDispatcher::get_default_ubuntukylin_distrowatch() {
     distrowatchInfo.insert("update_rate", distrowatch_Settings->value("update_rate").toString());
     distrowatch_Settings->endGroup();
     distrowatch_Settings->sync();
-//    qDebug() << "this is default ubuntukylin value.......";
-//    qDebug() << distrowatchInfo;
 }
-
 
 
 //准发发送信号告诉优客助手自己去改变自身的标题栏控制按钮位置
@@ -406,7 +395,7 @@ void SessionDispatcher::logout_ubuntukylin_account() {
 }
 
 //用户登录成功后处理数据：显示界面、id写入本地配置、开启定时器
-void SessionDispatcher::handle_data_after_login_success(QString id,/* QString level, */QString name, QString score) {
+void SessionDispatcher::handle_data_after_login_success(QString id, QString name, QString score) {
     loginOK = true;
     //登录成功后将用户信息显示在界面上
     bool ok;
@@ -426,7 +415,7 @@ void SessionDispatcher::handle_data_after_login_success(QString id,/* QString le
 }
 
 //用户查询成功后处理数据：界面刷新数据
-void SessionDispatcher::handle_data_after_search_success(/*QString level, */QString score) {
+void SessionDispatcher::handle_data_after_search_success(QString score) {
     //查询成功后将用户信息更新在界面上
     bool ok;
     QString level = score_count_level(score.toInt(&ok, 10));
@@ -492,14 +481,6 @@ void SessionDispatcher::handler_package_scan_over() {
     emit tellQMLPackageOver();
 }
 
-void SessionDispatcher::handler_append_largest_file_to_model(QString sizeValue, QString path) {
-    emit appendLargestContentToModel(sizeValue, path);
-}
-
-void SessionDispatcher::handler_largest_scan_over() {
-    emit tellQMLLargestOver();
-}
-
 void SessionDispatcher::handler_append_cookies_to_model(QString flag, QString domain, QString num) {
     emit appendCookiesContentToModel(flag, domain, num);
 }
@@ -526,15 +507,11 @@ QString SessionDispatcher::get_locale_version() {
 }
 
 void SessionDispatcher::onekey_scan_function_qt(QStringList selectedList) {
-//    sessioniface->call("onekey_scan_function", selectedList);
     KThread *thread = new KThread(selectedList, sessioniface, "onekey_scan_function");
     thread->start();
 }
 
 void SessionDispatcher::scan_history_records_qt(QString flag) {
-//    QDBusReply<int> reply = sessioniface->call("scan_history_records", flag);
-//    return reply.value();
-
     QStringList tmp;
     KThread *thread = new KThread(tmp, sessioniface, "scan_history_records", flag);
     thread->start();
@@ -542,9 +519,6 @@ void SessionDispatcher::scan_history_records_qt(QString flag) {
 
 
 void SessionDispatcher::scan_system_history_qt() {
-//    QDBusReply<int> reply = sessioniface->call("scan_system_history");
-//    return reply.value();
-
     QStringList tmp;
     KThread *thread = new KThread(tmp, sessioniface, "scan_system_history");
     thread->start();
@@ -627,14 +601,6 @@ QString SessionDispatcher::getHomePath() {
     return homepath;
 }
 
-void SessionDispatcher::set_page_num(int num) {
-    page_num = num;
-}
-
-int SessionDispatcher::get_page_num() {
-    return page_num;
-}
-
 QString SessionDispatcher::get_session_daemon_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_session_daemon");
     return reply.value();
@@ -646,8 +612,6 @@ void SessionDispatcher::get_system_message_qt() {
         QMap<QString, QVariant> value = reply.value();
         systemInfo.clear();
         systemInfo = value;
-//        qDebug() << systemInfo;
-//        QMap(("cpu", QVariant(QString, " Pentium(R) Dual-Core  CPU      E5500  @ 2.80GHz") ) ( "currrent_user" ,  QVariant(QString, "trusty") ) ( "desktopenvironment" ,  QVariant(QString, "Unity") ) ( "distribution" ,  QVariant(QString, "Ubuntu Kylin-14.04-trusty") ) ( "home_path" ,  QVariant(QString, "/home/trusty") ) ( "hostname" ,  QVariant(QString, "trusty-lenovo") ) ( "language" ,  QVariant(QString, "zh_CN.UTF-8") ) ( "platform" ,  QVariant(QString, "x86_64") ) ( "ram" ,  QVariant(QString, "2.0 GB") ) ( "shell" ,  QVariant(QString, "/bin/bash") ) )
         //把当前登录的用户名存放到QSetting配置文件中，方便任务管理器使用
         mSettings->beginGroup("user");
         mSettings->setValue("currentName", systemInfo["currrent_user"].toString());
@@ -965,21 +929,6 @@ bool SessionDispatcher::get_show_devices_qt() {
 }
 
 /*-----------------------------unity of beauty-----------------------------*/
-
-int SessionDispatcher::get_default_unity_qt(QString name, QString key) {
-    QDBusReply<int> reply = sessioniface->call("get_default_unity", name, key);
-    return reply.value();
-}
-
-void SessionDispatcher::set_default_unity_qt(QString flag, int value) {
-    if(flag == "launchersize") {//launcher图标大小
-        sessioniface->call("set_default_unity", "icon-size", "int", value);
-    }
-    else if(flag == "launcherhide") {//launcher自动隐藏
-        sessioniface->call("set_default_unity", "launcher-hide-mode", "int", value);
-    }
-}
-
 void SessionDispatcher::set_default_launcher_have_showdesktopicon_qt() {
     sessioniface->call("set_default_launcher_have_showdesktopicon");
 }
@@ -1146,7 +1095,6 @@ bool SessionDispatcher::set_show_power_percentage_qt(bool flag) {
 }
 
 
-
 /*-----------------------------theme of beauty-----------------------------*/
 QStringList SessionDispatcher::get_themes_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("get_themes");
@@ -1214,100 +1162,6 @@ void SessionDispatcher::set_window_theme_qt(QString theme) {
 }
 
 /*-----------------------------font of beauty-----------------------------*/
-QString SessionDispatcher::get_default_theme_sring_qt(QString flag/*QString schema, QString key*/) {
-    if(flag == "icontheme") {
-        QDBusReply<QString> reply = sessioniface->call("get_default_font_sring", "org.gnome.desktop.interface", "icon-theme");
-        return reply.value();
-    }
-    else if(flag == "windowtheme") {
-        QDBusReply<QString> reply = sessioniface->call("get_default_font_sring", "org.gnome.desktop.wm.preferences", "theme");
-        return reply.value();
-    }
-    else if(flag == "mousetheme") {
-        QDBusReply<QString> reply = sessioniface->call("get_default_font_sring", "org.gnome.desktop.interface", "cursor-theme");
-        return reply.value();
-    }
-    else if(flag == "smoothstyle") {
-        QDBusReply<QString> reply = sessioniface->call("get_default_font_sring", "org.gnome.settings-daemon.plugins.xsettings", "hinting");
-        return reply.value();
-    }
-    else if(flag == "antialiasingstyle") {
-        QDBusReply<QString> reply = sessioniface->call("get_default_font_sring", "org.gnome.settings-daemon.plugins.xsettings", "antialiasing");
-        return reply.value();
-    }
-    return flag;
-}
-
-double SessionDispatcher::get_default_theme_double_qt(QString schema, QString key) {
-    QDBusReply<double> reply = sessioniface->call("get_default_font_double", schema, key);
-    return reply.value();
-}
-
-void SessionDispatcher::set_default_theme_qt(QString flag/*QString schema, QString key, QString type*/) {
-    //-------------------字体-------------------
-    if(flag == "defaultfont") {
-        sessioniface->call("set_default_font", "org.gnome.desktop.interface", "font-name", "string");
-    }
-    else if(flag == "desktopfont") {
-        sessioniface->call("set_default_font", "org.gnome.nautilus.desktop", "font", "string");
-    }
-    else if(flag == "monospacefont") {
-        sessioniface->call("set_default_font", "org.gnome.desktop.interface", "monospace-font-name", "string");
-    }
-    else if(flag == "globalfontscaling") {
-        sessioniface->call("set_default_font", "org.gnome.desktop.interface", "text-scaling-factor", "double");
-    }
-    else if(flag == "documentfont") {
-        sessioniface->call("set_default_font", "org.gnome.desktop.interface", "document-font-name", "string");
-    }
-    else if(flag == "titlebarfont") {
-        sessioniface->call("set_default_font", "org.gnome.desktop.wm.preferences", "titlebar-font", "string");
-    }
-    else if(flag == "smoothstyle") {
-        sessioniface->call("set_default_font", "org.gnome.settings-daemon.plugins.xsettings", "hinting", "string");
-    }
-    else if(flag == "antialiasingstyle") {
-        sessioniface->call("set_default_font", "org.gnome.settings-daemon.plugins.xsettings", "antialiasing", "string");
-    }
-
-    else if(flag == "icontheme") {//图标主题
-        sessioniface->call("set_default_font", "org.gnome.desktop.interface", "icon-theme", "string");
-    }
-    else if(flag == "windowtheme") {//窗口主题
-        sessioniface->call("set_default_font", "org.gnome.desktop.wm.preferences", "theme", "string");
-    }
-    else if(flag == "mousetheme") {//鼠标指针主题
-        sessioniface->call("set_default_font", "org.gnome.desktop.interface", "cursor-theme", "string");
-    }
-    else if(flag == "cursorsize") {//光标大小
-        sessioniface->call("set_default_font", "org.gnome.desktop.interface", "cursor-size", "int");
-    }
-}
-
-bool SessionDispatcher::get_default_desktop_bool_qt(QString schema, QString key) {
-    QDBusReply<bool> reply = sessioniface->call("get_default_desktop_bool", schema, key);
-    return reply.value();
-}
-
-void SessionDispatcher::set_default_desktop_qt(QString flag) {
-    if(flag == "showdesktopicons") {//显示桌面图标
-        sessioniface->call("set_default_desktop", "org.gnome.desktop.background", "show-desktop-icons", "boolean");
-    }
-    else if(flag == "homeiconvisible") {//显示主文件夹
-        sessioniface->call("set_default_desktop", "org.gnome.nautilus.desktop", "home-icon-visible", "boolean");
-    }
-    else if(flag == "networkiconvisible") {//显示网络
-        sessioniface->call("set_default_desktop", "org.gnome.nautilus.desktop", "network-icon-visible", "boolean");
-    }
-    else if(flag == "trashiconvisible") {//显示回收站
-        sessioniface->call("set_default_desktop", "org.gnome.nautilus.desktop", "trash-icon-visible", "boolean");
-    }
-    else if(flag == "volumesvisible") {//显示挂载卷标
-        sessioniface->call("set_default_desktop", "org.gnome.nautilus.desktop", "volumes-visible", "boolean");
-    }
-}
-
-
 QString SessionDispatcher::get_default_sound_string_qt(QString flag/*QString schema, QString key*/) {
     if(flag == "soundtheme") {
         QDBusReply<QString> reply = sessioniface->call("get_default_sound_string", "org.gnome.desktop.sound", "theme-name");
@@ -1315,13 +1169,6 @@ QString SessionDispatcher::get_default_sound_string_qt(QString flag/*QString sch
     }
     return flag;
 }
-
-void SessionDispatcher::set_default_sound_qt(QString flag) {
-    if(flag == "soundtheme") {//声音主题
-        sessioniface->call("set_default_sound", "org.gnome.desktop.sound", "theme-name", "string");
-    }
-}
-
 
 QString SessionDispatcher::get_font_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_font");
@@ -1494,64 +1341,6 @@ QString SessionDispatcher::get_scrollbars_mode_qt() {
 }
 
 /*-----------------------------touchpad of beauty-----------------------------*/
-QString SessionDispatcher::get_default_system_sring_qt(QString flag) {
-    if(flag == "wheel-action") {//菜单项旁显示图标
-        QDBusReply<QString> reply = sessioniface->call("get_default_system_sring", "org.compiz.gwd", "mouse-wheel-action");
-        return reply.value();
-    }
-    else if(flag == "double-click") {//标题栏双击动作
-        QDBusReply<QString> reply = sessioniface->call("get_default_system_sring", "org.gnome.desktop.wm.preferences", "action-double-click-titlebar");
-        return reply.value();
-    }
-    else if(flag == "middle-click") {//标题栏中键动作
-        QDBusReply<QString> reply = sessioniface->call("get_default_system_sring", "org.gnome.desktop.wm.preferences", "action-middle-click-titlebar");
-        return reply.value();
-    }
-    else if(flag == "right-click") {//标题栏右键动作
-        QDBusReply<QString> reply = sessioniface->call("get_default_system_sring", "org.gnome.desktop.wm.preferences", "action-right-click-titlebar");
-        return reply.value();
-    }
-    return flag;
-}
-
-bool SessionDispatcher::get_default_system_bool_qt(QString schema, QString key) {
-    QDBusReply<bool> reply = sessioniface->call("get_default_system_bool", schema, key);
-    return reply.value();
-}
-
-void SessionDispatcher::set_default_system_qt(QString flag) {
-    if(flag == "touchpad-enabled") {//启用禁用触摸板
-        sessioniface->call("set_default_system", "org.gnome.settings-daemon.peripherals.touchpad", "touchpad-enabled", "boolean");
-    }
-    else if(flag == "scrollbar-mode") {//滚动条类型
-        sessioniface->call("set_default_system", "com.canonical.desktop.interface", "scrollbar-mode", "string");
-    }
-    else if(flag == "scroll-method") {//触摸板滚动条触发方式
-        sessioniface->call("set_default_system", "org.gnome.settings-daemon.peripherals.touchpad", "scroll-method", "string");
-    }
-    else if(flag == "horiz-scroll-enabled") {//触摸板横向滚动
-        sessioniface->call("set_default_system", "org.gnome.settings-daemon.peripherals.touchpad", "horiz-scroll-enabled", "boolean");
-    }
-    else if(flag == "control-button-position") {//窗口控制按钮位置
-        sessioniface->call("set_default_system", "org.gnome.desktop.wm.preferences", "button-layout", "string");
-    }
-    else if(flag == "menu-with-icons") {//菜单项旁显示图标
-        sessioniface->call("set_default_system", "org.gnome.desktop.interface", "menus-have-icons", "boolean");
-    }
-    else if(flag == "wheel-action") {//标题栏鼠标滚轮动作
-        sessioniface->call("set_default_system", "org.compiz.gwd", "mouse-wheel-action", "string");
-    }
-    else if(flag == "double-click") {//标题栏双击动作
-        sessioniface->call("set_default_system", "org.gnome.desktop.wm.preferences", "action-double-click-titlebar", "string");
-    }
-    else if(flag == "middle-click") {//标题栏中键动作
-        sessioniface->call("set_default_system", "org.gnome.desktop.wm.preferences", "action-middle-click-titlebar", "string");
-    }
-    else if(flag == "right-click") {//标题栏右键动作
-        sessioniface->call("set_default_system", "org.gnome.desktop.wm.preferences", "action-right-click-titlebar", "string");
-    }
-}
-
 bool SessionDispatcher::set_touchpad_enable_qt(bool flag) {
     QDBusReply<bool> reply = sessioniface->call("set_touchpad_enable", flag);
     return reply.value();
@@ -1685,30 +1474,6 @@ QString SessionDispatcher::get_sound_theme_qt() {
 
 void SessionDispatcher::set_sound_theme_qt(QString theme) {
     sessioniface->call("set_sound_theme", theme);
-}
-
-void SessionDispatcher::set_default_filemanager_qt(QString flag) {
-    if(flag == "pathbar") {//路径输入框取代路径栏
-        sessioniface->call("set_default_filemanager", "org.gnome.nautilus.preferences", "always-use-location-entry", "boolean");
-    }
-    else if(flag == "media") {//自动挂载媒体
-        sessioniface->call("set_default_filemanager", "org.gnome.desktop.media-handling", "automount", "boolean");
-    }
-    else if(flag == "folder") {//自动打开文件夹
-        sessioniface->call("set_default_filemanager", "org.gnome.desktop.media-handling", "automount-open", "boolean");
-    }
-    else if(flag == "programs") {//提示自动运行的程序
-        sessioniface->call("set_default_filemanager", "org.gnome.desktop.media-handling", "autorun-never", "boolean");
-    }
-    else if(flag == "iconsize") {//缩略图图标尺寸（像素）
-        sessioniface->call("set_default_filemanager", "org.gnome.nautilus.icon-view", "thumbnail-size", "int");
-    }
-    else if(flag == "cachetime") {//缩略图缓存时间（天数）
-        sessioniface->call("set_default_filemanager", "org.gnome.desktop.thumbnail-cache", "maximum-age", "int");
-    }
-    else if(flag == "maxsize") {//最大缩略图缓存尺寸（MB）
-        sessioniface->call("set_default_filemanager", "org.gnome.desktop.thumbnail-cache", "maximum-size", "int");
-    }
 }
 
 void SessionDispatcher::set_location_replace_pathbar_qt(bool flag) {
@@ -1911,5 +1676,4 @@ void SessionDispatcher::change_maincheckbox_status(QString status) {
 //0412
 void SessionDispatcher::handlerBackToHomePage(int index) {
     emit backToHomePage(index);
-    this->set_page_num(index);
 }

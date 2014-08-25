@@ -92,28 +92,19 @@ class SessionDaemon(dbus.service.Object):
         #self.wizardconf = Wizard()
         self.ip_addr = None
         self.distrowatch = []
-#        self.rank_list = []
-#        self.os_list = []
-#        self.today_hit_list = []
-#        self.img_list = []
-#        self.yestoday_hit_list = []
-#        self.sysinfo = {}
         self.cloudconf = CloudConfig(self)
         self.sysconf = Sysinfo()
         self.desktopconf = Desktop()
         self.unityconf = Unity()
         self.themeconf = Theme()
-        #self.systemconf = System()
         self.systemconf = System(self)
         self.soundconf = Sound()
         self.ballconf = MonitorBall()
         self.fileconf = FileManager()
         self.yahooconf = YahooWeather(self)
-#        self.weatherconf = WeatherInfo(self)
         self.server = WeatherPistonAPI(service_root=MySever)
         self.premoter = PingBackPistonAPI(service_root=PINGBACK_SERVER)
         self.weatherping = ServerPingBackAPI(service_root=WEATHER_SERVER)
-#        self.capturemode = Capture()
         self.daemonsame = cleaner.SearchTheSame()
         self.daemonlarge = cleaner.ManageTheLarge()
         self.daemonunneed = cleaner.CleanTheUnneed()
@@ -168,7 +159,6 @@ class SessionDaemon(dbus.service.Object):
         index = random.randint(0, LEN_AGENT-1)
         # br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Ubuntu/3.0.1-1.fc9 Firefox/3.0.1'), ('Accept-Language', 'zh-CN,zh;q=0.8,en;q=0.6')]
         self.br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Ubuntu/3.0.1-1.fc9 Firefox/3.0.1')]
-
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_ubuntukylin_distrowatch_info(self):
@@ -287,7 +277,6 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def get_distrowatch_info(self):
         return self.distrowatch
-
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def get_ip_address(self):
@@ -529,9 +518,9 @@ class SessionDaemon(dbus.service.Object):
     #def browser_status_by_history(self, status):
     #    pass
 
-    @dbus.service.signal(INTERFACE, signature='ss')
-    def data_transmit_by_large(self, size, filepath):
-        pass
+#    @dbus.service.signal(INTERFACE, signature='ss')
+#    def data_transmit_by_large(self, size, filepath):
+#        pass
 
     @dbus.service.signal(INTERFACE, signature='s')
     def cache_transmit_complete(self, flag):
@@ -586,13 +575,13 @@ class SessionDaemon(dbus.service.Object):
 
     # -------------------------desktop-------------------------
 
-    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='b')
-    def get_default_desktop_bool(self, schema, key):
-        return self.desktopconf.get_default_schema_value(schema, key)
+#    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='b')
+#    def get_default_desktop_bool(self, schema, key):
+#        return self.desktopconf.get_default_schema_value(schema, key)
 
-    @dbus.service.method(INTERFACE, in_signature='sss', out_signature='')
-    def set_default_desktop(self, schema, key, type):
-        self.desktopconf.set_default_schema_value(schema, key, type)
+#    @dbus.service.method(INTERFACE, in_signature='sss', out_signature='')
+#    def set_default_desktop(self, schema, key, type):
+#        self.desktopconf.set_default_schema_value(schema, key, type)
 
 
     # show desktop icons
@@ -647,13 +636,13 @@ class SessionDaemon(dbus.service.Object):
 
     # -------------------------unity-------------------------
 
-    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='i')
-    def get_default_unity(self, name, key):
-        return self.unityconf.get_default_schema_value(name, key)
+#    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='i')
+#    def get_default_unity(self, name, key):
+#        return self.unityconf.get_default_schema_value(name, key)
 
-    @dbus.service.method(INTERFACE, in_signature='ssi', out_signature='')
-    def set_default_unity(self, key, type, value):
-        self.unityconf.set_default_schema_value(key, type, value)
+#    @dbus.service.method(INTERFACE, in_signature='ssi', out_signature='')
+#    def set_default_unity(self, key, type, value):
+#        self.unityconf.set_default_schema_value(key, type, value)
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def set_default_launcher_have_showdesktopicon(self):
@@ -804,17 +793,17 @@ class SessionDaemon(dbus.service.Object):
 
     # -------------------------theme-------------------------
 
-    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='s')
-    def get_default_font_sring(self, schema, key):
-        return self.themeconf.get_default_schema_value(schema, key)
+#    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='s')
+#    def get_default_font_sring(self, schema, key):
+#        return self.themeconf.get_default_schema_value(schema, key)
 
-    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='d')
-    def get_default_font_double(self, schema, key):
-        return self.themeconf.get_default_schema_value(schema, key)
+#    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='d')
+#    def get_default_font_double(self, schema, key):
+#        return self.themeconf.get_default_schema_value(schema, key)
 
-    @dbus.service.method(INTERFACE, in_signature='sss', out_signature='')
-    def set_default_font(self, schema, key, type):
-        self.themeconf.set_default_schema_value(schema, key, type)
+#    @dbus.service.method(INTERFACE, in_signature='sss', out_signature='')
+#    def set_default_font(self, schema, key, type):
+#        self.themeconf.set_default_schema_value(schema, key, type)
 
     # get themes
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
@@ -999,17 +988,17 @@ class SessionDaemon(dbus.service.Object):
 
 
     # -------------------------scrollbars-------------------------
-    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='s')
-    def get_default_system_sring(self, schema, key):
-        return self.systemconf.get_default_schema_value(schema, key)
+#    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='s')
+#    def get_default_system_sring(self, schema, key):
+#        return self.systemconf.get_default_schema_value(schema, key)
 
-    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='b')
-    def get_default_system_bool(self, schema, key):
-        return self.systemconf.get_default_schema_value(schema, key)
+#    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='b')
+#    def get_default_system_bool(self, schema, key):
+#        return self.systemconf.get_default_schema_value(schema, key)
 
-    @dbus.service.method(INTERFACE, in_signature='sss', out_signature='')
-    def set_default_system(self, schema, key, type):
-        self.systemconf.set_default_schema_value(schema, key, type)
+#    @dbus.service.method(INTERFACE, in_signature='sss', out_signature='')
+#    def set_default_system(self, schema, key, type):
+#        self.systemconf.set_default_schema_value(schema, key, type)
 
     # set scrollbars mode overlay
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
@@ -1156,9 +1145,9 @@ class SessionDaemon(dbus.service.Object):
     def get_default_sound_string(self, schema, key):
         return self.soundconf.get_default_schema_value(schema, key)
 
-    @dbus.service.method(INTERFACE, in_signature='sss', out_signature='')
-    def set_default_sound(self, schema, key, type):
-        self.soundconf.set_default_schema_value(schema, key, type)
+#    @dbus.service.method(INTERFACE, in_signature='sss', out_signature='')
+#    def set_default_sound(self, schema, key, type):
+#        self.soundconf.set_default_schema_value(schema, key, type)
 
     # set enable the login music
     @dbus.service.method(INTERFACE, in_signature='b', out_signature='')
@@ -1190,9 +1179,9 @@ class SessionDaemon(dbus.service.Object):
     def get_default_filemanager_int(self, schema, key):
         return self.fileconf.get_default_schema_value(schema, key)
 
-    @dbus.service.method(INTERFACE, in_signature='sss', out_signature='')
-    def set_default_filemanager(self, schema, key, type):
-        self.fileconf.set_default_schema_value(schema, key, type)
+#    @dbus.service.method(INTERFACE, in_signature='sss', out_signature='')
+#    def set_default_filemanager(self, schema, key, type):
+#        self.fileconf.set_default_schema_value(schema, key, type)
 
     # Set: Use the location entry instead of the pathbar
     @dbus.service.method(INTERFACE, in_signature='b', out_signature='')
@@ -1263,9 +1252,6 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
     def get_thumbnail_cache_size(self):
         return self.fileconf.get_thumbnail_cache_size()
-
-    # -------------------------beautify end here-------------------------
-
 
     # -------------------------monitorball-------------------------
     # get cpu percent
@@ -1402,6 +1388,6 @@ class SessionDaemon(dbus.service.Object):
     def get_current_yahoo_weather_dict(self):
         return self.yahooconf.get_current_yahoo_weather_dict()
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
-    def get_yahoo_forecast_dict(self):
-        return self.yahooconf.get_yahoo_forecast_dict()
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+#    def get_yahoo_forecast_dict(self):
+#        return self.yahooconf.get_yahoo_forecast_dict()
