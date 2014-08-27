@@ -21,14 +21,6 @@
         <translation>V1.2.0</translation>
     </message>
     <message>
-        <source>V1.1.0</source>
-        <translation type="obsolete">V1.1.0</translation>
-    </message>
-    <message>
-        <source>V1.0.2</source>
-        <translation type="obsolete">V1.0.2</translation>
-    </message>
-    <message>
         <location filename="../aboutdialog.ui" line="102"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -57,10 +49,6 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;维护者&lt;span style=&quot; font-family:&apos;Droid Sans Fallback&apos;;&quot;&gt;：&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:11px; margin-bottom:11px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Ubuntu Kylin Team &amp;lt;ubuntukylin-members@list.launchpad.net&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>V1.0.1</source>
-        <translation type="obsolete">V1.0.1</translation>
     </message>
     <message>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -275,14 +263,6 @@ p, li { white-space: pre-wrap; }
         <translation>BIOS版本：</translation>
     </message>
     <message>
-        <source>BIOS Manufacturer: </source>
-        <translation type="obsolete">BIOS产商：</translation>
-    </message>
-    <message>
-        <source>Bios Version: </source>
-        <translation type="obsolete">BIOS版本：</translation>
-    </message>
-    <message>
         <location filename="../../qml/func/info/BoardInfo.qml" line="175"/>
         <source>Release Date: </source>
         <translation>发布日期：</translation>
@@ -293,10 +273,6 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Boot animation settings (only supports the PNG image format, does not support Chinese naming pictures!)</source>
         <translation type="obsolete">开机动画设置 (目前仅支持 png 图片格式，不支持以中文命名的图片！)</translation>
-    </message>
-    <message>
-        <source>Boot animation settings (only supports the PNG image format !)</source>
-        <translation type="obsolete">开机动画设置 (目前仅支持 png 图片格式！)</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="29"/>
@@ -2864,18 +2840,18 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">触摸板</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="229"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="230"/>
         <source>Logging...</source>
         <translation>正在登录...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="774"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="789"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="573"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="588"/>
         <source>Hits per day </source>
         <translation>每日点击次数 </translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="1050"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="849"/>
         <source>Feedback</source>
         <translation>问题反馈</translation>
     </message>
@@ -2884,17 +2860,17 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">用户名：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="291"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="292"/>
         <source>Level:</source>
         <translation>等级：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="302"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="303"/>
         <source>Score:</source>
         <translation>经验值：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="261"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="262"/>
         <source>Logout</source>
         <translation>注销</translation>
     </message>
@@ -2913,13 +2889,13 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">摄像头</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="381"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="359"/>
         <source>DistroWatch Ranking</source>
         <translation>DistroWatch受欢迎程度排名</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="393"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="410"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="369"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="386"/>
         <source>Details</source>
         <translation>详情</translation>
     </message>
@@ -2928,63 +2904,63 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">每日点击次数：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="803"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="821"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="602"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="620"/>
         <source>Hide</source>
         <translation>隐藏</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="837"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="636"/>
         <source>Last Update:</source>
         <translation>最后更新：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="856"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="655"/>
         <source>OS Type:</source>
         <translation>发行归类：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="874"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="673"/>
         <source>Based on:</source>
         <translation>基于何种发行：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="892"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="691"/>
         <source>Origin: </source>
         <translation>来源：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="910"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="709"/>
         <source>Architecture:</source>
         <translation>处理器架构：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="929"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="728"/>
         <source>Desktop:</source>
         <translation>桌面：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="948"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="747"/>
         <source>Category:</source>
         <translation>类型：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="966"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="765"/>
         <source>Status:</source>
         <translation>状态：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="984"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="783"/>
         <source>Popularity:</source>
         <translation>受欢迎程度排名：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="1024"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="823"/>
         <source>Forum Help</source>
         <translation>论坛求助</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="1041"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="840"/>
         <source>Features</source>
         <translation>新版本特性</translation>
     </message>
@@ -3069,7 +3045,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1475"/>
+        <location filename="../sessiondispatcher.cpp" line="1322"/>
         <source>Select folder</source>
         <translation>选择文件夹</translation>
     </message>

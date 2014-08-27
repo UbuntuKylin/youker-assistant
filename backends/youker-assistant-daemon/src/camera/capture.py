@@ -125,35 +125,22 @@ class Capture(threading.Thread):
             events = pygame.event.get()
             for e in events:
                 if e.type == QUIT or (e.type == KEYDOWN and e.key == K_ESCAPE):
-                    print '1111'
                     self.cam.stop()
-                    print '2222'
                     pic_name = get_local_format_time() + '.png'
-                    print '33333'
                     print pic_name
                     going = False
-            print 'out for ....'
             if self.cam.query_image():
-                print '44444'
                 self.snapshot = self.cam.get_image(self.snapshot)
-                print '55555555555'
-            else:
-                print '6666666666'
             self.display.blit(self.snapshot, (0,0))
-            print '7777777'
             pygame.display.flip()
-            print '8888'
-	print os.path.expanduser('~')
+#	print os.path.expanduser('~')
 	pic_path = os.path.expanduser('~') + '/' + pic_name
         #pic_path = os.path.join('/home/trusty', pic_name)
 	#os.path.expanduser('~')
         #pic_name = '/home/trusty/' + timevalue + '.png'
-        print '9999'
-        print pic_path
         pygame.image.save(self.snapshot, pic_path)
         pygame.quit()
         #exit(0)
-        print '10101010'
 
 #    def main(self):
 #        going1 = True

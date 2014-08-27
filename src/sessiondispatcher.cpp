@@ -89,6 +89,10 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(sessioniface, SIGNAL(get_history_number(QString, int)), this, SLOT(handlerHistoryNumber(QString, int)));
     QObject::connect(sessioniface, SIGNAL(get_largefile_list(QStringList)), this, SLOT(handlerLargeFileList(QStringList)));
 
+    QObject::connect(sessioniface, SIGNAL(distrowatch_all_signal(QString)), this, SLOT(handlerDistrowatchAllSignal(QString)));
+    QObject::connect(sessioniface, SIGNAL(distrowatch_ubuntukylin_signal(bool)), this, SLOT(handlerDistrowatchUKSignal(bool)));
+
+
     QObject::connect(MessengerProxy::get_instance_object(), SIGNAL(getHomeBackIndex(int)), this, SLOT(handlerBackToHomePage(int)));
     selectDialog = new SelectDialog(mSettings, 0);
     connect(selectDialog, SIGNAL(readyToUpdateWeatherForWizard()), this, SLOT(handler_change_city()));
@@ -234,9 +238,8 @@ void SessionDispatcher::set_default_ubuntukylin_distrowatch(QString key, QString
 }
 
 
-QString SessionDispatcher::get_distrowatch_url_qt() {
-    QDBusReply<QString> reply = sessioniface->call("get_distrowatch_url");
-    return reply.value();
+void SessionDispatcher::get_distrowatch_url_qt() {
+    sessioniface->call("get_distrowatch_url");
 }
 
 QStringList SessionDispatcher::get_distrowatch_info_qt() {
@@ -249,27 +252,8 @@ QStringList SessionDispatcher::get_distrowatch_info_qt() {
     return result;
 }
 
-bool SessionDispatcher::get_ubuntukylin_distrowatch_info_qt() {
-    QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_ubuntukylin_distrowatch_info");
-    if (reply.isValid()) {
-        if (reply.value().empty()) {
-            return false;
-        }
-        QMap<QString, QVariant> value = reply.value();
-        distrowatchInfo.clear();
-        distrowatchInfo = value;
-        QMap<QString, QVariant>::iterator it;
-        for ( it = distrowatchInfo.begin(); it != distrowatchInfo.end(); ++it ) {
-            if (it.key() != "description") {
-                this->set_default_ubuntukylin_distrowatch(it.key(), it.value().toString());
-            }
-        }
-        return true;
-    }
-    else {
-        qDebug() << "get ubuntukylin distrowatchInfo failed!";
-        return false;
-    }
+void SessionDispatcher::get_ubuntukylin_distrowatch_info_qt() {
+    sessioniface->call("get_ubuntukylin_distrowatch_info");
 }
 
 QString SessionDispatcher::getDistrowatchSingleInfo(QString key) {
@@ -1676,4 +1660,33 @@ void SessionDispatcher::change_maincheckbox_status(QString status) {
 //0412
 void SessionDispatcher::handlerBackToHomePage(int index) {
     emit backToHomePage(index);
+}
+
+void SessionDispatcher::handlerDistrowatchAllSignal(QString update_rate) {
+    emit this->finishAccessAllDistrowatch(update_rate);
+}
+
+void SessionDispatcher::handlerDistrowatchUKSignal(bool uk_flag) {
+    if (uk_flag) {
+        QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("show_ubuntukylin_distrowatch_info");
+        if (reply.isValid()) {
+            if (reply.value().empty()) {
+                return;
+            }
+            QMap<QString, QVariant> value = reply.value();
+            distrowatchInfo.clear();
+            distrowatchInfo = value;
+            QMap<QString, QVariant>::iterator it;
+            for ( it = distrowatchInfo.begin(); it != distrowatchInfo.end(); ++it ) {
+                if (it.key() != "description") {
+                    this->set_default_ubuntukylin_distrowatch(it.key(), it.value().toString());
+                }
+            }
+            emit this->finishAccessUKDistrowatch();
+        }
+        else {
+            qDebug() << "get ubuntukylin distrowatchInfo failed!";
+            return;
+        }
+    }
 }

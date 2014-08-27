@@ -88,6 +88,62 @@ Rectangle {
             levelText.text = "Lv" + level;
             scoreText.text = score;
         }
+
+        onFinishAccessAllDistrowatch: {
+            if (update_rate !== "") {
+                //set new data
+                var result = sessiondispatcher.get_distrowatch_info_qt();
+                rightbar.distrowatch_num = result.length;
+                listModel.clear();//清空
+                for(var i=0; i < result.length; i++) {
+                    var splitlist = result[i].split("+");
+                    var os_image = "";
+                    if (splitlist[2] == "opensuse") {
+                        os_image = "suse";
+                    }
+                    else if (splitlist[2] == "suse") {
+                        os_image = "sle";
+                    }
+                    else if (splitlist[2] == "sparkylinux") {
+                        os_image = "sparky";
+                    }
+                    else if (splitlist[2] == "makululinux") {
+                        os_image = "makulu";
+                    }
+                    else if (splitlist[2] == "gobolinux") {
+                        os_image = "gobo";
+                    }
+                    else if (splitlist[2] == "dragonfly") {
+                        os_image = "dragonflybsd";
+                    }
+                    else if (splitlist[2] == "emmabuntüs") {
+                        os_image = "emmabuntus";
+                    }
+                    else if (splitlist[2] == "symphonyos") {
+                        os_image = "symphony";
+                    }
+                    else {
+                        os_image = splitlist[2];
+                    }
+                    listModel.append({"rank": splitlist[0], "os": splitlist[1], "os_img": "http://distrowatch.com/images/yvzhuwbpy/" + os_image +".png", "today_hit": splitlist[3], "rank_img": "http://distrowatch.com/" + splitlist[4],  "yestoday_hit": splitlist[5]});
+                }
+            }
+        }
+
+        onFinishAccessUKDistrowatch: {
+             // set new data
+            lastupdateText.text = sessiondispatcher.getDistrowatchSingleInfo("lastupdate");
+            ostypeText.text = sessiondispatcher.getDistrowatchSingleInfo("ostype");
+            basedonText.text = sessiondispatcher.getDistrowatchSingleInfo("basedon");
+            originText.text = rightbar.transTitle(sessiondispatcher.getDistrowatchSingleInfo("origin"));
+            architectureText.text = sessiondispatcher.getDistrowatchSingleInfo("architecture");
+            desktopText.text = sessiondispatcher.getDistrowatchSingleInfo("desktop");
+            categoryText.text = sessiondispatcher.getDistrowatchSingleInfo("category");
+            statusText.text = rightbar.transTitle(sessiondispatcher.getDistrowatchSingleInfo("status"));
+            var popularity = sessiondispatcher.getDistrowatchSingleInfo("popularity");
+            var popularityList=  popularity.split("(");
+            popularityText.text = popularityList[0] + "( " + qsTr("Hits per day ") + popularityList[1] + " )";//每日点击次数
+        }
     }
 
     function setDistrowatchData() {
@@ -130,45 +186,8 @@ Rectangle {
             listModel.append({"rank": splitlist[0], "os": splitlist[1], "os_img": img_source, "today_hit": splitlist[3], "rank_img": "../../img/distrowatch/" + rightbar.split_last_str(splitlist[4]),  "yestoday_hit": splitlist[5]});
         }
 
-        //set new data
-        rightbar.update_rate = sessiondispatcher.get_distrowatch_url_qt();
-        if (rightbar.update_rate != "") {
-            result = sessiondispatcher.get_distrowatch_info_qt();
-            rightbar.distrowatch_num = result.length;
-            listModel.clear();//清空
-            for(var i=0; i < result.length; i++) {
-                var splitlist = result[i].split("+");
-                var os_image = "";
-                if (splitlist[2] == "opensuse") {
-                    os_image = "suse";
-                }
-                else if (splitlist[2] == "suse") {
-                    os_image = "sle";
-                }
-                else if (splitlist[2] == "sparkylinux") {
-                    os_image = "sparky";
-                }
-                else if (splitlist[2] == "makululinux") {
-                    os_image = "makulu";
-                }
-                else if (splitlist[2] == "gobolinux") {
-                    os_image = "gobo";
-                }
-                else if (splitlist[2] == "dragonfly") {
-                    os_image = "dragonflybsd";
-                }
-                else if (splitlist[2] == "emmabuntüs") {
-                    os_image = "emmabuntus";
-                }
-                else if (splitlist[2] == "symphonyos") {
-                    os_image = "symphony";
-                }
-                else {
-                    os_image = splitlist[2];
-                }
-                listModel.append({"rank": splitlist[0], "os": splitlist[1], "os_img": "http://distrowatch.com/images/yvzhuwbpy/" + os_image +".png", "today_hit": splitlist[3], "rank_img": "http://distrowatch.com/" + splitlist[4],  "yestoday_hit": splitlist[5]});
-            }
-        }
+        //access new data
+        sessiondispatcher.get_distrowatch_url_qt();
     }
 
     ListModel {
@@ -572,21 +591,12 @@ Rectangle {
             var popularityList=  popularity.split("(");
             popularityText.text = popularityList[0] + "( " + qsTr("Hits per day ") + popularityList[1] + " )";//每日点击次数
 
-            // set new data
-            var result = sessiondispatcher.get_ubuntukylin_distrowatch_info_qt();
-            if (result) {
-                lastupdateText.text = sessiondispatcher.getDistrowatchSingleInfo("lastupdate");
-                ostypeText.text = sessiondispatcher.getDistrowatchSingleInfo("ostype");
-                basedonText.text = sessiondispatcher.getDistrowatchSingleInfo("basedon");
-                originText.text = rightbar.transTitle(sessiondispatcher.getDistrowatchSingleInfo("origin"));
-                architectureText.text = sessiondispatcher.getDistrowatchSingleInfo("architecture");
-                desktopText.text = sessiondispatcher.getDistrowatchSingleInfo("desktop");
-                categoryText.text = sessiondispatcher.getDistrowatchSingleInfo("category");
-                statusText.text = rightbar.transTitle(sessiondispatcher.getDistrowatchSingleInfo("status"));
-                var popularity = sessiondispatcher.getDistrowatchSingleInfo("popularity");
-                var popularityList=  popularity.split("(");
-                popularityText.text = popularityList[0] + "( " + qsTr("Hits per day ") + popularityList[1] + " )";//每日点击次数
-            }
+            //access new data
+            sessiondispatcher.get_ubuntukylin_distrowatch_info_qt();
+//            var result = sessiondispatcher.get_ubuntukylin_distrowatch_info_qt();
+//            if (result) {
+//
+//            }
         }
 
         Image {

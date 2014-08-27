@@ -42,10 +42,10 @@ public:
     //打开文件夹
     Q_INVOKABLE void open_folder_qt(QString path);
 
-    Q_INVOKABLE QString get_distrowatch_url_qt();
+    Q_INVOKABLE void get_distrowatch_url_qt();
     Q_INVOKABLE QStringList get_distrowatch_info_qt();
     QMap<QString, QVariant> distrowatchInfo;
-    Q_INVOKABLE bool get_ubuntukylin_distrowatch_info_qt();
+    Q_INVOKABLE void get_ubuntukylin_distrowatch_info_qt();
     Q_INVOKABLE QString getDistrowatchSingleInfo(QString key);
     Q_INVOKABLE QStringList get_default_all_distrowatch();
     Q_INVOKABLE void get_default_ubuntukylin_distrowatch();
@@ -341,6 +341,8 @@ signals:
     void tellDetailPageUpdateData(QString infoFlag);
     //返回主页面信号
     void backToHomePage(int index);//0412
+    void finishAccessAllDistrowatch(QString update_rate);
+    void finishAccessUKDistrowatch();
 public slots:
     Q_INVOKABLE void get_current_weather_qt();
     void verify_user_and_password(QString user, QString pwd);
@@ -383,6 +385,8 @@ public slots:
     void handlerLargeFileList(QStringList filelist);
     //返回主页面槽函数
     void handlerBackToHomePage(int index);//0412
+    void handlerDistrowatchAllSignal(QString update_rate);
+    void handlerDistrowatchUKSignal(bool uk_flag);
 
 private:
     int mainwindow_width;

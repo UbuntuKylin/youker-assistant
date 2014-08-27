@@ -92,6 +92,7 @@ class SessionDaemon(dbus.service.Object):
         #self.wizardconf = Wizard()
         self.ip_addr = None
         self.distrowatch = []
+        self.ubuntukylin_dict = dict()
         self.cloudconf = CloudConfig(self)
         self.sysconf = Sysinfo()
         self.desktopconf = Desktop()
@@ -160,17 +161,23 @@ class SessionDaemon(dbus.service.Object):
         # br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Ubuntu/3.0.1-1.fc9 Firefox/3.0.1'), ('Accept-Language', 'zh-CN,zh;q=0.8,en;q=0.6')]
         self.br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Ubuntu/3.0.1-1.fc9 Firefox/3.0.1')]
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
-    def get_ubuntukylin_distrowatch_info(self):
+    @dbus.service.signal(INTERFACE, signature='b')
+    def distrowatch_ubuntukylin_signal(self, uk_flag):
+        pass
+
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def real_get_ubuntukylin_distrowatch_info(self):
+        self.ubuntukylin_dict.clear()
         try:
             r = self.br.open(ubuntukylin_distrowatch)
             html = r.read()
             soup = BeautifulSoup(html)
         except Exception as e:
-            return None
+            self.distrowatch_ubuntukylin_signal(False)
+            return
         contents = soup.findAll(name="td", attrs={"class":"TablesTitle"})
         p = re.compile('<[^>]+>')
-        ubuntukylin_list = dict()
+#        ubuntukylin_dict = dict()
         try:
             result = p.sub(" ", str(contents))
             aa = result.split('\n')
@@ -178,14 +185,14 @@ class SessionDaemon(dbus.service.Object):
             for i in range(0, len(aa)):
                 if 'Last Update:' in aa[i]:
                     start_pos = str(aa[i]).find("Last Update:")
-                    ubuntukylin_list['lastupdate'] = str(aa[i])[(start_pos+13):].rstrip()
+                    self.ubuntukylin_dict['lastupdate'] = str(aa[i])[(start_pos+13):].rstrip()
                 elif 'OS Type:' in aa[i] and 'Based on:' in aa[i] and 'Origin:' in aa[i]:
                     pos1 = str(aa[i]).find("OS Type:")
                     pos2 = str(aa[i]).find("Based on:")
                     pos3 = str(aa[i]).find("Origin:")
-                    ubuntukylin_list['ostype'] = str(aa[i])[(pos1+8):pos2].replace(' ', '')
-                    ubuntukylin_list['basedon'] = str(aa[i])[(pos2+9):pos3].replace(' ', '')
-                    ubuntukylin_list['origin'] = str(aa[i])[(pos3+7):].replace(' ', '')
+                    self.ubuntukylin_dict['ostype'] = str(aa[i])[(pos1+8):pos2].replace(' ', '')
+                    self.ubuntukylin_dict['basedon'] = str(aa[i])[(pos2+9):pos3].replace(' ', '')
+                    self.ubuntukylin_dict['origin'] = str(aa[i])[(pos3+7):].replace(' ', '')
                 elif 'Architecture:' in aa[i] and 'Desktop:' in aa[i] and 'Category:' in aa[i] and 'Status:' in aa[i] and 'Popularity:' in aa[i] and 'hits per day' in aa[i]:
                     pos1 = str(aa[i]).find("Architecture:")
                     pos2 = str(aa[i]).find("Desktop:")
@@ -193,19 +200,32 @@ class SessionDaemon(dbus.service.Object):
                     pos4 = str(aa[i]).find("Status:")
                     pos5 = str(aa[i]).find("Popularity:")
                     pos6 = str(aa[i]).find("hits per day")
-                    ubuntukylin_list['architecture'] = str(aa[i])[(pos1+13):pos2].replace(' ', '')
-                    ubuntukylin_list['desktop'] = str(aa[i])[(pos2+8):pos3].replace(' ', '')
-                    ubuntukylin_list['category'] = str(aa[i])[(pos3+9):pos4].replace(' ', '')
-                    ubuntukylin_list['status'] = str(aa[i])[(pos4+7):pos5].replace(' ', '')
-                    ubuntukylin_list['popularity'] = str(aa[i])[(pos5+11):pos6].replace(' ', '')
+                    self.ubuntukylin_dict['architecture'] = str(aa[i])[(pos1+13):pos2].replace(' ', '')
+                    self.ubuntukylin_dict['desktop'] = str(aa[i])[(pos2+8):pos3].replace(' ', '')
+                    self.ubuntukylin_dict['category'] = str(aa[i])[(pos3+9):pos4].replace(' ', '')
+                    self.ubuntukylin_dict['status'] = str(aa[i])[(pos4+7):pos5].replace(' ', '')
+                    self.ubuntukylin_dict['popularity'] = str(aa[i])[(pos5+11):pos6].replace(' ', '')
                 elif i==6:
-                    ubuntukylin_list['description'] = aa[i]
+                    self.ubuntukylin_dict['description'] = aa[i]
         except Exception, e:
             print 'exception->', e
-        return ubuntukylin_list
+        self.distrowatch_ubuntukylin_signal(True)
+#        return ubuntukylin_dict
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
-    def get_distrowatch_url(self):
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def show_ubuntukylin_distrowatch_info(self):
+        return self.ubuntukylin_dict
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def get_ubuntukylin_distrowatch_info(self):
+        t = threading.Thread(target = self.real_get_ubuntukylin_distrowatch_info)
+        t.start()
+
+    @dbus.service.signal(INTERFACE, signature='s')
+    def distrowatch_all_signal(self, update_rate):
+        pass
+
+    def real_get_distrowatch_url(self):
         self.distrowatch = []
         update_rate = 'Last 6 months'
         rank_list = []
@@ -218,7 +238,8 @@ class SessionDaemon(dbus.service.Object):
             html = r.read()
             soup = BeautifulSoup(html)
         except Exception as e:
-            return None
+            self.distrowatch_all_signal("")
+            return
         p = re.compile('<[^>]+>')
         spiderContents = soup.findAll(name="option", attrs={"selected":"selected"})
         if len(spiderContents) > 1:
@@ -272,7 +293,13 @@ class SessionDaemon(dbus.service.Object):
             line = "%s+%s+%s+%s+%s+%s" % (rank_list[i], os_list[i], os_list[i].replace(' ', '').replace('-', '').lower(), today_hit_list[i], img_list[i], yestoday_hit_list[i])
             self.distrowatch.append(line)
 #        print self.distrowatch
-        return update_rate
+        self.distrowatch_all_signal(update_rate)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def get_distrowatch_url(self):
+        t = threading.Thread(target = self.real_get_distrowatch_url)
+        t.start()
+
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def get_distrowatch_info(self):
