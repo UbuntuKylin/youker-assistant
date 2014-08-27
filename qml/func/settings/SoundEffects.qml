@@ -51,6 +51,18 @@ Rectangle {
         else {
             soundswitcher.switchedOn = false;
         }
+        if (sessiondispatcher.get_sound_event_enable_qt()) {
+            eventswitcher.switchedOn = true;
+        }
+        else {
+            eventswitcher.switchedOn = false;
+        }
+        if (sessiondispatcher.get_input_feedback_sounds_enable_qt()) {
+            feedbackswitcher.switchedOn = true;
+        }
+        else {
+            feedbackswitcher.switchedOn = false;
+        }
 
         var index = 0;
         var soundlist = systemdispatcher.get_sound_themes_qt();
@@ -240,238 +252,308 @@ Rectangle {
                 }
             }
         }
-    }
 
-    Row {
-        spacing: 2
-        anchors {
-            top: soundtheme.bottom
-            topMargin: 20
-            right: parent.right
-            rightMargin: 95
-        }
-        Text {
-            id: listen
-            font.pixelSize: 12
-            color: "#7a7a7a"
-            width: 50
-            text: qsTr("Listen")//试听
-        }
-        Text {
-            id: select
-            font.pixelSize: 12
-            color: "#7a7a7a"
-            width: 50
-            text: qsTr("Replace")//替换
-        }
-        Text {
-            id: revoke
-            font.pixelSize: 12
-            color: "#7a7a7a"
-            width: 50
-            text: qsTr("Restore")//还原
-        }
-    }
+        Row {
+            spacing: 20
+            Image {
+                source: "../../img/icons/dot.png"
+                width: 14; height: 14
+                anchors.verticalCenter: parent.verticalCenter
+            }
 
-    Column{     //程序事件及选择框
-        id:chooseyy
-        spacing: 10
-        anchors {
-            top: soundtheme.bottom
-            topMargin: 20
-            left: parent.left
-            leftMargin: 60
-        }
-        Text{
-            id: eventtitle
-            width: 100
-            text: qsTr("System event tone: ")//系统事件提示音：
-            font.bold:true
-            color: "#383838"
-            font.pointSize: 10
-        }
-        Rectangle{
-            border.color: "#b9c5cc"
-            width: 720; height: 270
-            clip:true
+            Common.TipLabel {
+                z: 11
+                anchors.verticalCenter: parent.verticalCenter
+                kflag: "no"
+                showImage: "../../img/icons/cloud-gray.png"
+            }
 
-            Component{
-                id:cdelegat
-
-                Item{
-                    id:wrapper
-                    width: 700; height: 30
-                    Image {
-                        id:pickcher
-                        source: musicimage
-                        anchors {
-                            left: parent.left
-                            leftMargin: 10
-                            verticalCenter: parent.verticalCenter
-                        }
+            Text{
+                text:qsTr("Event sounds:")//事件声音：
+                width: 160
+                font.pixelSize: 12
+                color: "#7a7a7a"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Common.Switch {
+                id: eventswitcher
+                onSwitched: {
+                    if (eventswitcher.switchedOn) {
+                        sessiondispatcher.set_sound_event_enable_qt(true);
                     }
-                    Text{
-                        id:listtext
-                        anchors.verticalCenter: parent.verticalCenter
-                        color: "grey"
-                        anchors.left: pickcher.right
-                        anchors.leftMargin: 5
-                        text: split_music_name(musicname)
+                    else if(!eventswitcher.switchedOn) {
+                        sessiondispatcher.set_sound_event_enable_qt(false);
                     }
-                    Row{
-                        spacing: 40
-                        anchors{
-                            right: parent.right
-                            rightMargin: 30
-                            verticalCenter: parent.verticalCenter
-                        }
-
-//                        z:soundz
-                        Rectangle{
-                            width: play.width;height: play.height; color: "transparent"
-                            Image {id:play;source: "../../img/icons/play.png"}
-                            Image {
-                                id: btnImg1
-                                anchors.fill: parent
-                                source: ""
-                            }
-                            MouseArea{
-                                anchors.fill:parent
-                                hoverEnabled: true
-                                onEntered: {
-                                    btnImg1.source = "../../img/icons/play_hover.png";
-                                }
-                                onPressed: {
-                                    btnImg1.source = "../../img/icons/play_hover.png";
-                                }
-                                //要判断松开是鼠标位置
-                                onReleased: {
-                                    btnImg1.source = "";
-                                }
-                                onExited: {
-                                    btnImg1.source = ""
-                                }
-                                onClicked: {
-                                    wrapper.ListView.view.currentIndex = index;
-                                    systemdispatcher.getMusicFileAbsolutePath(musicname);
-                                    if(play_pause==0){
-                                        song.play();
-                                        play_pause=1;
-                                    }
-                                    else if(play_pause == 1)
-                                    {
-                                        song.stop();
-                                        song.play();
-                                    }
-//                                    systemdispatcher.listen_music(musicname);
-                                }
-                            }
-                        }
-                        Rectangle{
-                            width: next.width;height: next.height; color: "transparent"
-                            Image {id:next;source: "../../img/icons/folder.png"}
-                            Image {
-                                id: btnImg2
-                                anchors.fill: parent
-                                source: ""
-                            }
-                            MouseArea{
-                                anchors.fill:parent
-                                hoverEnabled: true
-                                onEntered: {
-                                    btnImg2.source = "../../img/icons/folder_hover.png";
-                                }
-                                onPressed: {
-                                    btnImg2.source = "../../img/icons/folder_hover.png";
-                                }
-                                //要判断松开是鼠标位置
-                                onReleased: {
-                                    btnImg2.source = "";
-                                }
-                                onExited: {
-                                    btnImg2.source = ""
-                                }
-                                onClicked: {
-                                    wrapper.ListView.view.currentIndex = index;
-                                    var selectedmusic = systemdispatcher.showSelectFileDialog("soundeffects");
-                                    systemdispatcher.getMusicFileAbsolutePath(selectedmusic);
-                                    systemdispatcher.set_homedir_qt();
-                                    systemdispatcher.replace_sound_file_qt(selectedmusic, split_music_name(musicname));
-                                }
-                            }
-                        }
-                        Rectangle{
-                            width: revoke.width;height: revoke.height; color: "transparent"
-                            Image {id:revoke;source: "../../img/icons/revoke.png"}
-                            Image {
-                                id: btnImg3
-                                anchors.fill: parent
-                                source: ""
-                            }
-                            MouseArea{
-                                anchors.fill:parent
-                                hoverEnabled: true
-                                onEntered: {
-                                    btnImg3.source = "../../img/icons/revoke_hover.png";
-                                }
-                                onPressed: {
-                                    btnImg3.source = "../../img/icons/revoke_hover.png";
-                                }
-                                //要判断松开是鼠标位置
-                                onReleased: {
-                                    btnImg3.source = "";
-                                }
-                                onExited: {
-                                    btnImg3.source = ""
-                                }
-                                onClicked: {
-                                    wrapper.ListView.view.currentIndex = index;
-                                    systemdispatcher.restore_sound_file_qt(split_music_name(musicname));
-                                }
-                            }
-                        }
-                    }
-                    Image {
-                        id: btnImg
-                        anchors.fill: parent
-                        source: ""
-                    }
-                    MouseArea{
-                        height: parent.height
-                        width: 360//宽度不能超过360,否则会覆盖试听音乐等等的按钮响应区域
-                        hoverEnabled: true
-                        onClicked: {
-                            wrapper.ListView.view.currentIndex = index;
-
-                        }
-                    }
-
                 }
             }
-            Common.ScrollArea {
-                frame:false
-                anchors{
-                    top:parent.top
-                    topMargin: 1
-                    left:parent.left
-                    leftMargin: 1
-                }
-                height: parent.height-1
-                width: parent.width-1
-                Item {
-                    width: parent.width
-                    height: musiclist_num * 30 //列表长度
-                    //垃圾清理显示内容
-                    ListView{
-                        id:lisv
-                        anchors.fill: parent
-                        model:musicmodel
-                        delegate: cdelegat
-                        highlight: Rectangle{width: 530;height: 30 ; color: "lightsteelblue"}
-                        focus:true
+        }
+
+        Row {
+            spacing: 20
+            Image {
+                source: "../../img/icons/dot.png"
+                width: 14; height: 14
+                anchors.verticalCenter: parent.verticalCenter
+            }
+
+            Common.TipLabel {
+                z: 11
+                anchors.verticalCenter: parent.verticalCenter
+                kflag: "no"
+                showImage: "../../img/icons/cloud-gray.png"
+            }
+
+            Text{
+                text:qsTr("Input feedback sounds:")//输入反馈声音：
+                width: 160
+                font.pixelSize: 12
+                color: "#7a7a7a"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Common.Switch {
+                id: feedbackswitcher
+                onSwitched: {
+                    if (feedbackswitcher.switchedOn) {
+                        sessiondispatcher.set_input_feedback_sounds_enable_qt(true);
                     }
-                }//Item
-            }//ScrollArea
+                    else if(!feedbackswitcher.switchedOn) {
+                        sessiondispatcher.set_input_feedback_sounds_enable_qt(false);
+                    }
+                }
+            }
         }
     }
+
+//    Row {
+//        spacing: 2
+//        anchors {
+//            top: soundtheme.bottom
+//            topMargin: 20
+//            right: parent.right
+//            rightMargin: 95
+//        }
+//        Text {
+//            id: listen
+//            font.pixelSize: 12
+//            color: "#7a7a7a"
+//            width: 50
+//            text: qsTr("Listen")//试听
+//        }
+//        Text {
+//            id: select
+//            font.pixelSize: 12
+//            color: "#7a7a7a"
+//            width: 50
+//            text: qsTr("Replace")//替换
+//        }
+//        Text {
+//            id: revoke
+//            font.pixelSize: 12
+//            color: "#7a7a7a"
+//            width: 50
+//            text: qsTr("Restore")//还原
+//        }
+//    }
+
+//    Column{     //程序事件及选择框
+//        id:chooseyy
+//        spacing: 10
+//        anchors {
+//            top: soundtheme.bottom
+//            topMargin: 20
+//            left: parent.left
+//            leftMargin: 60
+//        }
+//        Text{
+//            id: eventtitle
+//            width: 100
+//            text: qsTr("System event tone: ")//系统事件提示音：
+//            font.bold:true
+//            color: "#383838"
+//            font.pointSize: 10
+//        }
+//        Rectangle{
+//            border.color: "#b9c5cc"
+//            width: 720; height: 270
+//            clip:true
+
+//            Component{
+//                id:cdelegat
+
+//                Item{
+//                    id:wrapper
+//                    width: 700; height: 30
+//                    Image {
+//                        id:pickcher
+//                        source: musicimage
+//                        anchors {
+//                            left: parent.left
+//                            leftMargin: 10
+//                            verticalCenter: parent.verticalCenter
+//                        }
+//                    }
+//                    Text{
+//                        id:listtext
+//                        anchors.verticalCenter: parent.verticalCenter
+//                        color: "grey"
+//                        anchors.left: pickcher.right
+//                        anchors.leftMargin: 5
+//                        text: split_music_name(musicname)
+//                    }
+//                    Row{
+//                        spacing: 40
+//                        anchors{
+//                            right: parent.right
+//                            rightMargin: 30
+//                            verticalCenter: parent.verticalCenter
+//                        }
+
+////                        z:soundz
+//                        Rectangle{
+//                            width: play.width;height: play.height; color: "transparent"
+//                            Image {id:play;source: "../../img/icons/play.png"}
+//                            Image {
+//                                id: btnImg1
+//                                anchors.fill: parent
+//                                source: ""
+//                            }
+//                            MouseArea{
+//                                anchors.fill:parent
+//                                hoverEnabled: true
+//                                onEntered: {
+//                                    btnImg1.source = "../../img/icons/play_hover.png";
+//                                }
+//                                onPressed: {
+//                                    btnImg1.source = "../../img/icons/play_hover.png";
+//                                }
+//                                //要判断松开是鼠标位置
+//                                onReleased: {
+//                                    btnImg1.source = "";
+//                                }
+//                                onExited: {
+//                                    btnImg1.source = ""
+//                                }
+//                                onClicked: {
+//                                    wrapper.ListView.view.currentIndex = index;
+//                                    systemdispatcher.getMusicFileAbsolutePath(musicname);
+//                                    if(play_pause==0){
+//                                        song.play();
+//                                        play_pause=1;
+//                                    }
+//                                    else if(play_pause == 1)
+//                                    {
+//                                        song.stop();
+//                                        song.play();
+//                                    }
+////                                    systemdispatcher.listen_music(musicname);
+//                                }
+//                            }
+//                        }
+//                        Rectangle{
+//                            width: next.width;height: next.height; color: "transparent"
+//                            Image {id:next;source: "../../img/icons/folder.png"}
+//                            Image {
+//                                id: btnImg2
+//                                anchors.fill: parent
+//                                source: ""
+//                            }
+//                            MouseArea{
+//                                anchors.fill:parent
+//                                hoverEnabled: true
+//                                onEntered: {
+//                                    btnImg2.source = "../../img/icons/folder_hover.png";
+//                                }
+//                                onPressed: {
+//                                    btnImg2.source = "../../img/icons/folder_hover.png";
+//                                }
+//                                //要判断松开是鼠标位置
+//                                onReleased: {
+//                                    btnImg2.source = "";
+//                                }
+//                                onExited: {
+//                                    btnImg2.source = ""
+//                                }
+//                                onClicked: {
+//                                    wrapper.ListView.view.currentIndex = index;
+//                                    var selectedmusic = systemdispatcher.showSelectFileDialog("soundeffects");
+//                                    systemdispatcher.getMusicFileAbsolutePath(selectedmusic);
+//                                    systemdispatcher.set_homedir_qt();
+//                                    systemdispatcher.replace_sound_file_qt(selectedmusic, split_music_name(musicname));
+//                                }
+//                            }
+//                        }
+//                        Rectangle{
+//                            width: revoke.width;height: revoke.height; color: "transparent"
+//                            Image {id:revoke;source: "../../img/icons/revoke.png"}
+//                            Image {
+//                                id: btnImg3
+//                                anchors.fill: parent
+//                                source: ""
+//                            }
+//                            MouseArea{
+//                                anchors.fill:parent
+//                                hoverEnabled: true
+//                                onEntered: {
+//                                    btnImg3.source = "../../img/icons/revoke_hover.png";
+//                                }
+//                                onPressed: {
+//                                    btnImg3.source = "../../img/icons/revoke_hover.png";
+//                                }
+//                                //要判断松开是鼠标位置
+//                                onReleased: {
+//                                    btnImg3.source = "";
+//                                }
+//                                onExited: {
+//                                    btnImg3.source = ""
+//                                }
+//                                onClicked: {
+//                                    wrapper.ListView.view.currentIndex = index;
+//                                    systemdispatcher.restore_sound_file_qt(split_music_name(musicname));
+//                                }
+//                            }
+//                        }
+//                    }
+//                    Image {
+//                        id: btnImg
+//                        anchors.fill: parent
+//                        source: ""
+//                    }
+//                    MouseArea{
+//                        height: parent.height
+//                        width: 360//宽度不能超过360,否则会覆盖试听音乐等等的按钮响应区域
+//                        hoverEnabled: true
+//                        onClicked: {
+//                            wrapper.ListView.view.currentIndex = index;
+
+//                        }
+//                    }
+
+//                }
+//            }
+//            Common.ScrollArea {
+//                frame:false
+//                anchors{
+//                    top:parent.top
+//                    topMargin: 1
+//                    left:parent.left
+//                    leftMargin: 1
+//                }
+//                height: parent.height-1
+//                width: parent.width-1
+//                Item {
+//                    width: parent.width
+//                    height: musiclist_num * 30 //列表长度
+//                    //垃圾清理显示内容
+//                    ListView{
+//                        id:lisv
+//                        anchors.fill: parent
+//                        model:musicmodel
+//                        delegate: cdelegat
+//                        highlight: Rectangle{width: 530;height: 30 ; color: "lightsteelblue"}
+//                        focus:true
+//                    }
+//                }//Item
+//            }//ScrollArea
+//        }
+//    }
 }

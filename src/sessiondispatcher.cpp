@@ -1442,6 +1442,25 @@ void SessionDispatcher::set_titlebar_right_qt(QString value) {
 
 
 /*-----------------------------sound of beauty-----------------------------*/
+bool SessionDispatcher::get_sound_event_enable_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_sound_event_enable");
+    return reply.value();
+}
+
+void SessionDispatcher::set_sound_event_enable_qt(bool flag) {
+    sessioniface->call("set_sound_event_enable", flag);
+}
+
+bool SessionDispatcher::get_input_feedback_sounds_enable_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_input_feedback_sounds_enable");
+    return reply.value();
+}
+
+void SessionDispatcher::set_input_feedback_sounds_enable_qt(bool flag) {
+    sessioniface->call("set_input_feedback_sounds_enable", flag);
+}
+
+
 void SessionDispatcher::set_login_music_enable_qt(bool flag) {
     sessioniface->call("set_login_music_enable", flag);
 }

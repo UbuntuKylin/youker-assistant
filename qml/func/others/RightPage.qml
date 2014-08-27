@@ -375,7 +375,7 @@ Rectangle {
             width: 16; height: 16
         }
         Text{
-            text: qsTr("DistroWatch Ranking")//DistroWatch国际排名
+            text: qsTr("DistroWatch Ranking")//受欢迎程度排名
             font.bold:true
             color: "#383838"
             font.pixelSize: 12
@@ -385,7 +385,7 @@ Rectangle {
     Text {
         id: widthText
         visible: false
-        text: qsTr("Details")//详情
+        text: qsTr("Ubuntu Kylin Details")//Ubuntu Kylin 详情
     }
     Common.ColorButton {
         id: ubuntukylinBtn
@@ -393,16 +393,16 @@ Rectangle {
             top: splitbar.bottom
             topMargin: 4
             right: parent.right
-            rightMargin: 2
+            rightMargin: 0
         }
         colorNormal: "#00a0e9"
         colorHover: "#65cfff"
         colorPressed: "#65cfff"
-        sizeNormal: 12
-        sizeHover: 14
-        sizePressed: 14
-        height: 20
-        wordname: qsTr("Details"); width: widthText.width
+        sizeNormal: 10
+        sizeHover: 12
+        sizePressed: 12
+        height: 20; width: widthText.width
+        wordname: qsTr("Ubuntu Kylin Details")
         onClicked: {
             ukrect.showFlag = true;
         }
@@ -626,8 +626,8 @@ Rectangle {
             sizeNormal: 10
             sizeHover: 12
             sizePressed: 12
-            height: 20
-            wordname: qsTr("Hide"); width: hideText.width
+            height: 20; width: hideText.width
+            wordname: qsTr("Hide")
             onClicked: {
                 ukrect.showFlag = false;
             }

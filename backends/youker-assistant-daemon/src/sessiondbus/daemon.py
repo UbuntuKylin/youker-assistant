@@ -1176,6 +1176,24 @@ class SessionDaemon(dbus.service.Object):
 #    def set_default_sound(self, schema, key, type):
 #        self.soundconf.set_default_schema_value(schema, key, type)
 
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='')
+    def set_input_feedback_sounds_enable(self, flag):
+        self.soundconf.set_input_feedback_sounds_enable(flag)
+
+    # get enable the login music
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_input_feedback_sounds_enable(self):
+        return self.soundconf.get_input_feedback_sounds_enable()
+
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='')
+    def set_sound_event_enable(self, flag):
+        self.soundconf.set_sound_event_enable(flag)
+
+    # get enable the login music
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_sound_event_enable(self):
+        return self.soundconf.get_sound_event_enable()
+
     # set enable the login music
     @dbus.service.method(INTERFACE, in_signature='b', out_signature='')
     def set_login_music_enable(self, flag):

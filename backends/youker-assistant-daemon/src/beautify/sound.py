@@ -44,6 +44,25 @@ class Sound:
         else:
             raise NotImplemented
     # ----------------------------------
+    def set_input_feedback_sounds_enable(self, flag):
+        return gsettings.set('org.gnome.desktop.sound',
+            None,
+            'input-feedback-sounds',
+            'boolean', flag)
+
+    def get_input_feedback_sounds_enable(self):
+        return gsettings.get('org.gnome.desktop.sound',
+            None, 'input-feedback-sounds', 'boolean')
+
+    def set_sound_event_enable(self, flag):
+        return gsettings.set('org.gnome.desktop.sound',
+            None,
+            'event-sounds',
+            'boolean', flag)
+
+    def get_sound_event_enable(self):
+        return gsettings.get('org.gnome.desktop.sound',
+            None, 'event-sounds', 'boolean')
 
     # enable the login music
     def set_login_music_enable(self, flag):

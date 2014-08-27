@@ -257,6 +257,10 @@ public:
     Q_INVOKABLE void set_titlebar_right_qt(QString value);
 
     /*-------------------sound of beauty-------------------*/
+    Q_INVOKABLE void set_sound_event_enable_qt(bool flag);
+    Q_INVOKABLE bool get_sound_event_enable_qt();
+    Q_INVOKABLE void set_input_feedback_sounds_enable_qt(bool flag);
+    Q_INVOKABLE bool get_input_feedback_sounds_enable_qt();
     Q_INVOKABLE void set_login_music_enable_qt(bool flag);
     Q_INVOKABLE bool get_login_music_enable_qt();
     Q_INVOKABLE QString get_sound_theme_qt();

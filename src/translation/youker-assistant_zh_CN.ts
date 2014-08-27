@@ -2840,18 +2840,23 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">触摸板</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="230"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="249"/>
         <source>Logging...</source>
         <translation>正在登录...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="573"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="588"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="145"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="592"/>
         <source>Hits per day </source>
         <translation>每日点击次数 </translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="849"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="388"/>
+        <source>Ubuntu Kylin Details</source>
+        <translation>Ubuntu Kylin 详情</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="859"/>
         <source>Feedback</source>
         <translation>问题反馈</translation>
     </message>
@@ -2860,17 +2865,17 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">用户名：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="292"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="311"/>
         <source>Level:</source>
         <translation>等级：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="303"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="322"/>
         <source>Score:</source>
         <translation>经验值：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="262"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="281"/>
         <source>Logout</source>
         <translation>注销</translation>
     </message>
@@ -2889,13 +2894,12 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">摄像头</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="359"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="378"/>
         <source>DistroWatch Ranking</source>
-        <translation>DistroWatch受欢迎程度排名</translation>
+        <translation>受欢迎程度排名</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="369"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="386"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="405"/>
         <source>Details</source>
         <translation>详情</translation>
     </message>
@@ -2904,63 +2908,63 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">每日点击次数：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="602"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="620"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="612"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="630"/>
         <source>Hide</source>
         <translation>隐藏</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="636"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="646"/>
         <source>Last Update:</source>
         <translation>最后更新：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="655"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="665"/>
         <source>OS Type:</source>
         <translation>发行归类：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="673"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="683"/>
         <source>Based on:</source>
         <translation>基于何种发行：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="691"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="701"/>
         <source>Origin: </source>
         <translation>来源：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="709"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="719"/>
         <source>Architecture:</source>
         <translation>处理器架构：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="728"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="738"/>
         <source>Desktop:</source>
         <translation>桌面：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="747"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="757"/>
         <source>Category:</source>
         <translation>类型：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="765"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="775"/>
         <source>Status:</source>
         <translation>状态：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="783"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="793"/>
         <source>Popularity:</source>
         <translation>受欢迎程度排名：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="823"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="833"/>
         <source>Forum Help</source>
         <translation>论坛求助</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="840"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="850"/>
         <source>Features</source>
         <translation>新版本特性</translation>
     </message>
@@ -3045,7 +3049,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1322"/>
+        <location filename="../sessiondispatcher.cpp" line="1306"/>
         <source>Select folder</source>
         <translation>选择文件夹</translation>
     </message>
@@ -3066,6 +3070,16 @@ p, li { white-space: pre-wrap; }
         <translation>声音效果</translation>
     </message>
     <message>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="272"/>
+        <source>Event sounds:</source>
+        <translation>事件声音：</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="307"/>
+        <source>Input feedback sounds:</source>
+        <translation>输入反馈声音：</translation>
+    </message>
+    <message>
         <source>selected music file name in the list box, do something such as audition, substitution and reduction.</source>
         <translation type="obsolete">选中列表框中的音乐文件名，可以对系统事件的提示音进行试听、替换和还原。</translation>
     </message>
@@ -3083,7 +3097,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">已完成</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="181"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="193"/>
         <source>Sound theme:</source>
         <translation>声音主题：</translation>
     </message>
@@ -3092,9 +3106,8 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">确定</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="272"/>
         <source>Restore</source>
-        <translation>恢复默认</translation>
+        <translation type="obsolete">恢复默认</translation>
     </message>
     <message>
         <source>Tips: </source>
@@ -3105,24 +3118,21 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">当前主题已经为默认主题!</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="288"/>
         <source>System event tone: </source>
-        <translation>系统事件提示音：</translation>
+        <translation type="obsolete">系统事件提示音：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="258"/>
         <source>Listen</source>
-        <translation>试听</translation>
+        <translation type="obsolete">试听</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="118"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="130"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="265"/>
         <source>Replace</source>
-        <translation>替换</translation>
+        <translation type="obsolete">替换</translation>
     </message>
     <message>
         <source>Custom Sound Theme</source>
@@ -3137,7 +3147,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">声音设置：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/SoundEffects.qml" line="225"/>
+        <location filename="../../qml/func/settings/SoundEffects.qml" line="237"/>
         <source>Login tone: </source>
         <translation>登录提示音：</translation>
     </message>
@@ -3452,9 +3462,8 @@ p, li { white-space: pre-wrap; }
         <translation>显卡</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemInfo.qml" line="47"/>
         <source>SB</source>
-        <translation>声卡</translation>
+        <translation type="obsolete">声卡</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemInfo.qml" line="53"/>
@@ -3484,8 +3493,9 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">显示器</translation>
     </message>
     <message>
+        <location filename="../../qml/func/page/SystemInfo.qml" line="47"/>
         <source>Audio</source>
-        <translation type="obsolete">音频</translation>
+        <translation>声卡</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemInfo.qml" line="50"/>
