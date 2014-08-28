@@ -29,7 +29,8 @@ Rectangle {
     property int play_pause: 0
     property int chooseyy_height: 200
     property string actiontitle: qsTr("Sound effect")//声音效果
-    property string actiontext: qsTr("Selected music file name in the list box, do something such as audition, substitution and reduction.")//选中列表框中的音乐文件名，进行对应程序事件的试听、替换和还原。
+    property string actiontext: qsTr("Set the sound theme you want.")//设置你想要的声音主题。
+//    property string actiontext: qsTr("Selected music file in the list box, you may Listem, Replace and Restore.")//选中列表框中的音乐文件名，进行对应程序事件的试听、替换和还原。
     property int musiclist_num: 0
     property int current_index//当前主题的索引
 //    property int default_index//系统默认主题的索引
@@ -153,7 +154,7 @@ Rectangle {
     //分割条
     Common.Separator {
         id: top_splitbar
-        y: 60
+        y: 70
         anchors {
             left: parent.left
             leftMargin: 2

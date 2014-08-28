@@ -85,7 +85,7 @@ Rectangle {
                              "picture": "../../img/toolWidget/deb-min.png",
                              "detailstr": qsTr("cleaning up the maximum files in user-specified directory, to save disk space.")})
             if (filepage.resultFlag == false) {
-                toolkits.alertMSG(qsTr("None size of the file!"));// 没有该大小的文件！
+                toolkits.alertMSG(qsTr("Nothing found!"));// 没有该大小的文件！
             }
         }
     }
@@ -231,7 +231,7 @@ Rectangle {
                         if(filepage.null_flag == true) {
                            filepage.state = "LargestFileWorkEmpty";
                             //友情提示：         扫描内容为空，无需清理！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("The scan results are empty, no need to clean up !"));
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"),qsTr("The scan reslut is empty, nothing has been done!"));
                         }
                         else if(filepage.null_flag == false) {
                             //test 0410

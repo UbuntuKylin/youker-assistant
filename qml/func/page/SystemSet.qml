@@ -120,7 +120,7 @@ Item {
         }
         Text {
             id: b11
-            text: qsTr("Dead pixel test")//坏点检测
+            text: qsTr("Dead pixel check")//坏点检测
         }
         Text {
             id: b12
@@ -504,7 +504,7 @@ Item {
                 sizeHover: 14
                 sizePressed: 14
                 height: 20
-                wordname: qsTr("Dead pixel test"); width: b11.width//坏点检测
+                wordname: qsTr("Dead pixel check"); width: b11.width//坏点检测
                 onClicked: {
                     sessiondispatcher.showCheckscreenDialog();
                 }
@@ -831,7 +831,7 @@ Item {
 //                            }
 //                            Text {
 //                                id: b11
-//                                text: qsTr("Dead pixel test")//坏点检测
+//                                text: qsTr("Dead pixel check")//坏点检测
 //                                visible: false
 //                            }
 //                        }
@@ -845,7 +845,7 @@ Item {
 //                            }//更改触摸板设置
 //                            Rectangle {height: 18; width: 1; color: "#b9c5cc"; anchors.verticalCenter: parent.verticalCenter }
 //                            Common.StyleButton {
-//                                wordname: qsTr("Dead pixel test"); width: b11.width//坏点检测
+//                                wordname: qsTr("Dead pixel check"); width: b11.width//坏点检测
 //                                onClicked: {
 //                                    sessiondispatcher.showCheckscreenDialog();
 //                                }

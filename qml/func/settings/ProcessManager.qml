@@ -220,7 +220,7 @@ Rectangle {
     //分割条
     Common.Separator {
         id: top_splitbar
-        y: 60
+        y: 70
         anchors {
             left: parent.left
             leftMargin: 2

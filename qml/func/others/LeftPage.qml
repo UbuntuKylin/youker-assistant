@@ -126,15 +126,15 @@ Rectangle {
                 //清理完毕后显示清理总数
                 if(leftbar.cookiesFlag) {
                     cookiedes.visible = true;
-                    cookiedes.text = qsTr("(totally cleared") + leftbar.cookies + qsTr("Cookies)");//（共清理掉    条Cookies）
+                    cookiedes.text = qsTr("(totally cleared") + " " + leftbar.cookies + " "+ qsTr("Cookies)");//（共清理掉    条Cookies）
                 }
                 if(leftbar.garbageFlag) {
                     cachedes.visible = true;
-                    cachedes.text = qsTr("(totally cleared") + leftbar.garbage + qsTr("garbage)");//（共清理掉      垃圾）
+                    cachedes.text = qsTr("(totally cleared") + " " + leftbar.garbage + " "+ qsTr("garbage)");//（共清理掉      垃圾）
                 }
                 if(leftbar.traceFlag) {
                     historydes.visible = true;
-                    historydes.text = qsTr("(totally cleared") + leftbar.trace + qsTr("historical records)");//（共清理掉     条历史记录）
+                    historydes.text = qsTr("(totally cleared") + " " + leftbar.trace  + " "+ qsTr("historical records)");//（共清理掉     条历史记录）
                 }
                 //显示清理总数后把与之相关的一些标记和变量恢复默认值
                 leftbar.cookies = "";
@@ -268,7 +268,7 @@ Rectangle {
                 id: text0
 //                elide: Text.ElideRight//add by kobe: 超出设定宽度时用...显示
                 width:leftbar.width-180
-                text: qsTr("Quick clean up system junks, saving disk space and improving the system efficiency !")//一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！
+                text: qsTr("Quick clean up system trash, saving disk space and improving the system efficiency!")//一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！
                 font.bold: true
                 wrapMode: Text.WordWrap
                 font.pixelSize: 14
@@ -277,7 +277,7 @@ Rectangle {
             Text {
                 id: text1
                 width: leftbar.width-180
-                text: qsTr("To help you quick clean up the Cookies, garbage, traces and plug-ins in your system")//一键帮您清理系统中的 Cookies、垃圾、痕迹和插件！
+                text: qsTr("To help you quick clean up the Cookies, garbage, traces and plug-ins.")//一键帮您清理系统中的 Cookies、垃圾、痕迹和插件！
                 wrapMode: Text.WordWrap
                 font.pixelSize: 12
                 color: "#7a7a7a"

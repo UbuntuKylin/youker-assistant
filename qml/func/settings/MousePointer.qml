@@ -94,7 +94,7 @@ Rectangle {
     //分割条
     Common.Separator {
         id: top_splitbar
-        y: 60
+        y: 70
         anchors {
             left: parent.left
             leftMargin: 2
@@ -108,7 +108,7 @@ Rectangle {
             left: parent.left
             leftMargin: 60
             top: top_splitbar.bottom
-            topMargin: 50
+            topMargin: 40
         }
         spacing: 20
         z: 11

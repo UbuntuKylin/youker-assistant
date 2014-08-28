@@ -27,7 +27,7 @@ Rectangle {
     property int lisv_height: 250
     property string image_path: ""
     property string actiontitle: qsTr("Boot animation settings")//开机动画设置
-    property string actiontext: qsTr("Click the ' Custom Image ' button to select the picture you want to add, select the picture you want to set and click ' OK ' button to complete the setup.")//单击＂自定义图片＂按钮选择需要添加的图片，选中列表中要设置的图片名称，单击＂确定＂按钮完成设置。
+    property string actiontext: qsTr("Click the \"Custom Picture\" button to select the picture you want to add, click the picture you want to set and push the \"OK\" button to complete.")//单击＂自定义图片＂按钮选择需要添加的图片，选中列表中要设置的图片名称，单击＂确定＂按钮完成设置。
     property int num: 0
     property string selectedimage: ""
 
@@ -124,7 +124,7 @@ Rectangle {
     //分割条
     Common.Separator {
         id: top_splitbar
-        y: 60
+        y: 70
         anchors {
             left: parent.left
             leftMargin: 2
@@ -153,7 +153,7 @@ Rectangle {
             fontcolor:"#707070"
             fontsize: 12
             width: 100; height: 28
-            text: qsTr("Custom picture")//自定义图片
+            text: qsTr("Custom Picture")//自定义图片
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
                 bootimagepage.image_path = systemdispatcher.showSelectFileDialog("bootanimation");

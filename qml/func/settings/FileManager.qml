@@ -24,7 +24,7 @@ Rectangle {
 //    color: "#e4f2fc"
 
     property string actiontitle: qsTr("File Manager")//文件管理器
-    property string actiontext: qsTr("Manage the Nautilus file manager. Tip: the cache time or cache size been setted to -1, it will disable cleaning.")//管理Nautilus文件管理器。注意：如果缩略图缓存时间或尺寸被设置为-1，缩略图将不会被清理。
+    property string actiontext: qsTr("Manage the Nautilus file manager. Tips: if the thumbnail's cache time or size is set to -1, it will not be checked.")//管理Nautilus文件管理器。注意：如果缩略图缓存时间或尺寸被设置为-1，缩略图将不会被清理。
 
     property bool first_icon_size: false
     property bool first_cache_time: false
@@ -151,7 +151,7 @@ Rectangle {
     //分割条
     Common.Separator {
         id: top_splitbar
-        y: 60
+        y: 70
         anchors {
             left: parent.left
             leftMargin: 2
@@ -164,7 +164,7 @@ Rectangle {
             left: parent.left
             leftMargin: 60
             top: top_splitbar.bottom
-            topMargin: 50
+            topMargin: 40
         }
         spacing: 10
         z: 11
@@ -185,7 +185,7 @@ Rectangle {
                 Common.Label {
                     id: pathbarlabel
                     width: 270
-                    text: qsTr("Use the location entry instead of the pathbar: ")//路径输入框取代路径栏：
+                    text: qsTr("Display entry location: ")//路径输入框取代路径栏：
                     font.pixelSize: 12
                     color: "#383838"
                     anchors.verticalCenter: parent.verticalCenter
@@ -365,7 +365,7 @@ Rectangle {
                 Common.Label {
                     id: programslabel
                     width: 270
-                    text: qsTr("Prompt or autorun/autostart programs: ")//提示自动运行的程序：
+                    text: qsTr("Prompt autorun programs: ")//提示自动运行的程序：
                     font.pixelSize: 12
                     color: "#383838"
                     anchors.verticalCenter: parent.verticalCenter

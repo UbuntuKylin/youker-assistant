@@ -93,7 +93,7 @@ Rectangle {
                         cookiespage.firefox_showNum = false;
                         if(cookiespage.flag == false) {//点击扫描时的获取数据，此时显示该对话框
                             //友情提示：      扫描内容为空，无需清理！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"));
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan reslut is empty, nothing has been done!"));
                         }
                         else {//清理apt后的重新获取数据，此时不需要显示对话框
                             cookiespage.flag = false;
@@ -150,7 +150,7 @@ Rectangle {
 
                         if(cookiespage.flag == false) {//点击扫描时的获取数据，此时显示该对话框
                             //友情提示：      扫描内容为空，无需清理！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"));
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan reslut is empty, nothing has been done!"));
                         }
                         else {//清理apt后的重新获取数据，此时不需要显示对话框
                             cookiespage.flag = false;

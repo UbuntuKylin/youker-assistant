@@ -21,7 +21,7 @@ Rectangle {
     width: parent.width; height: 437
 //    color: "#e4f2fc"
 
-    property string title: qsTr("Deep cleaning up the system cache")//深度清理系统缓存
+    property string title: qsTr("Cleaning up the system cache")//深度清理系统缓存
     property string description: qsTr("Deep cleaning up the system cache, to save disk space")//深度清理系统缓存，节省磁盘空间！
     property string btnFlag: "cache_scan"//扫描或者清理的标记：cache_scan/cache_work
     property bool aptresultFlag: false//判断apt扫描后的实际内容是否为空，为空时为false，有内容时为true
@@ -159,7 +159,7 @@ Rectangle {
                     cachepage.state = "AptWorkEmpty";
                     if(cachepage.flag == false) {//点击扫描时的获取数据，此时显示该对话框
                         //友情提示：      扫描内容为空，无需清理！
-                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"));
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan reslut is empty, nothing has been done!"));
                     }
                     else {//清理apt后的重新获取数据，此时不需要显示对话框
                         cachepage.flag = false;

@@ -25,7 +25,7 @@ Rectangle {
     height: 476
 
     property string actiontitle: qsTr("Camera")//摄像头
-    property string actiontext: qsTr("A simple camera and mirror.")//利用摄像头进行简单的拍照和照镜子。
+    property string actiontext: qsTr("An application to take pictures with the device camera.")//利用摄像头进行简单的拍照和照镜子。
 
     Component.onCompleted: {
     }
@@ -73,7 +73,7 @@ Rectangle {
     //分割条
     Common.Separator {
         id: top_splitbar
-        y: 60
+        y: 70
         anchors {
             left: parent.left
             leftMargin: 2
@@ -90,7 +90,7 @@ Rectangle {
         }
         Text {
             width: 600
-            text: qsTr("Press enter the [Esc] button at the top left of the keyboard, it can take picture and close the camera, also photos saved in home directory of the current user.")//按下键盘左上方的 [Esc] 按键可以拍照并关闭摄像头，照片保存在当前用户主目录下。
+            text: qsTr("Press the [ESC] button to take picture and turn the camera off , the photo saved in home directory by default.")//按下键盘左上方的 [Esc] 按键可以拍照并关闭摄像头，照片保存在当前用户主目录下。
             wrapMode: Text.WordWrap
         }
 

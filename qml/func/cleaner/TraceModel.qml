@@ -53,7 +53,7 @@ Rectangle {
                     tracepage.null_flag = true;
                     internetBtnRow.state = "BrowserWorkEmpty";
                     //友情提示：      扫描内容为空，无需清理！
-                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"));
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan reslut is empty, nothing has been done!"));
                 }
                 else {
                     tracepage.null_flag = false;
@@ -79,7 +79,7 @@ Rectangle {
                     tracepage.null_flag3 = true;
                     chromiumBtnRow.state = "ChromiumWorkEmpty";
                     //友情提示：      扫描内容为空，无需清理！
-                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"));
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan reslut is empty, nothing has been done!"));
                 }
                 else {
                     tracepage.null_flag3 = false;
@@ -98,7 +98,7 @@ Rectangle {
                     tracepage.null_flag2 = true;
                     fileBtnRow.state = "SystemWorkEmpty";
                     //友情提示      扫描内容为空，无需清理！
-                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"));
+                    sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan reslut is empty, nothing has been done!"));
                 }
                 else {
                     tracepage.null_flag2 = false;
@@ -401,7 +401,7 @@ Rectangle {
                         if(tracepage.null_flag == true) {
                             internetBtnRow.state = "BrowserWorkEmpty";
                             //友情提示：      扫描内容为空，无需清理！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"));
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan reslut is empty, nothing has been done!"));
                         }
                         else {
                             systemdispatcher.set_user_homedir_qt();
@@ -511,7 +511,7 @@ Rectangle {
                         if(tracepage.null_flag3 == true) {
                             internetBtnRow.state = "ChromiumWorkEmpty";
                             //友情提示：      扫描内容为空，无需清理！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"));
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan reslut is empty, nothing has been done!"));
                         }
                         else {
                             systemdispatcher.set_user_homedir_qt();
@@ -621,7 +621,7 @@ Rectangle {
                         if(tracepage.null_flag2 == true) {
                             tracepage.state = "SystemWorkEmpty";
                             //友情提示：      扫描内容为空，无需清理！
-                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"));
+                            sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan reslut is empty, nothing has been done!"));
                         }
                         else {
                             systemdispatcher.set_user_homedir_qt();

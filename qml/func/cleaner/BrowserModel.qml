@@ -123,7 +123,7 @@ Rectangle {
                     browserpage.state = "BrowserWorkEmpty";
                     if(browserpage.flag == false) {//点击扫描时的获取数据，此时显示该对话框
                         //友情提示：      扫描内容为空，无需清理！
-                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan results are empty, no need to clean up !"));
+                        sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("The scan reslut is empty, nothing has been done!"));
                     }
                     else {//清理firefox后的重新获取数据，此时不需要显示对话框
                         browserpage.flag = false;

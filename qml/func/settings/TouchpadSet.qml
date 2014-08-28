@@ -26,7 +26,7 @@ Rectangle {
     property string scrollbars_mode: ""
     property string touchscrolling_mode: ""
     property string actiontitle: qsTr("Touchpad settings")//触摸板设置
-    property string actiontext: qsTr("By setting the relevant properties of your touchpad, make the operation more convenient.")//通过调整您触摸板的相关设置，使操作更加便捷。
+    property string actiontext: qsTr("Setting the relevant properties of your touchpad,make the operation more convenient.")//通过调整您触摸板的相关设置，使操作更加便捷。
 
     //使用云配置后，控件状态根据配置发生相应的变化
 //    Connections
@@ -131,7 +131,7 @@ Rectangle {
     //分割条
     Common.Separator {
         id: top_splitbar
-        y: 60
+        y: 70
         anchors {
             left: parent.left
             leftMargin: 2
@@ -145,7 +145,7 @@ Rectangle {
             left: parent.left
             leftMargin: 60
             top: top_splitbar.bottom
-            topMargin: 50
+            topMargin: 40
         }
         z: 11
         Row {
@@ -166,7 +166,7 @@ Rectangle {
                 Common.Label {
                     width: 160
                     anchors.verticalCenter: parent.verticalCenter
-                    text: qsTr("Enable/Disable touchpad: ")//启用/禁用触摸板：
+                    text: qsTr("Enable touchpad: ")//启用/禁用触摸板：
                     font.pixelSize: 12
                     color: "#7a7a7a"
                 }
@@ -225,7 +225,7 @@ Rectangle {
                 }
                 Common.Label {
                     width: 160
-                    text: qsTr("Touchpad horizontal scroll: ")//触摸板横向滚动：
+                    text: qsTr("Enable horizontal scrolling: ")//触摸板横向滚动：
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
@@ -378,7 +378,7 @@ Rectangle {
                 }
                 Common.Label {
                     width: 160
-                    text: qsTr("Touchpad scroll trigger mode: ")//触摸板滚动触发方式：
+                    text: qsTr("Panel layout: ")//触摸板滚动触发方式：
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter
@@ -392,7 +392,7 @@ Rectangle {
                         spacing: 134
                         Common.CheckBox {
                             id:edge
-                            titleName: qsTr("Edgemotion")//边缘触发
+                            titleName: qsTr("Edge Scrolling")//边缘触发
                             checked: (touchpadsetpage.touchscrolling_mode == "edge-scrolling") ? true : false
                             flag: "radio"
                             onClicked: {
@@ -406,7 +406,7 @@ Rectangle {
                         }
                         Common.CheckBox {
                             id: twofinger
-                            titleName: qsTr("Twofinger Scroll")//双指触发
+                            titleName: qsTr("Two-finger Scrolling")//双指触发
                             checked: (touchpadsetpage.touchscrolling_mode == "two-finger-scrolling") ? true : false
                             flag: "radio"
                             onClicked: {

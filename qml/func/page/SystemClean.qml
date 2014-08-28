@@ -33,7 +33,7 @@ Item {
             }
         }
         Common.TabPage {
-            title:qsTr("Package Uninstall")//包卸载
+            title:qsTr("Uninstall Packages")//包卸载
             anchors.fill: parent
             Cleaner.PackageModel {
                 id: packagemodel

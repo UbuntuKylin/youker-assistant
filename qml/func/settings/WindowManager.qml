@@ -34,7 +34,7 @@ Rectangle {
     property int right_default_index//系统默认的索引
 
     property string actiontitle: qsTr("Window")//窗口
-    property string actiontext: qsTr("Manage Window Manager settings.")//管理窗口管理器的设置
+    property string actiontext: qsTr("Window Manager settings.")//管理窗口管理器的设置
     //背景
 //    Image {
 //        source: "../../img/skin/bg-middle.png"
@@ -275,7 +275,7 @@ Rectangle {
     //分割条
     Common.Separator {
         id: top_splitbar
-        y: 60
+        y: 70
         anchors {
             left: parent.left
             leftMargin: 2
@@ -289,7 +289,7 @@ Rectangle {
             left: parent.left
             leftMargin: 60
             top: top_splitbar.bottom
-            topMargin: 50
+            topMargin: 40
         }
         z: 11
         Row {
@@ -310,7 +310,7 @@ Rectangle {
                 }
                 Common.Label {
                     width: 160
-                    text: qsTr("Window control btn position:")//窗口控制按钮位置：
+                    text: qsTr("Window function button:")//窗口控制按钮位置：
                     font.pixelSize: 12
                     color: "#7a7a7a"
                     anchors.verticalCenter: parent.verticalCenter

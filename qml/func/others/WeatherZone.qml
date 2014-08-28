@@ -117,7 +117,7 @@ Rectangle {
 
     Text {
         id: ptimeText
-        text: qsTr("Release time")//发布时间
+        text: qsTr("Publish")//发布时间
         font.bold: true
         font.pixelSize: 14
         color: "#383838"
