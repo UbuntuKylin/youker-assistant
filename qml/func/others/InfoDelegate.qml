@@ -32,7 +32,7 @@ Item {
             id: icon
             width: 16
             height: 16
-            source: "../../img/logo/component/" + iconName + ".png"
+            source: "../../img/component/" + iconName + ".png"
             anchors.verticalCenter: parent.verticalCenter
         }
         //显示文字

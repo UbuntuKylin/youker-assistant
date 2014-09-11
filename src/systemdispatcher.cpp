@@ -21,7 +21,7 @@
 #include <QMessageBox>
 #include "kthread.h"
 
-extern QString music_path;
+//extern QString music_path;
 
 SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject(parent)
@@ -227,9 +227,9 @@ QString SystemDispatcher::get_system_daemon_qt() {
     return reply.value();
 }
 
-void SystemDispatcher::getMusicFileAbsolutePath(QString musicpath) {
-    music_path = musicpath;
-}
+//void SystemDispatcher::getMusicFileAbsolutePath(QString musicpath) {
+//    music_path = musicpath;
+//}
 
 void SystemDispatcher::listen_music(QString path) {
     if (QSound::isAvailable()) {

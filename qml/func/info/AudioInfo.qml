@@ -30,10 +30,15 @@ Rectangle {
     property bool secondFlag: false
     property bool thirdFlag: false
     property bool fourthFlag: false
+    property string homepath
     ListModel {id: firstModel}
     ListModel {id: secondModel}
     ListModel {id: thirdModel}
     ListModel {id: fourthModel}
+
+    Component.onCompleted: {
+        home.homepath = sessiondispatcher.getHomePath();
+    }
 
     function show_several_audio(num)
     {
@@ -53,7 +58,8 @@ Rectangle {
 
         splitbar1.visible = true;
         logo1.visible = true;
-        logo1.source = InfoGroup.judgeName(vendorname[0].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorname[0].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+        logo1.source = InfoGroup.judgeName(vendorname[0].toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + vendorname[0].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+//        logo1.source = InfoGroup.judgeName(vendorname[0].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorname[0].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         //--------------second--------------
         home.secondFlag = true;
         secondView.visible = true;
@@ -65,7 +71,8 @@ Rectangle {
         secondModel.append({"title": qsTr("Audio Driver:"), "result": drivers[1]});//声卡驱动：
         splitbar2.visible = true;
         logo2.visible = true;
-        logo2.source = InfoGroup.judgeName(vendorname[1].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorname[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+//        logo2.source = InfoGroup.judgeName(vendorname[1].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorname[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+        logo2.source = InfoGroup.judgeName(vendorname[1].toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + vendorname[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         if(num == 2) {
             //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
             listItem.height = (home.itemNum*20 + (home.itemNum - 1)*10 + 10*2) *2 + 40;
@@ -82,7 +89,8 @@ Rectangle {
             thirdModel.append({"title": qsTr("Audio Driver:"), "result": drivers[2]});//声卡驱动：
             splitbar3.visible = true;
             logo3.visible = true;
-            logo3.source = InfoGroup.judgeName(vendorname[2].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorname[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+//            logo3.source = InfoGroup.judgeName(vendorname[2].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorname[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+            logo3.source = InfoGroup.judgeName(vendorname[2].toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + vendorname[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             if(num == 3) {
                 //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
                 listItem.height = (home.itemNum*20 + (home.itemNum - 1)*10 + 10*2) *3 + 60;
@@ -98,7 +106,8 @@ Rectangle {
                 fourthModel.append({"title": qsTr("Audio Driver:"), "result": drivers[3]});//声卡驱动：
                 splitbar4.visible = true;
                 logo4.visible = true;
-                logo4.source = InfoGroup.judgeName(vendorname[3].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorname[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+//                logo4.source = InfoGroup.judgeName(vendorname[3].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorname[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+                logo4.source = InfoGroup.judgeName(vendorname[3].toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + vendorname[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
                 //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
                 listItem.height = (home.itemNum*20 + (home.itemNum - 1)*10 + 10*2) * + 80;
             }
@@ -126,7 +135,8 @@ Rectangle {
 
             splitbar1.visible = true;
             logo1.visible = true;
-            logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+//            logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+            logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
             listItem.height = home.itemNum*20 + (home.itemNum - 1)*home.viewSpace + home.viewSpace*2 + 20;
         }

@@ -37,7 +37,7 @@ public:
     //得到SystemDbus的验证值，可以通过其判断该服务是否正在运行
     Q_INVOKABLE QString get_system_daemon_qt();
     //得到音乐文件的绝对路径
-    Q_INVOKABLE void getMusicFileAbsolutePath(QString musicpath);
+//    Q_INVOKABLE void getMusicFileAbsolutePath(QString musicpath);
     //为系统设置来设置登录系统的普通用户的用户目录
     Q_INVOKABLE void set_homedir_qt();
     //为系统清理来设置登录系统的普通用户的用户目录

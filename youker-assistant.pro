@@ -2,8 +2,15 @@ TEMPLATE = subdirs
 SUBDIRS += src qml backends
 
 # i18n setting
-TRANSLATIONS += \
-    src/translation/youker-assistant_zh_CN.ts
+#TRANSLATIONS += \
+#    src/translation/youker-assistant_es.ts
+#    src/translation/youker-assistant_de.ts \
+#    src/translation/youker-assistant_fr.ts \
+#    src/translation/youker-assistant_ru.ts \
+
+
+
+#    src/translation/youker-assistant_zh_CN.ts
 #    src/translation/youker-assistant_ar.ts \
 #    src/translation/youker-assistant_ast.ts \
 #    src/translation/youker-assistant_be.ts \

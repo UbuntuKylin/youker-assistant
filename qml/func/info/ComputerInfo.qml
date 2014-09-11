@@ -23,12 +23,14 @@ Rectangle {
     id: home; width: parent.width; height: 476
 //    color: "transparent"
 //    color: "#e4f2fc"
+    property string homepath
 
     Component.onCompleted: {
+        home.homepath = sessiondispatcher.getHomePath();
         systemdispatcher.get_computer_info_qt();//获取详细信息
         var vendorName = systemdispatcher.getHWSingleInfo("ComVendor", "computer").toUpperCase();
-        logo.source = InfoGroup.judgeName(vendorName) ? ("../../img/logo/Manufacturer/" + vendorName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-
+        logo.source = InfoGroup.judgeName(vendorName) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + vendorName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+//        logo.source = InfoGroup.judgeName(vendorName) ? ("../../img/logo/Manufacturer/" + vendorName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         comvendorText.text = vendorName;
         comproductText.text = systemdispatcher.getHWSingleInfo("ComProduct", "computer");
         comversionText.text = systemdispatcher.getHWSingleInfo("ComVersion", "computer");

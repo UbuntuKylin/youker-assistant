@@ -63,6 +63,7 @@ from camera.capture import Capture
 #from weather.weatherinfo import WeatherInfo
 from weather.yahoo import YahooWeather
 from common import *
+from unzip import unzip_resource
 from piston_mini_client import APIError
 import httplib2
 from weather.piston import WeatherPistonAPI
@@ -129,6 +130,10 @@ class SessionDaemon(dbus.service.Object):
         self.ip_addr = get_ip()
         if self.ip_addr not in (False, None, {}, '', '[]', "['']"):
             self.access_weather('ip_addr', 'kobe')
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
+    def unzip_resource_uk(self, path):
+        return unzip_resource(path)
 
     #-----------------------------distrowatch rank-----------------------------
     def copy_distrowatch_default_conf(self):

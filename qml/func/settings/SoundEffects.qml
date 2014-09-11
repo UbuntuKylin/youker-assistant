@@ -16,7 +16,7 @@
 
 import QtQuick 1.1
 import "../common" as Common
-import AudioType 0.1
+//import AudioType 0.1
 
 Rectangle {
     id: soundeffectspage
@@ -109,7 +109,7 @@ Rectangle {
     }
 
 
-    QmlAudio{ id: song }
+//    QmlAudio{ id: song }
 
     Row {
         spacing: 20

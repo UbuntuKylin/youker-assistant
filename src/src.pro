@@ -1,7 +1,7 @@
 TEMPLATE = app
 LANGUAGE = C++
 TARGET = youker-assistant
-QT += core gui phonon declarative dbus xml
+QT += core gui declarative dbus xml
 
 CONFIG += qt \
     warn_on \
@@ -73,7 +73,6 @@ HEADERS += homepage.h \
     sessiondispatcher.h \
     modaldialog.h \
     warningdialog.h \
-    qmlaudio.h \
     qrangemodel.h \
     qrangemodel_p.h \
     qstyleitem.h \
@@ -98,7 +97,8 @@ HEADERS += homepage.h \
     commonobject.h \
     clounddispatcher.h \
     monitordispatcher.h \
-    acceleratedispatcher.h
+    acceleratedispatcher.h \
+    ftpmanager.h
 
 SOURCES += main.cpp \
     homepage.cpp \
@@ -119,7 +119,6 @@ SOURCES += main.cpp \
     sessiondispatcher.cpp \
     modaldialog.cpp \
     warningdialog.cpp \
-    qmlaudio.cpp \
     qrangemodel.cpp \
     qstyleitem.cpp \
     qwheelarea.cpp \
@@ -143,7 +142,8 @@ SOURCES += main.cpp \
     commonobject.cpp \
     clounddispatcher.cpp \
     monitordispatcher.cpp \
-    acceleratedispatcher.cpp
+    acceleratedispatcher.cpp \
+    ftpmanager.cpp
 
 RESOURCES += pixmap.qrc
 

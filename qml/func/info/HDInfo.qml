@@ -34,6 +34,11 @@ Rectangle {
     ListModel {id: thirdModel}
     ListModel {id: fourthModel}
 
+    property string homepath
+    Component.onCompleted: {
+        home.homepath = sessiondispatcher.getHomePath();
+    }
+
     function show_several_harddisk(num)
     {
         var diskmodel = systemdispatcher.getHWSingleInfo("DiskProduct", "harddisk").split("<1_1>");
@@ -55,11 +60,13 @@ Rectangle {
         firstModel.append({"title": qsTr("Serial Number: "), "result": diskserial[0]});//序列号：
         splitbar1.visible = true;
         logo1.visible = true;
-        if(diskvendor[0] == "Western Digital") {
-            logo1.source = "../../img/logo/Manufacturer/WDC.jpg";
+        if(diskvendor[0] == "Western Digital") {//
+//            logo1.source = "../../img/logo/Manufacturer/WDC.jpg";
+            logo1.source = home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + "WDC.jpg";
         }
         else {
-            logo1.source = InfoGroup.judgeName(diskvendor[0].toUpperCase()) ? ("../../img/logo/Manufacturer/" + diskvendor[0].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+//            logo1.source = InfoGroup.judgeName(diskvendor[0].toUpperCase()) ? ("../../img/logo/Manufacturer/" + diskvendor[0].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+            logo1.source = InfoGroup.judgeName(diskvendor[0].toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + diskvendor[0].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         }
 
         //--------------second--------------
@@ -75,10 +82,12 @@ Rectangle {
         splitbar2.visible = true;
         logo2.visible = true;
         if(diskvendor[1] == "Western Digital") {
-            logo2.source = "../../img/logo/Manufacturer/WDC.jpg";
+//            logo2.source = "../../img/logo/Manufacturer/WDC.jpg";
+            logo2.source = home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + "WDC.jpg";
         }
         else {
-            logo2.source = InfoGroup.judgeName(diskvendor[1].toUpperCase()) ? ("../../img/logo/Manufacturer/" + diskvendor[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+//            logo2.source = InfoGroup.judgeName(diskvendor[1].toUpperCase()) ? ("../../img/logo/Manufacturer/" + diskvendor[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+            logo2.source = InfoGroup.judgeName(diskvendor[1].toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + diskvendor[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         }
         if(num == 2) {
             //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
@@ -98,10 +107,12 @@ Rectangle {
             splitbar3.visible = true;
             logo3.visible = true;
             if(diskvendor[2] == "Western Digital") {
-                logo3.source = "../../img/logo/Manufacturer/WDC.jpg";
+//                logo3.source = "../../img/logo/Manufacturer/WDC.jpg";
+                logo3.source = home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + "WDC.jpg";
             }
             else {
-                logo3.source = InfoGroup.judgeName(diskvendor[2].toUpperCase()) ? ("../../img/logo/Manufacturer/" + diskvendor[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+//                logo3.source = InfoGroup.judgeName(diskvendor[2].toUpperCase()) ? ("../../img/logo/Manufacturer/" + diskvendor[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+                logo3.source = InfoGroup.judgeName(diskvendor[2].toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + diskvendor[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             }
             if(num == 3) {
                 //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
@@ -120,10 +131,12 @@ Rectangle {
                 splitbar4.visible = true;
                 logo4.visible = true;
                 if(diskvendor[3] == "Western Digital") {
-                    logo4.source = "../../img/logo/Manufacturer/WDC.jpg";
+//                    logo4.source = "../../img/logo/Manufacturer/WDC.jpg";
+                    logo4.source = home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + "WDC.jpg";
                 }
                 else {
-                    logo4.source = InfoGroup.judgeName(diskvendor[3].toUpperCase()) ? ("../../img/logo/Manufacturer/" + diskvendor[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+//                    logo4.source = InfoGroup.judgeName(diskvendor[3].toUpperCase()) ? ("../../img/logo/Manufacturer/" + diskvendor[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+                    logo4.source = InfoGroup.judgeName(diskvendor[3].toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + diskvendor[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
                 }
                 //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
                 listItem.height = (home.itemNum*20 + (home.itemNum - 1)*10 + 10*2) *4;
@@ -153,10 +166,12 @@ Rectangle {
             splitbar1.visible = true;
             logo1.visible = true;
             if(vendorName == "Western Digital") {
-                logo1.source = "../../img/logo/Manufacturer/WDC.jpg";
+//                logo1.source = "../../img/logo/Manufacturer/WDC.jpg";
+                logo1.source = home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + "WDC.jpg";
             }
             else {
-                logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+//                logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+                logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             }
 
             //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 硬盘个数

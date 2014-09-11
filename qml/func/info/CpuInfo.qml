@@ -24,13 +24,17 @@ Rectangle {
     width: parent.width; height: 476
 //    color: "transparent"
 //    color: "#e4f2fc"
+    property string homepath
+    Component.onCompleted: {
+        home.homepath = sessiondispatcher.getHomePath();
+    }
 
 //    Component.onCompleted: {
     function init_data() {
         systemdispatcher.get_cpu_info_qt();//获取详细信息
         var cpuName = systemdispatcher.getHWSingleInfo("CpuVendor", "cpu");
-        logo.source = InfoGroup.judgeName(cpuName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + cpuName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-
+//        logo.source = InfoGroup.judgeName(cpuName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + cpuName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+        logo.source = InfoGroup.judgeName(cpuName.toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + cpuName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         cpuversionText.text = systemdispatcher.getHWSingleInfo("CpuVersion", "cpu");
         cpuverdorText.text = cpuName;
         cpuserialText.text = systemdispatcher.getHWSingleInfo("CpuSerial", "cpu");

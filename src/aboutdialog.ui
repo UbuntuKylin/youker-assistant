@@ -73,7 +73,7 @@
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="label_4">
+    <widget class="QLabel" name="versionlabel">
      <property name="geometry">
       <rect>
        <x>296</x>
@@ -83,7 +83,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>V1.2.0</string>
+      <string/>
      </property>
     </widget>
     <widget class="QTextEdit" name="textEdit">

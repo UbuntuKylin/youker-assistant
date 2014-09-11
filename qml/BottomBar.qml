@@ -25,7 +25,7 @@ Rectangle {
     width: 850
     height: 26
     color: "transparent"
-    property string version: "V1.2.0"
+    property string version: "V1.3.0"
 
     CloundDispatcher {  id: clounddispatcher  }
     Toolkits{ id: toolkits }

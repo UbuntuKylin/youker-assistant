@@ -34,7 +34,7 @@
 #include "processmanager.h"
 #include "devicemanager.h"
 #include "slidershow.h"
-#include "qmlaudio.h"
+//#include "qmlaudio.h"
 #include "qrangemodel.h"
 #include "qstyleitem.h"
 #include "qwheelarea.h"
@@ -57,7 +57,7 @@ void registerTypes() {
     qmlRegisterType<CloundDispatcher>("CloundType", 0, 1, "CloundDispatcher");
     qmlRegisterType<ProcessManager>("ProcessType", 0, 1, "ProcessManager");
     qmlRegisterType<DeviceManager>("DeviceType", 0, 1, "DeviceManager");
-    qmlRegisterType<QmlAudio>("AudioType", 0, 1, "QmlAudio");
+//    qmlRegisterType<QmlAudio>("AudioType", 0, 1, "QmlAudio");
     qmlRegisterType<QRangeModel>("RangeModelType", 0, 1, "RangeModel");
     qmlRegisterType<QStyleItem>("StyleItemType", 0, 1, "StyleItem");
     qmlRegisterType<QWheelArea>("WheelAreaType", 0, 1, "WheelArea");
@@ -114,7 +114,7 @@ int main(int argc, char** argv)
 
     QString locale = QLocale::system().name();
     QTranslator translator;
-    if(locale == "zh_CN") {
+    if(locale == "zh_CN" || locale == "es" || locale == "fr" || locale == "de" || locale == "ru") {//中文 西班牙语 法语 德语 俄语
         //加载Qt和QML文件的国际化
         if(!translator.load("youker-assistant_" + locale + ".qm",
                             ":/translate/translation/"))

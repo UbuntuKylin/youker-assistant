@@ -23,8 +23,12 @@ Rectangle {
     width: parent.width; height: 476
 //    color: "transparent"
 //    color: "#e4f2fc"
+    property string homepath
 
-//    Component.onCompleted: {
+    Component.onCompleted: {
+        home.homepath = sessiondispatcher.getHomePath();
+    }
+
     function init_data() {
         if (sessiondispatcher.read_battery_info_qt()) {
             var data = sessiondispatcher.getBatterySingleInfo("POWER_SUPPLY_NAME");
@@ -48,7 +52,8 @@ Rectangle {
                 manufacturertext.text = qsTr("Unknown");
             }
             else {
-                logo.source = InfoGroup.judgeName(data.toUpperCase()) ? ("../../img/logo/Manufacturer/" + data.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+                logo.source = InfoGroup.judgeName(data.toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + data.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+//                logo.source = InfoGroup.judgeName(data.toUpperCase()) ? ("../../img/logo/Manufacturer/" + data.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
                 manufacturertext.text = data;
             }
             data = sessiondispatcher.getBatterySingleInfo("POWER_SUPPLY_SERIAL_NUMBER");

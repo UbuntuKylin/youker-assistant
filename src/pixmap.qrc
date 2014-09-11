@@ -47,6 +47,10 @@
     </qresource>
     <qresource prefix="/translate">
         <file>translation/youker-assistant_zh_CN.qm</file>
+        <file>translation/youker-assistant_de.qm</file>
+        <file>translation/youker-assistant_es.qm</file>
+        <file>translation/youker-assistant_fr.qm</file>
+        <file>translation/youker-assistant_ru.qm</file>
     </qresource>
     <qresource prefix="/skin">
         <file>image/0_bg.png</file>

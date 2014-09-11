@@ -26,6 +26,7 @@ Rectangle {
     property string update_rate
     property string activetext : qsTr("Active")//活跃发展中
     property string country : qsTr("China")//中国
+    property string homepath
 
     function split_last_str(str)
     {
@@ -182,17 +183,20 @@ Rectangle {
             else {
                 os_image = splitlist[2];
             }
-            img_source = InfoGroup.judgeDistrowatchName(os_image) ? ("../../img/distrowatch/" + os_image +".png") : ("../../img/distrowatch/default.png");
+            img_source = InfoGroup.judgeDistrowatchName(os_image) ? (rightbar.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/distrowatch/" + os_image +".png") : ("../../img/distrowatch/default.png");
             listModel.append({"rank": splitlist[0], "os": splitlist[1], "os_img": img_source, "today_hit": splitlist[3], "rank_img": "../../img/distrowatch/" + rightbar.split_last_str(splitlist[4]),  "yestoday_hit": splitlist[5]});
+//            img_source = InfoGroup.judgeDistrowatchName(os_image) ? ("../../img/distrowatch/" + os_image +".png") : ("../../img/distrowatch/default.png");
+//            listModel.append({"rank": splitlist[0], "os": splitlist[1], "os_img": img_source, "today_hit": splitlist[3], "rank_img": "../../img/distrowatch/" + rightbar.split_last_str(splitlist[4]),  "yestoday_hit": splitlist[5]});
         }
 
         //access new data
-        sessiondispatcher.get_distrowatch_url_qt();
+        sessiondispatcher.get_distrowatch_url_qt();//kobe 0903
     }
 
     ListModel {
         id: listModel
         Component.onCompleted: {
+            rightbar.homepath = sessiondispatcher.getHomePath();
             rightbar.setDistrowatchData();
         }
     }

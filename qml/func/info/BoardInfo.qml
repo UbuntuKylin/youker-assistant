@@ -23,14 +23,19 @@ Rectangle {
     id: home; width: parent.width; height: 476
 //    color: "transparent"
 //    color: "#e4f2fc"
-//    Component.onCompleted: {
+    property string homepath
+    Component.onCompleted: {
+        home.homepath = sessiondispatcher.getHomePath();
+    }
+
     function init_data() {
         systemdispatcher.get_board_info_qt();//获取详细信息
-
         var basicName = systemdispatcher.getHWSingleInfo("BoaVendor", "board").toUpperCase();
         var biosName = systemdispatcher.getHWSingleInfo("BioVendor", "board").toUpperCase();
-        basiclogo.source = InfoGroup.judgeName(basicName) ? ("../../img/logo/Manufacturer/" + basicName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-        bioslogo.source = InfoGroup.judgeName(biosName) ? ("../../img/logo/Manufacturer/" + biosName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+        basiclogo.source = InfoGroup.judgeName(basicName) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + basicName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+        bioslogo.source = InfoGroup.judgeName(biosName) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + biosName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+//        basiclogo.source = InfoGroup.judgeName(basicName) ? ("../../img/logo/Manufacturer/" + basicName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+//        bioslogo.source = InfoGroup.judgeName(biosName) ? ("../../img/logo/Manufacturer/" + biosName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
 
         productText.text = systemdispatcher.getHWSingleInfo("BoaProduct", "board");
         vendorText.text = basicName;

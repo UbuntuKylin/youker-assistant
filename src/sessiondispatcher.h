@@ -25,6 +25,7 @@
 #include "httpauth.h"
 #include "newcharacter.h"
 #include "selectdialog.h"
+#include "ftpmanager.h"
 
 class QSettings;
 
@@ -38,6 +39,8 @@ public:
     Q_INVOKABLE void show_slider_qt();
     //退出前的准备工作
     void ready_exit_normally();
+
+//    void ftp_get_resource();
 
     //打开文件夹
     Q_INVOKABLE void open_folder_qt(QString path);
@@ -405,6 +408,13 @@ private:
     bool loginOK;
     NewCharacter *slidershow; //新版特性界面
     SelectDialog *selectDialog;
+    FtpManager *manager;
+
+
+public slots:
+    void start_update_progess(int value);
+    void handler_unzip();
+    void unzip_resource_uk();
 };
 
 #endif // SESSIONDISPATCHER_H

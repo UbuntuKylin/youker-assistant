@@ -39,6 +39,10 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     this->mainwindow_width = 850;
     this->mainwindow_height = 600;
 
+    manager = new FtpManager("http://service.ubuntukylin.com:8001/ftp/","lixiang","123123",21,this);
+    connect(manager,SIGNAL(send_progress_value(int)),SLOT(start_update_progess(int)));
+    connect(manager,SIGNAL(downloadok()),this,SLOT(unzip_resource_uk()));
+
     httpauth = new HttpAuth();
     mSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
     mSettings->setIniCodec("UTF-8");
@@ -99,6 +103,8 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 
     connect(updatetimer,SIGNAL(timeout()),this,SLOT(get_current_weather_qt()));
     updatetimer->start(60000*15);
+
+//    this->ftp_get_resource();
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -132,6 +138,10 @@ SessionDispatcher::~SessionDispatcher() {
         delete updatetimer;
     }
 
+    manager->start_abort();//ftp 停止
+    if (manager != NULL) {
+        delete manager;
+    }
 
     this->exit_qt();
     if (sessioniface != NULL) {
@@ -164,6 +174,34 @@ SessionDispatcher::~SessionDispatcher() {
 //dbus服务退出
 void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
+}
+
+//void SessionDispatcher::ftp_get_resource() {
+    //普通下载
+//    manager->start_download("uk-img.tar.gz","/tmp/uk-img.tar.gz");
+    //下载（续传）
+//    manager->start_download("uk-img.tar.gz","/tmp/uk-img.tar.gz",true);
+//}
+
+void SessionDispatcher::handler_unzip() {
+    qDebug() << "start to unzip.0000..";
+}
+
+void SessionDispatcher::unzip_resource_uk() {
+    qDebug() << "start to unzip...";
+    QString path = "/tmp/uk-img.zip";
+    QDBusReply<bool> reply = sessioniface->call("unzip_resource_uk", path);
+    if(reply.value()) {
+        qDebug() << "unzip success...";
+    }
+    else {
+        qDebug() << "unzip failed...";
+    }
+}
+
+void SessionDispatcher::start_update_progess(int value) {
+    qDebug() << "dowload progress.....";
+    qDebug() << value;
 }
 
 bool SessionDispatcher::judge_camera_qt() {
