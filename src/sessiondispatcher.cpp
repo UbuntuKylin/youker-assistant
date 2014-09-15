@@ -39,9 +39,12 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     this->mainwindow_width = 850;
     this->mainwindow_height = 600;
 
-    manager = new FtpManager("http://service.ubuntukylin.com:8001/ftp/","lixiang","123123",21,this);
-    connect(manager,SIGNAL(send_progress_value(int)),SLOT(start_update_progess(int)));
-    connect(manager,SIGNAL(downloadok()),this,SLOT(unzip_resource_uk()));
+//    manager = new FtpManager("http://service.ubuntukylin.com:8001/ftp/","lixiang","123123",21,this);
+//    connect(manager,SIGNAL(send_progress_value(int)),SLOT(start_update_progess(int)));
+//    connect(manager,SIGNAL(downloadok()),this,SLOT(unzip_resource_uk()));
+
+    httpdownload = new HttpDownLoad();
+    connect(httpdownload,SIGNAL(downloadok()),this,SLOT(unzip_resource_uk()));
 
     httpauth = new HttpAuth();
     mSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
@@ -105,6 +108,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     updatetimer->start(60000*15);
 
 //    this->ftp_get_resource();
+    this->http_get_img_resource();
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -121,6 +125,12 @@ SessionDispatcher::~SessionDispatcher() {
     if (httpauth != NULL) {
         delete httpauth;
     }
+
+    if (httpdownload != NULL) {
+        delete httpdownload;
+    }
+
+
     waitTime = 0;
     disconnect(timer,SIGNAL(timeout()),this,SLOT(connectHttpServer()));
     if(timer->isActive()) {
@@ -138,10 +148,10 @@ SessionDispatcher::~SessionDispatcher() {
         delete updatetimer;
     }
 
-    manager->start_abort();//ftp 停止
-    if (manager != NULL) {
-        delete manager;
-    }
+//    manager->start_abort();//ftp 停止
+//    if (manager != NULL) {
+//        delete manager;
+//    }
 
     this->exit_qt();
     if (sessioniface != NULL) {
@@ -176,6 +186,13 @@ void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
 }
 
+void SessionDispatcher::http_get_img_resource() {
+//    QString requestData = QString("http://zz.onlinedown.net/down/laolafangkuaijin.rar");
+    QString requestData = QString("http://192.168.30.12/youker-assistant/download/?name=uk-img.zip");
+    QUrl url(requestData);
+    httpdownload->sendDownLoadRequest(url);
+}
+
 //void SessionDispatcher::ftp_get_resource() {
     //普通下载
 //    manager->start_download("uk-img.tar.gz","/tmp/uk-img.tar.gz");
@@ -183,12 +200,12 @@ void SessionDispatcher::exit_qt() {
 //    manager->start_download("uk-img.tar.gz","/tmp/uk-img.tar.gz",true);
 //}
 
-void SessionDispatcher::handler_unzip() {
-    qDebug() << "start to unzip.0000..";
-}
+//void SessionDispatcher::handler_unzip() {
+//    qDebug() << "start to unzip.0000..";
+//}
 
 void SessionDispatcher::unzip_resource_uk() {
-    qDebug() << "start to unzip...";
+//    qDebug() << "start to unzip...";
     QString path = "/tmp/uk-img.zip";
     QDBusReply<bool> reply = sessioniface->call("unzip_resource_uk", path);
     if(reply.value()) {
@@ -199,10 +216,10 @@ void SessionDispatcher::unzip_resource_uk() {
     }
 }
 
-void SessionDispatcher::start_update_progess(int value) {
-    qDebug() << "dowload progress.....";
-    qDebug() << value;
-}
+//void SessionDispatcher::start_update_progess(int value) {
+//    qDebug() << "dowload progress.....";
+//    qDebug() << value;
+//}
 
 bool SessionDispatcher::judge_camera_qt() {
     QDBusReply<bool> reply = sessioniface->call("judge_camera");
@@ -1344,6 +1361,12 @@ QString SessionDispatcher::show_folder_dialog() {
     QString dir = QFileDialog::getExistingDirectory(0, tr("Select folder"), QDir::homePath(),
                                                     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
     return dir;
+}
+
+QString SessionDispatcher::show_file_path_dialog() {
+    //选择文件
+    QString fileName=QFileDialog::getOpenFileName(0, tr("Select file"), QDir::homePath(), tr("All Files(*.*)"));
+    return fileName;
 }
 
 /*-----------------------------scrollbars of beauty-----------------------------*/

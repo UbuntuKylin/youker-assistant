@@ -52,7 +52,7 @@ Rectangle {
                 manufacturertext.text = qsTr("Unknown");
             }
             else {
-                logo.source = InfoGroup.judgeName(data.toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + data.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+                logo.source = InfoGroup.judgeName(data.toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + data.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
 //                logo.source = InfoGroup.judgeName(data.toUpperCase()) ? ("../../img/logo/Manufacturer/" + data.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
                 manufacturertext.text = data;
             }

@@ -61,7 +61,7 @@ Rectangle {
 //        splitbar1.visible = true;
         logo1.visible = true;
 //        logo1.source = InfoGroup.judgeName(Vgavendor[0].toUpperCase()) ? ("../../img/logo/Manufacturer/" + Vgavendor[0].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-        logo1.source = InfoGroup.judgeName(Vgavendor[0].toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + Vgavendor[0].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+        logo1.source = InfoGroup.judgeName(Vgavendor[0].toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + Vgavendor[0].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         //--------------second--------------
         home.secondFlag = true;
         secondView.visible = true;
@@ -75,7 +75,7 @@ Rectangle {
         splitbar2.visible = true;
         logo2.visible = true;
 //        logo2.source = InfoGroup.judgeName(Vgavendor[1].toUpperCase()) ? ("../../img/logo/Manufacturer/" + Vgavendor[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-        logo2.source = InfoGroup.judgeName(Vgavendor[1].toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + Vgavendor[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+        logo2.source = InfoGroup.judgeName(Vgavendor[1].toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + Vgavendor[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         if(num == 2) {
             //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
             listItem.height = (home.itemNum*20 + (home.itemNum - 1)*home.columnSpace + 10*2) *2 + 40;
@@ -93,7 +93,7 @@ Rectangle {
             thirdModel.append({"title": qsTr("Bus Address:"), "result": Vgabusinfo[2]});//显卡总线地址：
             splitbar3.visible = true;
             logo3.visible = true;
-            logo3.source = InfoGroup.judgeName(Vgavendor[2].toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + Vgavendor[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+            logo3.source = InfoGroup.judgeName(Vgavendor[2].toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + Vgavendor[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
 //            logo3.source = InfoGroup.judgeName(Vgavendor[2].toUpperCase()) ? ("../../img/logo/Manufacturer/" + Vgavendor[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             if(num == 3) {
                 //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
@@ -111,7 +111,7 @@ Rectangle {
                 fourthModel.append({"title": qsTr("Bus Address:"), "result": Vgabusinfo[3]});//显卡总线地址：
                 splitbar4.visible = true;
                 logo4.visible = true;
-                logo4.source = InfoGroup.judgeName(Vgavendor[3].toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + Vgavendor[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+                logo4.source = InfoGroup.judgeName(Vgavendor[3].toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + Vgavendor[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
 //                logo4.source = InfoGroup.judgeName(Vgavendor[3].toUpperCase()) ? ("../../img/logo/Manufacturer/" + Vgavendor[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
                 //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
                 listItem.height = (home.itemNum*20 + (home.itemNum - 1)*home.columnSpace + 10*2) *4 + 80;
@@ -140,7 +140,7 @@ Rectangle {
             firstModel.append({"title": qsTr("Bus Address:"), "result": systemdispatcher.getHWSingleInfo("Vga_businfo", "monitor")});//显卡总线地址：
 //            splitbar1.visible = true;
             logo1.visible = true;
-            logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+            logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
 //            logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
             listItem.height = home.itemNum*20 + (home.itemNum - 1)*home.columnSpace + 20 ;
@@ -164,7 +164,7 @@ Rectangle {
             montitle.visible = true;
             monitorlogo.visible = true;
             var vendorName = systemdispatcher.getHWSingleInfo("Mon_vendor", "monitor");
-            monitorlogo.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+            monitorlogo.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
 //            monitorlogo.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             productText.text = systemdispatcher.getHWSingleInfo("Mon_product", "monitor");
             vendorText.text = vendorName;

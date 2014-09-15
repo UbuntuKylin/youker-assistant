@@ -98,7 +98,8 @@ HEADERS += homepage.h \
     clounddispatcher.h \
     monitordispatcher.h \
     acceleratedispatcher.h \
-    ftpmanager.h
+    httpdownload.h \
+    filewipe.h
 
 SOURCES += main.cpp \
     homepage.cpp \
@@ -143,7 +144,8 @@ SOURCES += main.cpp \
     clounddispatcher.cpp \
     monitordispatcher.cpp \
     acceleratedispatcher.cpp \
-    ftpmanager.cpp
+    httpdownload.cpp \
+    filewipe.cpp
 
 RESOURCES += pixmap.qrc
 

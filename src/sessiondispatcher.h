@@ -25,7 +25,8 @@
 #include "httpauth.h"
 #include "newcharacter.h"
 #include "selectdialog.h"
-#include "ftpmanager.h"
+//#include "ftpmanager.h"
+#include "httpdownload.h"
 
 class QSettings;
 
@@ -41,6 +42,7 @@ public:
     void ready_exit_normally();
 
 //    void ftp_get_resource();
+    void http_get_img_resource();
 
     //打开文件夹
     Q_INVOKABLE void open_folder_qt(QString path);
@@ -201,6 +203,7 @@ public:
     Q_INVOKABLE void restore_default_font_signal(QString flag);
     Q_INVOKABLE void show_font_dialog(QString flag, QString current_font);
     Q_INVOKABLE QString show_folder_dialog();
+    Q_INVOKABLE QString show_file_path_dialog();
     Q_INVOKABLE QString get_font_qt();
     Q_INVOKABLE bool set_font_qt_default(QString font);
     bool set_font_qt(QString font);
@@ -408,12 +411,13 @@ private:
     bool loginOK;
     NewCharacter *slidershow; //新版特性界面
     SelectDialog *selectDialog;
-    FtpManager *manager;
+//    FtpManager *manager;
+    HttpDownLoad *httpdownload;
 
 
 public slots:
-    void start_update_progess(int value);
-    void handler_unzip();
+//    void start_update_progess(int value);
+//    void handler_unzip();
     void unzip_resource_uk();
 };
 

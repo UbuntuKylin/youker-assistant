@@ -11,17 +11,12 @@
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="70"/>
-        <location filename="../aboutdialog.ui" line="162"/>
+        <location filename="../aboutdialog.ui" line="165"/>
         <source>Youker Assistant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.ui" line="86"/>
-        <source>V1.2.0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.ui" line="102"/>
+        <location filename="../aboutdialog.ui" line="105"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -31,12 +26,12 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.ui" line="113"/>
+        <location filename="../aboutdialog.ui" line="116"/>
         <source>Contributor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.ui" line="128"/>
+        <location filename="../aboutdialog.ui" line="131"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -46,12 +41,12 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.ui" line="178"/>
+        <location filename="../aboutdialog.ui" line="181"/>
         <source>&lt;a href=https://launchpad.net/youker-assistant&gt;home page&lt;/a&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.ui" line="193"/>
+        <location filename="../aboutdialog.ui" line="199"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1397,68 +1392,53 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>FontButton</name>
+    <name>FileShredder</name>
     <message>
-        <location filename="../../qml/func/common/FontButton.qml" line="80"/>
-        <source>Click to change font</source>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="27"/>
+        <source>File Shredder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="28"/>
+        <source>Crush stubborn files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="51"/>
+        <source>Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="123"/>
+        <source>The selected file path: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="137"/>
+        <source>Select File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="150"/>
+        <source>Shred File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="156"/>
+        <source>Shred success!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="159"/>
+        <source>Shred abnormal!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>FtpManager</name>
+    <name>FontButton</name>
     <message>
-        <location filename="../ftpmanager.cpp" line="49"/>
-        <source>local file %1 open failed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ftpmanager.cpp" line="66"/>
-        <source>æ¬å°æä»¶%1æå¼å¤±è´¥ï¼</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ftpmanager.cpp" line="83"/>
-        <source>connect ftp server error:%1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ftpmanager.cpp" line="87"/>
-        <source>connect ftp server success</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ftpmanager.cpp" line="95"/>
-        <source>login ftp server error:%1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ftpmanager.cpp" line="98"/>
-        <source>login ftp server success</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ftpmanager.cpp" line="114"/>
-        <source>download error:%1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ftpmanager.cpp" line="119"/>
-        <source>download over</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ftpmanager.cpp" line="133"/>
-        <source>ä¸ä¼ åºç°éè¯¯ï¼%1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ftpmanager.cpp" line="137"/>
-        <source>å·²ç»å®ææä»¶ä¸ä¼ </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ftpmanager.cpp" line="147"/>
-        <source>had close connect</source>
+        <location filename="../../qml/func/common/FontButton.qml" line="80"/>
+        <source>Click to change font</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2546,105 +2526,105 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="146"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="596"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="149"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="603"/>
         <source>Hits per day </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="253"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="260"/>
         <source>Logging...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="285"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="292"/>
         <source>Logout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="315"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="322"/>
         <source>Level:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="326"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="333"/>
         <source>Score:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="382"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="389"/>
         <source>DistroWatch Ranking</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="392"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="409"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="399"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="416"/>
         <source>Ubuntu Kylin Details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="616"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="634"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="623"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="641"/>
         <source>Hide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="650"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="657"/>
         <source>Last Update:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="669"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="676"/>
         <source>OS Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="687"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="694"/>
         <source>Based on:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="705"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="712"/>
         <source>Origin: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="723"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="730"/>
         <source>Architecture:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="742"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="749"/>
         <source>Desktop:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="761"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="768"/>
         <source>Category:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="779"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="786"/>
         <source>Status:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="797"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="804"/>
         <source>Popularity:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="837"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="844"/>
         <source>Forum Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="854"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="861"/>
         <source>Features</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="863"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="870"/>
         <source>Feedback</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2721,8 +2701,18 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1344"/>
+        <location filename="../sessiondispatcher.cpp" line="1361"/>
         <source>Select folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sessiondispatcher.cpp" line="1368"/>
+        <source>Select file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sessiondispatcher.cpp" line="1368"/>
+        <source>All Files(*.*)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2903,27 +2893,32 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SystemBox</name>
     <message>
-        <location filename="../../qml/func/page/SystemBox.qml" line="36"/>
+        <location filename="../../qml/func/page/SystemBox.qml" line="37"/>
         <source>Dead pixel check</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemBox.qml" line="37"/>
+        <location filename="../../qml/func/page/SystemBox.qml" line="38"/>
         <source>Boot Animation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemBox.qml" line="38"/>
+        <location filename="../../qml/func/page/SystemBox.qml" line="39"/>
         <source>Task Manager</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemBox.qml" line="39"/>
+        <location filename="../../qml/func/page/SystemBox.qml" line="40"/>
         <source>Camera</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemBox.qml" line="55"/>
+        <location filename="../../qml/func/page/SystemBox.qml" line="41"/>
+        <source>File Shredder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/page/SystemBox.qml" line="57"/>
         <source>Default toolkits</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2964,22 +2959,22 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SystemDispatcher</name>
     <message>
-        <location filename="../systemdispatcher.cpp" line="340"/>
+        <location filename="../systemdispatcher.cpp" line="354"/>
         <source>Select the boot animation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="340"/>
+        <location filename="../systemdispatcher.cpp" line="354"/>
         <source>Image Files (*.png *.jpg *.gif)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="345"/>
+        <location filename="../systemdispatcher.cpp" line="359"/>
         <source>Select music</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="345"/>
+        <location filename="../systemdispatcher.cpp" line="359"/>
         <source>Audio Files (*.ogg *.wav *.mp3 *.wma)</source>
         <translation type="unfinished"></translation>
     </message>

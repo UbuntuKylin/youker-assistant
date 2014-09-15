@@ -1,342 +1,1843 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="es">
-    <extra-po-header-po_revision_date>2014-09-01 14:34+0000</extra-po-header-po_revision_date>
-    <extra-po-header-x_launchpad_export_date>2014-09-11 01:08+0000</extra-po-header-x_launchpad_export_date>
-    <extra-po-headers>Project-Id-Version,Report-Msgid-Bugs-To,POT-Creation-Date,PO-Revision-Date,Last-Translator,Language-Team,MIME-Version,Content-Type,Content-Transfer-Encoding,X-Launchpad-Export-Date,X-Generator</extra-po-headers>
-    <extra-po-header-x_generator>Launchpad (build 17196)</extra-po-header-x_generator>
-    <extra-po-header-report_msgid_bugs_to>FULL NAME &lt;EMAIL@ADDRESS&gt;</extra-po-header-report_msgid_bugs_to>
-    <extra-po-header-language_team>Spanish &lt;es@li.org&gt;</extra-po-header-language_team>
-    <extra-po-header-project_id_version>youker-assistant</extra-po-header-project_id_version>
-    <extra-po-header-pot_creation_date>2014-08-29 06:42+0000</extra-po-header-pot_creation_date>
-    <extra-po-header_comment># Spanish translation for youker-assistant
-# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
-# This file is distributed under the same license as the youker-assistant package.
-# FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, 2014.
-#</extra-po-header_comment>
-    <extra-po-header-last_translator>Hector A. Mantellini &lt;Unknown&gt;</extra-po-header-last_translator>
 <context>
     <name></name>
+    <message>
+        <source>About</source>
+        <comment>AboutDialog|</comment>
+        <translation type="obsolete">Acerca de...</translation>
+    </message>
+    <message>
+        <source>Youker Assistant</source>
+        <comment>AboutDialog|</comment>
+        <translation type="obsolete">Youker Asistente</translation>
+    </message>
+    <message>
+        <source>V1.2.0</source>
+        <comment>AboutDialog|</comment>
+        <translation type="obsolete">V1.2.0</translation>
+    </message>
+    <message>
+        <source>Contributor</source>
+        <comment>AboutDialog|</comment>
+        <translation type="obsolete">Colaborador</translation>
+    </message>
+    <message>
+        <source>&lt;a href=https://launchpad.net/youker-assistant&gt;home page&lt;/a&gt;</source>
+        <comment>AboutDialog|</comment>
+        <translation type="obsolete">&lt;a href=https://launchpad.net/youker-assistant&gt;Página de Inicio&lt;/a&gt;</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <comment>AboutDialog|</comment>
+        <translation type="obsolete">Cerrar</translation>
+    </message>
+    <message>
+        <source>Audio Model:</source>
+        <comment>AudioInfo|</comment>
+        <translation type="obsolete">Modelo Audio:</translation>
+    </message>
+    <message>
+        <source>Vendor:</source>
+        <comment>AudioInfo|</comment>
+        <translation type="obsolete">Fabricante:</translation>
+    </message>
+    <message>
+        <source>Audio Driver:</source>
+        <comment>AudioInfo|</comment>
+        <translation type="obsolete">Controlador de audio:</translation>
+    </message>
+    <message>
+        <source>Audio Info</source>
+        <comment>AudioInfo|</comment>
+        <translation type="obsolete">Informacion de Audio</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <comment>BatteryInfo|</comment>
+        <translation type="obsolete">Desconocido</translation>
+    </message>
+    <message>
+        <source>Battery Info</source>
+        <comment>BatteryInfo|</comment>
+        <translation type="obsolete">Info de batería</translation>
+    </message>
+    <message>
+        <source>Device Name:</source>
+        <comment>BatteryInfo|</comment>
+        <translation type="obsolete">Nombre del Dispositivo:</translation>
+    </message>
+    <message>
+        <source>Model:</source>
+        <comment>BatteryInfo|</comment>
+        <translation type="obsolete">Modelo:</translation>
+    </message>
+    <message>
+        <source>Manufacturer:</source>
+        <comment>BatteryInfo|</comment>
+        <translation type="obsolete">Fabricante:</translation>
+    </message>
+    <message>
+        <source>Serial Number:</source>
+        <comment>BatteryInfo|</comment>
+        <translation type="obsolete">Número de serie:</translation>
+    </message>
+    <message>
+        <source>Technology:</source>
+        <comment>BatteryInfo|</comment>
+        <translation type="obsolete">Tecnología:</translation>
+    </message>
+    <message>
+        <source>Voltage:</source>
+        <comment>BatteryInfo|</comment>
+        <translation type="obsolete">Voltaje</translation>
+    </message>
+    <message>
+        <source>Energy Full:</source>
+        <comment>BatteryInfo|</comment>
+        <translation type="obsolete">Full Energía:</translation>
+    </message>
+    <message>
+        <source>Energy Now:</source>
+        <comment>BatteryInfo|</comment>
+        <translation type="obsolete">Energía Ahora:</translation>
+    </message>
+    <message>
+        <source>Motherboard Basics Info</source>
+        <comment>BoardInfo|</comment>
+        <translation type="obsolete">Info básica Placa Base</translation>
+    </message>
+    <message>
+        <source>Motherboard Model: </source>
+        <comment>BoardInfo|</comment>
+        <translation type="obsolete">Modelo Placa Base: </translation>
+    </message>
+    <message>
+        <source>Motherboard Vendor: </source>
+        <comment>BoardInfo|</comment>
+        <translation type="obsolete">Fabricante Placa Base: </translation>
+    </message>
+    <message>
+        <source>Serial Number: </source>
+        <comment>BoardInfo|</comment>
+        <translation type="obsolete">Serial Número: </translation>
+    </message>
+    <message>
+        <source>BIOS Info</source>
+        <comment>BoardInfo|</comment>
+        <translation type="obsolete">BIOS Info</translation>
+    </message>
+    <message>
+        <source>BIOS Vendor: </source>
+        <comment>BoardInfo|</comment>
+        <translation type="obsolete">BIOS Fabricante: </translation>
+    </message>
+    <message>
+        <source>BIOS Version: </source>
+        <comment>BoardInfo|</comment>
+        <translation type="obsolete">Versión BIOS: </translation>
+    </message>
+    <message>
+        <source>Release Date: </source>
+        <comment>BoardInfo|</comment>
+        <translation type="obsolete">Fecha Lanzamiento: </translation>
+    </message>
+    <message>
+        <source>Boot animation settings</source>
+        <comment>BootAnimation|</comment>
+        <translation type="obsolete">Configuración de animación de arranque</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>BootAnimation|</comment>
+        <translation type="obsolete">Atrás</translation>
+    </message>
+    <message>
+        <source>Completed!</source>
+        <comment>BootAnimation|</comment>
+        <translation type="obsolete">¡Completo!</translation>
+    </message>
+    <message>
+        <source>Custom Picture</source>
+        <comment>BootAnimation|</comment>
+        <translation type="obsolete">Imagen personal</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <comment>BootAnimation|</comment>
+        <translation type="obsolete">Borrar</translation>
+    </message>
+    <message>
+        <source>Deleted successfully!</source>
+        <comment>BootAnimation|</comment>
+        <translation type="obsolete">¡Borrado con éxito!</translation>
+    </message>
+    <message>
+        <source>This is the using animation!</source>
+        <comment>BootAnimation|</comment>
+        <translation type="obsolete">Esta es la animación usada!</translation>
+    </message>
+    <message>
+        <source>This is the default animation!</source>
+        <comment>BootAnimation|</comment>
+        <translation type="obsolete">Esta es la animación por defecto!</translation>
+    </message>
+    <message>
+        <source>An unknown error occurred!</source>
+        <comment>BootAnimation|</comment>
+        <translation type="obsolete">Un error desconocido a ocurrido!</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <comment>BootAnimation|</comment>
+        <translation type="obsolete">OK</translation>
+    </message>
+    <message>
+        <source>Tips:</source>
+        <comment>BottomBar|</comment>
+        <translation type="obsolete">Consejos:</translation>
+    </message>
+    <message>
+        <source>The kuaipan4uk is not running!</source>
+        <comment>BottomBar|</comment>
+        <translation type="obsolete">kuaipan4uk no está ejecutandose!</translation>
+    </message>
+    <message>
+        <source>Download OK!</source>
+        <comment>BottomBar|</comment>
+        <translation type="obsolete">Descarga OK!</translation>
+    </message>
+    <message>
+        <source>Upload OK!</source>
+        <comment>BottomBar|</comment>
+        <translation type="obsolete">SUbida OK!</translation>
+    </message>
+    <message>
+        <source>main version:</source>
+        <comment>BottomBar|</comment>
+        <translation type="obsolete">Versión Principal:</translation>
+    </message>
+    <message>
+        <source>Use Cloud</source>
+        <comment>BottomBar|</comment>
+        <translation type="obsolete">Usar Nube</translation>
+    </message>
+    <message>
+        <source>Save Cloud</source>
+        <comment>BottomBar|</comment>
+        <translation type="obsolete">Salvar en la Nube</translation>
+    </message>
+    <message>
+        <source>Deep cleaning up the browser cache</source>
+        <comment>BrowserModel|</comment>
+        <translation type="obsolete">Limpieza profunda del caché del navegador</translation>
+    </message>
+    <message>
+        <source>Cleanup Firefox Cache</source>
+        <comment>BrowserModel|</comment>
+        <translation type="obsolete">Limpiar Cache Firefox</translation>
+    </message>
+    <message>
+        <source>Cleanup Chromium Cache</source>
+        <comment>BrowserModel|</comment>
+        <translation type="obsolete">Limpiar Cache Chromium</translation>
+    </message>
+    <message>
+        <source>Tips:</source>
+        <comment>BrowserModel|</comment>
+        <translation type="obsolete">Consejos:</translation>
+    </message>
+    <message>
+        <source>Scan completed!</source>
+        <comment>BrowserModel|</comment>
+        <translation type="obsolete">Escaneo terminado!</translation>
+    </message>
+    <message>
+        <source>Begin cleanup</source>
+        <comment>BrowserModel|</comment>
+        <translation type="obsolete">Comenzar limpieza</translation>
+    </message>
+    <message>
+        <source>Cleanup abnormal!</source>
+        <comment>BrowserModel|</comment>
+        <translation type="obsolete">Limpieza anormal!</translation>
+    </message>
+    <message>
+        <source>Cleanup interrupted!</source>
+        <comment>BrowserModel|</comment>
+        <translation type="obsolete">Limpieza interrumpida!</translation>
+    </message>
+    <message>
+        <source>Cleared!</source>
+        <comment>BrowserModel|</comment>
+        <translation type="obsolete">Limpio!</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>BrowserModel|</comment>
+        <translation type="obsolete">Volver</translation>
+    </message>
+    <message>
+        <source>Start scanning</source>
+        <comment>BrowserModel|</comment>
+        <translation type="obsolete">Comenzar scaneo</translation>
+    </message>
+    <message>
+        <source>CD-ROM Model:</source>
+        <comment>CDROMInfo|</comment>
+        <translation type="obsolete">Modelo CD-ROM:</translation>
+    </message>
+    <message>
+        <source>Vendor:</source>
+        <comment>CDROMInfo|</comment>
+        <translation type="obsolete">Fabricante:</translation>
+    </message>
+    <message>
+        <source>Device Name:</source>
+        <comment>CDROMInfo|</comment>
+        <translation type="obsolete">Nombre del Dispositivo:</translation>
+    </message>
+    <message>
+        <source>Firmware Version:</source>
+        <comment>CDROMInfo|</comment>
+        <translation type="obsolete">Versión del firmware:</translation>
+    </message>
+    <message>
+        <source>Serial Number:</source>
+        <comment>CDROMInfo|</comment>
+        <translation type="obsolete">Número de serie:</translation>
+    </message>
+    <message>
+        <source>CD-ROM Info</source>
+        <comment>CDROMInfo|</comment>
+        <translation type="obsolete">Info de CD-ROM</translation>
+    </message>
+    <message>
+        <source>No content</source>
+        <comment>CacheDelegate|</comment>
+        <translation type="obsolete">Sin contenido</translation>
+    </message>
+    <message>
+        <source>Tips:</source>
+        <comment>CacheModel|</comment>
+        <translation type="obsolete">Consejos:</translation>
+    </message>
+    <message>
+        <source>Scan completed!</source>
+        <comment>CacheModel|</comment>
+        <translation type="obsolete">Escaneo terminado!</translation>
+    </message>
+    <message>
+        <source>Begin cleanup</source>
+        <comment>CacheModel|</comment>
+        <translation type="obsolete">Comenzar limpieza</translation>
+    </message>
+    <message>
+        <source>Cleanup abnormal!</source>
+        <comment>CacheModel|</comment>
+        <translation type="obsolete">Limpieza anormal!</translation>
+    </message>
+    <message>
+        <source>Cleanup interrupted!</source>
+        <comment>CacheModel|</comment>
+        <translation type="obsolete">Limpieza interrumpida!</translation>
+    </message>
+    <message>
+        <source>Cleared!</source>
+        <comment>CacheModel|</comment>
+        <translation type="obsolete">Limpio!</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>CacheModel|</comment>
+        <translation type="obsolete">Volver</translation>
+    </message>
+    <message>
+        <source>Start scanning</source>
+        <comment>CacheModel|</comment>
+        <translation type="obsolete">Comenzar scaneo</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <comment>CameraCapture|</comment>
+        <translation type="obsolete">Cámara</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>CameraCapture|</comment>
+        <translation type="obsolete">Volver</translation>
+    </message>
+    <message>
+        <source>Open camera</source>
+        <comment>CameraCapture|</comment>
+        <translation type="obsolete">Abrir cámara</translation>
+    </message>
+    <message>
+        <source>View Photos</source>
+        <comment>CameraCapture|</comment>
+        <translation type="obsolete">Ver fotos</translation>
+    </message>
+    <message>
+        <source> Minutes</source>
+        <comment>ComputerInfo|</comment>
+        <translation type="obsolete"> Minutos</translation>
+    </message>
+    <message>
+        <source> Hours </source>
+        <comment>ComputerInfo|</comment>
+        <translation type="obsolete"> Horas </translation>
+    </message>
+    <message>
+        <source>Computer Basic Info</source>
+        <comment>ComputerInfo|</comment>
+        <translation type="obsolete">Info Básica del Computador</translation>
+    </message>
+    <message>
+        <source>Vendor: </source>
+        <comment>ComputerInfo|</comment>
+        <translation type="obsolete">Fabricante: </translation>
+    </message>
+    <message>
+        <source>Model: </source>
+        <comment>ComputerInfo|</comment>
+        <translation type="obsolete">Modelo: </translation>
+    </message>
+    <message>
+        <source>Version: </source>
+        <comment>ComputerInfo|</comment>
+        <translation type="obsolete">Versión: </translation>
+    </message>
+    <message>
+        <source>Serial Number: </source>
+        <comment>ComputerInfo|</comment>
+        <translation type="obsolete">Serial Número: </translation>
+    </message>
+    <message>
+        <source>Hostname: </source>
+        <comment>ComputerInfo|</comment>
+        <translation type="obsolete">Nombre de la máquina: </translation>
+    </message>
+    <message>
+        <source>OS Version: </source>
+        <comment>ComputerInfo|</comment>
+        <translation type="obsolete">Versión del SO: </translation>
+    </message>
+    <message>
+        <source>Kernel Version: </source>
+        <comment>ComputerInfo|</comment>
+        <translation type="obsolete">Versióm del Kernel: </translation>
+    </message>
+    <message>
+        <source>Kernel Arch: </source>
+        <comment>ComputerInfo|</comment>
+        <translation type="obsolete">Arquitectura Kernel </translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>CookiesDelegate|</comment>
+        <translation type="obsolete">Volver</translation>
+    </message>
+    <message>
+        <source>Rescan</source>
+        <comment>CookiesDelegate|</comment>
+        <translation type="obsolete">Explorar de nuevo</translation>
+    </message>
+    <message>
+        <source>Cleanup failed!</source>
+        <comment>CookiesItem|</comment>
+        <translation type="obsolete">Falló limpieza!</translation>
+    </message>
+    <message>
+        <source>Cleanup interrupted!</source>
+        <comment>CookiesItem|</comment>
+        <translation type="obsolete">Limpieza interrumpida!</translation>
+    </message>
+    <message>
+        <source>Cleanup successfully!</source>
+        <comment>CookiesItem|</comment>
+        <translation type="obsolete">Limpieza satisfactoria!</translation>
+    </message>
+    <message>
+        <source> Records</source>
+        <comment>CookiesItem|</comment>
+        <translation type="obsolete"> Registros</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <comment>CookiesItem|</comment>
+        <translation type="obsolete">Borrar</translation>
+    </message>
+    <message>
+        <source>Cleanup browser Cookies information, to protect your privacy</source>
+        <comment>CookiesModel|</comment>
+        <translation type="obsolete">Limpiar información de Cookies para proteger su privacidad</translation>
+    </message>
+    <message>
+        <source>Clean up user login information, support Firefox and Chromium browser</source>
+        <comment>CookiesModel|</comment>
+        <translation type="obsolete">Limpiar información de Login, soportada para Firefox y Chromium</translation>
+    </message>
+    <message>
+        <source>Start scanning</source>
+        <comment>CookiesModel|</comment>
+        <translation type="obsolete">Comenzar scaneo</translation>
+    </message>
+    <message>
+        <source>Tips:</source>
+        <comment>CookiesModel|</comment>
+        <translation type="obsolete">Consejos:</translation>
+    </message>
+    <message>
+        <source>Firefox is not installed!</source>
+        <comment>CookiesModel|</comment>
+        <translation type="obsolete">Firefox no está instalado!</translation>
+    </message>
+    <message>
+        <source>Chromium is not installed!</source>
+        <comment>CookiesModel|</comment>
+        <translation type="obsolete">Chromium no está instalado!</translation>
+    </message>
+    <message>
+        <source>The scan reslut is empty, nothing has been done!</source>
+        <comment>CookiesModel|</comment>
+        <translation type="obsolete">El resultado del scan está vacío, no se hizo nada!</translation>
+    </message>
+    <message>
+        <source>Scan completed!</source>
+        <comment>CookiesModel|</comment>
+        <translation type="obsolete">Escaneo terminado!</translation>
+    </message>
+    <message>
+        <source>Cleanup interrupted!</source>
+        <comment>CookiesModel|</comment>
+        <translation type="obsolete">Limpieza interrumpida!</translation>
+    </message>
+    <message>
+        <source>Cleanup abnormal!</source>
+        <comment>CookiesModel|</comment>
+        <translation type="obsolete">Limpieza anormal!</translation>
+    </message>
+    <message>
+        <source>Cleared</source>
+        <comment>CookiesModel|</comment>
+        <translation type="obsolete">Limpiado</translation>
+    </message>
+    <message>
+        <source>cores</source>
+        <comment>CpuInfo|</comment>
+        <translation type="obsolete">núcleos</translation>
+    </message>
+    <message>
+        <source>thread</source>
+        <comment>CpuInfo|</comment>
+        <translation type="obsolete">hilo</translation>
+    </message>
+    <message>
+        <source>CPU Info</source>
+        <comment>CpuInfo|</comment>
+        <translation type="obsolete">CPU Info</translation>
+    </message>
+    <message>
+        <source>CPU: </source>
+        <comment>CpuInfo|</comment>
+        <translation type="obsolete">CPU: </translation>
+    </message>
+    <message>
+        <source>Vendor: </source>
+        <comment>CpuInfo|</comment>
+        <translation type="obsolete">Fabricante: </translation>
+    </message>
+    <message>
+        <source>Serial Number: </source>
+        <comment>CpuInfo|</comment>
+        <translation type="obsolete">Serial Número: </translation>
+    </message>
+    <message>
+        <source>Maximum Frequency: </source>
+        <comment>CpuInfo|</comment>
+        <translation type="obsolete">Frecuencia Máxima: </translation>
+    </message>
+    <message>
+        <source>Current Frequency: </source>
+        <comment>CpuInfo|</comment>
+        <translation type="obsolete">Frecuencia Actual: </translation>
+    </message>
+    <message>
+        <source>Core Number: </source>
+        <comment>CpuInfo|</comment>
+        <translation type="obsolete">Número Núcleos: </translation>
+    </message>
+    <message>
+        <source>Default font settings</source>
+        <comment>DefaultFont|</comment>
+        <translation type="obsolete">Configuración por defecto</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>DefaultFont|</comment>
+        <translation type="obsolete">Volver</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <comment>DefaultFont|</comment>
+        <translation type="obsolete">Restaurar</translation>
+    </message>
+    <message>
+        <source>Desktop Icons</source>
+        <comment>DesktopIcon|</comment>
+        <translation type="obsolete">Iconos del Escritorio</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>DesktopIcon|</comment>
+        <translation type="obsolete">Volver</translation>
+    </message>
+    <message>
+        <source>Icon theme:</source>
+        <comment>DesktopIcon|</comment>
+        <translation type="obsolete">Tema de iconos:</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <comment>DesktopIcon|</comment>
+        <translation type="obsolete">Restaurar</translation>
+    </message>
+    <message>
+        <source>Show Desktop Icons: </source>
+        <comment>DesktopIcon|</comment>
+        <translation type="obsolete">Mostrar iconos en Escritorio: </translation>
+    </message>
+    <message>
+        <source>Home Folder: </source>
+        <comment>DesktopIcon|</comment>
+        <translation type="obsolete">Carpeta personal: </translation>
+    </message>
+    <message>
+        <source>Network: </source>
+        <comment>DesktopIcon|</comment>
+        <translation type="obsolete">Red: </translation>
+    </message>
+    <message>
+        <source>Trash : </source>
+        <comment>DesktopIcon|</comment>
+        <translation type="obsolete">Papelera: </translation>
+    </message>
+    <message>
+        <source>Desktop Info</source>
+        <comment>DesktopInfo|</comment>
+        <translation type="obsolete">Info Escritorio</translation>
+    </message>
+    <message>
+        <source>Distribution: </source>
+        <comment>DesktopInfo|</comment>
+        <translation type="obsolete">Distribución: </translation>
+    </message>
+    <message>
+        <source>Language: </source>
+        <comment>DesktopInfo|</comment>
+        <translation type="obsolete">Idioma: </translation>
+    </message>
+    <message>
+        <source>User: </source>
+        <comment>DesktopInfo|</comment>
+        <translation type="obsolete">Usuario: </translation>
+    </message>
+    <message>
+        <source>Home Folder: </source>
+        <comment>DesktopInfo|</comment>
+        <translation type="obsolete">Carpeta personal: </translation>
+    </message>
+    <message>
+        <source>Rank</source>
+        <comment>DistrowatchTitle|</comment>
+        <translation type="obsolete">Valorar</translation>
+    </message>
+    <message>
+        <source>Distribution</source>
+        <comment>DistrowatchTitle|</comment>
+        <translation type="obsolete">Distribución</translation>
+    </message>
+    <message>
+        <source>VGA Model:</source>
+        <comment>DriveInfo|</comment>
+        <translation type="obsolete">Modelo VGA:</translation>
+    </message>
+    <message>
+        <source>USB Model:</source>
+        <comment>DriveInfo|</comment>
+        <translation type="obsolete">Modelo USB</translation>
+    </message>
+    <message>
+        <source>Ethernet Model:</source>
+        <comment>DriveInfo|</comment>
+        <translation type="obsolete">Modelo Ethernet</translation>
+    </message>
+    <message>
+        <source>Audio Model:</source>
+        <comment>DriveInfo|</comment>
+        <translation type="obsolete">Modelo Audio:</translation>
+    </message>
+    <message>
+        <source>SATA Model:</source>
+        <comment>DriveInfo|</comment>
+        <translation type="obsolete">Modelo SATA:</translation>
+    </message>
+    <message>
+        <source>Driver in use:</source>
+        <comment>DriveInfo|</comment>
+        <translation type="obsolete">Dispositivo en uso:</translation>
+    </message>
+    <message>
+        <source>existing drivers:</source>
+        <comment>DriveInfo|</comment>
+        <translation type="obsolete">Dispositivos existentes:</translation>
+    </message>
+    <message>
+        <source>Network controller:</source>
+        <comment>DriveInfo|</comment>
+        <translation type="obsolete">Controlador de red</translation>
+    </message>
+    <message>
+        <source>File Manager</source>
+        <comment>FileManager|</comment>
+        <translation type="obsolete">Gestor de archivos</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>FileManager|</comment>
+        <translation type="obsolete">Volver</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <comment>FileManager|</comment>
+        <translation type="obsolete">Restaurar</translation>
+    </message>
+    <message>
+        <source>Automatically open a folder: </source>
+        <comment>FileManager|</comment>
+        <translation type="obsolete">Abrir automáticamente una carpeta: </translation>
+    </message>
+    <message>
+        <source>Range:1M-20480M; 1GB = 1024MB</source>
+        <comment>FileModel|</comment>
+        <translation type="obsolete">Rango:1M-20480M; 1GB = 1024MB</translation>
+    </message>
+    <message>
+        <source>Nothing found!</source>
+        <comment>FileModel|</comment>
+        <translation type="obsolete">No se encontró nada!</translation>
+    </message>
+    <message>
+        <source>Cleared!</source>
+        <comment>FileModel|</comment>
+        <translation type="obsolete">Limpio!</translation>
+    </message>
+    <message>
+        <source>Browse...</source>
+        <comment>FileModel|</comment>
+        <translation type="obsolete">Examinar…</translation>
+    </message>
+    <message>
+        <source>Tips:</source>
+        <comment>FileModel|</comment>
+        <translation type="obsolete">Consejos:</translation>
+    </message>
+    <message>
+        <source>Begin cleanup</source>
+        <comment>FileModel|</comment>
+        <translation type="obsolete">Comenzar limpieza</translation>
+    </message>
+    <message>
+        <source>The scan reslut is empty, nothing has been done!</source>
+        <comment>FileModel|</comment>
+        <translation type="obsolete">El resultado del scan está vacío, no se hizo nada!</translation>
+    </message>
+    <message>
+        <source>Unfinished</source>
+        <comment>FileModel|</comment>
+        <translation type="obsolete">Sin terminar</translation>
+    </message>
+    <message>
+        <source>Completed</source>
+        <comment>FileModel|</comment>
+        <translation type="obsolete">Finalizado</translation>
+    </message>
+    <message>
+        <source>HDD Model: </source>
+        <comment>HDInfo|</comment>
+        <translation type="obsolete">Modelo HDD: </translation>
+    </message>
+    <message>
+        <source>HDD Vendor: </source>
+        <comment>HDInfo|</comment>
+        <translation type="obsolete">Fabricante HDD: </translation>
+    </message>
+    <message>
+        <source>HDD Capacity: </source>
+        <comment>HDInfo|</comment>
+        <translation type="obsolete">Capacidad HDD: </translation>
+    </message>
+    <message>
+        <source>Device Name: </source>
+        <comment>HDInfo|</comment>
+        <translation type="obsolete">Nombre Dispositivo: </translation>
+    </message>
+    <message>
+        <source>Firmware Version: </source>
+        <comment>HDInfo|</comment>
+        <translation type="obsolete">Versión del Firmware: </translation>
+    </message>
+    <message>
+        <source>Serial Number: </source>
+        <comment>HDInfo|</comment>
+        <translation type="obsolete">Serial Número: </translation>
+    </message>
+    <message>
+        <source>HDD Info</source>
+        <comment>HDInfo|</comment>
+        <translation type="obsolete">Info HDD</translation>
+    </message>
+    <message>
+        <source>Dialog</source>
+        <comment>KFontDialog|</comment>
+        <translation type="obsolete">Diálogo</translation>
+    </message>
+    <message>
+        <source>Change Fonts</source>
+        <comment>KFontDialog|</comment>
+        <translation type="obsolete">Cambiar tipografía</translation>
+    </message>
+    <message>
+        <source>Style</source>
+        <comment>KFontDialog|</comment>
+        <translation type="obsolete">Estilo</translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <comment>KFontDialog|</comment>
+        <translation type="obsolete">Tamaño</translation>
+    </message>
+    <message>
+        <source>Font</source>
+        <comment>KFontDialog|</comment>
+        <translation type="obsolete">Tipografía</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <comment>KFontDialog|</comment>
+        <translation type="obsolete">OK</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <comment>KFontDialog|</comment>
+        <translation type="obsolete">Cancelar</translation>
+    </message>
+    <message>
+        <source>View</source>
+        <comment>KFontDialog|</comment>
+        <translation type="obsolete">Ver</translation>
+    </message>
+    <message>
+        <source>Tips</source>
+        <comment>KFontDialog|</comment>
+        <translation type="obsolete">Consejos</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>LauncherTheme|</comment>
+        <translation type="obsolete">Volver</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <comment>LauncherTheme|</comment>
+        <translation type="obsolete">Restaurar</translation>
+    </message>
+    <message>
+        <source>Display desktop icon: </source>
+        <comment>LauncherTheme|</comment>
+        <translation type="obsolete">Mostrar iconos en Escritorio </translation>
+    </message>
+    <message>
+        <source>(totally cleared</source>
+        <comment>LeftPage|</comment>
+        <translation type="obsolete">(totalmente limpio</translation>
+    </message>
+    <message>
+        <source>Cookies)</source>
+        <comment>LeftPage|</comment>
+        <translation type="obsolete">Cookies)</translation>
+    </message>
+    <message>
+        <source>Cleared!</source>
+        <comment>LeftPage|</comment>
+        <translation type="obsolete">Limpio!</translation>
+    </message>
+    <message>
+        <source>Cleaning up history trace of Firefox...</source>
+        <comment>LeftPage|</comment>
+        <translation type="obsolete">Limpiando histórico de Firefox</translation>
+    </message>
+    <message>
+        <source>Firefox history trace had been cleared!</source>
+        <comment>LeftPage|</comment>
+        <translation type="obsolete">Histórico de Firefox está limpio!</translation>
+    </message>
+    <message>
+        <source>Cleaning up history trace of Chromium...</source>
+        <comment>LeftPage|</comment>
+        <translation type="obsolete">Limpiando histórico de Chromium...</translation>
+    </message>
+    <message>
+        <source>Chromium history trace had been cleared!</source>
+        <comment>LeftPage|</comment>
+        <translation type="obsolete">Histórico de Chromium está limpio!</translation>
+    </message>
+    <message>
+        <source>Cleaning up Cookies of Firefox...</source>
+        <comment>LeftPage|</comment>
+        <translation type="obsolete">Limpiando cookies de Firefox...</translation>
+    </message>
+    <message>
+        <source>Firefox Cookies had been cleared!</source>
+        <comment>LeftPage|</comment>
+        <translation type="obsolete">Las cookies de Firefox estan limpias!</translation>
+    </message>
+    <message>
+        <source>Cleaning up Cookies of Chromium...</source>
+        <comment>LeftPage|</comment>
+        <translation type="obsolete">Limpiando Cookies de Chromium...</translation>
+    </message>
+    <message>
+        <source>Chromium Cookies had been cleared!</source>
+        <comment>LeftPage|</comment>
+        <translation type="obsolete">Las Cookies de Chromium están limpias</translation>
+    </message>
+    <message>
+        <source>Quick Cleanup</source>
+        <comment>LeftPage|</comment>
+        <translation type="obsolete">Limpieza Rápida</translation>
+    </message>
+    <message>
+        <source>Unfinished</source>
+        <comment>LeftPage|</comment>
+        <translation type="obsolete">Sin terminar</translation>
+    </message>
+    <message>
+        <source>Completed</source>
+        <comment>LeftPage|</comment>
+        <translation type="obsolete">Finalizado</translation>
+    </message>
+    <message>
+        <source>Dialog</source>
+        <comment>LoginDialog|</comment>
+        <translation type="obsolete">Diálogo</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <comment>LoginDialog|</comment>
+        <translation type="obsolete">Cancelar</translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <comment>LoginDialog|</comment>
+        <translation type="obsolete">Acceso</translation>
+    </message>
+    <message>
+        <source>Remember pwd</source>
+        <comment>LoginDialog|</comment>
+        <translation type="obsolete">Recordar clave de acceso</translation>
+    </message>
+    <message>
+        <source>Please input your username!</source>
+        <comment>LoginDialog|</comment>
+        <translation type="obsolete">Por favor ingrese su nombre de usuario!</translation>
+    </message>
+    <message>
+        <source>Please input your password!</source>
+        <comment>LoginDialog|</comment>
+        <translation type="obsolete">Por favor ingrese su clave de acceso!</translation>
+    </message>
+    <message>
+        <source>Vendor: </source>
+        <comment>MemoryInfo|</comment>
+        <translation type="obsolete">Fabricante: </translation>
+    </message>
+    <message>
+        <source>Serial Number: </source>
+        <comment>MemoryInfo|</comment>
+        <translation type="obsolete">Serial Número: </translation>
+    </message>
+    <message>
+        <source>Size: </source>
+        <comment>MemoryInfo|</comment>
+        <translation type="obsolete">Tamaño: </translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <comment>ModalDialog|</comment>
+        <translation type="obsolete">Cancelar</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <comment>ModalDialog|</comment>
+        <translation type="obsolete">OK</translation>
+    </message>
+    <message>
+        <source>Graphics Card Model:</source>
+        <comment>MonitorInfo|</comment>
+        <translation type="obsolete">Modelo de Tarjeta Gráfica:</translation>
+    </message>
+    <message>
+        <source>Vendor: </source>
+        <comment>MonitorInfo|</comment>
+        <translation type="obsolete">Fabricante: </translation>
+    </message>
+    <message>
+        <source>Dimensions: </source>
+        <comment>MonitorInfo|</comment>
+        <translation type="obsolete">Dimensiones: </translation>
+    </message>
+    <message>
+        <source>Max Resolution: </source>
+        <comment>MonitorInfo|</comment>
+        <translation type="obsolete">Max Resolución: </translation>
+    </message>
+    <message>
+        <source>Mouse Settings</source>
+        <comment>MousePointer|</comment>
+        <translation type="obsolete">Configuración del ratón</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>MousePointer|</comment>
+        <translation type="obsolete">Volver</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <comment>MousePointer|</comment>
+        <translation type="obsolete">Restaurar</translation>
+    </message>
+    <message>
+        <source>Vendor:</source>
+        <comment>NICInfo|</comment>
+        <translation type="obsolete">Fabricante:</translation>
+    </message>
+    <message>
+        <source>Device Name:</source>
+        <comment>NICInfo|</comment>
+        <translation type="obsolete">Nombre del Dispositivo:</translation>
+    </message>
+    <message>
+        <source>IP Address:</source>
+        <comment>NICInfo|</comment>
+        <translation type="obsolete">Dirección IP:</translation>
+    </message>
+    <message>
+        <source>Max Bandwidth: </source>
+        <comment>NICInfo|</comment>
+        <translation type="obsolete">Max Ancho de Banda </translation>
+    </message>
+    <message>
+        <source>Serial Number: </source>
+        <comment>NICInfo|</comment>
+        <translation type="obsolete">Número de Serie: </translation>
+    </message>
+    <message>
+        <source>Scan completed!</source>
+        <comment>PackageModel|</comment>
+        <translation type="obsolete">Escaneo terminado!</translation>
+    </message>
+    <message>
+        <source>Begin cleanup</source>
+        <comment>PackageModel|</comment>
+        <translation type="obsolete">Comenzar limpieza</translation>
+    </message>
+    <message>
+        <source>Cleanup abnormal!</source>
+        <comment>PackageModel|</comment>
+        <translation type="obsolete">Limpieza anormal!</translation>
+    </message>
+    <message>
+        <source>Cleanup interrupted!</source>
+        <comment>PackageModel|</comment>
+        <translation type="obsolete">Limpieza interrumpida!</translation>
+    </message>
+    <message>
+        <source>Cleared</source>
+        <comment>PackageModel|</comment>
+        <translation type="obsolete">Limpiado</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>PackageModel|</comment>
+        <translation type="obsolete">Volver</translation>
+    </message>
+    <message>
+        <source>Start scanning</source>
+        <comment>PackageModel|</comment>
+        <translation type="obsolete">Comenzar scaneo</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>PanelManager|</comment>
+        <translation type="obsolete">Volver</translation>
+    </message>
+    <message>
+        <source>Clear</source>
+        <comment>PanelManager|</comment>
+        <translation type="obsolete">Eliminar</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <comment>PanelManager|</comment>
+        <translation type="obsolete">Restaurar</translation>
+    </message>
+    <message>
+        <source>Task Manager</source>
+        <comment>ProcessManager|</comment>
+        <translation type="obsolete">Administrador de tareas</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>ProcessManager|</comment>
+        <translation type="obsolete">Volver</translation>
+    </message>
+    <message>
+        <source>Current User</source>
+        <comment>ProcessManager|</comment>
+        <translation type="obsolete">Usuario Actual</translation>
+    </message>
+    <message>
+        <source>All Users</source>
+        <comment>ProcessManager|</comment>
+        <translation type="obsolete">Todos los Usuarios</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <comment>ProcessManager|</comment>
+        <translation type="obsolete">Refrescar</translation>
+    </message>
+    <message>
+        <source>End process</source>
+        <comment>ProcessManager|</comment>
+        <translation type="obsolete">Finalizar proceso</translation>
+    </message>
+    <message>
+        <source>ID</source>
+        <comment>ProcessManager|</comment>
+        <translation type="obsolete">ID</translation>
+    </message>
+    <message>
+        <source>CPU %</source>
+        <comment>ProcessManager|</comment>
+        <translation type="obsolete">CPU %</translation>
+    </message>
+    <message>
+        <source>Start Time</source>
+        <comment>ProcessManager|</comment>
+        <translation type="obsolete">Hora de Inicio</translation>
+    </message>
+    <message>
+        <source>Process Description</source>
+        <comment>ProcessManager|</comment>
+        <translation type="obsolete">Descripción del Proceso</translation>
+    </message>
+    <message>
+        <source>Process Name</source>
+        <comment>ProcessManager|</comment>
+        <translation type="obsolete">Nombre del proceso</translation>
+    </message>
+    <message>
+        <source>Active</source>
+        <comment>RightPage|</comment>
+        <translation type="obsolete">Activo</translation>
+    </message>
+    <message>
+        <source>China</source>
+        <comment>RightPage|</comment>
+        <translation type="obsolete">China</translation>
+    </message>
+    <message>
+        <source>No User!</source>
+        <comment>RightPage|</comment>
+        <translation type="obsolete">¡Sin usuario!</translation>
+    </message>
+    <message>
+        <source>Password Wrong!</source>
+        <comment>RightPage|</comment>
+        <translation type="obsolete">Clave de acceso errónea!</translation>
+    </message>
+    <message>
+        <source>Login Failed!</source>
+        <comment>RightPage|</comment>
+        <translation type="obsolete">Login Fallo!</translation>
+    </message>
+    <message>
+        <source>Logout</source>
+        <comment>RightPage|</comment>
+        <translation type="obsolete">Cerrar sesión</translation>
+    </message>
+    <message>
+        <source>Level:</source>
+        <comment>RightPage|</comment>
+        <translation type="obsolete">Nivel:</translation>
+    </message>
+    <message>
+        <source>Score:</source>
+        <comment>RightPage|</comment>
+        <translation type="obsolete">Puntuación:</translation>
+    </message>
+    <message>
+        <source>Hide</source>
+        <comment>RightPage|</comment>
+        <translation type="obsolete">Ocultar</translation>
+    </message>
+    <message>
+        <source>Origin: </source>
+        <comment>RightPage|</comment>
+        <translation type="obsolete">Origen: </translation>
+    </message>
+    <message>
+        <source>Architecture:</source>
+        <comment>RightPage|</comment>
+        <translation type="obsolete">Arquitectura:</translation>
+    </message>
+    <message>
+        <source>Desktop:</source>
+        <comment>RightPage|</comment>
+        <translation type="obsolete">Escritorio:</translation>
+    </message>
+    <message>
+        <source>Category:</source>
+        <comment>RightPage|</comment>
+        <translation type="obsolete">Categoría:</translation>
+    </message>
+    <message>
+        <source>Status:</source>
+        <comment>RightPage|</comment>
+        <translation type="obsolete">Estatus:</translation>
+    </message>
+    <message>
+        <source>Popularity:</source>
+        <comment>RightPage|</comment>
+        <translation type="obsolete">Popularidad:</translation>
+    </message>
+    <message>
+        <source>Dialog</source>
+        <comment>SelectDialog|</comment>
+        <translation type="obsolete">Diálogo</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <comment>SelectDialog|</comment>
+        <translation type="obsolete">OK</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <comment>SelectDialog|</comment>
+        <translation type="obsolete">Cancelar</translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <comment>SelectDialog|</comment>
+        <translation type="obsolete">Buscar</translation>
+    </message>
+    <message>
+        <source>Warning:</source>
+        <comment>SelectDialog|</comment>
+        <translation type="obsolete">Advertencia:</translation>
+    </message>
+    <message>
+        <source>Select folder</source>
+        <comment>SessionDispatcher|</comment>
+        <translation type="obsolete">Seleccionar carpeta</translation>
+    </message>
+    <message>
+        <source>No found camera!</source>
+        <comment>SettingsDelegate|</comment>
+        <translation type="obsolete">Cámara no encontrada!</translation>
+    </message>
+    <message>
+        <source>Sound effect</source>
+        <comment>SoundEffects|</comment>
+        <translation type="obsolete">Efecto de sonido</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>SoundEffects|</comment>
+        <translation type="obsolete">Volver</translation>
+    </message>
+    <message>
+        <source>Sound theme:</source>
+        <comment>SoundEffects|</comment>
+        <translation type="obsolete">Tema de sonido:</translation>
+    </message>
+    <message>
+        <source>Event sounds:</source>
+        <comment>SoundEffects|</comment>
+        <translation type="obsolete">Sonidos de eventos:</translation>
+    </message>
+    <message>
+        <source>Unfinished</source>
+        <comment>StatusImage|</comment>
+        <translation type="obsolete">Sin terminar</translation>
+    </message>
+    <message>
+        <source>Details</source>
+        <comment>SuspensionFrame|</comment>
+        <translation type="obsolete">Detalles</translation>
+    </message>
+    <message>
+        <source>%1</source>
+        <comment>SuspensionFrame|</comment>
+        <translation type="obsolete">%1</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <comment>Switch|</comment>
+        <translation type="obsolete">OFF</translation>
+    </message>
+    <message>
+        <source>Task Manager</source>
+        <comment>SystemBox|</comment>
+        <translation type="obsolete">Gestor de tareas</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <comment>SystemBox|</comment>
+        <translation type="obsolete">Cámara</translation>
+    </message>
+    <message>
+        <source>Uninstall Packages</source>
+        <comment>SystemClean|</comment>
+        <translation type="obsolete">Desinstalar Paquetes</translation>
+    </message>
+    <message>
+        <source>Computer</source>
+        <comment>SystemInfo|</comment>
+        <translation type="obsolete">Equipo</translation>
+    </message>
+    <message>
+        <source>Desktop</source>
+        <comment>SystemInfo|</comment>
+        <translation type="obsolete">Escritorio</translation>
+    </message>
+    <message>
+        <source>CPU</source>
+        <comment>SystemInfo|</comment>
+        <translation type="obsolete">CPU</translation>
+    </message>
+    <message>
+        <source>Memory</source>
+        <comment>SystemInfo|</comment>
+        <translation type="obsolete">Memoria</translation>
+    </message>
+    <message>
+        <source>Motherboard</source>
+        <comment>SystemInfo|</comment>
+        <translation type="obsolete">Placa base</translation>
+    </message>
+    <message>
+        <source>Audio</source>
+        <comment>SystemInfo|</comment>
+        <translation type="obsolete">Audio</translation>
+    </message>
+    <message>
+        <source>CD-ROM</source>
+        <comment>SystemInfo|</comment>
+        <translation type="obsolete">CD-ROM</translation>
+    </message>
+    <message>
+        <source>Battery</source>
+        <comment>SystemInfo|</comment>
+        <translation type="obsolete">Batería</translation>
+    </message>
+    <message>
+        <source>Window</source>
+        <comment>SystemSet|</comment>
+        <translation type="obsolete">Ventana</translation>
+    </message>
+    <message>
+        <source>Touchpad</source>
+        <comment>SystemSet|</comment>
+        <translation type="obsolete">Panel táctil</translation>
+    </message>
+    <message>
+        <source>File manager</source>
+        <comment>SystemSet|</comment>
+        <translation type="obsolete">Gestor de archivos</translation>
+    </message>
+    <message>
+        <source> Personalize</source>
+        <comment>SystemSet|</comment>
+        <translation type="obsolete"> Personalizar</translation>
+    </message>
+    <message>
+        <source> Desktop</source>
+        <comment>SystemSet|</comment>
+        <translation type="obsolete"> Escritorio</translation>
+    </message>
+    <message>
+        <source> Others</source>
+        <comment>SystemSet|</comment>
+        <translation type="obsolete"> Otros</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <comment>ToolBar|</comment>
+        <translation type="obsolete">OK</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <comment>ToolBar|</comment>
+        <translation type="obsolete">Restaurar</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>ToolBar|</comment>
+        <translation type="obsolete">Volver</translation>
+    </message>
+    <message>
+        <source>No found camera!</source>
+        <comment>ToolsDelegate|</comment>
+        <translation type="obsolete">Cámara no encontrada!</translation>
+    </message>
+    <message>
+        <source>Touchpad settings</source>
+        <comment>TouchpadSet|</comment>
+        <translation type="obsolete">Configuración del panel táctil</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>TouchpadSet|</comment>
+        <translation type="obsolete">Volver</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <comment>TouchpadSet|</comment>
+        <translation type="obsolete">Restaurar</translation>
+    </message>
+    <message>
+        <source>Firefox is not installed!</source>
+        <comment>TraceModel|</comment>
+        <translation type="obsolete">Firefox no está instalado!</translation>
+    </message>
+    <message>
+        <source>Tips:</source>
+        <comment>TraceModel|</comment>
+        <translation type="obsolete">Consejos:</translation>
+    </message>
+    <message>
+        <source>Scan completed!</source>
+        <comment>TraceModel|</comment>
+        <translation type="obsolete">Escaneo terminado!</translation>
+    </message>
+    <message>
+        <source>Begin cleanup</source>
+        <comment>TraceModel|</comment>
+        <translation type="obsolete">Comenzar limpieza</translation>
+    </message>
+    <message>
+        <source>Chromium is not installed!</source>
+        <comment>TraceModel|</comment>
+        <translation type="obsolete">Chromium no está instalado!</translation>
+    </message>
+    <message>
+        <source>Cleanup abnormal!</source>
+        <comment>TraceModel|</comment>
+        <translation type="obsolete">Limpieza anormal!</translation>
+    </message>
+    <message>
+        <source>Cleanup interrupted!</source>
+        <comment>TraceModel|</comment>
+        <translation type="obsolete">Limpieza interrumpida!</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>TraceModel|</comment>
+        <translation type="obsolete">Volver</translation>
+    </message>
+    <message>
+        <source>Rescan</source>
+        <comment>TraceModel|</comment>
+        <translation type="obsolete">Volver a examinar</translation>
+    </message>
+    <message>
+        <source>0%</source>
+        <comment>Tray|</comment>
+        <translation type="obsolete">0 %</translation>
+    </message>
+    <message>
+        <source>About</source>
+        <comment>Tray|</comment>
+        <translation type="obsolete">Acerca de...</translation>
+    </message>
+    <message>
+        <source>&amp;Exit</source>
+        <comment>Tray|</comment>
+        <translation type="obsolete">&amp;Salir</translation>
+    </message>
+    <message>
+        <source>Dialog</source>
+        <comment>WarningDialog|</comment>
+        <translation type="obsolete">Diálogo</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <comment>WarningDialog|</comment>
+        <translation type="obsolete">OK</translation>
+    </message>
+    <message>
+        <source>Weather</source>
+        <comment>WeatherZone|</comment>
+        <translation type="obsolete">Clima</translation>
+    </message>
+    <message>
+        <source>Current temperature</source>
+        <comment>WeatherZone|</comment>
+        <translation type="obsolete">Temperatura actual</translation>
+    </message>
+    <message>
+        <source> </source>
+        <comment>WeatherZone|</comment>
+        <translation type="obsolete"> </translation>
+    </message>
+    <message>
+        <source>Current temperature:</source>
+        <comment>WeatherZone|</comment>
+        <translation type="obsolete">Temperatura actual:</translation>
+    </message>
+    <message>
+        <source>City</source>
+        <comment>WeatherZone|</comment>
+        <translation type="obsolete">Ciudad</translation>
+    </message>
+    <message>
+        <source>Publish</source>
+        <comment>WeatherZone|</comment>
+        <translation type="obsolete">Publicar</translation>
+    </message>
+    <message>
+        <source>N/A</source>
+        <comment>WeatherZone|</comment>
+        <translation type="obsolete">N/A</translation>
+    </message>
+    <message>
+        <source>Theme settings</source>
+        <comment>WidgetTheme|</comment>
+        <translation type="obsolete">Ajustes de tema</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>WidgetTheme|</comment>
+        <translation type="obsolete">Volver</translation>
+    </message>
+    <message>
+        <source>Window</source>
+        <comment>WindowManager|</comment>
+        <translation type="obsolete">Ventana</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <comment>WindowManager|</comment>
+        <translation type="obsolete">Volver</translation>
+    </message>
+    <message>
+        <source>Restore</source>
+        <comment>WindowManager|</comment>
+        <translation type="obsolete">Restaurar</translation>
+    </message>
+</context>
+<context>
+    <name>AboutDialog</name>
     <message>
         <location filename="../aboutdialog.ui" line="26"/>
         <location filename="../aboutdialog.ui" line="42"/>
         <source>About</source>
-        <comment>AboutDialog|</comment>
-        <translation>Acerca de...</translation>
+        <translation type="unfinished">Acerca de...</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="70"/>
-        <location filename="../aboutdialog.ui" line="162"/>
+        <location filename="../aboutdialog.ui" line="165"/>
         <source>Youker Assistant</source>
-        <comment>AboutDialog|</comment>
-        <translation>Youker Asistente</translation>
+        <translation type="unfinished">Youker Asistente</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.ui" line="86"/>
-        <source>V1.2.0</source>
-        <comment>AboutDialog|</comment>
-        <translation>V1.2.0</translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.ui" line="102"/>
+        <location filename="../aboutdialog.ui" line="105"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions. &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;      The software is still under development. Please visit www.ubuntukylin.com for more information. Welcome everyone to join with us. youker-assistant Homepage: https://launchpad.net/youker-assistant.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>AboutDialog|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.ui" line="113"/>
+        <location filename="../aboutdialog.ui" line="116"/>
         <source>Contributor</source>
-        <comment>AboutDialog|</comment>
-        <translation>Colaborador</translation>
+        <translation type="unfinished">Colaborador</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.ui" line="128"/>
+        <location filename="../aboutdialog.ui" line="131"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;Maintainer&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Droid Sans Fallback&apos;;&quot;&gt;:&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:11px; margin-bottom:11px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;Ubuntu Kylin Team &amp;lt;ubuntukylin-members@list.launchpad.net&amp;gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>AboutDialog|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.ui" line="178"/>
+        <location filename="../aboutdialog.ui" line="181"/>
         <source>&lt;a href=https://launchpad.net/youker-assistant&gt;home page&lt;/a&gt;</source>
-        <comment>AboutDialog|</comment>
-        <translation>&lt;a href=https://launchpad.net/youker-assistant&gt;Página de Inicio&lt;/a&gt;</translation>
+        <translation type="unfinished">&lt;a href=https://launchpad.net/youker-assistant&gt;Página de Inicio&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.ui" line="193"/>
+        <location filename="../aboutdialog.ui" line="199"/>
         <source>Close</source>
-        <comment>AboutDialog|</comment>
-        <translation>Cerrar</translation>
+        <translation type="unfinished">Cerrar</translation>
     </message>
+</context>
+<context>
+    <name>AlertDialog</name>
     <message>
         <location filename="../alertdialog.ui" line="14"/>
         <source>Form</source>
-        <comment>AlertDialog|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>AudioInfo</name>
     <message>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="49"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="62"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="79"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="95"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="122"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="54"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="68"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="86"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="103"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="131"/>
         <source>Audio Model:</source>
-        <comment>AudioInfo|</comment>
-        <translation>Modelo Audio:</translation>
+        <translation type="unfinished">Modelo Audio:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="50"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="63"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="80"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="96"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="123"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="55"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="69"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="87"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="104"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="132"/>
         <source>Vendor:</source>
-        <comment>AudioInfo|</comment>
-        <translation>Fabricante:</translation>
+        <translation type="unfinished">Fabricante:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="51"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="64"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="81"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="97"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="124"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="56"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="70"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="88"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="105"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="133"/>
         <source>Bus Address:</source>
-        <comment>AudioInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="52"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="65"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="82"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="98"/>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="125"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="57"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="71"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="89"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="106"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="134"/>
         <source>Audio Driver:</source>
-        <comment>AudioInfo|</comment>
-        <translation>Controlador de audio:</translation>
+        <translation type="unfinished">Controlador de audio:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/AudioInfo.qml" line="181"/>
+        <location filename="../../qml/func/info/AudioInfo.qml" line="191"/>
         <source>Audio Info</source>
-        <comment>AudioInfo|</comment>
-        <translation>Informacion de Audio</translation>
+        <translation type="unfinished">Informacion de Audio</translation>
     </message>
+</context>
+<context>
+    <name>BatteryInfo</name>
     <message>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="32"/>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="39"/>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="48"/>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="56"/>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="63"/>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="70"/>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="77"/>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="84"/>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="91"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="36"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="43"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="52"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="61"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="68"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="75"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="82"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="89"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="96"/>
         <source>Unknown</source>
-        <comment>BatteryInfo|</comment>
-        <translation>Desconocido</translation>
+        <translation type="unfinished">Desconocido</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="98"/>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="99"/>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="100"/>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="101"/>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="102"/>
         <location filename="../../qml/func/info/BatteryInfo.qml" line="103"/>
         <location filename="../../qml/func/info/BatteryInfo.qml" line="104"/>
         <location filename="../../qml/func/info/BatteryInfo.qml" line="105"/>
         <location filename="../../qml/func/info/BatteryInfo.qml" line="106"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="107"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="108"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="109"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="110"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="111"/>
         <source>Failed to get data</source>
-        <comment>BatteryInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="132"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="137"/>
         <source>Battery Info</source>
-        <comment>BatteryInfo|</comment>
-        <translation>Info de batería</translation>
+        <translation type="unfinished">Info de batería</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="149"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="154"/>
         <source>Device Name:</source>
-        <comment>BatteryInfo|</comment>
-        <translation>Nombre del Dispositivo:</translation>
+        <translation type="unfinished">Nombre del Dispositivo:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="164"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="169"/>
         <source>Model:</source>
-        <comment>BatteryInfo|</comment>
-        <translation>Modelo:</translation>
+        <translation type="unfinished">Modelo:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="179"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="184"/>
         <source>Manufacturer:</source>
-        <comment>BatteryInfo|</comment>
-        <translation>Fabricante:</translation>
+        <translation type="unfinished">Fabricante:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="195"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="200"/>
         <source>Serial Number:</source>
-        <comment>BatteryInfo|</comment>
-        <translation>Número de serie:</translation>
+        <translation type="unfinished">Número de serie:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="210"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="215"/>
         <source>Technology:</source>
-        <comment>BatteryInfo|</comment>
-        <translation>Tecnología:</translation>
+        <translation type="unfinished">Tecnología:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="225"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="230"/>
         <source>Voltage:</source>
-        <comment>BatteryInfo|</comment>
-        <translation>Voltaje</translation>
+        <translation type="unfinished">Voltaje</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="240"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="245"/>
         <source>Energy Designed:</source>
-        <comment>BatteryInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="255"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="260"/>
         <source>Energy Full:</source>
-        <comment>BatteryInfo|</comment>
-        <translation>Full Energía:</translation>
+        <translation type="unfinished">Full Energía:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BatteryInfo.qml" line="270"/>
+        <location filename="../../qml/func/info/BatteryInfo.qml" line="275"/>
         <source>Energy Now:</source>
-        <comment>BatteryInfo|</comment>
-        <translation>Energía Ahora:</translation>
+        <translation type="unfinished">Energía Ahora:</translation>
     </message>
+</context>
+<context>
+    <name>BoardInfo</name>
     <message>
-        <location filename="../../qml/func/info/BoardInfo.qml" line="65"/>
+        <location filename="../../qml/func/info/BoardInfo.qml" line="70"/>
         <source>Motherboard Basics Info</source>
-        <comment>BoardInfo|</comment>
-        <translation>Info básica Placa Base</translation>
+        <translation type="unfinished">Info básica Placa Base</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BoardInfo.qml" line="82"/>
+        <location filename="../../qml/func/info/BoardInfo.qml" line="87"/>
         <source>Motherboard Model: </source>
-        <comment>BoardInfo|</comment>
-        <translation>Modelo Placa Base: </translation>
+        <translation type="unfinished">Modelo Placa Base: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BoardInfo.qml" line="97"/>
+        <location filename="../../qml/func/info/BoardInfo.qml" line="102"/>
         <source>Motherboard Vendor: </source>
-        <comment>BoardInfo|</comment>
-        <translation>Fabricante Placa Base: </translation>
+        <translation type="unfinished">Fabricante Placa Base: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BoardInfo.qml" line="112"/>
+        <location filename="../../qml/func/info/BoardInfo.qml" line="117"/>
         <source>Serial Number: </source>
-        <comment>BoardInfo|</comment>
-        <translation>Serial Número: </translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BoardInfo.qml" line="128"/>
+        <location filename="../../qml/func/info/BoardInfo.qml" line="133"/>
         <source>BIOS Info</source>
-        <comment>BoardInfo|</comment>
-        <translation>BIOS Info</translation>
+        <translation type="unfinished">BIOS Info</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BoardInfo.qml" line="145"/>
+        <location filename="../../qml/func/info/BoardInfo.qml" line="150"/>
         <source>BIOS Vendor: </source>
-        <comment>BoardInfo|</comment>
-        <translation>BIOS Fabricante: </translation>
+        <translation type="unfinished">BIOS Fabricante: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BoardInfo.qml" line="160"/>
+        <location filename="../../qml/func/info/BoardInfo.qml" line="165"/>
         <source>BIOS Version: </source>
-        <comment>BoardInfo|</comment>
-        <translation>Versión BIOS: </translation>
+        <translation type="unfinished">Versión BIOS: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/BoardInfo.qml" line="175"/>
+        <location filename="../../qml/func/info/BoardInfo.qml" line="180"/>
         <source>Release Date: </source>
-        <comment>BoardInfo|</comment>
-        <translation>Fecha Lanzamiento: </translation>
+        <translation type="unfinished">Fecha Lanzamiento: </translation>
     </message>
+</context>
+<context>
+    <name>BootAnimation</name>
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="29"/>
         <source>Boot animation settings</source>
-        <comment>BootAnimation|</comment>
-        <translation>Configuración de animación de arranque</translation>
+        <translation type="unfinished">Configuración de animación de arranque</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="30"/>
         <source>Click the &quot;Custom Picture&quot; button to select the picture you want to add, click the picture you want to set and push the &quot;OK&quot; button to complete.</source>
-        <comment>BootAnimation|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="89"/>
         <source>Back</source>
-        <comment>BootAnimation|</comment>
-        <translation>Atrás</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="110"/>
         <source>Completed!</source>
-        <comment>BootAnimation|</comment>
-        <translation>¡Completo!</translation>
+        <translation type="unfinished">¡Completo!</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="156"/>
         <source>Custom Picture</source>
-        <comment>BootAnimation|</comment>
-        <translation>Imagen personal</translation>
+        <translation type="unfinished">Imagen personal</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="192"/>
         <source>Optional BootAnimation</source>
-        <comment>BootAnimation|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="259"/>
         <source>Delete</source>
-        <comment>BootAnimation|</comment>
-        <translation>Borrar</translation>
+        <translation type="unfinished">Borrar</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="285"/>
         <source>Deleted successfully!</source>
-        <comment>BootAnimation|</comment>
-        <translation>¡Borrado con éxito!</translation>
+        <translation type="unfinished">¡Borrado con éxito!</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="289"/>
         <source>This is the using animation!</source>
-        <comment>BootAnimation|</comment>
-        <translation>Esta es la animación usada!</translation>
+        <translation type="unfinished">Esta es la animación usada!</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="292"/>
         <source>This is the default animation!</source>
-        <comment>BootAnimation|</comment>
-        <translation>Esta es la animación por defecto!</translation>
+        <translation type="unfinished">Esta es la animación por defecto!</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="295"/>
         <source>An unknown error occurred!</source>
-        <comment>BootAnimation|</comment>
-        <translation>Un error desconocido a ocurrido!</translation>
+        <translation type="unfinished">Un error desconocido a ocurrido!</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/BootAnimation.qml" line="342"/>
         <source>OK</source>
-        <comment>BootAnimation|</comment>
-        <translation>OK</translation>
+        <translation type="unfinished">OK</translation>
     </message>
+</context>
+<context>
+    <name>BottomBar</name>
     <message>
         <location filename="../../qml/BottomBar.qml" line="51"/>
         <location filename="../../qml/BottomBar.qml" line="57"/>
@@ -344,76 +1845,67 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/BottomBar.qml" line="166"/>
         <location filename="../../qml/BottomBar.qml" line="197"/>
         <source>Tips:</source>
-        <comment>BottomBar|</comment>
-        <translation>Consejos:</translation>
+        <translation type="unfinished">Consejos:</translation>
     </message>
     <message>
         <location filename="../../qml/BottomBar.qml" line="51"/>
         <location filename="../../qml/BottomBar.qml" line="71"/>
         <source>The kuaipan4uk is not running!</source>
-        <comment>BottomBar|</comment>
-        <translation>kuaipan4uk no está ejecutandose!</translation>
+        <translation type="unfinished">kuaipan4uk no está ejecutandose!</translation>
     </message>
     <message>
         <location filename="../../qml/BottomBar.qml" line="57"/>
         <source>Not found the cloud configuration!</source>
-        <comment>BottomBar|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/BottomBar.qml" line="63"/>
         <source>Download OK!</source>
-        <comment>BottomBar|</comment>
-        <translation>Descarga OK!</translation>
+        <translation type="unfinished">Descarga OK!</translation>
     </message>
     <message>
         <location filename="../../qml/BottomBar.qml" line="77"/>
         <source>Upload OK!</source>
-        <comment>BottomBar|</comment>
-        <translation>SUbida OK!</translation>
+        <translation type="unfinished">SUbida OK!</translation>
     </message>
     <message>
         <location filename="../../qml/BottomBar.qml" line="100"/>
         <source>main version:</source>
-        <comment>BottomBar|</comment>
-        <translation>Versión Principal:</translation>
+        <translation type="unfinished">Versión Principal:</translation>
     </message>
     <message>
         <location filename="../../qml/BottomBar.qml" line="134"/>
         <location filename="../../qml/BottomBar.qml" line="156"/>
         <source>Use Cloud</source>
-        <comment>BottomBar|</comment>
-        <translation>Usar Nube</translation>
+        <translation type="unfinished">Usar Nube</translation>
     </message>
     <message>
         <location filename="../../qml/BottomBar.qml" line="139"/>
         <location filename="../../qml/BottomBar.qml" line="187"/>
         <source>Save Cloud</source>
-        <comment>BottomBar|</comment>
-        <translation>Salvar en la Nube</translation>
+        <translation type="unfinished">Salvar en la Nube</translation>
     </message>
     <message>
         <location filename="../../qml/BottomBar.qml" line="166"/>
         <source>It will use the Kingsoft disk cloud configuration!</source>
-        <comment>BottomBar|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/BottomBar.qml" line="197"/>
         <source>It will upload configuration to the Kingsoft disk cloud!</source>
-        <comment>BottomBar|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>BrowserModel</name>
     <message>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="24"/>
         <source>Deep cleaning up the browser cache</source>
-        <comment>BrowserModel|</comment>
-        <translation>Limpieza profunda del caché del navegador</translation>
+        <translation type="unfinished">Limpieza profunda del caché del navegador</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="25"/>
         <source>Deep cleaning up the browser cache, to save disk space</source>
-        <comment>BrowserModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -423,8 +1915,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="213"/>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="311"/>
         <source>Cleanup Firefox Cache</source>
-        <comment>BrowserModel|</comment>
-        <translation>Limpiar Cache Firefox</translation>
+        <translation type="unfinished">Limpiar Cache Firefox</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="79"/>
@@ -433,59 +1924,50 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="226"/>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="315"/>
         <source>Cleanup Chromium Cache</source>
-        <comment>BrowserModel|</comment>
-        <translation>Limpiar Cache Chromium</translation>
+        <translation type="unfinished">Limpiar Cache Chromium</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="126"/>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="374"/>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="382"/>
         <source>Tips:</source>
-        <comment>BrowserModel|</comment>
-        <translation>Consejos:</translation>
+        <translation type="unfinished">Consejos:</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="126"/>
         <source>The scan reslut is empty, nothing has been done!</source>
-        <comment>BrowserModel|</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">El resultado del scan está vacío, no se hizo nada!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="134"/>
         <source>Scan completed!</source>
-        <comment>BrowserModel|</comment>
-        <translation>Escaneo terminado!</translation>
+        <translation type="unfinished">Escaneo terminado!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="140"/>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="628"/>
         <source>Begin cleanup</source>
-        <comment>BrowserModel|</comment>
-        <translation>Comenzar limpieza</translation>
+        <translation type="unfinished">Comenzar limpieza</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="173"/>
         <source>Cleanup abnormal!</source>
-        <comment>BrowserModel|</comment>
-        <translation>Limpieza anormal!</translation>
+        <translation type="unfinished">Limpieza anormal!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="183"/>
         <source>Cleanup interrupted!</source>
-        <comment>BrowserModel|</comment>
-        <translation>Limpieza interrumpida!</translation>
+        <translation type="unfinished">Limpieza interrumpida!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="187"/>
         <source>Cleared!</source>
-        <comment>BrowserModel|</comment>
-        <translation>Limpio!</translation>
+        <translation type="unfinished">Limpio!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="291"/>
         <source>Back</source>
-        <comment>BrowserModel|</comment>
-        <translation>Volver</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="336"/>
@@ -494,113 +1976,107 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="646"/>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="652"/>
         <source>Start scanning</source>
-        <comment>BrowserModel|</comment>
-        <translation>Comenzar scaneo</translation>
+        <translation type="unfinished">Comenzar scaneo</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="374"/>
         <source>Sorry, You did not choose the content to be scanned, please confirm!</source>
-        <comment>BrowserModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="382"/>
         <source>Sorry, You did not choose the content to be cleaned up, please confirm!</source>
-        <comment>BrowserModel|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>CDROMInfo</name>
     <message>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="50"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="64"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="82"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="99"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="128"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="55"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="70"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="89"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="107"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="137"/>
         <source>CD-ROM Model:</source>
-        <comment>CDROMInfo|</comment>
-        <translation>Modelo CD-ROM:</translation>
+        <translation type="unfinished">Modelo CD-ROM:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="51"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="65"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="83"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="100"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="129"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="56"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="71"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="90"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="108"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="138"/>
         <source>Vendor:</source>
-        <comment>CDROMInfo|</comment>
-        <translation>Fabricante:</translation>
+        <translation type="unfinished">Fabricante:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="52"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="66"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="84"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="101"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="130"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="57"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="72"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="91"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="109"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="139"/>
         <source>Device Name:</source>
-        <comment>CDROMInfo|</comment>
-        <translation>Nombre del Dispositivo:</translation>
+        <translation type="unfinished">Nombre del Dispositivo:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="53"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="67"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="85"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="102"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="131"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="58"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="73"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="92"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="110"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="140"/>
         <source>Firmware Version:</source>
-        <comment>CDROMInfo|</comment>
-        <translation>Versión del firmware:</translation>
+        <translation type="unfinished">Versión del firmware:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="54"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="68"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="86"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="103"/>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="132"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="59"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="74"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="93"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="111"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="141"/>
         <source>Serial Number:</source>
-        <comment>CDROMInfo|</comment>
-        <translation>Número de serie:</translation>
+        <translation type="unfinished">Número de serie:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/CDROMInfo.qml" line="187"/>
+        <location filename="../../qml/func/info/CDROMInfo.qml" line="197"/>
         <source>CD-ROM Info</source>
-        <comment>CDROMInfo|</comment>
-        <translation>Info de CD-ROM</translation>
+        <translation type="unfinished">Info de CD-ROM</translation>
     </message>
+</context>
+<context>
+    <name>CacheDelegate</name>
     <message>
         <location filename="../../qml/func/cleaner/CacheDelegate.qml" line="121"/>
         <source> Items ]</source>
-        <comment>CacheDelegate|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheDelegate.qml" line="131"/>
         <source>No content</source>
-        <comment>CacheDelegate|</comment>
-        <translation>Sin contenido</translation>
+        <translation type="unfinished">Sin contenido</translation>
     </message>
+</context>
+<context>
+    <name>CacheModel</name>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="24"/>
         <source>Cleaning up the system cache</source>
-        <comment>CacheModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="25"/>
         <source>Deep cleaning up the system cache, to save disk space</source>
-        <comment>CacheModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="89"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="191"/>
         <source>Cleanup Package Cache</source>
-        <comment>CacheModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="93"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="195"/>
         <source>Cleanup Software Center Cache</source>
-        <comment>CacheModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -612,7 +2088,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="350"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="451"/>
         <source>Cleanup Thumbnails Cache</source>
-        <comment>CacheModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -620,45 +2095,38 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="541"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="549"/>
         <source>Tips:</source>
-        <comment>CacheModel|</comment>
-        <translation>Consejos:</translation>
+        <translation type="unfinished">Consejos:</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="162"/>
         <source>The scan reslut is empty, nothing has been done!</source>
-        <comment>CacheModel|</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">El resultado del scan está vacío, no se hizo nada!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="170"/>
         <source>Scan completed!</source>
-        <comment>CacheModel|</comment>
-        <translation>Escaneo terminado!</translation>
+        <translation type="unfinished">Escaneo terminado!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="176"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="931"/>
         <source>Begin cleanup</source>
-        <comment>CacheModel|</comment>
-        <translation>Comenzar limpieza</translation>
+        <translation type="unfinished">Comenzar limpieza</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="213"/>
         <source>Cleanup abnormal!</source>
-        <comment>CacheModel|</comment>
-        <translation>Limpieza anormal!</translation>
+        <translation type="unfinished">Limpieza anormal!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="223"/>
         <source>Cleanup interrupted!</source>
-        <comment>CacheModel|</comment>
-        <translation>Limpieza interrumpida!</translation>
+        <translation type="unfinished">Limpieza interrumpida!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="227"/>
         <source>Cleared!</source>
-        <comment>CacheModel|</comment>
-        <translation>Limpio!</translation>
+        <translation type="unfinished">Limpio!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="236"/>
@@ -667,7 +2135,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="325"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="443"/>
         <source>Package cache cleanup</source>
-        <comment>CacheModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -677,14 +2144,12 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="345"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="447"/>
         <source>Software Center buffer cleaning</source>
-        <comment>CacheModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="417"/>
         <source>Back</source>
-        <comment>CacheModel|</comment>
-        <translation>Volver</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="475"/>
@@ -693,204 +2158,186 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="949"/>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="955"/>
         <source>Start scanning</source>
-        <comment>CacheModel|</comment>
-        <translation>Comenzar scaneo</translation>
+        <translation type="unfinished">Comenzar scaneo</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="541"/>
         <source>Sorry, You did not choose the content to be scanned, please confirm!</source>
-        <comment>CacheModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CacheModel.qml" line="549"/>
         <source>Sorry, You did not choose the content to be cleaned up, please confirm!</source>
-        <comment>CacheModel|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>CameraCapture</name>
     <message>
         <location filename="../../qml/func/settings/CameraCapture.qml" line="27"/>
         <source>Camera</source>
-        <comment>CameraCapture|</comment>
-        <translation>Cámara</translation>
+        <translation type="unfinished">Cámara</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/CameraCapture.qml" line="28"/>
         <source>An application to take pictures with the device camera.</source>
-        <comment>CameraCapture|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/CameraCapture.qml" line="50"/>
         <source>Back</source>
-        <comment>CameraCapture|</comment>
-        <translation>Volver</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/CameraCapture.qml" line="93"/>
         <source>Press the [ESC] button to take picture and turn the camera off , the photo saved in home directory by default.</source>
-        <comment>CameraCapture|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/CameraCapture.qml" line="107"/>
         <source>Open camera</source>
-        <comment>CameraCapture|</comment>
-        <translation>Abrir cámara</translation>
+        <translation type="unfinished">Abrir cámara</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/CameraCapture.qml" line="119"/>
         <source>View Photos</source>
-        <comment>CameraCapture|</comment>
-        <translation>Ver fotos</translation>
+        <translation type="unfinished">Ver fotos</translation>
     </message>
+</context>
+<context>
+    <name>ComputerInfo</name>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="49"/>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="52"/>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="277"/>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="280"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="51"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="54"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="279"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="282"/>
         <source> Minutes</source>
-        <comment>ComputerInfo|</comment>
-        <translation> Minutos</translation>
+        <translation type="unfinished"> Minutos</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="52"/>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="280"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="54"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="282"/>
         <source> Hours </source>
-        <comment>ComputerInfo|</comment>
-        <translation> Horas </translation>
+        <translation type="unfinished"> Horas </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="77"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="79"/>
         <source>Computer Basic Info</source>
-        <comment>ComputerInfo|</comment>
-        <translation>Info Básica del Computador</translation>
+        <translation type="unfinished">Info Básica del Computador</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="94"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="96"/>
         <source>Vendor: </source>
-        <comment>ComputerInfo|</comment>
-        <translation>Fabricante: </translation>
+        <translation type="unfinished">Fabricante: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="109"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="111"/>
         <source>Model: </source>
-        <comment>ComputerInfo|</comment>
-        <translation>Modelo: </translation>
+        <translation type="unfinished">Modelo: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="124"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="126"/>
         <source>Version: </source>
-        <comment>ComputerInfo|</comment>
-        <translation>Versión: </translation>
+        <translation type="unfinished">Versión: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="139"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="141"/>
         <source>Serial Number: </source>
-        <comment>ComputerInfo|</comment>
-        <translation>Serial Número: </translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="154"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="156"/>
         <source>Hostname: </source>
-        <comment>ComputerInfo|</comment>
-        <translation>Nombre de la máquina: </translation>
+        <translation type="unfinished">Nombre de la máquina: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="169"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="171"/>
         <source>Running Time: </source>
-        <comment>ComputerInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="184"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="186"/>
         <source>OS Types: </source>
-        <comment>ComputerInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="199"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="201"/>
         <source>OS Version: </source>
-        <comment>ComputerInfo|</comment>
-        <translation>Versión del SO: </translation>
+        <translation type="unfinished">Versión del SO: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="214"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="216"/>
         <source>Kernel Bit: </source>
-        <comment>ComputerInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="229"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="231"/>
         <source>Kernel Version: </source>
-        <comment>ComputerInfo|</comment>
-        <translation>Versióm del Kernel: </translation>
+        <translation type="unfinished">Versióm del Kernel: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/ComputerInfo.qml" line="244"/>
+        <location filename="../../qml/func/info/ComputerInfo.qml" line="246"/>
         <source>Kernel Arch: </source>
-        <comment>ComputerInfo|</comment>
-        <translation>Arquitectura Kernel </translation>
+        <translation type="unfinished">Arquitectura Kernel </translation>
     </message>
+</context>
+<context>
+    <name>CookiesDelegate</name>
     <message>
         <location filename="../../qml/func/cleaner/CookiesDelegate.qml" line="94"/>
         <source> Items ]</source>
-        <comment>CookiesDelegate|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesDelegate.qml" line="112"/>
         <source>Back</source>
-        <comment>CookiesDelegate|</comment>
-        <translation>Volver</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesDelegate.qml" line="123"/>
         <source>Rescan</source>
-        <comment>CookiesDelegate|</comment>
-        <translation>Explorar de nuevo</translation>
+        <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>CookiesItem</name>
     <message>
         <location filename="../../qml/func/cleaner/CookiesItem.qml" line="47"/>
         <source>Cleanup failed!</source>
-        <comment>CookiesItem|</comment>
-        <translation>Falló limpieza!</translation>
+        <translation type="unfinished">Falló limpieza!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesItem.qml" line="53"/>
         <source>Cleanup interrupted!</source>
-        <comment>CookiesItem|</comment>
-        <translation>Limpieza interrumpida!</translation>
+        <translation type="unfinished">Limpieza interrumpida!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesItem.qml" line="57"/>
         <source>Cleanup successfully!</source>
-        <comment>CookiesItem|</comment>
-        <translation>Limpieza satisfactoria!</translation>
+        <translation type="unfinished">Limpieza satisfactoria!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesItem.qml" line="90"/>
         <source> Records</source>
-        <comment>CookiesItem|</comment>
-        <translation> Registros</translation>
+        <translation type="unfinished"> Registros</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesItem.qml" line="110"/>
         <source>Delete</source>
-        <comment>CookiesItem|</comment>
-        <translation>Borrar</translation>
+        <translation type="unfinished">Borrar</translation>
     </message>
+</context>
+<context>
+    <name>CookiesModel</name>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="24"/>
         <source>Cleanup browser Cookies information, to protect your privacy</source>
-        <comment>CookiesModel|</comment>
-        <translation>Limpiar información de Cookies para proteger su privacidad</translation>
+        <translation type="unfinished">Limpiar información de Cookies para proteger su privacidad</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="25"/>
         <source>Clean up user login information, support Firefox and Chromium browser</source>
-        <comment>CookiesModel|</comment>
-        <translation>Limpiar información de Login, soportada para Firefox y Chromium</translation>
+        <translation type="unfinished">Limpiar información de Login, soportada para Firefox y Chromium</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="45"/>
@@ -906,8 +2353,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="502"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="516"/>
         <source>Start scanning</source>
-        <comment>CookiesModel|</comment>
-        <translation>Comenzar scaneo</translation>
+        <translation type="unfinished">Comenzar scaneo</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="70"/>
@@ -915,48 +2361,41 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="96"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="153"/>
         <source>Tips:</source>
-        <comment>CookiesModel|</comment>
-        <translation>Consejos:</translation>
+        <translation type="unfinished">Consejos:</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="70"/>
         <source>Firefox is not installed!</source>
-        <comment>CookiesModel|</comment>
-        <translation>Firefox no está instalado!</translation>
+        <translation type="unfinished">Firefox no está instalado!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="74"/>
         <source>Chromium is not installed!</source>
-        <comment>CookiesModel|</comment>
-        <translation>Chromium no está instalado!</translation>
+        <translation type="unfinished">Chromium no está instalado!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="83"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="200"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="242"/>
         <source>Cleanup the Cookies saving in Firefox</source>
-        <comment>CookiesModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="96"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="153"/>
         <source>The scan reslut is empty, nothing has been done!</source>
-        <comment>CookiesModel|</comment>
-        <translation>El resultado del scan está vacío, no se hizo nada!</translation>
+        <translation type="unfinished">El resultado del scan está vacío, no se hizo nada!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="116"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="175"/>
         <source>Scan completed!</source>
-        <comment>CookiesModel|</comment>
-        <translation>Escaneo terminado!</translation>
+        <translation type="unfinished">Escaneo terminado!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="124"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="182"/>
         <source>All cleanup</source>
-        <comment>CookiesModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -964,136 +2403,120 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="204"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="267"/>
         <source>Cleanup the Cookies saving in Chromium</source>
-        <comment>CookiesModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="214"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="217"/>
         <source>Cleanup interrupted!</source>
-        <comment>CookiesModel|</comment>
-        <translation>Limpieza interrumpida!</translation>
+        <translation type="unfinished">Limpieza interrumpida!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="224"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="229"/>
         <source>Cleanup abnormal!</source>
-        <comment>CookiesModel|</comment>
-        <translation>Limpieza anormal!</translation>
+        <translation type="unfinished">Limpieza anormal!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="244"/>
         <source>Clean up automatically saved logon information by Firefox browser(Cookies)</source>
-        <comment>CookiesModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="258"/>
         <location filename="../../qml/func/cleaner/CookiesModel.qml" line="282"/>
         <source>Cleared</source>
-        <comment>CookiesModel|</comment>
-        <translation>Limpiado</translation>
+        <translation type="unfinished">Limpiado</translation>
     </message>
+</context>
+<context>
+    <name>CpuInfo</name>
     <message>
-        <location filename="../../qml/func/info/CpuInfo.qml" line="41"/>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="45"/>
         <source>cores</source>
-        <comment>CpuInfo|</comment>
-        <translation>núcleos</translation>
+        <translation type="unfinished">núcleos</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/CpuInfo.qml" line="41"/>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="45"/>
         <source>thread</source>
-        <comment>CpuInfo|</comment>
-        <translation>hilo</translation>
+        <translation type="unfinished">hilo</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/CpuInfo.qml" line="68"/>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="72"/>
         <source>CPU Info</source>
-        <comment>CpuInfo|</comment>
-        <translation>CPU Info</translation>
+        <translation type="unfinished">CPU Info</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/CpuInfo.qml" line="85"/>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="89"/>
         <source>CPU: </source>
-        <comment>CpuInfo|</comment>
-        <translation>CPU: </translation>
+        <translation type="unfinished">CPU: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/CpuInfo.qml" line="100"/>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="104"/>
         <source>Vendor: </source>
-        <comment>CpuInfo|</comment>
-        <translation>Fabricante: </translation>
+        <translation type="unfinished">Fabricante: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/CpuInfo.qml" line="115"/>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="119"/>
         <source>Serial Number: </source>
-        <comment>CpuInfo|</comment>
-        <translation>Serial Número: </translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/CpuInfo.qml" line="130"/>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="134"/>
         <source>Socket/Slot: </source>
-        <comment>CpuInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/CpuInfo.qml" line="145"/>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="149"/>
         <source>Maximum Frequency: </source>
-        <comment>CpuInfo|</comment>
-        <translation>Frecuencia Máxima: </translation>
+        <translation type="unfinished">Frecuencia Máxima: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/CpuInfo.qml" line="160"/>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="164"/>
         <source>Current Frequency: </source>
-        <comment>CpuInfo|</comment>
-        <translation>Frecuencia Actual: </translation>
+        <translation type="unfinished">Frecuencia Actual: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/CpuInfo.qml" line="175"/>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="179"/>
         <source>FSB: </source>
-        <comment>CpuInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/CpuInfo.qml" line="190"/>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="194"/>
         <source>Core Number: </source>
-        <comment>CpuInfo|</comment>
-        <translation>Número Núcleos: </translation>
+        <translation type="unfinished">Número Núcleos: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/CpuInfo.qml" line="205"/>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="209"/>
         <source>L1 Cache: </source>
-        <comment>CpuInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/CpuInfo.qml" line="220"/>
+        <location filename="../../qml/func/info/CpuInfo.qml" line="224"/>
         <source>L2 Cache: </source>
-        <comment>CpuInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>DefaultFont</name>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="37"/>
         <source>Default font settings</source>
-        <comment>DefaultFont|</comment>
-        <translation>Configuración por defecto</translation>
+        <translation type="unfinished">Configuración por defecto</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="38"/>
         <source>According to personal preferences to set the system default font, click the  &apos;Restore&apos; button, can be restored to the state before the font settings. </source>
-        <comment>DefaultFont|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="188"/>
         <source>Back</source>
-        <comment>DefaultFont|</comment>
-        <translation>Volver</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="251"/>
         <source>Default Font: </source>
-        <comment>DefaultFont|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1106,74 +2529,65 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/settings/DefaultFont.qml" line="585"/>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="636"/>
         <source>Restore</source>
-        <comment>DefaultFont|</comment>
-        <translation>Restaurar</translation>
+        <translation type="unfinished">Restaurar</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="302"/>
         <source>Desktop Font: </source>
-        <comment>DefaultFont|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="352"/>
         <source>Monospace Font: </source>
-        <comment>DefaultFont|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="402"/>
         <source>Document font: </source>
-        <comment>DefaultFont|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="452"/>
         <source>Titlebar font: </source>
-        <comment>DefaultFont|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="503"/>
         <source>Global Font Scaling: </source>
-        <comment>DefaultFont|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="562"/>
         <source>Hinting: </source>
-        <comment>DefaultFont|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DefaultFont.qml" line="613"/>
         <source>Antialiasing: </source>
-        <comment>DefaultFont|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>DesktopIcon</name>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="27"/>
         <source>Desktop Icons</source>
-        <comment>DesktopIcon|</comment>
-        <translation>Iconos del Escritorio</translation>
+        <translation type="unfinished">Iconos del Escritorio</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="28"/>
         <source>Set the desktop icon theme and the visibility of desktop icons.</source>
-        <comment>DesktopIcon|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="169"/>
         <source>Back</source>
-        <comment>DesktopIcon|</comment>
-        <translation>Volver</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="229"/>
         <source>Icon theme:</source>
-        <comment>DesktopIcon|</comment>
-        <translation>Tema de iconos:</translation>
+        <translation type="unfinished">Tema de iconos:</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="252"/>
@@ -1183,229 +2597,203 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="480"/>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="538"/>
         <source>Restore</source>
-        <comment>DesktopIcon|</comment>
-        <translation>Restaurar</translation>
+        <translation type="unfinished">Restaurar</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="280"/>
         <source>Show Desktop Icons: </source>
-        <comment>DesktopIcon|</comment>
-        <translation>Mostrar iconos en Escritorio: </translation>
+        <translation type="unfinished">Mostrar iconos en Escritorio: </translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="338"/>
         <source>Home Folder: </source>
-        <comment>DesktopIcon|</comment>
-        <translation>Carpeta personal: </translation>
+        <translation type="unfinished">Carpeta personal: </translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="396"/>
         <source>Network: </source>
-        <comment>DesktopIcon|</comment>
-        <translation>Red: </translation>
+        <translation type="unfinished">Red: </translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="454"/>
         <source>Trash : </source>
-        <comment>DesktopIcon|</comment>
-        <translation>Papelera: </translation>
+        <translation type="unfinished">Papelera: </translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="512"/>
         <source>Mounted Volumes: </source>
-        <comment>DesktopIcon|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>DesktopInfo</name>
     <message>
         <location filename="../../qml/func/info/DesktopInfo.qml" line="65"/>
         <source>Desktop Info</source>
-        <comment>DesktopInfo|</comment>
-        <translation>Info Escritorio</translation>
+        <translation type="unfinished">Info Escritorio</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DesktopInfo.qml" line="82"/>
         <source>Desktop Environment: </source>
-        <comment>DesktopInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DesktopInfo.qml" line="97"/>
         <source>Distribution: </source>
-        <comment>DesktopInfo|</comment>
-        <translation>Distribución: </translation>
+        <translation type="unfinished">Distribución: </translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DesktopInfo.qml" line="112"/>
         <source>Language: </source>
-        <comment>DesktopInfo|</comment>
-        <translation>Idioma: </translation>
+        <translation type="unfinished">Idioma: </translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DesktopInfo.qml" line="128"/>
         <source>User: </source>
-        <comment>DesktopInfo|</comment>
-        <translation>Usuario: </translation>
+        <translation type="unfinished">Usuario: </translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DesktopInfo.qml" line="143"/>
         <source>Home Folder: </source>
-        <comment>DesktopInfo|</comment>
-        <translation>Carpeta personal: </translation>
+        <translation type="unfinished">Carpeta personal: </translation>
     </message>
+</context>
+<context>
+    <name>DistrowatchTitle</name>
     <message>
         <location filename="../../qml/func/others/DistrowatchTitle.qml" line="31"/>
         <source>Rank</source>
-        <comment>DistrowatchTitle|</comment>
-        <translation>Valorar</translation>
+        <translation type="unfinished">Valorar</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/DistrowatchTitle.qml" line="47"/>
         <source>Distribution</source>
-        <comment>DistrowatchTitle|</comment>
-        <translation>Distribución</translation>
+        <translation type="unfinished">Distribución</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/DistrowatchTitle.qml" line="63"/>
         <source>T.H</source>
-        <comment>DistrowatchTitle|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/DistrowatchTitle.qml" line="79"/>
         <source>Y.H</source>
-        <comment>DistrowatchTitle|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>DriveInfo</name>
     <message>
         <location filename="../../qml/func/info/DriveInfo.qml" line="29"/>
         <source>Host bridge:</source>
-        <comment>DriveInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DriveInfo.qml" line="30"/>
         <source>VGA Model:</source>
-        <comment>DriveInfo|</comment>
-        <translation>Modelo VGA:</translation>
+        <translation type="unfinished">Modelo VGA:</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DriveInfo.qml" line="31"/>
         <source>USB Model:</source>
-        <comment>DriveInfo|</comment>
-        <translation>Modelo USB</translation>
+        <translation type="unfinished">Modelo USB</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DriveInfo.qml" line="32"/>
         <source>Communication Model:</source>
-        <comment>DriveInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DriveInfo.qml" line="33"/>
         <source>Ethernet Model:</source>
-        <comment>DriveInfo|</comment>
-        <translation>Modelo Ethernet</translation>
+        <translation type="unfinished">Modelo Ethernet</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DriveInfo.qml" line="34"/>
         <source>Audio Model:</source>
-        <comment>DriveInfo|</comment>
-        <translation>Modelo Audio:</translation>
+        <translation type="unfinished">Modelo Audio:</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DriveInfo.qml" line="35"/>
         <source>PCI bridge:</source>
-        <comment>DriveInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DriveInfo.qml" line="36"/>
         <source>ISA bridge:</source>
-        <comment>DriveInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DriveInfo.qml" line="37"/>
         <source>SATA Model:</source>
-        <comment>DriveInfo|</comment>
-        <translation>Modelo SATA:</translation>
+        <translation type="unfinished">Modelo SATA:</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DriveInfo.qml" line="38"/>
         <source>SMBus:</source>
-        <comment>DriveInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DriveInfo.qml" line="39"/>
         <source>System peripheral:</source>
-        <comment>DriveInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DriveInfo.qml" line="40"/>
         <source>Driver in use:</source>
-        <comment>DriveInfo|</comment>
-        <translation>Dispositivo en uso:</translation>
+        <translation type="unfinished">Dispositivo en uso:</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DriveInfo.qml" line="41"/>
         <source>existing drivers:</source>
-        <comment>DriveInfo|</comment>
-        <translation>Dispositivos existentes:</translation>
+        <translation type="unfinished">Dispositivos existentes:</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DriveInfo.qml" line="42"/>
         <source>IDE interface:</source>
-        <comment>DriveInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DriveInfo.qml" line="43"/>
         <source>SP controller:</source>
-        <comment>DriveInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DriveInfo.qml" line="44"/>
         <source>Network controller:</source>
-        <comment>DriveInfo|</comment>
-        <translation>Controlador de red</translation>
+        <translation type="unfinished">Controlador de red</translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DriveInfo.qml" line="45"/>
         <source>Multimedia audio controller:</source>
-        <comment>DriveInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/info/DriveInfo.qml" line="267"/>
         <source>Device Driver Info</source>
-        <comment>DriveInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>FileManager</name>
     <message>
         <location filename="../../qml/func/settings/FileManager.qml" line="26"/>
         <source>File Manager</source>
-        <comment>FileManager|</comment>
-        <translation>Gestor de archivos</translation>
+        <translation type="unfinished">Gestor de archivos</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/FileManager.qml" line="27"/>
         <source>Manage the Nautilus file manager. Tips: if the thumbnail&apos;s cache time or size is set to -1, it will not be checked.</source>
-        <comment>FileManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/FileManager.qml" line="129"/>
         <source>Back</source>
-        <comment>FileManager|</comment>
-        <translation>Volver</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/FileManager.qml" line="188"/>
         <source>Display entry location: </source>
-        <comment>FileManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1417,92 +2805,80 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/settings/FileManager.qml" line="521"/>
         <location filename="../../qml/func/settings/FileManager.qml" line="581"/>
         <source>Restore</source>
-        <comment>FileManager|</comment>
-        <translation>Restaurar</translation>
+        <translation type="unfinished">Restaurar</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/FileManager.qml" line="248"/>
         <source>Automatically mount media: </source>
-        <comment>FileManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/FileManager.qml" line="308"/>
         <source>Automatically open a folder: </source>
-        <comment>FileManager|</comment>
-        <translation>Abrir automáticamente una carpeta: </translation>
+        <translation type="unfinished">Abrir automáticamente una carpeta: </translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/FileManager.qml" line="368"/>
         <source>Prompt autorun programs: </source>
-        <comment>FileManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/FileManager.qml" line="428"/>
         <source>Thumbnail icon size (pixels): </source>
-        <comment>FileManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/FileManager.qml" line="488"/>
         <source>Thumbnail cache time (days): </source>
-        <comment>FileManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/FileManager.qml" line="548"/>
         <source>Maximum thumbnail cache size (MB): </source>
-        <comment>FileManager|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>FileModel</name>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="25"/>
         <source>Quickly find large files</source>
-        <comment>FileModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="26"/>
         <source>Range:1M-20480M; 1GB = 1024MB</source>
-        <comment>FileModel|</comment>
-        <translation>Rango:1M-20480M; 1GB = 1024MB</translation>
+        <translation type="unfinished">Rango:1M-20480M; 1GB = 1024MB</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="84"/>
         <source>Cleanup path is:</source>
-        <comment>FileModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="86"/>
         <source>cleaning up the maximum files in user-specified directory, to save disk space.</source>
-        <comment>FileModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="88"/>
         <source>Nothing found!</source>
-        <comment>FileModel|</comment>
-        <translation>No se encontró nada!</translation>
+        <translation type="unfinished">No se encontró nada!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="115"/>
         <source>Cleared!</source>
-        <comment>FileModel|</comment>
-        <translation>Limpio!</translation>
+        <translation type="unfinished">Limpio!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="154"/>
         <source>Please input the file size (M) : </source>
-        <comment>FileModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="185"/>
         <source>Browse...</source>
-        <comment>FileModel|</comment>
-        <translation>Examinar…</translation>
+        <translation type="unfinished">Examinar…</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="195"/>
@@ -1512,232 +2888,253 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/FileModel.qml" line="246"/>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="256"/>
         <source>Tips:</source>
-        <comment>FileModel|</comment>
-        <translation>Consejos:</translation>
+        <translation type="unfinished">Consejos:</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="195"/>
         <source>Sorry, you haven&apos;t set the file size or the value is 0, please input the file size!</source>
-        <comment>FileModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="217"/>
         <source>Begin cleanup</source>
-        <comment>FileModel|</comment>
-        <translation>Comenzar limpieza</translation>
+        <translation type="unfinished">Comenzar limpieza</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="223"/>
         <source>Sorry, You haven&apos;t set the file size or the value is 0, please input the file sizes !</source>
-        <comment>FileModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="227"/>
         <source>Sorry, You did not choose the scan path, please click the &apos;Browse&apos; button to continue!</source>
-        <comment>FileModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="234"/>
         <source>The scan reslut is empty, nothing has been done!</source>
-        <comment>FileModel|</comment>
-        <translation>El resultado del scan está vacío, no se hizo nada!</translation>
+        <translation type="unfinished">El resultado del scan está vacío, no se hizo nada!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="246"/>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="256"/>
         <source>Sorry, You did not choose the content to be cleaned up, please confirm!</source>
-        <comment>FileModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="347"/>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="354"/>
         <source>Unfinished</source>
-        <comment>FileModel|</comment>
-        <translation>Sin terminar</translation>
+        <translation type="unfinished">Sin terminar</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="358"/>
         <source>Exception occurred</source>
-        <comment>FileModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="362"/>
         <location filename="../../qml/func/cleaner/FileModel.qml" line="366"/>
         <source>Completed</source>
-        <comment>FileModel|</comment>
-        <translation>Finalizado</translation>
+        <translation type="unfinished">Finalizado</translation>
     </message>
+</context>
+<context>
+    <name>FileShredder</name>
     <message>
-        <location filename="../../qml/func/common/FontButton.qml" line="80"/>
-        <source>Click to change font</source>
-        <comment>FontButton|</comment>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="27"/>
+        <source>File Shredder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/HDInfo.qml" line="50"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="69"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="92"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="114"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="147"/>
-        <source>HDD Model: </source>
-        <comment>HDInfo|</comment>
-        <translation>Modelo HDD: </translation>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="28"/>
+        <source>Crush stubborn files.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/HDInfo.qml" line="51"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="70"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="93"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="115"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="148"/>
-        <source>HDD Vendor: </source>
-        <comment>HDInfo|</comment>
-        <translation>Fabricante HDD: </translation>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="51"/>
+        <source>Back</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/HDInfo.qml" line="52"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="71"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="94"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="116"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="149"/>
-        <source>HDD Capacity: </source>
-        <comment>HDInfo|</comment>
-        <translation>Capacidad HDD: </translation>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="123"/>
+        <source>The selected file path: </source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/HDInfo.qml" line="53"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="72"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="95"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="117"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="150"/>
-        <source>Device Name: </source>
-        <comment>HDInfo|</comment>
-        <translation>Nombre Dispositivo: </translation>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="137"/>
+        <source>Select File</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/HDInfo.qml" line="54"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="73"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="96"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="118"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="151"/>
-        <source>Firmware Version: </source>
-        <comment>HDInfo|</comment>
-        <translation>Versión del Firmware: </translation>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="150"/>
+        <source>Shred File</source>
+        <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="156"/>
+        <source>Shred success!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="159"/>
+        <source>Shred abnormal!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FontButton</name>
+    <message>
+        <location filename="../../qml/func/common/FontButton.qml" line="80"/>
+        <source>Click to change font</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>HDInfo</name>
     <message>
         <location filename="../../qml/func/info/HDInfo.qml" line="55"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="74"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="97"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="119"/>
-        <location filename="../../qml/func/info/HDInfo.qml" line="152"/>
-        <source>Serial Number: </source>
-        <comment>HDInfo|</comment>
-        <translation>Serial Número: </translation>
+        <location filename="../../qml/func/info/HDInfo.qml" line="76"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="101"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="125"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="160"/>
+        <source>HDD Model: </source>
+        <translation type="unfinished">Modelo HDD: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/HDInfo.qml" line="211"/>
-        <source>HDD Info</source>
-        <comment>HDInfo|</comment>
-        <translation>Info HDD</translation>
+        <location filename="../../qml/func/info/HDInfo.qml" line="56"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="77"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="102"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="126"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="161"/>
+        <source>HDD Vendor: </source>
+        <translation type="unfinished">Fabricante HDD: </translation>
     </message>
+    <message>
+        <location filename="../../qml/func/info/HDInfo.qml" line="57"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="78"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="103"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="127"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="162"/>
+        <source>HDD Capacity: </source>
+        <translation type="unfinished">Capacidad HDD: </translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/HDInfo.qml" line="58"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="79"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="104"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="128"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="163"/>
+        <source>Device Name: </source>
+        <translation type="unfinished">Nombre Dispositivo: </translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/HDInfo.qml" line="59"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="80"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="105"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="129"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="164"/>
+        <source>Firmware Version: </source>
+        <translation type="unfinished">Versión del Firmware: </translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/HDInfo.qml" line="60"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="81"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="106"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="130"/>
+        <location filename="../../qml/func/info/HDInfo.qml" line="165"/>
+        <source>Serial Number: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/HDInfo.qml" line="226"/>
+        <source>HDD Info</source>
+        <translation type="unfinished">Info HDD</translation>
+    </message>
+</context>
+<context>
+    <name>KFontDialog</name>
     <message>
         <location filename="../kfontdialog.ui" line="14"/>
         <source>Dialog</source>
-        <comment>KFontDialog|</comment>
-        <translation>Diálogo</translation>
+        <translation type="unfinished">Diálogo</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="35"/>
         <source>Change Fonts</source>
-        <comment>KFontDialog|</comment>
-        <translation>Cambiar tipografía</translation>
+        <translation type="unfinished">Cambiar tipografía</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="74"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>KFontDialog|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="97"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Current Font:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>KFontDialog|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="110"/>
         <source>Style</source>
-        <comment>KFontDialog|</comment>
-        <translation>Estilo</translation>
+        <translation type="unfinished">Estilo</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="123"/>
         <source>Size</source>
-        <comment>KFontDialog|</comment>
-        <translation>Tamaño</translation>
+        <translation type="unfinished">Tamaño</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="146"/>
         <source>Font</source>
-        <comment>KFontDialog|</comment>
-        <translation>Tipografía</translation>
+        <translation type="unfinished">Tipografía</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="199"/>
         <source>OK</source>
-        <comment>KFontDialog|</comment>
-        <translation>OK</translation>
+        <translation type="unfinished">OK</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="212"/>
         <source>Cancel</source>
-        <comment>KFontDialog|</comment>
-        <translation>Cancelar</translation>
+        <translation type="unfinished">Cancelar</translation>
     </message>
     <message>
         <location filename="../kfontdialog.ui" line="225"/>
         <source>View</source>
-        <comment>KFontDialog|</comment>
-        <translation>Ver</translation>
+        <translation type="unfinished">Ver</translation>
     </message>
     <message>
         <location filename="../kfontdialog.cpp" line="286"/>
         <source>Tips</source>
-        <comment>KFontDialog|</comment>
-        <translation>Consejos</translation>
+        <translation type="unfinished">Consejos</translation>
     </message>
     <message>
         <location filename="../kfontdialog.cpp" line="287"/>
         <source>You haven&apos;t change the font, please choose the font!</source>
-        <comment>KFontDialog|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>LauncherTheme</name>
     <message>
         <location filename="../../qml/func/settings/LauncherTheme.qml" line="28"/>
         <source>Launcher settings</source>
-        <comment>LauncherTheme|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/LauncherTheme.qml" line="29"/>
         <source>Setting the Launcher display mode, Icon size.</source>
-        <comment>LauncherTheme|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/LauncherTheme.qml" line="119"/>
         <source>Back</source>
-        <comment>LauncherTheme|</comment>
-        <translation>Volver</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/LauncherTheme.qml" line="180"/>
         <source>Launcher icon size: </source>
-        <comment>LauncherTheme|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1747,171 +3144,146 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/settings/LauncherTheme.qml" line="385"/>
         <location filename="../../qml/func/settings/LauncherTheme.qml" line="446"/>
         <source>Restore</source>
-        <comment>LauncherTheme|</comment>
-        <translation>Restaurar</translation>
+        <translation type="unfinished">Restaurar</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/LauncherTheme.qml" line="239"/>
         <source>Launcher hide mode:</source>
-        <comment>LauncherTheme|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/LauncherTheme.qml" line="297"/>
         <source>Display desktop icon: </source>
-        <comment>LauncherTheme|</comment>
-        <translation>Mostrar iconos en Escritorio </translation>
+        <translation type="unfinished">Mostrar iconos en Escritorio </translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/LauncherTheme.qml" line="353"/>
         <source>Launcher Transparency:</source>
-        <comment>LauncherTheme|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/LauncherTheme.qml" line="411"/>
         <source>Icon Background:</source>
-        <comment>LauncherTheme|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>LeftPage</name>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="129"/>
         <location filename="../../qml/func/others/LeftPage.qml" line="133"/>
         <location filename="../../qml/func/others/LeftPage.qml" line="137"/>
         <source>(totally cleared</source>
-        <comment>LeftPage|</comment>
-        <translation>(totalmente limpio</translation>
+        <translation type="unfinished">(totalmente limpio</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="129"/>
         <source>Cookies)</source>
-        <comment>LeftPage|</comment>
-        <translation>Cookies)</translation>
+        <translation type="unfinished">Cookies)</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="133"/>
         <source>garbage)</source>
-        <comment>LeftPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="137"/>
         <source>historical records)</source>
-        <comment>LeftPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="145"/>
         <source>Cleared!</source>
-        <comment>LeftPage|</comment>
-        <translation>Limpio!</translation>
+        <translation type="unfinished">Limpio!</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="177"/>
         <source>Cleaning up history trace of Firefox...</source>
-        <comment>LeftPage|</comment>
-        <translation>Limpiando histórico de Firefox</translation>
+        <translation type="unfinished">Limpiando histórico de Firefox</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="180"/>
         <source>Firefox history trace had been cleared!</source>
-        <comment>LeftPage|</comment>
-        <translation>Histórico de Firefox está limpio!</translation>
+        <translation type="unfinished">Histórico de Firefox está limpio!</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="185"/>
         <source>Cleaning up history trace of Chromium...</source>
-        <comment>LeftPage|</comment>
-        <translation>Limpiando histórico de Chromium...</translation>
+        <translation type="unfinished">Limpiando histórico de Chromium...</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="188"/>
         <source>Chromium history trace had been cleared!</source>
-        <comment>LeftPage|</comment>
-        <translation>Histórico de Chromium está limpio!</translation>
+        <translation type="unfinished">Histórico de Chromium está limpio!</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="193"/>
         <source>Cleaning up Cookies of Firefox...</source>
-        <comment>LeftPage|</comment>
-        <translation>Limpiando cookies de Firefox...</translation>
+        <translation type="unfinished">Limpiando cookies de Firefox...</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="196"/>
         <source>Firefox Cookies had been cleared!</source>
-        <comment>LeftPage|</comment>
-        <translation>Las cookies de Firefox estan limpias!</translation>
+        <translation type="unfinished">Las cookies de Firefox estan limpias!</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="201"/>
         <source>Cleaning up Cookies of Chromium...</source>
-        <comment>LeftPage|</comment>
-        <translation>Limpiando Cookies de Chromium...</translation>
+        <translation type="unfinished">Limpiando Cookies de Chromium...</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="204"/>
         <source>Chromium Cookies had been cleared!</source>
-        <comment>LeftPage|</comment>
-        <translation>Las Cookies de Chromium están limpias</translation>
+        <translation type="unfinished">Las Cookies de Chromium están limpias</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="209"/>
         <source>Apt cache had been cleared!</source>
-        <comment>LeftPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="212"/>
         <source>Cleaning up Apt cache: </source>
-        <comment>LeftPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="217"/>
         <source>Software Center cache had been cleared!</source>
-        <comment>LeftPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="220"/>
         <source>Cleaning up Software Center cache: </source>
-        <comment>LeftPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="271"/>
         <source>Quick clean up system trash, saving disk space and improving the system efficiency!</source>
-        <comment>LeftPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="280"/>
         <source>To help you quick clean up the Cookies, garbage, traces and plug-ins.</source>
-        <comment>LeftPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="381"/>
         <source>Quick Cleanup</source>
-        <comment>LeftPage|</comment>
-        <translation>Limpieza Rápida</translation>
+        <translation type="unfinished">Limpieza Rápida</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="402"/>
         <source>(Scan to:  </source>
-        <comment>LeftPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="479"/>
         <source>Cleanup Garbage</source>
-        <comment>LeftPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="492"/>
         <source>Clean up system junk files, free disk space</source>
-        <comment>LeftPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1922,490 +3294,439 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/others/LeftPage.qml" line="687"/>
         <location filename="../../qml/func/others/LeftPage.qml" line="703"/>
         <source>Unfinished</source>
-        <comment>LeftPage|</comment>
-        <translation>Sin terminar</translation>
+        <translation type="unfinished">Sin terminar</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="509"/>
         <location filename="../../qml/func/others/LeftPage.qml" line="601"/>
         <location filename="../../qml/func/others/LeftPage.qml" line="694"/>
         <source>Completed</source>
-        <comment>LeftPage|</comment>
-        <translation>Finalizado</translation>
+        <translation type="unfinished">Finalizado</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="513"/>
         <location filename="../../qml/func/others/LeftPage.qml" line="606"/>
         <location filename="../../qml/func/others/LeftPage.qml" line="699"/>
         <source>Exception occurred</source>
-        <comment>LeftPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="571"/>
         <source>Delete History</source>
-        <comment>LeftPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="584"/>
         <source>Clean up the historical records, to protect your privacy</source>
-        <comment>LeftPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="664"/>
         <source>Cleanup Cookies</source>
-        <comment>LeftPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/LeftPage.qml" line="677"/>
         <source>Clean up the Cookies, including surfing and shopping records</source>
-        <comment>LeftPage|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>LoginDialog</name>
     <message>
         <location filename="../logindialog.ui" line="14"/>
         <source>Dialog</source>
-        <comment>LoginDialog|</comment>
-        <translation>Diálogo</translation>
+        <translation type="unfinished">Diálogo</translation>
     </message>
     <message>
         <location filename="../logindialog.ui" line="30"/>
         <source>Cancel</source>
-        <comment>LoginDialog|</comment>
-        <translation>Cancelar</translation>
+        <translation type="unfinished">Cancelar</translation>
     </message>
     <message>
         <location filename="../logindialog.ui" line="47"/>
         <source>Login</source>
-        <comment>LoginDialog|</comment>
-        <translation>Acceso</translation>
+        <translation type="unfinished">Acceso</translation>
     </message>
     <message>
         <location filename="../logindialog.ui" line="76"/>
         <source>Forum account password</source>
-        <comment>LoginDialog|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../logindialog.ui" line="124"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>LoginDialog|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../logindialog.ui" line="146"/>
         <source>Remember pwd</source>
-        <comment>LoginDialog|</comment>
-        <translation>Recordar clave de acceso</translation>
+        <translation type="unfinished">Recordar clave de acceso</translation>
     </message>
     <message>
         <location filename="../logindialog.ui" line="184"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Register&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>LoginDialog|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../logindialog.cpp" line="93"/>
         <source>Please input your username!</source>
-        <comment>LoginDialog|</comment>
-        <translation>Por favor ingrese su nombre de usuario!</translation>
+        <translation type="unfinished">Por favor ingrese su nombre de usuario!</translation>
     </message>
     <message>
         <location filename="../logindialog.cpp" line="100"/>
         <source>Please input your password!</source>
-        <comment>LoginDialog|</comment>
-        <translation>Por favor ingrese su clave de acceso!</translation>
+        <translation type="unfinished">Por favor ingrese su clave de acceso!</translation>
     </message>
-    <message>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="50"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="64"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="83"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="101"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="131"/>
-        <source>Slot Number: </source>
-        <comment>MemoryInfo|</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="51"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="65"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="84"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="102"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="132"/>
-        <source>Memory Model: </source>
-        <comment>MemoryInfo|</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="52"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="66"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="85"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="103"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="133"/>
-        <source>Vendor: </source>
-        <comment>MemoryInfo|</comment>
-        <translation>Fabricante: </translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="53"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="67"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="86"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="104"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="134"/>
-        <source>Serial Number: </source>
-        <comment>MemoryInfo|</comment>
-        <translation>Serial Número: </translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="54"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="87"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="135"/>
-        <source>Memory Size: </source>
-        <comment>MemoryInfo|</comment>
-        <translation type="unfinished"></translation>
-    </message>
+</context>
+<context>
+    <name>MemoryInfo</name>
     <message>
         <location filename="../../qml/func/info/MemoryInfo.qml" line="55"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="69"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="88"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="106"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="136"/>
-        <source>Data Width: </source>
-        <comment>MemoryInfo|</comment>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="70"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="90"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="109"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="140"/>
+        <source>Slot Number: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/info/MemoryInfo.qml" line="56"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="70"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="89"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="107"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="137"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="71"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="91"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="110"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="141"/>
+        <source>Memory Model: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="57"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="72"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="92"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="111"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="142"/>
+        <source>Vendor: </source>
+        <translation type="unfinished">Fabricante: </translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="58"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="73"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="93"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="112"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="143"/>
+        <source>Serial Number: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="59"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="94"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="144"/>
+        <source>Memory Size: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="60"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="75"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="95"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="114"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="145"/>
+        <source>Data Width: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="61"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="76"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="96"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="115"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="146"/>
         <source>Memory Info: </source>
-        <comment>MemoryInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="68"/>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="105"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="74"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="113"/>
         <source>Size: </source>
-        <comment>MemoryInfo|</comment>
-        <translation>Tamaño: </translation>
+        <translation type="unfinished">Tamaño: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MemoryInfo.qml" line="190"/>
+        <location filename="../../qml/func/info/MemoryInfo.qml" line="200"/>
         <source>Memory Info</source>
-        <comment>MemoryInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>ModalDialog</name>
     <message>
         <location filename="../modaldialog.ui" line="14"/>
         <source>Dialog</source>
-        <comment>ModalDialog|</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Diálogo</translation>
     </message>
     <message>
         <location filename="../modaldialog.ui" line="71"/>
         <source>Cancel</source>
-        <comment>ModalDialog|</comment>
-        <translation>Cancelar</translation>
+        <translation type="unfinished">Cancelar</translation>
     </message>
     <message>
         <location filename="../modaldialog.ui" line="113"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Monitor Check&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>ModalDialog|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../modaldialog.ui" line="126"/>
         <source>OK</source>
-        <comment>ModalDialog|</comment>
-        <translation>OK</translation>
+        <translation type="unfinished">OK</translation>
     </message>
     <message>
         <location filename="../modaldialog.cpp" line="50"/>
         <source>Left-click to change the color, right-click to exit from this detection.</source>
-        <comment>ModalDialog|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>MonitorInfo</name>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="50"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="64"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="82"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="99"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="127"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="55"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="70"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="89"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="107"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="136"/>
         <source>Graphics Card Model:</source>
-        <comment>MonitorInfo|</comment>
-        <translation>Modelo de Tarjeta Gráfica:</translation>
+        <translation type="unfinished">Modelo de Tarjeta Gráfica:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="51"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="65"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="83"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="100"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="128"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="56"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="71"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="90"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="108"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="137"/>
         <source>Current Graphics Card:</source>
-        <comment>MonitorInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="52"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="66"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="84"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="101"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="129"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="57"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="72"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="91"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="109"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="138"/>
         <source>Graphics Card Vendor:</source>
-        <comment>MonitorInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="53"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="67"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="85"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="102"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="130"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="58"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="73"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="92"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="110"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="139"/>
         <source>Graphics Driver:</source>
-        <comment>MonitorInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="54"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="68"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="86"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="103"/>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="131"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="59"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="74"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="93"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="111"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="140"/>
         <source>Bus Address:</source>
-        <comment>MonitorInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="234"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="245"/>
         <source>Graphics Card Info</source>
-        <comment>MonitorInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="373"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="384"/>
         <source>Monitor Info</source>
-        <comment>MonitorInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="393"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="404"/>
         <source>Monitor: </source>
-        <comment>MonitorInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="410"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="421"/>
         <source>Vendor: </source>
-        <comment>MonitorInfo|</comment>
-        <translation>Fabricante: </translation>
+        <translation type="unfinished">Fabricante: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="426"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="437"/>
         <source>Production(year/week): </source>
-        <comment>MonitorInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="442"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="453"/>
         <source>Display Area: </source>
-        <comment>MonitorInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="458"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="469"/>
         <source>Dimensions: </source>
-        <comment>MonitorInfo|</comment>
-        <translation>Dimensiones: </translation>
+        <translation type="unfinished">Dimensiones: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="474"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="485"/>
         <source>Max Resolution: </source>
-        <comment>MonitorInfo|</comment>
-        <translation>Max Resolución: </translation>
+        <translation type="unfinished">Max Resolución: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="490"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="501"/>
         <source>Gamma Value: </source>
-        <comment>MonitorInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="506"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="517"/>
         <source>Current Output: </source>
-        <comment>MonitorInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/MonitorInfo.qml" line="523"/>
+        <location filename="../../qml/func/info/MonitorInfo.qml" line="534"/>
         <source>Support Output: </source>
-        <comment>MonitorInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>MousePointer</name>
     <message>
         <location filename="../../qml/func/settings/MousePointer.qml" line="28"/>
         <source>Mouse Settings</source>
-        <comment>MousePointer|</comment>
-        <translation>Configuración del ratón</translation>
+        <translation type="unfinished">Configuración del ratón</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/MousePointer.qml" line="29"/>
         <source>Replace the theme and size of the mouse pointer,  then click the &apos;OK&apos; button to confirm. Also, theme change need to restart system.</source>
-        <comment>MousePointer|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/MousePointer.qml" line="72"/>
         <source>Back</source>
-        <comment>MousePointer|</comment>
-        <translation>Volver</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/MousePointer.qml" line="132"/>
         <source>Mouse Pointer Theme:</source>
-        <comment>MousePointer|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/MousePointer.qml" line="156"/>
         <location filename="../../qml/func/settings/MousePointer.qml" line="234"/>
         <source>Restore</source>
-        <comment>MousePointer|</comment>
-        <translation>Restaurar</translation>
+        <translation type="unfinished">Restaurar</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/MousePointer.qml" line="187"/>
         <source>Cursor Pointer Size:</source>
-        <comment>MousePointer|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/MousePointer.qml" line="199"/>
         <source>Small Size</source>
-        <comment>MousePointer|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/MousePointer.qml" line="213"/>
         <source>Big Size</source>
-        <comment>MousePointer|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>NICInfo</name>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="85"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="91"/>
         <source>NIC Info</source>
-        <comment>NICInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="103"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="109"/>
         <source>NIC Model:</source>
-        <comment>NICInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="120"/>
-        <location filename="../../qml/func/info/NICInfo.qml" line="279"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="126"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="285"/>
         <source>Vendor:</source>
-        <comment>NICInfo|</comment>
-        <translation>Fabricante:</translation>
+        <translation type="unfinished">Fabricante:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="135"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="141"/>
         <source>NIC Driver:</source>
-        <comment>NICInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="150"/>
-        <location filename="../../qml/func/info/NICInfo.qml" line="311"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="156"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="317"/>
         <source>Bus Address:</source>
-        <comment>NICInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="165"/>
-        <location filename="../../qml/func/info/NICInfo.qml" line="327"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="171"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="333"/>
         <source>Device Name:</source>
-        <comment>NICInfo|</comment>
-        <translation>Nombre del Dispositivo:</translation>
+        <translation type="unfinished">Nombre del Dispositivo:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="180"/>
-        <location filename="../../qml/func/info/NICInfo.qml" line="344"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="186"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="350"/>
         <source>IP Address:</source>
-        <comment>NICInfo|</comment>
-        <translation>Dirección IP:</translation>
+        <translation type="unfinished">Dirección IP:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="195"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="201"/>
         <source>Mac Address:</source>
-        <comment>NICInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="210"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="216"/>
         <source>Connection Status: </source>
-        <comment>NICInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="225"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="231"/>
         <source>Max Bandwidth: </source>
-        <comment>NICInfo|</comment>
-        <translation>Max Ancho de Banda </translation>
+        <translation type="unfinished">Max Ancho de Banda </translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="242"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="248"/>
         <source>WLan NIC Info</source>
-        <comment>NICInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="261"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="267"/>
         <source>WLan NIC Model:</source>
-        <comment>NICInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="295"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="301"/>
         <source>WLan NIC Driver:</source>
-        <comment>NICInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/info/NICInfo.qml" line="361"/>
+        <location filename="../../qml/func/info/NICInfo.qml" line="367"/>
         <source>Serial Number: </source>
-        <comment>NICInfo|</comment>
-        <translation>Número de Serie: </translation>
+        <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>PackageModel</name>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="46"/>
         <source>The ongoing: </source>
-        <comment>PackageModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="67"/>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="1027"/>
         <source>Software operation schedule</source>
-        <comment>PackageModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="105"/>
         <source>Uninstall unnecessary procedures, old kernel packages and configfile</source>
-        <comment>PackageModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="106"/>
         <source>Cleaning up the software that installed by other software bundled, old kernel packages and configfile, to improve system performance</source>
-        <comment>PackageModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2417,7 +3738,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="403"/>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="522"/>
         <source>Uninstall unnecessary procedures</source>
-        <comment>PackageModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2429,7 +3749,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="423"/>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="526"/>
         <source>Uninstall old kernel packages</source>
-        <comment>PackageModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2441,7 +3760,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="428"/>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="530"/>
         <source>Cleanup software configfile</source>
-        <comment>PackageModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2449,51 +3767,43 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="619"/>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="627"/>
         <source>Tips:</source>
-        <comment>PackageModel|</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Consejos:</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="255"/>
         <source>The scan reslut is empty, nothing has been done!</source>
-        <comment>PackageModel|</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">El resultado del scan está vacío, no se hizo nada!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="263"/>
         <source>Scan completed!</source>
-        <comment>PackageModel|</comment>
-        <translation>Escaneo terminado!</translation>
+        <translation type="unfinished">Escaneo terminado!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="269"/>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="987"/>
         <source>Begin cleanup</source>
-        <comment>PackageModel|</comment>
-        <translation>Comenzar limpieza</translation>
+        <translation type="unfinished">Comenzar limpieza</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="290"/>
         <source>Cleanup abnormal!</source>
-        <comment>PackageModel|</comment>
-        <translation>Limpieza anormal!</translation>
+        <translation type="unfinished">Limpieza anormal!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="300"/>
         <source>Cleanup interrupted!</source>
-        <comment>PackageModel|</comment>
-        <translation>Limpieza interrumpida!</translation>
+        <translation type="unfinished">Limpieza interrumpida!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="304"/>
         <source>Cleared</source>
-        <comment>PackageModel|</comment>
-        <translation>Limpiado</translation>
+        <translation type="unfinished">Limpiado</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="496"/>
         <source>Back</source>
-        <comment>PackageModel|</comment>
-        <translation>Volver</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="554"/>
@@ -2502,62 +3812,55 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="1005"/>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="1011"/>
         <source>Start scanning</source>
-        <comment>PackageModel|</comment>
-        <translation>Comenzar scaneo</translation>
+        <translation type="unfinished">Comenzar scaneo</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="619"/>
         <source>Sorry, You did not choose the content to be scanned, please confirm!</source>
-        <comment>PackageModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/PackageModel.qml" line="627"/>
         <source>Sorry, You did not choose the content to be cleaned up, please confirm!</source>
-        <comment>PackageModel|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>PanelManager</name>
     <message>
         <location filename="../../qml/func/settings/PanelManager.qml" line="28"/>
         <source>Dash &amp; Panel</source>
-        <comment>PanelManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/PanelManager.qml" line="29"/>
         <source>Manage Dash and Panel menu settings.</source>
-        <comment>PanelManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/PanelManager.qml" line="143"/>
         <source>Back</source>
-        <comment>PanelManager|</comment>
-        <translation>Volver</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/PanelManager.qml" line="202"/>
         <source>Dash background blur type:</source>
-        <comment>PanelManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/PanelManager.qml" line="212"/>
         <source>Smart blur</source>
-        <comment>PanelManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/PanelManager.qml" line="226"/>
         <source>Static blur</source>
-        <comment>PanelManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/PanelManager.qml" line="240"/>
         <source>Clear</source>
-        <comment>PanelManager|</comment>
-        <translation>Eliminar</translation>
+        <translation type="unfinished">Eliminar</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/PanelManager.qml" line="262"/>
@@ -2570,404 +3873,353 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/settings/PanelManager.qml" line="671"/>
         <location filename="../../qml/func/settings/PanelManager.qml" line="729"/>
         <source>Restore</source>
-        <comment>PanelManager|</comment>
-        <translation>Restaurar</translation>
+        <translation type="unfinished">Restaurar</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/PanelManager.qml" line="308"/>
         <source>Panel Transparency:</source>
-        <comment>PanelManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/PanelManager.qml" line="366"/>
         <source>Date &amp; time format:</source>
-        <comment>PanelManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/PanelManager.qml" line="415"/>
         <source>Display seconds:</source>
-        <comment>PanelManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/PanelManager.qml" line="473"/>
         <source>Display week:</source>
-        <comment>PanelManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/PanelManager.qml" line="531"/>
         <source>Display the date:</source>
-        <comment>PanelManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/PanelManager.qml" line="594"/>
         <source>Display battery icon:</source>
-        <comment>PanelManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/PanelManager.qml" line="646"/>
         <source>Display battery percentage:</source>
-        <comment>PanelManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/PanelManager.qml" line="704"/>
         <source>Display battery remaining time:</source>
-        <comment>PanelManager|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>ProcessManager</name>
     <message>
         <location filename="../processmanager.cpp" line="71"/>
         <source>ps -u %1 -o user,pid,%cpu,%mem,start,ucmd,command</source>
-        <comment>ProcessManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../processmanager.cpp" line="123"/>
         <location filename="../processmanager.cpp" line="182"/>
         <source>%1;%2;%3;%4;%5;%6;%7</source>
-        <comment>ProcessManager|</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1;%2;%3;%4;%5;%6;%7</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/ProcessManager.qml" line="28"/>
         <source>Task Manager</source>
-        <comment>ProcessManager|</comment>
-        <translation>Administrador de tareas</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/ProcessManager.qml" line="29"/>
         <source>Help you learn more about the program running on the system.</source>
-        <comment>ProcessManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/ProcessManager.qml" line="95"/>
         <source>Back</source>
-        <comment>ProcessManager|</comment>
-        <translation>Volver</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/ProcessManager.qml" line="132"/>
         <source>Current User</source>
-        <comment>ProcessManager|</comment>
-        <translation>Usuario Actual</translation>
+        <translation type="unfinished">Usuario Actual</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/ProcessManager.qml" line="146"/>
         <source>All Users</source>
-        <comment>ProcessManager|</comment>
-        <translation>Todos los Usuarios</translation>
+        <translation type="unfinished">Todos los Usuarios</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/ProcessManager.qml" line="164"/>
         <source>Refresh</source>
-        <comment>ProcessManager|</comment>
-        <translation>Refrescar</translation>
+        <translation type="unfinished">Refrescar</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/ProcessManager.qml" line="174"/>
         <source>Refresh completed!</source>
-        <comment>ProcessManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/ProcessManager.qml" line="180"/>
         <source>End process</source>
-        <comment>ProcessManager|</comment>
-        <translation>Finalizar proceso</translation>
+        <translation type="unfinished">Finalizar proceso</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/ProcessManager.qml" line="190"/>
         <source>The end of the process operation is successful!</source>
-        <comment>ProcessManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/ProcessManager.qml" line="199"/>
         <source>The end of the process operation failed!</source>
-        <comment>ProcessManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/ProcessManager.qml" line="213"/>
         <source>Sorry,  You did not choose the process to be killed!</source>
-        <comment>ProcessManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/ProcessManager.qml" line="252"/>
         <source>User</source>
-        <comment>ProcessManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/ProcessManager.qml" line="257"/>
         <source>ID</source>
-        <comment>ProcessManager|</comment>
-        <translation>ID</translation>
+        <translation type="unfinished">ID</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/ProcessManager.qml" line="262"/>
         <source>CPU %</source>
-        <comment>ProcessManager|</comment>
-        <translation>CPU %</translation>
+        <translation type="unfinished">CPU %</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/ProcessManager.qml" line="267"/>
         <source>Memory %</source>
-        <comment>ProcessManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/ProcessManager.qml" line="272"/>
         <source>Start Time</source>
-        <comment>ProcessManager|</comment>
-        <translation>Hora de Inicio</translation>
+        <translation type="unfinished">Hora de Inicio</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/ProcessManager.qml" line="277"/>
         <source>Process Description</source>
-        <comment>ProcessManager|</comment>
-        <translation>Descripción del Proceso</translation>
+        <translation type="unfinished">Descripción del Proceso</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/ProcessManager.qml" line="282"/>
         <source>Process Name</source>
-        <comment>ProcessManager|</comment>
-        <translation>Nombre del proceso</translation>
+        <translation type="unfinished">Nombre del proceso</translation>
     </message>
+</context>
+<context>
+    <name>QObject</name>
     <message>
         <location filename="../main.cpp" line="168"/>
         <source>starting....</source>
-        <comment>QObject|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../main.cpp" line="170"/>
         <source>loading module data....</source>
-        <comment>QObject|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>QUIBO</name>
     <message>
         <location filename="../quibo.ui" line="14"/>
         <source>Form</source>
-        <comment>QUIBO|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>RightPage</name>
     <message>
         <location filename="../../qml/func/others/RightPage.qml" line="27"/>
         <source>Active</source>
-        <comment>RightPage|</comment>
-        <translation>Activo</translation>
+        <translation type="unfinished">Activo</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/RightPage.qml" line="28"/>
         <source>China</source>
-        <comment>RightPage|</comment>
-        <translation>China</translation>
+        <translation type="unfinished">China</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="67"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="68"/>
         <source>Network Error!</source>
-        <comment>RightPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="70"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="71"/>
         <source>No User!</source>
-        <comment>RightPage|</comment>
-        <translation>¡Sin usuario!</translation>
+        <translation type="unfinished">¡Sin usuario!</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="73"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="74"/>
         <source>Password Wrong!</source>
-        <comment>RightPage|</comment>
-        <translation>Clave de acceso errónea!</translation>
+        <translation type="unfinished">Clave de acceso errónea!</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="76"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="77"/>
         <source>Login Failed!</source>
-        <comment>RightPage|</comment>
-        <translation>Login Fallo!</translation>
+        <translation type="unfinished">Login Fallo!</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="145"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="592"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="149"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="603"/>
         <source>Hits per day </source>
-        <comment>RightPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="249"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="260"/>
         <source>Logging...</source>
-        <comment>RightPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="281"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="292"/>
         <source>Logout</source>
-        <comment>RightPage|</comment>
-        <translation>Cerrar sesión</translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="311"/>
-        <source>Level:</source>
-        <comment>RightPage|</comment>
-        <translation>Nivel:</translation>
+        <translation type="unfinished">Cerrar sesión</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/RightPage.qml" line="322"/>
+        <source>Level:</source>
+        <translation type="unfinished">Nivel:</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/others/RightPage.qml" line="333"/>
         <source>Score:</source>
-        <comment>RightPage|</comment>
-        <translation>Puntuación:</translation>
+        <translation type="unfinished">Puntuación:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="378"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="389"/>
         <source>DistroWatch Ranking</source>
-        <comment>RightPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="388"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="405"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="399"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="416"/>
         <source>Ubuntu Kylin Details</source>
-        <comment>RightPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="612"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="630"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="623"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="641"/>
         <source>Hide</source>
-        <comment>RightPage|</comment>
-        <translation>Ocultar</translation>
+        <translation type="unfinished">Ocultar</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="646"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="657"/>
         <source>Last Update:</source>
-        <comment>RightPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="665"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="676"/>
         <source>OS Type:</source>
-        <comment>RightPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="683"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="694"/>
         <source>Based on:</source>
-        <comment>RightPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="701"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="712"/>
         <source>Origin: </source>
-        <comment>RightPage|</comment>
-        <translation>Origen: </translation>
+        <translation type="unfinished">Origen: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="719"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="730"/>
         <source>Architecture:</source>
-        <comment>RightPage|</comment>
-        <translation>Arquitectura:</translation>
+        <translation type="unfinished">Arquitectura:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="738"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="749"/>
         <source>Desktop:</source>
-        <comment>RightPage|</comment>
-        <translation>Escritorio:</translation>
+        <translation type="unfinished">Escritorio:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="757"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="768"/>
         <source>Category:</source>
-        <comment>RightPage|</comment>
-        <translation>Categoría:</translation>
+        <translation type="unfinished">Categoría:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="775"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="786"/>
         <source>Status:</source>
-        <comment>RightPage|</comment>
-        <translation>Estatus:</translation>
+        <translation type="unfinished">Estatus:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="793"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="804"/>
         <source>Popularity:</source>
-        <comment>RightPage|</comment>
-        <translation>Popularidad:</translation>
+        <translation type="unfinished">Popularidad:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="833"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="844"/>
         <source>Forum Help</source>
-        <comment>RightPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="850"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="861"/>
         <source>Features</source>
-        <comment>RightPage|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="859"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="870"/>
         <source>Feedback</source>
-        <comment>RightPage|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>SelectDialog</name>
     <message>
         <location filename="../selectdialog.ui" line="14"/>
         <source>Dialog</source>
-        <comment>SelectDialog|</comment>
-        <translation>Diálogo</translation>
+        <translation type="unfinished">Diálogo</translation>
     </message>
     <message>
         <location filename="../selectdialog.ui" line="51"/>
         <source>Select City</source>
-        <comment>SelectDialog|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../selectdialog.ui" line="72"/>
         <source>Chinese Cities</source>
-        <comment>SelectDialog|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../selectdialog.ui" line="123"/>
         <location filename="../selectdialog.ui" line="193"/>
         <source>OK</source>
-        <comment>SelectDialog|</comment>
-        <translation>OK</translation>
+        <translation type="unfinished">OK</translation>
     </message>
     <message>
         <location filename="../selectdialog.ui" line="136"/>
         <location filename="../selectdialog.ui" line="206"/>
         <source>Cancel</source>
-        <comment>SelectDialog|</comment>
-        <translation>Cancelar</translation>
+        <translation type="unfinished">Cancelar</translation>
     </message>
     <message>
         <location filename="../selectdialog.ui" line="142"/>
         <source>Foreign Cities</source>
-        <comment>SelectDialog|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../selectdialog.ui" line="154"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Please enter a city name to search&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>SelectDialog|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../selectdialog.ui" line="167"/>
         <source>Search</source>
-        <comment>SelectDialog|</comment>
-        <translation>Buscar</translation>
+        <translation type="unfinished">Buscar</translation>
     </message>
     <message>
         <location filename="../selectdialog.cpp" line="174"/>
@@ -2975,158 +4227,157 @@ p, li { white-space: pre-wrap; }
         <location filename="../selectdialog.cpp" line="213"/>
         <location filename="../selectdialog.cpp" line="248"/>
         <source>Warning:</source>
-        <comment>SelectDialog|</comment>
-        <translation>Advertencia:</translation>
+        <translation type="unfinished">Advertencia:</translation>
     </message>
     <message>
         <location filename="../selectdialog.cpp" line="175"/>
         <location filename="../selectdialog.cpp" line="196"/>
         <source>Please input city name and click &apos;search&apos; button to find!</source>
-        <comment>SelectDialog|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../selectdialog.cpp" line="214"/>
         <source>Change the city failed!</source>
-        <comment>SelectDialog|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../selectdialog.cpp" line="249"/>
         <source>The city was not be found, please input the city name again!</source>
-        <comment>SelectDialog|</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SessionDispatcher</name>
+    <message>
+        <location filename="../sessiondispatcher.cpp" line="1361"/>
+        <source>Select folder</source>
+        <translation type="unfinished">Seleccionar carpeta</translation>
+    </message>
+    <message>
+        <location filename="../sessiondispatcher.cpp" line="1368"/>
+        <source>Select file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1306"/>
-        <source>Select folder</source>
-        <comment>SessionDispatcher|</comment>
-        <translation>Seleccionar carpeta</translation>
+        <location filename="../sessiondispatcher.cpp" line="1368"/>
+        <source>All Files(*.*)</source>
+        <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>SettingsDelegate</name>
     <message>
         <location filename="../../qml/func/others/SettingsDelegate.qml" line="81"/>
         <source>No found camera!</source>
-        <comment>SettingsDelegate|</comment>
-        <translation>Cámara no encontrada!</translation>
+        <translation type="unfinished">Cámara no encontrada!</translation>
     </message>
+</context>
+<context>
+    <name>SoundEffects</name>
     <message>
         <location filename="../../qml/func/settings/SoundEffects.qml" line="31"/>
         <source>Sound effect</source>
-        <comment>SoundEffects|</comment>
-        <translation>Efecto de sonido</translation>
+        <translation type="unfinished">Efecto de sonido</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/SoundEffects.qml" line="32"/>
         <source>Set the sound theme you want.</source>
-        <comment>SoundEffects|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/SoundEffects.qml" line="131"/>
         <source>Back</source>
-        <comment>SoundEffects|</comment>
-        <translation>Volver</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/SoundEffects.qml" line="194"/>
         <source>Sound theme:</source>
-        <comment>SoundEffects|</comment>
-        <translation>Tema de sonido:</translation>
+        <translation type="unfinished">Tema de sonido:</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/SoundEffects.qml" line="238"/>
         <source>Login tone: </source>
-        <comment>SoundEffects|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/SoundEffects.qml" line="273"/>
         <source>Event sounds:</source>
-        <comment>SoundEffects|</comment>
-        <translation>Sonidos de eventos:</translation>
+        <translation type="unfinished">Sonidos de eventos:</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/SoundEffects.qml" line="308"/>
         <source>Input feedback sounds:</source>
-        <comment>SoundEffects|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>StatusImage</name>
     <message>
         <location filename="../../qml/func/common/StatusImage.qml" line="23"/>
         <source>Unfinished</source>
-        <comment>StatusImage|</comment>
-        <translation>Sin terminar</translation>
+        <translation type="unfinished">Sin terminar</translation>
     </message>
+</context>
+<context>
+    <name>SuspensionFrame</name>
     <message>
         <location filename="../suspensionframe.ui" line="19"/>
         <source>Form</source>
-        <comment>SuspensionFrame|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="34"/>
         <source>10K/s</source>
-        <comment>SuspensionFrame|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="50"/>
         <source>20K/s</source>
-        <comment>SuspensionFrame|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="121"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;0%&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>SuspensionFrame|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="140"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;Computer running slow&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>SuspensionFrame|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="156"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#008000;&quot;&gt;Using &apos;quick clean&apos; ?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>SuspensionFrame|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="181"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CPU Utilization:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>SuspensionFrame|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="197"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;0%&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>SuspensionFrame|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="213"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Used:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>SuspensionFrame|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="229"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unused:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>SuspensionFrame|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="245"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Memory&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>SuspensionFrame|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../suspensionframe.ui" line="308"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Memory usage condition:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>SuspensionFrame|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3134,7 +4385,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../suspensionframe.cpp" line="211"/>
         <location filename="../suspensionframe.cpp" line="225"/>
         <source>System runs smoothly</source>
-        <comment>SuspensionFrame|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3142,27 +4392,23 @@ p, li { white-space: pre-wrap; }
         <location filename="../suspensionframe.cpp" line="212"/>
         <location filename="../suspensionframe.cpp" line="226"/>
         <source>No need to accelerate</source>
-        <comment>SuspensionFrame|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../suspensionframe.cpp" line="52"/>
         <source>Details</source>
-        <comment>SuspensionFrame|</comment>
-        <translation>Detalles</translation>
+        <translation type="unfinished">Detalles</translation>
     </message>
     <message>
         <location filename="../suspensionframe.cpp" line="119"/>
         <source>%1</source>
-        <comment>SuspensionFrame|</comment>
-        <translation>%1</translation>
+        <translation type="unfinished">%1</translation>
     </message>
     <message>
         <location filename="../suspensionframe.cpp" line="193"/>
         <location filename="../suspensionframe.cpp" line="205"/>
         <location filename="../suspensionframe.cpp" line="219"/>
         <source>Detected the high usage of CPU</source>
-        <comment>SuspensionFrame|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3171,367 +4417,343 @@ p, li { white-space: pre-wrap; }
         <location filename="../suspensionframe.cpp" line="220"/>
         <location filename="../suspensionframe.cpp" line="233"/>
         <source>Using &apos;quick clean&apos; ?</source>
-        <comment>SuspensionFrame|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../suspensionframe.cpp" line="232"/>
         <source>Computer runs slowly</source>
-        <comment>SuspensionFrame|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>Switch</name>
     <message>
         <location filename="../../qml/func/common/Switch.qml" line="39"/>
         <source>     ON</source>
-        <comment>Switch|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/common/Switch.qml" line="39"/>
         <source>OFF</source>
-        <comment>Switch|</comment>
-        <translation>OFF</translation>
+        <translation type="unfinished">OFF</translation>
     </message>
-    <message>
-        <location filename="../../qml/func/page/SystemBox.qml" line="36"/>
-        <source>Dead pixel check</source>
-        <comment>SystemBox|</comment>
-        <translation type="unfinished"></translation>
-    </message>
+</context>
+<context>
+    <name>SystemBox</name>
     <message>
         <location filename="../../qml/func/page/SystemBox.qml" line="37"/>
-        <source>Boot Animation</source>
-        <comment>SystemBox|</comment>
+        <source>Dead pixel check</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemBox.qml" line="38"/>
-        <source>Task Manager</source>
-        <comment>SystemBox|</comment>
-        <translation>Gestor de tareas</translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/page/SystemBox.qml" line="39"/>
-        <source>Camera</source>
-        <comment>SystemBox|</comment>
-        <translation>Cámara</translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/page/SystemBox.qml" line="55"/>
-        <source>Default toolkits</source>
-        <comment>SystemBox|</comment>
+        <source>Boot Animation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../qml/func/page/SystemBox.qml" line="39"/>
+        <source>Task Manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/page/SystemBox.qml" line="40"/>
+        <source>Camera</source>
+        <translation type="unfinished">Cámara</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/page/SystemBox.qml" line="41"/>
+        <source>File Shredder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/page/SystemBox.qml" line="57"/>
+        <source>Default toolkits</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SystemClean</name>
+    <message>
         <location filename="../../qml/func/page/SystemClean.qml" line="29"/>
         <source>Cache Cleanup</source>
-        <comment>SystemClean|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemClean.qml" line="36"/>
         <source>Uninstall Packages</source>
-        <comment>SystemClean|</comment>
-        <translation>Desinstalar Paquetes</translation>
+        <translation type="unfinished">Desinstalar Paquetes</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemClean.qml" line="43"/>
         <source>Cookies Cleanup</source>
-        <comment>SystemClean|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemClean.qml" line="50"/>
         <source>Browser Cleanup</source>
-        <comment>SystemClean|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemClean.qml" line="57"/>
         <source>Trace Cleanup</source>
-        <comment>SystemClean|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemClean.qml" line="64"/>
         <source>Find Large Files </source>
-        <comment>SystemClean|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>SystemDispatcher</name>
     <message>
-        <location filename="../systemdispatcher.cpp" line="340"/>
+        <location filename="../systemdispatcher.cpp" line="354"/>
         <source>Select the boot animation</source>
-        <comment>SystemDispatcher|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="340"/>
+        <location filename="../systemdispatcher.cpp" line="354"/>
         <source>Image Files (*.png *.jpg *.gif)</source>
-        <comment>SystemDispatcher|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="345"/>
+        <location filename="../systemdispatcher.cpp" line="359"/>
         <source>Select music</source>
-        <comment>SystemDispatcher|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="345"/>
+        <location filename="../systemdispatcher.cpp" line="359"/>
         <source>Audio Files (*.ogg *.wav *.mp3 *.wma)</source>
-        <comment>SystemDispatcher|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>SystemInfo</name>
     <message>
         <location filename="../../qml/func/page/SystemInfo.qml" line="39"/>
         <source>Computer</source>
-        <comment>SystemInfo|</comment>
-        <translation>Equipo</translation>
+        <translation type="unfinished">Equipo</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemInfo.qml" line="40"/>
         <source>Desktop</source>
-        <comment>SystemInfo|</comment>
-        <translation>Escritorio</translation>
+        <translation type="unfinished">Escritorio</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemInfo.qml" line="41"/>
         <source>CPU</source>
-        <comment>SystemInfo|</comment>
-        <translation>CPU</translation>
+        <translation type="unfinished">CPU</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemInfo.qml" line="42"/>
         <source>Memory</source>
-        <comment>SystemInfo|</comment>
-        <translation>Memoria</translation>
+        <translation type="unfinished">Memoria</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemInfo.qml" line="43"/>
         <source>Motherboard</source>
-        <comment>SystemInfo|</comment>
-        <translation>Placa base</translation>
+        <translation type="unfinished">Placa base</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemInfo.qml" line="44"/>
         <source>HD</source>
-        <comment>SystemInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemInfo.qml" line="45"/>
         <source>NIC</source>
-        <comment>SystemInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemInfo.qml" line="46"/>
         <source>VGA</source>
-        <comment>SystemInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemInfo.qml" line="47"/>
         <source>Audio</source>
-        <comment>SystemInfo|</comment>
-        <translation>Audio</translation>
+        <translation type="unfinished">Audio</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemInfo.qml" line="50"/>
         <source>CD-ROM</source>
-        <comment>SystemInfo|</comment>
-        <translation>CD-ROM</translation>
+        <translation type="unfinished">CD-ROM</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemInfo.qml" line="53"/>
         <source>Battery</source>
-        <comment>SystemInfo|</comment>
-        <translation>Batería</translation>
+        <translation type="unfinished">Batería</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemInfo.qml" line="55"/>
         <source>Device Driver</source>
-        <comment>SystemInfo|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>SystemSet</name>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="33"/>
         <source>You can perform a full range of customized systems based on personal preferences!</source>
-        <comment>SystemSet|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="82"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="178"/>
         <source>ThemeSetting</source>
-        <comment>SystemSet|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="86"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="201"/>
         <source>IconSetting</source>
-        <comment>SystemSet|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="90"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="224"/>
         <source>MousePointer</source>
-        <comment>SystemSet|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="94"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="247"/>
         <source>SoundEffect</source>
-        <comment>SystemSet|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="98"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="270"/>
         <source>BootAnimation</source>
-        <comment>SystemSet|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="102"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="326"/>
         <source>Custom Launcher</source>
-        <comment>SystemSet|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="106"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="349"/>
         <source>Dash &amp; Panel</source>
-        <comment>SystemSet|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="111"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="372"/>
         <source>Window</source>
-        <comment>SystemSet|</comment>
-        <translation>Ventana</translation>
+        <translation type="unfinished">Ventana</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="115"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="428"/>
         <source>DefaultFont</source>
-        <comment>SystemSet|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="119"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="484"/>
         <source>Touchpad</source>
-        <comment>SystemSet|</comment>
-        <translation>Panel táctil</translation>
+        <translation type="unfinished">Panel táctil</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="123"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="507"/>
         <source>Dead pixel check</source>
-        <comment>SystemSet|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="127"/>
         <location filename="../../qml/func/page/SystemSet.qml" line="562"/>
         <source>File manager</source>
-        <comment>SystemSet|</comment>
-        <translation>Gestor de archivos</translation>
+        <translation type="unfinished">Gestor de archivos</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="147"/>
         <source> Personalize</source>
-        <comment>SystemSet|</comment>
-        <translation> Personalizar</translation>
+        <translation type="unfinished"> Personalizar</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="295"/>
         <source> Desktop</source>
-        <comment>SystemSet|</comment>
-        <translation> Escritorio</translation>
+        <translation type="unfinished"> Escritorio</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="397"/>
         <source> Fonts</source>
-        <comment>SystemSet|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="453"/>
         <source> System options</source>
-        <comment>SystemSet|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="531"/>
         <source> Others</source>
-        <comment>SystemSet|</comment>
-        <translation> Otros</translation>
+        <translation type="unfinished"> Otros</translation>
     </message>
+</context>
+<context>
+    <name>TipLabel</name>
     <message>
         <location filename="../../qml/func/common/TipLabel.qml" line="43"/>
         <source>Support cloud conf</source>
-        <comment>TipLabel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/common/TipLabel.qml" line="47"/>
         <source>No support cloud conf</source>
-        <comment>TipLabel|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>ToolBar</name>
     <message>
         <location filename="../../qml/func/bars/ToolBar.qml" line="52"/>
         <source>OK</source>
-        <comment>ToolBar|</comment>
-        <translation>OK</translation>
+        <translation type="unfinished">OK</translation>
     </message>
     <message>
         <location filename="../../qml/func/bars/ToolBar.qml" line="64"/>
         <source>Restore</source>
-        <comment>ToolBar|</comment>
-        <translation>Restaurar</translation>
+        <translation type="unfinished">Restaurar</translation>
     </message>
     <message>
         <location filename="../../qml/func/bars/ToolBar.qml" line="75"/>
         <source>Back</source>
-        <comment>ToolBar|</comment>
-        <translation>Volver</translation>
+        <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>ToolsDelegate</name>
     <message>
         <location filename="../../qml/func/others/ToolsDelegate.qml" line="79"/>
         <source>No found camera!</source>
-        <comment>ToolsDelegate|</comment>
-        <translation>Cámara no encontrada!</translation>
+        <translation type="unfinished">Cámara no encontrada!</translation>
     </message>
+</context>
+<context>
+    <name>TouchpadSet</name>
     <message>
         <location filename="../../qml/func/settings/TouchpadSet.qml" line="28"/>
         <source>Touchpad settings</source>
-        <comment>TouchpadSet|</comment>
-        <translation>Configuración del panel táctil</translation>
+        <translation type="unfinished">Configuración del panel táctil</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/TouchpadSet.qml" line="29"/>
         <source>Setting the relevant properties of your touchpad,make the operation more convenient.</source>
-        <comment>TouchpadSet|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/TouchpadSet.qml" line="107"/>
         <source>Back</source>
-        <comment>TouchpadSet|</comment>
-        <translation>Volver</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/TouchpadSet.qml" line="169"/>
         <source>Enable touchpad: </source>
-        <comment>TouchpadSet|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3540,51 +4762,46 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/settings/TouchpadSet.qml" line="340"/>
         <location filename="../../qml/func/settings/TouchpadSet.qml" line="432"/>
         <source>Restore</source>
-        <comment>TouchpadSet|</comment>
-        <translation>Restaurar</translation>
+        <translation type="unfinished">Restaurar</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/TouchpadSet.qml" line="228"/>
         <source>Enable horizontal scrolling: </source>
-        <comment>TouchpadSet|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/TouchpadSet.qml" line="289"/>
         <source>Scrollbar type: </source>
-        <comment>TouchpadSet|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/TouchpadSet.qml" line="303"/>
         <source>Features Type</source>
-        <comment>TouchpadSet|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/TouchpadSet.qml" line="317"/>
         <source>Standard Type</source>
-        <comment>TouchpadSet|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/TouchpadSet.qml" line="381"/>
         <source>Panel layout: </source>
-        <comment>TouchpadSet|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/TouchpadSet.qml" line="395"/>
         <source>Edge Scrolling</source>
-        <comment>TouchpadSet|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/TouchpadSet.qml" line="409"/>
         <source>Two-finger Scrolling</source>
-        <comment>TouchpadSet|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>TraceModel</name>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="24"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="378"/>
@@ -3603,26 +4820,22 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="661"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="669"/>
         <source>Start scanning</source>
-        <comment>TraceModel|</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Comenzar scaneo</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="25"/>
         <source>Cleanup history, to protect your privacy</source>
-        <comment>TraceModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="26"/>
         <source>Cleaning the internet and opened documents recently records</source>
-        <comment>TraceModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="50"/>
         <source>Firefox is not installed!</source>
-        <comment>TraceModel|</comment>
-        <translation>Firefox no está instalado!</translation>
+        <translation type="unfinished">Firefox no está instalado!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="56"/>
@@ -3633,8 +4846,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="514"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="624"/>
         <source>Tips:</source>
-        <comment>TraceModel|</comment>
-        <translation>Consejos:</translation>
+        <translation type="unfinished">Consejos:</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="56"/>
@@ -3644,16 +4856,14 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="514"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="624"/>
         <source>The scan reslut is empty, nothing has been done!</source>
-        <comment>TraceModel|</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">El resultado del scan está vacío, no se hizo nada!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="61"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="87"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="106"/>
         <source>Scan completed!</source>
-        <comment>TraceModel|</comment>
-        <translation>Escaneo terminado!</translation>
+        <translation type="unfinished">Escaneo terminado!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="62"/>
@@ -3663,19 +4873,16 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="527"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="637"/>
         <source>Begin cleanup</source>
-        <comment>TraceModel|</comment>
-        <translation>Comenzar limpieza</translation>
+        <translation type="unfinished">Comenzar limpieza</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="72"/>
         <source>Chromium is not installed!</source>
-        <comment>TraceModel|</comment>
-        <translation>Chromium no está instalado!</translation>
+        <translation type="unfinished">Chromium no está instalado!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="76"/>
         <source>Chromium is running. When the browser is running, could not perform scan or cleanup operations.</source>
-        <comment>TraceModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3683,49 +4890,41 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="143"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="149"/>
         <source>Cleanup abnormal!</source>
-        <comment>TraceModel|</comment>
-        <translation>Limpieza anormal!</translation>
+        <translation type="unfinished">Limpieza anormal!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="155"/>
         <source>Cleanup interrupted!</source>
-        <comment>TraceModel|</comment>
-        <translation>Limpieza interrumpida!</translation>
+        <translation type="unfinished">Limpieza interrumpida!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="243"/>
         <source>Clean up the Firefox Internet records</source>
-        <comment>TraceModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="258"/>
         <source>Clean up the Firefox history records</source>
-        <comment>TraceModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="279"/>
         <source>Clean up the Chromium Internet records</source>
-        <comment>TraceModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="294"/>
         <source>Clean up the Chromium history records</source>
-        <comment>TraceModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="316"/>
         <source>Clean up the recently opened documents records</source>
-        <comment>TraceModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="331"/>
         <source>Clean up the recently opened documents in your system, to protect your privacy</source>
-        <comment>TraceModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3733,23 +4932,20 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="473"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="583"/>
         <source>Back</source>
-        <comment>TraceModel|</comment>
-        <translation>Volver</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="374"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="484"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="594"/>
         <source>Rescan</source>
-        <comment>TraceModel|</comment>
-        <translation>Volver a examinar</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="419"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="529"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="639"/>
         <source>(Scan to </source>
-        <comment>TraceModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3760,7 +4956,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="639"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="663"/>
         <source> records)</source>
-        <comment>TraceModel|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3768,206 +4963,187 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="553"/>
         <location filename="../../qml/func/cleaner/TraceModel.qml" line="663"/>
         <source>(Have been cleared </source>
-        <comment>TraceModel|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>Tray</name>
     <message>
         <location filename="../tray.ui" line="14"/>
         <source>MonitorBall</source>
-        <comment>Tray|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tray.ui" line="35"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;10K/s&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>Tray|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tray.ui" line="60"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;20K/s&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>Tray|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tray.ui" line="79"/>
         <source>0%</source>
-        <comment>Tray|</comment>
-        <translation>0 %</translation>
+        <translation type="unfinished">0 %</translation>
     </message>
     <message>
         <location filename="../tray.cpp" line="137"/>
         <source>Hide/Show window</source>
-        <comment>Tray|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tray.cpp" line="139"/>
         <source>Hide/Show monitor</source>
-        <comment>Tray|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../tray.cpp" line="144"/>
         <source>About</source>
-        <comment>Tray|</comment>
-        <translation>Acerca de...</translation>
+        <translation type="unfinished">Acerca de...</translation>
     </message>
     <message>
         <location filename="../tray.cpp" line="147"/>
         <source>&amp;Exit</source>
-        <comment>Tray|</comment>
-        <translation>&amp;Salir</translation>
+        <translation type="unfinished">&amp;Salir</translation>
     </message>
+</context>
+<context>
+    <name>WarningDialog</name>
     <message>
         <location filename="../warningdialog.ui" line="14"/>
         <source>Dialog</source>
-        <comment>WarningDialog|</comment>
-        <translation>Diálogo</translation>
+        <translation type="unfinished">Diálogo</translation>
     </message>
     <message>
         <location filename="../warningdialog.ui" line="71"/>
         <source>OK</source>
-        <comment>WarningDialog|</comment>
-        <translation>OK</translation>
+        <translation type="unfinished">OK</translation>
     </message>
     <message>
         <location filename="../warningdialog.ui" line="84"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Tips:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>WarningDialog|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>WeatherZone</name>
     <message>
         <location filename="../../qml/func/others/WeatherZone.qml" line="29"/>
         <source>Weather</source>
-        <comment>WeatherZone|</comment>
-        <translation>Clima</translation>
+        <translation type="unfinished">Clima</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/WeatherZone.qml" line="31"/>
         <source>AQI</source>
-        <comment>WeatherZone|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/WeatherZone.qml" line="32"/>
         <source>Current temperature</source>
-        <comment>WeatherZone|</comment>
-        <translation>Temperatura actual</translation>
+        <translation type="unfinished">Temperatura actual</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/WeatherZone.qml" line="52"/>
         <source> </source>
-        <comment>WeatherZone|</comment>
-        <translation> </translation>
+        <translation type="unfinished"> </translation>
     </message>
     <message>
         <location filename="../../qml/func/others/WeatherZone.qml" line="55"/>
         <source>AQI:</source>
-        <comment>WeatherZone|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/WeatherZone.qml" line="56"/>
         <location filename="../../qml/func/others/WeatherZone.qml" line="69"/>
         <source>Current temperature:</source>
-        <comment>WeatherZone|</comment>
-        <translation>Temperatura actual:</translation>
+        <translation type="unfinished">Temperatura actual:</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/WeatherZone.qml" line="100"/>
         <source>City</source>
-        <comment>WeatherZone|</comment>
-        <translation>Ciudad</translation>
+        <translation type="unfinished">Ciudad</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/WeatherZone.qml" line="110"/>
         <source>[Change]</source>
-        <comment>WeatherZone|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/WeatherZone.qml" line="120"/>
         <source>Publish</source>
-        <comment>WeatherZone|</comment>
-        <translation>Publicar</translation>
+        <translation type="unfinished">Publicar</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/WeatherZone.qml" line="145"/>
         <source>N/A</source>
-        <comment>WeatherZone|</comment>
-        <translation>N/A</translation>
+        <translation type="unfinished">N/A</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/WeatherZone.qml" line="151"/>
         <source>AQI:N/A</source>
-        <comment>WeatherZone|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/others/WeatherZone.qml" line="157"/>
         <source>Temperature:N/A</source>
-        <comment>WeatherZone|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>WidgetTheme</name>
     <message>
         <location filename="../../qml/func/settings/WidgetTheme.qml" line="26"/>
         <source>Theme settings</source>
-        <comment>WidgetTheme|</comment>
-        <translation>Ajustes de tema</translation>
+        <translation type="unfinished">Ajustes de tema</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/WidgetTheme.qml" line="27"/>
         <source>Choose the theme what you want.</source>
-        <comment>WidgetTheme|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/WidgetTheme.qml" line="82"/>
         <source>Back</source>
-        <comment>WidgetTheme|</comment>
-        <translation>Volver</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/WidgetTheme.qml" line="140"/>
         <source>Window theme settings:</source>
-        <comment>WidgetTheme|</comment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>WindowManager</name>
     <message>
         <location filename="../../qml/func/settings/WindowManager.qml" line="36"/>
         <source>Window</source>
-        <comment>WindowManager|</comment>
-        <translation>Ventana</translation>
+        <translation type="unfinished">Ventana</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/WindowManager.qml" line="37"/>
         <source>Window Manager settings.</source>
-        <comment>WindowManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/WindowManager.qml" line="253"/>
         <source>Back</source>
-        <comment>WindowManager|</comment>
-        <translation>Volver</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/WindowManager.qml" line="313"/>
         <source>Window function button:</source>
-        <comment>WindowManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/WindowManager.qml" line="323"/>
         <source>Left Side</source>
-        <comment>WindowManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/WindowManager.qml" line="337"/>
         <source>Right Side</source>
-        <comment>WindowManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3978,37 +5154,31 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/settings/WindowManager.qml" line="579"/>
         <location filename="../../qml/func/settings/WindowManager.qml" line="628"/>
         <source>Restore</source>
-        <comment>WindowManager|</comment>
-        <translation>Restaurar</translation>
+        <translation type="unfinished">Restaurar</translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/WindowManager.qml" line="401"/>
         <source>Menu with icons: </source>
-        <comment>WindowManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/WindowManager.qml" line="459"/>
         <source>Titlebar mouse wheel action:</source>
-        <comment>WindowManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/WindowManager.qml" line="508"/>
         <source>Titlebar double-click action:</source>
-        <comment>WindowManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/WindowManager.qml" line="557"/>
         <source>Titlebar middle-click action:</source>
-        <comment>WindowManager|</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/settings/WindowManager.qml" line="606"/>
         <source>Titlebar right-click action:</source>
-        <comment>WindowManager|</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>

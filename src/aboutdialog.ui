@@ -35,7 +35,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tabAbout">
     <attribute name="title">
@@ -60,9 +60,9 @@
     <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
-       <x>25</x>
+       <x>77</x>
        <y>17</y>
-       <width>351</width>
+       <width>241</width>
        <height>20</height>
       </rect>
      </property>
@@ -85,14 +85,17 @@
      <property name="text">
       <string/>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
     </widget>
     <widget class="QTextEdit" name="textEdit">
      <property name="geometry">
       <rect>
        <x>18</x>
-       <y>66</y>
+       <y>76</y>
        <width>361</width>
-       <height>161</height>
+       <height>151</height>
       </rect>
      </property>
      <property name="readOnly">
@@ -152,9 +155,9 @@ p, li { white-space: pre-wrap; }
     <widget class="QLabel" name="label_5">
      <property name="geometry">
       <rect>
-       <x>75</x>
-       <y>22</y>
-       <width>221</width>
+       <x>77</x>
+       <y>17</y>
+       <width>241</width>
        <height>20</height>
       </rect>
      </property>
@@ -168,14 +171,17 @@ p, li { white-space: pre-wrap; }
     <widget class="QLabel" name="homeBtn">
      <property name="geometry">
       <rect>
-       <x>298</x>
-       <y>20</y>
-       <width>91</width>
-       <height>20</height>
+       <x>296</x>
+       <y>42</y>
+       <width>101</width>
+       <height>17</height>
       </rect>
      </property>
      <property name="text">
       <string>&lt;a href=https://launchpad.net/youker-assistant&gt;home page&lt;/a&gt;</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>

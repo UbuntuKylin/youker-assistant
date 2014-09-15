@@ -24,8 +24,8 @@ Rectangle {
     scale: 1
     Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
     //竖列高度和宽度
-    width: 83//100
-    height: 84//100
+    width: 100//83//100
+    height: 100//84//100
 
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"
@@ -57,10 +57,10 @@ Rectangle {
         id: signaltest
         hoverEnabled: true
         anchors.fill: parent
-        onEntered: btnImg.source = "../../img/toolWidget/menu_hover.png"
-        onPressed: btnImg.source = "../../img/toolWidget/menu_press.png"
+        onEntered: btnImg.source = "../../img/toolWidget/menu-big-hover.png"
+        onPressed: btnImg.source = "../../img/toolWidget/menu-big-hover.png"
         //要判断松开是鼠标位置
-        onReleased: btnImg.source = "../../img/toolWidget/menu_hover.png"
+        onReleased: btnImg.source = "../../img/toolWidget/menu-big-hover.png"
         onExited: btnImg.source = ""
         onClicked: {
             //屏幕坏点检测
@@ -80,6 +80,9 @@ Rectangle {
                 else {
                     toolkits.alertMSG(qsTr("No found camera!"));
                 }
+            }
+            else if(flag == "FileShredder") {
+                pageStack.push(Qt.resolvedUrl("../settings/FileShredder.qml"));
             }
             //kobe:选中项深色块移动
             scaleMe.GridView.view.currentIndex = index;

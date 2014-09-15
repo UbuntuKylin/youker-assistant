@@ -33,7 +33,7 @@ Rectangle {
     function init_data() {
         systemdispatcher.get_networkcard_info_qt();//获取详细信息
         var netName = systemdispatcher.getHWSingleInfo("NetVendor", "networkcard");
-        logo.source = InfoGroup.judgeName(netName.toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + netName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+        logo.source = InfoGroup.judgeName(netName.toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + netName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
 //        logo.source = InfoGroup.judgeName(netName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + netName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
 
         modelText.text = systemdispatcher.getHWSingleInfo("NetProduct", "networkcard");
@@ -49,7 +49,7 @@ Rectangle {
 
         var wnetName = systemdispatcher.getHWSingleInfo("WlanVendor", "networkcard");
 //        wlogo.source = InfoGroup.judgeName(wnetName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + wnetName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-        wlogo.source = InfoGroup.judgeName(wnetName.toUpperCase()) ? (home.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/Manufacturer/" + wnetName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
+        wlogo.source = InfoGroup.judgeName(wnetName.toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + wnetName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         wdriverText.text = systemdispatcher.getHWSingleInfo("WlanDrive", "networkcard");
         wvendorText.text = wnetName;
         wmodelText.text = systemdispatcher.getHWSingleInfo("WlanProduct", "networkcard");

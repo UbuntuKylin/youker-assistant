@@ -114,6 +114,9 @@ Rectangle {
                     else if (splitlist[2] == "gobolinux") {
                         os_image = "gobo";
                     }
+                    else if (splitlist[2] == "handylinux") {
+                        os_image = "handy";
+                    }
                     else if (splitlist[2] == "dragonfly") {
                         os_image = "dragonflybsd";
                     }
@@ -171,6 +174,9 @@ Rectangle {
             else if (splitlist[2] == "gobolinux") {
                 os_image = "gobo";
             }
+            else if (splitlist[2] == "handylinux") {
+                os_image = "handy";
+            }
             else if (splitlist[2] == "dragonfly") {
                 os_image = "dragonflybsd";
             }
@@ -183,7 +189,8 @@ Rectangle {
             else {
                 os_image = splitlist[2];
             }
-            img_source = InfoGroup.judgeDistrowatchName(os_image) ? (rightbar.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/distrowatch/" + os_image +".png") : ("../../img/distrowatch/default.png");
+//            img_source = InfoGroup.judgeDistrowatchName(os_image) ? (rightbar.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/distrowatch/" + os_image +".png") : ("../../img/distrowatch/default.png");
+            img_source = InfoGroup.judgeDistrowatchName(os_image) ? (rightbar.homepath + "/.cache/youker-assistant/uk-img/distrowatch/" + os_image +".png") : ("../../img/distrowatch/default.png");
             listModel.append({"rank": splitlist[0], "os": splitlist[1], "os_img": img_source, "today_hit": splitlist[3], "rank_img": "../../img/distrowatch/" + rightbar.split_last_str(splitlist[4]),  "yestoday_hit": splitlist[5]});
 //            img_source = InfoGroup.judgeDistrowatchName(os_image) ? ("../../img/distrowatch/" + os_image +".png") : ("../../img/distrowatch/default.png");
 //            listModel.append({"rank": splitlist[0], "os": splitlist[1], "os_img": img_source, "today_hit": splitlist[3], "rank_img": "../../img/distrowatch/" + rightbar.split_last_str(splitlist[4]),  "yestoday_hit": splitlist[5]});
