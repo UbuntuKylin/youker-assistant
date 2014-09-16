@@ -187,8 +187,7 @@ void SessionDispatcher::exit_qt() {
 }
 
 void SessionDispatcher::http_get_img_resource() {
-//    QString requestData = QString("http://zz.onlinedown.net/down/laolafangkuaijin.rar");
-    QString requestData = QString("http://192.168.30.12/youker-assistant/download/?name=uk-img.zip");
+    QString requestData = QString("http://service.ubuntukylin.com:8001/youker-assistant/download/?name=uk-img.zip");
     QUrl url(requestData);
     httpdownload->sendDownLoadRequest(url);
 }

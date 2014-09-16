@@ -159,6 +159,8 @@ Rectangle {
         for(var i=0; i < result.length; i++) {
             var splitlist = result[i].split("+");
             var os_image = "";
+
+            //kobe: If you want to add something in here or the rank has other os name, you should add something in InfoGroup.js file at the same time.
             if (splitlist[2] == "opensuse") {
                 os_image = "suse";
             }
@@ -197,7 +199,7 @@ Rectangle {
         }
 
         //access new data
-        sessiondispatcher.get_distrowatch_url_qt();//kobe 0903
+        sessiondispatcher.get_distrowatch_url_qt();
     }
 
     ListModel {
