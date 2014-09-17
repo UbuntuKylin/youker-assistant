@@ -24,7 +24,7 @@ Item {
     Rectangle {
         id: setting_widget
         anchors.fill: parent
-        color: "#eeedf0"
+//        color: "#eeedf0"
 //        color: "white"
 
         //背景

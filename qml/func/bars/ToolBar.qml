@@ -55,9 +55,9 @@ Item {
          Common.Button {
              id: restoreBtn
              visible: toolbar.showrestore
-             picNormal: "../../img/icons/button12-gray-long.png"
-             picHover: "../../img/icons/button12-gray-long-hover.png"
-             picPressed: "../../img/icons/button12-gray-long-hover.png"
+             picNormal: "../../img/icons/button12-lightblue-long.png"
+             picHover: "../../img/icons/button12-lightblue-long-hover.png"
+             picPressed: "../../img/icons/button12-lightblue-long-hover.png"
              fontcolor:"#707070"
              fontsize: 12
              width: 100; height: 28

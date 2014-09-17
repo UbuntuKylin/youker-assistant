@@ -21,7 +21,7 @@ Rectangle {
     id: shredpage
     width: parent.width
 //    color:"transparent"
-    color: "#eeedf0"
+//    color: "#eeedf0"
     height: 476
 
     property string actiontitle: qsTr("File Shredder")//文件粉碎机
@@ -110,23 +110,111 @@ Rectangle {
 //    }
 
     Column{
-        spacing: 20
+        spacing: 30
         anchors{
             horizontalCenter: parent.horizontalCenter
             top: top_splitbar.bottom
             topMargin: 100
         }
-        Text {
-            id: showLabel
-            visible: (shredpage.selectedfile.length == 0) ? false : true
-            width: 600
-            text: qsTr("The selected file path: ") + shredpage.selectedfile//选中的文件路径：
-            wrapMode: Text.WordWrap
+//        Text {
+//            id: showLabel
+//            visible: (shredpage.selectedfile.length == 0) ? false : true
+//            width: 600
+//            text: qsTr("The selected file path: ") + shredpage.selectedfile//选中的文件路径：
+//            wrapMode: Text.WordWrap
+//        }
+        Column {
+            spacing: 10
+            Text {
+                font.bold: true
+                font.pixelSize: 14
+                color: "#383838"
+                text: qsTr("The file need to be shredded: ")//需要粉碎的文件：
+                wrapMode: Text.WordWrap
+            }
+            Rectangle {
+                width: 409; height: 24
+                color: "lightblue"
+                Image {
+                    id: backgroundImg
+                    anchors.fill: parent
+                    source: "../../img/icons/gray-bg-normal.png"
+                }
+                Text {
+                    id: showEdit
+                    anchors {
+                        verticalCenter: parent.verticalCenter
+                        left: parent.left
+                        leftMargin: 10
+                    }
+                    font.pixelSize: 13
+                    color: "#7a7a7a"
+                    text: qsTr("No select any file which need to be shredded")//未选择需要粉碎的文件
+                }
+                Rectangle{
+                    anchors {
+                        verticalCenter: parent.verticalCenter
+                        right: parent.right
+                        rightMargin: 10
+                    }
+                    width: play.width;height: play.height; color: "transparent"
+                    Image {id:play;source: "../../img/icons/folder.png"}
+                    Image {
+                        id: btnImg1
+                        anchors.fill: parent
+                        source: ""
+                    }
+                    MouseArea{
+                        anchors.fill:parent
+                        hoverEnabled: true
+                        onEntered: {
+                            btnImg1.source = "../../img/icons/folder_hover.png";
+                            backgroundImg.source = "../../img/icons/gray-bg-hover.png";
+                        }
+                        onPressed: {
+                            btnImg1.source = "../../img/icons/folder_hover.png";
+                            backgroundImg.source = "../../img/icons/gray-bg-hover.png";
+                        }
+                        //要判断松开是鼠标位置
+                        onReleased: {
+                            btnImg1.source = "";
+                            backgroundImg.source = "../../img/icons/gray-bg-normal.png";
+                        }
+                        onExited: {
+                            btnImg1.source = "";
+                            backgroundImg.source = "../../img/icons/gray-bg-normal.png";
+                        }
+                        onClicked: {
+                            shredpage.selectedfile = "";
+                            shredpage.selectedfile = sessiondispatcher.show_file_path_dialog();
+                            if (shredpage.selectedfile.length == 0) {
+                                showEdit.text = qsTr("No select any file which need to be shredded");
+                            }
+                            else {
+                                showEdit.text = shredpage.selectedfile;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         Row {
             spacing: 20
             anchors.horizontalCenter: parent.horizontalCenter
+//            Common.Button {
+//                picNormal: "../../img/icons/button12.png"
+//                picHover: "../../img/icons/button12-hover.png"
+//                picPressed: "../../img/icons/button12-hover.png"
+//                fontcolor:"#ffffff"
+//                fontsize: 12
+//                width: 100; height: 28
+//                text: qsTr("Select File")//选择文件
+//                onClicked: {
+//                    shredpage.selectedfile = "";
+//                    shredpage.selectedfile = sessiondispatcher.show_file_path_dialog();
+//                }
+//            }
             Common.Button {
                 picNormal: "../../img/icons/button12.png"
                 picHover: "../../img/icons/button12-hover.png"
@@ -134,20 +222,7 @@ Rectangle {
                 fontcolor:"#ffffff"
                 fontsize: 12
                 width: 100; height: 28
-                text: qsTr("Select File")//选择文件
-                onClicked: {
-                    shredpage.selectedfile = "";
-                    shredpage.selectedfile = sessiondispatcher.show_file_path_dialog();
-                }
-            }
-            Common.Button {
-                picNormal: "../../img/icons/button12.png"
-                picHover: "../../img/icons/button12-hover.png"
-                picPressed: "../../img/icons/button12-hover.png"
-                fontcolor:"#ffffff"
-                fontsize: 12
-                width: 100; height: 28
-                text: qsTr("Shred File")//查看照片
+                text: qsTr("Shred File")
                 onClicked: {
                     if(shredpage.selectedfile.length != 0) {
                         var value = systemdispatcher.start_to_destroy_file(shredpage.selectedfile);
@@ -159,6 +234,20 @@ Rectangle {
                             toolkits.alertMSG(qsTr("Shred abnormal!"));//粉碎出现异常！
                         }
                     }
+                }
+            }
+
+            Common.Button {
+                picNormal: "../../img/icons/button12-gray-long.png"
+                picHover: "../../img/icons/button12-gray-long-hover.png"
+                picPressed: "../../img/icons/button12-gray-long-hover.png"
+                fontcolor:"#707070"
+                fontsize: 12
+                width: 100; height: 28
+                text: qsTr("Deselect")
+                onClicked: {
+                    shredpage.selectedfile = "";
+                    showEdit.text = qsTr("No select any file which need to be shredded");
                 }
             }
         }

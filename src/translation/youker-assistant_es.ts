@@ -2189,17 +2189,17 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/CameraCapture.qml" line="93"/>
+        <location filename="../../qml/func/settings/CameraCapture.qml" line="101"/>
         <source>Press the [ESC] button to take picture and turn the camera off , the photo saved in home directory by default.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/CameraCapture.qml" line="107"/>
+        <location filename="../../qml/func/settings/CameraCapture.qml" line="115"/>
         <source>Open camera</source>
         <translation type="unfinished">Abrir cámara</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/CameraCapture.qml" line="119"/>
+        <location filename="../../qml/func/settings/CameraCapture.qml" line="127"/>
         <source>View Photos</source>
         <translation type="unfinished">Ver fotos</translation>
     </message>
@@ -2957,27 +2957,34 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="123"/>
-        <source>The selected file path: </source>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="132"/>
+        <source>The file need to be shredded: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="137"/>
-        <source>Select File</source>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="152"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="191"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="250"/>
+        <source>No select any file which need to be shredded</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="150"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="247"/>
+        <source>Deselect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="225"/>
         <source>Shred File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="156"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="231"/>
         <source>Shred success!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="159"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="234"/>
         <source>Shred abnormal!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3170,163 +3177,163 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>LeftPage</name>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="129"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="133"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="137"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="130"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="134"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="138"/>
         <source>(totally cleared</source>
         <translation type="unfinished">(totalmente limpio</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="129"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="130"/>
         <source>Cookies)</source>
         <translation type="unfinished">Cookies)</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="133"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="134"/>
         <source>garbage)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="137"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="138"/>
         <source>historical records)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="145"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="146"/>
         <source>Cleared!</source>
         <translation type="unfinished">Limpio!</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="177"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="178"/>
         <source>Cleaning up history trace of Firefox...</source>
         <translation type="unfinished">Limpiando histórico de Firefox</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="180"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="181"/>
         <source>Firefox history trace had been cleared!</source>
         <translation type="unfinished">Histórico de Firefox está limpio!</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="185"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="186"/>
         <source>Cleaning up history trace of Chromium...</source>
         <translation type="unfinished">Limpiando histórico de Chromium...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="188"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="189"/>
         <source>Chromium history trace had been cleared!</source>
         <translation type="unfinished">Histórico de Chromium está limpio!</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="193"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="194"/>
         <source>Cleaning up Cookies of Firefox...</source>
         <translation type="unfinished">Limpiando cookies de Firefox...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="196"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="197"/>
         <source>Firefox Cookies had been cleared!</source>
         <translation type="unfinished">Las cookies de Firefox estan limpias!</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="201"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="202"/>
         <source>Cleaning up Cookies of Chromium...</source>
         <translation type="unfinished">Limpiando Cookies de Chromium...</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="204"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="205"/>
         <source>Chromium Cookies had been cleared!</source>
         <translation type="unfinished">Las Cookies de Chromium están limpias</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="209"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="210"/>
         <source>Apt cache had been cleared!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="212"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="213"/>
         <source>Cleaning up Apt cache: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="217"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="218"/>
         <source>Software Center cache had been cleared!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="220"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="221"/>
         <source>Cleaning up Software Center cache: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="271"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="272"/>
         <source>Quick clean up system trash, saving disk space and improving the system efficiency!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="280"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="281"/>
         <source>To help you quick clean up the Cookies, garbage, traces and plug-ins.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="381"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="382"/>
         <source>Quick Cleanup</source>
         <translation type="unfinished">Limpieza Rápida</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="402"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="403"/>
         <source>(Scan to:  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="479"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="480"/>
         <source>Cleanup Garbage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="492"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="493"/>
         <source>Clean up system junk files, free disk space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="502"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="517"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="594"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="610"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="687"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="703"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="503"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="518"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="595"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="611"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="688"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="704"/>
         <source>Unfinished</source>
         <translation type="unfinished">Sin terminar</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="509"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="601"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="694"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="510"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="602"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="695"/>
         <source>Completed</source>
         <translation type="unfinished">Finalizado</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="513"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="606"/>
-        <location filename="../../qml/func/others/LeftPage.qml" line="699"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="514"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="607"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="700"/>
         <source>Exception occurred</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="571"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="572"/>
         <source>Delete History</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="584"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="585"/>
         <source>Clean up the historical records, to protect your privacy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="664"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="665"/>
         <source>Cleanup Cookies</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/LeftPage.qml" line="677"/>
+        <location filename="../../qml/func/others/LeftPage.qml" line="678"/>
         <source>Clean up the Cookies, including surfing and shopping records</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4075,104 +4082,104 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../../qml/func/others/RightPage.qml" line="149"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="603"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="607"/>
         <source>Hits per day </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="260"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="262"/>
         <source>Logging...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="292"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="294"/>
         <source>Logout</source>
         <translation type="unfinished">Cerrar sesión</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="322"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="324"/>
         <source>Level:</source>
         <translation type="unfinished">Nivel:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="333"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="335"/>
         <source>Score:</source>
         <translation type="unfinished">Puntuación:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="389"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="391"/>
         <source>DistroWatch Ranking</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="399"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="416"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="401"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="418"/>
         <source>Ubuntu Kylin Details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="623"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="641"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="627"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="645"/>
         <source>Hide</source>
         <translation type="unfinished">Ocultar</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="657"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="661"/>
         <source>Last Update:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="676"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="680"/>
         <source>OS Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="694"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="698"/>
         <source>Based on:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="712"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="716"/>
         <source>Origin: </source>
         <translation type="unfinished">Origen: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="730"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="734"/>
         <source>Architecture:</source>
         <translation type="unfinished">Arquitectura:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="749"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="753"/>
         <source>Desktop:</source>
         <translation type="unfinished">Escritorio:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="768"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="772"/>
         <source>Category:</source>
         <translation type="unfinished">Categoría:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="786"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="790"/>
         <source>Status:</source>
         <translation type="unfinished">Estatus:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="804"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="808"/>
         <source>Popularity:</source>
         <translation type="unfinished">Popularidad:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="844"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="848"/>
         <source>Forum Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="861"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="865"/>
         <source>Features</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="870"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="874"/>
         <source>Feedback</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4249,17 +4256,17 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1361"/>
+        <location filename="../sessiondispatcher.cpp" line="1360"/>
         <source>Select folder</source>
         <translation type="unfinished">Seleccionar carpeta</translation>
     </message>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1368"/>
+        <location filename="../sessiondispatcher.cpp" line="1367"/>
         <source>Select file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1368"/>
+        <location filename="../sessiondispatcher.cpp" line="1367"/>
         <source>All Files(*.*)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4441,32 +4448,32 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SystemBox</name>
     <message>
-        <location filename="../../qml/func/page/SystemBox.qml" line="37"/>
+        <location filename="../../qml/func/page/SystemBox.qml" line="38"/>
         <source>Dead pixel check</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemBox.qml" line="38"/>
+        <location filename="../../qml/func/page/SystemBox.qml" line="39"/>
         <source>Boot Animation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemBox.qml" line="39"/>
+        <location filename="../../qml/func/page/SystemBox.qml" line="40"/>
         <source>Task Manager</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemBox.qml" line="40"/>
+        <location filename="../../qml/func/page/SystemBox.qml" line="41"/>
         <source>Camera</source>
         <translation type="unfinished">Cámara</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemBox.qml" line="41"/>
+        <location filename="../../qml/func/page/SystemBox.qml" line="42"/>
         <source>File Shredder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemBox.qml" line="57"/>
+        <location filename="../../qml/func/page/SystemBox.qml" line="58"/>
         <source>Default toolkits</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4530,62 +4537,62 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SystemInfo</name>
     <message>
-        <location filename="../../qml/func/page/SystemInfo.qml" line="39"/>
+        <location filename="../../qml/func/page/SystemInfo.qml" line="40"/>
         <source>Computer</source>
         <translation type="unfinished">Equipo</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemInfo.qml" line="40"/>
+        <location filename="../../qml/func/page/SystemInfo.qml" line="41"/>
         <source>Desktop</source>
         <translation type="unfinished">Escritorio</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemInfo.qml" line="41"/>
+        <location filename="../../qml/func/page/SystemInfo.qml" line="42"/>
         <source>CPU</source>
         <translation type="unfinished">CPU</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemInfo.qml" line="42"/>
+        <location filename="../../qml/func/page/SystemInfo.qml" line="43"/>
         <source>Memory</source>
         <translation type="unfinished">Memoria</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemInfo.qml" line="43"/>
+        <location filename="../../qml/func/page/SystemInfo.qml" line="44"/>
         <source>Motherboard</source>
         <translation type="unfinished">Placa base</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemInfo.qml" line="44"/>
+        <location filename="../../qml/func/page/SystemInfo.qml" line="45"/>
         <source>HD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemInfo.qml" line="45"/>
+        <location filename="../../qml/func/page/SystemInfo.qml" line="46"/>
         <source>NIC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemInfo.qml" line="46"/>
+        <location filename="../../qml/func/page/SystemInfo.qml" line="47"/>
         <source>VGA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemInfo.qml" line="47"/>
+        <location filename="../../qml/func/page/SystemInfo.qml" line="48"/>
         <source>Audio</source>
         <translation type="unfinished">Audio</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemInfo.qml" line="50"/>
+        <location filename="../../qml/func/page/SystemInfo.qml" line="51"/>
         <source>CD-ROM</source>
         <translation type="unfinished">CD-ROM</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemInfo.qml" line="53"/>
+        <location filename="../../qml/func/page/SystemInfo.qml" line="54"/>
         <source>Battery</source>
         <translation type="unfinished">Batería</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemInfo.qml" line="55"/>
+        <location filename="../../qml/func/page/SystemInfo.qml" line="56"/>
         <source>Device Driver</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4593,104 +4600,104 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SystemSet</name>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="33"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="34"/>
         <source>You can perform a full range of customized systems based on personal preferences!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="82"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="178"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="83"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="179"/>
         <source>ThemeSetting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="86"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="201"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="87"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="202"/>
         <source>IconSetting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="90"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="224"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="91"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="225"/>
         <source>MousePointer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="94"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="247"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="95"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="248"/>
         <source>SoundEffect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="98"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="270"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="99"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="271"/>
         <source>BootAnimation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="102"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="326"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="103"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="327"/>
         <source>Custom Launcher</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="106"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="349"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="107"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="350"/>
         <source>Dash &amp; Panel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="111"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="372"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="112"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="373"/>
         <source>Window</source>
         <translation type="unfinished">Ventana</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="115"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="428"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="116"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="429"/>
         <source>DefaultFont</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="119"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="484"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="120"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="485"/>
         <source>Touchpad</source>
         <translation type="unfinished">Panel táctil</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="123"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="507"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="124"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="508"/>
         <source>Dead pixel check</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="127"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="562"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="128"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="563"/>
         <source>File manager</source>
         <translation type="unfinished">Gestor de archivos</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="147"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="148"/>
         <source> Personalize</source>
         <translation type="unfinished"> Personalizar</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="295"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="296"/>
         <source> Desktop</source>
         <translation type="unfinished"> Escritorio</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="397"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="398"/>
         <source> Fonts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="453"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="454"/>
         <source> System options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="531"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="532"/>
         <source> Others</source>
         <translation type="unfinished"> Otros</translation>
     </message>

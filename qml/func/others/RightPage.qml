@@ -21,7 +21,7 @@ import "../common/InfoGroup.js" as InfoGroup
 //右边栏
 Rectangle {
     id: rightbar
-    color: "#eeedf0"
+//    color: "#eeedf0"
     property int distrowatch_num:0
     property string update_rate
     property string activetext : qsTr("Active")//活跃发展中
@@ -444,7 +444,7 @@ Rectangle {
         }
         Rectangle{
             width: parent.width-8; height: 210
-            color: "#eeedf0"
+//            color: "#eeedf0"
             clip:true
             Component{
                 id:distrowatchdelegate
@@ -580,7 +580,7 @@ Rectangle {
         id: ukrect
         property bool showFlag: false
 //        color: "#e4f2fc"
-        color: "#eeedf0"
+//        color: "#eeedf0"
         width: showFlag ? parent.width-4 : 0
         height: 350
         anchors{

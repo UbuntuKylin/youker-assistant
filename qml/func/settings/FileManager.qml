@@ -21,7 +21,7 @@ Rectangle {
     id: filemanagerpage
     width: parent.width
     height: 476
-    color: "#eeedf0"
+//    color: "#eeedf0"
 
     property string actiontitle: qsTr("File Manager")//文件管理器
     property string actiontext: qsTr("Manage the Nautilus file manager. Tips: if the thumbnail's cache time or size is set to -1, it will not be checked.")//管理Nautilus文件管理器。注意：如果缩略图缓存时间或尺寸被设置为-1，缩略图将不会被清理。
@@ -207,10 +207,10 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-                picNormal: "../../img/icons/button12-blue.png"
-                picHover: "../../img/icons/button12-blue-hover.png"
-                picPressed: "../../img/icons/button12-blue-hover.png"
-                fontcolor:"#ffffff"
+                picNormal: "../../img/icons/button12-lightblue-long.png"
+                picHover: "../../img/icons/button12-lightblue-long-hover.png"
+                picPressed: "../../img/icons/button12-lightblue-long-hover.png"
+                fontcolor:"#707070"
                 fontsize: 12
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
@@ -267,10 +267,10 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-                picNormal: "../../img/icons/button12-blue.png"
-                picHover: "../../img/icons/button12-blue-hover.png"
-                picPressed: "../../img/icons/button12-blue-hover.png"
-                fontcolor:"#ffffff"
+                picNormal: "../../img/icons/button12-lightblue-long.png"
+                picHover: "../../img/icons/button12-lightblue-long-hover.png"
+                picPressed: "../../img/icons/button12-lightblue-long-hover.png"
+                fontcolor:"#707070"
                 fontsize: 12
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
@@ -327,10 +327,10 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-                picNormal: "../../img/icons/button12-blue.png"
-                picHover: "../../img/icons/button12-blue-hover.png"
-                picPressed: "../../img/icons/button12-blue-hover.png"
-                fontcolor:"#ffffff"
+                picNormal: "../../img/icons/button12-lightblue-long.png"
+                picHover: "../../img/icons/button12-lightblue-long-hover.png"
+                picPressed: "../../img/icons/button12-lightblue-long-hover.png"
+                fontcolor:"#707070"
                 fontsize: 12
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
@@ -387,10 +387,10 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-                picNormal: "../../img/icons/button12-blue.png"
-                picHover: "../../img/icons/button12-blue-hover.png"
-                picPressed: "../../img/icons/button12-blue-hover.png"
-                fontcolor:"#ffffff"
+                picNormal: "../../img/icons/button12-lightblue-long.png"
+                picHover: "../../img/icons/button12-lightblue-long-hover.png"
+                picPressed: "../../img/icons/button12-lightblue-long-hover.png"
+                fontcolor:"#707070"
                 fontsize: 12
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
@@ -452,10 +452,10 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-                picNormal: "../../img/icons/button12-blue.png"
-                picHover: "../../img/icons/button12-blue-hover.png"
-                picPressed: "../../img/icons/button12-blue-hover.png"
-                fontcolor:"#ffffff"
+                picNormal: "../../img/icons/button12-lightblue-long.png"
+                picHover: "../../img/icons/button12-lightblue-long-hover.png"
+                picPressed: "../../img/icons/button12-lightblue-long-hover.png"
+                fontcolor:"#707070"
                 fontsize: 12
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
@@ -512,10 +512,10 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-                picNormal: "../../img/icons/button12-blue.png"
-                picHover: "../../img/icons/button12-blue-hover.png"
-                picPressed: "../../img/icons/button12-blue-hover.png"
-                fontcolor:"#ffffff"
+                picNormal: "../../img/icons/button12-lightblue-long.png"
+                picHover: "../../img/icons/button12-lightblue-long-hover.png"
+                picPressed: "../../img/icons/button12-lightblue-long-hover.png"
+                fontcolor:"#707070"
                 fontsize: 12
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
@@ -572,10 +572,10 @@ Rectangle {
 
             Common.Button {
                 anchors.verticalCenter: parent.verticalCenter
-                picNormal: "../../img/icons/button12-blue.png"
-                picHover: "../../img/icons/button12-blue-hover.png"
-                picPressed: "../../img/icons/button12-blue-hover.png"
-                fontcolor:"#ffffff"
+                picNormal: "../../img/icons/button12-lightblue-long.png"
+                picHover: "../../img/icons/button12-lightblue-long-hover.png"
+                picPressed: "../../img/icons/button12-lightblue-long-hover.png"
+                fontcolor:"#707070"
                 fontsize: 12
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认

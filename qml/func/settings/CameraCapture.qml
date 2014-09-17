@@ -21,7 +21,7 @@ Rectangle {
     id: capturepage
     width: parent.width
 //    color:"transparent"
-    color: "#eeedf0"
+//    color: "#eeedf0"
     height: 476
 
     property string actiontitle: qsTr("Camera")//摄像头
@@ -82,13 +82,21 @@ Rectangle {
     }
 
     Column{
-        spacing: 20
+        spacing: 30
         anchors{
             horizontalCenter: parent.horizontalCenter
             top: top_splitbar.bottom
-            topMargin: 100
+            topMargin: 30
         }
+
+        Image {
+            anchors.horizontalCenter: parent.horizontalCenter
+            source: "../../img/icons/camera-uk.png"
+            width: 151; height: 168
+        }
+
         Text {
+            anchors.horizontalCenter: parent.horizontalCenter
             width: 600
             text: qsTr("Press the [ESC] button to take picture and turn the camera off , the photo saved in home directory by default.")//按下键盘左上方的 [Esc] 按键可以拍照并关闭摄像头，照片保存在当前用户主目录下。
             wrapMode: Text.WordWrap
@@ -110,9 +118,9 @@ Rectangle {
                 }
             }
             Common.Button {
-                picNormal: "../../img/icons/button12.png"
-                picHover: "../../img/icons/button12-hover.png"
-                picPressed: "../../img/icons/button12-hover.png"
+                picNormal: "../../img/icons/button12-blue.png"
+                picHover: "../../img/icons/button12-blue-hover.png"
+                picPressed: "../../img/icons/button12-blue-hover.png"
                 fontcolor:"#ffffff"
                 fontsize: 12
                 width: 100; height: 28

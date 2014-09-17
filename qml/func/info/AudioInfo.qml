@@ -23,7 +23,7 @@ import "../common/InfoGroup.js" as InfoGroup
 Rectangle {
     id: home; width: parent.width; height: 476
 //    color: "transparent"
-    color: "#eeedf0"
+//    color: "#eeedf0"
     property int itemNum: 4//每个模块的子项个数
     property int viewSpace: 10
     property bool firstFlag: false

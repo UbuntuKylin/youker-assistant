@@ -19,7 +19,7 @@ import "../common" as Common
 Rectangle {
     id:tracepage
     width: parent.width; height: 437
-    color: "#eeedf0"
+//    color: "#eeedf0"
 
     property string btn_text: qsTr("Start scanning")//开始扫描
     property string title: qsTr("Cleanup history, to protect your privacy")//清理历史记录，保护个人隐私

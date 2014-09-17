@@ -22,7 +22,7 @@ import "../common/InfoGroup.js" as InfoGroup
 Rectangle {
     id: home; width: parent.width; height: 476
 //    color: "transparent"
-    color: "#eeedf0"
+//    color: "#eeedf0"
     property int fontSize: 14
     property string homepath
     Component.onCompleted: {

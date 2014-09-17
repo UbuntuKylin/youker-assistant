@@ -21,7 +21,7 @@ import "../common" as Common
 Rectangle {
     id: settingpage
     width: 850; height: 476
-    color: "#eeedf0"
+//    color: "#eeedf0"
 
     Text {
         id: titlebar

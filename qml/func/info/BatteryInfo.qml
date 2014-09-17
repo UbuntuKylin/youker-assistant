@@ -22,7 +22,7 @@ Rectangle {
     id: home
     width: parent.width; height: 476
 //    color: "transparent"
-    color: "#eeedf0"
+//    color: "#eeedf0"
     property string homepath
 
     Component.onCompleted: {

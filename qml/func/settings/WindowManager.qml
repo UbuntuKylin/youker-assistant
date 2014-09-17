@@ -21,7 +21,7 @@ Rectangle {
     id: windowmanagerpage
     width: parent.width
     height: 476
-    color: "#eeedf0"
+//    color: "#eeedf0"
 
     property string position_mode: ""
     property int wheel_current_index//当前的索引
@@ -350,10 +350,10 @@ Rectangle {
             }
 
             Common.Button {
-                picNormal: "../../img/icons/button12-blue.png"
-                picHover: "../../img/icons/button12-blue-hover.png"
-                picPressed: "../../img/icons/button12-blue-hover.png"
-                fontcolor:"#ffffff"
+                picNormal: "../../img/icons/button12-lightblue-long.png"
+                picHover: "../../img/icons/button12-lightblue-long-hover.png"
+                picPressed: "../../img/icons/button12-lightblue-long-hover.png"
+                fontcolor:"#707070"
                 fontsize: 12
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
@@ -418,10 +418,10 @@ Rectangle {
             }
 
             Common.Button {
-                picNormal: "../../img/icons/button12-blue.png"
-                picHover: "../../img/icons/button12-blue-hover.png"
-                picPressed: "../../img/icons/button12-blue-hover.png"
-                fontcolor:"#ffffff"
+                picNormal: "../../img/icons/button12-lightblue-long.png"
+                picHover: "../../img/icons/button12-lightblue-long-hover.png"
+                picPressed: "../../img/icons/button12-lightblue-long-hover.png"
+                fontcolor:"#707070"
                 fontsize: 12
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
@@ -472,10 +472,10 @@ Rectangle {
             }
 
             Common.Button {
-                picNormal: "../../img/icons/button12-blue.png"
-                picHover: "../../img/icons/button12-blue-hover.png"
-                picPressed: "../../img/icons/button12-blue-hover.png"
-                fontcolor:"#ffffff"
+                picNormal: "../../img/icons/button12-lightblue-long.png"
+                picHover: "../../img/icons/button12-lightblue-long-hover.png"
+                picPressed: "../../img/icons/button12-lightblue-long-hover.png"
+                fontcolor:"#707070"
                 fontsize: 12
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
@@ -521,10 +521,10 @@ Rectangle {
             }
 
             Common.Button {
-                picNormal: "../../img/icons/button12-blue.png"
-                picHover: "../../img/icons/button12-blue-hover.png"
-                picPressed: "../../img/icons/button12-blue-hover.png"
-                fontcolor:"#ffffff"
+                picNormal: "../../img/icons/button12-lightblue-long.png"
+                picHover: "../../img/icons/button12-lightblue-long-hover.png"
+                picPressed: "../../img/icons/button12-lightblue-long-hover.png"
+                fontcolor:"#707070"
                 fontsize: 12
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
@@ -570,10 +570,10 @@ Rectangle {
             }
 
             Common.Button {
-                picNormal: "../../img/icons/button12-blue.png"
-                picHover: "../../img/icons/button12-blue-hover.png"
-                picPressed: "../../img/icons/button12-blue-hover.png"
-                fontcolor:"#ffffff"
+                picNormal: "../../img/icons/button12-lightblue-long.png"
+                picHover: "../../img/icons/button12-lightblue-long-hover.png"
+                picPressed: "../../img/icons/button12-lightblue-long-hover.png"
+                fontcolor:"#707070"
                 fontsize: 12
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
@@ -619,10 +619,10 @@ Rectangle {
             }
 
             Common.Button {
-                picNormal: "../../img/icons/button12-blue.png"
-                picHover: "../../img/icons/button12-blue-hover.png"
-                picPressed: "../../img/icons/button12-blue-hover.png"
-                fontcolor:"#ffffff"
+                picNormal: "../../img/icons/button12-lightblue-long.png"
+                picHover: "../../img/icons/button12-lightblue-long-hover.png"
+                picPressed: "../../img/icons/button12-lightblue-long-hover.png"
+                fontcolor:"#707070"
                 fontsize: 12
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认

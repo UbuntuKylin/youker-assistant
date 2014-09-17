@@ -19,7 +19,7 @@ import "../common" as Common
 Rectangle {
     id:browserpage
     width: parent.width; height: 437
-    color: "#eeedf0"
+//    color: "#eeedf0"
 
     property string title: qsTr("Deep cleaning up the browser cache")//深度清理浏览器缓存
     property string description: qsTr("Deep cleaning up the browser cache, to save disk space")//深度清理浏览器缓存，节省磁盘空间！
