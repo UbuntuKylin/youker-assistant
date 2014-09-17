@@ -21,7 +21,7 @@ Rectangle {
     id: home
     width: parent.width; height: 476
 //    color: "transparent"
-//    color: "#e4f2fc"
+    color: "#eeedf0"
 
 //    Component.onCompleted: {
     function init_data() {

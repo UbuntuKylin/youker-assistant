@@ -21,7 +21,7 @@ Rectangle {
     id: filemanagerpage
     width: parent.width
     height: 476
-//    color: "#e4f2fc"
+    color: "#eeedf0"
 
     property string actiontitle: qsTr("File Manager")//文件管理器
     property string actiontext: qsTr("Manage the Nautilus file manager. Tips: if the thumbnail's cache time or size is set to -1, it will not be checked.")//管理Nautilus文件管理器。注意：如果缩略图缓存时间或尺寸被设置为-1，缩略图将不会被清理。

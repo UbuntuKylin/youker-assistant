@@ -21,7 +21,7 @@ Rectangle {
     id: widgetthemepage
     width: parent.width
     height: 476
-//    color: "#e4f2fc"
+    color: "#eeedf0"
 
     property string actiontitle: qsTr("Theme settings")//GTK主题设置
     property string actiontext: qsTr("Choose the theme what you want.")//选择您想设置的主题。

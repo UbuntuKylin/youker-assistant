@@ -18,9 +18,10 @@ import QtQuick 1.1
 import "../common" as Common
 
 
-Item {
+Rectangle {
     id: settingpage
     width: 850; height: 476
+    color: "#eeedf0"
 
     Text {
         id: titlebar

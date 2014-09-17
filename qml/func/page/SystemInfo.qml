@@ -23,6 +23,7 @@ Rectangle {
     id: window
     width: parent.width; height: 476
     property string current_flag: "computer"
+    color: "#eeedf0"
 
     //背景
 //    Image {

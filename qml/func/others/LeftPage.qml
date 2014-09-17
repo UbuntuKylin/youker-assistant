@@ -20,6 +20,7 @@ import "../common" as Common
 Rectangle {
     id: leftbar
     width: 600; height: 436
+    color: "#eeedf0"
     property int num: 3//子checkbox的个数
     property int check_num: num
     property string flag: "onekeyscan" //onekeyscan:scan      onekey:clean

@@ -21,7 +21,7 @@ Rectangle {
     id: shredpage
     width: parent.width
 //    color:"transparent"
-//    color: "#e4f2fc"
+    color: "#eeedf0"
     height: 476
 
     property string actiontitle: qsTr("File Shredder")//文件粉碎机

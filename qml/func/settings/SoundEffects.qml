@@ -22,7 +22,7 @@ Rectangle {
     id: soundeffectspage
     width: parent.width
 //    color:"transparent"
-//    color: "#e4f2fc"
+    color: "#eeedf0"
     height: 476
 
     property int scrollbar_z: 0

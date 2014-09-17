@@ -21,7 +21,7 @@ Rectangle {
     id: capturepage
     width: parent.width
 //    color:"transparent"
-//    color: "#e4f2fc"
+    color: "#eeedf0"
     height: 476
 
     property string actiontitle: qsTr("Camera")//摄像头

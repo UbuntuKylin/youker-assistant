@@ -21,7 +21,7 @@ Rectangle {
     property bool on: true
     width: parent.width
     height: 476
-//    color: "#e4f2fc"
+    color: "#eeedf0"
 
     property string current_font: "Helvetica"
     property string desktop_font: "Helvetica"

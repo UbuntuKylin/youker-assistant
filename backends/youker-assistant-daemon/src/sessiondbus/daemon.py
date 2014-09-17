@@ -79,6 +79,9 @@ from piston_remoter import ServerPingBackAPI
 WEATHER_SERVER = "http://service.ubuntukylin.com:8001/weather/"
 
 from appcollections.monitorball.monitor_ball import MonitorBall
+
+#from sso.ubuntusso import get_ubuntu_sso_backend#20140917
+
 log = logging.getLogger('SessionDaemon')
 #from slider.wizard import Wizard
 
@@ -318,6 +321,13 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def show_ip_address(self):
         return self.ip_addr
+
+    # 20140917
+    # user account
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+#    def get_ubuntu_sso_backend_daemon(self):
+#        if not hasattr(self, 'sso'):
+#            self.sso = get_ubuntu_sso_backend()
 
     # True: has camera, False: no camera
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
