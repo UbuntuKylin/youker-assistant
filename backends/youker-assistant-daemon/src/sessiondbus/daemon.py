@@ -1353,12 +1353,24 @@ class SessionDaemon(dbus.service.Object):
     # is Unity or not
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def judge_desktop_is_unity(self):
+        '''env |grep XDG_CURRENT_DESKTOP'''
         dekstop = ''
         try:
             dekstop = os.getenv('XDG_CURRENT_DESKTOP')
         except Exception as e:
             pass
         return dekstop
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def judge_desktop_is_cinnamon(self):
+        '''env |grep XDG_CURRENT_DESKTOP'''
+        dekstop = ''#X-Cinnamon
+        try:
+            dekstop = os.getenv('XDG_CURRENT_DESKTOP')
+        except Exception as e:
+            pass
+        return dekstop
+
 
     # -------------------------pingback-------------------------
     def get_last_time(self):

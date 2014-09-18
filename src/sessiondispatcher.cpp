@@ -1607,6 +1607,11 @@ QString SessionDispatcher::judge_desktop_is_unity_qt() {
     return reply.value();
 }
 
+QString SessionDispatcher::judge_desktop_is_cinnamon_qt() {
+    QDBusReply<QString> reply = sessioniface->call("judge_desktop_is_cinnamon");
+    return reply.value();
+}
+
 bool SessionDispatcher::submit_uk_pingback() {
     mSettings->beginGroup("weather");
     QString city = mSettings->value("cityName").toString();

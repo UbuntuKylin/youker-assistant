@@ -288,6 +288,7 @@ public:
     Q_INVOKABLE void set_thumbnail_cache_size_qt(int size);
     Q_INVOKABLE int get_thumbnail_cache_size_qt();
     Q_INVOKABLE QString judge_desktop_is_unity_qt();
+    Q_INVOKABLE QString judge_desktop_is_cinnamon_qt();
 
     //-------------pinback
     bool submit_uk_pingback();

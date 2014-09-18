@@ -309,6 +309,8 @@ Rectangle {
             topMargin: 80
         }
         Row {
+            id: launcherRow
+            visible: (sessiondispatcher.judge_desktop_is_cinnamon_qt() == "X-Cinnamon") ? false : true
             spacing: 5
             Image {
                 source: "../../img/icons/dot.png"

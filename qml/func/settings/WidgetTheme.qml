@@ -208,7 +208,7 @@ Rectangle {
     Item {  //gredview外框架
         id:item
         width: parent.width - 60*2
-        height: 200
+        height: 350
         anchors {
             top: icontitle.bottom
             topMargin: 10
