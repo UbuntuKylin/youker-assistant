@@ -3,8 +3,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Language: fr_FR\n"
 "X-Source-Language: C\n"
 "X-Qt-Contexts: true\n"
 
@@ -13,17 +13,12 @@ msgctxt "AboutDialog|"
 msgid "About"
 msgstr ""
 
-#: ../aboutdialog.ui:70 ../aboutdialog.ui:162
+#: ../aboutdialog.ui:70 ../aboutdialog.ui:165
 msgctxt "AboutDialog|"
 msgid "Youker Assistant"
 msgstr ""
 
-#: ../aboutdialog.ui:86
-msgctxt "AboutDialog|"
-msgid "V1.2.0"
-msgstr ""
-
-#: ../aboutdialog.ui:102
+#: ../aboutdialog.ui:105
 msgctxt "AboutDialog|"
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -49,12 +44,12 @@ msgid ""
 "https://launchpad.net/youker-assistant.</span></p></body></html>"
 msgstr ""
 
-#: ../aboutdialog.ui:113
+#: ../aboutdialog.ui:116
 msgctxt "AboutDialog|"
 msgid "Contributor"
 msgstr ""
 
-#: ../aboutdialog.ui:128
+#: ../aboutdialog.ui:131
 msgctxt "AboutDialog|"
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -74,12 +69,12 @@ msgid ""
 "&lt;ubuntukylin-members@list.launchpad.net&gt;</span></p></body></html>"
 msgstr ""
 
-#: ../aboutdialog.ui:178
+#: ../aboutdialog.ui:181
 msgctxt "AboutDialog|"
 msgid "<a href=https://launchpad.net/youker-assistant>home page</a>"
 msgstr ""
 
-#: ../aboutdialog.ui:193
+#: ../aboutdialog.ui:199
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr ""
@@ -89,150 +84,150 @@ msgctxt "AlertDialog|"
 msgid "Form"
 msgstr ""
 
-#: ../../qml/func/info/AudioInfo.qml:49 ../../qml/func/info/AudioInfo.qml:62
-#: ../../qml/func/info/AudioInfo.qml:79 ../../qml/func/info/AudioInfo.qml:95
-#: ../../qml/func/info/AudioInfo.qml:122
+#: ../../qml/func/info/AudioInfo.qml:54 ../../qml/func/info/AudioInfo.qml:68
+#: ../../qml/func/info/AudioInfo.qml:86 ../../qml/func/info/AudioInfo.qml:103
+#: ../../qml/func/info/AudioInfo.qml:131
 msgctxt "AudioInfo|"
 msgid "Audio Model:"
 msgstr ""
 
-#: ../../qml/func/info/AudioInfo.qml:50 ../../qml/func/info/AudioInfo.qml:63
-#: ../../qml/func/info/AudioInfo.qml:80 ../../qml/func/info/AudioInfo.qml:96
-#: ../../qml/func/info/AudioInfo.qml:123
+#: ../../qml/func/info/AudioInfo.qml:55 ../../qml/func/info/AudioInfo.qml:69
+#: ../../qml/func/info/AudioInfo.qml:87 ../../qml/func/info/AudioInfo.qml:104
+#: ../../qml/func/info/AudioInfo.qml:132
 msgctxt "AudioInfo|"
 msgid "Vendor:"
 msgstr ""
 
-#: ../../qml/func/info/AudioInfo.qml:51 ../../qml/func/info/AudioInfo.qml:64
-#: ../../qml/func/info/AudioInfo.qml:81 ../../qml/func/info/AudioInfo.qml:97
-#: ../../qml/func/info/AudioInfo.qml:124
+#: ../../qml/func/info/AudioInfo.qml:56 ../../qml/func/info/AudioInfo.qml:70
+#: ../../qml/func/info/AudioInfo.qml:88 ../../qml/func/info/AudioInfo.qml:105
+#: ../../qml/func/info/AudioInfo.qml:133
 msgctxt "AudioInfo|"
 msgid "Bus Address:"
 msgstr ""
 
-#: ../../qml/func/info/AudioInfo.qml:52 ../../qml/func/info/AudioInfo.qml:65
-#: ../../qml/func/info/AudioInfo.qml:82 ../../qml/func/info/AudioInfo.qml:98
-#: ../../qml/func/info/AudioInfo.qml:125
+#: ../../qml/func/info/AudioInfo.qml:57 ../../qml/func/info/AudioInfo.qml:71
+#: ../../qml/func/info/AudioInfo.qml:89 ../../qml/func/info/AudioInfo.qml:106
+#: ../../qml/func/info/AudioInfo.qml:134
 msgctxt "AudioInfo|"
 msgid "Audio Driver:"
 msgstr ""
 
-#: ../../qml/func/info/AudioInfo.qml:181
+#: ../../qml/func/info/AudioInfo.qml:191
 msgctxt "AudioInfo|"
 msgid "Audio Info"
 msgstr ""
 
-#: ../../qml/func/info/BatteryInfo.qml:32
-#: ../../qml/func/info/BatteryInfo.qml:39
-#: ../../qml/func/info/BatteryInfo.qml:48
-#: ../../qml/func/info/BatteryInfo.qml:56
-#: ../../qml/func/info/BatteryInfo.qml:63
-#: ../../qml/func/info/BatteryInfo.qml:70
-#: ../../qml/func/info/BatteryInfo.qml:77
-#: ../../qml/func/info/BatteryInfo.qml:84 ../../qml/func/info/BatteryInfo.qml:91
+#: ../../qml/func/info/BatteryInfo.qml:36
+#: ../../qml/func/info/BatteryInfo.qml:43
+#: ../../qml/func/info/BatteryInfo.qml:52
+#: ../../qml/func/info/BatteryInfo.qml:61
+#: ../../qml/func/info/BatteryInfo.qml:68
+#: ../../qml/func/info/BatteryInfo.qml:75
+#: ../../qml/func/info/BatteryInfo.qml:82
+#: ../../qml/func/info/BatteryInfo.qml:89 ../../qml/func/info/BatteryInfo.qml:96
 msgctxt "BatteryInfo|"
 msgid "Unknown"
 msgstr ""
 
-#: ../../qml/func/info/BatteryInfo.qml:98
-#: ../../qml/func/info/BatteryInfo.qml:99
-#: ../../qml/func/info/BatteryInfo.qml:100
-#: ../../qml/func/info/BatteryInfo.qml:101
-#: ../../qml/func/info/BatteryInfo.qml:102
 #: ../../qml/func/info/BatteryInfo.qml:103
 #: ../../qml/func/info/BatteryInfo.qml:104
 #: ../../qml/func/info/BatteryInfo.qml:105
 #: ../../qml/func/info/BatteryInfo.qml:106
+#: ../../qml/func/info/BatteryInfo.qml:107
+#: ../../qml/func/info/BatteryInfo.qml:108
+#: ../../qml/func/info/BatteryInfo.qml:109
+#: ../../qml/func/info/BatteryInfo.qml:110
+#: ../../qml/func/info/BatteryInfo.qml:111
 msgctxt "BatteryInfo|"
 msgid "Failed to get data"
 msgstr ""
 
-#: ../../qml/func/info/BatteryInfo.qml:132
+#: ../../qml/func/info/BatteryInfo.qml:137
 msgctxt "BatteryInfo|"
 msgid "Battery Info"
 msgstr ""
 
-#: ../../qml/func/info/BatteryInfo.qml:149
+#: ../../qml/func/info/BatteryInfo.qml:154
 msgctxt "BatteryInfo|"
 msgid "Device Name:"
 msgstr ""
 
-#: ../../qml/func/info/BatteryInfo.qml:164
+#: ../../qml/func/info/BatteryInfo.qml:169
 msgctxt "BatteryInfo|"
 msgid "Model:"
 msgstr ""
 
-#: ../../qml/func/info/BatteryInfo.qml:179
+#: ../../qml/func/info/BatteryInfo.qml:184
 msgctxt "BatteryInfo|"
 msgid "Manufacturer:"
 msgstr ""
 
-#: ../../qml/func/info/BatteryInfo.qml:195
+#: ../../qml/func/info/BatteryInfo.qml:200
 msgctxt "BatteryInfo|"
 msgid "Serial Number:"
 msgstr ""
 
-#: ../../qml/func/info/BatteryInfo.qml:210
+#: ../../qml/func/info/BatteryInfo.qml:215
 msgctxt "BatteryInfo|"
 msgid "Technology:"
 msgstr ""
 
-#: ../../qml/func/info/BatteryInfo.qml:225
+#: ../../qml/func/info/BatteryInfo.qml:230
 msgctxt "BatteryInfo|"
 msgid "Voltage:"
 msgstr ""
 
-#: ../../qml/func/info/BatteryInfo.qml:240
+#: ../../qml/func/info/BatteryInfo.qml:245
 msgctxt "BatteryInfo|"
 msgid "Energy Designed:"
 msgstr ""
 
-#: ../../qml/func/info/BatteryInfo.qml:255
+#: ../../qml/func/info/BatteryInfo.qml:260
 msgctxt "BatteryInfo|"
 msgid "Energy Full:"
 msgstr ""
 
-#: ../../qml/func/info/BatteryInfo.qml:270
+#: ../../qml/func/info/BatteryInfo.qml:275
 msgctxt "BatteryInfo|"
 msgid "Energy Now:"
 msgstr ""
 
-#: ../../qml/func/info/BoardInfo.qml:65
+#: ../../qml/func/info/BoardInfo.qml:70
 msgctxt "BoardInfo|"
 msgid "Motherboard Basics Info"
 msgstr ""
 
-#: ../../qml/func/info/BoardInfo.qml:82
+#: ../../qml/func/info/BoardInfo.qml:87
 msgctxt "BoardInfo|"
 msgid "Motherboard Model: "
 msgstr ""
 
-#: ../../qml/func/info/BoardInfo.qml:97
+#: ../../qml/func/info/BoardInfo.qml:102
 msgctxt "BoardInfo|"
 msgid "Motherboard Vendor: "
 msgstr ""
 
-#: ../../qml/func/info/BoardInfo.qml:112
+#: ../../qml/func/info/BoardInfo.qml:117
 msgctxt "BoardInfo|"
 msgid "Serial Number: "
 msgstr ""
 
-#: ../../qml/func/info/BoardInfo.qml:128
+#: ../../qml/func/info/BoardInfo.qml:133
 msgctxt "BoardInfo|"
 msgid "BIOS Info"
 msgstr ""
 
-#: ../../qml/func/info/BoardInfo.qml:145
+#: ../../qml/func/info/BoardInfo.qml:150
 msgctxt "BoardInfo|"
 msgid "BIOS Vendor: "
 msgstr ""
 
-#: ../../qml/func/info/BoardInfo.qml:160
+#: ../../qml/func/info/BoardInfo.qml:165
 msgctxt "BoardInfo|"
 msgid "BIOS Version: "
 msgstr ""
 
-#: ../../qml/func/info/BoardInfo.qml:175
+#: ../../qml/func/info/BoardInfo.qml:180
 msgctxt "BoardInfo|"
 msgid "Release Date: "
 msgstr ""
@@ -441,42 +436,42 @@ msgctxt "BrowserModel|"
 msgid "Sorry, You did not choose the content to be cleaned up, please confirm!"
 msgstr ""
 
-#: ../../qml/func/info/CDROMInfo.qml:50 ../../qml/func/info/CDROMInfo.qml:64
-#: ../../qml/func/info/CDROMInfo.qml:82 ../../qml/func/info/CDROMInfo.qml:99
-#: ../../qml/func/info/CDROMInfo.qml:128
+#: ../../qml/func/info/CDROMInfo.qml:55 ../../qml/func/info/CDROMInfo.qml:70
+#: ../../qml/func/info/CDROMInfo.qml:89 ../../qml/func/info/CDROMInfo.qml:107
+#: ../../qml/func/info/CDROMInfo.qml:137
 msgctxt "CDROMInfo|"
 msgid "CD-ROM Model:"
 msgstr ""
 
-#: ../../qml/func/info/CDROMInfo.qml:51 ../../qml/func/info/CDROMInfo.qml:65
-#: ../../qml/func/info/CDROMInfo.qml:83 ../../qml/func/info/CDROMInfo.qml:100
-#: ../../qml/func/info/CDROMInfo.qml:129
+#: ../../qml/func/info/CDROMInfo.qml:56 ../../qml/func/info/CDROMInfo.qml:71
+#: ../../qml/func/info/CDROMInfo.qml:90 ../../qml/func/info/CDROMInfo.qml:108
+#: ../../qml/func/info/CDROMInfo.qml:138
 msgctxt "CDROMInfo|"
 msgid "Vendor:"
 msgstr ""
 
-#: ../../qml/func/info/CDROMInfo.qml:52 ../../qml/func/info/CDROMInfo.qml:66
-#: ../../qml/func/info/CDROMInfo.qml:84 ../../qml/func/info/CDROMInfo.qml:101
-#: ../../qml/func/info/CDROMInfo.qml:130
+#: ../../qml/func/info/CDROMInfo.qml:57 ../../qml/func/info/CDROMInfo.qml:72
+#: ../../qml/func/info/CDROMInfo.qml:91 ../../qml/func/info/CDROMInfo.qml:109
+#: ../../qml/func/info/CDROMInfo.qml:139
 msgctxt "CDROMInfo|"
 msgid "Device Name:"
 msgstr ""
 
-#: ../../qml/func/info/CDROMInfo.qml:53 ../../qml/func/info/CDROMInfo.qml:67
-#: ../../qml/func/info/CDROMInfo.qml:85 ../../qml/func/info/CDROMInfo.qml:102
-#: ../../qml/func/info/CDROMInfo.qml:131
+#: ../../qml/func/info/CDROMInfo.qml:58 ../../qml/func/info/CDROMInfo.qml:73
+#: ../../qml/func/info/CDROMInfo.qml:92 ../../qml/func/info/CDROMInfo.qml:110
+#: ../../qml/func/info/CDROMInfo.qml:140
 msgctxt "CDROMInfo|"
 msgid "Firmware Version:"
 msgstr ""
 
-#: ../../qml/func/info/CDROMInfo.qml:54 ../../qml/func/info/CDROMInfo.qml:68
-#: ../../qml/func/info/CDROMInfo.qml:86 ../../qml/func/info/CDROMInfo.qml:103
-#: ../../qml/func/info/CDROMInfo.qml:132
+#: ../../qml/func/info/CDROMInfo.qml:59 ../../qml/func/info/CDROMInfo.qml:74
+#: ../../qml/func/info/CDROMInfo.qml:93 ../../qml/func/info/CDROMInfo.qml:111
+#: ../../qml/func/info/CDROMInfo.qml:141
 msgctxt "CDROMInfo|"
 msgid "Serial Number:"
 msgstr ""
 
-#: ../../qml/func/info/CDROMInfo.qml:187
+#: ../../qml/func/info/CDROMInfo.qml:197
 msgctxt "CDROMInfo|"
 msgid "CD-ROM Info"
 msgstr ""
@@ -619,93 +614,93 @@ msgctxt "CameraCapture|"
 msgid "Back"
 msgstr ""
 
-#: ../../qml/func/settings/CameraCapture.qml:93
+#: ../../qml/func/settings/CameraCapture.qml:101
 msgctxt "CameraCapture|"
 msgid ""
 "Press the [ESC] button to take picture and turn the camera off , the photo "
 "saved in home directory by default."
 msgstr ""
 
-#: ../../qml/func/settings/CameraCapture.qml:107
+#: ../../qml/func/settings/CameraCapture.qml:115
 msgctxt "CameraCapture|"
 msgid "Open camera"
 msgstr ""
 
-#: ../../qml/func/settings/CameraCapture.qml:119
+#: ../../qml/func/settings/CameraCapture.qml:127
 msgctxt "CameraCapture|"
 msgid "View Photos"
 msgstr ""
 
-#: ../../qml/func/info/ComputerInfo.qml:49
-#: ../../qml/func/info/ComputerInfo.qml:52
-#: ../../qml/func/info/ComputerInfo.qml:277
-#: ../../qml/func/info/ComputerInfo.qml:280
+#: ../../qml/func/info/ComputerInfo.qml:51
+#: ../../qml/func/info/ComputerInfo.qml:54
+#: ../../qml/func/info/ComputerInfo.qml:279
+#: ../../qml/func/info/ComputerInfo.qml:282
 msgctxt "ComputerInfo|"
 msgid " Minutes"
 msgstr ""
 
-#: ../../qml/func/info/ComputerInfo.qml:52
-#: ../../qml/func/info/ComputerInfo.qml:280
+#: ../../qml/func/info/ComputerInfo.qml:54
+#: ../../qml/func/info/ComputerInfo.qml:282
 msgctxt "ComputerInfo|"
 msgid " Hours "
 msgstr ""
 
-#: ../../qml/func/info/ComputerInfo.qml:77
+#: ../../qml/func/info/ComputerInfo.qml:79
 msgctxt "ComputerInfo|"
 msgid "Computer Basic Info"
 msgstr ""
 
-#: ../../qml/func/info/ComputerInfo.qml:94
+#: ../../qml/func/info/ComputerInfo.qml:96
 msgctxt "ComputerInfo|"
 msgid "Vendor: "
 msgstr ""
 
-#: ../../qml/func/info/ComputerInfo.qml:109
+#: ../../qml/func/info/ComputerInfo.qml:111
 msgctxt "ComputerInfo|"
 msgid "Model: "
 msgstr ""
 
-#: ../../qml/func/info/ComputerInfo.qml:124
+#: ../../qml/func/info/ComputerInfo.qml:126
 msgctxt "ComputerInfo|"
 msgid "Version: "
 msgstr ""
 
-#: ../../qml/func/info/ComputerInfo.qml:139
+#: ../../qml/func/info/ComputerInfo.qml:141
 msgctxt "ComputerInfo|"
 msgid "Serial Number: "
 msgstr ""
 
-#: ../../qml/func/info/ComputerInfo.qml:154
+#: ../../qml/func/info/ComputerInfo.qml:156
 msgctxt "ComputerInfo|"
 msgid "Hostname: "
 msgstr ""
 
-#: ../../qml/func/info/ComputerInfo.qml:169
+#: ../../qml/func/info/ComputerInfo.qml:171
 msgctxt "ComputerInfo|"
 msgid "Running Time: "
 msgstr ""
 
-#: ../../qml/func/info/ComputerInfo.qml:184
+#: ../../qml/func/info/ComputerInfo.qml:186
 msgctxt "ComputerInfo|"
 msgid "OS Types: "
 msgstr ""
 
-#: ../../qml/func/info/ComputerInfo.qml:199
+#: ../../qml/func/info/ComputerInfo.qml:201
 msgctxt "ComputerInfo|"
 msgid "OS Version: "
 msgstr ""
 
-#: ../../qml/func/info/ComputerInfo.qml:214
+#: ../../qml/func/info/ComputerInfo.qml:216
 msgctxt "ComputerInfo|"
 msgid "Kernel Bit: "
 msgstr ""
 
-#: ../../qml/func/info/ComputerInfo.qml:229
+#: ../../qml/func/info/ComputerInfo.qml:231
 msgctxt "ComputerInfo|"
 msgid "Kernel Version: "
 msgstr ""
 
-#: ../../qml/func/info/ComputerInfo.qml:244
+#: ../../qml/func/info/ComputerInfo.qml:246
 msgctxt "ComputerInfo|"
 msgid "Kernel Arch: "
 msgstr ""
@@ -850,67 +845,67 @@ msgctxt "CookiesModel|"
 msgid "Cleared"
 msgstr ""
 
-#: ../../qml/func/info/CpuInfo.qml:41
+#: ../../qml/func/info/CpuInfo.qml:45
 msgctxt "CpuInfo|"
 msgid "cores"
 msgstr ""
 
-#: ../../qml/func/info/CpuInfo.qml:41
+#: ../../qml/func/info/CpuInfo.qml:45
 msgctxt "CpuInfo|"
 msgid "thread"
 msgstr ""
 
-#: ../../qml/func/info/CpuInfo.qml:68
+#: ../../qml/func/info/CpuInfo.qml:72
 msgctxt "CpuInfo|"
 msgid "CPU Info"
 msgstr ""
 
-#: ../../qml/func/info/CpuInfo.qml:85
+#: ../../qml/func/info/CpuInfo.qml:89
 msgctxt "CpuInfo|"
 msgid "CPU: "
 msgstr ""
 
-#: ../../qml/func/info/CpuInfo.qml:100
+#: ../../qml/func/info/CpuInfo.qml:104
 msgctxt "CpuInfo|"
 msgid "Vendor: "
 msgstr ""
 
-#: ../../qml/func/info/CpuInfo.qml:115
+#: ../../qml/func/info/CpuInfo.qml:119
 msgctxt "CpuInfo|"
 msgid "Serial Number: "
 msgstr ""
 
-#: ../../qml/func/info/CpuInfo.qml:130
+#: ../../qml/func/info/CpuInfo.qml:134
 msgctxt "CpuInfo|"
 msgid "Socket/Slot: "
 msgstr ""
 
-#: ../../qml/func/info/CpuInfo.qml:145
+#: ../../qml/func/info/CpuInfo.qml:149
 msgctxt "CpuInfo|"
 msgid "Maximum Frequency: "
 msgstr ""
 
-#: ../../qml/func/info/CpuInfo.qml:160
+#: ../../qml/func/info/CpuInfo.qml:164
 msgctxt "CpuInfo|"
 msgid "Current Frequency: "
 msgstr ""
 
-#: ../../qml/func/info/CpuInfo.qml:175
+#: ../../qml/func/info/CpuInfo.qml:179
 msgctxt "CpuInfo|"
 msgid "FSB: "
 msgstr ""
 
-#: ../../qml/func/info/CpuInfo.qml:190
+#: ../../qml/func/info/CpuInfo.qml:194
 msgctxt "CpuInfo|"
 msgid "Core Number: "
 msgstr ""
 
-#: ../../qml/func/info/CpuInfo.qml:205
+#: ../../qml/func/info/CpuInfo.qml:209
 msgctxt "CpuInfo|"
 msgid "L1 Cache: "
 msgstr ""
 
-#: ../../qml/func/info/CpuInfo.qml:220
+#: ../../qml/func/info/CpuInfo.qml:224
 msgctxt "CpuInfo|"
 msgid "L2 Cache: "
 msgstr ""
@@ -1348,54 +1343,101 @@ msgctxt "FileModel|"
 msgid "Completed"
 msgstr ""
 
+#: ../../qml/func/settings/FileShredder.qml:27
+msgctxt "FileShredder|"
+msgid "File Shredder"
+msgstr ""
+
+#: ../../qml/func/settings/FileShredder.qml:28
+msgctxt "FileShredder|"
+msgid "Crush stubborn files."
+msgstr ""
+
+#: ../../qml/func/settings/FileShredder.qml:51
+msgctxt "FileShredder|"
+msgid "Back"
+msgstr ""
+
+#: ../../qml/func/settings/FileShredder.qml:132
+msgctxt "FileShredder|"
+msgid "The file need to be shredded: "
+msgstr ""
+
+#: ../../qml/func/settings/FileShredder.qml:152
+#: ../../qml/func/settings/FileShredder.qml:191
+#: ../../qml/func/settings/FileShredder.qml:250
+msgctxt "FileShredder|"
+msgid "No select any file which need to be shredded"
+msgstr ""
+
+#: ../../qml/func/settings/FileShredder.qml:247
+msgctxt "FileShredder|"
+msgid "Deselect"
+msgstr ""
+
+#: ../../qml/func/settings/FileShredder.qml:225
+msgctxt "FileShredder|"
+msgid "Shred File"
+msgstr ""
+
+#: ../../qml/func/settings/FileShredder.qml:231
+msgctxt "FileShredder|"
+msgid "Shred success!"
+msgstr ""
+
+#: ../../qml/func/settings/FileShredder.qml:234
+msgctxt "FileShredder|"
+msgid "Shred abnormal!"
+msgstr ""
+
 #: ../../qml/func/common/FontButton.qml:80
 msgctxt "FontButton|"
 msgid "Click to change font"
 msgstr ""
 
-#: ../../qml/func/info/HDInfo.qml:50 ../../qml/func/info/HDInfo.qml:69
-#: ../../qml/func/info/HDInfo.qml:92 ../../qml/func/info/HDInfo.qml:114
-#: ../../qml/func/info/HDInfo.qml:147
+#: ../../qml/func/info/HDInfo.qml:55 ../../qml/func/info/HDInfo.qml:76
+#: ../../qml/func/info/HDInfo.qml:101 ../../qml/func/info/HDInfo.qml:125
+#: ../../qml/func/info/HDInfo.qml:160
 msgctxt "HDInfo|"
 msgid "HDD Model: "
 msgstr ""
 
-#: ../../qml/func/info/HDInfo.qml:51 ../../qml/func/info/HDInfo.qml:70
-#: ../../qml/func/info/HDInfo.qml:93 ../../qml/func/info/HDInfo.qml:115
-#: ../../qml/func/info/HDInfo.qml:148
+#: ../../qml/func/info/HDInfo.qml:56 ../../qml/func/info/HDInfo.qml:77
+#: ../../qml/func/info/HDInfo.qml:102 ../../qml/func/info/HDInfo.qml:126
+#: ../../qml/func/info/HDInfo.qml:161
 msgctxt "HDInfo|"
 msgid "HDD Vendor: "
 msgstr ""
 
-#: ../../qml/func/info/HDInfo.qml:52 ../../qml/func/info/HDInfo.qml:71
-#: ../../qml/func/info/HDInfo.qml:94 ../../qml/func/info/HDInfo.qml:116
-#: ../../qml/func/info/HDInfo.qml:149
+#: ../../qml/func/info/HDInfo.qml:57 ../../qml/func/info/HDInfo.qml:78
+#: ../../qml/func/info/HDInfo.qml:103 ../../qml/func/info/HDInfo.qml:127
+#: ../../qml/func/info/HDInfo.qml:162
 msgctxt "HDInfo|"
 msgid "HDD Capacity: "
 msgstr ""
 
-#: ../../qml/func/info/HDInfo.qml:53 ../../qml/func/info/HDInfo.qml:72
-#: ../../qml/func/info/HDInfo.qml:95 ../../qml/func/info/HDInfo.qml:117
-#: ../../qml/func/info/HDInfo.qml:150
+#: ../../qml/func/info/HDInfo.qml:58 ../../qml/func/info/HDInfo.qml:79
+#: ../../qml/func/info/HDInfo.qml:104 ../../qml/func/info/HDInfo.qml:128
+#: ../../qml/func/info/HDInfo.qml:163
 msgctxt "HDInfo|"
 msgid "Device Name: "
 msgstr ""
 
-#: ../../qml/func/info/HDInfo.qml:54 ../../qml/func/info/HDInfo.qml:73
-#: ../../qml/func/info/HDInfo.qml:96 ../../qml/func/info/HDInfo.qml:118
-#: ../../qml/func/info/HDInfo.qml:151
+#: ../../qml/func/info/HDInfo.qml:59 ../../qml/func/info/HDInfo.qml:80
+#: ../../qml/func/info/HDInfo.qml:105 ../../qml/func/info/HDInfo.qml:129
+#: ../../qml/func/info/HDInfo.qml:164
 msgctxt "HDInfo|"
 msgid "Firmware Version: "
 msgstr ""
 
-#: ../../qml/func/info/HDInfo.qml:55 ../../qml/func/info/HDInfo.qml:74
-#: ../../qml/func/info/HDInfo.qml:97 ../../qml/func/info/HDInfo.qml:119
-#: ../../qml/func/info/HDInfo.qml:152
+#: ../../qml/func/info/HDInfo.qml:60 ../../qml/func/info/HDInfo.qml:81
+#: ../../qml/func/info/HDInfo.qml:106 ../../qml/func/info/HDInfo.qml:130
+#: ../../qml/func/info/HDInfo.qml:165
 msgctxt "HDInfo|"
 msgid "Serial Number: "
 msgstr ""
 
-#: ../../qml/func/info/HDInfo.qml:211
+#: ../../qml/func/info/HDInfo.qml:226
 msgctxt "HDInfo|"
 msgid "HDD Info"
 msgstr ""
@@ -1511,161 +1553,161 @@ msgctxt "LauncherTheme|"
 msgid "Icon Background:"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:129
-#: ../../qml/func/others/LeftPage.qml:133 ../../qml/func/others/LeftPage.qml:137
+#: ../../qml/func/others/LeftPage.qml:130
+#: ../../qml/func/others/LeftPage.qml:134 ../../qml/func/others/LeftPage.qml:138
 msgctxt "LeftPage|"
 msgid "(totally cleared"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:129
+#: ../../qml/func/others/LeftPage.qml:130
 msgctxt "LeftPage|"
 msgid "Cookies)"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:133
+#: ../../qml/func/others/LeftPage.qml:134
 msgctxt "LeftPage|"
 msgid "garbage)"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:137
+#: ../../qml/func/others/LeftPage.qml:138
 msgctxt "LeftPage|"
 msgid "historical records)"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:145
+#: ../../qml/func/others/LeftPage.qml:146
 msgctxt "LeftPage|"
 msgid "Cleared!"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:177
+#: ../../qml/func/others/LeftPage.qml:178
 msgctxt "LeftPage|"
 msgid "Cleaning up history trace of Firefox..."
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:180
+#: ../../qml/func/others/LeftPage.qml:181
 msgctxt "LeftPage|"
 msgid "Firefox history trace had been cleared!"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:185
+#: ../../qml/func/others/LeftPage.qml:186
 msgctxt "LeftPage|"
 msgid "Cleaning up history trace of Chromium..."
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:188
+#: ../../qml/func/others/LeftPage.qml:189
 msgctxt "LeftPage|"
 msgid "Chromium history trace had been cleared!"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:193
+#: ../../qml/func/others/LeftPage.qml:194
 msgctxt "LeftPage|"
 msgid "Cleaning up Cookies of Firefox..."
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:196
+#: ../../qml/func/others/LeftPage.qml:197
 msgctxt "LeftPage|"
 msgid "Firefox Cookies had been cleared!"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:201
+#: ../../qml/func/others/LeftPage.qml:202
 msgctxt "LeftPage|"
 msgid "Cleaning up Cookies of Chromium..."
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:204
+#: ../../qml/func/others/LeftPage.qml:205
 msgctxt "LeftPage|"
 msgid "Chromium Cookies had been cleared!"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:209
+#: ../../qml/func/others/LeftPage.qml:210
 msgctxt "LeftPage|"
 msgid "Apt cache had been cleared!"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:212
+#: ../../qml/func/others/LeftPage.qml:213
 msgctxt "LeftPage|"
 msgid "Cleaning up Apt cache: "
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:217
+#: ../../qml/func/others/LeftPage.qml:218
 msgctxt "LeftPage|"
 msgid "Software Center cache had been cleared!"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:220
+#: ../../qml/func/others/LeftPage.qml:221
 msgctxt "LeftPage|"
 msgid "Cleaning up Software Center cache: "
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:271
+#: ../../qml/func/others/LeftPage.qml:272
 msgctxt "LeftPage|"
 msgid ""
 "Quick clean up system trash, saving disk space and improving the system "
 "efficiency!"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:280
+#: ../../qml/func/others/LeftPage.qml:281
 msgctxt "LeftPage|"
 msgid "To help you quick clean up the Cookies, garbage, traces and plug-ins."
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:381
+#: ../../qml/func/others/LeftPage.qml:382
 msgctxt "LeftPage|"
 msgid "Quick Cleanup"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:402
+#: ../../qml/func/others/LeftPage.qml:403
 msgctxt "LeftPage|"
 msgid "(Scan to:  "
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:479
+#: ../../qml/func/others/LeftPage.qml:480
 msgctxt "LeftPage|"
 msgid "Cleanup Garbage"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:492
+#: ../../qml/func/others/LeftPage.qml:493
 msgctxt "LeftPage|"
 msgid "Clean up system junk files, free disk space"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:502
-#: ../../qml/func/others/LeftPage.qml:517
-#: ../../qml/func/others/LeftPage.qml:594
-#: ../../qml/func/others/LeftPage.qml:610
-#: ../../qml/func/others/LeftPage.qml:687 ../../qml/func/others/LeftPage.qml:703
+#: ../../qml/func/others/LeftPage.qml:503
+#: ../../qml/func/others/LeftPage.qml:518
+#: ../../qml/func/others/LeftPage.qml:595
+#: ../../qml/func/others/LeftPage.qml:611
+#: ../../qml/func/others/LeftPage.qml:688 ../../qml/func/others/LeftPage.qml:704
 msgctxt "LeftPage|"
 msgid "Unfinished"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:509
-#: ../../qml/func/others/LeftPage.qml:601 ../../qml/func/others/LeftPage.qml:694
+#: ../../qml/func/others/LeftPage.qml:510
+#: ../../qml/func/others/LeftPage.qml:602 ../../qml/func/others/LeftPage.qml:695
 msgctxt "LeftPage|"
 msgid "Completed"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:513
-#: ../../qml/func/others/LeftPage.qml:606 ../../qml/func/others/LeftPage.qml:699
+#: ../../qml/func/others/LeftPage.qml:514
+#: ../../qml/func/others/LeftPage.qml:607 ../../qml/func/others/LeftPage.qml:700
 msgctxt "LeftPage|"
 msgid "Exception occurred"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:571
+#: ../../qml/func/others/LeftPage.qml:572
 msgctxt "LeftPage|"
 msgid "Delete History"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:584
+#: ../../qml/func/others/LeftPage.qml:585
 msgctxt "LeftPage|"
 msgid "Clean up the historical records, to protect your privacy"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:664
+#: ../../qml/func/others/LeftPage.qml:665
 msgctxt "LeftPage|"
 msgid "Cleanup Cookies"
 msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:677
+#: ../../qml/func/others/LeftPage.qml:678
 msgctxt "LeftPage|"
 msgid "Clean up the Cookies, including surfing and shopping records"
 msgstr ""
@@ -1715,60 +1757,60 @@ msgctxt "LoginDialog|"
 msgid "Please input your password!"
 msgstr ""
 
-#: ../../qml/func/info/MemoryInfo.qml:50 ../../qml/func/info/MemoryInfo.qml:64
-#: ../../qml/func/info/MemoryInfo.qml:83 ../../qml/func/info/MemoryInfo.qml:101
-#: ../../qml/func/info/MemoryInfo.qml:131
+#: ../../qml/func/info/MemoryInfo.qml:55 ../../qml/func/info/MemoryInfo.qml:70
+#: ../../qml/func/info/MemoryInfo.qml:90 ../../qml/func/info/MemoryInfo.qml:109
+#: ../../qml/func/info/MemoryInfo.qml:140
 msgctxt "MemoryInfo|"
 msgid "Slot Number: "
 msgstr ""
 
-#: ../../qml/func/info/MemoryInfo.qml:51 ../../qml/func/info/MemoryInfo.qml:65
-#: ../../qml/func/info/MemoryInfo.qml:84 ../../qml/func/info/MemoryInfo.qml:102
-#: ../../qml/func/info/MemoryInfo.qml:132
+#: ../../qml/func/info/MemoryInfo.qml:56 ../../qml/func/info/MemoryInfo.qml:71
+#: ../../qml/func/info/MemoryInfo.qml:91 ../../qml/func/info/MemoryInfo.qml:110
+#: ../../qml/func/info/MemoryInfo.qml:141
 msgctxt "MemoryInfo|"
 msgid "Memory Model: "
 msgstr ""
 
-#: ../../qml/func/info/MemoryInfo.qml:52 ../../qml/func/info/MemoryInfo.qml:66
-#: ../../qml/func/info/MemoryInfo.qml:85 ../../qml/func/info/MemoryInfo.qml:103
-#: ../../qml/func/info/MemoryInfo.qml:133
+#: ../../qml/func/info/MemoryInfo.qml:57 ../../qml/func/info/MemoryInfo.qml:72
+#: ../../qml/func/info/MemoryInfo.qml:92 ../../qml/func/info/MemoryInfo.qml:111
+#: ../../qml/func/info/MemoryInfo.qml:142
 msgctxt "MemoryInfo|"
 msgid "Vendor: "
 msgstr ""
 
-#: ../../qml/func/info/MemoryInfo.qml:53 ../../qml/func/info/MemoryInfo.qml:67
-#: ../../qml/func/info/MemoryInfo.qml:86 ../../qml/func/info/MemoryInfo.qml:104
-#: ../../qml/func/info/MemoryInfo.qml:134
+#: ../../qml/func/info/MemoryInfo.qml:58 ../../qml/func/info/MemoryInfo.qml:73
+#: ../../qml/func/info/MemoryInfo.qml:93 ../../qml/func/info/MemoryInfo.qml:112
+#: ../../qml/func/info/MemoryInfo.qml:143
 msgctxt "MemoryInfo|"
 msgid "Serial Number: "
 msgstr ""
 
-#: ../../qml/func/info/MemoryInfo.qml:54 ../../qml/func/info/MemoryInfo.qml:87
-#: ../../qml/func/info/MemoryInfo.qml:135
+#: ../../qml/func/info/MemoryInfo.qml:59 ../../qml/func/info/MemoryInfo.qml:94
+#: ../../qml/func/info/MemoryInfo.qml:144
 msgctxt "MemoryInfo|"
 msgid "Memory Size: "
 msgstr ""
 
-#: ../../qml/func/info/MemoryInfo.qml:55 ../../qml/func/info/MemoryInfo.qml:69
-#: ../../qml/func/info/MemoryInfo.qml:88 ../../qml/func/info/MemoryInfo.qml:106
-#: ../../qml/func/info/MemoryInfo.qml:136
+#: ../../qml/func/info/MemoryInfo.qml:60 ../../qml/func/info/MemoryInfo.qml:75
+#: ../../qml/func/info/MemoryInfo.qml:95 ../../qml/func/info/MemoryInfo.qml:114
+#: ../../qml/func/info/MemoryInfo.qml:145
 msgctxt "MemoryInfo|"
 msgid "Data Width: "
 msgstr ""
 
-#: ../../qml/func/info/MemoryInfo.qml:56 ../../qml/func/info/MemoryInfo.qml:70
-#: ../../qml/func/info/MemoryInfo.qml:89 ../../qml/func/info/MemoryInfo.qml:107
-#: ../../qml/func/info/MemoryInfo.qml:137
+#: ../../qml/func/info/MemoryInfo.qml:61 ../../qml/func/info/MemoryInfo.qml:76
+#: ../../qml/func/info/MemoryInfo.qml:96 ../../qml/func/info/MemoryInfo.qml:115
+#: ../../qml/func/info/MemoryInfo.qml:146
 msgctxt "MemoryInfo|"
 msgid "Memory Info: "
 msgstr ""
 
-#: ../../qml/func/info/MemoryInfo.qml:68 ../../qml/func/info/MemoryInfo.qml:105
+#: ../../qml/func/info/MemoryInfo.qml:74 ../../qml/func/info/MemoryInfo.qml:113
 msgctxt "MemoryInfo|"
 msgid "Size: "
 msgstr ""
 
-#: ../../qml/func/info/MemoryInfo.qml:190
+#: ../../qml/func/info/MemoryInfo.qml:200
 msgctxt "MemoryInfo|"
 msgid "Memory Info"
 msgstr ""
@@ -1799,102 +1841,102 @@ msgid ""
 "Left-click to change the color, right-click to exit from this detection."
 msgstr ""
 
-#: ../../qml/func/info/MonitorInfo.qml:50
-#: ../../qml/func/info/MonitorInfo.qml:64
-#: ../../qml/func/info/MonitorInfo.qml:82
-#: ../../qml/func/info/MonitorInfo.qml:99
-#: ../../qml/func/info/MonitorInfo.qml:127
+#: ../../qml/func/info/MonitorInfo.qml:55
+#: ../../qml/func/info/MonitorInfo.qml:70
+#: ../../qml/func/info/MonitorInfo.qml:89
+#: ../../qml/func/info/MonitorInfo.qml:107
+#: ../../qml/func/info/MonitorInfo.qml:136
 msgctxt "MonitorInfo|"
 msgid "Graphics Card Model:"
 msgstr ""
 
-#: ../../qml/func/info/MonitorInfo.qml:51
-#: ../../qml/func/info/MonitorInfo.qml:65
-#: ../../qml/func/info/MonitorInfo.qml:83
-#: ../../qml/func/info/MonitorInfo.qml:100
-#: ../../qml/func/info/MonitorInfo.qml:128
+#: ../../qml/func/info/MonitorInfo.qml:56
+#: ../../qml/func/info/MonitorInfo.qml:71
+#: ../../qml/func/info/MonitorInfo.qml:90
+#: ../../qml/func/info/MonitorInfo.qml:108
+#: ../../qml/func/info/MonitorInfo.qml:137
 msgctxt "MonitorInfo|"
 msgid "Current Graphics Card:"
 msgstr ""
 
-#: ../../qml/func/info/MonitorInfo.qml:52
-#: ../../qml/func/info/MonitorInfo.qml:66
-#: ../../qml/func/info/MonitorInfo.qml:84
-#: ../../qml/func/info/MonitorInfo.qml:101
-#: ../../qml/func/info/MonitorInfo.qml:129
+#: ../../qml/func/info/MonitorInfo.qml:57
+#: ../../qml/func/info/MonitorInfo.qml:72
+#: ../../qml/func/info/MonitorInfo.qml:91
+#: ../../qml/func/info/MonitorInfo.qml:109
+#: ../../qml/func/info/MonitorInfo.qml:138
 msgctxt "MonitorInfo|"
 msgid "Graphics Card Vendor:"
 msgstr ""
 
-#: ../../qml/func/info/MonitorInfo.qml:53
-#: ../../qml/func/info/MonitorInfo.qml:67
-#: ../../qml/func/info/MonitorInfo.qml:85
-#: ../../qml/func/info/MonitorInfo.qml:102
-#: ../../qml/func/info/MonitorInfo.qml:130
+#: ../../qml/func/info/MonitorInfo.qml:58
+#: ../../qml/func/info/MonitorInfo.qml:73
+#: ../../qml/func/info/MonitorInfo.qml:92
+#: ../../qml/func/info/MonitorInfo.qml:110
+#: ../../qml/func/info/MonitorInfo.qml:139
 msgctxt "MonitorInfo|"
 msgid "Graphics Driver:"
 msgstr ""
 
-#: ../../qml/func/info/MonitorInfo.qml:54
-#: ../../qml/func/info/MonitorInfo.qml:68
-#: ../../qml/func/info/MonitorInfo.qml:86
-#: ../../qml/func/info/MonitorInfo.qml:103
-#: ../../qml/func/info/MonitorInfo.qml:131
+#: ../../qml/func/info/MonitorInfo.qml:59
+#: ../../qml/func/info/MonitorInfo.qml:74
+#: ../../qml/func/info/MonitorInfo.qml:93
+#: ../../qml/func/info/MonitorInfo.qml:111
+#: ../../qml/func/info/MonitorInfo.qml:140
 msgctxt "MonitorInfo|"
 msgid "Bus Address:"
 msgstr ""
 
-#: ../../qml/func/info/MonitorInfo.qml:234
+#: ../../qml/func/info/MonitorInfo.qml:245
 msgctxt "MonitorInfo|"
 msgid "Graphics Card Info"
 msgstr ""
 
-#: ../../qml/func/info/MonitorInfo.qml:373
+#: ../../qml/func/info/MonitorInfo.qml:384
 msgctxt "MonitorInfo|"
 msgid "Monitor Info"
 msgstr ""
 
-#: ../../qml/func/info/MonitorInfo.qml:393
+#: ../../qml/func/info/MonitorInfo.qml:404
 msgctxt "MonitorInfo|"
 msgid "Monitor: "
 msgstr ""
 
-#: ../../qml/func/info/MonitorInfo.qml:410
+#: ../../qml/func/info/MonitorInfo.qml:421
 msgctxt "MonitorInfo|"
 msgid "Vendor: "
 msgstr ""
 
-#: ../../qml/func/info/MonitorInfo.qml:426
+#: ../../qml/func/info/MonitorInfo.qml:437
 msgctxt "MonitorInfo|"
 msgid "Production(year/week): "
 msgstr ""
 
-#: ../../qml/func/info/MonitorInfo.qml:442
+#: ../../qml/func/info/MonitorInfo.qml:453
 msgctxt "MonitorInfo|"
 msgid "Display Area: "
 msgstr ""
 
-#: ../../qml/func/info/MonitorInfo.qml:458
+#: ../../qml/func/info/MonitorInfo.qml:469
 msgctxt "MonitorInfo|"
 msgid "Dimensions: "
 msgstr ""
 
-#: ../../qml/func/info/MonitorInfo.qml:474
+#: ../../qml/func/info/MonitorInfo.qml:485
 msgctxt "MonitorInfo|"
 msgid "Max Resolution: "
 msgstr ""
 
-#: ../../qml/func/info/MonitorInfo.qml:490
+#: ../../qml/func/info/MonitorInfo.qml:501
 msgctxt "MonitorInfo|"
 msgid "Gamma Value: "
 msgstr ""
 
-#: ../../qml/func/info/MonitorInfo.qml:506
+#: ../../qml/func/info/MonitorInfo.qml:517
 msgctxt "MonitorInfo|"
 msgid "Current Output: "
 msgstr ""
 
-#: ../../qml/func/info/MonitorInfo.qml:523
+#: ../../qml/func/info/MonitorInfo.qml:534
 msgctxt "MonitorInfo|"
 msgid "Support Output: "
 msgstr ""
@@ -1942,72 +1984,72 @@ msgctxt "MousePointer|"
 msgid "Big Size"
 msgstr ""
 
-#: ../../qml/func/info/NICInfo.qml:85
+#: ../../qml/func/info/NICInfo.qml:91
 msgctxt "NICInfo|"
 msgid "NIC Info"
 msgstr ""
 
-#: ../../qml/func/info/NICInfo.qml:103
+#: ../../qml/func/info/NICInfo.qml:109
 msgctxt "NICInfo|"
 msgid "NIC Model:"
 msgstr ""
 
-#: ../../qml/func/info/NICInfo.qml:120 ../../qml/func/info/NICInfo.qml:279
+#: ../../qml/func/info/NICInfo.qml:126 ../../qml/func/info/NICInfo.qml:285
 msgctxt "NICInfo|"
 msgid "Vendor:"
 msgstr ""
 
-#: ../../qml/func/info/NICInfo.qml:135
+#: ../../qml/func/info/NICInfo.qml:141
 msgctxt "NICInfo|"
 msgid "NIC Driver:"
 msgstr ""
 
-#: ../../qml/func/info/NICInfo.qml:150 ../../qml/func/info/NICInfo.qml:311
+#: ../../qml/func/info/NICInfo.qml:156 ../../qml/func/info/NICInfo.qml:317
 msgctxt "NICInfo|"
 msgid "Bus Address:"
 msgstr ""
 
-#: ../../qml/func/info/NICInfo.qml:165 ../../qml/func/info/NICInfo.qml:327
+#: ../../qml/func/info/NICInfo.qml:171 ../../qml/func/info/NICInfo.qml:333
 msgctxt "NICInfo|"
 msgid "Device Name:"
 msgstr ""
 
-#: ../../qml/func/info/NICInfo.qml:180 ../../qml/func/info/NICInfo.qml:344
+#: ../../qml/func/info/NICInfo.qml:186 ../../qml/func/info/NICInfo.qml:350
 msgctxt "NICInfo|"
 msgid "IP Address:"
 msgstr ""
 
-#: ../../qml/func/info/NICInfo.qml:195
+#: ../../qml/func/info/NICInfo.qml:201
 msgctxt "NICInfo|"
 msgid "Mac Address:"
 msgstr ""
 
-#: ../../qml/func/info/NICInfo.qml:210
+#: ../../qml/func/info/NICInfo.qml:216
 msgctxt "NICInfo|"
 msgid "Connection Status: "
 msgstr ""
 
-#: ../../qml/func/info/NICInfo.qml:225
+#: ../../qml/func/info/NICInfo.qml:231
 msgctxt "NICInfo|"
 msgid "Max Bandwidth: "
 msgstr ""
 
-#: ../../qml/func/info/NICInfo.qml:242
+#: ../../qml/func/info/NICInfo.qml:248
 msgctxt "NICInfo|"
 msgid "WLan NIC Info"
 msgstr ""
 
-#: ../../qml/func/info/NICInfo.qml:261
+#: ../../qml/func/info/NICInfo.qml:267
 msgctxt "NICInfo|"
 msgid "WLan NIC Model:"
 msgstr ""
 
-#: ../../qml/func/info/NICInfo.qml:295
+#: ../../qml/func/info/NICInfo.qml:301
 msgctxt "NICInfo|"
 msgid "WLan NIC Driver:"
 msgstr ""
 
-#: ../../qml/func/info/NICInfo.qml:361
+#: ../../qml/func/info/NICInfo.qml:367
 msgctxt "NICInfo|"
 msgid "Serial Number: "
 msgstr ""
@@ -2345,125 +2387,125 @@ msgctxt "RightPage|"
 msgid "China"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:67
+#: ../../qml/func/others/RightPage.qml:68
 msgctxt "RightPage|"
 msgid "Network Error!"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:70
+#: ../../qml/func/others/RightPage.qml:71
 msgctxt "RightPage|"
 msgid "No User!"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:73
+#: ../../qml/func/others/RightPage.qml:74
 msgctxt "RightPage|"
 msgid "Password Wrong!"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:76
+#: ../../qml/func/others/RightPage.qml:77
 msgctxt "RightPage|"
 msgid "Login Failed!"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:145
-#: ../../qml/func/others/RightPage.qml:592
+#: ../../qml/func/others/RightPage.qml:149
+#: ../../qml/func/others/RightPage.qml:607
 msgctxt "RightPage|"
 msgid "Hits per day "
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:249
+#: ../../qml/func/others/RightPage.qml:262
 msgctxt "RightPage|"
 msgid "Logging..."
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:281
+#: ../../qml/func/others/RightPage.qml:294
 msgctxt "RightPage|"
 msgid "Logout"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:311
+#: ../../qml/func/others/RightPage.qml:324
 msgctxt "RightPage|"
 msgid "Level:"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:322
+#: ../../qml/func/others/RightPage.qml:335
 msgctxt "RightPage|"
 msgid "Score:"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:378
+#: ../../qml/func/others/RightPage.qml:391
 msgctxt "RightPage|"
 msgid "DistroWatch Ranking"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:388
-#: ../../qml/func/others/RightPage.qml:405
+#: ../../qml/func/others/RightPage.qml:401
+#: ../../qml/func/others/RightPage.qml:418
 msgctxt "RightPage|"
 msgid "Ubuntu Kylin Details"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:612
-#: ../../qml/func/others/RightPage.qml:630
+#: ../../qml/func/others/RightPage.qml:627
+#: ../../qml/func/others/RightPage.qml:645
 msgctxt "RightPage|"
 msgid "Hide"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:646
+#: ../../qml/func/others/RightPage.qml:661
 msgctxt "RightPage|"
 msgid "Last Update:"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:665
+#: ../../qml/func/others/RightPage.qml:680
 msgctxt "RightPage|"
 msgid "OS Type:"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:683
+#: ../../qml/func/others/RightPage.qml:698
 msgctxt "RightPage|"
 msgid "Based on:"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:701
+#: ../../qml/func/others/RightPage.qml:716
 msgctxt "RightPage|"
 msgid "Origin: "
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:719
+#: ../../qml/func/others/RightPage.qml:734
 msgctxt "RightPage|"
 msgid "Architecture:"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:738
+#: ../../qml/func/others/RightPage.qml:753
 msgctxt "RightPage|"
 msgid "Desktop:"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:757
+#: ../../qml/func/others/RightPage.qml:772
 msgctxt "RightPage|"
 msgid "Category:"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:775
+#: ../../qml/func/others/RightPage.qml:790
 msgctxt "RightPage|"
 msgid "Status:"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:793
+#: ../../qml/func/others/RightPage.qml:808
 msgctxt "RightPage|"
 msgid "Popularity:"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:833
+#: ../../qml/func/others/RightPage.qml:848
 msgctxt "RightPage|"
 msgid "Forum Help"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:850
+#: ../../qml/func/others/RightPage.qml:865
 msgctxt "RightPage|"
 msgid "Features"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:859
+#: ../../qml/func/others/RightPage.qml:874
 msgctxt "RightPage|"
 msgid "Feedback"
 msgstr ""
@@ -2530,9 +2572,19 @@ msgctxt "SelectDialog|"
 msgid "The city was not be found, please input the city name again!"
 msgstr ""
 
-#: ../sessiondispatcher.cpp:1306
+#: ../sessiondispatcher.cpp:1360
 msgctxt "SessionDispatcher|"
 msgid "Select folder"
+msgstr ""
+
+#: ../sessiondispatcher.cpp:1367
+msgctxt "SessionDispatcher|"
+msgid "Select file"
+msgstr ""
+
+#: ../sessiondispatcher.cpp:1367
+msgctxt "SessionDispatcher|"
+msgid "All Files(*.*)"
 msgstr ""
 
 #: ../../qml/func/others/SettingsDelegate.qml:81
@@ -2698,27 +2750,32 @@ msgctxt "Switch|"
 msgid "OFF"
 msgstr ""
 
-#: ../../qml/func/page/SystemBox.qml:36
+#: ../../qml/func/page/SystemBox.qml:38
 msgctxt "SystemBox|"
 msgid "Dead pixel check"
 msgstr ""
 
-#: ../../qml/func/page/SystemBox.qml:37
+#: ../../qml/func/page/SystemBox.qml:39
 msgctxt "SystemBox|"
 msgid "Boot Animation"
 msgstr ""
 
-#: ../../qml/func/page/SystemBox.qml:38
+#: ../../qml/func/page/SystemBox.qml:40
 msgctxt "SystemBox|"
 msgid "Task Manager"
 msgstr ""
 
-#: ../../qml/func/page/SystemBox.qml:39
+#: ../../qml/func/page/SystemBox.qml:41
 msgctxt "SystemBox|"
 msgid "Camera"
 msgstr ""
 
-#: ../../qml/func/page/SystemBox.qml:55
+#: ../../qml/func/page/SystemBox.qml:42
+msgctxt "SystemBox|"
+msgid "File Shredder"
+msgstr ""
+
+#: ../../qml/func/page/SystemBox.qml:58
 msgctxt "SystemBox|"
 msgid "Default toolkits"
 msgstr ""
@@ -2753,174 +2810,174 @@ msgctxt "SystemClean|"
 msgid "Find Large Files "
 msgstr ""
 
-#: ../systemdispatcher.cpp:340
+#: ../systemdispatcher.cpp:354
 msgctxt "SystemDispatcher|"
 msgid "Select the boot animation"
 msgstr ""
 
-#: ../systemdispatcher.cpp:340
+#: ../systemdispatcher.cpp:354
 msgctxt "SystemDispatcher|"
 msgid "Image Files (*.png *.jpg *.gif)"
 msgstr ""
 
-#: ../systemdispatcher.cpp:345
+#: ../systemdispatcher.cpp:359
 msgctxt "SystemDispatcher|"
 msgid "Select music"
 msgstr ""
 
-#: ../systemdispatcher.cpp:345
+#: ../systemdispatcher.cpp:359
 msgctxt "SystemDispatcher|"
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma)"
 msgstr ""
 
-#: ../../qml/func/page/SystemInfo.qml:39
+#: ../../qml/func/page/SystemInfo.qml:40
 msgctxt "SystemInfo|"
 msgid "Computer"
 msgstr ""
 
-#: ../../qml/func/page/SystemInfo.qml:40
+#: ../../qml/func/page/SystemInfo.qml:41
 msgctxt "SystemInfo|"
 msgid "Desktop"
 msgstr ""
 
-#: ../../qml/func/page/SystemInfo.qml:41
+#: ../../qml/func/page/SystemInfo.qml:42
 msgctxt "SystemInfo|"
 msgid "CPU"
 msgstr ""
 
-#: ../../qml/func/page/SystemInfo.qml:42
+#: ../../qml/func/page/SystemInfo.qml:43
 msgctxt "SystemInfo|"
 msgid "Memory"
 msgstr ""
 
-#: ../../qml/func/page/SystemInfo.qml:43
+#: ../../qml/func/page/SystemInfo.qml:44
 msgctxt "SystemInfo|"
 msgid "Motherboard"
 msgstr ""
 
-#: ../../qml/func/page/SystemInfo.qml:44
+#: ../../qml/func/page/SystemInfo.qml:45
 msgctxt "SystemInfo|"
 msgid "HD"
 msgstr ""
 
-#: ../../qml/func/page/SystemInfo.qml:45
+#: ../../qml/func/page/SystemInfo.qml:46
 msgctxt "SystemInfo|"
 msgid "NIC"
 msgstr ""
 
-#: ../../qml/func/page/SystemInfo.qml:46
+#: ../../qml/func/page/SystemInfo.qml:47
 msgctxt "SystemInfo|"
 msgid "VGA"
 msgstr ""
 
-#: ../../qml/func/page/SystemInfo.qml:47
+#: ../../qml/func/page/SystemInfo.qml:48
 msgctxt "SystemInfo|"
 msgid "Audio"
 msgstr ""
 
-#: ../../qml/func/page/SystemInfo.qml:50
+#: ../../qml/func/page/SystemInfo.qml:51
 msgctxt "SystemInfo|"
 msgid "CD-ROM"
 msgstr ""
 
-#: ../../qml/func/page/SystemInfo.qml:53
+#: ../../qml/func/page/SystemInfo.qml:54
 msgctxt "SystemInfo|"
 msgid "Battery"
 msgstr ""
 
-#: ../../qml/func/page/SystemInfo.qml:55
+#: ../../qml/func/page/SystemInfo.qml:56
 msgctxt "SystemInfo|"
 msgid "Device Driver"
 msgstr ""
 
-#: ../../qml/func/page/SystemSet.qml:33
+#: ../../qml/func/page/SystemSet.qml:34
 msgctxt "SystemSet|"
 msgid ""
 "You can perform a full range of customized systems based on personal "
 "preferences!"
 msgstr ""
 
-#: ../../qml/func/page/SystemSet.qml:82 ../../qml/func/page/SystemSet.qml:178
+#: ../../qml/func/page/SystemSet.qml:83 ../../qml/func/page/SystemSet.qml:179
 msgctxt "SystemSet|"
 msgid "ThemeSetting"
 msgstr ""
 
-#: ../../qml/func/page/SystemSet.qml:86 ../../qml/func/page/SystemSet.qml:201
+#: ../../qml/func/page/SystemSet.qml:87 ../../qml/func/page/SystemSet.qml:202
 msgctxt "SystemSet|"
 msgid "IconSetting"
 msgstr ""
 
-#: ../../qml/func/page/SystemSet.qml:90 ../../qml/func/page/SystemSet.qml:224
+#: ../../qml/func/page/SystemSet.qml:91 ../../qml/func/page/SystemSet.qml:225
 msgctxt "SystemSet|"
 msgid "MousePointer"
 msgstr ""
 
-#: ../../qml/func/page/SystemSet.qml:94 ../../qml/func/page/SystemSet.qml:247
+#: ../../qml/func/page/SystemSet.qml:95 ../../qml/func/page/SystemSet.qml:248
 msgctxt "SystemSet|"
 msgid "SoundEffect"
 msgstr ""
 
-#: ../../qml/func/page/SystemSet.qml:98 ../../qml/func/page/SystemSet.qml:270
+#: ../../qml/func/page/SystemSet.qml:99 ../../qml/func/page/SystemSet.qml:271
 msgctxt "SystemSet|"
 msgid "BootAnimation"
 msgstr ""
 
-#: ../../qml/func/page/SystemSet.qml:102 ../../qml/func/page/SystemSet.qml:326
+#: ../../qml/func/page/SystemSet.qml:103 ../../qml/func/page/SystemSet.qml:327
 msgctxt "SystemSet|"
 msgid "Custom Launcher"
 msgstr ""
 
-#: ../../qml/func/page/SystemSet.qml:106 ../../qml/func/page/SystemSet.qml:349
+#: ../../qml/func/page/SystemSet.qml:107 ../../qml/func/page/SystemSet.qml:350
 msgctxt "SystemSet|"
 msgid "Dash & Panel"
 msgstr ""
 
-#: ../../qml/func/page/SystemSet.qml:111 ../../qml/func/page/SystemSet.qml:372
+#: ../../qml/func/page/SystemSet.qml:112 ../../qml/func/page/SystemSet.qml:373
 msgctxt "SystemSet|"
 msgid "Window"
 msgstr ""
 
-#: ../../qml/func/page/SystemSet.qml:115 ../../qml/func/page/SystemSet.qml:428
+#: ../../qml/func/page/SystemSet.qml:116 ../../qml/func/page/SystemSet.qml:429
 msgctxt "SystemSet|"
 msgid "DefaultFont"
 msgstr ""
 
-#: ../../qml/func/page/SystemSet.qml:119 ../../qml/func/page/SystemSet.qml:484
+#: ../../qml/func/page/SystemSet.qml:120 ../../qml/func/page/SystemSet.qml:485
 msgctxt "SystemSet|"
 msgid "Touchpad"
 msgstr ""
 
-#: ../../qml/func/page/SystemSet.qml:123 ../../qml/func/page/SystemSet.qml:507
+#: ../../qml/func/page/SystemSet.qml:124 ../../qml/func/page/SystemSet.qml:508
 msgctxt "SystemSet|"
 msgid "Dead pixel check"
 msgstr ""
 
-#: ../../qml/func/page/SystemSet.qml:127 ../../qml/func/page/SystemSet.qml:562
+#: ../../qml/func/page/SystemSet.qml:128 ../../qml/func/page/SystemSet.qml:563
 msgctxt "SystemSet|"
 msgid "File manager"
 msgstr ""
 
-#: ../../qml/func/page/SystemSet.qml:147
+#: ../../qml/func/page/SystemSet.qml:148
 msgctxt "SystemSet|"
 msgid " Personalize"
 msgstr ""
 
-#: ../../qml/func/page/SystemSet.qml:295
+#: ../../qml/func/page/SystemSet.qml:296
 msgctxt "SystemSet|"
 msgid " Desktop"
 msgstr ""
 
-#: ../../qml/func/page/SystemSet.qml:397
+#: ../../qml/func/page/SystemSet.qml:398
 msgctxt "SystemSet|"
 msgid " Fonts"
 msgstr ""
 
-#: ../../qml/func/page/SystemSet.qml:453
+#: ../../qml/func/page/SystemSet.qml:454
 msgctxt "SystemSet|"
 msgid " System options"
 msgstr ""
 
-#: ../../qml/func/page/SystemSet.qml:531
+#: ../../qml/func/page/SystemSet.qml:532
 msgctxt "SystemSet|"
 msgid " Others"
 msgstr ""
