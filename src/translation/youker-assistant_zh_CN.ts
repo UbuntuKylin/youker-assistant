@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="zh_CN">
-    <extra-po-header-po_revision_date>2014-09-18 06:14+0000</extra-po-header-po_revision_date>
-    <extra-po-header-x_launchpad_export_date>2014-09-18 06:24+0000</extra-po-header-x_launchpad_export_date>
+    <extra-po-header-po_revision_date>2014-09-19 00:38+0000</extra-po-header-po_revision_date>
+    <extra-po-header-x_launchpad_export_date>2014-09-19 00:48+0000</extra-po-header-x_launchpad_export_date>
     <extra-po-headers>Project-Id-Version,Report-Msgid-Bugs-To,POT-Creation-Date,PO-Revision-Date,Last-Translator,Language-Team,MIME-Version,Content-Type,Content-Transfer-Encoding,X-Launchpad-Export-Date,X-Generator,X-Qt-Contexts,X-Language,X-Source-Language</extra-po-headers>
     <extra-po-header-x_generator>Launchpad (build 17196)</extra-po-header-x_generator>
     <extra-po-header-report_msgid_bugs_to></extra-po-header-report_msgid_bugs_to>
@@ -68,10 +68,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../aboutdialog.ui" line="199"/>
         <source>Close</source>
         <translation>关闭</translation>
-    </message>
-    <message>
-        <source>V1.2.0</source>
-        <translation type="obsolete">V1.2.0</translation>
     </message>
 </context>
 <context>
@@ -2743,7 +2739,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../sessiondispatcher.cpp" line="1367"/>
         <source>All Files(*.*)</source>
-        <translation>所有文件</translation>
+        <translation>所有文件(*.*)</translation>
     </message>
 </context>
 <context>
