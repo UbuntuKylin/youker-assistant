@@ -16,10 +16,6 @@ Files: qml/func/common/Dial.qml qml/func/common/private/Slider.qml qml/func/comm
 Copyright: Copyright (C) 2011 Nokia Corporation and/or its subsidiary(-ies).
 License: LGPL-2.1
 
-Files: src/qtkeytrans.cpp src/qtkeytrans.h src/qtkeytransdata.h
-Copyright: Copyright (C) 2012~2012 by CSSlayer
-License: GPL-2+
-
 Files: backends/youker-assistant-daemon/src/systemdbus/server.py
 Copyright: Copyright (C) 2008 Fluendo Embedded S.L.
            Copyright (C) 2010 TualatriX <tualatrix@gmail.com>
