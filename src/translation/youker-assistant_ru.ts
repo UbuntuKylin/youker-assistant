@@ -1414,30 +1414,31 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="152"/>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="191"/>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="250"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="154"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="193"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="233"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="253"/>
         <source>No select any file which need to be shredded</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="247"/>
-        <source>Deselect</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="225"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="227"/>
         <source>Shred File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="231"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="234"/>
         <source>Shred success!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="234"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="237"/>
         <source>Shred abnormal!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="250"/>
+        <source>Deselect</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2719,7 +2720,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../sessiondispatcher.cpp" line="1367"/>
-        <source>All Files(*.*)</source>
+        <source>All Files(*)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3088,43 +3089,43 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="103"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="327"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="329"/>
         <source>Custom Launcher</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="107"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="350"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="352"/>
         <source>Dash &amp; Panel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="112"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="373"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="375"/>
         <source>Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="116"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="429"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="431"/>
         <source>DefaultFont</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="120"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="485"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="487"/>
         <source>Touchpad</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="124"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="508"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="510"/>
         <source>Dead pixel check</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="128"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="563"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="565"/>
         <source>File manager</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3139,17 +3140,17 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="398"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="400"/>
         <source> Fonts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="454"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="456"/>
         <source> System options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="532"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="534"/>
         <source> Others</source>
         <translation type="unfinished"></translation>
     </message>

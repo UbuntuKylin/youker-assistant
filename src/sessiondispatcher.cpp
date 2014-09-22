@@ -1364,7 +1364,7 @@ QString SessionDispatcher::show_folder_dialog() {
 
 QString SessionDispatcher::show_file_path_dialog() {
     //选择文件
-    QString fileName=QFileDialog::getOpenFileName(0, tr("Select file"), QDir::homePath(), tr("All Files(*.*)"));
+    QString fileName=QFileDialog::getOpenFileName(0, tr("Select file"), QDir::homePath(), tr("All Files(*)"));
     return fileName;
 }
 

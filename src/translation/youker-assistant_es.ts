@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="es">
-    <extra-po-header-po_revision_date>2014-09-18 06:20+0000</extra-po-header-po_revision_date>
-    <extra-po-header-x_launchpad_export_date>2014-09-18 06:32+0000</extra-po-header-x_launchpad_export_date>
+    <extra-po-header-po_revision_date>2014-09-22 00:30+0000</extra-po-header-po_revision_date>
+    <extra-po-header-x_launchpad_export_date>2014-09-22 00:41+0000</extra-po-header-x_launchpad_export_date>
     <extra-po-headers>Project-Id-Version,Report-Msgid-Bugs-To,POT-Creation-Date,PO-Revision-Date,Last-Translator,Language-Team,MIME-Version,Content-Type,Content-Transfer-Encoding,X-Launchpad-Export-Date,X-Generator</extra-po-headers>
     <extra-po-header-x_generator>Launchpad (build 17196)</extra-po-header-x_generator>
     <extra-po-header-report_msgid_bugs_to>FULL NAME &lt;EMAIL@ADDRESS&gt;</extra-po-header-report_msgid_bugs_to>
     <extra-po-header-language_team>Spanish &lt;es@li.org&gt;</extra-po-header-language_team>
     <extra-po-header-project_id_version>youker-assistant</extra-po-header-project_id_version>
-    <extra-po-header-pot_creation_date>2014-09-18 06:01+0000</extra-po-header-pot_creation_date>
+    <extra-po-header-pot_creation_date>2014-09-21 11:24+0000</extra-po-header-pot_creation_date>
     <extra-po-header_comment># Spanish translation for youker-assistant
 # Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
 # This file is distributed under the same license as the youker-assistant package.
 # FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, 2014.
 #</extra-po-header_comment>
-    <extra-po-header-last_translator>shijing &lt;jingshi@ubuntukylin.com&gt;</extra-po-header-last_translator>
+    <extra-po-header-last_translator>kobe &lt;xiangli@ubuntukylin.com&gt;</extra-po-header-last_translator>
 <context>
     <name></name>
     <message>
@@ -1601,36 +1601,37 @@ p, li { white-space: pre-wrap; }
         <translation>La necesidad de archivos a triturar: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="152"/>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="191"/>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="250"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="154"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="193"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="233"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="253"/>
         <source>No select any file which need to be shredded</source>
         <comment>FileShredder|</comment>
         <translation>No seleccionar cualquier archivo que necesita ser triturado</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="247"/>
-        <source>Deselect</source>
-        <comment>FileShredder|</comment>
-        <translation>Deseleccionar</translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="225"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="227"/>
         <source>Shred File</source>
         <comment>FileShredder|</comment>
         <translation>Shred File</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="231"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="234"/>
         <source>Shred success!</source>
         <comment>FileShredder|</comment>
         <translation>Triture éxito!</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="234"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="237"/>
         <source>Shred abnormal!</source>
         <comment>FileShredder|</comment>
         <translation>Triture anormal!</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="250"/>
+        <source>Deselect</source>
+        <comment>FileShredder|</comment>
+        <translation>Deseleccionar</translation>
     </message>
     <message>
         <location filename="../../qml/func/common/FontButton.qml" line="80"/>
@@ -3071,9 +3072,9 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../sessiondispatcher.cpp" line="1367"/>
-        <source>All Files(*.*)</source>
+        <source>All Files(*)</source>
         <comment>SessionDispatcher|</comment>
-        <translation>Todos los archivos(*.*)</translation>
+        <translation>Todos los archivos(*)</translation>
     </message>
     <message>
         <location filename="../../qml/func/others/SettingsDelegate.qml" line="81"/>
@@ -3475,49 +3476,49 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="103"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="327"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="329"/>
         <source>Custom Launcher</source>
         <comment>SystemSet|</comment>
         <translation>Custom Lanzador</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="107"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="350"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="352"/>
         <source>Dash &amp; Panel</source>
         <comment>SystemSet|</comment>
         <translation>Dash &amp; Panel</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="112"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="373"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="375"/>
         <source>Window</source>
         <comment>SystemSet|</comment>
         <translation>Ventana</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="116"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="429"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="431"/>
         <source>DefaultFont</source>
         <comment>SystemSet|</comment>
         <translation>Fuente predeterminada</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="120"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="485"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="487"/>
         <source>Touchpad</source>
         <comment>SystemSet|</comment>
         <translation>Panel táctil</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="124"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="508"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="510"/>
         <source>Dead pixel check</source>
         <comment>SystemSet|</comment>
         <translation>Cheque pixel muerto</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="128"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="563"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="565"/>
         <source>File manager</source>
         <comment>SystemSet|</comment>
         <translation>Gestor de archivos</translation>
@@ -3535,19 +3536,19 @@ p, li { white-space: pre-wrap; }
         <translation> Escritorio</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="398"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="400"/>
         <source> Fonts</source>
         <comment>SystemSet|</comment>
         <translation> Fuentes</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="454"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="456"/>
         <source> System options</source>
         <comment>SystemSet|</comment>
         <translation> Las opciones del sistema</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="532"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="534"/>
         <source> Others</source>
         <comment>SystemSet|</comment>
         <translation> Otros</translation>
@@ -4088,11 +4089,6 @@ p, li { white-space: pre-wrap; }
         <source>Titlebar right-click action:</source>
         <comment>WindowManager|</comment>
         <translation>Acción de clic secundario sobre la barra de titulo:</translation>
-    </message>
-    <message>
-        <source>V1.2.0</source>
-        <comment>AboutDialog|</comment>
-        <translation type="obsolete">V1.2.0</translation>
     </message>
 </context>
 </TS>

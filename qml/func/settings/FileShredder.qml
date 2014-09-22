@@ -142,6 +142,8 @@ Rectangle {
                 }
                 Text {
                     id: showEdit
+                    width: backgroundImg.width-30
+                    elide: Text.ElideRight
                     anchors {
                         verticalCenter: parent.verticalCenter
                         left: parent.left
@@ -228,6 +230,7 @@ Rectangle {
                         var value = systemdispatcher.start_to_destroy_file(shredpage.selectedfile);
                         if (value == 0) {
                             shredpage.selectedfile = "";
+                            showEdit.text = qsTr("No select any file which need to be shredded");
                             toolkits.alertMSG(qsTr("Shred success!"));//粉碎成功！
                         }
                         else {

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="zh_CN">
-    <extra-po-header-po_revision_date>2014-09-19 00:38+0000</extra-po-header-po_revision_date>
-    <extra-po-header-x_launchpad_export_date>2014-09-19 00:48+0000</extra-po-header-x_launchpad_export_date>
+    <extra-po-header-po_revision_date>2014-09-22 00:29+0000</extra-po-header-po_revision_date>
+    <extra-po-header-x_launchpad_export_date>2014-09-22 00:41+0000</extra-po-header-x_launchpad_export_date>
     <extra-po-headers>Project-Id-Version,Report-Msgid-Bugs-To,POT-Creation-Date,PO-Revision-Date,Last-Translator,Language-Team,MIME-Version,Content-Type,Content-Transfer-Encoding,X-Launchpad-Export-Date,X-Generator,X-Qt-Contexts,X-Language,X-Source-Language</extra-po-headers>
     <extra-po-header-x_generator>Launchpad (build 17196)</extra-po-header-x_generator>
     <extra-po-header-report_msgid_bugs_to></extra-po-header-report_msgid_bugs_to>
     <extra-po-header-language_team>LANGUAGE &lt;LL@li.org&gt;</extra-po-header-language_team>
     <extra-po-header-project_id_version>PACKAGE VERSION</extra-po-header-project_id_version>
-    <extra-po-header-pot_creation_date>2014-09-18 06:01+0000</extra-po-header-pot_creation_date>
+    <extra-po-header-pot_creation_date>2014-09-21 11:24+0000</extra-po-header-pot_creation_date>
     <extra-po-header-last_translator>kobe &lt;xiangli@ubuntukylin.com&gt;</extra-po-header-last_translator>
 <context>
     <name>AboutDialog</name>
@@ -1433,31 +1433,32 @@ p, li { white-space: pre-wrap; }
         <translation>需要粉碎的文件： </translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="152"/>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="191"/>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="250"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="154"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="193"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="233"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="253"/>
         <source>No select any file which need to be shredded</source>
         <translation>未选择需要粉碎的文件</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="247"/>
-        <source>Deselect</source>
-        <translation>取消选择</translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="225"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="227"/>
         <source>Shred File</source>
         <translation>粉碎文件</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="231"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="234"/>
         <source>Shred success!</source>
         <translation>粉碎成功！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="234"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="237"/>
         <source>Shred abnormal!</source>
         <translation>粉碎出现异常！</translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="250"/>
+        <source>Deselect</source>
+        <translation>取消选择</translation>
     </message>
 </context>
 <context>
@@ -2738,8 +2739,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../sessiondispatcher.cpp" line="1367"/>
-        <source>All Files(*.*)</source>
-        <translation>所有文件(*.*)</translation>
+        <source>All Files(*)</source>
+        <translation>所有文件(*)</translation>
     </message>
 </context>
 <context>
@@ -3107,43 +3108,43 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="103"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="327"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="329"/>
         <source>Custom Launcher</source>
         <translation>自定义启动器</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="107"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="350"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="352"/>
         <source>Dash &amp; Panel</source>
         <translation>搜索和面板</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="112"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="373"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="375"/>
         <source>Window</source>
         <translation>窗口</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="116"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="429"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="431"/>
         <source>DefaultFont</source>
         <translation>默认字体设置</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="120"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="485"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="487"/>
         <source>Touchpad</source>
         <translation>触摸板设置</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="124"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="508"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="510"/>
         <source>Dead pixel check</source>
         <translation>坏点检测</translation>
     </message>
     <message>
         <location filename="../../qml/func/page/SystemSet.qml" line="128"/>
-        <location filename="../../qml/func/page/SystemSet.qml" line="563"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="565"/>
         <source>File manager</source>
         <translation>文件管理器</translation>
     </message>
@@ -3158,17 +3159,17 @@ p, li { white-space: pre-wrap; }
         <translation> 桌面</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="398"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="400"/>
         <source> Fonts</source>
         <translation> 字体</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="454"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="456"/>
         <source> System options</source>
         <translation> 系统选项</translation>
     </message>
     <message>
-        <location filename="../../qml/func/page/SystemSet.qml" line="532"/>
+        <location filename="../../qml/func/page/SystemSet.qml" line="534"/>
         <source> Others</source>
         <translation> 杂项</translation>
     </message>
