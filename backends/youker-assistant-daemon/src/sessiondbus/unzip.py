@@ -41,11 +41,14 @@ def unzip_resource(package_file):
     if unziped_dir[len(unziped_dir)-1] != "/":
         unziped_dir = unziped_dir + "/"
     subprocess.call(["unzip", package_file, "-d", unziped_dir])
-    if not os.path.exists(unziped_dir):
+    dest_dir = unziped_dir + "uk-img/"
+    if not os.path.exists(dest_dir):
+        fp.close()
         print("unzip '%s' to '%s' failed" % (package_file , unziped_dir))
         return False
     else:
         print "unzip ok...."
+        fp.close()
         return True
 #        unziped_dir = unziped_dir + WS360_CHROME_PKGNAME
 #        version = get_package_ver_from_manifest(unziped_dir)
