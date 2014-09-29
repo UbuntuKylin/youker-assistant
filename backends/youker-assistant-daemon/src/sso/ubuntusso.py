@@ -35,7 +35,7 @@ import piston_mini_client.failhandlers
 from spawn_helper import SpawnHelper
 from login import get_login_backend
 
-from backend.piston.ubuntusso_pristine import (
+from piston.ubuntusso_pristine import (
     UbuntuSsoAPI as PristineUbuntuSsoAPI,
 )
 # patch default_service_root to the one we use

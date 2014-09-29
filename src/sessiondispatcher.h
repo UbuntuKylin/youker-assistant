@@ -38,6 +38,12 @@ public:
     ~SessionDispatcher();
     QDBusInterface *sessioniface;
     Q_INVOKABLE void show_slider_qt();
+
+//    void check_user_qt();
+//    Q_INVOKABLE void slot_do_login_account();
+//    Q_INVOKABLE void slot_do_register();
+//    Q_INVOKABLE void slot_do_logout();
+
     //退出前的准备工作
     void ready_exit_normally();
 

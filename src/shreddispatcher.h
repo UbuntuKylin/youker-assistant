@@ -35,7 +35,6 @@ class ShredDispatcher : public QObject
 public:
     explicit ShredDispatcher(QObject *parent = 0);
     ~ShredDispatcher();
-    QString call_dbus_method(QString context);
     void exit_qt();
     Q_INVOKABLE int shred_file_qt(const QString &data);
 

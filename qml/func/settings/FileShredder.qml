@@ -82,33 +82,6 @@ Rectangle {
         width: parent.width - 4
     }
 
-//    Common.Button {
-//        anchors{
-//            horizontalCenter: parent.horizontalCenter
-//            top: top_splitbar.bottom
-//            topMargin: 100
-//        }
-//        picNormal: "../../img/icons/button12.png"
-//        picHover: "../../img/icons/button12-hover.png"
-//        picPressed: "../../img/icons/button12-hover.png"
-//        fontcolor:"#ffffff"
-//        fontsize: 12
-//        width: 100; height: 28
-//        text: qsTr("Select File")//选择文件
-//        onClicked: {
-//            var result = sessiondispatcher.show_file_path_dialog();
-//            if(result.length != 0) {
-//                var value = systemdispatcher.start_to_destroy_file(result);
-//                if (value == 0) {
-//                    toolkits.alertMSG(qsTr("Shred success!"));//粉碎成功！
-//                }
-//                else {
-//                    toolkits.alertMSG(qsTr("Shred abnormal!"));//粉碎出现异常！
-//                }
-//            }
-//        }
-//    }
-
     Column{
         spacing: 30
         anchors{

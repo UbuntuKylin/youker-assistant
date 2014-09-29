@@ -26,7 +26,8 @@ ServerImplementation::ServerImplementation(QObject *parent) :
 int ServerImplementation::shredFile(const QString &data)
 {
     char*  ch;
-    QByteArray ba = data.toLatin1();
+//    QByteArray ba = data.toLatin1();
+    QByteArray ba =data.toUtf8();
     ch=ba.data();
     int result = do_file(ch);
     return result;

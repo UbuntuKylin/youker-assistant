@@ -186,6 +186,23 @@ void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
 }
 
+
+//void SessionDispatcher::check_user_qt() {
+//    sessioniface->call("check_user");
+//}
+
+//void SessionDispatcher::slot_do_login_account() {
+//    sessioniface->call("slot_do_login_account");
+//}
+
+//void SessionDispatcher::slot_do_register() {
+//    sessioniface->call("slot_do_register");
+//}
+
+//void SessionDispatcher::slot_do_logout() {
+//    sessioniface->call("slot_do_logout");
+//}
+
 void SessionDispatcher::http_get_img_resource() {
     QString requestData = QString("http://service.ubuntukylin.com:8001/youker-assistant/download/?name=uk-img.zip");
     QUrl url(requestData);

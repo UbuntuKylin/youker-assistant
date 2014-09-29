@@ -120,6 +120,84 @@ class SessionDaemon(dbus.service.Object):
         dbus.service.Object.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
 
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+#    def check_user(self):
+#        self.sso = get_ubuntu_sso_backend()
+#        try:
+#            # try backend login
+#            self.token = self.sso.find_oauth_token_and_verify_sync()
+#            if self.token:
+#                self.sso.whoami()
+#        except ImportError:
+#            print ('Initial ubuntu-kylin-sso-client failed, seem it is not installed.')
+#        except:
+#            print ('Check user failed.')
+
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+#    def slot_do_login_account(self):
+#        try:
+#            self.sso.setShowRegister(False)
+#            self.token = self.sso.get_oauth_token_and_verify_sync()
+#            if self.token:
+#                self.sso.whoami()
+
+#        except ImportError:
+#            print ('Initial ubuntu-kylin-sso-client failed, seem it is not installed.')
+#        except:
+#            print ('User login failed.')
+
+#    # user register
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+#    def slot_do_register(self):
+#        try:
+#            self.sso.setShowRegister(True)
+#            self.token = self.sso.get_oauth_token_and_verify_sync()
+#            if self.token:
+#                self.sso.whoami()
+
+#        except ImportError:
+#            print ('Initial ubuntu-kylin-sso-client failed, seem it is not installed.')
+#        except:
+#            print ('User register failed.')
+
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+#    def slot_do_logout(self):
+
+#        try:
+#            self.sso.clear_token()
+#            self.token = ""
+
+##            self.ui.beforeLoginWidget.show()
+##            self.ui.afterLoginWidget.hide()
+
+##            Globals.USER = ''
+##            Globals.USER_DISPLAY = ''
+
+#        except ImportError:
+#            print ('Initial ubuntu-kylin-sso-client failed, seem it is not installed.')
+#        except:
+#            print ('User logout failed.')
+
+    # update user login status
+#    def slot_whoami_done(self, sso, result):
+#        user = result["username"]
+#        display_name = result["displayname"]
+#        preferred_email = result["preferred_email"]
+#        print 'Login success, username: %s' % display_name
+
+#        self.ui.beforeLoginWidget.hide()
+#        self.ui.afterLoginWidget.show()
+#        self.ui.username.setText(display_name)
+
+#        Globals.USER = user
+#        Globals.USER_DISPLAY = display_name
+#        Globals.TOKEN = self.sso.get_oauth_token_and_verify_sync()
+
+#        self.appmgr.reinit_premoter_auth()
+
+
+
+
     # a dbus method which open folder by kobe
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def open_folder(self, path):
