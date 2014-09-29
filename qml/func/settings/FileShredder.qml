@@ -227,7 +227,8 @@ Rectangle {
                 text: qsTr("Shred File")
                 onClicked: {
                     if(shredpage.selectedfile.length != 0) {
-                        var value = systemdispatcher.start_to_destroy_file(shredpage.selectedfile);
+//                        var value = systemdispatcher.start_to_destroy_file(shredpage.selectedfile);
+                        var value = shreddispatcher.shred_file_qt(shredpage.selectedfile);
                         if (value == 0) {
                             shredpage.selectedfile = "";
                             showEdit.text = qsTr("No select any file which need to be shredded");

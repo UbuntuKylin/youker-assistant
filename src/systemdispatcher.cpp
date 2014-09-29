@@ -59,19 +59,19 @@ SystemDispatcher::~SystemDispatcher() {
     }
 }
 
-int SystemDispatcher::start_to_destroy_file(QString selected_file) {
-    char*  ch;
-    QByteArray ba = selected_file.toLatin1();
-    ch=ba.data();
-    int result = do_file(ch);
-    return result;
-//    if (result == 0) {
-//        toolkits->alertMSG(tr("destory success"));
-//    }
-//    else {
-//        toolkits->alertMSG(tr("destory failed"));
-//    }
-}
+//int SystemDispatcher::start_to_destroy_file(QString selected_file) {
+//    char*  ch;
+//    QByteArray ba = selected_file.toLatin1();
+//    ch=ba.data();
+//    int result = do_file(ch);
+//    return result;
+////    if (result == 0) {
+////        toolkits->alertMSG(tr("destory success"));
+////    }
+////    else {
+////        toolkits->alertMSG(tr("destory failed"));
+////    }
+//}
 
 void SystemDispatcher::kill_root_process_qt(QString pid) {
     systemiface->call("kill_root_process", pid);

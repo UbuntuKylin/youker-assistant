@@ -19,6 +19,7 @@ import QtQuick 1.1
 import ToolkitsType 0.1
 import SessionType 0.1
 import SystemType 0.1
+import ShredType 0.1
 import ProcessType 0.1
 import DeviceType 0.1
 
@@ -37,6 +38,7 @@ Rectangle {
 
     SessionDispatcher { id: sessiondispatcher }
     SystemDispatcher { id: systemdispatcher }
+    ShredDispatcher {id: shreddispatcher}
     Toolkits{ id: toolkits }
     ProcessManager { id: processmanager }
     DeviceManager { id: devicemanager }

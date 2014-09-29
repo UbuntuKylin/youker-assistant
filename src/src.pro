@@ -99,7 +99,7 @@ HEADERS += homepage.h \
     monitordispatcher.h \
     acceleratedispatcher.h \
     httpdownload.h \
-    filewipe.h
+    shreddispatcher.h
 
 SOURCES += main.cpp \
     homepage.cpp \
@@ -145,7 +145,7 @@ SOURCES += main.cpp \
     monitordispatcher.cpp \
     acceleratedispatcher.cpp \
     httpdownload.cpp \
-    filewipe.cpp
+    shreddispatcher.cpp
 
 RESOURCES += pixmap.qrc
 
