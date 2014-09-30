@@ -140,7 +140,7 @@ Rectangle {
 //    }
 
     Component.onCompleted: {
-        if (sessiondispatcher.judge_desktop_is_unity_qt() == "Unity") {
+        if (sessiondispatcher.access_current_desktop_qt() == "Unity") {
             toolboxpositon.visible = false;
         }
         else {
@@ -291,7 +291,7 @@ Rectangle {
             top: top_splitbar.bottom
             topMargin: 40
         }
-        z: 11
+//        z: 11
         Row {
             id: toolboxpositon
             spacing: 230
@@ -303,11 +303,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     width: 160
                     text: qsTr("Window function button:")//窗口控制按钮位置：
@@ -391,11 +391,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     width: 160
                     text: qsTr("Menu with icons: ")//菜单项旁显示图标：
@@ -449,11 +449,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Text {
                     width: 160
                     text: qsTr("Titlebar mouse wheel action:")//标题栏鼠标滚轮动作：
@@ -498,11 +498,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Text {
                     width: 160
                     text: qsTr("Titlebar double-click action:")//标题栏双击动作：
@@ -547,11 +547,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Text {
                     width: 160
                     text: qsTr("Titlebar middle-click action:")//标题栏中键动作：
@@ -596,11 +596,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Text {
                     width: 160
                     text: qsTr("Titlebar right-click action:")//标题栏右键动作：

@@ -167,7 +167,7 @@ Rectangle {
             topMargin: 40
         }
         spacing: 10
-        z: 11
+//        z: 11
         Row {
             spacing: 100
             Row {
@@ -177,11 +177,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     id: pathbarlabel
                     width: 270
@@ -237,11 +237,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     id: medialabel
                     width: 270
@@ -297,11 +297,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     id: folderlabel
                     width: 270
@@ -357,11 +357,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     id: programslabel
                     width: 270
@@ -417,11 +417,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     id: thumbnailsizelabel
                     width: 270
@@ -477,11 +477,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     id: thumbnailtimelabel
                     width: 270
@@ -537,11 +537,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     id: thumbnailmaxsizelabel
                     width: 270

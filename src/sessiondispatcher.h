@@ -147,6 +147,20 @@ public:
     Q_INVOKABLE bool set_show_devices_qt(bool flag);
     Q_INVOKABLE bool get_show_devices_qt();
 
+
+    Q_INVOKABLE bool get_show_cinnamon_desktop_icons_qt();
+    Q_INVOKABLE bool set_show_cinnamon_desktop_icons_qt(bool flag);
+    Q_INVOKABLE bool get_show_cinnamon_computer_qt();
+    Q_INVOKABLE bool set_show_cinnamon_computer_qt(bool flag);
+    Q_INVOKABLE bool get_show_cinnamon_homefolder_qt();
+    Q_INVOKABLE bool set_show_cinnamon_homefolder_qt(bool flag);
+    Q_INVOKABLE bool get_show_cinnamon_network_qt();
+    Q_INVOKABLE bool set_show_cinnamon_network_qt(bool flag);
+    Q_INVOKABLE bool get_show_cinnamon_trash_qt();
+    Q_INVOKABLE bool set_show_cinnamon_trash_qt(bool flag);
+    Q_INVOKABLE bool get_show_cinnamon_devices_qt();
+    Q_INVOKABLE bool set_show_cinnamon_devices_qt(bool flag);
+
     /*-------------------unity of beauty-------------------*/
     Q_INVOKABLE bool set_launcher_autohide_qt(bool flag);
     Q_INVOKABLE bool get_launcher_autohide_qt();
@@ -293,8 +307,10 @@ public:
     Q_INVOKABLE int get_thumbnail_cache_time_qt();
     Q_INVOKABLE void set_thumbnail_cache_size_qt(int size);
     Q_INVOKABLE int get_thumbnail_cache_size_qt();
-    Q_INVOKABLE QString judge_desktop_is_unity_qt();
-    Q_INVOKABLE QString judge_desktop_is_cinnamon_qt();
+    //
+    Q_INVOKABLE QString access_current_desktop_qt();
+//    Q_INVOKABLE QString judge_desktop_is_unity_qt();
+//    Q_INVOKABLE QString judge_desktop_is_cinnamon_qt();
 
     //-------------pinback
     bool submit_uk_pingback();

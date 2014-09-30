@@ -703,7 +703,7 @@ class SessionDaemon(dbus.service.Object):
 #    def set_default_desktop(self, schema, key, type):
 #        self.desktopconf.set_default_schema_value(schema, key, type)
 
-
+    #--------------unity--------------------
     # show desktop icons
     @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
     def set_show_desktop_icons(self, flag):
@@ -753,6 +753,67 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
     def get_show_devices(self):
         return self.desktopconf.get_show_devices()
+
+    #--------------cinnamon--------------------
+    # show desktop icons
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
+    def set_show_cinnamon_desktop_icons(self, flag):
+        return self.desktopconf.set_show_cinnamon_desktop_icons(flag)
+
+    # get show desktop icons
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_show_cinnamon_desktop_icons(self):
+        return self.desktopconf.get_show_cinnamon_desktop_icons()
+
+    # show computer
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
+    def set_show_cinnamon_computer(self, flag):
+        return self.desktopconf.set_show_cinnamon_computer(flag)
+
+    # get show computer
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_show_cinnamon_computer(self):
+        return self.desktopconf.get_show_cinnamon_computer()
+
+    # show home folder
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
+    def set_show_cinnamon_homefolder(self, flag):
+        return self.desktopconf.set_show_cinnamon_homefolder(flag)
+
+    # get show homefolder
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_show_cinnamon_homefolder(self):
+        return self.desktopconf.get_show_cinnamon_homefolder()
+
+    # show network
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
+    def set_show_cinnamon_network(self, flag):
+        return self.desktopconf.set_show_cinnamon_network(flag)
+
+    # get show network
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_show_cinnamon_network(self):
+        return self.desktopconf.get_show_cinnamon_network()
+
+    # show trash
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
+    def set_show_cinnamon_trash(self, flag):
+        return self.desktopconf.set_show_cinnamon_trash(flag)
+
+    # get show trash
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_show_cinnamon_trash(self):
+        return self.desktopconf.get_show_cinnamon_trash()
+
+    # show devices
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
+    def set_show_cinnamon_devices(self, flag):
+        return self.desktopconf.set_show_cinnamon_devices(flag)
+
+    # get show devices
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_show_cinnamon_devices(self):
+        return self.desktopconf.get_show_cinnamon_devices()
 
     # -------------------------unity-------------------------
 
@@ -1428,9 +1489,9 @@ class SessionDaemon(dbus.service.Object):
 #    def get_forecast_dict(self):
 #        return self.weatherconf.get_forecast_dict()
 
-    # is Unity or not
+    # is Unity or Cinnamon or others
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
-    def judge_desktop_is_unity(self):
+    def access_current_desktop(self):
         '''env |grep XDG_CURRENT_DESKTOP'''
         dekstop = ''
         try:
@@ -1439,15 +1500,26 @@ class SessionDaemon(dbus.service.Object):
             pass
         return dekstop
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
-    def judge_desktop_is_cinnamon(self):
-        '''env |grep XDG_CURRENT_DESKTOP'''
-        dekstop = ''#X-Cinnamon
-        try:
-            dekstop = os.getenv('XDG_CURRENT_DESKTOP')
-        except Exception as e:
-            pass
-        return dekstop
+#    # is Unity or not
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+#    def judge_desktop_is_unity(self):
+#        '''env |grep XDG_CURRENT_DESKTOP'''
+#        dekstop = ''
+#        try:
+#            dekstop = os.getenv('XDG_CURRENT_DESKTOP')
+#        except Exception as e:
+#            pass
+#        return dekstop
+
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+#    def judge_desktop_is_cinnamon(self):
+#        '''env |grep XDG_CURRENT_DESKTOP'''
+#        dekstop = ''#X-Cinnamon
+#        try:
+#            dekstop = os.getenv('XDG_CURRENT_DESKTOP')
+#        except Exception as e:
+#            pass
+#        return dekstop
 
 
     # -------------------------pingback-------------------------

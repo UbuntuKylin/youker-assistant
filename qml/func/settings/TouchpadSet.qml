@@ -147,10 +147,10 @@ Rectangle {
             top: top_splitbar.bottom
             topMargin: 40
         }
-        z: 11
+//        z: 11
         Row {
             spacing: 200
-            z: 11
+//            z: 11
             Row {
                 spacing: 20
                 Image {
@@ -158,11 +158,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     width: 160
                     anchors.verticalCenter: parent.verticalCenter
@@ -218,11 +218,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     width: 160
                     text: qsTr("Enable horizontal scrolling: ")//触摸板横向滚动：
@@ -279,11 +279,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     width: 160
                     text: qsTr("Scrollbar type: ")//滚动条类型：
@@ -371,11 +371,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     width: 160
                     text: qsTr("Panel layout: ")//触摸板滚动触发方式：

@@ -111,7 +111,7 @@ Rectangle {
             topMargin: 40
         }
         spacing: 20
-        z: 11
+//        z: 11
         Row {
             spacing: 200
             Row {
@@ -121,11 +121,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "no"
-                    showImage: "../../img/icons/cloud-gray.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "no"
+//                    showImage: "../../img/icons/cloud-gray.png"
+//                }
                 Text {
                     id: cursorthemelabel
                     width: 160
@@ -176,11 +176,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "no"
-                    showImage: "../../img/icons/cloud-gray.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "no"
+//                    showImage: "../../img/icons/cloud-gray.png"
+//                }
                 Text {
                     id: trashlabel
                     width: 160

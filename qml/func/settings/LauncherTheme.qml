@@ -159,7 +159,7 @@ Rectangle {
             top: top_splitbar.bottom
             topMargin: 40
         }
-        z: 11
+//        z: 11
         Row {
             spacing: 210
             Row {
@@ -169,11 +169,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     id: iconsizelabel
                     width: 170
@@ -228,11 +228,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     id: launcherlabel
                     width: 170
@@ -286,11 +286,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "no"
-                    showImage: "../../img/icons/cloud-gray.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "no"
+//                    showImage: "../../img/icons/cloud-gray.png"
+//                }
                 Common.Label {
                     id: showdesktoplabel
                     width: 170
@@ -343,11 +343,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "no"
-                    showImage: "../../img/icons/cloud-gray.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "no"
+//                    showImage: "../../img/icons/cloud-gray.png"
+//                }
                 Common.Label {
                     width: 170
                     text: qsTr("Launcher Transparency:")//启动器透明度：
@@ -401,11 +401,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "no"
-                    showImage: "../../img/icons/cloud-gray.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "no"
+//                    showImage: "../../img/icons/cloud-gray.png"
+//                }
                 Text {
                     width: 170
                     text: qsTr("Icon Background:")//图标背景：

@@ -39,21 +39,21 @@ public:
     //弹出确认对话框
     Q_INVOKABLE bool showConfirmDialog(QString title, QString content);
     //金山快盘云配置
-    Q_INVOKABLE void download_kysoft_cloud_conf_qt();
-    Q_INVOKABLE void upload_kysoft_cloud_conf_qt();
+//    Q_INVOKABLE void download_kysoft_cloud_conf_qt();
+//    Q_INVOKABLE void upload_kysoft_cloud_conf_qt();
 
 signals:
     void startShowIPAddress(QString ip_addr);
     //把下载和使用云端配置的情况告诉QML
-    void tellDownloadCloudConfToQML(QString download);
+//    void tellDownloadCloudConfToQML(QString download);
     //把上传配置到云端的情况告诉QML
-    void tellUploadCloudConfToQML(QString upload);
+//    void tellUploadCloudConfToQML(QString upload);
 
 public slots:
     //接收下载和使用云端配置的信号
-    void handler_download_cloud_conf(QString download);
+//    void handler_download_cloud_conf(QString download);
     //接收上传配置到云端时的信号
-    void handler_upload_cloud_conf(QString upload);
+//    void handler_upload_cloud_conf(QString upload);
     void accord_flag_ip(QString key, QString value);
 
 private:

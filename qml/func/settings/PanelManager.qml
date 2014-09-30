@@ -181,7 +181,7 @@ Rectangle {
             top: top_splitbar.bottom
             topMargin: 40
         }
-        z: 11
+//        z: 11
         Row {
             spacing: 83//230
             Row {
@@ -192,11 +192,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "no"
-                    showImage: "../../img/icons/cloud-gray.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "no"
+//                    showImage: "../../img/icons/cloud-gray.png"
+//                }
                 Common.Label {
                     width: 160
                     text: qsTr("Dash background blur type:")//搜索框背景模糊类型：
@@ -298,11 +298,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "no"
-                    showImage: "../../img/icons/cloud-gray.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "no"
+//                    showImage: "../../img/icons/cloud-gray.png"
+//                }
                 Common.Label {
                     width: 160
                     text: qsTr("Panel Transparency:")//面板透明度：
@@ -356,11 +356,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "no"
-                    showImage: "../../img/icons/cloud-gray.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "no"
+//                    showImage: "../../img/icons/cloud-gray.png"
+//                }
                 Text {
                     width: 160
                     text: qsTr("Date & time format:")//日期时间格式：
@@ -405,11 +405,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "no"
-                    showImage: "../../img/icons/cloud-gray.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "no"
+//                    showImage: "../../img/icons/cloud-gray.png"
+//                }
                 Text {
                     width: 160
                     text: qsTr("Display seconds:")//显示秒数：
@@ -463,11 +463,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Text {
                     width: 160
                     text: qsTr("Display week:")//显示星期：
@@ -521,11 +521,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "no"
-                    showImage: "../../img/icons/cloud-gray.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "no"
+//                    showImage: "../../img/icons/cloud-gray.png"
+//                }
                 Text {
                     width: 160
                     text: qsTr("Display the date:")//显示日期：
@@ -584,11 +584,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "no"
-                    showImage: "../../img/icons/cloud-gray.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "no"
+//                    showImage: "../../img/icons/cloud-gray.png"
+//                }
                 Text {
                     width: 160
                     text: qsTr("Display battery icon:")//显示电池图标：
@@ -636,11 +636,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "no"
-                    showImage: "../../img/icons/cloud-gray.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "no"
+//                    showImage: "../../img/icons/cloud-gray.png"
+//                }
                 Text {
                     width: 160
                     text: qsTr("Display battery percentage:")//显示电池百分比：
@@ -694,11 +694,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "no"
-                    showImage: "../../img/icons/cloud-gray.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "no"
+//                    showImage: "../../img/icons/cloud-gray.png"
+//                }
                 Text {
                     width: 160
                     text: qsTr("Display battery remaining time:")//显示电池电量时间：

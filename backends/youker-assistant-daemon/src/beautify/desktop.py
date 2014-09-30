@@ -35,6 +35,7 @@ class Desktop:
             raise NotImplemented
     # ----------------------------------
 
+    #--------------------unity-------------------------------
     # show desktop icons, True/False
     def set_show_desktop_icons(self, flag):
         return gsettings.set('org.gnome.desktop.background',
@@ -94,6 +95,78 @@ class Desktop:
     # get show devices
     def get_show_devices(self):
         return gsettings.get('org.gnome.nautilus.desktop',
+            None, 'volumes-visible', 'boolean')
+
+
+    #-------------------------cinnamon--------------------------------
+    # show desktop icons, True/False
+    def set_show_cinnamon_desktop_icons(self, flag):
+        return gsettings.set('org.nemo.desktop',
+            None,
+            'show-desktop-icons',
+            'boolean', flag)
+
+    # get is show desktop icons
+    def get_show_cinnamon_desktop_icons(self):
+        return gsettings.get('org.nemo.desktop',
+            None, 'show-desktop-icons', 'boolean')
+
+    def set_show_cinnamon_computer(self, flag):
+        return gsettings.set('org.nemo.desktop',
+            None,
+            'computer-icon-visible',
+            'boolean', flag)
+
+    def get_show_cinnamon_computer(self):
+        return gsettings.get('org.nemo.desktop',
+            None, 'computer-icon-visible', 'boolean')
+
+    # show home folder
+    def set_show_cinnamon_homefolder(self, flag):
+        return gsettings.set('org.nemo.desktop',
+            None,
+            'home-icon-visible',
+            'boolean', flag)
+
+    # get show homefolder
+    def get_show_cinnamon_homefolder(self):
+        return gsettings.get('org.nemo.desktop',
+            None, 'home-icon-visible', 'boolean')
+
+    # show network
+    def set_show_cinnamon_network(self, flag):
+        return gsettings.set('org.nemo.desktop',
+            None,
+            'network-icon-visible',
+            'boolean', flag)
+
+    # get show network
+    def get_show_cinnamon_network(self):
+        return gsettings.get('org.nemo.desktop',
+            None, 'network-icon-visible', 'boolean')
+
+    # show trash
+    def set_show_cinnamon_trash(self, flag):
+        return gsettings.set('org.nemo.desktop',
+            None,
+            'trash-icon-visible',
+            'boolean', flag)
+
+    # get show trash
+    def get_show_cinnamon_trash(self):
+        return gsettings.get('org.nemo.desktop',
+            None, 'trash-icon-visible', 'boolean')
+
+    # show devices
+    def set_show_cinnamon_devices(self, flag):
+        return gsettings.set('org.nemo.desktop',
+            None,
+            'volumes-visible',
+            'boolean', flag)
+
+    # get show devices
+    def get_show_cinnamon_devices(self):
+        return gsettings.get('org.nemo.desktop',
             None, 'volumes-visible', 'boolean')
 
 # if __name__ == '__main__':

@@ -23,6 +23,7 @@ Rectangle {
     height: 476
 //    color: "#eeedf0"
 
+    property string current_desktop
     property int default_index//系统默认主题的索引
     property string actiontitle: qsTr("Desktop Icons")//桌面图标设置
     property string actiontext: qsTr("Set the desktop icon theme and the visibility of desktop icons.")//设置桌面图标主题和桌面图标的可见性
@@ -95,57 +96,103 @@ Rectangle {
 //    }
 
     Component.onCompleted: {
-        var iconlist = sessiondispatcher.get_icon_themes_qt();
-        var current_icon_theme = sessiondispatcher.get_icon_theme_qt();
-        var default_theme = sessiondispatcher.get_uk_default_setting_string("icon", "icon-theme");
-        var new_list = new Array();
-        for(var j=0; j < iconlist.length; j++) {
-            if(iconlist[j] !== current_icon_theme) {
-                new_list.push(iconlist[j]);
+        desktopiconsetpage.current_desktop =  sessiondispatcher.access_current_desktop_qt();
+        if (desktopiconsetpage.current_desktop == "Unity") {
+            var iconlist = sessiondispatcher.get_icon_themes_qt();
+            var current_icon_theme = sessiondispatcher.get_icon_theme_qt();
+            var default_theme = sessiondispatcher.get_uk_default_setting_string("icon", "icon-theme");
+            var new_list = new Array();
+            for(var j=0; j < iconlist.length; j++) {
+                if(iconlist[j] !== current_icon_theme) {
+                    new_list.push(iconlist[j]);
+                }
+            }
+            new_list.unshift(current_icon_theme);
+            choices.clear();
+            for(var k=0; k < new_list.length; k++) {
+                choices.append({"text": new_list[k]});
+                if (default_theme === new_list[k]) {
+                    desktopiconsetpage.default_index = k;
+                }
+            }
+
+            if (sessiondispatcher.get_show_desktop_icons_qt()) {
+                iconswitcher.switchedOn = true;
+            }
+            else {
+                iconswitcher.switchedOn = false;
+            }
+
+            if (sessiondispatcher.get_show_homefolder_qt()) {
+                folderswitcher.switchedOn = true;
+            }
+            else {
+                folderswitcher.switchedOn = false;
+            }
+
+            if (sessiondispatcher.get_show_network_qt()) {
+                networkswitcher.switchedOn = true;
+            }
+            else {
+                networkswitcher.switchedOn = false;
+            }
+
+            if (sessiondispatcher.get_show_trash_qt()) {
+                trashswitcher.switchedOn = true;
+            }
+            else {
+                trashswitcher.switchedOn = false;
+            }
+
+            if (sessiondispatcher.get_show_devices_qt()) {
+                deviceswitcher.switchedOn = true;
+            }
+            else {
+                deviceswitcher.switchedOn = false;
             }
         }
-        new_list.unshift(current_icon_theme);
-        choices.clear();
-        for(var k=0; k < new_list.length; k++) {
-            choices.append({"text": new_list[k]});
-            if (default_theme === new_list[k]) {
-                desktopiconsetpage.default_index = k;
+        else if (desktopiconsetpage.current_desktop == "X-Cinnamon") {
+            if (sessiondispatcher.get_show_cinnamon_desktop_icons_qt()) {
+                iconswitcher.switchedOn = true;
             }
-        }
+            else {
+                iconswitcher.switchedOn = false;
+            }
 
-        if (sessiondispatcher.get_show_desktop_icons_qt()) {
-            iconswitcher.switchedOn = true;
-        }
-        else {
-            iconswitcher.switchedOn = false;
-        }
+            if (sessiondispatcher.get_show_cinnamon_computer_qt()) {
+                computerswitcher.switchedOn = true;
+            }
+            else {
+                computerswitcher.switchedOn = false;
+            }
 
-        if (sessiondispatcher.get_show_homefolder_qt()) {
-            folderswitcher.switchedOn = true;
-        }
-        else {
-            folderswitcher.switchedOn = false;
-        }
+            if (sessiondispatcher.get_show_cinnamon_homefolder_qt()) {
+                folderswitcher.switchedOn = true;
+            }
+            else {
+                folderswitcher.switchedOn = false;
+            }
 
-        if (sessiondispatcher.get_show_network_qt()) {
-            networkswitcher.switchedOn = true;
-        }
-        else {
-            networkswitcher.switchedOn = false;
-        }
+            if (sessiondispatcher.get_show_cinnamon_network_qt()) {
+                networkswitcher.switchedOn = true;
+            }
+            else {
+                networkswitcher.switchedOn = false;
+            }
 
-        if (sessiondispatcher.get_show_trash_qt()) {
-            trashswitcher.switchedOn = true;
-        }
-        else {
-            trashswitcher.switchedOn = false;
-        }
+            if (sessiondispatcher.get_show_cinnamon_trash_qt()) {
+                trashswitcher.switchedOn = true;
+            }
+            else {
+                trashswitcher.switchedOn = false;
+            }
 
-        if (sessiondispatcher.get_show_devices_qt()) {
-            deviceswitcher.switchedOn = true;
-        }
-        else {
-            deviceswitcher.switchedOn = false;
+            if (sessiondispatcher.get_show_cinnamon_devices_qt()) {
+                deviceswitcher.switchedOn = true;
+            }
+            else {
+                deviceswitcher.switchedOn = false;
+            }
         }
     }
 
@@ -207,10 +254,11 @@ Rectangle {
             topMargin: 40
         }
         spacing: 10
-        z: 11
+//        z: 11
         Row {
+            visible: (desktopiconsetpage.current_desktop == "Unity") ? true : false
             spacing: 150
-            z: 11
+//            z: 11
             Row {
                 spacing: 20
                 Image {
@@ -218,11 +266,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     id: iconthemelabel
                     width: 170
@@ -269,11 +317,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     id: desktopiconlabel
                     width: 170
@@ -286,11 +334,21 @@ Rectangle {
                     id: iconswitcher
                     width: 220//desktopiconlabel.width
                     onSwitched: {
-                        if (iconswitcher.switchedOn) {
-                            sessiondispatcher.set_show_desktop_icons_qt(true);
+                        if (desktopiconsetpage.current_desktop == "Unity") {
+                            if (iconswitcher.switchedOn) {
+                                sessiondispatcher.set_show_desktop_icons_qt(true);
+                            }
+                            else if(!iconswitcher.switchedOn) {
+                                sessiondispatcher.set_show_desktop_icons_qt(false);
+                            }
                         }
-                        else if(!iconswitcher.switchedOn) {
-                            sessiondispatcher.set_show_desktop_icons_qt(false);
+                        else if (desktopiconsetpage.current_desktop == "X-Cinnamon") {
+                            if (iconswitcher.switchedOn) {
+                                sessiondispatcher.set_show_cinnamon_desktop_icons_qt(true);
+                            }
+                            else if(!iconswitcher.switchedOn) {
+                                sessiondispatcher.set_show_cinnamon_desktop_icons_qt(false);
+                            }
                         }
                     }
                 }
@@ -305,18 +363,91 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    if(sessiondispatcher.get_uk_default_setting_bool("icon", "show-desktop-icons") !== iconswitcher.switchedOn) {
-                        sessiondispatcher.restore_uk_default_setting("icon", "show-desktop-icons");
-                        if (sessiondispatcher.get_show_desktop_icons_qt()) {
-                            iconswitcher.switchedOn = true;
+                    if (desktopiconsetpage.current_desktop == "Unity") {
+                        if(sessiondispatcher.get_uk_default_setting_bool("icon", "show-desktop-icons") !== iconswitcher.switchedOn) {
+                            sessiondispatcher.restore_uk_default_setting("icon", "show-desktop-icons");
+                            if (sessiondispatcher.get_show_desktop_icons_qt()) {
+                                iconswitcher.switchedOn = true;
+                            }
+                            else {
+                                iconswitcher.switchedOn = false;
+                            }
                         }
-                        else {
-                            iconswitcher.switchedOn = false;
+                    }
+                    else if (desktopiconsetpage.current_desktop == "X-Cinnamon") {
+                        if(sessiondispatcher.get_uk_default_setting_bool("cinnamon-icon", "show-desktop-icons") !== iconswitcher.switchedOn) {
+                            sessiondispatcher.restore_uk_default_setting("cinnamon-icon", "show-desktop-icons");
+                            if (sessiondispatcher.get_show_cinnamon_desktop_icons_qt()) {
+                                iconswitcher.switchedOn = true;
+                            }
+                            else {
+                                iconswitcher.switchedOn = false;
+                            }
                         }
                     }
                 }
             }
         }
+
+        Row {
+            visible: (desktopiconsetpage.current_desktop == "X-Cinnamon") ? true : false
+            spacing: 150
+            Row {
+                spacing: 20
+                Image {
+                    source: "../../img/icons/dot.png"
+                    width: 14; height: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
+                Common.Label {
+                    id: computericonlabel
+                    width: 170
+                    text: qsTr("Computer: ")//计算机：
+                    font.pixelSize: 12
+                    color: "#383838"
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Common.Switch {
+                    id: computerswitcher
+                    width: 220
+                    onSwitched: {
+                        if (computerswitcher.switchedOn) {
+                            sessiondispatcher.set_show_cinnamon_computer_qt(true);
+                        }
+                        else if(!computerswitcher.switchedOn) {
+                            sessiondispatcher.set_show_cinnamon_computer_qt(false);
+                        }
+                    }
+                }
+            }
+
+            Common.Button {
+                picNormal: "../../img/icons/button12-lightblue-long.png"
+                picHover: "../../img/icons/button12-lightblue-long-hover.png"
+                picPressed: "../../img/icons/button12-lightblue-long-hover.png"
+                fontcolor:"#707070"
+                fontsize: 12
+                width: 100; height: 28
+                text: qsTr("Restore")//恢复默认
+                onClicked: {
+                    if(sessiondispatcher.get_uk_default_setting_bool("cinnamon-icon", "computer-icon-visible") !== computerswitcher.switchedOn) {
+                        sessiondispatcher.restore_uk_default_setting("cinnamon-icon", "computer-icon-visible");
+                        if (sessiondispatcher.get_show_cinnamon_computer_qt()) {
+                            computerswitcher.switchedOn = true;
+                        }
+                        else {
+                            computerswitcher.switchedOn = false;
+                        }
+                    }
+                }
+            }
+        }
+
 
         Row {
             spacing: 150
@@ -327,11 +458,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     id: homefolderlabel
                     width: 170
@@ -344,11 +475,21 @@ Rectangle {
                     id: folderswitcher
                     width: 220//homefolderlabel.width
                     onSwitched: {
-                        if (folderswitcher.switchedOn) {
-                            sessiondispatcher.set_show_homefolder_qt(true);
+                        if (desktopiconsetpage.current_desktop == "Unity") {
+                            if (folderswitcher.switchedOn) {
+                                sessiondispatcher.set_show_homefolder_qt(true);
+                            }
+                            else if(!folderswitcher.switchedOn) {
+                                sessiondispatcher.set_show_homefolder_qt(false);
+                            }
                         }
-                        else if(!folderswitcher.switchedOn) {
-                            sessiondispatcher.set_show_homefolder_qt(false);
+                        else if (desktopiconsetpage.current_desktop == "X-Cinnamon") {
+                            if (iconswitcher.switchedOn) {
+                                sessiondispatcher.set_show_cinnamon_homefolder_qt(true);
+                            }
+                            else if(!iconswitcher.switchedOn) {
+                                sessiondispatcher.set_show_cinnamon_homefolder_qt(false);
+                            }
                         }
                     }
                 }
@@ -363,13 +504,26 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    if(sessiondispatcher.get_uk_default_setting_bool("icon", "home-icon-visible") !== folderswitcher.switchedOn) {
-                        sessiondispatcher.restore_uk_default_setting("icon", "home-icon-visible");
-                        if (sessiondispatcher.get_show_homefolder_qt()) {
-                            folderswitcher.switchedOn = true;
+                    if (desktopiconsetpage.current_desktop == "Unity") {
+                        if(sessiondispatcher.get_uk_default_setting_bool("icon", "home-icon-visible") !== folderswitcher.switchedOn) {
+                            sessiondispatcher.restore_uk_default_setting("icon", "home-icon-visible");
+                            if (sessiondispatcher.get_show_homefolder_qt()) {
+                                folderswitcher.switchedOn = true;
+                            }
+                            else {
+                                folderswitcher.switchedOn = false;
+                            }
                         }
-                        else {
-                            folderswitcher.switchedOn = false;
+                    }
+                    else if (desktopiconsetpage.current_desktop == "X-Cinnamon") {
+                        if(sessiondispatcher.get_uk_default_setting_bool("cinnamon-icon", "home-icon-visible") !== folderswitcher.switchedOn) {
+                            sessiondispatcher.restore_uk_default_setting("cinnamon-icon", "home-icon-visible");
+                            if (sessiondispatcher.get_show_cinnamon_homefolder_qt()) {
+                                folderswitcher.switchedOn = true;
+                            }
+                            else {
+                                folderswitcher.switchedOn = false;
+                            }
                         }
                     }
                 }
@@ -385,11 +539,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     id: networklabel
                     width: 170
@@ -402,11 +556,21 @@ Rectangle {
                     id: networkswitcher
                     width: 220//networklabel.width
                     onSwitched: {
-                        if (networkswitcher.switchedOn) {
-                            sessiondispatcher.set_show_network_qt(true);
+                        if (desktopiconsetpage.current_desktop == "Unity") {
+                            if (networkswitcher.switchedOn) {
+                                sessiondispatcher.set_show_network_qt(true);
+                            }
+                            else if(!networkswitcher.switchedOn) {
+                                sessiondispatcher.set_show_network_qt(false);
+                            }
                         }
-                        else if(!networkswitcher.switchedOn) {
-                            sessiondispatcher.set_show_network_qt(false);
+                        else if (desktopiconsetpage.current_desktop == "X-Cinnamon") {
+                            if (iconswitcher.switchedOn) {
+                                sessiondispatcher.set_show_cinnamon_network_qt(true);
+                            }
+                            else if(!iconswitcher.switchedOn) {
+                                sessiondispatcher.set_show_cinnamon_network_qt(false);
+                            }
                         }
                     }
                 }
@@ -421,13 +585,26 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    if(sessiondispatcher.get_uk_default_setting_bool("icon", "network-icon-visible") !== networkswitcher.switchedOn) {
-                        sessiondispatcher.restore_uk_default_setting("icon", "network-icon-visible");
-                        if (sessiondispatcher.get_show_network_qt()) {
-                            networkswitcher.switchedOn = true;
+                    if (desktopiconsetpage.current_desktop == "Unity") {
+                        if(sessiondispatcher.get_uk_default_setting_bool("icon", "network-icon-visible") !== networkswitcher.switchedOn) {
+                            sessiondispatcher.restore_uk_default_setting("icon", "network-icon-visible");
+                            if (sessiondispatcher.get_show_network_qt()) {
+                                networkswitcher.switchedOn = true;
+                            }
+                            else {
+                                networkswitcher.switchedOn = false;
+                            }
                         }
-                        else {
-                            networkswitcher.switchedOn = false;
+                    }
+                    else if (desktopiconsetpage.current_desktop == "X-Cinnamon") {
+                        if(sessiondispatcher.get_uk_default_setting_bool("cinnamon-icon", "network-icon-visible") !== networkswitcher.switchedOn) {
+                            sessiondispatcher.restore_uk_default_setting("cinnamon-icon", "network-icon-visible");
+                            if (sessiondispatcher.get_show_cinnamon_network_qt()) {
+                                networkswitcher.switchedOn = true;
+                            }
+                            else {
+                                networkswitcher.switchedOn = false;
+                            }
                         }
                     }
                 }
@@ -443,11 +620,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     id: trashlabel
                     width: 170
@@ -460,11 +637,21 @@ Rectangle {
                     id: trashswitcher
                     width: 220//trashlabel.width
                     onSwitched: {
-                        if (trashswitcher.switchedOn) {
-                            sessiondispatcher.set_show_trash_qt(true);
+                        if (desktopiconsetpage.current_desktop == "Unity") {
+                            if (trashswitcher.switchedOn) {
+                                sessiondispatcher.set_show_trash_qt(true);
+                            }
+                            else if(!trashswitcher.switchedOn) {
+                                sessiondispatcher.set_show_trash_qt(false);
+                            }
                         }
-                        else if(!trashswitcher.switchedOn) {
-                            sessiondispatcher.set_show_trash_qt(false);
+                        else if (desktopiconsetpage.current_desktop == "X-Cinnamon") {
+                            if (iconswitcher.switchedOn) {
+                                sessiondispatcher.set_show_cinnamon_trash_qt(true);
+                            }
+                            else if(!iconswitcher.switchedOn) {
+                                sessiondispatcher.set_show_cinnamon_trash_qt(false);
+                            }
                         }
                     }
                 }
@@ -479,13 +666,26 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    if(sessiondispatcher.get_uk_default_setting_bool("icon", "trash-icon-visible") !== trashswitcher.switchedOn) {
-                        sessiondispatcher.restore_uk_default_setting("icon", "trash-icon-visible");
-                        if (sessiondispatcher.get_show_trash_qt()) {
-                            trashswitcher.switchedOn = true;
+                    if (desktopiconsetpage.current_desktop == "Unity") {
+                        if(sessiondispatcher.get_uk_default_setting_bool("icon", "trash-icon-visible") !== trashswitcher.switchedOn) {
+                            sessiondispatcher.restore_uk_default_setting("icon", "trash-icon-visible");
+                            if (sessiondispatcher.get_show_trash_qt()) {
+                                trashswitcher.switchedOn = true;
+                            }
+                            else {
+                                trashswitcher.switchedOn = false;
+                            }
                         }
-                        else {
-                            trashswitcher.switchedOn = false;
+                    }
+                    else if (desktopiconsetpage.current_desktop == "X-Cinnamon") {
+                        if(sessiondispatcher.get_uk_default_setting_bool("cinnamon-icon", "trash-icon-visible") !== trashswitcher.switchedOn) {
+                            sessiondispatcher.restore_uk_default_setting("cinnamon-icon", "trash-icon-visible");
+                            if (sessiondispatcher.get_show_cinnamon_trash_qt()) {
+                                trashswitcher.switchedOn = true;
+                            }
+                            else {
+                                trashswitcher.switchedOn = false;
+                            }
                         }
                     }
                 }
@@ -501,11 +701,11 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-                Common.TipLabel {
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "yes"
-                    showImage: "../../img/icons/cloud-light.png"
-                }
+//                Common.TipLabel {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "yes"
+//                    showImage: "../../img/icons/cloud-light.png"
+//                }
                 Common.Label {
                     id: devicelabel
                     width: 170
@@ -518,11 +718,21 @@ Rectangle {
                     id: deviceswitcher
                     width: 220//devicelabel.width
                     onSwitched: {
-                        if (deviceswitcher.switchedOn) {
-                            sessiondispatcher.set_show_devices_qt(true);
+                        if (desktopiconsetpage.current_desktop == "Unity") {
+                            if (deviceswitcher.switchedOn) {
+                                sessiondispatcher.set_show_devices_qt(true);
+                            }
+                            else if(!deviceswitcher.switchedOn) {
+                                sessiondispatcher.set_show_devices_qt(false);
+                            }
                         }
-                        else if(!deviceswitcher.switchedOn) {
-                            sessiondispatcher.set_show_devices_qt(false);
+                        else if (desktopiconsetpage.current_desktop == "X-Cinnamon") {
+                            if (iconswitcher.switchedOn) {
+                                sessiondispatcher.set_show_cinnamon_devices_qt(true);
+                            }
+                            else if(!iconswitcher.switchedOn) {
+                                sessiondispatcher.set_show_cinnamon_devices_qt(false);
+                            }
                         }
                     }
                 }
@@ -537,13 +747,26 @@ Rectangle {
                 width: 100; height: 28
                 text: qsTr("Restore")//恢复默认
                 onClicked: {
-                    if(sessiondispatcher.get_uk_default_setting_bool("icon", "volumes-visible") !== deviceswitcher.switchedOn) {
-                        sessiondispatcher.restore_uk_default_setting("icon", "volumes-visible");
-                        if (sessiondispatcher.get_show_devices_qt()) {
-                            deviceswitcher.switchedOn = true;
+                    if (desktopiconsetpage.current_desktop == "Unity") {
+                        if(sessiondispatcher.get_uk_default_setting_bool("icon", "volumes-visible") !== deviceswitcher.switchedOn) {
+                            sessiondispatcher.restore_uk_default_setting("icon", "volumes-visible");
+                            if (sessiondispatcher.get_show_devices_qt()) {
+                                deviceswitcher.switchedOn = true;
+                            }
+                            else {
+                                deviceswitcher.switchedOn = false;
+                            }
                         }
-                        else {
-                            deviceswitcher.switchedOn = false;
+                    }
+                    else if (desktopiconsetpage.current_desktop == "X-Cinnamon") {
+                        if(sessiondispatcher.get_uk_default_setting_bool("cinnamon-icon", "volumes-visible") !== deviceswitcher.switchedOn) {
+                            sessiondispatcher.restore_uk_default_setting("cinnamon-icon", "volumes-visible");
+                            if (sessiondispatcher.get_show_cinnamon_devices_qt()) {
+                                deviceswitcher.switchedOn = true;
+                            }
+                            else {
+                                deviceswitcher.switchedOn = false;
+                            }
                         }
                     }
                 }

@@ -29,8 +29,8 @@ CloundDispatcher::CloundDispatcher(QObject *parent) :
     this->mainwindow_width = 850;
     this->mainwindow_height = 600;
     //cloud conf
-    QObject::connect(cloundiface, SIGNAL(upload_cloud_conf_signal(QString)), this, SLOT(handler_upload_cloud_conf(QString)));
-    QObject::connect(cloundiface, SIGNAL(download_cloud_conf_signal(QString)), this, SLOT(handler_download_cloud_conf(QString)));
+//    QObject::connect(cloundiface, SIGNAL(upload_cloud_conf_signal(QString)), this, SLOT(handler_upload_cloud_conf(QString)));
+//    QObject::connect(cloundiface, SIGNAL(download_cloud_conf_signal(QString)), this, SLOT(handler_download_cloud_conf(QString)));
     QObject::connect(cloundiface, SIGNAL(access_weather(QString, QString)), this, SLOT(accord_flag_ip(QString, QString)));
 }
 
@@ -56,23 +56,23 @@ QString CloundDispatcher::show_ip_address_qt() {
     return reply.value();
 }
 
-void CloundDispatcher::download_kysoft_cloud_conf_qt() {
-    cloundiface->call("download_kysoft_cloud_conf");
-}
+//void CloundDispatcher::download_kysoft_cloud_conf_qt() {
+//    cloundiface->call("download_kysoft_cloud_conf");
+//}
 
-void CloundDispatcher::upload_kysoft_cloud_conf_qt() {
-    cloundiface->call("upload_kysoft_cloud_conf");
-}
+//void CloundDispatcher::upload_kysoft_cloud_conf_qt() {
+//    cloundiface->call("upload_kysoft_cloud_conf");
+//}
 
 //接收下载和使用云端配置的信号
-void CloundDispatcher::handler_download_cloud_conf(QString download) {
-    emit this->tellDownloadCloudConfToQML(download);
-}
+//void CloundDispatcher::handler_download_cloud_conf(QString download) {
+//    emit this->tellDownloadCloudConfToQML(download);
+//}
 
 //接收上传配置到云端时的信号
-void CloundDispatcher::handler_upload_cloud_conf(QString upload) {
-    emit this->tellUploadCloudConfToQML(upload);
-}
+//void CloundDispatcher::handler_upload_cloud_conf(QString upload) {
+//    emit this->tellUploadCloudConfToQML(upload);
+//}
 
 void CloundDispatcher::accord_flag_ip(QString key, QString value) {
     if(key == "ip_addr" && value == "kobe") {

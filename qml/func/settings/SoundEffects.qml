@@ -165,7 +165,7 @@ Rectangle {
     Column{     //声音主题
         id:soundtheme
         spacing: 10
-        z: 11
+//        z: 11
         anchors{
             left: parent.left
             leftMargin: 60
@@ -182,12 +182,12 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                 }
 
-                Common.TipLabel {
-                    z: 11
-                    anchors.verticalCenter: parent.verticalCenter
-                    kflag: "no"
-                    showImage: "../../img/icons/cloud-gray.png"
-                }
+//                Common.TipLabel {
+//                    z: 11
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    kflag: "no"
+//                    showImage: "../../img/icons/cloud-gray.png"
+//                }
                 Text {
                     id: trashlabel
                     width: 160
@@ -227,12 +227,12 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
 
-            Common.TipLabel {
-                z: 11
-                anchors.verticalCenter: parent.verticalCenter
-                kflag: "no"
-                showImage: "../../img/icons/cloud-gray.png"
-            }
+//            Common.TipLabel {
+//                z: 11
+//                anchors.verticalCenter: parent.verticalCenter
+//                kflag: "no"
+//                showImage: "../../img/icons/cloud-gray.png"
+//            }
 
             Text{
                 text:qsTr("Login tone: ")//登录提示音：
@@ -262,12 +262,12 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
 
-            Common.TipLabel {
-                z: 11
-                anchors.verticalCenter: parent.verticalCenter
-                kflag: "no"
-                showImage: "../../img/icons/cloud-gray.png"
-            }
+//            Common.TipLabel {
+//                z: 11
+//                anchors.verticalCenter: parent.verticalCenter
+//                kflag: "no"
+//                showImage: "../../img/icons/cloud-gray.png"
+//            }
 
             Text{
                 text:qsTr("Event sounds:")//事件声音：
@@ -297,12 +297,12 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
 
-            Common.TipLabel {
-                z: 11
-                anchors.verticalCenter: parent.verticalCenter
-                kflag: "no"
-                showImage: "../../img/icons/cloud-gray.png"
-            }
+//            Common.TipLabel {
+//                z: 11
+//                anchors.verticalCenter: parent.verticalCenter
+//                kflag: "no"
+//                showImage: "../../img/icons/cloud-gray.png"
+//            }
 
             Text{
                 text:qsTr("Input feedback sounds:")//输入反馈声音：

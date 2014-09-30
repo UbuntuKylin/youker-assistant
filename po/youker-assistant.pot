@@ -294,56 +294,9 @@ msgctxt "BootAnimation|"
 msgid "OK"
 msgstr ""
 
-#: ../../qml/BottomBar.qml:51 ../../qml/BottomBar.qml:57
-#: ../../qml/BottomBar.qml:71 ../../qml/BottomBar.qml:166
-#: ../../qml/BottomBar.qml:197
-msgctxt "BottomBar|"
-msgid "Tips:"
-msgstr ""
-
-#: ../../qml/BottomBar.qml:51 ../../qml/BottomBar.qml:71
-msgctxt "BottomBar|"
-msgid "The kuaipan4uk is not running!"
-msgstr ""
-
-#: ../../qml/BottomBar.qml:57
-msgctxt "BottomBar|"
-msgid "Not found the cloud configuration!"
-msgstr ""
-
-#: ../../qml/BottomBar.qml:63
-msgctxt "BottomBar|"
-msgid "Download OK!"
-msgstr ""
-
-#: ../../qml/BottomBar.qml:77
-msgctxt "BottomBar|"
-msgid "Upload OK!"
-msgstr ""
-
 #: ../../qml/BottomBar.qml:100
 msgctxt "BottomBar|"
 msgid "main version:"
-msgstr ""
-
-#: ../../qml/BottomBar.qml:134 ../../qml/BottomBar.qml:156
-msgctxt "BottomBar|"
-msgid "Use Cloud"
-msgstr ""
-
-#: ../../qml/BottomBar.qml:139 ../../qml/BottomBar.qml:187
-msgctxt "BottomBar|"
-msgid "Save Cloud"
-msgstr ""
-
-#: ../../qml/BottomBar.qml:166
-msgctxt "BottomBar|"
-msgid "It will use the Kingsoft disk cloud configuration!"
-msgstr ""
-
-#: ../../qml/BottomBar.qml:197
-msgctxt "BottomBar|"
-msgid "It will upload configuration to the Kingsoft disk cloud!"
 msgstr ""
 
 #: ../../qml/func/cleaner/BrowserModel.qml:24
@@ -979,57 +932,63 @@ msgctxt "DefaultFont|"
 msgid "Antialiasing: "
 msgstr ""
 
-#: ../../qml/func/settings/DesktopIcon.qml:27
+#: ../../qml/func/settings/DesktopIcon.qml:28
 msgctxt "DesktopIcon|"
 msgid "Desktop Icons"
 msgstr ""
 
-#: ../../qml/func/settings/DesktopIcon.qml:28
+#: ../../qml/func/settings/DesktopIcon.qml:29
 msgctxt "DesktopIcon|"
 msgid "Set the desktop icon theme and the visibility of desktop icons."
 msgstr ""
 
-#: ../../qml/func/settings/DesktopIcon.qml:169
+#: ../../qml/func/settings/DesktopIcon.qml:216
 msgctxt "DesktopIcon|"
 msgid "Back"
 msgstr ""
 
-#: ../../qml/func/settings/DesktopIcon.qml:229
+#: ../../qml/func/settings/DesktopIcon.qml:277
 msgctxt "DesktopIcon|"
 msgid "Icon theme:"
 msgstr ""
 
-#: ../../qml/func/settings/DesktopIcon.qml:252
-#: ../../qml/func/settings/DesktopIcon.qml:306
+#: ../../qml/func/settings/DesktopIcon.qml:300
 #: ../../qml/func/settings/DesktopIcon.qml:364
-#: ../../qml/func/settings/DesktopIcon.qml:422
-#: ../../qml/func/settings/DesktopIcon.qml:480
-#: ../../qml/func/settings/DesktopIcon.qml:538
+#: ../../qml/func/settings/DesktopIcon.qml:436
+#: ../../qml/func/settings/DesktopIcon.qml:505
+#: ../../qml/func/settings/DesktopIcon.qml:586
+#: ../../qml/func/settings/DesktopIcon.qml:667
+#: ../../qml/func/settings/DesktopIcon.qml:748
 msgctxt "DesktopIcon|"
 msgid "Restore"
 msgstr ""
 
-#: ../../qml/func/settings/DesktopIcon.qml:280
+#: ../../qml/func/settings/DesktopIcon.qml:328
 msgctxt "DesktopIcon|"
 msgid "Show Desktop Icons: "
 msgstr ""
 
-#: ../../qml/func/settings/DesktopIcon.qml:338
+#: ../../qml/func/settings/DesktopIcon.qml:410
+msgctxt "DesktopIcon|"
+msgid "Computer: "
+msgstr ""
+
+#: ../../qml/func/settings/DesktopIcon.qml:469
 msgctxt "DesktopIcon|"
 msgid "Home Folder: "
 msgstr ""
 
-#: ../../qml/func/settings/DesktopIcon.qml:396
+#: ../../qml/func/settings/DesktopIcon.qml:550
 msgctxt "DesktopIcon|"
 msgid "Network: "
 msgstr ""
 
-#: ../../qml/func/settings/DesktopIcon.qml:454
+#: ../../qml/func/settings/DesktopIcon.qml:631
 msgctxt "DesktopIcon|"
 msgid "Trash : "
 msgstr ""
 
-#: ../../qml/func/settings/DesktopIcon.qml:512
+#: ../../qml/func/settings/DesktopIcon.qml:712
 msgctxt "DesktopIcon|"
 msgid "Mounted Volumes: "
 msgstr ""
@@ -1358,35 +1317,35 @@ msgctxt "FileShredder|"
 msgid "Back"
 msgstr ""
 
-#: ../../qml/func/settings/FileShredder.qml:132
+#: ../../qml/func/settings/FileShredder.qml:105
 msgctxt "FileShredder|"
 msgid "The file need to be shredded: "
 msgstr ""
 
-#: ../../qml/func/settings/FileShredder.qml:154
-#: ../../qml/func/settings/FileShredder.qml:193
-#: ../../qml/func/settings/FileShredder.qml:233
-#: ../../qml/func/settings/FileShredder.qml:253
+#: ../../qml/func/settings/FileShredder.qml:127
+#: ../../qml/func/settings/FileShredder.qml:166
+#: ../../qml/func/settings/FileShredder.qml:207
+#: ../../qml/func/settings/FileShredder.qml:227
 msgctxt "FileShredder|"
 msgid "No select any file which need to be shredded"
 msgstr ""
 
-#: ../../qml/func/settings/FileShredder.qml:227
+#: ../../qml/func/settings/FileShredder.qml:200
 msgctxt "FileShredder|"
 msgid "Shred File"
 msgstr ""
 
-#: ../../qml/func/settings/FileShredder.qml:234
+#: ../../qml/func/settings/FileShredder.qml:208
 msgctxt "FileShredder|"
 msgid "Shred success!"
 msgstr ""
 
-#: ../../qml/func/settings/FileShredder.qml:237
+#: ../../qml/func/settings/FileShredder.qml:211
 msgctxt "FileShredder|"
 msgid "Shred abnormal!"
 msgstr ""
 
-#: ../../qml/func/settings/FileShredder.qml:250
+#: ../../qml/func/settings/FileShredder.qml:224
 msgctxt "FileShredder|"
 msgid "Deselect"
 msgstr ""
@@ -2363,12 +2322,12 @@ msgctxt "ProcessManager|"
 msgid "Process Name"
 msgstr ""
 
-#: ../main.cpp:168
+#: ../main.cpp:170
 msgctxt "QObject|"
 msgid "starting...."
 msgstr ""
 
-#: ../main.cpp:170
+#: ../main.cpp:172
 msgctxt "QObject|"
 msgid "loading module data...."
 msgstr ""
@@ -2573,17 +2532,17 @@ msgctxt "SelectDialog|"
 msgid "The city was not be found, please input the city name again!"
 msgstr ""
 
-#: ../sessiondispatcher.cpp:1360
+#: ../sessiondispatcher.cpp:1459
 msgctxt "SessionDispatcher|"
 msgid "Select folder"
 msgstr ""
 
-#: ../sessiondispatcher.cpp:1367
+#: ../sessiondispatcher.cpp:1466
 msgctxt "SessionDispatcher|"
 msgid "Select file"
 msgstr ""
 
-#: ../sessiondispatcher.cpp:1367
+#: ../sessiondispatcher.cpp:1466
 msgctxt "SessionDispatcher|"
 msgid "All Files(*)"
 msgstr ""
@@ -2811,22 +2770,22 @@ msgctxt "SystemClean|"
 msgid "Find Large Files "
 msgstr ""
 
-#: ../systemdispatcher.cpp:354
+#: ../systemdispatcher.cpp:349
 msgctxt "SystemDispatcher|"
 msgid "Select the boot animation"
 msgstr ""
 
-#: ../systemdispatcher.cpp:354
+#: ../systemdispatcher.cpp:349
 msgctxt "SystemDispatcher|"
 msgid "Image Files (*.png *.jpg *.gif)"
 msgstr ""
 
-#: ../systemdispatcher.cpp:359
+#: ../systemdispatcher.cpp:354
 msgctxt "SystemDispatcher|"
 msgid "Select music"
 msgstr ""
 
-#: ../systemdispatcher.cpp:359
+#: ../systemdispatcher.cpp:354
 msgctxt "SystemDispatcher|"
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma)"
 msgstr ""

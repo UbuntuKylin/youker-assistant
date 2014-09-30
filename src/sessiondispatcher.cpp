@@ -820,6 +820,26 @@ void SessionDispatcher::restore_uk_default_setting(QString key, QString name) {
              sessioniface->call("set_ubuntukylin_default_setting_bool", "org.gnome.nautilus.desktop", "icon", "volumes-visible", "boolean", default_Settings->value(name).toBool());
         }
     }
+    else if (key == "cinnamon-icon") {
+        if(name == "show-desktop-icons") {//显示桌面图标
+             sessioniface->call("set_ubuntukylin_default_setting_bool", "org.nemo.desktop", "icon", "show-desktop-icons", "boolean", default_Settings->value(name).toBool());
+        }
+        else if(name == "show-desktop-icons") {//显示计算机
+             sessioniface->call("set_ubuntukylin_default_setting_bool", "org.nemo.desktop", "icon", "computer-icon-visible", "boolean", default_Settings->value(name).toBool());
+        }
+        else if(name == "home-icon-visible") {//显示主文件夹
+             sessioniface->call("set_ubuntukylin_default_setting_bool", "org.nemo.desktop", "icon", "home-icon-visible", "boolean", default_Settings->value(name).toBool());
+        }
+        else if(name == "network-icon-visible") {//显示网络
+             sessioniface->call("set_ubuntukylin_default_setting_bool", "org.nemo.desktop", "icon", "network-icon-visible", "boolean", default_Settings->value(name).toBool());
+        }
+        else if(name == "trash-icon-visible") {//显示回收站
+             sessioniface->call("set_ubuntukylin_default_setting_bool", "org.nemo.desktop", "icon", "trash-icon-visible", "boolean", default_Settings->value(name).toBool());
+        }
+        else if(name == "volumes-visible") {//显示挂载卷标
+             sessioniface->call("set_ubuntukylin_default_setting_bool", "org.nemo.desktop", "icon", "volumes-visible", "boolean", default_Settings->value(name).toBool());
+        }
+    }
     else if (key == "file") {
         if(name == "always-use-location-entry") {//路径输入框取代路径栏
             sessioniface->call("set_ubuntukylin_default_setting_bool", "org.gnome.nautilus.preferences", "file", "always-use-location-entry", "boolean", default_Settings->value(name).toBool());
@@ -982,6 +1002,68 @@ bool SessionDispatcher::get_show_devices_qt() {
     QDBusReply<bool> reply = sessioniface->call("get_show_devices");
     return reply.value();
 }
+
+
+bool SessionDispatcher::get_show_cinnamon_desktop_icons_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_show_cinnamon_desktop_icons");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_show_cinnamon_desktop_icons_qt(bool flag) {
+    QDBusReply<bool> reply = sessioniface->call("set_show_cinnamon_desktop_icons", flag);
+    return reply.value();
+}
+
+bool SessionDispatcher::get_show_cinnamon_computer_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_show_cinnamon_computer");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_show_cinnamon_computer_qt(bool flag) {
+    QDBusReply<bool> reply = sessioniface->call("set_show_cinnamon_computer", flag);
+    return reply.value();
+}
+
+bool SessionDispatcher::get_show_cinnamon_homefolder_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_show_cinnamon_homefolder");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_show_cinnamon_homefolder_qt(bool flag) {
+    QDBusReply<bool> reply = sessioniface->call("set_show_cinnamon_homefolder", flag);
+    return reply.value();
+}
+
+bool SessionDispatcher::get_show_cinnamon_network_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_show_cinnamon_network");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_show_cinnamon_network_qt(bool flag) {
+    QDBusReply<bool> reply = sessioniface->call("set_show_cinnamon_network", flag);
+    return reply.value();
+}
+
+bool SessionDispatcher::get_show_cinnamon_trash_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_show_cinnamon_trash");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_show_cinnamon_trash_qt(bool flag) {
+    QDBusReply<bool> reply = sessioniface->call("set_show_cinnamon_trash", flag);
+    return reply.value();
+}
+
+bool SessionDispatcher::get_show_cinnamon_devices_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_show_cinnamon_devices");
+    return reply.value();
+}
+bool SessionDispatcher::set_show_cinnamon_devices_qt(bool flag) {
+    QDBusReply<bool> reply = sessioniface->call("set_show_cinnamon_devices", flag);
+    return reply.value();
+}
+
+
 
 /*-----------------------------unity of beauty-----------------------------*/
 void SessionDispatcher::set_default_launcher_have_showdesktopicon_qt() {
@@ -1619,15 +1701,20 @@ int SessionDispatcher::get_thumbnail_cache_size_qt() {
     return reply.value();
 }
 
-QString SessionDispatcher::judge_desktop_is_unity_qt() {
-    QDBusReply<QString> reply = sessioniface->call("judge_desktop_is_unity");
+QString SessionDispatcher::access_current_desktop_qt() {
+    QDBusReply<QString> reply = sessioniface->call("access_current_desktop");
     return reply.value();
 }
 
-QString SessionDispatcher::judge_desktop_is_cinnamon_qt() {
-    QDBusReply<QString> reply = sessioniface->call("judge_desktop_is_cinnamon");
-    return reply.value();
-}
+//QString SessionDispatcher::judge_desktop_is_unity_qt() {
+//    QDBusReply<QString> reply = sessioniface->call("judge_desktop_is_unity");
+//    return reply.value();
+//}
+
+//QString SessionDispatcher::judge_desktop_is_cinnamon_qt() {
+//    QDBusReply<QString> reply = sessioniface->call("judge_desktop_is_cinnamon");
+//    return reply.value();
+//}
 
 bool SessionDispatcher::submit_uk_pingback() {
     mSettings->beginGroup("weather");
