@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="es">
-    <extra-po-header-po_revision_date>2014-09-22 00:30+0000</extra-po-header-po_revision_date>
-    <extra-po-header-x_launchpad_export_date>2014-09-22 00:41+0000</extra-po-header-x_launchpad_export_date>
+    <extra-po-header-po_revision_date>2014-09-30 05:29+0000</extra-po-header-po_revision_date>
+    <extra-po-header-x_launchpad_export_date>2014-09-30 05:32+0000</extra-po-header-x_launchpad_export_date>
     <extra-po-headers>Project-Id-Version,Report-Msgid-Bugs-To,POT-Creation-Date,PO-Revision-Date,Last-Translator,Language-Team,MIME-Version,Content-Type,Content-Transfer-Encoding,X-Launchpad-Export-Date,X-Generator</extra-po-headers>
     <extra-po-header-x_generator>Launchpad (build 17196)</extra-po-header-x_generator>
     <extra-po-header-report_msgid_bugs_to>FULL NAME &lt;EMAIL@ADDRESS&gt;</extra-po-header-report_msgid_bugs_to>
     <extra-po-header-language_team>Spanish &lt;es@li.org&gt;</extra-po-header-language_team>
     <extra-po-header-project_id_version>youker-assistant</extra-po-header-project_id_version>
-    <extra-po-header-pot_creation_date>2014-09-21 11:24+0000</extra-po-header-pot_creation_date>
+    <extra-po-header-pot_creation_date>2014-09-30 03:56+0000</extra-po-header-pot_creation_date>
     <extra-po-header_comment># Spanish translation for youker-assistant
 # Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
 # This file is distributed under the same license as the youker-assistant package.
@@ -342,71 +342,10 @@ p, li { white-space: pre-wrap; }
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../../qml/BottomBar.qml" line="51"/>
-        <location filename="../../qml/BottomBar.qml" line="57"/>
-        <location filename="../../qml/BottomBar.qml" line="71"/>
-        <location filename="../../qml/BottomBar.qml" line="166"/>
-        <location filename="../../qml/BottomBar.qml" line="197"/>
-        <source>Tips:</source>
-        <comment>BottomBar|</comment>
-        <translation>Consejos:</translation>
-    </message>
-    <message>
-        <location filename="../../qml/BottomBar.qml" line="51"/>
-        <location filename="../../qml/BottomBar.qml" line="71"/>
-        <source>The kuaipan4uk is not running!</source>
-        <comment>BottomBar|</comment>
-        <translation>kuaipan4uk no está ejecutandose!</translation>
-    </message>
-    <message>
-        <location filename="../../qml/BottomBar.qml" line="57"/>
-        <source>Not found the cloud configuration!</source>
-        <comment>BottomBar|</comment>
-        <translation>No se encuentra la configuración de la nube!</translation>
-    </message>
-    <message>
-        <location filename="../../qml/BottomBar.qml" line="63"/>
-        <source>Download OK!</source>
-        <comment>BottomBar|</comment>
-        <translation>Descarga OK!</translation>
-    </message>
-    <message>
-        <location filename="../../qml/BottomBar.qml" line="77"/>
-        <source>Upload OK!</source>
-        <comment>BottomBar|</comment>
-        <translation>SUbida OK!</translation>
-    </message>
-    <message>
         <location filename="../../qml/BottomBar.qml" line="100"/>
         <source>main version:</source>
         <comment>BottomBar|</comment>
         <translation>Versión Principal:</translation>
-    </message>
-    <message>
-        <location filename="../../qml/BottomBar.qml" line="134"/>
-        <location filename="../../qml/BottomBar.qml" line="156"/>
-        <source>Use Cloud</source>
-        <comment>BottomBar|</comment>
-        <translation>Usar Nube</translation>
-    </message>
-    <message>
-        <location filename="../../qml/BottomBar.qml" line="139"/>
-        <location filename="../../qml/BottomBar.qml" line="187"/>
-        <source>Save Cloud</source>
-        <comment>BottomBar|</comment>
-        <translation>Salvar en la Nube</translation>
-    </message>
-    <message>
-        <location filename="../../qml/BottomBar.qml" line="166"/>
-        <source>It will use the Kingsoft disk cloud configuration!</source>
-        <comment>BottomBar|</comment>
-        <translation>Se utilizará la configuración nube disco Kingsoft!</translation>
-    </message>
-    <message>
-        <location filename="../../qml/BottomBar.qml" line="197"/>
-        <source>It will upload configuration to the Kingsoft disk cloud!</source>
-        <comment>BottomBar|</comment>
-        <translation>Se carga la configuración de la nube de disco Kingsoft!</translation>
     </message>
     <message>
         <location filename="../../qml/func/cleaner/BrowserModel.qml" line="24"/>
@@ -1156,66 +1095,73 @@ p, li { white-space: pre-wrap; }
         <translation>Antialiasing: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="27"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="28"/>
         <source>Desktop Icons</source>
         <comment>DesktopIcon|</comment>
         <translation>Iconos del Escritorio</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="28"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="29"/>
         <source>Set the desktop icon theme and the visibility of desktop icons.</source>
         <comment>DesktopIcon|</comment>
         <translation>Establecer el tema de iconos de escritorio y la visibilidad de los iconos del escritorio.</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="169"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="216"/>
         <source>Back</source>
         <comment>DesktopIcon|</comment>
         <translation>Volver</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="229"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="277"/>
         <source>Icon theme:</source>
         <comment>DesktopIcon|</comment>
         <translation>Tema de iconos:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="252"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="306"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="300"/>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="364"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="422"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="480"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="538"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="436"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="505"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="586"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="667"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="748"/>
         <source>Restore</source>
         <comment>DesktopIcon|</comment>
         <translation>Restaurar</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="280"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="328"/>
         <source>Show Desktop Icons: </source>
         <comment>DesktopIcon|</comment>
         <translation>Mostrar iconos en Escritorio: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="338"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="410"/>
+        <source>Computer: </source>
+        <comment>DesktopIcon|</comment>
+        <translation>Ordenador: </translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="469"/>
         <source>Home Folder: </source>
         <comment>DesktopIcon|</comment>
         <translation>Carpeta personal: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="396"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="550"/>
         <source>Network: </source>
         <comment>DesktopIcon|</comment>
         <translation>Red: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="454"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="631"/>
         <source>Trash : </source>
         <comment>DesktopIcon|</comment>
         <translation>Papelera: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="512"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="712"/>
         <source>Mounted Volumes: </source>
         <comment>DesktopIcon|</comment>
         <translation>Volúmenes montados: </translation>
@@ -1595,40 +1541,40 @@ p, li { white-space: pre-wrap; }
         <translation>Atrás</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="132"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="105"/>
         <source>The file need to be shredded: </source>
         <comment>FileShredder|</comment>
         <translation>La necesidad de archivos a triturar: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="154"/>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="193"/>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="233"/>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="253"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="127"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="166"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="207"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="227"/>
         <source>No select any file which need to be shredded</source>
         <comment>FileShredder|</comment>
         <translation>No seleccionar cualquier archivo que necesita ser triturado</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="227"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="200"/>
         <source>Shred File</source>
         <comment>FileShredder|</comment>
         <translation>Shred File</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="234"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="208"/>
         <source>Shred success!</source>
         <comment>FileShredder|</comment>
         <translation>Triture éxito!</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="237"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="211"/>
         <source>Shred abnormal!</source>
         <comment>FileShredder|</comment>
         <translation>Triture anormal!</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="250"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="224"/>
         <source>Deselect</source>
         <comment>FileShredder|</comment>
         <translation>Deseleccionar</translation>
@@ -2804,13 +2750,13 @@ p, li { white-space: pre-wrap; }
         <translation>Nombre del proceso</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="168"/>
+        <location filename="../main.cpp" line="170"/>
         <source>starting....</source>
         <comment>QObject|</comment>
         <translation>empezando ....</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="170"/>
+        <location filename="../main.cpp" line="172"/>
         <source>loading module data....</source>
         <comment>QObject|</comment>
         <translation>datos de módulo de carga ....</translation>
@@ -3059,19 +3005,19 @@ p, li { white-space: pre-wrap; }
         <translation>La ciudad no se puede encontrar, de entrada por favor el nombre de la ciudad de nuevo!</translation>
     </message>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1360"/>
+        <location filename="../sessiondispatcher.cpp" line="1459"/>
         <source>Select folder</source>
         <comment>SessionDispatcher|</comment>
         <translation>Seleccionar carpeta</translation>
     </message>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1367"/>
+        <location filename="../sessiondispatcher.cpp" line="1466"/>
         <source>Select file</source>
         <comment>SessionDispatcher|</comment>
         <translation>Seleccionar archivo(s)</translation>
     </message>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1367"/>
+        <location filename="../sessiondispatcher.cpp" line="1466"/>
         <source>All Files(*)</source>
         <comment>SessionDispatcher|</comment>
         <translation>Todos los archivos(*)</translation>
@@ -3338,25 +3284,25 @@ p, li { white-space: pre-wrap; }
         <translation>Buscar archivos grandes </translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="354"/>
+        <location filename="../systemdispatcher.cpp" line="349"/>
         <source>Select the boot animation</source>
         <comment>SystemDispatcher|</comment>
         <translation>Seleccione la animación de arranque</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="354"/>
+        <location filename="../systemdispatcher.cpp" line="349"/>
         <source>Image Files (*.png *.jpg *.gif)</source>
         <comment>SystemDispatcher|</comment>
         <translation>Los archivos de imagen (*.png *.jpg *.gif)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="359"/>
+        <location filename="../systemdispatcher.cpp" line="354"/>
         <source>Select music</source>
         <comment>SystemDispatcher|</comment>
         <translation>Seleccione la música</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="359"/>
+        <location filename="../systemdispatcher.cpp" line="354"/>
         <source>Audio Files (*.ogg *.wav *.mp3 *.wma)</source>
         <comment>SystemDispatcher|</comment>
         <translation>archivos de Audio (*.ogg *.wav *.mp3 *.wma)</translation>
@@ -4089,6 +4035,51 @@ p, li { white-space: pre-wrap; }
         <source>Titlebar right-click action:</source>
         <comment>WindowManager|</comment>
         <translation>Acción de clic secundario sobre la barra de titulo:</translation>
+    </message>
+    <message>
+        <source>Download OK!</source>
+        <comment>BottomBar|</comment>
+        <translation type="obsolete">Descarga OK!</translation>
+    </message>
+    <message>
+        <source>Tips:</source>
+        <comment>BottomBar|</comment>
+        <translation type="obsolete">Consejos:</translation>
+    </message>
+    <message>
+        <source>Use Cloud</source>
+        <comment>BottomBar|</comment>
+        <translation type="obsolete">Usar Nube</translation>
+    </message>
+    <message>
+        <source>Save Cloud</source>
+        <comment>BottomBar|</comment>
+        <translation type="obsolete">Salvar en la Nube</translation>
+    </message>
+    <message>
+        <source>Upload OK!</source>
+        <comment>BottomBar|</comment>
+        <translation type="obsolete">SUbida OK!</translation>
+    </message>
+    <message>
+        <source>The kuaipan4uk is not running!</source>
+        <comment>BottomBar|</comment>
+        <translation type="obsolete">kuaipan4uk no está ejecutandose!</translation>
+    </message>
+    <message>
+        <source>Not found the cloud configuration!</source>
+        <comment>BottomBar|</comment>
+        <translation type="obsolete">No se encuentra la configuración de la nube!</translation>
+    </message>
+    <message>
+        <source>It will use the Kingsoft disk cloud configuration!</source>
+        <comment>BottomBar|</comment>
+        <translation type="obsolete">Se utilizará la configuración nube disco Kingsoft!</translation>
+    </message>
+    <message>
+        <source>It will upload configuration to the Kingsoft disk cloud!</source>
+        <comment>BottomBar|</comment>
+        <translation type="obsolete">Se carga la configuración de la nube de disco Kingsoft!</translation>
     </message>
 </context>
 </TS>

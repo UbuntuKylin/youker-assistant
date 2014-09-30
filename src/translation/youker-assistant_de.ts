@@ -291,60 +291,8 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>BottomBar</name>
     <message>
-        <location filename="../../qml/BottomBar.qml" line="51"/>
-        <location filename="../../qml/BottomBar.qml" line="57"/>
-        <location filename="../../qml/BottomBar.qml" line="71"/>
-        <location filename="../../qml/BottomBar.qml" line="166"/>
-        <location filename="../../qml/BottomBar.qml" line="197"/>
-        <source>Tips:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/BottomBar.qml" line="51"/>
-        <location filename="../../qml/BottomBar.qml" line="71"/>
-        <source>The kuaipan4uk is not running!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/BottomBar.qml" line="57"/>
-        <source>Not found the cloud configuration!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/BottomBar.qml" line="63"/>
-        <source>Download OK!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/BottomBar.qml" line="77"/>
-        <source>Upload OK!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../qml/BottomBar.qml" line="100"/>
         <source>main version:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/BottomBar.qml" line="134"/>
-        <location filename="../../qml/BottomBar.qml" line="156"/>
-        <source>Use Cloud</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/BottomBar.qml" line="139"/>
-        <location filename="../../qml/BottomBar.qml" line="187"/>
-        <source>Save Cloud</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/BottomBar.qml" line="166"/>
-        <source>It will use the Kingsoft disk cloud configuration!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/BottomBar.qml" line="197"/>
-        <source>It will upload configuration to the Kingsoft disk cloud!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1022,57 +970,63 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>DesktopIcon</name>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="27"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="28"/>
         <source>Desktop Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="28"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="29"/>
         <source>Set the desktop icon theme and the visibility of desktop icons.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="169"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="216"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="229"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="277"/>
         <source>Icon theme:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="252"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="306"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="300"/>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="364"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="422"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="480"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="538"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="436"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="505"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="586"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="667"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="748"/>
         <source>Restore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="280"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="328"/>
         <source>Show Desktop Icons: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="338"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="410"/>
+        <source>Computer: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="469"/>
         <source>Home Folder: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="396"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="550"/>
         <source>Network: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="454"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="631"/>
         <source>Trash : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="512"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="712"/>
         <source>Mounted Volumes: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -1409,35 +1363,35 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="132"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="105"/>
         <source>The file need to be shredded: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="154"/>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="193"/>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="233"/>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="253"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="127"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="166"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="207"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="227"/>
         <source>No select any file which need to be shredded</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="227"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="200"/>
         <source>Shred File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="234"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="208"/>
         <source>Shred success!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="237"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="211"/>
         <source>Shred abnormal!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="250"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="224"/>
         <source>Deselect</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2483,12 +2437,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="168"/>
+        <location filename="../main.cpp" line="170"/>
         <source>starting....</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="170"/>
+        <location filename="../main.cpp" line="172"/>
         <source>loading module data....</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2709,17 +2663,17 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1360"/>
+        <location filename="../sessiondispatcher.cpp" line="1459"/>
         <source>Select folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1367"/>
+        <location filename="../sessiondispatcher.cpp" line="1466"/>
         <source>Select file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1367"/>
+        <location filename="../sessiondispatcher.cpp" line="1466"/>
         <source>All Files(*)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2967,22 +2921,22 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SystemDispatcher</name>
     <message>
-        <location filename="../systemdispatcher.cpp" line="354"/>
+        <location filename="../systemdispatcher.cpp" line="349"/>
         <source>Select the boot animation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="354"/>
+        <location filename="../systemdispatcher.cpp" line="349"/>
         <source>Image Files (*.png *.jpg *.gif)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="359"/>
+        <location filename="../systemdispatcher.cpp" line="354"/>
         <source>Select music</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="359"/>
+        <location filename="../systemdispatcher.cpp" line="354"/>
         <source>Audio Files (*.ogg *.wav *.mp3 *.wma)</source>
         <translation type="unfinished"></translation>
     </message>

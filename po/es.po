@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: youker-assistant\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-09-21 11:24+0000\n"
-"PO-Revision-Date: 2014-09-22 00:30+0000\n"
+"POT-Creation-Date: 2014-09-30 03:56+0000\n"
+"PO-Revision-Date: 2014-09-30 05:29+0000\n"
 "Last-Translator: kobe <xiangli@ubuntukylin.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-09-22 00:41+0000\n"
+"X-Launchpad-Export-Date: 2014-09-30 05:32+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #: ../aboutdialog.ui:26 ../aboutdialog.ui:42
@@ -343,57 +343,10 @@ msgctxt "BootAnimation|"
 msgid "OK"
 msgstr "OK"
 
-#: ../../qml/BottomBar.qml:51 ../../qml/BottomBar.qml:57
-#: ../../qml/BottomBar.qml:71 ../../qml/BottomBar.qml:166
-#: ../../qml/BottomBar.qml:197
-msgctxt "BottomBar|"
-msgid "Tips:"
-msgstr "Consejos:"
-
-#: ../../qml/BottomBar.qml:51 ../../qml/BottomBar.qml:71
-msgctxt "BottomBar|"
-msgid "The kuaipan4uk is not running!"
-msgstr "kuaipan4uk no está ejecutandose!"
-
-#: ../../qml/BottomBar.qml:57
-msgctxt "BottomBar|"
-msgid "Not found the cloud configuration!"
-msgstr "No se encuentra la configuración de la nube!"
-
-#: ../../qml/BottomBar.qml:63
-msgctxt "BottomBar|"
-msgid "Download OK!"
-msgstr "Descarga OK!"
-
-#: ../../qml/BottomBar.qml:77
-msgctxt "BottomBar|"
-msgid "Upload OK!"
-msgstr "SUbida OK!"
-
 #: ../../qml/BottomBar.qml:100
 msgctxt "BottomBar|"
 msgid "main version:"
 msgstr "Versión Principal:"
-
-#: ../../qml/BottomBar.qml:134 ../../qml/BottomBar.qml:156
-msgctxt "BottomBar|"
-msgid "Use Cloud"
-msgstr "Usar Nube"
-
-#: ../../qml/BottomBar.qml:139 ../../qml/BottomBar.qml:187
-msgctxt "BottomBar|"
-msgid "Save Cloud"
-msgstr "Salvar en la Nube"
-
-#: ../../qml/BottomBar.qml:166
-msgctxt "BottomBar|"
-msgid "It will use the Kingsoft disk cloud configuration!"
-msgstr "Se utilizará la configuración nube disco Kingsoft!"
-
-#: ../../qml/BottomBar.qml:197
-msgctxt "BottomBar|"
-msgid "It will upload configuration to the Kingsoft disk cloud!"
-msgstr "Se carga la configuración de la nube de disco Kingsoft!"
 
 #: ../../qml/func/cleaner/BrowserModel.qml:24
 msgctxt "BrowserModel|"
@@ -1045,59 +998,65 @@ msgctxt "DefaultFont|"
 msgid "Antialiasing: "
 msgstr "Antialiasing: "
 
-#: ../../qml/func/settings/DesktopIcon.qml:27
+#: ../../qml/func/settings/DesktopIcon.qml:28
 msgctxt "DesktopIcon|"
 msgid "Desktop Icons"
 msgstr "Iconos del Escritorio"
 
-#: ../../qml/func/settings/DesktopIcon.qml:28
+#: ../../qml/func/settings/DesktopIcon.qml:29
 msgctxt "DesktopIcon|"
 msgid "Set the desktop icon theme and the visibility of desktop icons."
 msgstr ""
 "Establecer el tema de iconos de escritorio y la visibilidad de los iconos "
 "del escritorio."
 
-#: ../../qml/func/settings/DesktopIcon.qml:169
+#: ../../qml/func/settings/DesktopIcon.qml:216
 msgctxt "DesktopIcon|"
 msgid "Back"
 msgstr "Volver"
 
-#: ../../qml/func/settings/DesktopIcon.qml:229
+#: ../../qml/func/settings/DesktopIcon.qml:277
 msgctxt "DesktopIcon|"
 msgid "Icon theme:"
 msgstr "Tema de iconos:"
 
-#: ../../qml/func/settings/DesktopIcon.qml:252
-#: ../../qml/func/settings/DesktopIcon.qml:306
+#: ../../qml/func/settings/DesktopIcon.qml:300
 #: ../../qml/func/settings/DesktopIcon.qml:364
-#: ../../qml/func/settings/DesktopIcon.qml:422
-#: ../../qml/func/settings/DesktopIcon.qml:480
-#: ../../qml/func/settings/DesktopIcon.qml:538
+#: ../../qml/func/settings/DesktopIcon.qml:436
+#: ../../qml/func/settings/DesktopIcon.qml:505
+#: ../../qml/func/settings/DesktopIcon.qml:586
+#: ../../qml/func/settings/DesktopIcon.qml:667
+#: ../../qml/func/settings/DesktopIcon.qml:748
 msgctxt "DesktopIcon|"
 msgid "Restore"
 msgstr "Restaurar"
 
-#: ../../qml/func/settings/DesktopIcon.qml:280
+#: ../../qml/func/settings/DesktopIcon.qml:328
 msgctxt "DesktopIcon|"
 msgid "Show Desktop Icons: "
 msgstr "Mostrar iconos en Escritorio: "
 
-#: ../../qml/func/settings/DesktopIcon.qml:338
+#: ../../qml/func/settings/DesktopIcon.qml:410
+msgctxt "DesktopIcon|"
+msgid "Computer: "
+msgstr "Ordenador: "
+
+#: ../../qml/func/settings/DesktopIcon.qml:469
 msgctxt "DesktopIcon|"
 msgid "Home Folder: "
 msgstr "Carpeta personal: "
 
-#: ../../qml/func/settings/DesktopIcon.qml:396
+#: ../../qml/func/settings/DesktopIcon.qml:550
 msgctxt "DesktopIcon|"
 msgid "Network: "
 msgstr "Red: "
 
-#: ../../qml/func/settings/DesktopIcon.qml:454
+#: ../../qml/func/settings/DesktopIcon.qml:631
 msgctxt "DesktopIcon|"
 msgid "Trash : "
 msgstr "Papelera: "
 
-#: ../../qml/func/settings/DesktopIcon.qml:512
+#: ../../qml/func/settings/DesktopIcon.qml:712
 msgctxt "DesktopIcon|"
 msgid "Mounted Volumes: "
 msgstr "Volúmenes montados: "
@@ -1438,35 +1397,35 @@ msgctxt "FileShredder|"
 msgid "Back"
 msgstr "Atrás"
 
-#: ../../qml/func/settings/FileShredder.qml:132
+#: ../../qml/func/settings/FileShredder.qml:105
 msgctxt "FileShredder|"
 msgid "The file need to be shredded: "
 msgstr "La necesidad de archivos a triturar: "
 
-#: ../../qml/func/settings/FileShredder.qml:154
-#: ../../qml/func/settings/FileShredder.qml:193
-#: ../../qml/func/settings/FileShredder.qml:233
-#: ../../qml/func/settings/FileShredder.qml:253
+#: ../../qml/func/settings/FileShredder.qml:127
+#: ../../qml/func/settings/FileShredder.qml:166
+#: ../../qml/func/settings/FileShredder.qml:207
+#: ../../qml/func/settings/FileShredder.qml:227
 msgctxt "FileShredder|"
 msgid "No select any file which need to be shredded"
 msgstr "No seleccionar cualquier archivo que necesita ser triturado"
 
-#: ../../qml/func/settings/FileShredder.qml:227
+#: ../../qml/func/settings/FileShredder.qml:200
 msgctxt "FileShredder|"
 msgid "Shred File"
 msgstr "Shred File"
 
-#: ../../qml/func/settings/FileShredder.qml:234
+#: ../../qml/func/settings/FileShredder.qml:208
 msgctxt "FileShredder|"
 msgid "Shred success!"
 msgstr "Triture éxito!"
 
-#: ../../qml/func/settings/FileShredder.qml:237
+#: ../../qml/func/settings/FileShredder.qml:211
 msgctxt "FileShredder|"
 msgid "Shred abnormal!"
 msgstr "Triture anormal!"
 
-#: ../../qml/func/settings/FileShredder.qml:250
+#: ../../qml/func/settings/FileShredder.qml:224
 msgctxt "FileShredder|"
 msgid "Deselect"
 msgstr "Deseleccionar"
@@ -2462,12 +2421,12 @@ msgctxt "ProcessManager|"
 msgid "Process Name"
 msgstr "Nombre del proceso"
 
-#: ../main.cpp:168
+#: ../main.cpp:170
 msgctxt "QObject|"
 msgid "starting...."
 msgstr "empezando ...."
 
-#: ../main.cpp:170
+#: ../main.cpp:172
 msgctxt "QObject|"
 msgid "loading module data...."
 msgstr "datos de módulo de carga ...."
@@ -2678,17 +2637,17 @@ msgstr ""
 "La ciudad no se puede encontrar, de entrada por favor el nombre de la ciudad "
 "de nuevo!"
 
-#: ../sessiondispatcher.cpp:1360
+#: ../sessiondispatcher.cpp:1459
 msgctxt "SessionDispatcher|"
 msgid "Select folder"
 msgstr "Seleccionar carpeta"
 
-#: ../sessiondispatcher.cpp:1367
+#: ../sessiondispatcher.cpp:1466
 msgctxt "SessionDispatcher|"
 msgid "Select file"
 msgstr "Seleccionar archivo(s)"
 
-#: ../sessiondispatcher.cpp:1367
+#: ../sessiondispatcher.cpp:1466
 msgctxt "SessionDispatcher|"
 msgid "All Files(*)"
 msgstr "Todos los archivos(*)"
@@ -2924,22 +2883,22 @@ msgctxt "SystemClean|"
 msgid "Find Large Files "
 msgstr "Buscar archivos grandes "
 
-#: ../systemdispatcher.cpp:354
+#: ../systemdispatcher.cpp:349
 msgctxt "SystemDispatcher|"
 msgid "Select the boot animation"
 msgstr "Seleccione la animación de arranque"
 
-#: ../systemdispatcher.cpp:354
+#: ../systemdispatcher.cpp:349
 msgctxt "SystemDispatcher|"
 msgid "Image Files (*.png *.jpg *.gif)"
 msgstr "Los archivos de imagen (*.png *.jpg *.gif)"
 
-#: ../systemdispatcher.cpp:359
+#: ../systemdispatcher.cpp:354
 msgctxt "SystemDispatcher|"
 msgid "Select music"
 msgstr "Seleccione la música"
 
-#: ../systemdispatcher.cpp:359
+#: ../systemdispatcher.cpp:354
 msgctxt "SystemDispatcher|"
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma)"
 msgstr "archivos de Audio (*.ogg *.wav *.mp3 *.wma)"
@@ -3567,3 +3526,39 @@ msgstr "Acción de clic central sobre la barra de titulo:"
 msgctxt "WindowManager|"
 msgid "Titlebar right-click action:"
 msgstr "Acción de clic secundario sobre la barra de titulo:"
+
+#~ msgctxt "BottomBar|"
+#~ msgid "Download OK!"
+#~ msgstr "Descarga OK!"
+
+#~ msgctxt "BottomBar|"
+#~ msgid "Tips:"
+#~ msgstr "Consejos:"
+
+#~ msgctxt "BottomBar|"
+#~ msgid "Use Cloud"
+#~ msgstr "Usar Nube"
+
+#~ msgctxt "BottomBar|"
+#~ msgid "Save Cloud"
+#~ msgstr "Salvar en la Nube"
+
+#~ msgctxt "BottomBar|"
+#~ msgid "Upload OK!"
+#~ msgstr "SUbida OK!"
+
+#~ msgctxt "BottomBar|"
+#~ msgid "The kuaipan4uk is not running!"
+#~ msgstr "kuaipan4uk no está ejecutandose!"
+
+#~ msgctxt "BottomBar|"
+#~ msgid "Not found the cloud configuration!"
+#~ msgstr "No se encuentra la configuración de la nube!"
+
+#~ msgctxt "BottomBar|"
+#~ msgid "It will use the Kingsoft disk cloud configuration!"
+#~ msgstr "Se utilizará la configuración nube disco Kingsoft!"
+
+#~ msgctxt "BottomBar|"
+#~ msgid "It will upload configuration to the Kingsoft disk cloud!"
+#~ msgstr "Se carga la configuración de la nube de disco Kingsoft!"

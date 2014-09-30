@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="zh_CN">
-    <extra-po-header-po_revision_date>2014-09-22 00:29+0000</extra-po-header-po_revision_date>
-    <extra-po-header-x_launchpad_export_date>2014-09-22 00:41+0000</extra-po-header-x_launchpad_export_date>
+    <extra-po-header-po_revision_date>2014-09-30 05:28+0000</extra-po-header-po_revision_date>
+    <extra-po-header-x_launchpad_export_date>2014-09-30 05:33+0000</extra-po-header-x_launchpad_export_date>
     <extra-po-headers>Project-Id-Version,Report-Msgid-Bugs-To,POT-Creation-Date,PO-Revision-Date,Last-Translator,Language-Team,MIME-Version,Content-Type,Content-Transfer-Encoding,X-Launchpad-Export-Date,X-Generator,X-Qt-Contexts,X-Language,X-Source-Language</extra-po-headers>
     <extra-po-header-x_generator>Launchpad (build 17196)</extra-po-header-x_generator>
     <extra-po-header-report_msgid_bugs_to></extra-po-header-report_msgid_bugs_to>
     <extra-po-header-language_team>LANGUAGE &lt;LL@li.org&gt;</extra-po-header-language_team>
     <extra-po-header-project_id_version>PACKAGE VERSION</extra-po-header-project_id_version>
-    <extra-po-header-pot_creation_date>2014-09-21 11:24+0000</extra-po-header-pot_creation_date>
+    <extra-po-header-pot_creation_date>2014-09-30 03:56+0000</extra-po-header-pot_creation_date>
     <extra-po-header-last_translator>kobe &lt;xiangli@ubuntukylin.com&gt;</extra-po-header-last_translator>
 <context>
     <name>AboutDialog</name>
@@ -310,61 +310,45 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>BottomBar</name>
     <message>
-        <location filename="../../qml/BottomBar.qml" line="51"/>
-        <location filename="../../qml/BottomBar.qml" line="57"/>
-        <location filename="../../qml/BottomBar.qml" line="71"/>
-        <location filename="../../qml/BottomBar.qml" line="166"/>
-        <location filename="../../qml/BottomBar.qml" line="197"/>
-        <source>Tips:</source>
-        <translation>友情提示：</translation>
-    </message>
-    <message>
-        <location filename="../../qml/BottomBar.qml" line="51"/>
-        <location filename="../../qml/BottomBar.qml" line="71"/>
-        <source>The kuaipan4uk is not running!</source>
-        <translation>快盘没有运行！</translation>
-    </message>
-    <message>
-        <location filename="../../qml/BottomBar.qml" line="57"/>
-        <source>Not found the cloud configuration!</source>
-        <translation>没有发现云配置文件！</translation>
-    </message>
-    <message>
-        <location filename="../../qml/BottomBar.qml" line="63"/>
-        <source>Download OK!</source>
-        <translation>使用完毕！</translation>
-    </message>
-    <message>
-        <location filename="../../qml/BottomBar.qml" line="77"/>
-        <source>Upload OK!</source>
-        <translation>上传完成！</translation>
-    </message>
-    <message>
         <location filename="../../qml/BottomBar.qml" line="100"/>
         <source>main version:</source>
         <translation>主版本：</translation>
     </message>
     <message>
-        <location filename="../../qml/BottomBar.qml" line="134"/>
-        <location filename="../../qml/BottomBar.qml" line="156"/>
+        <source>Tips:</source>
+        <translation type="obsolete">友情提示：</translation>
+    </message>
+    <message>
+        <source>The kuaipan4uk is not running!</source>
+        <translation type="obsolete">快盘没有运行！</translation>
+    </message>
+    <message>
+        <source>Not found the cloud configuration!</source>
+        <translation type="obsolete">没有发现云配置文件！</translation>
+    </message>
+    <message>
+        <source>Download OK!</source>
+        <translation type="obsolete">使用完毕！</translation>
+    </message>
+    <message>
+        <source>Upload OK!</source>
+        <translation type="obsolete">上传完成！</translation>
+    </message>
+    <message>
         <source>Use Cloud</source>
-        <translation>使用云配置</translation>
+        <translation type="obsolete">使用云配置</translation>
     </message>
     <message>
-        <location filename="../../qml/BottomBar.qml" line="139"/>
-        <location filename="../../qml/BottomBar.qml" line="187"/>
         <source>Save Cloud</source>
-        <translation>保存云配置</translation>
+        <translation type="obsolete">保存云配置</translation>
     </message>
     <message>
-        <location filename="../../qml/BottomBar.qml" line="166"/>
         <source>It will use the Kingsoft disk cloud configuration!</source>
-        <translation>该操作将使用金山快盘云配置来设置系统配置！</translation>
+        <translation type="obsolete">该操作将使用金山快盘云配置来设置系统配置！</translation>
     </message>
     <message>
-        <location filename="../../qml/BottomBar.qml" line="197"/>
         <source>It will upload configuration to the Kingsoft disk cloud!</source>
-        <translation>该操作将会把本地配置上传到金山快盘云端！</translation>
+        <translation type="obsolete">该操作将会把本地配置上传到金山快盘云端！</translation>
     </message>
 </context>
 <context>
@@ -1041,57 +1025,63 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>DesktopIcon</name>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="27"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="28"/>
         <source>Desktop Icons</source>
         <translation>桌面图标设置</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="28"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="29"/>
         <source>Set the desktop icon theme and the visibility of desktop icons.</source>
         <translation>设置桌面图标主题和桌面图标的可见性。</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="169"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="216"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="229"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="277"/>
         <source>Icon theme:</source>
         <translation>图标主题：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="252"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="306"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="300"/>
         <location filename="../../qml/func/settings/DesktopIcon.qml" line="364"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="422"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="480"/>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="538"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="436"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="505"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="586"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="667"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="748"/>
         <source>Restore</source>
         <translation>恢复默认</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="280"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="328"/>
         <source>Show Desktop Icons: </source>
         <translation>显示桌面图标： </translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="338"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="410"/>
+        <source>Computer: </source>
+        <translation>计算机： </translation>
+    </message>
+    <message>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="469"/>
         <source>Home Folder: </source>
         <translation>主文件夹： </translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="396"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="550"/>
         <source>Network: </source>
         <translation>网络： </translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="454"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="631"/>
         <source>Trash : </source>
         <translation>回收站： </translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/DesktopIcon.qml" line="512"/>
+        <location filename="../../qml/func/settings/DesktopIcon.qml" line="712"/>
         <source>Mounted Volumes: </source>
         <translation>挂载卷标： </translation>
     </message>
@@ -1428,35 +1418,35 @@ p, li { white-space: pre-wrap; }
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="132"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="105"/>
         <source>The file need to be shredded: </source>
         <translation>需要粉碎的文件： </translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="154"/>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="193"/>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="233"/>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="253"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="127"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="166"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="207"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="227"/>
         <source>No select any file which need to be shredded</source>
         <translation>未选择需要粉碎的文件</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="227"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="200"/>
         <source>Shred File</source>
         <translation>粉碎文件</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="234"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="208"/>
         <source>Shred success!</source>
         <translation>粉碎成功！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="237"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="211"/>
         <source>Shred abnormal!</source>
         <translation>粉碎出现异常！</translation>
     </message>
     <message>
-        <location filename="../../qml/func/settings/FileShredder.qml" line="250"/>
+        <location filename="../../qml/func/settings/FileShredder.qml" line="224"/>
         <source>Deselect</source>
         <translation>取消选择</translation>
     </message>
@@ -2502,12 +2492,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="168"/>
+        <location filename="../main.cpp" line="170"/>
         <source>starting....</source>
         <translation>优客助手正在启动中....</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="170"/>
+        <location filename="../main.cpp" line="172"/>
         <source>loading module data....</source>
         <translation>正在加载模块数据....</translation>
     </message>
@@ -2728,17 +2718,17 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1360"/>
+        <location filename="../sessiondispatcher.cpp" line="1459"/>
         <source>Select folder</source>
         <translation>选择文件夹</translation>
     </message>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1367"/>
+        <location filename="../sessiondispatcher.cpp" line="1466"/>
         <source>Select file</source>
         <translation>选择文件</translation>
     </message>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1367"/>
+        <location filename="../sessiondispatcher.cpp" line="1466"/>
         <source>All Files(*)</source>
         <translation>所有文件(*)</translation>
     </message>
@@ -2986,22 +2976,22 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SystemDispatcher</name>
     <message>
-        <location filename="../systemdispatcher.cpp" line="354"/>
+        <location filename="../systemdispatcher.cpp" line="349"/>
         <source>Select the boot animation</source>
         <translation>选择开机动画</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="354"/>
+        <location filename="../systemdispatcher.cpp" line="349"/>
         <source>Image Files (*.png *.jpg *.gif)</source>
         <translation>图像文件  (*.png *.jpg *.gif)</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="359"/>
+        <location filename="../systemdispatcher.cpp" line="354"/>
         <source>Select music</source>
         <translation>选择音乐</translation>
     </message>
     <message>
-        <location filename="../systemdispatcher.cpp" line="359"/>
+        <location filename="../systemdispatcher.cpp" line="354"/>
         <source>Audio Files (*.ogg *.wav *.mp3 *.wma)</source>
         <translation>音频文件 (*.ogg *.wav *.mp3 *.wma)</translation>
     </message>
