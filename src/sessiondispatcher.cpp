@@ -436,6 +436,10 @@ void SessionDispatcher::verify_user_and_password(QString user, QString pwd) {
 //弹出登录框
 void SessionDispatcher::popup_login_dialog() {
     //LoginDialog width:397; LoginDialog height:282
+
+    //add ubuntukylin sso
+//    sessioniface->call("slot_do_login_account");
+
     LoginDialog *logindialog = new LoginDialog();
     QObject::connect(logindialog, SIGNAL(translate_user_password(QString,QString)),this, SLOT(verify_user_and_password(QString,QString)));
     int w_x = widgetPosition.x() + (this->mainwindow_width / 2) - (397  / 2);
@@ -446,6 +450,8 @@ void SessionDispatcher::popup_login_dialog() {
 
 //退出登录
 void SessionDispatcher::logout_ubuntukylin_account() {
+    //add ubuntukylin sso
+//    sessioniface->call("slot_do_logout");
     this->ready_exit_normally();
 }
 
