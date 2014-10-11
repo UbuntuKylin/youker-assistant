@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="zh_CN">
-    <extra-po-header-po_revision_date>2014-09-30 05:28+0000</extra-po-header-po_revision_date>
-    <extra-po-header-x_launchpad_export_date>2014-09-30 05:33+0000</extra-po-header-x_launchpad_export_date>
+    <extra-po-header-po_revision_date>2014-10-11 05:39+0000</extra-po-header-po_revision_date>
+    <extra-po-header-x_launchpad_export_date>2014-10-11 05:44+0000</extra-po-header-x_launchpad_export_date>
     <extra-po-headers>Project-Id-Version,Report-Msgid-Bugs-To,POT-Creation-Date,PO-Revision-Date,Last-Translator,Language-Team,MIME-Version,Content-Type,Content-Transfer-Encoding,X-Launchpad-Export-Date,X-Generator,X-Qt-Contexts,X-Language,X-Source-Language</extra-po-headers>
     <extra-po-header-x_generator>Launchpad (build 17196)</extra-po-header-x_generator>
     <extra-po-header-report_msgid_bugs_to></extra-po-header-report_msgid_bugs_to>
     <extra-po-header-language_team>LANGUAGE &lt;LL@li.org&gt;</extra-po-header-language_team>
     <extra-po-header-project_id_version>PACKAGE VERSION</extra-po-header-project_id_version>
-    <extra-po-header-pot_creation_date>2014-09-30 03:56+0000</extra-po-header-pot_creation_date>
+    <extra-po-header-pot_creation_date>2014-10-11 05:39+0000</extra-po-header-pot_creation_date>
     <extra-po-header-last_translator>kobe &lt;xiangli@ubuntukylin.com&gt;</extra-po-header-last_translator>
 <context>
     <name>AboutDialog</name>
@@ -313,42 +313,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/BottomBar.qml" line="100"/>
         <source>main version:</source>
         <translation>主版本：</translation>
-    </message>
-    <message>
-        <source>Tips:</source>
-        <translation type="obsolete">友情提示：</translation>
-    </message>
-    <message>
-        <source>The kuaipan4uk is not running!</source>
-        <translation type="obsolete">快盘没有运行！</translation>
-    </message>
-    <message>
-        <source>Not found the cloud configuration!</source>
-        <translation type="obsolete">没有发现云配置文件！</translation>
-    </message>
-    <message>
-        <source>Download OK!</source>
-        <translation type="obsolete">使用完毕！</translation>
-    </message>
-    <message>
-        <source>Upload OK!</source>
-        <translation type="obsolete">上传完成！</translation>
-    </message>
-    <message>
-        <source>Use Cloud</source>
-        <translation type="obsolete">使用云配置</translation>
-    </message>
-    <message>
-        <source>Save Cloud</source>
-        <translation type="obsolete">保存云配置</translation>
-    </message>
-    <message>
-        <source>It will use the Kingsoft disk cloud configuration!</source>
-        <translation type="obsolete">该操作将使用金山快盘云配置来设置系统配置！</translation>
-    </message>
-    <message>
-        <source>It will upload configuration to the Kingsoft disk cloud!</source>
-        <translation type="obsolete">该操作将会把本地配置上传到金山快盘云端！</translation>
     </message>
 </context>
 <context>
@@ -1801,54 +1765,6 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>LoginDialog</name>
-    <message>
-        <location filename="../logindialog.ui" line="14"/>
-        <source>Dialog</source>
-        <translation>对话框</translation>
-    </message>
-    <message>
-        <location filename="../logindialog.ui" line="30"/>
-        <source>Cancel</source>
-        <translation>取消</translation>
-    </message>
-    <message>
-        <location filename="../logindialog.ui" line="47"/>
-        <source>Login</source>
-        <translation>登录</translation>
-    </message>
-    <message>
-        <location filename="../logindialog.ui" line="76"/>
-        <source>Forum account password</source>
-        <translation>论坛帐号的密码</translation>
-    </message>
-    <message>
-        <location filename="../logindialog.ui" line="124"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../logindialog.ui" line="146"/>
-        <source>Remember pwd</source>
-        <translation>记住密码</translation>
-    </message>
-    <message>
-        <location filename="../logindialog.ui" line="184"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Register&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;注册&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../logindialog.cpp" line="93"/>
-        <source>Please input your username!</source>
-        <translation>请输入您的用户名！</translation>
-    </message>
-    <message>
-        <location filename="../logindialog.cpp" line="100"/>
-        <source>Please input your password!</source>
-        <translation>请输入您的密码！</translation>
-    </message>
-</context>
-<context>
     <name>MemoryInfo</name>
     <message>
         <location filename="../../qml/func/info/MemoryInfo.qml" line="55"/>
@@ -2492,12 +2408,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="170"/>
+        <location filename="../main.cpp" line="172"/>
         <source>starting....</source>
         <translation>优客助手正在启动中....</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="172"/>
+        <location filename="../main.cpp" line="174"/>
         <source>loading module data....</source>
         <translation>正在加载模块数据....</translation>
     </message>
@@ -2523,127 +2439,127 @@ p, li { white-space: pre-wrap; }
         <translation>中国</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="68"/>
-        <source>Network Error!</source>
-        <translation>网络错误！</translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="71"/>
-        <source>No User!</source>
-        <translation>没有该用户！</translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="74"/>
-        <source>Password Wrong!</source>
-        <translation>密码错误！</translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="77"/>
-        <source>Login Failed!</source>
-        <translation>登录失败！</translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="149"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="607"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="183"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="661"/>
         <source>Hits per day </source>
         <translation>每日点击次数 </translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="262"/>
-        <source>Logging...</source>
-        <translation>正在登录...</translation>
+        <location filename="../../qml/func/others/RightPage.qml" line="272"/>
+        <source>Register</source>
+        <translation>注册账号</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="294"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="348"/>
         <source>Logout</source>
         <translation>注销</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="324"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="378"/>
         <source>Level:</source>
         <translation>等级：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="335"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="389"/>
         <source>Score:</source>
         <translation>经验值：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="391"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="445"/>
         <source>DistroWatch Ranking</source>
         <translation>受欢迎程度排名</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="401"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="418"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="455"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="472"/>
         <source>Ubuntu Kylin Details</source>
         <translation>Ubuntu Kylin 详情</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="627"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="645"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="681"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="699"/>
         <source>Hide</source>
         <translation>隐藏</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="661"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="715"/>
         <source>Last Update:</source>
         <translation>最后更新：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="680"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="734"/>
         <source>OS Type:</source>
         <translation>发行归类：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="698"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="752"/>
         <source>Based on:</source>
         <translation>基于何种发行：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="716"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="770"/>
         <source>Origin: </source>
         <translation>来源： </translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="734"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="788"/>
         <source>Architecture:</source>
         <translation>处理器架构：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="753"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="807"/>
         <source>Desktop:</source>
         <translation>桌面：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="772"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="826"/>
         <source>Category:</source>
         <translation>类型：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="790"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="844"/>
         <source>Status:</source>
         <translation>状态：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="808"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="862"/>
         <source>Popularity:</source>
         <translation>受欢迎程度排名：</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="848"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="902"/>
         <source>Forum Help</source>
         <translation>论坛求助</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="865"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="919"/>
         <source>Features</source>
         <translation>新版本特性</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="874"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="928"/>
         <source>Feedback</source>
         <translation>问题反馈</translation>
+    </message>
+    <message>
+        <source>Network Error!</source>
+        <translation type="obsolete">网络错误！</translation>
+    </message>
+    <message>
+        <source>No User!</source>
+        <translation type="obsolete">没有该用户！</translation>
+    </message>
+    <message>
+        <source>Password Wrong!</source>
+        <translation type="obsolete">密码错误！</translation>
+    </message>
+    <message>
+        <source>Login Failed!</source>
+        <translation type="obsolete">登录失败！</translation>
+    </message>
+    <message>
+        <source>Logging...</source>
+        <translation type="obsolete">正在登录...</translation>
     </message>
 </context>
 <context>
@@ -2718,17 +2634,17 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1459"/>
+        <location filename="../sessiondispatcher.cpp" line="1490"/>
         <source>Select folder</source>
         <translation>选择文件夹</translation>
     </message>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1466"/>
+        <location filename="../sessiondispatcher.cpp" line="1497"/>
         <source>Select file</source>
         <translation>选择文件</translation>
     </message>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1466"/>
+        <location filename="../sessiondispatcher.cpp" line="1497"/>
         <source>All Files(*)</source>
         <translation>所有文件(*)</translation>
     </message>
@@ -3649,6 +3565,45 @@ p, li { white-space: pre-wrap; }
         <location filename="../../qml/func/settings/WindowManager.qml" line="606"/>
         <source>Titlebar right-click action:</source>
         <translation>标题栏右键动作：</translation>
+    </message>
+</context>
+<context>
+    <name>LoginDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="obsolete">对话框</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="obsolete">取消</translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation type="obsolete">登录</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Remember pwd</source>
+        <translation type="obsolete">记住密码</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Register&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;注册&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Forum account password</source>
+        <translation type="obsolete">论坛帐号的密码</translation>
+    </message>
+    <message>
+        <source>Please input your username!</source>
+        <translation type="obsolete">请输入您的用户名！</translation>
+    </message>
+    <message>
+        <source>Please input your password!</source>
+        <translation type="obsolete">请输入您的密码！</translation>
     </message>
 </context>
 </TS>

@@ -66,9 +66,7 @@ HEADERS += homepage.h \
     slidershow.h \
     newcharacter.h \
     quibo.h \
-    logindialog.h \
     accountcache.h \
-    httpauth.h \
     systemdispatcher.h \
     sessiondispatcher.h \
     modaldialog.h \
@@ -112,9 +110,7 @@ SOURCES += main.cpp \
     icontext.cpp \
     slidershow.cpp \
     newcharacter.cpp \
-    logindialog.cpp \
     accountcache.cpp \
-    httpauth.cpp \
     quibo.cpp \
     systemdispatcher.cpp \
     sessiondispatcher.cpp \
@@ -151,7 +147,6 @@ RESOURCES += pixmap.qrc
 
 FORMS += \
     quibo.ui \
-    logindialog.ui \
     modaldialog.ui \
     warningdialog.ui \
     tray.ui \

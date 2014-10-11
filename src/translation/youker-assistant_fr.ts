@@ -1746,54 +1746,6 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>LoginDialog</name>
-    <message>
-        <location filename="../logindialog.ui" line="14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../logindialog.ui" line="30"/>
-        <source>Cancel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../logindialog.ui" line="47"/>
-        <source>Login</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../logindialog.ui" line="76"/>
-        <source>Forum account password</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../logindialog.ui" line="124"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../logindialog.ui" line="146"/>
-        <source>Remember pwd</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../logindialog.ui" line="184"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Register&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../logindialog.cpp" line="93"/>
-        <source>Please input your username!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../logindialog.cpp" line="100"/>
-        <source>Please input your password!</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>MemoryInfo</name>
     <message>
         <location filename="../../qml/func/info/MemoryInfo.qml" line="55"/>
@@ -2437,12 +2389,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="170"/>
+        <location filename="../main.cpp" line="172"/>
         <source>starting....</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="172"/>
+        <location filename="../main.cpp" line="174"/>
         <source>loading module data....</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2468,125 +2420,105 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="68"/>
-        <source>Network Error!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="71"/>
-        <source>No User!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="74"/>
-        <source>Password Wrong!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="77"/>
-        <source>Login Failed!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="149"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="607"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="183"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="661"/>
         <source>Hits per day </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="262"/>
-        <source>Logging...</source>
+        <location filename="../../qml/func/others/RightPage.qml" line="272"/>
+        <source>Register</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="294"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="348"/>
         <source>Logout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="324"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="378"/>
         <source>Level:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="335"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="389"/>
         <source>Score:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="391"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="445"/>
         <source>DistroWatch Ranking</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="401"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="418"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="455"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="472"/>
         <source>Ubuntu Kylin Details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="627"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="645"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="681"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="699"/>
         <source>Hide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="661"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="715"/>
         <source>Last Update:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="680"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="734"/>
         <source>OS Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="698"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="752"/>
         <source>Based on:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="716"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="770"/>
         <source>Origin: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="734"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="788"/>
         <source>Architecture:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="753"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="807"/>
         <source>Desktop:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="772"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="826"/>
         <source>Category:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="790"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="844"/>
         <source>Status:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="808"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="862"/>
         <source>Popularity:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="848"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="902"/>
         <source>Forum Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="865"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="919"/>
         <source>Features</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="874"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="928"/>
         <source>Feedback</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2663,17 +2595,17 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1459"/>
+        <location filename="../sessiondispatcher.cpp" line="1490"/>
         <source>Select folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1466"/>
+        <location filename="../sessiondispatcher.cpp" line="1497"/>
         <source>Select file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1466"/>
+        <location filename="../sessiondispatcher.cpp" line="1497"/>
         <source>All Files(*)</source>
         <translation type="unfinished"></translation>
     </message>

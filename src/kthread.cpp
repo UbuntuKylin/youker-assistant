@@ -84,6 +84,14 @@ void KThread::run() {
     else if(methodName == "call_camera") {
         iface->call("call_camera");
     }
+
+    //sso
+    else if(methodName == "slot_do_login_account") {
+        iface->call("slot_do_login_account");
+    }
+    else if(methodName == "check_user") {
+       iface->call("check_user");
+    }
 }
 void KThread::stop() {
     wait();

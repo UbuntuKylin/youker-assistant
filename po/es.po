@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: youker-assistant\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-09-30 03:56+0000\n"
-"PO-Revision-Date: 2014-09-30 05:29+0000\n"
+"POT-Creation-Date: 2014-10-11 05:39+0000\n"
+"PO-Revision-Date: 2014-10-11 05:40+0000\n"
 "Last-Translator: kobe <xiangli@ubuntukylin.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-09-30 05:32+0000\n"
+"X-Launchpad-Export-Date: 2014-10-11 05:44+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #: ../aboutdialog.ui:26 ../aboutdialog.ui:42
@@ -1757,51 +1757,6 @@ msgctxt "LeftPage|"
 msgid "Clean up the Cookies, including surfing and shopping records"
 msgstr "Limpie las cookies, incluyendo los registros de navegación y compra"
 
-#: ../logindialog.ui:14
-msgctxt "LoginDialog|"
-msgid "Dialog"
-msgstr "Diálogo"
-
-#: ../logindialog.ui:30
-msgctxt "LoginDialog|"
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: ../logindialog.ui:47
-msgctxt "LoginDialog|"
-msgid "Login"
-msgstr "Acceso"
-
-#: ../logindialog.ui:76
-msgctxt "LoginDialog|"
-msgid "Forum account password"
-msgstr "Foro contraseña de la cuenta"
-
-#: ../logindialog.ui:124
-msgctxt "LoginDialog|"
-msgid "<html><head/><body><p><br/></p></body></html>"
-msgstr "<html><head/><body><p><br/></p></body></html>"
-
-#: ../logindialog.ui:146
-msgctxt "LoginDialog|"
-msgid "Remember pwd"
-msgstr "Recordar clave de acceso"
-
-#: ../logindialog.ui:184
-msgctxt "LoginDialog|"
-msgid "<html><head/><body><p>Register</p></body></html>"
-msgstr "<html><head/><body><p>Registro</p></body></html>"
-
-#: ../logindialog.cpp:93
-msgctxt "LoginDialog|"
-msgid "Please input your username!"
-msgstr "Por favor ingrese su nombre de usuario!"
-
-#: ../logindialog.cpp:100
-msgctxt "LoginDialog|"
-msgid "Please input your password!"
-msgstr "Por favor ingrese su clave de acceso!"
-
 #: ../../qml/func/info/MemoryInfo.qml:55 ../../qml/func/info/MemoryInfo.qml:70
 #: ../../qml/func/info/MemoryInfo.qml:90 ../../qml/func/info/MemoryInfo.qml:109
 #: ../../qml/func/info/MemoryInfo.qml:140
@@ -2421,12 +2376,12 @@ msgctxt "ProcessManager|"
 msgid "Process Name"
 msgstr "Nombre del proceso"
 
-#: ../main.cpp:170
+#: ../main.cpp:172
 msgctxt "QObject|"
 msgid "starting...."
 msgstr "empezando ...."
 
-#: ../main.cpp:172
+#: ../main.cpp:174
 msgctxt "QObject|"
 msgid "loading module data...."
 msgstr "datos de módulo de carga ...."
@@ -2446,125 +2401,105 @@ msgctxt "RightPage|"
 msgid "China"
 msgstr "China"
 
-#: ../../qml/func/others/RightPage.qml:68
-msgctxt "RightPage|"
-msgid "Network Error!"
-msgstr "Error de red!"
-
-#: ../../qml/func/others/RightPage.qml:71
-msgctxt "RightPage|"
-msgid "No User!"
-msgstr "¡Sin usuario!"
-
-#: ../../qml/func/others/RightPage.qml:74
-msgctxt "RightPage|"
-msgid "Password Wrong!"
-msgstr "Clave de acceso errónea!"
-
-#: ../../qml/func/others/RightPage.qml:77
-msgctxt "RightPage|"
-msgid "Login Failed!"
-msgstr "Login Fallo!"
-
-#: ../../qml/func/others/RightPage.qml:149
-#: ../../qml/func/others/RightPage.qml:607
+#: ../../qml/func/others/RightPage.qml:183
+#: ../../qml/func/others/RightPage.qml:661
 msgctxt "RightPage|"
 msgid "Hits per day "
 msgstr "Entradas por día "
 
-#: ../../qml/func/others/RightPage.qml:262
+#: ../../qml/func/others/RightPage.qml:272
 msgctxt "RightPage|"
-msgid "Logging..."
-msgstr "Registro ..."
+msgid "Register"
+msgstr "Registro"
 
-#: ../../qml/func/others/RightPage.qml:294
+#: ../../qml/func/others/RightPage.qml:348
 msgctxt "RightPage|"
 msgid "Logout"
 msgstr "Cerrar sesión"
 
-#: ../../qml/func/others/RightPage.qml:324
+#: ../../qml/func/others/RightPage.qml:378
 msgctxt "RightPage|"
 msgid "Level:"
 msgstr "Nivel:"
 
-#: ../../qml/func/others/RightPage.qml:335
+#: ../../qml/func/others/RightPage.qml:389
 msgctxt "RightPage|"
 msgid "Score:"
 msgstr "Puntuación:"
 
-#: ../../qml/func/others/RightPage.qml:391
+#: ../../qml/func/others/RightPage.qml:445
 msgctxt "RightPage|"
 msgid "DistroWatch Ranking"
 msgstr "Clasificación DistroWatch"
 
-#: ../../qml/func/others/RightPage.qml:401
-#: ../../qml/func/others/RightPage.qml:418
+#: ../../qml/func/others/RightPage.qml:455
+#: ../../qml/func/others/RightPage.qml:472
 msgctxt "RightPage|"
 msgid "Ubuntu Kylin Details"
 msgstr "Ubuntu Kylin Detalles"
 
-#: ../../qml/func/others/RightPage.qml:627
-#: ../../qml/func/others/RightPage.qml:645
+#: ../../qml/func/others/RightPage.qml:681
+#: ../../qml/func/others/RightPage.qml:699
 msgctxt "RightPage|"
 msgid "Hide"
 msgstr "Ocultar"
 
-#: ../../qml/func/others/RightPage.qml:661
+#: ../../qml/func/others/RightPage.qml:715
 msgctxt "RightPage|"
 msgid "Last Update:"
 msgstr "Última actualización:"
 
-#: ../../qml/func/others/RightPage.qml:680
+#: ../../qml/func/others/RightPage.qml:734
 msgctxt "RightPage|"
 msgid "OS Type:"
 msgstr "OS Tipo:"
 
-#: ../../qml/func/others/RightPage.qml:698
+#: ../../qml/func/others/RightPage.qml:752
 msgctxt "RightPage|"
 msgid "Based on:"
 msgstr "Residencia en:"
 
-#: ../../qml/func/others/RightPage.qml:716
+#: ../../qml/func/others/RightPage.qml:770
 msgctxt "RightPage|"
 msgid "Origin: "
 msgstr "Origen: "
 
-#: ../../qml/func/others/RightPage.qml:734
+#: ../../qml/func/others/RightPage.qml:788
 msgctxt "RightPage|"
 msgid "Architecture:"
 msgstr "Arquitectura:"
 
-#: ../../qml/func/others/RightPage.qml:753
+#: ../../qml/func/others/RightPage.qml:807
 msgctxt "RightPage|"
 msgid "Desktop:"
 msgstr "Escritorio:"
 
-#: ../../qml/func/others/RightPage.qml:772
+#: ../../qml/func/others/RightPage.qml:826
 msgctxt "RightPage|"
 msgid "Category:"
 msgstr "Categoría:"
 
-#: ../../qml/func/others/RightPage.qml:790
+#: ../../qml/func/others/RightPage.qml:844
 msgctxt "RightPage|"
 msgid "Status:"
 msgstr "Estatus:"
 
-#: ../../qml/func/others/RightPage.qml:808
+#: ../../qml/func/others/RightPage.qml:862
 msgctxt "RightPage|"
 msgid "Popularity:"
 msgstr "Popularidad:"
 
-#: ../../qml/func/others/RightPage.qml:848
+#: ../../qml/func/others/RightPage.qml:902
 msgctxt "RightPage|"
 msgid "Forum Help"
 msgstr "Foro Ayuda"
 
-#: ../../qml/func/others/RightPage.qml:865
+#: ../../qml/func/others/RightPage.qml:919
 msgctxt "RightPage|"
 msgid "Features"
 msgstr "Características"
 
-#: ../../qml/func/others/RightPage.qml:874
+#: ../../qml/func/others/RightPage.qml:928
 msgctxt "RightPage|"
 msgid "Feedback"
 msgstr "Comentarios"
@@ -2637,17 +2572,17 @@ msgstr ""
 "La ciudad no se puede encontrar, de entrada por favor el nombre de la ciudad "
 "de nuevo!"
 
-#: ../sessiondispatcher.cpp:1459
+#: ../sessiondispatcher.cpp:1490
 msgctxt "SessionDispatcher|"
 msgid "Select folder"
 msgstr "Seleccionar carpeta"
 
-#: ../sessiondispatcher.cpp:1466
+#: ../sessiondispatcher.cpp:1497
 msgctxt "SessionDispatcher|"
 msgid "Select file"
 msgstr "Seleccionar archivo(s)"
 
-#: ../sessiondispatcher.cpp:1466
+#: ../sessiondispatcher.cpp:1497
 msgctxt "SessionDispatcher|"
 msgid "All Files(*)"
 msgstr "Todos los archivos(*)"
@@ -3527,38 +3462,58 @@ msgctxt "WindowManager|"
 msgid "Titlebar right-click action:"
 msgstr "Acción de clic secundario sobre la barra de titulo:"
 
-#~ msgctxt "BottomBar|"
-#~ msgid "Download OK!"
-#~ msgstr "Descarga OK!"
+#~ msgctxt "LoginDialog|"
+#~ msgid "Dialog"
+#~ msgstr "Diálogo"
 
-#~ msgctxt "BottomBar|"
-#~ msgid "Tips:"
-#~ msgstr "Consejos:"
+#~ msgctxt "LoginDialog|"
+#~ msgid "Cancel"
+#~ msgstr "Cancelar"
 
-#~ msgctxt "BottomBar|"
-#~ msgid "Use Cloud"
-#~ msgstr "Usar Nube"
+#~ msgctxt "LoginDialog|"
+#~ msgid "Please input your username!"
+#~ msgstr "Por favor ingrese su nombre de usuario!"
 
-#~ msgctxt "BottomBar|"
-#~ msgid "Save Cloud"
-#~ msgstr "Salvar en la Nube"
+#~ msgctxt "LoginDialog|"
+#~ msgid "Please input your password!"
+#~ msgstr "Por favor ingrese su clave de acceso!"
 
-#~ msgctxt "BottomBar|"
-#~ msgid "Upload OK!"
-#~ msgstr "SUbida OK!"
+#~ msgctxt "LoginDialog|"
+#~ msgid "Remember pwd"
+#~ msgstr "Recordar clave de acceso"
 
-#~ msgctxt "BottomBar|"
-#~ msgid "The kuaipan4uk is not running!"
-#~ msgstr "kuaipan4uk no está ejecutandose!"
+#~ msgctxt "LoginDialog|"
+#~ msgid "Login"
+#~ msgstr "Acceso"
 
-#~ msgctxt "BottomBar|"
-#~ msgid "Not found the cloud configuration!"
-#~ msgstr "No se encuentra la configuración de la nube!"
+#~ msgctxt "RightPage|"
+#~ msgid "Login Failed!"
+#~ msgstr "Login Fallo!"
 
-#~ msgctxt "BottomBar|"
-#~ msgid "It will use the Kingsoft disk cloud configuration!"
-#~ msgstr "Se utilizará la configuración nube disco Kingsoft!"
+#~ msgctxt "RightPage|"
+#~ msgid "No User!"
+#~ msgstr "¡Sin usuario!"
 
-#~ msgctxt "BottomBar|"
-#~ msgid "It will upload configuration to the Kingsoft disk cloud!"
-#~ msgstr "Se carga la configuración de la nube de disco Kingsoft!"
+#~ msgctxt "RightPage|"
+#~ msgid "Password Wrong!"
+#~ msgstr "Clave de acceso errónea!"
+
+#~ msgctxt "LoginDialog|"
+#~ msgid "<html><head/><body><p>Register</p></body></html>"
+#~ msgstr "<html><head/><body><p>Registro</p></body></html>"
+
+#~ msgctxt "LoginDialog|"
+#~ msgid "<html><head/><body><p><br/></p></body></html>"
+#~ msgstr "<html><head/><body><p><br/></p></body></html>"
+
+#~ msgctxt "LoginDialog|"
+#~ msgid "Forum account password"
+#~ msgstr "Foro contraseña de la cuenta"
+
+#~ msgctxt "RightPage|"
+#~ msgid "Logging..."
+#~ msgstr "Registro ..."
+
+#~ msgctxt "RightPage|"
+#~ msgid "Network Error!"
+#~ msgstr "Error de red!"

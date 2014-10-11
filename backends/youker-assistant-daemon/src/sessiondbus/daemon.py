@@ -80,7 +80,7 @@ WEATHER_SERVER = "http://service.ubuntukylin.com:8001/weather/"
 
 from appcollections.monitorball.monitor_ball import MonitorBall
 
-#from sso.ubuntusso import get_ubuntu_sso_backend#20140917
+from sso.ubuntusso import get_ubuntu_sso_backend
 
 log = logging.getLogger('SessionDaemon')
 #from slider.wizard import Wizard
@@ -116,85 +116,147 @@ class SessionDaemon(dbus.service.Object):
         self.daemonoldkernel = cleaner.CleanTheOldkernel()
         self.daemoncache = cleaner.CleanTheCache()
         self.init_mechanize()
+#        # sso - Robert
+        self.sso = get_ubuntu_sso_backend()
+        self.sso.connect("whoami", self.slot_whoami_done)
+        self.sso.connect("logout", self.slot_logout_successful)
+        self.sso.connect("fail",self.slot_login_fail)
+        self.token = ""
+        self.user = ""
+        self.display_name = ""
+        self.preferred_email = ""
+
         bus_name = dbus.service.BusName(INTERFACE, bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
 
-#    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
-#    def check_user(self):
-#        self.sso = get_ubuntu_sso_backend()
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def check_user(self):
+        try:
+            # try backend login
+            self.sso.find_oauth_token()
+        except ImportError:
+            print('Initial ubuntu-kylin-sso-client failed, seem it is not installed.')
+        except Exception, e:
+            print('Check user failed.')
+            print e
 #        try:
 #            # try backend login
 #            self.token = self.sso.find_oauth_token_and_verify_sync()
 #            if self.token:
-#                self.sso.whoami()
+#                # self.sso.whoami()
+#                self.sso.whoami_sync(self.token)
 #        except ImportError:
-#            print ('Initial ubuntu-kylin-sso-client failed, seem it is not installed.')
+#            print('Initial ubuntu-kylin-sso-client failed, seem it is not installed.')
 #        except:
-#            print ('Check user failed.')
+#            print('Check user failed.')
 
-#    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
-#    def slot_do_login_account(self):
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def slot_do_login_account(self):
+        try:
+            self.sso.set_show_register(False)
+            self.sso.get_oauth_token()
+        except ImportError:
+            print('Initial ubuntu-kylin-sso-client failed, seem it is not installed.')
+        except Exception, e:
+            print('User login failed.')
+            print e
 #        try:
+#            print 'a111'
 #            self.sso.setShowRegister(False)
+#            print 'a222'
 #            self.token = self.sso.get_oauth_token_and_verify_sync()
+#            print 'a333'
 #            if self.token:
-#                self.sso.whoami()
-
+#                # self.sso.whoami()
+#                print 'a444'
+#                self.sso.whoami_sync(self.token)
+#            print 'a555'
 #        except ImportError:
-#            print ('Initial ubuntu-kylin-sso-client failed, seem it is not installed.')
+#            print('Initial ubuntu-kylin-sso-client failed, seem it is not installed.')
 #        except:
-#            print ('User login failed.')
+#            print('User login failed.')
 
-#    # user register
-#    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
-#    def slot_do_register(self):
+    # user register
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def slot_do_register(self):
+        try:
+            self.sso.set_show_register(True)
+            self.sso.get_oauth_token()
+
+        except ImportError:
+            print('Initial ubuntu-kylin-sso-client failed, seem it is not installed.')
+        except Exception, e:
+            print('User register failed.')
+            print e
 #        try:
 #            self.sso.setShowRegister(True)
 #            self.token = self.sso.get_oauth_token_and_verify_sync()
 #            if self.token:
-#                self.sso.whoami()
+#                # self.sso.whoami()
+#                self.sso.whoami_sync(self.token)
 
 #        except ImportError:
-#            print ('Initial ubuntu-kylin-sso-client failed, seem it is not installed.')
+#            print('Initial ubuntu-kylin-sso-client failed, seem it is not installed.')
 #        except:
-#            print ('User register failed.')
+#            print('User register failed.')
 
-#    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
-#    def slot_do_logout(self):
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def slot_do_logout(self):
+        try:
+            self.sso.clear_token()
 
+        except ImportError:
+            print('Initial ubuntu-kylin-sso-client failed, seem it is not installed.')
+        except Exception, e:
+            print('User logout failed.')
+            print e
 #        try:
 #            self.sso.clear_token()
-#            self.token = ""
-
-##            self.ui.beforeLoginWidget.show()
-##            self.ui.afterLoginWidget.hide()
-
-##            Globals.USER = ''
-##            Globals.USER_DISPLAY = ''
+#            self.token = ''
+#            self.user = ''
+#            self.display_name = ''
+#            self.preferred_email = ''
 
 #        except ImportError:
-#            print ('Initial ubuntu-kylin-sso-client failed, seem it is not installed.')
+#            print('Initial ubuntu-kylin-sso-client failed, seem it is not installed.')
 #        except:
-#            print ('User logout failed.')
+#            print('User logout failed.')
 
-    # update user login status
-#    def slot_whoami_done(self, sso, result):
-#        user = result["username"]
-#        display_name = result["displayname"]
-#        preferred_email = result["preferred_email"]
-#        print 'Login success, username: %s' % display_name
+    #update user login status
+    def slot_whoami_done(self, sso, result):
+        self.user = result["username"]
+        self.display_name = result["displayname"]
+        self.preferred_email = result["preferred_email"]
+        print 'Login success, username: %s' % self.display_name
+        self.youkerid_whoami_signal(self.display_name, self.preferred_email)
 
-#        self.ui.beforeLoginWidget.hide()
-#        self.ui.afterLoginWidget.show()
-#        self.ui.username.setText(display_name)
+    def slot_logout_successful(self, sso):
+        if self.token:
+            print 'User %s has been logout' % self.display_name
+            self.token = ''
+            self.user = ''
+            self.display_name = ''
+            self.preferred_email = ''
+        else:
+            print 'No user has been login'
+        self.youkerid_logout_signal()
 
-#        Globals.USER = user
-#        Globals.USER_DISPLAY = display_name
-#        Globals.TOKEN = self.sso.get_oauth_token_and_verify_sync()
+    def slot_login_fail(self, sso):
+        print 'Login or logout failed'
+        self.youkerid_login_fail_signal()
 
-#        self.appmgr.reinit_premoter_auth()
+    @dbus.service.signal(INTERFACE, signature='ss')
+    def youkerid_whoami_signal(self, display_name, preferred_email):
+        pass
 
+    @dbus.service.signal(INTERFACE, signature='')
+    def youkerid_logout_signal(self):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='')
+    def youkerid_login_fail_signal(self):
+        pass
 
 
 
@@ -399,13 +461,6 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def show_ip_address(self):
         return self.ip_addr
-
-    # 20140917
-    # user account
-#    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
-#    def get_ubuntu_sso_backend_daemon(self):
-#        if not hasattr(self, 'sso'):
-#            self.sso = get_ubuntu_sso_backend()
 
     # True: has camera, False: no camera
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')

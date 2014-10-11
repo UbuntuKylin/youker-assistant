@@ -1,8 +1,9 @@
 youker-assistant (1.3.1-0ubuntu1) utopic; urgency=low
 
   * Add cinnamon desktop settings.
+  * Add Ubuntu Kylin SSO.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 30 Sep 2014 11:42:21 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Sat, 11 Oct 2014 15:26:25 +0800
 
 youker-assistant (1.3.0-0ubuntu1) utopic; urgency=low
 

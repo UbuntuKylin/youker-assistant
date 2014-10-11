@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-30 03:56+0000\n"
-"PO-Revision-Date: 2014-09-30 05:28+0000\n"
+"POT-Creation-Date: 2014-10-11 05:39+0000\n"
+"PO-Revision-Date: 2014-10-11 05:39+0000\n"
 "Last-Translator: kobe <xiangli@ubuntukylin.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-09-30 05:33+0000\n"
+"X-Launchpad-Export-Date: 2014-10-11 05:44+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 "X-Qt-Contexts: true\n"
 "X-Language: zh_CN\n"
@@ -1715,51 +1715,6 @@ msgctxt "LeftPage|"
 msgid "Clean up the Cookies, including surfing and shopping records"
 msgstr "清理系统中的 Cookies，包含上网、购物、游戏等记录"
 
-#: ../logindialog.ui:14
-msgctxt "LoginDialog|"
-msgid "Dialog"
-msgstr "对话框"
-
-#: ../logindialog.ui:30
-msgctxt "LoginDialog|"
-msgid "Cancel"
-msgstr "取消"
-
-#: ../logindialog.ui:47
-msgctxt "LoginDialog|"
-msgid "Login"
-msgstr "登录"
-
-#: ../logindialog.ui:76
-msgctxt "LoginDialog|"
-msgid "Forum account password"
-msgstr "论坛帐号的密码"
-
-#: ../logindialog.ui:124
-msgctxt "LoginDialog|"
-msgid "<html><head/><body><p><br/></p></body></html>"
-msgstr "<html><head/><body><p><br/></p></body></html>"
-
-#: ../logindialog.ui:146
-msgctxt "LoginDialog|"
-msgid "Remember pwd"
-msgstr "记住密码"
-
-#: ../logindialog.ui:184
-msgctxt "LoginDialog|"
-msgid "<html><head/><body><p>Register</p></body></html>"
-msgstr "<html><head/><body><p>注册</p></body></html>"
-
-#: ../logindialog.cpp:93
-msgctxt "LoginDialog|"
-msgid "Please input your username!"
-msgstr "请输入您的用户名！"
-
-#: ../logindialog.cpp:100
-msgctxt "LoginDialog|"
-msgid "Please input your password!"
-msgstr "请输入您的密码！"
-
 #: ../../qml/func/info/MemoryInfo.qml:55 ../../qml/func/info/MemoryInfo.qml:70
 #: ../../qml/func/info/MemoryInfo.qml:90 ../../qml/func/info/MemoryInfo.qml:109
 #: ../../qml/func/info/MemoryInfo.qml:140
@@ -2366,12 +2321,12 @@ msgctxt "ProcessManager|"
 msgid "Process Name"
 msgstr "进程名"
 
-#: ../main.cpp:170
+#: ../main.cpp:172
 msgctxt "QObject|"
 msgid "starting...."
 msgstr "优客助手正在启动中...."
 
-#: ../main.cpp:172
+#: ../main.cpp:174
 msgctxt "QObject|"
 msgid "loading module data...."
 msgstr "正在加载模块数据...."
@@ -2391,125 +2346,105 @@ msgctxt "RightPage|"
 msgid "China"
 msgstr "中国"
 
-#: ../../qml/func/others/RightPage.qml:68
-msgctxt "RightPage|"
-msgid "Network Error!"
-msgstr "网络错误！"
-
-#: ../../qml/func/others/RightPage.qml:71
-msgctxt "RightPage|"
-msgid "No User!"
-msgstr "没有该用户！"
-
-#: ../../qml/func/others/RightPage.qml:74
-msgctxt "RightPage|"
-msgid "Password Wrong!"
-msgstr "密码错误！"
-
-#: ../../qml/func/others/RightPage.qml:77
-msgctxt "RightPage|"
-msgid "Login Failed!"
-msgstr "登录失败！"
-
-#: ../../qml/func/others/RightPage.qml:149
-#: ../../qml/func/others/RightPage.qml:607
+#: ../../qml/func/others/RightPage.qml:183
+#: ../../qml/func/others/RightPage.qml:661
 msgctxt "RightPage|"
 msgid "Hits per day "
 msgstr "每日点击次数 "
 
-#: ../../qml/func/others/RightPage.qml:262
+#: ../../qml/func/others/RightPage.qml:272
 msgctxt "RightPage|"
-msgid "Logging..."
-msgstr "正在登录..."
+msgid "Register"
+msgstr "注册账号"
 
-#: ../../qml/func/others/RightPage.qml:294
+#: ../../qml/func/others/RightPage.qml:348
 msgctxt "RightPage|"
 msgid "Logout"
 msgstr "注销"
 
-#: ../../qml/func/others/RightPage.qml:324
+#: ../../qml/func/others/RightPage.qml:378
 msgctxt "RightPage|"
 msgid "Level:"
 msgstr "等级："
 
-#: ../../qml/func/others/RightPage.qml:335
+#: ../../qml/func/others/RightPage.qml:389
 msgctxt "RightPage|"
 msgid "Score:"
 msgstr "经验值："
 
-#: ../../qml/func/others/RightPage.qml:391
+#: ../../qml/func/others/RightPage.qml:445
 msgctxt "RightPage|"
 msgid "DistroWatch Ranking"
 msgstr "受欢迎程度排名"
 
-#: ../../qml/func/others/RightPage.qml:401
-#: ../../qml/func/others/RightPage.qml:418
+#: ../../qml/func/others/RightPage.qml:455
+#: ../../qml/func/others/RightPage.qml:472
 msgctxt "RightPage|"
 msgid "Ubuntu Kylin Details"
 msgstr "Ubuntu Kylin 详情"
 
-#: ../../qml/func/others/RightPage.qml:627
-#: ../../qml/func/others/RightPage.qml:645
+#: ../../qml/func/others/RightPage.qml:681
+#: ../../qml/func/others/RightPage.qml:699
 msgctxt "RightPage|"
 msgid "Hide"
 msgstr "隐藏"
 
-#: ../../qml/func/others/RightPage.qml:661
+#: ../../qml/func/others/RightPage.qml:715
 msgctxt "RightPage|"
 msgid "Last Update:"
 msgstr "最后更新："
 
-#: ../../qml/func/others/RightPage.qml:680
+#: ../../qml/func/others/RightPage.qml:734
 msgctxt "RightPage|"
 msgid "OS Type:"
 msgstr "发行归类："
 
-#: ../../qml/func/others/RightPage.qml:698
+#: ../../qml/func/others/RightPage.qml:752
 msgctxt "RightPage|"
 msgid "Based on:"
 msgstr "基于何种发行："
 
-#: ../../qml/func/others/RightPage.qml:716
+#: ../../qml/func/others/RightPage.qml:770
 msgctxt "RightPage|"
 msgid "Origin: "
 msgstr "来源： "
 
-#: ../../qml/func/others/RightPage.qml:734
+#: ../../qml/func/others/RightPage.qml:788
 msgctxt "RightPage|"
 msgid "Architecture:"
 msgstr "处理器架构："
 
-#: ../../qml/func/others/RightPage.qml:753
+#: ../../qml/func/others/RightPage.qml:807
 msgctxt "RightPage|"
 msgid "Desktop:"
 msgstr "桌面："
 
-#: ../../qml/func/others/RightPage.qml:772
+#: ../../qml/func/others/RightPage.qml:826
 msgctxt "RightPage|"
 msgid "Category:"
 msgstr "类型："
 
-#: ../../qml/func/others/RightPage.qml:790
+#: ../../qml/func/others/RightPage.qml:844
 msgctxt "RightPage|"
 msgid "Status:"
 msgstr "状态："
 
-#: ../../qml/func/others/RightPage.qml:808
+#: ../../qml/func/others/RightPage.qml:862
 msgctxt "RightPage|"
 msgid "Popularity:"
 msgstr "受欢迎程度排名："
 
-#: ../../qml/func/others/RightPage.qml:848
+#: ../../qml/func/others/RightPage.qml:902
 msgctxt "RightPage|"
 msgid "Forum Help"
 msgstr "论坛求助"
 
-#: ../../qml/func/others/RightPage.qml:865
+#: ../../qml/func/others/RightPage.qml:919
 msgctxt "RightPage|"
 msgid "Features"
 msgstr "新版本特性"
 
-#: ../../qml/func/others/RightPage.qml:874
+#: ../../qml/func/others/RightPage.qml:928
 msgctxt "RightPage|"
 msgid "Feedback"
 msgstr "问题反馈"
@@ -2576,17 +2511,17 @@ msgctxt "SelectDialog|"
 msgid "The city was not be found, please input the city name again!"
 msgstr "没有找到该城市，请重新输入城市名字！"
 
-#: ../sessiondispatcher.cpp:1459
+#: ../sessiondispatcher.cpp:1490
 msgctxt "SessionDispatcher|"
 msgid "Select folder"
 msgstr "选择文件夹"
 
-#: ../sessiondispatcher.cpp:1466
+#: ../sessiondispatcher.cpp:1497
 msgctxt "SessionDispatcher|"
 msgid "Select file"
 msgstr "选择文件"
 
-#: ../sessiondispatcher.cpp:1466
+#: ../sessiondispatcher.cpp:1497
 msgctxt "SessionDispatcher|"
 msgid "All Files(*)"
 msgstr "所有文件(*)"
@@ -3457,38 +3392,58 @@ msgctxt "WindowManager|"
 msgid "Titlebar right-click action:"
 msgstr "标题栏右键动作："
 
-#~ msgctxt "BottomBar|"
-#~ msgid "Tips:"
-#~ msgstr "友情提示："
+#~ msgctxt "LoginDialog|"
+#~ msgid "Dialog"
+#~ msgstr "对话框"
 
-#~ msgctxt "BottomBar|"
-#~ msgid "The kuaipan4uk is not running!"
-#~ msgstr "快盘没有运行！"
+#~ msgctxt "LoginDialog|"
+#~ msgid "Cancel"
+#~ msgstr "取消"
 
-#~ msgctxt "BottomBar|"
-#~ msgid "Not found the cloud configuration!"
-#~ msgstr "没有发现云配置文件！"
+#~ msgctxt "LoginDialog|"
+#~ msgid "Login"
+#~ msgstr "登录"
 
-#~ msgctxt "BottomBar|"
-#~ msgid "Download OK!"
-#~ msgstr "使用完毕！"
+#~ msgctxt "LoginDialog|"
+#~ msgid "<html><head/><body><p><br/></p></body></html>"
+#~ msgstr "<html><head/><body><p><br/></p></body></html>"
 
-#~ msgctxt "BottomBar|"
-#~ msgid "Upload OK!"
-#~ msgstr "上传完成！"
+#~ msgctxt "LoginDialog|"
+#~ msgid "Remember pwd"
+#~ msgstr "记住密码"
 
-#~ msgctxt "BottomBar|"
-#~ msgid "Use Cloud"
-#~ msgstr "使用云配置"
+#~ msgctxt "LoginDialog|"
+#~ msgid "<html><head/><body><p>Register</p></body></html>"
+#~ msgstr "<html><head/><body><p>注册</p></body></html>"
 
-#~ msgctxt "BottomBar|"
-#~ msgid "Save Cloud"
-#~ msgstr "保存云配置"
+#~ msgctxt "LoginDialog|"
+#~ msgid "Forum account password"
+#~ msgstr "论坛帐号的密码"
 
-#~ msgctxt "BottomBar|"
-#~ msgid "It will use the Kingsoft disk cloud configuration!"
-#~ msgstr "该操作将使用金山快盘云配置来设置系统配置！"
+#~ msgctxt "LoginDialog|"
+#~ msgid "Please input your username!"
+#~ msgstr "请输入您的用户名！"
 
-#~ msgctxt "BottomBar|"
-#~ msgid "It will upload configuration to the Kingsoft disk cloud!"
-#~ msgstr "该操作将会把本地配置上传到金山快盘云端！"
+#~ msgctxt "LoginDialog|"
+#~ msgid "Please input your password!"
+#~ msgstr "请输入您的密码！"
+
+#~ msgctxt "RightPage|"
+#~ msgid "Network Error!"
+#~ msgstr "网络错误！"
+
+#~ msgctxt "RightPage|"
+#~ msgid "No User!"
+#~ msgstr "没有该用户！"
+
+#~ msgctxt "RightPage|"
+#~ msgid "Password Wrong!"
+#~ msgstr "密码错误！"
+
+#~ msgctxt "RightPage|"
+#~ msgid "Login Failed!"
+#~ msgstr "登录失败！"
+
+#~ msgctxt "RightPage|"
+#~ msgid "Logging..."
+#~ msgstr "正在登录..."

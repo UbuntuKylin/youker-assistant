@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="es">
-    <extra-po-header-po_revision_date>2014-09-30 05:29+0000</extra-po-header-po_revision_date>
-    <extra-po-header-x_launchpad_export_date>2014-09-30 05:32+0000</extra-po-header-x_launchpad_export_date>
+    <extra-po-header-po_revision_date>2014-10-11 05:40+0000</extra-po-header-po_revision_date>
+    <extra-po-header-x_launchpad_export_date>2014-10-11 05:44+0000</extra-po-header-x_launchpad_export_date>
     <extra-po-headers>Project-Id-Version,Report-Msgid-Bugs-To,POT-Creation-Date,PO-Revision-Date,Last-Translator,Language-Team,MIME-Version,Content-Type,Content-Transfer-Encoding,X-Launchpad-Export-Date,X-Generator</extra-po-headers>
     <extra-po-header-x_generator>Launchpad (build 17196)</extra-po-header-x_generator>
     <extra-po-header-report_msgid_bugs_to>FULL NAME &lt;EMAIL@ADDRESS&gt;</extra-po-header-report_msgid_bugs_to>
     <extra-po-header-language_team>Spanish &lt;es@li.org&gt;</extra-po-header-language_team>
     <extra-po-header-project_id_version>youker-assistant</extra-po-header-project_id_version>
-    <extra-po-header-pot_creation_date>2014-09-30 03:56+0000</extra-po-header-pot_creation_date>
+    <extra-po-header-pot_creation_date>2014-10-11 05:39+0000</extra-po-header-pot_creation_date>
     <extra-po-header_comment># Spanish translation for youker-assistant
 # Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
 # This file is distributed under the same license as the youker-assistant package.
@@ -1973,60 +1973,6 @@ p, li { white-space: pre-wrap; }
         <translation>Limpie las cookies, incluyendo los registros de navegación y compra</translation>
     </message>
     <message>
-        <location filename="../logindialog.ui" line="14"/>
-        <source>Dialog</source>
-        <comment>LoginDialog|</comment>
-        <translation>Diálogo</translation>
-    </message>
-    <message>
-        <location filename="../logindialog.ui" line="30"/>
-        <source>Cancel</source>
-        <comment>LoginDialog|</comment>
-        <translation>Cancelar</translation>
-    </message>
-    <message>
-        <location filename="../logindialog.ui" line="47"/>
-        <source>Login</source>
-        <comment>LoginDialog|</comment>
-        <translation>Acceso</translation>
-    </message>
-    <message>
-        <location filename="../logindialog.ui" line="76"/>
-        <source>Forum account password</source>
-        <comment>LoginDialog|</comment>
-        <translation>Foro contraseña de la cuenta</translation>
-    </message>
-    <message>
-        <location filename="../logindialog.ui" line="124"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>LoginDialog|</comment>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../logindialog.ui" line="146"/>
-        <source>Remember pwd</source>
-        <comment>LoginDialog|</comment>
-        <translation>Recordar clave de acceso</translation>
-    </message>
-    <message>
-        <location filename="../logindialog.ui" line="184"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Register&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <comment>LoginDialog|</comment>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Registro&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../logindialog.cpp" line="93"/>
-        <source>Please input your username!</source>
-        <comment>LoginDialog|</comment>
-        <translation>Por favor ingrese su nombre de usuario!</translation>
-    </message>
-    <message>
-        <location filename="../logindialog.cpp" line="100"/>
-        <source>Please input your password!</source>
-        <comment>LoginDialog|</comment>
-        <translation>Por favor ingrese su clave de acceso!</translation>
-    </message>
-    <message>
         <location filename="../../qml/func/info/MemoryInfo.qml" line="55"/>
         <location filename="../../qml/func/info/MemoryInfo.qml" line="70"/>
         <location filename="../../qml/func/info/MemoryInfo.qml" line="90"/>
@@ -2750,13 +2696,13 @@ p, li { white-space: pre-wrap; }
         <translation>Nombre del proceso</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="170"/>
+        <location filename="../main.cpp" line="172"/>
         <source>starting....</source>
         <comment>QObject|</comment>
         <translation>empezando ....</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="172"/>
+        <location filename="../main.cpp" line="174"/>
         <source>loading module data....</source>
         <comment>QObject|</comment>
         <translation>datos de módulo de carga ....</translation>
@@ -2780,148 +2726,124 @@ p, li { white-space: pre-wrap; }
         <translation>China</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="68"/>
-        <source>Network Error!</source>
-        <comment>RightPage|</comment>
-        <translation>Error de red!</translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="71"/>
-        <source>No User!</source>
-        <comment>RightPage|</comment>
-        <translation>¡Sin usuario!</translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="74"/>
-        <source>Password Wrong!</source>
-        <comment>RightPage|</comment>
-        <translation>Clave de acceso errónea!</translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="77"/>
-        <source>Login Failed!</source>
-        <comment>RightPage|</comment>
-        <translation>Login Fallo!</translation>
-    </message>
-    <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="149"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="607"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="183"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="661"/>
         <source>Hits per day </source>
         <comment>RightPage|</comment>
         <translation>Entradas por día </translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="262"/>
-        <source>Logging...</source>
+        <location filename="../../qml/func/others/RightPage.qml" line="272"/>
+        <source>Register</source>
         <comment>RightPage|</comment>
-        <translation>Registro ...</translation>
+        <translation>Registro</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="294"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="348"/>
         <source>Logout</source>
         <comment>RightPage|</comment>
         <translation>Cerrar sesión</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="324"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="378"/>
         <source>Level:</source>
         <comment>RightPage|</comment>
         <translation>Nivel:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="335"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="389"/>
         <source>Score:</source>
         <comment>RightPage|</comment>
         <translation>Puntuación:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="391"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="445"/>
         <source>DistroWatch Ranking</source>
         <comment>RightPage|</comment>
         <translation>Clasificación DistroWatch</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="401"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="418"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="455"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="472"/>
         <source>Ubuntu Kylin Details</source>
         <comment>RightPage|</comment>
         <translation>Ubuntu Kylin Detalles</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="627"/>
-        <location filename="../../qml/func/others/RightPage.qml" line="645"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="681"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="699"/>
         <source>Hide</source>
         <comment>RightPage|</comment>
         <translation>Ocultar</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="661"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="715"/>
         <source>Last Update:</source>
         <comment>RightPage|</comment>
         <translation>Última actualización:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="680"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="734"/>
         <source>OS Type:</source>
         <comment>RightPage|</comment>
         <translation>OS Tipo:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="698"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="752"/>
         <source>Based on:</source>
         <comment>RightPage|</comment>
         <translation>Residencia en:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="716"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="770"/>
         <source>Origin: </source>
         <comment>RightPage|</comment>
         <translation>Origen: </translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="734"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="788"/>
         <source>Architecture:</source>
         <comment>RightPage|</comment>
         <translation>Arquitectura:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="753"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="807"/>
         <source>Desktop:</source>
         <comment>RightPage|</comment>
         <translation>Escritorio:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="772"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="826"/>
         <source>Category:</source>
         <comment>RightPage|</comment>
         <translation>Categoría:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="790"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="844"/>
         <source>Status:</source>
         <comment>RightPage|</comment>
         <translation>Estatus:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="808"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="862"/>
         <source>Popularity:</source>
         <comment>RightPage|</comment>
         <translation>Popularidad:</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="848"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="902"/>
         <source>Forum Help</source>
         <comment>RightPage|</comment>
         <translation>Foro Ayuda</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="865"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="919"/>
         <source>Features</source>
         <comment>RightPage|</comment>
         <translation>Características</translation>
     </message>
     <message>
-        <location filename="../../qml/func/others/RightPage.qml" line="874"/>
+        <location filename="../../qml/func/others/RightPage.qml" line="928"/>
         <source>Feedback</source>
         <comment>RightPage|</comment>
         <translation>Comentarios</translation>
@@ -3005,19 +2927,19 @@ p, li { white-space: pre-wrap; }
         <translation>La ciudad no se puede encontrar, de entrada por favor el nombre de la ciudad de nuevo!</translation>
     </message>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1459"/>
+        <location filename="../sessiondispatcher.cpp" line="1490"/>
         <source>Select folder</source>
         <comment>SessionDispatcher|</comment>
         <translation>Seleccionar carpeta</translation>
     </message>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1466"/>
+        <location filename="../sessiondispatcher.cpp" line="1497"/>
         <source>Select file</source>
         <comment>SessionDispatcher|</comment>
         <translation>Seleccionar archivo(s)</translation>
     </message>
     <message>
-        <location filename="../sessiondispatcher.cpp" line="1466"/>
+        <location filename="../sessiondispatcher.cpp" line="1497"/>
         <source>All Files(*)</source>
         <comment>SessionDispatcher|</comment>
         <translation>Todos los archivos(*)</translation>
@@ -4037,49 +3959,74 @@ p, li { white-space: pre-wrap; }
         <translation>Acción de clic secundario sobre la barra de titulo:</translation>
     </message>
     <message>
-        <source>Download OK!</source>
-        <comment>BottomBar|</comment>
-        <translation type="obsolete">Descarga OK!</translation>
+        <source>Dialog</source>
+        <comment>LoginDialog|</comment>
+        <translation type="obsolete">Diálogo</translation>
     </message>
     <message>
-        <source>Tips:</source>
-        <comment>BottomBar|</comment>
-        <translation type="obsolete">Consejos:</translation>
+        <source>Cancel</source>
+        <comment>LoginDialog|</comment>
+        <translation type="obsolete">Cancelar</translation>
     </message>
     <message>
-        <source>Use Cloud</source>
-        <comment>BottomBar|</comment>
-        <translation type="obsolete">Usar Nube</translation>
+        <source>Please input your username!</source>
+        <comment>LoginDialog|</comment>
+        <translation type="obsolete">Por favor ingrese su nombre de usuario!</translation>
     </message>
     <message>
-        <source>Save Cloud</source>
-        <comment>BottomBar|</comment>
-        <translation type="obsolete">Salvar en la Nube</translation>
+        <source>Please input your password!</source>
+        <comment>LoginDialog|</comment>
+        <translation type="obsolete">Por favor ingrese su clave de acceso!</translation>
     </message>
     <message>
-        <source>Upload OK!</source>
-        <comment>BottomBar|</comment>
-        <translation type="obsolete">SUbida OK!</translation>
+        <source>Remember pwd</source>
+        <comment>LoginDialog|</comment>
+        <translation type="obsolete">Recordar clave de acceso</translation>
     </message>
     <message>
-        <source>The kuaipan4uk is not running!</source>
-        <comment>BottomBar|</comment>
-        <translation type="obsolete">kuaipan4uk no está ejecutandose!</translation>
+        <source>Login</source>
+        <comment>LoginDialog|</comment>
+        <translation type="obsolete">Acceso</translation>
     </message>
     <message>
-        <source>Not found the cloud configuration!</source>
-        <comment>BottomBar|</comment>
-        <translation type="obsolete">No se encuentra la configuración de la nube!</translation>
+        <source>Login Failed!</source>
+        <comment>RightPage|</comment>
+        <translation type="obsolete">Login Fallo!</translation>
     </message>
     <message>
-        <source>It will use the Kingsoft disk cloud configuration!</source>
-        <comment>BottomBar|</comment>
-        <translation type="obsolete">Se utilizará la configuración nube disco Kingsoft!</translation>
+        <source>No User!</source>
+        <comment>RightPage|</comment>
+        <translation type="obsolete">¡Sin usuario!</translation>
     </message>
     <message>
-        <source>It will upload configuration to the Kingsoft disk cloud!</source>
-        <comment>BottomBar|</comment>
-        <translation type="obsolete">Se carga la configuración de la nube de disco Kingsoft!</translation>
+        <source>Password Wrong!</source>
+        <comment>RightPage|</comment>
+        <translation type="obsolete">Clave de acceso errónea!</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Register&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <comment>LoginDialog|</comment>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Registro&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <comment>LoginDialog|</comment>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Forum account password</source>
+        <comment>LoginDialog|</comment>
+        <translation type="obsolete">Foro contraseña de la cuenta</translation>
+    </message>
+    <message>
+        <source>Logging...</source>
+        <comment>RightPage|</comment>
+        <translation type="obsolete">Registro ...</translation>
+    </message>
+    <message>
+        <source>Network Error!</source>
+        <comment>RightPage|</comment>
+        <translation type="obsolete">Error de red!</translation>
     </message>
 </context>
 </TS>

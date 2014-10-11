@@ -75,11 +75,11 @@ void HttpDownLoad::httpReadyRead() {
 
 //finish download
 void HttpDownLoad::httpFinished() {
-    emit this->downloadok();
     file->flush();
     file->close();
     reply->deleteLater();
     reply = 0;
     delete file;
     file = 0;
+    emit this->downloadok();
 }

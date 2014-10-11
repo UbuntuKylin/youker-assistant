@@ -21,10 +21,10 @@
 
 from gi.repository import GObject
 
-#import logging
-import os
+import logging
+# import os
 
-#LOG = logging.getLogger(__name__)
+LOG = logging.getLogger(__name__)
 
 
 class LoginBackend(GObject.GObject):
@@ -49,6 +49,10 @@ class LoginBackend(GObject.GObject):
                                    GObject.TYPE_NONE,
                                    (),
                                    ),
+        "logout-successful": (GObject.SIGNAL_RUN_LAST,
+                              GObject.TYPE_NONE,
+                              (),
+                              ),
     }
 
     def login(self):
@@ -63,6 +67,9 @@ class LoginBackend(GObject.GObject):
     def cancel_login(self):
         self.emit("login-canceled")
 
+    def logout(self):
+        raise NotImplemented
+
 
 def get_login_backend(window_id, appname, help_text):
     """
@@ -75,7 +82,7 @@ def get_login_backend(window_id, appname, help_text):
     #     LOG.warn('Using fake login SSO functionality. Only meant for '
     #         'testing purposes')
     # else:
-    from backend.login_impl.login_sso import (
+    from sso.login_impl.login_sso import (
         LoginBackendDbusSSO)
     sso_class = LoginBackendDbusSSO(window_id, appname, help_text)
     return sso_class

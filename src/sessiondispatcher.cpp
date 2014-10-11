@@ -23,7 +23,6 @@
 #include "kthread.h"
 #include "util.h"
 #include "kfontdialog.h"
-#include "logindialog.h"
 #include "messengerproxy.h"
 
 QString selectedFont;
@@ -39,14 +38,9 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     this->mainwindow_width = 850;
     this->mainwindow_height = 600;
 
-//    manager = new FtpManager("http://service.ubuntukylin.com:8001/ftp/","lixiang","123123",21,this);
-//    connect(manager,SIGNAL(send_progress_value(int)),SLOT(start_update_progess(int)));
-//    connect(manager,SIGNAL(downloadok()),this,SLOT(unzip_resource_uk()));
-
     httpdownload = new HttpDownLoad();
     connect(httpdownload,SIGNAL(downloadok()),this,SLOT(unzip_resource_uk()));
 
-    httpauth = new HttpAuth();
     mSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
     mSettings->setIniCodec("UTF-8");
 
@@ -62,8 +56,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     slidershow = new NewCharacter();
 
     //超时计时器
-    timer = new QTimer(this);
-    loginOK = false;
+//    timer = new QTimer(this);
 
     updatetimer = new QTimer(this);
 
@@ -73,6 +66,13 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(sessioniface, SIGNAL(scan_complete(QString)), this, SLOT(handler_scan_complete(QString)));
     QObject::connect(sessioniface, SIGNAL(access_weather(QString, QString)), this, SLOT(accord_flag_access_weather(QString, QString)));
     QObject::connect(sessioniface, SIGNAL(total_data_transmit(QString, QString)), this, SLOT(handler_total_data_transmit(QString,QString)));
+//    QObject::connect(sessioniface, SIGNAL(distrowatch_ubuntukylin_signal(bool)), this, SLOT(handlerDistrowatchUKSignal(bool)));
+
+
+    QObject::connect(sessioniface, SIGNAL(youkerid_whoami_signal(QString, QString)), this, SLOT(handlerYoukerID(QString, QString)));
+    QObject::connect(sessioniface, SIGNAL(youkerid_logout_signal()), this, SLOT(handlerLogoutSuccess()));
+    QObject::connect(sessioniface, SIGNAL(youkerid_login_fail_signal()), this, SLOT(handlerLoginFail()));
+
 
     //Apt and Soft center cache
     QObject::connect(sessioniface, SIGNAL(data_transmit_by_cache(QString, QString, QString, QString)), this, SLOT(handler_append_cache_data_to_model(QString,QString,QString,QString)));
@@ -85,13 +85,6 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     //cookies
     QObject::connect(sessioniface, SIGNAL(data_transmit_by_cookies(QString, QString, QString)), this, SLOT(handler_append_cookies_to_model(QString,QString,QString)));
     QObject::connect(sessioniface, SIGNAL(cookies_transmit_complete(QString)), this, SLOT(handler_cookies_scan_over(QString)));
-
-    //login
-    QObject::connect(httpauth, SIGNAL(response(QString,QString,QString)), this, SLOT(handle_data_after_login_success(QString,QString,QString)));
-    QObject::connect(httpauth, SIGNAL(refresh(QString)), this, SLOT(handle_data_after_search_success(QString)));
-    QObject::connect(httpauth, SIGNAL(error(int)), this, SLOT(handle_data_when_login_failed(int)));
-    QObject::connect(httpauth, SIGNAL(failedCommunicate()), this, SLOT(resetTimerStatus()));
-    QObject::connect(httpauth, SIGNAL(successCommunicate()), this, SLOT(searchCurrentInfo()));
 
     QObject::connect(sessioniface, SIGNAL(get_history_number(QString, int)), this, SLOT(handlerHistoryNumber(QString, int)));
     QObject::connect(sessioniface, SIGNAL(get_largefile_list(QStringList)), this, SLOT(handlerLargeFileList(QStringList)));
@@ -107,37 +100,12 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     connect(updatetimer,SIGNAL(timeout()),this,SLOT(get_current_weather_qt()));
     updatetimer->start(60000*15);
 
-//    this->ftp_get_resource();
     this->http_get_img_resource();
 }
 
 SessionDispatcher::~SessionDispatcher() {
-    if(loginOK) {
-        //退出
-        mSettings->beginGroup("user");
-        int id = mSettings->value("id").toInt();
-        mSettings->endGroup();
-        mSettings->sync();
-        QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=logout&pp[table]=yk_member&pp[id]=%1").arg(id);
-        QUrl url(requestData);
-        httpauth->sendGetRequest(url);
-    }
-    if (httpauth != NULL) {
-        delete httpauth;
-    }
-
     if (httpdownload != NULL) {
         delete httpdownload;
-    }
-
-
-    waitTime = 0;
-    disconnect(timer,SIGNAL(timeout()),this,SLOT(connectHttpServer()));
-    if(timer->isActive()) {
-        timer->stop();
-    }
-    if (timer != NULL) {
-        delete timer;
     }
 
     disconnect(updatetimer,SIGNAL(timeout()),this,SLOT(get_current_weather_qt()));
@@ -147,11 +115,6 @@ SessionDispatcher::~SessionDispatcher() {
     if (updatetimer != NULL) {
         delete updatetimer;
     }
-
-//    manager->start_abort();//ftp 停止
-//    if (manager != NULL) {
-//        delete manager;
-//    }
 
     this->exit_qt();
     if (sessioniface != NULL) {
@@ -186,42 +149,14 @@ void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
 }
 
-
-//void SessionDispatcher::check_user_qt() {
-//    sessioniface->call("check_user");
-//}
-
-//void SessionDispatcher::slot_do_login_account() {
-//    sessioniface->call("slot_do_login_account");
-//}
-
-//void SessionDispatcher::slot_do_register() {
-//    sessioniface->call("slot_do_register");
-//}
-
-//void SessionDispatcher::slot_do_logout() {
-//    sessioniface->call("slot_do_logout");
-//}
-
 void SessionDispatcher::http_get_img_resource() {
     QString requestData = QString("http://service.ubuntukylin.com:8001/youker-assistant/download/?name=uk-img.zip");
     QUrl url(requestData);
     httpdownload->sendDownLoadRequest(url);
 }
 
-//void SessionDispatcher::ftp_get_resource() {
-    //普通下载
-//    manager->start_download("uk-img.tar.gz","/tmp/uk-img.tar.gz");
-    //下载（续传）
-//    manager->start_download("uk-img.tar.gz","/tmp/uk-img.tar.gz",true);
-//}
-
-//void SessionDispatcher::handler_unzip() {
-//    qDebug() << "start to unzip.0000..";
-//}
 
 void SessionDispatcher::unzip_resource_uk() {
-//    qDebug() << "start to unzip...";
     QString path = "/tmp/uk-img.zip";
     QDBusReply<bool> reply = sessioniface->call("unzip_resource_uk", path);
     if(reply.value()) {
@@ -231,11 +166,6 @@ void SessionDispatcher::unzip_resource_uk() {
         qDebug() << "unzip failed...";
     }
 }
-
-//void SessionDispatcher::start_update_progess(int value) {
-//    qDebug() << "dowload progress.....";
-//    qDebug() << value;
-//}
 
 bool SessionDispatcher::judge_camera_qt() {
     QDBusReply<bool> reply = sessioniface->call("judge_camera");
@@ -369,36 +299,36 @@ void SessionDispatcher::handler_change_titlebar_position(QString position) {
 }
 
 //每30minutes连接服务器beat一次
-void SessionDispatcher::connectHttpServer(){
-    mSettings->beginGroup("user");
-    int id = mSettings->value("id").toInt();
-    mSettings->endGroup();
-    mSettings->sync();
-    //心跳
-    QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=beat&pp[table]=yk_member&pp[id]=%1").arg(id);
-    QUrl url(requestData);
-    httpauth->sendGetRequest(url);
-}
+//void SessionDispatcher::connectHttpServer(){
+//    mSettings->beginGroup("user");
+//    int id = mSettings->value("id").toInt();
+//    mSettings->endGroup();
+//    mSettings->sync();
+//    //心跳
+//    QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=beat&pp[table]=yk_member&pp[id]=%1").arg(id);
+//    QUrl url(requestData);
+//    httpauth->sendGetRequest(url);
+//}
 
 //beat失败处理，beat不成功，界面的用户信息消失，改为登录界面，提示网络出错
-void SessionDispatcher::resetTimerStatus() {
-    //主动查询
-    QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=network");
-    QUrl url(requestData);
-    httpauth->sendGetRequest(url);
-}
+//void SessionDispatcher::resetTimerStatus() {
+//    //主动查询
+//    QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=network");
+//    QUrl url(requestData);
+//    httpauth->sendGetRequest(url);
+//}
 
 //查询当前的积分、等级....
-void SessionDispatcher::searchCurrentInfo() {
-    waitTime = 0;
-    mSettings->beginGroup("user");
-    int id = mSettings->value("id").toInt();
-    mSettings->endGroup();
-    mSettings->sync();
-    QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=getall&pp[table]=yk_member&pp[id]=%1").arg(id);
-    QUrl url(requestData);
-    httpauth->sendGetRequest(url);
-}
+//void SessionDispatcher::searchCurrentInfo() {
+////    waitTime = 0;
+//    mSettings->beginGroup("user");
+//    int id = mSettings->value("id").toInt();
+//    mSettings->endGroup();
+//    mSettings->sync();
+//    QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=getall&pp[table]=yk_member&pp[id]=%1").arg(id);
+//    QUrl url(requestData);
+//    httpauth->sendGetRequest(url);
+//}
 
 //显示SliderShow
 void SessionDispatcher::show_slider_qt() {
@@ -406,108 +336,120 @@ void SessionDispatcher::show_slider_qt() {
 }
 
 //程序正常关闭之前，关闭定时器，获取id后发送退出信号给服务端
-void SessionDispatcher::ready_exit_normally() {
+//void SessionDispatcher::ready_exit_normally() {
     //关闭定时器
-    waitTime = 0;
-    disconnect(timer,SIGNAL(timeout()),this,SLOT(connectHttpServer()));
-    if(timer->isActive()) {
-        timer->stop();
-    }
-    //退出
-    mSettings->beginGroup("user");
-    int id = mSettings->value("id").toInt();
-    mSettings->endGroup();
-    mSettings->sync();
-    QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=logout&pp[table]=yk_member&pp[id]=%1").arg(id);
-    QUrl url(requestData);
-    httpauth->sendGetRequest(url);
-}
+//    waitTime = 0;
+//    disconnect(timer,SIGNAL(timeout()),this,SLOT(connectHttpServer()));
+//    if(timer->isActive()) {
+//        timer->stop();
+//    }
+//    //退出
+//    mSettings->beginGroup("user");
+//    int id = mSettings->value("id").toInt();
+//    mSettings->endGroup();
+//    mSettings->sync();
+//    QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=logout&pp[table]=yk_member&pp[id]=%1").arg(id);
+//    QUrl url(requestData);
+//    httpauth->sendGetRequest(url);
+//}
 
 //点击登录框的确定按钮后，开始发送数据给服务端进行登录验证
-void SessionDispatcher::verify_user_and_password(QString user, QString pwd) {
-    //显示登录动态图
-    emit showLoginAnimatedImage();
-    //发送数据给服务端进行登录验证
-    QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=login&pp[table]=yk_member&name=%1&password=%2").arg(user).arg(pwd);
-    QUrl url(requestData);
-    httpauth->sendGetRequest(url);
+//void SessionDispatcher::verify_user_and_password(QString user, QString pwd) {
+//    //显示登录动态图
+//    emit showLoginAnimatedImage();
+//    //发送数据给服务端进行登录验证
+//    QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=login&pp[table]=yk_member&name=%1&password=%2").arg(user).arg(pwd);
+//    QUrl url(requestData);
+//    httpauth->sendGetRequest(url);
+//}
+
+void SessionDispatcher::check_user_qt() {
+    sessioniface->call("check_user");
 }
 
 //弹出登录框
 void SessionDispatcher::popup_login_dialog() {
-    //LoginDialog width:397; LoginDialog height:282
-
     //add ubuntukylin sso
-//    sessioniface->call("slot_do_login_account");
+    sessioniface->call("slot_do_login_account");
+}
 
-    LoginDialog *logindialog = new LoginDialog();
-    QObject::connect(logindialog, SIGNAL(translate_user_password(QString,QString)),this, SLOT(verify_user_and_password(QString,QString)));
-    int w_x = widgetPosition.x() + (this->mainwindow_width / 2) - (397  / 2);
-    int w_y = widgetPosition.y() + (this->mainwindow_height /2) - (282  / 2);
-    logindialog->move(w_x, w_y);
-    logindialog->exec();
+void SessionDispatcher::popup_register_dialog() {
+    //add ubuntukylin sso
+    sessioniface->call("slot_do_register");
 }
 
 //退出登录
 void SessionDispatcher::logout_ubuntukylin_account() {
     //add ubuntukylin sso
-//    sessioniface->call("slot_do_logout");
-    this->ready_exit_normally();
+    sessioniface->call("slot_do_logout");
 }
+
+void SessionDispatcher::handlerYoukerID(QString displayName, QString emailAddress) {
+    emit this->ssoSuccessSignal(displayName, emailAddress);
+}
+
+void SessionDispatcher::handlerLogoutSuccess() {
+    emit this->ssoLoginLogoutSignal(1);
+}
+
+void SessionDispatcher::handlerLoginFail() {
+    emit this->ssoLoginLogoutSignal(0);
+}
+
 
 //用户登录成功后处理数据：显示界面、id写入本地配置、开启定时器
-void SessionDispatcher::handle_data_after_login_success(QString id, QString name, QString score) {
-    loginOK = true;
-    //登录成功后将用户信息显示在界面上
-    bool ok;
-    QString level = score_count_level(score.toInt(&ok, 10));
-    emit updateLoginStatus(name, level, score);
+//void SessionDispatcher::handle_data_after_login_success(QString id, QString name, QString score) {
+//    loginOK = true;
+//    //登录成功后将用户信息显示在界面上
+//    bool ok;
+//    QString level = score_count_level(score.toInt(&ok, 10));
+//    emit updateLoginStatus(name, level, score);
 
-    //将当前用户id写入本地配置文件中
-    mSettings->beginGroup("user");
-    mSettings->setValue("id", id);
-    mSettings->endGroup();
-    mSettings->sync();
+//    //将当前用户id写入本地配置文件中
+//    mSettings->beginGroup("user");
+//    mSettings->setValue("id", id);
+//    mSettings->endGroup();
+//    mSettings->sync();
 
     //绑定和初始化定时器，每隔30minutes连接服务器一次
-    waitTime = 0;
-    connect(timer,SIGNAL(timeout()),this,SLOT(connectHttpServer()));
-    timer->start(60000*30);//5000
-}
+//    waitTime = 0;
+//    connect(timer,SIGNAL(timeout()),this,SLOT(connectHttpServer()));
+//    timer->start(60000*30);//5000
+//}
 
 //用户查询成功后处理数据：界面刷新数据
-void SessionDispatcher::handle_data_after_search_success(QString score) {
-    //查询成功后将用户信息更新在界面上
-    bool ok;
-    QString level = score_count_level(score.toInt(&ok, 10));
-    emit refreshUserInfo(level, score);
-    waitTime = 0;
-}
+//void SessionDispatcher::handle_data_after_search_success(QString score) {
+//    //查询成功后将用户信息更新在界面上
+//    bool ok;
+//    QString level = score_count_level(score.toInt(&ok, 10));
+//    emit refreshUserInfo(level, score);
+////    waitTime = 0;
+//}
 
 //登录失败时或者测试网络失败，通知QML界面
-void SessionDispatcher::handle_data_when_login_failed(int status) {
-    if(status == 99) {
-        waitTime++;
-        if(waitTime >= 4){
-            waitTime = 0;
-            disconnect(timer, SIGNAL(timeout()), this, SLOT(connectHttpServer()));
-            if(timer->isActive()) {
-                timer->stop();
-            }
-            emit loginFailedStatus(99); //超时次数到，向主界面发送网络出现错误的信号
-            qDebug()<<"connect fail...";
-        }else{
-            qDebug() << "continue connect...";
-            QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=network");
-            QUrl url(requestData);
-            httpauth->sendGetRequest(url);
-        }
-    }
-    else {
-        loginOK = false;
-        emit loginFailedStatus(status);
-    }
-}
+//void SessionDispatcher::handle_data_when_login_failed(int status) {
+//    if(status == 99) {
+//        waitTime++;
+//        if(waitTime >= 4){
+//            waitTime = 0;
+//            disconnect(timer, SIGNAL(timeout()), this, SLOT(connectHttpServer()));
+//            if(timer->isActive()) {
+//                timer->stop();
+//            }
+//            emit loginFailedStatus(99); //超时次数到，向主界面发送网络出现错误的信号
+//            qDebug()<<"connect fail...";
+//        }else{
+//            qDebug() << "continue connect...";
+//            QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=network");
+//            QUrl url(requestData);
+//            httpauth->sendGetRequest(url);
+//        }
+//    }
+//    else {
+//        loginOK = false;
+//        emit loginFailedStatus(status);
+//    }
+//}
 
 //根据积分计算用户等级
 QString SessionDispatcher::score_count_level(int score) {

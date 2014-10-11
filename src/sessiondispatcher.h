@@ -22,10 +22,8 @@
 #include <QDBusConnection>
 #include "quibo.h"
 #include "modaldialog.h"
-#include "httpauth.h"
 #include "newcharacter.h"
 #include "selectdialog.h"
-//#include "ftpmanager.h"
 #include "httpdownload.h"
 
 class QSettings;
@@ -39,15 +37,11 @@ public:
     QDBusInterface *sessioniface;
     Q_INVOKABLE void show_slider_qt();
 
-//    void check_user_qt();
-//    Q_INVOKABLE void slot_do_login_account();
-//    Q_INVOKABLE void slot_do_register();
-//    Q_INVOKABLE void slot_do_logout();
+    Q_INVOKABLE void check_user_qt();
 
     //退出前的准备工作
-    void ready_exit_normally();
+//    void ready_exit_normally();
 
-//    void ftp_get_resource();
     void http_get_img_resource();
 
     //打开文件夹
@@ -71,6 +65,7 @@ public:
 
     //弹出登录框
     Q_INVOKABLE void popup_login_dialog();
+    Q_INVOKABLE void popup_register_dialog();
     //退出登录
     Q_INVOKABLE void logout_ubuntukylin_account();
 
@@ -360,13 +355,17 @@ signals:
     //把一键扫描的总数告诉QML
     void tellScanResultToQML(QString flag, QString msg);
     //显示登录动态图片
-    void showLoginAnimatedImage();
+//    void showLoginAnimatedImage();
     //更新登录状态
-    void updateLoginStatus(QString username, QString level, QString score);
+//    void updateLoginStatus(QString username, QString level, QString score);
     //刷新用户数据
-    void refreshUserInfo(QString level, QString score);
+//    void refreshUserInfo(QString level, QString score);
     //登录失败
-    void loginFailedStatus(int status);
+//    void loginFailedStatus(int status);
+
+    void ssoSuccessSignal(QString displayName, QString emailAddress);
+    void ssoLoginLogoutSignal(bool loginFlag);
+
     //告诉QML界面，标题栏控制按钮位置发生变化了，准备改变优客助手自身的控制按钮位置
     void startChangeControlBtnPosition(QString position);
     void tellQMLHistoryNumber(QString flag, int num);
@@ -378,10 +377,10 @@ signals:
     void finishAccessUKDistrowatch();
 public slots:
     Q_INVOKABLE void get_current_weather_qt();
-    void verify_user_and_password(QString user, QString pwd);
-    void handle_data_after_login_success(QString id, QString name, QString score);
-    void handle_data_after_search_success(QString score);
-    void handle_data_when_login_failed(int status);
+//    void verify_user_and_password(QString user, QString pwd);
+//    void handle_data_after_login_success(QString id, QString name, QString score);
+//    void handle_data_after_search_success(QString score);
+//    void handle_data_when_login_failed(int status);
     //获取天气预报槽函数
     void accord_flag_access_weather(QString key, QString value);
     //扫描完成槽函数
@@ -405,11 +404,11 @@ public slots:
     //接收cookies扫描完后的信号
     void handler_cookies_scan_over(QString cookiesFlag);
     //连接服务器
-    void connectHttpServer();
+//    void connectHttpServer();
     //处理连接服务器失败的时候
-    void resetTimerStatus();
+//    void resetTimerStatus();
     //处理连接服务器成功的时候，查询当前用户的信息：积分、等级...
-    void searchCurrentInfo();
+//    void searchCurrentInfo();
     //根据积分计算用户等级
     QString score_count_level(int score);
     //接受标题栏控制按钮位置改变
@@ -421,26 +420,25 @@ public slots:
     void handlerDistrowatchAllSignal(QString update_rate);
     void handlerDistrowatchUKSignal(bool uk_flag);
 
+    void handlerYoukerID(QString displayName, QString emailAddress);
+    void handlerLogoutSuccess();
+    void handlerLoginFail();
+
 private:
     int mainwindow_width;
     int mainwindow_height;
     QSettings * mSettings;
     QSettings * default_Settings;
     QSettings * distrowatch_Settings;
-    HttpAuth *httpauth;
-    int waitTime;//超时重试次数
-    QTimer *timer;
+//    int waitTime;//超时重试次数
+//    QTimer *timer;
     QTimer *updatetimer;
-    bool loginOK;
+//    bool loginOK;
     NewCharacter *slidershow; //新版特性界面
     SelectDialog *selectDialog;
-//    FtpManager *manager;
     HttpDownLoad *httpdownload;
 
-
 public slots:
-//    void start_update_progess(int value);
-//    void handler_unzip();
     void unzip_resource_uk();
 };
 

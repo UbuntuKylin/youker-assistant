@@ -56,38 +56,25 @@ Rectangle {
         return str;
     }
 
-    //更新登录状态
     Connections
     {
         target: sessiondispatcher
-        onShowLoginAnimatedImage: {//正在登录过程中显示动态图片
-            rightbar.state = "Logining";
-        }
-        onLoginFailedStatus: {//登录失败
-            if(status == 99) {
-                toolkits.alertMSG(qsTr("Network Error!"));//网络错误！
-            }
-            else if(status == -1) {
-                toolkits.alertMSG(qsTr("No User!"));//没有该用户！
-            }
-            else if(status == -2) {
-                toolkits.alertMSG(qsTr("Password Wrong!"));//密码错误！
-            }
-            else {
-                toolkits.alertMSG(qsTr("Login Failed!"));//登录失败！
-            }
-            rightbar.state = "OffLine";
-        }
-        onUpdateLoginStatus: {//登录成功
+        onSsoSuccessSignal: {
             logo.source = "../../img/icons/logo.png"
-            userText.text = username;
-            levelText.text = "Lv" + level;
-            scoreText.text = score;
+            userText.text = displayName;
+            emailText.text = emailAddress;
+            levelText.text = "Lv 24";
+            scoreText.text = "10000";
             rightbar.state = "OnLine";
         }
-        onRefreshUserInfo: {//刷新成功
-            levelText.text = "Lv" + level;
-            scoreText.text = score;
+        onSsoLoginLogoutSignal: {
+            if(loginFlag) {
+//                console.log("qml logout success......");
+                rightbar.state = "OffLine";
+            }
+            else {
+//                console.log("qml login fail......");
+            }
         }
 
         onFinishAccessAllDistrowatch: {
@@ -210,6 +197,11 @@ Rectangle {
         }
     }
 
+    //add for sso
+    Component.onCompleted: {
+        sessiondispatcher.check_user_qt();
+    }
+
     Rectangle {
         id: offline
         width: parent.width
@@ -223,46 +215,61 @@ Rectangle {
             }
             login.showImage = offline.path + "login.png";
         }
-        Common.KButton {
-            id: login
-            kflag: "login"
-            showImage: ""
+        Column {
             anchors {
-                top: parent.top; topMargin: 25
+                top: parent.top; topMargin: 5
                 horizontalCenter: parent.horizontalCenter
             }
-            width: 216
-            height: 67
-            onClicked: {
-                sessiondispatcher.popup_login_dialog();
+            Common.StyleButton {
+                id: registerBtn
+                wordname: qsTr("Register")//注册账号
+                width: 60
+                height: 20
+                onClicked: {
+                    sessiondispatcher.popup_register_dialog();
+                }
+            }
+            Common.KButton {
+                id: login
+                kflag: "login"
+                showImage: ""
+    //            anchors {
+    //                top: parent.top; topMargin: 25
+    //                horizontalCenter: parent.horizontalCenter
+    //            }
+                width: 216
+                height: 67
+                onClicked: {
+                    sessiondispatcher.popup_login_dialog();
+                }
             }
         }
     }
 
-    Rectangle {
-        id: logining
-        width: parent.width
-        x: (parent.width * 1.5)
-        Column {
-            spacing: 5
-            anchors {
-                top: parent.top; topMargin: 40
-                horizontalCenter: parent.horizontalCenter
-            }
-            AnimatedImage {
-                width: 16
-                height: 16
-                anchors.horizontalCenter: parent.horizontalCenter
-                source: "../../img/icons/move.gif"
-            }
-            Text {
-                anchors.horizontalCenter: parent.horizontalCenter
-                font.pixelSize: 14
-                color: "#383838"
-                text: qsTr("Logging...") //正在登录...
-            }
-        }
-    }
+//    Rectangle {
+//        id: logining
+//        width: parent.width
+//        x: (parent.width * 1.5)
+//        Column {
+//            spacing: 5
+//            anchors {
+//                top: parent.top; topMargin: 40
+//                horizontalCenter: parent.horizontalCenter
+//            }
+//            AnimatedImage {
+//                width: 16
+//                height: 16
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                source: "../../img/icons/move.gif"
+//            }
+//            Text {
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                font.pixelSize: 14
+//                color: "#383838"
+//                text: qsTr("Logging...") //正在登录...
+//            }
+//        }
+//    }
 
     //------------------login
     Rectangle {
@@ -297,6 +304,7 @@ Rectangle {
                     userText.text = "";
                     levelText.text = "";
                     scoreText.text = "";
+                    emailText.text = "";
                     logo.source = "";
                     rightbar.state = "OffLine";
                 }
@@ -318,7 +326,17 @@ Rectangle {
                 color: "#383838"
                 width: 160
             }
+            Text {
+                id: emailText
+                elide: Text.ElideRight//add by kobe: 超出设定宽度时用...显示
+                width: 165
+//                wrapMode: Text.WordWrap
+                font.pixelSize: 12
+                color: "#7a7a7a"
+                text: ""
+            }
             Row {
+                visible: false
                 spacing: 10
                 Text {
                     text: qsTr("Level:")//当前等级：
@@ -330,6 +348,7 @@ Rectangle {
                 }
             }
             Row {
+                visible: false
                 spacing: 10
                 Text {
                     text: qsTr("Score:")//当前积分：
@@ -885,19 +904,19 @@ Rectangle {
             name: "OnLine"
             PropertyChanges { target: online; x: 0 }
             PropertyChanges { target: offline; x: (parent.width * 1.5) }
-            PropertyChanges { target: logining; x: (parent.width * 1.5) }
+//            PropertyChanges { target: logining; x: (parent.width * 1.5) }
         },
-        State {
-            name: "Logining"
-            PropertyChanges { target: logining; x: 0 }
-            PropertyChanges { target: online; x: (parent.width * 1.5) }
-            PropertyChanges { target: offline; x: (parent.width * 1.5) }
-        },
+//        State {
+//            name: "Logining"
+//            PropertyChanges { target: logining; x: 0 }
+//            PropertyChanges { target: online; x: (parent.width * 1.5) }
+//            PropertyChanges { target: offline; x: (parent.width * 1.5) }
+//        },
         State {
             name: "OffLine"
             PropertyChanges { target: offline; x: 0 }
             PropertyChanges { target: online; x: (parent.width * 1.5) }
-            PropertyChanges { target: logining; x: (parent.width * 1.5) }
+//            PropertyChanges { target: logining; x: (parent.width * 1.5) }
         }
     ]
 }

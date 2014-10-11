@@ -33,11 +33,21 @@ from ubuntu_kylin_sso import (
 )
 
 from sso.login import LoginBackend
-from sso.utils import utf8
 
 from sso.enums import SOFTWARE_CENTER_NAME_KEYRING
 
 LOG = logging.getLogger(__name__)
+
+def utf8(s):
+    """
+    Takes a string or unicode object and returns a utf-8 encoded
+    string, errors are ignored
+    """
+    if s is None:
+        return None
+    if isinstance(s, unicode):
+        return s.encode("utf-8", "ignore")
+    return unicode(s, "utf8", "ignore").encode("utf8")
 
 class LoginBackendDbusSSO(LoginBackend):
 
@@ -62,6 +72,8 @@ class LoginBackendDbusSSO(LoginBackend):
                                      self._on_credentials_error)
         self.proxy.connect_to_signal("AuthorizationDenied",
                                      self._on_authorization_denied)
+        self.proxy.connect_to_signal("CredentialsCleared",
+                                     self._on_credential_cleared)
         self._window_id = window_id
         self._credentials = None
 
@@ -88,6 +100,11 @@ class LoginBackendDbusSSO(LoginBackend):
         self._credentials = None
         # print "login_sso::login_or_register:", self.appname, self._get_params()
         self.proxy.register(self.appname, self._get_params())
+
+    def logout(self):
+        LOG.debug("login_or_register()")
+        self._credentials = None
+        self.proxy.clear_credentials(self.appname, {})
 
     def _on_credentials_not_found(self, app_name):
         LOG.debug("_on_credentials_not_found for '%s'" % app_name)
@@ -120,3 +137,9 @@ class LoginBackendDbusSSO(LoginBackend):
             return
         self.cancel_login()
         self.emit("login-canceled")
+
+    def _on_credential_cleared(self, app_name):
+        LOG.info("_on_credential_cleared: %s" % app_name)
+        if app_name != self.appname:
+            return
+        self.emit("logout-successful")

@@ -1672,51 +1672,6 @@ msgctxt "LeftPage|"
 msgid "Clean up the Cookies, including surfing and shopping records"
 msgstr ""
 
-#: ../logindialog.ui:14
-msgctxt "LoginDialog|"
-msgid "Dialog"
-msgstr ""
-
-#: ../logindialog.ui:30
-msgctxt "LoginDialog|"
-msgid "Cancel"
-msgstr ""
-
-#: ../logindialog.ui:47
-msgctxt "LoginDialog|"
-msgid "Login"
-msgstr ""
-
-#: ../logindialog.ui:76
-msgctxt "LoginDialog|"
-msgid "Forum account password"
-msgstr ""
-
-#: ../logindialog.ui:124
-msgctxt "LoginDialog|"
-msgid "<html><head/><body><p><br/></p></body></html>"
-msgstr ""
-
-#: ../logindialog.ui:146
-msgctxt "LoginDialog|"
-msgid "Remember pwd"
-msgstr ""
-
-#: ../logindialog.ui:184
-msgctxt "LoginDialog|"
-msgid "<html><head/><body><p>Register</p></body></html>"
-msgstr ""
-
-#: ../logindialog.cpp:93
-msgctxt "LoginDialog|"
-msgid "Please input your username!"
-msgstr ""
-
-#: ../logindialog.cpp:100
-msgctxt "LoginDialog|"
-msgid "Please input your password!"
-msgstr ""
-
 #: ../../qml/func/info/MemoryInfo.qml:55 ../../qml/func/info/MemoryInfo.qml:70
 #: ../../qml/func/info/MemoryInfo.qml:90 ../../qml/func/info/MemoryInfo.qml:109
 #: ../../qml/func/info/MemoryInfo.qml:140
@@ -2322,12 +2277,12 @@ msgctxt "ProcessManager|"
 msgid "Process Name"
 msgstr ""
 
-#: ../main.cpp:170
+#: ../main.cpp:172
 msgctxt "QObject|"
 msgid "starting...."
 msgstr ""
 
-#: ../main.cpp:172
+#: ../main.cpp:174
 msgctxt "QObject|"
 msgid "loading module data...."
 msgstr ""
@@ -2347,125 +2302,105 @@ msgctxt "RightPage|"
 msgid "China"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:68
-msgctxt "RightPage|"
-msgid "Network Error!"
-msgstr ""
-
-#: ../../qml/func/others/RightPage.qml:71
-msgctxt "RightPage|"
-msgid "No User!"
-msgstr ""
-
-#: ../../qml/func/others/RightPage.qml:74
-msgctxt "RightPage|"
-msgid "Password Wrong!"
-msgstr ""
-
-#: ../../qml/func/others/RightPage.qml:77
-msgctxt "RightPage|"
-msgid "Login Failed!"
-msgstr ""
-
-#: ../../qml/func/others/RightPage.qml:149
-#: ../../qml/func/others/RightPage.qml:607
+#: ../../qml/func/others/RightPage.qml:183
+#: ../../qml/func/others/RightPage.qml:661
 msgctxt "RightPage|"
 msgid "Hits per day "
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:262
+#: ../../qml/func/others/RightPage.qml:272
 msgctxt "RightPage|"
-msgid "Logging..."
+msgid "Register"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:294
+#: ../../qml/func/others/RightPage.qml:348
 msgctxt "RightPage|"
 msgid "Logout"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:324
+#: ../../qml/func/others/RightPage.qml:378
 msgctxt "RightPage|"
 msgid "Level:"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:335
+#: ../../qml/func/others/RightPage.qml:389
 msgctxt "RightPage|"
 msgid "Score:"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:391
+#: ../../qml/func/others/RightPage.qml:445
 msgctxt "RightPage|"
 msgid "DistroWatch Ranking"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:401
-#: ../../qml/func/others/RightPage.qml:418
+#: ../../qml/func/others/RightPage.qml:455
+#: ../../qml/func/others/RightPage.qml:472
 msgctxt "RightPage|"
 msgid "Ubuntu Kylin Details"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:627
-#: ../../qml/func/others/RightPage.qml:645
+#: ../../qml/func/others/RightPage.qml:681
+#: ../../qml/func/others/RightPage.qml:699
 msgctxt "RightPage|"
 msgid "Hide"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:661
+#: ../../qml/func/others/RightPage.qml:715
 msgctxt "RightPage|"
 msgid "Last Update:"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:680
+#: ../../qml/func/others/RightPage.qml:734
 msgctxt "RightPage|"
 msgid "OS Type:"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:698
+#: ../../qml/func/others/RightPage.qml:752
 msgctxt "RightPage|"
 msgid "Based on:"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:716
+#: ../../qml/func/others/RightPage.qml:770
 msgctxt "RightPage|"
 msgid "Origin: "
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:734
+#: ../../qml/func/others/RightPage.qml:788
 msgctxt "RightPage|"
 msgid "Architecture:"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:753
+#: ../../qml/func/others/RightPage.qml:807
 msgctxt "RightPage|"
 msgid "Desktop:"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:772
+#: ../../qml/func/others/RightPage.qml:826
 msgctxt "RightPage|"
 msgid "Category:"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:790
+#: ../../qml/func/others/RightPage.qml:844
 msgctxt "RightPage|"
 msgid "Status:"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:808
+#: ../../qml/func/others/RightPage.qml:862
 msgctxt "RightPage|"
 msgid "Popularity:"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:848
+#: ../../qml/func/others/RightPage.qml:902
 msgctxt "RightPage|"
 msgid "Forum Help"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:865
+#: ../../qml/func/others/RightPage.qml:919
 msgctxt "RightPage|"
 msgid "Features"
 msgstr ""
 
-#: ../../qml/func/others/RightPage.qml:874
+#: ../../qml/func/others/RightPage.qml:928
 msgctxt "RightPage|"
 msgid "Feedback"
 msgstr ""
@@ -2532,17 +2467,17 @@ msgctxt "SelectDialog|"
 msgid "The city was not be found, please input the city name again!"
 msgstr ""
 
-#: ../sessiondispatcher.cpp:1459
+#: ../sessiondispatcher.cpp:1490
 msgctxt "SessionDispatcher|"
 msgid "Select folder"
 msgstr ""
 
-#: ../sessiondispatcher.cpp:1466
+#: ../sessiondispatcher.cpp:1497
 msgctxt "SessionDispatcher|"
 msgid "Select file"
 msgstr ""
 
-#: ../sessiondispatcher.cpp:1466
+#: ../sessiondispatcher.cpp:1497
 msgctxt "SessionDispatcher|"
 msgid "All Files(*)"
 msgstr ""
