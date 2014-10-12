@@ -11,7 +11,6 @@ Build-Depends: debhelper (>= 9),
                libqt4-dev,
                pkg-config,
                python (>= 2.6.6-3~),
-               qt4-default,
                qtchooser,
 Standards-Version: 3.9.5
 Homepage: https://launchpad.net/youker-assistant
