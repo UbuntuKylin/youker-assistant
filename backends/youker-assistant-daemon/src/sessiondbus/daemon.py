@@ -274,9 +274,23 @@ class SessionDaemon(dbus.service.Object):
         if self.ip_addr not in (False, None, {}, '', '[]', "['']"):
             self.access_weather('ip_addr', 'kobe')
 
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
+    @dbus.service.signal(INTERFACE, signature='b')
+    def unzip_signal(self, result):
+        pass
+
+#    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
+    def unzip_resource_uk_real(self, path):
+        value = unzip_resource(path)
+        self.unzip_signal(value)
+#        return unzip_resource(path)
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def unzip_resource_uk(self, path):
-        return unzip_resource(path)
+        t = threading.Thread(target = self.unzip_resource_uk_real, args=(path,))
+        t.start()
+#        return unzip_resource(path)
+
+
 
     #-----------------------------distrowatch rank-----------------------------
     def copy_distrowatch_default_conf(self):
@@ -1598,10 +1612,20 @@ class SessionDaemon(dbus.service.Object):
         fp.write(time_text)
         fp.close()
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
-    def access_server_pingback(self):
+    @dbus.service.signal(INTERFACE, signature='b')
+    def weather_server_pingback_signal(self, result):
+        pass
+
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def access_server_pingback_real(self):
             pingback = self.weatherping.access_server_pingback()
-            return pingback
+            self.weather_server_pingback_signal(pingback)
+#            return pingback
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def access_server_pingback(self):
+        t = threading.Thread(target = self.access_server_pingback_real)
+        t.start()
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
     def submit_uk_pingback(self, cityname):

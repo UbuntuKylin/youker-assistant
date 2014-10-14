@@ -73,6 +73,8 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(sessioniface, SIGNAL(youkerid_logout_signal()), this, SLOT(handlerLogoutSuccess()));
     QObject::connect(sessioniface, SIGNAL(youkerid_login_fail_signal()), this, SLOT(handlerLoginFail()));
 
+    QObject::connect(sessioniface, SIGNAL(weather_server_pingback_signal(bool)), this, SLOT(handlerWeatherPingback(bool)));
+    QObject::connect(sessioniface, SIGNAL(unzip_signal(bool)), this, SLOT(handlerUnZip(bool)));
 
     //Apt and Soft center cache
     QObject::connect(sessioniface, SIGNAL(data_transmit_by_cache(QString, QString, QString, QString)), this, SLOT(handler_append_cache_data_to_model(QString,QString,QString,QString)));
@@ -158,13 +160,14 @@ void SessionDispatcher::http_get_img_resource() {
 
 void SessionDispatcher::unzip_resource_uk() {
     QString path = "/tmp/uk-img.zip";
-    QDBusReply<bool> reply = sessioniface->call("unzip_resource_uk", path);
-    if(reply.value()) {
-        qDebug() << "unzip success...";
-    }
-    else {
-        qDebug() << "unzip failed...";
-    }
+    sessioniface->call("unzip_resource_uk", path);
+//    QDBusReply<bool> reply = sessioniface->call("unzip_resource_uk", path);
+//    if(reply.value()) {
+//        qDebug() << "unzip success...";
+//    }
+//    else {
+//        qDebug() << "unzip failed...";
+//    }
 }
 
 bool SessionDispatcher::judge_camera_qt() {
@@ -396,6 +399,36 @@ void SessionDispatcher::handlerLoginFail() {
     emit this->ssoLoginLogoutSignal(0);
 }
 
+
+void SessionDispatcher::handlerWeatherPingback(bool result) {
+    if(result) {
+        QString initCityId = this->getCityIdInfo();
+        bool flag = Util::id_exists_in_location_file(initCityId);
+        if(flag) {//获取中国气象局数据
+            QStringList tmplist;
+            KThread *thread = new KThread(tmplist, sessioniface, "get_current_weather", initCityId);
+            thread->start();
+        }
+        else {//获取雅虎气象数据
+            QStringList latlon = this->getLatandLon();
+            KThread *thread = new KThread(latlon, sessioniface, "get_current_yahoo_weather", initCityId);
+            thread->start();
+        }
+        this->submit_uk_pingback();
+    }
+    else {
+        qDebug() << "link weather server failed....";
+    }
+}
+
+void SessionDispatcher::handlerUnZip(bool result) {
+    if(result) {
+        qDebug() << "unzip success...";
+    }
+    else {
+        qDebug() << "unzip failed...";
+    }
+}
 
 //用户登录成功后处理数据：显示界面、id写入本地配置、开启定时器
 //void SessionDispatcher::handle_data_after_login_success(QString id, QString name, QString score) {
@@ -1676,31 +1709,33 @@ bool SessionDispatcher::submit_uk_pingback() {
     return reply.value();
 }
 
-bool SessionDispatcher::access_server_pingback() {
-    QDBusReply<bool> reply = sessioniface->call("access_server_pingback");
-    return reply.value();
+/*bool*/void SessionDispatcher::access_server_pingback() {
+    sessioniface->call("access_server_pingback");
+//    QDBusReply<bool> reply = sessioniface->call("access_server_pingback");
+//    return reply.value();
 }
 
 void SessionDispatcher::get_current_weather_qt() {
-    bool result = this->access_server_pingback();
-    if(result) {
-        QString initCityId = this->getCityIdInfo();
-        bool flag = Util::id_exists_in_location_file(initCityId);
-        if(flag) {//获取中国气象局数据
-            QStringList tmplist;
-            KThread *thread = new KThread(tmplist, sessioniface, "get_current_weather", initCityId);
-            thread->start();
-        }
-        else {//获取雅虎气象数据
-            QStringList latlon = this->getLatandLon();
-            KThread *thread = new KThread(latlon, sessioniface, "get_current_yahoo_weather", initCityId);
-            thread->start();
-        }
-        this->submit_uk_pingback();
-    }
-    else {
-        qDebug() << "link weather server failed....";
-    }
+    this->access_server_pingback();
+//    bool result = this->access_server_pingback();
+//    if(result) {
+//        QString initCityId = this->getCityIdInfo();
+//        bool flag = Util::id_exists_in_location_file(initCityId);
+//        if(flag) {//获取中国气象局数据
+//            QStringList tmplist;
+//            KThread *thread = new KThread(tmplist, sessioniface, "get_current_weather", initCityId);
+//            thread->start();
+//        }
+//        else {//获取雅虎气象数据
+//            QStringList latlon = this->getLatandLon();
+//            KThread *thread = new KThread(latlon, sessioniface, "get_current_yahoo_weather", initCityId);
+//            thread->start();
+//        }
+//        this->submit_uk_pingback();
+//    }
+//    else {
+//        qDebug() << "link weather server failed....";
+//    }
 }
 
 void SessionDispatcher::get_current_weather_dict_qt() {

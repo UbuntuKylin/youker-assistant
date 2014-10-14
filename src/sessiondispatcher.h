@@ -309,7 +309,7 @@ public:
 
     //-------------pinback
     bool submit_uk_pingback();
-    bool access_server_pingback();
+    /*bool*/void access_server_pingback();
 
     void get_current_weather_dict_qt();//当天天气数据获取完成后，通过该函数返回其获取的值给currentInfo
 
@@ -423,6 +423,9 @@ public slots:
     void handlerYoukerID(QString displayName, QString emailAddress);
     void handlerLogoutSuccess();
     void handlerLoginFail();
+
+    void handlerWeatherPingback(bool result);
+    void handlerUnZip(bool result);
 
 private:
     int mainwindow_width;
