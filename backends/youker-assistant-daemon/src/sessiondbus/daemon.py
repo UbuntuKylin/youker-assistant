@@ -295,12 +295,21 @@ class SessionDaemon(dbus.service.Object):
     #-----------------------------distrowatch rank-----------------------------
     def copy_distrowatch_default_conf(self):
         distrowatch_path = HOME + '/.config/ubuntukylin/youker-assistant/distrowatch.conf'
+        distrowatch_path_uk = HOME + '/.config/ubuntukylin'
+        distrowatch_path_youker = HOME + '/.config/ubuntukylin/youker-assistant'
+        if not os.path.isdir(distrowatch_path_uk):
+            os.makedirs(distrowatch_path_uk)
+        if not os.path.isdir(distrowatch_path_youker):
+            os.makedirs(distrowatch_path_youker)
         if not os.path.exists(distrowatch_path):
+            if not os.path.exists(distrowatch_path):
+                os.mknod(distrowatch_path)
             srcFile = '/var/lib/youker-assistant-daemon/distrowatch.conf'
             if not os.path.exists(srcFile):
                 print "error with distrowatch file"
                 return
-            open(distrowatch_path, "wb").write(open(srcFile, "rb").read())
+            else:
+                open(distrowatch_path, "wb").write(open(srcFile, "rb").read())
 
     def init_mechanize(self):
         #copy distrowatch default file
