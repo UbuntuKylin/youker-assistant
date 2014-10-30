@@ -21,54 +21,11 @@ Rectangle {
     id: touchpadsetpage
     width: parent.width
     height: 476
-//    color: "#eeedf0"
 
     property string scrollbars_mode: ""
     property string touchscrolling_mode: ""
     property string actiontitle: qsTr("Touchpad settings")//触摸板设置
     property string actiontext: qsTr("Setting the relevant properties of your touchpad,make the operation more convenient.")//通过调整您触摸板的相关设置，使操作更加便捷。
-
-    //使用云配置后，控件状态根据配置发生相应的变化
-//    Connections
-//    {
-//        target: sessiondispatcher
-//        onTellDownloadCloudConfToQML: {
-//            if(download == "touchpad_enable") {
-//                if (sessiondispatcher.get_touchpad_enable_qt()) {
-//                    touchpadswitcher.switchedOn = true;
-//                }
-//                else {
-//                    touchpadswitcher.switchedOn = false;
-//                }
-//            }
-//            else if(download == "touch_horizontal_scrolling") {
-//                if (sessiondispatcher.get_touchscrolling_use_horizontal_qt()) {
-//                    horizontalswitcher.switchedOn = true;
-//                }
-//                else {
-//                    horizontalswitcher.switchedOn = false;
-//                }
-//            }
-//            else if(download == "type_scroll_bar") {
-//                touchpadsetpage.scrollbars_mode = sessiondispatcher.get_scrollbars_mode_qt();
-//                if (touchpadsetpage.scrollbars_mode == "overlay-auto") {
-//                    overlay.checked = true;
-//                }
-//                else if(touchpadsetpage.scrollbars_mode == "normal") {
-//                    legacy.checked = true;
-//                }
-//            }
-//            else if(download == "touchpad_scrolling_mode") {
-//                touchpadsetpage.touchscrolling_mode = sessiondispatcher.get_touchscrolling_mode_qt();
-//                if (touchpadsetpage.touchscrolling_mode == "edge-scrolling") {
-//                    edge.checked = true;
-//                }
-//                else if(touchpadsetpage.touchscrolling_mode == "two-finger-scrolling") {
-//                    twofinger.checked = true;
-//                }
-//            }
-//        }
-//    }
 
     Component.onCompleted: {
         touchpadsetpage.scrollbars_mode = sessiondispatcher.get_scrollbars_mode_qt();
@@ -147,10 +104,8 @@ Rectangle {
             top: top_splitbar.bottom
             topMargin: 40
         }
-//        z: 11
         Row {
             spacing: 200
-//            z: 11
             Row {
                 spacing: 20
                 Image {
@@ -158,11 +113,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     width: 160
                     anchors.verticalCenter: parent.verticalCenter
@@ -218,11 +168,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     width: 160
                     text: qsTr("Enable horizontal scrolling: ")//触摸板横向滚动：
@@ -279,11 +224,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     width: 160
                     text: qsTr("Scrollbar type: ")//滚动条类型：
@@ -371,11 +311,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     width: 160
                     text: qsTr("Panel layout: ")//触摸板滚动触发方式：

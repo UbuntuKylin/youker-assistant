@@ -54,10 +54,6 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     initConfigFile();
 
     slidershow = new NewCharacter();
-
-    //超时计时器
-//    timer = new QTimer(this);
-
     updatetimer = new QTimer(this);
 
     //handler_change_titlebar_position
@@ -66,9 +62,6 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
     QObject::connect(sessioniface, SIGNAL(scan_complete(QString)), this, SLOT(handler_scan_complete(QString)));
     QObject::connect(sessioniface, SIGNAL(access_weather(QString, QString)), this, SLOT(accord_flag_access_weather(QString, QString)));
     QObject::connect(sessioniface, SIGNAL(total_data_transmit(QString, QString)), this, SLOT(handler_total_data_transmit(QString,QString)));
-//    QObject::connect(sessioniface, SIGNAL(distrowatch_ubuntukylin_signal(bool)), this, SLOT(handlerDistrowatchUKSignal(bool)));
-
-
     QObject::connect(sessioniface, SIGNAL(youkerid_whoami_signal(QString, QString)), this, SLOT(handlerYoukerID(QString, QString)));
     QObject::connect(sessioniface, SIGNAL(youkerid_logout_signal()), this, SLOT(handlerLogoutSuccess()));
     QObject::connect(sessioniface, SIGNAL(youkerid_login_fail_signal()), this, SLOT(handlerLoginFail()));
@@ -161,13 +154,6 @@ void SessionDispatcher::http_get_img_resource() {
 void SessionDispatcher::unzip_resource_uk() {
     QString path = "/tmp/uk-img.zip";
     sessioniface->call("unzip_resource_uk", path);
-//    QDBusReply<bool> reply = sessioniface->call("unzip_resource_uk", path);
-//    if(reply.value()) {
-//        qDebug() << "unzip success...";
-//    }
-//    else {
-//        qDebug() << "unzip failed...";
-//    }
 }
 
 bool SessionDispatcher::judge_camera_qt() {
@@ -301,70 +287,10 @@ void SessionDispatcher::handler_change_titlebar_position(QString position) {
     emit this->startChangeControlBtnPosition(position);
 }
 
-//每30minutes连接服务器beat一次
-//void SessionDispatcher::connectHttpServer(){
-//    mSettings->beginGroup("user");
-//    int id = mSettings->value("id").toInt();
-//    mSettings->endGroup();
-//    mSettings->sync();
-//    //心跳
-//    QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=beat&pp[table]=yk_member&pp[id]=%1").arg(id);
-//    QUrl url(requestData);
-//    httpauth->sendGetRequest(url);
-//}
-
-//beat失败处理，beat不成功，界面的用户信息消失，改为登录界面，提示网络出错
-//void SessionDispatcher::resetTimerStatus() {
-//    //主动查询
-//    QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=network");
-//    QUrl url(requestData);
-//    httpauth->sendGetRequest(url);
-//}
-
-//查询当前的积分、等级....
-//void SessionDispatcher::searchCurrentInfo() {
-////    waitTime = 0;
-//    mSettings->beginGroup("user");
-//    int id = mSettings->value("id").toInt();
-//    mSettings->endGroup();
-//    mSettings->sync();
-//    QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=getall&pp[table]=yk_member&pp[id]=%1").arg(id);
-//    QUrl url(requestData);
-//    httpauth->sendGetRequest(url);
-//}
-
 //显示SliderShow
 void SessionDispatcher::show_slider_qt() {
     sessioniface->call("display_slide_show");
 }
-
-//程序正常关闭之前，关闭定时器，获取id后发送退出信号给服务端
-//void SessionDispatcher::ready_exit_normally() {
-    //关闭定时器
-//    waitTime = 0;
-//    disconnect(timer,SIGNAL(timeout()),this,SLOT(connectHttpServer()));
-//    if(timer->isActive()) {
-//        timer->stop();
-//    }
-//    //退出
-//    mSettings->beginGroup("user");
-//    int id = mSettings->value("id").toInt();
-//    mSettings->endGroup();
-//    mSettings->sync();
-//    QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=logout&pp[table]=yk_member&pp[id]=%1").arg(id);
-//    QUrl url(requestData);
-//    httpauth->sendGetRequest(url);
-//}
-
-//点击登录框的确定按钮后，开始发送数据给服务端进行登录验证
-//void SessionDispatcher::verify_user_and_password(QString user, QString pwd) {
-//    //显示登录动态图
-//    emit showLoginAnimatedImage();
-//    //发送数据给服务端进行登录验证
-//    QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=login&pp[table]=yk_member&name=%1&password=%2").arg(user).arg(pwd);
-//    QUrl url(requestData);
-//    httpauth->sendGetRequest(url);
-//}
 
 void SessionDispatcher::check_user_qt() {
     sessioniface->call("check_user");
@@ -429,60 +355,6 @@ void SessionDispatcher::handlerUnZip(bool result) {
         qDebug() << "unzip failed...";
     }
 }
-
-//用户登录成功后处理数据：显示界面、id写入本地配置、开启定时器
-//void SessionDispatcher::handle_data_after_login_success(QString id, QString name, QString score) {
-//    loginOK = true;
-//    //登录成功后将用户信息显示在界面上
-//    bool ok;
-//    QString level = score_count_level(score.toInt(&ok, 10));
-//    emit updateLoginStatus(name, level, score);
-
-//    //将当前用户id写入本地配置文件中
-//    mSettings->beginGroup("user");
-//    mSettings->setValue("id", id);
-//    mSettings->endGroup();
-//    mSettings->sync();
-
-    //绑定和初始化定时器，每隔30minutes连接服务器一次
-//    waitTime = 0;
-//    connect(timer,SIGNAL(timeout()),this,SLOT(connectHttpServer()));
-//    timer->start(60000*30);//5000
-//}
-
-//用户查询成功后处理数据：界面刷新数据
-//void SessionDispatcher::handle_data_after_search_success(QString score) {
-//    //查询成功后将用户信息更新在界面上
-//    bool ok;
-//    QString level = score_count_level(score.toInt(&ok, 10));
-//    emit refreshUserInfo(level, score);
-////    waitTime = 0;
-//}
-
-//登录失败时或者测试网络失败，通知QML界面
-//void SessionDispatcher::handle_data_when_login_failed(int status) {
-//    if(status == 99) {
-//        waitTime++;
-//        if(waitTime >= 4){
-//            waitTime = 0;
-//            disconnect(timer, SIGNAL(timeout()), this, SLOT(connectHttpServer()));
-//            if(timer->isActive()) {
-//                timer->stop();
-//            }
-//            emit loginFailedStatus(99); //超时次数到，向主界面发送网络出现错误的信号
-//            qDebug()<<"connect fail...";
-//        }else{
-//            qDebug() << "continue connect...";
-//            QString requestData = QString("http://www.ubuntukylin.com/boxbeta/find_get.php?pp[type]=network");
-//            QUrl url(requestData);
-//            httpauth->sendGetRequest(url);
-//        }
-//    }
-//    else {
-//        loginOK = false;
-//        emit loginFailedStatus(status);
-//    }
-//}
 
 //根据积分计算用户等级
 QString SessionDispatcher::score_count_level(int score) {
@@ -1709,33 +1581,12 @@ bool SessionDispatcher::submit_uk_pingback() {
     return reply.value();
 }
 
-/*bool*/void SessionDispatcher::access_server_pingback() {
+void SessionDispatcher::access_server_pingback() {
     sessioniface->call("access_server_pingback");
-//    QDBusReply<bool> reply = sessioniface->call("access_server_pingback");
-//    return reply.value();
 }
 
 void SessionDispatcher::get_current_weather_qt() {
     this->access_server_pingback();
-//    bool result = this->access_server_pingback();
-//    if(result) {
-//        QString initCityId = this->getCityIdInfo();
-//        bool flag = Util::id_exists_in_location_file(initCityId);
-//        if(flag) {//获取中国气象局数据
-//            QStringList tmplist;
-//            KThread *thread = new KThread(tmplist, sessioniface, "get_current_weather", initCityId);
-//            thread->start();
-//        }
-//        else {//获取雅虎气象数据
-//            QStringList latlon = this->getLatandLon();
-//            KThread *thread = new KThread(latlon, sessioniface, "get_current_yahoo_weather", initCityId);
-//            thread->start();
-//        }
-//        this->submit_uk_pingback();
-//    }
-//    else {
-//        qDebug() << "link weather server failed....";
-//    }
 }
 
 void SessionDispatcher::get_current_weather_dict_qt() {

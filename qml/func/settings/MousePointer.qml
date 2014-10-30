@@ -21,7 +21,6 @@ Rectangle {
     id: mousepointerpage
     width: parent.width
     height: 476
-//    color: "#eeedf0"
 
     property int cursor_size: 24
     property int default_index//系统默认主题的索引
@@ -111,7 +110,6 @@ Rectangle {
             topMargin: 40
         }
         spacing: 20
-//        z: 11
         Row {
             spacing: 200
             Row {
@@ -121,11 +119,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "no"
-//                    showImage: "../../img/icons/cloud-gray.png"
-//                }
                 Text {
                     id: cursorthemelabel
                     width: 160
@@ -176,11 +169,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "no"
-//                    showImage: "../../img/icons/cloud-gray.png"
-//                }
                 Text {
                     id: trashlabel
                     width: 160

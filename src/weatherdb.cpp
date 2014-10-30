@@ -41,10 +41,8 @@ void WeatherDB::exit_qt() {
     weatheriface->call("exit");
 }
 
-/*QStringList */void WeatherDB::search_city_names_qt(QString search_name) {
+void WeatherDB::search_city_names_qt(QString search_name) {
     weatheriface->call("search_city_names", search_name);
-//    QDBusReply<QStringList> reply = weatheriface->call("search_city_names", search_name);
-//    return reply.value();
 }
 
 QStringList WeatherDB::get_geonameid_list_qt() {
@@ -64,8 +62,6 @@ QStringList WeatherDB::get_latitude_list_qt() {
 
 void WeatherDB::get_yahoo_city_id_qt(QString geonameid) {
     weatheriface->call("get_yahoo_city_id", geonameid);
-//    QDBusReply<QString> reply = weatheriface->call("get_yahoo_city_id", geonameid);
-//    return reply.value();
 }
 
 void WeatherDB::handler_access_yahoo_city_id(QString cityId) {
@@ -80,9 +76,6 @@ void WeatherDB::handler_access_yahoo_city_id(QString cityId) {
 void WeatherDB::handler_access_yahoo_cities(QStringList cities) {
     emit this->ready_to_get_cities_info(cities);
 }
-//-------------------------
-
-
 
 //weather sqlite database
 QStringList WeatherDB::get_province_list_qt() {

@@ -19,29 +19,17 @@
 import dbus
 import dbus.service
 import logging
-#import gtk
 log = logging.getLogger("DbusProxy")
 
 INTERFACE = 'com.ubuntukylin.youker'
 UKPATH = '/'
 SHOWED = False
 
-#def youker_error_dialog(title, message):
-#    dialog = gtk.MessageDialog(None,
-#                               gtk.DIALOG_MODAL,
-#                               type=gtk.MESSAGE_ERROR,
-#                               buttons=gtk.BUTTONS_OK)
-#    dialog.set_markup("<b>%s</b>" % title)
-#    dialog.format_secondary_markup(message)
-#    dialog.run()
-#    dialog.destroy()
-
 def show_message(*args):
     from dialogs import ErrorDialog
     title = 'Daemon start failed'
     message = ('Youker Assisant systemdaemon didn\'t start correctly.\n'
                 'If you want to help developers debugging, try to run "<b>sudo /usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/start_systemdbus.py</b>" in a terminal.')
-    #youker_error_dialog(title, message)
     ErrorDialog(title=title, message=message).launch()
 
 def nothing(*args):
@@ -52,7 +40,6 @@ class DbusProxy:
         __system_bus = dbus.SystemBus()
         __object = __system_bus.get_object(INTERFACE, UKPATH)
     except Exception, e:
-        #log.error(e)
         __object = None
 
     def __getattr__(self, name):

@@ -22,9 +22,8 @@ WarningDialog::WarningDialog(QString title, QString content,QWidget *parent) :
     ui(new Ui::WarningDialog)
 {
     ui->setupUi(this);
-    this->setAttribute(Qt::WA_DeleteOnClose);//防止内存泄漏
+    this->setAttribute(Qt::WA_DeleteOnClose);
     this->setWindowFlags(Qt::FramelessWindowHint);
-//    this->setAttribute(Qt::WA_TranslucentBackground);
 
     ui->widget->setAutoFillBackground(true);
     QPalette palette;

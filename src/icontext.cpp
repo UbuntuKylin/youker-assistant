@@ -67,7 +67,6 @@ void IconText::mousePressEvent(QMouseEvent *e)
     if(e->button() == Qt::LeftButton)
     {
         setMousePressFlag(true);
-//        emit ukclicked(this);
         emit ukclicked(this->cur_index);
 
     }

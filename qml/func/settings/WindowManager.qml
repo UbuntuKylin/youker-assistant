@@ -21,7 +21,6 @@ Rectangle {
     id: windowmanagerpage
     width: parent.width
     height: 476
-//    color: "#eeedf0"
 
     property string position_mode: ""
     property int wheel_current_index//当前的索引
@@ -35,109 +34,11 @@ Rectangle {
 
     property string actiontitle: qsTr("Window")//窗口
     property string actiontext: qsTr("Window Manager settings.")//管理窗口管理器的设置
-    //背景
-//    Image {
-//        source: "../../img/skin/bg-middle.png"
-//        anchors.fill: parent
-//    }
 
     ListModel { id: wheelchoices }
     ListModel { id: doublechoices }
     ListModel { id: middlechoices }
     ListModel { id: rightchoices }
-
-    //使用云配置后，控件状态根据配置发生相应的变化
-//    Connections
-//    {
-//        target: sessiondispatcher
-//        onTellDownloadCloudConfToQML: {
-//            if(download == "window_button") {
-//                windowmanagerpage.position_mode = sessiondispatcher.get_window_button_align_qt();
-//                if (windowmanagerpage.position_mode == "left") {
-//                    leftbox.checked = true;
-//                }
-//                else if(windowmanagerpage.position_mode == "right") {
-//                    rightbox.checked = true;
-//                }
-//            }
-//            else if(download == "menus_have_icons") {
-//                if (sessiondispatcher.get_menus_have_icons_qt()) {
-//                    menuswitcher.switchedOn = true;
-//                }
-//                else {
-//                    menuswitcher.switchedOn = false;
-//                }
-//            }
-//            else if(download == "titlebar_wheel") {
-//                var wheellist = sessiondispatcher.get_titlebar_wheel_qt();
-//                var current_wheel_type = sessiondispatcher.get_current_titlebar_wheel_qt();
-//                var new_list = new Array();
-//                for(var m=0; m < wheellist.length; m++) {
-//                    if(wheellist[m] !== current_wheel_type) {
-//                        new_list.push(wheellist[m]);
-//                    }
-//                }
-//                new_list.unshift(current_wheel_type);
-//                for(var j=0; j < new_list.length; j++) {
-//                    if (current_wheel_type === new_list[j]) {
-//                        wheelcombo.selectedIndex  = j;
-//                        break;
-//                    }
-//                }
-//            }
-//            else if(download == "titlebar_double") {
-//                var doublelist = sessiondispatcher.get_titlebar_double_qt();
-//                var current_double_type = sessiondispatcher.get_current_titlebar_double_qt();
-//                var new_list = new Array();
-//                for(var m=0; m < doublelist.length; m++) {
-//                    if(doublelist[m] !== current_double_type) {
-//                        new_list.push(doublelist[m]);
-//                    }
-//                }
-//                new_list.unshift(current_double_type);
-//                for(var j=0; j < new_list.length; j++) {
-//                    if (current_double_type === new_list[j]) {
-//                        doublecombo.selectedIndex  = j;
-//                        break;
-//                    }
-//                }
-//            }
-//            else if(download == "titlebar_middle") {
-//                var middlelist = sessiondispatcher.get_titlebar_middle_qt();
-//                var current_middle_type = sessiondispatcher.get_current_titlebar_middle_qt();
-//                var new_list = new Array();
-//                for(var m=0; m < middlelist.length; m++) {
-//                    if(middlelist[m] !== current_middle_type) {
-//                        new_list.push(middlelist[m]);
-//                    }
-//                }
-//                new_list.unshift(current_middle_type);
-//                for(var j=0; j < new_list.length; j++) {
-//                    if (current_middle_type === new_list[j]) {
-//                        middlecombo.selectedIndex  = j;
-//                        break;
-//                    }
-//                }
-//            }
-//            else if(download == "titlebar_right") {
-//                var rightlist = sessiondispatcher.get_titlebar_right_qt();
-//                var current_right_type = sessiondispatcher.get_current_titlebar_right_qt();
-//                var new_list = new Array();
-//                for(var m=0; m < rightlist.length; m++) {
-//                    if(rightlist[m] !== current_right_type) {
-//                        new_list.push(rightlist[m]);
-//                    }
-//                }
-//                new_list.unshift(current_right_type);
-//                for(var j=0; j < new_list.length; j++) {
-//                    if (current_right_type === new_list[j]) {
-//                        rightcombo.selectedIndex  = j;
-//                        break;
-//                    }
-//                }
-//            }
-//        }
-//    }
 
     Component.onCompleted: {
         if (sessiondispatcher.access_current_desktop_qt() == "Unity") {
@@ -291,7 +192,6 @@ Rectangle {
             top: top_splitbar.bottom
             topMargin: 40
         }
-//        z: 11
         Row {
             id: toolboxpositon
             spacing: 230
@@ -303,11 +203,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     width: 160
                     text: qsTr("Window function button:")//窗口控制按钮位置：
@@ -391,11 +286,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     width: 160
                     text: qsTr("Menu with icons: ")//菜单项旁显示图标：
@@ -449,11 +339,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Text {
                     width: 160
                     text: qsTr("Titlebar mouse wheel action:")//标题栏鼠标滚轮动作：
@@ -498,11 +383,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Text {
                     width: 160
                     text: qsTr("Titlebar double-click action:")//标题栏双击动作：
@@ -547,11 +427,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Text {
                     width: 160
                     text: qsTr("Titlebar middle-click action:")//标题栏中键动作：
@@ -596,11 +471,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Text {
                     width: 160
                     text: qsTr("Titlebar right-click action:")//标题栏右键动作：

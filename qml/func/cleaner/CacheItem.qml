@@ -46,7 +46,7 @@ Item {
 
     signal getCacheItemCheckBoxStatus(string flag, bool status, int index); //test
 
-    width: 800//850
+    width: 800
     height: 30
     clip: true
     onSelectedChanged: {
@@ -149,7 +149,6 @@ Item {
         id: mouseArea
         hoverEnabled: true
         anchors.fill: itemText
-//        onClicked: container.clicked();
         onDoubleClicked: {//双击浏览器缓存栏目时，可以打开文件夹
             if((btn_flag == "browser_work") || (btn_flag == "cache_work" && container.descript == "True")) {
                 container.clicked(container.text);

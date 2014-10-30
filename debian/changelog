@@ -1,8 +1,9 @@
 youker-assistant (1.3.2-0ubuntu1) utopic; urgency=low
 
   * Make it work normally when fisrt start(LP: #1373294).
+  * Make icons on panel normally(LP: #1380938).
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Wed, 22 Oct 2014 11:04:26 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 30 Oct 2014 17:25:13 +0800
 
 youker-assistant (1.3.1-0ubuntu1) utopic; urgency=low
 

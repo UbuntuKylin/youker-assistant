@@ -36,17 +36,10 @@ public:
     ~SessionDispatcher();
     QDBusInterface *sessioniface;
     Q_INVOKABLE void show_slider_qt();
-
     Q_INVOKABLE void check_user_qt();
-
-    //退出前的准备工作
-//    void ready_exit_normally();
-
     void http_get_img_resource();
-
     //打开文件夹
     Q_INVOKABLE void open_folder_qt(QString path);
-
     Q_INVOKABLE void get_distrowatch_url_qt();
     Q_INVOKABLE QStringList get_distrowatch_info_qt();
     QMap<QString, QVariant> distrowatchInfo;
@@ -354,18 +347,8 @@ signals:
     void tellQMLCookiesOver(QString cookiesFlag);
     //把一键扫描的总数告诉QML
     void tellScanResultToQML(QString flag, QString msg);
-    //显示登录动态图片
-//    void showLoginAnimatedImage();
-    //更新登录状态
-//    void updateLoginStatus(QString username, QString level, QString score);
-    //刷新用户数据
-//    void refreshUserInfo(QString level, QString score);
-    //登录失败
-//    void loginFailedStatus(int status);
-
     void ssoSuccessSignal(QString displayName, QString emailAddress);
     void ssoLoginLogoutSignal(bool loginFlag);
-
     //告诉QML界面，标题栏控制按钮位置发生变化了，准备改变优客助手自身的控制按钮位置
     void startChangeControlBtnPosition(QString position);
     void tellQMLHistoryNumber(QString flag, int num);
@@ -377,10 +360,6 @@ signals:
     void finishAccessUKDistrowatch();
 public slots:
     Q_INVOKABLE void get_current_weather_qt();
-//    void verify_user_and_password(QString user, QString pwd);
-//    void handle_data_after_login_success(QString id, QString name, QString score);
-//    void handle_data_after_search_success(QString score);
-//    void handle_data_when_login_failed(int status);
     //获取天气预报槽函数
     void accord_flag_access_weather(QString key, QString value);
     //扫描完成槽函数
@@ -403,12 +382,6 @@ public slots:
     void handler_append_cookies_to_model(QString flag, QString domain, QString num);
     //接收cookies扫描完后的信号
     void handler_cookies_scan_over(QString cookiesFlag);
-    //连接服务器
-//    void connectHttpServer();
-    //处理连接服务器失败的时候
-//    void resetTimerStatus();
-    //处理连接服务器成功的时候，查询当前用户的信息：积分、等级...
-//    void searchCurrentInfo();
     //根据积分计算用户等级
     QString score_count_level(int score);
     //接受标题栏控制按钮位置改变
@@ -416,7 +389,7 @@ public slots:
     void handlerHistoryNumber(QString flag, int num);
     void handlerLargeFileList(QStringList filelist);
     //返回主页面槽函数
-    void handlerBackToHomePage(int index);//0412
+    void handlerBackToHomePage(int index);
     void handlerDistrowatchAllSignal(QString update_rate);
     void handlerDistrowatchUKSignal(bool uk_flag);
 
@@ -433,10 +406,7 @@ private:
     QSettings * mSettings;
     QSettings * default_Settings;
     QSettings * distrowatch_Settings;
-//    int waitTime;//超时重试次数
-//    QTimer *timer;
     QTimer *updatetimer;
-//    bool loginOK;
     NewCharacter *slidershow; //新版特性界面
     SelectDialog *selectDialog;
     HttpDownLoad *httpdownload;

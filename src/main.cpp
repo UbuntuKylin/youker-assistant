@@ -35,7 +35,6 @@
 #include "processmanager.h"
 #include "devicemanager.h"
 #include "slidershow.h"
-//#include "qmlaudio.h"
 #include "qrangemodel.h"
 #include "qstyleitem.h"
 #include "qwheelarea.h"
@@ -59,7 +58,6 @@ void registerTypes() {
     qmlRegisterType<CloundDispatcher>("CloundType", 0, 1, "CloundDispatcher");
     qmlRegisterType<ProcessManager>("ProcessType", 0, 1, "ProcessManager");
     qmlRegisterType<DeviceManager>("DeviceType", 0, 1, "DeviceManager");
-//    qmlRegisterType<QmlAudio>("AudioType", 0, 1, "QmlAudio");
     qmlRegisterType<QRangeModel>("RangeModelType", 0, 1, "RangeModel");
     qmlRegisterType<QStyleItem>("StyleItemType", 0, 1, "StyleItem");
     qmlRegisterType<QWheelArea>("WheelAreaType", 0, 1, "WheelArea");
@@ -145,7 +143,6 @@ int main(int argc, char** argv)
     mSettings->setIniCodec("UTF-8");
     mSettings->beginGroup("firststart");
     flag = mSettings->value(pwd->pw_name).toBool();
-//    flag = mSettings->value("flag").toBool();
     mSettings->endGroup();
     mSettings->sync();
 
@@ -183,7 +180,6 @@ int main(int argc, char** argv)
         delete splash;
         slider = new SliderShow();
         mSettings->beginGroup("firststart");
-//        mSettings->setValue("flag", "0");
         mSettings->setValue(pwd->pw_name, "1");
         mSettings->endGroup();
         mSettings->sync();

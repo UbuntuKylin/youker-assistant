@@ -20,11 +20,9 @@ import "../common" as Common
 Rectangle {
     id:filepage
     width: parent.width; height: 437
-//    color: "#eeedf0"
 
     property string title: qsTr("Quickly find large files")//快速找出大文件
     property string description: qsTr("Range:1M-20480M; 1GB = 1024MB")//大小范围为1M-20480M；1GB = 1024MB
-//    property string scope_desc: qsTr("Tips: No support the path contains Chinese.")//提示：暂不支持中文路径。
     property string btnFlag: "largestfile_work"//清理的标记：largestfile_work
     property int sub_num: 0
     property bool resultFlag: false//判断扫描后的实际内容是否为空，为空时为false，有内容时为true
@@ -292,7 +290,6 @@ Rectangle {
                     btn_flag: filepage.btnFlag
                     arrow_display: filepage.deleget_arrow
                     delegate_flag: false
-                    //test 0410
                     onTransmitFileItemMainCheckBoxStatus: {
                         if(status) {
                             for(var i=0; i<subModel.count; i++) {
@@ -325,7 +322,6 @@ Rectangle {
                 }
                 cacheBuffer: 1000
                 opacity: 1
-//                spacing: 10
                 snapMode: ListView.NoSnap
                 boundsBehavior: Flickable.DragOverBounds
                 currentIndex: 0

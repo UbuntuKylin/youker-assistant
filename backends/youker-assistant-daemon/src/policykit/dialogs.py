@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+
 ### BEGIN LICENSE
 # Copyright (C) 2007-2011 Tualatrix Chou <tualatrix@gmail.com>
 # This program is free software: you can redistribute it and/or modify it

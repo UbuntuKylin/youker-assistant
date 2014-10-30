@@ -17,15 +17,15 @@
 import QtQuick 1.1
 import "../common" as Common
 
-import ProcessType 0.1//1101
+import ProcessType 0.1
 
 Rectangle {
     id: scaleMe
     scale: 1
     Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad} }
     //竖列高度和宽度
-    width: 100//83//100
-    height: 100//84//100
+    width: 100
+    height: 100
 
     SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
     color: "transparent"

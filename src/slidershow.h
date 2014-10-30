@@ -34,8 +34,6 @@ public:
     explicit SliderShow(QWidget *parent = 0);
     ~SliderShow();
     QString get_locale_version();
-//    void showSlider();
-
 
 protected:
     void mousePressEvent(QMouseEvent *);
@@ -44,25 +42,17 @@ protected:
     bool eventFilter(QObject *obj, QEvent *event);
 
 private slots:
-//    void changeCurrentPage(IconText *);//点击按钮时更换成对应的图片
     void changeCurrentPage(int);//点击按钮时更换成对应的图片
     void timerChangePosition();
-
-//    void hideSlider();
     void start_run_program();
 
 private:
-//    void changeCurrentButton();
-//    void movePicPosition(bool);
-//    QPoint mouseSrcPos;//鼠标起始位置
-//    QPoint mouseDstPos;//鼠标结束位置
     int current_pos_x;
 
     QLabel *background_label; //背景图片
     int current_index; //当前图片下标
     QLabel *master_label;
     IconText *pic_array[5];
-//    IconText *cur_pic;
     KButton *close_button; //关闭按钮
     KButton *start_button; //开始按钮
     QHBoxLayout *hLayout;

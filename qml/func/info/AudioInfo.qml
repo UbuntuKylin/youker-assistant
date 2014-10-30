@@ -22,8 +22,7 @@ import "../common/InfoGroup.js" as InfoGroup
 /*------------------最多支持四个声卡的显示------------------*/
 Rectangle {
     id: home; width: parent.width; height: 476
-//    color: "transparent"
-//    color: "#eeedf0"
+
     property int itemNum: 4//每个模块的子项个数
     property int viewSpace: 10
     property bool firstFlag: false
@@ -59,7 +58,6 @@ Rectangle {
         splitbar1.visible = true;
         logo1.visible = true;
         logo1.source = InfoGroup.judgeName(vendorname[0].toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + vendorname[0].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-//        logo1.source = InfoGroup.judgeName(vendorname[0].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorname[0].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         //--------------second--------------
         home.secondFlag = true;
         secondView.visible = true;
@@ -71,7 +69,6 @@ Rectangle {
         secondModel.append({"title": qsTr("Audio Driver:"), "result": drivers[1]});//声卡驱动：
         splitbar2.visible = true;
         logo2.visible = true;
-//        logo2.source = InfoGroup.judgeName(vendorname[1].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorname[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         logo2.source = InfoGroup.judgeName(vendorname[1].toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + vendorname[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         if(num == 2) {
             //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
@@ -89,7 +86,6 @@ Rectangle {
             thirdModel.append({"title": qsTr("Audio Driver:"), "result": drivers[2]});//声卡驱动：
             splitbar3.visible = true;
             logo3.visible = true;
-//            logo3.source = InfoGroup.judgeName(vendorname[2].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorname[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             logo3.source = InfoGroup.judgeName(vendorname[2].toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + vendorname[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             if(num == 3) {
                 //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
@@ -106,7 +102,6 @@ Rectangle {
                 fourthModel.append({"title": qsTr("Audio Driver:"), "result": drivers[3]});//声卡驱动：
                 splitbar4.visible = true;
                 logo4.visible = true;
-//                logo4.source = InfoGroup.judgeName(vendorname[3].toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorname[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
                 logo4.source = InfoGroup.judgeName(vendorname[3].toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + vendorname[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
                 //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
                 listItem.height = (home.itemNum*20 + (home.itemNum - 1)*10 + 10*2) * + 80;
@@ -115,7 +110,6 @@ Rectangle {
     }
 
 
-//    Component.onCompleted: {
     function init_data() {
         home.firstFlag = false;
         home.secondFlag = false;
@@ -135,7 +129,6 @@ Rectangle {
 
             splitbar1.visible = true;
             logo1.visible = true;
-//            logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
             listItem.height = home.itemNum*20 + (home.itemNum - 1)*home.viewSpace + home.viewSpace*2 + 20;
@@ -164,7 +157,6 @@ Rectangle {
                 font.pixelSize: 14
                 color: "#7a7a7a"
                 width: 150
-//                height: 20
             }
             Text {
                 id: slotText
@@ -173,7 +165,6 @@ Rectangle {
                 wrapMode: Text.WordWrap
                 font.pixelSize: 14
                 color: "#7a7a7a"
-//                height: 20
             }
         }
     }
@@ -236,7 +227,6 @@ Rectangle {
                             top: parent.top
                             topMargin: 30
                             right: parent.right
-//                            rightMargin: 30
                         }
                     }
                 }
@@ -265,7 +255,6 @@ Rectangle {
                             top: parent.top
                             topMargin: 30
                             right: parent.right
-//                            rightMargin: 30
                         }
                     }
                 }

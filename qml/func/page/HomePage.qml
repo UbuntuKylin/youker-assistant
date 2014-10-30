@@ -17,8 +17,8 @@ import QtQuick 1.1
 import "../others" as Others
 
 Rectangle {
-    id: screen; width: parent.width; height: 476
-//    color: "#eeedf0"
+    id: screen
+    width: parent.width; height: 476
 
     function openFile(file) {
          var component = Qt.createComponent(file)

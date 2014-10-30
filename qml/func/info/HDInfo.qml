@@ -22,8 +22,7 @@ import "../common/InfoGroup.js" as InfoGroup
 /*------------------最多支持四个硬盘的显示------------------*/
 Rectangle {
     id: home; width: parent.width; height: 476
-//    color: "transparent"
-//    color: "#eeedf0"
+
     property bool firstFlag: false
     property bool secondFlag: false
     property bool thirdFlag: false
@@ -61,11 +60,9 @@ Rectangle {
         splitbar1.visible = true;
         logo1.visible = true;
         if(diskvendor[0] == "Western Digital") {//
-//            logo1.source = "../../img/logo/Manufacturer/WDC.jpg";
             logo1.source = home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + "WDC.jpg";
         }
         else {
-//            logo1.source = InfoGroup.judgeName(diskvendor[0].toUpperCase()) ? ("../../img/logo/Manufacturer/" + diskvendor[0].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             logo1.source = InfoGroup.judgeName(diskvendor[0].toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + diskvendor[0].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         }
 
@@ -82,11 +79,9 @@ Rectangle {
         splitbar2.visible = true;
         logo2.visible = true;
         if(diskvendor[1] == "Western Digital") {
-//            logo2.source = "../../img/logo/Manufacturer/WDC.jpg";
             logo2.source = home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + "WDC.jpg";
         }
         else {
-//            logo2.source = InfoGroup.judgeName(diskvendor[1].toUpperCase()) ? ("../../img/logo/Manufacturer/" + diskvendor[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             logo2.source = InfoGroup.judgeName(diskvendor[1].toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + diskvendor[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         }
         if(num == 2) {
@@ -107,11 +102,9 @@ Rectangle {
             splitbar3.visible = true;
             logo3.visible = true;
             if(diskvendor[2] == "Western Digital") {
-//                logo3.source = "../../img/logo/Manufacturer/WDC.jpg";
                 logo3.source = home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + "WDC.jpg";
             }
             else {
-//                logo3.source = InfoGroup.judgeName(diskvendor[2].toUpperCase()) ? ("../../img/logo/Manufacturer/" + diskvendor[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
                 logo3.source = InfoGroup.judgeName(diskvendor[2].toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + diskvendor[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             }
             if(num == 3) {
@@ -131,11 +124,9 @@ Rectangle {
                 splitbar4.visible = true;
                 logo4.visible = true;
                 if(diskvendor[3] == "Western Digital") {
-//                    logo4.source = "../../img/logo/Manufacturer/WDC.jpg";
                     logo4.source = home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + "WDC.jpg";
                 }
                 else {
-//                    logo4.source = InfoGroup.judgeName(diskvendor[3].toUpperCase()) ? ("../../img/logo/Manufacturer/" + diskvendor[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
                     logo4.source = InfoGroup.judgeName(diskvendor[3].toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + diskvendor[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
                 }
                 //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
@@ -144,7 +135,6 @@ Rectangle {
         }
     }
 
-//    Component.onCompleted: {
     function init_data() {
         home.firstFlag = false;
         home.secondFlag = false;
@@ -166,11 +156,9 @@ Rectangle {
             splitbar1.visible = true;
             logo1.visible = true;
             if(vendorName == "Western Digital") {
-//                logo1.source = "../../img/logo/Manufacturer/WDC.jpg";
                 logo1.source = home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + "WDC.jpg";
             }
             else {
-//                logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
                 logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             }
 
@@ -295,10 +283,7 @@ Rectangle {
                         visible: false
                         opacity: 0.5
                         source: ""
-                        anchors {
-                            right: parent.right
-//                            rightMargin: 30
-                        }
+                        anchors.right: parent.right
                     }
                 }
                 Common.Separator {
@@ -322,10 +307,7 @@ Rectangle {
                         visible: false
                         opacity: 0.5
                         source: ""
-                        anchors {
-                            right: parent.right
-//                            rightMargin: 30
-                        }
+                        anchors.right: parent.right
                     }
                 }
                 Common.Separator {
@@ -349,10 +331,7 @@ Rectangle {
                         visible: false
                         opacity: 0.5
                         source: ""
-                        anchors {
-                            right: parent.right
-//                            rightMargin: 30
-                        }
+                        anchors.right: parent.right
                     }
                 }
                 Common.Separator {

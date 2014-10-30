@@ -49,7 +49,6 @@ Rectangle {
         else {
             scrollbar_z = 1;
         }
-
     }
     //信号绑定，绑定qt的信号finishCleanWork，该信号emit时触发onFinishCleanWork
     Connections
@@ -102,7 +101,6 @@ Rectangle {
                      font.pixelSize: 14
                      color: "#383838"
                  }
-                //status picture
                 Common.StatusImage {
                     id: statusImage
                     visible: false

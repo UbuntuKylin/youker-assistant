@@ -21,7 +21,6 @@ Rectangle {
     id: filemanagerpage
     width: parent.width
     height: 476
-//    color: "#eeedf0"
 
     property string actiontitle: qsTr("File Manager")//文件管理器
     property string actiontext: qsTr("Manage the Nautilus file manager. Tips: if the thumbnail's cache time or size is set to -1, it will not be checked.")//管理Nautilus文件管理器。注意：如果缩略图缓存时间或尺寸被设置为-1，缩略图将不会被清理。
@@ -29,55 +28,6 @@ Rectangle {
     property bool first_icon_size: false
     property bool first_cache_time: false
     property bool first_cache_size: false
-
-    //使用云配置后，控件状态根据配置发生相应的变化
-//    Connections
-//    {
-//        target: sessiondispatcher
-//        onTellDownloadCloudConfToQML: {
-//            if(download == "location_replace_pathbar") {
-//                if (sessiondispatcher.get_location_replace_pathbar_qt()) {
-//                    pathbarswitcher.switchedOn = true;
-//                }
-//                else {
-//                    pathbarswitcher.switchedOn = false;
-//                }
-//            }
-//            else if(download == "auto_mount_media") {
-//                if (sessiondispatcher.get_auto_mount_media_qt()) {
-//                    mediaswitcher.switchedOn = true;
-//                }
-//                else {
-//                    mediaswitcher.switchedOn = false;
-//                }
-//            }
-//            else if(download == "auto_open_folder") {
-//                if (sessiondispatcher.get_auto_open_folder_qt()) {
-//                    folderswitcher.switchedOn = true;
-//                }
-//                else {
-//                    folderswitcher.switchedOn = false;
-//                }
-//            }
-//            else if(download == "prompt_autorun_programs") {
-//                if (sessiondispatcher.get_prompt_autorun_programs_qt()) {
-//                    programsswitcher.switchedOn = true;
-//                }
-//                else {
-//                    programsswitcher.switchedOn = false;
-//                }
-//            }
-//            else if(download == "thumbnail_icon_size") {
-//                iconsizeslider.value = sessiondispatcher.get_thumbnail_icon_size_qt();
-//            }
-//            else if(download == "thumbnail_cache_time") {
-//                cachetimeslider.value = sessiondispatcher.get_thumbnail_cache_time_qt();
-//            }
-//            else if(download == "thumbnail_cache_size") {
-//                maxcacheslider.value = sessiondispatcher.get_thumbnail_cache_size_qt();
-//            }
-//        }
-//    }
 
     Component.onCompleted: {
         if (sessiondispatcher.get_location_replace_pathbar_qt()) {
@@ -167,7 +117,6 @@ Rectangle {
             topMargin: 40
         }
         spacing: 10
-//        z: 11
         Row {
             spacing: 100
             Row {
@@ -177,11 +126,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     id: pathbarlabel
                     width: 270
@@ -237,11 +181,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     id: medialabel
                     width: 270
@@ -297,11 +236,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     id: folderlabel
                     width: 270
@@ -357,11 +291,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     id: programslabel
                     width: 270
@@ -417,11 +346,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     id: thumbnailsizelabel
                     width: 270
@@ -477,11 +401,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     id: thumbnailtimelabel
                     width: 270
@@ -537,11 +456,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     id: thumbnailmaxsizelabel
                     width: 270

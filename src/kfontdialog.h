@@ -33,7 +33,6 @@ class KFontDialog : public QDialog
 public:
     explicit KFontDialog(QSettings *mSettings = 0, QString flag = "", QString cur_font = "", QWidget *parent = 0);
     ~KFontDialog();
-//    void getInitFont();
     void initDialog();
     
 private:

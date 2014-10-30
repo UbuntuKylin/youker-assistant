@@ -21,8 +21,7 @@ import "../common/InfoGroup.js" as InfoGroup
 
 Rectangle {
     id: home; width: parent.width; height: 476
-//    color: "transparent"
-//    color: "#eeedf0"
+
     property string homepath
 
     Component.onCompleted: {
@@ -30,7 +29,6 @@ Rectangle {
         systemdispatcher.get_computer_info_qt();//获取详细信息
         var vendorName = systemdispatcher.getHWSingleInfo("ComVendor", "computer").toUpperCase();
         logo.source = InfoGroup.judgeName(vendorName) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + vendorName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-//        logo.source = InfoGroup.judgeName(vendorName) ? ("../../img/logo/Manufacturer/" + vendorName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         comvendorText.text = vendorName;
         comproductText.text = systemdispatcher.getHWSingleInfo("ComProduct", "computer");
         comversionText.text = systemdispatcher.getHWSingleInfo("ComVersion", "computer");
@@ -54,16 +52,6 @@ Rectangle {
             uptimeText.text = valueHour + qsTr(" Hours ") + valueMinute + qsTr(" Minutes");//小时 分钟
         }
     }
-
-//    Connections
-//    {
-//        target: sessiondispatcher
-//        onTellDetailPageUpdateData: {
-//            if (infoFlag == "computer") {
-//                home.init_data();
-//            }
-//        }
-//    }
 
     Column {
         anchors {
@@ -100,7 +88,7 @@ Rectangle {
                 }
                 Text {
                     id: comvendorText
-                    text: ""//systemdispatcher.getHWSingleInfo("ComVendor")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -115,7 +103,7 @@ Rectangle {
                 }
                 Text {
                     id: comproductText
-                    text: ""//systemdispatcher.getHWSingleInfo("ComProduct")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -130,7 +118,7 @@ Rectangle {
                 }
                 Text {
                     id: comversionText
-                    text: ""//systemdispatcher.getHWSingleInfo("ComVersion")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -145,7 +133,7 @@ Rectangle {
                 }
                 Text {
                     id: comserialText
-                    text: ""//systemdispatcher.getHWSingleInfo("ComSerial")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -160,7 +148,7 @@ Rectangle {
                 }
                 Text {
                     id: nodeText
-                    text: ""//systemdispatcher.getHWSingleInfo("node")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -175,7 +163,7 @@ Rectangle {
                 }
                 Text {
                     id: uptimeText
-                    text: ""//systemdispatcher.getHWSingleInfo("uptime")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -190,7 +178,7 @@ Rectangle {
                 }
                 Text {
                     id: systemText
-                    text: ""//systemdispatcher.getHWSingleInfo("system")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -205,7 +193,7 @@ Rectangle {
                 }
                 Text {
                     id: platformText
-                    text: ""//systemdispatcher.getHWSingleInfo("platform")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -220,7 +208,7 @@ Rectangle {
                 }
                 Text {
                     id: architectureText
-                    text: ""//systemdispatcher.getHWSingleInfo("architecture")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -235,7 +223,7 @@ Rectangle {
                 }
                 Text {
                     id: releaseText
-                    text: ""//systemdispatcher.getHWSingleInfo("release")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -250,7 +238,7 @@ Rectangle {
                 }
                 Text {
                     id: machineText
-                    text: ""//systemdispatcher.getHWSingleInfo("machine")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }

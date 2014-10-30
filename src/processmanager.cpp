@@ -120,7 +120,7 @@ QStringList ProcessManager::getProcess(){
             }
         }
 
-        str = tr("%1;%2;%3;%4;%5;%6;%7").arg(yp->user).arg(yp->pid).arg(yp->pcpu).arg(yp->pmem).arg(yp->started).arg(yp->memo).arg(yp->command);
+        str = QString("%1;%2;%3;%4;%5;%6;%7").arg(yp->user).arg(yp->pid).arg(yp->pcpu).arg(yp->pmem).arg(yp->started).arg(yp->memo).arg(yp->command);
         processList.append(str);
     }
     return processList;
@@ -179,7 +179,7 @@ QStringList ProcessManager::getProcessAdvance(){
             }
         }
 
-        str = tr("%1;%2;%3;%4;%5;%6;%7").arg(yp->user).arg(yp->pid).arg(yp->pcpu).arg(yp->pmem).arg(yp->started).arg(yp->memo).arg(yp->command);
+        str = QString("%1;%2;%3;%4;%5;%6;%7").arg(yp->user).arg(yp->pid).arg(yp->pcpu).arg(yp->pmem).arg(yp->started).arg(yp->memo).arg(yp->command);
         processList.append(str);
     }
     return processList;
@@ -187,12 +187,9 @@ QStringList ProcessManager::getProcessAdvance(){
 
 bool ProcessManager::killProcess(QString pid){
     QProcess *p = new QProcess();
-//    qDebug() << pid;
     p->start("kill -9 " + pid);
     bool aa = p->waitForFinished();
-//    qDebug() << QString("%1").arg(aa);
     return aa;
-//    return p->waitForFinished();
 }
 
 void ProcessManager::clearMap(){
@@ -214,7 +211,6 @@ QString ProcessManager::getProcessId(QString currentIndex){
 int ProcessManager::getProcessIndex(QString currentId){
     int currentIndex;
     currentIndex = processMap.key(currentId).toInt();
-//    qDebug() << QString("%1").arg(currentIndex);
     return currentIndex;
 }
 

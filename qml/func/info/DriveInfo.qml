@@ -22,8 +22,7 @@ import "../common/InfoGroup.js" as InfoGroup
 Rectangle {
     id: home
     width: parent.width; height: 476
-//    color: "transparent"
-//    color: "#eeedf0"
+
     property int rowNumber: 0//对有效行计数
     property int itemNumber: 0//对项目的计数s
     property string hbridge: qsTr("Host bridge:")//主桥
@@ -180,7 +179,6 @@ Rectangle {
     Component {
         id: deviceDelegate
         Column {
-//            spacing: 1
             Column {
                 spacing: 20
                 Row {

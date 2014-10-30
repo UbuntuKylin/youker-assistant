@@ -21,7 +21,6 @@ Rectangle {
     id: desktopiconsetpage
     width: parent.width
     height: 476
-//    color: "#eeedf0"
 
     property string current_desktop
     property int default_index//系统默认主题的索引
@@ -29,71 +28,6 @@ Rectangle {
     property string actiontext: qsTr("Set the desktop icon theme and the visibility of desktop icons.")//设置桌面图标主题和桌面图标的可见性
 
     ListModel { id: choices }
-
-    //使用云配置后，控件状态根据配置发生相应的变化
-//    Connections
-//    {
-//        target: sessiondispatcher
-//        onTellDownloadCloudConfToQML: {
-//            if(download == "icon_theme") {
-//                var iconlist = sessiondispatcher.get_icon_themes_qt();
-//                var current_icon_theme = sessiondispatcher.get_icon_theme_qt();
-//                var new_list = new Array();
-//                for(var m=0; m < iconlist.length; m++) {
-//                    if(iconlist[m] !== current_icon_theme) {
-//                        new_list.push(iconlist[m]);
-//                    }
-//                }
-//                new_list.unshift(current_icon_theme);
-//                for(var j=0; j < new_list.length; j++) {
-//                    if (current_icon_theme === new_list[j]) {
-//                        iconcombo.selectedIndex  = j;
-//                        break;
-//                    }
-//                }
-//            }
-//            else if(download == "show_desktop_icons") {
-//                if (sessiondispatcher.get_show_desktop_icons_qt()) {
-//                    iconswitcher.switchedOn = true;
-//                }
-//                else {
-//                    iconswitcher.switchedOn = false;
-//                }
-//            }
-//            else if(download == "show_homefolder") {
-//                if (sessiondispatcher.get_show_homefolder_qt()) {
-//                    folderswitcher.switchedOn = true;
-//                }
-//                else {
-//                    folderswitcher.switchedOn = false;
-//                }
-//            }
-//            else if(download == "show_network") {
-//                if (sessiondispatcher.get_show_network_qt()) {
-//                    networkswitcher.switchedOn = true;
-//                }
-//                else {
-//                    networkswitcher.switchedOn = false;
-//                }
-//            }
-//            else if(download == "show_trash") {
-//                if (sessiondispatcher.get_show_trash_qt()) {
-//                    trashswitcher.switchedOn = true;
-//                }
-//                else {
-//                    trashswitcher.switchedOn = false;
-//                }
-//            }
-//            else if(download == "show_devices") {
-//                if (sessiondispatcher.get_show_devices_qt()) {
-//                    deviceswitcher.switchedOn = true;
-//                }
-//                else {
-//                    deviceswitcher.switchedOn = false;
-//                }
-//            }
-//        }
-//    }
 
     Component.onCompleted: {
         desktopiconsetpage.current_desktop =  sessiondispatcher.access_current_desktop_qt();
@@ -258,7 +192,6 @@ Rectangle {
         Row {
             visible: (desktopiconsetpage.current_desktop == "Unity") ? true : false
             spacing: 150
-//            z: 11
             Row {
                 spacing: 20
                 Image {
@@ -266,11 +199,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     id: iconthemelabel
                     width: 170
@@ -317,11 +245,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     id: desktopiconlabel
                     width: 170
@@ -399,11 +322,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     id: computericonlabel
                     width: 170
@@ -458,11 +376,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     id: homefolderlabel
                     width: 170
@@ -539,11 +452,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     id: networklabel
                     width: 170
@@ -620,11 +528,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     id: trashlabel
                     width: 170
@@ -701,11 +604,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     id: devicelabel
                     width: 170

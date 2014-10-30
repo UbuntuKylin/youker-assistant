@@ -27,7 +27,6 @@ SliderShow::SliderShow(QWidget *parent)
     page_count = 5;
     window_btn_count = 5;
 
-    //去掉默认标题栏等，设置大小
     this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     this->resize(QSize(680, 372));

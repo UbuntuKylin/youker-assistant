@@ -140,16 +140,6 @@ class SessionDaemon(dbus.service.Object):
         except Exception, e:
             print('Check user failed.')
             print e
-#        try:
-#            # try backend login
-#            self.token = self.sso.find_oauth_token_and_verify_sync()
-#            if self.token:
-#                # self.sso.whoami()
-#                self.sso.whoami_sync(self.token)
-#        except ImportError:
-#            print('Initial ubuntu-kylin-sso-client failed, seem it is not installed.')
-#        except:
-#            print('Check user failed.')
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def slot_do_login_account(self):
@@ -161,21 +151,6 @@ class SessionDaemon(dbus.service.Object):
         except Exception, e:
             print('User login failed.')
             print e
-#        try:
-#            print 'a111'
-#            self.sso.setShowRegister(False)
-#            print 'a222'
-#            self.token = self.sso.get_oauth_token_and_verify_sync()
-#            print 'a333'
-#            if self.token:
-#                # self.sso.whoami()
-#                print 'a444'
-#                self.sso.whoami_sync(self.token)
-#            print 'a555'
-#        except ImportError:
-#            print('Initial ubuntu-kylin-sso-client failed, seem it is not installed.')
-#        except:
-#            print('User login failed.')
 
     # user register
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
@@ -189,17 +164,6 @@ class SessionDaemon(dbus.service.Object):
         except Exception, e:
             print('User register failed.')
             print e
-#        try:
-#            self.sso.setShowRegister(True)
-#            self.token = self.sso.get_oauth_token_and_verify_sync()
-#            if self.token:
-#                # self.sso.whoami()
-#                self.sso.whoami_sync(self.token)
-
-#        except ImportError:
-#            print('Initial ubuntu-kylin-sso-client failed, seem it is not installed.')
-#        except:
-#            print('User register failed.')
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def slot_do_logout(self):
@@ -211,17 +175,6 @@ class SessionDaemon(dbus.service.Object):
         except Exception, e:
             print('User logout failed.')
             print e
-#        try:
-#            self.sso.clear_token()
-#            self.token = ''
-#            self.user = ''
-#            self.display_name = ''
-#            self.preferred_email = ''
-
-#        except ImportError:
-#            print('Initial ubuntu-kylin-sso-client failed, seem it is not installed.')
-#        except:
-#            print('User logout failed.')
 
     #update user login status
     def slot_whoami_done(self, sso, result):
@@ -282,15 +235,11 @@ class SessionDaemon(dbus.service.Object):
     def unzip_resource_uk_real(self, path):
         value = unzip_resource(path)
         self.unzip_signal(value)
-#        return unzip_resource(path)
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def unzip_resource_uk(self, path):
         t = threading.Thread(target = self.unzip_resource_uk_real, args=(path,))
         t.start()
-#        return unzip_resource(path)
-
-
 
     #-----------------------------distrowatch rank-----------------------------
     def copy_distrowatch_default_conf(self):
@@ -644,11 +593,6 @@ class SessionDaemon(dbus.service.Object):
     def scan_of_large(self, size, path):
         t = threading.Thread(target = self.real_scan_large_files, args=(size, path))
         t.start()
-#        tmp_list = self.daemonlarge.get_scan_result(size, path)
-        #self.scan_complete_msg('large')
-        #return tmp_list
-#        self.get_largefile_list(filelist)
-#        self.tell_widget_largefile_list(tmp_list)
 
     # the function of clean the cookies records
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
@@ -663,24 +607,12 @@ class SessionDaemon(dbus.service.Object):
         packagefunc_obj = cleaner.CleanTheSpare()
         t = threading.Thread(target = packagefunc_obj.get_all_package_crufts, args = (mode_list, self))
         t.start()
-        #try:
-        #    packagefunc_obj.get_all_package_crufts(mode_list, self)
-        #except Exception, e:
-        #    pass
-        #else:
-        #    pass
 
     @dbus.service.method(INTERFACE, in_signature='ass', out_signature='')
     def cache_scan_function(self, mode_list, flag):
         cachefunc_obj = cleaner.CleanTheCache()
         t = threading.Thread(target = cachefunc_obj.get_all_cache_crufts, args = (mode_list, flag, self))
         t.start()
-        #try:
-        #    cachefunc_obj.get_all_cache_crufts(mode_list, flag, self)
-        #except Exception, e:
-        #    pass
-        #else:
-        #    pass
 
     # a dbus signal which means access weather by kobe
     @dbus.service.signal(INTERFACE, signature='ss')

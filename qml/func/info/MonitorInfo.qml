@@ -21,8 +21,7 @@ import "../common/InfoGroup.js" as InfoGroup
 
 Rectangle {
     id: home; width: parent.width; height: 476
-//    color: "transparent"
-//    color: "#eeedf0"
+
     property int itemNum: 5//每个模块的子项个数
     property bool firstFlag: false
     property bool secondFlag: false
@@ -58,9 +57,7 @@ Rectangle {
         firstModel.append({"title": qsTr("Graphics Driver:"), "result": VgaDrive[0]});//显卡驱动：
         firstModel.append({"title": qsTr("Bus Address:"), "result": Vgabusinfo[0]});//显卡总线地址：
 
-//        splitbar1.visible = true;
         logo1.visible = true;
-//        logo1.source = InfoGroup.judgeName(Vgavendor[0].toUpperCase()) ? ("../../img/logo/Manufacturer/" + Vgavendor[0].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         logo1.source = InfoGroup.judgeName(Vgavendor[0].toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + Vgavendor[0].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         //--------------second--------------
         home.secondFlag = true;
@@ -74,7 +71,6 @@ Rectangle {
         secondModel.append({"title": qsTr("Bus Address:"), "result": Vgabusinfo[1]});//显卡总线地址：
         splitbar2.visible = true;
         logo2.visible = true;
-//        logo2.source = InfoGroup.judgeName(Vgavendor[1].toUpperCase()) ? ("../../img/logo/Manufacturer/" + Vgavendor[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         logo2.source = InfoGroup.judgeName(Vgavendor[1].toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + Vgavendor[1].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         if(num == 2) {
             //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
@@ -94,7 +90,6 @@ Rectangle {
             splitbar3.visible = true;
             logo3.visible = true;
             logo3.source = InfoGroup.judgeName(Vgavendor[2].toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + Vgavendor[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-//            logo3.source = InfoGroup.judgeName(Vgavendor[2].toUpperCase()) ? ("../../img/logo/Manufacturer/" + Vgavendor[2].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             if(num == 3) {
                 //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
                 listItem.height = (home.itemNum*20 + (home.itemNum - 1)*home.columnSpace + 10*2) *3 + 60;
@@ -112,21 +107,18 @@ Rectangle {
                 splitbar4.visible = true;
                 logo4.visible = true;
                 logo4.source = InfoGroup.judgeName(Vgavendor[3].toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + Vgavendor[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-//                logo4.source = InfoGroup.judgeName(Vgavendor[3].toUpperCase()) ? ("../../img/logo/Manufacturer/" + Vgavendor[3].toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
                 //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
                 listItem.height = (home.itemNum*20 + (home.itemNum - 1)*home.columnSpace + 10*2) *4 + 80;
             }
         }
     }
 
-//    Component.onCompleted: {
     function init_data() {
         systemdispatcher.get_monitor_info_qt();//获取光驱详细信息
         home.firstFlag = false;
         home.secondFlag = false;
         home.thirdFlag = false;
         home.fourthFlag = false;
-//        systemdispatcher.get_audiocard_info_qt();//获取详细信息
         var num = systemdispatcher.getHWSingleInfo("Vga_num", "monitor");
         if(num == 1) {
             home.firstFlag = true;
@@ -138,10 +130,8 @@ Rectangle {
             firstModel.append({"title": qsTr("Graphics Card Vendor:"), "result": vendorName});//显卡制造商：
             firstModel.append({"title": qsTr("Graphics Driver:"), "result": systemdispatcher.getHWSingleInfo("Vga_Drive", "monitor")});//显卡驱动：
             firstModel.append({"title": qsTr("Bus Address:"), "result": systemdispatcher.getHWSingleInfo("Vga_businfo", "monitor")});//显卡总线地址：
-//            splitbar1.visible = true;
             logo1.visible = true;
             logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-//            logo1.source = InfoGroup.judgeName(vendorName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + vendorName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
             //(每个ListView子项的个数×子项高度 + (子项个数-1)×子项与子项的间隔 + 分隔条的上下间隔) × 内存条个数
             listItem.height = home.itemNum*20 + (home.itemNum - 1)*home.columnSpace + 20 ;
         }
@@ -262,10 +252,7 @@ Rectangle {
                     height: 0
                     Column {
                         spacing: home.columnSpace
-                        anchors {
-                            left: parent.left
-//                            leftMargin: 30
-                        }
+                        anchors.left: parent.left
                         Item {
                             width: 680 - 4 - 30*2
                             height: home.firstFlag ? (home.itemNum*20 + (home.itemNum - 1)*10) + 20 : 0
@@ -408,7 +395,7 @@ Rectangle {
                         }
                         Text {
                             id: productText
-                            text: ""//systemdispatcher.getHWSingleInfo("Mon_product")
+                            text: ""
                             width:360
                             font.pixelSize: 14
                             color: "#7a7a7a"
@@ -425,7 +412,7 @@ Rectangle {
                         }
                         Text {
                             id: vendorText
-                            text: ""//systemdispatcher.getHWSingleInfo("Mon_vendor")
+                            text: ""
                             font.pixelSize: 14
                             color: "#7a7a7a"
                         }
@@ -441,7 +428,7 @@ Rectangle {
                         }
                         Text {
                             id: dateText
-                            text: ""//systemdispatcher.getHWSingleInfo("Mon_year")
+                            text: ""
                             font.pixelSize: 14
                             color: "#7a7a7a"
                         }
@@ -457,7 +444,7 @@ Rectangle {
                         }
                         Text {
                             id: sizeText
-                            text: ""//systemdispatcher.getHWSingleInfo("Mon_size")
+                            text: ""
                             font.pixelSize: 14
                             color: "#7a7a7a"
                         }
@@ -473,7 +460,7 @@ Rectangle {
                         }
                         Text {
                             id: inText
-                            text: ""//systemdispatcher.getHWSingleInfo("Mon_in")
+                            text: ""
                             font.pixelSize: 14
                             color: "#7a7a7a"
                         }
@@ -489,7 +476,7 @@ Rectangle {
                         }
                         Text {
                             id: maxmodeText
-                            text: ""//systemdispatcher.getHWSingleInfo("Mon_maxmode")
+                            text: ""
                             font.pixelSize: 14
                             color: "#7a7a7a"
                         }
@@ -505,7 +492,7 @@ Rectangle {
                         }
                         Text {
                             id: gammaText
-                            text: ""//systemdispatcher.getHWSingleInfo("Mon_gamma")
+                            text: ""
                             font.pixelSize: 14
                             color: "#7a7a7a"
                         }
@@ -521,7 +508,7 @@ Rectangle {
                         }
                         Text {
                             id: outputText
-                            text: ""//systemdispatcher.getHWSingleInfo("Mon_output")
+                            text: ""
                             font.pixelSize: 14
                             color: "#7a7a7a"
                         }
@@ -538,7 +525,7 @@ Rectangle {
                         }
                         Text {
                             id: supportText
-                            text: ""//systemdispatcher.getHWSingleInfo("Mon_support")
+                            text: ""
                             font.pixelSize: 14
                             color: "#7a7a7a"
                         }

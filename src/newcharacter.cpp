@@ -17,7 +17,6 @@
 
 #include "newcharacter.h"
 #include <QDebug>
-//513 417    680 370
 
 NewCharacter::NewCharacter(QWidget *parent)
     :QWidget(parent)

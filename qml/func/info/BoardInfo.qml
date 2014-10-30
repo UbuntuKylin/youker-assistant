@@ -21,8 +21,7 @@ import "../common/InfoGroup.js" as InfoGroup
 
 Rectangle {
     id: home; width: parent.width; height: 476
-//    color: "transparent"
-//    color: "#eeedf0"
+
     property string homepath
     Component.onCompleted: {
         home.homepath = sessiondispatcher.getHomePath();
@@ -34,9 +33,6 @@ Rectangle {
         var biosName = systemdispatcher.getHWSingleInfo("BioVendor", "board").toUpperCase();
         basiclogo.source = InfoGroup.judgeName(basicName) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + basicName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         bioslogo.source = InfoGroup.judgeName(biosName) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + biosName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-//        basiclogo.source = InfoGroup.judgeName(basicName) ? ("../../img/logo/Manufacturer/" + basicName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-//        bioslogo.source = InfoGroup.judgeName(biosName) ? ("../../img/logo/Manufacturer/" + biosName + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-
         productText.text = systemdispatcher.getHWSingleInfo("BoaProduct", "board");
         vendorText.text = basicName;
         serialText.text = systemdispatcher.getHWSingleInfo("BoaSerial", "board");
@@ -91,7 +87,7 @@ Rectangle {
                 }
                 Text {
                     id: productText
-                    text: ""//systemdispatcher.getHWSingleInfo("BoaProduct")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -106,7 +102,7 @@ Rectangle {
                 }
                 Text {
                     id: vendorText
-                    text: ""//systemdispatcher.getHWSingleInfo("BoaVendor")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -121,7 +117,7 @@ Rectangle {
                 }
                 Text {
                     id: serialText
-                    text: ""//systemdispatcher.getHWSingleInfo("BoaSerial")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -154,7 +150,7 @@ Rectangle {
                 }
                 Text {
                     id: biosvendorText
-                    text: ""//systemdispatcher.getHWSingleInfo("BioVendor")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -169,7 +165,7 @@ Rectangle {
                 }
                 Text {
                     id: biosversionText
-                    text: ""//systemdispatcher.getHWSingleInfo("BioVersion")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -184,7 +180,7 @@ Rectangle {
                 }
                 Text {
                     id: biosreleaseText
-                    text: ""//systemdispatcher.getHWSingleInfo("BioRelease")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }

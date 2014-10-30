@@ -15,57 +15,6 @@
  */
 import QtQuick 1.1
 
-//Item {
-//    id: btn
-//    signal clicked
-//    signal exited
-//    signal entered
-//    property string text : ""
-//    property string hoverimage: "green.png"
-//    property string fontcolor: "white"
-//    property int fontsize: 12
-
-//    SystemPalette { id: myPalette; colorGroup: SystemPalette.Active }
-
-//    Text {
-//        id: displaytext
-//        color: btn.fontcolor
-//        anchors.centerIn: parent//buttonImage
-//        font.family: "Helvetica"
-//        font.pixelSize: fontsize
-//        text: btn.text
-//    }
-
-//    MouseArea {
-//        id: mouseRegion
-//        anchors.fill: parent//buttonImage
-//        hoverEnabled: true
-//        onEntered: {
-//            displaytext.color = "#f2390e";
-//            displaytext.text = qsTr("Click to change font");//点击更换字体
-//            btn.entered();
-//        }
-//        onPressed: {
-//            displaytext.color = btn.fontcolor;
-//            displaytext.text = btn.text;
-//        }
-//        //要判断松开是鼠标位置
-//        onReleased: {
-//            displaytext.color = btn.fontcolor;
-//            displaytext.text = btn.text;
-//        }
-//        onExited: {
-//            displaytext.color = btn.fontcolor;
-//            displaytext.text = btn.text;
-//            btn.exited();
-//        }
-//        onClicked: {
-//            btn.clicked();
-//        }
-//    }
-//}
-
-
 Rectangle
 {
     id: btn

@@ -66,7 +66,6 @@ HEADERS += homepage.h \
     slidershow.h \
     newcharacter.h \
     quibo.h \
-    accountcache.h \
     systemdispatcher.h \
     sessiondispatcher.h \
     modaldialog.h \
@@ -110,7 +109,6 @@ SOURCES += main.cpp \
     icontext.cpp \
     slidershow.cpp \
     newcharacter.cpp \
-    accountcache.cpp \
     quibo.cpp \
     systemdispatcher.cpp \
     sessiondispatcher.cpp \

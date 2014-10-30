@@ -35,7 +35,6 @@ public:
 public slots:
     void httpFinished();//完成下载
     void httpReadyRead();//接收到数据
-//    void updateDataReadProgress(qint64,qint64);//更新进度
 
 signals:
     void downloadok();

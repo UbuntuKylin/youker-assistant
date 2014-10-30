@@ -20,10 +20,7 @@ import "../common" as Common
 Rectangle {
     id: home
     width: parent.width; height: 476
-//    color: "transparent"
-//    color: "#eeedf0"
 
-//    Component.onCompleted: {
     function init_data() {
         sessiondispatcher.get_system_message_qt();
         desktoptext.text = sessiondispatcher.getSingleInfo("desktopenvironment");
@@ -86,7 +83,7 @@ Rectangle {
                 }
                 Text {
                     id: desktoptext
-                    text: ""//sessiondispatcher.getSingleInfo("desktopenvironment")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -101,7 +98,7 @@ Rectangle {
                 }
                 Text {
                     id: distributiontext
-                    text: ""//sessiondispatcher.getSingleInfo("distribution")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -116,7 +113,7 @@ Rectangle {
                 }
                 Text {
                     id: languagetext
-                    text: ""//sessiondispatcher.getSingleInfo("language")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -132,7 +129,7 @@ Rectangle {
                 }
                 Text {
                     id: usertext
-                    text: ""//sessiondispatcher.getSingleInfo("currrent_user")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -147,7 +144,7 @@ Rectangle {
                 }
                 Text {
                     id: hometext
-                    text: ""//sessiondispatcher.getSingleInfo("home_path")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }

@@ -20,12 +20,9 @@ Rectangle {
     property string showText
     visible: false
     color: "#383838"
-//    opacity: 0.7
-//    z:100
 
     BorderImage {
         id: borderimage
-//        opacity: 0
         source: "../../img/skin/frame.png"
         width: 165
         height: 24
@@ -36,7 +33,6 @@ Rectangle {
     }
     Text {
         id: tipText
-//        anchors.centerIn: borderimage
         anchors {
             left: borderimage.left
             leftMargin: 20

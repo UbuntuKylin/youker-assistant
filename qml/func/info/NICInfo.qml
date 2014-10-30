@@ -21,8 +21,7 @@ import "../common/InfoGroup.js" as InfoGroup
 
 Rectangle {
     id: home; width: parent.width; height: 476
-//    color: "transparent"
-//    color: "#eeedf0"
+
     property int fontSize: 14
     property string homepath
     Component.onCompleted: {
@@ -34,7 +33,6 @@ Rectangle {
         systemdispatcher.get_networkcard_info_qt();//获取详细信息
         var netName = systemdispatcher.getHWSingleInfo("NetVendor", "networkcard");
         logo.source = InfoGroup.judgeName(netName.toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + netName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
-//        logo.source = InfoGroup.judgeName(netName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + netName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
 
         modelText.text = systemdispatcher.getHWSingleInfo("NetProduct", "networkcard");
         vendorText.text = netName;
@@ -45,10 +43,8 @@ Rectangle {
         macText.text = systemdispatcher.getHWSingleInfo("NetSerial", "networkcard");
         linkText.text = systemdispatcher.getHWSingleInfo("NetLink", "networkcard");
         maxText.text = systemdispatcher.getHWSingleInfo("NetCapacity", "networkcard") + " Mbit/s";
-//        bitText.text = systemdispatcher.getHWSingleInfo("NetWidth", "networkcard");
 
         var wnetName = systemdispatcher.getHWSingleInfo("WlanVendor", "networkcard");
-//        wlogo.source = InfoGroup.judgeName(wnetName.toUpperCase()) ? ("../../img/logo/Manufacturer/" + wnetName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         wlogo.source = InfoGroup.judgeName(wnetName.toUpperCase()) ? (home.homepath + "/.cache/youker-assistant/uk-img/Manufacturer/" + wnetName.toUpperCase() + ".jpg") : ("../../img/toolWidget/ubuntukylin.png");
         wdriverText.text = systemdispatcher.getHWSingleInfo("WlanDrive", "networkcard");
         wvendorText.text = wnetName;
@@ -130,7 +126,7 @@ Rectangle {
                     }
                     Text {
                         id: vendorText
-                        text: ""//systemdispatcher.getHWSingleInfo("NetVendor")
+                        text: ""
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
                     }
@@ -145,7 +141,7 @@ Rectangle {
                     }
                     Text {
                         id: driverText
-                        text: ""//systemdispatcher.getHWSingleInfo("NetDrive")
+                        text: ""
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
                     }
@@ -160,7 +156,7 @@ Rectangle {
                     }
                     Text {
                         id: busText
-                        text: ""//systemdispatcher.getHWSingleInfo("NetBusinfo")
+                        text: ""
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
                     }
@@ -175,7 +171,7 @@ Rectangle {
                     }
                     Text {
                         id: deviceText
-                        text: ""//systemdispatcher.getHWSingleInfo("NetLogicalname")
+                        text: ""
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
                     }
@@ -190,7 +186,7 @@ Rectangle {
                     }
                     Text {
                         id: ipText
-                        text: ""//systemdispatcher.getHWSingleInfo("NetIp")
+                        text: ""
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
                     }
@@ -205,7 +201,7 @@ Rectangle {
                     }
                     Text {
                         id: macText
-                        text: ""//systemdispatcher.getHWSingleInfo("NetSerial")
+                        text: ""
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
                     }
@@ -220,7 +216,7 @@ Rectangle {
                     }
                     Text {
                         id: linkText
-                        text: ""//systemdispatcher.getHWSingleInfo("NetLink")
+                        text: ""
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
                     }
@@ -235,7 +231,7 @@ Rectangle {
                     }
                     Text {
                         id: maxText
-                        text: ""//systemdispatcher.getHWSingleInfo("NetCapacity")
+                        text: ""
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
                     }
@@ -273,7 +269,7 @@ Rectangle {
                         id: wmodelText
                         width: 450
                         wrapMode: Text.WordWrap
-                        text: ""//systemdispatcher.getHWSingleInfo("WlanProduct")
+                        text: ""
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
                     }
@@ -289,7 +285,7 @@ Rectangle {
                     }
                     Text {
                         id: wvendorText
-                        text: ""//systemdispatcher.getHWSingleInfo("WlanVendor")
+                        text: ""
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
                     }
@@ -305,7 +301,7 @@ Rectangle {
                     }
                     Text {
                         id: wdriverText
-                        text: ""//systemdispatcher.getHWSingleInfo("WlanDrive")
+                        text: ""
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
                     }
@@ -321,7 +317,7 @@ Rectangle {
                     }
                     Text {
                         id: wbusText
-                        text: ""//systemdispatcher.getHWSingleInfo("WlanBusinfo")
+                        text: ""
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
                     }
@@ -337,7 +333,7 @@ Rectangle {
                     }
                     Text {
                         id: wdeviceText
-                        text: ""//systemdispatcher.getHWSingleInfo("WlanLogicalname")
+                        text: ""
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
                     }
@@ -354,7 +350,7 @@ Rectangle {
                     }
                     Text {
                         id: wipText
-                        text: ""//systemdispatcher.getHWSingleInfo("WlanIp")
+                        text: ""
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
                     }
@@ -371,7 +367,7 @@ Rectangle {
                     }
                     Text {
                         id: wmacText
-                        text: ""//systemdispatcher.getHWSingleInfo("WlanSerial")
+                        text: ""
                         font.pixelSize: home.fontSize
                         color: "#7a7a7a"
                     }

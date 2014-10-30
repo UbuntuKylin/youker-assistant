@@ -13,17 +13,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #include "modaldialog.h"
 #include "ui_modaldialog.h"
 #include <QMouseEvent>
+
 ModalDialog::ModalDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ModalDialog)
 {
     ui->setupUi(this);
-    this->setAttribute(Qt::WA_DeleteOnClose);//防止内存泄漏
+    this->setAttribute(Qt::WA_DeleteOnClose);
     this->setWindowFlags(Qt::FramelessWindowHint);
-//    this->setAttribute(Qt::WA_TranslucentBackground);
 
     ui->widget->setAutoFillBackground(true);
     QPalette palette;

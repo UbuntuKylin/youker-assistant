@@ -21,8 +21,6 @@ import "../common/InfoGroup.js" as InfoGroup
 Rectangle {
     id: home
     width: parent.width; height: 476
-//    color: "transparent"
-//    color: "#eeedf0"
     property string homepath
 
     Component.onCompleted: {
@@ -173,7 +171,7 @@ Rectangle {
                 }
                 Text {
                     id: modeltext
-                    text: ""//sessiondispatcher.getSingleInfo("distribution"
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -188,7 +186,7 @@ Rectangle {
                 }
                 Text {
                     id: manufacturertext
-                    text: ""//sessiondispatcher.getSingleInfo("language")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -204,7 +202,7 @@ Rectangle {
                 }
                 Text {
                     id: serialtext
-                    text: ""//sessiondispatcher.getSingleInfo("currrent_user")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }
@@ -219,7 +217,7 @@ Rectangle {
                 }
                 Text {
                     id: technologytext
-                    text: ""//sessiondispatcher.getSingleInfo("home_path")
+                    text: ""
                     font.pixelSize: 14
                     color: "#7a7a7a"
                 }

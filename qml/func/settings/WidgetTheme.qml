@@ -21,7 +21,6 @@ Rectangle {
     id: widgetthemepage
     width: parent.width
     height: 476
-//    color: "#eeedf0"
 
     property string actiontitle: qsTr("Theme settings")//GTK主题设置
     property string actiontext: qsTr("Choose the theme what you want.")//选择您想设置的主题。
@@ -29,8 +28,6 @@ Rectangle {
     property string init_theme: ""
     property string path: "../../img/en/title/"
     property int gredview_num: 0 //记录listmodel中的子项数
-//    property int current_index//当前主题的索引
-//    property int default_index//系统默认主题的索引
 
     ListModel { id: themeModel }
 
@@ -120,7 +117,6 @@ Rectangle {
             top: top_splitbar.bottom
             topMargin: 40
         }
-//        z: 11
         spacing: 285 - 16 - 20
         Row {
             spacing: 20
@@ -129,11 +125,6 @@ Rectangle {
                 width: 14; height: 14
                 anchors.verticalCenter: parent.verticalCenter
             }
-//            Common.TipLabel {
-//                anchors.verticalCenter: parent.verticalCenter
-//                kflag: "no"
-//                showImage: "../../img/icons/cloud-gray.png"
-//            }
             Text {
                 id: showtitle
                 width: 130
@@ -171,7 +162,6 @@ Rectangle {
                 }
             }
             Image {
-//                id: themeindex
                 anchors{
                     top: parent.top
                     left: parent.left

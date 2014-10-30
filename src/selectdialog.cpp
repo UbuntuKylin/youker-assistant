@@ -22,8 +22,6 @@
 #include <QMessageBox>
 #include <QMouseEvent>
 
-//extern QPoint widgetPosition;
-
 SelectDialog::SelectDialog(QSettings *mSettings, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SelectDialog)
@@ -33,7 +31,7 @@ SelectDialog::SelectDialog(QSettings *mSettings, QWidget *parent) :
     connect(weatherdispather, SIGNAL(send_yahoo_city_id(QString)), this, SLOT(deal_with_yahoo_city_id(QString)));
     connect(weatherdispather, SIGNAL(ready_to_get_cities_info(QStringList)), this, SLOT(deal_with_yahoo_cities(QStringList)));
 
-    this->setAttribute(Qt::WA_DeleteOnClose);//防止内存泄漏
+    this->setAttribute(Qt::WA_DeleteOnClose);
     this->setWindowFlags(Qt::FramelessWindowHint);
 
     pSettings = mSettings;
@@ -65,7 +63,6 @@ SelectDialog::SelectDialog(QSettings *mSettings, QWidget *parent) :
     flag = false;
     selectCity = "";
     ui->tabWidget->setCurrentIndex(0);
-//    ui->comboBox->setFocus();
     ui->comboBox->showPopup();
     ui->okButton->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/button12-gray.png);}"
                 "QPushButton:hover{border-image:url(:/pixmap/image/button12-gray-hover.png);}");

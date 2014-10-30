@@ -19,7 +19,6 @@ import "../common" as Common
 Rectangle {
     id:cachepage
     width: parent.width; height: 437
-//    color: "#eeedf0"
 
     property string title: qsTr("Cleaning up the system cache")//深度清理系统缓存
     property string description: qsTr("Deep cleaning up the system cache, to save disk space")//深度清理系统缓存，节省磁盘空间！
@@ -366,12 +365,6 @@ Rectangle {
         }
     }
 
-    //背景
-//    Image {
-//        source: "../../img/skin/bg-middle.png"
-//        anchors.fill: parent
-//    }
-
     //titlebar
     Row {
         id: titlebar
@@ -480,9 +473,6 @@ Rectangle {
                 cachepage.aptEmpty = false;
                 cachepage.softEmpty = false;
                 cachepage.thumbEmpty = false;
-//                console.log("-----------");
-//                console.log(cachepage.apt_maincheck);
-//                console.log(cachepage.soft_maincheck);
 
                 if (cachepage.btnFlag == "cache_scan") {//扫描
                     cachepage.flag = false;

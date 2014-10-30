@@ -20,12 +20,10 @@ import "../common" as Common
 Rectangle {
     id: shredpage
     width: parent.width
-//    color:"transparent"
-//    color: "#eeedf0"
     height: 476
 
     property string actiontitle: qsTr("File Shredder")//文件粉碎机
-    property string actiontext: qsTr("Crush stubborn files.")//彻底粉碎无法删除的顽固文件。
+    property string actiontext: qsTr("Delete files makes it unable to recover.")//彻底删除文件使其无法恢复。
     property string selectedfile
 
     Component.onCompleted: {
@@ -89,13 +87,6 @@ Rectangle {
             top: top_splitbar.bottom
             topMargin: 100
         }
-//        Text {
-//            id: showLabel
-//            visible: (shredpage.selectedfile.length == 0) ? false : true
-//            width: 600
-//            text: qsTr("The selected file path: ") + shredpage.selectedfile//选中的文件路径：
-//            wrapMode: Text.WordWrap
-//        }
         Column {
             spacing: 10
             Text {
@@ -177,19 +168,6 @@ Rectangle {
         Row {
             spacing: 20
             anchors.horizontalCenter: parent.horizontalCenter
-//            Common.Button {
-//                picNormal: "../../img/icons/button12.png"
-//                picHover: "../../img/icons/button12-hover.png"
-//                picPressed: "../../img/icons/button12-hover.png"
-//                fontcolor:"#ffffff"
-//                fontsize: 12
-//                width: 100; height: 28
-//                text: qsTr("Select File")//选择文件
-//                onClicked: {
-//                    shredpage.selectedfile = "";
-//                    shredpage.selectedfile = sessiondispatcher.show_file_path_dialog();
-//                }
-//            }
             Common.Button {
                 picNormal: "../../img/icons/button12.png"
                 picHover: "../../img/icons/button12-hover.png"
@@ -200,7 +178,6 @@ Rectangle {
                 text: qsTr("Shred File")
                 onClicked: {
                     if(shredpage.selectedfile.length != 0) {
-//                        var value = systemdispatcher.start_to_destroy_file(shredpage.selectedfile);
                         var value = shreddispatcher.shred_file_qt(shredpage.selectedfile);
                         if (value == 0) {
                             shredpage.selectedfile = "";

@@ -21,7 +21,6 @@
 #include <QDBusConnection>
 #include <QSound>
 #include "util.h"
-//#include "filewipe.h"
 
 class SystemDispatcher : public QObject
 {
@@ -31,9 +30,6 @@ public:
     ~SystemDispatcher();
     //退出systemdbus服务
     Q_INVOKABLE void exit_qt();
-
-    //destory file
-//    Q_INVOKABLE int start_to_destroy_file(QString selected_file);
 
     //听音频文件
     Q_INVOKABLE void listen_music(QString path);

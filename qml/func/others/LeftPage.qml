@@ -20,7 +20,7 @@ import "../common" as Common
 Rectangle {
     id: leftbar
     width: 600; height: 436
-//    color: "#eeedf0"
+
     property int num: 3//子checkbox的个数
     property int check_num: num
     property string flag: "onekeyscan" //onekeyscan:scan      onekey:clean
@@ -55,7 +55,6 @@ Rectangle {
                 dynamicImage.visible = false;
                 leftbar.flag = "onekey";
                 firstonekey.showImage = leftbar.path + "quickclean.png";
-//                firstonekey.text = qsTr("Quick cleanup");//一键清理
                 //扫描完成后根据子checkbox的勾选情况置状态
                 if(garbageCheck.checked) {
                     cachestatus.visible = true;
@@ -236,11 +235,6 @@ Rectangle {
             mainCheck.checked = "mid";
         }
     }
-    //背景
-//    Image {
-//        source: "../../img/skin/bg-left.png"
-//        anchors.fill: parent
-//    }
 
     Row {
         id: myrow
@@ -368,9 +362,6 @@ Rectangle {
                     }
                 }
             }//Button
-
-
-
         }
     }//Row
 
@@ -420,7 +411,6 @@ Rectangle {
             }
         }
     }
-//    }
 
     //列表
     Column {

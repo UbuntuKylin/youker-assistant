@@ -21,34 +21,13 @@ Rectangle {
     id: launcherthemepage
     width: parent.width
     height: 476
-//    color: "#eeedf0"
 
     property bool first_slider_value: false //系统初始化时会使value的值为32（最小值），需要过滤掉
-//    property bool first_transparency_value: false //系统初始化时会使value的值为0.2（最小值），需要过滤掉
     property string actiontitle: qsTr("Launcher settings")//启动器设置
     property string actiontext: qsTr("Setting the Launcher display mode, Icon size.")//设置启动器的显示模式、图标尺寸。
     property int default_bg_index//系统默认图标背景模式的索引
 
     ListModel { id: backgroundchoices }
-
-    //使用云配置后，控件状态根据配置发生相应的变化
-//    Connections
-//    {
-//        target: sessiondispatcher
-//        onTellDownloadCloudConfToQML: {
-//            if(download == "launcher_autohide") {
-//                if (sessiondispatcher.get_launcher_autohide_qt()) {
-//                    launcherswitcher.switchedOn = true;
-//                }
-//                else {
-//                    launcherswitcher.switchedOn = false;
-//                }
-//            }
-//            else if(download == "launcher_icon_size") {
-//                slider.value = sessiondispatcher.get_launcher_icon_size_qt();
-//            }
-//        }
-//    }
 
     Component.onCompleted: {
         if (sessiondispatcher.get_launcher_autohide_qt()) {
@@ -159,7 +138,6 @@ Rectangle {
             top: top_splitbar.bottom
             topMargin: 40
         }
-//        z: 11
         Row {
             spacing: 210
             Row {
@@ -169,11 +147,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     id: iconsizelabel
                     width: 170
@@ -228,11 +201,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Common.Label {
                     id: launcherlabel
                     width: 170
@@ -286,11 +254,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "no"
-//                    showImage: "../../img/icons/cloud-gray.png"
-//                }
                 Common.Label {
                     id: showdesktoplabel
                     width: 170
@@ -343,11 +306,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "no"
-//                    showImage: "../../img/icons/cloud-gray.png"
-//                }
                 Common.Label {
                     width: 170
                     text: qsTr("Launcher Transparency:")//启动器透明度：
@@ -360,13 +318,6 @@ Rectangle {
                     value: sessiondispatcher.get_launcher_transparency_qt()
                     onValueChanged: {
                         sessiondispatcher.set_launcher_transparency_qt(opacityslider.value);
-//                        if(launcherthemepage.first_transparency_value ){//系统初始化时会使value的值为0.2（最小值），需要过滤掉
-//                            sessiondispatcher.set_launcher_transparency_qt(opacityslider.value);
-//                        }
-//                        if(slider.value == 0.2) { //系统初始化时会使value的值为0.2（最小值），需要过滤掉
-//                            console.log("22222222222222");
-//                            launcherthemepage.first_transparency_value = true;
-//                        }
                     }
                     width: 170
                     maximumValue: 1.0
@@ -401,11 +352,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "no"
-//                    showImage: "../../img/icons/cloud-gray.png"
-//                }
                 Text {
                     width: 170
                     text: qsTr("Icon Background:")//图标背景：

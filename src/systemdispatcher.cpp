@@ -21,8 +21,6 @@
 #include <QMessageBox>
 #include "kthread.h"
 
-//extern QString music_path;
-
 SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject(parent)
 {
@@ -58,15 +56,6 @@ SystemDispatcher::~SystemDispatcher() {
         delete systemiface;
     }
 }
-
-//int SystemDispatcher::start_to_destroy_file(QString selected_file) {
-//    char*  ch;
-////    QByteArray ba = selected_file.toLatin1();
-//    QByteArray ba =selected_file.toUtf8();
-//    ch=ba.data();
-//    int result = do_file(ch);
-//    return result;
-//}
 
 void SystemDispatcher::kill_root_process_qt(QString pid) {
     systemiface->call("kill_root_process", pid);
@@ -235,10 +224,6 @@ QString SystemDispatcher::get_system_daemon_qt() {
     QDBusReply<QString> reply = systemiface->call("get_system_daemon");
     return reply.value();
 }
-
-//void SystemDispatcher::getMusicFileAbsolutePath(QString musicpath) {
-//    music_path = musicpath;
-//}
 
 void SystemDispatcher::listen_music(QString path) {
     if (QSound::isAvailable()) {

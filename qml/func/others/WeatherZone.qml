@@ -27,11 +27,8 @@ Rectangle {
     function setDefaultWeather() {
         weatherIcon.source = "../../img/weather/d0.gif"
         weatherText.text = qsTr("Weather");//天气
-//        windText.text = qsTr("Wind");//风力
         pmText.text = qsTr("AQI");//空气质量指数
         tempText.text = qsTr("Current temperature");//当前温度（℃）
-//        temperatureRangeText.text = qsTr("Temperature range");//温度范围
-//        humidityText.text = qsTr("Humidity");//湿度
     }
 
     //设置天气数据到QML界面上
@@ -51,26 +48,18 @@ Rectangle {
         locationText.text = sessiondispatcher.getSingleWeatherInfo("city", "current");
         ptimeText.text = sessiondispatcher.getSingleWeatherInfo("time", "current") + qsTr(" ");// 发布
         weatherText.text = sessiondispatcher.getSingleWeatherInfo("weather", "current");
-//        windText.text = sessiondispatcher.getSingleWeatherInfo("WD", "current") + sessiondispatcher.getSingleWeatherInfo("WS", "current");
         pmText.text = qsTr("AQI:") + sessiondispatcher.getSingleWeatherInfo("aqi", "current");;//空气质量指数：
         tempText.text = qsTr("Current temperature:") + sessiondispatcher.getSingleWeatherInfo("temp", "current") + "℃";//当前温度：
-//        temperatureRangeText.text = qsTr("Temperature range:") + sessiondispatcher.getSingleWeatherInfo("temp2", "current") + "~" + sessiondispatcher.getSingleWeatherInfo("temp1", "current");//温度范围：
-//        humidityText.text = qsTr("Humidity:") + sessiondispatcher.getSingleWeatherInfo("SD", "current");//湿度：
     }
+
     //设置yahoo天气到界面上
     function resetCurrentYahooWeather() {
         weatherIcon.source = "http://l.yimg.com/a/i/us/we/52/" + sessiondispatcher.getSingleWeatherInfo("code", "yahoo") + ".gif";
         locationText.text = sessiondispatcher.getSingleWeatherInfo("city", "yahoo");//城市
         ptimeText.text = "";
         pmText.text = sessiondispatcher.getSingleWeatherInfo("time", "yahoo");//发布时间
-//        ptimeText.text = sessiondispatcher.getSingleWeatherInfo("time", "yahoo");;//发布时间
         weatherText.text = sessiondispatcher.getSingleWeatherInfo("text", "yahoo");//当前天气
-//        windText.text = qsTr("Wind:") + sessiondispatcher.getSingleWeatherInfo("wind", "yahoo");//风力
         tempText.text = qsTr("Current temperature:") + sessiondispatcher.getSingleWeatherInfo("temp", "yahoo");//当前温度：
-//        temperatureRangeText.text = qsTr("Sunrise:") + sessiondispatcher.getSingleWeatherInfo("sunrise", "yahoo");//日出 :
-//        humidityText.text = qsTr("Sunset:") + sessiondispatcher.getSingleWeatherInfo("sunset", "yahoo");//日落：
-//        temperatureRangeText.text = qsTr("Sunrise:") + sessiondispatcher.getSingleWeatherInfo("sunrise", "yahoo") + "; " + qsTr("Sunset:") + sessiondispatcher.getSingleWeatherInfo("sunset", "yahoo");//日出  日落
-//        humidityText.text = qsTr("Humidity:") + sessiondispatcher.getSingleWeatherInfo("humidity", "yahoo");//湿度：
     }
 
     Connections
@@ -105,7 +94,6 @@ Rectangle {
     }
     Common.StyleButton {
         id: changeCityBtn
-//        visible: false
         anchors.left: locationText.right
         wordname: qsTr("[Change]")//[切换]
         width: 60
@@ -158,24 +146,6 @@ Rectangle {
                 font.pixelSize: 12
                 color: "#7a7a7a"
             }
-//            Text {
-//                id: humidityText
-//                text: qsTr("Humidity:N/A")//湿度：未知
-//                font.pixelSize: 12
-//                color: "#7a7a7a"
-//            }
-//            Text {
-//                id: temperatureRangeText
-//                text: qsTr("Temperature range:N/A")//温度范围：未知
-//                font.pixelSize: 12
-//                color: "#7a7a7a"
-//            }
-//            Text {
-//                id: windText
-//                text: qsTr("Wind:N/A")//风力：未知
-//                font.pixelSize: 12
-//                color: "#7a7a7a"
-//            }
         }
     }
 //    Timer{

@@ -13,9 +13,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #include "suspensionframe.h"
 #include "ui_suspensionframe.h"
 #include <QMouseEvent>
+
 SuspensionFrame::SuspensionFrame(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::SuspensionFrame)
@@ -177,7 +179,6 @@ void SuspensionFrame::paintEvent(QPaintEvent *) {
 
     painter.setRenderHint(QPainter::Antialiasing);  //消除锯齿
     wheel.fill(Qt::transparent);
-//    blister.load(":/pixmap/image/blister-big.png");
     //线性渐变
     QLinearGradient linearGradient(76,10,76,76);
     //创建了一个QLinearGradient对象实例，参数为起点和终点坐标，可作为颜色渐变的方向
@@ -188,47 +189,47 @@ void SuspensionFrame::paintEvent(QPaintEvent *) {
     if (ratio_sus == 0)
     {
         if (cpu_sus > 80) {
-            color_start = "#940302";//950302
-            color_end="#dd291c";//DE281C
+            color_start = "#940302";
+            color_end="#dd291c";
             ui->title1->setText(tr("Detected the high usage of CPU"));//检测到CPU占用过高
             ui->title2->setText(tr("Using 'quick clean' ?"));//使用一键加速？
         }
         else {
-            color_start = "#940302";//950302
+            color_start = "#940302";
             color_end="transparent";
         }
     }
     else if (ratio_sus > 0 && ratio_sus < 50) {
         if (cpu_sus > 80) {
-            color_start = "#940302";//950302
-            color_end="#dd291c";//DE281C
+            color_start = "#940302";
+            color_end="#dd291c";
             ui->title1->setText(tr("Detected the high usage of CPU"));//检测到CPU占用过高
             ui->title2->setText(tr("Using 'quick clean' ?"));//使用一键加速？
         }
         else {
-            color_start = "#006f45";//006F45
-            color_end= "#48ca5e";//52D063
+            color_start = "#006f45";
+            color_end= "#48ca5e";
             ui->title1->setText(tr("System runs smoothly"));//系统运行流畅
             ui->title2->setText(tr("No need to accelerate"));//无需进行加速
         }
     }
     else if (ratio_sus >= 50 && ratio_sus <= 80) {
         if (cpu_sus > 80) {
-            color_start = "#940302";//950302
-            color_end="#dd291c";//DE281C
+            color_start = "#940302";
+            color_end="#dd291c";
             ui->title1->setText(tr("Detected the high usage of CPU"));//检测到CPU占用过高
             ui->title2->setText(tr("Using 'quick clean' ?"));//使用一键加速？
         }
         else {
-            color_start = "#af3a00";//AF3A00
-            color_end="#ed711d";//F07620
+            color_start = "#af3a00";
+            color_end="#ed711d";
             ui->title1->setText(tr("System runs smoothly"));//系统运行流畅
             ui->title2->setText(tr("No need to accelerate"));//无需进行加速
         }
     }
-    else {// if(ratio_sus > 80) {
-        color_start = "#940302";//950302
-        color_end="#dd291c";//DE281C
+    else {
+        color_start = "#940302";
+        color_end="#dd291c";
         ui->title1->setText(tr("Computer runs slowly"));//电脑运行缓慢
         ui->title2->setText(tr("Using 'quick clean' ?"));//使用一键加速？
     }
@@ -240,44 +241,36 @@ void SuspensionFrame::paintEvent(QPaintEvent *) {
     painter.drawEllipse(7,7,65,65);
     opt.init(this);
 
-
-//    painter.drawImage(0,0,wheel);
-//    painter.drawPixmap(44,231,memory,0,0,memory.width()*(ratio_sus* 0.01),memory.height());
-////    painter.drawPixmap(7,7, blister);
-
-     //图形宽度213,高度26
-    //    QLinearGradient linearGradient1(44,231,257,231);//覆盖原图边界
-        QLinearGradient linearGradient1(45,232,259,231);//显示原图边界
-        //从点（72，250）开始到点（283，249）结束，确定一条直线
-        //创建了一个QLinearGradient对象实例，参数为起点和终点坐标，可作为颜色渐变的方向
-        painter.setPen(Qt::transparent);
-        QString color_start1;
-        QString color_end1;
-        if (ratio_sus == 0)
-        {
-            color_start1 = "transparent";
-            color_end1="#940302";
-        }
-        else if (ratio_sus > 0 && ratio_sus < 50) {
-            color_start1 = "#48ca5e";
-            color_end1= "#006f45";
-        }
-        else if (ratio_sus >= 50 && ratio_sus <= 80) {
-            color_start1 = "#ed711d";
-            color_end1="#af3a00";
-        }
-        else {// if(ratio_sus > 80) {
-            color_start1 = "#dd291c";//950302
-            color_end1="#940302";//DE281C
-        }
-        linearGradient1.setColorAt(0.0, color_start1);
-        linearGradient1.setColorAt(ratio_sus * 0.01, color_start1);
-        linearGradient1.setColorAt((ratio_sus <= 0) ? 1.0 : (ratio_sus * 0.01 + 0.01), color_end1);
-        linearGradient1.setColorAt(1.0, color_end1);
-        painter.setBrush(QBrush(linearGradient1));
-        //绘制矩形
-    //    painter.drawRect(44,231,213,26);//覆盖原图边界
-        painter.drawRect(45,232,211,24);//显示原图边界
+    QLinearGradient linearGradient1(45,232,259,231);//显示原图边界
+    //从点（72，250）开始到点（283，249）结束，确定一条直线
+    //创建了一个QLinearGradient对象实例，参数为起点和终点坐标，可作为颜色渐变的方向
+    painter.setPen(Qt::transparent);
+    QString color_start1;
+    QString color_end1;
+    if (ratio_sus == 0)
+    {
+        color_start1 = "transparent";
+        color_end1="#940302";
+    }
+    else if (ratio_sus > 0 && ratio_sus < 50) {
+        color_start1 = "#48ca5e";
+        color_end1= "#006f45";
+    }
+    else if (ratio_sus >= 50 && ratio_sus <= 80) {
+        color_start1 = "#ed711d";
+        color_end1="#af3a00";
+    }
+    else {
+        color_start1 = "#dd291c";
+        color_end1="#940302";
+    }
+    linearGradient1.setColorAt(0.0, color_start1);
+    linearGradient1.setColorAt(ratio_sus * 0.01, color_start1);
+    linearGradient1.setColorAt((ratio_sus <= 0) ? 1.0 : (ratio_sus * 0.01 + 0.01), color_end1);
+    linearGradient1.setColorAt(1.0, color_end1);
+    painter.setBrush(QBrush(linearGradient1));
+    //绘制矩形
+    painter.drawRect(45,232,211,24);//显示原图边界
 
     QPixmap pixmap;
     pixmap.load(":/pixmap/image/shade.png");

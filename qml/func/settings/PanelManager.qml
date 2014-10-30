@@ -21,10 +21,8 @@ Rectangle {
     id: panelmanagerpage
     width: parent.width
     height: 476
-//    color: "#eeedf0"
 
     property int blur_mode
-
     property string actiontitle: qsTr("Dash & Panel")//搜索和面板
     property string actiontext: qsTr("Manage Dash and Panel menu settings.")//管理Dash搜索和面板菜单的设置
     property int default_time_index
@@ -181,7 +179,6 @@ Rectangle {
             top: top_splitbar.bottom
             topMargin: 40
         }
-//        z: 11
         Row {
             spacing: 83//230
             Row {
@@ -192,11 +189,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "no"
-//                    showImage: "../../img/icons/cloud-gray.png"
-//                }
                 Common.Label {
                     width: 160
                     text: qsTr("Dash background blur type:")//搜索框背景模糊类型：
@@ -298,11 +290,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "no"
-//                    showImage: "../../img/icons/cloud-gray.png"
-//                }
                 Common.Label {
                     width: 160
                     text: qsTr("Panel Transparency:")//面板透明度：
@@ -356,11 +343,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "no"
-//                    showImage: "../../img/icons/cloud-gray.png"
-//                }
                 Text {
                     width: 160
                     text: qsTr("Date & time format:")//日期时间格式：
@@ -405,11 +387,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "no"
-//                    showImage: "../../img/icons/cloud-gray.png"
-//                }
                 Text {
                     width: 160
                     text: qsTr("Display seconds:")//显示秒数：
@@ -463,11 +440,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "yes"
-//                    showImage: "../../img/icons/cloud-light.png"
-//                }
                 Text {
                     width: 160
                     text: qsTr("Display week:")//显示星期：
@@ -521,11 +493,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "no"
-//                    showImage: "../../img/icons/cloud-gray.png"
-//                }
                 Text {
                     width: 160
                     text: qsTr("Display the date:")//显示日期：
@@ -570,10 +537,7 @@ Rectangle {
             }
         }
 
-
-
-        //# 电源
-//        # present:电源总是可见     charge:当机器充电/放电时可见         never:总是不可见
+        //电源   present:电源总是可见     charge:当机器充电/放电时可见         never:总是不可见
         Row {
             id: battery_icon
             spacing: 230
@@ -584,11 +548,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "no"
-//                    showImage: "../../img/icons/cloud-gray.png"
-//                }
                 Text {
                     width: 160
                     text: qsTr("Display battery icon:")//显示电池图标：
@@ -636,11 +595,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "no"
-//                    showImage: "../../img/icons/cloud-gray.png"
-//                }
                 Text {
                     width: 160
                     text: qsTr("Display battery percentage:")//显示电池百分比：
@@ -694,11 +648,6 @@ Rectangle {
                     width: 14; height: 14
                     anchors.verticalCenter: parent.verticalCenter
                 }
-//                Common.TipLabel {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    kflag: "no"
-//                    showImage: "../../img/icons/cloud-gray.png"
-//                }
                 Text {
                     width: 160
                     text: qsTr("Display battery remaining time:")//显示电池电量时间：

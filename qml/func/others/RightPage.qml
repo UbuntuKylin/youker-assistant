@@ -21,7 +21,7 @@ import "../common/InfoGroup.js" as InfoGroup
 //右边栏
 Rectangle {
     id: rightbar
-//    color: "#eeedf0"
+
     property int distrowatch_num:0
     property string update_rate
     property string activetext : qsTr("Active")//活跃发展中
@@ -69,11 +69,7 @@ Rectangle {
         }
         onSsoLoginLogoutSignal: {
             if(loginFlag) {
-//                console.log("qml logout success......");
                 rightbar.state = "OffLine";
-            }
-            else {
-//                console.log("qml login fail......");
             }
         }
 
@@ -178,11 +174,8 @@ Rectangle {
             else {
                 os_image = splitlist[2];
             }
-//            img_source = InfoGroup.judgeDistrowatchName(os_image) ? (rightbar.homepath + "/.config/ubuntukylin/youker-assistant/uk-img/distrowatch/" + os_image +".png") : ("../../img/distrowatch/default.png");
             img_source = InfoGroup.judgeDistrowatchName(os_image) ? (rightbar.homepath + "/.cache/youker-assistant/uk-img/distrowatch/" + os_image +".png") : ("../../img/distrowatch/default.png");
             listModel.append({"rank": splitlist[0], "os": splitlist[1], "os_img": img_source, "today_hit": splitlist[3], "rank_img": "../../img/distrowatch/" + rightbar.split_last_str(splitlist[4]),  "yestoday_hit": splitlist[5]});
-//            img_source = InfoGroup.judgeDistrowatchName(os_image) ? ("../../img/distrowatch/" + os_image +".png") : ("../../img/distrowatch/default.png");
-//            listModel.append({"rank": splitlist[0], "os": splitlist[1], "os_img": img_source, "today_hit": splitlist[3], "rank_img": "../../img/distrowatch/" + rightbar.split_last_str(splitlist[4]),  "yestoday_hit": splitlist[5]});
         }
 
         //access new data
@@ -233,10 +226,6 @@ Rectangle {
                 id: login
                 kflag: "login"
                 showImage: ""
-    //            anchors {
-    //                top: parent.top; topMargin: 25
-    //                horizontalCenter: parent.horizontalCenter
-    //            }
                 width: 216
                 height: 67
                 onClicked: {
@@ -245,31 +234,6 @@ Rectangle {
             }
         }
     }
-
-//    Rectangle {
-//        id: logining
-//        width: parent.width
-//        x: (parent.width * 1.5)
-//        Column {
-//            spacing: 5
-//            anchors {
-//                top: parent.top; topMargin: 40
-//                horizontalCenter: parent.horizontalCenter
-//            }
-//            AnimatedImage {
-//                width: 16
-//                height: 16
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                source: "../../img/icons/move.gif"
-//            }
-//            Text {
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                font.pixelSize: 14
-//                color: "#383838"
-//                text: qsTr("Logging...") //正在登录...
-//            }
-//        }
-//    }
 
     //------------------login
     Rectangle {
@@ -521,7 +485,6 @@ Rectangle {
                         Image {
                             id: icon
                             width: 28; height: 28
-//                            width: 90; height: 87
                             source: os_img//"http://distrowatch.com/images/yvzhuwbpy/" + os_img +".png"
                             anchors.verticalCenter: parent.verticalCenter
                         }
@@ -598,8 +561,6 @@ Rectangle {
     Rectangle {
         id: ukrect
         property bool showFlag: false
-//        color: "#e4f2fc"
-//        color: "#eeedf0"
         width: showFlag ? parent.width-4 : 0
         height: 350
         anchors{
@@ -627,10 +588,6 @@ Rectangle {
 
             //access new data
             sessiondispatcher.get_ubuntukylin_distrowatch_info_qt();
-//            var result = sessiondispatcher.get_ubuntukylin_distrowatch_info_qt();
-//            if (result) {
-//
-//            }
         }
 
         Image {
@@ -871,14 +828,6 @@ Rectangle {
                 Qt.openUrlExternally("http://www.ubuntukylin.com/ukylin/forum.php");
             }
         }
-//        Text {
-//            id: helplabel
-//            width: 50
-//            height: 25
-//            textFormat: Text.RichText
-//            text:  qsTr("<a href=\"http://www.ubuntukylin.com/ukylin/forum.php\">Forum Help</a>")
-//            onLinkActivated: { Qt.openUrlExternally(link); }
-//        }
         Common.StyleButton {
             id: versionlabel
             wordname: qsTr("Features")//新版本特性
@@ -904,19 +853,11 @@ Rectangle {
             name: "OnLine"
             PropertyChanges { target: online; x: 0 }
             PropertyChanges { target: offline; x: (parent.width * 1.5) }
-//            PropertyChanges { target: logining; x: (parent.width * 1.5) }
         },
-//        State {
-//            name: "Logining"
-//            PropertyChanges { target: logining; x: 0 }
-//            PropertyChanges { target: online; x: (parent.width * 1.5) }
-//            PropertyChanges { target: offline; x: (parent.width * 1.5) }
-//        },
         State {
             name: "OffLine"
             PropertyChanges { target: offline; x: 0 }
             PropertyChanges { target: online; x: (parent.width * 1.5) }
-//            PropertyChanges { target: logining; x: (parent.width * 1.5) }
         }
     ]
 }

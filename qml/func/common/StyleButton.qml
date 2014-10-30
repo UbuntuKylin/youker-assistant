@@ -28,11 +28,6 @@ Rectangle {
 
     Text {
         id:textname
-//        anchors {
-//            horizontalCenter: parent.horizontalCenter
-//            top: parent.top
-//            topMargin: 2
-//        }
         anchors.centerIn: parent
         text: wordname
         font.pointSize: styleBtn.fontSize

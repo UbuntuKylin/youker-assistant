@@ -49,7 +49,6 @@ void HttpDownLoad::sendDownLoadRequest(const QUrl &url) {
 }
 
 void HttpDownLoad::startRequest(QUrl url) {
-//    QString uk_path = QDir::homePath() + "/.config/ubuntukylin/youker-assistant/uk-img/";
     QString uk_path = QDir::homePath() + "/.cache/youker-assistant/uk-img/";
     QDir tmpDir(uk_path);
     if(!tmpDir.exists())
@@ -57,7 +56,6 @@ void HttpDownLoad::startRequest(QUrl url) {
         reply = mManager->get(QNetworkRequest(url));
         connect(reply,SIGNAL(finished()),this,SLOT(httpFinished()));//下载完成
         connect(reply,SIGNAL(readyRead()),this,SLOT(httpReadyRead()));//有可用数据
-    //    connect(reply,SIGNAL(downloadProgress(qint64,qint64)),this,SLOT(updateDataReadProgress(qint64,qint64)));//更新进度
     }
 }
 
@@ -67,11 +65,6 @@ void HttpDownLoad::httpReadyRead() {
         file->write(reply->readAll());
     }
 }
-
-//update progress
-//void HttpDownLoad::updateDataReadProgress(qint64 bytesRead, qint64 totalBytes) {
-//    qDebug() << totalBytes << "-------------" << bytesRead;
-//}
 
 //finish download
 void HttpDownLoad::httpFinished() {

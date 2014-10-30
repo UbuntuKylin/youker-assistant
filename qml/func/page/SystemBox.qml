@@ -20,18 +20,12 @@ import "../bars" as Bars
 import "../others" as Others
 
 Item {
-    id: screen; width: parent.width; height: 476
+    id: screen
+    width: parent.width; height: 476
     Rectangle {
         id: setting_widget
         anchors.fill: parent
-//        color: "#eeedf0"
-//        color: "white"
 
-        //背景
-//        Image {
-//            source: "../../img/skin/bg-middle.png"
-//            anchors.fill: parent
-//        }
         //更新列表
         function updateList() {
             funcmodel.clear();//清空

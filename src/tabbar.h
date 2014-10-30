@@ -41,7 +41,4 @@ signals:
     void navigate(int index);
 };
 
-
-//}
-
 #endif // TABBAR_H

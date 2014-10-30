@@ -42,7 +42,6 @@ protected:
     void paintEvent(QPaintEvent *);
 
 signals:
-//    void ukclicked(IconText *);
     void ukclicked(int);
 
 private:

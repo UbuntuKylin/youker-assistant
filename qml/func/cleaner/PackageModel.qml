@@ -26,13 +26,7 @@ Item {
         id: masklayer
         width: parent.width
         height: parent.height
-//        color: "#eeedf0"
         x: (parent.width * 1.5)
-        //背景
-//        Image {
-//            source: "../../img/skin/bg-middle.png"
-//            anchors.fill: parent
-//        }
         Connections
         {
             target: systemdispatcher

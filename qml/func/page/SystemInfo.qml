@@ -23,13 +23,6 @@ Rectangle {
     id: window
     width: parent.width; height: 476
     property string current_flag: "computer"
-//    color: "#eeedf0"
-
-    //背景
-//    Image {
-//        source: "../../img/skin/bg-middle.png"
-//        anchors.fill: parent
-//    }
 
     function currentChanged(curIndex) {
         content.currentChanged(curIndex);

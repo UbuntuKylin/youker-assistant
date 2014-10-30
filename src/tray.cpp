@@ -41,7 +41,6 @@ Tray::Tray(QWidget *parent)
     this->setWindowFlags(Qt::ToolTip | Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     this->move(QApplication::desktop()->width() - this->width(), 25);
-//    this->show();
 
     aboutDlg = new AboutDialog();
     aboutDlg->hide();
@@ -138,8 +137,6 @@ void Tray::createTray() {
     connect(actionQml, SIGNAL(triggered()), this, SLOT(showOrHideQml()));
     this->actionShow = new QAction(tr("Hide/Show monitor"), this);//隐藏/显示监控球
     connect(actionShow, SIGNAL(triggered()), this, SLOT(showOrHide()));
-//    QShortcut *shortcut = new QShortcut(QKeySequence("Ctrl+H"), this);
-//    connect(shortcut, SIGNAL(activated()), this, SLOT(showOrHide()));
 
     this->actionAbout = new QAction(tr("About"), this);//关于本软件
     connect(actionAbout, SIGNAL(triggered()), this, SLOT(showAboutWidget()));
@@ -266,20 +263,20 @@ void Tray::paintEvent(QPaintEvent *) {
     QString color_end;
     if (ratio_sus == 0)
     {
-        color_start = "#940302";//950302
+        color_start = "#940302";
         color_end="transparent";
     }
     else if (ratio_sus > 0 && ratio_sus < 50) {
-        color_start = "#006f45";//006F45
-        color_end= "#48ca5e";//52D063
+        color_start = "#006f45";
+        color_end= "#48ca5e";
     }
     else if (ratio_sus >= 50 && ratio_sus <= 80) {
-        color_start = "#af3a00";//AF3A00
-        color_end="#ed711d";//F07620
+        color_start = "#af3a00";
+        color_end="#ed711d";
     }
-    else {// if(ratio_sus > 80) {
-        color_start = "#940302";//950302
-        color_end="#dd291c";//DE281C
+    else {
+        color_start = "#940302";
+        color_end="#dd291c";
     }
 
     linearGradient.setColorAt(0.0, color_start);

@@ -19,7 +19,6 @@ import "../common" as Common
 Rectangle {
     id:browserpage
     width: parent.width; height: 437
-//    color: "#eeedf0"
 
     property string title: qsTr("Deep cleaning up the browser cache")//深度清理浏览器缓存
     property string description: qsTr("Deep cleaning up the browser cache, to save disk space")//深度清理浏览器缓存，节省磁盘空间！
@@ -140,7 +139,6 @@ Rectangle {
                     actionBtn.text = qsTr("Begin cleanup");//开始清理
                     browserpage.btnFlag = "browser_work";
                     backBtn.visible = true;
-    //                rescanBtn.visible = true;
                 }
                 scrollItem.height = (browserpage.firefoxNum + 1) * browserpage.item_height + (browserpage.chromiumNum + 1) * browserpage.item_height + browserpage.spaceValue*4;
                 //扫描完成后恢复按钮的使能
@@ -240,12 +238,6 @@ Rectangle {
         }
     }
 
-    //背景
-//    Image {
-//        source: "../../img/skin/bg-middle.png"//bg-bottom-tab
-//        anchors.fill: parent
-//    }
-
     //titlebar
     Row {
         id: titlebar
@@ -340,9 +332,6 @@ Rectangle {
                 actionBtn.enabled = false;
                 browserpage.firefoxEmpty = false;
                 browserpage.chromiumEmpty = false;
-//                console.log("-----------");
-//                console.log(browserpage.firefox_maincheck);
-//                console.log(browserpage.chromium_maincheck);
 
                 if (browserpage.btnFlag == "browser_scan") {//扫描
                     browserpage.flag = false;
@@ -382,7 +371,6 @@ Rectangle {
                             sessiondispatcher.showWarningDialog(qsTr("Tips:"), qsTr("Sorry, You did not choose the content to be cleaned up, please confirm!"));
                         }
                         else {
-                            //test 0410
                             var browserlist = new Array();
                             for(var i=0; i<firefoxsubModel.count; i++) {
                                 if(firefoxsubModel.get(i).checked) {
@@ -431,7 +419,6 @@ Rectangle {
         anchors.top: titlebar.bottom
         anchors.topMargin: 30
         anchors.left:parent.left
-//        anchors.leftMargin: 27
         height: browserpage.height - titlebar.height - 47
         width: parent.width -2//parent.width - 27 -2
         Item {
@@ -474,7 +461,6 @@ Rectangle {
                             }
                         }
 
-                        //test 0410
                         onTransmitCacheItemCheckBoxStatus: {
                             if(flag == "firefoxcache") {
                                 if(status) {
@@ -494,7 +480,6 @@ Rectangle {
 
                         //Cleardelegate中返回是否有项目勾选上，有为true，没有为false
                         onCheckchanged: {
-//                            browserpage.aptresultFlag = checkchange;
                             browserpage.firefox_maincheck = checkchange;
                         }
                         onArrowClicked: {
@@ -547,8 +532,6 @@ Rectangle {
                         delegate_flag: browserpage.splitFlag
                         emptyTip: browserpage.chromiumEmpty
 
-
-                        //test 0410
                         onTransmitCacheItemMainCheckBoxStatus: {
                             if(flag == "chromiumcache") {
                                 if(status) {
@@ -564,7 +547,6 @@ Rectangle {
                             }
                         }
 
-                        //test 0410
                         onTransmitCacheItemCheckBoxStatus: {
                             if(flag == "chromiumcache") {
                                 if(status) {

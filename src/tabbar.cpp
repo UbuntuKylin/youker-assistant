@@ -24,7 +24,6 @@ TabBar::TabBar(QWidget *parent)
     this->setAutoFillBackground(false);
     this->view = new QDeclarativeView(this);
     this->view->rootContext()->setContextProperty("cpp", this);
-//    this->view->setSource(QUrl("../qml/TabBar.qml"));
     this->setup();
     this->view->move(0, 29);
 }
@@ -42,7 +41,6 @@ inline bool isRunningInstalled() {
 
 inline QString getAppDirectory() {
     if (isRunningInstalled()) {
-//        qDebug() << QCoreApplication::applicationDirPath();
         return QString("/usr/share/youker-assistant/qml/");
     } else {
         return QString(QCoreApplication::applicationDirPath() + "/../qml/");
