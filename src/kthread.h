@@ -29,9 +29,13 @@ class KThread : public QThread
 {
     Q_OBJECT
 public:
-    explicit KThread(QStringList &arglist, QDBusInterface *systemiface=0,/* QObject *parent = 0, */QString method="", QString flag="", int size=0);
+    explicit KThread(QObject *parent);
+//    explicit KThread(QStringList &arglist, QDBusInterface *systemiface=0,/* QObject *parent = 0, */QString method="", QString flag="", int size=0);
     ~KThread();
     void stop();
+    void initValues(QStringList &arglist, QDBusInterface *systemiface=0,QString method="", QString flag="", int size=0);
+signals:
+  void msgSignal(const int result);//用于向主线程传递
 protected:
     void run();
 private:

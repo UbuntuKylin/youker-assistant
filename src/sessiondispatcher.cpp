@@ -20,7 +20,7 @@
 #include <QFontDialog>
 #include <QFileDialog>
 #include "warningdialog.h"
-#include "kthread.h"
+//#include "kthread.h"
 #include "util.h"
 #include "kfontdialog.h"
 #include "messengerproxy.h"
@@ -35,6 +35,8 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
                                "/",
                                "com.ubuntukylin.session",
                                QDBusConnection::sessionBus());
+    thread = new KThread(this);
+
     this->mainwindow_width = 850;
     this->mainwindow_height = 600;
 
@@ -101,6 +103,11 @@ SessionDispatcher::SessionDispatcher(QObject *parent) :
 SessionDispatcher::~SessionDispatcher() {
     if (httpdownload != NULL) {
         delete httpdownload;
+        httpdownload = NULL;
+    }
+    if(thread != NULL) {
+        delete thread;
+        thread = NULL;
     }
 
     disconnect(updatetimer,SIGNAL(timeout()),this,SLOT(get_current_weather_qt()));
@@ -109,33 +116,40 @@ SessionDispatcher::~SessionDispatcher() {
     }
     if (updatetimer != NULL) {
         delete updatetimer;
+        updatetimer = NULL;
     }
 
     this->exit_qt();
     if (sessioniface != NULL) {
         delete sessioniface;
+        sessioniface = NULL;
     }
     mSettings->sync();
     if (mSettings != NULL) {
         delete mSettings;
+        mSettings = NULL;
     }
 
     default_Settings->sync();
     if (default_Settings != NULL) {
         delete default_Settings;
+        default_Settings = NULL;
     }
 
     distrowatch_Settings->sync();
     if (distrowatch_Settings != NULL) {
         delete distrowatch_Settings;
+        distrowatch_Settings = NULL;
     }
 
     if (slidershow != NULL) {
         delete slidershow;
+        slidershow = NULL;
     }
 
     if (selectDialog != NULL) {
         delete selectDialog;
+        selectDialog = NULL;
     }
 }
 
@@ -163,7 +177,7 @@ bool SessionDispatcher::judge_camera_qt() {
 
 void SessionDispatcher::call_camera_qt() {
     QStringList tmp;
-    KThread *thread = new KThread(tmp, sessioniface, "call_camera");
+    thread->initValues(tmp, sessioniface, "call_camera");
     thread->start();
 }
 
@@ -332,12 +346,12 @@ void SessionDispatcher::handlerWeatherPingback(bool result) {
         bool flag = Util::id_exists_in_location_file(initCityId);
         if(flag) {//获取中国气象局数据
             QStringList tmplist;
-            KThread *thread = new KThread(tmplist, sessioniface, "get_current_weather", initCityId);
+            thread->initValues(tmplist, sessioniface, "get_current_weather", initCityId);
             thread->start();
         }
         else {//获取雅虎气象数据
             QStringList latlon = this->getLatandLon();
-            KThread *thread = new KThread(latlon, sessioniface, "get_current_yahoo_weather", initCityId);
+            thread->initValues(latlon, sessioniface, "get_current_yahoo_weather", initCityId);
             thread->start();
         }
         this->submit_uk_pingback();
@@ -415,20 +429,20 @@ QString SessionDispatcher::get_locale_version() {
 }
 
 void SessionDispatcher::onekey_scan_function_qt(QStringList selectedList) {
-    KThread *thread = new KThread(selectedList, sessioniface, "onekey_scan_function");
+    thread->initValues(selectedList, sessioniface, "onekey_scan_function");
     thread->start();
 }
 
 void SessionDispatcher::scan_history_records_qt(QString flag) {
     QStringList tmp;
-    KThread *thread = new KThread(tmp, sessioniface, "scan_history_records", flag);
+    thread->initValues(tmp, sessioniface, "scan_history_records", flag);
     thread->start();
 }
 
 
 void SessionDispatcher::scan_system_history_qt() {
     QStringList tmp;
-    KThread *thread = new KThread(tmp, sessioniface, "scan_system_history");
+    thread->initValues(tmp, sessioniface, "scan_system_history");
     thread->start();
 }
 
@@ -444,13 +458,13 @@ void SessionDispatcher::scan_system_history_qt() {
 
 void SessionDispatcher::scan_of_large_qt(QString abspath, int size) {
     QStringList tmp;
-    KThread *thread = new KThread(tmp, sessioniface, "scan_of_large", abspath, size);
+    thread->initValues(tmp, sessioniface, "scan_of_large", abspath, size);
     thread->start();
 }
 
 void SessionDispatcher::cookies_scan_function_qt(QString flag) {
     QStringList tmp;
-    KThread *thread = new KThread(tmp, sessioniface, "cookies_scan_function", flag);
+    thread->initValues(tmp, sessioniface, "cookies_scan_function", flag);
     thread->start();
 }
 
@@ -495,12 +509,12 @@ QStringList SessionDispatcher::get_package_arglist(int i) {
 }
 
 void SessionDispatcher::cache_scan_function_qt(QStringList argList, QString flag) {
-    KThread *thread = new KThread(argList, sessioniface, "cache_scan_function", flag);
+    thread->initValues(argList, sessioniface, "cache_scan_function", flag);
     thread->start();
 }
 
 void SessionDispatcher::package_scan_function_qt(QStringList argList) {
-    KThread *thread = new KThread(argList, sessioniface, "package_scan_function");
+    thread->initValues(argList, sessioniface, "package_scan_function");
     thread->start();
 }
 

@@ -201,7 +201,7 @@ int write_pass(struct file_info *info)
 
 int zero_data(struct file_info *info)
 {
-    info->buf_size = 512;
+    info->buf_size = 1024*1024;//512
     if ((info->buf = (char *)malloc(info->buf_size)) == NULL)
     {
         fprintf(stderr, "\r cannot allocate %ld bytes for '%s': %s\n", 
@@ -430,10 +430,10 @@ int do_file(const char *name)
     return NOT_SUPPORT_TYPE;
 }
 
-#ifdef __DEBUG
+//#ifdef __DEBUG
 //int main(int argc, char **argv)
 //{
-//    /*
+    /*
 //    char pwd_path[PATH_MAX+1];
 //    memset(pwd_path, 0, sizeof(pwd_path)):
 //    int count = readlink("/proc/self/exe", pwd_path, PATH_MAX);
@@ -445,4 +445,4 @@ int do_file(const char *name)
 
 //    return do_file(argv[1]);
 //}
-#endif
+//#endif

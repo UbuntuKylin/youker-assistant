@@ -29,6 +29,22 @@ Rectangle {
     Component.onCompleted: {
     }
 
+    Connections
+    {
+        target: shreddispatcher
+        onFinishDeleteWork: {
+            doingImage.visible = false;
+            if (result == 0) {
+                shredpage.selectedfile = "";
+                showEdit.text = qsTr("No select any file which need to be shredded");
+                toolkits.alertMSG(qsTr("Shred success!"));//粉碎成功！
+            }
+            else {
+                toolkits.alertMSG(qsTr("Shred abnormal!"));//粉碎出现异常！
+            }
+        }
+    }
+
     Row {
         spacing: 20
         anchors {
@@ -48,7 +64,8 @@ Rectangle {
             width: 70; height: 28
             text: qsTr("Back")//返回
             onClicked: {
-                pageStack.pop();
+//                pageStack.pop();
+                pageStack.push(functioncollection);
             }
         }
         Column {
@@ -87,8 +104,17 @@ Rectangle {
             top: top_splitbar.bottom
             topMargin: 100
         }
+
         Column {
             spacing: 10
+            AnimatedImage {
+                id: doingImage
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: 16
+                height: 16
+                visible: false
+                source: "../../img/icons/move.gif"
+            }
             Text {
                 font.bold: true
                 font.pixelSize: 14
@@ -178,15 +204,8 @@ Rectangle {
                 text: qsTr("Shred File")
                 onClicked: {
                     if(shredpage.selectedfile.length != 0) {
-                        var value = shreddispatcher.shred_file_qt(shredpage.selectedfile);
-                        if (value == 0) {
-                            shredpage.selectedfile = "";
-                            showEdit.text = qsTr("No select any file which need to be shredded");
-                            toolkits.alertMSG(qsTr("Shred success!"));//粉碎成功！
-                        }
-                        else {
-                            toolkits.alertMSG(qsTr("Shred abnormal!"));//粉碎出现异常！
-                        }
+                        doingImage.visible = true;
+                        shreddispatcher.shred_file_qt(shredpage.selectedfile);
                     }
                 }
             }

@@ -30,7 +30,7 @@ Item {
         function updateList() {
             funcmodel.clear();//清空
             funcmodel.append({"icon": "../../img/icons/checkscreen.png", "name": qsTr("Dead pixel check"), "flag": "CheckScreen"});//坏点检测
-            funcmodel.append({"icon": "../../img/icons/bootanimation.png", "name": qsTr("Boot Animation"), "flag": "BootAnimation"});//开机动画
+//            funcmodel.append({"icon": "../../img/icons/bootanimation.png", "name": qsTr("Boot Animation"), "flag": "BootAnimation"});//开机动画
             funcmodel.append({"icon": "../../img/icons/processmanager.png", "name": qsTr("Task Manager"), "flag": "ProcessManager"});//任务管理器
             funcmodel.append({"icon": "../../img/icons/camera.png", "name": qsTr("Camera"), "flag": "CameraCapture"});//摄像头
             funcmodel.append({"icon": "../../img/icons/shredder.png", "name": qsTr("File Shredder"), "flag": "FileShredder"});//文件粉碎机

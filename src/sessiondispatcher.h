@@ -25,6 +25,7 @@
 #include "newcharacter.h"
 #include "selectdialog.h"
 #include "httpdownload.h"
+#include "kthread.h"
 
 class QSettings;
 
@@ -410,6 +411,7 @@ private:
     NewCharacter *slidershow; //新版特性界面
     SelectDialog *selectDialog;
     HttpDownLoad *httpdownload;
+    KThread *thread;
 
 public slots:
     void unzip_resource_uk();

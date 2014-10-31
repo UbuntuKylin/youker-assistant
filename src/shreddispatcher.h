@@ -28,6 +28,7 @@
 #include <QFileDialog>
 #include <QMap>
 #include <QMessageBox>
+#include "kthread.h"
 
 class ShredDispatcher : public QObject
 {
@@ -36,10 +37,17 @@ public:
     explicit ShredDispatcher(QObject *parent = 0);
     ~ShredDispatcher();
     void exit_qt();
-    Q_INVOKABLE int shred_file_qt(const QString &data);
+    Q_INVOKABLE void shred_file_qt(const QString &data);
+
+private slots:
+  void OnMsgSignal(const int result);//接受子线程传递,用于显示
+
+signals:
+    void finishDeleteWork(int result);
 
 private:
     QDBusInterface *shrediface;
+    KThread *thread;
 };
 
 #endif // SHREDDISPATCHER_H

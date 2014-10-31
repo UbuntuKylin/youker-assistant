@@ -16,8 +16,21 @@
 #include <QDebug>
 #include "kthread.h"
 
-KThread::KThread(QStringList &arglist, QDBusInterface *systemiface, /*QObject *parent, */QString method, QString flag, int size):QThread(/*parent*/)
+//KThread::KThread(QStringList &arglist, QDBusInterface *systemiface, /*QObject *parent, */QString method, QString flag, int size):QThread(/*parent*/)
+//{
+//    iface = systemiface;
+//    methodName = method;
+//    list = arglist;
+//    fileFlag = flag;
+//    fileSize = size;
+//}
+
+KThread::KThread(QObject *parent):QThread(parent)
 {
+
+}
+
+void KThread::initValues(QStringList &arglist, QDBusInterface *systemiface, QString method, QString flag, int size) {
     iface = systemiface;
     methodName = method;
     list = arglist;
@@ -91,6 +104,10 @@ void KThread::run() {
     }
     else if(methodName == "check_user") {
        iface->call("check_user");
+    }
+    else if(methodName == "shredFile") {
+        QDBusReply<int> reply = iface->call("shredFile", fileFlag);
+        emit msgSignal(reply.value());
     }
 }
 void KThread::stop() {

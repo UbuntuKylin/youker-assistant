@@ -97,7 +97,8 @@ Rectangle {
             width: 70; height: 28
             text: qsTr("Back")//返回
             onClicked: {
-                pageStack.pop();
+//                pageStack.pop();
+                pageStack.push(systemset);
             }
         }
         Column {

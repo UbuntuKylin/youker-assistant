@@ -21,6 +21,7 @@
 #include <QDBusConnection>
 #include <QSound>
 #include "util.h"
+#include "kthread.h"
 
 class SystemDispatcher : public QObject
 {
@@ -169,6 +170,7 @@ private:
     int ratio_sus;
     int mainwindow_width;
     int mainwindow_height;
+    KThread *thread;
 };
 
 #endif // SYSTEMDISPATCHER_H

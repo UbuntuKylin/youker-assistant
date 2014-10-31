@@ -21,6 +21,8 @@
 
 //qdbusxml2cpp shredInterfaceServer.xml -a ShredAdaptor
 
+//g++ -D__DEBUG -g -o0 -o filewipe -Wall filewipe.cpp
+
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);

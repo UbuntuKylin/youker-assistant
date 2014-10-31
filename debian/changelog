@@ -2,8 +2,10 @@ youker-assistant (1.3.2-0ubuntu1) utopic; urgency=low
 
   * Make it work normally when fisrt start(LP: #1373294).
   * Make icons on panel normally(LP: #1380938).
+  * Make main page normally when double clicked the link Btn and the back Btn(LP: #1387927).
+  * Shred big file normally(LP: #1373302).
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 30 Oct 2014 17:25:13 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 31 Oct 2014 15:51:37 +0800
 
 youker-assistant (1.3.1-0ubuntu1) utopic; urgency=low
 

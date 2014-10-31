@@ -25,12 +25,19 @@ ShredDispatcher::ShredDispatcher(QObject *parent) :
                                "/",
                                "org.freedesktop.ukshred",
                                QDBusConnection::systemBus());
+    thread = new KThread(this);
+    connect(thread, SIGNAL(msgSignal(const int)),this, SLOT(OnMsgSignal(const int)));//此处connect的第五个参数默认变成Qt::QueuedConnection
 }
 
 ShredDispatcher::~ShredDispatcher() {
     this->exit_qt();
     if (shrediface != NULL) {
         delete shrediface;
+        shrediface = NULL;
+    }
+    if (thread != NULL) {
+        delete thread;
+        thread = NULL;
     }
 }
 
@@ -38,7 +45,13 @@ void ShredDispatcher::exit_qt() {
     shrediface->call("exitDbus", "ubuntukylin");
 }
 
-int ShredDispatcher::shred_file_qt(const QString &data) {
-    QDBusReply<int> reply = shrediface->call("shredFile", data);
-    return reply.value();
+void ShredDispatcher::shred_file_qt(const QString &data) {
+    QStringList tmp;
+    thread->initValues(tmp, shrediface, "shredFile", data);
+    thread->start();
+}
+
+void ShredDispatcher::OnMsgSignal(const int result)
+{
+    emit this->finishDeleteWork(result);
 }

@@ -19,7 +19,6 @@
 #include <QFileDialog>
 #include <QMap>
 #include <QMessageBox>
-#include "kthread.h"
 
 SystemDispatcher::SystemDispatcher(QObject *parent) :
     QObject(parent)
@@ -28,6 +27,7 @@ SystemDispatcher::SystemDispatcher(QObject *parent) :
                                "/",
                                "com.ubuntukylin.youker",
                                QDBusConnection::systemBus());
+    thread = new KThread(this);
     onekey_args << "cache" << "history" << "cookies";
     tmplist << "Kobe" << "Lee";
     this->mainwindow_width = 850;
@@ -54,6 +54,11 @@ SystemDispatcher::~SystemDispatcher() {
     this->exit_qt();
     if (systemiface != NULL) {
         delete systemiface;
+        systemiface = NULL;
+    }
+    if (thread != NULL) {
+        delete thread;
+        thread = NULL;
     }
 }
 
@@ -345,34 +350,34 @@ QString SystemDispatcher::showSelectFileDialog(QString flag) {
 }
 
 void SystemDispatcher::clean_history_records_qt(QString flag) {
-    KThread *thread = new KThread(tmplist, systemiface, "history_clean_records_function", flag);
+    thread->initValues(tmplist, systemiface, "history_clean_records_function", flag);
     thread->start();
 }
 
 void SystemDispatcher::clean_system_history_qt() {
-    KThread *thread = new KThread(tmplist, systemiface, "clean_system_history");
+    thread->initValues(tmplist, systemiface, "clean_system_history");
     thread->start();
 }
 
 //void SystemDispatcher::clean_dash_history_qt() {
-//    KThread *thread = new KThread(tmplist, systemiface, "clean_dash_history");
+//    thread->initValues(tmplist, systemiface, "clean_dash_history");
 //    thread->start();
 //}
 
 void SystemDispatcher::cookies_clean_record_function_qt(QString flag, QString website) {
     QStringList strlist;
     strlist << flag << website;
-    KThread *thread = new KThread(strlist, systemiface, "cookies_clean_record_function");
+    thread->initValues(strlist, systemiface, "cookies_clean_record_function");
     thread->start();
 }
 
 void SystemDispatcher::cookies_clean_records_function_qt(QString flag) {
-    KThread *thread = new KThread(tmplist, systemiface, "cookies_clean_records_function", flag);
+    thread->initValues(tmplist, systemiface, "cookies_clean_records_function", flag);
     thread->start();
 }
 
 void SystemDispatcher::clean_file_cruft_qt(QStringList strlist, QString str) {
-    KThread *thread = new KThread(strlist, systemiface, "clean_file_cruft", str);
+    thread->initValues(strlist, systemiface, "clean_file_cruft", str);
     thread->start();
 }
 
@@ -396,7 +401,7 @@ void SystemDispatcher::clean_by_main_one_key_qt(bool garbageFlag, bool traceFlag
     else {
         argList << "0";
     }
-    KThread *thread = new KThread(argList, systemiface, "onekey_clean_crufts_function");
+    thread->initValues(argList, systemiface, "onekey_clean_crufts_function");
     thread->start();
 }
 
@@ -514,6 +519,6 @@ void SystemDispatcher::handlerRemoveProgress(QString type, QString msg) {//remov
 }
 
 void SystemDispatcher::clean_package_cruft_qt(QStringList strlist, QString flag) {
-    KThread *thread = new KThread(strlist, systemiface, "clean_package_cruft", flag);
+    thread->initValues(strlist, systemiface, "clean_package_cruft", flag);
     thread->start();
 }
