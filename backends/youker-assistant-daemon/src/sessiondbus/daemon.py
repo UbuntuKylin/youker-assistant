@@ -117,10 +117,10 @@ class SessionDaemon(dbus.service.Object):
         self.daemoncache = cleaner.CleanTheCache()
         self.init_mechanize()
 #        # sso - Robert
-        self.sso = get_ubuntu_sso_backend()
-        self.sso.connect("whoami", self.slot_whoami_done)
-        self.sso.connect("logout", self.slot_logout_successful)
-        self.sso.connect("fail",self.slot_login_fail)
+        #self.sso = get_ubuntu_sso_backend()
+        #self.sso.connect("whoami", self.slot_whoami_done)
+        #self.sso.connect("logout", self.slot_logout_successful)
+        #self.sso.connect("fail",self.slot_login_fail)
         self.token = ""
         self.user = ""
         self.display_name = ""
@@ -133,6 +133,10 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def check_user(self):
         try:
+            self.sso = get_ubuntu_sso_backend()
+            self.sso.connect("whoami", self.slot_whoami_done)
+            self.sso.connect("logout", self.slot_logout_successful)
+            self.sso.connect("fail",self.slot_login_fail)
             # try backend login
             self.sso.find_oauth_token()
         except ImportError:
