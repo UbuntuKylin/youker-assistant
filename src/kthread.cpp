@@ -102,6 +102,9 @@ void KThread::run() {
     else if(methodName == "slot_do_login_account") {
         iface->call("slot_do_login_account");
     }
+    else if(methodName == "slot_do_register") {
+       iface->call("slot_do_register");
+    }
     else if(methodName == "check_user") {
        iface->call("check_user");
     }

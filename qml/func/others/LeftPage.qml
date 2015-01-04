@@ -356,6 +356,10 @@ Rectangle {
                                 leftbar.cookiesFlag = false;
                             }
 
+                            //0104
+                            staticImage.visible = false;
+                            dynamicImage.visible = true;
+
                             systemdispatcher.set_user_homedir_qt();
                             systemdispatcher.clean_by_main_one_key_qt(leftbar.garbageFlag, leftbar.traceFlag, leftbar.cookiesFlag/*systemdispatcher.get_onekey_args()*/);
                         }

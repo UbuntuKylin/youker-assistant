@@ -179,7 +179,7 @@ Rectangle {
         }
 
         //access new data
-        sessiondispatcher.get_distrowatch_url_qt();
+        sessiondispatcher.get_distrowatch_url_qt();//0104
     }
 
     ListModel {
@@ -192,7 +192,7 @@ Rectangle {
 
     //add for sso
     Component.onCompleted: {
-        sessiondispatcher.check_user_qt();
+        sessiondispatcher.check_user_qt();//0104
     }
 
     Rectangle {
@@ -383,26 +383,41 @@ Rectangle {
         visible: false
         text: qsTr("Ubuntu Kylin Details")//Ubuntu Kylin 详情
     }
-    Common.ColorButton {
+    Common.StyleButton {
         id: ubuntukylinBtn
         anchors {
             top: splitbar.bottom
-            topMargin: 4
+            topMargin: 2
             right: parent.right
-            rightMargin: 0
+            rightMargin: 2
         }
-        colorNormal: "#00a0e9"
-        colorHover: "#65cfff"
-        colorPressed: "#65cfff"
-        sizeNormal: 10
-        sizeHover: 12
-        sizePressed: 12
-        height: 20; width: widthText.width
+        fontSize: 8
         wordname: qsTr("Ubuntu Kylin Details")
+        height: 20; width: widthText.width
         onClicked: {
             ukrect.showFlag = true;
         }
     }
+//    Common.ColorButton {
+//        id: ubuntukylinBtn
+//        anchors {
+//            top: splitbar.bottom
+//            topMargin: 4
+//            right: parent.right
+//            rightMargin: 0
+//        }
+//        colorNormal: "#00a0e9"
+//        colorHover: "#65cfff"
+//        colorPressed: "#65cfff"
+//        sizeNormal: 10
+//        sizeHover: 12
+//        sizePressed: 12
+//        height: 20; width: widthText.width
+//        wordname: qsTr("Ubuntu Kylin Details")
+//        onClicked: {
+//            ukrect.showFlag = true;
+//        }
+//    }
 
     DistrowatchTitle {
         id: distrowatchtitle
@@ -587,7 +602,7 @@ Rectangle {
             popularityText.text = popularityList[0] + "( " + qsTr("Hits per day ") + popularityList[1] + " )";//每日点击次数
 
             //access new data
-            sessiondispatcher.get_ubuntukylin_distrowatch_info_qt();
+            sessiondispatcher.get_ubuntukylin_distrowatch_info_qt();//0104
         }
 
         Image {
@@ -602,27 +617,43 @@ Rectangle {
             visible: false
             text: qsTr("Hide")//隐藏
         }
-        Common.ColorButton {
+        Common.StyleButton {
             id: hideBtn
-            visible: ukrect.showFlag
             anchors {
                 top: parent.top
                 topMargin: 2
                 right: parent.right
                 rightMargin: 2
             }
-            colorNormal: "#00a0e9"
-            colorHover: "#65cfff"
-            colorPressed: "#65cfff"
-            sizeNormal: 10
-            sizeHover: 12
-            sizePressed: 12
-            height: 20; width: hideText.width
+            visible: ukrect.showFlag
+            fontSize: 8
             wordname: qsTr("Hide")
+            height: 20; width: hideText.width
             onClicked: {
                 ukrect.showFlag = false;
             }
         }
+//        Common.ColorButton {
+//            id: hideBtn
+//            visible: ukrect.showFlag
+//            anchors {
+//                top: parent.top
+//                topMargin: 2
+//                right: parent.right
+//                rightMargin: 2
+//            }
+//            colorNormal: "#00a0e9"
+//            colorHover: "#65cfff"
+//            colorPressed: "#65cfff"
+//            sizeNormal: 10
+//            sizeHover: 12
+//            sizePressed: 12
+//            height: 20; width: hideText.width
+//            wordname: qsTr("Hide")
+//            onClicked: {
+//                ukrect.showFlag = false;
+//            }
+//        }
         Column {
             anchors {
                 left: parent.left

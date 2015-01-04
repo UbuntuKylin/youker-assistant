@@ -307,18 +307,27 @@ void SessionDispatcher::show_slider_qt() {
 }
 
 void SessionDispatcher::check_user_qt() {
-    sessioniface->call("check_user");
+//    sessioniface->call("check_user");//0104
+    QStringList tmp;
+    thread->initValues(tmp, sessioniface, "check_user");
+    thread->start();
 }
 
 //弹出登录框
 void SessionDispatcher::popup_login_dialog() {
     //add ubuntukylin sso
-    sessioniface->call("slot_do_login_account");
+//    sessioniface->call("slot_do_login_account");//0104
+    QStringList tmp;
+    thread->initValues(tmp, sessioniface, "slot_do_login_account");
+    thread->start();
 }
 
 void SessionDispatcher::popup_register_dialog() {
     //add ubuntukylin sso
-    sessioniface->call("slot_do_register");
+//    sessioniface->call("slot_do_register");//0104
+    QStringList tmp;
+    thread->initValues(tmp, sessioniface, "slot_do_register");
+    thread->start();
 }
 
 //退出登录

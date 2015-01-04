@@ -82,7 +82,7 @@ Rectangle {
 
     Component.onCompleted: {
         weahterzone.setDefaultWeather();
-        sessiondispatcher.get_current_weather_qt();
+        sessiondispatcher.get_current_weather_qt();//0104
     }
     Text {
         id: locationText

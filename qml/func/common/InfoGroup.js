@@ -28,7 +28,8 @@ var distrowatchNames = ["mint", "ubuntu", "debian", "mageia", "fedora", "suse", 
                              "ubuntukylin", "tanglu", "damnsmall", "slackel", "zenwalk", "kwheezy", "archbang", "4mlinux", "parsix", "avlinux",
                              "zentyal", "openbsd", "trisquel", "reactos", "backbox", "point", "wifislax", "freenas", "musix", "zevenos",
                              "mepis", "bridge", "dreamstudio", "solaris", "sle", "rosa", "legacy", "emmabuntus", "korora", "greenie",
-                             "symphony", "extix", "handy", "absolute", "calculate", "minix", "q4os", "qubes", "coreos", "lunar"];
+                             "symphony", "extix", "handy", "absolute", "calculate", "minix", "q4os", "qubes", "coreos", "lunar", "linuxconsole",
+                             "univention", "semplice"];
 
 function judgeName(name) {
 

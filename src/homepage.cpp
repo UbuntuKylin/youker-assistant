@@ -45,7 +45,7 @@ HomePage::~HomePage()
 
 void HomePage::showPage() {
     this->show();
-    tray->show();
+    tray->show();//0104
 }
 
 void HomePage::showOrHideMainPage() {
@@ -99,7 +99,8 @@ void HomePage::setup() {
     this->hlayout = new QBoxLayout(QBoxLayout::TopToBottom, this);
     this->topBar = new TopBar(this);
     connect(this->topBar, SIGNAL(readyShowMin()), this, SLOT(showMinimized()));
-    connect(this->topBar, SIGNAL(readyHideWidget()), this, SLOT(hide()));
+    connect(this->topBar, SIGNAL(readyHideWidget()), this, SLOT(hide()));//0104
+//    connect(this->topBar, SIGNAL(readyHideWidget()), qApp, SLOT(quit()));//0104
     this->tabBar = new TabBar(this);
     this->contentField = new ContentField(this);
     this->bottomBar = new BottomBar(this);

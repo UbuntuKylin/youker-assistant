@@ -23,7 +23,7 @@ Rectangle {
     width: 850
     height: 26
     color: "transparent"
-    property string version: "V1.3.2"
+    property string version: "V1.3.3"
 
     CloundDispatcher {  id: clounddispatcher  }
 
@@ -42,7 +42,7 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        clounddispatcher.get_ip_address_qt();
+        clounddispatcher.get_ip_address_qt();//0104
     }
     Row {
         id: versionrow

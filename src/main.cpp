@@ -147,37 +147,37 @@ int main(int argc, char** argv)
     mSettings->sync();
 
     SliderShow *slider;
-    QSplashScreen *splash;
-    //启动画面
-    splash = new QSplashScreen;
-    splash->setPixmap(QPixmap(":/pixmap/image/feature.png"));
-    splash->setDisabled(true);
+//    QSplashScreen *splash;
+//    //启动画面
+//    splash = new QSplashScreen;
+//    splash->setPixmap(QPixmap(":/pixmap/image/feature.png"));
+//    splash->setDisabled(true);
 
     //同时创建主视图对象
     HomePage homePage;
 
     //去掉splash背景底色
-    QBitmap objBitmap(313, 209);
-    QPainter painter(&objBitmap);
-    painter.fillRect(splash->rect(), Qt::white);
-    painter.setBrush(QColor(0, 0 ,0));
-    painter.drawRoundedRect(splash->rect(), 10 , 10);
-    splash->setMask(objBitmap);
-    splash->show();
-    splash->showMessage(QObject::tr("starting...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//优客助手正在启动中....
+//    QBitmap objBitmap(313, 209);
+//    QPainter painter(&objBitmap);
+//    painter.fillRect(splash->rect(), Qt::white);
+//    painter.setBrush(QColor(0, 0 ,0));
+//    painter.drawRoundedRect(splash->rect(), 10 , 10);
+//    splash->setMask(objBitmap);
+//    splash->show();
+//    splash->showMessage(QObject::tr("starting...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//优客助手正在启动中....
     app.processEvents();
-    splash->showMessage(QObject::tr("loading module data...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//正在加载模块数据....
+//    splash->showMessage(QObject::tr("loading module data...."), Qt::AlignHCenter|Qt::AlignBottom, Qt::black);//正在加载模块数据....
     //数据处理
     homePage.setup();
     if(flag) {
-        splash->finish(&homePage);
+//        splash->finish(&homePage);
         //显示主界面，并结束启动画面
         homePage.showPage();
-        delete splash;
+//        delete splash;
     }
     else {
-        splash->finish(&homePage);
-        delete splash;
+//        splash->finish(&homePage);
+//        delete splash;
         slider = new SliderShow();
         mSettings->beginGroup("firststart");
         mSettings->setValue(pwd->pw_name, "1");
