@@ -1,0 +1,239 @@
+youker-assistant (1.3.3) vivid; urgency=low
+
+  * Modify control and desktop file.
+  * Display animation when cleaning up garbage.
+  * Solve some problems about sso when network abnormal.
+  * Add 3 OS rankings.
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Sun, 04 Jan 2015 17:03:17 +0800
+
+youker-assistant (1.3.2-0ubuntu1) vivid; urgency=low
+
+  * Make it work normally when fisrt start(LP: #1373294).
+  * Make icons on panel normally(LP: #1380938).
+  * Make main page normally when double clicked the link Btn and the back Btn(LP: #1387927).
+  * Shred big file normally(LP: #1373302).
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 30 Dec 2014 10:21:27 +0800
+
+youker-assistant (1.3.1-0ubuntu1) utopic; urgency=low
+
+  * Add cinnamon desktop settings.
+  * Add Ubuntu Kylin SSO.
+  * Connect Server with thread.
+  * Make File Shredder work properly(LP: #1381382).
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 17 Oct 2014 10:42:04 +0800
+
+youker-assistant (1.3.0-0ubuntu1) utopic; urgency=low
+
+  * Support multiple languages.
+  * Remove copyrighted images and download images from http server.
+  * Add file shreder.
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 22 Sep 2014 11:07:11 +0800
+
+
+youker-assistant (1.2.0-0ubuntu1) utopic; urgency=low
+
+  * Add IP Address and pid file.
+  * Adjust the widget of system settings and change the background color.
+  * Display the slidershow according to different users.
+  * Modify debian/postinst and debian/postrm.
+  * Display the current font style when clicked the change button.
+  * Add pingback function.
+  * Modify Driver info page(LP: #1267374) and FileManager Page(LP: #1358999).
+  * Add judgment of the Desktop and DistroWatch ranking.
+  * Make launcher transparency setting do work(LP: #1358672).
+  * Find large files with thread(LP: #1358992).
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 28 Aug 2014 12:28:56 +0800
+
+youker-assistant (1.1.0-0ubuntu1) trusty; urgency=low
+
+  * Perfect for parameter when checkbox checked.
+  * Get the correct version information of OS.
+  * Do system scan with thread.
+  * Use Python Socket and UUID to get LAN port, IP address and MAC address(LP: #1310882).
+  * Add slider show and battery information.
+  * Solved the interface flicker problem when it move(LP: #1304980).
+  * Add some settings about Dash, Panel and Launcher.
+  * Use camera to take pictures.
+  * Modify moving zone of the main widget, file cleaner, cpu ratio and the monitor ball.
+  * Modify weather model.
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 07 Jul 2014 22:43:31 +0800
+
+youker-assistant (1.0.1-0ubuntu1) trusty; urgency=low
+
+  * Modify display mode of weather forecast and system settings.
+  * Add file manager and font style settings.
+  * Improve system settings and restoring default settings.
+  * Cache user account (not password).
+  * Change the position of window control buttons.
+  * Add configuration for Kysoft KuaiPan cloud client.
+  * Add the instruction of Youker Assistant.
+  * Open related folders when scanning items got double-clicked.
+  * Notify users when operating the Kingsoft disk cloud configuration.
+  * Modify Dbus starting method.
+  
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 20 Mar 2014 10:14:56 +0800
+
+youker-assistant (1.0.0-0ubuntu1) trusty; urgency=low
+
+  * Access Yahoo weather info.
+  * Add Class LoginDialog and HttpAuth to login with Ubuntu Kylin forum account.
+  * Cleanup browser cache, thumbnail cache and software configfile.
+  * Completed global mouse theme.
+  * Modify the icon on PolicyKit Dialog.
+  * Adjust the display format of network traffic on the monitor ball.
+  * Add ToolTip.qml.
+  * Achieve the function about login with forum account.
+  * Add FileManager.qml, filemanager.py, common.py, geditmanager.py and settings.py.
+  * Reset default config value with Gio Settings and compizconfig.
+  * Remove software recommand.
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 21 Feb 2014 16:36:44 +0800
+
+youker-assistant (0.3.2-0ubuntu1) trusty; urgency=low
+
+  * Refersh process list automatically and position the originally selected process(LP: #1261802).
+  * Adjust the structure of QML project.
+  * Add CD-ROM, Audio Card and WLan information.
+  * Kill root process.
+  * Add Device driver basic information.
+  * Use new translation content.
+  * Display the preview picture when click the name on the BootAnimation page.
+  * Rename dbus and add backends/youker-assistant-daemon/install.sh.
+  * Use policykit for all place that requires authentication(LP: #1261799).
+  * Add GnuPG keys of the UbuntuKylin archive: ubuntukylin-archive-keyring.gpg.
+  * Replace some icons.
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 10 Jan 2014 12:30:30 +0800
+
+youker-assistant (0.3.1-0ubuntu1) trusty; urgency=low
+
+  * Overide the Font Dialog with KFontDialog Class.
+  * Add detailed information of Network Card, HardDisk and Graphics Card.
+  * Add Separator.qml.
+  * Change Logo and add InfoGroup.js.
+  * Access weather data with python threading.
+  * Change /usr/share/youker-assistant-daemon to /var/lib/youker-assistant-daemon.
+  * Change UbuntuKylin to Ubuntu Kylin.
+  * Modify calculation method of system memory allocation(LP: #1242579).
+  * Refresh net speed every second to resolve the wrong displaying net flow(LP: #1237891).
+  * Modify LargestFile.qml and One Key cleaner.
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 17 Dec 2013 15:12:07 +0800
+
+youker-assistant (0.2.4-0ubuntu1) saucy; urgency=low
+
+  * Optimize button events of AuthDialog(LP: #1256183).
+  * Fixed Dialog's movement and hazing when click a button(LP: #1255550).
+  * Change some pictures of computer's detailed information.
+  * All system configuration saved with QSetting.
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 05 Dec 2013 14:26:53 +0800
+
+youker-assistant (0.2.3-0ubuntu1) saucy; urgency=low
+
+  * Add processmanager.
+  * Add Google Chromium Cookies cleaner.
+  * Change Chinese to English add add translation.
+  * Adjust components space after it added translation.
+  * Solve the segmentation fault when users cancel the previous Fcitx configuration(LP: #1252595).
+  * Save and restore the default system configuration with QSetting.
+  * Clear Cookies of Chromium(LP: #1224871).
+  * Solve wrong status of history cleaning(LP: #1253852).
+  * Popup a dialog to add Ubuntu Kylin sourcelist or not.
+  * Display detailed information of Computer.
+  * Display contents when one key scanning.
+  * Add debian/postrm file to remove a folder when it is uninstalled.
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 28 Nov 2013 21:01:35 +0800
+
+youker-assistant (0.2.2-0ubuntu1) saucy; urgency=low
+
+  * Change skin and add weather forecast information.
+  * Get correct system information(LP: #1240862).
+  * Get software list and software information dynamically.
+  * Start sudodbus server at the same time to scan package cruft(LP: #1242498).
+  * Change the progressbar from Qt to QML.
+  * Use qtsingleapplication by F.J Kong (kroodylove).
+  * Solve the SIGSEGV crash when the program exit(LP: #1235073).
+  * Add Splash screen.
+
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Fri, 01 Nov 2013 10:24:05 +0800
+
+youker-assistant (0.2.1-0ubuntu1) saucy; urgency=low
+
+  * Modify the mouse events of MonitorBall.
+  * Add reset button for clear pages.
+  * Add policykit for apt clear in sudodbus.
+  * Fixed the bug about software status and add masklayer.
+  * Rewrite the code of system information.
+  * Add some signals and slots.
+  * Fixed the bug about Software signals(LP: #1226389).
+  * Modify KThread and add base.py.
+  * Fixed the bug about the black widget when operate software(LP: #1231408).
+
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Thu, 26 Sep 2013 20:08:11 +0800
+
+youker-assistant (0.2.0-0ubuntu1) saucy; urgency=low
+
+  * Modify the MonitorBall from QML to QT.
+  * Add recommendation about top software.
+  * Add a module and clean trace about file opened.
+  * Add progressbar to display operation status and progress.
+  * Make it can only start a single program.
+  * Modify all status of clean module.
+
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Fri, 13 Sep 2013 16:57:13 +0800
+
+youker-assistant (0.1.6-0ubuntu1) saucy; urgency=low
+
+  * Modify Class SystemDispatcher and SessionDispatcher.
+  * Add watch file into debian folder.
+  * Resolve status of onekey button(LP: #1216236 ).
+  * Add monitorball code into systemdbus daemon.
+  * Optimize the status button.
+
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Mon, 02 Sep 2013 17:17:45 +0800
+
+youker-assistant (0.1.5-0ubuntu1) saucy; urgency=low
+
+  * 0.1-Release.
+  * Add policykit.
+  * Make bootimage success.
+
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Thu, 22 Aug 2013 11:25:15 +0800
+
+youker-assistant (0.1.4-0ubuntu1) raring; urgency=low
+
+  * Remove libstyleplugin.so and add our components.
+  * Merge youker-assistant and youker-assistant-daemon into one project.
+  * Finish the method of get password.
+  * Modify the start method of systemdbus.
+  * Add Timer to prompt information.
+
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Fri, 09 Aug 2013 16:41:16 +0800
+
+youker-assistant (0.1.3-0ubuntu1) raring; urgency=low
+
+  * Finish the basic beauty of Clear pages and Set pages.
+
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Thu, 01 Aug 2013 18:33:08 +0800
+
+youker-assistant (0.1.2-0ubuntu1) raring; urgency=low
+
+  * Modify some systemset pages.
+  * systemdbus and sessiondbus start when the program run.
+  * Modify Rubbish Clear functions.
+
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Fri, 26 Jul 2013 18:23:15 +0800
+
+youker-assistant (0.1.1-0ubuntu1) raring; urgency=low
+
+  * Initial release.
+
+ -- Kobe Lee (kylinkobe) <kobe24_lixiang@126.com>  Tue, 02 Jul 2013 08:57:14 +0800

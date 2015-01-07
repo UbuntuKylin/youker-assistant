@@ -1,0 +1,58 @@
+<RCC>
+    <qresource prefix="/pixmap">
+        <file>image/message.png</file>
+        <file>image/youker-assistant.png</file>
+        <file>image/closeBtn.png</file>
+        <file>image/minBtn.png</file>
+        <file>image/icon.png</file>
+        <file>image/accelerate-bg.png</file>
+        <file>image/accelerate-bg0.png</file>
+        <file>image/memory.png</file>
+        <file>image/alert.png</file>
+        <file>image/progress-bg.png</file>
+        <file>image/feature.png</file>
+        <file>image/upshiftEN.png</file>
+        <file>image/upshiftEN-hover.png</file>
+        <file>image/upshiftEN-press.png</file>
+        <file>image/upshiftZH.png</file>
+        <file>image/upshiftZH-hover.png</file>
+        <file>image/upshiftZH-press.png</file>
+        <file>image/login-dialog.png</file>
+        <file>image/clothes.png</file>
+        <file>image/next-en.png</file>
+        <file>image/next-zh.png</file>
+        <file>image/pre-en.png</file>
+        <file>image/pre-zh.png</file>
+        <file>image/desktop_0.jpg</file>
+        <file>image/desktop_1.jpg</file>
+        <file>image/desktop_2.jpg</file>
+        <file>image/desktop_3.jpg</file>
+        <file>image/desktop_4.jpg</file>
+        <file>image/dot_active.png</file>
+        <file>image/dot_normal.png</file>
+        <file>image/start.png</file>
+        <file>image/start_hover.png</file>
+        <file>image/closeBtn_hover.png</file>
+        <file>image/shade.png</file>
+        <file>image/titlebg.png</file>
+        <file>image/button12-gray.png</file>
+        <file>image/button12-gray-hover.png</file>
+        <file>image/add.png</file>
+        <file>image/del.png</file>
+        <file>image/start_active.png</file>
+        <file>image/start_en.png</file>
+        <file>image/start_en_active.png</file>
+        <file>image/start_en_hover.png</file>
+        <file>image/minBtn_hover.png</file>
+    </qresource>
+    <qresource prefix="/translate">
+        <file>translation/youker-assistant_zh_CN.qm</file>
+        <file>translation/youker-assistant_de.qm</file>
+        <file>translation/youker-assistant_es.qm</file>
+        <file>translation/youker-assistant_fr.qm</file>
+        <file>translation/youker-assistant_ru.qm</file>
+    </qresource>
+    <qresource prefix="/skin">
+        <file>image/0_bg.png</file>
+    </qresource>
+</RCC>

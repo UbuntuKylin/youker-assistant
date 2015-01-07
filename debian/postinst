@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -e
+#DEBHELPER#
+initfolder=$HOME"/.cache/youker-assistant/"
+if [ -d "$initfolder" ]; then
+	rm -rf $initfolder
+fi

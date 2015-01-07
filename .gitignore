@@ -1,0 +1,8 @@
+src/Makefile
+backends/Makefile
+qml/Makefile
+tmp/
+obj/
+Makefile
+!.git*
+.git/

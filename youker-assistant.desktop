@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=youker-assistant
+Name[zh_CN]=优客助手
+Comment=youker-assistant
+Comment[zh_CN]=优客助手
+Keywords=Settings;Cleaning;Customization
+Exec=/usr/bin/youker-assistant %u
+Icon=youker-assistant.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;System;Settings;Viewer;

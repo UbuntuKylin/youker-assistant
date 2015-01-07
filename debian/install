@@ -1,0 +1,8 @@
+backends/youker-assistant-daemon/dbus/com.ubuntukylin.youker.service /usr/share/dbus-1/system-services/
+backends/youker-assistant-daemon/dbus/com.ubuntukylin.session.service /usr/share/dbus-1/services/
+backends/youker-assistant-daemon/dbus/com.ubuntukylin.weather.service /usr/share/dbus-1/services/
+backends/youker-assistant-daemon/dbus/org.freedesktop.ukshred.service /usr/share/dbus-1/system-services/
+backends/youker-assistant-daemon/dbus/com.ubuntukylin.youker.policy /usr/share/polkit-1/actions/
+backends/youker-assistant-daemon/dbus/com.ubuntukylin.youker.conf /etc/dbus-1/system.d/
+backends/youker-assistant-daemon/dbus/org.freedesktop.ukshred.policy /usr/share/polkit-1/actions/
+backends/youker-assistant-daemon/dbus/org.freedesktop.ukshred.conf /etc/dbus-1/system.d/
