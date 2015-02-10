@@ -1,3 +1,22 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+### BEGIN LICENSE
+
+# Copyright (C) 2013 ~ 2014 National University of Defense Technology(NUDT) & Kylin Ltd
+# This program is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License version 3, as published
+# by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranties of
+# MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+# PURPOSE.  See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program.  If not, see <http://www.gnu.org/licenses/>.
+### END LICENSE
+
+
 import os
 import ConfigParser
 import copy
@@ -257,37 +276,37 @@ class Desktop_Autostart_Manage():
         cf = MyConfigParser()
         cf.read(filepath)
         
-        dic = {}
+        info = []
         iconpath1 = '/usr/share/icons/hicolor/24x24/apps/'
         iconpath2 = '/usr/share/pixmaps/'
         s = cf.sections()
         o = cf.options(SECTION)
-        dic['Path'] = filepath
+        info.append('Path:' + filepath)
         
         #
         if SECTION in s:
             if cname in o:
-                dic['Name'] = cf.get(SECTION, 'Name[zh_CN]')
+                info.append('Name:' + cf.get(SECTION, 'Name[zh_CN]'))
             else:
-                dic['Name'] = cf.get(SECTION, 'Name')
+                info.append('Name:' + cf.get(SECTION, 'Name'))
             
             if 'Comment[zh_CN]' in o:
-                dic['Comment'] = cf.get(SECTION, 'Comment[zh_CN]')
+                info.append('Comment:' + cf.get(SECTION, 'Comment[zh_CN]'))
             else:
-                dic['Comment'] = cf.get(SECTION, 'Comment')
+                info.append('Comment:' + cf.get(SECTION, 'Comment'))
 
             if 'Icon' in o:
                 tempicon = cf.get(SECTION, 'Icon')
                 if os.path.exists(iconpath2 + tempicon):
-                    dic['Icon'] = iconpath2 + tempicon
+                    info.append('Icon:' + iconpath2 + tempicon)
                 elif os.path.exists(iconpath1 + tempicon):
-                    dic['Icon'] = iconpath1 + tempicon
+                    info.append('Icon:' + iconpath1 + tempicon)
                 else:
-                    dic['Icon'] = ''
+                    info.append('Icon:')
             else:
-                dic['Icon'] = ''
+                info.append('Icon:')
 
-        return dic
+        return info
 
 
 def interface_get_status(fobj):
@@ -298,17 +317,15 @@ def interface_get_status(fobj):
         up = obj.dic.get("autostart", [])
         if up:
             for upvalue in up:
-                up_dic = obj.get_desktop_info(upvalue)
-                up_dic['Status'] = True
-                #发信号
-                fobj.autstartmanage_data_signal(up_dic)
+                up_list = obj.get_desktop_info(upvalue)
+                up_list.append('Status:' + 'true')
+                fobj.autstartmanage_data_signal(up_list)
 
         down = obj.dic.get("notautostart", [])
         if down:
             for downvalue in down:
-                down_dic = obj.get_desktop_info(downvalue)
-                down_dic['Status'] = False
-                #发信号
+                down_list = obj.get_desktop_info(downvalue)
+                down_list.append('Status:' + 'false')
                 fobj.autostartmanage_data_signal(downvalue)
 
     except Exception, e:

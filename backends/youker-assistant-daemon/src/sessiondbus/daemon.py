@@ -1476,7 +1476,7 @@ class SessionDaemon(dbus.service.Object):
     def change_autostart_status(self, filename):
         autostartmanage.interface_change_status(self, filename)
     
-    @dbus.service.signal(INTERFACE, signature='a{sas}')
+    @dbus.service.signal(INTERFACE, signature='as')
     def autostartmanage_data_signal(self, info):
         pass
     @dbus.service.signal(INTERFACE, signature='s')
