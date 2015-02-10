@@ -34,6 +34,7 @@ import time
 import threading
 
 import cleaner
+from autostartmanage import autostartmanage
 import pywapi
 import urllib2, urllib
 from urllib import urlencode
@@ -1465,6 +1466,26 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
     def get_thumbnail_cache_size(self):
         return self.fileconf.get_thumbnail_cache_size()
+
+    # ---start---------------------autostartmanage-------------------
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def get_current_autostart_status(self):
+        autostartmanage.interface_get_status(self)
+        
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def change_autostart_status(self, filename):
+        autostartmanage.interface_change_status(self, filename)
+    
+    @dbus.service.signal(INTERFACE, signature='a{sas}')
+    def autostartmanage_data_signal(self, info):
+        pass
+    @dbus.service.signal(INTERFACE, signature='s')
+    def autostartmanage_status_signal(self, status):
+        pass
+    @dbus.service.signal(INTERFACE, signature='s')
+    def autostartmanage_error_signal(self, error):
+        pass
+    # ---end---------------------autostartmanage--------------------
 
     # -------------------------monitorball-------------------------
     # get cpu percent
