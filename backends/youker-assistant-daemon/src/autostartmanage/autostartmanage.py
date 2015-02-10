@@ -272,7 +272,7 @@ class Desktop_Autostart_Manage():
             #else:
             cf.set(SECTION, OPTION_X, value)
             cf.write(open(name, "w"))
-    def get_desktop_info(filepath):
+    def get_desktop_info(self, filepath):
         cf = MyConfigParser()
         cf.read(filepath)
         
@@ -285,15 +285,17 @@ class Desktop_Autostart_Manage():
         
         #
         if SECTION in s:
-            if cname in o:
+            if 'Name[zh_CN]' in o:
                 info.append('Name:' + cf.get(SECTION, 'Name[zh_CN]'))
             else:
                 info.append('Name:' + cf.get(SECTION, 'Name'))
             
             if 'Comment[zh_CN]' in o:
                 info.append('Comment:' + cf.get(SECTION, 'Comment[zh_CN]'))
-            else:
+            elif 'Comment' in o:
                 info.append('Comment:' + cf.get(SECTION, 'Comment'))
+            else:
+                info.append('Comment:')
 
             if 'Icon' in o:
                 tempicon = cf.get(SECTION, 'Icon')
@@ -313,13 +315,12 @@ def interface_get_status(fobj):
     try:
         obj = Desktop_Autostart_Manage()
         obj.get_final_status()
-        pprint(obj.dic)
         up = obj.dic.get("autostart", [])
         if up:
             for upvalue in up:
                 up_list = obj.get_desktop_info(upvalue)
                 up_list.append('Status:' + 'true')
-                fobj.autstartmanage_data_signal(up_list)
+                fobj.autostartmanage_data_signal(up_list)
 
         down = obj.dic.get("notautostart", [])
         if down:
@@ -329,7 +330,7 @@ def interface_get_status(fobj):
                 fobj.autostartmanage_data_signal(downvalue)
 
     except Exception, e:
-        fobj.autostartmanage_error_signal(e)
+        fobj.autostartmanage_error_signal(str(e))
     else:
         fobj.autostartmanage_status_signal("complete")
 
@@ -338,7 +339,7 @@ def interface_change_status(fobj, filename):
         obj = Desktop_Autostart_Manage()
         obj.change_single_status(filename)
     except Exception, e:
-        fobj.autostartmanage_error_signal(e)
+        fobj.autostartmanage_error_signal(str(e))
     else:
         fobj.autostartmanage_status_signal("complete")
 
