@@ -327,7 +327,7 @@ def interface_get_status(fobj):
             for downvalue in down:
                 down_list = obj.get_desktop_info(downvalue)
                 down_list.append('Status:' + 'false')
-                fobj.autostartmanage_data_signal(downvalue)
+                fobj.autostartmanage_data_signal(down_list)
 
     except Exception, e:
         fobj.autostartmanage_error_signal(str(e))

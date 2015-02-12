@@ -682,4 +682,224 @@ class MainPage():
                     os.remove(f)
         size_str = common.confirm_filesize_unit(totalsize)
         sysdaemon.mainpage_clean(size_str)
+#----------------------------NEW YOUKER--------------------
 
+#---------------------SubPage---------------------
+
+def append_cacheinfo_to_list(belong, path):
+    info = []
+    info.append('Belong:%s' % belong)
+    info.append('Path:%s' % path)
+    if os.path.isdir(value):
+        info.append('Type:directory')
+        info.append('Size:%s' % common.confirm_filesize_unit(common.get_dir_size(one)))
+    else:
+        info.append('Type:file')
+        infor.append('Size:%s' % common.confirm_filesize_unit(os.path.getsize(one)))
+
+    return info
+
+def interface_get_subpage_session(session, mode_dic):
+    homedir = common.return_homedir_sesdaemon()
+
+    cache = mode_dic.get('Cache', [])
+    if cache:
+        cache_obj = cacheclean.CacheClean()
+        if 'apt' in cache:
+            aptpath = "/var/cache/apt/archives"
+            apt_list = cache_obj.scan_apt_cache(aptpath)
+            for value in apt_list:
+                info = append_cacheinfo_to_list('Cache.apt', value)
+
+                session.subpage_data_signal(info)
+        #else:
+            #info = []
+            #info.append('Belong:Cache.apt')
+            #info.append('')
+            #session.subpage_data_signal(info)
+
+        if 'software-center' in cache:
+            swcenterpath = "%s/.cache/software-center" % homedir
+            swcenter_list = cache_obj.public_scan_cache(swcenterpath)
+            for value in swcenter_list:
+                info = append_cacheinfo_to_list('Cache.software-center', value)
+                session.subpage_data_signal(info)
+        #else:
+            #info = []
+            #info.append('Belong:Cache-apt')
+            #info.append('')
+            #session.subpage_data_signal(info)
+
+        if 'thumbnails' in cache:
+            thumbnailspath = "%s/.cache/thumbnails" % homedir
+            thumbnails_list = cache_obj.public_scan_cache(thumbnailspath)
+            for value in thumbnails_list:
+                info = append_cacheinfo_to_list('Cache.thumbnails', value)
+                session.subpage_data_signal(info)
+        #else:
+            #info = []
+            #info.append('Belong:Cache.thumbnails')
+            #info.append('')
+            #session.subpage_data_signal(info)
+
+
+        if 'firefox' in cache:
+            firefoxpath = "%s/.cache/mozilla/firefox/%s" % (homedir, common.analytical_profiles_file(homedir))
+            firefox_cache_list = cache_obj.firefox_scan_cache(firefoxpath)
+            for value in firefox_cache_list:
+                info = append_cacheinfo_to_list('Cache.firefox', value)
+                session.subpage_data_signal(info)
+        #else:
+            #info = []
+            #info.append('Belong:Cache.firefox')
+            #info.append('')
+            #session.subpage_data_signal(info)
+
+        if 'chromium' in cache:
+            chromiumpath = "%s/.cache/chromium/Default" % homedir
+            chromium_cache_list = cache_obj.public_scan_cache(chromiumpath)
+            for value in chromium_cache_list:
+                info = append_cacheinfo_to_list('Cache.chromium', value)
+                session.subpage_data_signal(info)
+        #else:
+            #info = []
+            #info.append('Belong:Cache.chromium')
+            #info.append('')
+            #session.subpage_data_signal(info)
+
+        sessopm.subpage_status_signal('Complete:Cache')
+
+    cookies = mode_dic.get('Cookies', [])
+    if cookies:
+        cache = common.get_cookies_list()
+        cookies_obj = cookiesclean.CookiesClean(homedir)
+        
+
+        if 'firefox' in cookies:
+            if cache['firefox'].is_installed:
+                ffcpath = common.analytical_profiles_file(homedir)
+                if os.path.exists(ffcpath):
+                    ffcpam = [ffcpath, 'moz_cookies', 'baseDomain']
+                    firefox_cookies_list = cookies_obj.scan_cookies_records(pamf[0], pamf[1], pamf[2])
+
+                    for value in firefox_cookies_list:
+                        info = []
+                        info.append('Belong:Cookies.firefox')
+                        info.append('Content:%s' % value[0])
+                        info.append('Count:%s' % str(value[-1]))
+                        session.subpage_data_signal(info)
+                    
+                else:
+                    info = []
+                    info.append('Belong:Cookies.firefox')
+                    info.append('')
+                    session.subpage_data_signal(info)
+            else:
+                session.subpage_error_signal('Uninstalled:Firefox')
+                    
+        
+        if 'chromium' in cookies:
+            if cache['chromium'].is_installed:
+                chcpath = "%s/.config/chromium/Default/Cookies" % homedir
+                if os.path.exists(chcpath):
+                    chcpam = [filepathc, 'cookies', 'host_key']
+                    chromium_cookies_list = cookies_obj.scan_cookies_records(pamc[0], pamc[1], pamc[2])
+                    for value in firefox_cookies_list:
+                        info = []
+                        info.append('Belong:Cookies.chromium')
+                        info.append('Content:%s' % value[0])
+                        info.append('Count:%s' % str(value[-1]))
+                        session.subpage_data_signal(info)
+                else:
+                    info = []
+                    info.append('Belong:Cookies.chromium')
+                    info.append('')
+                    session.subpage_data_signal(info)
+            else:
+                session.subpage_error_signal('Uninstalled:Chromium')
+        sessopm.subpage_status_signal('Complete:Cookies')
+
+
+    history = mode_dic.get('History', [])
+    if history:
+        cache = common.get_cache_list()
+        brohistory_obj = historyclean.HistoryClean(homedir)
+
+        if 'fireofx' in history:
+            if cache['firefox'].is_installed:
+                ffhpath = "%s/.mozilla/firefox/%s/places.sqlite" % (homedir, common.analytical_profiles_file(homedir))
+                if os.path.exists(ffhpath):
+                    firefox_history_list = brohistory_obj.scan_firefox_history_records(ffhpath)
+                    for single in firefox_history_list:
+                        info = []
+                        info.append('Belong:History.firefox')
+                        info.append('Id:%s' % str(single[0]))
+                        info.append('Url:%s' % single[1])
+                        info.append('Count:%s' % str(single[2]))
+                        session.subpage_data_signal(info)
+                else:
+                    info = []
+                    info.append('Belong:History.firefox')
+                    info.append('')
+                    session.subpage_data_signal(info)
+                    
+            else:
+                session.subpage_error_signal('Uninstalled:Firefox')
+
+        if 'chromium' in history:
+            chhpath = "%s/.config/chromium/Default/History" % homedir
+            if cache['chromium'].is_installed:
+                run = common.process_pid("chromium-browser")
+                if not run:
+                    chromium_history_list = brohistory_obj.scan_chromium_history_records(filepathc)
+                    for single in chromium_history_list:
+                        info = []
+                        info.append('Belong:History.chromium')
+                        info.append('Id:%s' % str(single[0]))
+                        info.append('Url:%s' % single[1])
+                        info.append('Count:%s' % str(single[2]))
+                        session.subpage_data_single(info)
+                else:
+                    session.subpage_error_signal('Working:Chromium')
+            else:
+                session.subpage_error_signal('Uninstalled:Chromium')
+
+        if 'system' in history:
+            syshistory_obj = systemhistory.SystemHistory()
+            url_list = syshistory_obj.scan_the_xml(homedir)
+            for value in url_list:
+                info = []
+                info.append('Belong:History.system')
+                info.append('Count:%s' % count(url_list))
+                session.subpage_data_signal(info)
+        session.subpage_status_signal('Complete:History')
+
+    packages = mode_dic.get('Packages', [])
+    if packages:
+        if 'unneed' in packages:
+            unneed_obj = osslim.OsSlim()
+            
+            unneed_packages_list = unneed_obj.get_unneed_packages()
+            for value in unneed_packages_list:
+                info = value.split(";")
+                info.insert(0, 'Belong:Packages.unneed')
+                session.subpage_data_signal(info)
+        
+        if 'oldkernel' in packages:
+            oldkernel_obj = oldkernel.OldKernel()
+
+            oldkernel_list = oldkernel_obj.get_oldkernel_packages()
+            for value in oldkernel_list:
+                info = value.split(";")
+                info.insert(0, 'Belong:Packages.oldkernel')
+                session.subpage_data_signal(info)
+        
+        if 'configfile' in packages:
+            configfile_obj = softwareconfigfile.SoftwareConfigfile()
+            
+            configfile_list = get_configfile_packages()
+            for value in configfile_list:
+                info = value.split(";")
+                info.insert(0, 'Belong:Packages.configfile')
+                session.subpage_data_signal(info)
+        session.subpage_status_signal('Complete:Packages')

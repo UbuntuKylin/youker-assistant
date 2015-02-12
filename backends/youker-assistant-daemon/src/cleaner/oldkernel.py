@@ -44,6 +44,23 @@ class OldKernel():
                             final_oldkernel_list.append(pkg)
         return final_oldkernel_list
 
+    def get_oldkernel_packages(self):
+        #pkgs = self.cache.packages
+        cache = common.get_cache_list()
+        oldkernel_list = []
+        current_version = '-'.join(os.uname()[2].split('-')[:2])
+        if cache:
+            for pkg in cache:
+                if pkg.is_installed and pkg.name.startswith('linux'):
+                    if re.match(self.flag, pkg.name):
+                        #version = pkg.installedVersion[:-3]
+                        version = pkg.installed.version
+                        if apt_pkg.version_compare(version, current_version) < 0:
+                            #tmp_oldkernel_list = [pkg.name, common.confirm_filesize_unit(pkg.installedSize)]
+                            #final_oldkernel_list.append('<2_2>'.join(tmp_oldkernel_list))
+                            oldkernel_list.append('Name:' + pkg.name + ';' + 'Summary:' + pkg.installed.summary + ';' + 'Size:' + common.confirm_filesize_unit(pkg.installed.installed_size))
+
+        return oldkernel_list
 if __name__ == "__main__":
     objo = OldKernel()
     #objo.get_the_kernel()

@@ -1487,6 +1487,21 @@ class SessionDaemon(dbus.service.Object):
         pass
     # ---end---------------------autostartmanage--------------------
 
+    #----START-------------------New-Youker-------------------------
+    @dbus.service.method(INTERFACE, in_signature='a{sv}', out_signature='')
+    def get_scan_result(self, mode_dic):
+        cleaner.interface_get_subpage_session(self, mode_dic)
+    @dbus.service.signal(INTERFACE, signature='as')
+    def subpage_data_signal(self, info):
+        pass
+    @dbus.service.signal(INTERFACE, signature='s')
+    def subpage_status_signal(self, status):
+        pass
+    @dbus.service.signal(INTERFACE, signature='s')
+    def subpage_error_signal(self, error):
+        pass
+    #----END---------------------New-Youker-------------------------
+
     # -------------------------monitorball-------------------------
     # get cpu percent
     @dbus.service.method(INTERFACE, in_signature='', out_signature='d')
