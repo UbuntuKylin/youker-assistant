@@ -777,10 +777,10 @@ def interface_get_subpage_session(session, mode_dic):
 
         if 'firefox' in cookies:
             if cache['firefox'].is_installed:
-                ffcpath = common.analytical_profiles_file(homedir)
+                ffcpath = "%s/.mozilla/firefox/%s/cookies.sqlite" % (homedir, common.analytical_profiles_file(homedir))
                 if os.path.exists(ffcpath):
                     ffcpam = [ffcpath, 'moz_cookies', 'baseDomain']
-                    firefox_cookies_list = cookies_obj.scan_cookies_records(pamf[0], pamf[1], pamf[2])
+                    firefox_cookies_list = cookies_obj.scan_cookies_records(ffcpam[0], ffcpam[1], ffcpam[2])
 
                     for value in firefox_cookies_list:
                         info = []
@@ -803,7 +803,7 @@ def interface_get_subpage_session(session, mode_dic):
                 chcpath = "%s/.config/chromium/Default/Cookies" % homedir
                 if os.path.exists(chcpath):
                     chcpam = [filepathc, 'cookies', 'host_key']
-                    chromium_cookies_list = cookies_obj.scan_cookies_records(pamc[0], pamc[1], pamc[2])
+                    chromium_cookies_list = cookies_obj.scan_cookies_records(chcpam[0], chcpam[1], chcpam[2])
                     for value in firefox_cookies_list:
                         info = []
                         info.append('Belong:Cookies.chromium')
@@ -825,18 +825,22 @@ def interface_get_subpage_session(session, mode_dic):
         cache = common.get_cache_list()
         brohistory_obj = historyclean.HistoryClean(homedir)
 
-        if 'fireofx' in history:
+        if 'firefox' in history:
             if cache['firefox'].is_installed:
                 ffhpath = "%s/.mozilla/firefox/%s/places.sqlite" % (homedir, common.analytical_profiles_file(homedir))
                 if os.path.exists(ffhpath):
                     firefox_history_list = brohistory_obj.scan_firefox_history_records(ffhpath)
-                    for single in firefox_history_list:
-                        info = []
-                        info.append('Belong:History.firefox')
-                        info.append('Id:%s' % str(single[0]))
-                        info.append('Url:%s' % single[1])
-                        info.append('Count:%s' % str(single[2]))
-                        session.subpage_data_signal(info)
+                    #for single in firefox_history_list:
+                    #    info = []
+                    #    info.append('Belong:History.firefox')
+                    #    info.append('Id:%s' % str(single[0]))
+                    #    info.append('Url:%s' % single[1])
+                    #    info.append('Count:%s' % str(single[2]))
+                    #    session.subpage_data_signal(info)
+                    info = []
+                    info.append('Belong:History.firefox')
+                    info.append('Count:%s' % str(len(firefox_history_list)))
+                    session.subpage_data_signal(info)
                 else:
                     info = []
                     info.append('Belong:History.firefox')
@@ -852,13 +856,17 @@ def interface_get_subpage_session(session, mode_dic):
                 run = common.process_pid("chromium-browser")
                 if not run:
                     chromium_history_list = brohistory_obj.scan_chromium_history_records(chhpath)
-                    for single in chromium_history_list:
-                        info = []
-                        info.append('Belong:History.chromium')
-                        info.append('Id:%s' % str(single[0]))
-                        info.append('Url:%s' % single[1])
-                        info.append('Count:%s' % str(single[2]))
-                        session.subpage_data_single(info)
+                    #for single in chromium_history_list:
+                    #    info = []
+                    #    info.append('Belong:History.chromium')
+                    #    info.append('Id:%s' % str(single[0]))
+                    #    info.append('Url:%s' % single[1])
+                    #    info.append('Count:%s' % str(single[2]))
+                    #    session.subpage_data_signal(info)
+                    info = []
+                    info.append('Belong:History.chromium')
+                    info.append('Count:%s' % str(len(chromium_history_list)))
+                    session.subpage_data_signal(info)
                 else:
                     session.subpage_error_signal('Working:Chromium')
             else:
@@ -867,11 +875,16 @@ def interface_get_subpage_session(session, mode_dic):
         if 'system' in history:
             syshistory_obj = systemhistory.SystemHistory()
             url_list = syshistory_obj.scan_the_xml(homedir)
-            for value in url_list:
-                info = []
-                info.append('Belong:History.system')
-                info.append('Count:%s' % len(url_list))
-                session.subpage_data_signal(info)
+            #for value in url_list:
+            #    info = []
+            #    info.append('Belong:History.system')
+                #info.append('Count:%s' % len(url_list))
+            #    info.append('Href:%s' % value)
+            #    session.subpage_data_signal(info)
+            info = []
+            info.append('Belong:History.system')
+            info.append('Count:%s' % str(len(url_list)))
+            session.subpage_data_signal(info)
         session.subpage_status_signal('Complete:History')
 
     packages = mode_dic.get('Packages', [])
@@ -905,57 +918,97 @@ def interface_get_subpage_session(session, mode_dic):
         session.subpage_status_signal('Complete:Packages')
     session.subpage_status_signal('Complete:All')
 
-def interface_remove_file_system(system, filepath):
-    if os.path.exists(fp):
-        filepath = fp.encode("UTF-8")
-        info = []
-        if os.path.isdir(filepath):
-            info.append('Path:%s' % filepath)
-            info.append('Size:%s' % common.confirm_filesize_unit(common.get_dir_size(one)))
-            shutil.rmtree(filepath)
-            system.subpage_data_signal(info)
+
+def interface_remove_file_system(system, fp):
+        if os.path.exists(fp):
+            filepath = fp.encode("UTF-8")
+            info = []
+            if os.path.isdir(filepath):
+                info.append('Path:%s' % filepath)
+                info.append('Size:%s' % common.confirm_filesize_unit(common.get_dir_size(one)))
+                shutil.rmtree(filepath)
+                system.subpage_data_signal(info)
+            else:
+                info.append('Path:%s' % filepath)
+                info.append('Size:%s' % common.confirm_filesize_unit(os.path.getsize(one)))
+                os.remove(filepath)
+                system.subpage_data_signal(info)
         else:
-            info.append('Path:%s' % filepath)
-            info.append('Size:%s' % common.confirm_filesize_unit(os.path.getsize(one)))
-            os.remove(filepath)
-            system.subpage_data_signal(info)
+            system.subpage_error_signal('Non-existent:%s' % filepath)
+def interface_remove_firefox_history_system(system):
+    homedir = return_homedir_sysdaemon()
+    firefox_history_obj = historyclean.HistoryClean(homedir)
+
+    ffhpath = "%s/.mozilla/firefox/%s/places.sqlite" % (homedir, common.analytical_profiles_file(homedir))
+    firefox_history_obj.clean_firefox_all_records(ffhpath)
+
+    system.subpage_status_signal('Complete:History.firefox')
+
+def interface_remove_chromium_history_system(system):
+    homedir = return_homedir_sysdaemon()
+    chromium_history_obj = historyclean.HistoryClean(homedir)
+
+    run = common.process_pid("chromium-browser")
+    if not run:
+        chhpath = "%s/.config/chromium/Default/History" % homedir
+        chromium_history_obj.clean_chromium_all_records(chhpath)
+        system.subpage_status_signal('Complete:History.chromium')
     else:
-        system.subpage_error_signal('Non-existent:%s' % filepath)
+        system.subpage_error_signal('Working:Chromium')
+
+def interface_remove_firefox_cookies_system(system, domain):
+    homedir = return_homedir_sysdaemon()
+    firefox_cookies_obj.cookiesclean.CookiesClean(homedir)
+
+    ffcpath = "%s/.mozilla/firefox/%s/cookies.sqlite" % (homedir, common.analytical_profiles_file(homedir))
+    ffcpam = [ffcpath, 'moz_cookies', 'baseDomain', domain]
+    firefox_cookies_obj.clean_cookies_record(ffcpam[0], ffcpam[1], ffcpam[2], ffcpam[3])
+    system.subpage_status_signal('Complete:Cookies.firefox')
+
+def interface_remove_chromium_cookies_system(system, domain):
+    homedir = return_homedir_sysdaemon()
+    chromium_cookies_obj.cookiesclean.CookiesClean(homedir)
+    
+    chcpath = "%s/.config/chromium/Default/Cookies" % homedir
+    chcpam = [chcpath, 'cookies', 'host_key', domain]
+    chromium_cookies_obj.clean_cookies_record(chcpam[0], chcpam[1], chcpam[2], chcpam[3])
+    system.subpage_status_signal('Complete:Cookies.chromium')
+    
 
 def interface_remove_package_system(system, packagename):
-    if packagename:
-        cache = common.get_cache_list()
-        cache.open()
-        try:
-            pkg = cache[packagename]
-        except KeyError:
-            system.subpage_error_signal('Non-existent:%s' % pkgname)
-        if pkg.is_installed:
-            pkg.mark_delete()
-        else:
-            pkg.mark_delete(purge=True)
-        iprogress = NewInstallProgress(system)
-        cache.commit(None, iprogress)
+        if packagename:
+            cache = common.get_cache_list()
+            cache.open()
+            try:
+                pkg = cache[packagename]
+            except KeyError:
+                system.subpage_error_signal('Non-existent:%s' % pkgname)
+            if pkg.is_installed:
+                pkg.mark_delete()
+            else:
+                pkg.mark_delete(purge=True)
+            iprogress = NewInstallProgress(system)
+            cache.commit(None, iprogress)
 
 class NewInstallProgress(InstallProgress):
-        def __init__(self, system):
-            InstallProgress.__init__(self)
-            self.system = system
+    def __init__(self, system):
+        InstallProgress.__init__(self)
+        self.system = system
 
-        def status_change(self, pkg, percent, status):
-            #self.system.status_remove_packages("apt_pulse", "percent: %s, status: %s" % (str(int(percent)), status))
-            info = []
-            info.append('Percent:%s' % str(int(percent)))
-            info.append('Status:%s' % status)
-            self.system.subpage_status_signal(info)
+    def status_change(self, pkg, percent, status):
+        #self.system.status_remove_packages("apt_pulse", "percent: %s, status: %s" % (str(int(percent)), status))
+        info = []
+        info.append('Percent:%s' % str(int(percent)))
+        info.append('Status:%s' % status)
+        self.system.subpage_status_signal(info)
 
-        def error(self, errorstr):
-            pass
-        
-        def finish_update(self):
-            #self.system.status_remove_packages("apt_stop", "")
-            self.system.subpage_status_signal('Complete:')
+    def error(self, errorstr):
+        pass
 
-        def start_update(self):
-            #self.system.status_remove_packages("apt_start", "")
-            self.system.subpage_status_signal('Start:')
+    def finish_update(self):
+        #self.system.status_remove_packages("apt_stop", "")
+        self.system.subpage_status_signal('Complete:')
+
+    def start_update(self):
+        #self.system.status_remove_packages("apt_start", "")
+        self.system.subpage_status_signal('Start:')

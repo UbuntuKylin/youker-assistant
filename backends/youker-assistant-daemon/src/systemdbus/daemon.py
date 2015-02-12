@@ -426,6 +426,44 @@ class Daemon(PolicyKitService):
     def sudo_clean_error_msg(self, para):
         self.sudo_clean_error(para)
 
+#-----START-----------NEW-YOUKER---------------------------
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='', sender_keyword='sender')
+    def remove_file(self, fp):
+        cleaner.interface_remove_file_system(self, fp)
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='', sender_keyword='sender')
+    def remove_package(self, pkgname):
+        cleaner.interface_remove_package_system(self, pkgname)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
+    def remove_firefox_history(self):
+        cleaner.interface_remove_firefox_history_system(self)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
+    def remove_chromium_history(self):
+        cleaner.interface_remove_chromium_history_system(self)
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='', sender_keyword='sender')
+    def remove_firefox_cookies(self, domain):
+        cleaner.interface_remove_firefox_cookies_system(self, domain)
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='', sender_keyword='sender')
+    def remove_chromium_cookies(self, domain):
+        cleaner.interface_remove_chromium_cookies_system(self, domain)
+
+    @dbus.service.signal(INTERFACE, signature='as')
+    def subpage_data_signal(self, msg):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='s')
+    def subpage_status_signal(self, msg):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='s')
+    def subpage_error_signal(self, msg):
+        pass
+#-----END------------NEW-YOUKER---------------------------
+
 if __name__ == '__main__':
     os.environ["TERM"] = "xterm"
     os.environ["PATH"] = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/X11R6/bin"
