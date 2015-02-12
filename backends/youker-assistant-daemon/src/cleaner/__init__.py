@@ -690,12 +690,12 @@ def append_cacheinfo_to_list(belong, path):
     info = []
     info.append('Belong:%s' % belong)
     info.append('Path:%s' % path)
-    if os.path.isdir(value):
+    if os.path.isdir(path):
         info.append('Type:directory')
-        info.append('Size:%s' % common.confirm_filesize_unit(common.get_dir_size(one)))
+        info.append('Size:%s' % common.confirm_filesize_unit(common.get_dir_size(path)))
     else:
         info.append('Type:file')
-        infor.append('Size:%s' % common.confirm_filesize_unit(os.path.getsize(one)))
+        info.append('Size:%s' % common.confirm_filesize_unit(os.path.getsize(path)))
 
     return info
 
@@ -767,11 +767,11 @@ def interface_get_subpage_session(session, mode_dic):
             #info.append('')
             #session.subpage_data_signal(info)
 
-        sessopm.subpage_status_signal('Complete:Cache')
+        session.subpage_status_signal('Complete:Cache')
 
     cookies = mode_dic.get('Cookies', [])
     if cookies:
-        cache = common.get_cookies_list()
+        cache = common.get_cache_list()
         cookies_obj = cookiesclean.CookiesClean(homedir)
         
 
@@ -799,7 +799,7 @@ def interface_get_subpage_session(session, mode_dic):
                     
         
         if 'chromium' in cookies:
-            if cache['chromium'].is_installed:
+            if cache['chromium-browser'].is_installed:
                 chcpath = "%s/.config/chromium/Default/Cookies" % homedir
                 if os.path.exists(chcpath):
                     chcpam = [filepathc, 'cookies', 'host_key']
@@ -817,7 +817,7 @@ def interface_get_subpage_session(session, mode_dic):
                     session.subpage_data_signal(info)
             else:
                 session.subpage_error_signal('Uninstalled:Chromium')
-        sessopm.subpage_status_signal('Complete:Cookies')
+        session.subpage_status_signal('Complete:Cookies')
 
 
     history = mode_dic.get('History', [])
@@ -848,10 +848,10 @@ def interface_get_subpage_session(session, mode_dic):
 
         if 'chromium' in history:
             chhpath = "%s/.config/chromium/Default/History" % homedir
-            if cache['chromium'].is_installed:
+            if cache['chromium-browser'].is_installed:
                 run = common.process_pid("chromium-browser")
                 if not run:
-                    chromium_history_list = brohistory_obj.scan_chromium_history_records(filepathc)
+                    chromium_history_list = brohistory_obj.scan_chromium_history_records(chhpath)
                     for single in chromium_history_list:
                         info = []
                         info.append('Belong:History.chromium')
@@ -870,7 +870,7 @@ def interface_get_subpage_session(session, mode_dic):
             for value in url_list:
                 info = []
                 info.append('Belong:History.system')
-                info.append('Count:%s' % count(url_list))
+                info.append('Count:%s' % len(url_list))
                 session.subpage_data_signal(info)
         session.subpage_status_signal('Complete:History')
 
@@ -897,9 +897,65 @@ def interface_get_subpage_session(session, mode_dic):
         if 'configfile' in packages:
             configfile_obj = softwareconfigfile.SoftwareConfigfile()
             
-            configfile_list = get_configfile_packages()
+            configfile_list = configfile_obj.get_configfile_packages()
             for value in configfile_list:
                 info = value.split(";")
                 info.insert(0, 'Belong:Packages.configfile')
                 session.subpage_data_signal(info)
         session.subpage_status_signal('Complete:Packages')
+    session.subpage_status_signal('Complete:All')
+
+def interface_remove_file_system(system, filepath):
+    if os.path.exists(fp):
+        filepath = fp.encode("UTF-8")
+        info = []
+        if os.path.isdir(filepath):
+            info.append('Path:%s' % filepath)
+            info.append('Size:%s' % common.confirm_filesize_unit(common.get_dir_size(one)))
+            shutil.rmtree(filepath)
+            system.subpage_data_signal(info)
+        else:
+            info.append('Path:%s' % filepath)
+            info.append('Size:%s' % common.confirm_filesize_unit(os.path.getsize(one)))
+            os.remove(filepath)
+            system.subpage_data_signal(info)
+    else:
+        system.subpage_error_signal('Non-existent:%s' % filepath)
+
+def interface_remove_package_system(system, packagename):
+    if packagename:
+        cache = common.get_cache_list()
+        cache.open()
+        try:
+            pkg = cache[packagename]
+        except KeyError:
+            system.subpage_error_signal('Non-existent:%s' % pkgname)
+        if pkg.is_installed:
+            pkg.mark_delete()
+        else:
+            pkg.mark_delete(purge=True)
+        iprogress = NewInstallProgress(system)
+        cache.commit(None, iprogress)
+
+class NewInstallProgress(InstallProgress):
+        def __init__(self, system):
+            InstallProgress.__init__(self)
+            self.system = system
+
+        def status_change(self, pkg, percent, status):
+            #self.system.status_remove_packages("apt_pulse", "percent: %s, status: %s" % (str(int(percent)), status))
+            info = []
+            info.append('Percent:%s' % str(int(percent)))
+            info.append('Status:%s' % status)
+            self.system.subpage_status_signal(info)
+
+        def error(self, errorstr):
+            pass
+        
+        def finish_update(self):
+            #self.system.status_remove_packages("apt_stop", "")
+            self.system.subpage_status_signal('Complete:')
+
+        def start_update(self):
+            #self.system.status_remove_packages("apt_start", "")
+            self.system.subpage_status_signal('Start:')
