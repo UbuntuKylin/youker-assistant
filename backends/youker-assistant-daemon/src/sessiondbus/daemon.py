@@ -1492,7 +1492,7 @@ class SessionDaemon(dbus.service.Object):
     def currently_installed_version(self):
         cache = apt.Cache()
         pkg = cache['youker-assistant']
-        return pkg.installed
+        return pkg.installed.version
 
     @dbus.service.method(INTERFACE, in_signature='a{sv}', out_signature='')
     def get_scan_result(self, mode_dic):
