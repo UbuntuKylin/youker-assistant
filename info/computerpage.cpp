@@ -1,0 +1,507 @@
+#include "computerpage.h"
+#include "../component/labelgroup.h"
+#include "../component/utils.h"
+#include <QDebug>
+
+ComputerPage::ComputerPage(QWidget *parent, QString title/*, QString manufacturer*/) :
+    QWidget(parent), title_context(title)/*, vendor(manufacturer)*/
+{
+    this->setWindowFlags(Qt::FramelessWindowHint);
+    page_height = 0;
+    title_label = NULL;
+    separ = NULL;
+    h_layout = NULL;
+    v_layout = NULL;
+
+    logo_label = NULL;
+
+    group_box = NULL;
+    form_layout = NULL;
+}
+
+ComputerPage::~ComputerPage()
+{
+    page_height = 0;
+    if(title_label != NULL)
+    {
+        delete title_label;
+        title_label = NULL;
+    }
+    if(separ != NULL)
+    {
+        delete separ;
+        separ = NULL;
+    }
+    if(h_layout != NULL)
+    {
+        delete h_layout;
+        h_layout = NULL;
+    }
+    if(v_layout != NULL)
+    {
+        delete v_layout;
+        v_layout = NULL;
+    }
+}
+
+void ComputerPage::setLanguage() {
+//    title_label->setText(tr("%1").arg(title_context));
+    group_box->setTitle(tr("%1").arg(title_context));
+}
+
+void ComputerPage::initUI()
+{
+    group_box = new QGroupBox();
+
+
+
+//    logo_label->setFixedSize(93, 70);
+//    QPalette palette;
+////    palette.setBrush(using_label->backgroundRole(), QBrush(QPixmap(":/vendor/res/manufacturer/INTEL.jpg")));
+//    palette.setBrush(QPalette::Background, QBrush(QPixmap(":/vendor/res/manufacturer/" + vendor + ".jpg")));
+//    logo_label->setPalette(palette);
+
+    if(!vendor.isEmpty())
+    {
+        logo_label = new QLabel(this);
+        logo_label->setAutoFillBackground(true);
+        logo_label->setScaledContents(true);//自动缩放,显示图像大小自动调整为Qlabel大小
+        QPixmap label_pixmap(":/vendor/res/manufacturer/" + vendor + ".jpg");
+        logo_label->setPixmap(label_pixmap);
+        logo_label->setFixedSize(label_pixmap.size());
+
+        logo_label->show();
+        logo_label->move(720 - logo_label->width(), 40);
+    }
+
+//    group_box->setStyleSheet("QGroupBox::title{color:green;}");
+    QFont group_box_font = group_box->font();
+    group_box_font.setBold(true);
+    group_box->setFont(group_box_font);
+    group_box->setFixedWidth(720);
+
+    form_layout = new QFormLayout();
+//    form_layout->setSizeConstraint(QLayout::SetFixedSize);//frame will fixed with content's width
+    form_layout->setSpacing(ITEMVSPACE);
+    form_layout->setHorizontalSpacing(ITEMHSPACE);
+    form_layout->setRowWrapPolicy(QFormLayout::DontWrapRows);
+    form_layout->setFieldGrowthPolicy(QFormLayout::FieldsStayAtSizeHint);
+//    form_layout->setLabelAlignment(Qt::AlignRight|Qt::AlignVCenter);
+//    form_layout->setFormAlignment(Qt::AlignCenter);
+
+    QMap<QString,QVariant>::iterator it; //遍历map
+    for ( it = info_map.begin(); it != info_map.end(); ++it ) {
+        QLabel *label = new QLabel();
+        label->setText(tr("%1").arg(it.value().toString()));
+        label->setFixedHeight(ITEMHEIGHT);
+
+        if(it.key() == "uptime")
+        {
+//            var valueHour = Math.floor(timeValue/60);//返回小于等于timeValue/60的最大整数
+//    //        var aa = valueHour.toFixed(0);
+//            var valueMinute = timeValue % 60;
+//            if(valueHour == 0) {
+//                uptimeText.text = valueMinute + qsTr(" Minutes");//分钟
+//            }
+//            else {
+//                uptimeText.text = valueHour + qsTr(" Hours ") + valueMinute + qsTr(" Minutes");//小时 分钟
+//            }
+        }
+
+
+        form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), label);
+        page_height += label->height();
+        page_height += ITEMVSPACE;
+    }
+    page_height += ITEMVSPACE*2;//every groupbox has tow separate line
+    page_height += 30;
+//    page_height += 15;//space of QGroupBox's title and content in qss
+//    qDebug() << "compute page->" << page_height;
+    info_map.clear(); //清空map
+
+//    QLabel *label1 = new QLabel("12:45:43");
+//    label1->setFixedHeight(30);
+//    form_layout->addRow("Boot Time:", label1);
+//    page_height += 40;
+//    QLabel *label2 = new QLabel("aaaa");
+//    label2->setFixedHeight(30);
+//    form_layout->addRow("Host Name:", label2);
+//    page_height += 40;
+//    QLabel *label3 = new QLabel("bbbb");
+//    label3->setFixedHeight(30);
+//    form_layout->addRow("IP Address:", label3);
+//    page_height += 40;
+//    QLabel *label4 = new QLabel("cccc");
+//    label4->setFixedHeight(30);
+//    form_layout->addRow("MAC address ABCDEFGHIGH:", label4);
+//    page_height += 40;
+//    QLabel *label5 = new QLabel("dddd");
+//    label5->setFixedHeight(30);
+//    form_layout->addRow("OS Details:", label5);
+//    page_height += 40;
+//    QLabel *label6 = new QLabel("eeee");
+//    label6->setFixedHeight(30);
+//    form_layout->addRow("OS Details:", label6);
+//    page_height += 40;
+//    QLabel *label7 = new QLabel("ffff");
+//    label7->setFixedHeight(30);
+//    form_layout->addRow("OS Details:", label7);
+//    page_height += 40;
+//    QLabel *label8 = new QLabel("gggg");
+//    label8->setFixedHeight(30);
+//    form_layout->addRow("OS Details:", label8);
+//    page_height += 40;
+//    QLabel *label9 = new QLabel("hhhhh");
+//    label9->setFixedHeight(30);
+//    form_layout->addRow("OS Details:", label9);
+//    page_height += 40;
+
+//    page_height += 40;
+
+    group_box->setLayout(form_layout);
+    QVBoxLayout *layout = new QVBoxLayout();
+    layout->addWidget(group_box);
+    setLayout(layout);
+
+
+
+
+//    if(title_label == NULL)
+//    {
+//        title_label = new QLabel();
+//        title_label->setFixedHeight(ITEMHEIGHT);
+//        QFont font = title_label->font();
+//        font.setPointSize(12);
+//        font.setBold(true);
+//        title_label->setFont(font);
+//        title_label->setObjectName("titleLabel");
+//    }
+
+
+//    logo_label = new QLabel(this);
+//    logo_label->setFixedSize(93, 70);
+//    logo_label->setAutoFillBackground(true);
+//    QPalette palette;
+////    palette.setBrush(using_label->backgroundRole(), QBrush(QPixmap(":/vendor/res/manufacturer/INTEL.jpg")));
+//    palette.setBrush(QPalette::Background, QBrush(QPixmap(":/vendor/res/manufacturer/INTEL.jpg")));
+//    logo_label->setPalette(palette);
+//    logo_label->show();
+//    logo_label->move(670 - logo_label->width(), 40);
+
+////    line = new QLabel();
+//////    line->setFixedWidth(10);
+////    line->installEventFilter(this);
+//    if(separ == NULL)
+//    {
+//        separ = new SeparatorLine();
+//        separ->setFixedWidth(700-title_label->width());
+//    }
+//    if(h_layout == NULL)
+//    {
+//        h_layout = new QHBoxLayout();
+//        h_layout->addWidget(title_label);
+//        h_layout->addWidget(separ);
+////        h_layout->setSpacing(0);//设置间隔
+////        h_layout->setMargin(0);//设置总的外围边框
+//    }
+
+//    if(v_layout == NULL)
+//    {
+//        v_layout = new QVBoxLayout();
+//        v_layout->addLayout(h_layout);
+//    }
+//    page_height += title_label->height();
+
+//    QMap<QString,QString>::iterator it; //遍历map
+//    for ( it = info_map.begin(); it != info_map.end(); ++it ) {
+//        LabelGroup *label = new LabelGroup(this);
+//        label->setLanguage(it.key(), it.value());
+////        label->setFixedHeight(ITEMHEIGHT);
+//        label->setFixedSize(ITEMWIDTH, ITEMHEIGHT);
+//        v_layout->addWidget(label);
+//        page_height += label->height();
+//        page_height += ITEMVSPACE;
+
+//    }
+//    info_map.clear(); //清空map
+
+//    v_layout->setSpacing(ITEMHSPACE);//设置间隔
+//    v_layout->setMargin(0);//设置总的外围边框
+//    v_layout->setContentsMargins(20, 0, 0, 0);
+//    setLayout(v_layout);
+    this->setLanguage();
+}
+
+QString ComputerPage::translatorSwitch(QString orgStr)
+{
+    if(orgStr == "MulProduct")//声卡型号
+        return tr("Audio Model");
+    else if(orgStr == "MulVendor")//制造商
+        return tr("Vendor");
+    else if(orgStr == "MulBusinfo")//总线地址
+        return tr("Bus Address");
+    else if(orgStr == "MulDrive")//声卡驱动
+        return tr("Audio Driver");
+
+    else if(orgStr == "POWER_SUPPLY_NAME")//设备名
+        return tr("Device Name");
+    else if(orgStr == "POWER_SUPPLY_MANUFACTURER")//发行商
+        return tr("Manufacturer");
+//    else if(orgStr == "POWER_SUPPLY_CAPACITY")//
+//        return tr("POWER_SUPPLY_CAPACITY");
+//    else if(orgStr == "POWER_SUPPLY_CYCLE_COUNT")//
+//        return tr("POWER_SUPPLY_CYCLE_COUNT");
+//    else if(orgStr == "POWER_SUPPLY_POWER_NOW")//
+//        return tr("POWER_SUPPLY_POWER_NOW");
+//    else if(orgStr == "POWER_SUPPLY_PRESENT")//
+//        return tr("POWER_SUPPLY_PRESENT");
+//    else if(orgStr == "POWER_SUPPLY_STATUS")//
+//        return tr("POWER_SUPPLY_STATUS");
+//    else if(orgStr == "POWER_SUPPLY_VOLTAGE_MIN_DESIGN")//
+//        return tr("POWER_SUPPLY_VOLTAGE_MIN_DESIGN");
+    else if(orgStr == "POWER_SUPPLY_MODEL_NAME")//型号
+        return tr("Model");
+    else if(orgStr == "POWER_SUPPLY_TECHNOLOGY")//技术
+        return tr("Technology");
+    else if(orgStr == "POWER_SUPPLY_VOLTAGE_NOW")//电压
+        return tr("Voltage");
+    else if(orgStr == "POWER_SUPPLY_ENERGY_FULL_DESIGN")//能量（设计）
+        return tr("Energy Designed");
+    else if(orgStr == "POWER_SUPPLY_ENERGY_FULL")//满时能量
+        return tr("Energy Full");
+    else if(orgStr == "POWER_SUPPLY_ENERGY_NOW")//能量
+        return tr("Energy Now");
+    else if(orgStr == "POWER_SUPPLY_SERIAL_NUMBER")//序列号
+        return tr("Serial Number");
+
+    else if(orgStr == "BoaVendor")//主板型号
+        return tr("Motherboard Model");
+    else if(orgStr == "BoaProduct")//主板产商
+        return tr("Motherboard Vendor");
+    else if(orgStr == "BoaSerial")//序列号
+        return tr("Serial Number");
+    else if(orgStr == "BioVendor")//BIOS产商
+        return tr("BIOS Vendor");
+    else if(orgStr == "BioVersion")//BIOS版本
+        return tr("BIOS Version");
+    else if(orgStr == "BioRelease")//发布日期
+        return tr("Release Date");
+
+    else if(orgStr == "DvdProduct")//光驱型号
+        return tr("CD-ROM Model");
+    else if(orgStr == "DvdVendor")//制造商
+        return tr("Vendor");
+    else if(orgStr == "DvdName")//设备名称
+        return tr("Device Name");
+    else if(orgStr == "DvdFw")//固件版本
+        return tr("Firmware Version");
+    else if(orgStr == "DvdSerial")//序列号
+        return tr("Serial Number");
+
+
+
+    else if(orgStr == "CpuVersion")//处理器：
+        return tr("CPU");
+    else if(orgStr == "CpuVendor")//制造商：
+        return tr("Vendor");
+    else if(orgStr == "CpuSerial")//序列号：
+        return tr("Serial Number");
+    else if(orgStr == "CpuSlot")//插座/插槽：
+        return tr("Socket/Slot");
+    else if(orgStr == "CpuCapacity")//最大主频：
+        return tr("Maximum Frequency");
+    else if(orgStr == "CpuSize")//当前主频：
+        return tr("Current Frequency");
+    else if(orgStr == "CpuClock")//前端总线：
+        return tr("FSB");
+    else if(orgStr == "cpu_cores")//核心数目：
+        return tr("Core Number");
+    else if(orgStr == "cpu_siblings")//线程
+        return tr("Thread");
+    else if(orgStr == "clflush_size")//一级缓存：
+        return tr("L1 Cache");
+    else if(orgStr == "cache_size")//二级缓存：
+        return tr("L2 Cache");
+
+
+    else if(orgStr == "desktopenvironment")//桌面环境
+        return tr("Desktop Environment");
+    else if(orgStr == "cpu")
+        return tr("CPU");
+    else if(orgStr == "hostname")
+        return tr("Host Name");
+    else if(orgStr == "ram")
+        return tr("Memery Capacity");
+    else if(orgStr == "shell")
+        return tr("Shell");
+    else if(orgStr == "distribution")//发行版
+        return tr("Distribution");
+    else if(orgStr == "language")//语言
+        return tr("Language");
+    else if(orgStr == "currrent_user")//当前用户
+        return tr("User");
+    else if(orgStr == "home_path")//用户主目录
+        return tr("Home Folder");
+
+
+    else if(orgStr == "Host bridge")//主桥
+        return tr("Host bridge");
+    else if(orgStr == "VGA compatible controller")//VGA兼容控制器
+        return tr("VGA Model");
+    else if(orgStr == "USB controller")//USB控制器
+        return tr("USB Model");
+    else if(orgStr == "Communication controller")//通信控制器
+        return tr("Communication Model");
+    else if(orgStr == "Ethernet controller")//以太网控制器
+        return tr("Ethernet Model");
+    else if(orgStr == "Audio device")//音频设备
+        return tr("Audio Model");
+    else if(orgStr == "PCI bridge")//PCI桥
+        return tr("PCI bridge");
+    else if(orgStr == "ISA bridge")//ISA桥
+        return tr("ISA bridge");
+    else if(orgStr == "SATA controller")//SATA控制器
+        return tr("SATA Model");
+    else if(orgStr == "SMBus")//系统管理总线
+        return tr("SMBus");
+    else if(orgStr == "System peripheral")//系统外围
+        return tr("System peripheral");
+    else if(orgStr == "driver in use")//使用的驱动
+        return tr("Driver in use");
+    else if(orgStr == "existing drivers")//可选的驱动
+        return tr("existing drivers");
+    else if(orgStr == "IDE interface")//IDE接口
+        return tr("IDE interface");
+    else if(orgStr == "Signal processing controller")//信号处理控制器
+        return tr("SP controller");
+    else if(orgStr == "Network controlle")//网络控制器
+        return tr("Network controller");
+    else if(orgStr == "Multimedia audio controller")//多媒体音频控制器
+        return tr("Multimedia audio controller");
+
+
+    else if(orgStr == "DiskProduct")//硬盘型号：
+        return tr("HDD Model");
+    else if(orgStr == "DiskVendor")//硬盘厂商：
+        return tr("HDD Vendor");
+    else if(orgStr == "DiskCapacity")//硬盘容量：
+        return tr("HDD Capacity");
+    else if(orgStr == "DiskName")//设备名称：
+        return tr("Device Name");
+    else if(orgStr == "DiskFw")//固件版本：
+        return tr("Firmware Version");
+    else if(orgStr == "DiskSerial")//序列号：
+        return tr("Serial Number");
+
+    else if(orgStr == "MemSlot")//插槽号：
+        return tr("Slot Number");
+    else if(orgStr == "MemProduct")//内存型号：
+        return tr("Memory Model");
+    else if(orgStr == "MemVendor")//制造商：
+        return tr("Vendor");
+    else if(orgStr == "MemSerial")//序列号：
+        return tr("Serial Number");
+    else if(orgStr == "MemSize")//内存大小：
+        return tr("Memory Size");
+    else if(orgStr == "MemWidth")//数据宽度：
+        return tr("Data Width");
+    else if(orgStr == "MemInfo")//内存条信息：
+        return tr("Memory Info");
+
+    else if(orgStr == "Vga_product")//显卡型号：
+        return tr("Graphics Card Model");
+    else if(orgStr == "Mon_chip")//当前显卡：
+        return tr("Current Graphics Card");
+    else if(orgStr == "Vga_vendor")//显卡制造商：
+        return tr("Graphics Card Vendor");
+    else if(orgStr == "Vga_Drive")//显卡驱动：
+        return tr("Graphics Driver");
+    else if(orgStr == "Vga_businfo")//显卡总线地址：
+        return tr("Bus Address");
+
+
+    else if(orgStr == "NetVendor")//有线网卡型号：
+        return tr("NIC Model");
+    else if(orgStr == "NetProduct")//制造商：
+        return tr("Vendor");
+    else if(orgStr == "NetDrive")//有线网卡驱动：
+        return tr("NIC Driver");
+    else if(orgStr == "NetBusinfo")//总线地址：
+        return tr("Bus Address");
+    else if(orgStr == "NetLogicalname")//设备名称：
+        return tr("Device Name");
+    else if(orgStr == "NetIp")//IP地址：
+        return tr("IP Address");
+    else if(orgStr == "NetSerial")//MAC地址：
+        return tr("Mac Address");
+    else if(orgStr == "NetLink")//连接状态：
+        return tr("Connection Status");
+    else if(orgStr == "NetCapacity")//最大带宽：
+        return tr("Max Bandwidth");
+    else if(orgStr == "WlanVendor")//制造商：
+        return tr("Vendor");
+    else if(orgStr == "WlanDrive")//无线网卡驱动：
+        return tr("WLan NIC Driver");
+    else if(orgStr == "WlanProduct")//网卡型号：
+        return tr("WLan NIC Model");
+    else if(orgStr == "WlanBusinfo")//总线地址：
+        return tr("Bus Address");
+    else if(orgStr == "WlanLogicalname")//设备名称：
+        return tr("Device Name:");
+    else if(orgStr == "WlanSerial")//序列号：
+        return tr("Serial Number");
+    else if(orgStr == "WlanIp")//IP地址：
+        return tr("IP Address");
+
+    else if(orgStr == "ComVendor")//制造商：
+        return tr("Vendor");
+    else if(orgStr == "ComProduct")//电脑型号：
+        return tr("Model");
+    else if(orgStr == "ComVersion")//电脑版本：
+        return tr("Version");
+    else if(orgStr == "ComSerial")//序列号：
+        return tr("Serial Number");
+    else if(orgStr == "node")//主机名：
+        return tr("Hostname");
+    else if(orgStr == "uptime")//持续运行时间：
+        return tr("Running Time");
+    else if(orgStr == "system")//操作系统类型：
+        return tr("OS Types");
+    else if(orgStr == "platform")//操作系统版本：
+        return tr("OS Version");
+    else if(orgStr == "architecture")//系统位数：
+        return tr("Kernel Bit");
+    else if(orgStr == "release")//内核版本：
+        return tr("Kernel Version");
+    else if(orgStr == "machine")//内核架构：
+        return tr("Kernel Arch");
+    else
+        return "";
+
+}
+
+bool ComputerPage::eventFilter(QObject *obj, QEvent *event)
+{
+//    if(obj == line)
+//    {
+//        if(event->type() == QEvent::Paint)
+//        {
+//            int label_width  = 100;//line->width();
+//            QPainter painter(line);
+//            painter.setPen(QPen(QColor(220, 220, 220), 1, Qt::DashLine));
+//            painter.drawLine(label_width/2, 0, label_width/2, 1);
+//        }
+//    }
+
+//    return QWidget::eventFilter(obj, event);
+}
+
+void ComputerPage::resizeEvent(QResizeEvent *event)
+{
+    //获取当前窗口高度
+//    this->resize(700, page_height);
+//    page_height = height();
+    QWidget::resizeEvent(event);
+}
+
+

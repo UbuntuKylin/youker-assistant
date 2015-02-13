@@ -8,20 +8,11 @@ inst3.files += ../backends/youker-assistant-daemon/data/beautify/plymouth/
 inst3.path = /var/lib/youker-assistant-daemon/
 inst4.files += ../backends/youker-assistant-daemon/data/beautify/sound-theme/
 inst4.path = /var/lib/youker-assistant-daemon/
-inst5.files += ../backends/youker-assistant-daemon/data/processmanager/
+inst5.files += ../backends/youker-assistant-daemon/data/ubuntukylin-default-settings.ini
 inst5.path = /var/lib/youker-assistant-daemon/
-inst6.files += ../backends/youker-assistant-daemon/data/ubuntukylin-default-settings.ini
-inst6.path = /var/lib/youker-assistant-daemon/
-inst7.files += ../backends/youker-assistant-daemon/data/weather-app.db
-inst7.path = /var/lib/youker-assistant-daemon/
-inst8.files += ../backends/youker-assistant-daemon/data/distrowatch.conf
-inst8.path = /var/lib/youker-assistant-daemon/
 
 INSTALLS += inst1 \
     inst2 \
     inst3 \
     inst4 \
-    inst5 \
-    inst6 \
-    inst7 \
-    inst8
+    inst5

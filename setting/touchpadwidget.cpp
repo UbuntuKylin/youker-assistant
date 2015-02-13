@@ -1,0 +1,208 @@
+#include "touchpadwidget.h"
+#include <QDebug>
+#include "../dbusproxy/youkersessiondbus.h"
+
+TouchpadWidget::TouchpadWidget(QWidget *parent, SessionDispatcher *proxy) :
+    QWidget(parent),
+    sessionproxy(proxy)
+{
+//    splitter = new QSplitter();
+//    splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+//    splitter->setOrientation(Qt::Vertical);
+//    splitter->setHandleWidth(1);
+
+//    top_widget = new QWidget();
+//    bottom_widget = new QWidget();
+
+//    title_label = new QLabel();
+//    title_label->setFixedHeight(20);
+//    description_label = new QLabel();
+//    description_label->setFixedHeight(20);
+//    back_btn = new QPushButton();
+
+//    QVBoxLayout *v_layout = new QVBoxLayout();
+//    v_layout->addWidget(title_label);
+//    v_layout->addWidget(description_label);
+//    v_layout->setMargin(0);
+//    v_layout->setSpacing(1);
+
+//    QHBoxLayout *h_layout = new QHBoxLayout();
+//    h_layout->addWidget(back_btn);
+//    h_layout->addLayout(v_layout);
+//    h_layout->addStretch();
+//    top_widget->setLayout(h_layout);
+//    top_widget->setFixedSize(900,60);
+//    h_layout->setSpacing(20);
+//    h_layout->setContentsMargins(20, 0, 0, 0);
+
+    touchpad_label = new QLabel();
+    horizontal_scrolling_label = new QLabel();
+    scrollbar_type_label = new QLabel();
+    panel_layout_label = new QLabel();
+    touchpad_switcher  = new KylinSwitcher();
+    horizontal_scrolling_switcher  = new KylinSwitcher();
+    features_radio = new QRadioButton();
+    features_radio->setFocusPolicy(Qt::NoFocus);
+//    features_radio->setChecked(true);
+    features_radio->setObjectName("features_radio");
+    standard_radio = new QRadioButton();
+    standard_radio->setFocusPolicy(Qt::NoFocus);
+//    standard_radio->setChecked(false);
+    standard_radio->setObjectName("standard_radio");
+    edge_radio = new QRadioButton();
+    edge_radio->setFocusPolicy(Qt::NoFocus);
+//    edge_radio->setChecked(true);
+    edge_radio->setObjectName("edge_radio");
+    two_finger_radio = new QRadioButton();
+    two_finger_radio->setFocusPolicy(Qt::NoFocus);
+//    two_finger_radio->setChecked(false);
+    two_finger_radio->setObjectName("two_finger_radio");
+
+    touchpad_label->setFixedWidth(180);
+    horizontal_scrolling_label->setFixedWidth(180);
+    scrollbar_type_label->setFixedWidth(180);
+    panel_layout_label->setFixedWidth(180);
+
+    QHBoxLayout *layout1 = new QHBoxLayout();
+    layout1->setSpacing(10);
+    layout1->addWidget(touchpad_label);
+    layout1->addWidget(touchpad_switcher);
+    layout1->addStretch();
+    QHBoxLayout *layout2 = new QHBoxLayout();
+    layout2->setSpacing(10);
+    layout2->addWidget(horizontal_scrolling_label);
+    layout2->addWidget(horizontal_scrolling_switcher);
+    layout2->addStretch();
+    QHBoxLayout *layout3 = new QHBoxLayout();
+    layout3->setSpacing(10);
+    layout3->addWidget(scrollbar_type_label);
+    layout3->addWidget(features_radio);
+    layout3->addWidget(standard_radio);
+    layout3->addStretch();
+    QHBoxLayout *layout4 = new QHBoxLayout();
+    layout4->setSpacing(10);
+    layout4->addWidget(panel_layout_label);
+    layout4->addWidget(edge_radio);
+    layout4->addWidget(two_finger_radio);
+    layout4->addStretch();
+    QVBoxLayout *layout = new QVBoxLayout();
+    layout->addLayout(layout1);
+    layout->addLayout(layout2);
+    layout->addLayout(layout3);
+    layout->addLayout(layout4);
+    layout->addStretch();
+    setLayout(layout);
+    layout->setSpacing(10);
+    layout->setContentsMargins(20, 20, 0, 0);
+
+//    splitter->addWidget(top_widget);
+//    splitter->addWidget(bottom_widget);
+
+
+//    QHBoxLayout *main_layout = new QHBoxLayout;
+//    main_layout->addStretch();
+//    main_layout->addWidget(splitter);
+//    main_layout->setSpacing(0);
+//    main_layout->setContentsMargins(0, 0, 0, 0);
+//    setLayout(main_layout);
+    this->initData();
+    this->setLanguage();
+    this->initConnect();
+}
+
+TouchpadWidget::~TouchpadWidget()
+{
+//    if(label != NULL)
+//    {
+//        delete label;
+//        label = NULL;
+//    }
+//    if(back_btn != NULL)
+//    {
+//        delete back_btn;
+//        back_btn = NULL;
+//    }
+}
+
+void TouchpadWidget::setLanguage() {
+//    title_label->setText(tr("Touchpad settings"));
+//    description_label->setText(tr("Setting the relevant properties of your touchpad,make the operation more convenient."));
+//    back_btn->setText(tr("Back"));
+    touchpad_label->setText(tr("Enable touchpad") + ":");
+    horizontal_scrolling_label->setText(tr("Enable horizontal scrolling") + ":");
+    scrollbar_type_label->setText(tr("Scrollbar type") + ":");
+    panel_layout_label->setText(tr("Panel layout") + ":");
+    features_radio->setText(tr("Features Type"));
+    standard_radio->setText(tr("Standard Type"));
+    edge_radio->setText(tr("Edge Scrolling"));
+    two_finger_radio->setText(tr("Two-finger Scrolling"));
+}
+
+void TouchpadWidget::initData()
+{
+    touchpad_switcher->switchedOn = sessionproxy->get_touchpad_enable_qt();
+    horizontal_scrolling_switcher->switchedOn = sessionproxy->get_touchscrolling_use_horizontal_qt();
+
+    QString mode_value = sessionproxy->get_scrollbars_mode_qt();
+    if(mode_value == "overlay-auto") {
+        features_radio->setChecked(true);
+        standard_radio->setChecked(false);
+    }
+    else if(mode_value == "normal") {
+        standard_radio->setChecked(true);
+        features_radio->setChecked(false);
+    }
+
+    QString scroll_value = sessionproxy->get_touchscrolling_mode_qt();
+    if(scroll_value == "edge-scrolling") {
+        edge_radio->setChecked(true);
+        two_finger_radio->setChecked(false);
+    }
+    else if(scroll_value == "two-finger-scrolling") {
+        two_finger_radio->setChecked(true);
+        edge_radio->setChecked(false);
+    }
+}
+
+void TouchpadWidget::initConnect() {
+//    connect(back_btn, SIGNAL(clicked()), this, SIGNAL(showSettingMainWidget()));
+    connect(touchpad_switcher, SIGNAL(clicked()),  this, SLOT(setTouchpad()));
+    connect(horizontal_scrolling_switcher, SIGNAL(clicked()),  this, SLOT(setHorizontalScrolling()));
+    connect(features_radio, SIGNAL(clicked(/*bool*/)), this, SLOT(setRadioButtonRowStatus(/*bool*/)));
+    connect(standard_radio, SIGNAL(clicked(/*bool*/)), this, SLOT(setRadioButtonRowStatus(/*bool*/)));
+    connect(edge_radio, SIGNAL(clicked(/*bool*/)), this, SLOT(setRadioButtonRowStatus(/*bool*/)));
+    connect(two_finger_radio, SIGNAL(clicked(/*bool*/)), this, SLOT(setRadioButtonRowStatus(/*bool*/)));
+}
+
+void TouchpadWidget::setTouchpad()
+{
+    sessionproxy->set_touchpad_enable_qt(touchpad_switcher->switchedOn);
+}
+
+void TouchpadWidget::setHorizontalScrolling()
+{
+    sessionproxy->set_touchscrolling_use_horizontal_qt(horizontal_scrolling_switcher->switchedOn);
+}
+
+void TouchpadWidget::setRadioButtonRowStatus(/*bool status*/)
+{
+    QObject *obj = sender(); //返回发出信号的对象，用QObject类型接收
+    QRadioButton* pbtn = qobject_cast<QRadioButton*>(obj);
+    QString obj_name = pbtn->objectName();
+    if(obj_name == "features_radio")
+    {
+        sessionproxy->set_scrollbars_mode_overlay_qt();
+    }
+    else if(obj_name == "standard_radio")
+    {
+        sessionproxy->set_scrollbars_mode_legacy_qt();
+    }
+    else if(obj_name == "edge_radio")
+    {
+        sessionproxy->set_touchscrolling_mode_edge_qt();
+    }
+    else if(obj_name == "two_finger_radio")
+    {
+        sessionproxy->set_touchscrolling_mode_twofinger_qt();
+    }
+}

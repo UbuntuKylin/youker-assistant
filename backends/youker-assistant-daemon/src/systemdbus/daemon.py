@@ -428,27 +428,63 @@ class Daemon(PolicyKitService):
 
 #-----START-----------NEW-YOUKER---------------------------
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='', sender_keyword='sender')
-    def remove_file(self, fp):
+    def remove_file(self, fp, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            self.revoke_clean_onekey('yes')
+            return
+        else:
+            self.revoke_clean_onekey('no')
         cleaner.interface_remove_file_system(self, fp)
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='', sender_keyword='sender')
-    def remove_package(self, pkgname):
+    def remove_package(self, pkgname, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            self.revoke_clean_onekey('yes')
+            return
+        else:
+            self.revoke_clean_onekey('no')
         cleaner.interface_remove_package_system(self, pkgname)
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
-    def remove_firefox_history(self):
+    def remove_firefox_history(self, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            self.revoke_clean_onekey('yes')
+            return
+        else:
+            self.revoke_clean_onekey('no')
         cleaner.interface_remove_firefox_history_system(self)
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
-    def remove_chromium_history(self):
+    def remove_chromium_history(self, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            self.revoke_clean_onekey('yes')
+            return
+        else:
+            self.revoke_clean_onekey('no')
         cleaner.interface_remove_chromium_history_system(self)
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='', sender_keyword='sender')
-    def remove_firefox_cookies(self, domain):
+    def remove_firefox_cookies(self, domain, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            self.revoke_clean_onekey('yes')
+            return
+        else:
+            self.revoke_clean_onekey('no')
         cleaner.interface_remove_firefox_cookies_system(self, domain)
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='', sender_keyword='sender')
-    def remove_chromium_cookies(self, domain):
+    def remove_chromium_cookies(self, domain, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            self.revoke_clean_onekey('yes')
+            return
+        else:
+            self.revoke_clean_onekey('no')
         cleaner.interface_remove_chromium_cookies_system(self, domain)
 
     @dbus.service.signal(INTERFACE, signature='as')
