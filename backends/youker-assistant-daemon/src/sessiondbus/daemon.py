@@ -1488,6 +1488,12 @@ class SessionDaemon(dbus.service.Object):
     # ---end---------------------autostartmanage--------------------
 
     #----START-------------------New-Youker-------------------------
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def currently_installed_version(self):
+        cache = apt.Cache()
+        pkg = cache['youker-assistant']
+        return pkg.installed
+
     @dbus.service.method(INTERFACE, in_signature='a{sv}', out_signature='')
     def get_scan_result(self, mode_dic):
         cleaner.interface_get_subpage_session(self, mode_dic)
