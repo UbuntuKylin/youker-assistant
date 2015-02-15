@@ -1,3 +1,22 @@
+/*
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "autostartwidget.h"
 #include "ui_autostartwidget.h"
 #include <QDebug>
@@ -27,7 +46,6 @@ AutoStartWidget::AutoStartWidget(QWidget *parent, SessionDispatcher *proxy) :
     ui->widget_2->setPalette(palette);
 
     tip_label->setText(tr("AutoStart Items:"));
-    num_label->setText(tr("5"));
     name_label->setText(tr("App"));
     status_label->setText(tr("Status"));
 
@@ -78,6 +96,7 @@ void AutoStartWidget::readyShowUI()
 {
     QVBoxLayout *v_layout = new QVBoxLayout();
     QSignalMapper *signal_mapper = new QSignalMapper(this);
+    num_label->setText(QString::number(data_list.length()));
     for(int i =0; i<data_list.length(); i++)
     {
         QMap<QString,QString> tmpMap;
@@ -109,8 +128,8 @@ void AutoStartWidget::setCurrentItemAutoStatus(QString dekstopName)
     int  start_pos = dekstopName.lastIndexOf("/") + 1;
     int end_pos = dekstopName.length();
     QString name = dekstopName.mid(start_pos, end_pos-start_pos);
-    qDebug() << "change status->" << name;
-//    sessionproxy->changeAutoStartAppStatus(name);
+//    qDebug() << "change status->" << name;
+    sessionproxy->changeAutoStartAppStatus(name);
 }
 
 void AutoStartWidget::setLanguage()

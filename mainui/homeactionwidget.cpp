@@ -1,3 +1,22 @@
+/*
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "homeactionwidget.h"
 #include "../component/kylintoolbutton.h"
 #include "mainwindow.h"
@@ -39,11 +58,14 @@ HomeActionWidget::HomeActionWidget(QWidget *parent, QSettings *mSettings)
 
     suggest_label->setObjectName("whiteLabel");
     suggest_label->setWordWrap(true);//QLabel自动换行
+    suggest_label->setFixedWidth(460);
     result_label->setWordWrap(true);//QLabel自动换行
     result_label->setObjectName("tipLabel");
+    result_label->setFixedWidth(460);
     doing_label->setWordWrap(true);//QLabel自动换行
     doing_label->setObjectName("tipLabel");
     doing_label->hide();
+    doing_label->setFixedWidth(460);
 
     scan_button->setFixedSize(204, 65);
     scan_button->setFocusPolicy(Qt::NoFocus);
@@ -51,6 +73,7 @@ HomeActionWidget::HomeActionWidget(QWidget *parent, QSettings *mSettings)
     scan_button->setIcon(pixmap);
     scan_button->setIconSize(pixmap.size());
     scan_button->setObjectName("greenButton");
+    scan_button->setEnabled(false);
 //    QFont scan_font = scan_button->font();
 //    scan_font.setPointSize(16);
 //    scan_button->setFont(scan_font);
@@ -154,10 +177,15 @@ void HomeActionWidget::setLanguage()
     doing_label->setText(tr("Scanning......"));//正在扫描......
 }
 
+void HomeActionWidget::enableSanButton()
+{
+    scan_button->setEnabled(true);
+}
+
 void HomeActionWidget::getScanResult(QString msg)
 {
     doing_label->setText(tr("Scanning:") + msg);//正在扫描:
-    qDebug() << msg;
+//    qDebug() << msg;
 }
 
 void HomeActionWidget::finishScanResult(QString msg)
@@ -186,8 +214,9 @@ void HomeActionWidget::getScanAllResult(QString flag, QString msg){
     }
 }
 
-void HomeActionWidget::getCleanResult(QString msg)
+void HomeActionWidget::getCleanResult(QString msg/*, QString flag*/)
 {
+//    if(flag == "onekey") {
     if (msg == "yes") {//在弹出输入密码验证时，点击了取消按钮
         loading_label->stopLoading();
         clean_button->setEnabled(true);
@@ -195,6 +224,7 @@ void HomeActionWidget::getCleanResult(QString msg)
     if (msg == "no") {//在弹出输入密码验证时，输入密码，验证通过，此时让动态图片开始显示
         //show dynamic image
         doing_label->setText(tr("Cleaning......"));//正在清理......
+//        qDebug() << "test11111";
         loading_label->startLoading();
         clean_button->setEnabled(false);
     }
@@ -211,7 +241,7 @@ void HomeActionWidget::getCleanResult(QString msg)
         this->writeFixCleanDate();
         //清理完毕后显示清理总数
         result_label->setText(tr("The lastest cleanup time is ") + this->getCurrentDateTime());
-        doing_label->setText(tr("Cleanup Cookies:") +cookies + "; Garbage:" + garbage + "; Historical records:" +trace );
+        doing_label->setText(tr("Cleanup Cookies:") +cookies + tr("; Garbage:") + garbage + tr("; Historical records:") +trace );
         trace.clear();
         cookies.clear();
         garbage.clear();
@@ -221,6 +251,7 @@ void HomeActionWidget::getCleanResult(QString msg)
         clean_button->hide();
         clean_button->setEnabled(true);
     }
+//    }
 }
 
 void HomeActionWidget::finishCleanError(QString msg)
@@ -291,6 +322,7 @@ void HomeActionWidget::getCleaningMessage(QString type, QString status)
 void HomeActionWidget::onStartButtonClicked()
 {
     scan_button->setEnabled(false);
+//    qDebug() << "test2222";
     loading_label->startLoading();
     suggest_label->hide();
     result_label->hide();
@@ -304,6 +336,7 @@ void HomeActionWidget::onCleanButtonClicked()
 {
     clean_button->show();
     clean_button->setEnabled(false);
+//    qDebug() << "test3333";
     loading_label->startLoading();
     suggest_label->hide();
     result_label->hide();

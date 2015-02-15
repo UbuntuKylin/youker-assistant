@@ -925,12 +925,12 @@ def interface_remove_file_system(system, fp):
             info = []
             if os.path.isdir(filepath):
                 info.append('Path:%s' % filepath)
-                info.append('Size:%s' % common.confirm_filesize_unit(common.get_dir_size(one)))
+                info.append('Size:%s' % common.confirm_filesize_unit(common.get_dir_size(filepath)))
                 shutil.rmtree(filepath)
                 system.subpage_data_signal(info)
             else:
                 info.append('Path:%s' % filepath)
-                info.append('Size:%s' % common.confirm_filesize_unit(os.path.getsize(one)))
+                info.append('Size:%s' % common.confirm_filesize_unit(os.path.getsize(filepath)))
                 os.remove(filepath)
                 system.subpage_data_signal(info)
         else:
@@ -942,7 +942,7 @@ def interface_remove_firefox_history_system(system):
     ffhpath = "%s/.mozilla/firefox/%s/places.sqlite" % (homedir, common.analytical_profiles_file(homedir))
     firefox_history_obj.clean_firefox_all_records(ffhpath)
 
-    system.subpage_status_signal('Complete:History.firefox')
+    system.subpage_status_signal('Complete:History.firefox', 'history')
 
 def interface_remove_chromium_history_system(system):
     homedir = return_homedir_sysdaemon()
@@ -952,18 +952,19 @@ def interface_remove_chromium_history_system(system):
     if not run:
         chhpath = "%s/.config/chromium/Default/History" % homedir
         chromium_history_obj.clean_chromium_all_records(chhpath)
-        system.subpage_status_signal('Complete:History.chromium')
+        system.subpage_status_signal('Complete:History.chromium', 'history')
     else:
         system.subpage_error_signal('Working:Chromium')
 
 def interface_remove_firefox_cookies_system(system, domain):
     homedir = return_homedir_sysdaemon()
-    firefox_cookies_obj.cookiesclean.CookiesClean(homedir)
+    firefox_cookies_obj = cookiesclean.CookiesClean(homedir)
+    print(domain)
 
     ffcpath = "%s/.mozilla/firefox/%s/cookies.sqlite" % (homedir, common.analytical_profiles_file(homedir))
     ffcpam = [ffcpath, 'moz_cookies', 'baseDomain', domain]
     firefox_cookies_obj.clean_cookies_record(ffcpam[0], ffcpam[1], ffcpam[2], ffcpam[3])
-    system.subpage_status_signal('Complete:Cookies.firefox')
+    system.subpage_status_signal('Complete:Cookies.firefox', domain)
 
 def interface_remove_chromium_cookies_system(system, domain):
     homedir = return_homedir_sysdaemon()
@@ -972,7 +973,7 @@ def interface_remove_chromium_cookies_system(system, domain):
     chcpath = "%s/.config/chromium/Default/Cookies" % homedir
     chcpam = [chcpath, 'cookies', 'host_key', domain]
     chromium_cookies_obj.clean_cookies_record(chcpam[0], chcpam[1], chcpam[2], chcpam[3])
-    system.subpage_status_signal('Complete:Cookies.chromium')
+    system.subpage_status_signal('Complete:Cookies.chromium', domain)
     
 
 def interface_remove_package_system(system, packagename):
@@ -1000,15 +1001,15 @@ class NewInstallProgress(InstallProgress):
         info = []
         info.append('Percent:%s' % str(int(percent)))
         info.append('Status:%s' % status)
-        self.system.subpage_status_signal(info)
+        self.system.subpage_status_signal(info, 'apt')
 
     def error(self, errorstr):
         pass
 
     def finish_update(self):
         #self.system.status_remove_packages("apt_stop", "")
-        self.system.subpage_status_signal('Complete:')
+        self.system.subpage_status_signal('Complete:', 'apt')
 
     def start_update(self):
         #self.system.status_remove_packages("apt_start", "")
-        self.system.subpage_status_signal('Start:')
+        self.system.subpage_status_signal('Start:', 'apt')

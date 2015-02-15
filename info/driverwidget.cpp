@@ -1,3 +1,22 @@
+/*
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "driverwidget.h"
 #include "devicemanager.h"
 #include <QDebug>
@@ -10,7 +29,7 @@ DriverWidget::DriverWidget(QWidget *parent/*, SystemDispatcher *proxy*/) :
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403);
     this->initData();
-    page = new ComputerPage(scroll_widget->zone, "Driver Info");
+    page = new ComputerPage(scroll_widget->zone, tr("Driver Info"));
     page->setMap(driver_info_map,"");
     page->initUI();
     scroll_widget->addScrollWidget(page);

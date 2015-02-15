@@ -25,12 +25,12 @@ class Toolkits : public QObject
 {
     Q_OBJECT
 public:
-    explicit Toolkits(QObject *parent = 0);
+    explicit Toolkits(QObject *parent = 0, int width = 0, int height = 0);
     //启动alert提示
     Q_INVOKABLE void alertMSG(const QString &alertText);
 private:
-    int mainwindow_width;
-    int mainwindow_height;
+    int parent_width;
+    int parent_height;
     int alert_width;
     int alert_height;
     //本次alert的x坐标

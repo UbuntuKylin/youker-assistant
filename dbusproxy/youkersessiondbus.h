@@ -1,5 +1,8 @@
 /*
- * Copyright (C) 2013 ~ 2014 National University of Defense Technology(NUDT) & Kylin Ltd.
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -13,6 +16,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+
 #ifndef SESSIONDISPATCHER_H
 #define SESSIONDISPATCHER_H
 
@@ -38,14 +43,14 @@ public:
     QDBusInterface *sessioniface;
     void getAutoStartAppStatus();
     void changeAutoStartAppStatus(QString appName);
-
+    QString checkNewVersion();
 
     //new scan method
     void scanSystemCleanerItems(QMap<QString, QVariant> data);
 
 
 //    Q_INVOKABLE void show_slider_qt();
-//    Q_INVOKABLE void check_user_qt();
+    /*Q_INVOKABLE*/ void check_user_qt();
 //    void http_get_img_resource();
 //    //打开文件夹
     /*Q_INVOKABLE*/ void open_folder_qt(QString path);
@@ -67,9 +72,9 @@ public:
 
 //    //弹出登录框
     /*Q_INVOKABLE*/ void popup_login_dialog();
-//    Q_INVOKABLE void popup_register_dialog();
+    /*Q_INVOKABLE*/ void popup_register_dialog();
 //    //退出登录
-//    Q_INVOKABLE void logout_ubuntukylin_account();
+    /*Q_INVOKABLE*/ void logout_ubuntukylin_account();
 
 //    //得到SessionDbus的验证值，可以通过其判断该服务是否正在运行
 //    Q_INVOKABLE QString get_session_daemon_qt();
@@ -222,7 +227,7 @@ public:
 //    Q_INVOKABLE void restore_default_font_signal(QString flag);
 //    Q_INVOKABLE void show_font_dialog(QString flag, QString current_font);
 //    Q_INVOKABLE QString show_folder_dialog();
-//    Q_INVOKABLE QString show_file_path_dialog();
+    /*Q_INVOKABLE*/ QString show_file_path_dialog();
     /*Q_INVOKABLE*/ QString get_font_qt();
 //    Q_INVOKABLE bool set_font_qt_default(QString font);
     bool set_font_qt(QString font);
@@ -364,8 +369,8 @@ signals:
 //    void tellQMLCookiesOver(QString cookiesFlag);
 //    //把一键扫描的总数告诉QML
     void tellScanResultToQML(QString flag, QString msg);
-//    void ssoSuccessSignal(QString displayName, QString emailAddress);
-//    void ssoLoginLogoutSignal(bool loginFlag);
+    void ssoSuccessSignal(QString displayName, QString emailAddress);
+    void ssoLoginLogoutSignal(bool loginFlag);
 //    //告诉QML界面，标题栏控制按钮位置发生变化了，准备改变优客助手自身的控制按钮位置
 //    void startChangeControlBtnPosition(QString position);
 //    void tellQMLHistoryNumber(QString flag, int num);
@@ -421,9 +426,9 @@ public slots:
 //    void handlerDistrowatchAllSignal(QString update_rate);
 //    void handlerDistrowatchUKSignal(bool uk_flag);
 
-//    void handlerYoukerID(QString displayName, QString emailAddress);
-//    void handlerLogoutSuccess();
-//    void handlerLoginFail();
+    void handlerYoukerID(QString displayName, QString emailAddress);
+    void handlerLogoutSuccess();
+    void handlerLoginFail();
 
 //    void handlerWeatherPingback(bool result);
 //    void handlerUnZip(bool result);

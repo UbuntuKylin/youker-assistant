@@ -1,5 +1,8 @@
 /*
- * Copyright (C)  National University of Defense Technology(NUDT) & Kylin Ltd.
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -10,9 +13,10 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
- * You should have rec2013eived a copy of the GNU General Public License
+ * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #include <QDebug>
 #include "kthread.h"
 
@@ -30,8 +34,9 @@ KThread::KThread(QObject *parent):QThread(parent)
 
 }
 
-void KThread::initValues(QStringList &arglist, QDBusInterface *systemiface, QString method, QString flag, int size) {
+void KThread::initValues(QMap<QString, QVariant> data, QStringList &arglist, QDBusInterface *systemiface, QString method, QString flag, int size) {
     iface = systemiface;
+    mapData = data;
     methodName = method;
     list = arglist;
     fileFlag = flag;
@@ -76,6 +81,19 @@ void KThread::run() {
     else if(methodName == "onekey_scan_function") {
         iface->call("onekey_scan_function", list);
     }
+
+
+
+    //-------------------
+
+    else if(methodName == "get_scan_result") {
+        iface->call("get_scan_result", mapData);
+    }
+    else if(methodName == "remove_select_items") {
+        iface->call("remove_select_items", mapData);
+    }
+
+
     else if(methodName == "cache_scan_function") {
         iface->call("cache_scan_function", list, fileFlag);
     }

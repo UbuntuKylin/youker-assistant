@@ -1,3 +1,22 @@
+/*
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include <QStringList>
 #include <QCloseEvent>
 #include <QBitmap>
@@ -11,10 +30,8 @@ QPoint widgetPosition;//界面中心位置的全局变量
 
 ProcessDialog::ProcessDialog(ProcessManager *plugin, QDialog *parent)
 :QDialog(parent)
-//,m_EraseFile(this)
 {
-  setWindowFlags(Qt::FramelessWindowHint);
-//  ui.setupUi(this);
+    setWindowFlags(Qt::FramelessWindowHint);
 
     title_bar = new KylinTitleBar();
     initTitleBar();
@@ -22,7 +39,7 @@ ProcessDialog::ProcessDialog(ProcessManager *plugin, QDialog *parent)
     this->setFixedSize(850, 476);
     process_plugin = plugin;
 
-    toolkits = new Toolkits();
+    toolkits = new Toolkits(0, this->width(), this->height());
     tip_label = new QLabel();
     kill_btn = new QPushButton();
     kill_btn->setFixedSize(91, 25);

@@ -1,3 +1,22 @@
+/*
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "shredmanager.h"
 
 ShredManager::ShredManager(QObject *parent)
@@ -13,22 +32,19 @@ ShredManager::~ShredManager()
 
 QString ShredManager::getGuid()
 {
-    return tr("7F1F6AF1-82C3-4224-8A37-676A7FC98YUA");
+    return "UBUNTU-KYLIN-SHRED";
 }
 
-//插件名称
  QString ShredManager::getName()
 {
     return tr("Shred Manager");
 }
 
-//插件描述
 QString ShredManager::getDescribe()
 {
-    return tr("可以彻底粉碎无法删除的文件");
+    return tr("Delete files makes it unable to recover");//彻底删除文件使其无法恢复
 }
 
-//插件图片名称
 QString ShredManager::getPicture()
 {
     return "shredder.png";

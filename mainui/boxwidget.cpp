@@ -1,10 +1,27 @@
+/*
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "boxwidget.h"
 #include <QDebug>
 #include "../component/plugininterface.h"
 #include "pluginmanager.h"
 #include <QGridLayout>
-
-
 
 BoxWidget::BoxWidget(QWidget *parent, QString path) :
     QWidget(parent), plugin_path(path)
@@ -70,29 +87,19 @@ void BoxWidget::initPluginWidget()
 {
     QStringList title;
     title << tr("");
-    m_feture_Model.Setitle(title);
-    //插入一个空行，用于布局
+    m_feture_Model.setTitle(title);
     m_feture_Model.insertRows(0,1,QModelIndex());
     QModelIndex qindex = m_feture_Model.index(0,0,QModelIndex());
     m_feture_Model.setData(qindex,tr("      "));
     int count =  PluginManager::Instance()->count();
-    qDebug() << "Plugin count: " << count;
-    //添加插件到主界面
     for (int i = 0;i < count;++i)
     {
-//      PluginInterface* ICommon = PluginManager::Instance()->getInterfaceByindex<PluginInterface>(i);
         PluginInterface* ICommon = PluginManager::Instance()->getInterfaceByindex<PluginInterface>(i);
         QString picture = ICommon->getPicture();
-//        qDebug() << picture;
         QString  pacture_path = QString(":/model/res/plugin/%1").arg(picture);
-//        qDebug() << pacture_path;
-        m_feture_Model.SetGuid(ICommon->getGuid());
-        //      qDebug() << picture;
-        //      qDebug() << pacture_path;
-        //      qDebug() << ICommon->getGuid();
+        m_feture_Model.setGuid(ICommon->getGuid());
         m_feture_Model.insertRows(i + 1,1,QModelIndex());
         qindex = m_feture_Model.index(i + 1,0,QModelIndex());
-//        m_feture_Model.setData(qindex,ICommon->getName() + "(" + ICommon->getDescribe() + ")");
         m_feture_Model.setData(qindex,ICommon->getName());
         m_feture_Model.setData(qindex,QIcon(QPixmap(pacture_path)),Qt::DecorationRole);
     }
@@ -100,13 +107,7 @@ void BoxWidget::initPluginWidget()
 
 void BoxWidget::OnClickListView(const QModelIndex & index)
 {
-//  if (index.row() == 0)
-//  {
-//    return;
-//  }
-  QString guid = m_feture_Model.getGuid(index.row() - 1);
-////  PluginInterface* ICommon = PluginManager::Instance()->getInterfaceByGuid<PluginInterface>(guid);
-  PluginInterface* ICommon = PluginManager::Instance()->getInterfaceByGuid<PluginInterface>(guid);
-  ICommon->doAction();
-//  displayBoxSubPage(guid);
+    QString guid = m_feture_Model.getGuid(index.row() - 1);
+    PluginInterface* interface = PluginManager::Instance()->getInterfaceByGuid<PluginInterface>(guid);
+    interface->doAction();
 }

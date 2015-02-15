@@ -1,5 +1,8 @@
 /*
- * Copyright (C) 2013 ~ 2014 National University of Defense Technology(NUDT) & Kylin Ltd.
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,7 +29,6 @@
 //#include "messengerproxy.h"
 
 //QString selectedFont;
-//extern QPoint widgetPosition;
 
 SessionDispatcher::SessionDispatcher(QObject *parent)
 //    QObject(parent)
@@ -75,9 +77,9 @@ SessionDispatcher::SessionDispatcher(QObject *parent)
     QObject::connect(sessioniface, SIGNAL(scan_complete(QString)), this, SLOT(handler_scan_complete(QString)));
 //    QObject::connect(sessioniface, SIGNAL(access_weather(QString, QString)), this, SLOT(accord_flag_access_weather(QString, QString)));
     QObject::connect(sessioniface, SIGNAL(total_data_transmit(QString, QString)), this, SLOT(handler_total_data_transmit(QString,QString)));
-//    QObject::connect(sessioniface, SIGNAL(youkerid_whoami_signal(QString, QString)), this, SLOT(handlerYoukerID(QString, QString)));
-//    QObject::connect(sessioniface, SIGNAL(youkerid_logout_signal()), this, SLOT(handlerLogoutSuccess()));
-//    QObject::connect(sessioniface, SIGNAL(youkerid_login_fail_signal()), this, SLOT(handlerLoginFail()));
+    QObject::connect(sessioniface, SIGNAL(youkerid_whoami_signal(QString, QString)), this, SLOT(handlerYoukerID(QString, QString)));
+    QObject::connect(sessioniface, SIGNAL(youkerid_logout_signal()), this, SLOT(handlerLogoutSuccess()));
+    QObject::connect(sessioniface, SIGNAL(youkerid_login_fail_signal()), this, SLOT(handlerLoginFail()));
 
 //    QObject::connect(sessioniface, SIGNAL(weather_server_pingback_signal(bool)), this, SLOT(handlerWeatherPingback(bool)));
 //    QObject::connect(sessioniface, SIGNAL(unzip_signal(bool)), this, SLOT(handlerUnZip(bool)));
@@ -170,17 +172,21 @@ void SessionDispatcher::exit_qt() {
 }
 
 
+QString SessionDispatcher::checkNewVersion()
+{
+    QDBusReply<QString> reply = sessioniface->call("currently_installed_version");
+    return reply.value();
+}
+
 void SessionDispatcher::handlerAutoManageData(QStringList data)
 //void SessionDispatcher::handlerAutoManageData(const QVariantMap &data)
 {
-    qDebug() << "signal data------";
     emit this->tellAutoModel(data);
 //    qDebug() << data;
 }
 
 void SessionDispatcher::handlerAutoManageStatus(QString status)
 {
-    qDebug() << "status signal data------";
 //    qDebug() << status;
     emit this->showAutoModel();
 }
@@ -192,7 +198,6 @@ void SessionDispatcher::handlerAutoManageError(QString status)
 
 void SessionDispatcher::getAutoStartAppStatus()
 {
-    qDebug() << "start----------";
     sessioniface->call("get_current_autostart_status");
 }
 
@@ -241,7 +246,8 @@ bool SessionDispatcher::judge_camera_qt() {
 
 void SessionDispatcher::call_camera_qt() {
     QStringList tmp;
-    thread->initValues(tmp, sessioniface, "call_camera");
+    QMap<QString, QVariant> data;
+    thread->initValues(data, tmp, sessioniface, "call_camera");
     thread->start();
 }
 
@@ -370,9 +376,9 @@ void SessionDispatcher::open_folder_qt(QString path) {
 //    sessioniface->call("display_slide_show");
 //}
 
-//void SessionDispatcher::check_user_qt() {
-//    sessioniface->call("check_user");
-//}
+void SessionDispatcher::check_user_qt() {
+    sessioniface->call("check_user");
+}
 
 //弹出登录框
 void SessionDispatcher::popup_login_dialog() {
@@ -380,28 +386,28 @@ void SessionDispatcher::popup_login_dialog() {
     sessioniface->call("slot_do_login_account");
 }
 
-//void SessionDispatcher::popup_register_dialog() {
-//    //add ubuntukylin sso
-//    sessioniface->call("slot_do_register");
-//}
+void SessionDispatcher::popup_register_dialog() {
+    //add ubuntukylin sso
+    sessioniface->call("slot_do_register");
+}
 
 //退出登录
-//void SessionDispatcher::logout_ubuntukylin_account() {
-//    //add ubuntukylin sso
-//    sessioniface->call("slot_do_logout");
-//}
+void SessionDispatcher::logout_ubuntukylin_account() {
+    //add ubuntukylin sso
+    sessioniface->call("slot_do_logout");
+}
 
-//void SessionDispatcher::handlerYoukerID(QString displayName, QString emailAddress) {
-//    emit this->ssoSuccessSignal(displayName, emailAddress);
-//}
+void SessionDispatcher::handlerYoukerID(QString displayName, QString emailAddress) {
+    emit this->ssoSuccessSignal(displayName, emailAddress);
+}
 
-//void SessionDispatcher::handlerLogoutSuccess() {
-//    emit this->ssoLoginLogoutSignal(1);
-//}
+void SessionDispatcher::handlerLogoutSuccess() {
+    emit this->ssoLoginLogoutSignal(true);
+}
 
-//void SessionDispatcher::handlerLoginFail() {
-//    emit this->ssoLoginLogoutSignal(0);
-//}
+void SessionDispatcher::handlerLoginFail() {
+    emit this->ssoLoginLogoutSignal(false);
+}
 
 
 //void SessionDispatcher::handlerWeatherPingback(bool result) {
@@ -493,7 +499,8 @@ void SessionDispatcher::handler_total_data_transmit(QString flag, QString msg) {
 //}
 
 void SessionDispatcher::onekey_scan_function_qt(QStringList selectedList) {
-    thread->initValues(selectedList, sessioniface, "onekey_scan_function");
+    QMap<QString, QVariant> data;
+    thread->initValues(data, selectedList, sessioniface, "onekey_scan_function");
     thread->start();
 }
 
@@ -574,8 +581,9 @@ void SessionDispatcher::onekey_scan_function_qt(QStringList selectedList) {
 
 void SessionDispatcher::scanSystemCleanerItems(QMap<QString, QVariant> data)
 {
-    qDebug() << "get arglist----------------------" << data;
-    sessioniface->call("get_scan_result", data);
+    QStringList tmp;
+    thread->initValues(data, tmp, sessioniface, "get_scan_result");
+    thread->start();
 }
 
 //void SessionDispatcher::cache_scan_function_qt(QStringList argList, QString flag) {
@@ -1399,11 +1407,11 @@ bool SessionDispatcher::set_antialiasing_style_qt(QString style) {
 //    return dir;
 //}
 
-//QString SessionDispatcher::show_file_path_dialog() {
-//    //选择文件
-//    QString fileName=QFileDialog::getOpenFileName(0, tr("Select file"), QDir::homePath(), tr("All Files(*)"));
-//    return fileName;
-//}
+QString SessionDispatcher::show_file_path_dialog() {
+    //选择文件
+    QString fileName=QFileDialog::getOpenFileName(0, tr("Select file"), QDir::homePath(), tr("All Files(*)"));
+    return fileName;
+}
 
 /*-----------------------------scrollbars of beauty-----------------------------*/
 bool SessionDispatcher::set_scrollbars_mode_overlay_qt() {

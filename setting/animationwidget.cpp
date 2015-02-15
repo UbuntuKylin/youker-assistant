@@ -1,3 +1,22 @@
+/*
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "animationwidget.h"
 #include <QPainter>
 #include <QDebug>
@@ -195,11 +214,9 @@ void AnimationWidget::initData()
     systemproxy->plymouth_init_check_qt();
     QStringList valid_list;
     QStringList plymouth_list = systemproxy->get_existing_plymouth_list_qt();
-    qDebug() << "11111111->" << plymouth_list;
     for(int i=0; i < plymouth_list.length(); i++) {
         if(systemproxy->get_image_path_qt(plymouth_list[i]) != "False"){
 //            mainModel.append({"itemTitle": plymouth_list[i]});
-            qDebug() << "222222->" << plymouth_list[i];
             valid_list.append(plymouth_list[i]);
         }
     }
@@ -303,7 +320,7 @@ void AnimationWidget::deleteSelectedAnimation(QString name)
 
 void AnimationWidget::displayCurrentItemInfo(QString info)
 {
-    qDebug() << "show info..." << info;
+//    qDebug() << "show info..." << info;
     this->selected_animation = info;
     int list_count = list_widget->count();
     for(int i=0; i < list_count; i++)

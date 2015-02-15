@@ -1,3 +1,22 @@
+/*
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #ifndef COMPUTERPAGE_H
 #define COMPUTERPAGE_H
 
@@ -8,7 +27,6 @@
 #include <QPainter>
 #include <QPen>
 #include <QEvent>
-#include "../component/separatorline.h"
 #include <QMap>
 #include <QGroupBox>
 #include <QFormLayout>
@@ -30,7 +48,7 @@ public:
         vendor = manufacturer;
     }
     QString translatorSwitch(QString orgStr);
-
+    void resetTimeValue(QString value);
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event);
@@ -43,16 +61,12 @@ private:
     QString title_context;
     QLabel *title_label;
     QString vendor;
-//    QLabel *line;
-    QHBoxLayout *h_layout;
-    QVBoxLayout *v_layout;
-    SeparatorLine *separ;
 
     void resizeEvent(QResizeEvent *);
 
     QMap<QString ,QVariant> info_map;
     QLabel *logo_label;
-
+    QLabel *time_label;
     QGroupBox *group_box;
     QFormLayout *form_layout;
 };

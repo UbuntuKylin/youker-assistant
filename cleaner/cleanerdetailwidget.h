@@ -1,6 +1,30 @@
-﻿#ifndef CLEANERDETAILWIDGET_H
+/*
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#ifndef CLEANERDETAILWIDGET_H
 #define CLEANERDETAILWIDGET_H
 
+//#include <QWidget>
+//#include "../component/kylinlistwidget.h"
+//#include "../component/kylintitlebar.h"
+//#include "../component/autogroup.h"
+//#include <QCheckBox>
 #include <QWidget>
 #include <QLabel>
 #include <QPushButton>
@@ -11,65 +35,105 @@
 #include "../component/kylinbutton.h"
 #include "../component/kylintoolbutton.h"
 #include "../component/systembutton.h"
-#include "../component/loadinglabel.h"
-#include <QTreeWidget>
-#include <QTableWidgetItem>
+#include "../component/commoncheckbox.h"
+#include <QCheckBox>
+#include "cleaneritems.h"
+#include "cleanlistwidget.h"
+#include <QGridLayout>
 
-//class MainWindow;
+class SessionDispatcher;
+class SystemDispatcher;
+class MainWindow;
+
+namespace Ui {
+class CleanerDetailWidget;
+}
+
 class CleanerDetailWidget : public QWidget
 {
     Q_OBJECT
+
 public:
-    explicit CleanerDetailWidget(QWidget *parent = 0);
+    explicit CleanerDetailWidget(QWidget *parent = 0, SessionDispatcher *seroxy = 0, SystemDispatcher *syproxy = 0, MainWindow *window = 0);
     ~CleanerDetailWidget();
-//    void setParentWindow(MainWindow* window) { p_mainwindow = window;}
+    void setUIData();
     void setLanguage();
-    void initTreeRoot();
     void initConnect();
-    void addSubItem(int rootIndex, QString content);
-    QTreeWidgetItem* getItem(QTreeWidgetItem *cur_item, QString item_text);
-    void deleteTreeWidgetItem(QString item_text);
-    void recursiveSelectedSubItems();
+    void getAllSelectedItems();
 
 public slots:
-    void cleanSelectedItemCache();
-    void onTreeWidgetItemChanged(QTreeWidgetItem* item, int column);
-    void onTreeWidgetItemPressed(QTreeWidgetItem * item, int column );
-    void onTreeItemDoubleClicked (QTreeWidgetItem * item, int column);
+    void onButtonClicked();
     void showReciveData(const QStringList &data);
 
+    void receiveCleanSignal();
+    void showReciveStatus(const QString &status);
+    void CleanUIAndData();
+
+
+signals:
+    void notifyMainCheckBox(int status);
 
 private:
-    QTreeWidget *tree_widget;
-    QTreeWidgetItem*  root_item;
-    bool changeFromUser; // true：这个状态变化是由用户触发的；false：由程序调用 setCheckState 函数触发的
-    bool changeToParent; // 某个节点 checkState 变化后，同步更新其它节点的方向，true：向父节点方向；false：向子节点方向
-    void changeParents(QTreeWidgetItem *item, Qt::CheckState state); //朝父节点方向刷新 CheckState
-    void changeChildren(QTreeWidgetItem *item, Qt::CheckState state); //朝子节点方向刷新 CheckState
-//    QLabel *img_label;
-//    QLabel *title_label;
-//    QLabel *description_label;
+    void initTitleBar();
 
-//    MainWindow *p_mainwindow;
-    QTreeWidgetItem *cache_apt_root;
-    QTreeWidgetItem *cache_software_root;
-    QTreeWidgetItem *cache_thumbnails_root;
-    QTreeWidgetItem *cache_firefox_root;
-    QTreeWidgetItem *cache_chromium_root;
-    QTreeWidgetItem *package_unneed_root;
-    QTreeWidgetItem *package_oldkernel_root;
-    QTreeWidgetItem *package_configfile_root;
-    QTreeWidgetItem *cookies_firefox_root;
-    QTreeWidgetItem *cookies_chromium_root;
-    QTreeWidgetItem *trace_firefox_root;
-    QTreeWidgetItem *trace_chromium_root;
-    QTreeWidgetItem *trace_system_root;
+private:
+    Ui::CleanerDetailWidget *ui;
+    MainWindow *parentWindow;
+    SessionDispatcher *sessionproxy;
+    SystemDispatcher *systemproxy;
+    QMap<QString, QVariant> argsData;
+    CleanListWidget *cache_apt_items ;
+    CommonCheckBox *cache_apt_btn;
+    CleanListWidget *cache_software_items ;
+    CommonCheckBox *cache_software_btn;
+    CleanListWidget *cache_thumbnails_items ;
+    CommonCheckBox *cache_thumbnails_btn;
+    CleanListWidget *cache_firefox_items ;
+    CommonCheckBox *cache_firefox_btn;
+    CleanListWidget *cache_chromium_items ;
+    CommonCheckBox *cache_chromium_btn;
+
+    CleanListWidget *package_unneed_items ;
+    CommonCheckBox *package_unneed_btn;
+    CleanListWidget *package_oldkernel_items ;
+    CommonCheckBox *package_oldkernel_btn;
+    CleanListWidget *package_configfile_items ;
+    CommonCheckBox *package_configfile_btn;
+
+    CleanListWidget *cookies_firefox_items ;
+    CommonCheckBox *cookies_firefox_btn;
+    CleanListWidget *cookies_chromium_items ;
+    CommonCheckBox *cookies_chromium_btn;
+
+    CommonCheckBox *trace_firefox_btn;
+    CommonCheckBox *trace_chromium_btn;
+//    KylinCheckBox *trace_system_btn;
+
+    QStringList cache_apt_list;
+    QStringList cache_software_list;
+    QStringList cache_thumbnails_list;
+    QStringList cache_firefox_list;
+    QStringList cache_chromium_list;
+    QStringList package_unneed_list;
+    QStringList package_oldkernel_list;
+    QStringList package_configfile_list;
+    QStringList cookies_firefox_list;
+    QStringList cookies_chromium_list;
+    QString trace_firefox_count;
+    QString trace_chromium_count;
 
     bool colorFlag;
+    QBoxLayout *main_layout;
+    QHBoxLayout *layout1;
+    QHBoxLayout *layout2;
+    QHBoxLayout *layout3;
+    int appendNum1;
+    int appendNum2;
+    int appendNum3;
+
+    QGridLayout *grid_layout;
+    int rowIndex;
+    int columnIndex;
 };
 
 #endif // CLEANERDETAILWIDGET_H
-
-
-
-

@@ -38,8 +38,6 @@ MainWindow::MainWindow(QWidget *parent) :
     this->resize(900, 600);
 //    this->setMouseTracking(true);
 //    ui->centralWidget->setMouseTracking(true);
-    initSkinCenter();
-
     this->setWindowOpacity(1);
 //    setMouseTracking(true);
     this->setAutoFillBackground(true);
@@ -62,6 +60,8 @@ MainWindow::MainWindow(QWidget *parent) :
 //    palette_back.setBrush(QPalette::Background, QBrush(QPixmap(last_skin_path)));
 //    main_skin_pixmap.load(":/background/res/skin/1.png");
 //    setPalette(palette_back);
+
+    initSkinCenter();
 
     home_page = NULL;
     info_widget = NULL;
@@ -298,20 +298,30 @@ void MainWindow::startDbusDaemon()
 //    systemproxy(this),
     sessioninterface = new SessionDispatcher(this);
     systeminterface = new SystemDispatcher(this);
+
+
+
     login_widget->setSessionDbusProxy(sessioninterface);
-//    home_action_widget->setParentWindow(this);
+    sessioninterface->check_user_qt();
+    connect(sessioninterface, SIGNAL(ssoSuccessSignal(QString, QString)), login_widget, SLOT(showLoginInfo(QString,QString)));
+    connect(sessioninterface, SIGNAL(ssoLoginLogoutSignal(bool)), login_widget, SLOT(showLoginAndLogoutStatus(bool)));
+
+    //    home_action_widget->setParentWindow(this);
     home_action_widget->setSessionDbusProxy(sessioninterface);
     home_action_widget->setSystemDbusProxy(systeminterface);
+    home_action_widget->enableSanButton();
     connect(sessioninterface, SIGNAL(isScanning(QString)), home_action_widget, SLOT(getScanResult(QString)));
     connect(sessioninterface, SIGNAL(finishScanWork(QString)), home_action_widget, SLOT(finishScanResult(QString)));
     connect(sessioninterface, SIGNAL(tellScanResultToQML(QString,QString)) ,home_action_widget, SLOT(getScanAllResult(QString,QString)));
-    connect(systeminterface, SIGNAL(finishCleanWorkMain(QString)), home_action_widget, SLOT(getCleanResult(QString)));
+    connect(systeminterface, SIGNAL(finishCleanWorkMain(QString/*, QString*/)), home_action_widget, SLOT(getCleanResult(QString/*, QString*/)));
     connect(systeminterface, SIGNAL(finishCleanWorkMainError(QString)), home_action_widget, SLOT(finishCleanError(QString)));
     connect(systeminterface, SIGNAL(quickCleanProcess(QString,QString)), home_action_widget, SLOT(getCleaningMessage(QString,QString)));
     home_page->setSessionDbusProxy(sessioninterface);
 }
 
 void MainWindow::initSkinCenter() {
+//    skin_center.setBackGround(last_skin_path);
+    skin_center.initTitleBar(last_skin_path);
     skin_center.setParentWindow(this);
     skin_center.initBackgroundList();
 }
@@ -401,7 +411,7 @@ void MainWindow::showHomePage()
         login_widget->show();
     if(home_action_widget == NULL)
     {
-        qDebug() << "new home action.....";
+//        qDebug() << "new home action.....";
         if(top_grid_layout == NULL )
             top_grid_layout = new QGridLayout();
         home_action_widget = new HomeActionWidget(this, mSettings);
@@ -412,7 +422,7 @@ void MainWindow::showHomePage()
     }
     else
     {
-        qDebug() << "show home.....";
+//        qDebug() << "show home.....";
         home_action_widget->show();
     }
     if(info_action_widget != NULL)
@@ -434,7 +444,7 @@ void MainWindow::showHomePage()
 
     if(home_page == NULL)
     {
-        qDebug() << "new home.....";
+//        qDebug() << "new home.....";
         if( bottom_grid_layout == NULL )
             bottom_grid_layout = new QGridLayout();
         home_page = new HomePage();
@@ -451,7 +461,7 @@ void MainWindow::showHomePage()
     }
     else
     {
-        qDebug() << "show home.....";
+//        qDebug() << "show home.....";
         home_page->show();
     }
     action_widget->setFixedSize(900, 227);
@@ -480,7 +490,7 @@ void MainWindow::showInfoWidget()
         login_widget->hide();
     if(info_action_widget == NULL)
     {
-        qDebug() << "new info action.....";
+//        qDebug() << "new info action.....";
         if(top_grid_layout == NULL )
             top_grid_layout = new QGridLayout();
         info_action_widget = new InfoActionWidget();
@@ -491,7 +501,7 @@ void MainWindow::showInfoWidget()
     }
     else
     {
-        qDebug() << "show info action.....";
+//        qDebug() << "show info action.....";
         info_action_widget->show();
     }
     if(home_action_widget != NULL)
@@ -531,7 +541,7 @@ void MainWindow::showInfoWidget()
     }
     else
     {
-        qDebug() << "show info.....";
+//        qDebug() << "show info.....";
         info_widget->show();
     }
     action_widget->setFixedSize(900, 150);
@@ -566,6 +576,7 @@ void MainWindow::showClearWidget()
         cleaner_action_widget = new CleanerActionWidget();
         cleaner_action_widget->setSessionDbusProxy(sessioninterface);
         cleaner_action_widget->setSystemDbusProxy(systeminterface);
+        connect(systeminterface, SIGNAL(sendCleanOverSignal()), cleaner_action_widget, SLOT(showCleanOverStatus()));
         connect(sessioninterface, SIGNAL(tellCleanerDetailStatus(QString)), cleaner_action_widget, SLOT(showReciveStatus(QString)));
         top_grid_layout->addWidget(cleaner_action_widget,0,0);
         action_widget->setLayout(top_grid_layout);
@@ -604,7 +615,8 @@ void MainWindow::showClearWidget()
         cleaner_widget->initUI();
         connect(cleaner_action_widget, SIGNAL(showDetailData()),cleaner_widget, SLOT(displayDetailPage()));
         connect(cleaner_action_widget, SIGNAL(showMainData()),cleaner_widget, SLOT(displayMainPage()));
-
+        connect(cleaner_action_widget, SIGNAL(sendCleanSignal()),cleaner_widget, SIGNAL(transCleanSignal()));
+        connect(systeminterface, SIGNAL(sendCleanOverSignal()), cleaner_widget, SLOT(displayMainPage()));
         bottom_grid_layout->addWidget(cleaner_widget,0,0);
 //        this->content_widget->setLayout(bottom_grid_layout);
         content_widget->setLayout(bottom_grid_layout);
@@ -768,9 +780,6 @@ void MainWindow::showBoxWidget()
     {
         if( bottom_grid_layout == NULL )
             bottom_grid_layout = new QGridLayout();
-        qDebug() << "Current Run Path->" << qApp->applicationDirPath();
-        qDebug() << "Get Path->" << getAppDirectory();
-
         box_widget = new BoxWidget(this, getAppDirectory());
 //        box_widget = new BoxWidget(this, qApp->applicationDirPath());
         bottom_grid_layout->addWidget(box_widget,0,0);

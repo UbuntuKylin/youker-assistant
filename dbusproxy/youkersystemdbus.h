@@ -1,5 +1,8 @@
 /*
- * Copyright (C) 2013 ~ 2014 National University of Defense Technology(NUDT) & Kylin Ltd.
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -13,6 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #ifndef YOUKERSYSTEMDBUS_H
 #define YOUKERSYSTEMDBUS_H
 
@@ -32,7 +36,7 @@ public:
     //退出systemdbus服务
     /*Q_INVOKABLE */void exit_qt();
 
-
+    void cleanAllSelectItems(QMap<QString, QVariant> selectMap);
 //    void removeFile(QString fileName);
 //    void removePackage(QString packageName);
 //    void removeFirefoxHistory();
@@ -135,14 +139,15 @@ public:
 //    QString dealProgressData(QString type, QString msg);
 
 signals:
+    void sendCleanOverSignal();
     //添加新的开机动画图片后触发该信号
 //    void finishAddBootImage();
 //    void finishCleanSingleWork(QString msg);
 //    void finishCleanSingleWorkError(QString msg);
 //    void finishCleanWork(QString msg);
-//    void quitCleanWork(QString msg);
+    void quitCleanWork(/*QString msg*/);
 //    void finishCleanWorkError(QString msg);
-    void finishCleanWorkMain(QString msg);
+    void finishCleanWorkMain(QString msg/*, QString flag*/);
     void finishCleanWorkMainError(QString msg);
     void quickCleanProcess(QString type, QString status);
 //    //------------------------------
@@ -157,14 +162,14 @@ public slots:
 //    void handler_clear_single_rubbish(QString msg);
 //    void handler_clear_single_rubbish_error(QString msg);
 //    void handler_clear_rubbish(QString msg);
-//    void handler_quit_clean(QString msg);
+    void handler_quit_clean(/*QString msg*/);
 //    void handler_clear_rubbish_error(QString msg);
     void handler_clear_rubbish_main_onekey(QString msg);
     void handler_clear_rubbish_main_error(QString msg);
     void handler_status_for_quick_clean(QString type, QString status);
 
     void handlerCleanerSubPageDataSignal(QStringList data);
-    void handlerCleanerSubPageStatusSignal(QString status);
+    void handlerCleanerSubPageStatusSignal(QString status, QString domain);
     void handlerCleanerSubPageErrorSignal(QString status);
 //    //----------------------------
 //    //后台发来清理不需要的包的正确过程中的信号后响应该函数

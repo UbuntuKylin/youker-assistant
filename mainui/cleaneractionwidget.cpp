@@ -1,3 +1,22 @@
+/*
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "cleaneractionwidget.h"
 #include "../component/kylintoolbutton.h"
 #include <QDebug>
@@ -87,15 +106,14 @@ CleanerActionWidget::CleanerActionWidget(QWidget *parent)
     layout2->setMargin(0);
     layout2->setContentsMargins(0, 0, 0, 0);
 
-    QHBoxLayout *layout3 = new QHBoxLayout();
+    QVBoxLayout *layout3 = new QVBoxLayout();
     layout3->addStretch();
-    layout3->addWidget(scan_button/*, 0, Qt::AlignRight*/);
-    layout3->addWidget(clean_button/*, 0, Qt::AlignRight*/);
-    layout3->addWidget(back_button/*, 0, Qt::AlignBottom*/);
+    layout3->addWidget(scan_button, 0, Qt::AlignRight);
+    layout3->addWidget(clean_button, 0, Qt::AlignRight);
+    layout3->addWidget(back_button, 0, Qt::AlignRight);
     layout3->addStretch();
     layout3->setSpacing(10);
-    layout3->setMargin(0);
-    layout3->setContentsMargins(0, 0, 0, 0);
+    layout3->setContentsMargins(0, 20, 0, 0);
 
     QHBoxLayout *main_layout = new QHBoxLayout();
     main_layout->addLayout(layout2);
@@ -133,9 +151,24 @@ void CleanerActionWidget::setLanguage()
     doing_label->setText(tr("Scaning......"));//正在扫描......
 }
 
+void CleanerActionWidget::showCleanOverStatus()
+{
+//    qDebug() << "Clean OVer.......";
+    loading_label->stopLoading();
+    scan_button->show();
+    scan_button->setEnabled(true);
+    clean_button->hide();
+    back_button->hide();
+//    back_button->hide();
+//    suggest_label->show();
+//    result_label->show();
+//    doing_label->hide();
+    doing_label->setText(tr("Clean OK......"));
+}
+
 void CleanerActionWidget::showReciveStatus(const QString &status)
 {
-    qDebug() << "mainpage receive status--------" << status;
+//    qDebug() << "mainpage receive status--------" << status;
     if(status == "Complete:Cache")
     {
         doing_label->setText(tr("Cache Scan OK......"));
@@ -202,8 +235,32 @@ void CleanerActionWidget::onCleanButtonClicked()
 //    result_label->hide();
     doing_label->setText(tr("Ready to Cleanup......"));//准备清理......
     doing_label->show();
+    emit this->sendCleanSignal();
+
+
+    //cache file
+//    systemProxy->removeFile("/home/trusty64/.cache/thumbnails/fail");
+
+
+    //package file
+//    systemProxy->removePackage("/var/cache/apt/archives/tk8.6_8.6.1-3ubuntu2_amd64.deb");
+
+
+    //firefox cookies
 //    systemProxy->set_user_homedir_qt();
-//    systemProxy->clean_by_main_one_key_qt();
+//    systemProxy->removeFirefoxCookie("07net01.com");
+
+    //chromium cookies
+//    systemProxy->set_user_homedir_qt();
+//    systemProxy->removeChromiumCookie();
+
+    //firefox history
+//    systemProxy->set_user_homedir_qt();
+//    systemProxy->removeFirefoxHistory();
+
+    //chromium history
+//    systemProxy->set_user_homedir_qt();
+//    systemProxy->removeChromiumHistory();
 }
 
 void CleanerActionWidget::onBackButtonClicked()

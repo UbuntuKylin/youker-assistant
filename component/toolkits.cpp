@@ -17,11 +17,11 @@
 
 extern QPoint widgetPosition;
 
-Toolkits::Toolkits(QObject *parent) :
-    QObject(parent)
+Toolkits::Toolkits(QObject *parent, int width, int height) :
+    QObject(parent), parent_width(width), parent_height(height)
 {
-    this->mainwindow_width = 850;
-    this->mainwindow_height = 600;
+//    this->mainwindow_width = 850;
+//    this->mainwindow_height = 600;
     this->alert_width = 200;
     this->alert_height = 75;
 
@@ -38,8 +38,10 @@ Toolkits::Toolkits(QObject *parent) :
 
 //启动alert提示
 void Toolkits::alertMSG(const QString &alertText) {
-    this->alert_x = widgetPosition.x() + (mainwindow_width / 2) - (this->alert_width  / 2);
-    this->alert_y = widgetPosition.y() + (mainwindow_height /2) - (this->alert_height  / 2);
+//    this->alert_x = widgetPosition.x() + (mainwindow_width / 2) - (this->alert_width  / 2);
+//    this->alert_y = widgetPosition.y() + (mainwindow_height /2) - (this->alert_height  / 2);
+    this->alert_x = widgetPosition.x() + (this->parent_width / 2) - (this->alert_width  / 2);
+    this->alert_y = widgetPosition.y() + (this->parent_height /2) - (this->alert_height  / 2);
 
     this->ay = this->alert_y;
     this->ao = 0.0;

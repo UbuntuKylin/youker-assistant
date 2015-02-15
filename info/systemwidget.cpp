@@ -1,3 +1,22 @@
+/*
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "systemwidget.h"
 #include <QScrollBar>
 #include <QPushButton>
@@ -9,14 +28,16 @@ SystemWidget::SystemWidget(QWidget *parent, SystemDispatcher *proxy) :
     systemproxy(proxy)
 {
     setFixedSize(750, 403);
-
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(updateTimeValue()));
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403);
     this->initData();
-    page = new ComputerPage(scroll_widget->zone, "Computer Base Info");
+    page = new ComputerPage(scroll_widget->zone, tr("Computer Base Info"));
     page->setMap(sys_info_map, sys_info_map.value("ComVendor").toString().toUpper());
     page->initUI();
     scroll_widget->addScrollWidget(page);
+    timer->start(1000*4);
 //    page2 = new ComputerPage(scroll_widget->zone, "lixiang");
 //    page2->setMap(sys_info_map);
 //    page2->initUI();
@@ -46,6 +67,35 @@ SystemWidget::SystemWidget(QWidget *parent, SystemDispatcher *proxy) :
 //    pArea->setWidget(qw);//这里设置滚动窗口qw，
 //    pArea->setGeometry(0,0,700, 490);//要显示的区域大小
 //    qw->setGeometry(0,0,700, 600);//这里变大后，看出他实际滚动的是里面的QWidget窗口
+}
+
+SystemWidget::~SystemWidget()
+{
+    disconnect(timer,SIGNAL(timeout()),this,SLOT(updateTimeValue()));
+    if(timer->isActive()) {
+        timer->stop();
+    }
+    if (timer != NULL) {
+        delete timer;
+        timer = NULL;
+    }
+}
+
+void SystemWidget::updateTimeValue()
+{
+    QString result;
+    int time_value = systemproxy->get_time_value_qt().toInt();
+    int hour_value = time_value/60;
+    int minutes_value =time_value%60;
+    if(hour_value < 1)
+    {
+        result = QString::number(minutes_value) + tr(" Minutes");//分钟
+    }
+    else
+    {
+        result = QString::number(hour_value) + tr(" Hours ") + QString::number(minutes_value) + tr(" Minutes");//小时 分钟
+    }
+    page->resetTimeValue(result);
 }
 
 void SystemWidget::initData()

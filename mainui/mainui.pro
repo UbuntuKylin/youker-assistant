@@ -124,7 +124,7 @@ SOURCES += main.cpp\
     ../cleaner/cleanermainwidget.cpp \
     ../cleaner/cleaneritems.cpp \
     ../component/kylincheckbox.cpp \
-    toolkits.cpp \
+#    toolkits.cpp \
     alertdialog.cpp \
     ../dbusproxy/youkersystemdbus.cpp \
     ../dbusproxy/youkersessiondbus.cpp \
@@ -135,7 +135,9 @@ SOURCES += main.cpp\
     ../component/kylinscrollarea.cpp \
     kthread.cpp \
     cameramanager.cpp \
-    aboutdialog.cpp
+    aboutdialog.cpp \
+    ../cleaner/cleanlistwidget.cpp \
+    ../component/commoncheckbox.cpp
 
 HEADERS  += mainwindow.h \
     titlewidget.h \
@@ -205,7 +207,7 @@ HEADERS  += mainwindow.h \
     ../cleaner/cleanermainwidget.h \
     ../cleaner/cleaneritems.h \
     ../component/kylincheckbox.h \
-    toolkits.h \
+#    toolkits.h \
     alertdialog.h \
     ../dbusproxy/youkersystemdbus.h \
     ../dbusproxy/youkersessiondbus.h \
@@ -216,13 +218,17 @@ HEADERS  += mainwindow.h \
     ../component/kylinscrollarea.h \
     kthread.h \
     cameramanager.h \
-    aboutdialog.h
+    aboutdialog.h \
+    ../cleaner/cleanlistwidget.h \
+    ../component/commoncheckbox.h
 
 FORMS    += mainwindow.ui \
     ../component/quibo.ui \
     alertdialog.ui \
     autostartwidget.ui \
-    aboutdialog.ui
+    aboutdialog.ui \
+    ../cleaner/cleanlistwidget.ui \
+    ../cleaner/cleanerdetailwidget.ui
 
 RESOURCES += \
     img.qrc

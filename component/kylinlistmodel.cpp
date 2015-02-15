@@ -1,14 +1,15 @@
 #include "kylinlistmodel.h"
 #include <QIcon>
-CFetureListModel::CFetureListModel(void)
+
+KylinListModel::KylinListModel()
 {
 }
 
-CFetureListModel::~CFetureListModel(void)
+KylinListModel::~KylinListModel()
 {
 }
 
-QModelIndex	CFetureListModel::index ( int row,
+QModelIndex	KylinListModel::index ( int row,
                                 int column,
                                 const QModelIndex & parent) const
 {
@@ -20,16 +21,16 @@ QModelIndex	CFetureListModel::index ( int row,
     return QModelIndex();
 }
 
-int CFetureListModel::rowCount ( const QModelIndex & parent  ) const
+int KylinListModel::rowCount ( const QModelIndex & parent  ) const
 {
     return m_data.count();
 }
 
-int CFetureListModel::columnCount ( const QModelIndex & parent  ) const
+int KylinListModel::columnCount ( const QModelIndex & parent  ) const
 {
     return m_title.count();
 }
-bool CFetureListModel::insertRows ( int row, int count, const QModelIndex & parent)
+bool KylinListModel::insertRows ( int row, int count, const QModelIndex & parent)
 {
     beginInsertRows(QModelIndex(), row, row + count - 1);
     for (int i = 0; i < count; ++i)
@@ -42,22 +43,22 @@ bool CFetureListModel::insertRows ( int row, int count, const QModelIndex & pare
     return true;
 }
 
-bool CFetureListModel::insertColumns ( int column, int count, const QModelIndex & )
+bool KylinListModel::insertColumns ( int column, int count, const QModelIndex & )
 {
     return true;
 }
 
-bool CFetureListModel::removeRows ( int row, int count, const QModelIndex & parent  )
+bool KylinListModel::removeRows ( int row, int count, const QModelIndex & parent  )
 {
     return true;
 }
 
-bool CFetureListModel::removeColumns ( int column, int count, const QModelIndex & parent )
+bool KylinListModel::removeColumns ( int column, int count, const QModelIndex & parent )
 {
     return true;
 }
 
-QVariant CFetureListModel::data ( const QModelIndex & index, int role  ) const
+QVariant KylinListModel::data ( const QModelIndex & index, int role  ) const
 {
     if (!index.isValid())
     {
@@ -83,7 +84,7 @@ QVariant CFetureListModel::data ( const QModelIndex & index, int role  ) const
     return QVariant();
 }
 
-bool CFetureListModel::setData ( const QModelIndex & index,
+bool KylinListModel::setData ( const QModelIndex & index,
                            const QVariant & value,
                            int role)
 {
@@ -110,7 +111,7 @@ bool CFetureListModel::setData ( const QModelIndex & index,
     return false;
 }
 
-QVariant CFetureListModel::headerData(int section, Qt::Orientation  orientation ,int role) const
+QVariant KylinListModel::headerData(int section, Qt::Orientation  orientation ,int role) const
 {
 
     if (role == Qt::DisplayRole && orientation == Qt::Horizontal)

@@ -404,4 +404,7 @@
         <file>res/plugin/processmanager.png</file>
         <file>res/plugin/shredder.png</file>
     </qresource>
+    <qresource prefix="/translate">
+        <file>translation/youker-assistant_zh_CN.qm</file>
+    </qresource>
 </RCC>

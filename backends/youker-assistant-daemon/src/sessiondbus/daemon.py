@@ -118,10 +118,10 @@ class SessionDaemon(dbus.service.Object):
         self.daemoncache = cleaner.CleanTheCache()
         self.init_mechanize()
 #        # sso - Robert
-        #self.sso = get_ubuntu_sso_backend()
-        #self.sso.connect("whoami", self.slot_whoami_done)
-        #self.sso.connect("logout", self.slot_logout_successful)
-        #self.sso.connect("fail",self.slot_login_fail)
+#        self.sso = get_ubuntu_sso_backend()
+#        self.sso.connect("whoami", self.slot_whoami_done)
+#        self.sso.connect("logout", self.slot_logout_successful)
+#        self.sso.connect("fail",self.slot_login_fail)
         self.token = ""
         self.user = ""
         self.display_name = ""
@@ -130,6 +130,12 @@ class SessionDaemon(dbus.service.Object):
         bus_name = dbus.service.BusName(INTERFACE, bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def currently_installed_version(self):
+        cache = apt.Cache()
+        pkg = cache['youker-assistant']
+        return pkg.installed.version
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def check_user(self):
@@ -145,12 +151,6 @@ class SessionDaemon(dbus.service.Object):
         except Exception, e:
             print('Check user failed.')
             print e
-
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
-    def currently_installed_version(self):
-        cache = apt.Cache()
-        pkg = cache['youker-assistant']
-        return pkg.installed.version
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def slot_do_login_account(self):

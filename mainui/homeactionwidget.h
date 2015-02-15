@@ -1,4 +1,23 @@
-﻿#ifndef HOMEACTIONWIDGET_H
+﻿/*
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#ifndef HOMEACTIONWIDGET_H
 #define HOMEACTIONWIDGET_H
 
 #include <QWidget>
@@ -36,6 +55,8 @@ public:
     QString getSafeScanDate();
     QString getOneKeyFlag();
 
+    void enableSanButton();
+
 public slots:
     void onStartButtonClicked();
     void onCleanButtonClicked();
@@ -43,7 +64,7 @@ public slots:
     void getScanResult(QString msg);
     void finishScanResult(QString msg);
     void getScanAllResult(QString flag, QString msg);
-    void getCleanResult(QString msg);
+    void getCleanResult(QString msg/*, QString flag*/);
     void finishCleanError(QString msg);
     void getCleaningMessage(QString type, QString status);
 

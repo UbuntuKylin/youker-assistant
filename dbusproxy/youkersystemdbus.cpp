@@ -1,5 +1,8 @@
 /*
- * Copyright (C) 2013 ~ 2014 National University of Defense Technology(NUDT) & Kylin Ltd.
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -13,6 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #include "youkersystemdbus.h"
 #include <QDebug>
 #include <QtDBus>
@@ -23,7 +27,6 @@
 SystemDispatcher::SystemDispatcher(QObject *parent)
 //    QObject(parent)
 {
-    qDebug() << "init system dbus daemon....";
     systemiface = new QDBusInterface("com.ubuntukylin.youker",
                                "/",
                                "com.ubuntukylin.youker",
@@ -38,7 +41,7 @@ SystemDispatcher::SystemDispatcher(QObject *parent)
 //    QObject::connect(systemiface,SIGNAL(clean_single_complete(QString)),this,SLOT(handler_clear_single_rubbish(QString)));
 //    QObject::connect(systemiface,SIGNAL(clean_single_error(QString)),this,SLOT(handler_clear_single_rubbish_error(QString)));
 //    QObject::connect(systemiface,SIGNAL(clean_complete(QString)),this,SLOT(handler_clear_rubbish(QString)));
-//    QObject::connect(systemiface,SIGNAL(quit_clean(QString)),this,SLOT(handler_quit_clean(QString)));
+    QObject::connect(systemiface,SIGNAL(quit_clean(/*QString*/)),this,SLOT(handler_quit_clean(/*QString*/)));
 //    QObject::connect(systemiface,SIGNAL(clean_error(QString)),this,SLOT(handler_clear_rubbish_error(QString)));
     QObject::connect(systemiface,SIGNAL(clean_complete_onekey(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error_onekey(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
@@ -46,7 +49,7 @@ SystemDispatcher::SystemDispatcher(QObject *parent)
 
 
     QObject::connect(systemiface,SIGNAL(subpage_data_signal(QStringList)),this,SLOT(handlerCleanerSubPageDataSignal(QStringList)));
-    QObject::connect(systemiface,SIGNAL(subpage_status_signal(QString)),this,SLOT(handlerCleanerSubPageStatusSignal(QString)));
+    QObject::connect(systemiface,SIGNAL(subpage_status_signal(QString, QString)),this,SLOT(handlerCleanerSubPageStatusSignal(QString, QString)));
     QObject::connect(systemiface,SIGNAL(subpage_error_signal(QString)),this,SLOT(handlerCleanerSubPageErrorSignal(QString)));
 
 //    QObject::connect(systemiface,SIGNAL(finish_clean(QString)),this,SLOT(handlerClearDeb(QString)));
@@ -67,6 +70,44 @@ SystemDispatcher::~SystemDispatcher() {
 //        thread = NULL;
 //    }
 }
+
+void SystemDispatcher::cleanAllSelectItems(QMap<QString, QVariant> selectMap)
+{
+    QStringList tmp;
+    thread->initValues(selectMap, tmp, systemiface, "remove_select_items");
+    thread->start();
+}
+
+//void SystemDispatcher::removeFile(QString fileName)
+//{
+//    qDebug() << "start to remove file->" << fileName;
+//    systemiface->call("remove_file", fileName);
+//}
+
+//void SystemDispatcher::removePackage(QString packageName)
+//{
+//    systemiface->call("remove_package", packageName);
+//}
+
+//void SystemDispatcher::removeFirefoxHistory()
+//{
+//    systemiface->call("remove_firefox_history");
+//}
+
+//void SystemDispatcher::removeChromiumHistory()
+//{
+//    systemiface->call("remove_chromium_history");
+//}
+
+//void SystemDispatcher::removeFirefoxCookie(QString cookieName)
+//{
+//    systemiface->call("remove_firefox_cookies", cookieName);
+//}
+
+//void SystemDispatcher::removeChromiumCookie(QString cookieName)
+//{
+//    systemiface->call("remove_chromium_cookies", cookieName);
+//}
 
 //void SystemDispatcher::kill_root_process_qt(QString pid) {
 //    systemiface->call("kill_root_process", pid);
@@ -270,9 +311,9 @@ void SystemDispatcher::set_user_homedir_qt() {
 //     emit finishCleanWork(msg);
 //}
 
-//void SystemDispatcher::handler_quit_clean(QString msg) {
-//    emit quitCleanWork(msg);
-//}
+void SystemDispatcher::handler_quit_clean(/*QString msg*/) {
+    emit quitCleanWork(/*msg*/);//dengting
+}
 
 //void SystemDispatcher::handler_clear_single_rubbish(QString msg) {
 //    emit finishCleanSingleWork(msg);
@@ -282,8 +323,8 @@ void SystemDispatcher::set_user_homedir_qt() {
 //    emit finishCleanSingleWorkError(msg);
 //}
 
-void SystemDispatcher::handler_clear_rubbish_main_onekey(QString msg) {
-     emit finishCleanWorkMain(msg);
+void SystemDispatcher::handler_clear_rubbish_main_onekey(QString msg/*, QString flag*/) {
+     emit finishCleanWorkMain(msg/*, flag*/);
 }
 
 void SystemDispatcher::handler_clear_rubbish_main_error(QString msg) {
@@ -303,17 +344,24 @@ QStringList SystemDispatcher::get_sound_themes_qt() {
 
 void SystemDispatcher::handlerCleanerSubPageDataSignal(QStringList data)
 {
-
+    qDebug() << "lixiang clean data----" << data;
 }
 
-void SystemDispatcher::handlerCleanerSubPageStatusSignal(QString status)
+void SystemDispatcher::handlerCleanerSubPageStatusSignal(QString status, QString domain)
 {
+    qDebug() << "lixiang clean status----" << status << "--------domain--------" << domain;
 
+//    lixiang clean status---- "Complete:Cookies.firefox" --------domain-------- "10010.com"
+//    lixiang clean status---- "Complete:Cookies.firefox" --------domain-------- "10086.cn"
+    if(status == "Complete:All" && domain == "finish")
+    {
+        emit sendCleanOverSignal();
+    }
 }
 
 void SystemDispatcher::handlerCleanerSubPageErrorSignal(QString status)
 {
-
+    qDebug() << "lixiang clean error----" << status;
 }
 
 //QStringList SystemDispatcher::get_sounds_qt() {
@@ -416,7 +464,8 @@ QString SystemDispatcher::showSelectFileDialog(QString flag) {
 void SystemDispatcher::clean_by_main_one_key_qt() {
     QStringList argList;
     argList << "1" << "1" << "1";
-    thread->initValues(argList, systemiface, "onekey_clean_crufts_function");
+    QMap<QString, QVariant> data;
+    thread->initValues(data, argList, systemiface, "onekey_clean_crufts_function");
     thread->start();
 }
 

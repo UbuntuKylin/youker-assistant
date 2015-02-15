@@ -64,7 +64,7 @@ int make_pid_file() {
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+    QApplication app(argc, argv);
 
     QTextCodec::setCodecForTr(QTextCodec::codecForLocale());
     QTextCodec::setCodecForCStrings(QTextCodec::codecForLocale());
@@ -75,22 +75,21 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-//    QString locale = QLocale::system().name();
-//    QTranslator translator;
-//    if(locale == "zh_CN" || locale == "es" || locale == "fr" || locale == "de" || locale == "ru") {//中文 西班牙语 法语 德语 俄语
-//        //加载Qt和QML文件的国际化
-//        if(!translator.load("youker-assistant_" + locale + ".qm",
-//                            ":/translate/translation/"))
-//            qDebug() << "Load translation file："<< "youker-assistant_" + locale + ".qm" << " failed!";
-//        else
-//            app.installTranslator(&translator);
-//    }
+    QString locale = QLocale::system().name();
+    QTranslator translator;
+    if(locale == "zh_CN") {
+        if(!translator.load("youker-assistant_" + locale + ".qm",
+                            ":/translate/translation/"))
+            qDebug() << "Load translation file："<< "youker-assistant_" + locale + ".qm" << " failed!";
+        else
+            app.installTranslator(&translator);
+    }
 
-//    //加载Qt对话框默认的国际化
-//    QTranslator qtTranslator;
-//    qtTranslator.load("qt_" + locale,
-//                      QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-//    app.installTranslator(&qtTranslator);
+    //加载Qt对话框默认的国际化
+    QTranslator qtTranslator;
+    qtTranslator.load("qt_" + locale,
+                      QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    app.installTranslator(&qtTranslator);
 
     QFile qss(":/qssfile/res/qss/youker-assistant.qss");
     qss.open(QFile::ReadOnly);
@@ -98,8 +97,8 @@ int main(int argc, char *argv[])
     qss.close();
 
     MainWindow w;
-//    w.setTranslator(&translator);
+    w.setTranslator(&translator);
     w.display();
 
-    return a.exec();
+    return app.exec();
 }

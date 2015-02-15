@@ -1,3 +1,22 @@
+/*
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "homepage.h"
 //#include "../component/commontoolbutton.h"
 #include <QSignalMapper>
@@ -28,6 +47,7 @@ HomePage::HomePage(QWidget *parent) :
     version_title = new QLabel();
     version_tip = new QLabel();
     check_btn = new QPushButton();
+    version_label = new QLabel();
     box_logo = new QLabel();
     box_title = new QLabel();
     box_tip = new QLabel();
@@ -47,14 +67,17 @@ HomePage::HomePage(QWidget *parent) :
     check_btn->setObjectName("checkButton");
     check_btn->setCursor(Qt::PointingHandCursor);
     check_btn->setFocusPolicy(Qt::NoFocus);
+    version_label->setObjectName("smallgrayLabel");
     version_title->setObjectName("bigblackLabel");
     box_title->setObjectName("bigblackLabel");
     version_tip->setAlignment(Qt::AlignLeft);
     version_tip->setObjectName("smallgrayLabel");
+    version_tip->setFixedWidth(380);
     box_tip->setAlignment(Qt::AlignLeft);
     box_tip->setObjectName("smallgrayLabel");
     version_tip->setWordWrap(true);//QLabel自动换行
     box_tip->setWordWrap(true);//QLabel自动换行
+    box_tip->setFixedWidth(380);
     more_btn->setObjectName("transparentButton");
     more_btn->setCursor(Qt::PointingHandCursor);
 
@@ -87,6 +110,7 @@ void HomePage::initUI()
     QHBoxLayout *layout1 = new QHBoxLayout();
     layout1->addWidget(version_title);
     layout1->addWidget(check_btn);
+    layout1->addWidget(version_label);
     layout1->addStretch();
     layout1->setMargin(0);
     layout1->setSpacing(5);
@@ -196,6 +220,7 @@ void HomePage::initConnect()
     connect(more_btn, SIGNAL(clicked()), p_mainwindow, SIGNAL(chanegBoxToolStatus()));
     connect(more_text_btn, SIGNAL(clicked()), p_mainwindow, SLOT(showBoxWidget()));
     connect(more_text_btn, SIGNAL(clicked()), p_mainwindow, SIGNAL(chanegBoxToolStatus()));
+    connect(check_btn, SIGNAL(clicked()), this, SLOT(checkLastestVersion()));
 }
 
 void HomePage::setLanguage()
@@ -212,6 +237,12 @@ void HomePage::setLanguage()
 void HomePage::initBoxTool()
 {
 
+}
+
+void HomePage::checkLastestVersion()
+{
+    QString version = sessionProxy->checkNewVersion();
+    version_label->setText(version);
 }
 
 void HomePage::switchPageIndex(QString index)

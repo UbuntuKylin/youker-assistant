@@ -46,7 +46,8 @@ QLabel#smallgrayLabel{
 }
 
 QLabel#tipLabel{
-    color:#7c8487;
+    /*color:#7c8487;*/
+    color:#b2b2b2;
     font-family: "Ubuntu";
     font-size: 14;
     text-align: left;

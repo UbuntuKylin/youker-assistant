@@ -1,3 +1,22 @@
+/*
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "cleanerwidget.h"
 #include <QVBoxLayout>
 #include <QDebug>
@@ -36,8 +55,11 @@ CleanerWidget::~CleanerWidget()
 void CleanerWidget::initUI()
 {
     main_widget = new CleanerMainWidget(this, p_mainwindow);
-    detail_widget = new CleanerDetailWidget();
+    detail_widget = new CleanerDetailWidget(this, sessionProxy, systemProxy, p_mainwindow);
+    connect(this, SIGNAL(transCleanSignal()), detail_widget, SLOT(receiveCleanSignal()));
+    connect(this, SIGNAL(clearDetailPage()), detail_widget, SLOT(CleanUIAndData()));
     connect(sessionProxy, SIGNAL(tellCleanerDetailData(QStringList)), detail_widget, SLOT(showReciveData(QStringList)));
+    connect(sessionProxy, SIGNAL(tellCleanerDetailStatus(QString)), detail_widget, SLOT(showReciveStatus(QString)));
     statked_widget->addWidget(main_widget);
     statked_widget->addWidget(detail_widget);
     QVBoxLayout *layout1 = new QVBoxLayout();
@@ -57,4 +79,5 @@ void CleanerWidget::displayDetailPage()
 void CleanerWidget::displayMainPage()
 {
     statked_widget->setCurrentIndex(0);
+    emit this->clearDetailPage();
 }

@@ -1,3 +1,22 @@
+/*
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "infoactionwidget.h"
 #include "../component/kylintoolbutton.h"
 #include "mainwindow.h"
@@ -54,6 +73,6 @@ InfoActionWidget::~InfoActionWidget()
 
 void InfoActionWidget::setLanguage()
 {
-    suggest_label->setText(tr("Understand hardware information, provide more convenient channel to obtain hardware information"));//了解电脑硬件详细信息，为用户提供更加方便的获 取硬件信息渠道
+    suggest_label->setText(tr("Understand hardware information, provide more convenient channel to obtain hardware information"));//了解电脑硬件详细信息，为用户提供更加方便的获取硬件信息渠道
 //    result_label->setText(tr("了解电脑硬件详细信息，为用户提供更加方便的获 取硬件信息渠道。"));
 }

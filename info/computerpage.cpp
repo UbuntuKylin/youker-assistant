@@ -1,3 +1,22 @@
+/*
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "computerpage.h"
 #include "../component/labelgroup.h"
 #include "../component/utils.h"
@@ -9,12 +28,8 @@ ComputerPage::ComputerPage(QWidget *parent, QString title/*, QString manufacture
     this->setWindowFlags(Qt::FramelessWindowHint);
     page_height = 0;
     title_label = NULL;
-    separ = NULL;
-    h_layout = NULL;
-    v_layout = NULL;
-
+    time_label =NULL;
     logo_label = NULL;
-
     group_box = NULL;
     form_layout = NULL;
 }
@@ -27,20 +42,10 @@ ComputerPage::~ComputerPage()
         delete title_label;
         title_label = NULL;
     }
-    if(separ != NULL)
+    if(time_label != NULL)
     {
-        delete separ;
-        separ = NULL;
-    }
-    if(h_layout != NULL)
-    {
-        delete h_layout;
-        h_layout = NULL;
-    }
-    if(v_layout != NULL)
-    {
-        delete v_layout;
-        v_layout = NULL;
+        delete time_label;
+        time_label = NULL;
     }
 }
 
@@ -91,26 +96,34 @@ void ComputerPage::initUI()
 
     QMap<QString,QVariant>::iterator it; //遍历map
     for ( it = info_map.begin(); it != info_map.end(); ++it ) {
-        QLabel *label = new QLabel();
-        label->setText(tr("%1").arg(it.value().toString()));
-        label->setFixedHeight(ITEMHEIGHT);
-
         if(it.key() == "uptime")
         {
-//            var valueHour = Math.floor(timeValue/60);//返回小于等于timeValue/60的最大整数
-//    //        var aa = valueHour.toFixed(0);
-//            var valueMinute = timeValue % 60;
-//            if(valueHour == 0) {
-//                uptimeText.text = valueMinute + qsTr(" Minutes");//分钟
-//            }
-//            else {
-//                uptimeText.text = valueHour + qsTr(" Hours ") + valueMinute + qsTr(" Minutes");//小时 分钟
-//            }
+            time_label = new QLabel();
+            int time_value = it.value().toInt();
+            int hour_value = time_value/60;
+            int minutes_value =time_value%60;
+            if(hour_value < 1)
+            {
+                time_label->setText(QString::number(minutes_value) + tr(" Minutes"));//分钟
+            }
+            else
+            {
+                time_label->setText(QString::number(hour_value) + tr(" Hours ") + QString::number(minutes_value) + tr(" Minutes"));//小时 分钟
+            }
+            time_label->setFixedHeight(ITEMHEIGHT);
+            form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), time_label);
+            page_height += time_label->height();
         }
-
-
-        form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), label);
-        page_height += label->height();
+        else{
+            QLabel *label = new QLabel();
+            label->setText(tr("%1").arg(it.value().toString()));
+            label->setFixedHeight(ITEMHEIGHT);
+            form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), label);
+            page_height += label->height();
+        }
+//        label->setFixedHeight(ITEMHEIGHT);
+//        form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), label);
+//        page_height += label->height();
         page_height += ITEMVSPACE;
     }
     page_height += ITEMVSPACE*2;//every groupbox has tow separate line
@@ -188,48 +201,13 @@ void ComputerPage::initUI()
 //    logo_label->show();
 //    logo_label->move(670 - logo_label->width(), 40);
 
-////    line = new QLabel();
-//////    line->setFixedWidth(10);
-////    line->installEventFilter(this);
-//    if(separ == NULL)
-//    {
-//        separ = new SeparatorLine();
-//        separ->setFixedWidth(700-title_label->width());
-//    }
-//    if(h_layout == NULL)
-//    {
-//        h_layout = new QHBoxLayout();
-//        h_layout->addWidget(title_label);
-//        h_layout->addWidget(separ);
-////        h_layout->setSpacing(0);//设置间隔
-////        h_layout->setMargin(0);//设置总的外围边框
-//    }
 
-//    if(v_layout == NULL)
-//    {
-//        v_layout = new QVBoxLayout();
-//        v_layout->addLayout(h_layout);
-//    }
-//    page_height += title_label->height();
-
-//    QMap<QString,QString>::iterator it; //遍历map
-//    for ( it = info_map.begin(); it != info_map.end(); ++it ) {
-//        LabelGroup *label = new LabelGroup(this);
-//        label->setLanguage(it.key(), it.value());
-////        label->setFixedHeight(ITEMHEIGHT);
-//        label->setFixedSize(ITEMWIDTH, ITEMHEIGHT);
-//        v_layout->addWidget(label);
-//        page_height += label->height();
-//        page_height += ITEMVSPACE;
-
-//    }
-//    info_map.clear(); //清空map
-
-//    v_layout->setSpacing(ITEMHSPACE);//设置间隔
-//    v_layout->setMargin(0);//设置总的外围边框
-//    v_layout->setContentsMargins(20, 0, 0, 0);
-//    setLayout(v_layout);
     this->setLanguage();
+}
+
+void ComputerPage::resetTimeValue(QString value)
+{
+    time_label->setText(value);
 }
 
 QString ComputerPage::translatorSwitch(QString orgStr)
