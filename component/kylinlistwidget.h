@@ -34,6 +34,9 @@ public:
 public slots:
     void onItemClicked(QListWidgetItem *item);
 
+signals:
+    void sendBackgroundName(QString name);
+
 protected:
     virtual void	enterEvent (QEvent  *event);
     virtual void	leaveEvent (QEvent *event);

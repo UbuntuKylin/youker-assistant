@@ -473,8 +473,8 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
 //        doing_label->setText(tr("Cookies Scan OK......"));
         if(cookies_firefox_list.length() > 0)
         {
-            qDebug() << "11111111111";
-            qDebug() << cookies_firefox_list.length();
+//            qDebug() << "11111111111";
+//            qDebug() << cookies_firefox_list.length();
             cookies_firefox_items = new CleanListWidget(cookies_firefox_list, tr("Thumbnails Cache Clean Items"));
             cookies_firefox_btn = new CommonCheckBox(0, "://res/cookie.png");
             cookies_firefox_btn->setFixedSize(160, 130);

@@ -22,12 +22,14 @@
 #include <QDebug>
 #include "../component/agentlistitem.h"
 #include "../dbusproxy/youkersystemdbus.h"
+#include "../mainui/mainwindow.h"
 #include <QStringList>
 #include <QFileDialog>
+#include "../component/tipdialog.h"
 
-AnimationWidget::AnimationWidget(QWidget *parent, SystemDispatcher *proxy) :
+AnimationWidget::AnimationWidget(QWidget *parent, SystemDispatcher *proxy, MainWindow *window) :
     QWidget(parent),
-    systemproxy(proxy)
+    systemproxy(proxy), parentWindow(window)
 {
 //    this->setAutoFillBackground(true);
 //    this->setObjectName("transparentWidget");
@@ -288,7 +290,8 @@ void AnimationWidget::deleteSelectedAnimation(QString name)
     QString result = systemproxy->delete_plymouth_qt(name);
     if (result == "ok") {
 //        toolkits.alertMSG(qsTr("Deleted successfully!"));//删除成功！
-        qDebug() << "Deleted successfully!";
+//        qDebug() << "Deleted successfully!";
+
         int list_count = list_widget->count();
         for(int i=0; i < list_count; i++)
         {
@@ -302,20 +305,43 @@ void AnimationWidget::deleteSelectedAnimation(QString name)
                 break;
             }
         }
+        TipDialog *dialog = new TipDialog(0, tr("Deleted successfully!"));
+        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
+        int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (180  / 2);
+        dialog->move(w_x, w_y);
+        dialog->show();
+        dialog->raise();
     }
     else if (result == "use") {
-        qDebug() << "This is the using animation!";
+//        qDebug() << "This is the using animation!";
+        TipDialog *dialog = new TipDialog(0, tr("This is the using animation!"));
+        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
+        int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (180  / 2);
+        dialog->move(w_x, w_y);
+        dialog->show();
+        dialog->raise();
 //        toolkits.alertMSG(qsTr("This is the using animation!"));//该动画为当前使用动画！
     }
     else if (result == "sys") {
         qDebug() << "This is the default animation!";
+        TipDialog *dialog = new TipDialog(0, tr("This is the default animation!"));
+        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
+        int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (180  / 2);
+        dialog->move(w_x, w_y);
+        dialog->show();
+        dialog->raise();
 //        toolkits.alertMSG(qsTr("This is the default animation!"));//该动画为系统默认动画！
     }
     else {
-        qDebug() << "An unknown error occurred!";
+//        qDebug() << "An unknown error occurred!";
+        TipDialog *dialog = new TipDialog(0, tr("An unknown error occurred!"));
+        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
+        int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (180  / 2);
+        dialog->move(w_x, w_y);
+        dialog->show();
+        dialog->raise();
 //        toolkits.alertMSG(qsTr("An unknown error occurred!"));//发生未知错误！
     }
-
 }
 
 void AnimationWidget::displayCurrentItemInfo(QString info)

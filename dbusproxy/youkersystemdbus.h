@@ -139,7 +139,10 @@ public:
 //    QString dealProgressData(QString type, QString msg);
 
 signals:
+    void tellCleanerMainData(const QStringList &data);
+    void tellCleanerMainStatus(const QString &status, const QString &domain);
     void sendCleanOverSignal();
+    void sendCleanErrorSignal(const QString &status);
     //添加新的开机动画图片后触发该信号
 //    void finishAddBootImage();
 //    void finishCleanSingleWork(QString msg);

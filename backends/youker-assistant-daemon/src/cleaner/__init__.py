@@ -999,9 +999,11 @@ class NewInstallProgress(InstallProgress):
     def status_change(self, pkg, percent, status):
         #self.system.status_remove_packages("apt_pulse", "percent: %s, status: %s" % (str(int(percent)), status))
         info = []
+        info.append('Pkg:%s' % pkg)
         info.append('Percent:%s' % str(int(percent)))
         info.append('Status:%s' % status)
-        self.system.subpage_status_signal(info, 'apt')
+        self.system.subpage_data_signal(info)
+        #self.system.subpage_status_signal(info, 'apt')
 
     def error(self, errorstr):
         pass

@@ -166,6 +166,83 @@ void CleanerActionWidget::showCleanOverStatus()
     doing_label->setText(tr("Clean OK......"));
 }
 
+void CleanerActionWidget::showCleanerData(const QStringList &data)
+{
+    //    lixiang clean data---- ("Path:/home/trusty64/.cache/software-center/rnrclient", "Size:0.00 B")
+        //lixiang clean data---- ("Pkg:testapp", "Percent:50%", "Status:removing")
+
+
+//    cleaner data......-> ("Pkg:dpkg-exec", "Percent:0", "Status:Running dpkg")
+//    cleaner data......-> ("Pkg:360safeforlinux", "Percent:50", "Status:Preparing to completely remove 360safeforlinux (amd64)")
+//    cleaner data......-> ("Pkg:360safeforlinux", "Percent:50", "Status:Removing 360safeforlinux (amd64)")
+//    cleaner data......-> ("Pkg:360safeforlinux", "Percent:50", "Status:Completely removing 360safeforlinux (amd64)")
+//    cleaner data......-> ("Pkg:360safeforlinux", "Percent:100", "Status:Completely removed 360safeforlinux (amd64)")
+//    qDebug() << "cleaner data......->" << data;
+    if(data.length() == 2)
+    {
+        doing_label->setText(tr("Cleaning: ") + data.at(0).split(":").at(1));
+    }
+    else if(data.length() == 3)
+    {
+        doing_label->setText(data.at(0).split(":").at(1) + tr(", Percent is: ") + data.at(1).split(":").at(1) + tr("%, Status is: ") + data.at(2).split(":").at(1));
+    }
+}
+
+void CleanerActionWidget::showCleanerStatus(const QString &status, const QString &domain)
+{
+    //    lixiang clean status---- "Complete:Cookies.firefox" --------domain-------- "10010.com"
+    //    lixiang clean status---- "Complete:Cookies.firefox" --------domain-------- "10086.cn"
+
+//    system.subpage_status_signal('Complete:History.firefox', 'history')
+//    system.subpage_status_signal('Complete:History.chromium', 'history')
+//    system.subpage_status_signal('Complete:Cookies.firefox', domain)
+//    system.subpage_status_signal('Complete:Cookies.chromium', domain)
+//     self.system.subpage_status_signal('Complete:', 'apt')
+//     self.system.subpage_status_signal('Start:', 'apt')
+    if(status == "Complete:History.firefox" && domain == "history")
+    {
+        doing_label->setText(tr("Clean Firefox history......"));
+    }
+    else if(status == "Complete:History.chromium" && domain == "history")
+    {
+        doing_label->setText(tr("Clean Chromium history......"));
+    }
+
+    else if(status == "Complete:" && domain == "apt")
+    {
+        doing_label->setText(tr("Clean apt......"));
+    }
+    else if(status == "Start:" && domain == "apt")
+    {
+        doing_label->setText(tr("Start clean apt......"));
+    }
+
+    else if(status == "Complete:Cookies.firefox")
+    {
+        doing_label->setText(tr("Clean Firefox Cookie:") + domain);
+    }
+    else if(status == "Complete:Cookies.chromium")
+    {
+        doing_label->setText(tr("Clean Chromium Cookie:") + domain);
+    }
+}
+
+void CleanerActionWidget::showCleanerError(const QString &status)
+{
+    if(status.contains("Non-existent:"))
+    {
+        if(status.split(":").at(1).length() > 0)
+            doing_label->setText(status.split(":").at(1) + tr(" does not exist"));
+    }
+    else if(status.contains("Working:Chromium"))
+    {
+        doing_label->setText(tr("Chromium Browser is running......"));
+    }
+    //system.subpage_error_signal('Non-existent:%s' % filepath)
+    //system.subpage_error_signal('Working:Chromium')
+    //system.subpage_error_signal('Non-existent:%s' % pkgname)
+}
+
 void CleanerActionWidget::showReciveStatus(const QString &status)
 {
 //    qDebug() << "mainpage receive status--------" << status;
@@ -197,6 +274,36 @@ void CleanerActionWidget::showReciveStatus(const QString &status)
         suggest_label->show();
         back_button->show();
     }
+}
+
+void CleanerActionWidget::showReciveError(const QString &status)
+{
+    doing_label->setText(tr("Error: ") + status);
+    if(status == "Uninstalled:Firefox")
+    {
+        doing_label->setText(tr("Firefox Browser does not be installed......"));
+    }
+    else if(status == "Uninstalled:Chromium")
+    {
+        doing_label->setText(tr("Chromium Browser does not be installed......"));
+    }
+    else if(status == "Working:Chromium")
+    {
+        doing_label->setText(tr("Chromium Browser is running......"));
+    }
+    else
+    {
+        if(status.contains("Non-existent:"))
+            doing_label->setText(status.split(":").at(1) + tr(" does not exist"));
+    }
+//    session.subpage_error_signal('Uninstalled:Firefox')
+//    session.subpage_error_signal('Uninstalled:Chromium')
+//    session.subpage_error_signal('Uninstalled:Firefox')
+//    session.subpage_error_signal('Working:Chromium')
+//    session.subpage_error_signal('Uninstalled:Chromium')
+//    system.subpage_error_signal('Non-existent:%s' % filepath)
+//     system.subpage_error_signal('Working:Chromium')
+//    system.subpage_error_signal('Non-existent:%s' % pkgname)
 }
 
 void CleanerActionWidget::onStartButtonClicked()

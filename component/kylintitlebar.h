@@ -35,6 +35,7 @@ public:
     void setTitleWidth(int width) { title_width = width;}
     void setTitleName(QString title) { title_content = title;}
     void setTitleBackgound(QString img) { backgroud_image = img;}
+    void resetBackground(QString name);
 
 protected:
     virtual void resizeEvent (QResizeEvent *event);

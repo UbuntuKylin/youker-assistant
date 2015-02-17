@@ -81,6 +81,14 @@ KylinTitleBar::~KylinTitleBar(void)
 {
 }
 
+void KylinTitleBar::resetBackground(QString name)
+{
+    backgroud_image = name;
+    QPalette palette_widget;
+    palette_widget.setBrush(QPalette::Background, QBrush(QPixmap(backgroud_image)));
+    setPalette(palette_widget);
+}
+
 void KylinTitleBar::resizeEvent(QResizeEvent *event)
 {
     //width

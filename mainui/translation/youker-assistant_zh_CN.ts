@@ -76,24 +76,44 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>AnimationWidget</name>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="196"/>
+        <location filename="../../setting/animationwidget.cpp" line="198"/>
         <source>Please select a picture as boot animation</source>
         <translation>请选择一个图片作为开机动画</translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="197"/>
+        <location filename="../../setting/animationwidget.cpp" line="199"/>
         <source>Custom Picture</source>
         <translation>自定义图片</translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="198"/>
+        <location filename="../../setting/animationwidget.cpp" line="200"/>
         <source>Optional BootAnimation</source>
         <translation>可选启动动画</translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="199"/>
+        <location filename="../../setting/animationwidget.cpp" line="201"/>
         <source>OK</source>
         <translation>确定</translation>
+    </message>
+    <message>
+        <location filename="../../setting/animationwidget.cpp" line="308"/>
+        <source>Deleted successfully!</source>
+        <translation>删除成功！</translation>
+    </message>
+    <message>
+        <location filename="../../setting/animationwidget.cpp" line="317"/>
+        <source>This is the using animation!</source>
+        <translation>该动画为当前使用动画！</translation>
+    </message>
+    <message>
+        <location filename="../../setting/animationwidget.cpp" line="327"/>
+        <source>This is the default animation!</source>
+        <translation>该动画为系统默认动画！</translation>
+    </message>
+    <message>
+        <location filename="../../setting/animationwidget.cpp" line="337"/>
+        <source>An unknown error occurred!</source>
+        <translation>发生未知错误！</translation>
     </message>
 </context>
 <context>
@@ -174,7 +194,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>BoxWidget</name>
     <message>
-        <location filename="../boxwidget.cpp" line="94"/>
+        <location filename="../boxwidget.cpp" line="93"/>
         <source>      </source>
         <translation></translation>
     </message>
@@ -333,7 +353,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../cleaneractionwidget.cpp" line="151"/>
-        <location filename="../cleaneractionwidget.cpp" line="190"/>
+        <location filename="../cleaneractionwidget.cpp" line="267"/>
         <source>Scaning......</source>
         <translation>正在扫描.....</translation>
     </message>
@@ -343,27 +363,99 @@ p, li { white-space: pre-wrap; }
         <translation>清理完毕......</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="174"/>
+        <location filename="../cleaneractionwidget.cpp" line="183"/>
+        <source>Cleaning: </source>
+        <translation>正在清理：</translation>
+    </message>
+    <message>
+        <location filename="../cleaneractionwidget.cpp" line="187"/>
+        <source>, Percent is: </source>
+        <translation>，进度为：</translation>
+    </message>
+    <message>
+        <location filename="../cleaneractionwidget.cpp" line="187"/>
+        <source>%, Status is: </source>
+        <translation>%，状态为：</translation>
+    </message>
+    <message>
+        <location filename="../cleaneractionwidget.cpp" line="204"/>
+        <source>Clean Firefox history......</source>
+        <translation>清理Firefox浏览器历史记录......</translation>
+    </message>
+    <message>
+        <location filename="../cleaneractionwidget.cpp" line="208"/>
+        <source>Clean Chromium history......</source>
+        <translation>清理Chromium浏览器历史记录......</translation>
+    </message>
+    <message>
+        <location filename="../cleaneractionwidget.cpp" line="213"/>
+        <source>Clean apt......</source>
+        <translation>清理Apt......</translation>
+    </message>
+    <message>
+        <location filename="../cleaneractionwidget.cpp" line="217"/>
+        <source>Start clean apt......</source>
+        <translation>开始清理Apt......</translation>
+    </message>
+    <message>
+        <location filename="../cleaneractionwidget.cpp" line="222"/>
+        <source>Clean Firefox Cookie:</source>
+        <translation>清理Firefox浏览器Cookie：</translation>
+    </message>
+    <message>
+        <location filename="../cleaneractionwidget.cpp" line="226"/>
+        <source>Clean Chromium Cookie:</source>
+        <translation>清理Chromium浏览器Cookie：</translation>
+    </message>
+    <message>
+        <location filename="../cleaneractionwidget.cpp" line="235"/>
+        <location filename="../cleaneractionwidget.cpp" line="297"/>
+        <source> does not exist</source>
+        <translation>不存在</translation>
+    </message>
+    <message>
+        <location filename="../cleaneractionwidget.cpp" line="239"/>
+        <location filename="../cleaneractionwidget.cpp" line="292"/>
+        <source>Chromium Browser is running......</source>
+        <translation>Chromium浏览器正在运行中......</translation>
+    </message>
+    <message>
+        <location filename="../cleaneractionwidget.cpp" line="251"/>
         <source>Cache Scan OK......</source>
         <translation>缓存扫描完成.....</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="178"/>
+        <location filename="../cleaneractionwidget.cpp" line="255"/>
         <source>Cookies Scan OK......</source>
         <translation>Cookies扫描完成.....</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="182"/>
+        <location filename="../cleaneractionwidget.cpp" line="259"/>
         <source>History Scan OK......</source>
         <translation>历史记录扫描完成.....</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="186"/>
+        <location filename="../cleaneractionwidget.cpp" line="263"/>
         <source>Packages Scan OK......</source>
         <translation>包扫描完成......</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="236"/>
+        <location filename="../cleaneractionwidget.cpp" line="281"/>
+        <source>Error: </source>
+        <translation>错误：</translation>
+    </message>
+    <message>
+        <location filename="../cleaneractionwidget.cpp" line="284"/>
+        <source>Firefox Browser does not be installed......</source>
+        <translation>没有安装Firefox浏览器......</translation>
+    </message>
+    <message>
+        <location filename="../cleaneractionwidget.cpp" line="288"/>
+        <source>Chromium Browser does not be installed......</source>
+        <translation>没有安装Chromium浏览器......</translation>
+    </message>
+    <message>
+        <location filename="../cleaneractionwidget.cpp" line="343"/>
         <source>Ready to Cleanup......</source>
         <translation>准备清理......</translation>
     </message>
@@ -1834,12 +1926,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SessionDispatcher</name>
     <message>
-        <location filename="../../dbusproxy/youkersessiondbus.cpp" line="1412"/>
+        <location filename="../../dbusproxy/youkersessiondbus.cpp" line="1413"/>
         <source>Select file</source>
         <translation>选择文件</translation>
     </message>
     <message>
-        <location filename="../../dbusproxy/youkersessiondbus.cpp" line="1412"/>
+        <location filename="../../dbusproxy/youkersessiondbus.cpp" line="1413"/>
         <source>All Files(*)</source>
         <translation>所有文件(*)</translation>
     </message>
@@ -2069,7 +2161,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SkinCenter</name>
     <message>
-        <location filename="../skincenter.cpp" line="101"/>
+        <location filename="../skincenter.cpp" line="120"/>
         <source>Skin Center</source>
         <translation>皮肤中心</translation>
     </message>
@@ -2077,22 +2169,22 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SystemDispatcher</name>
     <message>
-        <location filename="../../dbusproxy/youkersystemdbus.cpp" line="419"/>
+        <location filename="../../dbusproxy/youkersystemdbus.cpp" line="429"/>
         <source>Select the boot animation</source>
         <translation>选择开机动画</translation>
     </message>
     <message>
-        <location filename="../../dbusproxy/youkersystemdbus.cpp" line="419"/>
+        <location filename="../../dbusproxy/youkersystemdbus.cpp" line="429"/>
         <source>Image Files (*.png *.jpg *.gif)</source>
         <translation>图片文件(*.png *.jpg *.gif)</translation>
     </message>
     <message>
-        <location filename="../../dbusproxy/youkersystemdbus.cpp" line="424"/>
+        <location filename="../../dbusproxy/youkersystemdbus.cpp" line="434"/>
         <source>Select music</source>
         <translation>选择音乐文件</translation>
     </message>
     <message>
-        <location filename="../../dbusproxy/youkersystemdbus.cpp" line="424"/>
+        <location filename="../../dbusproxy/youkersystemdbus.cpp" line="434"/>
         <source>Audio Files (*.ogg *.wav *.mp3 *.wma)</source>
         <translation>音频文件(*.ogg *.wav *.mp3 *.wma)</translation>
     </message>
@@ -2140,6 +2232,19 @@ p, li { white-space: pre-wrap; }
         <location filename="../../setting/themewidget.cpp" line="119"/>
         <source>%1</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>TipDialog</name>
+    <message>
+        <location filename="../../component/tipdialog.cpp" line="74"/>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <location filename="../../component/tipdialog.cpp" line="97"/>
+        <source>Tip Dialog</source>
+        <translation>提示框</translation>
     </message>
 </context>
 <context>

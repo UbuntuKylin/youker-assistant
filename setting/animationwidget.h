@@ -27,12 +27,13 @@
 #include <QSplitter>
 #include <QListWidget>
 class SystemDispatcher;
+class MainWindow;
 
 class AnimationWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit AnimationWidget(QWidget *parent = 0, SystemDispatcher *proxy = 0);
+    explicit AnimationWidget(QWidget *parent = 0, SystemDispatcher *proxy = 0, MainWindow *window = 0);
     ~AnimationWidget();
     void setLanguage();
     void initConnect();
@@ -50,6 +51,7 @@ public slots:
 
 private:
     SystemDispatcher *systemproxy;
+    MainWindow *parentWindow;
 //    QSplitter *splitter;
 //    QWidget * top_widget;
 //    QWidget * bottom_widget;

@@ -55,7 +55,11 @@ public slots:
     void onCleanButtonClicked();
     void onBackButtonClicked();
     void showReciveStatus(const QString &status);
+    void showReciveError(const QString &status);
     void showCleanOverStatus();
+    void showCleanerData(const QStringList &data);
+    void showCleanerStatus(const QString &status, const QString &domain);
+    void showCleanerError(const QString &status);
 
 signals:
     void showDetailData();

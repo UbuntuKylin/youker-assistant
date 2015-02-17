@@ -34,6 +34,7 @@ SkinCenter::SkinCenter(QWidget *parent, Qt::WindowFlags f)
 //    initTitleBar();
 
     list_widget = new KylinListWidget();
+    connect(list_widget, SIGNAL(sendBackgroundName(QString)), this, SLOT(changeSkinCenterBackground(QString)));
     list_widget->setMouseTracking(true);//hover need it
     list_widget->setAutoFillBackground(false);
 
@@ -44,12 +45,23 @@ SkinCenter::SkinCenter(QWidget *parent, Qt::WindowFlags f)
     layout->setMargin(0);
     layout->setContentsMargins(0, 0, 0, 0);
     setLayout(layout);
+
+//    delayTimer = QTimer();
+
     this->setLanguage();
     this->initConnect();
 }
 
 SkinCenter::~SkinCenter()
 {
+//    disconnect(delayTimer,SIGNAL(timeout()),this,SLOT(changeAnimationStep()));
+//    if(delayTimer->isActive()) {
+//        delayTimer->stop();
+//    }
+//    if (delayTimer != NULL) {
+//        delete delayTimer;
+//        delayTimer = NULL;
+//    }
 }
 
 void SkinCenter::setLanguage()
@@ -61,11 +73,18 @@ void SkinCenter::initConnect()
 {
 //    connect(title_bar, SIGNAL(showMinDialog()), this, SLOT(onMinButtonClicked()));
     connect(title_bar,SIGNAL(closeDialog()), this, SLOT(onCloseButtonClicked()));
+//    connect(delayTimer, SIGNAL(timeout()), this, SLOT(changeAnimationStep()));
 }
 
 void SkinCenter::onCloseButtonClicked()
 {
     this->close();
+}
+
+void SkinCenter::changeSkinCenterBackground(QString pciture)
+{
+    last_skin_path = pciture;
+    title_bar->resetBackground(last_skin_path);
 }
 
 //void SkinCenter::onMinButtonClicked()
@@ -99,10 +118,36 @@ void SkinCenter::initTitleBar(const QString &path)
 {
     title_bar->setTitleWidth(500);
     title_bar->setTitleName(tr("Skin Center"));
-    title_bar->setTitleBackgound(path);
+    last_skin_path = path;
+    title_bar->setTitleBackgound(last_skin_path);
 }
+
+//void MainWindow::reViewThePointSkin(QString pciture)
+//{
+//  if (review_skin_pixmap.isDetached())
+//  {
+//    review_skin_pixmap.detach();
+//  }
+
+//  review_skin_pixmap.load(pciture);
+//  QPalette palette_back;
+//  palette_back.setBrush(QPalette::Background, review_skin_pixmap);
+//  action_widget->setPalette(palette_back);
+//}
+
+//void  SkinCenter::enterEvent (QEvent *event)
+//{
+//    delayTimer->start(300);
+//}
+
+//void  SkinCenter::leaveEvent (QEvent *event)
+//{
+//    if(delayTimer->isActive())
+//        delayTimer->stop();
+//}
 
 void SkinCenter::closeEvent(QCloseEvent *event)
 {
-   mainwindow->restoreSkin();
+    title_bar->setTitleBackgound(last_skin_path);
+    mainwindow->restoreSkin();
 }

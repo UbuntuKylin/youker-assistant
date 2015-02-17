@@ -137,7 +137,8 @@ SOURCES += main.cpp\
     cameramanager.cpp \
     aboutdialog.cpp \
     ../cleaner/cleanlistwidget.cpp \
-    ../component/commoncheckbox.cpp
+    ../component/commoncheckbox.cpp \
+    ../component/tipdialog.cpp
 
 HEADERS  += mainwindow.h \
     titlewidget.h \
@@ -220,7 +221,8 @@ HEADERS  += mainwindow.h \
     cameramanager.h \
     aboutdialog.h \
     ../cleaner/cleanlistwidget.h \
-    ../component/commoncheckbox.h
+    ../component/commoncheckbox.h \
+    ../component/tipdialog.h
 
 FORMS    += mainwindow.ui \
     ../component/quibo.ui \

@@ -64,7 +64,6 @@ public:
 public slots:
     void onButtonClicked();
     void showReciveData(const QStringList &data);
-
     void receiveCleanSignal();
     void showReciveStatus(const QString &status);
     void CleanUIAndData();

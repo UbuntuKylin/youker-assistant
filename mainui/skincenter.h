@@ -21,6 +21,7 @@
 #define SKINCENTER_H
 
 #include <QDialog>
+//#include <QTimer>
 
 #include "../component/kylinlistwidget.h"
 #include "../component/kylintitlebar.h"
@@ -43,9 +44,12 @@ public:
 
 public slots:
     void onCloseButtonClicked();
+    void changeSkinCenterBackground(QString pciture);
 //    void onMinButtonClicked();
 
 protected:
+//    virtual void	enterEvent (QEvent  *event);
+//    virtual void	leaveEvent (QEvent *event);
     void closeEvent(QCloseEvent *event);
 
 private:
@@ -53,6 +57,8 @@ private:
     MainWindow *mainwindow;
     KylinTitleBar *title_bar;
     KylinListWidget *list_widget;
+    QString last_skin_path;
+//    QTimer *delayTimer;
 //    QString titlebar_pic;
 };
 

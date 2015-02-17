@@ -278,7 +278,7 @@ QString SystemDispatcher::getHWSingleInfo(QString key, QString flag) {
 //}
 
 void SystemDispatcher::exit_qt() {
-    qDebug() << "start exit system dbus daemon....";
+//    qDebug() << "start exit system dbus daemon....";
     systemiface->call("exit");
 }
 
@@ -344,12 +344,15 @@ QStringList SystemDispatcher::get_sound_themes_qt() {
 
 void SystemDispatcher::handlerCleanerSubPageDataSignal(QStringList data)
 {
-    qDebug() << "lixiang clean data----" << data;
+//    qDebug() << "lixiang clean data----" << data;
+    emit this->tellCleanerMainData(data);
+//    lixiang clean data---- ("Path:/home/trusty64/.cache/software-center/rnrclient", "Size:0.00 B")
+    //lixiang clean data---- ("Pkg:testapp", "Percent:50%", "Status:removing")
 }
 
 void SystemDispatcher::handlerCleanerSubPageStatusSignal(QString status, QString domain)
 {
-    qDebug() << "lixiang clean status----" << status << "--------domain--------" << domain;
+//    qDebug() << "lixiang clean status----" << status << "--------domain--------" << domain;
 
 //    lixiang clean status---- "Complete:Cookies.firefox" --------domain-------- "10010.com"
 //    lixiang clean status---- "Complete:Cookies.firefox" --------domain-------- "10086.cn"
@@ -357,11 +360,18 @@ void SystemDispatcher::handlerCleanerSubPageStatusSignal(QString status, QString
     {
         emit sendCleanOverSignal();
     }
+    else {
+        emit this->tellCleanerMainStatus(status, domain);
+    }
 }
 
 void SystemDispatcher::handlerCleanerSubPageErrorSignal(QString status)
 {
-    qDebug() << "lixiang clean error----" << status;
+//    qDebug() << "lixiang clean error----" << status;
+    emit sendCleanErrorSignal(status);
+    //system.subpage_error_signal('Non-existent:%s' % filepath)
+    //system.subpage_error_signal('Working:Chromium')
+    //system.subpage_error_signal('Non-existent:%s' % pkgname)
 }
 
 //QStringList SystemDispatcher::get_sounds_qt() {

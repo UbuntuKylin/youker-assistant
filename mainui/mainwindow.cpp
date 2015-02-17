@@ -577,7 +577,11 @@ void MainWindow::showClearWidget()
         cleaner_action_widget->setSessionDbusProxy(sessioninterface);
         cleaner_action_widget->setSystemDbusProxy(systeminterface);
         connect(systeminterface, SIGNAL(sendCleanOverSignal()), cleaner_action_widget, SLOT(showCleanOverStatus()));
+        connect(systeminterface, SIGNAL(tellCleanerMainData(QStringList)), cleaner_action_widget, SLOT(showCleanerData(QStringList)));
+        connect(systeminterface, SIGNAL(tellCleanerMainStatus(QString, QString)), cleaner_action_widget, SLOT(showCleanerStatus(QString, QString)));
+        connect(systeminterface, SIGNAL(sendCleanErrorSignal(QString)), cleaner_action_widget, SLOT(showCleanerError(QString)));
         connect(sessioninterface, SIGNAL(tellCleanerDetailStatus(QString)), cleaner_action_widget, SLOT(showReciveStatus(QString)));
+        connect(sessioninterface, SIGNAL(tellCleanerDetailError(QString)), cleaner_action_widget, SLOT(showReciveError(QString)));
         top_grid_layout->addWidget(cleaner_action_widget,0,0);
         action_widget->setLayout(top_grid_layout);
         top_grid_layout->setSpacing(0);

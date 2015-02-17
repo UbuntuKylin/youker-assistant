@@ -349,6 +349,7 @@ signals:
 
     void tellCleanerDetailData(const QStringList &data);
     void tellCleanerDetailStatus(const QString &status);
+    void tellCleanerDetailError(const QString &status);
 //    void notifyFontStyleToQML(QString font_style);
 //    void startChangeQMLCity();//发送开始更换QML城市
 //    void startUpdateForecastWeahter(QString flag);//发送开始更换六天天气预报

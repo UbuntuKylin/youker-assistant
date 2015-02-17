@@ -223,7 +223,8 @@ void SessionDispatcher::handlerScanCleanerStatus(QString status)
 
 void SessionDispatcher::handlerScanCleanerError(QString status)
 {
-    qDebug() << "scan error------->" << status;
+//    qDebug() << "scan error------->" << status;
+    emit this->tellCleanerDetailError(status);
 }
 
 

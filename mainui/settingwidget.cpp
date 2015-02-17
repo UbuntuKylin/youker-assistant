@@ -132,7 +132,7 @@ void SettingWidget::initUI()
     icon_widget = new IconWidget(this, sessionProxy);
     mouse_widget = new MouseWidget(this, sessionProxy, systemProxy);
     voice_widget = new VoiceWidget(this, sessionProxy, systemProxy);
-    animation_widget = new AnimationWidget(this, systemProxy);
+    animation_widget = new AnimationWidget(this, systemProxy, p_mainwindow);
     launcher_widget = new LauncherWidget(this, sessionProxy);
     panel_widget = new PanelWidget(this, sessionProxy);
     window_widget = new WindowWidget(this, sessionProxy);

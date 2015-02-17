@@ -36,6 +36,7 @@ KylinListWidget::~KylinListWidget()
 void KylinListWidget::onItemClicked(QListWidgetItem *item)
 {
     KylinListWidgetItem* listitem = static_cast<KylinListWidgetItem*>(item);
+    emit this->sendBackgroundName(listitem->getSkinName());
     mainwindow->changeSkin(listitem->getSkinName());
 }
 
