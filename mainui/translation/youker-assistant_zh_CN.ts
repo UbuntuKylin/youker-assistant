@@ -2110,7 +2110,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../../shredmanager/shreddialog.cpp" line="104"/>
-        <location filename="../../shredmanager/shreddialog.cpp" line="168"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="183"/>
         <source>No select any file which need to be shredded</source>
         <translation>没有选择需要粉碎的文件</translation>
     </message>
@@ -2125,22 +2125,25 @@ p, li { white-space: pre-wrap; }
         <translation>取消粉碎</translation>
     </message>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="143"/>
-        <source>Select file</source>
-        <translation>选择文件</translation>
-    </message>
-    <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="143"/>
-        <source>All Files(*)</source>
+        <location filename="../../shredmanager/shreddialog.cpp" line="149"/>
+        <source>Allfile(*)</source>
         <translation>所有文件(*)</translation>
     </message>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="157"/>
+        <source>Select file</source>
+        <translation type="obsolete">选择文件</translation>
+    </message>
+    <message>
+        <source>All Files(*)</source>
+        <translation type="obsolete">所有文件(*)</translation>
+    </message>
+    <message>
+        <location filename="../../shredmanager/shreddialog.cpp" line="172"/>
         <source>Shred successfully!</source>
         <translation>粉碎成功！</translation>
     </message>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="162"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="177"/>
         <source>Shred failed!</source>
         <translation>粉碎失败！</translation>
     </message>

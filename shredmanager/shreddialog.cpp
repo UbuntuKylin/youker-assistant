@@ -140,8 +140,23 @@ void ShredDialog::onSelecteComboActivated(int index)
 
 void ShredDialog::onSelectButtonClicked()
 {
-    QString fileName=QFileDialog::getOpenFileName(0, tr("Select file"), QDir::homePath(), tr("All Files(*)"));
-    select_edit->setText(fileName);
+//    QString fileName=QFileDialog::getOpenFileName(0, tr("Select file"), QDir::homePath(), tr("All Files(*)"));
+
+    QStringList fileNameList;
+    QString fileName;
+    QFileDialog* fd = new QFileDialog(this);
+    fd->resize(500, 471);
+    fd->setFilter(tr("Allfile(*)"));
+//    fd->setFilter( "Allfile(*.*);;mp3file(*.mp3);;wmafile(*.wma);;wavefile(*.wav)");
+    fd->setViewMode(QFileDialog::List);//设置浏览模式，有 列表（list） 模式和 详细信息（detail）两种方式
+    if (fd->exec() == QDialog::Accepted)
+    {
+        fileNameList = fd->selectedFiles();
+        fileName = fileNameList[0];
+        select_edit->setText(fileName);
+    }
+    else
+        fd->close();
 }
 
 void ShredDialog::onShredButtonClicked()
