@@ -109,7 +109,7 @@ void SettingAction::setLanguage(int index)
 //        description_label->setText(tr("Set the desktop icon theme and the visibility of desktop icons."));
         break;
     case 3:
-        title_label->setText(tr("Replace the theme and size of the mouse pointer. Also, theme change need to restart system."));
+        title_label->setText(tr("Replace the theme and size of the mouse pointer, and theme change need to restart system."));
 //        description_label->setText(tr("Replace the theme and size of the mouse pointer,  then click the 'OK' button to confirm. Also, theme change need to restart system."));
         break;
     case 4:

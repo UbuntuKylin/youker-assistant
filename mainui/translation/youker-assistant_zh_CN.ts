@@ -302,7 +302,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../cameramanager.cpp" line="98"/>
         <source>Press the [ESC] button to take picture and turn the camera off , the photo saved in home directory by default.</source>
-        <translation>按[退出]键拍照并关闭摄像头，照片默认保存再家目录下。</translation>
+        <translation>按[退出]键拍照并关闭摄像头，照片默认保存在家目录下。</translation>
     </message>
     <message>
         <location filename="../cameramanager.cpp" line="99"/>
@@ -1968,9 +1968,13 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">更换鼠标指针主题和大小，更改设置后点击＂确定＂按钮进行确认。主题更改需要重新系统才能生效。</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="112"/>
         <source>Replace the theme and size of the mouse pointer. Also, theme change need to restart system.</source>
-        <translation>更换鼠标指针主题和大小。主题更改需要重新系统才能生效。</translation>
+        <translation type="obsolete">更换鼠标指针主题和大小。主题更改需要重新系统才能生效。</translation>
+    </message>
+    <message>
+        <location filename="../../component/settingaction.cpp" line="112"/>
+        <source>Replace the theme and size of the mouse pointer, and theme change need to restart system.</source>
+        <translation>更换鼠标指针主题和大小，主题更改需要重新系统才能生效。</translation>
     </message>
     <message>
         <location filename="../../component/settingaction.cpp" line="116"/>
