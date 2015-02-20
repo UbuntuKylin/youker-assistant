@@ -91,10 +91,13 @@ AnimationWidget::AnimationWidget(QWidget *parent, SystemDispatcher *proxy, MainW
 //    show_widget->setAutoFillBackground(true);
 //    show_widget->setObjectName("transparentWidget");
 
-    QHBoxLayout *layout0 = new QHBoxLayout();
+    QVBoxLayout *layout0 = new QVBoxLayout();
     layout0->addWidget(show_widget);
-    layout0->setContentsMargins(16,16,16,0);
+    layout0->addStretch();
+    layout0->setMargin(0);
+    layout0->setSpacing(0);
     view_widget->setLayout(layout0);
+    view_widget->setContentsMargins(16, 16, 16, 0);
 
     tip_label = new QLabel();
     list_widget = new QListWidget();
@@ -260,22 +263,33 @@ void AnimationWidget::selectCustomAnimation()
     show_widget->setWindowFlags(Qt::FramelessWindowHint);
     show_widget->setAutoFillBackground(true);
 //    show_widget->setObjectName("transparentWidget");
-    QString abs_path = systemproxy->showSelectFileDialog("bootanimation");
-//    QString abs_path = "/home/trusty64/dianxin2.png";
-//    qDebug() << abs_path;
-    int  start_pos = abs_path.lastIndexOf("/") + 1;
-    int end_pos = abs_path.length();
-    QString pic_name = abs_path.mid(start_pos, end_pos-start_pos);
-    this->selected_animation = pic_name;
-//    qDebug() << pic_name;
-    QPalette palette;
-//    palette.setBrush(QPalette::Background, QBrush(QPixmap("://res/ubuntukylin.png").scaled(180, 170, Qt::KeepAspectRatio)));
-    palette.setBrush(QPalette::Background, QBrush(QPixmap(abs_path).scaled(172, 115, Qt::KeepAspectRatio)));
-    show_widget->setPalette(palette);
-    systemproxy->add_new_plymouth_qt(abs_path, pic_name);
-    //update date
-    list_widget->clear();
-    this->initData();
+//    QString abs_path = systemproxy->showSelectFileDialog("bootanimation");
+
+    QStringList fileNameList;
+    QString abs_path;
+    QFileDialog* fd = new QFileDialog(this);
+    fd->resize(500, 471);
+    fd->setFilter(tr("Image Files (*.png *.jpg *.gif)"));
+    fd->setViewMode(QFileDialog::List);//设置浏览模式，有 列表（list） 模式和 详细信息（detail）两种方式
+    if (fd->exec() == QDialog::Accepted)
+    {
+        fileNameList = fd->selectedFiles();
+        abs_path = fileNameList[0];
+        int  start_pos = abs_path.lastIndexOf("/") + 1;
+        int end_pos = abs_path.length();
+        QString pic_name = abs_path.mid(start_pos, end_pos-start_pos);
+        this->selected_animation = pic_name;
+        QPalette palette;
+    //    palette.setBrush(QPalette::Background, QBrush(QPixmap("://res/ubuntukylin.png").scaled(180, 170, Qt::KeepAspectRatio)));
+        palette.setBrush(QPalette::Background, QBrush(QPixmap(abs_path).scaled(172, 115, Qt::KeepAspectRatio)));
+        show_widget->setPalette(palette);
+        systemproxy->add_new_plymouth_qt(abs_path, pic_name);
+        //update date
+        list_widget->clear();
+        this->initData();
+    }
+    else
+        fd->close();
 }
 
 void AnimationWidget::setCustomAnimation()

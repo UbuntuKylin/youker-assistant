@@ -161,20 +161,28 @@ void ShredDialog::onSelectButtonClicked()
 
 void ShredDialog::onShredButtonClicked()
 {
-    char* ch;
-    QByteArray ba = select_edit->text().toUtf8();
-    ch=ba.data();
-    int result = do_file(ch);
-//    qDebug() << "shred file result -> " << result;
-    if (result == 0)
+    if(select_edit->text().length() == 0 || !select_edit->text().contains("/"))
     {
-        //success
-        toolkits->alertMSG(tr("Shred successfully!"));
+        toolkits->alertMSG(tr("Select file!"));
     }
     else
     {
-        //failed
-        toolkits->alertMSG(tr("Shred failed!"));
+        char* ch;
+        QByteArray ba = select_edit->text().toUtf8();
+        ch=ba.data();
+        int result = do_file(ch);
+    //    qDebug() << "shred file result -> " << result;
+        if (result == 0)
+        {
+            //success
+            toolkits->alertMSG(tr("Shred successfully!"));
+            select_edit->setText(tr("No select any file which need to be shredded"));
+        }
+        else
+        {
+            //failed
+            toolkits->alertMSG(tr("Shred failed!"));
+        }
     }
 }
 

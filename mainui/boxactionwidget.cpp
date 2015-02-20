@@ -42,6 +42,7 @@ BoxActionWidget::BoxActionWidget(QWidget *parent)
     more_btn->setFocusPolicy(Qt::NoFocus);
 //    more_btn->setObjectName("transparentButton");
     more_btn->setObjectName("whiteButton");
+    more_btn->hide();
 //    title_label->setFixedWidth(400);
     title_label->setMinimumWidth(500);
     title_label->setMaximumWidth(600);

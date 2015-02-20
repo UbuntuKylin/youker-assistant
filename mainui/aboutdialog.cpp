@@ -29,7 +29,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
     ui(new Ui::AboutDialog)
 {
     ui->setupUi(this);
-    ui->versionlabel->setText("V3.0.0");
+    ui->versionlabel->setText("V2.0.0");
     this->setWindowFlags(Qt::WindowStaysOnTopHint);
     move((QApplication::desktop()->width() - this->width())/2, (QApplication::desktop()->height() - this->height())/2);
     ui->tabWidget->setCurrentIndex(0);

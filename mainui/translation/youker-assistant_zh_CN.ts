@@ -76,42 +76,47 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>AnimationWidget</name>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="198"/>
+        <location filename="../../setting/animationwidget.cpp" line="201"/>
         <source>Please select a picture as boot animation</source>
         <translation>请选择一个图片作为开机动画</translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="199"/>
+        <location filename="../../setting/animationwidget.cpp" line="202"/>
         <source>Custom Picture</source>
         <translation>自定义图片</translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="200"/>
+        <location filename="../../setting/animationwidget.cpp" line="203"/>
         <source>Optional BootAnimation</source>
         <translation>可选启动动画</translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="201"/>
+        <location filename="../../setting/animationwidget.cpp" line="204"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="308"/>
+        <location filename="../../setting/animationwidget.cpp" line="272"/>
+        <source>Image Files (*.png *.jpg *.gif)</source>
+        <translation>图片文件(*.png *.jpg *.gif)</translation>
+    </message>
+    <message>
+        <location filename="../../setting/animationwidget.cpp" line="322"/>
         <source>Deleted successfully!</source>
         <translation>删除成功！</translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="317"/>
+        <location filename="../../setting/animationwidget.cpp" line="331"/>
         <source>This is the using animation!</source>
         <translation>该动画为当前使用动画！</translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="327"/>
+        <location filename="../../setting/animationwidget.cpp" line="341"/>
         <source>This is the default animation!</source>
         <translation>该动画为系统默认动画！</translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="337"/>
+        <location filename="../../setting/animationwidget.cpp" line="351"/>
         <source>An unknown error occurred!</source>
         <translation>发生未知错误！</translation>
     </message>
@@ -181,12 +186,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>BoxActionWidget</name>
     <message>
-        <location filename="../boxactionwidget.cpp" line="72"/>
+        <location filename="../boxactionwidget.cpp" line="73"/>
         <source>Provide a practical and lightweight tool, create fast and convenient experience for you</source>
         <translation>提供轻巧使用工具，为您打造快捷方便的体验</translation>
     </message>
     <message>
-        <location filename="../boxactionwidget.cpp" line="73"/>
+        <location filename="../boxactionwidget.cpp" line="74"/>
         <source>More App</source>
         <translation>更多应用</translation>
     </message>
@@ -1699,6 +1704,11 @@ p, li { white-space: pre-wrap; }
         <source>Login Youker Account</source>
         <translation>登录优客帐号</translation>
     </message>
+    <message>
+        <location filename="../loginwidget.cpp" line="111"/>
+        <source>Logout</source>
+        <translation>注销</translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>
@@ -1954,9 +1964,13 @@ p, li { white-space: pre-wrap; }
         <translation>设置桌面图标主题和桌面图标的可见性</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="112"/>
         <source>Replace the theme and size of the mouse pointer,  then click the &apos;OK&apos; button to confirm. Also, theme change need to restart system.</source>
-        <translation>更换鼠标指针主题和大小，更改设置后点击＂确定＂按钮进行确认。主题更改需要重新系统才能生效。</translation>
+        <translation type="obsolete">更换鼠标指针主题和大小，更改设置后点击＂确定＂按钮进行确认。主题更改需要重新系统才能生效。</translation>
+    </message>
+    <message>
+        <location filename="../../component/settingaction.cpp" line="112"/>
+        <source>Replace the theme and size of the mouse pointer. Also, theme change need to restart system.</source>
+        <translation>更换鼠标指针主题和大小。主题更改需要重新系统才能生效。</translation>
     </message>
     <message>
         <location filename="../../component/settingaction.cpp" line="116"/>
@@ -2110,7 +2124,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../../shredmanager/shreddialog.cpp" line="104"/>
-        <location filename="../../shredmanager/shreddialog.cpp" line="183"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="179"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="191"/>
         <source>No select any file which need to be shredded</source>
         <translation>没有选择需要粉碎的文件</translation>
     </message>
@@ -2130,6 +2145,11 @@ p, li { white-space: pre-wrap; }
         <translation>所有文件(*)</translation>
     </message>
     <message>
+        <location filename="../../shredmanager/shreddialog.cpp" line="166"/>
+        <source>Select file!</source>
+        <translation>选择文件！</translation>
+    </message>
+    <message>
         <source>Select file</source>
         <translation type="obsolete">选择文件</translation>
     </message>
@@ -2138,12 +2158,12 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">所有文件(*)</translation>
     </message>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="172"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="178"/>
         <source>Shred successfully!</source>
         <translation>粉碎成功！</translation>
     </message>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="177"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="184"/>
         <source>Shred failed!</source>
         <translation>粉碎失败！</translation>
     </message>

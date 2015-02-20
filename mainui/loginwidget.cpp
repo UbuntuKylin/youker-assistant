@@ -25,7 +25,7 @@
 LoginWidget::LoginWidget(QWidget *parent)
 	: QWidget(parent)
 {
-    this->setFixedSize(220, 72);
+    this->setFixedSize(300, 72);
     logo_label = new QPushButton();
     logo_label->setObjectName("whiteButton");
     logo_label->setCursor(Qt::PointingHandCursor);
@@ -108,6 +108,7 @@ void LoginWidget::showLoginAndLogoutStatus(bool status)
 void LoginWidget::setLauguage()
 {
     logo_label->setText(tr("Login Youker Account"));
+    logout_btn->setText(tr("Logout"));
 }
 
 void LoginWidget::onLoginButtonClicked()

@@ -272,7 +272,7 @@ void MainWindow::setMainWindowLayout() {
     main_layout->setMargin(0);
     main_layout->setContentsMargins(0, 0, 0, 0);
     title_widget->move(0, 0);
-    login_widget->move(665, 0);//900 - login_widget(220) - right_align(15) = 665
+    login_widget->move(585, 0);//900 - login_widget(220) - right_align(15) = 665
     this->centralWidget()->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     this->centralWidget()->setLayout(main_layout);
 }
