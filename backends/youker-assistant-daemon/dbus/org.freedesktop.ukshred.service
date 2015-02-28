@@ -1,4 +1,0 @@
-[D-BUS Service]
-Name=org.freedesktop.ukshred
-Exec=/usr/sbin/ukshreddbus
-User=root

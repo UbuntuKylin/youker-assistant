@@ -1,0 +1,66 @@
+/*
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  Kobe Lee    xiangli@ubuntukylin.com/kobe24_lixiang@126.com
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#ifndef AUTOSTARTWIDGET_H
+#define AUTOSTARTWIDGET_H
+
+#include <QWidget>
+#include "../component/kylinlistwidget.h"
+#include "../component/kylintitlebar.h"
+#include "../component/autogroup.h"
+
+class SessionDispatcher;
+
+namespace Ui {
+class AutoStartWidget;
+}
+
+class AutoStartWidget : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit AutoStartWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0);
+    ~AutoStartWidget();
+    void setLanguage();
+    void initConnect();
+    void initData();
+
+public slots:
+    void onCloseButtonClicked();
+//    void onMinButtonClicked();
+    void setCurrentItemAutoStatus(QString dekstopName);
+    void readyReciveData(const QStringList &data);
+    void readyShowUI();
+
+private:
+    void initTitleBar();
+
+private:
+    Ui::AutoStartWidget *ui;
+    SessionDispatcher *sessionproxy;
+    QList<QStringList> data_list;
+    KylinTitleBar *title_bar;
+    QLabel *tip_label;
+    QLabel *num_label;
+    QLabel *name_label;
+    QLabel *status_label;
+};
+
+#endif // AUTOSTARTWIDGET_H

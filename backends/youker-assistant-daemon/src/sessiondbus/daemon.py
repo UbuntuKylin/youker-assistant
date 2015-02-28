@@ -34,6 +34,7 @@ import time
 import threading
 
 import cleaner
+from autostartmanage import autostartmanage
 import pywapi
 import urllib2, urllib
 from urllib import urlencode
@@ -61,14 +62,14 @@ from beautify.cloudconfig import CloudConfig
 from sysinfo import Sysinfo
 from camera.capture import Capture
 #from weather.weatherinfo import WeatherInfo
-from weather.yahoo import YahooWeather
+#from weather.yahoo import YahooWeather
 from common import *
 from unzip import unzip_resource
 from piston_mini_client import APIError
 import httplib2
-from weather.piston import WeatherPistonAPI
-MySever = ("http://service.ubuntukylin.com:8001/weather/api/1.0/")
-WeatherPistonAPI.default_service_root = MySever
+#from weather.piston import WeatherPistonAPI
+#MySever = ("http://service.ubuntukylin.com:8001/weather/api/1.0/")
+#WeatherPistonAPI.default_service_root = MySever
 
 from piston_remoter import PingBackPistonAPI
 #PingBackSever = ("http://servicPingBackPistonAPIe.ubuntukylin.com:8001/youker-assistant/")
@@ -106,10 +107,10 @@ class SessionDaemon(dbus.service.Object):
         self.soundconf = Sound()
         self.ballconf = MonitorBall()
         self.fileconf = FileManager()
-        self.yahooconf = YahooWeather(self)
-        self.server = WeatherPistonAPI(service_root=MySever)
+#        self.yahooconf = YahooWeather(self)
+#        self.server = WeatherPistonAPI(service_root=MySever)
         self.premoter = PingBackPistonAPI(service_root=PINGBACK_SERVER)
-        self.weatherping = ServerPingBackAPI(service_root=WEATHER_SERVER)
+#        self.weatherping = ServerPingBackAPI(service_root=WEATHER_SERVER)
         self.daemonsame = cleaner.SearchTheSame()
         self.daemonlarge = cleaner.ManageTheLarge()
         self.daemonunneed = cleaner.CleanTheUnneed()
@@ -117,10 +118,10 @@ class SessionDaemon(dbus.service.Object):
         self.daemoncache = cleaner.CleanTheCache()
         self.init_mechanize()
 #        # sso - Robert
-        #self.sso = get_ubuntu_sso_backend()
-        #self.sso.connect("whoami", self.slot_whoami_done)
-        #self.sso.connect("logout", self.slot_logout_successful)
-        #self.sso.connect("fail",self.slot_login_fail)
+#        self.sso = get_ubuntu_sso_backend()
+#        self.sso.connect("whoami", self.slot_whoami_done)
+#        self.sso.connect("logout", self.slot_logout_successful)
+#        self.sso.connect("fail",self.slot_login_fail)
         self.token = ""
         self.user = ""
         self.display_name = ""
@@ -129,6 +130,12 @@ class SessionDaemon(dbus.service.Object):
         bus_name = dbus.service.BusName(INTERFACE, bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def currently_installed_version(self):
+        cache = apt.Cache()
+        pkg = cache['youker-assistant']
+        return pkg.installed.version
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def check_user(self):
@@ -1466,6 +1473,41 @@ class SessionDaemon(dbus.service.Object):
     def get_thumbnail_cache_size(self):
         return self.fileconf.get_thumbnail_cache_size()
 
+    # ---start---------------------autostartmanage-------------------
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+    def get_current_autostart_status(self):
+        autostartmanage.interface_get_status(self)
+        
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def change_autostart_status(self, filename):
+        autostartmanage.interface_change_status(self, filename)
+    
+    @dbus.service.signal(INTERFACE, signature='as')
+    def autostartmanage_data_signal(self, info):
+        pass
+    @dbus.service.signal(INTERFACE, signature='s')
+    def autostartmanage_status_signal(self, status):
+        pass
+    @dbus.service.signal(INTERFACE, signature='s')
+    def autostartmanage_error_signal(self, error):
+        pass
+    # ---end---------------------autostartmanage--------------------
+
+    #----START-------------------New-Youker-------------------------
+    @dbus.service.method(INTERFACE, in_signature='a{sv}', out_signature='')
+    def get_scan_result(self, mode_dic):
+        cleaner.interface_get_subpage_session(self, mode_dic)
+    @dbus.service.signal(INTERFACE, signature='as')
+    def subpage_data_signal(self, info):
+        pass
+    @dbus.service.signal(INTERFACE, signature='s')
+    def subpage_status_signal(self, status):
+        pass
+    @dbus.service.signal(INTERFACE, signature='s')
+    def subpage_error_signal(self, error):
+        pass
+    #----END---------------------New-Youker-------------------------
+
     # -------------------------monitorball-------------------------
     # get cpu percent
     @dbus.service.method(INTERFACE, in_signature='', out_signature='d')
@@ -1557,20 +1599,20 @@ class SessionDaemon(dbus.service.Object):
         fp.write(time_text)
         fp.close()
 
-    @dbus.service.signal(INTERFACE, signature='b')
-    def weather_server_pingback_signal(self, result):
-        pass
+#    @dbus.service.signal(INTERFACE, signature='b')
+#    def weather_server_pingback_signal(self, result):
+#        pass
 
 #    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
-    def access_server_pingback_real(self):
-            pingback = self.weatherping.access_server_pingback()
-            self.weather_server_pingback_signal(pingback)
-#            return pingback
+#    def access_server_pingback_real(self):
+#            pingback = self.weatherping.access_server_pingback()
+#            self.weather_server_pingback_signal(pingback)
+##            return pingback
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
-    def access_server_pingback(self):
-        t = threading.Thread(target = self.access_server_pingback_real)
-        t.start()
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+#    def access_server_pingback(self):
+#        t = threading.Thread(target = self.access_server_pingback_real)
+#        t.start()
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
     def submit_uk_pingback(self, cityname):
@@ -1607,32 +1649,32 @@ class SessionDaemon(dbus.service.Object):
             else:
                 return False
 
-    def real_get_current_weather(self, cityId):
-        self.weather_data = self.server.get_cma_observe_weather(cityId)
-        if self.weather_data not in (False, None, {}, '', '[]', "['']"):
-            self.access_weather('weather', 'kobe')
+#    def real_get_current_weather(self, cityId):
+#        self.weather_data = self.server.get_cma_observe_weather(cityId)
+#        if self.weather_data not in (False, None, {}, '', '[]', "['']"):
+#            self.access_weather('weather', 'kobe')
 
     # get current day's weather
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
-    def get_current_weather(self, cityId):
-        t = threading.Thread(target = self.real_get_current_weather, args = (cityId,))
-        t.setDaemon(True)
-        t.start()
+#    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+#    def get_current_weather(self, cityId):
+#        t = threading.Thread(target = self.real_get_current_weather, args = (cityId,))
+#        t.setDaemon(True)
+#        t.start()
 #        self.weatherconf.getCurrentWeather(cityId)
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
-    def get_current_weather_dict(self):
-        return self.weather_data
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+#    def get_current_weather_dict(self):
+#        return self.weather_data
 #        return self.weatherconf.get_current_weather_dict()
 
     # get current day's weather from yahoo 0.3.3
-    @dbus.service.method(INTERFACE, in_signature='ass', out_signature='')
-    def get_current_yahoo_weather(self, latlon, cityId):
-        self.yahooconf.getYahooCurrentWeather(latlon, cityId)
+#    @dbus.service.method(INTERFACE, in_signature='ass', out_signature='')
+#    def get_current_yahoo_weather(self, latlon, cityId):
+#        self.yahooconf.getYahooCurrentWeather(latlon, cityId)
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
-    def get_current_yahoo_weather_dict(self):
-        return self.yahooconf.get_current_yahoo_weather_dict()
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+#    def get_current_yahoo_weather_dict(self):
+#        return self.yahooconf.get_current_yahoo_weather_dict()
 
 #    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
 #    def get_yahoo_forecast_dict(self):

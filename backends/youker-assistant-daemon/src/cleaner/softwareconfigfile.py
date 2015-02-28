@@ -32,6 +32,16 @@ class SoftwareConfigfile():
         for one in result:
             final_softwareconfigfile_list.append(cache[one])
         return final_softwareconfigfile_list
+    def get_configfile_packages(self):
+        cache = common.get_cache_list()
+        softwareconfigfile_list = []
+
+        status, output = commands.getstatusoutput('dpkg -l')
+        result = [(line.split()[1]).split(':')[0] for line in output.split('\n') if line.startswith('rc')]
+        for one in result:
+            pkg = cache[one]
+            softwareconfigfile_list.append('Name:' + pkg.name + ';' + 'Summary:' + ';' + 'Size:')
+        return softwareconfigfile_list
 
 
 if __name__ == '__main__':

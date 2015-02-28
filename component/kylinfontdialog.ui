@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>KylinFontDialog</class>
+ <widget class="QDialog" name="KylinFontDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>512</width>
+    <height>390</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>512</width>
+     <height>30</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="widget_2" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>30</y>
+     <width>512</width>
+     <height>359</height>
+    </rect>
+   </property>
+   <widget class="QLabel" name="curFontText">
+    <property name="geometry">
+     <rect>
+      <x>126</x>
+      <y>10</y>
+      <width>371</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="sizeEdit">
+    <property name="geometry">
+     <rect>
+      <x>444</x>
+      <y>59</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="curFontLabel">
+    <property name="geometry">
+     <rect>
+      <x>14</x>
+      <y>9</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Current Font:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="styleLabel">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>39</y>
+      <width>71</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Style</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="sizeLabel">
+    <property name="geometry">
+     <rect>
+      <x>444</x>
+      <y>39</y>
+      <width>91</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Size</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="familyEdit">
+    <property name="geometry">
+     <rect>
+      <x>16</x>
+      <y>59</y>
+      <width>211</width>
+      <height>27</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fontLabel">
+    <property name="geometry">
+     <rect>
+      <x>16</x>
+      <y>39</y>
+      <width>71</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Font</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="styleEdit">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>59</y>
+      <width>171</width>
+      <height>27</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QListView" name="sizeList">
+    <property name="geometry">
+     <rect>
+      <x>445</x>
+      <y>90</y>
+      <width>51</width>
+      <height>161</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QListView" name="familyList">
+    <property name="geometry">
+     <rect>
+      <x>17</x>
+      <y>90</y>
+      <width>211</width>
+      <height>161</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QListView" name="styleList">
+    <property name="geometry">
+     <rect>
+      <x>251</x>
+      <y>90</y>
+      <width>171</width>
+      <height>161</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="okBtn">
+    <property name="geometry">
+     <rect>
+      <x>426</x>
+      <y>320</y>
+      <width>70</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>OK</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="quitBtn">
+    <property name="geometry">
+     <rect>
+      <x>426</x>
+      <y>280</y>
+      <width>70</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Cancel</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="sampleLabel">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>260</y>
+      <width>81</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>View</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="sampleEdit">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>280</y>
+      <width>391</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -9,6 +9,15 @@ class OsSlim():
     def __init__(self):
         pass
 
+    def get_unneed_packages(self):
+        cache = common.get_cache_list()
+        unneed_packages_list = []
+        if cache:
+            for pkg in cache:
+                if pkg.is_auto_removable and not pkg.name.startswith('linux'):
+                    unneed_packages_list.append('Name:' + pkg.name + ';' + 'Summary:' + pkg.installed.summary + ';' + 'Size:' + common.confirm_filesize_unit(pkg.installed.installed_size))
+        return unneed_packages_list
+
     def get_spare_packages(self):
         cache = common.get_cache_list()
         spare_packages_list = []

@@ -1,3 +1,2 @@
 /usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/start_systemdbus.py  /usr/bin/youker-assistant-backend.py
 /usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/start_sessiondbus.py  /usr/bin/youker-assistant-session.py
-usr/lib/python2.7/dist-packages/youker-assistant-daemon/src/start_weatherdbus.py usr/bin/youker-assistant-weather.py
