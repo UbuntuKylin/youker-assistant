@@ -6,7 +6,6 @@ debian/youker-assistant.debhelper.log
 debian/youker-assistant.postinst.debhelper
 debian/youker-assistant.prerm.debhelper
 debian/youker-assistant.substvars
-libs/*.so
 mainui/Makefile
 processmanager/Makefile
 processmanager/*.o
