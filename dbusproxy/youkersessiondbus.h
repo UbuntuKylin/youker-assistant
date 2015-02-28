@@ -44,6 +44,7 @@ public:
     void getAutoStartAppStatus();
     void changeAutoStartAppStatus(QString appName);
     QString checkNewVersion();
+    void runApp(QString pkgname);
 
     //new scan method
     void scanSystemCleanerItems(QMap<QString, QVariant> data);

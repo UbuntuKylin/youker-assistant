@@ -23,6 +23,9 @@
 import os, sys
 import urllib2
 import platform
+import re
+import subprocess
+import commands
 
 VERSION = "1.2.0"
 str_agent = []
@@ -116,6 +119,28 @@ def get_ip():
     except:
         ret = get_ip_again()
     return ret
+
+
+def get_run_command(pkgname):
+    fd = os.popen('find /usr/share/applications/ -name "%s.desktop" | xargs grep "Exec"' %pkgname)
+    exc = fd.read()
+    fd.close()
+    command = ['']
+    # 截取运行指令部分
+    if exc:
+        command = re.findall('Exec=(.*)',exc)
+    # 有些软件Exec后面会有%U %f等，进行过滤
+    if re.findall(' ',command[0]):
+        command = re.findall('(.*) ',command[0])
+    #split the command to prevent the error: "OSError: [Errno 2] 没有那个文件或目录"
+    fullcmd = command[0]
+    if fullcmd:
+        fullcmd = command[0].split()
+    return fullcmd
+
+def run_app(pkgname):
+    cmd = get_run_command(pkgname)
+    p = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=False)
 
 if __name__ == '__main__':
     ip = get_ip()

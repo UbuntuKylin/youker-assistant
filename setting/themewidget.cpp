@@ -141,7 +141,10 @@ ThemeWidget::ThemeWidget(QWidget *parent, SessionDispatcher *proxy) :
     QListWidgetItem *cur_item = list_widget->item(initIndex);
     this->initCurrentTheme(cur_item);
 
-    QHBoxLayout *layout = new QHBoxLayout();
+//    QHBoxLayout *layout = new QHBoxLayout();
+//    layout->addWidget(list_widget);
+//    setLayout(layout);
+    QGridLayout *layout = new QGridLayout();
     layout->addWidget(list_widget);
     setLayout(layout);
 

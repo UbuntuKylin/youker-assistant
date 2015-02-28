@@ -28,6 +28,8 @@
 #include <QListView>
 #include "../component/kylinlistmodel.h"
 
+class SessionDispatcher;
+
 class BoxWidget : public QWidget
 {
     Q_OBJECT
@@ -36,6 +38,7 @@ public:
     ~BoxWidget();
     void loadPlugins();
     void initPluginWidget();
+    void setSessionDbusProxy(SessionDispatcher *dispatcher) { sessionProxy = dispatcher;}
 
 signals:
 
@@ -48,6 +51,7 @@ private:
     QListView *list_view;
     KylinListModel m_feture_Model;
     QString plugin_path;
+    SessionDispatcher *sessionProxy;
 };
 
 #endif // BOXWIDGET_H

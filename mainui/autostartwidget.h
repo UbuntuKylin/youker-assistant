@@ -59,8 +59,14 @@ private:
     KylinTitleBar *title_bar;
     QLabel *tip_label;
     QLabel *num_label;
+    QLabel *on_label;
+    QLabel *on_num_label;
+    QLabel *off_label;
+    QLabel *off_num_label;
     QLabel *name_label;
     QLabel *status_label;
+    int onNum;
+    int offNum;
 };
 
 #endif // AUTOSTARTWIDGET_H

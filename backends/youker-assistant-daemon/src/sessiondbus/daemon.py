@@ -137,6 +137,10 @@ class SessionDaemon(dbus.service.Object):
         pkg = cache['youker-assistant']
         return pkg.installed.version
 
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def run_selected_app(self, pkgname):
+        run_app(pkgname)
+
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def check_user(self):
         try:

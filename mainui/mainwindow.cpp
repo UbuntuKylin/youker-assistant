@@ -785,6 +785,7 @@ void MainWindow::showBoxWidget()
         if( bottom_grid_layout == NULL )
             bottom_grid_layout = new QGridLayout();
         box_widget = new BoxWidget(this, getAppDirectory());
+        box_widget->setSessionDbusProxy(sessioninterface);
 //        box_widget = new BoxWidget(this, qApp->applicationDirPath());
         bottom_grid_layout->addWidget(box_widget,0,0);
         this->content_widget->setLayout(bottom_grid_layout);

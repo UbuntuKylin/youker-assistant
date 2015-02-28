@@ -22,6 +22,7 @@
 #include "../component/plugininterface.h"
 #include "pluginmanager.h"
 #include <QGridLayout>
+#include "../dbusproxy/youkersessiondbus.h"
 
 BoxWidget::BoxWidget(QWidget *parent, QString path) :
     QWidget(parent), plugin_path(path)
@@ -40,9 +41,9 @@ BoxWidget::BoxWidget(QWidget *parent, QString path) :
     list_view->setResizeMode(QListView::Adjust);
     list_view->setModel(&m_feture_Model);
     list_view->setViewMode(QListView::IconMode);
-    list_view->setMovement(QListView::Static);
+//    list_view->setMovement(QListView::Static);
     list_view->setSpacing(26);
-    list_view->setLineWidth(110);
+//    list_view->setLineWidth(110);
 
     this->loadPlugins();
     this->initPluginWidget();
@@ -88,9 +89,18 @@ void BoxWidget::initPluginWidget()
     QStringList title;
     title << tr("");
     m_feture_Model.setTitle(title);
+//    m_feture_Model.insertRows(0,1,QModelIndex());
+//    QModelIndex qindex = m_feture_Model.index(0,0,QModelIndex());
+//    m_feture_Model.setData(qindex,tr("      "));
     m_feture_Model.insertRows(0,1,QModelIndex());
     QModelIndex qindex = m_feture_Model.index(0,0,QModelIndex());
-    m_feture_Model.setData(qindex,tr("      "));
+    //set text
+    m_feture_Model.setData(qindex, tr("UbuntuKylin Software Center"));
+    //set icon
+    m_feture_Model.setData(qindex,QIcon(QPixmap("://res/ubuntukylin-software-center.png")),Qt::DecorationRole);
+    //set tooltip
+    m_feture_Model.setData(qindex, tr("UbuntuKylin Software Center"),Qt::WhatsThisRole);
+
     int count =  PluginManager::Instance()->count();
     for (int i = 0;i < count;++i)
     {
@@ -102,12 +112,20 @@ void BoxWidget::initPluginWidget()
         qindex = m_feture_Model.index(i + 1,0,QModelIndex());
         m_feture_Model.setData(qindex,ICommon->getName());
         m_feture_Model.setData(qindex,QIcon(QPixmap(pacture_path)),Qt::DecorationRole);
+        m_feture_Model.setData(qindex,ICommon->getName(),Qt::WhatsThisRole);
     }
 }
 
 void BoxWidget::OnClickListView(const QModelIndex & index)
 {
-    QString guid = m_feture_Model.getGuid(index.row() - 1);
-    PluginInterface* interface = PluginManager::Instance()->getInterfaceByGuid<PluginInterface>(guid);
-    interface->doAction();
+    if(index.row() == 0)
+    {
+        sessionProxy->runApp("ubuntu-kylin-software-center");
+    }
+    else
+    {
+        QString guid = m_feture_Model.getGuid(index.row() - 1);
+        PluginInterface* interface = PluginManager::Instance()->getInterfaceByGuid<PluginInterface>(guid);
+        interface->doAction();
+    }
 }

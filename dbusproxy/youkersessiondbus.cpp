@@ -178,6 +178,11 @@ QString SessionDispatcher::checkNewVersion()
     return reply.value();
 }
 
+void SessionDispatcher::runApp(QString pkgname)
+{
+    sessioniface->call("run_selected_app", pkgname);
+}
+
 void SessionDispatcher::handlerAutoManageData(QStringList data)
 //void SessionDispatcher::handlerAutoManageData(const QVariantMap &data)
 {
