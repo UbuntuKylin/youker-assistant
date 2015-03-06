@@ -26,8 +26,6 @@
 #include <QDir>
 #include <QProcess>
 
-QPoint widgetPosition;//界面中心位置的全局变量
-
 ProcessDialog::ProcessDialog(ProcessManager *plugin, QDialog *parent)
 :QDialog(parent)
 {
@@ -237,12 +235,9 @@ void ProcessDialog::refresh_prolist() {
 }
 
 void ProcessDialog::handlercellClicked(int row, int column) {
-//    qDebug() << row;
-//    qDebug() << column;
     QList<QTableWidgetItem*>items=tableWidget->selectedItems();
     QTableWidgetItem*item=items.at(2);
     QString name=item->text();//获取内容
-//    qDebug() << name;
     selected_pid = name;
 }
 
@@ -255,31 +250,15 @@ void ProcessDialog::killSelectedProcess(){
     p->start("kill -9 " + pid);
     bool result = p->waitForFinished();
     if (result) {
-        toolkits->alertMSG(tr("kill process success"));
+        toolkits->alertMSG(this->frameGeometry().topLeft().x(), this->frameGeometry().topLeft().y(), tr("kill process success"));
     }
     else {
-        toolkits->alertMSG(tr("kill process failed"));
+        toolkits->alertMSG(this->frameGeometry().topLeft().x(), this->frameGeometry().topLeft().y(), tr("kill process failed"));
     }
 //    int count=items.count();
 //   for(int i=0;i<count;i++) {
 //          int row = tableWidget->row(items.at(i));//获取选中的行
 //          QTableWidgetItem* item = items.at(i);
 //          QString name=item->text();//获取内容
-//          qDebug() << name;
 //    }
-}
-
-void ProcessDialog::paintEvent(QPaintEvent *event)
-{
-     widgetPosition = this->pos();
-//    QBitmap objBitmap(size());
-//    //QPainter用于在位图上绘画
-//    QPainter painter(&objBitmap);
-//    //填充位图矩形框(用白色填充)
-//    painter.fillRect(rect(),Qt::white);
-//    painter.setBrush(QColor(0,0,0));
-//    //在位图上画圆角矩形(用黑色填充)
-//    painter.drawRoundedRect(this->rect(),5,5);
-//    ////使用setmask过滤即可
-//    setMask(objBitmap);
 }

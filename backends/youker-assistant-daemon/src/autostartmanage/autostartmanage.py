@@ -346,14 +346,24 @@ def interface_get_status(fobj):
     else:
         fobj.autostartmanage_status_signal("complete")
 
+def interface_get_single_status(fobj, path):
+    obj = Desktop_Autostart_Manage()
+    status = obj.function_home(path)
+    if status == "autostart":
+        return True
+    elif status == "notautostart":
+        return False
+    else:
+        return False
+
 def interface_change_status(fobj, filename):
     try:
         obj = Desktop_Autostart_Manage()
         obj.change_single_status(filename)
     except Exception, e:
         fobj.autostartmanage_error_signal(str(e))
-    else:
-        fobj.autostartmanage_status_signal("complete")
+#    else:
+#        fobj.autostartmanage_status_signal("complete")
 
 if __name__ == "__main__":
     obj = Desktop_Autostart_Manage()

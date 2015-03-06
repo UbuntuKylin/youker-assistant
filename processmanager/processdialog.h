@@ -43,7 +43,6 @@ class ProcessDialog : public QDialog
 public:
   ProcessDialog(ProcessManager *plugin, QDialog *parent = 0);
   ~ProcessDialog();
-  virtual void paintEvent ( QPaintEvent *event);
   void setLanguage();
   void initConnect();
   void initTitleBar();
