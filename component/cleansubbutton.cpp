@@ -25,9 +25,10 @@
 CleanSubButton::CleanSubButton(QWidget *parent) :
     QWidget(parent)
 {
-    hoverPixmap.load("://res/shadow_hover");
-    grayhoverPixmap.load("://res/shadow_gray_hover");
-    this->setFixedSize(hoverPixmap.size());
+//    hoverPixmap.load("://res/shadow_hover");
+//    grayhoverPixmap.load("://res/shadow_gray_hover");
+//    this->setFixedSize(hoverPixmap.size());
+    this->setFixedSize(48, 48);
     QPixmap pixMap("://res/checkbox-tristate.png");
     int width = pixMap.width();
     int height = pixMap.height();
@@ -36,16 +37,16 @@ CleanSubButton::CleanSubButton(QWidget *parent) :
     {
         checkboxList.append(pixMap.copy(i*(width/num), 0, width/num, height));
     }
-    //设置checkbox的显示位置:x(100), y(100)
-    checkboxRect.setX(100);
-    checkboxRect.setY(100);
+    //设置checkbox的显示位置:x(36), y(34)
+    checkboxRect.setX(36);
+    checkboxRect.setY(34);
     checkboxRect.setSize(checkboxList.at(0).size());
 }
 
 void CleanSubButton::setIconPath(const QString &icon)
 {
     checkPixmap.load(icon + "_check");
-    midcheckPixmap.load(icon + "_midcheck");
+//    midcheckPixmap.load(icon + "_midcheck");
     uncheckPixmap.load(icon + "_uncheck");
 }
 
@@ -73,7 +74,7 @@ void CleanSubButton::paintEvent(QPaintEvent *)
         }
         else if(tristateStatus == 1)
         {
-            painter.drawPixmap(rect(), midcheckPixmap);
+            painter.drawPixmap(rect(), checkPixmap);
             painter.drawPixmap(checkboxRect, checkboxList.at(6));
         }
         else if(tristateStatus == 0)
@@ -85,19 +86,19 @@ void CleanSubButton::paintEvent(QPaintEvent *)
     case BUTTON_ENTER:
         if(tristateStatus == 2)
         {
-            painter.drawPixmap(rect(), hoverPixmap);
+//            painter.drawPixmap(rect(), hoverPixmap);
             painter.drawPixmap(rect(), checkPixmap);
             painter.drawPixmap(checkboxRect, checkboxList.at(4));
         }
         else if(tristateStatus == 1)
         {
-            painter.drawPixmap(rect(), hoverPixmap);
-            painter.drawPixmap(rect(), midcheckPixmap);
+//            painter.drawPixmap(rect(), hoverPixmap);
+            painter.drawPixmap(rect(), checkPixmap);
             painter.drawPixmap(checkboxRect, checkboxList.at(7));
         }
         else if(tristateStatus == 0)
         {
-            painter.drawPixmap(rect(), grayhoverPixmap);
+//            painter.drawPixmap(rect(), grayhoverPixmap);
             painter.drawPixmap(rect(), uncheckPixmap);
             painter.drawPixmap(checkboxRect, checkboxList.at(1));
         }
@@ -105,19 +106,19 @@ void CleanSubButton::paintEvent(QPaintEvent *)
     case BUTTON_PRESSED:
         if(tristateStatus == 2)
         {
-            painter.drawPixmap(rect(), hoverPixmap);
+//            painter.drawPixmap(rect(), hoverPixmap);
             painter.drawPixmap(rect(), checkPixmap);
             painter.drawPixmap(checkboxRect, checkboxList.at(4));
         }
         else if(tristateStatus == 1)
         {
-            painter.drawPixmap(rect(), hoverPixmap);
-            painter.drawPixmap(rect(), midcheckPixmap);
+//            painter.drawPixmap(rect(), hoverPixmap);
+            painter.drawPixmap(rect(), checkPixmap);
             painter.drawPixmap(checkboxRect, checkboxList.at(7));
         }
         else if(tristateStatus == 0)
         {
-            painter.drawPixmap(rect(), grayhoverPixmap);
+//            painter.drawPixmap(rect(), grayhoverPixmap);
             painter.drawPixmap(rect(), uncheckPixmap);
             painter.drawPixmap(checkboxRect, checkboxList.at(1));
         }

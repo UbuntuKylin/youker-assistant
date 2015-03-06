@@ -232,7 +232,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cache_apt_items = new CleanListWidget(cache_apt_list, tr("Apt Cache Clean Items"));
 //            cache_apt_btn = new CommonCheckBox(0, "://res/cache");
-            cache_apt_btn = new CleanSubGroup(0, "://res/cache");
+            cache_apt_btn = new CleanSubGroup(0, "://res/item");
 //            cache_apt_btn->setFixedSize(160, 130);
 //            cache_apt_btn->setFixedSize(160, 200);
             cache_apt_btn->setStatusTip("cache-apt");
@@ -282,7 +282,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cache_software_items = new CleanListWidget(cache_software_list, tr("Software Cache Clean Items"));
 //            cache_software_btn = new CommonCheckBox(0, "://res/cache");
-            cache_software_btn = new CleanSubGroup(0, "://res/cache");
+            cache_software_btn = new CleanSubGroup(0, "://res/item");
 //            cache_software_btn->setFixedSize(160, 130);
 //            cache_software_btn->setFixedSize(160, 200);
             cache_software_btn->setStatusTip("cache-software");
@@ -332,7 +332,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cache_thumbnails_items = new CleanListWidget(cache_thumbnails_list, tr("Thumbnails Cache Clean Items"));
 //            cache_thumbnails_btn = new CommonCheckBox(0, "://res/cache");
-            cache_thumbnails_btn = new CleanSubGroup(0, "://res/cache");
+            cache_thumbnails_btn = new CleanSubGroup(0, "://res/item");
 //            cache_thumbnails_btn->setFixedSize(160, 130);
 //            cache_thumbnails_btn->setFixedSize(160, 200);
             cache_thumbnails_btn->setStatusTip("cache-thumbnails");
@@ -383,7 +383,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cache_firefox_items = new CleanListWidget(cache_firefox_list, tr("Software Cache Clean Items"));
 //            cache_firefox_btn = new CommonCheckBox(0, "://res/cache");
-            cache_firefox_btn = new CleanSubGroup(0, "://res/cache");
+            cache_firefox_btn = new CleanSubGroup(0, "://res/item");
 //            cache_firefox_btn->setFixedSize(160, 130);
             cache_firefox_btn->setStatusTip("cache-firefox");
             cache_firefox_btn->setLabelText(tr("Firefox Cache Count:"), cache_firefox_list.length());
@@ -431,7 +431,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cache_chromium_items = new CleanListWidget(cache_chromium_list, tr("Thumbnails Cache Clean Items"));
 //            cache_chromium_btn = new CommonCheckBox(0, "://res/cache");
-            cache_chromium_btn = new CleanSubGroup(0, "://res/cache");
+            cache_chromium_btn = new CleanSubGroup(0, "://res/item");
 //            cache_chromium_btn->setFixedSize(160, 130);
             cache_chromium_btn->setStatusTip("cache-chromium");
             cache_chromium_btn->setLabelText(tr("Chromium Cache Count:"), cache_chromium_list.length());
@@ -484,7 +484,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cookies_firefox_items = new CleanListWidget(cookies_firefox_list, tr("Thumbnails Cache Clean Items"));
 //            cookies_firefox_btn = new CommonCheckBox(0, "://res/cookie");
-            cookies_firefox_btn = new CleanSubGroup(0, "://res/cache");
+            cookies_firefox_btn = new CleanSubGroup(0, "://res/item");
 //            cookies_firefox_btn->setFixedSize(160, 130);
             cookies_firefox_btn->setStatusTip("cookes-firefox");
             cookies_firefox_btn->setLabelText(tr("Firefox Cookies Count:"), cookies_firefox_list.length());
@@ -534,7 +534,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cookies_chromium_items = new CleanListWidget(cookies_chromium_list, tr("Thumbnails Cache Clean Items"));
 //            cookies_chromium_btn = new CommonCheckBox(0, "://res/cache");
-            cookies_chromium_btn = new CleanSubGroup(0, "://res/cache");
+            cookies_chromium_btn = new CleanSubGroup(0, "://res/item");
 //            cookies_chromium_btn->setFixedSize(160, 130);
             cookies_chromium_btn->setStatusTip("cookes-chromium");
             cookies_chromium_btn->setLabelText(tr("Chromium Cookies Count:"), cookies_chromium_list.length());
@@ -587,7 +587,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         if(trace_firefox_count.length() > 0)
         {
 //            trace_firefox_btn = new CommonCheckBox(0, "://res/cache");
-            trace_firefox_btn = new CleanSubGroup(0, "://res/cache");
+            trace_firefox_btn = new CleanSubGroup(0, "://res/item");
 //            trace_firefox_btn->setFixedSize(160, 130);
             trace_firefox_btn->hideCustomButton();
             trace_firefox_btn->setStatusTip("history-firefox");
@@ -628,7 +628,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         }
         if(trace_chromium_count.length() > 0)
         {
-            trace_chromium_btn = new CleanSubGroup(0, "://res/cache");
+            trace_chromium_btn = new CleanSubGroup(0, "://res/item");
             trace_chromium_btn->hideCustomButton();
             trace_chromium_btn->setStatusTip("history-chromium");
             trace_chromium_btn->setLabelText(tr("Chromium History Count:"), trace_chromium_count.toInt());
@@ -651,7 +651,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
 
         if(trace_system_count.length() > 0)
         {
-            trace_system_btn = new CleanSubGroup(0, "://res/cache");
+            trace_system_btn = new CleanSubGroup(0, "://res/item");
             trace_system_btn->hideCustomButton();
             trace_system_btn->setStatusTip("history-system");
             trace_system_btn->setLabelText(tr("System History Count:"), trace_system_count.toInt());
@@ -679,7 +679,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             package_unneed_items = new CleanListWidget(package_unneed_list, tr("Thumbnails Cache Clean Items"));
 //            package_unneed_btn = new CommonCheckBox(0, "://res/cache");
-            package_unneed_btn = new CleanSubGroup(0, "://res/cache");
+            package_unneed_btn = new CleanSubGroup(0, "://res/item");
 //            package_unneed_btn->setFixedSize(160, 130);
             package_unneed_btn->setStatusTip("package-unneed");
             package_unneed_btn->setLabelText(tr("Package Unneed Count:"),package_unneed_list.length());
@@ -728,7 +728,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             package_oldkernel_items = new CleanListWidget(package_oldkernel_list, tr("Thumbnails Cache Clean Items"));
 //            package_oldkernel_btn = new CommonCheckBox(0, "://res/cache");
-            package_oldkernel_btn = new CleanSubGroup(0, "://res/cache");
+            package_oldkernel_btn = new CleanSubGroup(0, "://res/item");
 //            package_oldkernel_btn->setFixedSize(160, 130);
             package_oldkernel_btn->setStatusTip("package-oldkernel");
             package_oldkernel_btn->setLabelText(tr("Package oldkernel Count:"), package_oldkernel_list.length());
@@ -777,7 +777,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             package_configfile_items = new CleanListWidget(package_configfile_list, tr("Thumbnails Cache Clean Items"));
 //            package_configfile_btn = new CommonCheckBox(0, "://res/cache");
-            package_configfile_btn = new CleanSubGroup(0, "://res/cache");
+            package_configfile_btn = new CleanSubGroup(0, "://res/item");
 //            package_configfile_btn->setFixedSize(160, 130);
             package_configfile_btn->setStatusTip("package-configfile");
             package_configfile_btn->setLabelText(tr("Package configfile Count:"),package_configfile_list.length());

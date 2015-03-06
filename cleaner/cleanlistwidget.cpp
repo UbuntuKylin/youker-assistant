@@ -39,8 +39,9 @@ CleanListWidget::CleanListWidget(QStringList &arglist, const QString title_text,
     ui->widget_1->setPalette(palette);
 
     ui->scrollArea->setAutoFillBackground(true);
-    palette.setBrush(QPalette::Window, QBrush(Qt::white));
-    ui->scrollArea->setPalette(palette);
+    ui->scrollArea->setBackgroundRole(QPalette::Light);
+//    palette.setBrush(QPalette::Window, QBrush(Qt::white));
+//    ui->scrollArea->setPalette(palette);
 
     tip_label->setText(tr("Clean Items:"));
 
