@@ -22,11 +22,9 @@
 
 #include <QWidget>
 #include <QSplitter>
-#include <QToolButton>
 #include <QPushButton>
 #include <QLabel>
 #include <QProgressBar>
-#include <QPainter>
 #include <QPen>
 #include <QHBoxLayout>
 #include <QEvent>
@@ -71,11 +69,8 @@ signals:
 public slots:
     void displaySettingHomePage();
     void displaySettingSubPage();
-//    void showCheckscreenDialog();
 
 private:
-//    int mainwindow_width;
-//    int mainwindow_height;
     MainWindow *p_mainwindow;
     SessionDispatcher *sessionProxy;
     SystemDispatcher *systemProxy;
@@ -93,11 +88,7 @@ private:
     TouchpadWidget *touchpad_widget;
     DeadpixelWidget *deadpixel_widget;
     NautilusWidget *nautilus_widget;
-
-//    QLabel *title_label;
-//    QSplitter *v_splitter;
     QSplitter *h_splitter;
-
     QWidget *individuation_widget;
     QLabel *individuation_icon;
     QLabel *individuation_title;

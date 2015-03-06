@@ -21,7 +21,6 @@
 #include "kylinlistwidget.h"
 #include "kylinlistwidgetitem.h"
 #include "mainwindow.h"
-#include <QDebug>
 
 KylinListWidget::KylinListWidget(QWidget *parent)
     :QListWidget(parent)
@@ -40,18 +39,9 @@ void KylinListWidget::onItemClicked(QListWidgetItem *item)
     mainwindow->changeSkin(listitem->getSkinName());
 }
 
-void  KylinListWidget::enterEvent (QEvent *event)
-{
-
-}
 void  KylinListWidget::leaveEvent (QEvent *event)
 {
-
-}
-
-void KylinListWidget::moveEvent (QMoveEvent *event)
-{
-
+    mainwindow->reViewTheOrgSkin();
 }
 
 void KylinListWidget::mouseMoveEvent(QMouseEvent *event)
@@ -60,7 +50,7 @@ void KylinListWidget::mouseMoveEvent(QMouseEvent *event)
     KylinListWidgetItem *item = (KylinListWidgetItem*)itemAt(point);
     if (item)
     {
-        item->painter();
+        item->paintPointSkin();
     }
     event->ignore();
 }

@@ -20,30 +20,19 @@
 #ifndef CLEANERDETAILWIDGET_H
 #define CLEANERDETAILWIDGET_H
 
-//#include <QWidget>
-//#include "../component/kylinlistwidget.h"
-//#include "../component/kylintitlebar.h"
-//#include "../component/autogroup.h"
-//#include <QCheckBox>
 #include <QWidget>
-#include <QLabel>
-#include <QPushButton>
-#include <QMouseEvent>
-#include <QHBoxLayout>
-#include <QSignalMapper>
-#include <QVBoxLayout>
-#include "../component/kylinbutton.h"
-#include "../component/kylintoolbutton.h"
-#include "../component/systembutton.h"
-#include "../component/commoncheckbox.h"
-#include <QCheckBox>
 #include "cleaneritems.h"
 #include "cleanlistwidget.h"
-#include <QGridLayout>
 
+class QLabel;
+class QBoxLayout;
+class QHBoxLayout;
+class QGridLayout;
 class SessionDispatcher;
 class SystemDispatcher;
+class Toolkits;
 class MainWindow;
+class CleanSubGroup;
 
 namespace Ui {
 class CleanerDetailWidget;
@@ -54,7 +43,7 @@ class CleanerDetailWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit CleanerDetailWidget(QWidget *parent = 0, SessionDispatcher *seroxy = 0, SystemDispatcher *syproxy = 0, MainWindow *window = 0);
+    explicit CleanerDetailWidget(QWidget *parent = 0, SessionDispatcher *seroxy = 0, SystemDispatcher *syproxy = 0, MainWindow *window = 0, Toolkits *kits = 0);
     ~CleanerDetailWidget();
     void setUIData();
     void setLanguage();
@@ -62,15 +51,16 @@ public:
     void getAllSelectedItems();
 
 public slots:
-    void onButtonClicked();
+    void showCustomPage();
     void showReciveData(const QStringList &data);
     void receiveCleanSignal();
     void showReciveStatus(const QString &status);
     void CleanUIAndData();
-
+//    void receivePolicyKitSignal(bool status);
 
 signals:
     void notifyMainCheckBox(int status);
+//    void showActionAnimaiton();
 
 private:
     void initTitleBar();
@@ -80,33 +70,34 @@ private:
     MainWindow *parentWindow;
     SessionDispatcher *sessionproxy;
     SystemDispatcher *systemproxy;
+    Toolkits *toolKits;
     QMap<QString, QVariant> argsData;
     CleanListWidget *cache_apt_items ;
-    CommonCheckBox *cache_apt_btn;
+    CleanSubGroup *cache_apt_btn;
     CleanListWidget *cache_software_items ;
-    CommonCheckBox *cache_software_btn;
+    CleanSubGroup *cache_software_btn;
     CleanListWidget *cache_thumbnails_items ;
-    CommonCheckBox *cache_thumbnails_btn;
+    CleanSubGroup *cache_thumbnails_btn;
     CleanListWidget *cache_firefox_items ;
-    CommonCheckBox *cache_firefox_btn;
+    CleanSubGroup *cache_firefox_btn;
     CleanListWidget *cache_chromium_items ;
-    CommonCheckBox *cache_chromium_btn;
+    CleanSubGroup *cache_chromium_btn;
 
     CleanListWidget *package_unneed_items ;
-    CommonCheckBox *package_unneed_btn;
+    CleanSubGroup *package_unneed_btn;
     CleanListWidget *package_oldkernel_items ;
-    CommonCheckBox *package_oldkernel_btn;
+    CleanSubGroup *package_oldkernel_btn;
     CleanListWidget *package_configfile_items ;
-    CommonCheckBox *package_configfile_btn;
+    CleanSubGroup *package_configfile_btn;
 
     CleanListWidget *cookies_firefox_items ;
-    CommonCheckBox *cookies_firefox_btn;
+    CleanSubGroup *cookies_firefox_btn;
     CleanListWidget *cookies_chromium_items ;
-    CommonCheckBox *cookies_chromium_btn;
+    CleanSubGroup *cookies_chromium_btn;
 
-    CommonCheckBox *trace_firefox_btn;
-    CommonCheckBox *trace_chromium_btn;
-//    KylinCheckBox *trace_system_btn;
+    CleanSubGroup *trace_firefox_btn;
+    CleanSubGroup *trace_chromium_btn;
+    CleanSubGroup *trace_system_btn;
 
     QStringList cache_apt_list;
     QStringList cache_software_list;
@@ -120,6 +111,7 @@ private:
     QStringList cookies_chromium_list;
     QString trace_firefox_count;
     QString trace_chromium_count;
+    QString trace_system_count;
 
     bool colorFlag;
     QBoxLayout *main_layout;

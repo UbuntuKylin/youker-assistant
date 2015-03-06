@@ -29,7 +29,6 @@
 #include <QVBoxLayout>
 #include <QSettings>
 #include "../component/kylinbutton.h"
-#include "../component/kylintoolbutton.h"
 #include "../component/systembutton.h"
 #include "../component/loadinglabel.h"
 

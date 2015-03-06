@@ -22,7 +22,6 @@
 
 #include <QMainWindow>
 #include <QPixmap>
-#include <QTranslator>
 #include <QSettings>
 
 #include "titlewidget.h"
@@ -38,7 +37,7 @@
 #include "skincenter.h"
 #include "../component/kylinmenu.h"
 #include "../component/utils.h"
-#include "../component/systemtray.h"
+#include "../component/toolkits.h"
 
 #include "homeactionwidget.h"
 #include "infoactionwidget.h"
@@ -47,8 +46,8 @@
 #include "boxactionwidget.h"
 #include "aboutdialog.h"
 
-//#include "../dbusproxy/youkersystemdbus.h"
 
+class QParallelAnimationGroup;
 class SessionDispatcher;
 class SystemDispatcher;
 
@@ -72,19 +71,17 @@ public:
     void showInfoWidget();
     void showClearWidget();
     void showSettingWidget();
-
-//    QPixmap* NinePatch(QString picName,int titleHeight,int BorderLineWidth ,QWidget* Wnd);
-
     void reViewThePointSkin(QString pciture);
+    void reViewTheOrgSkin();
     void changeSkin(QString pciture);
     void restoreSkin();
+//    void initAnimation();
 
 protected:
-//    void paintEvent(QPaintEvent *event);
-//    QPixmap background;
     void mousePressEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
+    void closeEvent(QCloseEvent *);
 
 public slots:
     void showBoxWidget();
@@ -96,10 +93,6 @@ public slots:
     void newFeatures();
     void setupConfigure();
     void aboutUs();
-
-    void showMainWindow();
-    void iconIsActived(QSystemTrayIcon::ActivationReason reason);
-
     void startDbusDaemon();
 
 signals:
@@ -107,12 +100,9 @@ signals:
 
 private:
     Ui::MainWindow *ui;
-//    int titleHeight;
-//    QVBoxLayout *main_layout;
     QBoxLayout *main_layout;
     QGridLayout *top_grid_layout;
     QGridLayout *bottom_grid_layout;
-//    QSplitter *splitter;
     TitleWidget *title_widget;
     ActionWidget *action_widget;
     ToolWidget *tool_widget;
@@ -133,6 +123,8 @@ private:
     SkinCenter skin_center;
     KylinMenu *main_menu;
 
+    QString version;
+
     QPoint drag_pos; //移动的距离
     bool mouse_press; //按下鼠标左键
 
@@ -143,11 +135,14 @@ private:
     QString last_skin_path;
     QPixmap review_skin_pixmap;
 
-    SystemTray *system_tray;
     SystemDispatcher *systeminterface;
     SessionDispatcher *sessioninterface;
+    Toolkits *toolKits;
     AboutDialog *aboutDlg;
     QSettings * mSettings;
+
+//    QParallelAnimationGroup *openGroup;
+//    QParallelAnimationGroup *closeGroup;
 };
 
 #endif // MAINWINDOW_H

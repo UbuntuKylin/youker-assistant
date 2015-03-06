@@ -38,9 +38,9 @@ class AutoStartWidget : public QWidget
 public:
     explicit AutoStartWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0);
     ~AutoStartWidget();
-    void setLanguage();
     void initConnect();
     void initData();
+    void scanAllSwitcher();
 
 public slots:
     void onCloseButtonClicked();
@@ -56,6 +56,7 @@ private:
     Ui::AutoStartWidget *ui;
     SessionDispatcher *sessionproxy;
     QList<QStringList> data_list;
+    QList<AutoGroup *> switcher_list;
     KylinTitleBar *title_bar;
     QLabel *tip_label;
     QLabel *num_label;

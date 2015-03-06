@@ -21,13 +21,12 @@
 #define NAUTILUSWIDGET_H
 
 #include <QWidget>
-#include <QLabel>
-#include <QPushButton>
-#include <QHBoxLayout>
 #include "../component/kylinswitcher.h"
-#include <QSplitter>
-#include <QSlider>
+
 class SessionDispatcher;
+class QLabel;
+class QPushButton;
+class QSlider;
 
 class NautilusWidget : public QWidget
 {
@@ -38,9 +37,6 @@ public:
     void setLanguage();
     void initConnect();
     void initData();
-
-//signals:
-//    void showSettingMainWidget();
 
 public slots:
     void setLocation();
@@ -53,14 +49,6 @@ public slots:
 
 private:
     SessionDispatcher *sessionproxy;
-//    QSplitter *splitter;
-//    QWidget * top_widget;
-//    QWidget * bottom_widget;
-
-//    QPushButton *back_btn;
-//    QLabel *title_label;
-//    QLabel *description_label;
-
     QLabel *location_label;
     QLabel *mount_media_label;
     QLabel *open_folder_label;

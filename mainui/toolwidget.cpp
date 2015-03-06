@@ -20,12 +20,12 @@
 #include "toolwidget.h"
 #include "../component/kylintoolbutton.h"
 #include "mainwindow.h"
-#include <QDebug>
 
 ToolWidget::ToolWidget(QWidget *parent)
 	: QWidget(parent)
 {
     this->setFixedSize(900, 47);
+//    this->setGeometry(0, 227, 900, 47);
     this->setAutoFillBackground(true);
     QPalette palette;
     palette.setColor(QPalette::Background, QColor(233,238,241));//#e9eef1
@@ -80,11 +80,11 @@ void ToolWidget::switchPageIndex(QString index)
         KylinToolButton *tool_button = button_list.at(i);
 		if(current_index == i)
 		{
-			tool_button->setMousePress(true);
+            tool_button->setMousePress(true);
 		}
 		else
 		{
-			tool_button->setMousePress(false);
+            tool_button->setMousePress(false);
 		}
 	}
     emit turnCurrentPage(current_index);

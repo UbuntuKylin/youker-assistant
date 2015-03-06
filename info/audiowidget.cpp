@@ -18,6 +18,7 @@
  */
 
 #include "audiowidget.h"
+#include "computerpage.h"
 #include <QPalette>
 #include <QtGui/QApplication>
 

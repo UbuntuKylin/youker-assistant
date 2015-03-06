@@ -21,12 +21,12 @@
 #define WINDOWWIDGET_H
 
 #include <QWidget>
-#include <QLabel>
-#include <QPushButton>
-#include <QHBoxLayout>
-#include <QComboBox>
 #include "../component/kylinswitcher.h"
-#include <QSplitter>
+
+class QLabel;
+class QPushButton;
+class QComboBox;
+
 class SessionDispatcher;
 
 class WindowWidget : public QWidget
@@ -39,9 +39,6 @@ public:
     void initConnect();
     void initData();
 
-//signals:
-//    void showSettingMainWidget();
-
 public slots:
     void setMenuIcon();
     void setMouseWheel(QString selected);
@@ -51,14 +48,6 @@ public slots:
 
 private:
     SessionDispatcher *sessionproxy;
-//    QSplitter *splitter;
-//    QWidget * top_widget;
-//    QWidget * bottom_widget;
-
-//    QPushButton *back_btn;
-//    QLabel *title_label;
-//    QLabel *description_label;
-
     QLabel *icon_label;
     QLabel *wheel_label;
     QLabel *double_click_label;

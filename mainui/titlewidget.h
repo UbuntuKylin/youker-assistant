@@ -28,7 +28,6 @@
 #include <QSignalMapper>
 #include <QVBoxLayout>
 #include "../component/kylinbutton.h"
-#include "../component/kylintoolbutton.h"
 #include "../component/systembutton.h"
 
 class MainWindow;

@@ -18,6 +18,7 @@
  */
 
 #include "memorywidget.h"
+#include "computerpage.h"
 #include "../dbusproxy/youkersystemdbus.h"
 #include <QDebug>
 

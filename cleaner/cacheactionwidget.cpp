@@ -18,8 +18,8 @@
  */
 
 #include "cacheactionwidget.h"
-#include "../component/kylintoolbutton.h"
 #include "mainwindow.h"
+#include <QLabel>
 
 CacheActionWidget::CacheActionWidget(QWidget *parent)
     : QWidget(parent)
@@ -71,6 +71,4 @@ void CacheActionWidget::setLanguage()
 {
     title_label->setText(tr("Cleaning up the system cache"));
     description_label->setText(tr("Deep cleaning up the system cache, to save disk space"));
-//    action_btn->setText(tr("Start scanning"));
-//    clean_btn->setText(tr("Begin cleanup"));
 }

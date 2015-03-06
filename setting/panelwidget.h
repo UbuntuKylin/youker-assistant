@@ -21,16 +21,15 @@
 #define PANELWIDGET_H
 
 #include <QWidget>
-#include <QLabel>
-#include <QPushButton>
-#include <QHBoxLayout>
-#include <QComboBox>
 #include "../component/kylinswitcher.h"
-#include <QSplitter>
-#include <QSlider>
-#include <QDoubleSpinBox>
-#include <QRadioButton>
+
 class SessionDispatcher;
+class QLabel;
+class QPushButton;
+class QComboBox;
+class QSlider;
+class QDoubleSpinBox;
+class QRadioButton;
 
 class PanelWidget : public QWidget
 {
@@ -58,14 +57,6 @@ public slots:
 
 private:
     SessionDispatcher *sessionproxy;
-//    QSplitter *splitter;
-//    QWidget * top_widget;
-//    QWidget * bottom_widget;
-
-//    QPushButton *back_btn;
-//    QLabel *title_label;
-//    QLabel *description_label;
-
     QLabel *blur_label;
     QLabel *transparency_label;
     QLabel *date_format_label;

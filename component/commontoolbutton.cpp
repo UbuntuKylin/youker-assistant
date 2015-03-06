@@ -86,20 +86,20 @@ void CommonToolButton::setMousePress(bool is_press)
 void CommonToolButton::paintEvent(QPaintEvent *event)
 {
     if(this->mouse_over)
-	{
+    {
         this->setIcon(QIcon(press_icon));
-	}
-	else
-	{
+    }
+    else
+    {
         if(this->mouse_press)
-		{
+        {
             this->setIcon(QIcon(hover_icon));
-		}
+        }
         else
         {
             this->setIcon(QIcon(normal_icon));
         }
-	}
+    }
 
-	QToolButton::paintEvent(event);
+    QToolButton::paintEvent(event);
 }

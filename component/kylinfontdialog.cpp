@@ -18,7 +18,6 @@
  */
 
 #include "kylinfontdialog.h"
-//#include "ui_kylinfontdialog.h"
 #include <QMouseEvent>
 #include <QListView>
 #include <QStringListModel>
@@ -28,13 +27,9 @@
 #include <QHBoxLayout>
 #include <QLineEdit>
 
-//extern QString selectedFont;
-
 KylinFontDialog::KylinFontDialog(/*QSettings *mSettings, QString flag, */QString cur_font, QWidget *parent) :
     QDialog(parent)
-//    ui(new Ui::KylinFontDialog)
 {
-//    ui->setupUi(this);
     this->setFixedSize(600, 500);
     this->setAttribute(Qt::WA_DeleteOnClose);
     this->setWindowFlags(Qt::FramelessWindowHint);
@@ -143,43 +138,6 @@ KylinFontDialog::KylinFontDialog(/*QSettings *mSettings, QString flag, */QString
     main_layout->setMargin(0);
     main_layout->setContentsMargins(0, 0, 0, 0);
     setLayout(main_layout);
-
-
-
-//
-//    QPixmap img(":/pixmap/image/titlebg.png");
-//    palette.setBrush(QPalette::Window, img);//标题栏背景颜色
-//    ui->widget->setPalette(palette);
-//    ui->titleLabel->setStyleSheet("color: white");//设置字颜色
-//    ui->curFontText->setStyleSheet("color: #940302");//设置字颜色  488400
-    //http://www.atool.org/colorpicker.php
-//    ui->widget_2->setAutoFillBackground(true);
-//    QPalette palette;
-//    palette.setColor(QPalette::Background, QColor(228,242,252));//#e4f2fc
-//    ui->widget_2->setPalette(palette);
-
-//    ui->okBtn->installEventFilter(this);
-//    ui->quitBtn->installEventFilter(this);
-//    ui->okBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/button12-gray.png);}"
-//                "QPushButton:hover{border-image:url(:/pixmap/image/button12-gray-hover.png);}");
-//    ui->quitBtn->setStyleSheet("QPushButton {border-image:url(:/pixmap/image/button12-gray.png);}"
-//                "QPushButton:hover{border-image:url(:/pixmap/image/button12-gray-hover.png);}");
-//    ui->curFontText->setStyleSheet("color: green");
-
-//    ui->familyEdit->setReadOnly(true);
-//    ui->familyEdit->setFocusProxy(ui->familyList);
-//    ui->fontLabel->setBuddy(ui->familyList);
-//    ui->styleEdit->setReadOnly(true);
-//    ui->styleEdit->setFocusProxy(ui->styleList);
-//    ui->styleLabel->setBuddy(ui->styleList);
-//    ui->sizeEdit->setReadOnly(true);
-//    ui->sizeEdit->setFocusProxy(ui->sizeList);
-//    ui->sizeLabel->setBuddy(ui->sizeList);
-//    ui->sampleEdit->setSizePolicy(QSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored));
-//    ui->sampleEdit->setAlignment(Qt::AlignCenter);
-//    pSettings = mSettings;
-//    fontFlag = flag;
-//    ui->curFontText->setText(cur_font);//得到初始字体
     cur_font_label->setText(cur_font);
 
     familymodel = new QStringListModel;
@@ -234,12 +192,6 @@ void KylinFontDialog::onCacelButtonClicked()
 {
     this->close();
 }
-
-//void KylinFontDialog::onMinButtonClicked()
-//{
-////    this->showMinimized();
-//    this->hide();
-//}
 
 void KylinFontDialog::onOKButtonClicked() {
     if(font_edit->text().isEmpty()) {

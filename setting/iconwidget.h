@@ -21,13 +21,13 @@
 #define ICONWIDGET_H
 
 #include <QWidget>
-#include <QLabel>
-#include <QPushButton>
-#include <QHBoxLayout>
-#include <QComboBox>
 #include "../component/kylinswitcher.h"
-#include <QSplitter>
+
 class SessionDispatcher;
+class QLabel;
+class QPushButton;
+class QHBoxLayout;
+class QComboBox;
 
 class IconWidget : public QWidget
 {
@@ -39,9 +39,6 @@ public:
     void initConnect();
     void initData();
 
-//signals:
-//    void showSettingMainWidget();
-
 public slots:
     void changeSwitcherStatus();
     void setIconTheme(QString selectTheme);
@@ -52,13 +49,6 @@ public slots:
     void setDiskIcon();
 
 private:
-//    QSplitter *splitter;
-//    QWidget * top_widget;
-//    QWidget * bottom_widget;
-
-//    QPushButton *back_btn;
-//    QLabel *title_label;
-//    QLabel *description_label;
     SessionDispatcher *sessionproxy;
 
     QLabel *theme_label;

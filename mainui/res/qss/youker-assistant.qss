@@ -1,5 +1,5 @@
 QSplitter::handle{
-        background:lightgray;
+    background:lightgray;
 }
 
 QLabel#grayLabel{
@@ -42,19 +42,32 @@ QLabel#smallgrayLabel{
     color:#b2b2b2;
     font-family: "Ubuntu";
     font-size: 14px;
-    /*text-align: left;*/
 }
 
 QLabel#tipLabel{
-    /*color:#7c8487;*/
     color:#b2b2b2;
     font-family: "Ubuntu";
     font-size: 14;
     text-align: left;
 }
 
-QWidget#grayLine {
-   background-color: #ccdadd;
+
+QLabel#backgroundLabel{
+    color:#b2b2b2;
+    font-family: "Ubuntu";
+    font-size: 14px;
+}
+
+QLabel#backgroundLabel::hover{
+    color:#b2b2b2;
+    font-family: "Ubuntu";
+    font-size: 14px;
+}
+
+QLabel#backgroundLabel::pressed{
+    color:#b2b2b2;
+    font-family: "Ubuntu";
+    font-size: 14px;
 }
 
 QWidget#transparentWidget {
@@ -63,6 +76,20 @@ QWidget#transparentWidget {
 
 QPushButton#transparentButton{
     background:transparent;
+}
+
+QPushButton#settingButton{
+    color:rgb(0, 120, 230);
+    background:transparent;
+    text-align: left;
+}
+
+QPushButton#settingButton:hover{
+    color:rgb(50, 150, 255);
+}
+
+QPushButton#settingButton:pressed{
+    color:rgb(50, 150, 255);
 }
 
 QPushButton#backgroundButton{
@@ -93,7 +120,6 @@ QPushButton#blackButton:pressed{
 QPushButton#underlineButton{
     background:transparent;
     text-decoration:underline;
-    /*text-decoration:none;*/
     color:#cfd8dc;
     font-family: "Ubuntu";
     font-size: 14px;
@@ -114,84 +140,73 @@ QPushButton#whiteButton{
 }
 
 QPushButton#checkButton{
-        color:#3f96e4;
-        font-family: "Ubuntu";
-        font-size: 14px;
-        text-align: center;
-        background:transparent;
+    color:#3f96e4;
+    font-family: "Ubuntu";
+    font-size: 14px;
+    text-align: center;
+    background:transparent;
 }
 
 QPushButton#checkButton:hover{
-        color:#4fc3f7;
-        font-family: "Ubuntu";
-        font-size: 14px;
-        text-align: center;
-        background:transparent;
+    color:#4fc3f7;
+    font-family: "Ubuntu";
+    font-size: 14px;
+    text-align: center;
+    background:transparent;
 }
 
 QPushButton#checkButton:pressed{
-        color:#4fc3f7;
-        font-family: "Ubuntu";
-        font-size: 14px;
-        text-align: center;
-        background:transparent;
-}
-
-QPushButton#lefButton{
-    text-align: left;
+    color:#4fc3f7;
+    font-family: "Ubuntu";
+    font-size: 14px;
+    text-align: center;
+    background:transparent;
 }
 
 QPushButton#greenButton{
-        background:#52c832;
-        font-size:30px;
-        color:#ffffff;
-        border-radius:1px;
-        /*padding:1px 10px 3px 25px;
-        font-weight:bold;
-        border-color:black;
-        border-width:1px;
-        border-style:outset;
-        border-right:0px;
-        border-bottom:0px;*/
+    background:#52c832;
+    font-size:30px;
+    color:#ffffff;
+    border-radius:1px;
 }
 
 QPushButton#greenButton:hover{
-        background:#68d94a;
+    background:#68d94a;
 }
 
 QPushButton#greenButton:pressed{
-        background:#40b222;
+    background:#40b222;
 }
 
 QPushButton#backButton{
-        font-size:14px;
-        color:#cfd8dc;
+    font-size:14px;
+    color:#cfd8dc;
 }
 
 QPushButton#backButton:hover{
-        background:#ffffff;
+    background:#ffffff;
 }
 
 QPushButton#backButton:pressed{
-        background:#ffffff;
+    background:#ffffff;
 }
 
 QPushButton#bottomButton{
-        color:rgb(0, 120, 230);
-        background:transparent;
+    color:rgb(0, 120, 230);
+    background:transparent;
 }
 
 QPushButton#bottomButton:hover{
-        color:rgb(50, 150, 255);
+    color:rgb(50, 150, 255);
 }
 
 QPushButton#bottomButton:pressed{
-        color:rgb(50, 150, 255);
+    color:rgb(50, 150, 255);
 }
 
 QPushButton#loginButton{
-        background-image: url(://res/logo.png);
-        border: none;
+    background-image: url(://res/logo.png);
+    border: none;
 }
 
 QPushButton#loginButton:hover{
@@ -203,12 +218,12 @@ QPushButton#loginButton:pressed{
 }
 
 QToolButton#commonToolButton{
-        background-color:#ffffff;
-        border:none;
-        color:#b2b2b2;
-        font-family: "Ubuntu";
-        font-size: 14px;
-        text-align: center;
+    background-color:#ffffff;
+    border:none;
+    color:#b2b2b2;
+    font-family: "Ubuntu";
+    font-size: 14px;
+    text-align: center;
 }
 
 QToolButton#commonToolButton::hover{
@@ -228,12 +243,12 @@ QToolButton#commonToolButton::pressed{
 }
 
 QToolButton#transparentToolButton{
-        background:transparent;
-        border:none;
-        color:#00609a;
-        font-family: "Ubuntu";
-        font-size: 18px;
-        text-align: left;
+    background:transparent;
+    border:none;
+    color:#00609a;
+    font-family: "Ubuntu";
+    font-size: 18px;
+    text-align: left;
 }
 
 QToolButton#transparentToolButton::hover{
@@ -252,7 +267,6 @@ QToolButton#transparentToolButton::pressed{
 
 /*-------------------QComboBox-------------------*/
 QComboBox{
-    /*background-color:#ffffff;*/
     border:1px solid #32435E;
     width: 150px;
 }
@@ -335,7 +349,6 @@ QListView{
 /*-------------------QListWidget-------------------*/
 QListWidget{
     border:none;
-    /*background:#e9eef0;*/
 }
 
 QListWidget#animationListWidget{
@@ -349,14 +362,9 @@ QListWidget#animationListWidget::item:selected {
      margin:0px;
 }
 
-
 QListWidget#infoList{
     border:1px solid #d5e3ec;
     border-radius:4px;
-    /*background:#3f96e4;
-    color:#ffffff;
-    font-family: "Ubuntu";
-    font-size: 12px;*/
 }
 
 QListWidget#infoList::item{
@@ -375,11 +383,7 @@ QListWidget#infoList::item:hover{
     color:#000000;
     font-family: "Ubuntu";
     font-size: 12px;
-    /*background:#eaf4fa;
-    background-image:url('://res/left-tab-hover.png');*/
     border:none;
-    /*background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                stop: 0 #4f4f4f,  stop: 1.0 #ffffff);*/
     margin:0px;
 }
 
@@ -389,9 +393,6 @@ QListWidget#infoList::item:selected {
      color:#ffffff;
      font-family: "Ubuntu";
      font-size: 12px;
-     /*background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                 stop: 0 #6A848C,  stop: 1.0 #0F9EAF);*/
-     /*padding:0px;*/
      margin:0px;
 }
 
@@ -440,90 +441,8 @@ QTabBar::tab:only-one {
         margin: 0;
 }
 
-/*-------------------QTreeWidget-------------------*/
-QTreeWidget::item{
-    height: 30px
-}
-
-QTreeWidget::branch{
-    image:none;
-}
-
-QTreeWidget::item:hover{
-    background-color:rgb(0,255,0,50);
-}
-
-QTreeWidget::item:selected{
-    background-color:rgb(255,0,0,100);
-}
-
-/*-------------------QSlider-------------------*/
-/*QSlider::groove:horizontal {
-    border: 1px solid #4A708B;
-    background: #000000;
-    height: 5px;
-    border-radius: 1px;
-    padding-left:-1px;
-    padding-right:-1px;
-}
-
-QSlider::sub-page:horizontal {
-    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-        stop:0 #B1B1B1, stop:1 #c4c4c4);
-    background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,
-        stop: 0 #5DCCFF, stop: 1 #1874CD);
-    border: 1px solid #4A708B;
-    height: 10px;
-    border-radius: 1px;
-}
-
-QSlider::add-page:horizontal {
-    background: #575757;
-    border: 0px solid #777;
-    height: 10px;
-    border-radius: 2px;
-}
-
-QSlider::handle:horizontal
-{
-    background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5,
-    stop:0.6 #45ADED, stop:0.778409 rgba(255, 255, 255, 255));
-
-    width: 11px;
-    margin-top: -3px;
-    margin-bottom: -3px;
-    border-radius: 5px;
-}
-
-QSlider::handle:horizontal:hover {
-    background: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 #2A8BDA,
-    stop:0.778409 rgba(255, 255, 255, 255));
-
-    width: 11px;
-    margin-top: -3px;
-    margin-bottom: -3px;
-    border-radius: 5px;
-}
-
-QSlider::sub-page:horizontal:disabled {
-    background: #00009C;
-    border-color: #999;
-}
-
-QSlider::add-page:horizontal:disabled {
-    background: #eee;
-    border-color: #999;
-}
-
-QSlider::handle:horizontal:disabled {
-    background: #eee;
-    border: 1px solid #aaa;
-    border-radius: 4px;
-}*/
-
 /*-------------------QGroupBox-------------------*/
 QGroupBox {
-     /*background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #E0E0E0, stop: 1 #FFFFFF);*/
      border: 1px solid #e0e0e0;
      border-radius: 2px;
      margin-top: 15px;
@@ -535,7 +454,6 @@ QGroupBox {
      padding: 0 3px;
      color: #00609a;
      font-weight:bold;
-     /*background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #FFOECE, stop: 1 #FFFFFF);*/
  }
 
 /*-------------------QMenu-------------------*/
@@ -578,48 +496,6 @@ QMenu::indicator {
     height: 13px;
 }
 
-
-QMenu#mainmenu {
-    background-color: white;
-    border: 1px solid gray;
-    color: #4f4f4f;
-    padding: 1px;
-}
-
-QMenu#mainmenu::item {
-    padding: 2px 80px 2px 20px;
-    border: 1px solid transparent;
-}
-
-QMenu#mainmenu::item:disabled {
-    color: #4f4f4f;
-}
-
-QMenu#mainmenu::item:selected {
-    border-color: gray;
-    background: white;
-}
-
-QMenu#mainmenu::icon:checked {
-
-}
-
-QMenu#mainmenu::separator {
-    height: 1px;
-    background: #222222;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 1px;
-    margin-bottom: 1px;
-}
-
-QMenu#mainmenu::indicator {
-    width: 65px;
-    height: 13px;
-}
-
-
-
 /*-------------------QRadioButton-------------------*/
 QRadioButton {
   spacing: 5px;
@@ -650,17 +526,7 @@ QRadioButton::indicator:unchecked:hover {
   image: url(://res/radiobutton-unselect.png);
 }
 
-
 /*-------------------QCheckBox-------------------*/
-/*QCheckBox{
-    border: 1px solid gray;
-    border-radius: 4px;
-    color: yellow;
-    font: 12px;
-    padding: 1px 12px 1px 8px;
-}*/
-
-
 QCheckBox{
     spacing:5px;
 }
@@ -690,40 +556,6 @@ QCheckBox::indicator:checked:hover {
     image: url(://res/checkbox-checked.png);
 }
 
-
 QCheckBox::indicator:checked:pressed {
     image: url(://res/checkbox-checked.png);
 }
-
-
-
-
-
-QCheckBox#mainCheckBox{
-    spacing:5px;
-}
-
-QCheckBox#mainCheckBox::indicator {
-    width:20px;
-    height:20px;
-}
-
-QCheckBox#mainCheckBox::indicator:unchecked{
-    image: url(://res/checkbox.png);
-}
-
-QCheckBox#mainCheckBox::indicator:checked{
-    image: url(://res/checkbox-press.png);
-}
-
-/*QCheckBox#mainCheckBox::indicator:partiallychecked {
-    image:url(://res/checkbox_mid.png);
-}
-
-QCheckBox::indicator:indeterminate:hover {
-    image: url(://res/checkbox_mid.png);
-}
-
-QCheckBox::indicator:indeterminate:pressed {
-    image: url(://res/checkbox_mid.png);
-}*/

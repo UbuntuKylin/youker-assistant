@@ -21,14 +21,13 @@
 #define VOICEWIDGET_H
 
 #include <QWidget>
-#include <QLabel>
-#include <QPushButton>
-#include <QHBoxLayout>
-#include <QComboBox>
 #include "../component/kylinswitcher.h"
-#include <QSplitter>
+
 class SessionDispatcher;
 class SystemDispatcher;
+class QLabel;
+class QPushButton;
+class QComboBox;
 
 class VoiceWidget : public QWidget
 {
@@ -40,9 +39,6 @@ public:
     void initConnect();
     void initData();
 
-//signals:
-//    void showSettingMainWidget();
-
 public slots:
     void setVoiceTheme(QString selectTheme);
     void setLoginTipVoice();
@@ -52,14 +48,6 @@ public slots:
 private:
     SessionDispatcher *sessionproxy;
     SystemDispatcher *systemproxy;
-//    QSplitter *splitter;
-//    QWidget * top_widget;
-//    QWidget * bottom_widget;
-
-//    QPushButton *back_btn;
-//    QLabel *title_label;
-//    QLabel *description_label;
-
     QLabel *theme_label;
     QLabel *tip_label;
     QLabel *event_label;

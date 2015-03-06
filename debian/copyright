@@ -12,10 +12,6 @@ Copyright: Copyright (C) 2007-2011 Tualatrix Chou <tualatrix@gmail.com>
            Copyright (C) 2013-2014 National University of Defense Technology(NUDT) & Kylin Ltd.
 License: GPL-3
 
-Files: qml/func/common/Dial.qml qml/func/common/private/Slider.qml qml/func/common/RangeModel.js qml/func/common/RangeModel.qml src/qrangemodel.cpp src/qtmenu.cpp src/qtmenu.h src/qrangemodel.h src/qtoplevelwindow.cpp src/qwheelarea.cpp src/qcursorarea.h src/qcursorarea.cpp src/qrangemodel_p.h src/qtoplevelwindow.h src/qwheelarea.h
-Copyright: Copyright (C) 2011 Nokia Corporation and/or its subsidiary(-ies).
-License: LGPL-2.1
-
 Files: backends/youker-assistant-daemon/src/systemdbus/server.py
 Copyright: Copyright (C) 2008 Fluendo Embedded S.L.
            Copyright (C) 2010 TualatriX <tualatrix@gmail.com>
@@ -30,20 +26,9 @@ Files: backends/youker-assistant-daemon/src/beautify/ccm/*
 Copyright: Copyright (C) 2007 Quinn Storm
 License: GPL-2+
 
-Files: src/qstyleitem.h src/qtmenuitem.h src/qtmenuitem.cpp src/qstyleitem.cpp qml/func/common/Page.qml qml/func/common/PageStack.qml qml/func/common/UIConstants.js qml/func/common/PageStack.js
-Copyright: Copyright (C) 2010-2011 Nokia Corporation and/or its subsidiary(-ies).
+Files: qtsingleapplication/*
+Copyright: 2013 Digia Plc and/or its subsidiary(-ies)
 License: BSD-3-clause
-
-License: LGPL-2.1
- This file may be used under the terms of the GNU Lesser
- General Public License version 2.1 as published by the Free Software
- Foundation and appearing in the file LICENSE.LGPL included in the
- packaging of this file.  Please review the following information to
- ensure the GNU Lesser General Public License version 2.1 requirements
- will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
- .
- On Debian systems, the complete text of the LGPL-2.1 license can be found in
- `/usr/share/common-licenses/LGPL-2.1`.
 
 License: GPL-2+
  This program is free software; you can redistribute it and/or

@@ -28,7 +28,6 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QHBoxLayout>
-#include <QPainter>
 
 class SystemTray : public QSystemTrayIcon
 {

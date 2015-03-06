@@ -24,7 +24,6 @@
 
 #include "../component/kylinlistwidget.h"
 #include "../component/kylintitlebar.h"
-#include "../component/kylinlistwidgetitem.h"
 
 class SessionDispatcher;
 class MainWindow;

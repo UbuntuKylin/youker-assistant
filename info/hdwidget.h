@@ -21,13 +21,10 @@
 #define HDWIDGET_H
 
 #include <QWidget>
-#include <QLabel>
-#include <QPushButton>
-#include <QHBoxLayout>
-#include "computerpage.h"
 #include "../component/scrollwidget.h"
 #include <QMap>
 #include <QVariant>
+
 class SystemDispatcher;
 
 class HDWidget : public QWidget
@@ -43,7 +40,6 @@ public slots:
 
 private:
     ScrollWidget *scroll_widget;
-//    ComputerPage *page;
     QMap<QString, QVariant> hd_info_map;
     QMap<QString, QVariant> tmp_info_map;
     SystemDispatcher *systemproxy;

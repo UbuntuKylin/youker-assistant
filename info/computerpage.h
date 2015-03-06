@@ -21,18 +21,14 @@
 #define COMPUTERPAGE_H
 
 #include <QWidget>
-#include <QLabel>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-#include <QPainter>
-#include <QPen>
-#include <QEvent>
 #include <QMap>
-#include <QGroupBox>
-#include <QFormLayout>
 #include <QVariant>
 #include "../dbusproxy/youkersessiondbus.h"
 #include "../dbusproxy/youkersystemdbus.h"
+
+class QLabel;
+class QGroupBox;
+class QFormLayout;
 
 class ComputerPage : public QWidget
 {
@@ -50,9 +46,6 @@ public:
     QString translatorSwitch(QString orgStr);
     void resetTimeValue(QString value);
 
-protected:
-    bool eventFilter(QObject *obj, QEvent *event);
-
 signals:
 
 public slots:
@@ -61,9 +54,7 @@ private:
     QString title_context;
     QLabel *title_label;
     QString vendor;
-
-    void resizeEvent(QResizeEvent *);
-
+//    void resizeEvent(QResizeEvent *);
     QMap<QString ,QVariant> info_map;
     QLabel *logo_label;
     QLabel *time_label;

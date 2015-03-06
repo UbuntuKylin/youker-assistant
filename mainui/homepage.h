@@ -26,8 +26,6 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
-//class CommonToolButton;
-#include <QToolButton>
 class MainWindow;
 class SessionDispatcher;
 #include "autostartwidget.h"
@@ -37,7 +35,7 @@ class HomePage : public QWidget
 {
     Q_OBJECT
 public:
-    explicit HomePage(QWidget *parent = 0);
+    explicit HomePage(QWidget *parent = 0, const QString &version = "");
     ~HomePage();
     void setLanguage();
     void initBoxTool();
@@ -59,17 +57,13 @@ private:
     QLabel *box_logo;
     QLabel *box_title;
     QLabel *box_tip;
-//    QList<CommonToolButton *> button_list;
-    QList<QToolButton *> button_list;
     QPushButton *more_text_btn;
     QPushButton *more_btn;
     SessionDispatcher *sessionProxy;
-//    CommonToolButton *software_btn;
-//    CommonToolButton *boot_btn;
-//    CommonToolButton *camera_btn;
     MainWindow *p_mainwindow;
     AutoStartWidget *auto_start;
     CameraManager *camera_manager;
+    QString current_version;
 };
 
 #endif // HOMEPAGE_H

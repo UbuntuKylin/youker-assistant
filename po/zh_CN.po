@@ -1,25 +1,20 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 08:56+0000\n"
-"PO-Revision-Date: 2014-10-30 09:02+0000\n"
-"Last-Translator: kobe <xiangli@ubuntukylin.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-10-30 09:04+0000\n"
-"X-Generator: Launchpad (build 17211)\n"
-"X-Qt-Contexts: true\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Language: zh_CN\n"
 "X-Source-Language: C\n"
+"X-Qt-Contexts: true\n"
 
+# 关于本软件
 #: ../aboutdialog.ui:26 ../aboutdialog.ui:42
 msgctxt "AboutDialog|"
 msgid "About"
-msgstr "关于本软件"
+msgstr "关于"
 
+# 优客助手
 #: ../aboutdialog.ui:70 ../aboutdialog.ui:165
 msgctxt "AboutDialog|"
 msgid "Youker Assistant"
@@ -33,38 +28,38 @@ msgid ""
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
 "type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-"
-"weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-"family:'Sans Serif';\">      Youker Assistant is a powerful system "
+"</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; "
+"font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" "
+"font-family:'Sans Serif';\">      Youker Assistant is a powerful system "
 "supporting software which is developed by Ubuntu Kylin team. Mainly for the "
 "naive user, it can help users manage the system. At present, It provides "
 "system junk scanning and cleaning, viewing the system hardware and software "
 "information , system customization, task manager, monitoring ball, and some "
 "other functions. </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-"family:'Sans Serif';\">      The software is still under development. Please "
-"visit www.ubuntukylin.com for more information. Welcome everyone to join "
-"with us. youker-assistant Homepage: https://launchpad.net/youker-"
-"assistant.</span></p></body></html>"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" "
+"font-family:'Sans Serif';\">      The software is still under development. "
+"Please visit www.ubuntukylin.com for more information. Welcome everyone to "
+"join with us. youker-assistant Homepage: "
+"https://launchpad.net/youker-assistant.</span></p></body></html>"
 msgstr ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
 "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
 "type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Cantarell'; font-size:11pt; font-"
-"weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-"family:'Sans Serif';\">      优客助手是由Ubuntu "
-"Kylin团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方"
-"位定制、任务管理器以及监控球等功能。 </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-"family:'Sans Serif';\">      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 "
+"</style></head><body style=\" font-family:'Cantarell'; font-size:11pt; "
+"font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" "
+"font-family:'Sans Serif';\">      优客助手是由Ubuntu "
+"Kylin团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器以及监控球等功能。 "
+"</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" "
+"font-family:'Sans Serif';\">      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 "
 "www.ubuntukylin.com "
 "了解软件的最新进展并反馈问题，欢迎广大优客一起参与。优客助手主页：https://launchpad.net/youker-assistant "
 "。</span></p></body></html>"
@@ -82,3315 +77,2198 @@ msgid ""
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
 "type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-"
-"weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-"family:'Cantarell';\">Maintainer</span><span style=\" font-family:'Droid "
-"Sans Fallback';\">:</span></p>\n"
-"<p style=\" margin-top:11px; margin-bottom:11px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-"family:'Cantarell';\">Ubuntu Kylin Team &lt;ubuntukylin-"
-"members@list.launchpad.net&gt;</span></p></body></html>"
+"</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; "
+"font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" "
+"font-family:'Cantarell';\">Maintainer</span><span style=\" "
+"font-family:'Droid Sans Fallback';\">:</span></p>\n"
+"<p style=\" margin-top:11px; margin-bottom:11px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" "
+"font-family:'Cantarell';\">Ubuntu Kylin Team "
+"&lt;ubuntukylin-members@list.launchpad.net&gt;</span></p></body></html>"
 msgstr ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
 "\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
 "type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Cantarell'; font-size:11pt; font-"
-"weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">维护者<span style=\" font-"
-"family:'Droid Sans Fallback';\">：</span></p>\n"
-"<p style=\" margin-top:11px; margin-bottom:11px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">Ubuntu Kylin Team "
+"</style></head><body style=\" font-family:'Cantarell'; font-size:11pt; "
+"font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\">维护者<span style=\" "
+"font-family:'Droid Sans Fallback';\">：</span></p>\n"
+"<p style=\" margin-top:11px; margin-bottom:11px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Ubuntu Kylin Team "
 "&lt;ubuntukylin-members@list.launchpad.net&gt;</p></body></html>"
 
 #: ../aboutdialog.ui:181
 msgctxt "AboutDialog|"
 msgid "<a href=https://launchpad.net/youker-assistant>home page</a>"
-msgstr "<a href=https://launchpad.net/youker-assistant>项目主页</a>"
+msgstr "<a href=https://launchpad.net/youker-assistant>主页</a>"
 
+# 关闭
 #: ../aboutdialog.ui:199
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "关闭"
 
-#: ../alertdialog.ui:14
+#: ../../component/alertdialog.ui:14
 msgctxt "AlertDialog|"
 msgid "Form"
-msgstr "对话框"
+msgstr ""
 
-#: ../../qml/func/info/AudioInfo.qml:53 ../../qml/func/info/AudioInfo.qml:66
-#: ../../qml/func/info/AudioInfo.qml:83 ../../qml/func/info/AudioInfo.qml:99
-#: ../../qml/func/info/AudioInfo.qml:125
-msgctxt "AudioInfo|"
-msgid "Audio Model:"
-msgstr "声卡型号："
+#: ../../setting/animationwidget.cpp:191
+msgctxt "AnimationWidget|"
+msgid "Please select a picture as boot animation"
+msgstr "请选择一个图片作为开机动画"
 
-#: ../../qml/func/info/AudioInfo.qml:54 ../../qml/func/info/AudioInfo.qml:67
-#: ../../qml/func/info/AudioInfo.qml:84 ../../qml/func/info/AudioInfo.qml:100
-#: ../../qml/func/info/AudioInfo.qml:126
-msgctxt "AudioInfo|"
-msgid "Vendor:"
-msgstr "制造商："
-
-#: ../../qml/func/info/AudioInfo.qml:55 ../../qml/func/info/AudioInfo.qml:68
-#: ../../qml/func/info/AudioInfo.qml:85 ../../qml/func/info/AudioInfo.qml:101
-#: ../../qml/func/info/AudioInfo.qml:127
-msgctxt "AudioInfo|"
-msgid "Bus Address:"
-msgstr "总线地址："
-
-#: ../../qml/func/info/AudioInfo.qml:56 ../../qml/func/info/AudioInfo.qml:69
-#: ../../qml/func/info/AudioInfo.qml:86 ../../qml/func/info/AudioInfo.qml:102
-#: ../../qml/func/info/AudioInfo.qml:128
-msgctxt "AudioInfo|"
-msgid "Audio Driver:"
-msgstr "声卡驱动："
-
-#: ../../qml/func/info/AudioInfo.qml:182
-msgctxt "AudioInfo|"
-msgid "Audio Info"
-msgstr "音频信息"
-
-#: ../../qml/func/info/BatteryInfo.qml:34
-#: ../../qml/func/info/BatteryInfo.qml:41
-#: ../../qml/func/info/BatteryInfo.qml:50
-#: ../../qml/func/info/BatteryInfo.qml:59
-#: ../../qml/func/info/BatteryInfo.qml:66
-#: ../../qml/func/info/BatteryInfo.qml:73
-#: ../../qml/func/info/BatteryInfo.qml:80
-#: ../../qml/func/info/BatteryInfo.qml:87 ../../qml/func/info/BatteryInfo.qml:94
-msgctxt "BatteryInfo|"
-msgid "Unknown"
-msgstr "未知"
-
-#: ../../qml/func/info/BatteryInfo.qml:101
-#: ../../qml/func/info/BatteryInfo.qml:102
-#: ../../qml/func/info/BatteryInfo.qml:103
-#: ../../qml/func/info/BatteryInfo.qml:104
-#: ../../qml/func/info/BatteryInfo.qml:105
-#: ../../qml/func/info/BatteryInfo.qml:106
-#: ../../qml/func/info/BatteryInfo.qml:107
-#: ../../qml/func/info/BatteryInfo.qml:108
-#: ../../qml/func/info/BatteryInfo.qml:109
-msgctxt "BatteryInfo|"
-msgid "Failed to get data"
-msgstr "获取失败"
-
-#: ../../qml/func/info/BatteryInfo.qml:135
-msgctxt "BatteryInfo|"
-msgid "Battery Info"
-msgstr "电池信息"
-
-#: ../../qml/func/info/BatteryInfo.qml:152
-msgctxt "BatteryInfo|"
-msgid "Device Name:"
-msgstr "设备名称："
-
-#: ../../qml/func/info/BatteryInfo.qml:167
-msgctxt "BatteryInfo|"
-msgid "Model:"
-msgstr "型号："
-
-#: ../../qml/func/info/BatteryInfo.qml:182
-msgctxt "BatteryInfo|"
-msgid "Manufacturer:"
-msgstr "发行商："
-
-#: ../../qml/func/info/BatteryInfo.qml:198
-msgctxt "BatteryInfo|"
-msgid "Serial Number:"
-msgstr "序列号："
-
-#: ../../qml/func/info/BatteryInfo.qml:213
-msgctxt "BatteryInfo|"
-msgid "Technology:"
-msgstr "技术："
-
-#: ../../qml/func/info/BatteryInfo.qml:228
-msgctxt "BatteryInfo|"
-msgid "Voltage:"
-msgstr "电压："
-
-#: ../../qml/func/info/BatteryInfo.qml:243
-msgctxt "BatteryInfo|"
-msgid "Energy Designed:"
-msgstr "能量（设计）："
-
-#: ../../qml/func/info/BatteryInfo.qml:258
-msgctxt "BatteryInfo|"
-msgid "Energy Full:"
-msgstr "满时能量："
-
-#: ../../qml/func/info/BatteryInfo.qml:273
-msgctxt "BatteryInfo|"
-msgid "Energy Now:"
-msgstr "能量："
-
-#: ../../qml/func/info/BoardInfo.qml:66
-msgctxt "BoardInfo|"
-msgid "Motherboard Basics Info"
-msgstr "主板基本信息"
-
-#: ../../qml/func/info/BoardInfo.qml:83
-msgctxt "BoardInfo|"
-msgid "Motherboard Model: "
-msgstr "主板型号： "
-
-#: ../../qml/func/info/BoardInfo.qml:98
-msgctxt "BoardInfo|"
-msgid "Motherboard Vendor: "
-msgstr "主板产商： "
-
-#: ../../qml/func/info/BoardInfo.qml:113
-msgctxt "BoardInfo|"
-msgid "Serial Number: "
-msgstr "序列号： "
-
-#: ../../qml/func/info/BoardInfo.qml:129
-msgctxt "BoardInfo|"
-msgid "BIOS Info"
-msgstr "BIOS信息"
-
-#: ../../qml/func/info/BoardInfo.qml:146
-msgctxt "BoardInfo|"
-msgid "BIOS Vendor: "
-msgstr "BIOS产商： "
-
-#: ../../qml/func/info/BoardInfo.qml:161
-msgctxt "BoardInfo|"
-msgid "BIOS Version: "
-msgstr "BIOS版本： "
-
-#: ../../qml/func/info/BoardInfo.qml:176
-msgctxt "BoardInfo|"
-msgid "Release Date: "
-msgstr "发布日期： "
-
-#: ../../qml/func/settings/BootAnimation.qml:29
-msgctxt "BootAnimation|"
-msgid "Boot animation settings"
-msgstr "开机动画设置"
-
-#: ../../qml/func/settings/BootAnimation.qml:30
-msgctxt "BootAnimation|"
-msgid ""
-"Click the \"Custom Picture\" button to select the picture you want to add, "
-"click the picture you want to set and push the \"OK\" button to complete."
-msgstr "单击＂自定义图片＂按钮选择需要添加的图片，选中列表中要设置的图片名称，单击＂确定＂按钮完成设置。"
-
-#: ../../qml/func/settings/BootAnimation.qml:88
-msgctxt "BootAnimation|"
-msgid "Back"
-msgstr "返回"
-
-#: ../../qml/func/settings/BootAnimation.qml:108
-msgctxt "BootAnimation|"
-msgid "Completed!"
-msgstr "已完成！"
-
-#: ../../qml/func/settings/BootAnimation.qml:154
-msgctxt "BootAnimation|"
+#: ../../setting/animationwidget.cpp:192
+msgctxt "AnimationWidget|"
 msgid "Custom Picture"
 msgstr "自定义图片"
 
-#: ../../qml/func/settings/BootAnimation.qml:190
-msgctxt "BootAnimation|"
+#: ../../setting/animationwidget.cpp:193
+msgctxt "AnimationWidget|"
 msgid "Optional BootAnimation"
-msgstr "可选的开机动画"
+msgstr "可选启动动画"
 
-#: ../../qml/func/settings/BootAnimation.qml:257
-msgctxt "BootAnimation|"
-msgid "Delete"
-msgstr "删除"
+#: ../../setting/animationwidget.cpp:194
+msgctxt "AnimationWidget|"
+msgid "OK"
+msgstr "确定"
 
-#: ../../qml/func/settings/BootAnimation.qml:283
-msgctxt "BootAnimation|"
+#: ../../setting/animationwidget.cpp:255
+msgctxt "AnimationWidget|"
+msgid "Image Files (*.png *.jpg *.gif)"
+msgstr "图片文件(*.png *.jpg *.gif)"
+
+#: ../../setting/animationwidget.cpp:305
+msgctxt "AnimationWidget|"
 msgid "Deleted successfully!"
 msgstr "删除成功！"
 
-#: ../../qml/func/settings/BootAnimation.qml:287
-msgctxt "BootAnimation|"
+#: ../../setting/animationwidget.cpp:314
+msgctxt "AnimationWidget|"
 msgid "This is the using animation!"
 msgstr "该动画为当前使用动画！"
 
-#: ../../qml/func/settings/BootAnimation.qml:290
-msgctxt "BootAnimation|"
+#: ../../setting/animationwidget.cpp:324
+msgctxt "AnimationWidget|"
 msgid "This is the default animation!"
 msgstr "该动画为系统默认动画！"
 
-#: ../../qml/func/settings/BootAnimation.qml:293
-msgctxt "BootAnimation|"
+#: ../../setting/animationwidget.cpp:334
+msgctxt "AnimationWidget|"
 msgid "An unknown error occurred!"
 msgstr "发生未知错误！"
 
-#: ../../qml/func/settings/BootAnimation.qml:340
-msgctxt "BootAnimation|"
-msgid "OK"
-msgstr "确定"
+#: ../../info/audiowidget.cpp:37
+msgctxt "AudioWidget|"
+msgid "Audio Info"
+msgstr "声卡信息"
 
-#: ../../qml/BottomBar.qml:62
-msgctxt "BottomBar|"
-msgid "main version:"
-msgstr "主版本："
+#: ../../info/audiowidget.cpp:47
+#, qt-format
+msgctxt "AudioWidget|"
+msgid "Audio Info %1"
+msgstr "声卡信息%1"
 
-#: ../../qml/func/cleaner/BrowserModel.qml:23
-msgctxt "BrowserModel|"
-msgid "Deep cleaning up the browser cache"
-msgstr "深度清理浏览器缓存"
+# 框
+#: ../autostartwidget.ui:14
+msgctxt "AutoStartWidget|"
+msgid "Form"
+msgstr ""
 
-#: ../../qml/func/cleaner/BrowserModel.qml:24
-msgctxt "BrowserModel|"
-msgid "Deep cleaning up the browser cache, to save disk space"
-msgstr "深度清理浏览器缓存，节省磁盘空间"
+#: ../autostartwidget.cpp:52
+msgctxt "AutoStartWidget|"
+msgid "AutoStart Items:"
+msgstr "自启动选项："
 
-#: ../../qml/func/cleaner/BrowserModel.qml:74
-#: ../../qml/func/cleaner/BrowserModel.qml:153
-#: ../../qml/func/cleaner/BrowserModel.qml:193
-#: ../../qml/func/cleaner/BrowserModel.qml:211
-#: ../../qml/func/cleaner/BrowserModel.qml:303
-msgctxt "BrowserModel|"
-msgid "Cleanup Firefox Cache"
-msgstr "清理Firefox缓存"
+#~ msgctxt "AutoStartWidget|"
+#~ msgid "5"
+#~ msgstr "５"
 
-#: ../../qml/func/cleaner/BrowserModel.qml:78
-#: ../../qml/func/cleaner/BrowserModel.qml:157
-#: ../../qml/func/cleaner/BrowserModel.qml:197
-#: ../../qml/func/cleaner/BrowserModel.qml:224
-#: ../../qml/func/cleaner/BrowserModel.qml:307
-msgctxt "BrowserModel|"
-msgid "Cleanup Chromium Cache"
-msgstr "清理Chromium缓存"
+#: ../autostartwidget.cpp:53
+msgctxt "AutoStartWidget|"
+msgid "App"
+msgstr "应用程序"
 
-#: ../../qml/func/cleaner/BrowserModel.qml:125
-#: ../../qml/func/cleaner/BrowserModel.qml:363
-#: ../../qml/func/cleaner/BrowserModel.qml:371
-msgctxt "BrowserModel|"
-msgid "Tips:"
-msgstr "友情提示："
+#: ../autostartwidget.cpp:54
+msgctxt "AutoStartWidget|"
+msgid "Status"
+msgstr "状态"
 
-#: ../../qml/func/cleaner/BrowserModel.qml:125
-msgctxt "BrowserModel|"
-msgid "The scan reslut is empty, nothing has been done!"
-msgstr "扫描内容为空，无需清理！"
+#: ../autostartwidget.cpp:56
+msgctxt "AutoStartWidget|"
+msgid "ON Items:"
+msgstr "已开启数目："
 
-#: ../../qml/func/cleaner/BrowserModel.qml:133
-msgctxt "BrowserModel|"
-msgid "Scan completed!"
-msgstr "扫描完成！"
+#: ../autostartwidget.cpp:57
+msgctxt "AutoStartWidget|"
+msgid "OFF Items:"
+msgstr "已关闭数目："
 
-#: ../../qml/func/cleaner/BrowserModel.qml:139
-#: ../../qml/func/cleaner/BrowserModel.qml:610
-msgctxt "BrowserModel|"
-msgid "Begin cleanup"
-msgstr "开始清理"
+#: ../autostartwidget.cpp:208
+msgctxt "AutoStartWidget|"
+msgid "Auto Start"
+msgstr "自启动"
 
-#: ../../qml/func/cleaner/BrowserModel.qml:171
-msgctxt "BrowserModel|"
-msgid "Cleanup abnormal!"
-msgstr "清理出现异常！"
+#: ../../info/batterywidget.cpp:32
+msgctxt "BatteryWidget|"
+msgid "Battery Info"
+msgstr "电池信息"
 
-#: ../../qml/func/cleaner/BrowserModel.qml:181
-msgctxt "BrowserModel|"
-msgid "Cleanup interrupted!"
-msgstr "清理中断！"
+#: ../../info/boardwidget.cpp:29
+msgctxt "BoardWidget|"
+msgid "Board Info"
+msgstr "主板信息"
 
-#: ../../qml/func/cleaner/BrowserModel.qml:185
-msgctxt "BrowserModel|"
-msgid "Cleared!"
-msgstr "清理完毕！"
-
-#: ../../qml/func/cleaner/BrowserModel.qml:283
-msgctxt "BrowserModel|"
-msgid "Back"
-msgstr "返回"
-
-#: ../../qml/func/cleaner/BrowserModel.qml:328
-#: ../../qml/func/cleaner/BrowserModel.qml:616
-#: ../../qml/func/cleaner/BrowserModel.qml:622
-#: ../../qml/func/cleaner/BrowserModel.qml:628
-#: ../../qml/func/cleaner/BrowserModel.qml:634
-msgctxt "BrowserModel|"
-msgid "Start scanning"
-msgstr "开始扫描"
-
-#: ../../qml/func/cleaner/BrowserModel.qml:363
-msgctxt "BrowserModel|"
-msgid "Sorry, You did not choose the content to be scanned, please confirm!"
-msgstr "对不起，您没有选择需要扫描的内容，请确认！"
-
-#: ../../qml/func/cleaner/BrowserModel.qml:371
-msgctxt "BrowserModel|"
+#: ../boxactionwidget.cpp:70
+msgctxt "BoxActionWidget|"
 msgid ""
-"Sorry, You did not choose the content to be cleaned up, please confirm!"
-msgstr "对不起，您没有选择需要清理的内容，请确认！"
+"Provide a practical and lightweight tool, create fast and convenient "
+"experience for you"
+msgstr "提供轻巧使用工具，为您打造快捷方便的体验"
 
-#: ../../qml/func/info/CDROMInfo.qml:54 ../../qml/func/info/CDROMInfo.qml:68
-#: ../../qml/func/info/CDROMInfo.qml:86 ../../qml/func/info/CDROMInfo.qml:103
-#: ../../qml/func/info/CDROMInfo.qml:129
-msgctxt "CDROMInfo|"
-msgid "CD-ROM Model:"
-msgstr "光驱型号："
+#: ../boxactionwidget.cpp:71
+msgctxt "BoxActionWidget|"
+msgid "More App"
+msgstr "更多应用"
 
-#: ../../qml/func/info/CDROMInfo.qml:55 ../../qml/func/info/CDROMInfo.qml:69
-#: ../../qml/func/info/CDROMInfo.qml:87 ../../qml/func/info/CDROMInfo.qml:104
-#: ../../qml/func/info/CDROMInfo.qml:130
-msgctxt "CDROMInfo|"
-msgid "Vendor:"
-msgstr "制造商："
+#: ../boxwidget.cpp:98 ../boxwidget.cpp:102
+msgctxt "BoxWidget|"
+msgid "UbuntuKylin Software Center"
+msgstr "优客软件中心"
 
-#: ../../qml/func/info/CDROMInfo.qml:56 ../../qml/func/info/CDROMInfo.qml:70
-#: ../../qml/func/info/CDROMInfo.qml:88 ../../qml/func/info/CDROMInfo.qml:105
-#: ../../qml/func/info/CDROMInfo.qml:131
-msgctxt "CDROMInfo|"
-msgid "Device Name:"
-msgstr "设备名称："
+#~ msgctxt "BrowserTab|"
+#~ msgid "windowsç³»ç»åå¾æä»¶"
+#~ msgstr "windows系统垃圾文件"
 
-#: ../../qml/func/info/CDROMInfo.qml:57 ../../qml/func/info/CDROMInfo.qml:71
-#: ../../qml/func/info/CDROMInfo.qml:89 ../../qml/func/info/CDROMInfo.qml:106
-#: ../../qml/func/info/CDROMInfo.qml:132
-msgctxt "CDROMInfo|"
-msgid "Firmware Version:"
-msgstr "固件版本："
+#~ msgctxt "BrowserTab|"
+#~ msgid "æµè§å¨ç¼å­ç®å½"
+#~ msgstr "浏览器缓存目录"
 
-#: ../../qml/func/info/CDROMInfo.qml:58 ../../qml/func/info/CDROMInfo.qml:72
-#: ../../qml/func/info/CDROMInfo.qml:90 ../../qml/func/info/CDROMInfo.qml:107
-#: ../../qml/func/info/CDROMInfo.qml:133
-msgctxt "CDROMInfo|"
-msgid "Serial Number:"
-msgstr "序列号："
+#~ msgctxt "BrowserTab|"
+#~ msgid "è§é¢æ­æ¾ç¼å­ç®å½"
+#~ msgstr "视频播放缓存目录"
 
-#: ../../qml/func/info/CDROMInfo.qml:186
-msgctxt "CDROMInfo|"
-msgid "CD-ROM Info"
+#~ msgctxt "BrowserTab|"
+#~ msgid "Deep cleaning up the browser cache"
+#~ msgstr "深度清理浏览器缓存"
+
+#~ msgctxt "BrowserTab|"
+#~ msgid "Deep cleaning up the browser cache, to save disk space"
+#~ msgstr "深度清理浏览器缓存，节省磁盘空间"
+
+#~ msgctxt "BrowserTab|"
+#~ msgid "Start scanning"
+#~ msgstr "开始扫描"
+
+#~ msgctxt "BrowserTab|"
+#~ msgid "Begin cleanup"
+#~ msgstr "开始清理"
+
+#: ../../info/cdrowwidget.cpp:30
+msgctxt "CDRowWidget|"
+msgid "CDROM Info"
 msgstr "光驱信息"
 
-#: ../../qml/func/cleaner/CacheDelegate.qml:121
-msgctxt "CacheDelegate|"
-msgid " Items ]"
-msgstr " 个项目 ]"
-
-#: ../../qml/func/cleaner/CacheDelegate.qml:131
-msgctxt "CacheDelegate|"
-msgid "No content"
-msgstr "无内容"
-
-#: ../../qml/func/cleaner/CacheModel.qml:23
-msgctxt "CacheModel|"
+#: ../../cleaner/cacheactionwidget.cpp:72
+msgctxt "CacheActionWidget|"
 msgid "Cleaning up the system cache"
-msgstr "深度清理系统缓存"
+msgstr "清理系统缓存"
 
-#: ../../qml/func/cleaner/CacheModel.qml:24
-msgctxt "CacheModel|"
+#: ../../cleaner/cacheactionwidget.cpp:73
+msgctxt "CacheActionWidget|"
 msgid "Deep cleaning up the system cache, to save disk space"
 msgstr "深度清理系统缓存，节省磁盘空间"
 
-#: ../../qml/func/cleaner/CacheModel.qml:88
-#: ../../qml/func/cleaner/CacheModel.qml:190
-msgctxt "CacheModel|"
-msgid "Cleanup Package Cache"
-msgstr "清理包缓存"
+#~ msgctxt "CacheTab|"
+#~ msgid "windowsç³»ç»åå¾æä»¶"
+#~ msgstr "windows系统垃圾文件"
 
-#: ../../qml/func/cleaner/CacheModel.qml:92
-#: ../../qml/func/cleaner/CacheModel.qml:194
-msgctxt "CacheModel|"
-msgid "Cleanup Software Center Cache"
-msgstr "清理软件中心缓存"
+#~ msgctxt "CacheTab|"
+#~ msgid "æµè§å¨ç¼å­ç®å½"
+#~ msgstr "浏览器缓存目录"
 
-#: ../../qml/func/cleaner/CacheModel.qml:96
-#: ../../qml/func/cleaner/CacheModel.qml:198
-#: ../../qml/func/cleaner/CacheModel.qml:243
-#: ../../qml/func/cleaner/CacheModel.qml:289
-#: ../../qml/func/cleaner/CacheModel.qml:329
-#: ../../qml/func/cleaner/CacheModel.qml:349
-#: ../../qml/func/cleaner/CacheModel.qml:444
-msgctxt "CacheModel|"
-msgid "Cleanup Thumbnails Cache"
-msgstr "清理缩略图缓存"
+#~ msgctxt "CacheTab|"
+#~ msgid "è§é¢æ­æ¾ç¼å­ç®å½"
+#~ msgstr "视频播放缓存目录"
 
-#: ../../qml/func/cleaner/CacheModel.qml:161
-#: ../../qml/func/cleaner/CacheModel.qml:531
-#: ../../qml/func/cleaner/CacheModel.qml:539
-msgctxt "CacheModel|"
-msgid "Tips:"
-msgstr "友情提示："
+#~ msgctxt "CacheTab|"
+#~ msgid "Cleaning up the system cache"
+#~ msgstr "清理系统缓存"
 
-#: ../../qml/func/cleaner/CacheModel.qml:161
-msgctxt "CacheModel|"
-msgid "The scan reslut is empty, nothing has been done!"
-msgstr "扫描内容为空，无需清理！"
+#~ msgctxt "CacheTab|"
+#~ msgid "Deep cleaning up the system cache, to save disk space"
+#~ msgstr "深度清理系统缓存，节省磁盘空间"
 
-#: ../../qml/func/cleaner/CacheModel.qml:169
-msgctxt "CacheModel|"
-msgid "Scan completed!"
-msgstr "扫描完成！"
+#~ msgctxt "CacheTab|"
+#~ msgid "Start scanning"
+#~ msgstr "开始扫描"
 
-#: ../../qml/func/cleaner/CacheModel.qml:175
-#: ../../qml/func/cleaner/CacheModel.qml:921
-msgctxt "CacheModel|"
-msgid "Begin cleanup"
-msgstr "开始清理"
+#~ msgctxt "CacheTab|"
+#~ msgid "Begin cleanup"
+#~ msgstr "开始清理"
 
-#: ../../qml/func/cleaner/CacheModel.qml:212
-msgctxt "CacheModel|"
-msgid "Cleanup abnormal!"
-msgstr "清理出现异常！"
+#: ../cameramanager.cpp:98
+msgctxt "CameraManager|"
+msgid "NO found camara"
+msgstr "未发现摄像头"
 
-#: ../../qml/func/cleaner/CacheModel.qml:222
-msgctxt "CacheModel|"
-msgid "Cleanup interrupted!"
-msgstr "清理中断！"
-
-#: ../../qml/func/cleaner/CacheModel.qml:226
-msgctxt "CacheModel|"
-msgid "Cleared!"
-msgstr "清理完毕！"
-
-#: ../../qml/func/cleaner/CacheModel.qml:235
-#: ../../qml/func/cleaner/CacheModel.qml:259
-#: ../../qml/func/cleaner/CacheModel.qml:304
-#: ../../qml/func/cleaner/CacheModel.qml:324
-#: ../../qml/func/cleaner/CacheModel.qml:436
-msgctxt "CacheModel|"
-msgid "Package cache cleanup"
-msgstr "包缓存清理"
-
-#: ../../qml/func/cleaner/CacheModel.qml:239
-#: ../../qml/func/cleaner/CacheModel.qml:274
-#: ../../qml/func/cleaner/CacheModel.qml:309
-#: ../../qml/func/cleaner/CacheModel.qml:344
-#: ../../qml/func/cleaner/CacheModel.qml:440
-msgctxt "CacheModel|"
-msgid "Software Center buffer cleaning"
-msgstr "软件中心缓存清理"
-
-#: ../../qml/func/cleaner/CacheModel.qml:410
-msgctxt "CacheModel|"
-msgid "Back"
-msgstr "返回"
-
-#: ../../qml/func/cleaner/CacheModel.qml:468
-#: ../../qml/func/cleaner/CacheModel.qml:927
-#: ../../qml/func/cleaner/CacheModel.qml:933
-#: ../../qml/func/cleaner/CacheModel.qml:939
-#: ../../qml/func/cleaner/CacheModel.qml:945
-msgctxt "CacheModel|"
-msgid "Start scanning"
-msgstr "开始扫描"
-
-#: ../../qml/func/cleaner/CacheModel.qml:531
-msgctxt "CacheModel|"
-msgid "Sorry, You did not choose the content to be scanned, please confirm!"
-msgstr "对不起，您没有选择需要扫描的内容，请确认！"
-
-#: ../../qml/func/cleaner/CacheModel.qml:539
-msgctxt "CacheModel|"
-msgid ""
-"Sorry, You did not choose the content to be cleaned up, please confirm!"
-msgstr "对不起，您没有选择需要清理的内容，请确认！"
-
-#: ../../qml/func/settings/CameraCapture.qml:25
-msgctxt "CameraCapture|"
-msgid "Camera"
-msgstr "摄像头"
-
-#: ../../qml/func/settings/CameraCapture.qml:26
-msgctxt "CameraCapture|"
+#: ../cameramanager.cpp:99
+msgctxt "CameraManager|"
 msgid "An application to take pictures with the device camera."
-msgstr "利用摄像头进行简单的拍照和照镜子。"
+msgstr "一个使用摄像头拍照的应用。"
 
-#: ../../qml/func/settings/CameraCapture.qml:48
-msgctxt "CameraCapture|"
-msgid "Back"
-msgstr "返回"
-
-#: ../../qml/func/settings/CameraCapture.qml:99
-msgctxt "CameraCapture|"
+#: ../cameramanager.cpp:100
+msgctxt "CameraManager|"
 msgid ""
 "Press the [ESC] button to take picture and turn the camera off , the photo "
 "saved in home directory by default."
-msgstr "按下键盘左上方的 [Esc] 按键可以拍照并关闭摄像头，照片保存在当前用户主目录下。"
+msgstr "按[退出]键拍照并关闭摄像头，照片默认保存在家目录下。"
 
-#: ../../qml/func/settings/CameraCapture.qml:113
-msgctxt "CameraCapture|"
+#: ../cameramanager.cpp:101
+msgctxt "CameraManager|"
 msgid "Open camera"
-msgstr "开启摄像头"
+msgstr "打开摄像头"
 
-#: ../../qml/func/settings/CameraCapture.qml:125
-msgctxt "CameraCapture|"
+#: ../cameramanager.cpp:102
+msgctxt "CameraManager|"
 msgid "View Photos"
-msgstr "查看照片"
+msgstr "浏览照片"
 
-#: ../../qml/func/info/ComputerInfo.qml:49
-#: ../../qml/func/info/ComputerInfo.qml:52
-#: ../../qml/func/info/ComputerInfo.qml:267
-#: ../../qml/func/info/ComputerInfo.qml:270
-msgctxt "ComputerInfo|"
-msgid " Minutes"
-msgstr " 分钟"
+#: ../cameramanager.cpp:144
+msgctxt "CameraManager|"
+msgid "Camera Manager"
+msgstr "摄像头管理"
 
-#: ../../qml/func/info/ComputerInfo.qml:52
-#: ../../qml/func/info/ComputerInfo.qml:270
-msgctxt "ComputerInfo|"
-msgid " Hours "
-msgstr " 小时 "
+# 框
+#: ../../cleaner/cleanlistwidget.ui:14
+msgctxt "CleanListWidget|"
+msgid "Form"
+msgstr ""
 
-#: ../../qml/func/info/ComputerInfo.qml:67
-msgctxt "ComputerInfo|"
-msgid "Computer Basic Info"
-msgstr "电脑基本信息"
+#: ../../cleaner/cleanlistwidget.cpp:45
+msgctxt "CleanListWidget|"
+msgid "Clean Items:"
+msgstr "清理项："
 
-#: ../../qml/func/info/ComputerInfo.qml:84
-msgctxt "ComputerInfo|"
-msgid "Vendor: "
-msgstr "制造商： "
+#: ../../component/cleansubgroup.cpp:51
+msgctxt "CleanSubGroup|"
+msgid "Custom"
+msgstr "自定义"
 
-#: ../../qml/func/info/ComputerInfo.qml:99
-msgctxt "ComputerInfo|"
-msgid "Model: "
-msgstr "电脑型号： "
+#: ../cleaneractionwidget.cpp:142
+msgctxt "CleanerActionWidget|"
+msgid "Regular cleaning, let your computer remains the relaxed state"
+msgstr "经常清理，让电脑保持最轻松的状态"
 
-#: ../../qml/func/info/ComputerInfo.qml:114
-msgctxt "ComputerInfo|"
-msgid "Version: "
-msgstr "电脑版本： "
-
-#: ../../qml/func/info/ComputerInfo.qml:129
-msgctxt "ComputerInfo|"
-msgid "Serial Number: "
-msgstr "序列号： "
-
-#: ../../qml/func/info/ComputerInfo.qml:144
-msgctxt "ComputerInfo|"
-msgid "Hostname: "
-msgstr "主机名： "
-
-#: ../../qml/func/info/ComputerInfo.qml:159
-msgctxt "ComputerInfo|"
-msgid "Running Time: "
-msgstr "持续运行时间： "
-
-#: ../../qml/func/info/ComputerInfo.qml:174
-msgctxt "ComputerInfo|"
-msgid "OS Types: "
-msgstr "操作系统类型： "
-
-#: ../../qml/func/info/ComputerInfo.qml:189
-msgctxt "ComputerInfo|"
-msgid "OS Version: "
-msgstr "操作系统版本： "
-
-#: ../../qml/func/info/ComputerInfo.qml:204
-msgctxt "ComputerInfo|"
-msgid "Kernel Bit: "
-msgstr "系统位数： "
-
-#: ../../qml/func/info/ComputerInfo.qml:219
-msgctxt "ComputerInfo|"
-msgid "Kernel Version: "
-msgstr "内核版本： "
-
-#: ../../qml/func/info/ComputerInfo.qml:234
-msgctxt "ComputerInfo|"
-msgid "Kernel Arch: "
-msgstr "内核架构： "
-
-#: ../../qml/func/cleaner/CookiesDelegate.qml:94
-msgctxt "CookiesDelegate|"
-msgid " Items ]"
-msgstr " 个项目 ]"
-
-#: ../../qml/func/cleaner/CookiesDelegate.qml:112
-msgctxt "CookiesDelegate|"
-msgid "Back"
-msgstr "返回"
-
-#: ../../qml/func/cleaner/CookiesDelegate.qml:123
-msgctxt "CookiesDelegate|"
-msgid "Rescan"
-msgstr "重新扫描"
-
-#: ../../qml/func/cleaner/CookiesItem.qml:47
-msgctxt "CookiesItem|"
-msgid "Cleanup failed!"
-msgstr "清理失败！"
-
-#: ../../qml/func/cleaner/CookiesItem.qml:53
-msgctxt "CookiesItem|"
-msgid "Cleanup interrupted!"
-msgstr "清理中断！"
-
-#: ../../qml/func/cleaner/CookiesItem.qml:57
-msgctxt "CookiesItem|"
-msgid "Cleanup successfully!"
-msgstr "清理成功！"
-
-#: ../../qml/func/cleaner/CookiesItem.qml:90
-msgctxt "CookiesItem|"
-msgid " Records"
-msgstr " 条记录"
-
-#: ../../qml/func/cleaner/CookiesItem.qml:110
-msgctxt "CookiesItem|"
-msgid "Delete"
-msgstr "删除"
-
-#: ../../qml/func/cleaner/CookiesModel.qml:23
-msgctxt "CookiesModel|"
-msgid "Cleanup browser Cookies information, to protect your privacy"
-msgstr "清理浏览器 Cookies 信息，保护个人隐私"
-
-#: ../../qml/func/cleaner/CookiesModel.qml:24
-msgctxt "CookiesModel|"
-msgid "Clean up user login information, support Firefox and Chromium browser"
-msgstr "清理用户登陆网站信息, 支持 Firefox 和 Chromium 浏览器"
-
-#: ../../qml/func/cleaner/CookiesModel.qml:44
-#: ../../qml/func/cleaner/CookiesModel.qml:45
-#: ../../qml/func/cleaner/CookiesModel.qml:101
-#: ../../qml/func/cleaner/CookiesModel.qml:159
-#: ../../qml/func/cleaner/CookiesModel.qml:248
-#: ../../qml/func/cleaner/CookiesModel.qml:272
-#: ../../qml/func/cleaner/CookiesModel.qml:368
-#: ../../qml/func/cleaner/CookiesModel.qml:386
-#: ../../qml/func/cleaner/CookiesModel.qml:401
-#: ../../qml/func/cleaner/CookiesModel.qml:483
-#: ../../qml/func/cleaner/CookiesModel.qml:501
-#: ../../qml/func/cleaner/CookiesModel.qml:515
-msgctxt "CookiesModel|"
-msgid "Start scanning"
+#: ../cleaneractionwidget.cpp:144
+msgctxt "CleanerActionWidget|"
+msgid "Start Scan"
 msgstr "开始扫描"
 
-#: ../../qml/func/cleaner/CookiesModel.qml:69
-#: ../../qml/func/cleaner/CookiesModel.qml:73
-#: ../../qml/func/cleaner/CookiesModel.qml:95
-#: ../../qml/func/cleaner/CookiesModel.qml:152
-msgctxt "CookiesModel|"
-msgid "Tips:"
-msgstr "友情提示："
-
-#: ../../qml/func/cleaner/CookiesModel.qml:69
-msgctxt "CookiesModel|"
-msgid "Firefox is not installed!"
-msgstr "没有安装 Firefox！"
-
-#: ../../qml/func/cleaner/CookiesModel.qml:73
-msgctxt "CookiesModel|"
-msgid "Chromium is not installed!"
-msgstr "没有安装 Chromium！"
-
-#: ../../qml/func/cleaner/CookiesModel.qml:82
-#: ../../qml/func/cleaner/CookiesModel.qml:199
-#: ../../qml/func/cleaner/CookiesModel.qml:241
-msgctxt "CookiesModel|"
-msgid "Cleanup the Cookies saving in Firefox"
-msgstr "清理 Firefox 浏览器保存的 Cookies"
-
-#: ../../qml/func/cleaner/CookiesModel.qml:95
-#: ../../qml/func/cleaner/CookiesModel.qml:152
-msgctxt "CookiesModel|"
-msgid "The scan reslut is empty, nothing has been done!"
-msgstr "扫描内容为空，无需清理！"
-
-#: ../../qml/func/cleaner/CookiesModel.qml:115
-#: ../../qml/func/cleaner/CookiesModel.qml:174
-msgctxt "CookiesModel|"
-msgid "Scan completed!"
-msgstr "扫描完成！"
-
-#: ../../qml/func/cleaner/CookiesModel.qml:123
-#: ../../qml/func/cleaner/CookiesModel.qml:181
-msgctxt "CookiesModel|"
-msgid "All cleanup"
-msgstr "全部清理"
-
-#: ../../qml/func/cleaner/CookiesModel.qml:139
-#: ../../qml/func/cleaner/CookiesModel.qml:203
-#: ../../qml/func/cleaner/CookiesModel.qml:266
-msgctxt "CookiesModel|"
-msgid "Cleanup the Cookies saving in Chromium"
-msgstr "清理 Chromium 浏览器保存的 Cookies"
-
-#: ../../qml/func/cleaner/CookiesModel.qml:213
-#: ../../qml/func/cleaner/CookiesModel.qml:216
-msgctxt "CookiesModel|"
-msgid "Cleanup interrupted!"
-msgstr "清理中断！"
-
-#: ../../qml/func/cleaner/CookiesModel.qml:223
-#: ../../qml/func/cleaner/CookiesModel.qml:228
-msgctxt "CookiesModel|"
-msgid "Cleanup abnormal!"
-msgstr "清理出现异常！"
-
-#: ../../qml/func/cleaner/CookiesModel.qml:243
-msgctxt "CookiesModel|"
-msgid ""
-"Clean up automatically saved logon information by Firefox browser(Cookies)"
-msgstr "清理 Firefox 浏览器自动保存的登录信息 (Cookies)"
-
-#: ../../qml/func/cleaner/CookiesModel.qml:257
-#: ../../qml/func/cleaner/CookiesModel.qml:281
-msgctxt "CookiesModel|"
-msgid "Cleared"
-msgstr "清理完毕"
-
-#: ../../qml/func/info/CpuInfo.qml:43
-msgctxt "CpuInfo|"
-msgid "cores"
-msgstr "核"
-
-#: ../../qml/func/info/CpuInfo.qml:43
-msgctxt "CpuInfo|"
-msgid "thread"
-msgstr "线程"
-
-#: ../../qml/func/info/CpuInfo.qml:70
-msgctxt "CpuInfo|"
-msgid "CPU Info"
-msgstr "处理器信息"
-
-#: ../../qml/func/info/CpuInfo.qml:87
-msgctxt "CpuInfo|"
-msgid "CPU: "
-msgstr "处理器： "
-
-#: ../../qml/func/info/CpuInfo.qml:102
-msgctxt "CpuInfo|"
-msgid "Vendor: "
-msgstr "制造商： "
-
-#: ../../qml/func/info/CpuInfo.qml:117
-msgctxt "CpuInfo|"
-msgid "Serial Number: "
-msgstr "序列号： "
-
-#: ../../qml/func/info/CpuInfo.qml:132
-msgctxt "CpuInfo|"
-msgid "Socket/Slot: "
-msgstr "插座/插槽： "
-
-#: ../../qml/func/info/CpuInfo.qml:147
-msgctxt "CpuInfo|"
-msgid "Maximum Frequency: "
-msgstr "最大主频： "
-
-#: ../../qml/func/info/CpuInfo.qml:162
-msgctxt "CpuInfo|"
-msgid "Current Frequency: "
-msgstr "当前主频： "
-
-#: ../../qml/func/info/CpuInfo.qml:177
-msgctxt "CpuInfo|"
-msgid "FSB: "
-msgstr "前端总线： "
-
-#: ../../qml/func/info/CpuInfo.qml:192
-msgctxt "CpuInfo|"
-msgid "Core Number: "
-msgstr "核心数目： "
-
-#: ../../qml/func/info/CpuInfo.qml:207
-msgctxt "CpuInfo|"
-msgid "L1 Cache: "
-msgstr "一级缓存： "
-
-#: ../../qml/func/info/CpuInfo.qml:222
-msgctxt "CpuInfo|"
-msgid "L2 Cache: "
-msgstr "二级缓存： "
-
-#: ../../qml/func/settings/DefaultFont.qml:36
-msgctxt "DefaultFont|"
-msgid "Default font settings"
-msgstr "字体设置"
-
-#: ../../qml/func/settings/DefaultFont.qml:37
-msgctxt "DefaultFont|"
-msgid ""
-"According to personal preferences to set the system default font, click the  "
-"'Restore' button, can be restored to the state before the font settings. "
-msgstr "根据个人喜好设置系统默认字体，单击＂恢复默认＂按钮，可以将对应的字体恢复到设置前状态。 "
-
-#: ../../qml/func/settings/DefaultFont.qml:132
-msgctxt "DefaultFont|"
-msgid "Back"
-msgstr "返回"
-
-#: ../../qml/func/settings/DefaultFont.qml:188
-msgctxt "DefaultFont|"
-msgid "Default Font: "
-msgstr "默认字体： "
-
-#: ../../qml/func/settings/DefaultFont.qml:212
-#: ../../qml/func/settings/DefaultFont.qml:257
-#: ../../qml/func/settings/DefaultFont.qml:302
-#: ../../qml/func/settings/DefaultFont.qml:347
-#: ../../qml/func/settings/DefaultFont.qml:392
-#: ../../qml/func/settings/DefaultFont.qml:445
-#: ../../qml/func/settings/DefaultFont.qml:491
-#: ../../qml/func/settings/DefaultFont.qml:537
-msgctxt "DefaultFont|"
-msgid "Restore"
-msgstr "恢复默认"
-
-#: ../../qml/func/settings/DefaultFont.qml:233
-msgctxt "DefaultFont|"
-msgid "Desktop Font: "
-msgstr "桌面字体： "
-
-#: ../../qml/func/settings/DefaultFont.qml:278
-msgctxt "DefaultFont|"
-msgid "Monospace Font: "
-msgstr "等宽字体： "
-
-#: ../../qml/func/settings/DefaultFont.qml:323
-msgctxt "DefaultFont|"
-msgid "Document font: "
-msgstr "文档字体： "
-
-#: ../../qml/func/settings/DefaultFont.qml:368
-msgctxt "DefaultFont|"
-msgid "Titlebar font: "
-msgstr "标题栏字体： "
-
-#: ../../qml/func/settings/DefaultFont.qml:414
-msgctxt "DefaultFont|"
-msgid "Global Font Scaling: "
-msgstr "全局字体缩放： "
-
-#: ../../qml/func/settings/DefaultFont.qml:468
-msgctxt "DefaultFont|"
-msgid "Hinting: "
-msgstr "平滑： "
-
-#: ../../qml/func/settings/DefaultFont.qml:514
-msgctxt "DefaultFont|"
-msgid "Antialiasing: "
-msgstr "反锯齿： "
-
-#: ../../qml/func/settings/DesktopIcon.qml:27
-msgctxt "DesktopIcon|"
-msgid "Desktop Icons"
-msgstr "桌面图标设置"
-
-#: ../../qml/func/settings/DesktopIcon.qml:28
-msgctxt "DesktopIcon|"
-msgid "Set the desktop icon theme and the visibility of desktop icons."
-msgstr "设置桌面图标主题和桌面图标的可见性。"
-
-#: ../../qml/func/settings/DesktopIcon.qml:150
-msgctxt "DesktopIcon|"
-msgid "Back"
-msgstr "返回"
-
-#: ../../qml/func/settings/DesktopIcon.qml:205
-msgctxt "DesktopIcon|"
-msgid "Icon theme:"
-msgstr "图标主题："
-
-#: ../../qml/func/settings/DesktopIcon.qml:228
-#: ../../qml/func/settings/DesktopIcon.qml:287
-#: ../../qml/func/settings/DesktopIcon.qml:354
-#: ../../qml/func/settings/DesktopIcon.qml:418
-#: ../../qml/func/settings/DesktopIcon.qml:494
-#: ../../qml/func/settings/DesktopIcon.qml:570
-#: ../../qml/func/settings/DesktopIcon.qml:646
-msgctxt "DesktopIcon|"
-msgid "Restore"
-msgstr "恢复默认"
-
-#: ../../qml/func/settings/DesktopIcon.qml:251
-msgctxt "DesktopIcon|"
-msgid "Show Desktop Icons: "
-msgstr "显示桌面图标： "
-
-#: ../../qml/func/settings/DesktopIcon.qml:328
-msgctxt "DesktopIcon|"
-msgid "Computer: "
-msgstr "计算机： "
-
-#: ../../qml/func/settings/DesktopIcon.qml:382
-msgctxt "DesktopIcon|"
-msgid "Home Folder: "
-msgstr "主文件夹： "
-
-#: ../../qml/func/settings/DesktopIcon.qml:458
-msgctxt "DesktopIcon|"
-msgid "Network: "
-msgstr "网络： "
-
-#: ../../qml/func/settings/DesktopIcon.qml:534
-msgctxt "DesktopIcon|"
-msgid "Trash : "
-msgstr "回收站： "
-
-#: ../../qml/func/settings/DesktopIcon.qml:610
-msgctxt "DesktopIcon|"
-msgid "Mounted Volumes: "
-msgstr "挂载卷标： "
-
-#: ../../qml/func/info/DesktopInfo.qml:62
-msgctxt "DesktopInfo|"
-msgid "Desktop Info"
-msgstr "桌面信息"
-
-#: ../../qml/func/info/DesktopInfo.qml:79
-msgctxt "DesktopInfo|"
-msgid "Desktop Environment: "
-msgstr "桌面环境： "
-
-#: ../../qml/func/info/DesktopInfo.qml:94
-msgctxt "DesktopInfo|"
-msgid "Distribution: "
-msgstr "发行版： "
-
-#: ../../qml/func/info/DesktopInfo.qml:109
-msgctxt "DesktopInfo|"
-msgid "Language: "
-msgstr "语言： "
-
-#: ../../qml/func/info/DesktopInfo.qml:125
-msgctxt "DesktopInfo|"
-msgid "User: "
-msgstr "当前用户： "
-
-#: ../../qml/func/info/DesktopInfo.qml:140
-msgctxt "DesktopInfo|"
-msgid "Home Folder: "
-msgstr "用户主目录： "
-
-#: ../../qml/func/others/DistrowatchTitle.qml:31
-msgctxt "DistrowatchTitle|"
-msgid "Rank"
-msgstr "名次"
-
-#: ../../qml/func/others/DistrowatchTitle.qml:47
-msgctxt "DistrowatchTitle|"
-msgid "Distribution"
-msgstr "发行"
-
-#: ../../qml/func/others/DistrowatchTitle.qml:63
-msgctxt "DistrowatchTitle|"
-msgid "T.H"
-msgstr "今日点击"
-
-#: ../../qml/func/others/DistrowatchTitle.qml:79
-msgctxt "DistrowatchTitle|"
-msgid "Y.H"
-msgstr "昨日点击"
-
-#: ../../qml/func/info/DriveInfo.qml:28
-msgctxt "DriveInfo|"
-msgid "Host bridge:"
-msgstr "主桥："
-
-#: ../../qml/func/info/DriveInfo.qml:29
-msgctxt "DriveInfo|"
-msgid "VGA Model:"
-msgstr "VGA兼容控制器："
-
-#: ../../qml/func/info/DriveInfo.qml:30
-msgctxt "DriveInfo|"
-msgid "USB Model:"
-msgstr "USB控制器："
-
-#: ../../qml/func/info/DriveInfo.qml:31
-msgctxt "DriveInfo|"
-msgid "Communication Model:"
-msgstr "通信控制器："
-
-#: ../../qml/func/info/DriveInfo.qml:32
-msgctxt "DriveInfo|"
-msgid "Ethernet Model:"
-msgstr "以太网控制器："
-
-#: ../../qml/func/info/DriveInfo.qml:33
-msgctxt "DriveInfo|"
-msgid "Audio Model:"
-msgstr "声卡型号："
-
-#: ../../qml/func/info/DriveInfo.qml:34
-msgctxt "DriveInfo|"
-msgid "PCI bridge:"
-msgstr "PCI桥："
-
-#: ../../qml/func/info/DriveInfo.qml:35
-msgctxt "DriveInfo|"
-msgid "ISA bridge:"
-msgstr "ISA桥："
-
-#: ../../qml/func/info/DriveInfo.qml:36
-msgctxt "DriveInfo|"
-msgid "SATA Model:"
-msgstr "SATA控制器："
-
-#: ../../qml/func/info/DriveInfo.qml:37
-msgctxt "DriveInfo|"
-msgid "SMBus:"
-msgstr "系统管理总线："
-
-#: ../../qml/func/info/DriveInfo.qml:38
-msgctxt "DriveInfo|"
-msgid "System peripheral:"
-msgstr "系统外围："
-
-#: ../../qml/func/info/DriveInfo.qml:39
-msgctxt "DriveInfo|"
-msgid "Driver in use:"
-msgstr "使用的驱动："
-
-#: ../../qml/func/info/DriveInfo.qml:40
-msgctxt "DriveInfo|"
-msgid "existing drivers:"
-msgstr "可选的驱动："
-
-#: ../../qml/func/info/DriveInfo.qml:41
-msgctxt "DriveInfo|"
-msgid "IDE interface:"
-msgstr "IDE 接口："
-
-#: ../../qml/func/info/DriveInfo.qml:42
-msgctxt "DriveInfo|"
-msgid "SP controller:"
-msgstr "信号处理控制器："
-
-#: ../../qml/func/info/DriveInfo.qml:43
-msgctxt "DriveInfo|"
-msgid "Network controller:"
-msgstr "网络控制器："
-
-#: ../../qml/func/info/DriveInfo.qml:44
-msgctxt "DriveInfo|"
-msgid "Multimedia audio controller:"
-msgstr "多媒体音频控制器："
-
-#: ../../qml/func/info/DriveInfo.qml:265
-msgctxt "DriveInfo|"
-msgid "Device Driver Info"
-msgstr "设备驱动信息"
-
-#: ../../qml/func/settings/FileManager.qml:25
-msgctxt "FileManager|"
-msgid "File Manager"
-msgstr "文件管理器"
-
-#: ../../qml/func/settings/FileManager.qml:26
-msgctxt "FileManager|"
-msgid ""
-"Manage the Nautilus file manager. Tips: if the thumbnail's cache time or "
-"size is set to -1, it will not be checked."
-msgstr "管理Nautilus文件管理器。提示：如果缩略图缓存时间或尺寸被设置为-1，缩略图将不会被清理。"
-
-#: ../../qml/func/settings/FileManager.qml:79
-msgctxt "FileManager|"
-msgid "Back"
-msgstr "返回"
-
-#: ../../qml/func/settings/FileManager.qml:132
-msgctxt "FileManager|"
-msgid "Display entry location: "
-msgstr "路径输入框取代路径栏： "
-
-#: ../../qml/func/settings/FileManager.qml:160
-#: ../../qml/func/settings/FileManager.qml:215
-#: ../../qml/func/settings/FileManager.qml:270
-#: ../../qml/func/settings/FileManager.qml:325
-#: ../../qml/func/settings/FileManager.qml:385
-#: ../../qml/func/settings/FileManager.qml:440
-#: ../../qml/func/settings/FileManager.qml:495
-msgctxt "FileManager|"
-msgid "Restore"
-msgstr "恢复默认"
-
-#: ../../qml/func/settings/FileManager.qml:187
-msgctxt "FileManager|"
-msgid "Automatically mount media: "
-msgstr "自动挂载媒体： "
-
-#: ../../qml/func/settings/FileManager.qml:242
-msgctxt "FileManager|"
-msgid "Automatically open a folder: "
-msgstr "自动打开文件夹： "
-
-#: ../../qml/func/settings/FileManager.qml:297
-msgctxt "FileManager|"
-msgid "Prompt autorun programs: "
-msgstr "提示自动运行的程序： "
-
-#: ../../qml/func/settings/FileManager.qml:352
-msgctxt "FileManager|"
-msgid "Thumbnail icon size (pixels): "
-msgstr "缩略图图标尺寸（像素）： "
-
-#: ../../qml/func/settings/FileManager.qml:407
-msgctxt "FileManager|"
-msgid "Thumbnail cache time (days): "
-msgstr "缩略图缓存时间（天数）： "
-
-#: ../../qml/func/settings/FileManager.qml:462
-msgctxt "FileManager|"
-msgid "Maximum thumbnail cache size (MB): "
-msgstr "最大缩略图缓存尺寸（MB）： "
-
-#: ../../qml/func/cleaner/FileModel.qml:24
-msgctxt "FileModel|"
-msgid "Quickly find large files"
-msgstr "快速找出大文件"
-
-#: ../../qml/func/cleaner/FileModel.qml:25
-msgctxt "FileModel|"
-msgid "Range:1M-20480M; 1GB = 1024MB"
-msgstr "大小范围为1M-20480M；1GB = 1024MB"
-
-#: ../../qml/func/cleaner/FileModel.qml:82
-msgctxt "FileModel|"
-msgid "Cleanup path is:"
-msgstr "清理路径为："
-
-#: ../../qml/func/cleaner/FileModel.qml:84
-msgctxt "FileModel|"
-msgid ""
-"cleaning up the maximum files in user-specified directory, to save disk "
-"space."
-msgstr "清理用户指定目录下的最大文件，节省磁盘空间。"
-
-#: ../../qml/func/cleaner/FileModel.qml:86
-msgctxt "FileModel|"
-msgid "Nothing found!"
-msgstr "没有该大小的文件！"
-
-#: ../../qml/func/cleaner/FileModel.qml:113
-msgctxt "FileModel|"
-msgid "Cleared!"
-msgstr "清理完毕！"
-
-#: ../../qml/func/cleaner/FileModel.qml:152
-msgctxt "FileModel|"
-msgid "Please input the file size (M) : "
-msgstr "请输入文件大小 (M)： "
-
-#: ../../qml/func/cleaner/FileModel.qml:183
-msgctxt "FileModel|"
-msgid "Browse..."
-msgstr "浏览..."
-
-#: ../../qml/func/cleaner/FileModel.qml:193
-#: ../../qml/func/cleaner/FileModel.qml:221
-#: ../../qml/func/cleaner/FileModel.qml:225
-#: ../../qml/func/cleaner/FileModel.qml:232
-#: ../../qml/func/cleaner/FileModel.qml:244
-#: ../../qml/func/cleaner/FileModel.qml:254
-msgctxt "FileModel|"
-msgid "Tips:"
-msgstr "友情提示："
-
-#: ../../qml/func/cleaner/FileModel.qml:193
-msgctxt "FileModel|"
-msgid ""
-"Sorry, you haven't set the file size or the value is 0, please input the "
-"file size!"
-msgstr "对不起，您没有设置扫描文件的大小或者设置值为 0，请重新输入文件大小！"
-
-#: ../../qml/func/cleaner/FileModel.qml:215
-msgctxt "FileModel|"
-msgid "Begin cleanup"
+#: ../cleaneractionwidget.cpp:145
+msgctxt "CleanerActionWidget|"
+msgid "Start Cleanup"
 msgstr "开始清理"
 
-#: ../../qml/func/cleaner/FileModel.qml:221
-msgctxt "FileModel|"
-msgid ""
-"Sorry, You haven't set the file size or the value is 0, please input the "
-"file sizes !"
-msgstr "对不起，您没有设置扫描文件的大小或者设置值为 0，请重新输入文件大小！"
-
-#: ../../qml/func/cleaner/FileModel.qml:225
-msgctxt "FileModel|"
-msgid ""
-"Sorry, You did not choose the scan path, please click the 'Browse' button to "
-"continue!"
-msgstr "对不起，您没有选择扫描路径，请点击＂浏览＂按钮选择！"
-
-#: ../../qml/func/cleaner/FileModel.qml:232
-msgctxt "FileModel|"
-msgid "The scan reslut is empty, nothing has been done!"
-msgstr "扫描内容为空，无需清理！"
-
-#: ../../qml/func/cleaner/FileModel.qml:244
-#: ../../qml/func/cleaner/FileModel.qml:254
-msgctxt "FileModel|"
-msgid ""
-"Sorry, You did not choose the content to be cleaned up, please confirm!"
-msgstr "对不起，您没有选择需要清理的项，请确认！"
-
-#: ../../qml/func/cleaner/FileModel.qml:343
-#: ../../qml/func/cleaner/FileModel.qml:350
-msgctxt "FileModel|"
-msgid "Unfinished"
-msgstr "未完成"
-
-#: ../../qml/func/cleaner/FileModel.qml:354
-msgctxt "FileModel|"
-msgid "Exception occurred"
-msgstr "出现异常"
-
-#: ../../qml/func/cleaner/FileModel.qml:358
-#: ../../qml/func/cleaner/FileModel.qml:362
-msgctxt "FileModel|"
-msgid "Completed"
-msgstr "已完成"
-
-#: ../../qml/func/settings/FileShredder.qml:25
-msgctxt "FileShredder|"
-msgid "File Shredder"
-msgstr "文件粉碎机"
-
-#: ../../qml/func/settings/FileShredder.qml:26
-msgctxt "FileShredder|"
-msgid "Delete files makes it unable to recover."
-msgstr "彻底删除文件使其无法恢复。"
-
-#: ../../qml/func/settings/FileShredder.qml:49
-msgctxt "FileShredder|"
+#: ../cleaneractionwidget.cpp:146
+msgctxt "CleanerActionWidget|"
 msgid "Back"
 msgstr "返回"
 
-#: ../../qml/func/settings/FileShredder.qml:96
-msgctxt "FileShredder|"
-msgid "The file need to be shredded: "
-msgstr "需要粉碎的文件： "
+#: ../cleaneractionwidget.cpp:147 ../cleaneractionwidget.cpp:239
+msgctxt "CleanerActionWidget|"
+msgid "Scaning......"
+msgstr "正在扫描....."
 
-#: ../../qml/func/settings/FileShredder.qml:118
-#: ../../qml/func/settings/FileShredder.qml:157
-#: ../../qml/func/settings/FileShredder.qml:184
-#: ../../qml/func/settings/FileShredder.qml:204
-msgctxt "FileShredder|"
-msgid "No select any file which need to be shredded"
-msgstr "未选择需要粉碎的文件"
+#: ../cleaneractionwidget.cpp:157
+msgctxt "CleanerActionWidget|"
+msgid "Clean OK......"
+msgstr "清理完毕......"
 
-#: ../../qml/func/settings/FileShredder.qml:178
-msgctxt "FileShredder|"
-msgid "Shred File"
-msgstr "粉碎文件"
+#: ../cleaneractionwidget.cpp:164
+msgctxt "CleanerActionWidget|"
+msgid "Cleaning: "
+msgstr "正在清理："
 
-#: ../../qml/func/settings/FileShredder.qml:185
-msgctxt "FileShredder|"
-msgid "Shred success!"
-msgstr "粉碎成功！"
+#: ../cleaneractionwidget.cpp:168
+msgctxt "CleanerActionWidget|"
+msgid ", Percent is: "
+msgstr "，进度为："
 
-#: ../../qml/func/settings/FileShredder.qml:188
-msgctxt "FileShredder|"
-msgid "Shred abnormal!"
-msgstr "粉碎出现异常！"
+#: ../cleaneractionwidget.cpp:168
+msgctxt "CleanerActionWidget|"
+msgid "%, Status is: "
+msgstr "%，状态为："
 
-#: ../../qml/func/settings/FileShredder.qml:201
-msgctxt "FileShredder|"
-msgid "Deselect"
-msgstr "取消选择"
+#: ../cleaneractionwidget.cpp:176
+msgctxt "CleanerActionWidget|"
+msgid "Clean Firefox history......"
+msgstr "清理Firefox浏览器历史记录......"
 
-#: ../../qml/func/common/FontButton.qml:29
-msgctxt "FontButton|"
-msgid "Click to change font"
-msgstr "点击更换字体"
+#: ../cleaneractionwidget.cpp:180
+msgctxt "CleanerActionWidget|"
+msgid "Clean Chromium history......"
+msgstr "清理Chromium浏览器历史记录......"
 
-#: ../../qml/func/info/HDInfo.qml:54 ../../qml/func/info/HDInfo.qml:73
-#: ../../qml/func/info/HDInfo.qml:96 ../../qml/func/info/HDInfo.qml:118
-#: ../../qml/func/info/HDInfo.qml:150
-msgctxt "HDInfo|"
-msgid "HDD Model: "
-msgstr "硬盘型号： "
+#: ../cleaneractionwidget.cpp:184
+msgctxt "CleanerActionWidget|"
+msgid "Clean system history......"
+msgstr "清理系统历史痕迹......"
 
-#: ../../qml/func/info/HDInfo.qml:55 ../../qml/func/info/HDInfo.qml:74
-#: ../../qml/func/info/HDInfo.qml:97 ../../qml/func/info/HDInfo.qml:119
-#: ../../qml/func/info/HDInfo.qml:151
-msgctxt "HDInfo|"
-msgid "HDD Vendor: "
-msgstr "硬盘厂商： "
+#: ../cleaneractionwidget.cpp:189
+msgctxt "CleanerActionWidget|"
+msgid "Clean apt......"
+msgstr "清理Apt......"
 
-#: ../../qml/func/info/HDInfo.qml:56 ../../qml/func/info/HDInfo.qml:75
-#: ../../qml/func/info/HDInfo.qml:98 ../../qml/func/info/HDInfo.qml:120
-#: ../../qml/func/info/HDInfo.qml:152
-msgctxt "HDInfo|"
-msgid "HDD Capacity: "
-msgstr "硬盘容量： "
+#: ../cleaneractionwidget.cpp:193
+msgctxt "CleanerActionWidget|"
+msgid "Start clean apt......"
+msgstr "开始清理Apt......"
 
-#: ../../qml/func/info/HDInfo.qml:57 ../../qml/func/info/HDInfo.qml:76
-#: ../../qml/func/info/HDInfo.qml:99 ../../qml/func/info/HDInfo.qml:121
-#: ../../qml/func/info/HDInfo.qml:153
-msgctxt "HDInfo|"
-msgid "Device Name: "
-msgstr "设备名称： "
+#: ../cleaneractionwidget.cpp:198
+msgctxt "CleanerActionWidget|"
+msgid "Clean Firefox Cookie:"
+msgstr "清理Firefox浏览器Cookie："
 
-#: ../../qml/func/info/HDInfo.qml:58 ../../qml/func/info/HDInfo.qml:77
-#: ../../qml/func/info/HDInfo.qml:100 ../../qml/func/info/HDInfo.qml:122
-#: ../../qml/func/info/HDInfo.qml:154
-msgctxt "HDInfo|"
-msgid "Firmware Version: "
-msgstr "固件版本： "
+#: ../cleaneractionwidget.cpp:202
+msgctxt "CleanerActionWidget|"
+msgid "Clean Chromium Cookie:"
+msgstr "清理Chromium浏览器Cookie："
 
-#: ../../qml/func/info/HDInfo.qml:59 ../../qml/func/info/HDInfo.qml:78
-#: ../../qml/func/info/HDInfo.qml:101 ../../qml/func/info/HDInfo.qml:123
-#: ../../qml/func/info/HDInfo.qml:155
-msgctxt "HDInfo|"
-msgid "Serial Number: "
-msgstr "序列号： "
+#: ../cleaneractionwidget.cpp:211 ../cleaneractionwidget.cpp:269
+msgctxt "CleanerActionWidget|"
+msgid " does not exist"
+msgstr "不存在"
 
-#: ../../qml/func/info/HDInfo.qml:214
-msgctxt "HDInfo|"
-msgid "HDD Info"
-msgstr "硬盘信息"
+#: ../cleaneractionwidget.cpp:215 ../cleaneractionwidget.cpp:264
+msgctxt "CleanerActionWidget|"
+msgid "Chromium Browser is running......"
+msgstr "Chromium浏览器正在运行中......"
 
-#: ../kfontdialog.ui:14
-msgctxt "KFontDialog|"
-msgid "Dialog"
-msgstr "对话框"
+#: ../cleaneractionwidget.cpp:223
+msgctxt "CleanerActionWidget|"
+msgid "Cache Scan OK......"
+msgstr "缓存扫描完成....."
 
-#: ../kfontdialog.ui:35
-msgctxt "KFontDialog|"
-msgid "Change Fonts"
-msgstr "更换字体"
+#: ../cleaneractionwidget.cpp:227
+msgctxt "CleanerActionWidget|"
+msgid "Cookies Scan OK......"
+msgstr "Cookies扫描完成....."
 
-#: ../kfontdialog.ui:74
-msgctxt "KFontDialog|"
-msgid "<html><head/><body><p><br/></p></body></html>"
-msgstr "<html><head/><body><p><br/></p></body></html>"
+#: ../cleaneractionwidget.cpp:231
+msgctxt "CleanerActionWidget|"
+msgid "History Scan OK......"
+msgstr "历史记录扫描完成....."
 
-#: ../kfontdialog.ui:97
-msgctxt "KFontDialog|"
-msgid ""
-"<html><head/><body><p><span style=\" font-weight:600;\">Current "
-"Font:</span></p></body></html>"
+#: ../cleaneractionwidget.cpp:235
+msgctxt "CleanerActionWidget|"
+msgid "Packages Scan OK......"
+msgstr "包扫描完成......"
+
+#: ../cleaneractionwidget.cpp:253
+msgctxt "CleanerActionWidget|"
+msgid "Error: "
+msgstr "错误："
+
+#: ../cleaneractionwidget.cpp:256
+msgctxt "CleanerActionWidget|"
+msgid "Firefox Browser does not be installed......"
+msgstr "没有安装Firefox浏览器......"
+
+#: ../cleaneractionwidget.cpp:260
+msgctxt "CleanerActionWidget|"
+msgid "Chromium Browser does not be installed......"
+msgstr "没有安装Chromium浏览器......"
+
+#: ../cleaneractionwidget.cpp:288
+msgctxt "CleanerActionWidget|"
+msgid "Ready to Cleanup......"
+msgstr "准备清理......"
+
+#: ../../cleaner/cleanerdetailwidget.cpp:228
+msgctxt "CleanerDetailWidget|"
+msgid "Apt Cache Clean Items"
+msgstr "Apt缓存清理项"
+
+#: ../../cleaner/cleanerdetailwidget.cpp:234
+msgctxt "CleanerDetailWidget|"
+msgid "Apt Cache count:"
+msgstr "Apt缓存总数："
+
+#: ../../cleaner/cleanerdetailwidget.cpp:274
+#: ../../cleaner/cleanerdetailwidget.cpp:368
+msgctxt "CleanerDetailWidget|"
+msgid "Software Cache Clean Items"
+msgstr "软件中心缓存清理项"
+
+#: ../../cleaner/cleanerdetailwidget.cpp:280
+msgctxt "CleanerDetailWidget|"
+msgid "Software Cache count:"
+msgstr "软件中心缓存总数："
+
+#: ../../cleaner/cleanerdetailwidget.cpp:320
+#: ../../cleaner/cleanerdetailwidget.cpp:413
+#: ../../cleaner/cleanerdetailwidget.cpp:463
+#: ../../cleaner/cleanerdetailwidget.cpp:510
+#: ../../cleaner/cleanerdetailwidget.cpp:643
+#: ../../cleaner/cleanerdetailwidget.cpp:689
+#: ../../cleaner/cleanerdetailwidget.cpp:735
+msgctxt "CleanerDetailWidget|"
+msgid "Thumbnails Cache Clean Items"
+msgstr "缩略图缓存清理项"
+
+#: ../../cleaner/cleanerdetailwidget.cpp:326
+msgctxt "CleanerDetailWidget|"
+msgid "Thumbnails Cache Count:"
+msgstr "缩略图缓存总数："
+
+#: ../../cleaner/cleanerdetailwidget.cpp:373
+msgctxt "CleanerDetailWidget|"
+msgid "Firefox Cache Count:"
+msgstr "Firefox浏览器缓存总数："
+
+#: ../../cleaner/cleanerdetailwidget.cpp:418
+msgctxt "CleanerDetailWidget|"
+msgid "Chromium Cache Count:"
+msgstr "Chromium浏览器缓存总数："
+
+#: ../../cleaner/cleanerdetailwidget.cpp:468
+msgctxt "CleanerDetailWidget|"
+msgid "Firefox Cookies Count:"
+msgstr "Firefox Cookies总数："
+
+#: ../../cleaner/cleanerdetailwidget.cpp:515
+msgctxt "CleanerDetailWidget|"
+msgid "Chromium Cookies Count:"
+msgstr "Chromium Cookies总数："
+
+#: ../../cleaner/cleanerdetailwidget.cpp:566
+msgctxt "CleanerDetailWidget|"
+msgid "Firefox History Count:"
+msgstr "Firefox 历史记录总数："
+
+#: ../../cleaner/cleanerdetailwidget.cpp:603
+msgctxt "CleanerDetailWidget|"
+msgid "Chromium History Count:"
+msgstr "Chromium历史记录总数："
+
+#: ../../cleaner/cleanerdetailwidget.cpp:623
+msgctxt "CleanerDetailWidget|"
+msgid "System History Count:"
+msgstr "系统历史痕迹总数："
+
+#: ../../cleaner/cleanerdetailwidget.cpp:648
+msgctxt "CleanerDetailWidget|"
+msgid "Package Unneed Count:"
+msgstr "不需要的包总数："
+
+#: ../../cleaner/cleanerdetailwidget.cpp:694
+msgctxt "CleanerDetailWidget|"
+msgid "Package oldkernel Count:"
+msgstr "旧内核包总数："
+
+#: ../../cleaner/cleanerdetailwidget.cpp:740
+msgctxt "CleanerDetailWidget|"
+msgid "Package configfile Count:"
+msgstr "包配置文件总数："
+
+#: ../../cleaner/cleanerdetailwidget.cpp:1268
+msgctxt "CleanerDetailWidget|"
+msgid "Clean args is empty!"
+msgstr "清理参数为空！"
+
+# 框
+#: ../../cleaner/cleanerdetailwidget.ui:14
+msgctxt "CleanerDetailWidget|"
+msgid "Form"
 msgstr ""
-"<html><head/><body><p><span style=\" font-"
-"weight:600;\">当前字体：</span></p></body></html>"
 
-#: ../kfontdialog.ui:110
-msgctxt "KFontDialog|"
-msgid "Style"
-msgstr "风格"
-
-#: ../kfontdialog.ui:123
-msgctxt "KFontDialog|"
-msgid "Size"
-msgstr "大小"
-
-#: ../kfontdialog.ui:146
-msgctxt "KFontDialog|"
-msgid "Font"
-msgstr "字体"
-
-#: ../kfontdialog.ui:199
-msgctxt "KFontDialog|"
+#: ../../cleaner/cleaneritems.cpp:143
+msgctxt "CleanerItems|"
 msgid "OK"
 msgstr "确定"
 
-#: ../kfontdialog.ui:212
-msgctxt "KFontDialog|"
-msgid "Cancel"
-msgstr "取消"
+#: ../../cleaner/cleanermainwidget.cpp:38
+msgctxt "CleanerMainWidget|"
+msgid "Cleanup Package Cache"
+msgstr "清理包缓存"
 
-#: ../kfontdialog.ui:225
-msgctxt "KFontDialog|"
-msgid "View"
-msgstr "视图"
+#: ../../cleaner/cleanermainwidget.cpp:38
+msgctxt "CleanerMainWidget|"
+msgid "Cleanup Software Center Cache"
+msgstr "清理软件中心缓存"
 
-#: ../kfontdialog.cpp:252
-msgctxt "KFontDialog|"
-msgid "Tips"
-msgstr "提示"
+#: ../../cleaner/cleanermainwidget.cpp:38
+msgctxt "CleanerMainWidget|"
+msgid "Cleanup Thumbnails Cache"
+msgstr "清理缩略图缓存"
 
-#: ../kfontdialog.cpp:253
-msgctxt "KFontDialog|"
-msgid "You haven't change the font, please choose the font!"
-msgstr "您还没有更换字体，请选择字体进行更换！"
+#: ../../cleaner/cleanermainwidget.cpp:38
+msgctxt "CleanerMainWidget|"
+msgid "Cleanup FireFox Cache"
+msgstr "清理火狐浏览器缓存"
 
-#: ../../qml/func/settings/LauncherTheme.qml:26
-msgctxt "LauncherTheme|"
-msgid "Launcher settings"
-msgstr "启动器设置"
+#: ../../cleaner/cleanermainwidget.cpp:38
+msgctxt "CleanerMainWidget|"
+msgid "Cleanup Chromium Cache"
+msgstr "清理chromium缓存"
 
-#: ../../qml/func/settings/LauncherTheme.qml:27
-msgctxt "LauncherTheme|"
-msgid "Setting the Launcher display mode, Icon size."
-msgstr "设置启动器的显示模式、图标尺寸。"
+#: ../../cleaner/cleanermainwidget.cpp:40
+msgctxt "CleanerMainWidget|"
+msgid "Cache Items"
+msgstr "缓存选项"
 
-#: ../../qml/func/settings/LauncherTheme.qml:98
-msgctxt "LauncherTheme|"
-msgid "Back"
-msgstr "返回"
+#: ../../cleaner/cleanermainwidget.cpp:45
+msgctxt "CleanerMainWidget|"
+msgid "System Cache"
+msgstr "系统缓存"
 
-#: ../../qml/func/settings/LauncherTheme.qml:153
-msgctxt "LauncherTheme|"
-msgid "Launcher icon size: "
-msgstr "启动器图标尺寸： "
+#: ../../cleaner/cleanermainwidget.cpp:45
+msgctxt "CleanerMainWidget|"
+msgid "Cleanup  cache of system, software-center, thumbnails and browser"
+msgstr "清除包、软件中心、缩略图和浏览器缓存"
 
-#: ../../qml/func/settings/LauncherTheme.qml:185
-#: ../../qml/func/settings/LauncherTheme.qml:233
-#: ../../qml/func/settings/LauncherTheme.qml:286
-#: ../../qml/func/settings/LauncherTheme.qml:336
-#: ../../qml/func/settings/LauncherTheme.qml:392
-msgctxt "LauncherTheme|"
-msgid "Restore"
-msgstr "恢复默认"
+#: ../../cleaner/cleanermainwidget.cpp:52
+msgctxt "CleanerMainWidget|"
+msgid "Uninstall unnecessary procedures"
+msgstr "卸载不必要的程序"
 
-#: ../../qml/func/settings/LauncherTheme.qml:207
-msgctxt "LauncherTheme|"
-msgid "Launcher hide mode:"
-msgstr "启动器自动隐藏："
+#: ../../cleaner/cleanermainwidget.cpp:52
+msgctxt "CleanerMainWidget|"
+msgid "Uninstall old kernel packages"
+msgstr "卸载旧版本内核"
 
-#: ../../qml/func/settings/LauncherTheme.qml:260
-msgctxt "LauncherTheme|"
-msgid "Display desktop icon: "
-msgstr "显示桌面图标： "
+#: ../../cleaner/cleanermainwidget.cpp:52
+msgctxt "CleanerMainWidget|"
+msgid "Cleanup software configfile"
+msgstr "清理软件残余配置文件"
 
-#: ../../qml/func/settings/LauncherTheme.qml:311
-msgctxt "LauncherTheme|"
-msgid "Launcher Transparency:"
-msgstr "启动器透明度："
+#: ../../cleaner/cleanermainwidget.cpp:55
+msgctxt "CleanerMainWidget|"
+msgid "Package Items"
+msgstr "包选项"
 
-#: ../../qml/func/settings/LauncherTheme.qml:357
-msgctxt "LauncherTheme|"
-msgid "Icon Background:"
-msgstr "图标背景："
+#: ../../cleaner/cleanermainwidget.cpp:59
+msgctxt "CleanerMainWidget|"
+msgid "Packages and configfile"
+msgstr "包垃圾和残余配置文件"
 
-#: ../../qml/func/others/LeftPage.qml:129
-#: ../../qml/func/others/LeftPage.qml:133 ../../qml/func/others/LeftPage.qml:137
-msgctxt "LeftPage|"
-msgid "(totally cleared"
-msgstr "（共清理掉"
+#: ../../cleaner/cleanermainwidget.cpp:59
+msgctxt "CleanerMainWidget|"
+msgid ""
+"Cleaning up the software that installed by other software bundled, old "
+"kernel packages and configfile, to improve system performance"
+msgstr "清除不必要的程序、旧内核包、配置文件，提升系统性能"
 
-#: ../../qml/func/others/LeftPage.qml:129
-msgctxt "LeftPage|"
-msgid "Cookies)"
-msgstr "条Cookies）"
+#: ../../cleaner/cleanermainwidget.cpp:67
+msgctxt "CleanerMainWidget|"
+msgid "Cleanup the Cookies saving in Firefox"
+msgstr "清理火狐浏览器的Cookies"
 
-#: ../../qml/func/others/LeftPage.qml:133
-msgctxt "LeftPage|"
-msgid "garbage)"
-msgstr "垃圾）"
+#: ../../cleaner/cleanermainwidget.cpp:67
+msgctxt "CleanerMainWidget|"
+msgid "Cleanup the Cookies saving in Chromium"
+msgstr "清理Chromium浏览器的Cookies"
 
-#: ../../qml/func/others/LeftPage.qml:137
-msgctxt "LeftPage|"
-msgid "historical records)"
-msgstr "条历史记录）"
+#: ../../cleaner/cleanermainwidget.cpp:70
+msgctxt "CleanerMainWidget|"
+msgid "Cookies Items"
+msgstr "Cookies选项"
 
-#: ../../qml/func/others/LeftPage.qml:145
-msgctxt "LeftPage|"
-msgid "Cleared!"
-msgstr "一键清理完毕！"
+#: ../../cleaner/cleanermainwidget.cpp:74
+msgctxt "CleanerMainWidget|"
+msgid "Cookies"
+msgstr "Cookies"
 
-#: ../../qml/func/others/LeftPage.qml:177
-msgctxt "LeftPage|"
-msgid "Cleaning up history trace of Firefox..."
-msgstr "正在清理Firefox的历史痕迹..."
+#: ../../cleaner/cleanermainwidget.cpp:74
+msgctxt "CleanerMainWidget|"
+msgid "Clean up user login information, support Firefox and Chromium browser"
+msgstr "清除上网、游戏、购物等记录"
 
-#: ../../qml/func/others/LeftPage.qml:180
-msgctxt "LeftPage|"
-msgid "Firefox history trace had been cleared!"
-msgstr "Firefox的历史痕迹已清理完毕！"
+#: ../../cleaner/cleanermainwidget.cpp:82
+msgctxt "CleanerMainWidget|"
+msgid "Clean up the Firefox Internet records"
+msgstr "清理火狐访问记录"
 
-#: ../../qml/func/others/LeftPage.qml:185
-msgctxt "LeftPage|"
-msgid "Cleaning up history trace of Chromium..."
-msgstr "正在清理Chromium的历史痕迹..."
+#: ../../cleaner/cleanermainwidget.cpp:82
+msgctxt "CleanerMainWidget|"
+msgid "Clean up the Chromium Internet records"
+msgstr "清理Chromium访问记录"
 
-#: ../../qml/func/others/LeftPage.qml:188
-msgctxt "LeftPage|"
-msgid "Chromium history trace had been cleared!"
-msgstr "Chromium的历史痕迹已清理完毕！"
+#: ../../cleaner/cleanermainwidget.cpp:82
+msgctxt "CleanerMainWidget|"
+msgid "Clean up the recently opened documents records"
+msgstr "清理最近打开的文件记录"
 
-#: ../../qml/func/others/LeftPage.qml:193
-msgctxt "LeftPage|"
-msgid "Cleaning up Cookies of Firefox..."
-msgstr "正在清理Firefox的Cookies..."
+#: ../../cleaner/cleanermainwidget.cpp:85
+msgctxt "CleanerMainWidget|"
+msgid "Trace Items"
+msgstr "访问痕迹选项"
 
-#: ../../qml/func/others/LeftPage.qml:196
-msgctxt "LeftPage|"
-msgid "Firefox Cookies had been cleared!"
-msgstr "Firefox的Cookies已清理完毕！"
+#: ../../cleaner/cleanermainwidget.cpp:89
+msgctxt "CleanerMainWidget|"
+msgid "History trace"
+msgstr "历史痕迹"
 
-#: ../../qml/func/others/LeftPage.qml:201
-msgctxt "LeftPage|"
-msgid "Cleaning up Cookies of Chromium..."
-msgstr "正在清理Chromium的Cookies..."
+#: ../../cleaner/cleanermainwidget.cpp:89
+msgctxt "CleanerMainWidget|"
+msgid "Cleaning the internet and opened documents recently records"
+msgstr "清除浏览器和系统使用痕迹"
 
-#: ../../qml/func/others/LeftPage.qml:204
-msgctxt "LeftPage|"
-msgid "Chromium Cookies had been cleared!"
-msgstr "Chromium的Cookies已清理完毕！"
+#: ../../cleaner/cleanermainwidget.cpp:159
+msgctxt "CleanerMainWidget|"
+msgid "Please select the items you want to clean"
+msgstr "请选择您想清理的选项"
 
-#: ../../qml/func/others/LeftPage.qml:209
-msgctxt "LeftPage|"
-msgid "Apt cache had been cleared!"
-msgstr "Apt缓存已清理完毕！"
+#: ../../cleaner/cleanermainwidget.cpp:168
+msgctxt "CleanerMainWidget|"
+msgid "Scan args is empty!"
+msgstr "扫描参数为空！"
 
-#: ../../qml/func/others/LeftPage.qml:212
-msgctxt "LeftPage|"
-msgid "Cleaning up Apt cache: "
-msgstr "正在清理Apt缓存： "
+#~ msgctxt "CommonCheckBox|"
+#~ msgid "Custom"
+#~ msgstr "自定义"
 
-#: ../../qml/func/others/LeftPage.qml:217
-msgctxt "LeftPage|"
-msgid "Software Center cache had been cleared!"
-msgstr "软件中心缓存已清理完毕！"
+#: ../../info/computerpage.cpp:55 ../../info/computerpage.cpp:104
+#: ../../info/computerpage.cpp:109 ../../info/computerpage.cpp:111
+#, qt-format
+msgctxt "ComputerPage|"
+msgid "%1"
+msgstr ""
 
-#: ../../qml/func/others/LeftPage.qml:220
-msgctxt "LeftPage|"
-msgid "Cleaning up Software Center cache: "
-msgstr "正在清理软件中心缓存： "
+#: ../../info/computerpage.cpp:97 ../../info/computerpage.cpp:101
+msgctxt "ComputerPage|"
+msgid " Minutes"
+msgstr " 分钟"
 
-#: ../../qml/func/others/LeftPage.qml:266
-msgctxt "LeftPage|"
+#: ../../info/computerpage.cpp:101
+msgctxt "ComputerPage|"
+msgid " Hours "
+msgstr " 小时"
+
+#: ../../info/computerpage.cpp:136 ../../info/computerpage.cpp:256
+msgctxt "ComputerPage|"
+msgid "Audio Model"
+msgstr "声卡型号"
+
+#: ../../info/computerpage.cpp:138 ../../info/computerpage.cpp:191
+#: ../../info/computerpage.cpp:204 ../../info/computerpage.cpp:299
+#: ../../info/computerpage.cpp:324 ../../info/computerpage.cpp:340
+#: ../../info/computerpage.cpp:355
+msgctxt "ComputerPage|"
+msgid "Vendor"
+msgstr "制造商"
+
+#: ../../info/computerpage.cpp:140 ../../info/computerpage.cpp:318
+#: ../../info/computerpage.cpp:328 ../../info/computerpage.cpp:346
+msgctxt "ComputerPage|"
+msgid "Bus Address"
+msgstr "总线地址"
+
+#: ../../info/computerpage.cpp:142
+msgctxt "ComputerPage|"
+msgid "Audio Driver"
+msgstr "声卡驱动"
+
+#: ../../info/computerpage.cpp:145 ../../info/computerpage.cpp:193
+#: ../../info/computerpage.cpp:288 ../../info/computerpage.cpp:330
+msgctxt "ComputerPage|"
+msgid "Device Name"
+msgstr "设备名"
+
+#: ../../info/computerpage.cpp:147
+msgctxt "ComputerPage|"
+msgid "Manufacturer"
+msgstr "发行商"
+
+#: ../../info/computerpage.cpp:161 ../../info/computerpage.cpp:357
+msgctxt "ComputerPage|"
+msgid "Model"
+msgstr "型号"
+
+#: ../../info/computerpage.cpp:163
+msgctxt "ComputerPage|"
+msgid "Technology"
+msgstr "技术"
+
+#: ../../info/computerpage.cpp:165
+msgctxt "ComputerPage|"
+msgid "Voltage"
+msgstr "电压"
+
+#: ../../info/computerpage.cpp:167
+msgctxt "ComputerPage|"
+msgid "Energy Designed"
+msgstr "能量（设计）"
+
+#: ../../info/computerpage.cpp:169
+msgctxt "ComputerPage|"
+msgid "Energy Full"
+msgstr "满时能量"
+
+#: ../../info/computerpage.cpp:171
+msgctxt "ComputerPage|"
+msgid "Energy Now"
+msgstr "能量"
+
+#: ../../info/computerpage.cpp:173 ../../info/computerpage.cpp:180
+#: ../../info/computerpage.cpp:197 ../../info/computerpage.cpp:206
+#: ../../info/computerpage.cpp:292 ../../info/computerpage.cpp:301
+#: ../../info/computerpage.cpp:350 ../../info/computerpage.cpp:361
+msgctxt "ComputerPage|"
+msgid "Serial Number"
+msgstr "序列号"
+
+#: ../../info/computerpage.cpp:176
+msgctxt "ComputerPage|"
+msgid "Motherboard Model"
+msgstr "主板型号"
+
+#: ../../info/computerpage.cpp:178
+msgctxt "ComputerPage|"
+msgid "Motherboard Vendor"
+msgstr "主板产商"
+
+#: ../../info/computerpage.cpp:182
+msgctxt "ComputerPage|"
+msgid "BIOS Vendor"
+msgstr "BIOS产商"
+
+#: ../../info/computerpage.cpp:184
+msgctxt "ComputerPage|"
+msgid "BIOS Version"
+msgstr "BIOS版本"
+
+#: ../../info/computerpage.cpp:186
+msgctxt "ComputerPage|"
+msgid "Release Date"
+msgstr "发布日期"
+
+#: ../../info/computerpage.cpp:189
+msgctxt "ComputerPage|"
+msgid "CD-ROM Model"
+msgstr "光驱型号"
+
+#: ../../info/computerpage.cpp:195 ../../info/computerpage.cpp:290
+msgctxt "ComputerPage|"
+msgid "Firmware Version"
+msgstr "固件版本"
+
+#: ../../info/computerpage.cpp:202 ../../info/computerpage.cpp:228
+msgctxt "ComputerPage|"
+msgid "CPU"
+msgstr "处理器"
+
+#: ../../info/computerpage.cpp:208
+msgctxt "ComputerPage|"
+msgid "Socket/Slot"
+msgstr "插座／插槽"
+
+#: ../../info/computerpage.cpp:210
+msgctxt "ComputerPage|"
+msgid "Maximum Frequency"
+msgstr "最大主频"
+
+#: ../../info/computerpage.cpp:212
+msgctxt "ComputerPage|"
+msgid "Current Frequency"
+msgstr "当前主频"
+
+#: ../../info/computerpage.cpp:214
+msgctxt "ComputerPage|"
+msgid "FSB"
+msgstr "前端总线"
+
+#: ../../info/computerpage.cpp:216
+msgctxt "ComputerPage|"
+msgid "Core Number"
+msgstr "核心数目"
+
+#: ../../info/computerpage.cpp:218
+msgctxt "ComputerPage|"
+msgid "Thread"
+msgstr "线程"
+
+#: ../../info/computerpage.cpp:220
+msgctxt "ComputerPage|"
+msgid "L1 Cache"
+msgstr "１级缓存"
+
+#: ../../info/computerpage.cpp:222
+msgctxt "ComputerPage|"
+msgid "L2 Cache"
+msgstr "２级缓存"
+
+#: ../../info/computerpage.cpp:226
+msgctxt "ComputerPage|"
+msgid "Desktop Environment"
+msgstr "桌面环境"
+
+#: ../../info/computerpage.cpp:230
+msgctxt "ComputerPage|"
+msgid "Host Name"
+msgstr "主机名"
+
+#: ../../info/computerpage.cpp:232
+msgctxt "ComputerPage|"
+msgid "Memery Capacity"
+msgstr "内存容量"
+
+#: ../../info/computerpage.cpp:234
+msgctxt "ComputerPage|"
+msgid "Shell"
+msgstr "Shell终端"
+
+#: ../../info/computerpage.cpp:236
+msgctxt "ComputerPage|"
+msgid "Distribution"
+msgstr "发行版"
+
+#: ../../info/computerpage.cpp:238
+msgctxt "ComputerPage|"
+msgid "Language"
+msgstr "语言"
+
+#: ../../info/computerpage.cpp:240
+msgctxt "ComputerPage|"
+msgid "User"
+msgstr "用户"
+
+#: ../../info/computerpage.cpp:242
+msgctxt "ComputerPage|"
+msgid "Home Folder"
+msgstr "用户主目录"
+
+#: ../../info/computerpage.cpp:246
+msgctxt "ComputerPage|"
+msgid "Host bridge"
+msgstr "主桥"
+
+#: ../../info/computerpage.cpp:248
+msgctxt "ComputerPage|"
+msgid "VGA Model"
+msgstr "VGA兼容控制器"
+
+#: ../../info/computerpage.cpp:250
+msgctxt "ComputerPage|"
+msgid "USB Model"
+msgstr "USB控制器"
+
+#: ../../info/computerpage.cpp:252
+msgctxt "ComputerPage|"
+msgid "Communication Model"
+msgstr "通信控制器"
+
+#: ../../info/computerpage.cpp:254
+msgctxt "ComputerPage|"
+msgid "Ethernet Model"
+msgstr "以太网控制器"
+
+#: ../../info/computerpage.cpp:258
+msgctxt "ComputerPage|"
+msgid "PCI bridge"
+msgstr "PCI桥"
+
+#: ../../info/computerpage.cpp:260
+msgctxt "ComputerPage|"
+msgid "ISA bridge"
+msgstr "ISA桥"
+
+#: ../../info/computerpage.cpp:262
+msgctxt "ComputerPage|"
+msgid "SATA Model"
+msgstr "SATA控制器"
+
+#: ../../info/computerpage.cpp:264
+msgctxt "ComputerPage|"
+msgid "SMBus"
+msgstr "系统管理总线"
+
+#: ../../info/computerpage.cpp:266
+msgctxt "ComputerPage|"
+msgid "System peripheral"
+msgstr "系统外围"
+
+#: ../../info/computerpage.cpp:268
+msgctxt "ComputerPage|"
+msgid "Driver in use"
+msgstr "使用的驱动"
+
+#: ../../info/computerpage.cpp:270
+msgctxt "ComputerPage|"
+msgid "existing drivers"
+msgstr "可选的驱动"
+
+#: ../../info/computerpage.cpp:272
+msgctxt "ComputerPage|"
+msgid "IDE interface"
+msgstr "IDE接口"
+
+#: ../../info/computerpage.cpp:274
+msgctxt "ComputerPage|"
+msgid "SP controller"
+msgstr "信号处理控制器"
+
+#: ../../info/computerpage.cpp:276
+msgctxt "ComputerPage|"
+msgid "Network controller"
+msgstr "网络控制器"
+
+#: ../../info/computerpage.cpp:278
+msgctxt "ComputerPage|"
+msgid "Multimedia audio controller"
+msgstr "多媒体音频控制器"
+
+#: ../../info/computerpage.cpp:282
+msgctxt "ComputerPage|"
+msgid "HDD Model"
+msgstr "硬盘型号"
+
+#: ../../info/computerpage.cpp:284
+msgctxt "ComputerPage|"
+msgid "HDD Vendor"
+msgstr "硬盘厂商"
+
+#: ../../info/computerpage.cpp:286
+msgctxt "ComputerPage|"
+msgid "HDD Capacity"
+msgstr "硬盘容量"
+
+#: ../../info/computerpage.cpp:295
+msgctxt "ComputerPage|"
+msgid "Slot Number"
+msgstr "插槽号"
+
+#: ../../info/computerpage.cpp:297
+msgctxt "ComputerPage|"
+msgid "Memory Model"
+msgstr "内存型号"
+
+#: ../../info/computerpage.cpp:303
+msgctxt "ComputerPage|"
+msgid "Memory Size"
+msgstr "内存大小"
+
+#: ../../info/computerpage.cpp:305
+msgctxt "ComputerPage|"
+msgid "Data Width"
+msgstr "数据宽度"
+
+#: ../../info/computerpage.cpp:307
+msgctxt "ComputerPage|"
+msgid "Memory Info"
+msgstr "内存条信息"
+
+#: ../../info/computerpage.cpp:310
+msgctxt "ComputerPage|"
+msgid "Graphics Card Model"
+msgstr "显卡型号"
+
+#: ../../info/computerpage.cpp:312
+msgctxt "ComputerPage|"
+msgid "Current Graphics Card"
+msgstr "当前显卡"
+
+#: ../../info/computerpage.cpp:314
+msgctxt "ComputerPage|"
+msgid "Graphics Card Vendor"
+msgstr "显卡制造商"
+
+#: ../../info/computerpage.cpp:316
+msgctxt "ComputerPage|"
+msgid "Graphics Driver"
+msgstr "显卡驱动"
+
+#: ../../info/computerpage.cpp:322
+msgctxt "ComputerPage|"
+msgid "NIC Model"
+msgstr "有线网卡型号"
+
+#: ../../info/computerpage.cpp:326
+msgctxt "ComputerPage|"
+msgid "NIC Driver"
+msgstr "有线网卡驱动"
+
+#: ../../info/computerpage.cpp:332 ../../info/computerpage.cpp:352
+msgctxt "ComputerPage|"
+msgid "IP Address"
+msgstr "IP地址"
+
+#: ../../info/computerpage.cpp:334
+msgctxt "ComputerPage|"
+msgid "Mac Address"
+msgstr "MAC地址"
+
+#: ../../info/computerpage.cpp:336
+msgctxt "ComputerPage|"
+msgid "Connection Status"
+msgstr "连接状态"
+
+#: ../../info/computerpage.cpp:338
+msgctxt "ComputerPage|"
+msgid "Max Bandwidth"
+msgstr "最大带宽"
+
+#: ../../info/computerpage.cpp:342
+msgctxt "ComputerPage|"
+msgid "WLan NIC Driver"
+msgstr "无线网卡驱动"
+
+#: ../../info/computerpage.cpp:344
+msgctxt "ComputerPage|"
+msgid "WLan NIC Model"
+msgstr "网卡型号"
+
+#: ../../info/computerpage.cpp:348
+msgctxt "ComputerPage|"
+msgid "Device Name:"
+msgstr "设备名称："
+
+#: ../../info/computerpage.cpp:359
+msgctxt "ComputerPage|"
+msgid "Version"
+msgstr "电脑版本"
+
+#: ../../info/computerpage.cpp:363
+msgctxt "ComputerPage|"
+msgid "Hostname"
+msgstr "主机名"
+
+#: ../../info/computerpage.cpp:365
+msgctxt "ComputerPage|"
+msgid "Running Time"
+msgstr "持续运行时间"
+
+#: ../../info/computerpage.cpp:367
+msgctxt "ComputerPage|"
+msgid "OS Types"
+msgstr "操作系统类型"
+
+#: ../../info/computerpage.cpp:369
+msgctxt "ComputerPage|"
+msgid "OS Version"
+msgstr "操作系统版本"
+
+#: ../../info/computerpage.cpp:371
+msgctxt "ComputerPage|"
+msgid "Kernel Bit"
+msgstr "系统位数"
+
+#: ../../info/computerpage.cpp:373
+msgctxt "ComputerPage|"
+msgid "Kernel Version"
+msgstr "内核版本"
+
+#: ../../info/computerpage.cpp:375
+msgctxt "ComputerPage|"
+msgid "Kernel Arch"
+msgstr "内核架构"
+
+#: ../../info/cpuwidget.cpp:30
+msgctxt "CpuWidget|"
+msgid "CPU Info"
+msgstr "处理器信息"
+
+#: ../../setting/deadpixelwidget.cpp:75
+msgctxt "DeadpixelWidget|"
+msgid ""
+"Left-click to change the color, right-click to exit from this detection."
+msgstr "鼠标左键点击更改颜色，右键点击推出坏点检测。"
+
+#: ../../setting/deadpixelwidget.cpp:76
+msgctxt "DeadpixelWidget|"
+msgid "OK"
+msgstr "确定"
+
+#: ../../info/desktopwidget.cpp:30
+msgctxt "DesktopWidget|"
+msgid "Desktop Info"
+msgstr "桌面环境信息"
+
+#: ../../info/driverwidget.cpp:32
+msgctxt "DriverWidget|"
+msgid "Driver Info"
+msgstr "驱动信息"
+
+#: ../../setting/fontwidget.cpp:63 ../../setting/fontwidget.cpp:64
+#: ../../setting/fontwidget.cpp:65 ../../setting/fontwidget.cpp:66
+#: ../../setting/fontwidget.cpp:67
+msgctxt "FontWidget|"
+msgid "Click here to change font"
+msgstr "点击此处更换字体"
+
+#: ../../setting/fontwidget.cpp:166
+msgctxt "FontWidget|"
+msgid "Default Font"
+msgstr "默认字体"
+
+#: ../../setting/fontwidget.cpp:167
+msgctxt "FontWidget|"
+msgid "Desktop Font"
+msgstr "桌面字体"
+
+#: ../../setting/fontwidget.cpp:168
+msgctxt "FontWidget|"
+msgid "Monospace Font"
+msgstr "等宽字体"
+
+#: ../../setting/fontwidget.cpp:169
+msgctxt "FontWidget|"
+msgid "Document Font"
+msgstr "文档字体"
+
+#: ../../setting/fontwidget.cpp:170
+msgctxt "FontWidget|"
+msgid "Titlebar Font"
+msgstr "标题栏字体"
+
+#: ../../setting/fontwidget.cpp:171
+msgctxt "FontWidget|"
+msgid "Global Font Scaling"
+msgstr "全局字体缩放"
+
+#: ../../setting/fontwidget.cpp:172
+msgctxt "FontWidget|"
+msgid "Hinting"
+msgstr "平滑"
+
+#: ../../setting/fontwidget.cpp:173
+msgctxt "FontWidget|"
+msgid "Antialiasing"
+msgstr "反锯齿"
+
+#: ../../info/hdwidget.cpp:35
+msgctxt "HDWidget|"
+msgid "HardWare Info"
+msgstr "硬盘信息"
+
+# 硬盘信息 %1
+#: ../../info/hdwidget.cpp:45
+#, qt-format
+msgctxt "HDWidget|"
+msgid "HardWare Info %1"
+msgstr ""
+
+#: ../homeactionwidget.cpp:132 ../homeactionwidget.cpp:231
+msgctxt "HomeActionWidget|"
+msgid "The lastest cleanup time is "
+msgstr "上一次清理时间是"
+
+#: ../homeactionwidget.cpp:138 ../homeactionwidget.cpp:184
+msgctxt "HomeActionWidget|"
+msgid "The lastest scan time is "
+msgstr "上一次扫描时间是"
+
+#: ../homeactionwidget.cpp:142
+msgctxt "HomeActionWidget|"
+msgid "You have not implemented the one key scan and clean-up operation."
+msgstr "您还没有执行过一键扫描和一键清理操作。"
+
+#: ../homeactionwidget.cpp:163
+msgctxt "HomeActionWidget|"
 msgid ""
 "Quick clean up system trash, saving disk space and improving the system "
 "efficiency!"
 msgstr "一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！"
 
-#: ../../qml/func/others/LeftPage.qml:275
-msgctxt "LeftPage|"
-msgid "To help you quick clean up the Cookies, garbage, traces and plug-ins."
-msgstr "一键帮您清理系统中的 Cookies、垃圾、痕迹和插件。"
-
-#: ../../qml/func/others/LeftPage.qml:373
-msgctxt "LeftPage|"
-msgid "Quick Cleanup"
-msgstr "一键清理项目"
-
-#: ../../qml/func/others/LeftPage.qml:394
-msgctxt "LeftPage|"
-msgid "(Scan to:  "
-msgstr "(正在扫描：  "
-
-#: ../../qml/func/others/LeftPage.qml:470
-msgctxt "LeftPage|"
-msgid "Cleanup Garbage"
-msgstr "清理系统中的垃圾"
-
-#: ../../qml/func/others/LeftPage.qml:483
-msgctxt "LeftPage|"
-msgid "Clean up system junk files, free disk space"
-msgstr "清理系统中的垃圾文件，释放磁盘空间"
-
-#: ../../qml/func/others/LeftPage.qml:493
-#: ../../qml/func/others/LeftPage.qml:508
-#: ../../qml/func/others/LeftPage.qml:585
-#: ../../qml/func/others/LeftPage.qml:601
-#: ../../qml/func/others/LeftPage.qml:678 ../../qml/func/others/LeftPage.qml:694
-msgctxt "LeftPage|"
-msgid "Unfinished"
-msgstr "未完成"
-
-#: ../../qml/func/others/LeftPage.qml:500
-#: ../../qml/func/others/LeftPage.qml:592 ../../qml/func/others/LeftPage.qml:685
-msgctxt "LeftPage|"
-msgid "Completed"
-msgstr "已完成"
-
-#: ../../qml/func/others/LeftPage.qml:504
-#: ../../qml/func/others/LeftPage.qml:597 ../../qml/func/others/LeftPage.qml:690
-msgctxt "LeftPage|"
-msgid "Exception occurred"
-msgstr "出现异常"
-
-#: ../../qml/func/others/LeftPage.qml:562
-msgctxt "LeftPage|"
-msgid "Delete History"
-msgstr "清理历史记录"
-
-#: ../../qml/func/others/LeftPage.qml:575
-msgctxt "LeftPage|"
-msgid "Clean up the historical records, to protect your privacy"
-msgstr "清理上网时留下的历史记录，保护您的个人隐私"
-
-#: ../../qml/func/others/LeftPage.qml:655
-msgctxt "LeftPage|"
-msgid "Cleanup Cookies"
-msgstr "清理 Cookies"
-
-#: ../../qml/func/others/LeftPage.qml:668
-msgctxt "LeftPage|"
-msgid "Clean up the Cookies, including surfing and shopping records"
-msgstr "清理系统中的 Cookies，包含上网、购物、游戏等记录"
-
-#: ../../qml/func/info/MemoryInfo.qml:54 ../../qml/func/info/MemoryInfo.qml:68
-#: ../../qml/func/info/MemoryInfo.qml:87 ../../qml/func/info/MemoryInfo.qml:105
-#: ../../qml/func/info/MemoryInfo.qml:135
-msgctxt "MemoryInfo|"
-msgid "Slot Number: "
-msgstr "插槽号： "
-
-#: ../../qml/func/info/MemoryInfo.qml:55 ../../qml/func/info/MemoryInfo.qml:69
-#: ../../qml/func/info/MemoryInfo.qml:88 ../../qml/func/info/MemoryInfo.qml:106
-#: ../../qml/func/info/MemoryInfo.qml:136
-msgctxt "MemoryInfo|"
-msgid "Memory Model: "
-msgstr "内存型号： "
-
-#: ../../qml/func/info/MemoryInfo.qml:56 ../../qml/func/info/MemoryInfo.qml:70
-#: ../../qml/func/info/MemoryInfo.qml:89 ../../qml/func/info/MemoryInfo.qml:107
-#: ../../qml/func/info/MemoryInfo.qml:137
-msgctxt "MemoryInfo|"
-msgid "Vendor: "
-msgstr "制造商： "
-
-#: ../../qml/func/info/MemoryInfo.qml:57 ../../qml/func/info/MemoryInfo.qml:71
-#: ../../qml/func/info/MemoryInfo.qml:90 ../../qml/func/info/MemoryInfo.qml:108
-#: ../../qml/func/info/MemoryInfo.qml:138
-msgctxt "MemoryInfo|"
-msgid "Serial Number: "
-msgstr "序列号： "
-
-#: ../../qml/func/info/MemoryInfo.qml:58 ../../qml/func/info/MemoryInfo.qml:91
-#: ../../qml/func/info/MemoryInfo.qml:139
-msgctxt "MemoryInfo|"
-msgid "Memory Size: "
-msgstr "内存大小： "
-
-#: ../../qml/func/info/MemoryInfo.qml:59 ../../qml/func/info/MemoryInfo.qml:73
-#: ../../qml/func/info/MemoryInfo.qml:92 ../../qml/func/info/MemoryInfo.qml:110
-#: ../../qml/func/info/MemoryInfo.qml:140
-msgctxt "MemoryInfo|"
-msgid "Data Width: "
-msgstr "数据宽度： "
-
-#: ../../qml/func/info/MemoryInfo.qml:60 ../../qml/func/info/MemoryInfo.qml:74
-#: ../../qml/func/info/MemoryInfo.qml:93 ../../qml/func/info/MemoryInfo.qml:111
-#: ../../qml/func/info/MemoryInfo.qml:141
-msgctxt "MemoryInfo|"
-msgid "Memory Info: "
-msgstr "内存条信息： "
-
-#: ../../qml/func/info/MemoryInfo.qml:72 ../../qml/func/info/MemoryInfo.qml:109
-msgctxt "MemoryInfo|"
-msgid "Size: "
-msgstr "内存大小： "
-
-#: ../../qml/func/info/MemoryInfo.qml:194
-msgctxt "MemoryInfo|"
-msgid "Memory Info"
-msgstr "内存条信息"
-
-#: ../modaldialog.ui:14
-msgctxt "ModalDialog|"
-msgid "Dialog"
-msgstr "对话框"
-
-#: ../modaldialog.ui:71
-msgctxt "ModalDialog|"
-msgid "Cancel"
-msgstr "取消"
-
-#: ../modaldialog.ui:113
-msgctxt "ModalDialog|"
-msgid "<html><head/><body><p>Monitor Check</p></body></html>"
-msgstr "<html><head/><body><p>屏幕坏点检测</p></body></html>"
-
-#: ../modaldialog.ui:126
-msgctxt "ModalDialog|"
-msgid "OK"
-msgstr "确定"
-
-#: ../modaldialog.cpp:51
-msgctxt "ModalDialog|"
-msgid ""
-"Left-click to change the color, right-click to exit from this detection."
-msgstr "点击鼠标左键进行更换颜色检测操作，点击鼠标右键退出检测。"
-
-#: ../../qml/func/info/MonitorInfo.qml:54
-#: ../../qml/func/info/MonitorInfo.qml:67
-#: ../../qml/func/info/MonitorInfo.qml:85
-#: ../../qml/func/info/MonitorInfo.qml:102
-#: ../../qml/func/info/MonitorInfo.qml:128
-msgctxt "MonitorInfo|"
-msgid "Graphics Card Model:"
-msgstr "显卡型号："
-
-#: ../../qml/func/info/MonitorInfo.qml:55
-#: ../../qml/func/info/MonitorInfo.qml:68
-#: ../../qml/func/info/MonitorInfo.qml:86
-#: ../../qml/func/info/MonitorInfo.qml:103
-#: ../../qml/func/info/MonitorInfo.qml:129
-msgctxt "MonitorInfo|"
-msgid "Current Graphics Card:"
-msgstr "当前显卡："
-
-#: ../../qml/func/info/MonitorInfo.qml:56
-#: ../../qml/func/info/MonitorInfo.qml:69
-#: ../../qml/func/info/MonitorInfo.qml:87
-#: ../../qml/func/info/MonitorInfo.qml:104
-#: ../../qml/func/info/MonitorInfo.qml:130
-msgctxt "MonitorInfo|"
-msgid "Graphics Card Vendor:"
-msgstr "显卡制造商："
-
-#: ../../qml/func/info/MonitorInfo.qml:57
-#: ../../qml/func/info/MonitorInfo.qml:70
-#: ../../qml/func/info/MonitorInfo.qml:88
-#: ../../qml/func/info/MonitorInfo.qml:105
-#: ../../qml/func/info/MonitorInfo.qml:131
-msgctxt "MonitorInfo|"
-msgid "Graphics Driver:"
-msgstr "显卡驱动："
-
-#: ../../qml/func/info/MonitorInfo.qml:58
-#: ../../qml/func/info/MonitorInfo.qml:71
-#: ../../qml/func/info/MonitorInfo.qml:89
-#: ../../qml/func/info/MonitorInfo.qml:106
-#: ../../qml/func/info/MonitorInfo.qml:132
-msgctxt "MonitorInfo|"
-msgid "Bus Address:"
-msgstr "总线地址："
-
-#: ../../qml/func/info/MonitorInfo.qml:235
-msgctxt "MonitorInfo|"
-msgid "Graphics Card Info"
-msgstr "显卡信息"
-
-#: ../../qml/func/info/MonitorInfo.qml:371
-msgctxt "MonitorInfo|"
-msgid "Monitor Info"
-msgstr "显示器信息"
-
-#: ../../qml/func/info/MonitorInfo.qml:391
-msgctxt "MonitorInfo|"
-msgid "Monitor: "
-msgstr "显示器： "
-
-#: ../../qml/func/info/MonitorInfo.qml:408
-msgctxt "MonitorInfo|"
-msgid "Vendor: "
-msgstr "制造商： "
-
-#: ../../qml/func/info/MonitorInfo.qml:424
-msgctxt "MonitorInfo|"
-msgid "Production(year/week): "
-msgstr "生产日期(年/周)： "
-
-#: ../../qml/func/info/MonitorInfo.qml:440
-msgctxt "MonitorInfo|"
-msgid "Display Area: "
-msgstr "可视面积： "
-
-#: ../../qml/func/info/MonitorInfo.qml:456
-msgctxt "MonitorInfo|"
-msgid "Dimensions: "
-msgstr "屏幕尺寸： "
-
-#: ../../qml/func/info/MonitorInfo.qml:472
-msgctxt "MonitorInfo|"
-msgid "Max Resolution: "
-msgstr "最大分辨率： "
-
-#: ../../qml/func/info/MonitorInfo.qml:488
-msgctxt "MonitorInfo|"
-msgid "Gamma Value: "
-msgstr "伽马值： "
-
-#: ../../qml/func/info/MonitorInfo.qml:504
-msgctxt "MonitorInfo|"
-msgid "Current Output: "
-msgstr "当前接口： "
-
-#: ../../qml/func/info/MonitorInfo.qml:521
-msgctxt "MonitorInfo|"
-msgid "Support Output: "
-msgstr "支持接口： "
-
-#: ../../qml/func/settings/MousePointer.qml:27
-msgctxt "MousePointer|"
-msgid "Mouse Settings"
-msgstr "鼠标设置"
-
-#: ../../qml/func/settings/MousePointer.qml:28
-msgctxt "MousePointer|"
-msgid ""
-"Replace the theme and size of the mouse pointer,  then click the 'OK' button "
-"to confirm. Also, theme change need to restart system."
-msgstr "更换鼠标指针主题和大小，更改设置后点击＂确定＂按钮进行确认。主题更改后需要重启系统生效。"
-
-#: ../../qml/func/settings/MousePointer.qml:71
-msgctxt "MousePointer|"
-msgid "Back"
-msgstr "返回"
-
-#: ../../qml/func/settings/MousePointer.qml:125
-msgctxt "MousePointer|"
-msgid "Mouse Pointer Theme:"
-msgstr "鼠标指针主题："
-
-#: ../../qml/func/settings/MousePointer.qml:149
-#: ../../qml/func/settings/MousePointer.qml:222
-msgctxt "MousePointer|"
-msgid "Restore"
-msgstr "恢复默认"
-
-#: ../../qml/func/settings/MousePointer.qml:175
-msgctxt "MousePointer|"
-msgid "Cursor Pointer Size:"
-msgstr "光标指针大小："
-
-#: ../../qml/func/settings/MousePointer.qml:187
-msgctxt "MousePointer|"
-msgid "Small Size"
-msgstr "小号"
-
-#: ../../qml/func/settings/MousePointer.qml:201
-msgctxt "MousePointer|"
-msgid "Big Size"
-msgstr "大号"
-
-#: ../../qml/func/info/NICInfo.qml:87
-msgctxt "NICInfo|"
-msgid "NIC Info"
-msgstr "有线网卡信息"
-
-#: ../../qml/func/info/NICInfo.qml:105
-msgctxt "NICInfo|"
-msgid "NIC Model:"
-msgstr "有线网卡型号："
-
-#: ../../qml/func/info/NICInfo.qml:122 ../../qml/func/info/NICInfo.qml:281
-msgctxt "NICInfo|"
-msgid "Vendor:"
-msgstr "制造商："
-
-#: ../../qml/func/info/NICInfo.qml:137
-msgctxt "NICInfo|"
-msgid "NIC Driver:"
-msgstr "有线网卡驱动："
-
-#: ../../qml/func/info/NICInfo.qml:152 ../../qml/func/info/NICInfo.qml:313
-msgctxt "NICInfo|"
-msgid "Bus Address:"
-msgstr "总线地址："
-
-#: ../../qml/func/info/NICInfo.qml:167 ../../qml/func/info/NICInfo.qml:329
-msgctxt "NICInfo|"
-msgid "Device Name:"
-msgstr "设备名称："
-
-#: ../../qml/func/info/NICInfo.qml:182 ../../qml/func/info/NICInfo.qml:346
-msgctxt "NICInfo|"
-msgid "IP Address:"
-msgstr "IP地址："
-
-#: ../../qml/func/info/NICInfo.qml:197
-msgctxt "NICInfo|"
-msgid "Mac Address:"
-msgstr "MAC地址："
-
-#: ../../qml/func/info/NICInfo.qml:212
-msgctxt "NICInfo|"
-msgid "Connection Status: "
-msgstr "连接状态： "
-
-#: ../../qml/func/info/NICInfo.qml:227
-msgctxt "NICInfo|"
-msgid "Max Bandwidth: "
-msgstr "最大带宽： "
-
-#: ../../qml/func/info/NICInfo.qml:244
-msgctxt "NICInfo|"
-msgid "WLan NIC Info"
-msgstr "无线网卡信息"
-
-#: ../../qml/func/info/NICInfo.qml:263
-msgctxt "NICInfo|"
-msgid "WLan NIC Model:"
-msgstr "网卡型号："
-
-#: ../../qml/func/info/NICInfo.qml:297
-msgctxt "NICInfo|"
-msgid "WLan NIC Driver:"
-msgstr "无线网卡驱动："
-
-#: ../../qml/func/info/NICInfo.qml:363
-msgctxt "NICInfo|"
-msgid "Serial Number: "
-msgstr "序列号： "
-
-#: ../../qml/func/cleaner/PackageModel.qml:40
-msgctxt "PackageModel|"
-msgid "The ongoing: "
-msgstr "正在进行： "
-
-#: ../../qml/func/cleaner/PackageModel.qml:61
-#: ../../qml/func/cleaner/PackageModel.qml:1021
-msgctxt "PackageModel|"
-msgid "Software operation schedule"
-msgstr "软件介绍"
-
-#: ../../qml/func/cleaner/PackageModel.qml:99
-msgctxt "PackageModel|"
-msgid "Uninstall unnecessary procedures, old kernel packages and configfile"
-msgstr "卸载不必要的程序，旧内核包和软件配置文件"
-
-#: ../../qml/func/cleaner/PackageModel.qml:100
-msgctxt "PackageModel|"
-msgid ""
-"Cleaning up the software that installed by other software bundled, old "
-"kernel packages and configfile, to improve system performance"
-msgstr "清理软件安装过程中捆绑安装的依赖程序，旧内核包和软件配置文件，提高系统性能"
-
-#: ../../qml/func/cleaner/PackageModel.qml:138
-#: ../../qml/func/cleaner/PackageModel.qml:175
-#: ../../qml/func/cleaner/PackageModel.qml:308
-#: ../../qml/func/cleaner/PackageModel.qml:332
-#: ../../qml/func/cleaner/PackageModel.qml:377
-#: ../../qml/func/cleaner/PackageModel.qml:397
-#: ../../qml/func/cleaner/PackageModel.qml:516
-msgctxt "PackageModel|"
-msgid "Uninstall unnecessary procedures"
-msgstr "卸载不必要的程序"
-
-#: ../../qml/func/cleaner/PackageModel.qml:142
-#: ../../qml/func/cleaner/PackageModel.qml:179
-#: ../../qml/func/cleaner/PackageModel.qml:312
-#: ../../qml/func/cleaner/PackageModel.qml:347
-#: ../../qml/func/cleaner/PackageModel.qml:382
-#: ../../qml/func/cleaner/PackageModel.qml:417
-#: ../../qml/func/cleaner/PackageModel.qml:520
-msgctxt "PackageModel|"
-msgid "Uninstall old kernel packages"
-msgstr "卸载旧内核包"
-
-#: ../../qml/func/cleaner/PackageModel.qml:146
-#: ../../qml/func/cleaner/PackageModel.qml:183
-#: ../../qml/func/cleaner/PackageModel.qml:316
-#: ../../qml/func/cleaner/PackageModel.qml:362
-#: ../../qml/func/cleaner/PackageModel.qml:402
-#: ../../qml/func/cleaner/PackageModel.qml:422
-#: ../../qml/func/cleaner/PackageModel.qml:524
-msgctxt "PackageModel|"
-msgid "Cleanup software configfile"
-msgstr "清理软件配置文件"
-
-#: ../../qml/func/cleaner/PackageModel.qml:249
-#: ../../qml/func/cleaner/PackageModel.qml:613
-#: ../../qml/func/cleaner/PackageModel.qml:621
-msgctxt "PackageModel|"
-msgid "Tips:"
-msgstr "友情提示："
-
-#: ../../qml/func/cleaner/PackageModel.qml:249
-msgctxt "PackageModel|"
-msgid "The scan reslut is empty, nothing has been done!"
-msgstr "扫描内容为空，无需清理！"
-
-#: ../../qml/func/cleaner/PackageModel.qml:257
-msgctxt "PackageModel|"
-msgid "Scan completed!"
-msgstr "扫描完成！"
-
-#: ../../qml/func/cleaner/PackageModel.qml:263
-#: ../../qml/func/cleaner/PackageModel.qml:981
-msgctxt "PackageModel|"
-msgid "Begin cleanup"
-msgstr "开始清理"
-
-#: ../../qml/func/cleaner/PackageModel.qml:284
-msgctxt "PackageModel|"
-msgid "Cleanup abnormal!"
-msgstr "清理出现异常！"
-
-#: ../../qml/func/cleaner/PackageModel.qml:294
-msgctxt "PackageModel|"
-msgid "Cleanup interrupted!"
-msgstr "清理中断！"
-
-#: ../../qml/func/cleaner/PackageModel.qml:298
-msgctxt "PackageModel|"
-msgid "Cleared"
-msgstr "清理完毕"
-
-#: ../../qml/func/cleaner/PackageModel.qml:490
-msgctxt "PackageModel|"
-msgid "Back"
-msgstr "返回"
-
-#: ../../qml/func/cleaner/PackageModel.qml:548
-#: ../../qml/func/cleaner/PackageModel.qml:987
-#: ../../qml/func/cleaner/PackageModel.qml:993
-#: ../../qml/func/cleaner/PackageModel.qml:999
-#: ../../qml/func/cleaner/PackageModel.qml:1005
-msgctxt "PackageModel|"
-msgid "Start scanning"
+#: ../homeactionwidget.cpp:164
+msgctxt "HomeActionWidget|"
+msgid "Start Scan"
 msgstr "开始扫描"
 
-#: ../../qml/func/cleaner/PackageModel.qml:613
-msgctxt "PackageModel|"
-msgid "Sorry, You did not choose the content to be scanned, please confirm!"
-msgstr "对不起，您没有选择需要扫描的内容，请确认！"
+#: ../homeactionwidget.cpp:165
+msgctxt "HomeActionWidget|"
+msgid "Start Cleanup"
+msgstr "开始清理"
 
-#: ../../qml/func/cleaner/PackageModel.qml:621
-msgctxt "PackageModel|"
-msgid ""
-"Sorry, You did not choose the content to be cleaned up, please confirm!"
-msgstr "对不起，您没有选择需要清理的内容，请确认！"
-
-#: ../../qml/func/settings/PanelManager.qml:26
-msgctxt "PanelManager|"
-msgid "Dash & Panel"
-msgstr "搜索和面板"
-
-#: ../../qml/func/settings/PanelManager.qml:27
-msgctxt "PanelManager|"
-msgid "Manage Dash and Panel menu settings."
-msgstr "管理Dash搜索和面板菜单的设置。"
-
-#: ../../qml/func/settings/PanelManager.qml:141
-msgctxt "PanelManager|"
+#: ../homeactionwidget.cpp:166
+msgctxt "HomeActionWidget|"
 msgid "Back"
 msgstr "返回"
 
-#: ../../qml/func/settings/PanelManager.qml:194
-msgctxt "PanelManager|"
-msgid "Dash background blur type:"
-msgstr "搜索框背景模糊类型："
-
-#: ../../qml/func/settings/PanelManager.qml:204
-msgctxt "PanelManager|"
-msgid "Smart blur"
-msgstr "活动模糊"
-
-#: ../../qml/func/settings/PanelManager.qml:218
-msgctxt "PanelManager|"
-msgid "Static blur"
-msgstr "静态模糊"
-
-#: ../../qml/func/settings/PanelManager.qml:232
-msgctxt "PanelManager|"
-msgid "Clear"
-msgstr "非模糊"
-
-#: ../../qml/func/settings/PanelManager.qml:254
-#: ../../qml/func/settings/PanelManager.qml:326
-#: ../../qml/func/settings/PanelManager.qml:369
-#: ../../qml/func/settings/PanelManager.qml:418
-#: ../../qml/func/settings/PanelManager.qml:471
-#: ../../qml/func/settings/PanelManager.qml:524
-#: ../../qml/func/settings/PanelManager.qml:574
-#: ../../qml/func/settings/PanelManager.qml:625
-#: ../../qml/func/settings/PanelManager.qml:678
-msgctxt "PanelManager|"
-msgid "Restore"
-msgstr "恢复默认"
-
-#: ../../qml/func/settings/PanelManager.qml:295
-msgctxt "PanelManager|"
-msgid "Panel Transparency:"
-msgstr "面板透明度："
-
-#: ../../qml/func/settings/PanelManager.qml:348
-msgctxt "PanelManager|"
-msgid "Date & time format:"
-msgstr "日期时间格式："
-
-#: ../../qml/func/settings/PanelManager.qml:392
-msgctxt "PanelManager|"
-msgid "Display seconds:"
-msgstr "显示秒数："
-
-#: ../../qml/func/settings/PanelManager.qml:445
-msgctxt "PanelManager|"
-msgid "Display week:"
-msgstr "显示星期："
-
-#: ../../qml/func/settings/PanelManager.qml:498
-msgctxt "PanelManager|"
-msgid "Display the date:"
-msgstr "显示日期："
-
-#: ../../qml/func/settings/PanelManager.qml:553
-msgctxt "PanelManager|"
-msgid "Display battery icon:"
-msgstr "显示电池图标："
-
-#: ../../qml/func/settings/PanelManager.qml:600
-msgctxt "PanelManager|"
-msgid "Display battery percentage:"
-msgstr "显示电池百分比："
-
-#: ../../qml/func/settings/PanelManager.qml:653
-msgctxt "PanelManager|"
-msgid "Display battery remaining time:"
-msgstr "显示电池电量时间："
-
-#: ../processmanager.cpp:71
-#, qt-format
-msgctxt "ProcessManager|"
-msgid "ps -u %1 -o user,pid,%cpu,%mem,start,ucmd,command"
-msgstr "ps -u %1 -o user,pid,%cpu,%mem,start,ucmd,command"
-
-#: ../../qml/func/settings/ProcessManager.qml:28
-msgctxt "ProcessManager|"
-msgid "Task Manager"
-msgstr "任务管理器"
-
-#: ../../qml/func/settings/ProcessManager.qml:29
-msgctxt "ProcessManager|"
-msgid "Help you learn more about the program running on the system."
-msgstr "帮助您了解系统上运行程序的详细信息。"
-
-#: ../../qml/func/settings/ProcessManager.qml:95
-msgctxt "ProcessManager|"
-msgid "Back"
-msgstr "返回"
-
-#: ../../qml/func/settings/ProcessManager.qml:132
-msgctxt "ProcessManager|"
-msgid "Current User"
-msgstr "当前用户"
-
-#: ../../qml/func/settings/ProcessManager.qml:146
-msgctxt "ProcessManager|"
-msgid "All Users"
-msgstr "所有用户"
-
-#: ../../qml/func/settings/ProcessManager.qml:164
-msgctxt "ProcessManager|"
-msgid "Refresh"
-msgstr "刷新"
-
-#: ../../qml/func/settings/ProcessManager.qml:174
-msgctxt "ProcessManager|"
-msgid "Refresh completed!"
-msgstr "刷新完成！"
-
-#: ../../qml/func/settings/ProcessManager.qml:180
-msgctxt "ProcessManager|"
-msgid "End process"
-msgstr "结束进程"
-
-#: ../../qml/func/settings/ProcessManager.qml:190
-msgctxt "ProcessManager|"
-msgid "The end of the process operation is successful!"
-msgstr "结束进程操作成功！"
-
-#: ../../qml/func/settings/ProcessManager.qml:199
-msgctxt "ProcessManager|"
-msgid "The end of the process operation failed!"
-msgstr "结束进程操作失败！"
-
-#: ../../qml/func/settings/ProcessManager.qml:213
-msgctxt "ProcessManager|"
-msgid "Sorry,  You did not choose the process to be killed!"
-msgstr "对不起，您没有选择想要结束的进程！"
-
-#: ../../qml/func/settings/ProcessManager.qml:252
-msgctxt "ProcessManager|"
-msgid "User"
-msgstr "用户"
-
-#: ../../qml/func/settings/ProcessManager.qml:257
-msgctxt "ProcessManager|"
-msgid "ID"
-msgstr "ID"
-
-#: ../../qml/func/settings/ProcessManager.qml:262
-msgctxt "ProcessManager|"
-msgid "CPU %"
-msgstr "CPU占用 %"
-
-#: ../../qml/func/settings/ProcessManager.qml:267
-msgctxt "ProcessManager|"
-msgid "Memory %"
-msgstr "内存占用 %"
-
-#: ../../qml/func/settings/ProcessManager.qml:272
-msgctxt "ProcessManager|"
-msgid "Start Time"
-msgstr "启动时间"
-
-#: ../../qml/func/settings/ProcessManager.qml:277
-msgctxt "ProcessManager|"
-msgid "Process Description"
-msgstr "进程说明"
-
-#: ../../qml/func/settings/ProcessManager.qml:282
-msgctxt "ProcessManager|"
-msgid "Process Name"
-msgstr "进程名"
-
-#: ../main.cpp:167
-msgctxt "QObject|"
-msgid "starting...."
-msgstr "优客助手正在启动中...."
-
-#: ../main.cpp:169
-msgctxt "QObject|"
-msgid "loading module data...."
-msgstr "正在加载模块数据...."
-
-#: ../quibo.ui:14
-msgctxt "QUIBO|"
-msgid "Form"
-msgstr "对话框"
-
-#: ../../qml/func/others/RightPage.qml:27
-msgctxt "RightPage|"
-msgid "Active"
-msgstr "活跃发展中"
-
-#: ../../qml/func/others/RightPage.qml:28
-msgctxt "RightPage|"
-msgid "China"
-msgstr "中国"
-
-#: ../../qml/func/others/RightPage.qml:132
-#: ../../qml/func/others/RightPage.qml:587
-msgctxt "RightPage|"
-msgid "Hits per day "
-msgstr "每日点击次数 "
-
-#: ../../qml/func/others/RightPage.qml:218
-msgctxt "RightPage|"
-msgid "Register"
-msgstr "注册账号"
-
-#: ../../qml/func/others/RightPage.qml:265
-msgctxt "RightPage|"
-msgid "Logout"
-msgstr "注销"
-
-#: ../../qml/func/others/RightPage.qml:306
-msgctxt "RightPage|"
-msgid "Level:"
-msgstr "等级："
-
-#: ../../qml/func/others/RightPage.qml:318
-msgctxt "RightPage|"
-msgid "Score:"
-msgstr "经验值："
-
-#: ../../qml/func/others/RightPage.qml:374
-msgctxt "RightPage|"
-msgid "DistroWatch Ranking"
-msgstr "受欢迎程度排名"
-
-#: ../../qml/func/others/RightPage.qml:384
-#: ../../qml/func/others/RightPage.qml:401
-msgctxt "RightPage|"
-msgid "Ubuntu Kylin Details"
-msgstr "Ubuntu Kylin 详情"
-
-#: ../../qml/func/others/RightPage.qml:603
-#: ../../qml/func/others/RightPage.qml:621
-msgctxt "RightPage|"
-msgid "Hide"
-msgstr "隐藏"
-
-#: ../../qml/func/others/RightPage.qml:637
-msgctxt "RightPage|"
-msgid "Last Update:"
-msgstr "最后更新："
-
-#: ../../qml/func/others/RightPage.qml:656
-msgctxt "RightPage|"
-msgid "OS Type:"
-msgstr "发行归类："
-
-#: ../../qml/func/others/RightPage.qml:674
-msgctxt "RightPage|"
-msgid "Based on:"
-msgstr "基于何种发行："
-
-#: ../../qml/func/others/RightPage.qml:692
-msgctxt "RightPage|"
-msgid "Origin: "
-msgstr "来源： "
-
-#: ../../qml/func/others/RightPage.qml:710
-msgctxt "RightPage|"
-msgid "Architecture:"
-msgstr "处理器架构："
-
-#: ../../qml/func/others/RightPage.qml:729
-msgctxt "RightPage|"
-msgid "Desktop:"
-msgstr "桌面："
-
-#: ../../qml/func/others/RightPage.qml:748
-msgctxt "RightPage|"
-msgid "Category:"
-msgstr "类型："
-
-#: ../../qml/func/others/RightPage.qml:766
-msgctxt "RightPage|"
-msgid "Status:"
-msgstr "状态："
-
-#: ../../qml/func/others/RightPage.qml:784
-msgctxt "RightPage|"
-msgid "Popularity:"
-msgstr "受欢迎程度排名："
-
-#: ../../qml/func/others/RightPage.qml:824
-msgctxt "RightPage|"
-msgid "Forum Help"
-msgstr "论坛求助"
-
-#: ../../qml/func/others/RightPage.qml:833
-msgctxt "RightPage|"
-msgid "Features"
-msgstr "新版本特性"
-
-#: ../../qml/func/others/RightPage.qml:842
-msgctxt "RightPage|"
-msgid "Feedback"
-msgstr "问题反馈"
-
-#: ../selectdialog.ui:14
-msgctxt "SelectDialog|"
-msgid "Dialog"
-msgstr "对话框"
-
-#: ../selectdialog.ui:51
-msgctxt "SelectDialog|"
-msgid "Select City"
-msgstr "选择城市"
-
-#: ../selectdialog.ui:72
-msgctxt "SelectDialog|"
-msgid "Chinese Cities"
-msgstr "中国国内城市"
-
-#: ../selectdialog.ui:123 ../selectdialog.ui:193
-msgctxt "SelectDialog|"
-msgid "OK"
-msgstr "确定"
-
-#: ../selectdialog.ui:136 ../selectdialog.ui:206
-msgctxt "SelectDialog|"
-msgid "Cancel"
-msgstr "取消"
-
-#: ../selectdialog.ui:142
-msgctxt "SelectDialog|"
-msgid "Foreign Cities"
-msgstr "国外城市"
-
-#: ../selectdialog.ui:154
-msgctxt "SelectDialog|"
-msgid ""
-"<html><head/><body><p>Please enter a city name to search</p></body></html>"
-msgstr "<html><head/><body><p>请输入非中国国内城市名字去查找</p></body></html>"
-
-#: ../selectdialog.ui:167
-msgctxt "SelectDialog|"
-msgid "Search"
-msgstr "查找"
-
-#: ../selectdialog.cpp:171 ../selectdialog.cpp:192 ../selectdialog.cpp:210
-#: ../selectdialog.cpp:245
-msgctxt "SelectDialog|"
-msgid "Warning:"
-msgstr "警告："
-
-#: ../selectdialog.cpp:172 ../selectdialog.cpp:193
-msgctxt "SelectDialog|"
-msgid "Please input city name and click 'search' button to find!"
-msgstr "请输入合适的城市名字后点击“查找”按钮进行查找！"
-
-#: ../selectdialog.cpp:211
-msgctxt "SelectDialog|"
-msgid "Change the city failed!"
-msgstr "切换城市失败！"
-
-#: ../selectdialog.cpp:246
-msgctxt "SelectDialog|"
-msgid "The city was not be found, please input the city name again!"
-msgstr "没有找到该城市，请重新输入城市名字！"
-
-#: ../sessiondispatcher.cpp:1312
-msgctxt "SessionDispatcher|"
-msgid "Select folder"
-msgstr "选择文件夹"
-
-#: ../sessiondispatcher.cpp:1319
-msgctxt "SessionDispatcher|"
-msgid "Select file"
-msgstr "选择文件"
-
-#: ../sessiondispatcher.cpp:1319
-msgctxt "SessionDispatcher|"
-msgid "All Files(*)"
-msgstr "所有文件(*)"
-
-#: ../../qml/func/others/SettingsDelegate.qml:81
-msgctxt "SettingsDelegate|"
-msgid "No found camera!"
-msgstr "没有找到可用的摄像头！"
-
-#: ../../qml/func/settings/SoundEffects.qml:28
-msgctxt "SoundEffects|"
-msgid "Sound effect"
-msgstr "声音效果"
-
-#: ../../qml/func/settings/SoundEffects.qml:29
-msgctxt "SoundEffects|"
-msgid "Set the sound theme you want."
-msgstr "设置你想要的声音主题。"
-
-#: ../../qml/func/settings/SoundEffects.qml:121
-msgctxt "SoundEffects|"
-msgid "Back"
-msgstr "返回"
-
-#: ../../qml/func/settings/SoundEffects.qml:176
-msgctxt "SoundEffects|"
-msgid "Sound theme:"
-msgstr "声音主题："
-
-#: ../../qml/func/settings/SoundEffects.qml:213
-msgctxt "SoundEffects|"
-msgid "Login tone: "
-msgstr "登录提示音： "
-
-#: ../../qml/func/settings/SoundEffects.qml:241
-msgctxt "SoundEffects|"
-msgid "Event sounds:"
-msgstr "事件声音："
-
-#: ../../qml/func/settings/SoundEffects.qml:269
-msgctxt "SoundEffects|"
-msgid "Input feedback sounds:"
-msgstr "输入反馈声音："
-
-#: ../../qml/func/common/StatusImage.qml:23
-msgctxt "StatusImage|"
-msgid "Unfinished"
-msgstr "未完成"
-
-#: ../suspensionframe.ui:19
-msgctxt "SuspensionFrame|"
-msgid "Form"
-msgstr "对话框"
-
-#: ../suspensionframe.ui:34
-msgctxt "SuspensionFrame|"
-msgid "10K/s"
-msgstr "10K/s"
-
-#: ../suspensionframe.ui:50
-msgctxt "SuspensionFrame|"
-msgid "20K/s"
-msgstr "20K/s"
-
-#: ../suspensionframe.ui:121
-msgctxt "SuspensionFrame|"
-msgid ""
-"<html><head/><body><p><span style=\" font-"
-"size:14pt;\">0%</span></p></body></html>"
-msgstr ""
-"<html><head/><body><p><span style=\" font-"
-"size:14pt;\">0%</span></p></body></html>"
-
-#: ../suspensionframe.ui:140
-msgctxt "SuspensionFrame|"
-msgid ""
-"<html><head/><body><p><span style=\" color:#008000;\">Computer running "
-"slow</span></p></body></html>"
-msgstr ""
-"<html><head/><body><p><span style=\" "
-"color:#008000;\">电脑运行缓慢</span></p></body></html>"
-
-#: ../suspensionframe.ui:156
-msgctxt "SuspensionFrame|"
-msgid ""
-"<html><head/><body><p><span style=\" color:#008000;\">Using 'quick clean' "
-"?</span></p></body></html>"
-msgstr ""
-"<html><head/><body><p><span style=\" "
-"color:#008000;\">使用一键加速？</span></p></body></html>"
-
-#: ../suspensionframe.ui:181
-msgctxt "SuspensionFrame|"
-msgid "<html><head/><body><p>CPU Utilization:</p></body></html>"
-msgstr "<html><head/><body><p>CPU占用率：</p></body></html>"
-
-#: ../suspensionframe.ui:197
-msgctxt "SuspensionFrame|"
-msgid ""
-"<html><head/><body><p><span style=\" font-"
-"size:11pt;\">0%</span></p></body></html>"
-msgstr ""
-"<html><head/><body><p><span style=\" font-"
-"size:11pt;\">0%</span></p></body></html>"
-
-#: ../suspensionframe.ui:213
-msgctxt "SuspensionFrame|"
-msgid "<html><head/><body><p>Used:</p></body></html>"
-msgstr "<html><head/><body><p>已使用：</p></body></html>"
-
-#: ../suspensionframe.ui:229
-msgctxt "SuspensionFrame|"
-msgid "<html><head/><body><p>Unused:</p></body></html>"
-msgstr "<html><head/><body><p>未使用：</p></body></html>"
-
-#: ../suspensionframe.ui:245
-msgctxt "SuspensionFrame|"
-msgid "<html><head/><body><p>Memory</p></body></html>"
-msgstr "<html><head/><body><p>内存</p></body></html>"
-
-#: ../suspensionframe.ui:308
-msgctxt "SuspensionFrame|"
-msgid "<html><head/><body><p>Memory usage condition:</p></body></html>"
-msgstr "<html><head/><body><p>内存使用情况：</p></body></html>"
-
-#: ../suspensionframe.cpp:28 ../suspensionframe.cpp:212
-#: ../suspensionframe.cpp:226
-msgctxt "SuspensionFrame|"
-msgid "System runs smoothly"
-msgstr "系统运行流畅"
-
-#: ../suspensionframe.cpp:29 ../suspensionframe.cpp:213
-#: ../suspensionframe.cpp:227
-msgctxt "SuspensionFrame|"
-msgid "No need to accelerate"
-msgstr "无需进行加速"
-
-#: ../suspensionframe.cpp:54
-msgctxt "SuspensionFrame|"
-msgid "Details"
-msgstr "详细"
-
-#: ../suspensionframe.cpp:121
-#, qt-format
-msgctxt "SuspensionFrame|"
-msgid "%1"
-msgstr "%1"
-
-#: ../suspensionframe.cpp:194 ../suspensionframe.cpp:206
-#: ../suspensionframe.cpp:220
-msgctxt "SuspensionFrame|"
-msgid "Detected the high usage of CPU"
-msgstr "检查到CPU占用率过高"
-
-#: ../suspensionframe.cpp:195 ../suspensionframe.cpp:207
-#: ../suspensionframe.cpp:221 ../suspensionframe.cpp:234
-msgctxt "SuspensionFrame|"
-msgid "Using 'quick clean' ?"
-msgstr "使用一键加速？"
-
-#: ../suspensionframe.cpp:233
-msgctxt "SuspensionFrame|"
-msgid "Computer runs slowly"
-msgstr "电脑运行缓慢"
-
-#: ../../qml/func/common/Switch.qml:39
-msgctxt "Switch|"
-msgid "     ON"
-msgstr "     已开启"
-
-#: ../../qml/func/common/Switch.qml:39
-msgctxt "Switch|"
-msgid "OFF"
-msgstr "已关闭"
-
-#: ../../qml/func/page/SystemBox.qml:32
-msgctxt "SystemBox|"
-msgid "Dead pixel check"
-msgstr "坏点检测"
-
-#: ../../qml/func/page/SystemBox.qml:33
-msgctxt "SystemBox|"
-msgid "Boot Animation"
-msgstr "开机动画"
-
-#: ../../qml/func/page/SystemBox.qml:34
-msgctxt "SystemBox|"
-msgid "Task Manager"
-msgstr "任务管理器"
-
-#: ../../qml/func/page/SystemBox.qml:35
-msgctxt "SystemBox|"
+#: ../homeactionwidget.cpp:167
+msgctxt "HomeActionWidget|"
+msgid "Scanning......"
+msgstr "正在扫描....."
+
+#: ../homeactionwidget.cpp:177
+msgctxt "HomeActionWidget|"
+msgid "Scanning:"
+msgstr "正在扫描："
+
+#: ../homeactionwidget.cpp:183
+msgctxt "HomeActionWidget|"
+msgid "Scan Over"
+msgstr "扫描完成"
+
+#: ../homeactionwidget.cpp:215
+msgctxt "HomeActionWidget|"
+msgid "Cleaning......"
+msgstr "正在清理......."
+
+#: ../homeactionwidget.cpp:220
+msgctxt "HomeActionWidget|"
+msgid "Garbage Cleanup OK......"
+msgstr "垃圾清理完成......"
+
+#: ../homeactionwidget.cpp:223
+msgctxt "HomeActionWidget|"
+msgid "History Cleanup OK......"
+msgstr "历史记录清理完成......"
+
+#: ../homeactionwidget.cpp:226
+msgctxt "HomeActionWidget|"
+msgid "Cookies Cleanup OK......"
+msgstr "Cookies清理完成......"
+
+#: ../homeactionwidget.cpp:232
+msgctxt "HomeActionWidget|"
+msgid "Cleanup Cookies:"
+msgstr "清理了Cookies："
+
+#: ../homeactionwidget.cpp:232
+msgctxt "HomeActionWidget|"
+msgid "; Garbage:"
+msgstr "；垃圾："
+
+#: ../homeactionwidget.cpp:232
+msgctxt "HomeActionWidget|"
+msgid "; Historical records:"
+msgstr "；历史记录："
+
+#: ../homeactionwidget.cpp:262
+msgctxt "HomeActionWidget|"
+msgid "Cleaning up history trace of Firefox..."
+msgstr "正在清理Firefox浏览器的历史痕迹......"
+
+#: ../homeactionwidget.cpp:265
+msgctxt "HomeActionWidget|"
+msgid "Firefox history trace had been cleared!"
+msgstr "Firefox浏览器历史痕迹清理完成！"
+
+#: ../homeactionwidget.cpp:270
+msgctxt "HomeActionWidget|"
+msgid "Cleaning up history trace of Chromium..."
+msgstr "正在清理Chromium浏览器的历史痕迹......"
+
+#: ../homeactionwidget.cpp:273
+msgctxt "HomeActionWidget|"
+msgid "Chromium history trace had been cleared!"
+msgstr "Chromium浏览器的历史痕迹清理完成！"
+
+#: ../homeactionwidget.cpp:278
+msgctxt "HomeActionWidget|"
+msgid "Cleaning up Cookies of Firefox..."
+msgstr "正在清理Firefox浏览器的Cookies......"
+
+#: ../homeactionwidget.cpp:281
+msgctxt "HomeActionWidget|"
+msgid "Firefox Cookies had been cleared!"
+msgstr "Firefox浏览器的Cookies清理完成！"
+
+#: ../homeactionwidget.cpp:286
+msgctxt "HomeActionWidget|"
+msgid "Cleaning up Cookies of Chromium..."
+msgstr "正在清理Chromium浏览器的Cookies......"
+
+#: ../homeactionwidget.cpp:289
+msgctxt "HomeActionWidget|"
+msgid "Chromium Cookies had been cleared!"
+msgstr "Chromium浏览器的Cookies清理完成！"
+
+#: ../homeactionwidget.cpp:294
+msgctxt "HomeActionWidget|"
+msgid "Apt cache had been cleared!"
+msgstr "Apt缓存清理完成！"
+
+#: ../homeactionwidget.cpp:297
+msgctxt "HomeActionWidget|"
+msgid "Cleaning up Apt cache: "
+msgstr "正在清理Apt缓存："
+
+#: ../homeactionwidget.cpp:302
+msgctxt "HomeActionWidget|"
+msgid "Software Center cache had been cleared!"
+msgstr "软件中心缓存清理完成！"
+
+#: ../homeactionwidget.cpp:305
+msgctxt "HomeActionWidget|"
+msgid "Cleaning up Software Center cache: "
+msgstr "正在清理软件中心缓存："
+
+#: ../homeactionwidget.cpp:329
+msgctxt "HomeActionWidget|"
+msgid "Ready to Cleanup......"
+msgstr "准备清理......"
+
+#: ../homepage.cpp:152
+msgctxt "HomePage|"
+msgid "Boot Manager"
+msgstr "开机启动项管理"
+
+#: ../homepage.cpp:152
+msgctxt "HomePage|"
 msgid "Camera"
 msgstr "摄像头"
 
-#: ../../qml/func/page/SystemBox.qml:36
-msgctxt "SystemBox|"
-msgid "File Shredder"
-msgstr "文件粉碎机"
+#: ../homepage.cpp:220
+msgctxt "HomePage|"
+msgid "Current Version Number"
+msgstr "当前版本号"
 
-#: ../../qml/func/page/SystemBox.qml:52
-msgctxt "SystemBox|"
-msgid "Default toolkits"
-msgstr "默认工具箱"
+#: ../homepage.cpp:221
+msgctxt "HomePage|"
+msgid "Update to the lastest version, make it work better"
+msgstr "更新至最新版本，使软件更好用"
 
-#: ../../qml/func/page/SystemClean.qml:29
-msgctxt "SystemClean|"
-msgid "Cache Cleanup"
-msgstr "缓存清理"
+#: ../homepage.cpp:222
+msgctxt "HomePage|"
+msgid "Check new version"
+msgstr "检查最新版本"
 
-#: ../../qml/func/page/SystemClean.qml:36
-msgctxt "SystemClean|"
-msgid "Uninstall Packages"
-msgstr "包卸载"
+#: ../homepage.cpp:223
+msgctxt "HomePage|"
+msgid "Common toolbox"
+msgstr "工具箱"
 
-#: ../../qml/func/page/SystemClean.qml:43
-msgctxt "SystemClean|"
-msgid "Cookies Cleanup"
-msgstr "Cookies清除"
+#: ../homepage.cpp:224
+msgctxt "HomePage|"
+msgid "Fast and practical, making the system more personalized"
+msgstr "更快更好，让系统更具个性化"
 
-#: ../../qml/func/page/SystemClean.qml:50
-msgctxt "SystemClean|"
-msgid "Browser Cleanup"
-msgstr "浏览器清理"
+#: ../homepage.cpp:225 ../homepage.cpp:226
+msgctxt "HomePage|"
+msgid "More"
+msgstr "更多"
 
-#: ../../qml/func/page/SystemClean.qml:57
-msgctxt "SystemClean|"
-msgid "Trace Cleanup"
-msgstr "痕迹清理"
+#: ../../setting/iconwidget.cpp:182
+msgctxt "IconWidget|"
+msgid "Icon theme"
+msgstr "图标主题"
 
-#: ../../qml/func/page/SystemClean.qml:64
-msgctxt "SystemClean|"
-msgid "Find Large Files "
-msgstr "查找大文件 "
+#: ../../setting/iconwidget.cpp:183
+msgctxt "IconWidget|"
+msgid "Show Desktop Icons"
+msgstr "显示桌面图标"
 
-#: ../systemdispatcher.cpp:334
-msgctxt "SystemDispatcher|"
-msgid "Select the boot animation"
-msgstr "选择开机动画"
+#: ../../setting/iconwidget.cpp:184
+msgctxt "IconWidget|"
+msgid "Home Folder"
+msgstr "用户主目录"
 
-#: ../systemdispatcher.cpp:334
-msgctxt "SystemDispatcher|"
-msgid "Image Files (*.png *.jpg *.gif)"
-msgstr "图像文件  (*.png *.jpg *.gif)"
+#: ../../setting/iconwidget.cpp:185
+msgctxt "IconWidget|"
+msgid "Network"
+msgstr "网络"
 
-#: ../systemdispatcher.cpp:339
-msgctxt "SystemDispatcher|"
-msgid "Select music"
-msgstr "选择音乐"
+#: ../../setting/iconwidget.cpp:186
+msgctxt "IconWidget|"
+msgid "Trash"
+msgstr "回收站"
 
-#: ../systemdispatcher.cpp:339
-msgctxt "SystemDispatcher|"
-msgid "Audio Files (*.ogg *.wav *.mp3 *.wma)"
-msgstr "音频文件 (*.ogg *.wav *.mp3 *.wma)"
+#: ../../setting/iconwidget.cpp:187
+msgctxt "IconWidget|"
+msgid "Mounted Volumes"
+msgstr "挂载卷"
 
-#: ../../qml/func/page/SystemInfo.qml:33
-msgctxt "SystemInfo|"
+#: ../infoactionwidget.cpp:61
+msgctxt "InfoActionWidget|"
+msgid ""
+"Understand hardware information, provide more convenient channel to obtain "
+"hardware information"
+msgstr "了解电脑硬件详细信息，为用户提供更加方便的获取硬件信息渠道"
+
+#: ../infowidget.cpp:36
+msgctxt "InfoWidget|"
 msgid "Computer"
 msgstr "电脑概述"
 
-#: ../../qml/func/page/SystemInfo.qml:34
-msgctxt "SystemInfo|"
+#: ../infowidget.cpp:36
+msgctxt "InfoWidget|"
 msgid "Desktop"
-msgstr "桌面"
+msgstr "桌面环境"
 
-#: ../../qml/func/page/SystemInfo.qml:35
-msgctxt "SystemInfo|"
+#: ../infowidget.cpp:36
+msgctxt "InfoWidget|"
 msgid "CPU"
-msgstr "CPU"
+msgstr "处理器"
 
-#: ../../qml/func/page/SystemInfo.qml:36
-msgctxt "SystemInfo|"
+#: ../infowidget.cpp:36
+msgctxt "InfoWidget|"
 msgid "Memory"
 msgstr "内存"
 
-#: ../../qml/func/page/SystemInfo.qml:37
-msgctxt "SystemInfo|"
+#: ../infowidget.cpp:36
+msgctxt "InfoWidget|"
 msgid "Motherboard"
 msgstr "主板"
 
-#: ../../qml/func/page/SystemInfo.qml:38
-msgctxt "SystemInfo|"
+#: ../infowidget.cpp:36
+msgctxt "InfoWidget|"
 msgid "HD"
 msgstr "硬盘"
 
-#: ../../qml/func/page/SystemInfo.qml:39
-msgctxt "SystemInfo|"
+#: ../infowidget.cpp:36
+msgctxt "InfoWidget|"
 msgid "NIC"
 msgstr "网卡"
 
-#: ../../qml/func/page/SystemInfo.qml:40
-msgctxt "SystemInfo|"
+#: ../infowidget.cpp:36
+msgctxt "InfoWidget|"
 msgid "VGA"
 msgstr "显卡"
 
-#: ../../qml/func/page/SystemInfo.qml:41
-msgctxt "SystemInfo|"
+#: ../infowidget.cpp:36
+msgctxt "InfoWidget|"
 msgid "Audio"
 msgstr "声卡"
 
-#: ../../qml/func/page/SystemInfo.qml:44
-msgctxt "SystemInfo|"
+#: ../infowidget.cpp:36
+msgctxt "InfoWidget|"
 msgid "CD-ROM"
 msgstr "光驱"
 
-#: ../../qml/func/page/SystemInfo.qml:47
-msgctxt "SystemInfo|"
+#: ../infowidget.cpp:36
+msgctxt "InfoWidget|"
 msgid "Battery"
 msgstr "电池"
 
-#: ../../qml/func/page/SystemInfo.qml:49
-msgctxt "SystemInfo|"
+#: ../infowidget.cpp:36
+msgctxt "InfoWidget|"
 msgid "Device Driver"
 msgstr "设备驱动"
 
-#: ../../qml/func/page/SystemSet.qml:33
-msgctxt "SystemSet|"
+#: ../../component/kylinfontdialog.cpp:176
+msgctxt "KylinFontDialog|"
+msgid "Current Font"
+msgstr "当前字体"
+
+#: ../../component/kylinfontdialog.cpp:177
+msgctxt "KylinFontDialog|"
+msgid "Font"
+msgstr "字体"
+
+#: ../../component/kylinfontdialog.cpp:178
+msgctxt "KylinFontDialog|"
+msgid "Style"
+msgstr "风格"
+
+#: ../../component/kylinfontdialog.cpp:179
+msgctxt "KylinFontDialog|"
+msgid "Size"
+msgstr "大小"
+
+#: ../../component/kylinfontdialog.cpp:180
+msgctxt "KylinFontDialog|"
+msgid "View"
+msgstr "视图"
+
+#: ../../component/kylinfontdialog.cpp:181
+msgctxt "KylinFontDialog|"
+msgid "OK"
+msgstr "确定"
+
+#: ../../component/kylinfontdialog.cpp:182
+msgctxt "KylinFontDialog|"
+msgid "Cancel"
+msgstr "取消"
+
+#: ../../component/kylinfontdialog.cpp:211
+msgctxt "KylinFontDialog|"
+msgid "Tips"
+msgstr "提示"
+
+#: ../../component/kylinfontdialog.cpp:212
+msgctxt "KylinFontDialog|"
+msgid "You haven't change the font, please choose the font!"
+msgstr "您没有更改字体，请选择需要更改的字体！"
+
+#: ../../component/kylinfontdialog.cpp:225
+msgctxt "KylinFontDialog|"
+msgid "Font Dialog"
+msgstr "字体对话框"
+
+#: ../../component/kylinmenu.cpp:48
+msgctxt "KylinMenu|"
+msgid "Forum Help"
+msgstr "论坛求助"
+
+#: ../../component/kylinmenu.cpp:50
+msgctxt "KylinMenu|"
+msgid "Feedback"
+msgstr "问题反馈"
+
+#: ../../component/kylinmenu.cpp:52
+msgctxt "KylinMenu|"
+msgid "About us"
+msgstr "关于我们"
+
+#: ../../component/kylinmenu.cpp:54
+msgctxt "KylinMenu|"
+msgid "Help"
+msgstr "帮助"
+
+#: ../../component/kylinswitcher.cpp:82
+msgctxt "KylinSwitcher|"
+msgid "ON"
+msgstr "已开启"
+
+#: ../../component/kylinswitcher.cpp:91
+msgctxt "KylinSwitcher|"
+msgid "OFF"
+msgstr "已关闭"
+
+#: ../../setting/launcherwidget.cpp:133
+msgctxt "LauncherWidget|"
+msgid "Launcher icon size"
+msgstr "启动器图标尺寸"
+
+#: ../../setting/launcherwidget.cpp:134
+msgctxt "LauncherWidget|"
+msgid "Launcher hide mode"
+msgstr "启动器自动隐藏"
+
+#: ../../setting/launcherwidget.cpp:135
+msgctxt "LauncherWidget|"
+msgid "Display desktop icon"
+msgstr "显示桌面图标"
+
+#: ../../setting/launcherwidget.cpp:136
+msgctxt "LauncherWidget|"
+msgid "Launcher Transparency"
+msgstr "启动器透明度"
+
+#: ../../setting/launcherwidget.cpp:137
+msgctxt "LauncherWidget|"
+msgid "Icon Background"
+msgstr "图标背景"
+
+#: ../loginwidget.cpp:106
+msgctxt "LoginWidget|"
+msgid "Login Youker Account"
+msgstr "登录优客帐号"
+
+#: ../loginwidget.cpp:107
+msgctxt "LoginWidget|"
+msgid "Logout"
+msgstr "注销"
+
+# 主界面
+#: ../mainwindow.ui:17
+msgctxt "MainWindow|"
+msgid "MainWindow"
+msgstr ""
+
+#: ../../info/memorywidget.cpp:36
+msgctxt "MemoryWidget|"
+msgid "Memory Info"
+msgstr "内存条信息"
+
+#: ../../info/memorywidget.cpp:46
+#, qt-format
+msgctxt "MemoryWidget|"
+msgid "Memory Info %1"
+msgstr "内存信息 %1"
+
+#: ../../info/monitorwidget.cpp:35
+msgctxt "MonitorWidget|"
+msgid "Monitor Info"
+msgstr "显示器和显卡信息"
+
+#: ../../info/monitorwidget.cpp:45
+#, qt-format
+msgctxt "MonitorWidget|"
+msgid "Monitor Info %1"
+msgstr "显示器和显卡信息 %1"
+
+#: ../../setting/mousewidget.cpp:100
+msgctxt "MouseWidget|"
+msgid "Mouse Pointer Theme"
+msgstr "鼠标指针主题"
+
+#: ../../setting/mousewidget.cpp:101
+msgctxt "MouseWidget|"
+msgid "Cursor Pointer Size"
+msgstr "光标指针大小"
+
+#: ../../setting/mousewidget.cpp:102
+msgctxt "MouseWidget|"
+msgid "Small Size"
+msgstr "小号"
+
+#: ../../setting/mousewidget.cpp:103
+msgctxt "MouseWidget|"
+msgid "Big Size"
+msgstr "大号"
+
+#: ../../setting/nautiluswidget.cpp:179
+msgctxt "NautilusWidget|"
+msgid "Display entry location"
+msgstr "路径输入框取代路径栏"
+
+#: ../../setting/nautiluswidget.cpp:180
+msgctxt "NautilusWidget|"
+msgid "Automatically mount media"
+msgstr "自动挂载媒体"
+
+#: ../../setting/nautiluswidget.cpp:181
+msgctxt "NautilusWidget|"
+msgid "Automatically open a folder"
+msgstr "自动打开文件夹"
+
+#: ../../setting/nautiluswidget.cpp:182
+msgctxt "NautilusWidget|"
+msgid "Prompt autorun programs"
+msgstr "提示自动运行的程序"
+
+#: ../../setting/nautiluswidget.cpp:183
+msgctxt "NautilusWidget|"
+msgid "Thumbnail icon size (pixels)"
+msgstr "缩略图图标尺寸（像素）"
+
+#: ../../setting/nautiluswidget.cpp:184
+msgctxt "NautilusWidget|"
+msgid "Thumbnail cache time (days)"
+msgstr "缩略图缓存时间（天数）"
+
+#: ../../setting/nautiluswidget.cpp:185
+msgctxt "NautilusWidget|"
+msgid "Maximum thumbnail cache size (MB)"
+msgstr "最大缩略图缓存尺寸（MB）"
+
+#: ../../info/nicwidget.cpp:30
+msgctxt "NicWidget|"
+msgid "NIC Info"
+msgstr "有线网卡信息"
+
+#: ../../info/nicwidget.cpp:34
+msgctxt "NicWidget|"
+msgid "WireLess NIC Info"
+msgstr "无线网卡信息"
+
+#: ../../setting/panelwidget.cpp:181
+msgctxt "PanelWidget|"
+msgid "Dash background blur type"
+msgstr "搜索框背景模糊类型"
+
+#: ../../setting/panelwidget.cpp:182
+msgctxt "PanelWidget|"
+msgid "Panel Transparency"
+msgstr "面板透明度"
+
+#: ../../setting/panelwidget.cpp:183
+msgctxt "PanelWidget|"
+msgid "Date & time format"
+msgstr "日期时间格式"
+
+#: ../../setting/panelwidget.cpp:184
+msgctxt "PanelWidget|"
+msgid "Display seconds"
+msgstr "显示秒数"
+
+#: ../../setting/panelwidget.cpp:185
+msgctxt "PanelWidget|"
+msgid "Display week"
+msgstr "显示星期"
+
+#: ../../setting/panelwidget.cpp:186
+msgctxt "PanelWidget|"
+msgid "Display the date"
+msgstr "显示日期"
+
+#: ../../setting/panelwidget.cpp:187
+msgctxt "PanelWidget|"
+msgid "Display battery icon"
+msgstr "显示电池图标"
+
+#: ../../setting/panelwidget.cpp:188
+msgctxt "PanelWidget|"
+msgid "Display battery percentage"
+msgstr "显示电池百分比"
+
+#: ../../setting/panelwidget.cpp:189
+msgctxt "PanelWidget|"
+msgid "Display battery remaining time"
+msgstr "显示电池电量时间"
+
+#: ../../setting/panelwidget.cpp:191
+msgctxt "PanelWidget|"
+msgid "Smart blur"
+msgstr "活动模糊"
+
+#: ../../setting/panelwidget.cpp:192
+msgctxt "PanelWidget|"
+msgid "Static blur"
+msgstr "静态模糊"
+
+#: ../../setting/panelwidget.cpp:193
+msgctxt "PanelWidget|"
+msgid "Clear"
+msgstr "非模糊"
+
+#: ../../processmanager/processdialog.cpp:91
+#: ../../processmanager/processdialog.cpp:125
+msgctxt "ProcessDialog|"
+msgid "Process Manager"
+msgstr "进程管理器"
+
+#: ../../processmanager/processdialog.cpp:92
+msgctxt "ProcessDialog|"
+msgid "Help you learn more about the program running on the system."
+msgstr "帮助您了解和管理系统上运行的进程。"
+
+#: ../../processmanager/processdialog.cpp:93
+msgctxt "ProcessDialog|"
+msgid "Kill Process"
+msgstr "杀进程"
+
+#: ../../processmanager/processdialog.cpp:253
+msgctxt "ProcessDialog|"
+msgid "kill process success"
+msgstr "杀进程成功"
+
+#: ../../processmanager/processdialog.cpp:256
+msgctxt "ProcessDialog|"
+msgid "kill process failed"
+msgstr "杀进程失败"
+
+#: ../../processmanager/processmanager.cpp:40
+msgctxt "ProcessManager|"
+msgid "Process Manager"
+msgstr "进程管理器"
+
+# 帮助用户杀进程
+#: ../../processmanager/processmanager.cpp:45
+msgctxt "ProcessManager|"
+msgid "Help user to kill process"
+msgstr ""
+
+#: ../../component/quibo.ui:14
+msgctxt "QUIBO|"
+msgid "Form"
+msgstr ""
+
+#~ msgctxt "SessionDispatcher|"
+#~ msgid "Select file"
+#~ msgstr "选择文件"
+
+#~ msgctxt "SessionDispatcher|"
+#~ msgid "All Files(*)"
+#~ msgstr "所有文件(*)"
+
+#: ../../component/settingaction.cpp:99
+msgctxt "SettingAction|"
+msgid "Back"
+msgstr "返回"
+
+#: ../../component/settingaction.cpp:102
+msgctxt "SettingAction|"
+msgid "Choose the theme what you want"
+msgstr "选择您需要的主题"
+
+#: ../../component/settingaction.cpp:106
+msgctxt "SettingAction|"
+msgid "Set the desktop icon theme and the visibility of desktop icons"
+msgstr "设置桌面图标主题和桌面图标的可见性"
+
+#~ msgctxt "SettingAction|"
+#~ msgid ""
+#~ "Replace the theme and size of the mouse pointer,  then click the 'OK' "
+#~ "button to confirm. Also, theme change need to restart system."
+#~ msgstr "更换鼠标指针主题和大小，更改设置后点击＂确定＂按钮进行确认。主题更改需要重新系统才能生效。"
+
+#~ msgctxt "SettingAction|"
+#~ msgid ""
+#~ "Replace the theme and size of the mouse pointer. Also, theme change need "
+#~ "to restart system."
+#~ msgstr "更换鼠标指针主题和大小。主题更改需要重新系统才能生效。"
+
+#: ../../component/settingaction.cpp:110
+msgctxt "SettingAction|"
+msgid ""
+"Replace the theme and size of the mouse pointer, and theme change need to "
+"restart system."
+msgstr "更换鼠标指针主题和大小，主题更改需要重新系统才能生效。"
+
+#: ../../component/settingaction.cpp:114
+msgctxt "SettingAction|"
+msgid "Set the sound theme you want"
+msgstr "设置您需要的声音主题"
+
+#: ../../component/settingaction.cpp:118
+msgctxt "SettingAction|"
+msgid ""
+"Click the \"Custom Picture\" button to select the picture you want to add, "
+"click the picture you want to set and push the \"OK\" button to complete"
+msgstr "单击＂自定义图片＂按钮选择需要添加的图片，选中列表中要设置的图片名称，单击＂确定＂按钮完成设置"
+
+#: ../../component/settingaction.cpp:122
+msgctxt "SettingAction|"
+msgid "Setting the Launcher display mode, Icon size."
+msgstr "设置启动器的显示模式、图标尺寸。"
+
+#: ../../component/settingaction.cpp:126
+msgctxt "SettingAction|"
+msgid "Manage Dash and Panel menu settings"
+msgstr "管理Dash搜索和面板菜单的设置"
+
+#: ../../component/settingaction.cpp:130
+msgctxt "SettingAction|"
+msgid "Window Manager settings"
+msgstr "窗口管理器设置"
+
+#: ../../component/settingaction.cpp:134
+msgctxt "SettingAction|"
+msgid ""
+"According to personal preferences to set the system default font, click the  "
+"'Restore' button, can be restored to the state before the font settings"
+msgstr "根据个人喜好设置系统默认字体，单击＂恢复默认＂按钮，可以将对应的字体恢复到设置前状态"
+
+#: ../../component/settingaction.cpp:138
+msgctxt "SettingAction|"
+msgid ""
+"Setting the relevant properties of your touchpad,make the operation more "
+"convenient"
+msgstr "通过调整您触摸板的相关设置，使操作更加便捷"
+
+#: ../../component/settingaction.cpp:142
+msgctxt "SettingAction|"
+msgid "Monitor Check"
+msgstr "坏点检测"
+
+#: ../../component/settingaction.cpp:146
+msgctxt "SettingAction|"
+msgid ""
+"Manage the Nautilus file manager. Tips: if the thumbnail's cache time or "
+"size is set to -1, it will not be checked."
+msgstr "管理Nautilus文件管理器。注意：如果缩略图缓存时间或尺寸被设置为-1，缩略图将不会被清理。"
+
+#: ../settingactionwidget.cpp:142
+msgctxt "SettingActionWidget|"
 msgid ""
 "You can perform a full range of customized systems based on personal "
-"preferences!"
-msgstr "您可以根据个人喜好对系统进行全方位的定制！"
+"preferences"
+msgstr "您可以根据个人喜好对系统进行全方位的定制"
 
-#: ../../qml/func/page/SystemSet.qml:82 ../../qml/func/page/SystemSet.qml:178
-msgctxt "SystemSet|"
+#: ../settingwidget.cpp:247
+msgctxt "SettingWidget|"
+msgid "Personalize"
+msgstr "个性化"
+
+#: ../settingwidget.cpp:258
+msgctxt "SettingWidget|"
 msgid "ThemeSetting"
 msgstr "主题设置"
 
-#: ../../qml/func/page/SystemSet.qml:86 ../../qml/func/page/SystemSet.qml:200
-msgctxt "SystemSet|"
+#: ../settingwidget.cpp:259
+msgctxt "SettingWidget|"
 msgid "IconSetting"
-msgstr "图标配置"
+msgstr "图标设置"
 
-#: ../../qml/func/page/SystemSet.qml:90 ../../qml/func/page/SystemSet.qml:222
-msgctxt "SystemSet|"
+#: ../settingwidget.cpp:260
+msgctxt "SettingWidget|"
 msgid "MousePointer"
-msgstr "鼠标指针"
+msgstr "鼠标设置"
 
-#: ../../qml/func/page/SystemSet.qml:94 ../../qml/func/page/SystemSet.qml:244
-msgctxt "SystemSet|"
+#: ../settingwidget.cpp:261
+msgctxt "SettingWidget|"
 msgid "SoundEffect"
 msgstr "声音效果"
 
-#: ../../qml/func/page/SystemSet.qml:98 ../../qml/func/page/SystemSet.qml:266
-msgctxt "SystemSet|"
+#: ../settingwidget.cpp:262
+msgctxt "SettingWidget|"
 msgid "BootAnimation"
 msgstr "开机动画"
 
-#: ../../qml/func/page/SystemSet.qml:102 ../../qml/func/page/SystemSet.qml:323
-msgctxt "SystemSet|"
+#: ../settingwidget.cpp:338
+msgctxt "SettingWidget|"
+msgid "Desktop"
+msgstr "桌面"
+
+#: ../settingwidget.cpp:342
+msgctxt "SettingWidget|"
 msgid "Custom Launcher"
 msgstr "自定义启动器"
 
-#: ../../qml/func/page/SystemSet.qml:106 ../../qml/func/page/SystemSet.qml:345
-msgctxt "SystemSet|"
+#: ../settingwidget.cpp:343
+msgctxt "SettingWidget|"
 msgid "Dash & Panel"
 msgstr "搜索和面板"
 
-#: ../../qml/func/page/SystemSet.qml:111 ../../qml/func/page/SystemSet.qml:367
-msgctxt "SystemSet|"
+#: ../settingwidget.cpp:344
+msgctxt "SettingWidget|"
 msgid "Window"
 msgstr "窗口"
 
-#: ../../qml/func/page/SystemSet.qml:115 ../../qml/func/page/SystemSet.qml:422
-msgctxt "SystemSet|"
-msgid "DefaultFont"
-msgstr "默认字体设置"
+#: ../settingwidget.cpp:392
+msgctxt "SettingWidget|"
+msgid "Font"
+msgstr "字体"
 
-#: ../../qml/func/page/SystemSet.qml:119 ../../qml/func/page/SystemSet.qml:477
-msgctxt "SystemSet|"
+#: ../settingwidget.cpp:394
+msgctxt "SettingWidget|"
+msgid "FontSetting"
+msgstr "字体设置"
+
+#: ../settingwidget.cpp:452
+msgctxt "SettingWidget|"
+msgid "Sys options"
+msgstr "系统选项"
+
+#: ../settingwidget.cpp:455
+msgctxt "SettingWidget|"
 msgid "Touchpad"
-msgstr "触摸板设置"
+msgstr "触摸板"
 
-#: ../../qml/func/page/SystemSet.qml:123 ../../qml/func/page/SystemSet.qml:500
-msgctxt "SystemSet|"
+#: ../settingwidget.cpp:456
+msgctxt "SettingWidget|"
 msgid "Dead pixel check"
 msgstr "坏点检测"
 
-#: ../../qml/func/page/SystemSet.qml:127 ../../qml/func/page/SystemSet.qml:555
-msgctxt "SystemSet|"
+#: ../settingwidget.cpp:504
+msgctxt "SettingWidget|"
+msgid "Others"
+msgstr "其他"
+
+#: ../settingwidget.cpp:506
+msgctxt "SettingWidget|"
 msgid "File manager"
 msgstr "文件管理器"
 
-#: ../../qml/func/page/SystemSet.qml:147
-msgctxt "SystemSet|"
-msgid " Personalize"
-msgstr " 个性化"
+#: ../../shredmanager/shreddialog.cpp:100 ../../shredmanager/shreddialog.cpp:129
+msgctxt "ShredDialog|"
+msgid "Shred Manager"
+msgstr "文件粉碎机"
 
-#: ../../qml/func/page/SystemSet.qml:290
-msgctxt "SystemSet|"
-msgid " Desktop"
-msgstr " 桌面"
+#: ../../shredmanager/shreddialog.cpp:101
+#: ../../shredmanager/shreddialog.cpp:174 ../../shredmanager/shreddialog.cpp:186
+msgctxt "ShredDialog|"
+msgid "No select any file which need to be shredded"
+msgstr "没有选择需要粉碎的文件"
 
-#: ../../qml/func/page/SystemSet.qml:391
-msgctxt "SystemSet|"
-msgid " Fonts"
-msgstr " 字体"
+#: ../../shredmanager/shreddialog.cpp:102
+msgctxt "ShredDialog|"
+msgid "Shred File"
+msgstr "粉碎文件"
 
-#: ../../qml/func/page/SystemSet.qml:446
-msgctxt "SystemSet|"
-msgid " System options"
-msgstr " 系统选项"
+#: ../../shredmanager/shreddialog.cpp:103
+msgctxt "ShredDialog|"
+msgid "Deselect"
+msgstr "取消粉碎"
 
-#: ../../qml/func/page/SystemSet.qml:524
-msgctxt "SystemSet|"
-msgid " Others"
-msgstr " 杂项"
+#: ../../shredmanager/shreddialog.cpp:145
+msgctxt "ShredDialog|"
+msgid "Allfile(*)"
+msgstr "所有文件(*)"
 
-#: ../../qml/func/common/TipLabel.qml:43
-msgctxt "TipLabel|"
-msgid "Support cloud conf"
-msgstr "支持云配置"
+#: ../../shredmanager/shreddialog.cpp:162
+msgctxt "ShredDialog|"
+msgid "Select file!"
+msgstr "选择文件！"
 
-#: ../../qml/func/common/TipLabel.qml:47
-msgctxt "TipLabel|"
-msgid "No support cloud conf"
-msgstr "不支持云配置"
+#~ msgctxt "ShredDialog|"
+#~ msgid "Select file"
+#~ msgstr "选择文件"
 
-#: ../../qml/func/bars/ToolBar.qml:52
-msgctxt "ToolBar|"
+#~ msgctxt "ShredDialog|"
+#~ msgid "All Files(*)"
+#~ msgstr "所有文件(*)"
+
+#: ../../shredmanager/shreddialog.cpp:173
+msgctxt "ShredDialog|"
+msgid "Shred successfully!"
+msgstr "粉碎成功！"
+
+#: ../../shredmanager/shreddialog.cpp:179
+msgctxt "ShredDialog|"
+msgid "Shred failed!"
+msgstr "粉碎失败！"
+
+#: ../../shredmanager/shredmanager.cpp:40
+msgctxt "ShredManager|"
+msgid "Shred Manager"
+msgstr "文件粉碎机"
+
+#: ../../shredmanager/shredmanager.cpp:45
+msgctxt "ShredManager|"
+msgid "Delete files makes it unable to recover"
+msgstr "彻底删除文件使其无法恢复"
+
+#: ../skincenter.cpp:107
+msgctxt "SkinCenter|"
+msgid "Skin Center"
+msgstr "皮肤中心"
+
+#~ msgctxt "SystemDispatcher|"
+#~ msgid "Select the boot animation"
+#~ msgstr "选择开机动画"
+
+#~ msgctxt "SystemDispatcher|"
+#~ msgid "Image Files (*.png *.jpg *.gif)"
+#~ msgstr "图片文件(*.png *.jpg *.gif)"
+
+#~ msgctxt "SystemDispatcher|"
+#~ msgid "Select music"
+#~ msgstr "选择音乐文件"
+
+#~ msgctxt "SystemDispatcher|"
+#~ msgid "Audio Files (*.ogg *.wav *.mp3 *.wma)"
+#~ msgstr "音频文件(*.ogg *.wav *.mp3 *.wma)"
+
+#~ msgctxt "SystemTray|"
+#~ msgid "Youker Assistant"
+#~ msgstr "优客助手"
+
+#~ msgctxt "SystemTray|"
+#~ msgid "open"
+#~ msgstr "打开"
+
+#~ msgctxt "SystemTray|"
+#~ msgid "logout"
+#~ msgstr "退出"
+
+#: ../../info/systemwidget.cpp:36
+msgctxt "SystemWidget|"
+msgid "Computer Base Info"
+msgstr "电脑概述"
+
+#: ../../info/systemwidget.cpp:63 ../../info/systemwidget.cpp:67
+msgctxt "SystemWidget|"
+msgid " Minutes"
+msgstr " 分钟"
+
+#: ../../info/systemwidget.cpp:67
+msgctxt "SystemWidget|"
+msgid " Hours "
+msgstr " 小时"
+
+#: ../../setting/themewidget.cpp:67
+#, qt-format
+msgctxt "ThemeWidget|"
+msgid "%1"
+msgstr ""
+
+#: ../../component/tipdialog.cpp:74
+msgctxt "TipDialog|"
 msgid "OK"
 msgstr "确定"
 
-#: ../../qml/func/bars/ToolBar.qml:64
-msgctxt "ToolBar|"
-msgid "Restore"
-msgstr "恢复默认"
+#: ../../component/tipdialog.cpp:97
+msgctxt "TipDialog|"
+msgid "Tip Dialog"
+msgstr "提示框"
 
-#: ../../qml/func/bars/ToolBar.qml:75
-msgctxt "ToolBar|"
-msgid "Back"
-msgstr "返回"
+#: ../toolwidget.cpp:38
+msgctxt "ToolWidget|"
+msgid "Home"
+msgstr "优客首页"
 
-#: ../../qml/func/others/ToolsDelegate.qml:79
-msgctxt "ToolsDelegate|"
-msgid "No found camera!"
-msgstr "没有找到可用的摄像头！"
+#: ../toolwidget.cpp:38
+msgctxt "ToolWidget|"
+msgid "Cleanup"
+msgstr "系统清理"
 
-#: ../../qml/func/settings/TouchpadSet.qml:27
-msgctxt "TouchpadSet|"
-msgid "Touchpad settings"
-msgstr "触摸板设置"
+#: ../toolwidget.cpp:38
+msgctxt "ToolWidget|"
+msgid "Sysinfo"
+msgstr "系统信息"
 
-#: ../../qml/func/settings/TouchpadSet.qml:28
-msgctxt "TouchpadSet|"
-msgid ""
-"Setting the relevant properties of your touchpad,make the operation more "
-"convenient."
-msgstr "通过调整触摸板的相关设置，使操作更加便捷。"
+#: ../toolwidget.cpp:38
+msgctxt "ToolWidget|"
+msgid "Feature"
+msgstr "系统美化"
 
-#: ../../qml/func/settings/TouchpadSet.qml:64
-msgctxt "TouchpadSet|"
-msgid "Back"
-msgstr "返回"
+#: ../toolwidget.cpp:38
+msgctxt "ToolWidget|"
+msgid "Toolkits"
+msgstr "功能大全"
 
-#: ../../qml/func/settings/TouchpadSet.qml:119
-msgctxt "TouchpadSet|"
-msgid "Enable touchpad: "
-msgstr "启用触摸板： "
+#: ../../setting/touchpadwidget.cpp:126
+msgctxt "TouchpadWidget|"
+msgid "Enable touchpad"
+msgstr "启用/禁用触摸板"
 
-#: ../../qml/func/settings/TouchpadSet.qml:145
-#: ../../qml/func/settings/TouchpadSet.qml:200
-#: ../../qml/func/settings/TouchpadSet.qml:280
-#: ../../qml/func/settings/TouchpadSet.qml:367
-msgctxt "TouchpadSet|"
-msgid "Restore"
-msgstr "恢复默认"
+#: ../../setting/touchpadwidget.cpp:127
+msgctxt "TouchpadWidget|"
+msgid "Enable horizontal scrolling"
+msgstr "触摸板横向滚动"
 
-#: ../../qml/func/settings/TouchpadSet.qml:173
-msgctxt "TouchpadSet|"
-msgid "Enable horizontal scrolling: "
-msgstr "触摸板横向滚动： "
+#: ../../setting/touchpadwidget.cpp:128
+msgctxt "TouchpadWidget|"
+msgid "Scrollbar type"
+msgstr "滚动条类型"
 
-#: ../../qml/func/settings/TouchpadSet.qml:229
-msgctxt "TouchpadSet|"
-msgid "Scrollbar type: "
-msgstr "滚动条类型： "
+#: ../../setting/touchpadwidget.cpp:129
+msgctxt "TouchpadWidget|"
+msgid "Panel layout"
+msgstr "触摸板滚动触发方式"
 
-#: ../../qml/func/settings/TouchpadSet.qml:243
-msgctxt "TouchpadSet|"
+#: ../../setting/touchpadwidget.cpp:130
+msgctxt "TouchpadWidget|"
 msgid "Features Type"
 msgstr "特色类型"
 
-#: ../../qml/func/settings/TouchpadSet.qml:257
-msgctxt "TouchpadSet|"
+#: ../../setting/touchpadwidget.cpp:131
+msgctxt "TouchpadWidget|"
 msgid "Standard Type"
 msgstr "标准类型"
 
-#: ../../qml/func/settings/TouchpadSet.qml:316
-msgctxt "TouchpadSet|"
-msgid "Panel layout: "
-msgstr "触摸板滚动触发方式： "
-
-#: ../../qml/func/settings/TouchpadSet.qml:330
-msgctxt "TouchpadSet|"
+#: ../../setting/touchpadwidget.cpp:132
+msgctxt "TouchpadWidget|"
 msgid "Edge Scrolling"
 msgstr "边缘触发"
 
-#: ../../qml/func/settings/TouchpadSet.qml:344
-msgctxt "TouchpadSet|"
+#: ../../setting/touchpadwidget.cpp:133
+msgctxt "TouchpadWidget|"
 msgid "Two-finger Scrolling"
 msgstr "双指触发"
 
-#: ../../qml/func/cleaner/TraceModel.qml:23
-#: ../../qml/func/cleaner/TraceModel.qml:377
-#: ../../qml/func/cleaner/TraceModel.qml:424
-#: ../../qml/func/cleaner/TraceModel.qml:432
-#: ../../qml/func/cleaner/TraceModel.qml:440
-#: ../../qml/func/cleaner/TraceModel.qml:449
-#: ../../qml/func/cleaner/TraceModel.qml:487
-#: ../../qml/func/cleaner/TraceModel.qml:534
-#: ../../qml/func/cleaner/TraceModel.qml:542
-#: ../../qml/func/cleaner/TraceModel.qml:550
-#: ../../qml/func/cleaner/TraceModel.qml:559
-#: ../../qml/func/cleaner/TraceModel.qml:597
-#: ../../qml/func/cleaner/TraceModel.qml:644
-#: ../../qml/func/cleaner/TraceModel.qml:652
-#: ../../qml/func/cleaner/TraceModel.qml:660
-#: ../../qml/func/cleaner/TraceModel.qml:668
-msgctxt "TraceModel|"
-msgid "Start scanning"
-msgstr "开始扫描"
+#: ../../setting/voicewidget.cpp:99
+msgctxt "VoiceWidget|"
+msgid "Sound theme"
+msgstr "事件声音"
 
-#: ../../qml/func/cleaner/TraceModel.qml:24
-msgctxt "TraceModel|"
-msgid "Cleanup history, to protect your privacy"
-msgstr "清理历史记录，保护个人隐私"
+#: ../../setting/voicewidget.cpp:100
+msgctxt "VoiceWidget|"
+msgid "Login tone"
+msgstr "登录提示音"
 
-#: ../../qml/func/cleaner/TraceModel.qml:25
-msgctxt "TraceModel|"
-msgid "Cleaning the internet and opened documents recently records"
-msgstr "清理浏览器上网记录和系统最近打开文件记录"
+#: ../../setting/voicewidget.cpp:101
+msgctxt "VoiceWidget|"
+msgid "Event sounds"
+msgstr "声音主题"
 
-#: ../../qml/func/cleaner/TraceModel.qml:49
-msgctxt "TraceModel|"
-msgid "Firefox is not installed!"
-msgstr "没有安装Firefox！"
+#: ../../setting/voicewidget.cpp:102
+msgctxt "VoiceWidget|"
+msgid "Input feedback sounds"
+msgstr "输入反馈声音"
 
-#: ../../qml/func/cleaner/TraceModel.qml:55
-#: ../../qml/func/cleaner/TraceModel.qml:75
-#: ../../qml/func/cleaner/TraceModel.qml:81
-#: ../../qml/func/cleaner/TraceModel.qml:100
-#: ../../qml/func/cleaner/TraceModel.qml:403
-#: ../../qml/func/cleaner/TraceModel.qml:513
-#: ../../qml/func/cleaner/TraceModel.qml:623
-msgctxt "TraceModel|"
-msgid "Tips:"
-msgstr "友情提示："
+#: ../../setting/windowwidget.cpp:115
+msgctxt "WindowWidget|"
+msgid "Menu with icons"
+msgstr "菜单项旁显示图标"
 
-#: ../../qml/func/cleaner/TraceModel.qml:55
-#: ../../qml/func/cleaner/TraceModel.qml:81
-#: ../../qml/func/cleaner/TraceModel.qml:100
-#: ../../qml/func/cleaner/TraceModel.qml:403
-#: ../../qml/func/cleaner/TraceModel.qml:513
-#: ../../qml/func/cleaner/TraceModel.qml:623
-msgctxt "TraceModel|"
-msgid "The scan reslut is empty, nothing has been done!"
-msgstr "扫描内容为空，无需清理！"
+#: ../../setting/windowwidget.cpp:116
+msgctxt "WindowWidget|"
+msgid "Titlebar mouse wheel action"
+msgstr "标题栏鼠标滚轮动作"
 
-#: ../../qml/func/cleaner/TraceModel.qml:60
-#: ../../qml/func/cleaner/TraceModel.qml:86
-#: ../../qml/func/cleaner/TraceModel.qml:105
-msgctxt "TraceModel|"
-msgid "Scan completed!"
-msgstr "扫描完成！"
+#: ../../setting/windowwidget.cpp:117
+msgctxt "WindowWidget|"
+msgid "Titlebar double-click action"
+msgstr "标题栏双击动作"
 
-#: ../../qml/func/cleaner/TraceModel.qml:61
-#: ../../qml/func/cleaner/TraceModel.qml:87
-#: ../../qml/func/cleaner/TraceModel.qml:106
-#: ../../qml/func/cleaner/TraceModel.qml:416
-#: ../../qml/func/cleaner/TraceModel.qml:526
-#: ../../qml/func/cleaner/TraceModel.qml:636
-msgctxt "TraceModel|"
-msgid "Begin cleanup"
-msgstr "开始清理"
+#: ../../setting/windowwidget.cpp:118
+msgctxt "WindowWidget|"
+msgid "Titlebar middle-click action"
+msgstr "标题栏中键动作"
 
-#: ../../qml/func/cleaner/TraceModel.qml:71
-msgctxt "TraceModel|"
-msgid "Chromium is not installed!"
-msgstr "没有安装Chromium！"
-
-#: ../../qml/func/cleaner/TraceModel.qml:75
-msgctxt "TraceModel|"
-msgid ""
-"Chromium is running. When the browser is running, could not perform scan or "
-"cleanup operations."
-msgstr "Chromium正在运行中。当它正在运行的时候，不能执行扫描或者清理操作。"
-
-#: ../../qml/func/cleaner/TraceModel.qml:136
-#: ../../qml/func/cleaner/TraceModel.qml:142
-#: ../../qml/func/cleaner/TraceModel.qml:148
-msgctxt "TraceModel|"
-msgid "Cleanup abnormal!"
-msgstr "清理出现异常！"
-
-#: ../../qml/func/cleaner/TraceModel.qml:154
-msgctxt "TraceModel|"
-msgid "Cleanup interrupted!"
-msgstr "清理中断！"
-
-#: ../../qml/func/cleaner/TraceModel.qml:242
-msgctxt "TraceModel|"
-msgid "Clean up the Firefox Internet records"
-msgstr "清理 Firefox 浏览器上网记录"
-
-#: ../../qml/func/cleaner/TraceModel.qml:257
-msgctxt "TraceModel|"
-msgid "Clean up the Firefox history records"
-msgstr "清理 Firefox 浏览器上网时留下的浏览痕迹"
-
-#: ../../qml/func/cleaner/TraceModel.qml:278
-msgctxt "TraceModel|"
-msgid "Clean up the Chromium Internet records"
-msgstr "清理 Chromium 浏览器上网记录"
-
-#: ../../qml/func/cleaner/TraceModel.qml:293
-msgctxt "TraceModel|"
-msgid "Clean up the Chromium history records"
-msgstr "清理 Chromium 浏览器上网时留下的浏览痕迹"
-
-#: ../../qml/func/cleaner/TraceModel.qml:315
-msgctxt "TraceModel|"
-msgid "Clean up the recently opened documents records"
-msgstr "清理最近打开文件记录"
-
-#: ../../qml/func/cleaner/TraceModel.qml:330
-msgctxt "TraceModel|"
-msgid ""
-"Clean up the recently opened documents in your system, to protect your "
-"privacy"
-msgstr "清理系统上最近打开的文件记录，保护您的个人隐私"
-
-#: ../../qml/func/cleaner/TraceModel.qml:362
-#: ../../qml/func/cleaner/TraceModel.qml:472
-#: ../../qml/func/cleaner/TraceModel.qml:582
-msgctxt "TraceModel|"
-msgid "Back"
-msgstr "返回"
-
-#: ../../qml/func/cleaner/TraceModel.qml:373
-#: ../../qml/func/cleaner/TraceModel.qml:483
-#: ../../qml/func/cleaner/TraceModel.qml:593
-msgctxt "TraceModel|"
-msgid "Rescan"
-msgstr "重新扫描"
-
-#: ../../qml/func/cleaner/TraceModel.qml:418
-#: ../../qml/func/cleaner/TraceModel.qml:528
-#: ../../qml/func/cleaner/TraceModel.qml:638
-msgctxt "TraceModel|"
-msgid "(Scan to "
-msgstr "（扫描到 "
-
-#: ../../qml/func/cleaner/TraceModel.qml:418
-#: ../../qml/func/cleaner/TraceModel.qml:442
-#: ../../qml/func/cleaner/TraceModel.qml:528
-#: ../../qml/func/cleaner/TraceModel.qml:552
-#: ../../qml/func/cleaner/TraceModel.qml:638
-#: ../../qml/func/cleaner/TraceModel.qml:662
-msgctxt "TraceModel|"
-msgid " records)"
-msgstr " 条记录）"
-
-#: ../../qml/func/cleaner/TraceModel.qml:442
-#: ../../qml/func/cleaner/TraceModel.qml:552
-#: ../../qml/func/cleaner/TraceModel.qml:662
-msgctxt "TraceModel|"
-msgid "(Have been cleared "
-msgstr "（已清理 "
-
-#: ../tray.ui:14
-msgctxt "Tray|"
-msgid "MonitorBall"
-msgstr "监控球"
-
-#: ../tray.ui:35
-msgctxt "Tray|"
-msgid "<html><head/><body><p align=\"right\">10K/s</p></body></html>"
-msgstr "<html><head/><body><p align=\"right\">10K/s</p></body></html>"
-
-#: ../tray.ui:60
-msgctxt "Tray|"
-msgid "<html><head/><body><p align=\"right\">20K/s</p></body></html>"
-msgstr "<html><head/><body><p align=\"right\">20K/s</p></body></html>"
-
-#: ../tray.ui:79
-msgctxt "Tray|"
-msgid "0%"
-msgstr "0%"
-
-#: ../tray.cpp:136
-msgctxt "Tray|"
-msgid "Hide/Show window"
-msgstr "隐藏/显示主界面"
-
-#: ../tray.cpp:138
-msgctxt "Tray|"
-msgid "Hide/Show monitor"
-msgstr "隐藏/显示监控球"
-
-#: ../tray.cpp:141
-msgctxt "Tray|"
-msgid "About"
-msgstr "关于本软件"
-
-#: ../tray.cpp:144
-msgctxt "Tray|"
-msgid "&Exit"
-msgstr "退出(&E)"
-
-#: ../warningdialog.ui:14
-msgctxt "WarningDialog|"
-msgid "Dialog"
-msgstr "对话框"
-
-#: ../warningdialog.ui:71
-msgctxt "WarningDialog|"
-msgid "OK"
-msgstr "确定"
-
-#: ../warningdialog.ui:84
-msgctxt "WarningDialog|"
-msgid "<html><head/><body><p>Tips:</p></body></html>"
-msgstr "<html><head/><body><p>友情提示：</p></body></html>"
-
-#: ../../qml/func/others/WeatherZone.qml:29
-msgctxt "WeatherZone|"
-msgid "Weather"
-msgstr "天气"
-
-#: ../../qml/func/others/WeatherZone.qml:30
-msgctxt "WeatherZone|"
-msgid "AQI"
-msgstr "空气质量指数"
-
-#: ../../qml/func/others/WeatherZone.qml:31
-msgctxt "WeatherZone|"
-msgid "Current temperature"
-msgstr "当前温度（℃）"
-
-#: ../../qml/func/others/WeatherZone.qml:49
-msgctxt "WeatherZone|"
-msgid " "
-msgstr "发布 "
-
-#: ../../qml/func/others/WeatherZone.qml:51
-msgctxt "WeatherZone|"
-msgid "AQI:"
-msgstr "空气质量指数："
-
-#: ../../qml/func/others/WeatherZone.qml:52
-#: ../../qml/func/others/WeatherZone.qml:62
-msgctxt "WeatherZone|"
-msgid "Current temperature:"
-msgstr "当前温度："
-
-#: ../../qml/func/others/WeatherZone.qml:89
-msgctxt "WeatherZone|"
-msgid "City"
-msgstr "城市"
-
-#: ../../qml/func/others/WeatherZone.qml:98
-msgctxt "WeatherZone|"
-msgid "[Change]"
-msgstr "[ 切换 ]"
-
-#: ../../qml/func/others/WeatherZone.qml:108
-msgctxt "WeatherZone|"
-msgid "Publish"
-msgstr "发布时间"
-
-#: ../../qml/func/others/WeatherZone.qml:133
-msgctxt "WeatherZone|"
-msgid "N/A"
-msgstr "未知"
-
-#: ../../qml/func/others/WeatherZone.qml:139
-msgctxt "WeatherZone|"
-msgid "AQI:N/A"
-msgstr "空气质量指数：未知"
-
-#: ../../qml/func/others/WeatherZone.qml:145
-msgctxt "WeatherZone|"
-msgid "Temperature:N/A"
-msgstr "温度：未知"
-
-#: ../../qml/func/settings/WidgetTheme.qml:25
-msgctxt "WidgetTheme|"
-msgid "Theme settings"
-msgstr "主题设置"
-
-#: ../../qml/func/settings/WidgetTheme.qml:26
-msgctxt "WidgetTheme|"
-msgid "Choose the theme what you want."
-msgstr "选择您想设置的主题。"
-
-#: ../../qml/func/settings/WidgetTheme.qml:79
-msgctxt "WidgetTheme|"
-msgid "Back"
-msgstr "返回"
-
-#: ../../qml/func/settings/WidgetTheme.qml:131
-msgctxt "WidgetTheme|"
-msgid "Window theme settings:"
-msgstr "窗口装饰主题："
-
-#: ../../qml/func/settings/WindowManager.qml:35
-msgctxt "WindowManager|"
-msgid "Window"
-msgstr "窗口"
-
-#: ../../qml/func/settings/WindowManager.qml:36
-msgctxt "WindowManager|"
-msgid "Window Manager settings."
-msgstr "管理窗口管理器的设置。"
-
-#: ../../qml/func/settings/WindowManager.qml:154
-msgctxt "WindowManager|"
-msgid "Back"
-msgstr "返回"
-
-#: ../../qml/func/settings/WindowManager.qml:208
-msgctxt "WindowManager|"
-msgid "Window function button:"
-msgstr "窗口控制按钮位置："
-
-#: ../../qml/func/settings/WindowManager.qml:218
-msgctxt "WindowManager|"
-msgid "Left Side"
-msgstr "左边"
-
-#: ../../qml/func/settings/WindowManager.qml:232
-msgctxt "WindowManager|"
-msgid "Right Side"
-msgstr "右边"
-
-#: ../../qml/func/settings/WindowManager.qml:254
-#: ../../qml/func/settings/WindowManager.qml:317
-#: ../../qml/func/settings/WindowManager.qml:366
-#: ../../qml/func/settings/WindowManager.qml:410
-#: ../../qml/func/settings/WindowManager.qml:454
-#: ../../qml/func/settings/WindowManager.qml:498
-msgctxt "WindowManager|"
-msgid "Restore"
-msgstr "恢复默认"
-
-#: ../../qml/func/settings/WindowManager.qml:291
-msgctxt "WindowManager|"
-msgid "Menu with icons: "
-msgstr "菜单项旁显示图标： "
-
-#: ../../qml/func/settings/WindowManager.qml:344
-msgctxt "WindowManager|"
-msgid "Titlebar mouse wheel action:"
-msgstr "标题栏鼠标滚轮动作："
-
-#: ../../qml/func/settings/WindowManager.qml:388
-msgctxt "WindowManager|"
-msgid "Titlebar double-click action:"
-msgstr "标题栏双击动作："
-
-#: ../../qml/func/settings/WindowManager.qml:432
-msgctxt "WindowManager|"
-msgid "Titlebar middle-click action:"
-msgstr "标题栏中键动作："
-
-#: ../../qml/func/settings/WindowManager.qml:476
-msgctxt "WindowManager|"
-msgid "Titlebar right-click action:"
-msgstr "标题栏右键动作："
-
-#, qt-format
-#~ msgctxt "ProcessManager|"
-#~ msgid "%1;%2;%3;%4;%5;%6;%7"
-#~ msgstr "%1;%2;%3;%4;%5;%6;%7"
-
-#~ msgctxt "FileShredder|"
-#~ msgid "Crush stubborn files."
-#~ msgstr "彻底粉碎无法删除的顽固文件。"
+#: ../../setting/windowwidget.cpp:119
+msgctxt "WindowWidget|"
+msgid "Titlebar right-click action"
+msgstr "标题栏右键动作"

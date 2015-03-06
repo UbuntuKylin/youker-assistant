@@ -21,9 +21,7 @@
 #include <QVBoxLayout>
 #include <QDebug>
 #include "../component/utils.h"
-//#include "mainwindow.h"
 #include "../dbusproxy/youkersessiondbus.h"
-//#include "../dbusproxy/youkersystemdbus.h"
 
 CleanerWidget::CleanerWidget(QWidget *parent) :
     QWidget(parent)
@@ -42,9 +40,6 @@ CleanerWidget::CleanerWidget(QWidget *parent) :
     sessionProxy = NULL;
     main_widget = NULL;
     detail_widget = NULL;
-
-
-    kthread.setCleanerWidget(this);
 }
 
 CleanerWidget::~CleanerWidget()
@@ -54,9 +49,15 @@ CleanerWidget::~CleanerWidget()
 
 void CleanerWidget::initUI()
 {
-    main_widget = new CleanerMainWidget(this, p_mainwindow);
-    detail_widget = new CleanerDetailWidget(this, sessionProxy, systemProxy, p_mainwindow);
+    main_widget = new CleanerMainWidget(this, sessionProxy, p_mainwindow, toolKits);
+    detail_widget = new CleanerDetailWidget(this, sessionProxy, systemProxy, p_mainwindow, toolKits);
     connect(this, SIGNAL(transCleanSignal()), detail_widget, SLOT(receiveCleanSignal()));
+
+    connect(this, SIGNAL(transScanSignal()), main_widget, SLOT(receiveScanSignal()));
+    connect(main_widget, SIGNAL(showActionAnimaiton()), this, SIGNAL(tranActionAnimaitonSignal()));
+//    connect(detail_widget, SIGNAL(showActionAnimaiton()), this, SIGNAL(tranCleanActionAnimaitonSignal()));
+
+
     connect(this, SIGNAL(clearDetailPage()), detail_widget, SLOT(CleanUIAndData()));
     connect(sessionProxy, SIGNAL(tellCleanerDetailData(QStringList)), detail_widget, SLOT(showReciveData(QStringList)));
     connect(sessionProxy, SIGNAL(tellCleanerDetailStatus(QString)), detail_widget, SLOT(showReciveStatus(QString)));

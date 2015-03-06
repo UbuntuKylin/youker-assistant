@@ -21,13 +21,10 @@
 #define DRIVERWIDGET_H
 
 #include <QWidget>
-#include <QHBoxLayout>
-#include <QLabel>
 #include "computerpage.h"
 #include "../component/scrollwidget.h"
 #include <QMap>
-#include <QVariant>
-//class SystemDispatcher;
+class QVariant;
 
 class DriverWidget : public QWidget
 {
@@ -44,7 +41,6 @@ private:
     ScrollWidget *scroll_widget;
     ComputerPage *page;
     QMap<QString, QVariant> driver_info_map;
-//    SystemDispatcher *systemproxy;
 };
 
 #endif // DRIVERWIDGET_H

@@ -21,15 +21,14 @@
 #define LAUNCHERWIDGET_H
 
 #include <QWidget>
-#include <QLabel>
-#include <QPushButton>
-#include <QHBoxLayout>
-#include <QComboBox>
 #include "../component/kylinswitcher.h"
-#include <QSplitter>
-#include <QSlider>
-#include <QDoubleSpinBox>
+
 class SessionDispatcher;
+class QLabel;
+class QPushButton;
+class QComboBox;
+class QSlider;
+class QDoubleSpinBox;
 
 class LauncherWidget : public QWidget
 {
@@ -41,9 +40,6 @@ public:
     void initConnect();
     void initData();
 
-//signals:
-//    void showSettingMainWidget();
-
 public slots:
     void setIconColouring(QString selectColour);
     void setAutoHide();
@@ -53,14 +49,6 @@ public slots:
 
 private:
     SessionDispatcher *sessionproxy;
-//    QSplitter *splitter;
-//    QWidget * top_widget;
-//    QWidget * bottom_widget;
-
-//    QPushButton *back_btn;
-//    QLabel *title_label;
-//    QLabel *description_label;
-
     QLabel *size_label;
     QLabel *size_value_label;
     QLabel *hide_label;

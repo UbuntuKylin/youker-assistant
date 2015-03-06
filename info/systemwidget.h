@@ -24,8 +24,9 @@
 #include "computerpage.h"
 #include "../component/scrollwidget.h"
 #include <QMap>
-#include <QVariant>
 #include <QTimer>
+
+class QVariant;
 class SystemDispatcher;
 
 class SystemWidget : public QWidget
@@ -44,7 +45,6 @@ public slots:
 private:
     ScrollWidget *scroll_widget;
     ComputerPage *page;
-//    ComputerPage *page2;
     QMap<QString, QVariant> sys_info_map;
     SystemDispatcher *systemproxy;
     QTimer *timer;

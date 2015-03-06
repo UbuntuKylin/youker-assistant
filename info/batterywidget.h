@@ -21,12 +21,11 @@
 #define BATTERYWIDGET_H
 
 #include <QWidget>
-#include <QHBoxLayout>
-#include <QLabel>
 #include "computerpage.h"
 #include "../component/scrollwidget.h"
 #include <QMap>
-#include <QVariant>
+
+class QVariant;
 class SessionDispatcher;
 
 class BatteryWidget : public QWidget

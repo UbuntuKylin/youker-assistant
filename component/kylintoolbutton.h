@@ -36,7 +36,6 @@ protected:
     void enterEvent(QEvent *event);
     void leaveEvent(QEvent *event);
 	void mousePressEvent(QMouseEvent *event);
-    void paintEvent(QPaintEvent *event);
 
 public:
 	bool mouse_over; //鼠标是否移过

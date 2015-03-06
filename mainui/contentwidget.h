@@ -21,12 +21,9 @@
 #define CONTENTWIDGET_H
 
 #include <QWidget>
-#include <QSplitter>
-#include <QToolButton>
 #include <QPushButton>
 #include <QLabel>
 #include <QProgressBar>
-#include <QPainter>
 #include <QPen>
 #include <QHBoxLayout>
 #include <QEvent>

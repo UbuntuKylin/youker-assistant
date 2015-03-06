@@ -18,7 +18,6 @@
  */
 
 #include "homeactionwidget.h"
-#include "../component/kylintoolbutton.h"
 #include "mainwindow.h"
 #include <QDebug>
 #include <QDateTime>
@@ -31,15 +30,6 @@ HomeActionWidget::HomeActionWidget(QWidget *parent, QSettings *mSettings)
     is_move = false;
     this->setAutoFillBackground(true);
     this->setObjectName("transparentWidget");
-//    this->setAttribute(Qt::WA_TranslucentBackground,true);//背景透明
-//    this->setStyleSheet("background-color:transparent;");
-//    QPalette palette_back;
-//    palette_back.setBrush(QPalette::Background, QBrush(QPixmap(":/background/res/skin/1.png")));
-//    this->setPalette(palette_back);
-
-//    QPalette palette_back;
-//    palette_back.setBrush(QPalette::Background, QBrush(QPixmap(":/background/res/bg/1.png")));
-//    this->setPalette(palette_back);
 
     suggest_label = new QLabel();
     result_label = new QLabel();
@@ -185,7 +175,6 @@ void HomeActionWidget::enableSanButton()
 void HomeActionWidget::getScanResult(QString msg)
 {
     doing_label->setText(tr("Scanning:") + msg);//正在扫描:
-//    qDebug() << msg;
 }
 
 void HomeActionWidget::finishScanResult(QString msg)
@@ -224,7 +213,6 @@ void HomeActionWidget::getCleanResult(QString msg/*, QString flag*/)
     if (msg == "no") {//在弹出输入密码验证时，输入密码，验证通过，此时让动态图片开始显示
         //show dynamic image
         doing_label->setText(tr("Cleaning......"));//正在清理......
-//        qDebug() << "test11111";
         loading_label->startLoading();
         clean_button->setEnabled(false);
     }
@@ -322,7 +310,6 @@ void HomeActionWidget::getCleaningMessage(QString type, QString status)
 void HomeActionWidget::onStartButtonClicked()
 {
     scan_button->setEnabled(false);
-//    qDebug() << "test2222";
     loading_label->startLoading();
     suggest_label->hide();
     result_label->hide();
@@ -336,7 +323,6 @@ void HomeActionWidget::onCleanButtonClicked()
 {
     clean_button->show();
     clean_button->setEnabled(false);
-//    qDebug() << "test3333";
     loading_label->startLoading();
     suggest_label->hide();
     result_label->hide();

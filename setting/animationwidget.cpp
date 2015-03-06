@@ -18,7 +18,6 @@
  */
 
 #include "animationwidget.h"
-#include <QPainter>
 #include <QDebug>
 #include "../component/agentlistitem.h"
 #include "../dbusproxy/youkersystemdbus.h"
@@ -31,15 +30,6 @@ AnimationWidget::AnimationWidget(QWidget *parent, SystemDispatcher *proxy, MainW
     QWidget(parent),
     systemproxy(proxy), parentWindow(window)
 {
-//    this->setAutoFillBackground(true);
-//    this->setObjectName("transparentWidget");
-//    splitter = new QSplitter();
-//    splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-//    splitter->setOrientation(Qt::Vertical);
-//    splitter->setHandleWidth(1);
-
-//    top_widget = new QWidget();
-//    bottom_widget = new QWidget();
     title_label = new QLabel();
     left_widget = new QWidget();
     left_widget->setFixedWidth(240);
@@ -252,18 +242,11 @@ void AnimationWidget::initData()
 //    connect(list_widget,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(onItemClicked(QListWidgetItem*)));
 }
 
-//QString AnimationWidget::showSelectFileDialog() {
-//    //选择开机动画            图像文件  (*.png *.jpg *.gif)
-//    QString bootfileName = QFileDialog::getOpenFileName(0, tr("Select the boot animation"), "", tr("Image Files (*.png *.jpg *.gif)"));
-//    return bootfileName;
-//}
-
 void AnimationWidget::selectCustomAnimation()
 {
     show_widget->setWindowFlags(Qt::FramelessWindowHint);
     show_widget->setAutoFillBackground(true);
 //    show_widget->setObjectName("transparentWidget");
-//    QString abs_path = systemproxy->showSelectFileDialog("bootanimation");
 
     QStringList fileNameList;
     QString abs_path;
@@ -360,7 +343,6 @@ void AnimationWidget::deleteSelectedAnimation(QString name)
 
 void AnimationWidget::displayCurrentItemInfo(QString info)
 {
-//    qDebug() << "show info..." << info;
     this->selected_animation = info;
     int list_count = list_widget->count();
     for(int i=0; i < list_count; i++)

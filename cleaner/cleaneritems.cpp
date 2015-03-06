@@ -18,11 +18,10 @@
  */
 
 #include "cleaneritems.h"
-#include "../component/kylintoolbutton.h"
 #include "mainwindow.h"
 #include <QDebug>
 
-CleanerItems::CleanerItems(QStringList &arglist, int height, const QString title_text, QWidget *parent)
+CleanerItems::CleanerItems(QStringList &arglist, QStringList &statuslist, int height, const QString title_text, QWidget *parent)
     : QWidget(parent),titleName(title_text)/*, widgetHeight(height)*/
 {
     this->setFixedSize(410, height);
@@ -36,25 +35,6 @@ CleanerItems::CleanerItems(QStringList &arglist, int height, const QString title
     title_bar = new KylinTitleBar();
     initTitleBar();
 
-//    checkbox1 = new QCheckBox("11111");
-//    checkbox1->setCheckState(Qt::Checked);
-//    checkbox2 = new QCheckBox("2222222");
-//    checkbox2->setCheckState(Qt::Checked);
-//    checkbox3 = new QCheckBox("3333333");
-//    checkbox3->setCheckState(Qt::Checked);
-//    QVBoxLayout *layoutbox = new QVBoxLayout;
-//    layoutbox->addWidget(checkbox1);
-//    layoutbox->addWidget(checkbox2);
-//    layoutbox->addWidget(checkbox3);
-//    checkbox_list.append(checkbox1);
-//    checkbox_list.append(checkbox2);
-//    checkbox_list.append(checkbox3);
-//    connect(checkbox1, SIGNAL(clicked()), this, SLOT(scanAllSubCheckbox()));
-//    connect(checkbox2, SIGNAL(clicked()), this, SLOT(scanAllSubCheckbox()));
-//    connect(checkbox3, SIGNAL(clicked()), this, SLOT(scanAllSubCheckbox()));
-//    setLayout(layoutbox);
-
-
     QVBoxLayout *button_layout = new QVBoxLayout;
     int count = arglist.count();
     //    QSignalMapper *signal_mapper = new QSignalMapper(this);
@@ -63,7 +43,7 @@ CleanerItems::CleanerItems(QStringList &arglist, int height, const QString title
         QCheckBox *checkbox = new QCheckBox(arglist.at(i));
         checkbox->setFocusPolicy(Qt::NoFocus);
         checkbox->setCheckState(Qt::Checked);
-//        checkbox->setStatusTip("kobe");
+        checkbox->setStatusTip(statuslist.at(i));
         checkbox_list.append(checkbox);
 //        connect(checkbox, SIGNAL(clicked()), signal_mapper, SLOT(map()));
         connect(checkbox, SIGNAL(clicked()), this, SLOT(scanAllSubCheckbox()));
@@ -80,8 +60,6 @@ CleanerItems::CleanerItems(QStringList &arglist, int height, const QString title
     okBtn->setFixedSize(91, 25);
     okBtn->setObjectName("blackButton");
     okBtn->setFocusPolicy(Qt::NoFocus);
-//    okBtn->setStyleSheet("QPushButton{font-size:14px;background:#0bc406;border:1px solid #03a603;color:white;}QPushButton:hover{background-color:#16d911;border:1px solid #03a603;color:white;}QPushButton:pressed{background-color:#07b302;border:1px solid #037800;color:white;}");
-
     QHBoxLayout *btn_layout  = new QHBoxLayout();
     btn_layout->addStretch();
     btn_layout->addWidget(okBtn);
@@ -153,7 +131,8 @@ QStringList CleanerItems::getSelectedItems()
     {
         QCheckBox *checkbox = checkbox_list.at(i);
         if (checkbox->isChecked()) {
-            text_list.append(checkbox->text());
+//            text_list.append(checkbox->text());
+            text_list.append(checkbox->statusTip());
         }
     }
     return text_list;

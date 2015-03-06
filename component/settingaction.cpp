@@ -18,8 +18,6 @@
  */
 
 #include "settingaction.h"
-#include "../component/kylintoolbutton.h"
-//#include "mainwindow.h"
 
 SettingAction::SettingAction(QWidget *parent)
 	: QWidget(parent)

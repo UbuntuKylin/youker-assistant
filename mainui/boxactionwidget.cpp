@@ -18,7 +18,6 @@
  */
 
 #include "boxactionwidget.h"
-#include "../component/kylintoolbutton.h"
 #include "mainwindow.h"
 #include <QDebug>
 
@@ -55,9 +54,7 @@ BoxActionWidget::BoxActionWidget(QWidget *parent)
     layout1->addStretch();
     layout1->setSpacing(15);
     layout1->setContentsMargins(20, 20, 0, 0);
-
     setLayout(layout1);
-//    qDebug() << title_label->size();
 
     this->setLanguage();
 }

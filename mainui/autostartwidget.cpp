@@ -38,10 +38,6 @@ AutoStartWidget::AutoStartWidget(QWidget *parent, SessionDispatcher *proxy) :
     on_num_label = new QLabel();
     off_label = new QLabel();
     off_num_label = new QLabel();
-    on_label->hide();
-    on_num_label->hide();
-    off_label->hide();
-    off_num_label->hide();
     name_label = new QLabel();
     status_label = new QLabel();
 
@@ -112,7 +108,8 @@ AutoStartWidget::AutoStartWidget(QWidget *parent, SessionDispatcher *proxy) :
     title_bar->show();
     initTitleBar();
     ui->scrollArea->setFixedSize(560,302);
-    this->setLanguage();
+    ui->scrollArea->setAutoFillBackground(true);
+    ui->scrollArea->setBackgroundRole(QPalette::Light);
     this->initConnect();
 }
 
@@ -134,9 +131,10 @@ void AutoStartWidget::readyReciveData(const QStringList &data)
 
 void AutoStartWidget::readyShowUI()
 {
-    QVBoxLayout *v_layout = new QVBoxLayout();
+    int rowIndex = 0;
+//    QVBoxLayout *v_layout = new QVBoxLayout();
+    QGridLayout *v_layout = new QGridLayout();
     QSignalMapper *signal_mapper = new QSignalMapper(this);
-//    qDebug() << data_list;
     onNum = offNum = 0;
     num_label->setText(QString::number(data_list.length()));
     for(int i =0; i<data_list.length(); i++)
@@ -147,29 +145,47 @@ void AutoStartWidget::readyShowUI()
         {
             tmpMap.insert(tmp_list[j].split(":").at(0), tmp_list[j].split(":").at(1));
         }
-        AutoGroup *auto_group = new AutoGroup(ui->scrollAreaWidgetContents);
+        AutoGroup *auto_group = new AutoGroup();
         auto_group->initData(tmpMap);
-//        qDebug() << tmpMap;
         if(tmpMap.value("Status") == "true")
             onNum += 1;
         else if(tmpMap.value("Status") == "false")
             offNum += 1;
         connect(auto_group, SIGNAL(autoStatusChange()), signal_mapper, SLOT(map()));
         signal_mapper->setMapping(auto_group, tmpMap.value("Path"));
-        v_layout->addWidget(auto_group, 0, Qt::AlignBottom);
+//        v_layout->addWidget(auto_group/*, 0, Qt::AlignBottom*/);
+        v_layout->addWidget(auto_group, rowIndex, 0);
+        rowIndex += 1;
+        switcher_list.append(auto_group);
     }
     connect(signal_mapper, SIGNAL(mapped(QString)), this, SLOT(setCurrentItemAutoStatus(QString)));
     on_num_label->setText(QString::number(onNum));
     off_num_label->setText(QString::number(offNum));
 
-    QVBoxLayout *layout  = new QVBoxLayout();
-//    layout->addWidget(title_bar);
-    layout->addLayout(v_layout);
-//    layout->addWidget(scroll_widget);
-    layout->setSpacing(0);
-    layout->setMargin(0);
-    layout->setContentsMargins(10, 0, 10, 10);
-    ui->scrollAreaWidgetContents->setLayout(layout);
+//    QVBoxLayout *layout  = new QVBoxLayout();
+//    layout->addLayout(v_layout);
+//    layout->setSpacing(0);
+//    layout->setMargin(0);
+//    layout->setContentsMargins(10, 0, 10, 10);
+    ui->scrollAreaWidgetContents->setLayout(v_layout);
+}
+
+void AutoStartWidget::scanAllSwitcher() {
+    int count = switcher_list.count();
+    onNum = offNum = 0;
+    for(int i=0; i<count; i++)
+    {
+        AutoGroup *checkbox = switcher_list.at(i);
+        if(checkbox->getSwitcherStatus())
+        {
+            onNum +=1;
+        }
+        else {
+            offNum += 1;
+        }
+    }
+    on_num_label->setText(QString::number(onNum));
+    off_num_label->setText(QString::number(offNum));
 }
 
 void AutoStartWidget::setCurrentItemAutoStatus(QString dekstopName)
@@ -177,18 +193,8 @@ void AutoStartWidget::setCurrentItemAutoStatus(QString dekstopName)
     int  start_pos = dekstopName.lastIndexOf("/") + 1;
     int end_pos = dekstopName.length();
     QString name = dekstopName.mid(start_pos, end_pos-start_pos);
-//    qDebug() << "change status->" << name;
     sessionproxy->changeAutoStartAppStatus(name);
-    //need to get status to change on_num_label and off_num_label
-//    onNum += 1;
-//    offNum -= 1;
-//    on_num_label->setText(QString::number(onNum));
-//    off_num_label->setText(QString::number(offNum));
-}
-
-void AutoStartWidget::setLanguage()
-{
-
+    this->scanAllSwitcher();
 }
 
 void AutoStartWidget::initConnect()
@@ -207,8 +213,3 @@ void AutoStartWidget::onCloseButtonClicked()
 {
     this->close();
 }
-
-//void AutoStartWidget::onMinButtonClicked()
-//{
-//    this->hide();
-//}

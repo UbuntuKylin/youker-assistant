@@ -19,30 +19,29 @@
 
 #include "cleanerdetailwidget.h"
 #include "ui_cleanerdetailwidget.h"
-#include "../component/kylintoolbutton.h"
 #include "../mainui/mainwindow.h"
+#include "../component/cleansubgroup.h"
 #include <QDebug>
 #include <QBoxLayout>
 
-
-CleanerDetailWidget::CleanerDetailWidget(QWidget *parent, SessionDispatcher *seroxy, SystemDispatcher *syproxy, MainWindow *window)
-    : QWidget(parent), sessionproxy(seroxy), systemproxy(syproxy), parentWindow(window),
+CleanerDetailWidget::CleanerDetailWidget(QWidget *parent, SessionDispatcher *seroxy, SystemDispatcher *syproxy, MainWindow *window, Toolkits *kits)
+    : QWidget(parent), sessionproxy(seroxy), systemproxy(syproxy), parentWindow(window), toolKits(kits),
     ui(new Ui::CleanerDetailWidget)
 {
     ui->setupUi(this);
     this->setFixedSize(900, 403);
     this->setAutoFillBackground(true);
-//    this->setObjectName("transparentWidget");
-
-    colorFlag = false;
+    this->setObjectName("transparentWidget");
+//    this->setAutoFillBackground(true);
+//    QPalette palette;
+//    palette.setBrush(QPalette::Window, QBrush(Qt::white));
+//    this->setPalette(palette);
 
     ui->scrollArea->setFixedSize(900, 403);
     ui->scrollArea->setAutoFillBackground(true);
-    ui->scrollAreaWidgetContents->setAutoFillBackground(true);
-    QPalette palette;
-    palette.setBrush(QPalette::Window, QBrush(Qt::white));
-    ui->scrollAreaWidgetContents->setPalette(palette);
-    ui->scrollArea->setPalette(palette);
+    ui->scrollArea->setBackgroundRole(QPalette::Light);
+
+    colorFlag = false;
 
     grid_layout = new QGridLayout();
     rowIndex = columnIndex = 0;
@@ -72,39 +71,23 @@ CleanerDetailWidget::CleanerDetailWidget(QWidget *parent, SessionDispatcher *ser
 
     trace_firefox_btn = NULL;
     trace_chromium_btn = NULL;
-//    trace_system_btn = NULL;
-
-
+    trace_system_btn = NULL;
 
     appendNum1 = 0;
     appendNum2 = 0;
     appendNum3 = 0;
-//    main_layout = new QBoxLayout(QBoxLayout::TopToBottom);
-//    layout1 = new QHBoxLayout();
-//    layout2 = new QHBoxLayout();
-//    layout3 = new QHBoxLayout();
-//    layout1->setSpacing(30);
-//    layout1->setMargin(0);
-//    layout1->setContentsMargins(0,0,0,0);
-//    layout2->setSpacing(30);
-//    layout2->setMargin(0);
-//    layout2->setContentsMargins(0,0,0,0);
-//    layout3->setSpacing(30);
-//    layout3->setMargin(0);
-//    layout3->setContentsMargins(0,0,0,0);
-//    main_layout->addLayout(layout1);
-//    main_layout->addLayout(layout2);
-//    main_layout->addLayout(layout3);
-//    main_layout->setSpacing(30);
-//    main_layout->setMargin(0);
-//    main_layout->setContentsMargins(0,0,0,0);
-//    ui->scrollAreaWidgetContents->setLayout(main_layout);
+
     ui->scrollAreaWidgetContents->setLayout(grid_layout);
     this->setLanguage();
 }
 
 CleanerDetailWidget::~CleanerDetailWidget()
 {
+    if(grid_layout != NULL)
+    {
+        delete grid_layout;
+        grid_layout = NULL;
+    }
     delete ui;
 }
 
@@ -126,9 +109,10 @@ void CleanerDetailWidget::CleanUIAndData()
     cookies_chromium_list.clear();
     trace_firefox_count.clear();
     trace_chromium_count.clear();
+    trace_system_count.clear();
 
     //clear ui
-    while(grid_layout->count() > 0)
+    while(grid_layout != NULL && grid_layout->count() > 0)
     {
         QWidget* widget = grid_layout->itemAt(0)->widget();
         grid_layout->removeWidget(widget);
@@ -230,14 +214,14 @@ void CleanerDetailWidget::showReciveData(const QStringList &data)
                 trace_chromium_count = data.at(1).split(":").at(1);
         }
     }
-//    else if(data.at(0) == "Belong:History.system" && !data.at(1).isEmpty())
-//    {
-//        if(data.at(1).contains(":"))
-//        {
-////            if(data.at(1).split(":").at(1).toInt() != 0)
-////                this->addSubItem(12, data.at(1).split(":").at(1));
-//        }
-//    }
+    else if(data.at(0) == "Belong:History.system" && !data.at(1).isEmpty())
+    {
+        if(data.at(1).contains(":"))
+        {
+            if(data.at(1).split(":").at(1).toInt() != 0)
+                trace_system_count = data.at(1).split(":").at(1);
+        }
+    }
 }
 
 void CleanerDetailWidget::showReciveStatus(const QString &status)
@@ -247,14 +231,16 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         if(cache_apt_list.length() > 0)
         {
             cache_apt_items = new CleanListWidget(cache_apt_list, tr("Apt Cache Clean Items"));
-            cache_apt_btn = new CommonCheckBox(0, "://res/cache.png");
-            cache_apt_btn->setFixedSize(160, 130);
-            cache_apt_btn->setToolTip("cache-apt");
+//            cache_apt_btn = new CommonCheckBox(0, "://res/cache");
+            cache_apt_btn = new CleanSubGroup(0, "://res/cache");
+//            cache_apt_btn->setFixedSize(160, 130);
+//            cache_apt_btn->setFixedSize(160, 200);
+            cache_apt_btn->setStatusTip("cache-apt");
             cache_apt_btn->setLabelText(tr("Apt Cache count:"), cache_apt_list.length());
             //子checkbox的状态被改变时，重新设置总按钮的状态
             connect(cache_apt_items, SIGNAL(notifyMainCheckBox(int)), cache_apt_btn, SLOT(resetMainStatus(int)));
-            //点击自定义按钮后，根据总按钮的状态去改变子checkbox的状态
-            connect(cache_apt_btn, SIGNAL(customButtonClicked()), this, SLOT(onButtonClicked()));
+            //点击自定义按钮后，显示自定义页面
+            connect(cache_apt_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(cache_apt_btn, SIGNAL(spreadStatus(int)), cache_apt_items, SLOT(resetSubCheckbox(int)));
 //            if(appendNum1 < 4)
@@ -275,6 +261,10 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
 //                    appendNum3 += 1;
 //                }
 //            }
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
             if(columnIndex < 5)
             {
                 grid_layout->addWidget(cache_apt_btn, rowIndex, columnIndex);
@@ -291,16 +281,22 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         if(cache_software_list.length() > 0)
         {
             cache_software_items = new CleanListWidget(cache_software_list, tr("Software Cache Clean Items"));
-            cache_software_btn = new CommonCheckBox(0, "://res/cache.png");
-            cache_software_btn->setFixedSize(160, 130);
-            cache_software_btn->setToolTip("cache-software");
+//            cache_software_btn = new CommonCheckBox(0, "://res/cache");
+            cache_software_btn = new CleanSubGroup(0, "://res/cache");
+//            cache_software_btn->setFixedSize(160, 130);
+//            cache_software_btn->setFixedSize(160, 200);
+            cache_software_btn->setStatusTip("cache-software");
             cache_software_btn->setLabelText(tr("Software Cache count:"), cache_software_list.length());
             //子checkbox的状态被改变时，重新设置总按钮的状态
             connect(cache_software_items, SIGNAL(notifyMainCheckBox(int)), cache_software_btn, SLOT(resetMainStatus(int)));
             //点击自定义按钮后，根据总按钮的状态去改变子checkbox的状态
-            connect(cache_software_btn, SIGNAL(customButtonClicked()), this, SLOT(onButtonClicked()));
+            connect(cache_software_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(cache_software_btn, SIGNAL(spreadStatus(int)), cache_software_items, SLOT(resetSubCheckbox(int)));
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
             if(columnIndex < 5)
             {
                 grid_layout->addWidget(cache_software_btn, rowIndex, columnIndex);
@@ -335,17 +331,22 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         if(cache_thumbnails_list.length() > 0)
         {
             cache_thumbnails_items = new CleanListWidget(cache_thumbnails_list, tr("Thumbnails Cache Clean Items"));
-            cache_thumbnails_btn = new CommonCheckBox(0, "://res/cache.png");
-            cache_thumbnails_btn->setFixedSize(160, 130);
-            cache_thumbnails_btn->setToolTip("cache-thumbnails");
+//            cache_thumbnails_btn = new CommonCheckBox(0, "://res/cache");
+            cache_thumbnails_btn = new CleanSubGroup(0, "://res/cache");
+//            cache_thumbnails_btn->setFixedSize(160, 130);
+//            cache_thumbnails_btn->setFixedSize(160, 200);
+            cache_thumbnails_btn->setStatusTip("cache-thumbnails");
             cache_thumbnails_btn->setLabelText(tr("Thumbnails Cache Count:"), cache_thumbnails_list.length());
             //子checkbox的状态被改变时，重新设置总按钮的状态
             connect(cache_thumbnails_items, SIGNAL(notifyMainCheckBox(int)), cache_thumbnails_btn, SLOT(resetMainStatus(int)));
             //点击自定义按钮后，根据总按钮的状态去改变子checkbox的状态
-            connect(cache_thumbnails_btn, SIGNAL(customButtonClicked()), this, SLOT(onButtonClicked()));
+            connect(cache_thumbnails_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(cache_thumbnails_btn, SIGNAL(spreadStatus(int)), cache_thumbnails_items, SLOT(resetSubCheckbox(int)));
-
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
             if(columnIndex < 5)
             {
                 grid_layout->addWidget(cache_thumbnails_btn, rowIndex, columnIndex);
@@ -381,17 +382,21 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         if(cache_firefox_list.length() > 0)
         {
             cache_firefox_items = new CleanListWidget(cache_firefox_list, tr("Software Cache Clean Items"));
-            cache_firefox_btn = new CommonCheckBox(0, "://res/cache.png");
-            cache_firefox_btn->setFixedSize(160, 130);
-            cache_firefox_btn->setToolTip("cache-firefox");
+//            cache_firefox_btn = new CommonCheckBox(0, "://res/cache");
+            cache_firefox_btn = new CleanSubGroup(0, "://res/cache");
+//            cache_firefox_btn->setFixedSize(160, 130);
+            cache_firefox_btn->setStatusTip("cache-firefox");
             cache_firefox_btn->setLabelText(tr("Firefox Cache Count:"), cache_firefox_list.length());
             //子checkbox的状态被改变时，重新设置总按钮的状态
             connect(cache_firefox_items, SIGNAL(notifyMainCheckBox(int)), cache_firefox_btn, SLOT(resetMainStatus(int)));
             //点击自定义按钮后，根据总按钮的状态去改变子checkbox的状态
-            connect(cache_firefox_btn, SIGNAL(customButtonClicked()), this, SLOT(onButtonClicked()));
+            connect(cache_firefox_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(cache_firefox_btn, SIGNAL(spreadStatus(int)), cache_firefox_items, SLOT(resetSubCheckbox(int)));
-
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
             if(columnIndex < 5)
             {
                 grid_layout->addWidget(cache_firefox_btn, rowIndex, columnIndex);
@@ -425,17 +430,21 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         if(cache_chromium_list.length() > 0)
         {
             cache_chromium_items = new CleanListWidget(cache_chromium_list, tr("Thumbnails Cache Clean Items"));
-            cache_chromium_btn = new CommonCheckBox(0, "://res/cache.png");
-            cache_chromium_btn->setFixedSize(160, 130);
-            cache_chromium_btn->setToolTip("cache-chromium");
+//            cache_chromium_btn = new CommonCheckBox(0, "://res/cache");
+            cache_chromium_btn = new CleanSubGroup(0, "://res/cache");
+//            cache_chromium_btn->setFixedSize(160, 130);
+            cache_chromium_btn->setStatusTip("cache-chromium");
             cache_chromium_btn->setLabelText(tr("Chromium Cache Count:"), cache_chromium_list.length());
             //子checkbox的状态被改变时，重新设置总按钮的状态
             connect(cache_chromium_items, SIGNAL(notifyMainCheckBox(int)), cache_chromium_btn, SLOT(resetMainStatus(int)));
             //点击自定义按钮后，根据总按钮的状态去改变子checkbox的状态
-            connect(cache_chromium_btn, SIGNAL(customButtonClicked()), this, SLOT(onButtonClicked()));
+            connect(cache_chromium_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(cache_chromium_btn, SIGNAL(spreadStatus(int)), cache_chromium_items, SLOT(resetSubCheckbox(int)));
-
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
             if(columnIndex < 5)
             {
                 grid_layout->addWidget(cache_chromium_btn, rowIndex, columnIndex);
@@ -473,20 +482,22 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
 //        doing_label->setText(tr("Cookies Scan OK......"));
         if(cookies_firefox_list.length() > 0)
         {
-//            qDebug() << "11111111111";
-//            qDebug() << cookies_firefox_list.length();
             cookies_firefox_items = new CleanListWidget(cookies_firefox_list, tr("Thumbnails Cache Clean Items"));
-            cookies_firefox_btn = new CommonCheckBox(0, "://res/cookie.png");
-            cookies_firefox_btn->setFixedSize(160, 130);
-            cookies_firefox_btn->setToolTip("cookes-firefox");
+//            cookies_firefox_btn = new CommonCheckBox(0, "://res/cookie");
+            cookies_firefox_btn = new CleanSubGroup(0, "://res/cache");
+//            cookies_firefox_btn->setFixedSize(160, 130);
+            cookies_firefox_btn->setStatusTip("cookes-firefox");
             cookies_firefox_btn->setLabelText(tr("Firefox Cookies Count:"), cookies_firefox_list.length());
             //子checkbox的状态被改变时，重新设置总按钮的状态
             connect(cookies_firefox_items, SIGNAL(notifyMainCheckBox(int)), cookies_firefox_btn, SLOT(resetMainStatus(int)));
             //点击自定义按钮后，根据总按钮的状态去改变子checkbox的状态
-            connect(cookies_firefox_btn, SIGNAL(customButtonClicked()), this, SLOT(onButtonClicked()));
+            connect(cookies_firefox_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(cookies_firefox_btn, SIGNAL(spreadStatus(int)), cookies_firefox_items, SLOT(resetSubCheckbox(int)));
-
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
             if(columnIndex < 5)
             {
                 grid_layout->addWidget(cookies_firefox_btn, rowIndex, columnIndex);
@@ -522,17 +533,21 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         if(cookies_chromium_list.length() > 0)
         {
             cookies_chromium_items = new CleanListWidget(cookies_chromium_list, tr("Thumbnails Cache Clean Items"));
-            cookies_chromium_btn = new CommonCheckBox(0, "://res/cookie.png");
-            cookies_chromium_btn->setFixedSize(160, 130);
-            cookies_chromium_btn->setToolTip("cookes-chromium");
+//            cookies_chromium_btn = new CommonCheckBox(0, "://res/cache");
+            cookies_chromium_btn = new CleanSubGroup(0, "://res/cache");
+//            cookies_chromium_btn->setFixedSize(160, 130);
+            cookies_chromium_btn->setStatusTip("cookes-chromium");
             cookies_chromium_btn->setLabelText(tr("Chromium Cookies Count:"), cookies_chromium_list.length());
             //子checkbox的状态被改变时，重新设置总按钮的状态
             connect(cookies_chromium_items, SIGNAL(notifyMainCheckBox(int)), cookies_chromium_btn, SLOT(resetMainStatus(int)));
             //点击自定义按钮后，根据总按钮的状态去改变子checkbox的状态
-            connect(cookies_chromium_btn, SIGNAL(customButtonClicked()), this, SLOT(onButtonClicked()));
+            connect(cookies_chromium_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(cookies_chromium_btn, SIGNAL(spreadStatus(int)), cookies_chromium_items, SLOT(resetSubCheckbox(int)));
-
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
             if(columnIndex < 5)
             {
                 grid_layout->addWidget(cookies_chromium_btn, rowIndex, columnIndex);
@@ -571,11 +586,16 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
 //        doing_label->setText(tr("History Scan OK......"));
         if(trace_firefox_count.length() > 0)
         {
-            trace_firefox_btn = new CommonCheckBox(0, "://res/trace.png");
-            trace_firefox_btn->setFixedSize(160, 130);
-            trace_firefox_btn->setToolTip("history-firefox");
+//            trace_firefox_btn = new CommonCheckBox(0, "://res/cache");
+            trace_firefox_btn = new CleanSubGroup(0, "://res/cache");
+//            trace_firefox_btn->setFixedSize(160, 130);
+            trace_firefox_btn->hideCustomButton();
+            trace_firefox_btn->setStatusTip("history-firefox");
             trace_firefox_btn->setLabelText(tr("Firefox History Count:"), trace_firefox_count.toInt());
-
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
             if(columnIndex < 5)
             {
                 grid_layout->addWidget(trace_firefox_btn, rowIndex, columnIndex);
@@ -608,11 +628,14 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         }
         if(trace_chromium_count.length() > 0)
         {
-            trace_chromium_btn = new CommonCheckBox(0, "://res/trace.png");
-            trace_chromium_btn->setFixedSize(160, 130);
-            trace_chromium_btn->setToolTip("history-chromium");
+            trace_chromium_btn = new CleanSubGroup(0, "://res/cache");
+            trace_chromium_btn->hideCustomButton();
+            trace_chromium_btn->setStatusTip("history-chromium");
             trace_chromium_btn->setLabelText(tr("Chromium History Count:"), trace_chromium_count.toInt());
-
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
             if(columnIndex < 5)
             {
                 grid_layout->addWidget(trace_chromium_btn, rowIndex, columnIndex);
@@ -624,26 +647,30 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
                 grid_layout->addWidget(trace_chromium_btn, rowIndex, columnIndex);
                 columnIndex += 1;
             }
-//            if(appendNum1 < 4)
-//            {
-//                layout1->addWidget(trace_chromium_btn);
-//                appendNum1 += 1;
-//            }
-//            else
-//            {
-//                if(appendNum2 < 4)
-//                {
-//                    layout2->addWidget(trace_chromium_btn);
-//                    appendNum2 += 1;
-//                }
-//                else
-//                {
-//                    layout3->addWidget(trace_chromium_btn);
-//                    appendNum3 += 1;
-//                }
-//            }
         }
 
+        if(trace_system_count.length() > 0)
+        {
+            trace_system_btn = new CleanSubGroup(0, "://res/cache");
+            trace_system_btn->hideCustomButton();
+            trace_system_btn->setStatusTip("history-system");
+            trace_system_btn->setLabelText(tr("System History Count:"), trace_system_count.toInt());
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
+            if(columnIndex < 5)
+            {
+                grid_layout->addWidget(trace_system_btn, rowIndex, columnIndex);
+                columnIndex += 1;
+            }
+            else {
+                rowIndex += 1;
+                columnIndex = 0;
+                grid_layout->addWidget(trace_system_btn, rowIndex, columnIndex);
+                columnIndex += 1;
+            }
+        }
     }
     else if(status == "Complete:Packages")
     {
@@ -651,17 +678,21 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         if(package_unneed_list.length() > 0)
         {
             package_unneed_items = new CleanListWidget(package_unneed_list, tr("Thumbnails Cache Clean Items"));
-            package_unneed_btn = new CommonCheckBox(0, "://res/package.png");
-            package_unneed_btn->setFixedSize(160, 130);
-            package_unneed_btn->setToolTip("package-unneed");
+//            package_unneed_btn = new CommonCheckBox(0, "://res/cache");
+            package_unneed_btn = new CleanSubGroup(0, "://res/cache");
+//            package_unneed_btn->setFixedSize(160, 130);
+            package_unneed_btn->setStatusTip("package-unneed");
             package_unneed_btn->setLabelText(tr("Package Unneed Count:"),package_unneed_list.length());
             //子checkbox的状态被改变时，重新设置总按钮的状态
             connect(package_unneed_items, SIGNAL(notifyMainCheckBox(int)), package_unneed_btn, SLOT(resetMainStatus(int)));
             //点击自定义按钮后，根据总按钮的状态去改变子checkbox的状态
-            connect(package_unneed_btn, SIGNAL(customButtonClicked()), this, SLOT(onButtonClicked()));
+            connect(package_unneed_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(package_unneed_btn, SIGNAL(spreadStatus(int)), package_unneed_items, SLOT(resetSubCheckbox(int)));
-
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
             if(columnIndex < 5)
             {
                 grid_layout->addWidget(package_unneed_btn, rowIndex, columnIndex);
@@ -696,17 +727,21 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         if(package_oldkernel_list.length() > 0)
         {
             package_oldkernel_items = new CleanListWidget(package_oldkernel_list, tr("Thumbnails Cache Clean Items"));
-            package_oldkernel_btn = new CommonCheckBox(0, "://res/package.png");
-            package_oldkernel_btn->setFixedSize(160, 130);
-            package_oldkernel_btn->setToolTip("package-oldkernel");
+//            package_oldkernel_btn = new CommonCheckBox(0, "://res/cache");
+            package_oldkernel_btn = new CleanSubGroup(0, "://res/cache");
+//            package_oldkernel_btn->setFixedSize(160, 130);
+            package_oldkernel_btn->setStatusTip("package-oldkernel");
             package_oldkernel_btn->setLabelText(tr("Package oldkernel Count:"), package_oldkernel_list.length());
             //子checkbox的状态被改变时，重新设置总按钮的状态
             connect(package_oldkernel_items, SIGNAL(notifyMainCheckBox(int)), package_oldkernel_btn, SLOT(resetMainStatus(int)));
             //点击自定义按钮后，根据总按钮的状态去改变子checkbox的状态
-            connect(package_oldkernel_btn, SIGNAL(customButtonClicked()), this, SLOT(onButtonClicked()));
+            connect(package_oldkernel_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(package_oldkernel_btn, SIGNAL(spreadStatus(int)), package_oldkernel_items, SLOT(resetSubCheckbox(int)));
-
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
             if(columnIndex < 5)
             {
                 grid_layout->addWidget(package_oldkernel_btn, rowIndex, columnIndex);
@@ -741,17 +776,21 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         if(package_configfile_list.length() > 0)
         {
             package_configfile_items = new CleanListWidget(package_configfile_list, tr("Thumbnails Cache Clean Items"));
-            package_configfile_btn = new CommonCheckBox(0, "://res/package.png");
-            package_configfile_btn->setFixedSize(160, 130);
-            package_configfile_btn->setToolTip("package-configfile");
+//            package_configfile_btn = new CommonCheckBox(0, "://res/cache");
+            package_configfile_btn = new CleanSubGroup(0, "://res/cache");
+//            package_configfile_btn->setFixedSize(160, 130);
+            package_configfile_btn->setStatusTip("package-configfile");
             package_configfile_btn->setLabelText(tr("Package configfile Count:"),package_configfile_list.length());
             //子checkbox的状态被改变时，重新设置总按钮的状态
             connect(package_configfile_items, SIGNAL(notifyMainCheckBox(int)), package_configfile_btn, SLOT(resetMainStatus(int)));
             //点击自定义按钮后，根据总按钮的状态去改变子checkbox的状态
-            connect(package_configfile_btn, SIGNAL(customButtonClicked()), this, SLOT(onButtonClicked()));
+            connect(package_configfile_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(package_configfile_btn, SIGNAL(spreadStatus(int)), package_configfile_items, SLOT(resetSubCheckbox(int)));
-
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
             if(columnIndex < 5)
             {
                 grid_layout->addWidget(package_configfile_btn, rowIndex, columnIndex);
@@ -813,11 +852,12 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
     }
 }
 
-void CleanerDetailWidget::onButtonClicked()
+void CleanerDetailWidget::showCustomPage()
 {
     QObject *object = QObject::sender();
-    CommonCheckBox *checkbox = qobject_cast<CommonCheckBox *>(object);
-    QString object_name = checkbox->toolTip();
+//    CommonCheckBox *checkbox = qobject_cast<CommonCheckBox *>(object);
+    CleanSubGroup *checkbox = qobject_cast<CleanSubGroup *>(object);
+    QString object_name = checkbox->statusTip();
     if(object_name == "cache-apt")
     {
 //        if(cache_apt_items != NULL)
@@ -1271,7 +1311,7 @@ void CleanerDetailWidget::receiveCleanSignal()
     this->getAllSelectedItems();
     if(argsData.empty())
     {
-        qDebug() << "args is empty..........";
+        toolKits->alertMSG(parentWindow->geometry().topLeft().x(), parentWindow->geometry().topLeft().y(), tr("Clean args is empty!"));
     }
     else
     {
@@ -1280,6 +1320,16 @@ void CleanerDetailWidget::receiveCleanSignal()
         systemproxy->cleanAllSelectItems(argsData);
     }
 }
+
+//void CleanerDetailWidget::receivePolicyKitSignal(bool status)
+//{
+//    //status = true:ok
+//    //status = false:cacel
+//    if(status)//ok
+//    {
+//        emit this->showActionAnimaiton();
+//    }
+//}
 
 void CleanerDetailWidget::getAllSelectedItems()
 {
@@ -1377,6 +1427,11 @@ void CleanerDetailWidget::getAllSelectedItems()
     {
        argsData.insert("chromium-history", QStringList() << trace_chromium_count);
     }
+    if(trace_system_btn != NULL && trace_system_btn->getCheckBoxStatus() != 0)
+    {
+       argsData.insert("system-history", QStringList() << trace_system_count);
+    }
+
     if(fileTmp.length() > 0)
         argsData.insert("file", fileTmp);
     if(packageTmp.length() > 0)

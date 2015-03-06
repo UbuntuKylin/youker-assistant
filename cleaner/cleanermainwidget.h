@@ -21,50 +21,45 @@
 #define CLEANERMAINWIDGET_H
 
 #include <QWidget>
-#include <QLabel>
-#include <QPushButton>
-#include <QMouseEvent>
-#include <QHBoxLayout>
-#include <QSignalMapper>
-#include <QVBoxLayout>
-#include "../component/kylinbutton.h"
-#include "../component/kylintoolbutton.h"
-#include "../component/systembutton.h"
-#include "../component/loadinglabel.h"
-#include "../component/kylincheckbox.h"
-
-#include <QCheckBox>
 #include "cleaneritems.h"
 
 class MainWindow;
+class CleanGroup;
+class SessionDispatcher;
+class Toolkits;
+
 class CleanerMainWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit CleanerMainWidget(QWidget *parent = 0, MainWindow *window = 0);
+    explicit CleanerMainWidget(QWidget *parent = 0, SessionDispatcher *seroxy = 0, MainWindow *window = 0, Toolkits *kits = 0);
     ~CleanerMainWidget();
     void setLanguage();
+    void getAllSelectedItems();
 
 public slots:
     void onButtonClicked();
+    void receiveScanSignal();
+
+signals:
+    void showActionAnimaiton();
 
 private:
-//    QList<QCheckBox *> checkbox_list;
     MainWindow *parentWindow;
     QLabel *tip_label;
-//    QCheckBox *main_checkbox;
 
-    KylinCheckBox *cache_btn;
+    CleanGroup *cache_btn;
     CleanerItems *cache_items;
-    KylinCheckBox *package_btn;
+    CleanGroup *package_btn;
     CleanerItems *package_items;
-    KylinCheckBox *cookies_btn;
+    CleanGroup *cookies_btn;
     CleanerItems *cookies_items;
-//    KylinCheckBox *browser_btn;
-    CleanerItems *browser_items;
-    KylinCheckBox *trace_btn;
+    CleanGroup *trace_btn;
     CleanerItems *trace_items;
 
+    QMap<QString, QVariant> argsMap;
+    SessionDispatcher *sessionproxy;
+    Toolkits *toolKits;
 };
 
 #endif // CLEANERMAINWIDGET_H

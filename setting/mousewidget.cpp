@@ -19,6 +19,9 @@
 
 #include "mousewidget.h"
 #include <QDebug>
+#include <QLabel>
+#include <QComboBox>
+#include <QRadioButton>
 #include "../dbusproxy/youkersessiondbus.h"
 #include "../dbusproxy/youkersystemdbus.h"
 
@@ -27,35 +30,6 @@ MouseWidget::MouseWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispa
     sessionproxy(proxy),
     systemproxy(sproxy)
 {
-//    splitter = new QSplitter();
-//    splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-//    splitter->setOrientation(Qt::Vertical);
-//    splitter->setHandleWidth(1);
-
-//    top_widget = new QWidget();
-//    bottom_widget = new QWidget();
-
-//    title_label = new QLabel();
-//    title_label->setFixedHeight(20);
-//    description_label = new QLabel();
-//    description_label->setFixedHeight(20);
-//    back_btn = new QPushButton();
-
-//    QVBoxLayout *v_layout = new QVBoxLayout();
-//    v_layout->addWidget(title_label);
-//    v_layout->addWidget(description_label);
-//    v_layout->setMargin(0);
-//    v_layout->setSpacing(1);
-
-//    QHBoxLayout *h_layout = new QHBoxLayout();
-//    h_layout->addWidget(back_btn);
-//    h_layout->addLayout(v_layout);
-//    h_layout->addStretch();
-//    top_widget->setLayout(h_layout);
-//    top_widget->setFixedSize(900,60);
-//    h_layout->setSpacing(20);
-//    h_layout->setContentsMargins(20, 0, 0, 0);
-
     theme_label = new QLabel();
     size_label = new QLabel();
     theme_combo = new QComboBox();
@@ -179,11 +153,9 @@ void MouseWidget::setRadioButtonRowStatus(/*bool status*/)
     if(obj_name == "smallradio")
     {
         sessionproxy->set_cursor_size_qt(24);
-//        qDebug() << "small radio clicked";
     }
     else if(obj_name == "bigradio")
     {
         sessionproxy->set_cursor_size_qt(48);
-//        qDebug() << "big radio clicked";
     }
 }

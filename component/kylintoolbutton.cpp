@@ -18,6 +18,7 @@
  */
 
 #include "kylintoolbutton.h"
+#include <QDebug>
 
 KylinToolButton::KylinToolButton(const QString &pic_name, const QString &text, QWidget *parent)
     :QToolButton(parent)
@@ -85,26 +86,19 @@ void KylinToolButton::mousePressEvent(QMouseEvent *event)
 void KylinToolButton::setMousePress(bool is_press)
 {
     this->mouse_press = is_press;
-	update();
-}
-
-void KylinToolButton::paintEvent(QPaintEvent *event)
-{
     if(this->mouse_over)
-	{
+    {
         this->setIcon(QIcon(hover_icon));
-	}
-	else
-	{
+    }
+    else
+    {
         if(this->mouse_press)
-		{
+        {
             this->setIcon(QIcon(press_icon));
-		}
+        }
         else
         {
             this->setIcon(QIcon(normal_icon));
         }
-	}
-
-	QToolButton::paintEvent(event);
+    }
 }

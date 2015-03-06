@@ -21,13 +21,11 @@
 #define CPUWIDGET_H
 
 #include <QWidget>
-#include <QLabel>
-#include <QPushButton>
-#include <QHBoxLayout>
 #include "computerpage.h"
 #include "../component/scrollwidget.h"
 #include <QMap>
-#include <QVariant>
+
+class QVariant;
 class SystemDispatcher;
 
 class CpuWidget : public QWidget

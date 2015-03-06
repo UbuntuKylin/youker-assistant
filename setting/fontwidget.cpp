@@ -28,35 +28,6 @@ FontWidget::FontWidget(QWidget *parent, SessionDispatcher *proxy, MainWindow *wi
     sessionproxy(proxy),
     parentWindow(window)
 {
-//    splitter = new QSplitter();
-//    splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-//    splitter->setOrientation(Qt::Vertical);
-//    splitter->setHandleWidth(1);
-
-//    top_widget = new QWidget();
-//    bottom_widget = new QWidget();
-
-//    title_label = new QLabel();
-//    title_label->setFixedHeight(20);
-//    description_label = new QLabel();
-//    description_label->setFixedHeight(20);
-//    back_btn = new QPushButton();
-
-//    QVBoxLayout *v_layout = new QVBoxLayout();
-//    v_layout->addWidget(title_label);
-//    v_layout->addWidget(description_label);
-//    v_layout->setMargin(0);
-//    v_layout->setSpacing(1);
-
-//    QHBoxLayout *h_layout = new QHBoxLayout();
-//    h_layout->addWidget(back_btn);
-//    h_layout->addLayout(v_layout);
-//    h_layout->addStretch();
-//    top_widget->setLayout(h_layout);
-//    top_widget->setFixedSize(900,60);
-//    h_layout->setSpacing(20);
-//    h_layout->setContentsMargins(20, 0, 0, 0);
-
     default_font_label = new QLabel();
     desktop_font_label = new QLabel();
     monospace_font_label = new QLabel();
@@ -303,7 +274,6 @@ void FontWidget::setMonospaceFont() {
 void FontWidget::resetMonospaceFont(QString cur_font)
 {
     sessionproxy->set_monospace_font_qt(cur_font);
-//    qDebug() << cur_font;
     monospace_font_btn->setText(cur_font);
 }
 
@@ -319,7 +289,6 @@ void FontWidget::setDocumentFont() {
 void FontWidget::resetDocumentFont(QString cur_font)
 {
     sessionproxy->set_document_font_qt(cur_font);
-//    qDebug() << cur_font;
     document_font_btn->setText(cur_font);
 }
 
@@ -335,7 +304,6 @@ void FontWidget::setTitlebarFont() {
 void FontWidget::resetTitlebarFont(QString cur_font)
 {
     sessionproxy->set_window_title_font_qt(cur_font);
-//    qDebug() << cur_font;
     titlebar_font_btn->setText(cur_font);
 }
 

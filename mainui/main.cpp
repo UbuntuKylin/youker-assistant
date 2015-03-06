@@ -21,6 +21,7 @@
 #include <QApplication>
 #include <QTextCodec>
 #include <QTranslator>
+#include <QtSingleApplication>
 
 #include <unistd.h>
 #include <fcntl.h>
@@ -64,7 +65,11 @@ int make_pid_file() {
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
+//    QApplication app(argc, argv);
+    //单程序运行处理
+    QtSingleApplication app(argc, argv);
+    if (app.isRunning())
+        return 0;
 
     QTextCodec::setCodecForTr(QTextCodec::codecForLocale());
     QTextCodec::setCodecForCStrings(QTextCodec::codecForLocale());
@@ -77,9 +82,9 @@ int main(int argc, char *argv[])
 
     QString locale = QLocale::system().name();
     QTranslator translator;
-    if(locale == "zh_CN") {
+    if(locale == "zh_CN" || locale == "es" || locale == "fr" || locale == "de" || locale == "ru") {//中文 西班牙语 法语 德语 俄语
         if(!translator.load("youker-assistant_" + locale + ".qm",
-                            ":/translate/translation/"))
+                            ":/qmfile/translation/"))
             qDebug() << "Load translation file："<< "youker-assistant_" + locale + ".qm" << " failed!";
         else
             app.installTranslator(&translator);

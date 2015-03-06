@@ -22,7 +22,6 @@
 
 #include <QWidget>
 #include <QLabel>
-#include <QToolButton>
 #include <QHBoxLayout>
 #include <QPushButton>
 #include <QListView>
@@ -49,7 +48,7 @@ public slots:
 
 private:
     QListView *list_view;
-    KylinListModel m_feture_Model;
+    KylinListModel pluginModel;
     QString plugin_path;
     SessionDispatcher *sessionProxy;
 };

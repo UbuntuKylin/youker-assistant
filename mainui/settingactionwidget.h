@@ -21,21 +21,12 @@
 #define SETTINGACTIONWIDGET_H
 
 #include <QWidget>
-#include <QLabel>
-#include <QPushButton>
-#include <QMouseEvent>
-#include <QHBoxLayout>
-#include <QSignalMapper>
-#include <QVBoxLayout>
 #include "../component/kylinbutton.h"
-#include "../component/kylintoolbutton.h"
 #include "../component/systembutton.h"
-#include "../component/loadinglabel.h"
-#include <QStackedWidget>
-
 #include "../component/settingaction.h"
 
 class MainWindow;
+class QStackedWidget;
 
 class SettingActionWidget : public QWidget
 {
@@ -57,7 +48,6 @@ signals:
 private:
     QLabel *img_label;
     QLabel *title_label;
-//    QLabel *description_label;
     QStackedWidget *stacked_widget;
     QWidget *main_acion;
     SettingAction *theme_action;

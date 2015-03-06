@@ -18,9 +18,11 @@
  */
 
 #include "computerpage.h"
-#include "../component/labelgroup.h"
 #include "../component/utils.h"
 #include <QDebug>
+#include <QLabel>
+#include <QGroupBox>
+#include <QFormLayout>
 
 ComputerPage::ComputerPage(QWidget *parent, QString title/*, QString manufacturer*/) :
     QWidget(parent), title_context(title)/*, vendor(manufacturer)*/
@@ -50,21 +52,12 @@ ComputerPage::~ComputerPage()
 }
 
 void ComputerPage::setLanguage() {
-//    title_label->setText(tr("%1").arg(title_context));
     group_box->setTitle(tr("%1").arg(title_context));
 }
 
 void ComputerPage::initUI()
 {
     group_box = new QGroupBox();
-
-
-
-//    logo_label->setFixedSize(93, 70);
-//    QPalette palette;
-////    palette.setBrush(using_label->backgroundRole(), QBrush(QPixmap(":/vendor/res/manufacturer/INTEL.jpg")));
-//    palette.setBrush(QPalette::Background, QBrush(QPixmap(":/vendor/res/manufacturer/" + vendor + ".jpg")));
-//    logo_label->setPalette(palette);
 
     if(!vendor.isEmpty())
     {
@@ -79,7 +72,6 @@ void ComputerPage::initUI()
         logo_label->move(720 - logo_label->width(), 40);
     }
 
-//    group_box->setStyleSheet("QGroupBox::title{color:green;}");
     QFont group_box_font = group_box->font();
     group_box_font.setBold(true);
     group_box->setFont(group_box_font);
@@ -91,8 +83,6 @@ void ComputerPage::initUI()
     form_layout->setHorizontalSpacing(ITEMHSPACE);
     form_layout->setRowWrapPolicy(QFormLayout::DontWrapRows);
     form_layout->setFieldGrowthPolicy(QFormLayout::FieldsStayAtSizeHint);
-//    form_layout->setLabelAlignment(Qt::AlignRight|Qt::AlignVCenter);
-//    form_layout->setFormAlignment(Qt::AlignCenter);
 
     QMap<QString,QVariant>::iterator it; //遍历map
     for ( it = info_map.begin(); it != info_map.end(); ++it ) {
@@ -121,86 +111,16 @@ void ComputerPage::initUI()
             form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), label);
             page_height += label->height();
         }
-//        label->setFixedHeight(ITEMHEIGHT);
-//        form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), label);
-//        page_height += label->height();
         page_height += ITEMVSPACE;
     }
     page_height += ITEMVSPACE*2;//every groupbox has tow separate line
     page_height += 30;
-//    page_height += 15;//space of QGroupBox's title and content in qss
-//    qDebug() << "compute page->" << page_height;
     info_map.clear(); //清空map
-
-//    QLabel *label1 = new QLabel("12:45:43");
-//    label1->setFixedHeight(30);
-//    form_layout->addRow("Boot Time:", label1);
-//    page_height += 40;
-//    QLabel *label2 = new QLabel("aaaa");
-//    label2->setFixedHeight(30);
-//    form_layout->addRow("Host Name:", label2);
-//    page_height += 40;
-//    QLabel *label3 = new QLabel("bbbb");
-//    label3->setFixedHeight(30);
-//    form_layout->addRow("IP Address:", label3);
-//    page_height += 40;
-//    QLabel *label4 = new QLabel("cccc");
-//    label4->setFixedHeight(30);
-//    form_layout->addRow("MAC address ABCDEFGHIGH:", label4);
-//    page_height += 40;
-//    QLabel *label5 = new QLabel("dddd");
-//    label5->setFixedHeight(30);
-//    form_layout->addRow("OS Details:", label5);
-//    page_height += 40;
-//    QLabel *label6 = new QLabel("eeee");
-//    label6->setFixedHeight(30);
-//    form_layout->addRow("OS Details:", label6);
-//    page_height += 40;
-//    QLabel *label7 = new QLabel("ffff");
-//    label7->setFixedHeight(30);
-//    form_layout->addRow("OS Details:", label7);
-//    page_height += 40;
-//    QLabel *label8 = new QLabel("gggg");
-//    label8->setFixedHeight(30);
-//    form_layout->addRow("OS Details:", label8);
-//    page_height += 40;
-//    QLabel *label9 = new QLabel("hhhhh");
-//    label9->setFixedHeight(30);
-//    form_layout->addRow("OS Details:", label9);
-//    page_height += 40;
-
-//    page_height += 40;
 
     group_box->setLayout(form_layout);
     QVBoxLayout *layout = new QVBoxLayout();
     layout->addWidget(group_box);
     setLayout(layout);
-
-
-
-
-//    if(title_label == NULL)
-//    {
-//        title_label = new QLabel();
-//        title_label->setFixedHeight(ITEMHEIGHT);
-//        QFont font = title_label->font();
-//        font.setPointSize(12);
-//        font.setBold(true);
-//        title_label->setFont(font);
-//        title_label->setObjectName("titleLabel");
-//    }
-
-
-//    logo_label = new QLabel(this);
-//    logo_label->setFixedSize(93, 70);
-//    logo_label->setAutoFillBackground(true);
-//    QPalette palette;
-////    palette.setBrush(using_label->backgroundRole(), QBrush(QPixmap(":/vendor/res/manufacturer/INTEL.jpg")));
-//    palette.setBrush(QPalette::Background, QBrush(QPixmap(":/vendor/res/manufacturer/INTEL.jpg")));
-//    logo_label->setPalette(palette);
-//    logo_label->show();
-//    logo_label->move(670 - logo_label->width(), 40);
-
 
     this->setLanguage();
 }
@@ -455,31 +375,14 @@ QString ComputerPage::translatorSwitch(QString orgStr)
         return tr("Kernel Arch");
     else
         return "";
-
 }
 
-bool ComputerPage::eventFilter(QObject *obj, QEvent *event)
-{
-//    if(obj == line)
-//    {
-//        if(event->type() == QEvent::Paint)
-//        {
-//            int label_width  = 100;//line->width();
-//            QPainter painter(line);
-//            painter.setPen(QPen(QColor(220, 220, 220), 1, Qt::DashLine));
-//            painter.drawLine(label_width/2, 0, label_width/2, 1);
-//        }
-//    }
-
-//    return QWidget::eventFilter(obj, event);
-}
-
-void ComputerPage::resizeEvent(QResizeEvent *event)
-{
-    //获取当前窗口高度
-//    this->resize(700, page_height);
-//    page_height = height();
-    QWidget::resizeEvent(event);
-}
+//void ComputerPage::resizeEvent(QResizeEvent *event)
+//{
+//    //获取当前窗口高度
+////    this->resize(700, page_height);
+////    page_height = height();
+//    QWidget::resizeEvent(event);
+//}
 
 

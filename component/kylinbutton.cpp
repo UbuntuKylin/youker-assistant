@@ -72,33 +72,33 @@ void KylinButton::leaveEvent(QEvent *)
 
 void KylinButton::paintEvent(QPaintEvent *)
 {
-	QPainter painter(this);
-	QPixmap pixmap;
-	switch(status)
-	{
-	case NORMAL:
-		{
-			pixmap.load(pic_name);
-			break;
-		}    
-	case ENTER:
-		{
-			pixmap.load(pic_name + QString("_hover"));
-			break;
-		} 
-	case PRESS:
-		{
-			pixmap.load(pic_name + QString("_pressed"));	
-			break;
-		}   
-	case NOSTATUS:
-		{
-			pixmap.load(pic_name);	
-			break;
-		}   
-	default:
-		pixmap.load(pic_name);
-	}
+    QPainter painter(this);
+    QPixmap pixmap;
+    switch(status)
+    {
+    case NORMAL:
+        {
+            pixmap.load(pic_name);
+            break;
+        }
+    case ENTER:
+        {
+            pixmap.load(pic_name + QString("_hover"));
+            break;
+        }
+    case PRESS:
+        {
+            pixmap.load(pic_name + QString("_pressed"));
+            break;
+        }
+    case NOSTATUS:
+        {
+            pixmap.load(pic_name);
+            break;
+        }
+    default:
+        pixmap.load(pic_name);
+    }
 	
-	painter.drawPixmap(rect(), pixmap);
+    painter.drawPixmap(rect(), pixmap);
 }
