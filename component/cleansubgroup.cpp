@@ -28,7 +28,7 @@ CleanSubGroup::CleanSubGroup(QWidget *parent, const QString &picture) :
     QWidget(parent), tristateStatus(2)
 {
     this->setAttribute(Qt::WA_TranslucentBackground);
-    this->setFixedSize(160, 190);
+    this->setFixedSize(160, 110);
     this->setFocusPolicy(Qt::NoFocus);
     img_btn = new CleanSubButton();
 //    img_btn->setAttribute(Qt::WA_TransparentForMouseEvents);//屏蔽鼠标事件
@@ -65,7 +65,7 @@ CleanSubGroup::CleanSubGroup(QWidget *parent, const QString &picture) :
     h_layout->addStretch();
 
     QVBoxLayout *main_layout = new QVBoxLayout();
-    main_layout->addWidget(img_btn);
+    main_layout->addWidget(img_btn, 0, Qt::AlignHCenter);
     main_layout->addLayout(h_layout);
     main_layout->addWidget(custom_btn,0, Qt::AlignHCenter);
     main_layout->setSpacing(5);

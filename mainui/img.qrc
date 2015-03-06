@@ -141,6 +141,21 @@
         <file>res/package_uncheck.png</file>
         <file>res/trace_check.png</file>
         <file>res/trace_uncheck.png</file>
+        <file>res/bigfile_logo.png</file>
+        <file>res/bigfile_logo_gray.png</file>
+        <file>res/browser_logo.png</file>
+        <file>res/browser_logo_gray.png</file>
+        <file>res/cache_logo.png</file>
+        <file>res/cache_logo_gray.png</file>
+        <file>res/cookie_logo.png</file>
+        <file>res/cookie_logo_gray.png</file>
+        <file>res/disappear.png</file>
+        <file>res/package_logo.png</file>
+        <file>res/package_logo_gray.png</file>
+        <file>res/trace_logo.png</file>
+        <file>res/trace_logo_gray.png</file>
+        <file>res/item_check.png</file>
+        <file>res/item_uncheck.png</file>
     </qresource>
     <qresource prefix="/sys">
         <file>res/sysBtn/close_button.png</file>

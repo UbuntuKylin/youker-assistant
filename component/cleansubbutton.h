@@ -44,10 +44,10 @@ protected:
 
 private:
     int tristateStatus;
-    QPixmap hoverPixmap;
-    QPixmap grayhoverPixmap;
+//    QPixmap hoverPixmap;
+//    QPixmap grayhoverPixmap;
     QPixmap checkPixmap;
-    QPixmap midcheckPixmap;
+//    QPixmap midcheckPixmap;
     QPixmap uncheckPixmap;
     QList<QPixmap> checkboxList;
     BUTTONSTATUS buttonStatus;

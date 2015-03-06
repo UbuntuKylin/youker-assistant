@@ -33,9 +33,9 @@ CleanButton::CleanButton(QWidget *parent) :
     {
         checkboxList.append(pixMap.copy(i*(width/num), 0, width/num, height));
     }
-    //设置checkbox的显示位置:x(60), y(60)
+    //设置checkbox的显示位置:x(62), y(53)
     checkboxRect.setX(60);
-    checkboxRect.setY(60);
+    checkboxRect.setY(53);
     checkboxRect.setSize(checkboxList.at(0).size());
 }
 
