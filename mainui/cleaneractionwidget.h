@@ -28,15 +28,11 @@
 #include <QSignalMapper>
 #include <QVBoxLayout>
 #include "../component/kylinbutton.h"
-#include "../component/kylintoolbutton.h"
 #include "../component/systembutton.h"
 #include "../component/loadinglabel.h"
-#include <QStackedWidget>
 
-//class MainWindow;
 class SessionDispatcher;
 class SystemDispatcher;
-//class CacheActionWidget;
 
 class CleanerActionWidget : public QWidget
 {
@@ -44,7 +40,6 @@ class CleanerActionWidget : public QWidget
 public:
     explicit CleanerActionWidget(QWidget *parent = 0);
     ~CleanerActionWidget();
-//    void setParentWindow(MainWindow* window) { p_mainwindow = window;}
     void setSessionDbusProxy(SessionDispatcher* dispatcher) { sessionProxy = dispatcher;}
     void setSystemDbusProxy(SystemDispatcher* dispatcher) { systemProxy = dispatcher;}
     void initConnect();
@@ -61,24 +56,25 @@ public slots:
     void showCleanerStatus(const QString &status, const QString &domain);
     void showCleanerError(const QString &status);
 
+    void displayAnimation();
+//    void displayCleanAnimation();
+    void receivePolicyKitSignal(bool status);
+
 signals:
     void showDetailData();
     void showMainData();
     void sendCleanSignal();
+    void sendScanSignal();
 
 private:
-//    QStackedWidget *statked_widget;
-//    CacheActionWidget *cache_page;
     bool is_move;
     LoadingLabel *loading_label;
     QLabel *suggest_label;
-//    QLabel *result_label;
     QLabel *doing_label;
     QPushButton *scan_button;
     QPushButton *clean_button;
     QPushButton *back_button;
 
-//    MainWindow *p_mainwindow;
     SystemDispatcher *systemProxy;
     SessionDispatcher *sessionProxy;
 };

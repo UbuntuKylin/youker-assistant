@@ -38,10 +38,8 @@ signals:
     void sendBackgroundName(QString name);
 
 protected:
-    virtual void	enterEvent (QEvent  *event);
     virtual void	leaveEvent (QEvent *event);
     virtual void mouseMoveEvent(QMouseEvent *event);
-    virtual void moveEvent(QMoveEvent *event);
 
 private:
     MainWindow *mainwindow;

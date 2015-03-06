@@ -18,6 +18,7 @@
  */
 
 #include "hdwidget.h"
+#include "computerpage.h"
 
 HDWidget::HDWidget(QWidget *parent, SystemDispatcher *proxy) :
     QWidget(parent),

@@ -124,6 +124,23 @@
         <file>res/delete.png</file>
         <file>res/picture.png</file>
         <file>res/systeminfo.png</file>
+        <file>res/checkbox-tristate.png</file>
+        <file>res/checkbox-two.png</file>
+        <file>res/radiobutton.png</file>
+        <file>res/cache_check.png</file>
+        <file>res/cache_uncheck.png</file>
+        <file>res/shadow_gray_hover.png</file>
+        <file>res/shadow_hover.png</file>
+        <file>res/bigfile_check.png</file>
+        <file>res/bigfile_uncheck.png</file>
+        <file>res/browser_check.png</file>
+        <file>res/browser_uncheck.png</file>
+        <file>res/cookie_check.png</file>
+        <file>res/cookie_uncheck.png</file>
+        <file>res/package_check.png</file>
+        <file>res/package_uncheck.png</file>
+        <file>res/trace_check.png</file>
+        <file>res/trace_uncheck.png</file>
     </qresource>
     <qresource prefix="/sys">
         <file>res/sysBtn/close_button.png</file>
@@ -135,8 +152,11 @@
         <file>res/qss/youker-assistant.qss</file>
     </qresource>
     <qresource prefix="/qmfile">
-        <file>res/qm/youker-assistant_es.qm</file>
-        <file>res/qm/youker-assistant_zh_CN.qm</file>
+        <file>translation/youker-assistant_de.qm</file>
+        <file>translation/youker-assistant_es.qm</file>
+        <file>translation/youker-assistant_fr.qm</file>
+        <file>translation/youker-assistant_ru.qm</file>
+        <file>translation/youker-assistant_zh_CN.qm</file>
     </qresource>
     <qresource prefix="/hd">
         <file>res/hardware/audio.png</file>
@@ -403,8 +423,5 @@
     <qresource prefix="/model">
         <file>res/plugin/processmanager.png</file>
         <file>res/plugin/shredder.png</file>
-    </qresource>
-    <qresource prefix="/translate">
-        <file>translation/youker-assistant_zh_CN.qm</file>
     </qresource>
 </RCC>

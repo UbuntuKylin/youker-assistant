@@ -22,6 +22,7 @@ import ConfigParser
 import copy
 import shutil
 from pprint import pprint
+import locale
 
 SECTION = 'Desktop Entry'
 OPTION_H = 'Hidden'
@@ -272,7 +273,8 @@ class Desktop_Autostart_Manage():
             #else:
             cf.set(SECTION, OPTION_X, value)
             cf.write(open(name, "w"))
-    def get_desktop_info(self, filepath):
+
+    def get_desktop_info(self, filepath, locale_language):
         cf = MyConfigParser()
         cf.read(filepath)
         
@@ -285,20 +287,29 @@ class Desktop_Autostart_Manage():
         
         #
         if SECTION in s:
-            if 'Name[zh_CN]' in o:
-                info.append('Name:' + cf.get(SECTION, 'Name[zh_CN]'))
+            if locale_language == "zh_CN":
+                if 'Name[zh_CN]' in o:
+                    info.append('Name:' + cf.get(SECTION, 'Name[zh_CN]'))
+                else:
+                    info.append('Name:' + cf.get(SECTION, 'Name'))
+
+                if 'Comment[zh_CN]' in o:
+                    info.append('Comment:' + cf.get(SECTION, 'Comment[zh_CN]'))
+                elif 'Comment' in o:
+                    info.append('Comment:' + cf.get(SECTION, 'Comment'))
+                else:
+                    info.append('Comment:')
             else:
                 info.append('Name:' + cf.get(SECTION, 'Name'))
-            
-            if 'Comment[zh_CN]' in o:
-                info.append('Comment:' + cf.get(SECTION, 'Comment[zh_CN]'))
-            elif 'Comment' in o:
-                info.append('Comment:' + cf.get(SECTION, 'Comment'))
-            else:
-                info.append('Comment:')
+                if 'Comment' in o:
+                    info.append('Comment:' + cf.get(SECTION, 'Comment'))
+                else:
+                    info.append('Comment:')
 
             if 'Icon' in o:
                 tempicon = cf.get(SECTION, 'Icon')
+                if not tempicon.endswith('.png') and not tempicon.endswith('.jpg'):
+                    tempicon = tempicon + '.png'
                 if os.path.exists(iconpath2 + tempicon):
                     info.append('Icon:' + iconpath2 + tempicon)
                 elif os.path.exists(iconpath1 + tempicon):
@@ -312,20 +323,21 @@ class Desktop_Autostart_Manage():
 
 
 def interface_get_status(fobj):
+    locale_language = locale.getdefaultlocale()[0]
     try:
         obj = Desktop_Autostart_Manage()
         obj.get_final_status()
         up = obj.dic.get("autostart", [])
         if up:
             for upvalue in up:
-                up_list = obj.get_desktop_info(upvalue)
+                up_list = obj.get_desktop_info(upvalue, locale_language)
                 up_list.append('Status:' + 'true')
                 fobj.autostartmanage_data_signal(up_list)
 
         down = obj.dic.get("notautostart", [])
         if down:
             for downvalue in down:
-                down_list = obj.get_desktop_info(downvalue)
+                down_list = obj.get_desktop_info(downvalue, locale_language)
                 down_list.append('Status:' + 'false')
                 fobj.autostartmanage_data_signal(down_list)
 
@@ -334,14 +346,24 @@ def interface_get_status(fobj):
     else:
         fobj.autostartmanage_status_signal("complete")
 
+def interface_get_single_status(fobj, path):
+    obj = Desktop_Autostart_Manage()
+    status = obj.function_home(path)
+    if status == "autostart":
+        return True
+    elif status == "notautostart":
+        return False
+    else:
+        return False
+
 def interface_change_status(fobj, filename):
     try:
         obj = Desktop_Autostart_Manage()
         obj.change_single_status(filename)
     except Exception, e:
         fobj.autostartmanage_error_signal(str(e))
-    else:
-        fobj.autostartmanage_status_signal("complete")
+#    else:
+#        fobj.autostartmanage_status_signal("complete")
 
 if __name__ == "__main__":
     obj = Desktop_Autostart_Manage()

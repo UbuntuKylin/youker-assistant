@@ -37,8 +37,6 @@ BatteryWidget::BatteryWidget(QWidget *parent, SessionDispatcher *proxy) :
 
 void BatteryWidget::initData()
 {
-//    battery_info_map = sessionproxy->read_battery_info_qt();
-//    qDebug() << battery_info_map;
     QMap<QString, QVariant> tmpMap = sessionproxy->read_battery_info_qt();
     QMap<QString,QVariant>::iterator it; //遍历map
     for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {

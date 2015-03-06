@@ -18,6 +18,7 @@
  */
 
 #include "monitorwidget.h"
+#include "computerpage.h"
 
 MonitorWidget::MonitorWidget(QWidget *parent, SystemDispatcher *proxy) :
     QWidget(parent),

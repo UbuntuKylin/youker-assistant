@@ -38,7 +38,7 @@ protected:
 	void leaveEvent(QEvent *);
 	void mousePressEvent(QMouseEvent *event);
 	void mouseReleaseEvent(QMouseEvent *event);
-	void paintEvent(QPaintEvent *);
+    void paintEvent(QPaintEvent *);
 
 private:
 	//枚举按钮的几种状态

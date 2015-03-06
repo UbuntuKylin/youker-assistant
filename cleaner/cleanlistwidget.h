@@ -21,12 +21,10 @@
 #define CLEANLISTWIDGET_H
 
 #include <QWidget>
-#include "../component/kylinlistwidget.h"
 #include "../component/kylintitlebar.h"
-#include "../component/autogroup.h"
-#include <QCheckBox>
 
 class SessionDispatcher;
+class QCheckBox;
 
 namespace Ui {
 class CleanListWidget;
@@ -41,17 +39,12 @@ public:
     ~CleanListWidget();
     void setLanguage();
     void initConnect();
-//    void initData();
     QStringList getSelectedItems();
 
 public slots:
     void resetSubCheckbox(int status);
     void scanAllSubCheckbox();
     void onCloseButtonClicked();
-//    void onMinButtonClicked();
-//    void setCurrentItemAutoStatus(QString dekstopName);
-//    void readyReciveData(const QStringList &data);
-//    void readyShowUI();
 
 signals:
     void notifyMainCheckBox(int status);
@@ -61,8 +54,6 @@ private:
 
 private:
     Ui::CleanListWidget *ui;
-//    SessionDispatcher *sessionproxy;
-//    QList<QStringList> data_list;
     QList<QCheckBox *> checkbox_list;
     KylinTitleBar *title_bar;
     QString titleName;

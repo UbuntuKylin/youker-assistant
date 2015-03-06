@@ -50,19 +50,10 @@ SettingWidget::SettingWidget(QWidget *parent) :
     deadpixel_widget = NULL;
     nautilus_widget = NULL;
 
-//    title_label = new QLabel();
-//    v_splitter = new QSplitter();
-//    v_splitter->setStyleSheet("QSplitter::handle{background:lightgray;}");
-//    v_splitter->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-//    v_splitter->setOrientation(Qt::Vertical);
-//    v_splitter->setHandleWidth(1);
     h_splitter = new QSplitter();
-    h_splitter->setStyleSheet("QSplitter::handle{background:lightgray;}");
     h_splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     h_splitter->setOrientation(Qt::Horizontal);
     h_splitter->setHandleWidth(1);
-
-//    title_label->setText(tr("您可以根据个人喜好对系统进行全方位的定制！"));
 
     this->initIndividuationWidget();
     this->initDesktopWidget();
@@ -70,8 +61,6 @@ SettingWidget::SettingWidget(QWidget *parent) :
     this->initOptionWidget();
     this->initOtherWidget();
 
-//    title_label->setFixedSize(850, 50);
-//    title_label->setContentsMargins(30, 0 , 0 , 0);
     individuation_widget->setFixedSize(170, 426);
     dekstop_widget->setFixedSize(170, 426);
     fonts_widget->setFixedSize(170, 426);
@@ -81,9 +70,6 @@ SettingWidget::SettingWidget(QWidget *parent) :
     h_splitter->addWidget(fonts_widget);
     h_splitter->addWidget(option_widget);
     h_splitter->addWidget(other_widget);
-
-//    v_splitter->addWidget(title_label);
-//    v_splitter->addWidget(h_splitter);
 
     for(int i = 0; i<h_splitter->count();i++)
     {
@@ -169,30 +155,25 @@ void SettingWidget::initIndividuationWidget() {
     individuation_title = new QLabel();
     dot1 = new QLabel();
     theme_button = new QPushButton();
-    theme_button->setObjectName("lefButton");
     dot2 = new QLabel();
     icon_button = new QPushButton();
-    icon_button->setObjectName("lefButton");
     dot3 = new QLabel();
     mouse_button = new QPushButton();
-    mouse_button->setObjectName("lefButton");
     dot4 = new QLabel();
     voice_button = new QPushButton();
-    voice_button->setObjectName("lefButton");
     dot5 = new QLabel();
     animation_button = new QPushButton();
-    animation_button->setObjectName("lefButton");
 
     theme_button->setFocusPolicy(Qt::NoFocus);
-    theme_button->setStyleSheet("QPushButton{color:rgb(0, 120, 230);background:transparent;}QPushButton:hover{color:rgb(50, 150, 255);}QPushButton:pressed{color:rgb(50, 150, 255);}");
+    theme_button->setObjectName("settingButton");
     icon_button->setFocusPolicy(Qt::NoFocus);
-    icon_button->setStyleSheet("QPushButton{color:rgb(0, 120, 230);background:transparent;}QPushButton:hover{color:rgb(50, 150, 255);}QPushButton:pressed{color:rgb(50, 150, 255);}");
+    icon_button->setObjectName("settingButton");
     mouse_button->setFocusPolicy(Qt::NoFocus);
-    mouse_button->setStyleSheet("QPushButton{color:rgb(0, 120, 230);background:transparent;}QPushButton:hover{color:rgb(50, 150, 255);}QPushButton:pressed{color:rgb(50, 150, 255);}");
+    mouse_button->setObjectName("settingButton");
     voice_button->setFocusPolicy(Qt::NoFocus);
-    voice_button->setStyleSheet("QPushButton{color:rgb(0, 120, 230);background:transparent;}QPushButton:hover{color:rgb(50, 150, 255);}QPushButton:pressed{color:rgb(50, 150, 255);}");
+    voice_button->setObjectName("settingButton");
     animation_button->setFocusPolicy(Qt::NoFocus);
-    animation_button->setStyleSheet("QPushButton{color:rgb(0, 120, 230);background:transparent;}QPushButton:hover{color:rgb(50, 150, 255);}QPushButton:pressed{color:rgb(50, 150, 255);}");
+    animation_button->setObjectName("settingButton");
 
     QHBoxLayout *title_layout = new QHBoxLayout();
     title_layout->addWidget(individuation_icon);
@@ -293,20 +274,17 @@ void SettingWidget::initDesktopWidget() {
     dekstop_title = new QLabel();
     dot6 = new QLabel();
     launcher_button = new QPushButton();
-    launcher_button->setObjectName("lefButton");
     dot7 = new QLabel();
     panel_button = new QPushButton();
-    panel_button->setObjectName("lefButton");
     dot8 = new QLabel();
     window_button = new QPushButton();
-    window_button->setObjectName("lefButton");
 
     launcher_button->setFocusPolicy(Qt::NoFocus);
-    launcher_button->setStyleSheet("QPushButton{color:rgb(0, 120, 230);background:transparent;}QPushButton:hover{color:rgb(50, 150, 255);}QPushButton:pressed{color:rgb(50, 150, 255);}");
+    launcher_button->setObjectName("settingButton");
     panel_button->setFocusPolicy(Qt::NoFocus);
-    panel_button->setStyleSheet("QPushButton{color:rgb(0, 120, 230);background:transparent;}QPushButton:hover{color:rgb(50, 150, 255);}QPushButton:pressed{color:rgb(50, 150, 255);}");
+    panel_button->setObjectName("settingButton");
     window_button->setFocusPolicy(Qt::NoFocus);
-    window_button->setStyleSheet("QPushButton{color:rgb(0, 120, 230);background:transparent;}QPushButton:hover{color:rgb(50, 150, 255);}QPushButton:pressed{color:rgb(50, 150, 255);}");
+    window_button->setObjectName("settingButton");
 
     QHBoxLayout *title_layout = new QHBoxLayout();
     title_layout->addWidget(dekstop_icon);
@@ -379,10 +357,9 @@ void SettingWidget::initFontWidget() {
     font_title = new QLabel();
     dot9 = new QLabel();
     font_button = new QPushButton();
-    font_button->setObjectName("lefButton");
 
     font_button->setFocusPolicy(Qt::NoFocus);
-    font_button->setStyleSheet("QPushButton{color:rgb(0, 120, 230);background:transparent;}QPushButton:hover{color:rgb(50, 150, 255);}QPushButton:pressed{color:rgb(50, 150, 255);}");
+    font_button->setObjectName("settingButton");
 
     QHBoxLayout *title_layout = new QHBoxLayout();
     title_layout->addWidget(font_icon);
@@ -426,15 +403,13 @@ void SettingWidget::initOptionWidget() {
     option_title = new QLabel();
     dot10 = new QLabel();
     touch_button = new QPushButton();
-    touch_button->setObjectName("lefButton");
     dot11 = new QLabel();
     pixel_button = new QPushButton();
-    pixel_button->setObjectName("lefButton");
 
     touch_button->setFocusPolicy(Qt::NoFocus);
-    touch_button->setStyleSheet("QPushButton{color:rgb(0, 120, 230);background:transparent;}QPushButton:hover{color:rgb(50, 150, 255);}QPushButton:pressed{color:rgb(50, 150, 255);}");
+    touch_button->setObjectName("settingButton");
     pixel_button->setFocusPolicy(Qt::NoFocus);
-    pixel_button->setStyleSheet("QPushButton{color:rgb(0, 120, 230);background:transparent;}QPushButton:hover{color:rgb(50, 150, 255);}QPushButton:pressed{color:rgb(50, 150, 255);}");
+    pixel_button->setObjectName("settingButton");
 
     QHBoxLayout *title_layout = new QHBoxLayout();
     title_layout->addWidget(option_icon);
@@ -493,10 +468,10 @@ void SettingWidget::initOtherWidget() {
     other_title = new QLabel();
     dot12 = new QLabel();
     nautilus_button = new QPushButton();
-    nautilus_button->setObjectName("lefButton");
 
     nautilus_button->setFocusPolicy(Qt::NoFocus);
-    nautilus_button->setStyleSheet("QPushButton{color:rgb(0, 120, 230);background:transparent;}QPushButton:hover{color:rgb(50, 150, 255);}QPushButton:pressed{color:rgb(50, 150, 255);}");
+    nautilus_button->setObjectName("settingButton");
+//    nautilus_button->setStyleSheet("QPushButton{color:rgb(0, 120, 230);background:transparent;}QPushButton:hover{color:rgb(50, 150, 255);}QPushButton:pressed{color:rgb(50, 150, 255);}");
 
     QHBoxLayout *title_layout = new QHBoxLayout();
     title_layout->addWidget(other_icon);
@@ -546,8 +521,6 @@ void SettingWidget::displaySettingSubPage() {
     QObject *object = QObject::sender();
     QPushButton *btn = qobject_cast<QPushButton *>(object);
     QString object_name = btn->statusTip();
-//    qDebug() << "--------";
-//    qDebug() << object_name;
     if (object_name == "theme") {
         stacked_widget->setCurrentIndex(1);
         emit changeActionPage(1);
@@ -597,14 +570,3 @@ void SettingWidget::displaySettingSubPage() {
         emit changeActionPage(12);
     }
 }
-
-
-//void SettingWidget::showCheckscreenDialog() {
-//    //ModalDialog width:329; ModalDialog height:195
-//    DeadPixelDialog *dialog = new DeadPixelDialog;
-//    int w_x = widgetPosition.x() + (this->mainwindow_width / 2) - (329  / 2);
-//    int w_y = widgetPosition.y() + (this->mainwindow_height /2) - (195  / 2);
-//    dialog->move(w_x, w_y);
-//    dialog->setModal(true);
-//    dialog->show();
-//}

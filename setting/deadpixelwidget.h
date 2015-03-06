@@ -21,11 +21,10 @@
 #define DEADPIXELWIDGET_H
 
 #include <QWidget>
-#include <QLabel>
-#include <QPushButton>
-#include <QHBoxLayout>
 #include "../component/quibo.h"
-#include <QSplitter>
+
+class QLabel;
+class QPushButton;
 
 class DeadpixelWidget : public QWidget
 {
@@ -36,23 +35,10 @@ public:
     void setLanguage();
     void initConnect();
 
-//signals:
-//    void showSettingMainWidget();
-
 public slots:
     void startMonitorCheck();
 
 private:
-//    QSplitter *splitter;
-//    QWidget * top_widget;
-//    QWidget * bottom_widget;
-//    QWidget * left_widget;
-//    QWidget * right_widget;
-
-//    QPushButton *back_btn;
-//    QLabel *title_label;
-//    QLabel *description_label;
-
     QUIBO *qtui;
     QLabel *tip_label;
     QPushButton *ok_btn;

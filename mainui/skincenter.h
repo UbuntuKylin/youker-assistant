@@ -28,7 +28,7 @@
 #include "../component/kylinlistwidgetitem.h"
 
 class MainWindow;
-//class KylinTitleBar;
+
 class SkinCenter :public QDialog
 {
   Q_OBJECT
@@ -36,7 +36,6 @@ public:
     SkinCenter(QWidget *parent = 0, Qt::WindowFlags f = 0);
     ~SkinCenter();
     void setParentWindow(MainWindow *From) { mainwindow = From;}
-//    void setBackGround(QString path) { titlebar_pic = path;}
     void initBackgroundList();
     void setLanguage();
     void initConnect();
@@ -45,15 +44,13 @@ public:
 public slots:
     void onCloseButtonClicked();
     void changeSkinCenterBackground(QString pciture);
-//    void onMinButtonClicked();
 
 protected:
-//    virtual void	enterEvent (QEvent  *event);
-//    virtual void	leaveEvent (QEvent *event);
+//    virtual void	enterEvent (QEvent  *);
+//    virtual void	leaveEvent (QEvent *);
     void closeEvent(QCloseEvent *event);
 
 private:
-//    Ui::Dialog  m_Dlg;
     MainWindow *mainwindow;
     KylinTitleBar *title_bar;
     KylinListWidget *list_widget;

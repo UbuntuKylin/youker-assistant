@@ -34,6 +34,10 @@ AutoStartWidget::AutoStartWidget(QWidget *parent, SessionDispatcher *proxy) :
     setWindowFlags(Qt::FramelessWindowHint);
     tip_label = new QLabel();
     num_label = new QLabel();
+    on_label = new QLabel();
+    on_num_label = new QLabel();
+    off_label = new QLabel();
+    off_num_label = new QLabel();
     name_label = new QLabel();
     status_label = new QLabel();
 
@@ -49,14 +53,46 @@ AutoStartWidget::AutoStartWidget(QWidget *parent, SessionDispatcher *proxy) :
     name_label->setText(tr("App"));
     status_label->setText(tr("Status"));
 
+    on_label->setText(tr("ON Items:"));
+    off_label->setText(tr("OFF Items:"));
+
+    QHBoxLayout *layout1 = new QHBoxLayout();
+    layout1->addWidget(tip_label);
+    layout1->addWidget(num_label);
+    layout1->setSpacing(0);
+    layout1->setMargin(0);
+
+    QHBoxLayout *layout2 = new QHBoxLayout();
+    layout2->addWidget(on_label);
+    layout2->addWidget(on_num_label);
+    layout2->setSpacing(0);
+    layout2->setMargin(0);
+
+    QHBoxLayout *layout3 = new QHBoxLayout();
+    layout3->addWidget(off_label);
+    layout3->addWidget(off_num_label);
+    layout3->setSpacing(0);
+    layout3->setMargin(0);
+
     QHBoxLayout *tip_layout = new QHBoxLayout();
-    tip_layout->addWidget(tip_label);
-    tip_layout->addWidget(num_label);
+    tip_layout->addLayout(layout1);
     tip_layout->addStretch();
+    tip_layout->addLayout(layout2);
+    tip_layout->addStretch();
+    tip_layout->addLayout(layout3);
     tip_layout->setSpacing(0);
     tip_layout->setMargin(0);
-    tip_layout->setContentsMargins(20, 0, 0, 0);
+    tip_layout->setContentsMargins(20, 0, 20, 0);
     ui->widget_1->setLayout(tip_layout);
+
+//    QHBoxLayout *tip_layout = new QHBoxLayout();
+//    tip_layout->addWidget(tip_label);
+//    tip_layout->addWidget(num_label);
+//    tip_layout->addStretch();
+//    tip_layout->setSpacing(0);
+//    tip_layout->setMargin(0);
+//    tip_layout->setContentsMargins(20, 0, 0, 0);
+//    ui->widget_1->setLayout(tip_layout);
 
     QHBoxLayout *status_layout = new QHBoxLayout();
     status_layout->addWidget(name_label);
@@ -72,7 +108,8 @@ AutoStartWidget::AutoStartWidget(QWidget *parent, SessionDispatcher *proxy) :
     title_bar->show();
     initTitleBar();
     ui->scrollArea->setFixedSize(560,302);
-    this->setLanguage();
+    ui->scrollArea->setAutoFillBackground(true);
+    ui->scrollArea->setBackgroundRole(QPalette::Light);
     this->initConnect();
 }
 
@@ -94,8 +131,11 @@ void AutoStartWidget::readyReciveData(const QStringList &data)
 
 void AutoStartWidget::readyShowUI()
 {
-    QVBoxLayout *v_layout = new QVBoxLayout();
+    int rowIndex = 0;
+//    QVBoxLayout *v_layout = new QVBoxLayout();
+    QGridLayout *v_layout = new QGridLayout();
     QSignalMapper *signal_mapper = new QSignalMapper(this);
+    onNum = offNum = 0;
     num_label->setText(QString::number(data_list.length()));
     for(int i =0; i<data_list.length(); i++)
     {
@@ -105,22 +145,47 @@ void AutoStartWidget::readyShowUI()
         {
             tmpMap.insert(tmp_list[j].split(":").at(0), tmp_list[j].split(":").at(1));
         }
-        AutoGroup *auto_group = new AutoGroup(ui->scrollAreaWidgetContents);
+        AutoGroup *auto_group = new AutoGroup();
         auto_group->initData(tmpMap);
+        if(tmpMap.value("Status") == "true")
+            onNum += 1;
+        else if(tmpMap.value("Status") == "false")
+            offNum += 1;
         connect(auto_group, SIGNAL(autoStatusChange()), signal_mapper, SLOT(map()));
         signal_mapper->setMapping(auto_group, tmpMap.value("Path"));
-        v_layout->addWidget(auto_group, 0, Qt::AlignBottom);
+//        v_layout->addWidget(auto_group/*, 0, Qt::AlignBottom*/);
+        v_layout->addWidget(auto_group, rowIndex, 0);
+        rowIndex += 1;
+        switcher_list.append(auto_group);
     }
     connect(signal_mapper, SIGNAL(mapped(QString)), this, SLOT(setCurrentItemAutoStatus(QString)));
+    on_num_label->setText(QString::number(onNum));
+    off_num_label->setText(QString::number(offNum));
 
-    QVBoxLayout *layout  = new QVBoxLayout();
-//    layout->addWidget(title_bar);
-    layout->addLayout(v_layout);
-//    layout->addWidget(scroll_widget);
-    layout->setSpacing(0);
-    layout->setMargin(0);
-    layout->setContentsMargins(10, 0, 10, 10);
-    ui->scrollAreaWidgetContents->setLayout(layout);
+//    QVBoxLayout *layout  = new QVBoxLayout();
+//    layout->addLayout(v_layout);
+//    layout->setSpacing(0);
+//    layout->setMargin(0);
+//    layout->setContentsMargins(10, 0, 10, 10);
+    ui->scrollAreaWidgetContents->setLayout(v_layout);
+}
+
+void AutoStartWidget::scanAllSwitcher() {
+    int count = switcher_list.count();
+    onNum = offNum = 0;
+    for(int i=0; i<count; i++)
+    {
+        AutoGroup *checkbox = switcher_list.at(i);
+        if(checkbox->getSwitcherStatus())
+        {
+            onNum +=1;
+        }
+        else {
+            offNum += 1;
+        }
+    }
+    on_num_label->setText(QString::number(onNum));
+    off_num_label->setText(QString::number(offNum));
 }
 
 void AutoStartWidget::setCurrentItemAutoStatus(QString dekstopName)
@@ -128,18 +193,12 @@ void AutoStartWidget::setCurrentItemAutoStatus(QString dekstopName)
     int  start_pos = dekstopName.lastIndexOf("/") + 1;
     int end_pos = dekstopName.length();
     QString name = dekstopName.mid(start_pos, end_pos-start_pos);
-//    qDebug() << "change status->" << name;
     sessionproxy->changeAutoStartAppStatus(name);
-}
-
-void AutoStartWidget::setLanguage()
-{
-
+    this->scanAllSwitcher();
 }
 
 void AutoStartWidget::initConnect()
 {
-//    connect(title_bar, SIGNAL(showMinDialog()), this, SLOT(onMinButtonClicked()));
     connect(title_bar,SIGNAL(closeDialog()), this, SLOT(onCloseButtonClicked()));
 }
 
@@ -154,8 +213,3 @@ void AutoStartWidget::onCloseButtonClicked()
 {
     this->close();
 }
-
-//void AutoStartWidget::onMinButtonClicked()
-//{
-//    this->hide();
-//}

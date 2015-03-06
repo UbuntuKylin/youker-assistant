@@ -18,6 +18,9 @@
  */
 
 #include "voicewidget.h"
+#include <QLabel>
+#include <QComboBox>
+#include <QHBoxLayout>
 #include "../dbusproxy/youkersessiondbus.h"
 #include "../dbusproxy/youkersystemdbus.h"
 
@@ -26,35 +29,6 @@ VoiceWidget::VoiceWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispa
     sessionproxy(proxy),
     systemproxy(sproxy)
 {
-//    splitter = new QSplitter();
-//    splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-//    splitter->setOrientation(Qt::Vertical);
-//    splitter->setHandleWidth(1);
-
-//    top_widget = new QWidget();
-//    bottom_widget = new QWidget();
-
-//    title_label = new QLabel();
-//    title_label->setFixedHeight(20);
-//    description_label = new QLabel();
-//    description_label->setFixedHeight(20);
-//    back_btn = new QPushButton();
-
-//    QVBoxLayout *v_layout = new QVBoxLayout();
-//    v_layout->addWidget(title_label);
-//    v_layout->addWidget(description_label);
-//    v_layout->setMargin(0);
-//    v_layout->setSpacing(1);
-
-//    QHBoxLayout *h_layout = new QHBoxLayout();
-//    h_layout->addWidget(back_btn);
-//    h_layout->addLayout(v_layout);
-//    h_layout->addStretch();
-//    top_widget->setLayout(h_layout);
-//    top_widget->setFixedSize(900,60);
-//    h_layout->setSpacing(20);
-//    h_layout->setContentsMargins(20, 0, 0, 0);
-
     theme_label = new QLabel();
     tip_label = new QLabel();
     event_label = new QLabel();

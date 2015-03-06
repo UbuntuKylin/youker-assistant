@@ -21,13 +21,13 @@
 #define CLEANERWIDGET_H
 
 #include <QWidget>
-#include "kylinthread.h"
 #include "../cleaner/cleanermainwidget.h"
 #include "../cleaner/cleanerdetailwidget.h"
 #include <QStackedWidget>
 
 class SessionDispatcher;
 class SystemDispatcher;
+class Toolkits;
 class MainWindow;
 
 class CleanerWidget : public QWidget
@@ -40,6 +40,7 @@ public:
     void setParentWindow(MainWindow* window) { p_mainwindow = window;}
     void setSessionDbusProxy(SessionDispatcher* dispatcher) { sessionProxy = dispatcher;}
     void setSystemDbusProxy(SystemDispatcher* dispatcher) { systemProxy = dispatcher;}
+    void setToolKits(Toolkits* kits) { toolKits = kits;}
     void initUI();
 
 public slots:
@@ -48,16 +49,19 @@ public slots:
 
 signals:
     void transCleanSignal();
+    void transScanSignal();
     void clearDetailPage();
+    void tranActionAnimaitonSignal();
+//    void tranCleanActionAnimaitonSignal();
 
 private:
-    KylinThread kthread;
     QStackedWidget *statked_widget;
     CleanerMainWidget *main_widget;
     CleanerDetailWidget *detail_widget;
     MainWindow *p_mainwindow;
     SystemDispatcher *systemProxy;
     SessionDispatcher *sessionProxy;
+    Toolkits *toolKits;
 };
 
 #endif // CLEANERWIDGET_H

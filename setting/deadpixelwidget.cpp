@@ -18,42 +18,13 @@
  */
 
 #include "deadpixelwidget.h"
+#include <QLabel>
+#include <QPushButton>
+#include <QHBoxLayout>
 
 DeadpixelWidget::DeadpixelWidget(QWidget *parent) :
     QWidget(parent)
 {
-//    splitter = new QSplitter();
-//    splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-//    splitter->setOrientation(Qt::Vertical);
-//    splitter->setHandleWidth(1);
-
-//    top_widget = new QWidget();
-//    bottom_widget = new QWidget();
-//    left_widget = new QWidget();
-//    left_widget->setFixedWidth(240);
-//    right_widget = new QWidget();
-
-//    title_label = new QLabel();
-//    title_label->setFixedHeight(20);
-//    description_label = new QLabel();
-//    description_label->setFixedHeight(20);
-//    back_btn = new QPushButton();
-
-//    QVBoxLayout *v_layout = new QVBoxLayout();
-//    v_layout->addWidget(title_label);
-//    v_layout->addWidget(description_label);
-//    v_layout->setMargin(0);
-//    v_layout->setSpacing(1);
-
-//    QHBoxLayout *h_layout = new QHBoxLayout();
-//    h_layout->addWidget(back_btn);
-//    h_layout->addLayout(v_layout);
-//    h_layout->addStretch();
-//    top_widget->setLayout(h_layout);
-//    top_widget->setFixedSize(900,60);
-//    h_layout->setSpacing(20);
-//    h_layout->setContentsMargins(20, 0, 0, 0);
-
     this->qtui = NULL;
     tip_label = new QLabel();
     tip_label->setWordWrap(true);//QLabel自动换行

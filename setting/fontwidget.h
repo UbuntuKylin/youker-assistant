@@ -21,14 +21,13 @@
 #define FONTWIDGET_H
 
 #include <QWidget>
-#include <QLabel>
-#include <QPushButton>
-#include <QHBoxLayout>
-#include <QComboBox>
-#include <QSplitter>
-#include <QDoubleSpinBox>
+
 class SessionDispatcher;
 class MainWindow;
+class QLabel;
+class QPushButton;
+class QComboBox;
+class QDoubleSpinBox;
 
 class FontWidget : public QWidget
 {
@@ -39,9 +38,6 @@ public:
     void setLanguage();
     void initConnect();
     void initData();
-
-//signals:
-//    void showSettingMainWidget();
 
 public slots:
     void setDefaultFont();
@@ -61,14 +57,6 @@ public slots:
 private:
     SessionDispatcher *sessionproxy;
     MainWindow *parentWindow;
-//    QSplitter *splitter;
-//    QWidget * top_widget;
-//    QWidget * bottom_widget;
-
-//    QPushButton *back_btn;
-//    QLabel *title_label;
-//    QLabel *description_label;
-
     QLabel *default_font_label;
     QLabel *desktop_font_label;
     QLabel *monospace_font_label;

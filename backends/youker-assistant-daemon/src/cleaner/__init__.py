@@ -802,9 +802,9 @@ def interface_get_subpage_session(session, mode_dic):
             if cache['chromium-browser'].is_installed:
                 chcpath = "%s/.config/chromium/Default/Cookies" % homedir
                 if os.path.exists(chcpath):
-                    chcpam = [filepathc, 'cookies', 'host_key']
+                    chcpam = [chcpath, 'cookies', 'host_key']
                     chromium_cookies_list = cookies_obj.scan_cookies_records(chcpam[0], chcpam[1], chcpam[2])
-                    for value in firefox_cookies_list:
+                    for value in chromium_cookies_list:
                         info = []
                         info.append('Belong:Cookies.chromium')
                         info.append('Content:%s' % value[0])
@@ -935,6 +935,7 @@ def interface_remove_file_system(system, fp):
                 system.subpage_data_signal(info)
         else:
             system.subpage_error_signal('Non-existent:%s' % filepath)
+
 def interface_remove_firefox_history_system(system):
     homedir = return_homedir_sysdaemon()
     firefox_history_obj = historyclean.HistoryClean(homedir)
@@ -943,6 +944,12 @@ def interface_remove_firefox_history_system(system):
     firefox_history_obj.clean_firefox_all_records(ffhpath)
 
     system.subpage_status_signal('Complete:History.firefox', 'history')
+
+def interface_remove_system_history_system(system):
+    homedir = return_homedir_sysdaemon()
+    system_history_obj = systemhistory.SystemHistory()
+    system_history_obj.clean_the_xml(homedir)
+    system.subpage_status_signal('Complete:History.system', 'history')
 
 def interface_remove_chromium_history_system(system):
     homedir = return_homedir_sysdaemon()
@@ -968,7 +975,7 @@ def interface_remove_firefox_cookies_system(system, domain):
 
 def interface_remove_chromium_cookies_system(system, domain):
     homedir = return_homedir_sysdaemon()
-    chromium_cookies_obj.cookiesclean.CookiesClean(homedir)
+    chromium_cookies_obj = cookiesclean.CookiesClean(homedir)
     
     chcpath = "%s/.config/chromium/Default/Cookies" % homedir
     chcpam = [chcpath, 'cookies', 'host_key', domain]

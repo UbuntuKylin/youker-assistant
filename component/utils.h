@@ -55,4 +55,13 @@ struct AutoData
     QString appStatus;
 };
 
+typedef enum{
+    BUTTON_ENTER,
+    BUTTON_LEAVE,
+    BUTTON_PRESSED,
+    BUTTON_DISABLE,
+    BUTTON_FIRST,
+    BUTTON_SCALED,
+}BUTTONSTATUS;
+
 #endif // UTILS_H

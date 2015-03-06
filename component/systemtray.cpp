@@ -43,7 +43,6 @@ void SystemTray::initTrayActions()
     this->setIcon(QIcon("://res/icon.png"));
     tray_menu = new QMenu();
 //    tray_menu->setObjectName("mainmenu");
-    tray_menu->setStyleSheet("QMenu{background-color: red;border: 1px solid gray;color: #4f4f4f;padding: 1px;}");
     action_open = new QAction(this);
     action_logout = new QAction(this);
 

@@ -22,7 +22,6 @@
 
 InfoWidget::InfoWidget(QWidget *parent) :
     QWidget(parent)
-//    systemproxy(this)
 {
     this->setFixedSize(900, 403);
     splitter = new QSplitter();
@@ -34,8 +33,6 @@ InfoWidget::InfoWidget(QWidget *parent) :
     category_widget->setFixedSize(150, 403);
     category_widget->setFocusPolicy(Qt::NoFocus);
     category_widget->setObjectName("infoList");
-//    category_widget->setStyleSheet("QListWidget{border:1px solid #d5e3ec;border-radius:4px;background:#eaf4fa;}QListWidget::item{height:31px;padding-left:27px;margin-top:-1px;border:1px solid #d5e3ec;}QListWidget::item:hover{background-image:url(':/uk/res/left-tab-default.png');}QListWidget::item:selected{background-image:url(':/uk/res/left-tab-hover.png');color:black;}");
-//    type_list << "电脑概述" << "桌面" << "CPU" << "内存" << "主板" << "硬盘" << "网卡" << "显卡" << "声卡" << "光驱" << "电池" << "设备驱动";
     type_list << tr("Computer") << tr("Desktop") << tr("CPU") << tr("Memory") << tr("Motherboard") << tr("HD") << tr("NIC") << tr("VGA") << tr("Audio") << tr("CD-ROM") << tr("Battery") << tr("Device Driver");
     icon_list << "computer"<< "unity" << "cpu"<<"memory"<<"board"<<"harddisk"<<"network"<<"monitor"<<"audio"<<"cdrom"<<"battery"<<"drive";
 
@@ -201,7 +198,6 @@ void InfoWidget::changeInfoPage(QListWidgetItem *item) {
         }
         else if (item->statusTip() == "memory") {
             stacked_widget->setCurrentWidget(memory_widget);
-//            qDebug() << "-------------" << systemproxy.get_memory_info_qt();
         }
         else if (item->statusTip() == "board") {
             stacked_widget->setCurrentWidget(board_widget);

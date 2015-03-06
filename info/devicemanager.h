@@ -23,8 +23,6 @@
 #include <QObject>
 #include <QDebug>
 #include <QProcess>
-//#include "yprocess.h"
-//#include "util.h"
 #include <QMap>
 #include <QFile>
 

@@ -21,13 +21,11 @@
 #define DESKTOPWIDGET_H
 
 #include <QWidget>
-#include <QLabel>
-#include <QPushButton>
-#include <QHBoxLayout>
 #include "computerpage.h"
 #include "../component/scrollwidget.h"
 #include <QMap>
-#include <QVariant>
+
+class QVariant;
 class SessionDispatcher;
 
 class DesktopWidget : public QWidget

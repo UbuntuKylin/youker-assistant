@@ -25,14 +25,9 @@
 SkinCenter::SkinCenter(QWidget *parent, Qt::WindowFlags f)
 :QDialog(parent)
 {
-
-//    m_Dlg.setupUi(this);
     this->setFixedSize(500, 271);
     setWindowFlags(Qt::FramelessWindowHint);
-
     title_bar = new KylinTitleBar();
-//    initTitleBar();
-
     list_widget = new KylinListWidget();
     connect(list_widget, SIGNAL(sendBackgroundName(QString)), this, SLOT(changeSkinCenterBackground(QString)));
     list_widget->setMouseTracking(true);//hover need it
@@ -71,7 +66,6 @@ void SkinCenter::setLanguage()
 
 void SkinCenter::initConnect()
 {
-//    connect(title_bar, SIGNAL(showMinDialog()), this, SLOT(onMinButtonClicked()));
     connect(title_bar,SIGNAL(closeDialog()), this, SLOT(onCloseButtonClicked()));
 //    connect(delayTimer, SIGNAL(timeout()), this, SLOT(changeAnimationStep()));
 }
@@ -87,12 +81,6 @@ void SkinCenter::changeSkinCenterBackground(QString pciture)
     title_bar->resetBackground(last_skin_path);
 }
 
-//void SkinCenter::onMinButtonClicked()
-//{
-////    this->showMinimized();
-//    this->hide();
-//}
-
 void SkinCenter::initBackgroundList()
 {
     list_widget->setIconSize(QSize(150, 100));
@@ -103,12 +91,11 @@ void SkinCenter::initBackgroundList()
     list_widget->setMainWindow(mainwindow);
     for(int index = 0; index < 4; ++index)
     {
-        QString strPath = QString(":/background/res/skin/%1.png").arg(index + 1);
-        QString pciture_path = QString(":/background/res/skin/%1.png").arg(index + 1);
-        QPixmap objPixmap(strPath);
-        KylinListWidgetItem *item = new KylinListWidgetItem(QIcon(objPixmap.scaled(QSize(150,100))),"");
+        QString iconPath = QString(":/background/res/skin/%1.png").arg(index + 1);
+        QPixmap pixMap(iconPath);
+        KylinListWidgetItem *item = new KylinListWidgetItem(QIcon(pixMap.scaled(QSize(150,100))), "");
         item->setMainWindow(mainwindow);
-        item->setSkinName(pciture_path);
+        item->setSkinName(iconPath);
         item->setSizeHint(QSize(150,100));
         list_widget->insertItem(index, item);
     }
@@ -135,12 +122,12 @@ void SkinCenter::initTitleBar(const QString &path)
 //  action_widget->setPalette(palette_back);
 //}
 
-//void  SkinCenter::enterEvent (QEvent *event)
+//void  SkinCenter::enterEvent (QEvent *)
 //{
 //    delayTimer->start(300);
 //}
 
-//void  SkinCenter::leaveEvent (QEvent *event)
+//void  SkinCenter::leaveEvent (QEvent *)
 //{
 //    if(delayTimer->isActive())
 //        delayTimer->stop();

@@ -52,7 +52,6 @@ private:
     QPoint press_point;//鼠标按下去的点
     bool is_move;
     QList<KylinToolButton *> button_list;
-
     MainWindow *p_mainwindow;
 };
 

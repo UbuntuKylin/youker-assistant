@@ -28,11 +28,7 @@
 #include <QSignalMapper>
 #include <QVBoxLayout>
 #include "../component/kylinbutton.h"
-#include "../component/kylintoolbutton.h"
 #include "../component/systembutton.h"
-#include "../component/loadinglabel.h"
-
-//class MainWindow;
 
 class SettingAction : public QWidget
 {

@@ -22,7 +22,6 @@
 
 #include <QToolButton>
 #include <QMouseEvent>
-#include <QPainter>
 
 class CommonToolButton : public QToolButton
 {

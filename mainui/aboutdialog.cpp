@@ -23,13 +23,12 @@
 #include "ui_aboutdialog.h"
 #include <QtGui>
 
-
-AboutDialog::AboutDialog(QWidget *parent) :
+AboutDialog::AboutDialog(QWidget *parent, const QString &version) :
     QDialog(parent),
     ui(new Ui::AboutDialog)
 {
     ui->setupUi(this);
-    ui->versionlabel->setText("V2.0.0");
+    ui->versionlabel->setText(version);
     this->setWindowFlags(Qt::WindowStaysOnTopHint);
     move((QApplication::desktop()->width() - this->width())/2, (QApplication::desktop()->height() - this->height())/2);
     ui->tabWidget->setCurrentIndex(0);

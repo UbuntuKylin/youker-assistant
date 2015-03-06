@@ -24,10 +24,10 @@
 
 #include "../component/kylinlistwidget.h"
 #include "../component/kylintitlebar.h"
-#include "../component/kylinlistwidgetitem.h"
 
 class SessionDispatcher;
 class MainWindow;
+
 class TipDialog :public QDialog
 {
   Q_OBJECT

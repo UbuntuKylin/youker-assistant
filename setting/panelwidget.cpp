@@ -18,41 +18,17 @@
  */
 
 #include "panelwidget.h"
+#include <QLabel>
+#include <QComboBox>
+#include <QDoubleSpinBox>
+#include <QRadioButton>
+#include <QHBoxLayout>
 #include "../dbusproxy/youkersessiondbus.h"
 
 PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy) :
     QWidget(parent),
     sessionproxy(proxy)
 {
-//    splitter = new QSplitter();
-//    splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-//    splitter->setOrientation(Qt::Vertical);
-//    splitter->setHandleWidth(1);
-
-//    top_widget = new QWidget();
-//    bottom_widget = new QWidget();
-
-//    title_label = new QLabel();
-//    title_label->setFixedHeight(20);
-//    description_label = new QLabel();
-//    description_label->setFixedHeight(20);
-//    back_btn = new QPushButton();
-
-//    QVBoxLayout *v_layout = new QVBoxLayout();
-//    v_layout->addWidget(title_label);
-//    v_layout->addWidget(description_label);
-//    v_layout->setMargin(0);
-//    v_layout->setSpacing(1);
-
-//    QHBoxLayout *h_layout = new QHBoxLayout();
-//    h_layout->addWidget(back_btn);
-//    h_layout->addLayout(v_layout);
-//    h_layout->addStretch();
-//    top_widget->setLayout(h_layout);
-//    top_widget->setFixedSize(900,60);
-//    h_layout->setSpacing(20);
-//    h_layout->setContentsMargins(20, 0, 0, 0);
-
     blur_label = new QLabel();
     transparency_label = new QLabel();
     date_format_label = new QLabel();
@@ -310,17 +286,14 @@ void PanelWidget::setRadioButtonRowStatus(/*bool status*/)
     if(obj_name == "smart_radio")
     {
         sessionproxy->set_cursor_size_qt(24);
-//        qDebug() << "small radio clicked";
     }
     else if(obj_name == "static_radio")
     {
         sessionproxy->set_cursor_size_qt(48);
-//        qDebug() << "big radio clicked";
     }
     else if(obj_name == "clear_radio")
     {
         sessionproxy->set_cursor_size_qt(48);
-//        qDebug() << "big radio clicked";
     }
 }
 

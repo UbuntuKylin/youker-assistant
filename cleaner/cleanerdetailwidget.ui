@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
   <widget class="QScrollArea" name="scrollArea">
    <property name="geometry">
     <rect>
@@ -21,6 +24,9 @@
      <width>900</width>
      <height>403</height>
     </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
    </property>
    <property name="widgetResizable">
     <bool>true</bool>

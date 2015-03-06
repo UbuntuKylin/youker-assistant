@@ -18,7 +18,6 @@
  */
 
 #include "loginwidget.h"
-#include "../component/kylintoolbutton.h"
 #include "mainwindow.h"
 #include <QDebug>
 
@@ -40,9 +39,6 @@ LoginWidget::LoginWidget(QWidget *parent)
 //    login_button->setIcon(QIcon("://res/logo.png"));
     login_button->setIconSize(QSize(44, 44));
     login_button->setFlat(true);
-//    login_button->setStyleSheet("QPushButton{background-image: url(://res/logo.png); border: none;}"
-//        "QPushButton:hover{background-image: url(://res/logo-hover.png);}"
-//        "QPushButton:pressed{background-image: url(://res/logo-hover.png);}");
 
     user_label = new QLabel();
     user_label->hide();
@@ -84,8 +80,8 @@ void LoginWidget::showLoginInfo(QString name, QString email)
 {
     logo_label->hide();
     login_button->hide();
-    logout_btn->show();
-    logout_btn->setText(name + "<" + email + ">");
+    user_label->show();
+    user_label->setText(name + "<" + email + ">");
     logout_btn->show();
 }
 
@@ -96,8 +92,8 @@ void LoginWidget::showLoginAndLogoutStatus(bool status)
         logo_label->show();
         login_button->show();
         logout_btn->hide();
-        logout_btn->setText("");
-        logout_btn->hide();
+        user_label->setText("");
+        user_label->hide();
     }
     else
     {//login failed

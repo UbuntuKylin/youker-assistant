@@ -16,6 +16,7 @@ QModelIndex	KylinListModel::index ( int row,
     if (row >= 0 && row < rowCount() && column >= 0 && column < columnCount())
     {
         QStandardItem* item = m_data.at(row);
+//        item->setSizeHint(QSize(80,130));
         return createIndex (row, column, (void *)(item));
     }
     return QModelIndex();
@@ -35,8 +36,12 @@ bool KylinListModel::insertRows ( int row, int count, const QModelIndex & parent
     beginInsertRows(QModelIndex(), row, row + count - 1);
     for (int i = 0; i < count; ++i)
     {
-        QStandardItem* item = new QStandardItem();
-//        item->setSizeHint(QSize(130,130));//kobe
+        QStandardItem *item = new QStandardItem();
+//        item->setSizeHint(QSize(80,130));
+//        item->setFont(QFont("微软雅黑",10,1));
+//        QPixmap pix("://res/box-hover.png");
+//        QBrush brush(pix);
+//        item->setBackground(brush);
         m_data.insert (row,item);
     }
     endInsertRows();
@@ -67,18 +72,21 @@ QVariant KylinListModel::data ( const QModelIndex & index, int role  ) const
     if (role == Qt::DisplayRole)
     {
         QStandardItem* item = m_data.at(index.row());
+//        item->setSizeHint(QSize(80,130));
         return QVariant(item->text());
 
     }
     if (role == Qt::DecorationRole)
     {
         QStandardItem* item = m_data.at(index.row());
+//        item->setSizeHint(QSize(80,130));
         return QVariant(item->icon());
     }
 
     if (role == Qt::WhatsThisRole)
     {
         QStandardItem* item = m_data.at(index.row());
+//        item->setSizeHint(QSize(80,130));
         return item->toolTip();
     }
     return QVariant();
@@ -92,6 +100,7 @@ bool KylinListModel::setData ( const QModelIndex & index,
     if (index.isValid() && role == Qt::EditRole)
     {
         QStandardItem* item = m_data.at(index.row());
+//        item->setSizeHint(QSize(80,130));
         item->setText(value.toString());
         emit dataChanged(index, index);
         return true;
@@ -99,12 +108,14 @@ bool KylinListModel::setData ( const QModelIndex & index,
     if (role == Qt::DecorationRole)
     {
         QStandardItem* item = m_data.at(index.row());
+//        item->setSizeHint(QSize(80,130));
         item->setIcon(value.value<QIcon>());
         return true;
     }
     if (role == Qt::WhatsThisRole)
     {
       QStandardItem* item = m_data.at(index.row());
+//      item->setSizeHint(QSize(80,130));
       item->setToolTip(value.toString());
       return true;
     }

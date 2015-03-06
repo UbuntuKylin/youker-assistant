@@ -26,19 +26,21 @@
 CameraManager::CameraManager(QWidget *parent, SessionDispatcher *proxy)
 :QDialog(parent),sessionproxy(proxy)
 {
-
-//    m_Dlg.setupUi(this);
     this->setFixedSize(500, 271);
-    setWindowFlags(Qt::FramelessWindowHint);
+    this->setWindowFlags(Qt::FramelessWindowHint);
+    this->setAutoFillBackground(true);
+    QPalette palette;
+    palette.setBrush(QPalette::Window, QBrush(Qt::white));
+    this->setPalette(palette);
 
     title_bar = new KylinTitleBar();
     initTitleBar();
     msg_label = new QLabel();
     msg_label->setWordWrap(true);//QLabel自动换行
     msg_label->setFixedWidth(480);
-    QPalette pa;
-    pa.setColor(QPalette::WindowText,Qt::red);
-    msg_label->setPalette(pa);
+
+    palette.setColor(QPalette::WindowText,Qt::red);
+    msg_label->setPalette(palette);
 
     msg_label->hide();
     tip_label = new QLabel();

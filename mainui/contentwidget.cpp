@@ -25,6 +25,7 @@ ContentWidget::ContentWidget(QWidget *parent)
 {
 //    this->resize(900, 326);
     this->setFixedSize(900, 326);
+//    this->setGeometry(0, 274, 900, 326);
 
 }
 

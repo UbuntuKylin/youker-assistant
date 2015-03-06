@@ -18,13 +18,9 @@
  */
 
 #include "cleaneractionwidget.h"
-#include "../component/kylintoolbutton.h"
 #include <QDebug>
-//#include "mainwindow.h"
 #include "../dbusproxy/youkersessiondbus.h"
 #include "../dbusproxy/youkersystemdbus.h"
-
-//#include "../cleaner/cacheactionwidget.h"
 
 CleanerActionWidget::CleanerActionWidget(QWidget *parent)
 	: QWidget(parent)
@@ -153,31 +149,16 @@ void CleanerActionWidget::setLanguage()
 
 void CleanerActionWidget::showCleanOverStatus()
 {
-//    qDebug() << "Clean OVer.......";
     loading_label->stopLoading();
     scan_button->show();
     scan_button->setEnabled(true);
     clean_button->hide();
     back_button->hide();
-//    back_button->hide();
-//    suggest_label->show();
-//    result_label->show();
-//    doing_label->hide();
     doing_label->setText(tr("Clean OK......"));
 }
 
 void CleanerActionWidget::showCleanerData(const QStringList &data)
 {
-    //    lixiang clean data---- ("Path:/home/trusty64/.cache/software-center/rnrclient", "Size:0.00 B")
-        //lixiang clean data---- ("Pkg:testapp", "Percent:50%", "Status:removing")
-
-
-//    cleaner data......-> ("Pkg:dpkg-exec", "Percent:0", "Status:Running dpkg")
-//    cleaner data......-> ("Pkg:360safeforlinux", "Percent:50", "Status:Preparing to completely remove 360safeforlinux (amd64)")
-//    cleaner data......-> ("Pkg:360safeforlinux", "Percent:50", "Status:Removing 360safeforlinux (amd64)")
-//    cleaner data......-> ("Pkg:360safeforlinux", "Percent:50", "Status:Completely removing 360safeforlinux (amd64)")
-//    cleaner data......-> ("Pkg:360safeforlinux", "Percent:100", "Status:Completely removed 360safeforlinux (amd64)")
-//    qDebug() << "cleaner data......->" << data;
     if(data.length() == 2)
     {
         doing_label->setText(tr("Cleaning: ") + data.at(0).split(":").at(1));
@@ -190,15 +171,6 @@ void CleanerActionWidget::showCleanerData(const QStringList &data)
 
 void CleanerActionWidget::showCleanerStatus(const QString &status, const QString &domain)
 {
-    //    lixiang clean status---- "Complete:Cookies.firefox" --------domain-------- "10010.com"
-    //    lixiang clean status---- "Complete:Cookies.firefox" --------domain-------- "10086.cn"
-
-//    system.subpage_status_signal('Complete:History.firefox', 'history')
-//    system.subpage_status_signal('Complete:History.chromium', 'history')
-//    system.subpage_status_signal('Complete:Cookies.firefox', domain)
-//    system.subpage_status_signal('Complete:Cookies.chromium', domain)
-//     self.system.subpage_status_signal('Complete:', 'apt')
-//     self.system.subpage_status_signal('Start:', 'apt')
     if(status == "Complete:History.firefox" && domain == "history")
     {
         doing_label->setText(tr("Clean Firefox history......"));
@@ -206,6 +178,10 @@ void CleanerActionWidget::showCleanerStatus(const QString &status, const QString
     else if(status == "Complete:History.chromium" && domain == "history")
     {
         doing_label->setText(tr("Clean Chromium history......"));
+    }
+    else if(status == "Complete:History.system" && domain == "history")
+    {
+        doing_label->setText(tr("Clean system history......"));
     }
 
     else if(status == "Complete:" && domain == "apt")
@@ -238,14 +214,10 @@ void CleanerActionWidget::showCleanerError(const QString &status)
     {
         doing_label->setText(tr("Chromium Browser is running......"));
     }
-    //system.subpage_error_signal('Non-existent:%s' % filepath)
-    //system.subpage_error_signal('Working:Chromium')
-    //system.subpage_error_signal('Non-existent:%s' % pkgname)
 }
 
 void CleanerActionWidget::showReciveStatus(const QString &status)
 {
-//    qDebug() << "mainpage receive status--------" << status;
     if(status == "Complete:Cache")
     {
         doing_label->setText(tr("Cache Scan OK......"));
@@ -296,82 +268,58 @@ void CleanerActionWidget::showReciveError(const QString &status)
         if(status.contains("Non-existent:"))
             doing_label->setText(status.split(":").at(1) + tr(" does not exist"));
     }
-//    session.subpage_error_signal('Uninstalled:Firefox')
-//    session.subpage_error_signal('Uninstalled:Chromium')
-//    session.subpage_error_signal('Uninstalled:Firefox')
-//    session.subpage_error_signal('Working:Chromium')
-//    session.subpage_error_signal('Uninstalled:Chromium')
-//    system.subpage_error_signal('Non-existent:%s' % filepath)
-//     system.subpage_error_signal('Working:Chromium')
-//    system.subpage_error_signal('Non-existent:%s' % pkgname)
 }
 
-void CleanerActionWidget::onStartButtonClicked()
+void CleanerActionWidget::displayAnimation()
 {
     scan_button->setEnabled(false);
     loading_label->startLoading();
     suggest_label->hide();
-//    result_label->hide();
     doing_label->show();
-    QStringList args;
-    args << "cache" << "history" << "cookies";
-//    sessionProxy->onekey_scan_function_qt(args);
     emit this->showDetailData();
-    QMap<QString, QVariant> tmpMap;
-    QStringList tmp;
-    tmp << "apt" << "software-center" << "thumbnails" << "firefox" << "chromium";
-    tmpMap.insert("Cache", tmp);
-    tmp.clear();
-    tmp << "unneed" << "oldkernel" << "configfile";
-    tmpMap.insert("Packages", tmp);
-    tmp.clear();
-    tmp << "firefox" << "chromium";
-    tmpMap.insert("Cookies", tmp);
-    tmp.clear();
-    tmp << "firefox" << "chromium" << "system";
-    tmpMap.insert("History", tmp);
-    sessionProxy->scanSystemCleanerItems(tmpMap);
+}
+
+//void CleanerActionWidget::displayCleanAnimation()
+//{
+//    clean_button->show();
+//    clean_button->setEnabled(false);
+//    loading_label->startLoading();
+//    suggest_label->hide();
+//    doing_label->setText(tr("Ready to Cleanup......"));//准备清理......
+//    doing_label->show();
+//}
+
+void CleanerActionWidget::receivePolicyKitSignal(bool status)
+{
+    /*display Clean Animation
+        status = true:ok
+        status = false:cacel
+    */
+    if(status)//ok
+    {
+        clean_button->show();
+        clean_button->setEnabled(false);
+        loading_label->startLoading();
+        suggest_label->hide();
+        doing_label->setText(tr("Ready to Cleanup......"));//准备清理......
+        doing_label->show();
+    }
+}
+
+
+void CleanerActionWidget::onStartButtonClicked()
+{
+    emit this->sendScanSignal();
 }
 
 void CleanerActionWidget::onCleanButtonClicked()
 {
-    clean_button->show();
-    clean_button->setEnabled(false);
-    loading_label->startLoading();
-    suggest_label->hide();
-//    result_label->hide();
-    doing_label->setText(tr("Ready to Cleanup......"));//准备清理......
-    doing_label->show();
     emit this->sendCleanSignal();
-
-
-    //cache file
-//    systemProxy->removeFile("/home/trusty64/.cache/thumbnails/fail");
-
-
-    //package file
-//    systemProxy->removePackage("/var/cache/apt/archives/tk8.6_8.6.1-3ubuntu2_amd64.deb");
-
-
-    //firefox cookies
-//    systemProxy->set_user_homedir_qt();
-//    systemProxy->removeFirefoxCookie("07net01.com");
-
-    //chromium cookies
-//    systemProxy->set_user_homedir_qt();
-//    systemProxy->removeChromiumCookie();
-
-    //firefox history
-//    systemProxy->set_user_homedir_qt();
-//    systemProxy->removeFirefoxHistory();
-
-    //chromium history
-//    systemProxy->set_user_homedir_qt();
-//    systemProxy->removeChromiumHistory();
 }
 
 void CleanerActionWidget::onBackButtonClicked()
 {
+    back_button->hide();
     loading_label->stopLoading();
     scan_button->show();
     scan_button->setEnabled(true);

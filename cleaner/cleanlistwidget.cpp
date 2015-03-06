@@ -19,16 +19,13 @@
 
 #include "cleanlistwidget.h"
 #include "ui_cleanlistwidget.h"
-#include <QDebug>
 #include <QVBoxLayout>
-#include <QSignalMapper>
-//#include "../dbusproxy/youkersessiondbus.h"
+#include <QCheckBox>
 #include "../component/utils.h"
 
-
-CleanListWidget::CleanListWidget(QStringList &arglist, const QString title_text, QWidget *parent/*, SessionDispatcher *proxy*/) :
+CleanListWidget::CleanListWidget(QStringList &arglist, const QString title_text, QWidget *parent) :
     QWidget(parent),titleName(title_text),
-    ui(new Ui::CleanListWidget)//sessionproxy(proxy),
+    ui(new Ui::CleanListWidget)
 {
     ui->setupUi(this);
     this->setFixedSize(560, 398);
@@ -66,30 +63,22 @@ CleanListWidget::CleanListWidget(QStringList &arglist, const QString title_text,
     QVBoxLayout *button_layout = new QVBoxLayout;
     int count = arglist.count();
     num_label->setText(QString::number(count));
-    //    QSignalMapper *signal_mapper = new QSignalMapper(this);
     for(int i=0; i<count; i++)
     {
-//        qDebug() << arglist.at(i);
         QCheckBox *checkbox = new QCheckBox(arglist.at(i));
         checkbox->setFocusPolicy(Qt::NoFocus);
         checkbox->setCheckState(Qt::Checked);
         checkbox_list.append(checkbox);
-//        connect(checkbox, SIGNAL(clicked()), signal_mapper, SLOT(map()));
         connect(checkbox, SIGNAL(clicked()), this, SLOT(scanAllSubCheckbox()));
-//        signal_mapper->setMapping(checkbox, QString::number(i, 10));
         button_layout->addWidget(checkbox);
     }
     button_layout->setSpacing(20);
     button_layout->setMargin(0);
     button_layout->setContentsMargins(0, 0, 0, 0);
-//    connect(signal_mapper, SIGNAL(mapped(QString)), this, SLOT(switchPageIndex(QString)));
-//    setLayout(button_layout);
 
     QVBoxLayout *layout  = new QVBoxLayout();
-//    layout->addWidget(title_bar);
     layout->addLayout(button_layout);
     layout->addStretch();
-//    layout->addWidget(scroll_widget);
     layout->setSpacing(0);
     layout->setMargin(0);
     layout->setContentsMargins(10, 0, 10, 10);
@@ -103,11 +92,6 @@ CleanListWidget::~CleanListWidget()
 {
     delete ui;
 }
-
-//void CleanListWidget::initData()
-//{
-//    sessionproxy->getAutoStartAppStatus();
-//}
 
 QStringList CleanListWidget::getSelectedItems()
 {
@@ -152,6 +136,7 @@ void CleanListWidget::resetSubCheckbox(int status) {
             QCheckBox *checkbox = checkbox_list.at(i);
             checkbox->setChecked(false);
         }
+        num_label->setText("0");
     }
     else if(status == 2) {
         for(int i=0; i<checkbox_list.count(); i++)
@@ -159,6 +144,8 @@ void CleanListWidget::resetSubCheckbox(int status) {
             QCheckBox *checkbox = checkbox_list.at(i);
             checkbox->setChecked(true);
         }
+        int count = checkbox_list.count();
+        num_label->setText(QString::number(count));
     }
 }
 

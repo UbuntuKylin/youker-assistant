@@ -222,8 +222,8 @@ class Daemon(PolicyKitService):
         pass
 
     # a dbus method which means quit clean by clicking the policykit's quit button
-    @dbus.service.signal(INTERFACE, signature='')
-    def quit_clean(self):
+    @dbus.service.signal(INTERFACE, signature='b')
+    def quit_clean(self, status):
         pass
 
     # a dbus method which means clean single complete
@@ -281,33 +281,33 @@ class Daemon(PolicyKitService):
     def onekey_clean_cancel_function(self, t):
         daemononekey.cancel_onekey_clean(t, SystemExit)
 
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='', sender_keyword='sender')
-    def history_clean_records_function(self, flag, sender=None):
-        status = self._check_permission(sender, UK_ACTION_YOUKER)
-        if not status:
-            self.clean_complete_msg('')
-            return
-        daemonhistory = cleaner.CleanTheHistory()
-        try:
-            running = daemonhistory.clean_all_history_crufts(flag)
-        except Exception, e:
-            self.clean_error_msg(flag)
-        else:
-            self.clean_complete_msg(flag)
+#    @dbus.service.method(INTERFACE, in_signature='s', out_signature='', sender_keyword='sender')
+#    def history_clean_records_function(self, flag, sender=None):
+#        status = self._check_permission(sender, UK_ACTION_YOUKER)
+#        if not status:
+#            self.clean_complete_msg('')
+#            return
+#        daemonhistory = cleaner.CleanTheHistory()
+#        try:
+#            running = daemonhistory.clean_all_history_crufts(flag)
+#        except Exception, e:
+#            self.clean_error_msg(flag)
+#        else:
+#            self.clean_complete_msg(flag)
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
-    def clean_system_history(self, sender=None):
-        status = self._check_permission(sender, UK_ACTION_YOUKER)
-        if not status:
-            self.clean_complete_msg('')
-            return
-        daemonsystem = cleaner.CleanSystemHistory()
-        try:
-            daemonsystem.clean_the_cruftlist()
-        except Exception, e:
-            self.clean_error_msg('system')
-        else:
-            self.clean_complete_msg('system')
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
+#    def clean_system_history(self, sender=None):
+#        status = self._check_permission(sender, UK_ACTION_YOUKER)
+#        if not status:
+#            self.clean_complete_msg('')
+#            return
+#        daemonsystem = cleaner.CleanSystemHistory()
+#        try:
+#            daemonsystem.clean_the_cruftlist()
+#        except Exception, e:
+#            self.clean_error_msg('system')
+#        else:
+#            self.clean_complete_msg('system')
 
     #@dbus.service.method(INTERFACE, in_signature='', out_signature='', sender_keyword='sender')
     #def clean_dash_history(self, sender=None):
@@ -323,19 +323,19 @@ class Daemon(PolicyKitService):
     #    else:
     #        self.clean_complete_msg('dash')
 
-    @dbus.service.method(INTERFACE, in_signature = 'as', out_signature = '', sender_keyword = 'sender')
-    def cookies_clean_record_function(self, flag, sender=None):
-        status = self._check_permission(sender, UK_ACTION_YOUKER)
-        if not status:
-            self.clean_single_complete_msg('')
-            return
-        daemoncookies = cleaner.CleanTheCookies(None)
-        try:
-            daemoncookies.clean_one_cookies_cruft(flag[0], flag[1])
-        except Exception, e:
-            self.clean_single_error_msg('cookies')
-        else:
-            self.clean_single_complete_msg('cookies')
+#    @dbus.service.method(INTERFACE, in_signature = 'as', out_signature = '', sender_keyword = 'sender')
+#    def cookies_clean_record_function(self, flag, sender=None):
+#        status = self._check_permission(sender, UK_ACTION_YOUKER)
+#        if not status:
+#            self.clean_single_complete_msg('')
+#            return
+#        daemoncookies = cleaner.CleanTheCookies(None)
+#        try:
+#            daemoncookies.clean_one_cookies_cruft(flag[0], flag[1])
+#        except Exception, e:
+#            self.clean_single_error_msg('cookies')
+#        else:
+#            self.clean_single_complete_msg('cookies')
 
 #    @dbus.service.method(INTERFACE, in_signature = 's', out_signature = '', sender_keyword = 'sender')
 #    def cookies_clean_records_function(self, flag, sender = None):
@@ -353,19 +353,19 @@ class Daemon(PolicyKitService):
 
     # the function of clean files
     ### input-['filepath', 'file...]   output-''
-    @dbus.service.method(INTERFACE, in_signature='ass', out_signature='', sender_keyword='sender')
-    def clean_file_cruft(self, cruft_list, flagstr, sender=None):
-        status = self._check_permission(sender, UK_ACTION_YOUKER)
-        if not status:
-            self.clean_complete_msg('')
-            return
-        try:
-            for cruft in cruft_list:
-                self.daemonclean.clean_the_file(cruft)
-        except Exception, e:
-            self.clean_error_msg(flagstr)
-        else:
-            self.clean_complete_msg(flagstr)
+#    @dbus.service.method(INTERFACE, in_signature='ass', out_signature='', sender_keyword='sender')
+#    def clean_file_cruft(self, cruft_list, flagstr, sender=None):
+#        status = self._check_permission(sender, UK_ACTION_YOUKER)
+#        if not status:
+#            self.clean_complete_msg('')
+#            return
+#        try:
+#            for cruft in cruft_list:
+#                self.daemonclean.clean_the_file(cruft)
+#        except Exception, e:
+#            self.clean_error_msg(flagstr)
+#        else:
+#            self.clean_complete_msg(flagstr)
 
     #def dbusstring_to_string(self, string):
     #    tmp_string = str(string)
@@ -378,8 +378,8 @@ class Daemon(PolicyKitService):
 
 #    def quit_clean_work(self, para):
 #        self.quit_clean(para)
-    def quit_clean_work(self):
-        self.quit_clean()
+#    def quit_clean_work(self, status):
+#        self.quit_clean(status)
 
     def clean_single_complete_msg(self, para):
         self.clean_single_complete(para)
@@ -394,39 +394,39 @@ class Daemon(PolicyKitService):
         self.clean_complete_onekey(para)
 
     # a dbus method which means clean complete
-    @dbus.service.signal(INTERFACE, signature='s')
-    def finish_clean(self, msg):
-        pass
+#    @dbus.service.signal(INTERFACE, signature='s')
+#    def finish_clean(self, msg):
+#        pass
 
     @dbus.service.signal(INTERFACE, signature='ss')
     def status_remove_packages(self, type, msg):
         pass
 
     # a dbus method which means an error occurred
-    @dbus.service.signal(INTERFACE, signature='s')
-    def sudo_clean_error(self, msg):
-        pass
+#    @dbus.service.signal(INTERFACE, signature='s')
+#    def sudo_clean_error(self, msg):
+#        pass
 
     # the function of clean packages
     ### input-['packagename', 'pack...]   output-''
-    @dbus.service.method(INTERFACE, in_signature='ass', out_signature='', sender_keyword='sender')
-    def clean_package_cruft(self, cruftlist, flag, sender=None):
-        status = self._check_permission(sender, UK_ACTION_YOUKER)
-        if not status:
-            self.finish_clean_msg('')
-            return
-        try:
-            self.daemonclean.clean_the_package(cruftlist, self)
-        except Exception, e:
-            self.sudo_clean_error_msg(flag)
-        else:
-            self.finish_clean_msg(flag)
+#    @dbus.service.method(INTERFACE, in_signature='ass', out_signature='', sender_keyword='sender')
+#    def clean_package_cruft(self, cruftlist, flag, sender=None):
+#        status = self._check_permission(sender, UK_ACTION_YOUKER)
+#        if not status:
+#            self.finish_clean_msg('')
+#            return
+#        try:
+#            self.daemonclean.clean_the_package(cruftlist, self)
+#        except Exception, e:
+#            self.sudo_clean_error_msg(flag)
+#        else:
+#            self.finish_clean_msg(flag)
 
-    def finish_clean_msg(self, para):
-        self.finish_clean(para)
+#    def finish_clean_msg(self, para):
+#        self.finish_clean(para)
 
-    def sudo_clean_error_msg(self, para):
-        self.sudo_clean_error(para)
+#    def sudo_clean_error_msg(self, para):
+#        self.sudo_clean_error(para)
 
 #-----START-----------NEW-YOUKER---------------------------
 #
@@ -435,8 +435,11 @@ class Daemon(PolicyKitService):
     def remove_select_items(self, mode_dic, sender=None):
         status = self._check_permission(sender, UK_ACTION_YOUKER)
         if not status:
-            self.quit_clean_work()
+            self.quit_clean(False)
+#            self.quit_clean_work()
             return
+        else:
+            self.quit_clean(True)
         filecache = mode_dic.get('file', [])
         if filecache:
             for tmpName in filecache:
@@ -454,6 +457,10 @@ class Daemon(PolicyKitService):
         chromiumhistory = mode_dic.get('chromium-history', [])
         if chromiumhistory:
             cleaner.interface_remove_chromium_history_system(self)
+
+        systemhistory = mode_dic.get('system-history', [])
+        if systemhistory:
+            cleaner.interface_remove_system_history_system(self)
 
         firefoxcookies = mode_dic.get('firefox-cookie', [])
         if firefoxcookies:

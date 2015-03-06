@@ -21,13 +21,12 @@
 #define TOUCHPADWIDGET_H
 
 #include <QWidget>
-#include <QLabel>
-#include <QPushButton>
-#include <QHBoxLayout>
-#include <QSplitter>
-#include <QRadioButton>
 #include "../component/kylinswitcher.h"
+
 class SessionDispatcher;
+class QLabel;
+class QPushButton;
+class QRadioButton;
 
 class TouchpadWidget : public QWidget
 {
@@ -39,9 +38,6 @@ public:
     void initConnect();
     void initData();
 
-//signals:
-//    void showSettingMainWidget();
-
 public slots:
     void setRadioButtonRowStatus(/*bool status*/);
     void setTouchpad();
@@ -49,14 +45,6 @@ public slots:
 
 private:
     SessionDispatcher *sessionproxy;
-//    QSplitter *splitter;
-//    QWidget * top_widget;
-//    QWidget * bottom_widget;
-
-//    QPushButton *back_btn;
-//    QLabel *title_label;
-//    QLabel *description_label;
-
     QLabel *touchpad_label;
     QLabel *horizontal_scrolling_label;
     QLabel *scrollbar_type_label;

@@ -34,7 +34,6 @@ class ShredDialog : public QDialog
 public:
   ShredDialog(ShredManager *plugin, QDialog *parent = 0);
   ~ShredDialog();
-  virtual void paintEvent (QPaintEvent *event);
   void setLanguage();
   void initConnect();
   void initTitleBar();
@@ -46,7 +45,7 @@ public slots:
     void onSelectButtonClicked();
     void onShredButtonClicked();
     void onCacelButtonClicked();
-    void onSelecteComboActivated(int index);
+//    void onSelecteComboActivated(int index);
     void onCloseButtonClicked();
 //    void onMinButtonClicked();
 

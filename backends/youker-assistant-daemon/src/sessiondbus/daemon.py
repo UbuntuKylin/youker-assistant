@@ -64,7 +64,7 @@ from camera.capture import Capture
 #from weather.weatherinfo import WeatherInfo
 #from weather.yahoo import YahooWeather
 from common import *
-from unzip import unzip_resource
+#from unzip import unzip_resource
 from piston_mini_client import APIError
 import httplib2
 #from weather.piston import WeatherPistonAPI
@@ -95,7 +95,7 @@ BAT_FILE = "/sys/class/power_supply/BAT0/uevent"
 class SessionDaemon(dbus.service.Object):
     def __init__ (self, mainloop):
         #self.wizardconf = Wizard()
-        self.ip_addr = None
+#        self.ip_addr = None
         self.distrowatch = []
         self.ubuntukylin_dict = dict()
         self.cloudconf = CloudConfig(self)
@@ -136,6 +136,10 @@ class SessionDaemon(dbus.service.Object):
         cache = apt.Cache()
         pkg = cache['youker-assistant']
         return pkg.installed.version
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def run_selected_app(self, pkgname):
+        run_app(pkgname)
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def check_user(self):
@@ -233,24 +237,24 @@ class SessionDaemon(dbus.service.Object):
         if os.path.isdir(root_path):
             os.system("xdg-open '%s' &" % root_path)
 
-    def real_get_ip_address(self):
-        self.ip_addr = get_ip()
-        if self.ip_addr not in (False, None, {}, '', '[]', "['']"):
-            self.access_weather('ip_addr', 'kobe')
+#    def real_get_ip_address(self):
+#        self.ip_addr = get_ip()
+#        if self.ip_addr not in (False, None, {}, '', '[]', "['']"):
+#            self.access_weather('ip_addr', 'kobe')
 
-    @dbus.service.signal(INTERFACE, signature='b')
-    def unzip_signal(self, result):
-        pass
+#    @dbus.service.signal(INTERFACE, signature='b')
+#    def unzip_signal(self, result):
+#        pass
 
 #    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
-    def unzip_resource_uk_real(self, path):
-        value = unzip_resource(path)
-        self.unzip_signal(value)
+#    def unzip_resource_uk_real(self, path):
+#        value = unzip_resource(path)
+#        self.unzip_signal(value)
 
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
-    def unzip_resource_uk(self, path):
-        t = threading.Thread(target = self.unzip_resource_uk_real, args=(path,))
-        t.start()
+#    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+#    def unzip_resource_uk(self, path):
+#        t = threading.Thread(target = self.unzip_resource_uk_real, args=(path,))
+#        t.start()
 
     #-----------------------------distrowatch rank-----------------------------
     def copy_distrowatch_default_conf(self):
@@ -292,158 +296,158 @@ class SessionDaemon(dbus.service.Object):
         # br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Ubuntu/3.0.1-1.fc9 Firefox/3.0.1'), ('Accept-Language', 'zh-CN,zh;q=0.8,en;q=0.6')]
         self.br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Ubuntu/3.0.1-1.fc9 Firefox/3.0.1')]
 
-    @dbus.service.signal(INTERFACE, signature='b')
-    def distrowatch_ubuntukylin_signal(self, uk_flag):
-        pass
+#    @dbus.service.signal(INTERFACE, signature='b')
+#    def distrowatch_ubuntukylin_signal(self, uk_flag):
+#        pass
 
 #    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
-    def real_get_ubuntukylin_distrowatch_info(self):
-        self.ubuntukylin_dict.clear()
-        try:
-            r = self.br.open(ubuntukylin_distrowatch)
-            html = r.read()
-            soup = BeautifulSoup(html)
-        except Exception as e:
-            self.distrowatch_ubuntukylin_signal(False)
-            return
-        contents = soup.findAll(name="td", attrs={"class":"TablesTitle"})
-        p = re.compile('<[^>]+>')
-#        ubuntukylin_dict = dict()
-        try:
-            result = p.sub(" ", str(contents))
-            aa = result.split('\n')
-            # print len(aa)
-            for i in range(0, len(aa)):
-                if 'Last Update:' in aa[i]:
-                    start_pos = str(aa[i]).find("Last Update:")
-                    self.ubuntukylin_dict['lastupdate'] = str(aa[i])[(start_pos+13):].rstrip()
-                elif 'OS Type:' in aa[i] and 'Based on:' in aa[i] and 'Origin:' in aa[i]:
-                    pos1 = str(aa[i]).find("OS Type:")
-                    pos2 = str(aa[i]).find("Based on:")
-                    pos3 = str(aa[i]).find("Origin:")
-                    self.ubuntukylin_dict['ostype'] = str(aa[i])[(pos1+8):pos2].replace(' ', '')
-                    self.ubuntukylin_dict['basedon'] = str(aa[i])[(pos2+9):pos3].replace(' ', '')
-                    self.ubuntukylin_dict['origin'] = str(aa[i])[(pos3+7):].replace(' ', '')
-                elif 'Architecture:' in aa[i] and 'Desktop:' in aa[i] and 'Category:' in aa[i] and 'Status:' in aa[i] and 'Popularity:' in aa[i] and 'hits per day' in aa[i]:
-                    pos1 = str(aa[i]).find("Architecture:")
-                    pos2 = str(aa[i]).find("Desktop:")
-                    pos3 = str(aa[i]).find("Category:")
-                    pos4 = str(aa[i]).find("Status:")
-                    pos5 = str(aa[i]).find("Popularity:")
-                    pos6 = str(aa[i]).find("hits per day")
-                    self.ubuntukylin_dict['architecture'] = str(aa[i])[(pos1+13):pos2].replace(' ', '')
-                    self.ubuntukylin_dict['desktop'] = str(aa[i])[(pos2+8):pos3].replace(' ', '')
-                    self.ubuntukylin_dict['category'] = str(aa[i])[(pos3+9):pos4].replace(' ', '')
-                    self.ubuntukylin_dict['status'] = str(aa[i])[(pos4+7):pos5].replace(' ', '')
-                    self.ubuntukylin_dict['popularity'] = str(aa[i])[(pos5+11):pos6].replace(' ', '')
-                elif i==6:
-                    self.ubuntukylin_dict['description'] = aa[i]
-        except Exception, e:
-            print 'exception->', e
-        self.distrowatch_ubuntukylin_signal(True)
-#        return ubuntukylin_dict
+#    def real_get_ubuntukylin_distrowatch_info(self):
+#        self.ubuntukylin_dict.clear()
+#        try:
+#            r = self.br.open(ubuntukylin_distrowatch)
+#            html = r.read()
+#            soup = BeautifulSoup(html)
+#        except Exception as e:
+#            self.distrowatch_ubuntukylin_signal(False)
+#            return
+#        contents = soup.findAll(name="td", attrs={"class":"TablesTitle"})
+#        p = re.compile('<[^>]+>')
+##        ubuntukylin_dict = dict()
+#        try:
+#            result = p.sub(" ", str(contents))
+#            aa = result.split('\n')
+#            # print len(aa)
+#            for i in range(0, len(aa)):
+#                if 'Last Update:' in aa[i]:
+#                    start_pos = str(aa[i]).find("Last Update:")
+#                    self.ubuntukylin_dict['lastupdate'] = str(aa[i])[(start_pos+13):].rstrip()
+#                elif 'OS Type:' in aa[i] and 'Based on:' in aa[i] and 'Origin:' in aa[i]:
+#                    pos1 = str(aa[i]).find("OS Type:")
+#                    pos2 = str(aa[i]).find("Based on:")
+#                    pos3 = str(aa[i]).find("Origin:")
+#                    self.ubuntukylin_dict['ostype'] = str(aa[i])[(pos1+8):pos2].replace(' ', '')
+#                    self.ubuntukylin_dict['basedon'] = str(aa[i])[(pos2+9):pos3].replace(' ', '')
+#                    self.ubuntukylin_dict['origin'] = str(aa[i])[(pos3+7):].replace(' ', '')
+#                elif 'Architecture:' in aa[i] and 'Desktop:' in aa[i] and 'Category:' in aa[i] and 'Status:' in aa[i] and 'Popularity:' in aa[i] and 'hits per day' in aa[i]:
+#                    pos1 = str(aa[i]).find("Architecture:")
+#                    pos2 = str(aa[i]).find("Desktop:")
+#                    pos3 = str(aa[i]).find("Category:")
+#                    pos4 = str(aa[i]).find("Status:")
+#                    pos5 = str(aa[i]).find("Popularity:")
+#                    pos6 = str(aa[i]).find("hits per day")
+#                    self.ubuntukylin_dict['architecture'] = str(aa[i])[(pos1+13):pos2].replace(' ', '')
+#                    self.ubuntukylin_dict['desktop'] = str(aa[i])[(pos2+8):pos3].replace(' ', '')
+#                    self.ubuntukylin_dict['category'] = str(aa[i])[(pos3+9):pos4].replace(' ', '')
+#                    self.ubuntukylin_dict['status'] = str(aa[i])[(pos4+7):pos5].replace(' ', '')
+#                    self.ubuntukylin_dict['popularity'] = str(aa[i])[(pos5+11):pos6].replace(' ', '')
+#                elif i==6:
+#                    self.ubuntukylin_dict['description'] = aa[i]
+#        except Exception, e:
+#            print 'exception->', e
+#        self.distrowatch_ubuntukylin_signal(True)
+##        return ubuntukylin_dict
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
-    def show_ubuntukylin_distrowatch_info(self):
-        return self.ubuntukylin_dict
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+#    def show_ubuntukylin_distrowatch_info(self):
+#        return self.ubuntukylin_dict
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
-    def get_ubuntukylin_distrowatch_info(self):
-        t = threading.Thread(target = self.real_get_ubuntukylin_distrowatch_info)
-        t.start()
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+#    def get_ubuntukylin_distrowatch_info(self):
+#        t = threading.Thread(target = self.real_get_ubuntukylin_distrowatch_info)
+#        t.start()
 
-    @dbus.service.signal(INTERFACE, signature='s')
-    def distrowatch_all_signal(self, update_rate):
-        pass
+#    @dbus.service.signal(INTERFACE, signature='s')
+#    def distrowatch_all_signal(self, update_rate):
+#        pass
 
-    def real_get_distrowatch_url(self):
-        self.distrowatch = []
-        update_rate = 'Last 6 months'
-        rank_list = []
-        os_list = []
-        today_hit_list = []
-        img_list = []
-        yestoday_hit_list = []
-        try:
-            r = self.br.open(distrowatch)
-            html = r.read()
-            soup = BeautifulSoup(html)
-        except Exception as e:
-            self.distrowatch_all_signal("")
-            return
-        p = re.compile('<[^>]+>')
-        spiderContents = soup.findAll(name="option", attrs={"selected":"selected"})
-        if len(spiderContents) > 1:
-            try:
-                result = p.sub("", str(spiderContents[1]))
-                update_rate = result
-            except Exception, e:
-                pass
-        else:
-            try:
-                result = p.sub("", str(spiderContents[0]))
-                update_rate = result
-            except Exception, e:
-                pass
-        spiderContents_rank = soup.findAll(name="th", attrs={"class":"phr1"})
-        spiderContents_os = soup.findAll(name="td", attrs={"class":"phr2"})
-        spiderContents_hit = soup.findAll(name="td", attrs={"class":"phr3"})
-        for i in range(0, len(spiderContents_rank)):
-            # print spiderContents_rank[i]#<th class="phr1">96</th>
-            try:
-                result = p.sub("", str(spiderContents_rank[i]))
-                rank_list.append(result)
-                # bb = spiderContents[i].findAll('img', id = 'src')
-                # print pa.sub("", str(spiderContents[i]))
-                # print bb#[<img src="images/other/alevel.png" alt="=" title="Yesterday: 155" />]
-            except Exception, e:
-                rank_list.append('')
-            try:
-                result = p.sub("", str(spiderContents_os[i]))
-                os_list.append(result)
-            except Exception, e:
-                os_list[i].append('')
-            try:
-                result = p.sub("", str(spiderContents_hit[i]))
-                today_hit_list.append(result)
-            except Exception, e:
-                today_hit_list.append('')
-            #<td class="phr3" title="Yesterday: 156">156<img src="images/other/alevel.png" alt="=" title="Yesterday: 156" /></td>
-            start_pos = str(spiderContents_hit[i]).find("src=")
-            end_pos = str(spiderContents_hit[i]).find("alt=")
-            img_path = ''
-            img_path = str(spiderContents_hit[i])[start_pos+5:end_pos]
-            img_path = img_path.replace('\"', '').replace(' ', '')
-            yestoday_hit_last_pos = str(spiderContents_hit[i]).find('Yesterday:',start_pos)
-            yestoday_hit_str = str(spiderContents_hit[i])[yestoday_hit_last_pos+10:]
-            yestoday_hit_num = 0
-            yestoday_hit_num = int(filter(str.isdigit, yestoday_hit_str))
-            img_list.append(img_path)
-            yestoday_hit_list.append(str(yestoday_hit_num))
-        for i in range(0, len(rank_list)):
-            line = "%s+%s+%s+%s+%s+%s" % (rank_list[i], os_list[i], os_list[i].replace(' ', '').replace('-', '').lower(), today_hit_list[i], img_list[i], yestoday_hit_list[i])
-            self.distrowatch.append(line)
-#        print self.distrowatch
-        self.distrowatch_all_signal(update_rate)
+#    def real_get_distrowatch_url(self):
+#        self.distrowatch = []
+#        update_rate = 'Last 6 months'
+#        rank_list = []
+#        os_list = []
+#        today_hit_list = []
+#        img_list = []
+#        yestoday_hit_list = []
+#        try:
+#            r = self.br.open(distrowatch)
+#            html = r.read()
+#            soup = BeautifulSoup(html)
+#        except Exception as e:
+#            self.distrowatch_all_signal("")
+#            return
+#        p = re.compile('<[^>]+>')
+#        spiderContents = soup.findAll(name="option", attrs={"selected":"selected"})
+#        if len(spiderContents) > 1:
+#            try:
+#                result = p.sub("", str(spiderContents[1]))
+#                update_rate = result
+#            except Exception, e:
+#                pass
+#        else:
+#            try:
+#                result = p.sub("", str(spiderContents[0]))
+#                update_rate = result
+#            except Exception, e:
+#                pass
+#        spiderContents_rank = soup.findAll(name="th", attrs={"class":"phr1"})
+#        spiderContents_os = soup.findAll(name="td", attrs={"class":"phr2"})
+#        spiderContents_hit = soup.findAll(name="td", attrs={"class":"phr3"})
+#        for i in range(0, len(spiderContents_rank)):
+#            # print spiderContents_rank[i]#<th class="phr1">96</th>
+#            try:
+#                result = p.sub("", str(spiderContents_rank[i]))
+#                rank_list.append(result)
+#                # bb = spiderContents[i].findAll('img', id = 'src')
+#                # print pa.sub("", str(spiderContents[i]))
+#                # print bb#[<img src="images/other/alevel.png" alt="=" title="Yesterday: 155" />]
+#            except Exception, e:
+#                rank_list.append('')
+#            try:
+#                result = p.sub("", str(spiderContents_os[i]))
+#                os_list.append(result)
+#            except Exception, e:
+#                os_list[i].append('')
+#            try:
+#                result = p.sub("", str(spiderContents_hit[i]))
+#                today_hit_list.append(result)
+#            except Exception, e:
+#                today_hit_list.append('')
+#            #<td class="phr3" title="Yesterday: 156">156<img src="images/other/alevel.png" alt="=" title="Yesterday: 156" /></td>
+#            start_pos = str(spiderContents_hit[i]).find("src=")
+#            end_pos = str(spiderContents_hit[i]).find("alt=")
+#            img_path = ''
+#            img_path = str(spiderContents_hit[i])[start_pos+5:end_pos]
+#            img_path = img_path.replace('\"', '').replace(' ', '')
+#            yestoday_hit_last_pos = str(spiderContents_hit[i]).find('Yesterday:',start_pos)
+#            yestoday_hit_str = str(spiderContents_hit[i])[yestoday_hit_last_pos+10:]
+#            yestoday_hit_num = 0
+#            yestoday_hit_num = int(filter(str.isdigit, yestoday_hit_str))
+#            img_list.append(img_path)
+#            yestoday_hit_list.append(str(yestoday_hit_num))
+#        for i in range(0, len(rank_list)):
+#            line = "%s+%s+%s+%s+%s+%s" % (rank_list[i], os_list[i], os_list[i].replace(' ', '').replace('-', '').lower(), today_hit_list[i], img_list[i], yestoday_hit_list[i])
+#            self.distrowatch.append(line)
+##        print self.distrowatch
+#        self.distrowatch_all_signal(update_rate)
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
-    def get_distrowatch_url(self):
-        t = threading.Thread(target = self.real_get_distrowatch_url)
-        t.start()
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+#    def get_distrowatch_url(self):
+#        t = threading.Thread(target = self.real_get_distrowatch_url)
+#        t.start()
 
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-    def get_distrowatch_info(self):
-        return self.distrowatch
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+#    def get_distrowatch_info(self):
+#        return self.distrowatch
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
-    def get_ip_address(self):
-        t = threading.Thread(target = self.real_get_ip_address)
-        t.start()
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+#    def get_ip_address(self):
+#        t = threading.Thread(target = self.real_get_ip_address)
+#        t.start()
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
-    def show_ip_address(self):
-        return self.ip_addr
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+#    def show_ip_address(self):
+#        return self.ip_addr
 
     # True: has camera, False: no camera
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
@@ -537,41 +541,41 @@ class SessionDaemon(dbus.service.Object):
 #        mainfunc_obj = cleaner.MainPage()
 #        mainfunc_obj.cancel_mainpage_function(target_tid, SystemExit)
 
-    @dbus.service.signal(INTERFACE, signature='as')
-    def get_largefile_list(self, filelist):
-        pass
+#    @dbus.service.signal(INTERFACE, signature='as')
+#    def get_largefile_list(self, filelist):
+#        pass
 
 #    def tell_widget_largefile_list(self, filelist):
 #        self.get_largefile_list(filelist)
 
-    @dbus.service.signal(INTERFACE, signature='si')
-    def get_history_number(self, flag, num):
-        pass
+#    @dbus.service.signal(INTERFACE, signature='si')
+#    def get_history_number(self, flag, num):
+#        pass
 
-    def tell_widget_history_number(self, flag, num):
-        self.get_history_number(flag, num)
+#    def tell_widget_history_number(self, flag, num):
+#        self.get_history_number(flag, num)
 
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='i')
-    def scan_history_records(self, flag):
-        historyfunc_obj = cleaner.CleanTheHistory()
-        crufts = historyfunc_obj.get_history_crufts(flag)
-        figure = None
-        if isinstance(crufts, list):
-            figure = sum([int(one.split('<2_2>')[-1]) for one in crufts])
-        elif crufts in 'True':
-            figure = -99
-        elif crufts in 'No':
-            figure = -1
-        #return figure
-        self.tell_widget_history_number(flag, figure)
+#    @dbus.service.method(INTERFACE, in_signature='s', out_signature='i')
+#    def scan_history_records(self, flag):
+#        historyfunc_obj = cleaner.CleanTheHistory()
+#        crufts = historyfunc_obj.get_history_crufts(flag)
+#        figure = None
+#        if isinstance(crufts, list):
+#            figure = sum([int(one.split('<2_2>')[-1]) for one in crufts])
+#        elif crufts in 'True':
+#            figure = -99
+#        elif crufts in 'No':
+#            figure = -1
+#        #return figure
+#        self.tell_widget_history_number(flag, figure)
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
-    def scan_system_history(self):
-        daemonsystem = cleaner.CleanSystemHistory()
-        url = daemonsystem.get_scan_result()
-        #self.scan_complete_msg('system')
-        #return len(url)
-        self.tell_widget_history_number("system", len(url))
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+#    def scan_system_history(self):
+#        daemonsystem = cleaner.CleanSystemHistory()
+#        url = daemonsystem.get_scan_result()
+#        #self.scan_complete_msg('system')
+#        #return len(url)
+#        self.tell_widget_history_number("system", len(url))
 
     #@dbus.service.method(INTERFACE, in_signature='', out_signature='i')
     #def scan_dash_history(self):
@@ -595,40 +599,40 @@ class SessionDaemon(dbus.service.Object):
     #    self.scan_complete_msg('large')
     #    return tmp_list
 
-    def real_scan_large_files(self, size, path):
-        filelist = self.daemonlarge.get_scan_result(size, path)
-        # start to send the over signal to UI
-        self.get_largefile_list(filelist)
+#    def real_scan_large_files(self, size, path):
+#        filelist = self.daemonlarge.get_scan_result(size, path)
+#        # start to send the over signal to UI
+#        self.get_largefile_list(filelist)
 
-    @dbus.service.method(INTERFACE, in_signature='is', out_signature='')
-    def scan_of_large(self, size, path):
-        t = threading.Thread(target = self.real_scan_large_files, args=(size, path))
-        t.start()
+#    @dbus.service.method(INTERFACE, in_signature='is', out_signature='')
+#    def scan_of_large(self, size, path):
+#        t = threading.Thread(target = self.real_scan_large_files, args=(size, path))
+#        t.start()
 
     # the function of clean the cookies records
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
-    def cookies_scan_function(self, flag):
-        cookiesfunc_obj = cleaner.CleanTheCookies(self)
-        t = threading.Thread(target = cookiesfunc_obj.get_cookie_crufts, args = (flag, self))
-        t.start()
-        #cookiesfunc_obj.get_cookie_crufts(flag, self)
+#    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+#    def cookies_scan_function(self, flag):
+#        cookiesfunc_obj = cleaner.CleanTheCookies(self)
+#        t = threading.Thread(target = cookiesfunc_obj.get_cookie_crufts, args = (flag, self))
+#        t.start()
+#        #cookiesfunc_obj.get_cookie_crufts(flag, self)
 
-    @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
-    def package_scan_function(self, mode_list):
-        packagefunc_obj = cleaner.CleanTheSpare()
-        t = threading.Thread(target = packagefunc_obj.get_all_package_crufts, args = (mode_list, self))
-        t.start()
+#    @dbus.service.method(INTERFACE, in_signature='as', out_signature='')
+#    def package_scan_function(self, mode_list):
+#        packagefunc_obj = cleaner.CleanTheSpare()
+#        t = threading.Thread(target = packagefunc_obj.get_all_package_crufts, args = (mode_list, self))
+#        t.start()
 
-    @dbus.service.method(INTERFACE, in_signature='ass', out_signature='')
-    def cache_scan_function(self, mode_list, flag):
-        cachefunc_obj = cleaner.CleanTheCache()
-        t = threading.Thread(target = cachefunc_obj.get_all_cache_crufts, args = (mode_list, flag, self))
-        t.start()
+#    @dbus.service.method(INTERFACE, in_signature='ass', out_signature='')
+#    def cache_scan_function(self, mode_list, flag):
+#        cachefunc_obj = cleaner.CleanTheCache()
+#        t = threading.Thread(target = cachefunc_obj.get_all_cache_crufts, args = (mode_list, flag, self))
+#        t.start()
 
     # a dbus signal which means access weather by kobe
-    @dbus.service.signal(INTERFACE, signature='ss')
-    def access_weather(self, key, msg):
-        pass
+#    @dbus.service.signal(INTERFACE, signature='ss')
+#    def access_weather(self, key, msg):
+#        pass
 
     # a dbus signal which means scan complete by kobe
     @dbus.service.signal(INTERFACE, signature='s')
@@ -1477,6 +1481,10 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def get_current_autostart_status(self):
         autostartmanage.interface_get_status(self)
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
+    def get_current_single_autostart_status(self, path):
+        return autostartmanage.interface_get_single_status(self, path)
         
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def change_autostart_status(self, filename):
@@ -1497,12 +1505,15 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='a{sv}', out_signature='')
     def get_scan_result(self, mode_dic):
         cleaner.interface_get_subpage_session(self, mode_dic)
+
     @dbus.service.signal(INTERFACE, signature='as')
     def subpage_data_signal(self, info):
         pass
+
     @dbus.service.signal(INTERFACE, signature='s')
     def subpage_status_signal(self, status):
         pass
+
     @dbus.service.signal(INTERFACE, signature='s')
     def subpage_error_signal(self, error):
         pass
@@ -1614,40 +1625,40 @@ class SessionDaemon(dbus.service.Object):
 #        t = threading.Thread(target = self.access_server_pingback_real)
 #        t.start()
 
-    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
-    def submit_uk_pingback(self, cityname):
-        last_time = self.get_last_time()
-        now_time = datetime.datetime.now()
-        if last_time in (None, ''):
-            version_youker_assistant = get_uk_version()
-            distro, version_os  = get_distro_info()
-            try:
-                pingback = self.premoter.submit_pingback_main(distro, version_os, version_youker_assistant, cityname)
-            except Exception as e:
-                print 'pingback failed...'
-                print e
-            if pingback:
-                self. set_last_time(now_time.strftime('%Y-%m-%d'))#'%Y-%m-%d %H:%M:%S'
-            return pingback
-        else:
-            last_time = datetime.datetime.strptime(last_time, '%Y-%m-%d')
-            now_time = now_time.strftime('%Y-%m-%d')
-            now_time = datetime.datetime.strptime(now_time, '%Y-%m-%d')
-#            myseconds = (now_time - last_time).seconds
-            delta = now_time - last_time#两个日期相隔的天数
-            if (delta.days > 0):
-                version_youker_assistant = get_uk_version()
-                distro, version_os  = get_distro_info()
-                try:
-                    pingback = self.premoter.submit_pingback_main(distro, version_os, version_youker_assistant, cityname)
-                except Exception as e:
-                    print 'pingback failed...'
-                    print e
-                if pingback:
-                    self. set_last_time(now_time.strftime('%Y-%m-%d'))
-                return pingback
-            else:
-                return False
+#    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
+#    def submit_uk_pingback(self, cityname):
+#        last_time = self.get_last_time()
+#        now_time = datetime.datetime.now()
+#        if last_time in (None, ''):
+#            version_youker_assistant = get_uk_version()
+#            distro, version_os  = get_distro_info()
+#            try:
+#                pingback = self.premoter.submit_pingback_main(distro, version_os, version_youker_assistant, cityname)
+#            except Exception as e:
+#                print 'pingback failed...'
+#                print e
+#            if pingback:
+#                self. set_last_time(now_time.strftime('%Y-%m-%d'))#'%Y-%m-%d %H:%M:%S'
+#            return pingback
+#        else:
+#            last_time = datetime.datetime.strptime(last_time, '%Y-%m-%d')
+#            now_time = now_time.strftime('%Y-%m-%d')
+#            now_time = datetime.datetime.strptime(now_time, '%Y-%m-%d')
+##            myseconds = (now_time - last_time).seconds
+#            delta = now_time - last_time#两个日期相隔的天数
+#            if (delta.days > 0):
+#                version_youker_assistant = get_uk_version()
+#                distro, version_os  = get_distro_info()
+#                try:
+#                    pingback = self.premoter.submit_pingback_main(distro, version_os, version_youker_assistant, cityname)
+#                except Exception as e:
+#                    print 'pingback failed...'
+#                    print e
+#                if pingback:
+#                    self. set_last_time(now_time.strftime('%Y-%m-%d'))
+#                return pingback
+#            else:
+#                return False
 
 #    def real_get_current_weather(self, cityId):
 #        self.weather_data = self.server.get_cma_observe_weather(cityId)

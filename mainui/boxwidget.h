@@ -22,11 +22,12 @@
 
 #include <QWidget>
 #include <QLabel>
-#include <QToolButton>
 #include <QHBoxLayout>
 #include <QPushButton>
 #include <QListView>
 #include "../component/kylinlistmodel.h"
+
+class SessionDispatcher;
 
 class BoxWidget : public QWidget
 {
@@ -36,6 +37,7 @@ public:
     ~BoxWidget();
     void loadPlugins();
     void initPluginWidget();
+    void setSessionDbusProxy(SessionDispatcher *dispatcher) { sessionProxy = dispatcher;}
 
 signals:
 
@@ -46,8 +48,9 @@ public slots:
 
 private:
     QListView *list_view;
-    KylinListModel m_feture_Model;
+    KylinListModel pluginModel;
     QString plugin_path;
+    SessionDispatcher *sessionProxy;
 };
 
 #endif // BOXWIDGET_H

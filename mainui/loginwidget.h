@@ -21,18 +21,12 @@
 #define LOGINWIDGET_H
 
 #include <QWidget>
-#include <QPushButton>
-#include <QMouseEvent>
-#include <QHBoxLayout>
-#include <QSignalMapper>
-#include <QVBoxLayout>
-#include <QLabel>
+
 #include "../component/kylinbutton.h"
-#include "../component/kylintoolbutton.h"
 #include "../component/systembutton.h"
 
 class SessionDispatcher;
-//class MainWindow;
+class QLabel;
 
 class LoginWidget : public QWidget
 {
@@ -40,13 +34,9 @@ class LoginWidget : public QWidget
 public:
     explicit LoginWidget(QWidget *parent = 0);
     ~LoginWidget();
-//    void setParentWindow(MainWindow* window) { p_mainwindow = window;}
     void setSessionDbusProxy(SessionDispatcher* dispatcher) { sessionProxy = dispatcher;}
     void setLauguage();
     void initConnect();
-
-
-signals:
 
 public slots:
     void onLoginButtonClicked();
@@ -62,8 +52,6 @@ private:
     QLabel *user_label;
     QPushButton *logout_btn;
     SessionDispatcher *sessionProxy;
-
-//    MainWindow *p_mainwindow;
 };
 
 #endif // LOGINWIDGET_H

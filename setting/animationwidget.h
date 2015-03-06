@@ -21,13 +21,12 @@
 #define ANIMATIONWIDGET_H
 
 #include <QWidget>
-#include <QLabel>
-#include <QPushButton>
-#include <QHBoxLayout>
-#include <QSplitter>
 #include <QListWidget>
+
 class SystemDispatcher;
 class MainWindow;
+class QLabel;
+class QPushButton;
 
 class AnimationWidget : public QWidget
 {
@@ -38,10 +37,6 @@ public:
     void setLanguage();
     void initConnect();
     void initData();
-//    QString showSelectFileDialog();
-
-//signals:
-//    void showSettingMainWidget();
 
 public slots:
     void selectCustomAnimation();
@@ -52,15 +47,9 @@ public slots:
 private:
     SystemDispatcher *systemproxy;
     MainWindow *parentWindow;
-//    QSplitter *splitter;
-//    QWidget * top_widget;
-//    QWidget * bottom_widget;
     QWidget * left_widget;
     QWidget * right_widget;
 
-//    QPushButton *back_btn;
-//    QLabel *title_label;
-//    QLabel *description_label;
     QLabel *title_label;
     QPushButton *custom_btn;
     QPushButton *ok_btn;

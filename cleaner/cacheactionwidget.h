@@ -21,19 +21,9 @@
 #define CACHEACTIONWIDGET_H
 
 #include <QWidget>
-#include <QLabel>
-#include <QPushButton>
-#include <QMouseEvent>
-#include <QHBoxLayout>
-#include <QSignalMapper>
-#include <QVBoxLayout>
-#include "../component/kylinbutton.h"
-#include "../component/kylintoolbutton.h"
-#include "../component/systembutton.h"
-#include "../component/loadinglabel.h"
-#include <QStackedWidget>
-
 class MainWindow;
+class QLabel;
+
 class CacheActionWidget : public QWidget
 {
     Q_OBJECT
@@ -47,7 +37,6 @@ private:
     QLabel *img_label;
     QLabel *title_label;
     QLabel *description_label;
-
     MainWindow *p_mainwindow;
 };
 

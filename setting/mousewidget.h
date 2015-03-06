@@ -21,14 +21,14 @@
 #define MOUSEWIDGET_H
 
 #include <QWidget>
-#include <QLabel>
-#include <QPushButton>
 #include <QHBoxLayout>
-#include <QSplitter>
-#include <QComboBox>
-#include <QRadioButton>
+
 class SessionDispatcher;
 class SystemDispatcher;
+class QLabel;
+class QPushButton;
+class QComboBox;
+class QRadioButton;
 
 class MouseWidget : public QWidget
 {
@@ -50,14 +50,6 @@ public slots:
 private:
     SessionDispatcher *sessionproxy;
     SystemDispatcher *systemproxy;
-//    QSplitter *splitter;
-//    QWidget * top_widget;
-//    QWidget * bottom_widget;
-
-//    QPushButton *back_btn;
-//    QLabel *title_label;
-//    QLabel *description_label;
-
     QLabel *theme_label;
     QLabel *size_label;
     QComboBox *theme_combo;

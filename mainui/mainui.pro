@@ -16,6 +16,10 @@ CONFIG += qt \
     release
 INCLUDEPATH += .
 
+include(../qtsingleapplication/src/qtsingleapplication.pri)
+
+QMAKE_CFLAGS_DEBUG  = -g
+
 #指定uic命令将.ui文件转化成ui_*.h文件的存放的目录
 UI_DIR += $$PWD/../tmp/
 
@@ -77,7 +81,6 @@ SOURCES += main.cpp\
     ../component/kylinlistmodel.cpp \
     ../component/kylinbutton.cpp \
     ../component/kylinmenu.cpp \
-    ../component/systemtray.cpp \
     ../component/kylintoolbutton.cpp \
     ../component/kylinswitcher.cpp \
     ../component/systembutton.cpp \
@@ -108,8 +111,6 @@ SOURCES += main.cpp\
     ../setting/touchpadwidget.cpp \
     ../setting/deadpixelwidget.cpp \
     ../setting/nautiluswidget.cpp \
-    kylinthread.cpp \
-    ../component/labelgroup.cpp \
     ../component/scrollwidget.cpp \
     ../component/agentlistitem.cpp \
     ../component/quibo.cpp \
@@ -118,27 +119,28 @@ SOURCES += main.cpp\
     ../component/kylinlistwidgetitem.cpp \
     ../component/kylinlistwidget.cpp \
     ../component/loadinglabel.cpp \
-    ../component/commontoolbutton.cpp \
+    ../component/alertdialog.cpp \
+    ../component/toolkits.cpp \
     ../cleaner/cacheactionwidget.cpp \
     ../cleaner/cleanerdetailwidget.cpp \
     ../cleaner/cleanermainwidget.cpp \
     ../cleaner/cleaneritems.cpp \
-    ../component/kylincheckbox.cpp \
-#    toolkits.cpp \
-    alertdialog.cpp \
     ../dbusproxy/youkersystemdbus.cpp \
     ../dbusproxy/youkersessiondbus.cpp \
     ../info/devicemanager.cpp \
     ../component/settingaction.cpp \
     autostartwidget.cpp \
     ../component/autogroup.cpp \
-    ../component/kylinscrollarea.cpp \
     kthread.cpp \
     cameramanager.cpp \
     aboutdialog.cpp \
     ../cleaner/cleanlistwidget.cpp \
-    ../component/commoncheckbox.cpp \
-    ../component/tipdialog.cpp
+    ../component/tipdialog.cpp \
+    ../component/toolbutton.cpp \
+    ../component/cleangroup.cpp \
+    ../component/cleanbutton.cpp \
+    ../component/cleansubgroup.cpp \
+    ../component/cleansubbutton.cpp
 
 HEADERS  += mainwindow.h \
     titlewidget.h \
@@ -161,7 +163,6 @@ HEADERS  += mainwindow.h \
     ../component/utils.h \
     ../component/kylinbutton.h \
     ../component/kylinmenu.h \
-    ../component/systemtray.h \
     ../component/kylintoolbutton.h \
     ../component/kylinswitcher.h \
     ../component/systembutton.h \
@@ -192,8 +193,6 @@ HEADERS  += mainwindow.h \
     ../setting/touchpadwidget.h \
     ../setting/deadpixelwidget.h \
     ../setting/nautiluswidget.h \
-    kylinthread.h \
-    ../component/labelgroup.h \
     ../component/scrollwidget.h \
     ../component/agentlistitem.h \
     ../component/quibo.h \
@@ -202,31 +201,32 @@ HEADERS  += mainwindow.h \
     ../component/kylinlistwidgetitem.h \
     ../component/kylinlistwidget.h \
     ../component/loadinglabel.h \
-    ../component/commontoolbutton.h \
+    ../component/alertdialog.h \
+    ../component/toolkits.h \
     ../cleaner/cacheactionwidget.h \
     ../cleaner/cleanerdetailwidget.h \
     ../cleaner/cleanermainwidget.h \
     ../cleaner/cleaneritems.h \
-    ../component/kylincheckbox.h \
-#    toolkits.h \
-    alertdialog.h \
     ../dbusproxy/youkersystemdbus.h \
     ../dbusproxy/youkersessiondbus.h \
     ../info/devicemanager.h \
     ../component/settingaction.h \
     autostartwidget.h \
     ../component/autogroup.h \
-    ../component/kylinscrollarea.h \
     kthread.h \
     cameramanager.h \
     aboutdialog.h \
     ../cleaner/cleanlistwidget.h \
-    ../component/commoncheckbox.h \
-    ../component/tipdialog.h
+    ../component/tipdialog.h \
+    ../component/toolbutton.h \
+    ../component/cleangroup.h \
+    ../component/cleanbutton.h \
+    ../component/cleansubgroup.h \
+    ../component/cleansubbutton.h
 
 FORMS    += mainwindow.ui \
     ../component/quibo.ui \
-    alertdialog.ui \
+    ../component/alertdialog.ui \
     autostartwidget.ui \
     aboutdialog.ui \
     ../cleaner/cleanlistwidget.ui \

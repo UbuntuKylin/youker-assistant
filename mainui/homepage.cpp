@@ -18,12 +18,12 @@
  */
 
 #include "homepage.h"
-//#include "../component/commontoolbutton.h"
 #include <QSignalMapper>
 #include <QDebug>
 #include "mainwindow.h"
+#include "../component/toolbutton.h"
 
-HomePage::HomePage(QWidget *parent) :
+HomePage::HomePage(QWidget *parent, const QString &version) :
     QWidget(parent)
 {
     this->setFixedSize(900, 326);
@@ -42,7 +42,7 @@ HomePage::HomePage(QWidget *parent) :
 //    QPixmap pixmap("://res/scan.png");
 //    scan_button->setIcon(pixmap);
 //    scan_button->setIconSize(pixmap.size());
-
+    current_version = version;
     version_logo = new QLabel();
     version_title = new QLabel();
     version_tip = new QLabel();
@@ -57,13 +57,14 @@ HomePage::HomePage(QWidget *parent) :
     auto_start = NULL;
     camera_manager = NULL;
 
-//    software_btn = new CommonToolButton();
-//    boot_btn = new CommonToolButton();
-//    camera_btn = new CommonToolButton();
-//    more_text_btn->setAlignment(Qt::AlignCenter);
     more_text_btn->setObjectName("checkButton");
-    more_text_btn->setCursor(Qt::PointingHandCursor);
+//    more_text_btn->setCursor(Qt::PointingHandCursor);
+    more_text_btn->setCursor(Qt::OpenHandCursor);
     more_text_btn->setFocusPolicy(Qt::NoFocus);
+    QFont font = more_text_btn->font();
+    font.setUnderline(true);
+    more_text_btn->setFont(font);
+
     check_btn->setObjectName("checkButton");
     check_btn->setCursor(Qt::PointingHandCursor);
     check_btn->setFocusPolicy(Qt::NoFocus);
@@ -153,21 +154,12 @@ void HomePage::initUI()
     QSignalMapper *signal_mapper = new QSignalMapper(this);
     for(int i=0; i<icon_list.size(); i++)
     {
-        QToolButton *tool_button = new QToolButton();
-        tool_button->setFocusPolicy(Qt::NoFocus);
+        ToolButton *tool_button = new ToolButton;
+        tool_button->setIcon(icon_list.at(i));
         tool_button->setText(text_list.at(i));
-        tool_button->setIcon(QIcon(icon_list.at(i)));
-        tool_button->setIconSize(QPixmap(icon_list.at(i)).size());
-        tool_button->setAutoRaise(true);
-        tool_button->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-        tool_button->setObjectName("commonToolButton");
-        tool_button->setFixedSize(110, 110);
-//        tool_button->setContentsMargins(0, 20, 0, 30);
-
-        button_list.append(tool_button);
         connect(tool_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
         signal_mapper->setMapping(tool_button, QString::number(i, 10));
-        button_layout->addWidget(tool_button, 0, Qt::AlignBottom);
+        button_layout->addWidget(tool_button);
     }
     connect(signal_mapper, SIGNAL(mapped(QString)), this, SLOT(switchPageIndex(QString)));
 
@@ -225,7 +217,7 @@ void HomePage::initConnect()
 
 void HomePage::setLanguage()
 {
-    version_title->setText(tr("Current Version Number") + "    " + "V2.0.0");
+    version_title->setText(tr("Current Version Number") + "    " + current_version);
     version_tip->setText(tr("Update to the lastest version, make it work better"));
     check_btn->setText(tr("Check new version"));
     box_title->setText(tr("Common toolbox"));
@@ -249,7 +241,6 @@ void HomePage::switchPageIndex(QString index)
 {
 //    bool ok;
 //    int current_index = index.toInt(&ok, 10);
-//    qDebug() << index;
 
     if(index == "0")
     {
@@ -298,17 +289,4 @@ void HomePage::switchPageIndex(QString index)
             camera_manager->raise();
         }
     }
-//    for(int i=0; i<button_list.count(); i++)
-//    {
-////        CommonToolButton *tool_button = button_list.at(i);
-//        QToolButton *tool_button = button_list.at(i);
-//        if(current_index == i)
-//        {
-//            tool_button->setMousePress(true);
-//        }
-//        else
-//        {
-//            tool_button->setMousePress(false);
-//        }
-//    }
 }

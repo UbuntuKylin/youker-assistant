@@ -19,16 +19,9 @@
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QPainter>
-#include <QDesktopWidget>
 #include <QDebug>
-#include <QBitmap>
-
-//#include "../dbusproxy/youkersessiondbus.h"
-//#include "../dbusproxy/youkersystemdbus.h"
-#include "../component/utils.h"
-
-QPoint widgetPosition;//界面中心位置的全局变量
+#include <QPropertyAnimation>
+#include <QParallelAnimationGroup>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), skin_center(parent),
@@ -36,12 +29,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->resize(900, 600);
-//    this->setMouseTracking(true);
-//    ui->centralWidget->setMouseTracking(true);
     this->setWindowOpacity(1);
-//    setMouseTracking(true);
-    this->setAutoFillBackground(true);
     this->setWindowFlags(Qt::FramelessWindowHint | Qt::Widget);
+
+    version = "V2.0.1";
 
     mSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
     mSettings->setIniCodec("UTF-8");
@@ -55,11 +46,6 @@ MainWindow::MainWindow(QWidget *parent) :
     mSettings->endGroup();
     mSettings->sync();
     main_skin_pixmap.load(last_skin_path);
-//    QPalette palette_back;
-//    last_skin_path = ":/background/res/skin/1.png";
-//    palette_back.setBrush(QPalette::Background, QBrush(QPixmap(last_skin_path)));
-//    main_skin_pixmap.load(":/background/res/skin/1.png");
-//    setPalette(palette_back);
 
     initSkinCenter();
 
@@ -76,10 +62,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setting_action_widget = NULL;
     box_action_widget = NULL;
 
-    system_tray = new SystemTray(this);
-    connect(system_tray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(iconIsActived(QSystemTrayIcon::ActivationReason)));
-    connect(system_tray, SIGNAL(showWidget()), this, SLOT(showMainWindow()));
-    system_tray->show();
+    toolKits = new Toolkits(0, this->width(), this->height());
 
     title_widget = new TitleWidget(this);
     connect(title_widget, SIGNAL(closeApp()), this, SLOT(closeYoukerAssistant()));
@@ -87,6 +70,8 @@ MainWindow::MainWindow(QWidget *parent) :
     title_widget->initConnect();
 
     action_widget = new ActionWidget(this);
+    //设置在最底层，方便title_widget的显示
+//    action_widget->lower();
     QPalette palette_back;
     palette_back.setBrush(QPalette::Background, QBrush(QPixmap(last_skin_path)));
     action_widget->setPalette(palette_back);
@@ -107,6 +92,7 @@ MainWindow::MainWindow(QWidget *parent) :
     main_menu->initConnect();
 
     this->showHomePage();
+//    this->initAnimation();
 }
 
 MainWindow::~MainWindow()
@@ -196,6 +182,11 @@ MainWindow::~MainWindow()
         delete aboutDlg;
         aboutDlg = NULL;
     }
+    if (toolKits != NULL)
+    {
+        delete toolKits;
+        toolKits = NULL;
+    }
     mSettings->sync();
     if (mSettings != NULL)
     {
@@ -204,6 +195,57 @@ MainWindow::~MainWindow()
     }
     delete ui;
 }
+
+
+//void MainWindow::initAnimation()
+//{
+//    QRect mainAcitonRect(0, 0, 900, 150);
+//    QRect origAcitonRect(0, 0, 900, 227);
+//    QPoint origPoint(0, 227);
+//    QPoint needPoint(0, 150);
+//    QRect mainContentRect(0, 197, 900, 403);
+//    QRect origContentRect(0, 274, 900, 326);
+
+//    QPropertyAnimation *mainActionAnimation = new QPropertyAnimation(action_widget, "geometry");
+//    mainActionAnimation->setDuration(1000);
+//    mainActionAnimation->setStartValue(origAcitonRect);
+//    mainActionAnimation->setEndValue(mainAcitonRect);
+
+//    QPropertyAnimation *mainToolAnimation = new QPropertyAnimation(tool_widget, "pos");
+//    mainToolAnimation->setDuration(200);
+//    mainToolAnimation->setStartValue(origPoint);
+//    mainToolAnimation->setEndValue(needPoint);
+
+//    QPropertyAnimation *mainContentAnimation = new QPropertyAnimation(content_widget, "geometry");
+//    mainContentAnimation->setDuration(500);
+//    mainContentAnimation->setStartValue(origContentRect);
+//    mainContentAnimation->setEndValue(mainContentRect);
+
+//    openGroup = new QParallelAnimationGroup(this);
+//    openGroup->addAnimation(mainActionAnimation);
+//    openGroup->addAnimation(mainToolAnimation);
+//    openGroup->addAnimation(mainContentAnimation);
+
+//    QPropertyAnimation *mainActionBackAnimation = new QPropertyAnimation(action_widget, "geometry");
+//    mainActionBackAnimation->setDuration(1000);
+//    mainActionBackAnimation->setStartValue(mainAcitonRect);
+//    mainActionBackAnimation->setEndValue(origAcitonRect);
+
+//    QPropertyAnimation *mainToolBackAnimation = new QPropertyAnimation(tool_widget, "pos");
+//    mainToolBackAnimation->setDuration(200);
+//    mainToolBackAnimation->setStartValue(needPoint);
+//    mainToolBackAnimation->setEndValue(origPoint);
+
+//    QPropertyAnimation *mainContentBackAnimation = new QPropertyAnimation(content_widget, "geometry");
+//    mainContentBackAnimation->setDuration(500);
+//    mainContentBackAnimation->setStartValue(mainContentRect);
+//    mainContentBackAnimation->setEndValue(origContentRect);
+
+//    closeGroup = new QParallelAnimationGroup(this);
+//    closeGroup->addAnimation(mainActionBackAnimation);
+//    closeGroup->addAnimation(mainToolBackAnimation);
+//    closeGroup->addAnimation(mainContentBackAnimation);
+//}
 
 void MainWindow::setTranslator(QTranslator* translator)
 {
@@ -250,20 +292,8 @@ void MainWindow::changeLanguage(LANGUAGE language)
 //	system_tray->translateLanguage();
 }
 
-//void MainWindow::paintEvent(QPaintEvent *)
-//{
-//    widgetPosition = this->pos();
-//    qDebug() << "--------"<<widgetPosition;
-//    //画圆角矩形
-////    QBitmap objBitmap(size());
-////    QPainter painter(&objBitmap);
-////    painter.fillRect(rect(),Qt::white);
-////    painter.setBrush(QColor(0,0,0));
-////    painter.drawRoundedRect(this->rect(),5,5);
-////    setMask(objBitmap);
-//}
-
 void MainWindow::setMainWindowLayout() {
+//    main_layout = NULL;
     main_layout = new QBoxLayout(QBoxLayout::TopToBottom);
     main_layout->addWidget(action_widget/*, 0, Qt::AlignTop*/);
     main_layout->addWidget(tool_widget);
@@ -272,6 +302,7 @@ void MainWindow::setMainWindowLayout() {
     main_layout->setMargin(0);
     main_layout->setContentsMargins(0, 0, 0, 0);
     title_widget->move(0, 0);
+//    title_widget->show();
     login_widget->move(585, 0);//900 - login_widget(220) - right_align(15) = 665
     this->centralWidget()->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     this->centralWidget()->setLayout(main_layout);
@@ -279,6 +310,12 @@ void MainWindow::setMainWindowLayout() {
 
 void MainWindow::display() {
     this->setMainWindowLayout();
+
+    QPropertyAnimation *animation = new QPropertyAnimation(this, "windowOpacity");
+    animation->setDuration(500);
+    animation->setStartValue(0);
+    animation->setEndValue(1);
+    animation->start();
 
     if (this->isHidden()) {
         int windowWidth = QApplication::desktop()->width();
@@ -295,24 +332,18 @@ void MainWindow::display() {
 
 void MainWindow::startDbusDaemon()
 {
-//    systemproxy(this),
     sessioninterface = new SessionDispatcher(this);
     systeminterface = new SystemDispatcher(this);
-
-
-
     login_widget->setSessionDbusProxy(sessioninterface);
     sessioninterface->check_user_qt();
     connect(sessioninterface, SIGNAL(ssoSuccessSignal(QString, QString)), login_widget, SLOT(showLoginInfo(QString,QString)));
     connect(sessioninterface, SIGNAL(ssoLoginLogoutSignal(bool)), login_widget, SLOT(showLoginAndLogoutStatus(bool)));
-
-    //    home_action_widget->setParentWindow(this);
     home_action_widget->setSessionDbusProxy(sessioninterface);
     home_action_widget->setSystemDbusProxy(systeminterface);
     home_action_widget->enableSanButton();
     connect(sessioninterface, SIGNAL(isScanning(QString)), home_action_widget, SLOT(getScanResult(QString)));
     connect(sessioninterface, SIGNAL(finishScanWork(QString)), home_action_widget, SLOT(finishScanResult(QString)));
-    connect(sessioninterface, SIGNAL(tellScanResultToQML(QString,QString)) ,home_action_widget, SLOT(getScanAllResult(QString,QString)));
+    connect(sessioninterface, SIGNAL(tellScanResult(QString,QString)) ,home_action_widget, SLOT(getScanAllResult(QString,QString)));
     connect(systeminterface, SIGNAL(finishCleanWorkMain(QString/*, QString*/)), home_action_widget, SLOT(getCleanResult(QString/*, QString*/)));
     connect(systeminterface, SIGNAL(finishCleanWorkMainError(QString)), home_action_widget, SLOT(finishCleanError(QString)));
     connect(systeminterface, SIGNAL(quickCleanProcess(QString,QString)), home_action_widget, SLOT(getCleaningMessage(QString,QString)));
@@ -320,7 +351,6 @@ void MainWindow::startDbusDaemon()
 }
 
 void MainWindow::initSkinCenter() {
-//    skin_center.setBackGround(last_skin_path);
     skin_center.initTitleBar(last_skin_path);
     skin_center.setParentWindow(this);
     skin_center.initBackgroundList();
@@ -370,6 +400,18 @@ void MainWindow::reViewThePointSkin(QString pciture)
   action_widget->setPalette(palette_back);
 }
 
+void MainWindow::reViewTheOrgSkin()
+{
+  if (review_skin_pixmap.isDetached())
+  {
+    review_skin_pixmap.detach();
+  }
+  review_skin_pixmap.load(last_skin_path);
+  QPalette palette_back;
+  palette_back.setBrush(QPalette::Background, review_skin_pixmap);
+  action_widget->setPalette(palette_back);
+}
+
 void MainWindow::showMainMenu() {
     QPoint p = rect().topLeft();
     p.setX(p.x() + 104);
@@ -378,6 +420,18 @@ void MainWindow::showMainMenu() {
 }
 
 void MainWindow::closeYoukerAssistant() {
+//    qApp->exit();
+    QPropertyAnimation *animation = new QPropertyAnimation(this, "windowOpacity");
+    animation->setDuration(500);
+    animation->setStartValue(1);
+    animation->setEndValue(0);
+    animation->start();
+    connect(animation, SIGNAL(finished()), this, SLOT(close()));
+}
+
+void MainWindow::closeEvent(QCloseEvent *)
+{
+//    QApplication::quit();
     qApp->exit();
 }
 
@@ -385,22 +439,27 @@ void MainWindow::setCurrentPageIndex(int index)
 {
     if(index == 0)
     {
+//        closeGroup->start();
         this->showHomePage();
     }
     else if(index == 1)
     {
+//        openGroup->start();
         this->showClearWidget();
     }
     else if(index == 2)
     {
+//        openGroup->start();
         this->showInfoWidget();
     }
     else if(index == 3)
     {
+//        openGroup->start();
         this->showSettingWidget();
     }
     else if(index == 4)
     {
+//        openGroup->start();
         this->showBoxWidget();
     }
 }
@@ -411,7 +470,6 @@ void MainWindow::showHomePage()
         login_widget->show();
     if(home_action_widget == NULL)
     {
-//        qDebug() << "new home action.....";
         if(top_grid_layout == NULL )
             top_grid_layout = new QGridLayout();
         home_action_widget = new HomeActionWidget(this, mSettings);
@@ -422,7 +480,6 @@ void MainWindow::showHomePage()
     }
     else
     {
-//        qDebug() << "show home.....";
         home_action_widget->show();
     }
     if(info_action_widget != NULL)
@@ -444,24 +501,20 @@ void MainWindow::showHomePage()
 
     if(home_page == NULL)
     {
-//        qDebug() << "new home.....";
         if( bottom_grid_layout == NULL )
             bottom_grid_layout = new QGridLayout();
-        home_page = new HomePage();
+        home_page = new HomePage(0, version);
         home_page->setParentWindow(this);
         home_page->initUI();
         home_page->initConnect();
 
         bottom_grid_layout->addWidget(home_page,0,0);
         content_widget->setLayout(bottom_grid_layout);
-//        this->content_widget->setLayout(bottom_grid_layout);
         bottom_grid_layout->setSpacing(0);
         bottom_grid_layout->setContentsMargins(0, 0, 0, 0);
-//        connect(m_formFileSec,SIGNAL(push()),this,SLOT(searchlist()));
     }
     else
     {
-//        qDebug() << "show home.....";
         home_page->show();
     }
     action_widget->setFixedSize(900, 227);
@@ -490,7 +543,6 @@ void MainWindow::showInfoWidget()
         login_widget->hide();
     if(info_action_widget == NULL)
     {
-//        qDebug() << "new info action.....";
         if(top_grid_layout == NULL )
             top_grid_layout = new QGridLayout();
         info_action_widget = new InfoActionWidget();
@@ -501,7 +553,6 @@ void MainWindow::showInfoWidget()
     }
     else
     {
-//        qDebug() << "show info action.....";
         info_action_widget->show();
     }
     if(home_action_widget != NULL)
@@ -524,7 +575,6 @@ void MainWindow::showInfoWidget()
 
     if(info_widget == NULL)
     {
-//        qDebug() << "new info.....";
         if( bottom_grid_layout == NULL )
             bottom_grid_layout = new QGridLayout();
         info_widget = new InfoWidget();
@@ -533,15 +583,11 @@ void MainWindow::showInfoWidget()
         info_widget->initUI();
         bottom_grid_layout->addWidget(info_widget,0,0);
         content_widget->setLayout(bottom_grid_layout);
-//        this->content_widget->setLayout(bottom_grid_layout);
         bottom_grid_layout->setSpacing(0);
         bottom_grid_layout->setContentsMargins(0, 0, 0, 0);
-
-//        connect(m_formFileSec,SIGNAL(push()),this,SLOT(searchlist()));
     }
     else
     {
-//        qDebug() << "show info.....";
         info_widget->show();
     }
     action_widget->setFixedSize(900, 150);
@@ -576,6 +622,8 @@ void MainWindow::showClearWidget()
         cleaner_action_widget = new CleanerActionWidget();
         cleaner_action_widget->setSessionDbusProxy(sessioninterface);
         cleaner_action_widget->setSystemDbusProxy(systeminterface);
+
+        connect(systeminterface, SIGNAL(policykitCleanSignal(bool)), cleaner_action_widget, SLOT(receivePolicyKitSignal(bool)));
         connect(systeminterface, SIGNAL(sendCleanOverSignal()), cleaner_action_widget, SLOT(showCleanOverStatus()));
         connect(systeminterface, SIGNAL(tellCleanerMainData(QStringList)), cleaner_action_widget, SLOT(showCleanerData(QStringList)));
         connect(systeminterface, SIGNAL(tellCleanerMainStatus(QString, QString)), cleaner_action_widget, SLOT(showCleanerStatus(QString, QString)));
@@ -615,18 +663,24 @@ void MainWindow::showClearWidget()
         cleaner_widget = new CleanerWidget();
         cleaner_widget->setSessionDbusProxy(sessioninterface);
         cleaner_widget->setSystemDbusProxy(systeminterface);
+        cleaner_widget->setToolKits(toolKits);
         cleaner_widget->setParentWindow(this);
         cleaner_widget->initUI();
         connect(cleaner_action_widget, SIGNAL(showDetailData()),cleaner_widget, SLOT(displayDetailPage()));
         connect(cleaner_action_widget, SIGNAL(showMainData()),cleaner_widget, SLOT(displayMainPage()));
         connect(cleaner_action_widget, SIGNAL(sendCleanSignal()),cleaner_widget, SIGNAL(transCleanSignal()));
         connect(systeminterface, SIGNAL(sendCleanOverSignal()), cleaner_widget, SLOT(displayMainPage()));
+//        connect(systeminterface, SIGNAL(policykitCleanSignal(bool)), cleaner_widget, SLOT(displayMainPage()));
+
+
+        connect(cleaner_action_widget, SIGNAL(sendScanSignal()),cleaner_widget, SIGNAL(transScanSignal()));
+        connect(cleaner_widget, SIGNAL(tranActionAnimaitonSignal()),cleaner_action_widget, SLOT(displayAnimation()));
+//        connect(cleaner_widget, SIGNAL(tranCleanActionAnimaitonSignal()),cleaner_action_widget, SLOT(displayCleanAnimation()));
+
         bottom_grid_layout->addWidget(cleaner_widget,0,0);
-//        this->content_widget->setLayout(bottom_grid_layout);
         content_widget->setLayout(bottom_grid_layout);
         bottom_grid_layout->setSpacing(0);
         bottom_grid_layout->setContentsMargins(0, 0, 0, 0);
-//        connect(m_formFileSec,SIGNAL(push()),this,SLOT(searchlist()));
     }
     else
     {
@@ -700,11 +754,9 @@ void MainWindow::showSettingWidget()
         connect(setting_widget, SIGNAL(changeActionPage(int)), setting_action_widget, SLOT(displayActionSubPage(int)));
         connect(setting_action_widget, SIGNAL(notifyContentPageToMain()), setting_widget, SLOT(displaySettingHomePage()));
         bottom_grid_layout->addWidget(setting_widget,0,0);
-//        this->content_widget->setLayout(bottom_grid_layout);
         content_widget->setLayout(bottom_grid_layout);
         bottom_grid_layout->setSpacing(0);
         bottom_grid_layout->setContentsMargins(0, 0, 0, 0);
-//        connect(m_formFileSec,SIGNAL(push()),this,SLOT(searchlist()));
     }
     else
     {
@@ -785,13 +837,12 @@ void MainWindow::showBoxWidget()
         if( bottom_grid_layout == NULL )
             bottom_grid_layout = new QGridLayout();
         box_widget = new BoxWidget(this, getAppDirectory());
+        box_widget->setSessionDbusProxy(sessioninterface);
 //        box_widget = new BoxWidget(this, qApp->applicationDirPath());
         bottom_grid_layout->addWidget(box_widget,0,0);
         this->content_widget->setLayout(bottom_grid_layout);
         bottom_grid_layout->setSpacing(0);
         bottom_grid_layout->setContentsMargins(0, 0, 0, 0);
-//        connect(m_formFileSec,SIGNAL(push()),this,SLOT(searchlist()));
-
     }
     else
     {
@@ -818,7 +869,6 @@ void MainWindow::showBoxWidget()
 }
 
 void MainWindow::openSkinCenter() {
-//    qDebug() << this->frameGeometry().topLeft();
     int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (500  / 2);
     int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (271  / 2);
     skin_center.move(w_x, w_y);
@@ -842,7 +892,7 @@ void MainWindow::aboutUs()
     int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (398  / 2);
     if(aboutDlg == NULL)
     {
-        aboutDlg = new AboutDialog();
+        aboutDlg = new AboutDialog(0, version);
         aboutDlg->move(w_x, w_y);
         aboutDlg->show();
         aboutDlg->raise();
@@ -881,32 +931,4 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         setWindowOpacity(0.9);
         event->accept();
     }
-}
-
-void MainWindow::iconIsActived(QSystemTrayIcon::ActivationReason reason)
-{
-    switch(reason)
-    {
-        //点击托盘图标之后松开
-    case QSystemTrayIcon::Trigger:
-        {
-            showMainWindow();
-            break;
-        }
-        //双击托盘图标
-    case QSystemTrayIcon::DoubleClick:
-        {
-            showMainWindow();
-            break;
-        }
-    default:
-        break;
-    }
-}
-
-void MainWindow::showMainWindow()
-{
-    this->showNormal();
-    this->raise();
-    this->activateWindow();
 }

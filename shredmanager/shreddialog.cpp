@@ -20,7 +20,6 @@
 #include <QStringList>
 #include <QCloseEvent>
 #include <QBitmap>
-#include <QPainter>
 #include "shredmanager.h"
 #include <QFileDialog>
 #include <QDir>
@@ -32,8 +31,6 @@
 #include <QComboBox>
 #include <QDebug>
 #include "filewipe.h"
-
-QPoint widgetPosition;//界面中心位置的全局变量
 
 ShredDialog::ShredDialog(ShredManager *plugin, QDialog *parent)
     :QDialog(parent)
@@ -133,10 +130,9 @@ void ShredDialog::initTitleBar()
     title_bar->setTitleBackgound(":/background/res/skin/1.png");
 }
 
-void ShredDialog::onSelecteComboActivated(int index)
-{
-//    qDebug() << index;
-}
+//void ShredDialog::onSelecteComboActivated(int index)
+//{
+//}
 
 void ShredDialog::onSelectButtonClicked()
 {
@@ -163,7 +159,7 @@ void ShredDialog::onShredButtonClicked()
 {
     if(select_edit->text().length() == 0 || !select_edit->text().contains("/"))
     {
-        toolkits->alertMSG(tr("Select file!"));
+        toolkits->alertMSG(this->frameGeometry().topLeft().x(), this->frameGeometry().topLeft().y(), tr("Select file!"));
     }
     else
     {
@@ -171,17 +167,16 @@ void ShredDialog::onShredButtonClicked()
         QByteArray ba = select_edit->text().toUtf8();
         ch=ba.data();
         int result = do_file(ch);
-    //    qDebug() << "shred file result -> " << result;
         if (result == 0)
         {
             //success
-            toolkits->alertMSG(tr("Shred successfully!"));
+            toolkits->alertMSG(this->frameGeometry().topLeft().x(), this->frameGeometry().topLeft().y(), tr("Shred successfully!"));
             select_edit->setText(tr("No select any file which need to be shredded"));
         }
         else
         {
             //failed
-            toolkits->alertMSG(tr("Shred failed!"));
+            toolkits->alertMSG(this->frameGeometry().topLeft().x(), this->frameGeometry().topLeft().y(), tr("Shred failed!"));
         }
     }
 }
@@ -195,19 +190,4 @@ void ShredDialog::closeEvent(QCloseEvent *event)
 {
     event->accept();
 //  emit SignalClose();
-}
-
-void ShredDialog::paintEvent(QPaintEvent *event)
-{
-    widgetPosition = this->pos();
-//    QBitmap objBitmap(size());
-//    //QPainter用于在位图上绘画
-//    QPainter painter(&objBitmap);
-//    //填充位图矩形框(用白色填充)
-//    painter.fillRect(rect(),Qt::white);
-//    painter.setBrush(QColor(0,0,0));
-//    //在位图上画圆角矩形(用黑色填充)
-//    painter.drawRoundedRect(this->rect(),5,5);
-//    ////使用setmask过滤即可
-//    setMask(objBitmap);
 }
