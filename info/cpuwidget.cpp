@@ -27,10 +27,16 @@ CpuWidget::CpuWidget(QWidget *parent, SystemDispatcher *proxy) :
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403 - 3);
     this->initData();
-    page = new ComputerPage(scroll_widget->zone, tr("CPU Info"));
-    page->setMap(cpu_info_map, cpu_info_map.value("CpuVendor").toString().toUpper());
-    page->initUI();
-    scroll_widget->addScrollWidget(page);
+    if(cpu_info_map.count() == 1 && cpu_info_map.contains("kylinkobe"))
+    {
+        page = NULL;
+    }
+    else {
+        page = new ComputerPage(scroll_widget->zone, tr("CPU Info"));
+        page->setMap(cpu_info_map, cpu_info_map.value("CpuVendor").toString().toUpper());
+        page->initUI();
+        scroll_widget->addScrollWidget(page);
+    }
 }
 
 void CpuWidget::initData()

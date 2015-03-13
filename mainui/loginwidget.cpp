@@ -20,6 +20,7 @@
 #include "loginwidget.h"
 #include "mainwindow.h"
 #include <QDebug>
+#include <QFontMetrics>
 
 LoginWidget::LoginWidget(QWidget *parent)
 	: QWidget(parent)
@@ -42,6 +43,9 @@ LoginWidget::LoginWidget(QWidget *parent)
 
     user_label = new QLabel();
     user_label->hide();
+    user_label->setStyleSheet("QLabel{color:#ffffff;font-family: Ubuntu;font-size: 12px;text-align: right;}");
+    user_label->adjustSize();
+
     logout_btn = new QPushButton();
     logout_btn->setObjectName("whiteButton");
     logout_btn->setCursor(Qt::PointingHandCursor);
@@ -81,7 +85,14 @@ void LoginWidget::showLoginInfo(QString name, QString email)
     logo_label->hide();
     login_button->hide();
     user_label->show();
-    user_label->setText(name + "<" + email + ">");
+//    user_label->setText(name + "<" + email + ">");
+    QString alltext= QString("%1 <%2>").arg(name).arg(email);
+    QFont ft;
+    QFontMetrics fm(ft);
+    QString elided_text = fm.elidedText(alltext, Qt::ElideRight, 260);
+    user_label->setText(elided_text);
+    if(elided_text.endsWith("…"))
+        user_label->setToolTip(alltext);
     logout_btn->show();
 }
 

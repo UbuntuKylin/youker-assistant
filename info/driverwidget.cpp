@@ -29,10 +29,16 @@ DriverWidget::DriverWidget(QWidget *parent/*, SystemDispatcher *proxy*/) :
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403);
     this->initData();
-    page = new ComputerPage(scroll_widget->zone, tr("Driver Info"));
-    page->setMap(driver_info_map,"");
-    page->initUI();
-    scroll_widget->addScrollWidget(page);
+    if(driver_info_map.count() != 0)
+    {
+        page = new ComputerPage(scroll_widget->zone, tr("Driver Info"));
+        page->setMap(driver_info_map,"");
+        page->initUI();
+        scroll_widget->addScrollWidget(page);
+    }
+    else {
+        page = NULL;
+    }
 }
 
 void DriverWidget::initData()

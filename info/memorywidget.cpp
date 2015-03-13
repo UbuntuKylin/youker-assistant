@@ -31,30 +31,35 @@ MemoryWidget::MemoryWidget(QWidget *parent, SystemDispatcher *proxy) :
     scroll_widget->setGeometry(0, 0, 750, 403);
     memoryNum = this->initData();
 
-    if(memoryNum == 1)
+    if(memory_info_map.count() == 1 && memory_info_map.contains("kylinkobe"))
     {
-        ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("Memory Info"));
-        memory_info_map.remove("Memnum");
-        page->setMap(memory_info_map, "INTEL");
-        page->initUI();
-        scroll_widget->addScrollWidget(page);
     }
-    else if(memoryNum > 1)
-    {
-        for(int i=0;i<memoryNum;i++)
+    else {
+        if(memoryNum == 1)
         {
-            ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("Memory Info %1").arg(i+1));
-            tmp_info_map.clear();
-            QMap<QString, QVariant>::iterator itbegin = memory_info_map.begin();
-            QMap<QString, QVariant>::iterator  itend = memory_info_map.end();
-            for (;itbegin != itend; ++itbegin)
-            {
-                if(itbegin.key() != "Memnum")
-                    tmp_info_map.insert(itbegin.key(), itbegin.value().toString().split("<1_1>").at(i));
-            }
-            page->setMap(tmp_info_map, tmp_info_map.value("MemVendor").toString().toUpper());
+            ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("Memory Info"));
+            memory_info_map.remove("Memnum");
+            page->setMap(memory_info_map, "INTEL");
             page->initUI();
             scroll_widget->addScrollWidget(page);
+        }
+        else if(memoryNum > 1)
+        {
+            for(int i=0;i<memoryNum;i++)
+            {
+                ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("Memory Info %1").arg(i+1));
+                tmp_info_map.clear();
+                QMap<QString, QVariant>::iterator itbegin = memory_info_map.begin();
+                QMap<QString, QVariant>::iterator  itend = memory_info_map.end();
+                for (;itbegin != itend; ++itbegin)
+                {
+                    if(itbegin.key() != "Memnum")
+                        tmp_info_map.insert(itbegin.key(), itbegin.value().toString().split("<1_1>").at(i));
+                }
+                page->setMap(tmp_info_map, tmp_info_map.value("MemVendor").toString().toUpper());
+                page->initUI();
+                scroll_widget->addScrollWidget(page);
+            }
         }
     }
 }
