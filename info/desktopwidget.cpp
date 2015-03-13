@@ -27,10 +27,16 @@ DesktopWidget::DesktopWidget(QWidget *parent, SessionDispatcher *proxy) :
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403);
     this->initData();
-    page = new ComputerPage(scroll_widget->zone, tr("Desktop Info"));
-    page->setMap(desktop_info_map, "UBUNTUKYLIN");
-    page->initUI();
-    scroll_widget->addScrollWidget(page);
+    if(desktop_info_map.count() == 1 && desktop_info_map.contains("kylinkobe"))
+    {
+        page = NULL;
+    }
+    else {
+        page = new ComputerPage(scroll_widget->zone, tr("Desktop Info"));
+        page->setMap(desktop_info_map, "UBUNTUKYLIN");
+        page->initUI();
+        scroll_widget->addScrollWidget(page);
+    }
 }
 
 void DesktopWidget::initData()

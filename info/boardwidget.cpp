@@ -26,10 +26,16 @@ BoardWidget::BoardWidget(QWidget *parent, SystemDispatcher *proxy) :
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403);
     this->initData();
-    page = new ComputerPage(scroll_widget->zone, tr("Board Info"));
-    page->setMap(board_info_map, board_info_map.value("BoaVendor").toString().toUpper());
-    page->initUI();
-    scroll_widget->addScrollWidget(page);
+    if(board_info_map.count() == 1 && board_info_map.contains("kylinkobe"))
+    {
+        page = NULL;
+    }
+    else {
+        page = new ComputerPage(scroll_widget->zone, tr("Board Info"));
+        page->setMap(board_info_map, board_info_map.value("BoaVendor").toString().toUpper());
+        page->initUI();
+        scroll_widget->addScrollWidget(page);
+    }
 }
 
 void BoardWidget::initData()

@@ -159,6 +159,9 @@ QMap<QString, QVariant> SessionDispatcher::read_battery_info_qt() {
     }
     else {
         qDebug() << "get battery_message failed!";
+        QMap<QString, QVariant> value;
+        value.insert("kylinkobe", "kylinkobe");
+        return value;
     }
 }
 
@@ -254,6 +257,9 @@ QMap<QString, QVariant>  SessionDispatcher::get_system_message_qt() {
     }
     else {
         qDebug() << "get pc_message failed!";
+        QMap<QString, QVariant> value;
+        value.insert("kylinkobe", "kylinkobe");
+        return value;
     }
 }
 

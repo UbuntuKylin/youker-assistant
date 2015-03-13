@@ -75,6 +75,9 @@ QMap<QString, QVariant> SystemDispatcher::get_computer_info_qt() {
     }
     else {
         qDebug() << "get computer info failed!";
+        QMap<QString, QVariant> value;
+        value.insert("kylinkobe", "kylinkobe");
+        return value;
     }
 }
 
@@ -86,6 +89,9 @@ QMap<QString, QVariant> SystemDispatcher::get_cpu_info_qt() {
     }
     else {
         qDebug() << "get cpu info failed!";
+        QMap<QString, QVariant> value;
+        value.insert("kylinkobe", "kylinkobe");
+        return value;
     }
 }
 
@@ -97,6 +103,9 @@ QMap<QString, QVariant> SystemDispatcher::get_memory_info_qt() {
     }
     else {
         qDebug() << "get memory info failed!";
+        QMap<QString, QVariant> value;
+        value.insert("kylinkobe", "kylinkobe");
+        return value;
     }
 }
 
@@ -108,6 +117,9 @@ QMap<QString, QVariant> SystemDispatcher::get_board_info_qt() {
     }
     else {
         qDebug() << "get board info failed!";
+        QMap<QString, QVariant> value;
+        value.insert("kylinkobe", "kylinkobe");
+        return value;
     }
 }
 
@@ -119,6 +131,9 @@ QMap<QString, QVariant> SystemDispatcher::get_harddisk_info_qt() {
     }
     else {
         qDebug() << "get harddisk info failed!";
+        QMap<QString, QVariant> value;
+        value.insert("kylinkobe", "kylinkobe");
+        return value;
     }
 }
 
@@ -130,6 +145,9 @@ QMap<QString, QVariant> SystemDispatcher::get_networkcard_info_qt() {
     }
     else {
         qDebug() << "get networkcard info failed!";
+        QMap<QString, QVariant> value;
+        value.insert("kylinkobe", "kylinkobe");
+        return value;
     }
 }
 
@@ -141,6 +159,9 @@ QMap<QString, QVariant> SystemDispatcher::get_monitor_info_qt() {
     }
     else {
         qDebug() << "get monitor info failed!";
+        QMap<QString, QVariant> value;
+        value.insert("kylinkobe", "kylinkobe");
+        return value;
     }
 }
 
@@ -152,6 +173,9 @@ QMap<QString, QVariant> SystemDispatcher::get_cdrom_info_qt() {
     }
     else {
         qDebug() << "get cdrom info failed!";
+        QMap<QString, QVariant> value;
+        value.insert("kylinkobe", "kylinkobe");
+        return value;
     }
 }
 
@@ -163,6 +187,9 @@ QMap<QString, QVariant> SystemDispatcher::get_audiocard_info_qt() {
     }
     else {
         qDebug() << "get audiocard info failed!";
+        QMap<QString, QVariant> value;
+        value.insert("kylinkobe", "kylinkobe");
+        return value;
     }
 }
 

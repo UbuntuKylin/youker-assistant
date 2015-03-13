@@ -30,30 +30,35 @@ MonitorWidget::MonitorWidget(QWidget *parent, SystemDispatcher *proxy) :
 
     vgaNum = this->initData();
 
-    if(vgaNum == 1)
+    if(monitor_info_map.count() == 1 && monitor_info_map.contains("kylinkobe"))
     {
-        ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("Monitor Info"));
-        monitor_info_map.remove("Vga_num");
-        page->setMap(monitor_info_map, monitor_info_map.value("Vga_vendor").toString().toUpper());
-        page->initUI();
-        scroll_widget->addScrollWidget(page);
     }
-    else if(vgaNum > 1)
-    {
-        for(int i=0;i<vgaNum;i++)
+    else {
+        if(vgaNum == 1)
         {
-            ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("Monitor Info %1").arg(i+1));
-            tmp_info_map.clear();
-            QMap<QString, QVariant>::iterator itbegin = monitor_info_map.begin();
-            QMap<QString, QVariant>::iterator  itend = monitor_info_map.end();
-            for (;itbegin != itend; ++itbegin)
-            {
-                if(itbegin.key() != "Vga_num")
-                    tmp_info_map.insert(itbegin.key(), itbegin.value().toString().split("<1_1>").at(i));
-            }
-            page->setMap(tmp_info_map, tmp_info_map.value("Vga_vendor").toString().toUpper());
+            ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("Monitor Info"));
+            monitor_info_map.remove("Vga_num");
+            page->setMap(monitor_info_map, monitor_info_map.value("Vga_vendor").toString().toUpper());
             page->initUI();
             scroll_widget->addScrollWidget(page);
+        }
+        else if(vgaNum > 1)
+        {
+            for(int i=0;i<vgaNum;i++)
+            {
+                ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("Monitor Info %1").arg(i+1));
+                tmp_info_map.clear();
+                QMap<QString, QVariant>::iterator itbegin = monitor_info_map.begin();
+                QMap<QString, QVariant>::iterator  itend = monitor_info_map.end();
+                for (;itbegin != itend; ++itbegin)
+                {
+                    if(itbegin.key() != "Vga_num")
+                        tmp_info_map.insert(itbegin.key(), itbegin.value().toString().split("<1_1>").at(i));
+                }
+                page->setMap(tmp_info_map, tmp_info_map.value("Vga_vendor").toString().toUpper());
+                page->initUI();
+                scroll_widget->addScrollWidget(page);
+            }
         }
     }
 }
