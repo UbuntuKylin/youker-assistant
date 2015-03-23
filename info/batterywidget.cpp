@@ -48,7 +48,8 @@ void BatteryWidget::initData()
     for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
         if(it.key() != "POWER_SUPPLY_CAPACITY" && it.key() != "POWER_SUPPLY_CYCLE_COUNT" && it.key() != "POWER_SUPPLY_POWER_NOW" && it.key() != "POWER_SUPPLY_PRESENT" && it.key() != "POWER_SUPPLY_STATUS" && it.key() != "POWER_SUPPLY_VOLTAGE_MIN_DESIGN" )
         {
-            battery_info_map.insert(it.key(), it.value());
+            if (it.value().toString().length() > 0)
+                battery_info_map.insert(it.key(), it.value());
         }
     }
 }

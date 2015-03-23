@@ -38,7 +38,14 @@ MonitorWidget::MonitorWidget(QWidget *parent, SystemDispatcher *proxy) :
         {
             ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("Monitor Info"));
             monitor_info_map.remove("Vga_num");
-            page->setMap(monitor_info_map, monitor_info_map.value("Vga_vendor").toString().toUpper());
+            QMap<QString, QVariant> tmpMap;
+            QMap<QString,QVariant>::iterator it;
+            for ( it = monitor_info_map.begin(); it != monitor_info_map.end(); ++it ) {
+                if (it.value().toString().length() > 0) {
+                    tmpMap.insert(it.key(), it.value());
+                }
+            }
+            page->setMap(tmpMap, monitor_info_map.value("Vga_vendor").toString().toUpper());
             page->initUI();
             scroll_widget->addScrollWidget(page);
         }
@@ -52,8 +59,12 @@ MonitorWidget::MonitorWidget(QWidget *parent, SystemDispatcher *proxy) :
                 QMap<QString, QVariant>::iterator  itend = monitor_info_map.end();
                 for (;itbegin != itend; ++itbegin)
                 {
-                    if(itbegin.key() != "Vga_num")
-                        tmp_info_map.insert(itbegin.key(), itbegin.value().toString().split("<1_1>").at(i));
+                    if(itbegin.key() != "Vga_num") {
+                        QString result = itbegin.value().toString().split("<1_1>").at(i);
+                        if (result.length() > 0) {
+                            tmp_info_map.insert(itbegin.key(), result);
+                        }
+                    }
                 }
                 page->setMap(tmp_info_map, tmp_info_map.value("Vga_vendor").toString().toUpper());
                 page->initUI();

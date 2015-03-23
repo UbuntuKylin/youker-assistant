@@ -37,7 +37,14 @@ HDWidget::HDWidget(QWidget *parent, SystemDispatcher *proxy) :
         {
             ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("HardWare Info"));
             hd_info_map.remove("DiskNum");
-            page->setMap(hd_info_map, hd_info_map.value("DiskVendor").toString().toUpper());
+            QMap<QString, QVariant> tmpMap;
+            QMap<QString,QVariant>::iterator it;
+            for ( it = hd_info_map.begin(); it != hd_info_map.end(); ++it ) {
+                if (it.value().toString().length() > 0) {
+                    tmpMap.insert(it.key(), it.value());
+                }
+            }
+            page->setMap(tmpMap, hd_info_map.value("DiskVendor").toString().toUpper());
             page->initUI();
             scroll_widget->addScrollWidget(page);
         }
@@ -51,8 +58,12 @@ HDWidget::HDWidget(QWidget *parent, SystemDispatcher *proxy) :
                 QMap<QString, QVariant>::iterator  itend = hd_info_map.end();
                 for (;itbegin != itend; ++itbegin)
                 {
-                    if(itbegin.key() != "DiskNum")
-                        tmp_info_map.insert(itbegin.key(), itbegin.value().toString().split("<1_1>").at(i));
+                    if(itbegin.key() != "DiskNum") {
+                        QString result = itbegin.value().toString().split("<1_1>").at(i);
+                        if (result.length() > 0) {
+                            tmp_info_map.insert(itbegin.key(), result);
+                        }
+                    }
                 }
                 page->setMap(tmp_info_map, tmp_info_map.value("DiskVendor").toString().toUpper());
                 page->initUI();

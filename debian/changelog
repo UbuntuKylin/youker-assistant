@@ -4,8 +4,9 @@ youker-assistant (2.0.1) vivid; urgency=low
   * Improve UI.
   * Fixed some bug.
   * Deal with system information access exception.
+  * Deal with autostart Apps.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 13 Mar 2015 10:07:56 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 23 Mar 2015 21:36:55 +0800
 
 youker-assistant (2.0.0) vivid; urgency=low
 

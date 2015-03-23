@@ -41,5 +41,11 @@ DesktopWidget::DesktopWidget(QWidget *parent, SessionDispatcher *proxy) :
 
 void DesktopWidget::initData()
 {
-    desktop_info_map = sessionProxy->get_system_message_qt();
+    QMap<QString, QVariant> tmpMap = sessionProxy->get_system_message_qt();
+    QMap<QString,QVariant>::iterator it;
+    for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
+        if (it.value().toString().length() > 0) {
+            desktop_info_map.insert(it.key(), it.value());
+        }
+    }
 }

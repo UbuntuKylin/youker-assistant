@@ -77,5 +77,11 @@ void SystemWidget::updateTimeValue()
 
 void SystemWidget::initData()
 {
-    sys_info_map = systemproxy->get_computer_info_qt();
+    QMap<QString, QVariant> tmpMap = systemproxy->get_computer_info_qt();
+    QMap<QString,QVariant>::iterator it;
+    for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
+        if (it.value().toString().length() > 0) {
+            sys_info_map.insert(it.key(), it.value());
+        }
+    }
 }

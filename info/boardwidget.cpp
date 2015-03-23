@@ -40,5 +40,11 @@ BoardWidget::BoardWidget(QWidget *parent, SystemDispatcher *proxy) :
 
 void BoardWidget::initData()
 {
-    board_info_map = systemproxy->get_board_info_qt();
+    QMap<QString, QVariant> tmpMap = systemproxy->get_board_info_qt();
+    QMap<QString,QVariant>::iterator it;
+    for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
+        if (it.value().toString().length() > 0) {
+            board_info_map.insert(it.key(), it.value());
+        }
+    }
 }
