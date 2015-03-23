@@ -39,7 +39,14 @@ MemoryWidget::MemoryWidget(QWidget *parent, SystemDispatcher *proxy) :
         {
             ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("Memory Info"));
             memory_info_map.remove("Memnum");
-            page->setMap(memory_info_map, "INTEL");
+            QMap<QString, QVariant> tmpMap;
+            QMap<QString,QVariant>::iterator it;
+            for ( it = memory_info_map.begin(); it != memory_info_map.end(); ++it ) {
+                if (it.value().toString().length() > 0) {
+                    tmpMap.insert(it.key(), it.value());
+                }
+            }
+            page->setMap(tmpMap, "INTEL");
             page->initUI();
             scroll_widget->addScrollWidget(page);
         }
@@ -53,8 +60,12 @@ MemoryWidget::MemoryWidget(QWidget *parent, SystemDispatcher *proxy) :
                 QMap<QString, QVariant>::iterator  itend = memory_info_map.end();
                 for (;itbegin != itend; ++itbegin)
                 {
-                    if(itbegin.key() != "Memnum")
-                        tmp_info_map.insert(itbegin.key(), itbegin.value().toString().split("<1_1>").at(i));
+                    if(itbegin.key() != "Memnum") {
+                        QString result = itbegin.value().toString().split("<1_1>").at(i);
+                        if (result.length() > 0) {
+                            tmp_info_map.insert(itbegin.key(), result);
+                        }
+                    }
                 }
                 page->setMap(tmp_info_map, tmp_info_map.value("MemVendor").toString().toUpper());
                 page->initUI();

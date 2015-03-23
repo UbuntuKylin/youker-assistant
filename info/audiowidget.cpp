@@ -39,7 +39,14 @@ AudioWidget::AudioWidget(QWidget *parent, SystemDispatcher *proxy) :
         {
             ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("Audio Info"));
             audio_info_map.remove("MulNum");
-            page->setMap(audio_info_map, audio_info_map.value("MulVendor").toString().toUpper());
+            QMap<QString, QVariant> tmpMap;
+            QMap<QString,QVariant>::iterator it;
+            for ( it = audio_info_map.begin(); it != audio_info_map.end(); ++it ) {
+                if (it.value().toString().length() > 0) {
+                    tmpMap.insert(it.key(), it.value());
+                }
+            }
+            page->setMap(tmpMap, audio_info_map.value("MulVendor").toString().toUpper());
             page->initUI();
             scroll_widget->addScrollWidget(page);
         }
@@ -53,8 +60,12 @@ AudioWidget::AudioWidget(QWidget *parent, SystemDispatcher *proxy) :
                 QMap<QString, QVariant>::iterator  itend = audio_info_map.end();
                 for (;itbegin != itend; ++itbegin)
                 {
-                    if(itbegin.key() != "MulNum")
-                        tmp_info_map.insert(itbegin.key(), itbegin.value().toString().split("<1_1>").at(i));
+                    if(itbegin.key() != "MulNum") {
+                        QString result = itbegin.value().toString().split("<1_1>").at(i);
+                        if (result.length() > 0) {
+                            tmp_info_map.insert(itbegin.key(), result);
+                        }
+                    }
                 }
                 page->setMap(tmp_info_map, tmp_info_map.value("MulVendor").toString().toUpper());
                 page->initUI();

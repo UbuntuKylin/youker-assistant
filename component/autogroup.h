@@ -43,6 +43,7 @@ private:
     QLabel *name_label;
     QLabel *comment_label;
     KylinSwitcher *switcher;
+    QLabel *splitlabel;
 };
 
 #endif // AUTOGROUP_H

@@ -56,11 +56,15 @@ void NicWidget::initData()
     for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
         if(it.key().startsWith("Wlan"))
         {
-            wireless_info_map.insert(it.key(), it.value());
+            if (it.value().toString().length() > 0) {
+                wireless_info_map.insert(it.key(), it.value());
+            }
         }
         else
         {
-            wire_info_map.insert(it.key(), it.value());
+            if (it.value().toString().length() > 0) {
+                wire_info_map.insert(it.key(), it.value());
+            }
         }
     }
 }

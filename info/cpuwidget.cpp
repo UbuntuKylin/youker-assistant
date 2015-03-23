@@ -41,5 +41,11 @@ CpuWidget::CpuWidget(QWidget *parent, SystemDispatcher *proxy) :
 
 void CpuWidget::initData()
 {
-    cpu_info_map = systemproxy->get_cpu_info_qt();
+    QMap<QString, QVariant> tmpMap = systemproxy->get_cpu_info_qt();
+    QMap<QString,QVariant>::iterator it;
+    for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
+        if (it.value().toString().length() > 0) {
+            cpu_info_map.insert(it.key(), it.value());
+        }
+    }
 }

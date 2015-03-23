@@ -24,7 +24,10 @@
 AutoGroup::AutoGroup(QWidget *parent) :
     QWidget(parent)
 {
-    this->resize(400, 50);
+    this->resize(560, 50);
+    splitlabel = new QLabel(this);
+    splitlabel->setGeometry(QRect(0, this->height(), this->width(), 1));
+    splitlabel->setStyleSheet("QLabel{background:#aaaaaa;}");
     logo_label = new QLabel();
     name_label = new QLabel();
     comment_label = new QLabel();
@@ -32,8 +35,13 @@ AutoGroup::AutoGroup(QWidget *parent) :
     connect(switcher, SIGNAL(clicked()), this, SIGNAL(autoStatusChange()));
 
     QVBoxLayout *v_layout = new QVBoxLayout();
+    v_layout->addStretch();
     v_layout->addWidget(name_label);
     v_layout->addWidget(comment_label);
+    v_layout->addStretch();
+    v_layout->setSpacing(5);
+    v_layout->setMargin(0);
+    v_layout->setContentsMargins(0,0,0,0);
     QHBoxLayout *h_layout = new QHBoxLayout();
     h_layout->addWidget(logo_label);
     h_layout->addLayout(v_layout);
