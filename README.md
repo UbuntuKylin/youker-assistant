@@ -11,7 +11,7 @@ debhelper (>= 9), dh-translations, libphonon-dev, libqt4-dev, fcitx-libs-dev, pk
 
 Attention with IDE
 ==================
-1、Install backend:
+1. Install backend:
 sudo sh ./backends/youker-assistant-daemon/install.sh
-2、Run:
+2. Run:
 Click the 'run' button or press 'F5' in QtCreator.
