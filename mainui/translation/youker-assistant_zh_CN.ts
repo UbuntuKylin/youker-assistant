@@ -123,12 +123,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>AudioWidget</name>
     <message>
-        <location filename="../../info/audiowidget.cpp" line="37"/>
+        <location filename="../../info/audiowidget.cpp" line="40"/>
         <source>Audio Info</source>
         <translation>声卡信息</translation>
     </message>
     <message>
-        <location filename="../../info/audiowidget.cpp" line="47"/>
+        <location filename="../../info/audiowidget.cpp" line="57"/>
         <source>Audio Info %1</source>
         <translation>声卡信息%1</translation>
     </message>
@@ -179,7 +179,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>BatteryWidget</name>
     <message>
-        <location filename="../../info/batterywidget.cpp" line="32"/>
+        <location filename="../../info/batterywidget.cpp" line="37"/>
         <source>Battery Info</source>
         <translation>电池信息</translation>
     </message>
@@ -187,7 +187,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>BoardWidget</name>
     <message>
-        <location filename="../../info/boardwidget.cpp" line="29"/>
+        <location filename="../../info/boardwidget.cpp" line="34"/>
         <source>Board Info</source>
         <translation>主板信息</translation>
     </message>
@@ -248,9 +248,14 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CDRowWidget</name>
     <message>
-        <location filename="../../info/cdrowwidget.cpp" line="30"/>
+        <location filename="../../info/cdrowwidget.cpp" line="48"/>
         <source>CDROM Info</source>
         <translation>光驱信息</translation>
+    </message>
+    <message>
+        <location filename="../../info/cdrowwidget.cpp" line="65"/>
+        <source>CDROM Info %1</source>
+        <translation>光驱信息 %1</translation>
     </message>
 </context>
 <context>
@@ -339,7 +344,7 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanlistwidget.cpp" line="45"/>
+        <location filename="../../cleaner/cleanlistwidget.cpp" line="46"/>
         <source>Clean Items:</source>
         <translation>清理项：</translation>
     </message>
@@ -483,7 +488,7 @@ p, li { white-space: pre-wrap; }
         <translation>没有安装Chromium浏览器......</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="288"/>
+        <location filename="../cleaneractionwidget.cpp" line="304"/>
         <source>Ready to Cleanup......</source>
         <translation>准备清理......</translation>
     </message>
@@ -491,94 +496,94 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CleanerDetailWidget</name>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="228"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="233"/>
         <source>Apt Cache Clean Items</source>
         <translation>Apt缓存清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="234"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="239"/>
         <source>Apt Cache count:</source>
         <translation>Apt缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="274"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="368"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="283"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="384"/>
         <source>Software Cache Clean Items</source>
         <translation>软件中心缓存清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="280"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="289"/>
         <source>Software Cache count:</source>
         <translation>软件中心缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="320"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="413"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="463"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="510"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="643"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="689"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="735"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="333"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="432"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="485"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="535"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="680"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="729"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="778"/>
         <source>Thumbnails Cache Clean Items</source>
         <translation>缩略图缓存清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="326"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="339"/>
         <source>Thumbnails Cache Count:</source>
         <translation>缩略图缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="373"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="389"/>
         <source>Firefox Cache Count:</source>
         <translation>Firefox浏览器缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="418"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="437"/>
         <source>Chromium Cache Count:</source>
         <translation>Chromium浏览器缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="468"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="490"/>
         <source>Firefox Cookies Count:</source>
         <translation>Firefox Cookies总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="515"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="540"/>
         <source>Chromium Cookies Count:</source>
         <translation>Chromium Cookies总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="566"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="594"/>
         <source>Firefox History Count:</source>
         <translation>Firefox 历史记录总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="603"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="634"/>
         <source>Chromium History Count:</source>
         <translation>Chromium历史记录总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="623"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="657"/>
         <source>System History Count:</source>
         <translation>系统历史痕迹总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="648"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="685"/>
         <source>Package Unneed Count:</source>
         <translation>不需要的包总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="694"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="734"/>
         <source>Package oldkernel Count:</source>
         <translation>旧内核包总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="740"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="783"/>
         <source>Package configfile Count:</source>
         <translation>包配置文件总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1268"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1314"/>
         <source>Clean args is empty!</source>
         <translation>清理参数为空！</translation>
     </message>
@@ -774,17 +779,17 @@ p, li { white-space: pre-wrap; }
         <location filename="../../info/computerpage.cpp" line="191"/>
         <location filename="../../info/computerpage.cpp" line="204"/>
         <location filename="../../info/computerpage.cpp" line="299"/>
-        <location filename="../../info/computerpage.cpp" line="324"/>
-        <location filename="../../info/computerpage.cpp" line="340"/>
-        <location filename="../../info/computerpage.cpp" line="355"/>
+        <location filename="../../info/computerpage.cpp" line="344"/>
+        <location filename="../../info/computerpage.cpp" line="360"/>
+        <location filename="../../info/computerpage.cpp" line="375"/>
         <source>Vendor</source>
         <translation>制造商</translation>
     </message>
     <message>
         <location filename="../../info/computerpage.cpp" line="140"/>
         <location filename="../../info/computerpage.cpp" line="318"/>
-        <location filename="../../info/computerpage.cpp" line="328"/>
-        <location filename="../../info/computerpage.cpp" line="346"/>
+        <location filename="../../info/computerpage.cpp" line="348"/>
+        <location filename="../../info/computerpage.cpp" line="366"/>
         <source>Bus Address</source>
         <translation>总线地址</translation>
     </message>
@@ -797,7 +802,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../../info/computerpage.cpp" line="145"/>
         <location filename="../../info/computerpage.cpp" line="193"/>
         <location filename="../../info/computerpage.cpp" line="288"/>
-        <location filename="../../info/computerpage.cpp" line="330"/>
+        <location filename="../../info/computerpage.cpp" line="350"/>
         <source>Device Name</source>
         <translation>设备名</translation>
     </message>
@@ -808,7 +813,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../../info/computerpage.cpp" line="161"/>
-        <location filename="../../info/computerpage.cpp" line="357"/>
+        <location filename="../../info/computerpage.cpp" line="377"/>
         <source>Model</source>
         <translation>型号</translation>
     </message>
@@ -844,8 +849,8 @@ p, li { white-space: pre-wrap; }
         <location filename="../../info/computerpage.cpp" line="206"/>
         <location filename="../../info/computerpage.cpp" line="292"/>
         <location filename="../../info/computerpage.cpp" line="301"/>
-        <location filename="../../info/computerpage.cpp" line="350"/>
-        <location filename="../../info/computerpage.cpp" line="361"/>
+        <location filename="../../info/computerpage.cpp" line="370"/>
+        <location filename="../../info/computerpage.cpp" line="381"/>
         <source>Serial Number</source>
         <translation>序列号</translation>
     </message>
@@ -1112,88 +1117,138 @@ p, li { white-space: pre-wrap; }
         <translation>显卡驱动</translation>
     </message>
     <message>
+        <location filename="../../info/computerpage.cpp" line="320"/>
+        <source>Gamma</source>
+        <translation>伽马值</translation>
+    </message>
+    <message>
         <location filename="../../info/computerpage.cpp" line="322"/>
+        <source>Screen Size</source>
+        <translation>屏幕尺寸</translation>
+    </message>
+    <message>
+        <location filename="../../info/computerpage.cpp" line="324"/>
+        <source>Max Resolution</source>
+        <translation>最大分辨率</translation>
+    </message>
+    <message>
+        <location filename="../../info/computerpage.cpp" line="326"/>
+        <source>Current Interface</source>
+        <translation>当前接口</translation>
+    </message>
+    <message>
+        <location filename="../../info/computerpage.cpp" line="328"/>
+        <source>Monitor Model</source>
+        <translation>显示器型号</translation>
+    </message>
+    <message>
+        <location filename="../../info/computerpage.cpp" line="330"/>
+        <source>Visual Area</source>
+        <translation>可视面积</translation>
+    </message>
+    <message>
+        <location filename="../../info/computerpage.cpp" line="332"/>
+        <source>Support Interface</source>
+        <translation>支持接口</translation>
+    </message>
+    <message>
+        <location filename="../../info/computerpage.cpp" line="334"/>
+        <source>Monitor Manufacturers</source>
+        <translation>显示器制造商</translation>
+    </message>
+    <message>
+        <location filename="../../info/computerpage.cpp" line="336"/>
+        <source>Date of production/Week</source>
+        <translation>生产日期/周</translation>
+    </message>
+    <message>
+        <location filename="../../info/computerpage.cpp" line="338"/>
+        <source>Date of production/Year</source>
+        <translation>生产日期/年</translation>
+    </message>
+    <message>
+        <location filename="../../info/computerpage.cpp" line="342"/>
         <source>NIC Model</source>
         <translation>有线网卡型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="326"/>
+        <location filename="../../info/computerpage.cpp" line="346"/>
         <source>NIC Driver</source>
         <translation>有线网卡驱动</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="332"/>
         <location filename="../../info/computerpage.cpp" line="352"/>
+        <location filename="../../info/computerpage.cpp" line="372"/>
         <source>IP Address</source>
         <translation>IP地址</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="334"/>
+        <location filename="../../info/computerpage.cpp" line="354"/>
         <source>Mac Address</source>
         <translation>MAC地址</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="336"/>
+        <location filename="../../info/computerpage.cpp" line="356"/>
         <source>Connection Status</source>
         <translation>连接状态</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="338"/>
+        <location filename="../../info/computerpage.cpp" line="358"/>
         <source>Max Bandwidth</source>
         <translation>最大带宽</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="342"/>
+        <location filename="../../info/computerpage.cpp" line="362"/>
         <source>WLan NIC Driver</source>
         <translation>无线网卡驱动</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="344"/>
+        <location filename="../../info/computerpage.cpp" line="364"/>
         <source>WLan NIC Model</source>
         <translation>网卡型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="348"/>
+        <location filename="../../info/computerpage.cpp" line="368"/>
         <source>Device Name:</source>
         <translation>设备名称：</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="359"/>
+        <location filename="../../info/computerpage.cpp" line="379"/>
         <source>Version</source>
         <translation>电脑版本</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="363"/>
+        <location filename="../../info/computerpage.cpp" line="383"/>
         <source>Hostname</source>
         <translation>主机名</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="365"/>
+        <location filename="../../info/computerpage.cpp" line="385"/>
         <source>Running Time</source>
         <translation>持续运行时间</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="367"/>
+        <location filename="../../info/computerpage.cpp" line="387"/>
         <source>OS Types</source>
         <translation>操作系统类型</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="369"/>
+        <location filename="../../info/computerpage.cpp" line="389"/>
         <source>OS Version</source>
         <translation>操作系统版本</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="371"/>
+        <location filename="../../info/computerpage.cpp" line="391"/>
         <source>Kernel Bit</source>
         <translation>系统位数</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="373"/>
+        <location filename="../../info/computerpage.cpp" line="393"/>
         <source>Kernel Version</source>
         <translation>内核版本</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="375"/>
+        <location filename="../../info/computerpage.cpp" line="395"/>
         <source>Kernel Arch</source>
         <translation>内核架构</translation>
     </message>
@@ -1201,7 +1256,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CpuWidget</name>
     <message>
-        <location filename="../../info/cpuwidget.cpp" line="30"/>
+        <location filename="../../info/cpuwidget.cpp" line="35"/>
         <source>CPU Info</source>
         <translation>处理器信息</translation>
     </message>
@@ -1222,7 +1277,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>DesktopWidget</name>
     <message>
-        <location filename="../../info/desktopwidget.cpp" line="30"/>
+        <location filename="../../info/desktopwidget.cpp" line="35"/>
         <source>Desktop Info</source>
         <translation>桌面环境信息</translation>
     </message>
@@ -1230,7 +1285,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>DriverWidget</name>
     <message>
-        <location filename="../../info/driverwidget.cpp" line="32"/>
+        <location filename="../../info/driverwidget.cpp" line="34"/>
         <source>Driver Info</source>
         <translation>驱动信息</translation>
     </message>
@@ -1290,15 +1345,14 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>HDWidget</name>
     <message>
-        <location filename="../../info/hdwidget.cpp" line="35"/>
+        <location filename="../../info/hdwidget.cpp" line="38"/>
         <source>HardWare Info</source>
         <translation>硬盘信息</translation>
     </message>
     <message>
-        <location filename="../../info/hdwidget.cpp" line="45"/>
+        <location filename="../../info/hdwidget.cpp" line="55"/>
         <source>HardWare Info %1</source>
-        <translatorcomment>硬盘信息 %1</translatorcomment>
-        <translation></translation>
+        <translation>硬盘信息 %1</translation>
     </message>
 </context>
 <context>
@@ -1607,52 +1661,52 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>KylinFontDialog</name>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="176"/>
+        <location filename="../../component/kylinfontdialog.cpp" line="171"/>
         <source>Current Font</source>
         <translation>当前字体</translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="177"/>
+        <location filename="../../component/kylinfontdialog.cpp" line="172"/>
         <source>Font</source>
         <translation>字体</translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="178"/>
+        <location filename="../../component/kylinfontdialog.cpp" line="173"/>
         <source>Style</source>
         <translation>风格</translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="179"/>
+        <location filename="../../component/kylinfontdialog.cpp" line="174"/>
         <source>Size</source>
         <translation>大小</translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="180"/>
+        <location filename="../../component/kylinfontdialog.cpp" line="175"/>
         <source>View</source>
         <translation>视图</translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="181"/>
+        <location filename="../../component/kylinfontdialog.cpp" line="176"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="182"/>
+        <location filename="../../component/kylinfontdialog.cpp" line="177"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="211"/>
+        <location filename="../../component/kylinfontdialog.cpp" line="200"/>
         <source>Tips</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="212"/>
+        <location filename="../../component/kylinfontdialog.cpp" line="201"/>
         <source>You haven&apos;t change the font, please choose the font!</source>
         <translation>您没有更改字体，请选择需要更改的字体！</translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="225"/>
+        <location filename="../../component/kylinfontdialog.cpp" line="214"/>
         <source>Font Dialog</source>
         <translation>字体对话框</translation>
     </message>
@@ -1724,12 +1778,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>LoginWidget</name>
     <message>
-        <location filename="../loginwidget.cpp" line="106"/>
+        <location filename="../loginwidget.cpp" line="117"/>
         <source>Login Youker Account</source>
         <translation>登录优客帐号</translation>
     </message>
     <message>
-        <location filename="../loginwidget.cpp" line="107"/>
+        <location filename="../loginwidget.cpp" line="118"/>
         <source>Logout</source>
         <translation>注销</translation>
     </message>
@@ -1746,12 +1800,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>MemoryWidget</name>
     <message>
-        <location filename="../../info/memorywidget.cpp" line="36"/>
+        <location filename="../../info/memorywidget.cpp" line="40"/>
         <source>Memory Info</source>
         <translation>内存条信息</translation>
     </message>
     <message>
-        <location filename="../../info/memorywidget.cpp" line="46"/>
+        <location filename="../../info/memorywidget.cpp" line="57"/>
         <source>Memory Info %1</source>
         <translation>内存信息 %1</translation>
     </message>
@@ -1759,12 +1813,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>MonitorWidget</name>
     <message>
-        <location filename="../../info/monitorwidget.cpp" line="35"/>
+        <location filename="../../info/monitorwidget.cpp" line="38"/>
         <source>Monitor Info</source>
         <translation>显示器和显卡信息</translation>
     </message>
     <message>
-        <location filename="../../info/monitorwidget.cpp" line="45"/>
+        <location filename="../../info/monitorwidget.cpp" line="55"/>
         <source>Monitor Info %1</source>
         <translation>显示器和显卡信息 %1</translation>
     </message>
@@ -1833,12 +1887,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>NicWidget</name>
     <message>
-        <location filename="../../info/nicwidget.cpp" line="30"/>
+        <location filename="../../info/nicwidget.cpp" line="36"/>
         <source>NIC Info</source>
         <translation>有线网卡信息</translation>
     </message>
     <message>
-        <location filename="../../info/nicwidget.cpp" line="34"/>
+        <location filename="../../info/nicwidget.cpp" line="46"/>
         <source>WireLess NIC Info</source>
         <translation>无线网卡信息</translation>
     </message>
@@ -2252,18 +2306,18 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SystemWidget</name>
     <message>
-        <location filename="../../info/systemwidget.cpp" line="36"/>
+        <location filename="../../info/systemwidget.cpp" line="41"/>
         <source>Computer Base Info</source>
         <translation>电脑概述</translation>
     </message>
     <message>
-        <location filename="../../info/systemwidget.cpp" line="63"/>
-        <location filename="../../info/systemwidget.cpp" line="67"/>
+        <location filename="../../info/systemwidget.cpp" line="69"/>
+        <location filename="../../info/systemwidget.cpp" line="73"/>
         <source> Minutes</source>
         <translation> 分钟</translation>
     </message>
     <message>
-        <location filename="../../info/systemwidget.cpp" line="67"/>
+        <location filename="../../info/systemwidget.cpp" line="73"/>
         <source> Hours </source>
         <translation> 小时</translation>
     </message>
