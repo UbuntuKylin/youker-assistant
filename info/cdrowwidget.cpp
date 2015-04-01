@@ -18,6 +18,7 @@
  */
 
 #include "cdrowwidget.h"
+#include "computerpage.h"
 
 CDRowWidget::CDRowWidget(QWidget *parent, SystemDispatcher *proxy) :
     QWidget(parent),
@@ -26,26 +27,79 @@ CDRowWidget::CDRowWidget(QWidget *parent, SystemDispatcher *proxy) :
     setFixedSize(750, 403);
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403);
-    this->initData();
+//    this->initData();
+//    if(cdrom_info_map.count() == 1 && cdrom_info_map.contains("kylinkobe"))
+//    {
+//        page = NULL;
+//    }
+//    else {
+//        page = new ComputerPage(scroll_widget->zone, tr("CDROM Info"));
+//        page->setMap(cdrom_info_map, cdrom_info_map.value("DvdVendor").toString().toUpper());
+//        page->initUI();
+//        scroll_widget->addScrollWidget(page);
+//    }
+    cdNum = this->initData();
     if(cdrom_info_map.count() == 1 && cdrom_info_map.contains("kylinkobe"))
     {
-        page = NULL;
     }
     else {
-        page = new ComputerPage(scroll_widget->zone, tr("CDROM Info"));
-        page->setMap(cdrom_info_map, cdrom_info_map.value("DvdVendor").toString().toUpper());
-        page->initUI();
-        scroll_widget->addScrollWidget(page);
+        if(cdNum == 1)
+        {
+            ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("CDROM Info"));
+            cdrom_info_map.remove("Dvdnum");
+            QMap<QString, QVariant> tmpMap;
+            QMap<QString,QVariant>::iterator it;
+            for ( it = cdrom_info_map.begin(); it != cdrom_info_map.end(); ++it ) {
+                if (it.value().toString().length() > 0) {
+                    tmpMap.insert(it.key(), it.value());
+                }
+            }
+            page->setMap(tmpMap, cdrom_info_map.value("DvdVendor").toString().toUpper());
+            page->initUI();
+            scroll_widget->addScrollWidget(page);
+        }
+        else if(cdNum > 1)
+        {
+            for(int i=0;i<cdNum;i++)
+            {
+                ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("CDROM Info %1").arg(i+1));
+                tmp_info_map.clear();
+                QMap<QString, QVariant>::iterator itbegin = cdrom_info_map.begin();
+                QMap<QString, QVariant>::iterator  itend = cdrom_info_map.end();
+                for (;itbegin != itend; ++itbegin)
+                {
+                    if(itbegin.key() != "Dvdnum") {
+                        QString result = itbegin.value().toString().split("<1_1>").at(i);
+                        if (result.length() > 0) {
+                            tmp_info_map.insert(itbegin.key(), result);
+                        }
+                    }
+                }
+                page->setMap(tmp_info_map, tmp_info_map.value("DvdVendor").toString().toUpper());
+                page->initUI();
+                scroll_widget->addScrollWidget(page);
+            }
+        }
     }
 }
 
-void CDRowWidget::initData()
+int CDRowWidget::initData()
 {
-    QMap<QString, QVariant> tmpMap = systemproxy->get_cdrom_info_qt();
-    QMap<QString,QVariant>::iterator it;
-    for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
-        if (it.value().toString().length() > 0) {
-            cdrom_info_map.insert(it.key(), it.value());
-        }
+//    QMap<QString, QVariant> tmpMap = systemproxy->get_cdrom_info_qt();
+//    QMap<QString,QVariant>::iterator it;
+//    for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
+//        if (it.value().toString().length() > 0) {
+//            cdrom_info_map.insert(it.key(), it.value());
+//        }
+//    }
+    cdrom_info_map.clear();
+    cdrom_info_map = systemproxy->get_cdrom_info_qt();
+    QMap<QString, QVariant>::iterator iter = cdrom_info_map.find("Dvdnum");
+    if (iter == cdrom_info_map.end())
+    {
+        return 0;
+    }
+    else{
+        return iter.value().toInt();
     }
 }

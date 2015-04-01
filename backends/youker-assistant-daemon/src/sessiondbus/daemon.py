@@ -1560,9 +1560,11 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def access_current_desktop(self):
         '''env |grep XDG_CURRENT_DESKTOP'''
-        dekstop = ''
+        dekstop = None
         try:
             dekstop = os.getenv('XDG_CURRENT_DESKTOP')
+            if dekstop is None:
+                 dekstop = os.getenv('XDG_SESSION_DESKTOP')
         except Exception as e:
             pass
         return dekstop

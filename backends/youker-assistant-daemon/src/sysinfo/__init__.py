@@ -121,6 +121,10 @@ class Sysinfo:
         }
         try:
             desktop_name = os.getenv('XDG_CURRENT_DESKTOP')
+            if desktop_name is None:
+                 desktop_name = os.getenv('XDG_SESSION_DESKTOP')
+            if desktop_name is None:
+                desktop_name = "N/A"
             return desktop_name
         except Exception as e:
             print e

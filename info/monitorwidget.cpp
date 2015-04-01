@@ -29,7 +29,6 @@ MonitorWidget::MonitorWidget(QWidget *parent, SystemDispatcher *proxy) :
     scroll_widget->setGeometry(0, 0, 750, 403);
 
     vgaNum = this->initData();
-
     if(monitor_info_map.count() == 1 && monitor_info_map.contains("kylinkobe"))
     {
     }

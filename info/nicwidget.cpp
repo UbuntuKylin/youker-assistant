@@ -18,6 +18,7 @@
  */
 
 #include "nicwidget.h"
+#include <QDebug>
 
 NicWidget::NicWidget(QWidget *parent, SystemDispatcher *proxy) :
     QWidget(parent),
@@ -27,7 +28,7 @@ NicWidget::NicWidget(QWidget *parent, SystemDispatcher *proxy) :
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403);
     this->initData();
-    if(wireless_info_map.count() == 0)
+    if(wire_info_map.count() == 0)
     {
         page = NULL;
     }
