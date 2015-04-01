@@ -76,7 +76,10 @@ class Desktop_Autostart_Manage():
         #return flag
 
     def get_desktop_env(self):
-        return os.getenv('XDG_CURRENT_DESKTOP')
+        desktop_name = os.getenv('XDG_CURRENT_DESKTOP')
+        if desktop_name is None:
+             desktop_name = os.getenv('XDG_SESSION_DESKTOP')
+        return desktop_name
 
     def _walk_dir(self, sdir):
         scan_files = []

@@ -21,11 +21,10 @@
 #define CDROWWIDGET_H
 
 #include <QWidget>
-#include "computerpage.h"
 #include "../component/scrollwidget.h"
 #include <QMap>
+#include <QVariant>
 
-class QVariant;
 class SystemDispatcher;
 
 class CDRowWidget : public QWidget
@@ -33,7 +32,7 @@ class CDRowWidget : public QWidget
     Q_OBJECT
 public:
     explicit CDRowWidget(QWidget *parent = 0, SystemDispatcher *proxy = 0);
-    void initData();
+    int initData();
 
 signals:
 
@@ -41,9 +40,10 @@ public slots:
 
 private:
     ScrollWidget *scroll_widget;
-    ComputerPage *page;
     QMap<QString, QVariant> cdrom_info_map;
+    QMap<QString, QVariant> tmp_info_map;
     SystemDispatcher *systemproxy;
+    int cdNum;
 };
 
 #endif // CDROWWIDGET_H

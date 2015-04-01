@@ -316,6 +316,26 @@ QString ComputerPage::translatorSwitch(QString orgStr)
         return tr("Graphics Driver");
     else if(orgStr == "Vga_businfo")//显卡总线地址：
         return tr("Bus Address");
+    else if(orgStr == "Mon_gamma")//伽马值
+        return tr("Gamma");
+    else if(orgStr == "Mon_in")//屏幕尺寸
+        return tr("Screen Size");
+    else if(orgStr == "Mon_maxmode")//最大分辨率
+        return tr("Max Resolution");
+    else if(orgStr == "Mon_output")//当前接口
+        return tr("Current Interface");
+    else if(orgStr == "Mon_product")//显示器型号：
+        return tr("Monitor Model");
+    else if(orgStr == "Mon_size")//可视面积
+        return tr("Visual Area");
+    else if(orgStr == "Mon_support")//支持接口
+        return tr("Support Interface");
+    else if(orgStr == "Mon_vendor")//显示器制造商
+        return tr("Monitor Manufacturers");
+    else if(orgStr == "Mon_week")//生产日期_周
+        return tr("Date of production/Week");
+    else if(orgStr == "Mon_year")//生产日期_年
+        return tr("Date of production/Year");
 
 
     else if(orgStr == "NetVendor")//有线网卡型号：
