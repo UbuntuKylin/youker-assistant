@@ -28,21 +28,37 @@ IconWidget::IconWidget(QWidget *parent, SessionDispatcher *proxy) :
     QWidget(parent),
     sessionproxy(proxy)
 {
+    this->desktop = sessionproxy->access_current_desktop_qt();
     theme_label = new QLabel();
     show_label = new QLabel();
+    computer_label = new QLabel();
+
     folder_label = new QLabel();
     network_label = new QLabel();
     recycle_label = new QLabel();
     disk_label = new QLabel();
     theme_combo = new QComboBox();
     show_switcher = new KylinSwitcher();
+    computer_switcher = new KylinSwitcher();
     folder_switcher = new KylinSwitcher();
     network_switcher = new KylinSwitcher();
     recycle_switcher = new KylinSwitcher();
     disk_switcher = new KylinSwitcher();
 
+    if (this->desktop == "mate")
+    {
+        show_label->hide();
+        show_switcher->hide();
+    }
+    else
+    {
+        computer_label->hide();
+        computer_switcher->hide();
+    }
+
     theme_label->setFixedWidth(150);
     show_label->setFixedWidth(150);
+    computer_label->setFixedWidth(150);
     folder_label->setFixedWidth(150);
     network_label->setFixedWidth(150);
     recycle_label->setFixedWidth(150);
@@ -63,24 +79,29 @@ IconWidget::IconWidget(QWidget *parent, SessionDispatcher *proxy) :
     layout2->addStretch();
     QHBoxLayout *layout3 = new QHBoxLayout();
     layout3->setSpacing(10);
-    layout3->addWidget(folder_label);
-    layout3->addWidget(folder_switcher);
+    layout3->addWidget(computer_label);
+    layout3->addWidget(computer_switcher);
     layout3->addStretch();
     QHBoxLayout *layout4 = new QHBoxLayout();
     layout4->setSpacing(10);
-    layout4->addWidget(network_label);
-    layout4->addWidget(network_switcher);
+    layout4->addWidget(folder_label);
+    layout4->addWidget(folder_switcher);
     layout4->addStretch();
     QHBoxLayout *layout5 = new QHBoxLayout();
     layout5->setSpacing(10);
-    layout5->addWidget(recycle_label);
-    layout5->addWidget(recycle_switcher);
+    layout5->addWidget(network_label);
+    layout5->addWidget(network_switcher);
     layout5->addStretch();
     QHBoxLayout *layout6 = new QHBoxLayout();
     layout6->setSpacing(10);
-    layout6->addWidget(disk_label);
-    layout6->addWidget(disk_switcher);
+    layout6->addWidget(recycle_label);
+    layout6->addWidget(recycle_switcher);
     layout6->addStretch();
+    QHBoxLayout *layout7 = new QHBoxLayout();
+    layout7->setSpacing(10);
+    layout7->addWidget(disk_label);
+    layout7->addWidget(disk_switcher);
+    layout7->addStretch();
     QVBoxLayout *layout = new QVBoxLayout();
     layout->addLayout(layout1);
     layout->addLayout(layout2);
@@ -88,6 +109,7 @@ IconWidget::IconWidget(QWidget *parent, SessionDispatcher *proxy) :
     layout->addLayout(layout4);
     layout->addLayout(layout5);
     layout->addLayout(layout6);
+    layout->addLayout(layout7);
     layout->addStretch();
     setLayout(layout);
     layout->setSpacing(10);
@@ -181,6 +203,7 @@ void IconWidget::setLanguage() {
 //    back_btn->setText(tr("Back"));
     theme_label->setText(tr("Icon theme") + ":");
     show_label->setText(tr("Show Desktop Icons") + ":");
+    computer_label->setText(tr("Computer") + ":");
     folder_label->setText(tr("Home Folder") + ":");
     network_label->setText(tr("Network") + ":");
     recycle_label->setText(tr("Trash") + ":");
@@ -210,6 +233,7 @@ void IconWidget::initData()
 //    recycle_switcher->setSwitchStatus(sessionproxy->get_show_trash_qt());
 //    disk_switcher->setSwitchStatus(sessionproxy->get_show_devices_qt());
     show_switcher->switchedOn = sessionproxy->get_show_desktop_icons_qt();
+    computer_switcher->switchedOn = sessionproxy->get_show_computer_qt();
     folder_switcher->switchedOn = sessionproxy->get_show_homefolder_qt();
     network_switcher->switchedOn = sessionproxy->get_show_network_qt();
     recycle_switcher->switchedOn = sessionproxy->get_show_trash_qt();
@@ -221,6 +245,7 @@ void IconWidget::initConnect() {
 //    connect(theme_combo, SIGNAL(currentIndexChanged(int)),  this, SLOT(setIconTheme()));
     connect(theme_combo, SIGNAL(currentIndexChanged(QString)),  this, SLOT(setIconTheme(QString)));
     connect(show_switcher, SIGNAL(clicked()),  this, SLOT(setShowDesktopIcons()));
+    connect(computer_switcher, SIGNAL(clicked()),  this, SLOT(setComputerIcon()));
     connect(folder_switcher, SIGNAL(clicked()),  this, SLOT(setFolderIcon()));
     connect(network_switcher, SIGNAL(clicked()),  this, SLOT(setNetworkIcon()));
     connect(recycle_switcher, SIGNAL(clicked()),  this, SLOT(setRecycleBinIcon()));
@@ -233,6 +258,10 @@ void IconWidget::setIconTheme(QString selectTheme) {
 
 void IconWidget::setShowDesktopIcons() {
     sessionproxy->set_show_desktop_icons_qt(show_switcher->switchedOn);
+}
+
+void IconWidget::setComputerIcon() {
+    sessionproxy->set_show_computer_qt(computer_switcher->switchedOn);
 }
 
 void IconWidget::setFolderIcon() {

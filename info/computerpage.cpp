@@ -318,8 +318,8 @@ QString ComputerPage::translatorSwitch(QString orgStr)
         return tr("Bus Address");
     else if(orgStr == "Mon_gamma")//伽马值
         return tr("Gamma");
-    else if(orgStr == "Mon_in")//屏幕尺寸
-        return tr("Screen Size");
+    else if(orgStr == "Mon_in")//屏幕尺寸（英寸）
+        return tr("Screen Size(inch)");
     else if(orgStr == "Mon_maxmode")//最大分辨率
         return tr("Max Resolution");
     else if(orgStr == "Mon_output")//当前接口

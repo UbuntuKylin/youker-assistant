@@ -29,6 +29,7 @@ VoiceWidget::VoiceWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispa
     sessionproxy(proxy),
     systemproxy(sproxy)
 {
+    this->desktop = sessionproxy->access_current_desktop_qt();
     theme_label = new QLabel();
     tip_label = new QLabel();
     event_label = new QLabel();
@@ -42,6 +43,12 @@ VoiceWidget::VoiceWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispa
     tip_label->setFixedWidth(180);
     event_label->setFixedWidth(180);
     feedback_label->setFixedWidth(180);
+
+    if (this->desktop == "mate")
+    {
+        tip_label->hide();
+        tip_switcher->hide();
+    }
 
     QHBoxLayout *layout1 = new QHBoxLayout();
     layout1->setSpacing(10);

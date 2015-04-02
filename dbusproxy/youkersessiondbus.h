@@ -75,6 +75,8 @@ public:
 //    /*-------------------desktop of beauty-------------------*/
     bool set_show_desktop_icons_qt(bool flag);
     bool get_show_desktop_icons_qt();
+    bool set_show_computer_qt(bool flag);
+    bool get_show_computer_qt();
     bool set_show_homefolder_qt(bool flag);
     bool get_show_homefolder_qt();
     bool set_show_network_qt(bool flag);
@@ -105,6 +107,11 @@ public:
     int get_launcher_icon_size_qt();
     bool set_launcher_have_showdesktopicon_qt(bool flag);
     bool get_launcher_have_showdesktopicon_qt();
+    //-----------------mate of beauty--------------------*/
+    bool set_mate_panel_autohide_qt(QString positon, bool flag);
+    bool get_mate_panel_autohide_qt(QString positon);
+    bool set_mate_panel_icon_size_qt(QString positon, int num);
+    int get_mate_panel_icon_size_qt(QString positon);
 
     //透明度
     double get_launcher_transparency_qt();
@@ -239,7 +246,7 @@ public:
     int get_thumbnail_cache_time_qt();
     void set_thumbnail_cache_size_qt(int size);
     int get_thumbnail_cache_size_qt();
-//    Q_INVOKABLE QString access_current_desktop_qt();
+    QString access_current_desktop_qt();
 //    Q_INVOKABLE QString judge_desktop_is_unity_qt();
 //    Q_INVOKABLE QString judge_desktop_is_cinnamon_qt();
     //一键清理扫描

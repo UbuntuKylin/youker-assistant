@@ -56,6 +56,7 @@ private:
     KylinSwitcher *tip_switcher;
     KylinSwitcher *event_switcher;
     KylinSwitcher *feedback_switcher;
+    QString desktop;
 };
 
 #endif // VOICEWIDGET_H

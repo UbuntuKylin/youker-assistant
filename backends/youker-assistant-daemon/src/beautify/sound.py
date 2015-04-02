@@ -23,9 +23,13 @@ import utils
 
 class Sound:
     homedir = ''
+    dekstop = None
 
     def __init__(self):
         self.homedir = utils.get_home_dir()
+        self.dekstop = os.getenv('XDG_CURRENT_DESKTOP')
+        if self.dekstop is None:
+             self.dekstop = os.getenv('XDG_SESSION_DESKTOP')
 
     # sometimes need set homedir manual fe:the backend run by root dbus
     def set_homedir(self, homedir):
@@ -45,24 +49,44 @@ class Sound:
             raise NotImplemented
     # ----------------------------------
     def set_input_feedback_sounds_enable(self, flag):
-        return gsettings.set('org.gnome.desktop.sound',
-            None,
-            'input-feedback-sounds',
-            'boolean', flag)
+        if self.dekstop == "mate":
+            return gsettings.set('org.mate.sound',
+                None,
+                'input-feedback-sounds',
+                'boolean', flag)
+        else:
+            return gsettings.set('org.gnome.desktop.sound',
+                None,
+                'input-feedback-sounds',
+                'boolean', flag)
 
     def get_input_feedback_sounds_enable(self):
-        return gsettings.get('org.gnome.desktop.sound',
-            None, 'input-feedback-sounds', 'boolean')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.sound',
+                None, 'input-feedback-sounds', 'boolean')
+        else:
+            return gsettings.get('org.gnome.desktop.sound',
+                None, 'input-feedback-sounds', 'boolean')
 
     def set_sound_event_enable(self, flag):
-        return gsettings.set('org.gnome.desktop.sound',
-            None,
-            'event-sounds',
-            'boolean', flag)
+        if self.dekstop == "mate":
+            return gsettings.set('org.mate.sound',
+                None,
+                'event-sounds',
+                'boolean', flag)
+        else:
+            return gsettings.set('org.gnome.desktop.sound',
+                None,
+                'event-sounds',
+                'boolean', flag)
 
     def get_sound_event_enable(self):
-        return gsettings.get('org.gnome.desktop.sound',
-            None, 'event-sounds', 'boolean')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.sound',
+                None, 'event-sounds', 'boolean')
+        else:
+            return gsettings.get('org.gnome.desktop.sound',
+                None, 'event-sounds', 'boolean')
 
     # enable the login music
     def set_login_music_enable(self, flag):
@@ -111,13 +135,21 @@ class Sound:
 
     # get current sound theme
     def get_sound_theme(self):
-        return gsettings.get('org.gnome.desktop.sound',
-            None, 'theme-name', 'string')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.sound',
+                None, 'theme-name', 'string')
+        else:
+            return gsettings.get('org.gnome.desktop.sound',
+                None, 'theme-name', 'string')
 
     # set sound theme
     def set_sound_theme(self, theme):
-        gstheme = gsettings.get_schema('org.gnome.desktop.sound')
-        gstheme.set_string('theme-name',theme)
+        if self.dekstop == "mate":
+            gstheme = gsettings.get_schema('org.mate.sound')
+            gstheme.set_string('theme-name',theme)
+        else:
+            gstheme = gsettings.get_schema('org.gnome.desktop.sound')
+            gstheme.set_string('theme-name',theme)
 
     # get sounds in current theme
     def get_sounds(self):
