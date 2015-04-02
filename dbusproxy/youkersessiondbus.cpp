@@ -274,6 +274,16 @@ bool SessionDispatcher::get_show_desktop_icons_qt() {
     return reply.value();
 }
 
+bool SessionDispatcher::set_show_computer_qt(bool flag) {
+    QDBusReply<bool> reply = sessioniface->call("set_show_computer", flag);
+    return reply.value();
+}
+
+bool SessionDispatcher::get_show_computer_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_show_computer");
+    return reply.value();
+}
+
 bool SessionDispatcher::set_show_homefolder_qt(bool flag) {
     QDBusReply<bool> reply = sessioniface->call("set_show_homefolder", flag);
     return reply.value();
@@ -283,6 +293,7 @@ bool SessionDispatcher::get_show_homefolder_qt() {
     QDBusReply<bool> reply = sessioniface->call("get_show_homefolder");
     return reply.value();
 }
+
 bool SessionDispatcher::set_show_network_qt(bool flag) {
     QDBusReply<bool> reply = sessioniface->call("set_show_network", flag);
     return reply.value();
@@ -292,6 +303,7 @@ bool SessionDispatcher::get_show_network_qt() {
     QDBusReply<bool> reply = sessioniface->call("get_show_network");
     return reply.value();
 }
+
 bool SessionDispatcher::set_show_trash_qt(bool flag) {
     QDBusReply<bool> reply = sessioniface->call("set_show_trash", flag);
     return reply.value();
@@ -301,6 +313,7 @@ bool SessionDispatcher::get_show_trash_qt() {
     QDBusReply<bool> reply = sessioniface->call("get_show_trash");
     return reply.value();
 }
+
 bool SessionDispatcher::set_show_devices_qt(bool flag) {
     QDBusReply<bool> reply = sessioniface->call("set_show_devices", flag);
     return reply.value();
@@ -401,6 +414,31 @@ bool SessionDispatcher::set_launcher_have_showdesktopicon_qt(bool flag) {
 
 bool SessionDispatcher::get_launcher_have_showdesktopicon_qt() {
     QDBusReply<bool> reply = sessioniface->call("get_launcher_have_showdesktopicon");
+    return reply.value();
+}
+
+//-----------------------------------------------mate----------------------------------------------
+bool SessionDispatcher::set_mate_panel_autohide_qt(QString positon, bool flag)
+{
+    QDBusReply<bool> reply = sessioniface->call("set_mate_panel_autohide", positon, flag);
+    return reply.value();
+}
+
+bool SessionDispatcher::get_mate_panel_autohide_qt(QString positon)
+{
+    QDBusReply<bool> reply = sessioniface->call("get_mate_panel_autohide", positon);
+    return reply.value();
+}
+
+bool SessionDispatcher::set_mate_panel_icon_size_qt(QString positon, int num)
+{
+    QDBusReply<bool> reply = sessioniface->call("set_mate_panel_icon_size", positon, num);
+    return reply.value();
+}
+
+int SessionDispatcher::get_mate_panel_icon_size_qt(QString positon)
+{
+    QDBusReply<bool> reply = sessioniface->call("get_mate_panel_icon_size", positon);
     return reply.value();
 }
 
@@ -948,10 +986,10 @@ int SessionDispatcher::get_thumbnail_cache_size_qt() {
     return reply.value();
 }
 
-//QString SessionDispatcher::access_current_desktop_qt() {
-//    QDBusReply<QString> reply = sessioniface->call("access_current_desktop");
-//    return reply.value();
-//}
+QString SessionDispatcher::access_current_desktop_qt() {
+    QDBusReply<QString> reply = sessioniface->call("access_current_desktop");
+    return reply.value();
+}
 
 //QString SessionDispatcher::judge_desktop_is_unity_qt() {
 //    QDBusReply<QString> reply = sessioniface->call("judge_desktop_is_unity");

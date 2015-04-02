@@ -55,6 +55,7 @@ private:
     QComboBox *theme_combo;
     QRadioButton *small_size;
     QRadioButton *big_size;
+    QString desktop;
 };
 
 #endif // MOUSEWIDGET_H

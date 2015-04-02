@@ -46,6 +46,10 @@ public slots:
     void setDisplayDesktopIcon();
     void setIconSizeValue(int value);
     void setTransparencyValue(double value);
+    void setTopIconSizeValue(int value);
+    void setBottomIconSizeValue(int value);
+    void setTopAutoHide();
+    void setBottomAutoHide();
 
 private:
     SessionDispatcher *sessionproxy;
@@ -55,11 +59,22 @@ private:
     QLabel *icon_label;
     QLabel *transparency_label;
     QLabel *background_label;
+    QLabel *size_top_label;
+    QLabel *hide_top_label;
+    QLabel *size_top_value_label;
+    QLabel *size_bottom_label;
+    QLabel *hide_bottom_label;
+    QLabel *size_bottom_value_label;
     QSlider *size_slider;
     KylinSwitcher *hide_switcher;
     KylinSwitcher *icon_switcher;
     QDoubleSpinBox *transparency_slider;
     QComboBox *backgound_combo;
+    QSlider *size_top_slider;
+    QSlider *size_bottom_slider;
+    KylinSwitcher *hide_top_switcher;
+    KylinSwitcher *hide_bottom_switcher;
+    QString desktop;
 };
 
 #endif // LAUNCHERWIDGET_H

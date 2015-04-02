@@ -32,12 +32,25 @@ LauncherWidget::LauncherWidget(QWidget *parent, SessionDispatcher *proxy) :
     QWidget(parent),
     sessionproxy(proxy)
 {
+    this->desktop = sessionproxy->access_current_desktop_qt();
     size_label = new QLabel();
     size_value_label = new QLabel();
     hide_label = new QLabel();
     icon_label = new QLabel();
     transparency_label = new QLabel();
     background_label = new QLabel();
+    size_top_label = new QLabel();
+    hide_top_label = new QLabel();
+    size_top_value_label = new QLabel();
+    size_bottom_label = new QLabel();
+    hide_bottom_label = new QLabel();
+    size_bottom_value_label = new QLabel();
+
+//    QLabel *size_top_label;
+//    QLabel *hide_top_label;
+//    QLabel *size_bottom_label;
+//    QLabel *hide_bottom_label;
+
     size_slider = new QSlider(Qt::Horizontal);
 //    size_slider->setTickPosition(QSlider::TicksRight);
     size_slider->setFocusPolicy(Qt::NoFocus);
@@ -55,11 +68,57 @@ LauncherWidget::LauncherWidget(QWidget *parent, SessionDispatcher *proxy) :
     transparency_slider->setMaximum(1.0);
     backgound_combo = new QComboBox();
 
+    size_top_slider = new QSlider(Qt::Horizontal);
+    size_top_slider->setFocusPolicy(Qt::NoFocus);
+    size_top_slider->setRange(24, 180);
+    size_top_slider->setSingleStep(1);
+    size_bottom_slider = new QSlider(Qt::Horizontal);
+    size_bottom_slider->setFocusPolicy(Qt::NoFocus);
+    size_bottom_slider->setRange(24, 180);
+    size_bottom_slider->setSingleStep(1);
+    hide_top_switcher = new KylinSwitcher();
+    hide_bottom_switcher = new KylinSwitcher();
+
+//    QSlider *size_top_slider;
+//    QSlider *size_bottom_slider;
+//    KylinSwitcher *hide_top_switcher;
+//    KylinSwitcher *icon_bottom_switcher;
+    if (this->desktop == "mate") {
+        size_label->hide();
+        size_value_label->hide();
+        hide_label->hide();
+        icon_label->hide();
+        transparency_label->hide();
+        background_label->hide();
+        size_slider->hide();
+        hide_switcher->hide();
+        icon_switcher->hide();
+        transparency_slider->hide();;
+        backgound_combo->hide();
+    }
+    else
+    {
+        size_top_label->hide();
+        hide_top_label->hide();
+        size_top_value_label->hide();
+        size_bottom_label->hide();
+        hide_bottom_label->hide();
+        size_bottom_value_label->hide();
+        size_top_slider->hide();
+        size_bottom_slider->hide();
+        hide_top_switcher->hide();
+        hide_bottom_switcher->hide();
+    }
+
     size_label->setFixedWidth(180);
     hide_label->setFixedWidth(180);
     icon_label->setFixedWidth(180);
     transparency_label->setFixedWidth(180);
     background_label->setFixedWidth(180);
+    size_top_label->setFixedWidth(180);
+    hide_top_label->setFixedWidth(180);
+    size_bottom_label->setFixedWidth(180);
+    hide_bottom_label->setFixedWidth(180);
 
     QHBoxLayout *layout1 = new QHBoxLayout();
     layout1->setSpacing(10);
@@ -87,12 +146,39 @@ LauncherWidget::LauncherWidget(QWidget *parent, SessionDispatcher *proxy) :
     layout5->addWidget(background_label);
     layout5->addWidget(backgound_combo);
     layout5->addStretch();
+
+    QHBoxLayout *layout6 = new QHBoxLayout();
+    layout6->setSpacing(10);
+    layout6->addWidget(size_top_label);
+    layout6->addWidget(size_top_slider);
+    layout6->addWidget(size_top_value_label);
+    layout6->addStretch();
+    QHBoxLayout *layout7 = new QHBoxLayout();
+    layout7->setSpacing(10);
+    layout7->addWidget(hide_top_label);
+    layout7->addWidget(hide_top_switcher);
+    layout7->addStretch();
+    QHBoxLayout *layout8 = new QHBoxLayout();
+    layout8->setSpacing(10);
+    layout8->addWidget(size_bottom_label);
+    layout8->addWidget(size_bottom_slider);
+    layout8->addWidget(size_bottom_value_label);
+    layout8->addStretch();
+    QHBoxLayout *layout9 = new QHBoxLayout();
+    layout9->setSpacing(10);
+    layout9->addWidget(hide_bottom_label);
+    layout9->addWidget(hide_bottom_switcher);
+    layout9->addStretch();
     QVBoxLayout *layout = new QVBoxLayout();
     layout->addLayout(layout1);
     layout->addLayout(layout2);
     layout->addLayout(layout3);
     layout->addLayout(layout4);
     layout->addLayout(layout5);
+    layout->addLayout(layout6);
+    layout->addLayout(layout7);
+    layout->addLayout(layout8);
+    layout->addLayout(layout9);
     layout->addStretch();
     setLayout(layout);
     layout->setSpacing(10);
@@ -135,7 +221,10 @@ void LauncherWidget::setLanguage() {
     icon_label->setText(tr("Display desktop icon") + ":");
     transparency_label->setText(tr("Launcher Transparency") + ":");
     background_label->setText(tr("Icon Background") + ":");
-
+    size_top_label->setText(tr("Top panel icon size") + ":");
+    hide_top_label->setText(tr("Top panel auto hide") + ":");
+    size_bottom_label->setText(tr("Bottom panel icon size") + ":");
+    hide_bottom_label->setText(tr("Bottom panel auto hide") + ":");
 }
 
 void LauncherWidget::initData()
@@ -175,6 +264,12 @@ void LauncherWidget::initData()
     }
     backgound_combo->setCurrentIndex(initIndex);
 
+    size_top_slider->setValue(sessionproxy->get_mate_panel_icon_size_qt("top"));
+    size_top_value_label->setText(QString::number(size_top_slider->value()));
+    size_bottom_slider->setValue(sessionproxy->get_mate_panel_icon_size_qt("bottom"));
+    size_bottom_value_label->setText(QString::number(size_bottom_slider->value()));
+    hide_top_switcher->switchedOn = sessionproxy->get_mate_panel_autohide_qt("top");
+    hide_bottom_switcher->switchedOn = sessionproxy->get_mate_panel_autohide_qt("top");
 }
 
 void LauncherWidget::initConnect() {
@@ -184,6 +279,11 @@ void LauncherWidget::initConnect() {
     connect(icon_switcher, SIGNAL(clicked()),  this, SLOT(setDisplayDesktopIcon()));
     connect(transparency_slider, SIGNAL(valueChanged(double)), this, SLOT(setTransparencyValue(double)));
     connect(backgound_combo, SIGNAL(currentIndexChanged(QString)),  this, SLOT(setIconColouring(QString)));
+
+    connect(size_top_slider, SIGNAL(valueChanged(int)), this, SLOT(setTopIconSizeValue(int)));
+    connect(size_bottom_slider, SIGNAL(valueChanged(int)), this, SLOT(setBottomIconSizeValue(int)));
+    connect(hide_top_switcher, SIGNAL(clicked()),  this, SLOT(setTopAutoHide()));
+    connect(hide_bottom_switcher, SIGNAL(clicked()),  this, SLOT(setBottomAutoHide()));
 }
 
 void LauncherWidget::setIconSizeValue(int value){
@@ -220,4 +320,22 @@ void LauncherWidget::setAutoHide() {
 
 void LauncherWidget::setDisplayDesktopIcon() {
     sessionproxy->set_launcher_have_showdesktopicon_qt(icon_switcher->switchedOn);
+}
+
+void LauncherWidget::setTopIconSizeValue(int value){
+    size_top_value_label->setText(QString::number(value));
+    sessionproxy->set_mate_panel_icon_size_qt("top", value);
+}
+
+void LauncherWidget::setBottomIconSizeValue(int value){
+    size_bottom_value_label->setText(QString::number(value));
+    sessionproxy->set_mate_panel_icon_size_qt("bottom", value);
+}
+
+void LauncherWidget::setTopAutoHide() {
+    sessionproxy->set_mate_panel_autohide_qt("top", hide_top_switcher->switchedOn);
+}
+
+void LauncherWidget::setBottomAutoHide() {
+    sessionproxy->set_mate_panel_autohide_qt("bottom", hide_bottom_switcher->switchedOn);
 }

@@ -739,6 +739,15 @@ class SessionDaemon(dbus.service.Object):
     def get_show_desktop_icons(self):
         return self.desktopconf.get_show_desktop_icons()
 
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
+    def set_show_computer(self, flag):
+        return self.desktopconf.set_show_computer(flag)
+
+    # get show homefolder
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_show_computer(self):
+        return self.desktopconf.get_show_computer()
+
     # show home folder
     @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
     def set_show_homefolder(self, flag):
@@ -995,7 +1004,24 @@ class SessionDaemon(dbus.service.Object):
     def set_show_power_percentage(self, flag):
         return self.unityconf.set_show_power_percentage(flag)
 
+    #-------------------------mate-------------------------
+    @dbus.service.method(INTERFACE, in_signature='sb', out_signature='b')
+    def set_mate_panel_autohide(self, position, flag):
+        return self.unityconf.set_mate_panel_autohide(position, flag)
 
+    # get launcher auto hide mode
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
+    def get_mate_panel_autohide(self, position):
+        return self.unityconf.get_mate_panel_autohide(position)
+
+    @dbus.service.method(INTERFACE, in_signature='si', out_signature='b')
+    def set_mate_panel_icon_size(self, position, size):
+        return self.unityconf.set_mate_panel_icon_size(position, size)
+
+    # get launcher icon size
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='i')
+    def get_mate_panel_icon_size(self, position):
+        return self.unityconf.get_mate_panel_icon_size(position)
 
     # -------------------------theme-------------------------
 

@@ -265,7 +265,59 @@ class Unity:
             'show-percentage',
             'boolean', flag)
 
+    #-----------------mate----------------------------
+    def set_mate_panel_icon_size(self, position, size):
+        if position == "top":
+            return gsettings.set('org.mate.panel.toplevel',
+                '/org/mate/panel/toplevels/top/',
+                'size',
+                'int', size)
+        elif position == "bottom":
+            return gsettings.set('org.mate.panel.toplevel',
+                '/org/mate/panel/toplevels/bottom/',
+                'size',
+                'int', size)
+        else:
+            return False
 
+    # get launcher icon size
+    def get_mate_panel_icon_size(self, position):
+        if position == "top":
+            return gsettings.get('org.mate.panel.toplevel',
+                '/org/mate/panel/toplevels/top/',
+                'size', 'int')
+        elif position == "bottom":
+            return gsettings.get('org.mate.panel.toplevel',
+                '/org/mate/panel/toplevels/bottom/',
+                'size', 'int')
+        else:
+            return False
+
+    def set_mate_panel_autohide(self, position, flag):
+        if position == "top":
+            return gsettings.set('org.mate.panel.toplevel',
+                '/org/mate/panel/toplevels/top/',
+                'auto-hide',
+                'boolean', flag)
+        elif position == "bottom":
+            return gsettings.set('org.mate.panel.toplevel',
+                '/org/mate/panel/toplevels/bottom/',
+                'auto-hide',
+                'boolean', flag)
+        else:
+            return False
+
+    def get_mate_panel_autohide(self, position):
+        if position == "top":
+            return gsettings.get('org.mate.panel.toplevel',
+                '/org/mate/panel/toplevels/top/',
+                'auto-hide', 'boolean')
+        elif position == "bottom":
+            return gsettings.get('org.mate.panel.toplevel',
+                '/org/mate/panel/toplevels/bottom/',
+                'auto-hide', 'boolean')
+        else:
+            return False
 
 if __name__ == '__main__':
     uuu = Unity()

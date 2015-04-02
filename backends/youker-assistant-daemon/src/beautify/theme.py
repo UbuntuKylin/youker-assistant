@@ -22,9 +22,13 @@ import utils
 
 class Theme:
     homedir = ''
+    dekstop = None
 
     def __init__(self):
         self.homedir = utils.get_home_dir()
+        self.dekstop = os.getenv('XDG_CURRENT_DESKTOP')
+        if self.dekstop is None:
+             self.dekstop = os.getenv('XDG_SESSION_DESKTOP')
 
     # ---------------themes---------------
     def set_ubuntukylin_default_setting(self, schema, title, key, type, default_value):
@@ -59,15 +63,23 @@ class Theme:
 
     # get current theme
     def get_theme(self):
-        return gsettings.get('org.gnome.desktop.interface',
-            None, 'gtk-theme', 'string')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.interface',
+                None, 'gtk-theme', 'string')
+        else:
+            return gsettings.get('org.gnome.desktop.interface',
+                None, 'gtk-theme', 'string')
 
     # set GTK theme and window theme
     def set_theme(self, theme):
-        gstheme = gsettings.get_schema('org.gnome.desktop.interface')
-        gstheme.set_string('gtk-theme',theme)
-        _gstheme = gsettings.get_schema('org.gnome.desktop.wm.preferences')
-        _gstheme.set_string('theme',theme)
+        if self.dekstop == "mate":
+            gstheme = gsettings.get_schema('org.mate.interface')
+            gstheme.set_string('gtk-theme',theme)
+        else:
+            gstheme = gsettings.get_schema('org.gnome.desktop.interface')
+            gstheme.set_string('gtk-theme',theme)
+            _gstheme = gsettings.get_schema('org.gnome.desktop.wm.preferences')
+            _gstheme.set_string('theme',theme)
 
     #------------------------窗口主题设置
     # get window theme
@@ -105,13 +117,21 @@ class Theme:
 
     # get current icon theme
     def get_icon_theme(self):
-        return gsettings.get('org.gnome.desktop.interface',
-            None, 'icon-theme', 'string')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.interface',
+                None, 'icon-theme', 'string')
+        else:
+            return gsettings.get('org.gnome.desktop.interface',
+                None, 'icon-theme', 'string')
 
     # set icon theme
     def set_icon_theme(self, theme):
-        gstheme = gsettings.get_schema('org.gnome.desktop.interface')
-        gstheme.set_string('icon-theme',theme)
+        if self.dekstop == "mate":
+            gstheme = gsettings.get_schema('org.mate.interface')
+            gstheme.set_string('icon-theme',theme)
+        else:
+            gstheme = gsettings.get_schema('org.gnome.desktop.interface')
+            gstheme.set_string('icon-theme',theme)
 
     # get cursor themes
     def get_cursor_themes(self):
@@ -131,8 +151,12 @@ class Theme:
 
     # set cursor theme
     def set_cursor_theme(self, theme):
-        gstheme = gsettings.get_schema('org.gnome.desktop.interface')
-        gstheme.set_string('cursor-theme', theme)
+        if self.dekstop == "mate":
+            gstheme = gsettings.get_schema('org.mate.peripherals-mouse')
+            gstheme.set_string('cursor-theme', theme)
+        else:
+            gstheme = gsettings.get_schema('org.gnome.desktop.interface')
+            gstheme.set_string('cursor-theme', theme)
 
     def set_cursor_theme_with_root(self, theme):
         try :
@@ -146,13 +170,21 @@ class Theme:
 
     # get cursor size
     def get_cursor_size(self):
-        return gsettings.get('org.gnome.desktop.interface',
-            None, 'cursor-size', 'int')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.peripherals-mouse',
+                None, 'cursor-size', 'int')
+        else:
+            return gsettings.get('org.gnome.desktop.interface',
+                None, 'cursor-size', 'int')
 
     # set cursor size
     def set_cursor_size(self, size):
-        gstheme = gsettings.get_schema('org.gnome.desktop.interface')
-        gstheme.set_int('cursor-size', size)
+        if self.dekstop == "mate":
+            gstheme = gsettings.get_schema('org.mate.peripherals-mouse')
+            gstheme.set_int('cursor-size', size)
+        else:
+            gstheme = gsettings.get_schema('org.gnome.desktop.interface')
+            gstheme.set_int('cursor-size', size)
 
 
 

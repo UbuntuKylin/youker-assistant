@@ -30,6 +30,7 @@ MouseWidget::MouseWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispa
     sessionproxy(proxy),
     systemproxy(sproxy)
 {
+    this->desktop = sessionproxy->access_current_desktop_qt();
     theme_label = new QLabel();
     size_label = new QLabel();
     theme_combo = new QComboBox();
@@ -120,15 +121,28 @@ void MouseWidget::initData()
             break;
     }
     theme_combo->setCurrentIndex(initIndex);
-
     int default_value = sessionproxy->get_cursor_size_qt();
-    if(default_value == 24) {
-        small_size->setChecked(true);
-        big_size->setChecked(false);
+    if (this->desktop == "mate")
+    {
+        if(default_value == 18) {
+            small_size->setChecked(true);
+            big_size->setChecked(false);
+        }
+        else if(default_value == 48) {
+            big_size->setChecked(true);
+            small_size->setChecked(false);
+        }
     }
-    else if(default_value == 48) {
-        big_size->setChecked(true);
-        small_size->setChecked(false);
+    else
+    {
+        if(default_value == 24) {
+            small_size->setChecked(true);
+            big_size->setChecked(false);
+        }
+        else if(default_value == 48) {
+            big_size->setChecked(true);
+            small_size->setChecked(false);
+        }
     }
 }
 
@@ -152,7 +166,10 @@ void MouseWidget::setRadioButtonRowStatus(/*bool status*/)
     QString obj_name = pbtn->objectName();
     if(obj_name == "smallradio")
     {
-        sessionproxy->set_cursor_size_qt(24);
+        if (this->desktop == "mate")
+            sessionproxy->set_cursor_size_qt(18);
+        else
+            sessionproxy->set_cursor_size_qt(24);
     }
     else if(obj_name == "bigradio")
     {

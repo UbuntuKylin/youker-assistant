@@ -16,9 +16,16 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
+import os
 import gsettings
 
 class Desktop:
+    dekstop = None
+
+    def __init__(self):
+        self.dekstop = os.getenv('XDG_CURRENT_DESKTOP')
+        if self.dekstop is None:
+             self.dekstop = os.getenv('XDG_SESSION_DESKTOP')
 
     # ---------------desktopicon---------------
     # -----------------默认值-----------------
@@ -35,7 +42,7 @@ class Desktop:
             raise NotImplemented
     # ----------------------------------
 
-    #--------------------unity-------------------------------
+
     # show desktop icons, True/False
     def set_show_desktop_icons(self, flag):
         return gsettings.set('org.gnome.desktop.background',
@@ -48,54 +55,105 @@ class Desktop:
         return gsettings.get('org.gnome.desktop.background',
             None, 'show-desktop-icons', 'boolean')
 
+    def set_show_computer(self, flag):
+        if self.dekstop == "mate":
+            return gsettings.set('org.mate.caja.desktop',
+                None,
+                'computer-icon-visible',
+                'boolean', flag)
+
+    def get_show_computer(self):
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.caja.desktop',
+                None, 'computer-icon-visible', 'boolean')
 
     # show home folder
     def set_show_homefolder(self, flag):
-        return gsettings.set('org.gnome.nautilus.desktop',
-            None,
-            'home-icon-visible',
-            'boolean', flag)
+        if self.dekstop == "mate":
+            return gsettings.set('org.mate.caja.desktop',
+                None,
+                'home-icon-visible',
+                'boolean', flag)
+        else:
+            return gsettings.set('org.gnome.nautilus.desktop',
+                None,
+                'home-icon-visible',
+                'boolean', flag)
 
     # get show homefolder
     def get_show_homefolder(self):
-        return gsettings.get('org.gnome.nautilus.desktop',
-            None, 'home-icon-visible', 'boolean')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.caja.desktop',
+                None, 'home-icon-visible', 'boolean')
+        else:
+            return gsettings.get('org.gnome.nautilus.desktop',
+                None, 'home-icon-visible', 'boolean')
 
     # show network
     def set_show_network(self, flag):
-        return gsettings.set('org.gnome.nautilus.desktop',
-            None,
-            'network-icon-visible',
-            'boolean', flag)
+        if self.dekstop == "mate":
+            return gsettings.set('org.mate.caja.desktop',
+                None,
+                'network-icon-visible',
+                'boolean', flag)
+        else:
+            return gsettings.set('org.gnome.nautilus.desktop',
+                None,
+                'network-icon-visible',
+                'boolean', flag)
 
     # get show network
     def get_show_network(self):
-        return gsettings.get('org.gnome.nautilus.desktop',
-            None, 'network-icon-visible', 'boolean')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.caja.desktop',
+                None, 'network-icon-visible', 'boolean')
+        else:
+            return gsettings.get('org.gnome.nautilus.desktop',
+                None, 'network-icon-visible', 'boolean')
 
     # show trash
     def set_show_trash(self, flag):
-        return gsettings.set('org.gnome.nautilus.desktop',
-            None,
-            'trash-icon-visible',
-            'boolean', flag)
+        if self.dekstop == "mate":
+            return gsettings.set('org.mate.caja.desktop',
+                None,
+                'trash-icon-visible',
+                'boolean', flag)
+        else:
+            return gsettings.set('org.gnome.nautilus.desktop',
+                None,
+                'trash-icon-visible',
+                'boolean', flag)
 
     # get show trash
     def get_show_trash(self):
-        return gsettings.get('org.gnome.nautilus.desktop',
-            None, 'trash-icon-visible', 'boolean')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.caja.desktop',
+                None, 'trash-icon-visible', 'boolean')
+        else:
+            return gsettings.get('org.gnome.nautilus.desktop',
+                None, 'trash-icon-visible', 'boolean')
 
     # show devices
     def set_show_devices(self, flag):
-        return gsettings.set('org.gnome.nautilus.desktop',
-            None,
-            'volumes-visible',
-            'boolean', flag)
+        if self.dekstop == "mate":
+            return gsettings.set('org.mate.caja.desktop',
+                None,
+                'volumes-visible',
+                'boolean', flag)
+        else:
+            return gsettings.set('org.gnome.nautilus.desktop',
+                None,
+                'volumes-visible',
+                'boolean', flag)
 
     # get show devices
     def get_show_devices(self):
-        return gsettings.get('org.gnome.nautilus.desktop',
-            None, 'volumes-visible', 'boolean')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.caja.desktop',
+                None, 'volumes-visible', 'boolean')
+        else:
+            return gsettings.get('org.gnome.nautilus.desktop',
+                None, 'volumes-visible', 'boolean')
 
 
     #-------------------------cinnamon--------------------------------
