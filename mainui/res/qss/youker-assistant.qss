@@ -499,10 +499,9 @@ QMenu::indicator {
 /*-------------------QRadioButton-------------------*/
 QRadioButton {
   spacing: 5px;
-  font-size: 14px;
+  font-size: 12px;
   color:#000000;
   font-family: "Ubuntu";
-  font-size: 14px;
 }
 
 QRadioButton::indicator {

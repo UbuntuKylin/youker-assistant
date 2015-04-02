@@ -21,12 +21,14 @@
 #include <QLabel>
 #include <QComboBox>
 #include <QHBoxLayout>
+#include <QRadioButton>
 #include "../dbusproxy/youkersessiondbus.h"
 
 WindowWidget::WindowWidget(QWidget *parent, SessionDispatcher *proxy) :
     QWidget(parent),
     sessionproxy(proxy)
 {
+    this->desktop = sessionproxy->access_current_desktop_qt();
     icon_label = new QLabel();
     wheel_label = new QLabel();
     double_click_label = new QLabel();
@@ -37,13 +39,37 @@ WindowWidget::WindowWidget(QWidget *parent, SessionDispatcher *proxy) :
     double_click_combo = new QComboBox();
     middle_click_combo = new QComboBox();
     right_click_combo = new QComboBox();
+    position_label = new QLabel();
+    left_radio = new QRadioButton();
+    right_radio = new QRadioButton();
+    left_radio->setFocusPolicy(Qt::NoFocus);
+    left_radio->setObjectName("leftradio");
+    right_radio->setFocusPolicy(Qt::NoFocus);
+    right_radio->setObjectName("rightradio");
 
-    icon_label->setFixedWidth(200);
-    wheel_label->setFixedWidth(200);
-    double_click_label->setFixedWidth(200);
-    middle_click_label->setFixedWidth(200);
-    right_click_label->setFixedWidth(200);
+    if (this->desktop == "mate") {
+        icon_label->hide();
+        icon_switcher->hide();
+    }
+    else {
+        position_label->hide();
+        left_radio->hide();
+        right_radio->hide();
+    }
 
+    position_label->setFixedWidth(220);
+    icon_label->setFixedWidth(220);
+    wheel_label->setFixedWidth(220);
+    double_click_label->setFixedWidth(220);
+    middle_click_label->setFixedWidth(220);
+    right_click_label->setFixedWidth(220);
+
+    QHBoxLayout *layout0 = new QHBoxLayout();
+    layout0->setSpacing(10);
+    layout0->addWidget(position_label);
+    layout0->addWidget(left_radio);
+    layout0->addWidget(right_radio);
+    layout0->addStretch();
     QHBoxLayout *layout1 = new QHBoxLayout();
     layout1->setSpacing(10);
     layout1->addWidget(icon_label);
@@ -70,6 +96,7 @@ WindowWidget::WindowWidget(QWidget *parent, SessionDispatcher *proxy) :
     layout5->addWidget(right_click_combo);
     layout5->addStretch();
     QVBoxLayout *layout = new QVBoxLayout();
+    layout->addLayout(layout0);
     layout->addLayout(layout1);
     layout->addLayout(layout2);
     layout->addLayout(layout3);
@@ -112,16 +139,27 @@ void WindowWidget::setLanguage() {
 //    title_label->setText(tr("Window"));
 //    description_label->setText(tr("Window Manager settings."));
 //    back_btn->setText(tr("Back"));
+    position_label->setText(tr("Arrangement of buttons on the titlebar") + ":");//标题栏按钮布局
     icon_label->setText(tr("Menu with icons") + ":");
     wheel_label->setText(tr("Titlebar mouse wheel action") + ":");
     double_click_label->setText(tr("Titlebar double-click action") + ":");
     middle_click_label->setText(tr("Titlebar middle-click action") + ":");
     right_click_label->setText(tr("Titlebar right-click action") + ":");
-
+    left_radio->setText(tr("Left"));
+    right_radio->setText(tr("Right"));
 }
 
 void WindowWidget::initData()
 {
+    QString current_value = sessionproxy->get_window_button_align_qt();
+    if(current_value == "left") {
+        left_radio->setChecked(true);
+        right_radio->setChecked(false);
+    }
+    else if(current_value == "right") {
+        right_radio->setChecked(true);
+        left_radio->setChecked(false);
+    }
 
     icon_switcher->switchedOn = sessionproxy->get_menus_have_icons_qt();
 
@@ -184,6 +222,8 @@ void WindowWidget::initData()
 
 void WindowWidget::initConnect() {
 //    connect(back_btn, SIGNAL(clicked()), this, SIGNAL(showSettingMainWidget()));
+    connect(left_radio, SIGNAL(clicked()), this, SLOT(setRadioButtonRowStatus()));
+    connect(right_radio, SIGNAL(clicked()), this, SLOT(setRadioButtonRowStatus()));
     connect(icon_switcher, SIGNAL(clicked()), this, SLOT(setMenuIcon()));
     connect(wheel_combo, SIGNAL(currentIndexChanged(QString)), this, SLOT(setMouseWheel(QString)));
     connect(double_click_combo, SIGNAL(currentIndexChanged(QString)), this, SLOT(setMouseDoubleClick(QString)));
@@ -215,4 +255,19 @@ void WindowWidget::setMouseMiddleClick(QString selected)
 void WindowWidget::setMouseRightClick(QString selected)
 {
     sessionproxy->set_titlebar_right_qt(selected);
+}
+
+void WindowWidget::setRadioButtonRowStatus()
+{
+    QObject *obj = sender(); //返回发出信号的对象，用QObject类型接收
+    QRadioButton* pbtn = qobject_cast<QRadioButton*>(obj);
+    QString obj_name = pbtn->objectName();
+    if(obj_name == "leftradio")
+    {
+        sessionproxy->set_window_button_align_left_qt();
+    }
+    else if(obj_name == "rightradio")
+    {
+        sessionproxy->set_window_button_align_right_qt();
+    }
 }

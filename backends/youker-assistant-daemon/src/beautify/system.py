@@ -16,11 +16,18 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
+import os
 import gsettings
 
 class System():
+
+    dekstop = None
+
     def __init__(self, sysdaemon):
         self.sysdaemon = sysdaemon
+        self.dekstop = os.getenv('XDG_CURRENT_DESKTOP')
+        if self.dekstop is None:
+             self.dekstop = os.getenv('XDG_SESSION_DESKTOP')
 
     # -----------------默认值-----------------
     # Get Default Value
@@ -68,15 +75,31 @@ class System():
 
     # enable/disable the touchpad
     def set_touchpad_enable(self, flag):
-        return gsettings.set('org.gnome.settings-daemon.peripherals.touchpad',
-            None,
-            'touchpad-enabled',
-            'boolean', flag)
+        if self.dekstop == "mate":
+            return gsettings.set('org.mate.peripherals-touchpad',
+                None,
+                'touchpad-enabled',
+                'boolean', flag)
+        else:
+            return gsettings.set('org.gnome.settings-daemon.peripherals.touchpad',
+                None,
+                'touchpad-enabled',
+                'boolean', flag)
 
     # get is touchpad enable
     def get_touchpad_enable(self):
-        return gsettings.get('org.gnome.settings-daemon.peripherals.touchpad',
-            None, 'touchpad-enabled', 'boolean')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.peripherals-touchpad',
+                None, 'touchpad-enabled', 'boolean')
+        else:
+            return gsettings.get('org.gnome.settings-daemon.peripherals.touchpad',
+                None, 'touchpad-enabled', 'boolean')
+
+    def set_touchscrolling_mode_disabled(self):
+        return gsettings.set('org.gnome.settings-daemon.peripherals.touchpad',
+            None,
+            'scroll-method',
+            'string', 'disabled')
 
     # set touch scrolling mode edge
     def set_touchscrolling_mode_edge(self):
@@ -97,27 +120,55 @@ class System():
         return gsettings.get('org.gnome.settings-daemon.peripherals.touchpad',
             None, 'scroll-method', 'string')
 
+    #----------------------------mate--------------------------
+    #选择触摸板滚动模式。支持的值有：0 - 禁止，1 - 边界滚动，2 - 双指滚动
+    def set_mate_touchscrolling_mode(self, value):
+        return gsettings.set('org.mate.peripherals-touchpad',
+            None,
+            'scroll-method',
+            'int', value)
+
+    def get_mate_touchscrolling_mode(self):
+        return gsettings.get('org.mate.peripherals-touchpad',
+            None, 'scroll-method', 'int')
+
     # set touch scrolling use horizontal True/False
     def set_touchscrolling_use_horizontal(self, flag):
-        return gsettings.set('org.gnome.settings-daemon.peripherals.touchpad',
-            None,
-            'horiz-scroll-enabled',
-            'boolean', flag)
+        if self.dekstop == "mate":
+            return gsettings.set('org.mate.peripherals-touchpad',
+                None,
+                'horiz-scroll-enabled',
+                'boolean', flag)
+        else:
+            return gsettings.set('org.gnome.settings-daemon.peripherals.touchpad',
+                None,
+                'horiz-scroll-enabled',
+                'boolean', flag)
 
     # get is touch scrolling use horizontal
     def get_touchscrolling_use_horizontal(self):
-        return gsettings.get('org.gnome.settings-daemon.peripherals.touchpad',
-            None, 'horiz-scroll-enabled', 'boolean')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.peripherals-touchpad',
+                None, 'horiz-scroll-enabled', 'boolean')
+        else:
+            return gsettings.get('org.gnome.settings-daemon.peripherals.touchpad',
+                None, 'horiz-scroll-enabled', 'boolean')
 
     # ---------------window---------------
 
     # set window button alignment left
     def set_window_button_align_left(self):
-        gsettings.set('org.gnome.desktop.wm.preferences',
-            None,
-            'button-layout',
-            'string', 'close,maximize,minimize:')
-        self.sysdaemon.change_titlebar_position("left")
+        if self.dekstop == "mate":
+            gsettings.set('org.mate.Marco.general',
+                None,
+                'button-layout',
+                'string', 'close,maximize,minimize:menu')
+        else:
+            gsettings.set('org.gnome.desktop.wm.preferences',
+                None,
+                'button-layout',
+                'string', 'close,maximize,minimize:')
+            self.sysdaemon.change_titlebar_position("left")
         #return gsettings.set('org.gnome.desktop.wm.preferences',
         #    None,
         #    'button-layout',
@@ -125,11 +176,17 @@ class System():
 
     # set window button alignment right
     def set_window_button_align_right(self):
-        gsettings.set('org.gnome.desktop.wm.preferences',
-            None,
-            'button-layout',
-            'string', ':minimize,maximize,close')
-        self.sysdaemon.change_titlebar_position("right")
+        if self.dekstop == "mate":
+            gsettings.set('org.mate.Marco.general',
+                None,
+                'button-layout',
+                'string', 'menu:minimize,maximize,close')
+        else:
+            gsettings.set('org.gnome.desktop.wm.preferences',
+                None,
+                'button-layout',
+                'string', ':minimize,maximize,close')
+            self.sysdaemon.change_titlebar_position("right")
         #return gsettings.set('org.gnome.desktop.wm.preferences',
         #    None,
         #    'button-layout',
@@ -137,16 +194,24 @@ class System():
 
     # get window button alignment
     def get_window_button_align(self):
-        value = gsettings.get('org.gnome.desktop.wm.preferences',
-            None, 'button-layout', 'string')
-        if value == 'close,maximize,minimize:' or value == 'close,minimize,maximize:':
-            return 'left'
-        elif value == ':minimize,maximize,close' or value == ':maximize,minimize,close':
-            return 'right'
-        #elif value == 'close,minimize,maximize:':
-        #    return 'default'
+        if self.dekstop == "mate":
+            value = gsettings.get('org.mate.Marco.general',
+                None, 'button-layout', 'string')
+            if value == 'close,maximize,minimize:menu' or value == 'close,minimize,maximize:menu':
+                return 'left'
+            elif value == 'menu:minimize,maximize,close' or value == 'menu:maximize,minimize,close':
+                return 'right'
         else:
-            return 'custom'
+            value = gsettings.get('org.gnome.desktop.wm.preferences',
+                None, 'button-layout', 'string')
+            if value == 'close,maximize,minimize:' or value == 'close,minimize,maximize:':
+                return 'left'
+            elif value == ':minimize,maximize,close' or value == ':maximize,minimize,close':
+                return 'right'
+            #elif value == 'close,minimize,maximize:':
+            #    return 'default'
+            else:
+                return 'custom'
 
     # set right click menus have icons 菜单带图标 是否可在菜单项旁显示图标。
     def set_menus_have_icons(self, flag):
@@ -195,55 +260,89 @@ class System():
             'string', value)
 
     #-------------------------标题栏双击动作-------------------------
+#    “toggle-shade”卷起/展开窗口，“toggle-maximize”最大化/还原窗口，
+#“toggle-maximize-horizontally”及“toggle-maximize-vertically”横向及纵向最大化/还原窗口，
+#“minimize”最小化窗口，“shade”卷起窗口，
+#“menu”显示窗口菜单，“lower”将窗口降低到所有窗口之下，还有“none”什么也不做。
     # get titlebar double
     def get_titlebar_double(self):
-        return ['none', 'toggle-maximize', 'minimize', 'toggle-shade', 'lower', 'menu']
+        return ['none', 'toggle-maximize', 'toggle-maximize-horizontally', 'toggle-maximize-vertically', 'minimize', 'toggle-shade', 'lower', 'menu', 'last']
 
     # get current titlebar double
     def get_current_titlebar_double(self):
-        return gsettings.get('org.gnome.desktop.wm.preferences',
-            None, 'action-double-click-titlebar', 'string')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.Marco.general',
+                None, 'action-double-click-titlebar', 'string')
+        else:
+            return gsettings.get('org.gnome.desktop.wm.preferences',
+                None, 'action-double-click-titlebar', 'string')
 
     # set titlebar double
     def set_titlebar_double(self, value):
-        return gsettings.set('org.gnome.desktop.wm.preferences',
-            None,
-            'action-double-click-titlebar',
-            'string', value)
+        if self.dekstop == "mate":
+            return gsettings.set('org.mate.Marco.general',
+                None,
+                'action-double-click-titlebar',
+                'string', value)
+        else:
+            return gsettings.set('org.gnome.desktop.wm.preferences',
+                None,
+                'action-double-click-titlebar',
+                'string', value)
 
     #-------------------------标题栏中键动作-------------------------
     # get titlebar middle
     def get_titlebar_middle(self):
-        return ['none', 'toggle-maximize', 'minimize', 'toggle-shade', 'lower','menu']
+        return ['none', 'toggle-maximize', 'toggle-maximize-horizontally', 'toggle-maximize-vertically', 'minimize', 'toggle-shade', 'lower', 'menu', 'last']
 
     # get current titlebar middle
     def get_current_titlebar_middle(self):
-        return gsettings.get('org.gnome.desktop.wm.preferences',
-            None, 'action-middle-click-titlebar', 'string')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.Marco.general',
+                None, 'action-middle-click-titlebar', 'string')
+        else:
+            return gsettings.get('org.gnome.desktop.wm.preferences',
+                None, 'action-middle-click-titlebar', 'string')
 
     # set titlebar middle
     def set_titlebar_middle(self, value):
-        return gsettings.set('org.gnome.desktop.wm.preferences',
-            None,
-            'action-middle-click-titlebar',
-            'string', value)
+        if self.dekstop == "mate":
+            return gsettings.set('org.mate.Marco.general',
+                None,
+                'action-middle-click-titlebar',
+                'string', value)
+        else:
+            return gsettings.set('org.gnome.desktop.wm.preferences',
+                None,
+                'action-middle-click-titlebar',
+                'string', value)
 
     #-------------------------标题栏右键动作-------------------------
     # get titlebar right
     def get_titlebar_right(self):
-        return ['none', 'toggle-maximize', 'minimize', 'toggle-shade', 'lower','menu']
+        return ['none', 'toggle-maximize', 'toggle-maximize-horizontally', 'toggle-maximize-vertically', 'minimize', 'toggle-shade', 'lower', 'menu', 'last']
 
     # get current titlebar right
     def get_current_titlebar_right(self):
-        return gsettings.get('org.gnome.desktop.wm.preferences',
-            None, 'action-right-click-titlebar', 'string')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.Marco.general',
+                None, 'action-right-click-titlebar', 'string')
+        else:
+            return gsettings.get('org.gnome.desktop.wm.preferences',
+                None, 'action-right-click-titlebar', 'string')
 
     # set titlebar right
     def set_titlebar_right(self, value):
-        return gsettings.set('org.gnome.desktop.wm.preferences',
-            None,
-            'action-right-click-titlebar',
-            'string', value)
+        if self.dekstop == "mate":
+            return gsettings.set('org.mate.Marco.general',
+                None,
+                'action-right-click-titlebar',
+                'string', value)
+        else:
+            return gsettings.set('org.gnome.desktop.wm.preferences',
+                None,
+                'action-right-click-titlebar',
+                'string', value)
 
 if __name__ == '__main__':
     gsettings.set('org.compiz.gwd',None,'mouse-wheel-action', 'string', 'shade')

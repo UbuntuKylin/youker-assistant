@@ -1204,51 +1204,51 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>FontWidget</name>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="63"/>
         <location filename="../../setting/fontwidget.cpp" line="64"/>
         <location filename="../../setting/fontwidget.cpp" line="65"/>
         <location filename="../../setting/fontwidget.cpp" line="66"/>
         <location filename="../../setting/fontwidget.cpp" line="67"/>
+        <location filename="../../setting/fontwidget.cpp" line="68"/>
         <source>Click here to change font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="166"/>
+        <location filename="../../setting/fontwidget.cpp" line="171"/>
         <source>Default Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="167"/>
+        <location filename="../../setting/fontwidget.cpp" line="172"/>
         <source>Desktop Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="168"/>
+        <location filename="../../setting/fontwidget.cpp" line="173"/>
         <source>Monospace Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="169"/>
+        <location filename="../../setting/fontwidget.cpp" line="174"/>
         <source>Document Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="170"/>
+        <location filename="../../setting/fontwidget.cpp" line="175"/>
         <source>Titlebar Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="171"/>
+        <location filename="../../setting/fontwidget.cpp" line="176"/>
         <source>Global Font Scaling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="172"/>
+        <location filename="../../setting/fontwidget.cpp" line="177"/>
         <source>Hinting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="173"/>
+        <location filename="../../setting/fontwidget.cpp" line="178"/>
         <source>Antialiasing</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1468,37 +1468,37 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>IconWidget</name>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="204"/>
+        <location filename="../../setting/iconwidget.cpp" line="199"/>
         <source>Icon theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="205"/>
+        <location filename="../../setting/iconwidget.cpp" line="200"/>
         <source>Show Desktop Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="206"/>
+        <location filename="../../setting/iconwidget.cpp" line="201"/>
         <source>Computer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="207"/>
+        <location filename="../../setting/iconwidget.cpp" line="202"/>
         <source>Home Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="208"/>
+        <location filename="../../setting/iconwidget.cpp" line="203"/>
         <source>Network</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="209"/>
+        <location filename="../../setting/iconwidget.cpp" line="204"/>
         <source>Trash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="210"/>
+        <location filename="../../setting/iconwidget.cpp" line="205"/>
         <source>Mounted Volumes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1835,63 +1835,83 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PanelWidget</name>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="181"/>
+        <location filename="../../setting/panelwidget.cpp" line="250"/>
         <source>Dash background blur type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="182"/>
+        <location filename="../../setting/panelwidget.cpp" line="251"/>
         <source>Panel Transparency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="183"/>
+        <location filename="../../setting/panelwidget.cpp" line="252"/>
         <source>Date &amp; time format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="184"/>
+        <location filename="../../setting/panelwidget.cpp" line="253"/>
         <source>Display seconds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="185"/>
+        <location filename="../../setting/panelwidget.cpp" line="254"/>
         <source>Display week</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="186"/>
+        <location filename="../../setting/panelwidget.cpp" line="255"/>
         <source>Display the date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="187"/>
+        <location filename="../../setting/panelwidget.cpp" line="256"/>
         <source>Display battery icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="188"/>
+        <location filename="../../setting/panelwidget.cpp" line="257"/>
         <source>Display battery percentage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="189"/>
+        <location filename="../../setting/panelwidget.cpp" line="258"/>
         <source>Display battery remaining time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="191"/>
+        <location filename="../../setting/panelwidget.cpp" line="260"/>
         <source>Smart blur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="192"/>
+        <location filename="../../setting/panelwidget.cpp" line="261"/>
         <source>Static blur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="193"/>
+        <location filename="../../setting/panelwidget.cpp" line="262"/>
         <source>Clear</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/panelwidget.cpp" line="264"/>
+        <source>Show applications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/panelwidget.cpp" line="265"/>
+        <source>Show system</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/panelwidget.cpp" line="267"/>
+        <source>Show places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/panelwidget.cpp" line="266"/>
+        <source>Show icon</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2247,42 +2267,47 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>TouchpadWidget</name>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="126"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="137"/>
         <source>Enable touchpad</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="127"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="138"/>
         <source>Enable horizontal scrolling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="128"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="139"/>
         <source>Scrollbar type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="129"/>
-        <source>Panel layout</source>
+        <location filename="../../setting/touchpadwidget.cpp" line="140"/>
+        <source>Touchpad scrolling mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="130"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="141"/>
         <source>Features Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="131"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="142"/>
         <source>Standard Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="132"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="143"/>
+        <source>Disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/touchpadwidget.cpp" line="144"/>
         <source>Edge Scrolling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="133"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="145"/>
         <source>Two-finger Scrolling</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2313,28 +2338,43 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>WindowWidget</name>
     <message>
-        <location filename="../../setting/windowwidget.cpp" line="115"/>
+        <location filename="../../setting/windowwidget.cpp" line="142"/>
+        <source>Arrangement of buttons on the titlebar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/windowwidget.cpp" line="143"/>
         <source>Menu with icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/windowwidget.cpp" line="116"/>
+        <location filename="../../setting/windowwidget.cpp" line="144"/>
         <source>Titlebar mouse wheel action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/windowwidget.cpp" line="117"/>
+        <location filename="../../setting/windowwidget.cpp" line="145"/>
         <source>Titlebar double-click action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/windowwidget.cpp" line="118"/>
+        <location filename="../../setting/windowwidget.cpp" line="146"/>
         <source>Titlebar middle-click action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/windowwidget.cpp" line="119"/>
+        <location filename="../../setting/windowwidget.cpp" line="147"/>
         <source>Titlebar right-click action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/windowwidget.cpp" line="148"/>
+        <source>Left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/windowwidget.cpp" line="149"/>
+        <source>Right</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

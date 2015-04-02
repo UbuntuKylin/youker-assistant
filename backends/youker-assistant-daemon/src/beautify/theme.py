@@ -192,63 +192,113 @@ class Theme:
 
     # get font
     def get_font(self):
-        return gsettings.get('org.gnome.desktop.interface',
-            None, 'font-name', 'string')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.interface',
+                None, 'font-name', 'string')
+        else:
+            return gsettings.get('org.gnome.desktop.interface',
+                None, 'font-name', 'string')
 
     # set font
     def set_font(self, font):
-        return gsettings.set('org.gnome.desktop.interface',
-            None,
-            'font-name',
-            'string', font)
+        if self.dekstop == "mate":
+            return gsettings.set('org.mate.interface',
+                None,
+                'font-name',
+                'string', font)
+        else:
+            return gsettings.set('org.gnome.desktop.interface',
+                None,
+                'font-name',
+                'string', font)
 
     # get desktop font
     def get_desktop_font(self):
-        return gsettings.get('org.gnome.nautilus.desktop',
-            None, 'font', 'string')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.caja.desktop',
+                None, 'font', 'string')
+        else:
+            return gsettings.get('org.gnome.nautilus.desktop',
+                None, 'font', 'string')
 
     # set desktop font
     def set_desktop_font(self, font):
-        return gsettings.set('org.gnome.nautilus.desktop',
-            None,
-            'font',
-            'string', font)
+        if self.dekstop == "mate":
+            return gsettings.set('org.mate.caja.desktop',
+                None,
+                'font',
+                'string', font)
+        else:
+            return gsettings.set('org.gnome.nautilus.desktop',
+                None,
+                'font',
+                'string', font)
 
     # get document font
     def get_document_font(self):
-        return gsettings.get('org.gnome.desktop.interface',
-            None, 'document-font-name', 'string')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.interface',
+                None, 'document-font-name', 'string')
+        else:
+            return gsettings.get('org.gnome.desktop.interface',
+                None, 'document-font-name', 'string')
 
     # set document font
     def set_document_font(self, font):
-        return gsettings.set('org.gnome.desktop.interface',
-            None,
-            'document-font-name',
-            'string', font)
+        if self.dekstop == "mate":
+            return gsettings.set('org.mate.interface',
+                None,
+                'document-font-name',
+                'string', font)
+        else:
+            return gsettings.set('org.gnome.desktop.interface',
+                None,
+                'document-font-name',
+                'string', font)
 
     # get monospace font
     def get_monospace_font(self):
-        return gsettings.get('org.gnome.desktop.interface',
-            None, 'monospace-font-name', 'string')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.interface',
+                None, 'monospace-font-name', 'string')
+        else:
+            return gsettings.get('org.gnome.desktop.interface',
+                None, 'monospace-font-name', 'string')
 
     # set monospace font (use this func to change document font in ubuntu)
     def set_monospace_font(self, font):
-        return gsettings.set('org.gnome.desktop.interface',
-            None,
-            'monospace-font-name',
-            'string', font)
+        if self.dekstop == "mate":
+            return gsettings.set('org.mate.interface',
+                None,
+                'monospace-font-name',
+                'string', font)
+        else:
+            return gsettings.set('org.gnome.desktop.interface',
+                None,
+                'monospace-font-name',
+                'string', font)
 
     # get window title font
     def get_window_title_font(self):
-        return gsettings.get('org.gnome.desktop.wm.preferences',
-            None, 'titlebar-font', 'string')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.Marco.general',
+                None, 'titlebar-font', 'string')
+        else:
+            return gsettings.get('org.gnome.desktop.wm.preferences',
+                None, 'titlebar-font', 'string')
 
     # set window title font
     def set_window_title_font(self, font):
-        return gsettings.set('org.gnome.desktop.wm.preferences',
-            None,
-            'titlebar-font',
-            'string', font)
+        if self.dekstop == "mate":
+            return gsettings.set('org.mate.Marco.general',
+                None,
+                'titlebar-font',
+                'string', font)
+        else:
+            return gsettings.set('org.gnome.desktop.wm.preferences',
+                None,
+                'titlebar-font',
+                'string', font)
 
     # get font zoom
     def get_font_zoom(self):
@@ -269,17 +319,29 @@ class Theme:
     
     # get current hinting
     def get_hinting(self):
-        return gsettings.get('org.gnome.settings-daemon.plugins.xsettings',
-            None,
-            'hinting',
-            'string')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.font-rendering',
+                None,
+                'hinting',
+                'string')
+        else:
+            return gsettings.get('org.gnome.settings-daemon.plugins.xsettings',
+                None,
+                'hinting',
+                'string')
 
     # set hinting
     def set_hinting(self, value):
-        return gsettings.set('org.gnome.settings-daemon.plugins.xsettings',
-            None,
-            'hinting',
-            'string', value)
+        if self.dekstop == "mate":
+            return gsettings.set('org.mate.font-rendering',
+                None,
+                'hinting',
+                'string', value)
+        else:
+            return gsettings.set('org.gnome.settings-daemon.plugins.xsettings',
+                None,
+                'hinting',
+                'string', value)
 
     # -------------------------反锯齿----------------------------------
     # get all antialiasing value.  none:'No antialiasing', grayscale:'Standard grayscale antialiasing',rgba:'Subpixel antialiasing (LCD screens only)'
@@ -288,17 +350,29 @@ class Theme:
 
     # get current antialiasing
     def get_antialiasing(self):
-        return gsettings.get('org.gnome.settings-daemon.plugins.xsettings',
-            None,
-            'antialiasing',
-            'string')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.font-rendering',
+                None,
+                'antialiasing',
+                'string')
+        else:
+            return gsettings.get('org.gnome.settings-daemon.plugins.xsettings',
+                None,
+                'antialiasing',
+                'string')
 
     # set antialiasing
     def set_antialiasing(self,value):
-        return gsettings.set('org.gnome.settings-daemon.plugins.xsettings',
-            None,
-            'antialiasing',
-            'string', value)
+        if self.dekstop == "mate":
+            return gsettings.set('org.mate.font-rendering',
+                None,
+                'antialiasing',
+                'string', value)
+        else:
+            return gsettings.set('org.gnome.settings-daemon.plugins.xsettings',
+                None,
+                'antialiasing',
+                'string', value)
 
 if __name__ == '__main__':
     ttt = Theme()

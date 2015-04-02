@@ -29,6 +29,7 @@ PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy) :
     QWidget(parent),
     sessionproxy(proxy)
 {
+    this->desktop = sessionproxy->access_current_desktop_qt();
     blur_label = new QLabel();
     transparency_label = new QLabel();
     date_format_label = new QLabel();
@@ -38,6 +39,10 @@ PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy) :
     battery_icon_label = new QLabel();
     battery_percentage_label = new QLabel();
     battery_time_label = new QLabel();
+    show_app_label = new QLabel();
+    show_desktop_label = new QLabel();
+    show_icon_label = new QLabel();
+    show_places_label = new QLabel();
 
     smart_radio = new QRadioButton();
     smart_radio->setFocusPolicy(Qt::NoFocus);
@@ -71,6 +76,43 @@ PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy) :
     battery_combo = new QComboBox();
     battery_percentage_switcher = new KylinSwitcher();
     battery_time_switcher = new KylinSwitcher();
+    app_switcher = new KylinSwitcher();
+    desktop_switcher = new KylinSwitcher();
+    icon_switcher = new KylinSwitcher();
+    places_switcher = new KylinSwitcher();
+
+    if (this->desktop == "mate") {
+        blur_label->hide();
+        transparency_label->hide();
+        date_format_label->hide();
+        second_label->hide();
+        week_label->hide();
+        date_label->hide();
+        battery_icon_label->hide();
+        battery_percentage_label->hide();
+        battery_time_label->hide();
+        smart_radio->hide();
+        static_radio->hide();
+        clear_radio->hide();
+        transparency_slider->hide();
+        date_combo->hide();
+        second_switcher->hide();
+        week_switcher->hide();
+        date_switcher->hide();
+        battery_combo->hide();
+        battery_percentage_switcher->hide();
+        battery_time_switcher->hide();
+    }
+    else {
+        show_app_label->hide();
+        show_desktop_label->hide();
+        show_icon_label->hide();
+        show_places_label->hide();
+        app_switcher->hide();
+        desktop_switcher->hide();
+        icon_switcher->hide();
+        places_switcher->hide();
+    }
 
     blur_label->setFixedWidth(220);
     transparency_label->setFixedWidth(220);
@@ -81,6 +123,10 @@ PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy) :
     battery_icon_label->setFixedWidth(220);
     battery_percentage_label->setFixedWidth(220);
     battery_time_label->setFixedWidth(220);
+    show_app_label->setFixedWidth(220);
+    show_desktop_label->setFixedWidth(220);
+    show_icon_label->setFixedWidth(220);
+    show_places_label->setFixedWidth(220);
 
     QHBoxLayout *layout1 = new QHBoxLayout();
     layout1->setSpacing(10);
@@ -127,6 +173,26 @@ PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy) :
     layout9->addWidget(battery_time_label);
     layout9->addWidget(battery_time_switcher);
     layout9->addStretch();
+    QHBoxLayout *layout10 = new QHBoxLayout();
+    layout10->setSpacing(10);
+    layout10->addWidget(show_app_label);
+    layout10->addWidget(app_switcher);
+    layout10->addStretch();
+    QHBoxLayout *layout11 = new QHBoxLayout();
+    layout11->setSpacing(10);
+    layout11->addWidget(show_desktop_label);
+    layout11->addWidget(desktop_switcher);
+    layout11->addStretch();
+    QHBoxLayout *layout12 = new QHBoxLayout();
+    layout12->setSpacing(10);
+    layout12->addWidget(show_icon_label);
+    layout12->addWidget(icon_switcher);
+    layout12->addStretch();
+    QHBoxLayout *layout13 = new QHBoxLayout();
+    layout13->setSpacing(10);
+    layout13->addWidget(show_places_label);
+    layout13->addWidget(places_switcher);
+    layout13->addStretch();
     QVBoxLayout *layout = new QVBoxLayout();
     layout->addLayout(layout1);
     layout->addLayout(layout2);
@@ -140,7 +206,10 @@ PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy) :
         layout->addLayout(layout8);
         layout->addLayout(layout9);
     }
-
+    layout->addLayout(layout10);
+    layout->addLayout(layout11);
+    layout->addLayout(layout12);
+    layout->addLayout(layout13);
     layout->addStretch();
     setLayout(layout);
     layout->setSpacing(10);
@@ -192,6 +261,10 @@ void PanelWidget::setLanguage() {
     static_radio->setText(tr("Static blur"));
     clear_radio->setText(tr("Clear"));
 
+    show_app_label->setText(tr("Show applications") + ":");
+    show_desktop_label->setText(tr("Show system") + ":");//Show desktop
+    show_icon_label->setText(tr("Show icon") + ":");
+    show_places_label->setText(tr("Show places") + ":");
 }
 
 void PanelWidget::initData()
@@ -248,6 +321,11 @@ void PanelWidget::initData()
 
     battery_percentage_switcher->switchedOn = sessionproxy->get_show_power_percentage_qt();
     battery_time_switcher->switchedOn = sessionproxy->get_show_power_time_qt();
+
+    app_switcher->switchedOn = sessionproxy->get_show_apps_qt();
+    desktop_switcher->switchedOn = sessionproxy->get_show_desktop_qt();
+    icon_switcher->switchedOn = sessionproxy->get_show_icon_qt();
+    places_switcher->switchedOn = sessionproxy->get_show_places_qt();
 }
 
 void PanelWidget::initConnect() {
@@ -263,6 +341,10 @@ void PanelWidget::initConnect() {
     connect(battery_combo, SIGNAL(currentIndexChanged(QString)),  this, SLOT(setShowBatteryIcon(QString)));
     connect(battery_percentage_switcher, SIGNAL(clicked()),  this, SLOT(setDisplayBatteryPercentage()));
     connect(battery_time_switcher, SIGNAL(clicked()),  this, SLOT(setDisplayBatteryTime()));
+    connect(app_switcher, SIGNAL(clicked()),  this, SLOT(showApplications()));
+    connect(desktop_switcher, SIGNAL(clicked()),  this, SLOT(showDesktop()));
+    connect(icon_switcher, SIGNAL(clicked()),  this, SLOT(showIcon()));
+    connect(places_switcher, SIGNAL(clicked()),  this, SLOT(showPlaces()));
 }
 
 void PanelWidget::setTransparencyValue(double value)
@@ -320,4 +402,24 @@ void PanelWidget::setDisplayBatteryPercentage()
 void PanelWidget::setDisplayBatteryTime()
 {
     sessionproxy->set_show_power_time_qt(battery_time_switcher->switchedOn);
+}
+
+void PanelWidget::showApplications()
+{
+    sessionproxy->set_show_apps_qt(app_switcher->switchedOn);
+}
+
+void PanelWidget::showDesktop()
+{
+    sessionproxy->set_show_desktop_qt(desktop_switcher->switchedOn);
+}
+
+void PanelWidget::showIcon()
+{
+    sessionproxy->set_show_icon_qt(icon_switcher->switchedOn);
+}
+
+void PanelWidget::showPlaces()
+{
+    sessionproxy->set_show_places_qt(places_switcher->switchedOn);
 }
