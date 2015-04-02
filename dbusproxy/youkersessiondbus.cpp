@@ -573,6 +573,48 @@ bool SessionDispatcher::set_show_power_percentage_qt(bool flag) {
     return reply.value();
 }
 
+//--------------------------mate--------------------
+bool SessionDispatcher::get_show_apps_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_show_apps");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_show_apps_qt(bool flag) {
+    QDBusReply<bool> reply = sessioniface->call("set_show_apps", flag);
+    return reply.value();
+}
+
+bool SessionDispatcher::get_show_desktop_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_show_desktop");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_show_desktop_qt(bool flag) {
+    QDBusReply<bool> reply = sessioniface->call("set_show_desktop", flag);
+    return reply.value();
+}
+
+bool SessionDispatcher::get_show_icon_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_show_icon");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_show_icon_qt(bool flag) {
+    QDBusReply<bool> reply = sessioniface->call("set_show_icon", flag);
+    return reply.value();
+}
+
+bool SessionDispatcher::get_show_places_qt() {
+    QDBusReply<bool> reply = sessioniface->call("get_show_places");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_show_places_qt(bool flag) {
+    QDBusReply<bool> reply = sessioniface->call("set_show_places", flag);
+    return reply.value();
+}
+
+
 /*-----------------------------theme of beauty-----------------------------*/
 QStringList SessionDispatcher::get_themes_qt() {
     QDBusReply<QStringList> reply = sessioniface->call("get_themes");
@@ -781,6 +823,11 @@ bool SessionDispatcher::get_touchpad_enable_qt() {
     return reply.value();
 }
 
+bool SessionDispatcher::set_touchscrolling_mode_disabled_qt() {
+    QDBusReply<bool> reply = sessioniface->call("set_touchscrolling_mode_disabled");
+    return reply.value();
+}
+
 bool SessionDispatcher::set_touchscrolling_mode_edge_qt() {
     QDBusReply<bool> reply = sessioniface->call("set_touchscrolling_mode_edge");
     return reply.value();
@@ -806,19 +853,31 @@ bool SessionDispatcher::get_touchscrolling_use_horizontal_qt() {
     return reply.value();
 }
 
+int SessionDispatcher::get_mate_touchscrolling_mode_qt()
+{
+    QDBusReply<int> reply = sessioniface->call("get_mate_touchscrolling_mode");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_mate_touchscrolling_mode_qt(int value)
+{
+    QDBusReply<bool> reply = sessioniface->call("set_mate_touchscrolling_mode", value);
+    return reply.value();
+}
+
 /*-----------------------------window of beauty-----------------------------*/
-//void SessionDispatcher::set_window_button_align_left_qt() {
-//    sessioniface->call("set_window_button_align_left");
-//}
+void SessionDispatcher::set_window_button_align_left_qt() {
+    sessioniface->call("set_window_button_align_left");
+}
 
-//void SessionDispatcher::set_window_button_align_right_qt() {
-//    sessioniface->call("set_window_button_align_right");
-//}
+void SessionDispatcher::set_window_button_align_right_qt() {
+    sessioniface->call("set_window_button_align_right");
+}
 
-//QString SessionDispatcher::get_window_button_align_qt() {
-//    QDBusReply<QString> reply = sessioniface->call("get_window_button_align");
-//    return reply.value();
-//}
+QString SessionDispatcher::get_window_button_align_qt() {
+    QDBusReply<QString> reply = sessioniface->call("get_window_button_align");
+    return reply.value();
+}
 
 bool SessionDispatcher::set_menus_have_icons_qt(bool flag) {
     QDBusReply<bool> reply = sessioniface->call("set_menus_have_icons", flag);

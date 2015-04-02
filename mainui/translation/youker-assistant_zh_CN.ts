@@ -1297,51 +1297,51 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>FontWidget</name>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="63"/>
         <location filename="../../setting/fontwidget.cpp" line="64"/>
         <location filename="../../setting/fontwidget.cpp" line="65"/>
         <location filename="../../setting/fontwidget.cpp" line="66"/>
         <location filename="../../setting/fontwidget.cpp" line="67"/>
+        <location filename="../../setting/fontwidget.cpp" line="68"/>
         <source>Click here to change font</source>
         <translation>点击此处更换字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="166"/>
+        <location filename="../../setting/fontwidget.cpp" line="171"/>
         <source>Default Font</source>
         <translation>默认字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="167"/>
+        <location filename="../../setting/fontwidget.cpp" line="172"/>
         <source>Desktop Font</source>
         <translation>桌面字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="168"/>
+        <location filename="../../setting/fontwidget.cpp" line="173"/>
         <source>Monospace Font</source>
         <translation>等宽字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="169"/>
+        <location filename="../../setting/fontwidget.cpp" line="174"/>
         <source>Document Font</source>
         <translation>文档字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="170"/>
+        <location filename="../../setting/fontwidget.cpp" line="175"/>
         <source>Titlebar Font</source>
         <translation>标题栏字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="171"/>
+        <location filename="../../setting/fontwidget.cpp" line="176"/>
         <source>Global Font Scaling</source>
         <translation>全局字体缩放</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="172"/>
+        <location filename="../../setting/fontwidget.cpp" line="177"/>
         <source>Hinting</source>
         <translation>平滑</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="173"/>
+        <location filename="../../setting/fontwidget.cpp" line="178"/>
         <source>Antialiasing</source>
         <translation>反锯齿</translation>
     </message>
@@ -1561,37 +1561,37 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>IconWidget</name>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="204"/>
+        <location filename="../../setting/iconwidget.cpp" line="199"/>
         <source>Icon theme</source>
         <translation>图标主题</translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="205"/>
+        <location filename="../../setting/iconwidget.cpp" line="200"/>
         <source>Show Desktop Icons</source>
         <translation>显示桌面图标</translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="206"/>
+        <location filename="../../setting/iconwidget.cpp" line="201"/>
         <source>Computer</source>
         <translation>计算机</translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="207"/>
+        <location filename="../../setting/iconwidget.cpp" line="202"/>
         <source>Home Folder</source>
         <translation>用户主目录</translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="208"/>
+        <location filename="../../setting/iconwidget.cpp" line="203"/>
         <source>Network</source>
         <translation>网络</translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="209"/>
+        <location filename="../../setting/iconwidget.cpp" line="204"/>
         <source>Trash</source>
         <translation>回收站</translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="210"/>
+        <location filename="../../setting/iconwidget.cpp" line="205"/>
         <source>Mounted Volumes</source>
         <translation>挂载卷</translation>
     </message>
@@ -1929,64 +1929,92 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PanelWidget</name>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="181"/>
+        <location filename="../../setting/panelwidget.cpp" line="250"/>
         <source>Dash background blur type</source>
         <translation>搜索框背景模糊类型</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="182"/>
+        <location filename="../../setting/panelwidget.cpp" line="251"/>
         <source>Panel Transparency</source>
         <translation>面板透明度</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="183"/>
+        <location filename="../../setting/panelwidget.cpp" line="252"/>
         <source>Date &amp; time format</source>
         <translation>日期时间格式</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="184"/>
+        <location filename="../../setting/panelwidget.cpp" line="253"/>
         <source>Display seconds</source>
         <translation>显示秒数</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="185"/>
+        <location filename="../../setting/panelwidget.cpp" line="254"/>
         <source>Display week</source>
         <translation>显示星期</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="186"/>
+        <location filename="../../setting/panelwidget.cpp" line="255"/>
         <source>Display the date</source>
         <translation>显示日期</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="187"/>
+        <location filename="../../setting/panelwidget.cpp" line="256"/>
         <source>Display battery icon</source>
         <translation>显示电池图标</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="188"/>
+        <location filename="../../setting/panelwidget.cpp" line="257"/>
         <source>Display battery percentage</source>
         <translation>显示电池百分比</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="189"/>
+        <location filename="../../setting/panelwidget.cpp" line="258"/>
         <source>Display battery remaining time</source>
         <translation>显示电池电量时间</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="191"/>
+        <location filename="../../setting/panelwidget.cpp" line="260"/>
         <source>Smart blur</source>
         <translation>活动模糊</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="192"/>
+        <location filename="../../setting/panelwidget.cpp" line="261"/>
         <source>Static blur</source>
         <translation>静态模糊</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="193"/>
+        <location filename="../../setting/panelwidget.cpp" line="262"/>
         <source>Clear</source>
         <translation>非模糊</translation>
+    </message>
+    <message>
+        <location filename="../../setting/panelwidget.cpp" line="264"/>
+        <source>Show applications</source>
+        <translation>显示应用程序</translation>
+    </message>
+    <message>
+        <location filename="../../setting/panelwidget.cpp" line="265"/>
+        <source>Show system</source>
+        <translation>显示系统</translation>
+    </message>
+    <message>
+        <source>Show desktop</source>
+        <translation type="obsolete">显示桌面</translation>
+    </message>
+    <message>
+        <location filename="../../setting/panelwidget.cpp" line="267"/>
+        <source>Show places</source>
+        <translation>显示位置</translation>
+    </message>
+    <message>
+        <source>Show applications menu</source>
+        <translation type="obsolete">显示应用程序</translation>
+    </message>
+    <message>
+        <location filename="../../setting/panelwidget.cpp" line="266"/>
+        <source>Show icon</source>
+        <translation>显示图标</translation>
     </message>
 </context>
 <context>
@@ -2403,44 +2431,53 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>TouchpadWidget</name>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="126"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="137"/>
         <source>Enable touchpad</source>
         <translation>启用/禁用触摸板</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="127"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="138"/>
         <source>Enable horizontal scrolling</source>
         <translation>触摸板横向滚动</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="128"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="139"/>
         <source>Scrollbar type</source>
         <translation>滚动条类型</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="129"/>
         <source>Panel layout</source>
-        <translation>触摸板滚动触发方式</translation>
+        <translation type="obsolete">触摸板滚动触发方式</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="130"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="140"/>
+        <source>Touchpad scrolling mode</source>
+        <translation>触摸板滚动模式</translation>
+    </message>
+    <message>
+        <location filename="../../setting/touchpadwidget.cpp" line="141"/>
         <source>Features Type</source>
         <translation>特色类型</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="131"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="142"/>
         <source>Standard Type</source>
         <translation>标准类型</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="132"/>
-        <source>Edge Scrolling</source>
-        <translation>边缘触发</translation>
+        <location filename="../../setting/touchpadwidget.cpp" line="143"/>
+        <source>Disabled</source>
+        <translation>禁用</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="133"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="144"/>
+        <source>Edge Scrolling</source>
+        <translation>边界滚动</translation>
+    </message>
+    <message>
+        <location filename="../../setting/touchpadwidget.cpp" line="145"/>
         <source>Two-finger Scrolling</source>
-        <translation>双指触发</translation>
+        <translation>双指滚动</translation>
     </message>
 </context>
 <context>
@@ -2469,29 +2506,44 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>WindowWidget</name>
     <message>
-        <location filename="../../setting/windowwidget.cpp" line="115"/>
+        <location filename="../../setting/windowwidget.cpp" line="142"/>
+        <source>Arrangement of buttons on the titlebar</source>
+        <translation>标题栏按钮布局</translation>
+    </message>
+    <message>
+        <location filename="../../setting/windowwidget.cpp" line="143"/>
         <source>Menu with icons</source>
         <translation>菜单项旁显示图标</translation>
     </message>
     <message>
-        <location filename="../../setting/windowwidget.cpp" line="116"/>
+        <location filename="../../setting/windowwidget.cpp" line="144"/>
         <source>Titlebar mouse wheel action</source>
         <translation>标题栏鼠标滚轮动作</translation>
     </message>
     <message>
-        <location filename="../../setting/windowwidget.cpp" line="117"/>
+        <location filename="../../setting/windowwidget.cpp" line="145"/>
         <source>Titlebar double-click action</source>
         <translation>标题栏双击动作</translation>
     </message>
     <message>
-        <location filename="../../setting/windowwidget.cpp" line="118"/>
+        <location filename="../../setting/windowwidget.cpp" line="146"/>
         <source>Titlebar middle-click action</source>
         <translation>标题栏中键动作</translation>
     </message>
     <message>
-        <location filename="../../setting/windowwidget.cpp" line="119"/>
+        <location filename="../../setting/windowwidget.cpp" line="147"/>
         <source>Titlebar right-click action</source>
         <translation>标题栏右键动作</translation>
+    </message>
+    <message>
+        <location filename="../../setting/windowwidget.cpp" line="148"/>
+        <source>Left</source>
+        <translation>左边</translation>
+    </message>
+    <message>
+        <location filename="../../setting/windowwidget.cpp" line="149"/>
+        <source>Right</source>
+        <translation>右边</translation>
     </message>
 </context>
 </TS>

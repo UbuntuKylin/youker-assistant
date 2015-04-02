@@ -45,15 +45,25 @@ class Desktop:
 
     # show desktop icons, True/False
     def set_show_desktop_icons(self, flag):
-        return gsettings.set('org.gnome.desktop.background',
-            None,
-            'show-desktop-icons',
-            'boolean', flag)
+        if self.dekstop == "mate":
+            return gsettings.set('org.mate.background',
+                None,
+                'show-desktop-icons',
+                'boolean', flag)
+        else:
+            return gsettings.set('org.gnome.desktop.background',
+                None,
+                'show-desktop-icons',
+                'boolean', flag)
 
     # get is show desktop icons
     def get_show_desktop_icons(self):
-        return gsettings.get('org.gnome.desktop.background',
-            None, 'show-desktop-icons', 'boolean')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.background',
+                None, 'show-desktop-icons', 'boolean')
+        else:
+            return gsettings.get('org.gnome.desktop.background',
+                None, 'show-desktop-icons', 'boolean')
 
     def set_show_computer(self, flag):
         if self.dekstop == "mate":

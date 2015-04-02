@@ -48,13 +48,15 @@ private:
     QLabel *touchpad_label;
     QLabel *horizontal_scrolling_label;
     QLabel *scrollbar_type_label;
-    QLabel *panel_layout_label;
+    QLabel *scrolling_mode_label;
     KylinSwitcher *touchpad_switcher;
     KylinSwitcher *horizontal_scrolling_switcher;
     QRadioButton *features_radio;
     QRadioButton *standard_radio;
+    QRadioButton *disable_radio;
     QRadioButton *edge_radio;
     QRadioButton *two_finger_radio;
+    QString desktop;
 };
 
 #endif // TOUCHPADWIDGET_H

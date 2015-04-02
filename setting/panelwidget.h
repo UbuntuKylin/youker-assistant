@@ -54,6 +54,10 @@ public slots:
     void setDisplayDate();
     void setDisplayBatteryPercentage();
     void setDisplayBatteryTime();
+    void showApplications();
+    void showDesktop();
+    void showIcon();
+    void showPlaces();
 
 private:
     SessionDispatcher *sessionproxy;
@@ -66,6 +70,10 @@ private:
     QLabel *battery_icon_label;
     QLabel *battery_percentage_label;
     QLabel *battery_time_label;
+    QLabel *show_app_label;
+    QLabel *show_desktop_label;
+    QLabel *show_icon_label;
+    QLabel *show_places_label;
     QRadioButton *smart_radio;
     QRadioButton *static_radio;
     QRadioButton *clear_radio;
@@ -77,6 +85,11 @@ private:
     QComboBox *battery_combo;
     KylinSwitcher *battery_percentage_switcher;
     KylinSwitcher *battery_time_switcher;
+    KylinSwitcher *app_switcher;
+    KylinSwitcher *desktop_switcher;
+    KylinSwitcher *icon_switcher;
+    KylinSwitcher *places_switcher;
+    QString desktop;
 };
 
 #endif // PANELWIDGET_H

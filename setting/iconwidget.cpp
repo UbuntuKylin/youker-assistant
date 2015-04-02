@@ -45,12 +45,7 @@ IconWidget::IconWidget(QWidget *parent, SessionDispatcher *proxy) :
     recycle_switcher = new KylinSwitcher();
     disk_switcher = new KylinSwitcher();
 
-    if (this->desktop == "mate")
-    {
-        show_label->hide();
-        show_switcher->hide();
-    }
-    else
+    if (this->desktop != "mate")
     {
         computer_label->hide();
         computer_switcher->hide();

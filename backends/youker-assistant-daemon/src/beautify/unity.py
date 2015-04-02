@@ -16,13 +16,18 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
+import os
 import gsettings
 from compizsettings import CompizSetting
 
 class Unity:
     '''if compiz: key is icon_size; else if gsettins: key is icon-size'''
+    dekstop = None
 
-    #def __init__(self, name, key):
+    def __init__(self):
+        self.dekstop = os.getenv('XDG_CURRENT_DESKTOP')
+        if self.dekstop is None:
+             self.dekstop = os.getenv('XDG_SESSION_DESKTOP')
     #    self.setting = CompizSetting("%s.%s" % (name, key))
 
     # ---------------launcher---------------
@@ -173,12 +178,24 @@ class Unity:
         return ['locale-default', '12-hour' , '24-hour', 'custom']
 
     def get_time_format(self):
+#        if self.dekstop == "mate":
+#            return gsettings.get('org.mate.panel',
+#                '/org/mate/panel/objects/clock/prefs/',
+#                'format',
+#                'string')
+#        else:
         return gsettings.get('com.canonical.indicator.datetime',
             None,
             'time-format',
             'string')
 
     def set_time_format(self, format):
+#        if self.dekstop == "mate":
+#            return gsettings.set('org.mate.panel',
+#                '/org/mate/panel/objects/clock/prefs/',
+#                'format',
+#                'string', format)
+#        else:
         return gsettings.set('com.canonical.indicator.datetime',
             None,
             'time-format',
@@ -318,6 +335,54 @@ class Unity:
                 'auto-hide', 'boolean')
         else:
             return False
+
+    def get_show_apps(self):
+        return gsettings.get('org.mate.panel.menubar',
+            None,
+            'show-applications',
+            'boolean')
+
+    def set_show_apps(self, flag):
+        return gsettings.set('org.mate.panel.menubar',
+            None,
+            'show-applications',
+            'boolean', flag)
+
+    def get_show_desktop(self):
+        return gsettings.get('org.mate.panel.menubar',
+            None,
+            'show-desktop',
+            'boolean')
+
+    def set_show_desktop(self, flag):
+        return gsettings.set('org.mate.panel.menubar',
+            None,
+            'show-desktop',
+            'boolean', flag)
+
+    def get_show_icon(self):
+        return gsettings.get('org.mate.panel.menubar',
+            None,
+            'show-icon',
+            'boolean')
+
+    def set_show_icon(self, flag):
+        return gsettings.set('org.mate.panel.menubar',
+            None,
+            'show-icon',
+            'boolean', flag)
+
+    def get_show_places(self):
+        return gsettings.get('org.mate.panel.menubar',
+            None,
+            'show-places',
+            'boolean')
+
+    def set_show_places(self, flag):
+        return gsettings.set('org.mate.panel.menubar',
+            None,
+            'show-places',
+            'boolean', flag)
 
 if __name__ == '__main__':
     uuu = Unity()

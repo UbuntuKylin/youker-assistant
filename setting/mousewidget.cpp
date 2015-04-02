@@ -102,8 +102,6 @@ void MouseWidget::setLanguage() {
     size_label->setText(tr("Cursor Pointer Size") + ":");
     small_size->setText(tr("Small Size"));
     big_size->setText(tr("Big Size"));
-
-
 }
 
 void MouseWidget::initData()

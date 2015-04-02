@@ -145,6 +145,16 @@ public:
     bool get_show_power_percentage_qt();
     bool set_show_power_percentage_qt(bool flag);
 
+
+    bool get_show_apps_qt();
+    bool set_show_apps_qt(bool flag);
+    bool get_show_desktop_qt();
+    bool set_show_desktop_qt(bool flag);
+    bool get_show_icon_qt();
+    bool set_show_icon_qt(bool flag);
+    bool get_show_places_qt();
+    bool set_show_places_qt(bool flag);
+
     /*-------------------theme of beauty-------------------*/
     QStringList get_themes_qt();
     QString get_theme_qt();
@@ -196,16 +206,20 @@ public:
     /*-------------------touchpad of beauty-------------------*/
     bool set_touchpad_enable_qt(bool flag);
     bool get_touchpad_enable_qt();
+    bool set_touchscrolling_mode_disabled_qt();
     bool set_touchscrolling_mode_edge_qt();
     bool set_touchscrolling_mode_twofinger_qt();
     QString get_touchscrolling_mode_qt();
     bool set_touchscrolling_use_horizontal_qt(bool flag);
     bool get_touchscrolling_use_horizontal_qt();
 
+    int get_mate_touchscrolling_mode_qt();
+    bool set_mate_touchscrolling_mode_qt(int value);
+
     /*-------------------window of beauty-------------------*/
-//    Q_INVOKABLE void set_window_button_align_left_qt();
-//    Q_INVOKABLE void set_window_button_align_right_qt();
-//    Q_INVOKABLE QString get_window_button_align_qt();
+    void set_window_button_align_left_qt();
+    void set_window_button_align_right_qt();
+    QString get_window_button_align_qt();
     bool set_menus_have_icons_qt(bool flag);
     bool get_menus_have_icons_qt();
     QStringList get_titlebar_wheel_qt();

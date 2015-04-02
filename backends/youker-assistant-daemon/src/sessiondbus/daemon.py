@@ -1023,6 +1023,38 @@ class SessionDaemon(dbus.service.Object):
     def get_mate_panel_icon_size(self, position):
         return self.unityconf.get_mate_panel_icon_size(position)
 
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_show_apps(self):
+        return self.unityconf.get_show_apps()
+
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
+    def set_show_apps(self, flag):
+        return self.unityconf.set_show_apps(flag)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_show_desktop(self):
+        return self.unityconf.get_show_desktop()
+
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
+    def set_show_desktop(self, flag):
+        return self.unityconf.set_show_desktop(flag)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_show_icon(self):
+        return self.unityconf.get_show_icon()
+
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
+    def set_show_icon(self, flag):
+        return self.unityconf.set_show_icon(flag)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_show_places(self):
+        return self.unityconf.get_show_places()
+
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='b')
+    def set_show_places(self, flag):
+        return self.unityconf.set_show_places(flag)
+
     # -------------------------theme-------------------------
 
 #    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='s')
@@ -1269,6 +1301,10 @@ class SessionDaemon(dbus.service.Object):
     def get_touchscrolling_use_horizontal(self):
         return self.systemconf.get_touchscrolling_use_horizontal()
 
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def set_touchscrolling_mode_disabled(self):
+        return self.systemconf.set_touchscrolling_mode_disabled()
+
     # set touch scrolling mode edge
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
     def set_touchscrolling_mode_edge(self):
@@ -1283,6 +1319,15 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_touchscrolling_mode(self):
         return self.systemconf.get_touchscrolling_mode()
+
+    @dbus.service.method(INTERFACE, in_signature='i', out_signature='b')
+    def set_mate_touchscrolling_mode(self, value):
+        return self.systemconf.set_mate_touchscrolling_mode(value)
+
+    # get is touch scrolling use horizontal
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    def get_mate_touchscrolling_mode(self):
+        return self.systemconf.get_mate_touchscrolling_mode()
 
     # -------------------------window-------------------------
 

@@ -26,6 +26,7 @@
 class QLabel;
 class QPushButton;
 class QComboBox;
+class QRadioButton;
 
 class SessionDispatcher;
 
@@ -45,6 +46,7 @@ public slots:
     void setMouseDoubleClick(QString selected);
     void setMouseMiddleClick(QString selected);
     void setMouseRightClick(QString selected);
+    void setRadioButtonRowStatus();
 
 private:
     SessionDispatcher *sessionproxy;
@@ -58,7 +60,10 @@ private:
     QComboBox *double_click_combo;
     QComboBox *middle_click_combo;
     QComboBox *right_click_combo;
-
+    QLabel *position_label;
+    QRadioButton *left_radio;
+    QRadioButton *right_radio;
+    QString desktop;
 };
 
 #endif // WINDOWWIDGET_H

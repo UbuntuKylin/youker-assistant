@@ -79,6 +79,7 @@ private:
     QString monospace_font;
     QString document_font;
     QString titlebar_font;
+    QString desktop;
 };
 
 #endif // FONTWIDGET_H

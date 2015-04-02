@@ -28,6 +28,7 @@ FontWidget::FontWidget(QWidget *parent, SessionDispatcher *proxy, MainWindow *wi
     sessionproxy(proxy),
     parentWindow(window)
 {
+    this->desktop = sessionproxy->access_current_desktop_qt();
     default_font_label = new QLabel();
     desktop_font_label = new QLabel();
     monospace_font_label = new QLabel();
@@ -66,6 +67,10 @@ FontWidget::FontWidget(QWidget *parent, SessionDispatcher *proxy, MainWindow *wi
     document_font_btn->setToolTip(tr("Click here to change font"));
     titlebar_font_btn->setToolTip(tr("Click here to change font"));
 
+    if (this->desktop == "mate") {
+        scaling_label->hide();
+        scaling_slider->hide();
+    }
 
     default_font_label->setFixedWidth(150);
     desktop_font_label->setFixedWidth(150);
@@ -178,8 +183,14 @@ void FontWidget::initData()
     current_font = sessionproxy->get_font_qt();
     desktop_font = sessionproxy->get_desktop_font_qt();
     if(desktop_font.isEmpty())
-        sessionproxy->set_desktop_font_qt_default();
-        desktop_font = sessionproxy->get_desktop_font_qt();
+    {
+//        sessionproxy->set_desktop_font_qt_default();
+        if (this->desktop == "mate")
+            sessionproxy->set_desktop_font_qt("Sans 10");
+        else
+            sessionproxy->set_desktop_font_qt("Ubuntu 11");
+    }
+    desktop_font = sessionproxy->get_desktop_font_qt();
     monospace_font = sessionproxy->get_monospace_font_qt();
     document_font = sessionproxy->get_document_font_qt();
     titlebar_font = sessionproxy->get_window_title_font_qt();
