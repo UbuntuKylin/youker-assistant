@@ -32,7 +32,7 @@ class SettingActionWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SettingActionWidget(QWidget *parent = 0);
+    explicit SettingActionWidget(QString cur_desktop = "", QWidget *parent = 0);
     ~SettingActionWidget();
     void setParentWindow(MainWindow* window) { p_mainwindow = window;}
     void setLanguage();
@@ -64,6 +64,7 @@ private:
     SettingAction *nautilus_action;
 
     MainWindow *p_mainwindow;
+    QString desktop;
 };
 
 #endif // SETTINGACTIONWIDGET_H

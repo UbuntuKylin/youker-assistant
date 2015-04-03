@@ -24,12 +24,11 @@
 #include "../dbusproxy/youkersessiondbus.h"
 #include "../dbusproxy/youkersystemdbus.h"
 
-VoiceWidget::VoiceWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispatcher *sproxy) :
+VoiceWidget::VoiceWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispatcher *sproxy, QString cur_desktop) :
     QWidget(parent),
     sessionproxy(proxy),
     systemproxy(sproxy)
 {
-    this->desktop = sessionproxy->access_current_desktop_qt();
     theme_label = new QLabel();
     tip_label = new QLabel();
     event_label = new QLabel();
@@ -44,7 +43,7 @@ VoiceWidget::VoiceWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispa
     event_label->setFixedWidth(180);
     feedback_label->setFixedWidth(180);
 
-    if (this->desktop == "mate")
+    if (cur_desktop == "mate")
     {
         tip_label->hide();
         tip_switcher->hide();

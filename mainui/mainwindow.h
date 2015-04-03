@@ -140,6 +140,7 @@ private:
     Toolkits *toolKits;
     AboutDialog *aboutDlg;
     QSettings * mSettings;
+    QString desktop;
 
 //    QParallelAnimationGroup *openGroup;
 //    QParallelAnimationGroup *closeGroup;

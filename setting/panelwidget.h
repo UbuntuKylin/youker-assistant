@@ -35,7 +35,7 @@ class PanelWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit PanelWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0);
+    explicit PanelWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0, QString cur_desktop = "");
     ~PanelWidget();
     void setLanguage();
     void initConnect();
@@ -89,7 +89,6 @@ private:
     KylinSwitcher *desktop_switcher;
     KylinSwitcher *icon_switcher;
     KylinSwitcher *places_switcher;
-    QString desktop;
 };
 
 #endif // PANELWIDGET_H

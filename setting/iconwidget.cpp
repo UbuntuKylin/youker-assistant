@@ -24,11 +24,10 @@
 #include <QComboBox>
 #include <QHBoxLayout>
 
-IconWidget::IconWidget(QWidget *parent, SessionDispatcher *proxy) :
+IconWidget::IconWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_desktop) :
     QWidget(parent),
     sessionproxy(proxy)
 {
-    this->desktop = sessionproxy->access_current_desktop_qt();
     theme_label = new QLabel();
     show_label = new QLabel();
     computer_label = new QLabel();
@@ -45,7 +44,7 @@ IconWidget::IconWidget(QWidget *parent, SessionDispatcher *proxy) :
     recycle_switcher = new KylinSwitcher();
     disk_switcher = new KylinSwitcher();
 
-    if (this->desktop != "mate")
+    if (cur_desktop != "mate")
     {
         computer_label->hide();
         computer_switcher->hide();

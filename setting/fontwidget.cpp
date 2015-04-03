@@ -23,12 +23,12 @@
 #include "../dbusproxy/youkersessiondbus.h"
 #include "../mainui/mainwindow.h"
 
-FontWidget::FontWidget(QWidget *parent, SessionDispatcher *proxy, MainWindow *window) :
+FontWidget::FontWidget(QWidget *parent, SessionDispatcher *proxy, MainWindow *window, QString cur_desktop) :
     QWidget(parent),
     sessionproxy(proxy),
-    parentWindow(window)
+    parentWindow(window),
+    desktop(cur_desktop)
 {
-    this->desktop = sessionproxy->access_current_desktop_qt();
     default_font_label = new QLabel();
     desktop_font_label = new QLabel();
     monospace_font_label = new QLabel();
@@ -50,6 +50,27 @@ FontWidget::FontWidget(QWidget *parent, SessionDispatcher *proxy, MainWindow *wi
     scaling_slider->setMaximum(3.0);
     hinting_combo = new QComboBox();
     antialiasing_combo = new QComboBox();
+
+    restore_default_font_btn = new QPushButton();
+    restore_desktop_font_btn = new QPushButton();
+    restore_monospace_font_btn = new QPushButton();
+    restore_document_font_btn = new QPushButton();
+    restore_titlebar_font_btn = new QPushButton();
+    restore_default_font_btn->setFixedSize(91, 25);
+    restore_desktop_font_btn->setFixedSize(91, 25);
+    restore_monospace_font_btn->setFixedSize(91, 25);
+    restore_document_font_btn->setFixedSize(91, 25);
+    restore_titlebar_font_btn->setFixedSize(91, 25);
+    restore_default_font_btn->setObjectName("blackButton");
+    restore_desktop_font_btn->setObjectName("blackButton");
+    restore_monospace_font_btn->setObjectName("blackButton");
+    restore_document_font_btn->setObjectName("blackButton");
+    restore_titlebar_font_btn->setObjectName("blackButton");
+    restore_default_font_btn->setFocusPolicy(Qt::NoFocus);
+    restore_desktop_font_btn->setFocusPolicy(Qt::NoFocus);
+    restore_monospace_font_btn->setFocusPolicy(Qt::NoFocus);
+    restore_document_font_btn->setFocusPolicy(Qt::NoFocus);
+    restore_titlebar_font_btn->setFocusPolicy(Qt::NoFocus);
 
     default_font_btn->setObjectName("transparentButton");
     desktop_font_btn->setObjectName("transparentButton");
@@ -86,26 +107,36 @@ FontWidget::FontWidget(QWidget *parent, SessionDispatcher *proxy, MainWindow *wi
     layout1->addWidget(default_font_label);
     layout1->addWidget(default_font_btn);
     layout1->addStretch();
+    layout1->addWidget(restore_default_font_btn);
+    layout1->setContentsMargins(0, 0, 200, 0);
     QHBoxLayout *layout2 = new QHBoxLayout();
     layout2->setSpacing(10);
     layout2->addWidget(desktop_font_label);
     layout2->addWidget(desktop_font_btn);
     layout2->addStretch();
+    layout2->addWidget(restore_desktop_font_btn);
+    layout2->setContentsMargins(0, 0, 200, 0);
     QHBoxLayout *layout3 = new QHBoxLayout();
     layout3->setSpacing(10);
     layout3->addWidget(monospace_font_label);
     layout3->addWidget(monospace_font_btn);
     layout3->addStretch();
+    layout3->addWidget(restore_monospace_font_btn);
+    layout3->setContentsMargins(0, 0, 200, 0);
     QHBoxLayout *layout4 = new QHBoxLayout();
     layout4->setSpacing(10);
     layout4->addWidget(document_font_label);
     layout4->addWidget(document_font_btn);
     layout4->addStretch();
+    layout4->addWidget(restore_document_font_btn);
+    layout4->setContentsMargins(0, 0, 200, 0);
     QHBoxLayout *layout5 = new QHBoxLayout();
     layout5->setSpacing(10);
     layout5->addWidget(titlebar_font_label);
     layout5->addWidget(titlebar_font_btn);
     layout5->addStretch();
+    layout5->addWidget(restore_titlebar_font_btn);
+    layout5->setContentsMargins(0, 0, 200, 0);
     QHBoxLayout *layout6 = new QHBoxLayout();
     layout6->setSpacing(10);
     layout6->addWidget(scaling_label);
@@ -134,7 +165,7 @@ FontWidget::FontWidget(QWidget *parent, SessionDispatcher *proxy, MainWindow *wi
 //    bottom_widget->setLayout(layout);
     setLayout(layout);
     layout->setSpacing(10);
-    layout->setContentsMargins(20, 20, 0, 0);
+    layout->setContentsMargins(20, 20, 20, 0);
 
 //    splitter->addWidget(top_widget);
 //    splitter->addWidget(bottom_widget);
@@ -176,6 +207,11 @@ void FontWidget::setLanguage() {
     scaling_label->setText(tr("Global Font Scaling") + ":");
     hinting_label->setText(tr("Hinting") + ":");
     antialiasing_label->setText(tr("Antialiasing") + ":");
+    restore_default_font_btn->setText(tr("Restore"));
+    restore_desktop_font_btn->setText(tr("Restore"));
+    restore_monospace_font_btn->setText(tr("Restore"));
+    restore_document_font_btn->setText(tr("Restore"));
+    restore_titlebar_font_btn->setText(tr("Restore"));
 }
 
 void FontWidget::initData()
@@ -240,6 +276,11 @@ void FontWidget::initConnect() {
     connect(scaling_slider, SIGNAL(valueChanged(double)), this, SLOT(setScalingValue(double)));
     connect(hinting_combo, SIGNAL(currentIndexChanged(QString)),  this, SLOT(setFontHinting(QString)));
     connect(antialiasing_combo, SIGNAL(currentIndexChanged(QString)),  this, SLOT(setFontAntialiasing(QString)));
+    connect(restore_default_font_btn, SIGNAL(clicked()), this, SLOT(restore_default_font()));
+    connect(restore_desktop_font_btn, SIGNAL(clicked()), this, SLOT(restore_desktop_font()));
+    connect(restore_monospace_font_btn, SIGNAL(clicked()), this, SLOT(restore_monospace_font()));
+    connect(restore_document_font_btn, SIGNAL(clicked()), this, SLOT(restore_document_font()));
+    connect(restore_titlebar_font_btn, SIGNAL(clicked()), this, SLOT(restore_titlebar_font()));
 }
 
 void FontWidget::setDefaultFont() {
@@ -318,7 +359,6 @@ void FontWidget::resetTitlebarFont(QString cur_font)
     titlebar_font_btn->setText(cur_font);
 }
 
-
 void FontWidget::setScalingValue(double value)
 {
     sessionproxy->set_font_zoom_qt(value);
@@ -332,4 +372,64 @@ void FontWidget::setFontHinting(QString selected)
 void FontWidget::setFontAntialiasing(QString selected)
 {
     sessionproxy->set_antialiasing_style_qt(selected);
+}
+
+void FontWidget::restore_default_font()
+{
+    if (this->desktop == "mate") {
+        sessionproxy->set_default_font_string_qt("org.mate.interface", "font-name", "string");
+        default_font_btn->setText(sessionproxy->get_default_font_string_qt("org.mate.interface", "font-name"));
+    }
+    else {
+        sessionproxy->set_default_font_string_qt("org.gnome.desktop.interface", "font-name", "string");
+        default_font_btn->setText(sessionproxy->get_default_font_string_qt("org.gnome.desktop.interface", "font-name"));
+    }
+}
+
+void FontWidget::restore_desktop_font()
+{
+    if (this->desktop == "mate") {
+        sessionproxy->set_default_font_string_qt("org.mate.caja.desktop", "font", "string");
+        desktop_font_btn->setText(sessionproxy->get_default_font_string_qt("org.mate.caja.desktop", "font"));
+    }
+    else {
+        sessionproxy->set_default_font_string_qt("org.gnome.nautilus.desktop", "font", "string");
+        desktop_font_btn->setText(sessionproxy->get_default_font_string_qt("org.gnome.nautilus.desktop", "font"));
+    }
+}
+
+void FontWidget::restore_monospace_font()
+{
+    if (this->desktop == "mate") {
+        sessionproxy->set_default_font_string_qt("org.mate.interface", "monospace-font-name", "string");
+        monospace_font_btn->setText(sessionproxy->get_default_font_string_qt("org.mate.interface", "monospace-font-name"));
+    }
+    else {
+        sessionproxy->set_default_font_string_qt("org.gnome.desktop.interface", "monospace-font-name", "string");
+        monospace_font_btn->setText(sessionproxy->get_default_font_string_qt("org.gnome.desktop.interface", "monospace-font-name"));
+    }
+}
+
+void FontWidget::restore_document_font()
+{
+    if (this->desktop == "mate") {
+        sessionproxy->set_default_font_string_qt("org.mate.interface", "document-font-name", "string");
+        document_font_btn->setText(sessionproxy->get_default_font_string_qt("org.mate.interface", "document-font-name"));
+    }
+    else {
+        sessionproxy->set_default_font_string_qt("org.gnome.desktop.interface", "document-font-name", "string");
+        document_font_btn->setText(sessionproxy->get_default_font_string_qt("org.gnome.desktop.interface", "document-font-name"));
+    }
+}
+
+void FontWidget::restore_titlebar_font()
+{
+    if (this->desktop == "mate") {
+        sessionproxy->set_default_font_string_qt("org.mate.Marco.general", "titlebar-font", "string");
+        titlebar_font_btn->setText(sessionproxy->get_default_font_string_qt("org.mate.Marco.general", "titlebar-font"));
+    }
+    else {
+        sessionproxy->set_default_font_string_qt("org.gnome.desktop.wm.preferences", "titlebar-font", "string");
+        titlebar_font_btn->setText(sessionproxy->get_default_font_string_qt("org.gnome.desktop.wm.preferences", "titlebar-font"));
+    }
 }

@@ -23,8 +23,8 @@
 //#include "../dbusproxy/youkersessiondbus.h"
 //#include "mainwindow.h"
 
-SettingWidget::SettingWidget(QWidget *parent) :
-    QWidget(parent)
+SettingWidget::SettingWidget(QString cur_desktop, QWidget *parent) :
+    QWidget(parent), desktop(cur_desktop)
 {
     this->setFixedSize(900, 403);
     //set white background color
@@ -115,15 +115,15 @@ SettingWidget::~SettingWidget()
 void SettingWidget::initUI()
 {
     theme_widget = new ThemeWidget(this, sessionProxy);
-    icon_widget = new IconWidget(this, sessionProxy);
-    mouse_widget = new MouseWidget(this, sessionProxy, systemProxy);
-    voice_widget = new VoiceWidget(this, sessionProxy, systemProxy);
+    icon_widget = new IconWidget(this, sessionProxy, desktop);
+    mouse_widget = new MouseWidget(this, sessionProxy, systemProxy, desktop);
+    voice_widget = new VoiceWidget(this, sessionProxy, systemProxy, desktop);
     animation_widget = new AnimationWidget(this, systemProxy, p_mainwindow);
-    launcher_widget = new LauncherWidget(this, sessionProxy);
-    panel_widget = new PanelWidget(this, sessionProxy);
-    window_widget = new WindowWidget(this, sessionProxy);
-    font_widget = new FontWidget(this, sessionProxy, p_mainwindow);
-    touchpad_widget = new TouchpadWidget(this, sessionProxy);
+    launcher_widget = new LauncherWidget(this, sessionProxy, desktop);
+    panel_widget = new PanelWidget(this, sessionProxy, desktop);
+    window_widget = new WindowWidget(this, sessionProxy, desktop);
+    font_widget = new FontWidget(this, sessionProxy, p_mainwindow, desktop);
+    touchpad_widget = new TouchpadWidget(this, sessionProxy, desktop);
     deadpixel_widget = new DeadpixelWidget(this);
     nautilus_widget = new NautilusWidget(this, sessionProxy);
     stacked_widget->addWidget(h_splitter);
@@ -339,8 +339,14 @@ void SettingWidget::initDesktopWidget() {
     dot6->setPixmap(QPixmap("://res/dot.png"));
     dot7->setPixmap(QPixmap("://res/dot.png"));
     dot8->setPixmap(QPixmap("://res/dot.png"));
-    launcher_button->setText(tr("Custom Launcher"));//自定义启动器
-    panel_button->setText(tr("Dash & Panel"));//搜索和面板
+    if (this->desktop == "mate") {
+        launcher_button->setText(tr("Panel"));//面板
+        panel_button->setText(tr("StartMenu"));//启动菜单
+    }
+    else {
+        launcher_button->setText(tr("Custom Launcher"));//自定义启动器
+        panel_button->setText(tr("Dash & Panel"));//搜索和面板
+    }
     window_button->setText(tr("Window"));//窗口
     launcher_button->setStatusTip("launcher");
     panel_button->setStatusTip("panel");

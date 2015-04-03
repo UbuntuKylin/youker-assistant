@@ -1057,17 +1057,17 @@ class SessionDaemon(dbus.service.Object):
 
     # -------------------------theme-------------------------
 
-#    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='s')
-#    def get_default_font_sring(self, schema, key):
-#        return self.themeconf.get_default_schema_value(schema, key)
+    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='s')
+    def get_default_font_string(self, schema, key):
+        return self.themeconf.get_default_schema_value(schema, key)
 
 #    @dbus.service.method(INTERFACE, in_signature='ss', out_signature='d')
 #    def get_default_font_double(self, schema, key):
 #        return self.themeconf.get_default_schema_value(schema, key)
 
-#    @dbus.service.method(INTERFACE, in_signature='sss', out_signature='')
-#    def set_default_font(self, schema, key, type):
-#        self.themeconf.set_default_schema_value(schema, key, type)
+    @dbus.service.method(INTERFACE, in_signature='sss', out_signature='b')
+    def set_default_font(self, schema, key, type):
+        return self.themeconf.set_default_schema_value(schema, key, type)
 
     # get themes
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
@@ -1373,8 +1373,8 @@ class SessionDaemon(dbus.service.Object):
 
     # get titlebar double
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-    def get_titlebar_double(self):
-        return self.systemconf.get_titlebar_double()
+    def get_titlebar_options(self):
+        return self.systemconf.get_titlebar_options()
 
     # get current titlebar double
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')

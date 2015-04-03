@@ -33,7 +33,7 @@ class IconWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit IconWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0);
+    explicit IconWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0, QString cur_desktop = "");
     ~IconWidget();
     void setLanguage();
     void initConnect();
@@ -66,7 +66,6 @@ private:
     KylinSwitcher *network_switcher;
     KylinSwitcher *recycle_switcher;
     KylinSwitcher *disk_switcher;
-    QString desktop;
 };
 
 #endif // ICONWIDGET_H

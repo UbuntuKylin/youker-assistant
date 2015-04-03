@@ -19,8 +19,8 @@
 
 #include "settingaction.h"
 
-SettingAction::SettingAction(QWidget *parent)
-	: QWidget(parent)
+SettingAction::SettingAction(QString cur_desktop, QWidget *parent)
+    : QWidget(parent), desktop(cur_desktop)
 {
     this->setFixedSize(900, 150);
     this->setAutoFillBackground(true);
@@ -107,7 +107,7 @@ void SettingAction::setLanguage(int index)
 //        description_label->setText(tr("Set the desktop icon theme and the visibility of desktop icons."));
         break;
     case 3:
-        title_label->setText(tr("Replace the theme and size of the mouse pointer, and theme change need to restart system."));
+        title_label->setText(tr("Replace the theme and size of the mouse pointer, and theme change need to restart system"));
 //        description_label->setText(tr("Replace the theme and size of the mouse pointer,  then click the 'OK' button to confirm. Also, theme change need to restart system."));
         break;
     case 4:
@@ -119,11 +119,17 @@ void SettingAction::setLanguage(int index)
 //        description_label->setText(tr("Click the \"Custom Picture\" button to select the picture you want to add, click the picture you want to set and push the \"OK\" button to complete."));
         break;
     case 6:
-        title_label->setText(tr("Setting the Launcher display mode, Icon size."));
+        if (this->desktop == "mate")
+            title_label->setText(tr("Setting the panel mode of auto hide and icon size"));
+        else
+            title_label->setText(tr("Setting the Launcher display mode, Icon size"));
 //        description_label->setText(tr("Setting the Launcher display mode, Icon size."));
         break;
     case 7:
-        title_label->setText(tr("Manage Dash and Panel menu settings"));
+        if (this->desktop == "mate")
+            title_label->setText(tr("Manage display of the start menu"));
+        else
+            title_label->setText(tr("Manage Dash and Panel menu settings"));
 //        description_label->setText(tr("Manage Dash and Panel menu settings."));
         break;
     case 8:
@@ -143,7 +149,10 @@ void SettingAction::setLanguage(int index)
 //        description_label->setText(tr("Monitor Check."));
         break;
     case 12:
-        title_label->setText(tr("Manage the Nautilus file manager. Tips: if the thumbnail's cache time or size is set to -1, it will not be checked."));
+        if (this->desktop == "mate")
+            title_label->setText(tr("Manage the Caja file manager. Tips: if the thumbnail's cache time or size is set to -1, it will not be checked"));
+        else
+            title_label->setText(tr("Manage the Nautilus file manager. Tips: if the thumbnail's cache time or size is set to -1, it will not be checked"));
 //        description_label->setText(tr("Manage the Nautilus file manager. Tips: if the thumbnail's cache time or size is set to -1, it will not be checked."));
         break;
     default:

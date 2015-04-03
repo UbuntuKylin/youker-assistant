@@ -34,7 +34,7 @@ class WindowWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit WindowWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0);
+    explicit WindowWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0, QString cur_desktop = "");
     ~WindowWidget();
     void setLanguage();
     void initConnect();
@@ -63,7 +63,6 @@ private:
     QLabel *position_label;
     QRadioButton *left_radio;
     QRadioButton *right_radio;
-    QString desktop;
 };
 
 #endif // WINDOWWIDGET_H

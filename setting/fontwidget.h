@@ -33,7 +33,7 @@ class FontWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit FontWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0, MainWindow *window = 0);
+    explicit FontWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0, MainWindow *window = 0, QString cur_desktop = "");
     ~FontWidget();
     void setLanguage();
     void initConnect();
@@ -53,6 +53,11 @@ public slots:
     void resetMonospaceFont(QString cur_font);
     void resetDocumentFont(QString cur_font);
     void resetTitlebarFont(QString cur_font);
+    void restore_default_font();
+    void restore_desktop_font();
+    void restore_monospace_font();
+    void restore_document_font();
+    void restore_titlebar_font();
 
 private:
     SessionDispatcher *sessionproxy;
@@ -73,6 +78,12 @@ private:
     QDoubleSpinBox *scaling_slider;
     QComboBox *hinting_combo;
     QComboBox *antialiasing_combo;
+
+    QPushButton *restore_default_font_btn;
+    QPushButton *restore_desktop_font_btn;
+    QPushButton *restore_monospace_font_btn;
+    QPushButton *restore_document_font_btn;
+    QPushButton *restore_titlebar_font_btn;
 
     QString current_font;
     QString desktop_font;

@@ -25,12 +25,12 @@
 #include "../dbusproxy/youkersessiondbus.h"
 #include "../dbusproxy/youkersystemdbus.h"
 
-MouseWidget::MouseWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispatcher *sproxy) :
+MouseWidget::MouseWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispatcher *sproxy, QString cur_desktop) :
     QWidget(parent),
     sessionproxy(proxy),
-    systemproxy(sproxy)
+    systemproxy(sproxy),
+    desktop(cur_desktop)
 {
-    this->desktop = sessionproxy->access_current_desktop_qt();
     theme_label = new QLabel();
     size_label = new QLabel();
     theme_combo = new QComboBox();

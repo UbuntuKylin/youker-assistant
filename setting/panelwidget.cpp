@@ -25,11 +25,10 @@
 #include <QHBoxLayout>
 #include "../dbusproxy/youkersessiondbus.h"
 
-PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy) :
+PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_desktop) :
     QWidget(parent),
     sessionproxy(proxy)
 {
-    this->desktop = sessionproxy->access_current_desktop_qt();
     blur_label = new QLabel();
     transparency_label = new QLabel();
     date_format_label = new QLabel();
@@ -81,7 +80,7 @@ PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy) :
     icon_switcher = new KylinSwitcher();
     places_switcher = new KylinSwitcher();
 
-    if (this->desktop == "mate") {
+    if (cur_desktop == "mate") {
         blur_label->hide();
         transparency_label->hide();
         date_format_label->hide();

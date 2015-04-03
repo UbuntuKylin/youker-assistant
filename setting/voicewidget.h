@@ -33,7 +33,7 @@ class VoiceWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit VoiceWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0, SystemDispatcher *sproxy = 0);
+    explicit VoiceWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0, SystemDispatcher *sproxy = 0, QString cur_desktop = "");
     ~VoiceWidget();
     void setLanguage();
     void initConnect();
@@ -56,7 +56,6 @@ private:
     KylinSwitcher *tip_switcher;
     KylinSwitcher *event_switcher;
     KylinSwitcher *feedback_switcher;
-    QString desktop;
 };
 
 #endif // VOICEWIDGET_H

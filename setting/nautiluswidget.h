@@ -66,7 +66,6 @@ private:
     QSlider *icon_size_slider;
     QSlider *cache_time_slider;
     QSlider *cache_size_slider;
-
 };
 
 #endif // NAUTILUSWIDGET_H

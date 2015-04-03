@@ -34,7 +34,7 @@ class LauncherWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit LauncherWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0);
+    explicit LauncherWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0, QString cur_desktop = "");
     ~LauncherWidget();
     void setLanguage();
     void initConnect();
@@ -74,7 +74,6 @@ private:
     QSlider *size_bottom_slider;
     KylinSwitcher *hide_top_switcher;
     KylinSwitcher *hide_bottom_switcher;
-    QString desktop;
 };
 
 #endif // LAUNCHERWIDGET_H
