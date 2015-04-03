@@ -35,7 +35,7 @@ import threading
 
 import cleaner
 from autostartmanage import autostartmanage
-import pywapi
+#import pywapi
 import urllib2, urllib
 from urllib import urlencode
 from xml.dom.minidom import parseString
@@ -46,10 +46,10 @@ import locale
 import datetime
 HOME = os.path.expandvars('$HOME')
 
-import mechanize
-import cookielib
-import random
-from BeautifulSoup import BeautifulSoup
+#import mechanize
+#import cookielib
+#import random
+#from BeautifulSoup import BeautifulSoup
 
 
 from beautify.desktop import Desktop
@@ -65,21 +65,21 @@ from camera.capture import Capture
 #from weather.yahoo import YahooWeather
 from common import *
 #from unzip import unzip_resource
-from piston_mini_client import APIError
+#from piston_mini_client import APIError
 import httplib2
 #from weather.piston import WeatherPistonAPI
 #MySever = ("http://service.ubuntukylin.com:8001/weather/api/1.0/")
 #WeatherPistonAPI.default_service_root = MySever
 
-from piston_remoter import PingBackPistonAPI
+#from piston_remoter import PingBackPistonAPI
 #PingBackSever = ("http://servicPingBackPistonAPIe.ubuntukylin.com:8001/youker-assistant/")
 #PingBackPistonAPI.default_service_root = PingBackSever
-PINGBACK_SERVER = "http://service.ubuntukylin.com:8001/youker-assistant/"
+#PINGBACK_SERVER = "http://service.ubuntukylin.com:8001/youker-assistant/"
 
-from piston_remoter import ServerPingBackAPI
-WEATHER_SERVER = "http://service.ubuntukylin.com:8001/weather/"
+#from piston_remoter import ServerPingBackAPI
+#WEATHER_SERVER = "http://service.ubuntukylin.com:8001/weather/"
 
-from appcollections.monitorball.monitor_ball import MonitorBall
+#from appcollections.monitorball.monitor_ball import MonitorBall
 
 from sso.ubuntusso import get_ubuntu_sso_backend
 
@@ -105,18 +105,18 @@ class SessionDaemon(dbus.service.Object):
         self.themeconf = Theme()
         self.systemconf = System(self)
         self.soundconf = Sound()
-        self.ballconf = MonitorBall()
+#        self.ballconf = MonitorBall()
         self.fileconf = FileManager()
 #        self.yahooconf = YahooWeather(self)
 #        self.server = WeatherPistonAPI(service_root=MySever)
-        self.premoter = PingBackPistonAPI(service_root=PINGBACK_SERVER)
+#        self.premoter = PingBackPistonAPI(service_root=PINGBACK_SERVER)
 #        self.weatherping = ServerPingBackAPI(service_root=WEATHER_SERVER)
-        self.daemonsame = cleaner.SearchTheSame()
-        self.daemonlarge = cleaner.ManageTheLarge()
-        self.daemonunneed = cleaner.CleanTheUnneed()
-        self.daemonoldkernel = cleaner.CleanTheOldkernel()
-        self.daemoncache = cleaner.CleanTheCache()
-        self.init_mechanize()
+#        self.daemonsame = cleaner.SearchTheSame()
+#        self.daemonlarge = cleaner.ManageTheLarge()
+#        self.daemonunneed = cleaner.CleanTheUnneed()
+#        self.daemonoldkernel = cleaner.CleanTheOldkernel()
+#        self.daemoncache = cleaner.CleanTheCache()
+#        self.init_mechanize()
 #        # sso - Robert
 #        self.sso = get_ubuntu_sso_backend()
 #        self.sso.connect("whoami", self.slot_whoami_done)
@@ -275,26 +275,26 @@ class SessionDaemon(dbus.service.Object):
             else:
                 open(distrowatch_path, "wb").write(open(srcFile, "rb").read())
 
-    def init_mechanize(self):
-        #copy distrowatch default file
-        self.copy_distrowatch_default_conf()
-        # Browser
-        self.br = mechanize.Browser()
-        # Cookie Jar
-        cj = cookielib.LWPCookieJar()
-        self.br.set_cookiejar(cj)
+#    def init_mechanize(self):
+#        #copy distrowatch default file
+#        self.copy_distrowatch_default_conf()
+#        # Browser
+#        self.br = mechanize.Browser()
+#        # Cookie Jar
+#        cj = cookielib.LWPCookieJar()
+#        self.br.set_cookiejar(cj)
 
-        # Browser options
-        self.br.set_handle_equiv(True)
-#        self.br.set_handle_gzip(True)
-        #self.br.set_handle_gzip(False)
-        self.br.set_handle_redirect(True)
-        self.br.set_handle_referer(True)
-        self.br.set_handle_robots(False)
-        self.br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
-        index = random.randint(0, LEN_AGENT-1)
-        # br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Ubuntu/3.0.1-1.fc9 Firefox/3.0.1'), ('Accept-Language', 'zh-CN,zh;q=0.8,en;q=0.6')]
-        self.br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Ubuntu/3.0.1-1.fc9 Firefox/3.0.1')]
+#        # Browser options
+#        self.br.set_handle_equiv(True)
+##        self.br.set_handle_gzip(True)
+#        #self.br.set_handle_gzip(False)
+#        self.br.set_handle_redirect(True)
+#        self.br.set_handle_referer(True)
+#        self.br.set_handle_robots(False)
+#        self.br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
+#        index = random.randint(0, LEN_AGENT-1)
+#        # br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Ubuntu/3.0.1-1.fc9 Firefox/3.0.1'), ('Accept-Language', 'zh-CN,zh;q=0.8,en;q=0.6')]
+#        self.br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Ubuntu/3.0.1-1.fc9 Firefox/3.0.1')]
 
 #    @dbus.service.signal(INTERFACE, signature='b')
 #    def distrowatch_ubuntukylin_signal(self, uk_flag):
@@ -1591,30 +1591,30 @@ class SessionDaemon(dbus.service.Object):
     #----END---------------------New-Youker-------------------------
 
     # -------------------------monitorball-------------------------
-    # get cpu percent
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='d')
-    def get_cpu_percent(self):
-        return self.ballconf.get_cpu_percent()
+#    # get cpu percent
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='d')
+#    def get_cpu_percent(self):
+#        return self.ballconf.get_cpu_percent()
 
-    # get total memory
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
-    def get_total_memory(self):
-        return self.ballconf.get_total_memory()
+#    # get total memory
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+#    def get_total_memory(self):
+#        return self.ballconf.get_total_memory()
 
-    # get used memory
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
-    def get_used_memory(self):
-        return self.ballconf.get_used_memory()
+#    # get used memory
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+#    def get_used_memory(self):
+#        return self.ballconf.get_used_memory()
 
-    # get free memory
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
-    def get_free_memory(self):
-        return self.ballconf.get_free_memory()
+#    # get free memory
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+#    def get_free_memory(self):
+#        return self.ballconf.get_free_memory()
 
-    # get network flow total, return (up, down)
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
-    def get_network_flow_total(self):
-        return self.ballconf.get_network_flow_total()
+#    # get network flow total, return (up, down)
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+#    def get_network_flow_total(self):
+#        return self.ballconf.get_network_flow_total()
 
     # -------------------------weather-------------------------
     # get weather information of six days

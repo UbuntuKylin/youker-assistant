@@ -40,12 +40,15 @@ class Theme:
     # -----------------默认值-----------------
     # Get Default Value
     def get_default_schema_value(self, schema, key):
-        return gsettings.get_schema_value(schema, key)
+        default_value = gsettings.get_schema_value(schema, key)
+        if (default_value in (None, '') and schema == 'org.gnome.nautilus.desktop' and key == 'font'):
+            default_value = 'Ubuntu 11'
+        return default_value
 
     # Set Default Value
     def set_default_schema_value(self, schema, key, type):
         default_value = self.get_default_schema_value(schema, key)
-        if (default_value == '' and schema == 'org.gnome.nautilus.desktop' and key == 'font'):
+        if (default_value in (None, '') and schema == 'org.gnome.nautilus.desktop' and key == 'font'):
             default_value = 'Ubuntu 11'
         if default_value is not None:
             return gsettings.set(schema, None, key, type, default_value)

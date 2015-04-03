@@ -1,24 +1,27 @@
-youker-assistant (2.0.2-0ubuntu1) vivid; urgency=medium
+youker-assistant (2.0.2) vivid; urgency=low
 
-  * Deal with incosistency of system info and autostart
+  * Add mate-desktop-environment settings.
+  * Deal with system information for mate.
+  * Add restore button for font.
 
- -- Aron Xu <happyaron@ubuntu.com>  Tue, 24 Mar 2015 21:12:41 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 03 Apr 2015 11:35:19 +0800
 
-youker-assistant (2.0.1-0ubuntu1) vivid; urgency=low
+youker-assistant (2.0.1) vivid; urgency=low
 
-  * New upstream release:
-    - Decrease CPU occupation.
-    - Deal with system information access exceptions.
-    - Improve UI.
-    - General bug fixes.
+  * Achieve low CPU occupancy rate.
+  * Improve UI.
+  * Fixed some bug.
+  * Deal with system information access exception.
+  * Deal with autostart Apps.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 13 Mar 2015 10:07:56 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 23 Mar 2015 21:36:55 +0800
 
-youker-assistant (2.0.0-0ubuntu1) vivid; urgency=low
+youker-assistant (2.0.0) vivid; urgency=low
 
-  * New upstream release.
+  * New UI.
+  * Fixed FileDialog and LoginDialog.
 
- -- Aron Xu <happyaron@ubuntu.com>  Fri, 20 Feb 2015 22:16:28 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 20 Feb 2015 22:16:28 +0800
 
 youker-assistant (1.3.3-0ubuntu1) vivid; urgency=low
 
