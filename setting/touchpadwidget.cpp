@@ -26,11 +26,11 @@
 #include <QVBoxLayout>
 #include "../dbusproxy/youkersessiondbus.h"
 
-TouchpadWidget::TouchpadWidget(QWidget *parent, SessionDispatcher *proxy) :
+TouchpadWidget::TouchpadWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_desktop) :
     QWidget(parent),
-    sessionproxy(proxy)
+    sessionproxy(proxy),
+    desktop(cur_desktop)
 {
-    this->desktop = sessionproxy->access_current_desktop_qt();
     touchpad_label = new QLabel();
     horizontal_scrolling_label = new QLabel();
     scrollbar_type_label = new QLabel();

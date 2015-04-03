@@ -265,8 +265,11 @@ class System():
 #“minimize”最小化窗口，“shade”卷起窗口，
 #“menu”显示窗口菜单，“lower”将窗口降低到所有窗口之下，还有“none”什么也不做。
     # get titlebar double
-    def get_titlebar_double(self):
-        return ['none', 'toggle-maximize', 'toggle-maximize-horizontally', 'toggle-maximize-vertically', 'minimize', 'toggle-shade', 'lower', 'menu', 'last']
+    def get_titlebar_options(self):
+        if self.dekstop == "mate":
+            return ['none', 'toggle_maximize', 'toggle_maximize_horizontally', 'toggle_maximize_vertically', 'minimize',  'toggle_shade', 'lower', 'menu', 'last']
+        else:
+            return ['none', 'toggle-maximize', 'toggle-maximize-horizontally', 'toggle-maximize-vertically', 'minimize', 'toggle-shade', 'lower', 'menu', 'last']
 
     # get current titlebar double
     def get_current_titlebar_double(self):

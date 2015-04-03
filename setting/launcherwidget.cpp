@@ -28,11 +28,10 @@
 #include <QHBoxLayout>
 #include "../dbusproxy/youkersessiondbus.h"
 
-LauncherWidget::LauncherWidget(QWidget *parent, SessionDispatcher *proxy) :
+LauncherWidget::LauncherWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_desktop) :
     QWidget(parent),
     sessionproxy(proxy)
 {
-    this->desktop = sessionproxy->access_current_desktop_qt();
     size_label = new QLabel();
     size_value_label = new QLabel();
     hide_label = new QLabel();
@@ -83,7 +82,7 @@ LauncherWidget::LauncherWidget(QWidget *parent, SessionDispatcher *proxy) :
 //    QSlider *size_bottom_slider;
 //    KylinSwitcher *hide_top_switcher;
 //    KylinSwitcher *icon_bottom_switcher;
-    if (this->desktop == "mate") {
+    if (cur_desktop == "mate") {
         size_label->hide();
         size_value_label->hide();
         hide_label->hide();

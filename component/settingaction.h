@@ -34,7 +34,7 @@ class SettingAction : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SettingAction(QWidget *parent = 0);
+    explicit SettingAction(QString cur_dekstop = "", QWidget *parent = 0);
     ~SettingAction();
 //    void setParentWindow(MainWindow* window) { p_mainwindow = window;}
     void setLanguage(int index);
@@ -48,6 +48,7 @@ private:
     QLabel *title_label;
 //    QLabel *description_label;
 //    MainWindow *p_mainwindow;
+    QString desktop;
 };
 
 #endif // SETTINGACTION_H

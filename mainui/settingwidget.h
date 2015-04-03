@@ -51,7 +51,7 @@ class SettingWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SettingWidget(QWidget *parent = 0);
+    explicit SettingWidget(QString cur_desktop = "", QWidget *parent = 0);
     ~SettingWidget();
     void initIndividuationWidget();
     void initDesktopWidget();
@@ -132,6 +132,7 @@ private:
     QLabel *other_title;
     QLabel *dot12;
     QPushButton *nautilus_button;
+    QString desktop;
 };
 
 #endif // SETTINGWIDGET_H

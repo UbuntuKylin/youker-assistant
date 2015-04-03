@@ -173,6 +173,9 @@ public:
 //    void set_window_theme_qt(QString theme);
 
 //    /*-------------------fonts of beauty-------------------*/
+    QString get_default_font_string_qt(QString schema, QString key);
+    bool set_default_font_string_qt(QString schema, QString key, QString type);
+
     QString get_font_qt();
 //    Q_INVOKABLE bool set_font_qt_default(QString font);
     bool set_font_qt(QString font);
@@ -225,13 +228,13 @@ public:
     QStringList get_titlebar_wheel_qt();
     QString get_current_titlebar_wheel_qt();
     void set_titlebar_wheel_qt(QString value);
-    QStringList get_titlebar_double_qt();
+    QStringList get_titlebar_options_qt();
     QString get_current_titlebar_double_qt();
     void set_titlebar_double_qt(QString value);
-    QStringList get_titlebar_middle_qt();
+//    QStringList get_titlebar_middle_qt();
     QString get_current_titlebar_middle_qt();
     void set_titlebar_middle_qt(QString value);
-    QStringList get_titlebar_right_qt();
+//    QStringList get_titlebar_right_qt();
     QString get_current_titlebar_right_qt();
     void set_titlebar_right_qt(QString value);
 

@@ -23,12 +23,12 @@
 #include <QHBoxLayout>
 #include <QRadioButton>
 #include "../dbusproxy/youkersessiondbus.h"
+#include <QDebug>
 
-WindowWidget::WindowWidget(QWidget *parent, SessionDispatcher *proxy) :
+WindowWidget::WindowWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_desktop) :
     QWidget(parent),
     sessionproxy(proxy)
 {
-    this->desktop = sessionproxy->access_current_desktop_qt();
     icon_label = new QLabel();
     wheel_label = new QLabel();
     double_click_label = new QLabel();
@@ -47,7 +47,7 @@ WindowWidget::WindowWidget(QWidget *parent, SessionDispatcher *proxy) :
     right_radio->setFocusPolicy(Qt::NoFocus);
     right_radio->setObjectName("rightradio");
 
-    if (this->desktop == "mate") {
+    if (cur_desktop == "mate") {
         icon_label->hide();
         icon_switcher->hide();
     }
@@ -178,11 +178,11 @@ void WindowWidget::initData()
     wheel_combo->setCurrentIndex(initIndex1);
 
     QString current_double_type = sessionproxy->get_current_titlebar_double_qt();
-    QStringList doublelist  = sessionproxy->get_titlebar_double_qt();
+    QStringList titlebar_options  = sessionproxy->get_titlebar_options_qt();
     double_click_combo->clear();
     double_click_combo->clearEditText();
-    double_click_combo->addItems(doublelist);
-    QList<QString>::Iterator it2 = doublelist.begin(), itend2 = doublelist.end();
+    double_click_combo->addItems(titlebar_options);
+    QList<QString>::Iterator it2 = titlebar_options.begin(), itend2 = titlebar_options.end();
     int initIndex2 = 0;
     for(;it2 != itend2; it2++,initIndex2++)
     {
@@ -192,11 +192,11 @@ void WindowWidget::initData()
     double_click_combo->setCurrentIndex(initIndex2);
 
     QString current_middle_type = sessionproxy->get_current_titlebar_middle_qt();
-    QStringList middlelist  = sessionproxy->get_titlebar_middle_qt();
+//    QStringList middlelist  = sessionproxy->get_titlebar_middle_qt();
     middle_click_combo->clear();
     middle_click_combo->clearEditText();
-    middle_click_combo->addItems(middlelist);
-    QList<QString>::Iterator it3 = middlelist.begin(), itend3 = middlelist.end();
+    middle_click_combo->addItems(titlebar_options);
+    QList<QString>::Iterator it3 = titlebar_options.begin(), itend3 = titlebar_options.end();
     int initIndex3 = 0;
     for(;it3 != itend3; it3++,initIndex3++)
     {
@@ -206,11 +206,11 @@ void WindowWidget::initData()
     middle_click_combo->setCurrentIndex(initIndex3);
 
     QString current_right_type = sessionproxy->get_current_titlebar_right_qt();
-    QStringList rightlist  = sessionproxy->get_titlebar_right_qt();
+//    QStringList rightlist  = sessionproxy->get_titlebar_right_qt();
     right_click_combo->clear();
     right_click_combo->clearEditText();
-    right_click_combo->addItems(rightlist);
-    QList<QString>::Iterator it4 = rightlist.begin(), itend4 = rightlist.end();
+    right_click_combo->addItems(titlebar_options);
+    QList<QString>::Iterator it4 = titlebar_options.begin(), itend4 = titlebar_options.end();
     int initIndex4 = 0;
     for(;it4 != itend4; it4++,initIndex4++)
     {

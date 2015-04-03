@@ -20,8 +20,8 @@
 #include "settingactionwidget.h"
 #include "mainwindow.h"
 
-SettingActionWidget::SettingActionWidget(QWidget *parent)
-	: QWidget(parent)
+SettingActionWidget::SettingActionWidget(QString cur_desktop, QWidget *parent)
+    : QWidget(parent), desktop(cur_desktop)
 {
     this->setFixedSize(900, 150);
     this->setAutoFillBackground(true);
@@ -60,30 +60,30 @@ SettingActionWidget::SettingActionWidget(QWidget *parent)
     main_acion->setLayout(layout2);
 
     stacked_widget = new QStackedWidget(this);//stacked_widget will delete when SettingWidget delete
-    theme_action = new SettingAction();
+    theme_action = new SettingAction(desktop);
     theme_action->setLanguage(1);
 
-    icon_action = new SettingAction();
+    icon_action = new SettingAction(desktop);
     icon_action->setLanguage(2);
-    mouse_action = new SettingAction();
+    mouse_action = new SettingAction(desktop);
     mouse_action->setLanguage(3);
-    voice_action = new SettingAction();
+    voice_action = new SettingAction(desktop);
     voice_action->setLanguage(4);
-    animation_action = new SettingAction();
+    animation_action = new SettingAction(desktop);
     animation_action->setLanguage(5);
-    launcher_action = new SettingAction();
+    launcher_action = new SettingAction(desktop);
     launcher_action->setLanguage(6);
-    panel_action = new SettingAction();
+    panel_action = new SettingAction(desktop);
     panel_action->setLanguage(7);
-    window_action = new SettingAction();
+    window_action = new SettingAction(desktop);
     window_action->setLanguage(8);
-    font_action = new SettingAction();
+    font_action = new SettingAction(desktop);
     font_action->setLanguage(9);
-    touchpad_action = new SettingAction();
+    touchpad_action = new SettingAction(desktop);
     touchpad_action->setLanguage(10);
-    deadpixel_action = new SettingAction();
+    deadpixel_action = new SettingAction(desktop);
     deadpixel_action->setLanguage(11);
-    nautilus_action = new SettingAction();
+    nautilus_action = new SettingAction(desktop);
     nautilus_action->setLanguage(12);
     stacked_widget->addWidget(main_acion);
     stacked_widget->addWidget(theme_action);

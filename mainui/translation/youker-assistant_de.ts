@@ -1204,52 +1204,61 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>FontWidget</name>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="64"/>
-        <location filename="../../setting/fontwidget.cpp" line="65"/>
-        <location filename="../../setting/fontwidget.cpp" line="66"/>
-        <location filename="../../setting/fontwidget.cpp" line="67"/>
-        <location filename="../../setting/fontwidget.cpp" line="68"/>
+        <location filename="../../setting/fontwidget.cpp" line="85"/>
+        <location filename="../../setting/fontwidget.cpp" line="86"/>
+        <location filename="../../setting/fontwidget.cpp" line="87"/>
+        <location filename="../../setting/fontwidget.cpp" line="88"/>
+        <location filename="../../setting/fontwidget.cpp" line="89"/>
         <source>Click here to change font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="171"/>
+        <location filename="../../setting/fontwidget.cpp" line="202"/>
         <source>Default Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="172"/>
+        <location filename="../../setting/fontwidget.cpp" line="203"/>
         <source>Desktop Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="173"/>
+        <location filename="../../setting/fontwidget.cpp" line="204"/>
         <source>Monospace Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="174"/>
+        <location filename="../../setting/fontwidget.cpp" line="205"/>
         <source>Document Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="175"/>
+        <location filename="../../setting/fontwidget.cpp" line="206"/>
         <source>Titlebar Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="176"/>
+        <location filename="../../setting/fontwidget.cpp" line="207"/>
         <source>Global Font Scaling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="177"/>
+        <location filename="../../setting/fontwidget.cpp" line="208"/>
         <source>Hinting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="178"/>
+        <location filename="../../setting/fontwidget.cpp" line="209"/>
         <source>Antialiasing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/fontwidget.cpp" line="210"/>
+        <location filename="../../setting/fontwidget.cpp" line="211"/>
+        <location filename="../../setting/fontwidget.cpp" line="212"/>
+        <location filename="../../setting/fontwidget.cpp" line="213"/>
+        <location filename="../../setting/fontwidget.cpp" line="214"/>
+        <source>Restore</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1468,37 +1477,37 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>IconWidget</name>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="199"/>
+        <location filename="../../setting/iconwidget.cpp" line="198"/>
         <source>Icon theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="200"/>
+        <location filename="../../setting/iconwidget.cpp" line="199"/>
         <source>Show Desktop Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="201"/>
+        <location filename="../../setting/iconwidget.cpp" line="200"/>
         <source>Computer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="202"/>
+        <location filename="../../setting/iconwidget.cpp" line="201"/>
         <source>Home Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="203"/>
+        <location filename="../../setting/iconwidget.cpp" line="202"/>
         <source>Network</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="204"/>
+        <location filename="../../setting/iconwidget.cpp" line="203"/>
         <source>Trash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="205"/>
+        <location filename="../../setting/iconwidget.cpp" line="204"/>
         <source>Mounted Volumes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1666,47 +1675,47 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>LauncherWidget</name>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="219"/>
+        <location filename="../../setting/launcherwidget.cpp" line="218"/>
         <source>Launcher icon size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="220"/>
+        <location filename="../../setting/launcherwidget.cpp" line="219"/>
         <source>Launcher hide mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="221"/>
+        <location filename="../../setting/launcherwidget.cpp" line="220"/>
         <source>Display desktop icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="222"/>
+        <location filename="../../setting/launcherwidget.cpp" line="221"/>
         <source>Launcher Transparency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="223"/>
+        <location filename="../../setting/launcherwidget.cpp" line="222"/>
         <source>Icon Background</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="224"/>
+        <location filename="../../setting/launcherwidget.cpp" line="223"/>
         <source>Top panel icon size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="225"/>
+        <location filename="../../setting/launcherwidget.cpp" line="224"/>
         <source>Top panel auto hide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="226"/>
+        <location filename="../../setting/launcherwidget.cpp" line="225"/>
         <source>Bottom panel icon size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="227"/>
+        <location filename="../../setting/launcherwidget.cpp" line="226"/>
         <source>Bottom panel auto hide</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1835,82 +1844,82 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PanelWidget</name>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="250"/>
+        <location filename="../../setting/panelwidget.cpp" line="249"/>
         <source>Dash background blur type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="251"/>
+        <location filename="../../setting/panelwidget.cpp" line="250"/>
         <source>Panel Transparency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="252"/>
+        <location filename="../../setting/panelwidget.cpp" line="251"/>
         <source>Date &amp; time format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="253"/>
+        <location filename="../../setting/panelwidget.cpp" line="252"/>
         <source>Display seconds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="254"/>
+        <location filename="../../setting/panelwidget.cpp" line="253"/>
         <source>Display week</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="255"/>
+        <location filename="../../setting/panelwidget.cpp" line="254"/>
         <source>Display the date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="256"/>
+        <location filename="../../setting/panelwidget.cpp" line="255"/>
         <source>Display battery icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="257"/>
+        <location filename="../../setting/panelwidget.cpp" line="256"/>
         <source>Display battery percentage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="258"/>
+        <location filename="../../setting/panelwidget.cpp" line="257"/>
         <source>Display battery remaining time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="260"/>
+        <location filename="../../setting/panelwidget.cpp" line="259"/>
         <source>Smart blur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="261"/>
+        <location filename="../../setting/panelwidget.cpp" line="260"/>
         <source>Static blur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="262"/>
+        <location filename="../../setting/panelwidget.cpp" line="261"/>
         <source>Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="264"/>
+        <location filename="../../setting/panelwidget.cpp" line="263"/>
         <source>Show applications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="265"/>
+        <location filename="../../setting/panelwidget.cpp" line="264"/>
         <source>Show system</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="267"/>
+        <location filename="../../setting/panelwidget.cpp" line="266"/>
         <source>Show places</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="266"/>
+        <location filename="../../setting/panelwidget.cpp" line="265"/>
         <source>Show icon</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1983,11 +1992,6 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="110"/>
-        <source>Replace the theme and size of the mouse pointer, and theme change need to restart system.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../component/settingaction.cpp" line="114"/>
         <source>Set the sound theme you want</source>
         <translation type="unfinished"></translation>
@@ -1998,38 +2002,58 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="122"/>
-        <source>Setting the Launcher display mode, Icon size.</source>
+        <location filename="../../component/settingaction.cpp" line="110"/>
+        <source>Replace the theme and size of the mouse pointer, and theme change need to restart system</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="126"/>
-        <source>Manage Dash and Panel menu settings</source>
+        <location filename="../../component/settingaction.cpp" line="123"/>
+        <source>Setting the panel mode of auto hide and icon size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../component/settingaction.cpp" line="125"/>
+        <source>Setting the Launcher display mode, Icon size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../component/settingaction.cpp" line="130"/>
+        <source>Manage display of the start menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../component/settingaction.cpp" line="132"/>
+        <source>Manage Dash and Panel menu settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../component/settingaction.cpp" line="136"/>
         <source>Window Manager settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="134"/>
+        <location filename="../../component/settingaction.cpp" line="140"/>
         <source>According to personal preferences to set the system default font, click the  &apos;Restore&apos; button, can be restored to the state before the font settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="138"/>
+        <location filename="../../component/settingaction.cpp" line="144"/>
         <source>Setting the relevant properties of your touchpad,make the operation more convenient</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="142"/>
+        <location filename="../../component/settingaction.cpp" line="148"/>
         <source>Monitor Check</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="146"/>
-        <source>Manage the Nautilus file manager. Tips: if the thumbnail&apos;s cache time or size is set to -1, it will not be checked.</source>
+        <location filename="../../component/settingaction.cpp" line="153"/>
+        <source>Manage the Caja file manager. Tips: if the thumbnail&apos;s cache time or size is set to -1, it will not be checked</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../component/settingaction.cpp" line="155"/>
+        <source>Manage the Nautilus file manager. Tips: if the thumbnail&apos;s cache time or size is set to -1, it will not be checked</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2079,52 +2103,62 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="342"/>
-        <source>Custom Launcher</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingwidget.cpp" line="343"/>
-        <source>Dash &amp; Panel</source>
+        <source>Panel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingwidget.cpp" line="344"/>
+        <source>StartMenu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingwidget.cpp" line="347"/>
+        <source>Custom Launcher</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingwidget.cpp" line="348"/>
+        <source>Dash &amp; Panel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingwidget.cpp" line="350"/>
         <source>Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="392"/>
+        <location filename="../settingwidget.cpp" line="398"/>
         <source>Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="394"/>
+        <location filename="../settingwidget.cpp" line="400"/>
         <source>FontSetting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="452"/>
+        <location filename="../settingwidget.cpp" line="458"/>
         <source>Sys options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="455"/>
+        <location filename="../settingwidget.cpp" line="461"/>
         <source>Touchpad</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="456"/>
+        <location filename="../settingwidget.cpp" line="462"/>
         <source>Dead pixel check</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="504"/>
+        <location filename="../settingwidget.cpp" line="510"/>
         <source>Others</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="506"/>
+        <location filename="../settingwidget.cpp" line="512"/>
         <source>File manager</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2315,22 +2349,22 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>VoiceWidget</name>
     <message>
-        <location filename="../../setting/voicewidget.cpp" line="106"/>
+        <location filename="../../setting/voicewidget.cpp" line="105"/>
         <source>Sound theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/voicewidget.cpp" line="107"/>
+        <location filename="../../setting/voicewidget.cpp" line="106"/>
         <source>Login tone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/voicewidget.cpp" line="108"/>
+        <location filename="../../setting/voicewidget.cpp" line="107"/>
         <source>Event sounds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/voicewidget.cpp" line="109"/>
+        <location filename="../../setting/voicewidget.cpp" line="108"/>
         <source>Input feedback sounds</source>
         <translation type="unfinished"></translation>
     </message>

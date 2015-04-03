@@ -1297,53 +1297,62 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>FontWidget</name>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="64"/>
-        <location filename="../../setting/fontwidget.cpp" line="65"/>
-        <location filename="../../setting/fontwidget.cpp" line="66"/>
-        <location filename="../../setting/fontwidget.cpp" line="67"/>
-        <location filename="../../setting/fontwidget.cpp" line="68"/>
+        <location filename="../../setting/fontwidget.cpp" line="85"/>
+        <location filename="../../setting/fontwidget.cpp" line="86"/>
+        <location filename="../../setting/fontwidget.cpp" line="87"/>
+        <location filename="../../setting/fontwidget.cpp" line="88"/>
+        <location filename="../../setting/fontwidget.cpp" line="89"/>
         <source>Click here to change font</source>
         <translation>点击此处更换字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="171"/>
+        <location filename="../../setting/fontwidget.cpp" line="202"/>
         <source>Default Font</source>
         <translation>默认字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="172"/>
+        <location filename="../../setting/fontwidget.cpp" line="203"/>
         <source>Desktop Font</source>
         <translation>桌面字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="173"/>
+        <location filename="../../setting/fontwidget.cpp" line="204"/>
         <source>Monospace Font</source>
         <translation>等宽字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="174"/>
+        <location filename="../../setting/fontwidget.cpp" line="205"/>
         <source>Document Font</source>
         <translation>文档字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="175"/>
+        <location filename="../../setting/fontwidget.cpp" line="206"/>
         <source>Titlebar Font</source>
         <translation>标题栏字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="176"/>
+        <location filename="../../setting/fontwidget.cpp" line="207"/>
         <source>Global Font Scaling</source>
         <translation>全局字体缩放</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="177"/>
+        <location filename="../../setting/fontwidget.cpp" line="208"/>
         <source>Hinting</source>
         <translation>平滑</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="178"/>
+        <location filename="../../setting/fontwidget.cpp" line="209"/>
         <source>Antialiasing</source>
         <translation>反锯齿</translation>
+    </message>
+    <message>
+        <location filename="../../setting/fontwidget.cpp" line="210"/>
+        <location filename="../../setting/fontwidget.cpp" line="211"/>
+        <location filename="../../setting/fontwidget.cpp" line="212"/>
+        <location filename="../../setting/fontwidget.cpp" line="213"/>
+        <location filename="../../setting/fontwidget.cpp" line="214"/>
+        <source>Restore</source>
+        <translation>恢复默认</translation>
     </message>
 </context>
 <context>
@@ -1561,37 +1570,37 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>IconWidget</name>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="199"/>
+        <location filename="../../setting/iconwidget.cpp" line="198"/>
         <source>Icon theme</source>
         <translation>图标主题</translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="200"/>
+        <location filename="../../setting/iconwidget.cpp" line="199"/>
         <source>Show Desktop Icons</source>
         <translation>显示桌面图标</translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="201"/>
+        <location filename="../../setting/iconwidget.cpp" line="200"/>
         <source>Computer</source>
         <translation>计算机</translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="202"/>
+        <location filename="../../setting/iconwidget.cpp" line="201"/>
         <source>Home Folder</source>
         <translation>用户主目录</translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="203"/>
+        <location filename="../../setting/iconwidget.cpp" line="202"/>
         <source>Network</source>
         <translation>网络</translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="204"/>
+        <location filename="../../setting/iconwidget.cpp" line="203"/>
         <source>Trash</source>
         <translation>回收站</translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="205"/>
+        <location filename="../../setting/iconwidget.cpp" line="204"/>
         <source>Mounted Volumes</source>
         <translation>挂载卷</translation>
     </message>
@@ -1759,47 +1768,47 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>LauncherWidget</name>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="219"/>
+        <location filename="../../setting/launcherwidget.cpp" line="218"/>
         <source>Launcher icon size</source>
         <translation>启动器图标尺寸</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="220"/>
+        <location filename="../../setting/launcherwidget.cpp" line="219"/>
         <source>Launcher hide mode</source>
         <translation>启动器自动隐藏</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="221"/>
+        <location filename="../../setting/launcherwidget.cpp" line="220"/>
         <source>Display desktop icon</source>
         <translation>显示桌面图标</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="222"/>
+        <location filename="../../setting/launcherwidget.cpp" line="221"/>
         <source>Launcher Transparency</source>
         <translation>启动器透明度</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="223"/>
+        <location filename="../../setting/launcherwidget.cpp" line="222"/>
         <source>Icon Background</source>
         <translation>图标背景</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="224"/>
+        <location filename="../../setting/launcherwidget.cpp" line="223"/>
         <source>Top panel icon size</source>
         <translation>顶部面板图标大小</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="225"/>
+        <location filename="../../setting/launcherwidget.cpp" line="224"/>
         <source>Top panel auto hide</source>
         <translation>顶部面板自动隐藏</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="226"/>
+        <location filename="../../setting/launcherwidget.cpp" line="225"/>
         <source>Bottom panel icon size</source>
         <translation>底部面板图标大小</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="227"/>
+        <location filename="../../setting/launcherwidget.cpp" line="226"/>
         <source>Bottom panel auto hide</source>
         <translation>底部面板自动隐藏</translation>
     </message>
@@ -1929,72 +1938,72 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PanelWidget</name>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="250"/>
+        <location filename="../../setting/panelwidget.cpp" line="249"/>
         <source>Dash background blur type</source>
         <translation>搜索框背景模糊类型</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="251"/>
+        <location filename="../../setting/panelwidget.cpp" line="250"/>
         <source>Panel Transparency</source>
         <translation>面板透明度</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="252"/>
+        <location filename="../../setting/panelwidget.cpp" line="251"/>
         <source>Date &amp; time format</source>
         <translation>日期时间格式</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="253"/>
+        <location filename="../../setting/panelwidget.cpp" line="252"/>
         <source>Display seconds</source>
         <translation>显示秒数</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="254"/>
+        <location filename="../../setting/panelwidget.cpp" line="253"/>
         <source>Display week</source>
         <translation>显示星期</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="255"/>
+        <location filename="../../setting/panelwidget.cpp" line="254"/>
         <source>Display the date</source>
         <translation>显示日期</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="256"/>
+        <location filename="../../setting/panelwidget.cpp" line="255"/>
         <source>Display battery icon</source>
         <translation>显示电池图标</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="257"/>
+        <location filename="../../setting/panelwidget.cpp" line="256"/>
         <source>Display battery percentage</source>
         <translation>显示电池百分比</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="258"/>
+        <location filename="../../setting/panelwidget.cpp" line="257"/>
         <source>Display battery remaining time</source>
         <translation>显示电池电量时间</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="260"/>
+        <location filename="../../setting/panelwidget.cpp" line="259"/>
         <source>Smart blur</source>
         <translation>活动模糊</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="261"/>
+        <location filename="../../setting/panelwidget.cpp" line="260"/>
         <source>Static blur</source>
         <translation>静态模糊</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="262"/>
+        <location filename="../../setting/panelwidget.cpp" line="261"/>
         <source>Clear</source>
         <translation>非模糊</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="264"/>
+        <location filename="../../setting/panelwidget.cpp" line="263"/>
         <source>Show applications</source>
         <translation>显示应用程序</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="265"/>
+        <location filename="../../setting/panelwidget.cpp" line="264"/>
         <source>Show system</source>
         <translation>显示系统</translation>
     </message>
@@ -2003,7 +2012,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">显示桌面</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="267"/>
+        <location filename="../../setting/panelwidget.cpp" line="266"/>
         <source>Show places</source>
         <translation>显示位置</translation>
     </message>
@@ -2012,7 +2021,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">显示应用程序</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="266"/>
+        <location filename="../../setting/panelwidget.cpp" line="265"/>
         <source>Show icon</source>
         <translation>显示图标</translation>
     </message>
@@ -2105,9 +2114,8 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">更换鼠标指针主题和大小。主题更改需要重新系统才能生效。</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="110"/>
         <source>Replace the theme and size of the mouse pointer, and theme change need to restart system.</source>
-        <translation>更换鼠标指针主题和大小，主题更改需要重新系统才能生效。</translation>
+        <translation type="obsolete">更换鼠标指针主题和大小，主题更改需要重新系统才能生效。</translation>
     </message>
     <message>
         <location filename="../../component/settingaction.cpp" line="114"/>
@@ -2120,39 +2128,67 @@ p, li { white-space: pre-wrap; }
         <translation>单击＂自定义图片＂按钮选择需要添加的图片，选中列表中要设置的图片名称，单击＂确定＂按钮完成设置</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="122"/>
         <source>Setting the Launcher display mode, Icon size.</source>
-        <translation>设置启动器的显示模式、图标尺寸。</translation>
+        <translation type="obsolete">设置启动器的显示模式、图标尺寸。</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="126"/>
+        <location filename="../../component/settingaction.cpp" line="110"/>
+        <source>Replace the theme and size of the mouse pointer, and theme change need to restart system</source>
+        <translation>更换鼠标指针主题和大小，主题更改需要重新系统才能生效</translation>
+    </message>
+    <message>
+        <location filename="../../component/settingaction.cpp" line="123"/>
+        <source>Setting the panel mode of auto hide and icon size</source>
+        <translation>设置面板自动隐藏模式和面板图标大小</translation>
+    </message>
+    <message>
+        <location filename="../../component/settingaction.cpp" line="125"/>
+        <source>Setting the Launcher display mode, Icon size</source>
+        <translation>设置启动器的显示模式、图标尺寸</translation>
+    </message>
+    <message>
+        <location filename="../../component/settingaction.cpp" line="130"/>
+        <source>Manage display of the start menu</source>
+        <translation>管理启动菜单的显示</translation>
+    </message>
+    <message>
+        <location filename="../../component/settingaction.cpp" line="132"/>
         <source>Manage Dash and Panel menu settings</source>
         <translation>管理Dash搜索和面板菜单的设置</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="130"/>
+        <location filename="../../component/settingaction.cpp" line="136"/>
         <source>Window Manager settings</source>
         <translation>窗口管理器设置</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="134"/>
+        <location filename="../../component/settingaction.cpp" line="140"/>
         <source>According to personal preferences to set the system default font, click the  &apos;Restore&apos; button, can be restored to the state before the font settings</source>
         <translation>根据个人喜好设置系统默认字体，单击＂恢复默认＂按钮，可以将对应的字体恢复到设置前状态</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="138"/>
+        <location filename="../../component/settingaction.cpp" line="144"/>
         <source>Setting the relevant properties of your touchpad,make the operation more convenient</source>
         <translation>通过调整您触摸板的相关设置，使操作更加便捷</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="142"/>
+        <location filename="../../component/settingaction.cpp" line="148"/>
         <source>Monitor Check</source>
         <translation>坏点检测</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="146"/>
+        <location filename="../../component/settingaction.cpp" line="153"/>
+        <source>Manage the Caja file manager. Tips: if the thumbnail&apos;s cache time or size is set to -1, it will not be checked</source>
+        <translation>管理Caja文件管理器。注意：如果缩略图缓存时间或尺寸被设置为-1，缩略图将不会被清理</translation>
+    </message>
+    <message>
+        <location filename="../../component/settingaction.cpp" line="155"/>
+        <source>Manage the Nautilus file manager. Tips: if the thumbnail&apos;s cache time or size is set to -1, it will not be checked</source>
+        <translation>管理Nautilus文件管理器。注意：如果缩略图缓存时间或尺寸被设置为-1，缩略图将不会被清理</translation>
+    </message>
+    <message>
         <source>Manage the Nautilus file manager. Tips: if the thumbnail&apos;s cache time or size is set to -1, it will not be checked.</source>
-        <translation>管理Nautilus文件管理器。注意：如果缩略图缓存时间或尺寸被设置为-1，缩略图将不会被清理。</translation>
+        <translation type="obsolete">管理Nautilus文件管理器。注意：如果缩略图缓存时间或尺寸被设置为-1，缩略图将不会被清理。</translation>
     </message>
 </context>
 <context>
@@ -2201,52 +2237,62 @@ p, li { white-space: pre-wrap; }
         <translation>桌面</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="342"/>
+        <location filename="../settingwidget.cpp" line="343"/>
+        <source>Panel</source>
+        <translation>面板</translation>
+    </message>
+    <message>
+        <location filename="../settingwidget.cpp" line="344"/>
+        <source>StartMenu</source>
+        <translation>启动菜单</translation>
+    </message>
+    <message>
+        <location filename="../settingwidget.cpp" line="347"/>
         <source>Custom Launcher</source>
         <translation>自定义启动器</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="343"/>
+        <location filename="../settingwidget.cpp" line="348"/>
         <source>Dash &amp; Panel</source>
         <translation>搜索和面板</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="344"/>
+        <location filename="../settingwidget.cpp" line="350"/>
         <source>Window</source>
         <translation>窗口</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="392"/>
+        <location filename="../settingwidget.cpp" line="398"/>
         <source>Font</source>
         <translation>字体</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="394"/>
+        <location filename="../settingwidget.cpp" line="400"/>
         <source>FontSetting</source>
         <translation>字体设置</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="452"/>
+        <location filename="../settingwidget.cpp" line="458"/>
         <source>Sys options</source>
         <translation>系统选项</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="455"/>
+        <location filename="../settingwidget.cpp" line="461"/>
         <source>Touchpad</source>
         <translation>触摸板</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="456"/>
+        <location filename="../settingwidget.cpp" line="462"/>
         <source>Dead pixel check</source>
         <translation>坏点检测</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="504"/>
+        <location filename="../settingwidget.cpp" line="510"/>
         <source>Others</source>
         <translation>其他</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="506"/>
+        <location filename="../settingwidget.cpp" line="512"/>
         <source>File manager</source>
         <translation>文件管理器</translation>
     </message>
@@ -2483,22 +2529,22 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>VoiceWidget</name>
     <message>
-        <location filename="../../setting/voicewidget.cpp" line="106"/>
+        <location filename="../../setting/voicewidget.cpp" line="105"/>
         <source>Sound theme</source>
         <translation>声音主题</translation>
     </message>
     <message>
-        <location filename="../../setting/voicewidget.cpp" line="107"/>
+        <location filename="../../setting/voicewidget.cpp" line="106"/>
         <source>Login tone</source>
         <translation>登录提示音</translation>
     </message>
     <message>
-        <location filename="../../setting/voicewidget.cpp" line="108"/>
+        <location filename="../../setting/voicewidget.cpp" line="107"/>
         <source>Event sounds</source>
         <translation>事件声音</translation>
     </message>
     <message>
-        <location filename="../../setting/voicewidget.cpp" line="109"/>
+        <location filename="../../setting/voicewidget.cpp" line="108"/>
         <source>Input feedback sounds</source>
         <translation>输入反馈声音</translation>
     </message>

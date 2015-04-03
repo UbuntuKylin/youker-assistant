@@ -32,7 +32,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowOpacity(1);
     this->setWindowFlags(Qt::FramelessWindowHint | Qt::Widget);
 
-    version = "V2.0.1";
+    version = "V2.0.2";
 
     mSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
     mSettings->setIniCodec("UTF-8");
@@ -323,7 +323,7 @@ void MainWindow::display() {
         this->move((windowWidth - this->width()) / 2,(windowHeight - this->height()) / 2);
         this->show();
         this->raise();
-        QTimer::singleShot(500, this, SLOT(startDbusDaemon()));
+        QTimer::singleShot(100, this, SLOT(startDbusDaemon()));
     }
     else {
         this->hide();
@@ -334,6 +334,7 @@ void MainWindow::startDbusDaemon()
 {
     sessioninterface = new SessionDispatcher(this);
     systeminterface = new SystemDispatcher(this);
+    this->desktop = sessioninterface->access_current_desktop_qt();
     login_widget->setSessionDbusProxy(sessioninterface);
     sessioninterface->check_user_qt();
     connect(sessioninterface, SIGNAL(ssoSuccessSignal(QString, QString)), login_widget, SLOT(showLoginInfo(QString,QString)));
@@ -715,7 +716,7 @@ void MainWindow::showSettingWidget()
     {
         if(top_grid_layout == NULL )
             top_grid_layout = new QGridLayout();
-        setting_action_widget = new SettingActionWidget();
+        setting_action_widget = new SettingActionWidget(this->desktop);
         top_grid_layout->addWidget(setting_action_widget,0,0);
         action_widget->setLayout(top_grid_layout);
         top_grid_layout->setSpacing(0);
@@ -746,7 +747,7 @@ void MainWindow::showSettingWidget()
     {
         if( bottom_grid_layout == NULL )
             bottom_grid_layout = new QGridLayout();
-        setting_widget = new SettingWidget();
+        setting_widget = new SettingWidget(this->desktop);
         setting_widget->setParentWindow(this);
         setting_widget->setSessionDbusProxy(sessioninterface);
         setting_widget->setSystemDbusProxy(systeminterface);

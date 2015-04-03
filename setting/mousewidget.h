@@ -34,7 +34,7 @@ class MouseWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit MouseWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0, SystemDispatcher *sproxy = 0);
+    explicit MouseWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0, SystemDispatcher *sproxy = 0, QString cur_desktop = "");
     ~MouseWidget();
     void setLanguage();
     void initConnect();

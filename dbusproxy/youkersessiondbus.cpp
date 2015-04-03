@@ -681,6 +681,18 @@ void SessionDispatcher::set_cursor_size_qt(int size) {
 //    sessioniface->call("set_window_theme", theme);
 //}
 
+QString SessionDispatcher::get_default_font_string_qt(QString schema, QString key)
+{
+    QDBusReply<QString> reply = sessioniface->call("get_default_font_string", schema, key);
+    return reply.value();
+}
+
+bool SessionDispatcher::set_default_font_string_qt(QString schema, QString key, QString type)
+{
+    QDBusReply<bool> reply = sessioniface->call("set_default_font", schema, key, type);
+    return reply.value();
+}
+
 QString SessionDispatcher::get_font_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_font");
     return reply.value();
@@ -903,8 +915,8 @@ void SessionDispatcher::set_titlebar_wheel_qt(QString value) {
     sessioniface->call("set_titlebar_wheel", value);
 }
 
-QStringList SessionDispatcher::get_titlebar_double_qt() {
-    QDBusReply<QStringList> reply = sessioniface->call("get_titlebar_double");
+QStringList SessionDispatcher::get_titlebar_options_qt() {
+    QDBusReply<QStringList> reply = sessioniface->call("get_titlebar_options");
     return reply.value();
 }
 
@@ -917,10 +929,10 @@ void SessionDispatcher::set_titlebar_double_qt(QString value) {
     sessioniface->call("set_titlebar_double", value);
 }
 
-QStringList SessionDispatcher::get_titlebar_middle_qt() {
-    QDBusReply<QStringList> reply = sessioniface->call("get_titlebar_middle");
-    return reply.value();
-}
+//QStringList SessionDispatcher::get_titlebar_middle_qt() {
+//    QDBusReply<QStringList> reply = sessioniface->call("get_titlebar_middle");
+//    return reply.value();
+//}
 
 QString SessionDispatcher::get_current_titlebar_middle_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_current_titlebar_middle");
@@ -931,10 +943,10 @@ void SessionDispatcher::set_titlebar_middle_qt(QString value) {
     sessioniface->call("set_titlebar_middle", value);
 }
 
-QStringList SessionDispatcher::get_titlebar_right_qt() {
-    QDBusReply<QStringList> reply = sessioniface->call("get_titlebar_right");
-    return reply.value();
-}
+//QStringList SessionDispatcher::get_titlebar_right_qt() {
+//    QDBusReply<QStringList> reply = sessioniface->call("get_titlebar_right");
+//    return reply.value();
+//}
 
 QString SessionDispatcher::get_current_titlebar_right_qt() {
     QDBusReply<QString> reply = sessioniface->call("get_current_titlebar_right");
