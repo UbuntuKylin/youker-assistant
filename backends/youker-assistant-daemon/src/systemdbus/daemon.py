@@ -30,9 +30,9 @@ import dbus
 import dbus.service
 import dbus.mainloop.glib
 from gi.repository import GObject
-import apt
-import aptsources.sourceslist
-import apt_pkg
+#import apt
+#import aptsources.sourceslist
+#import apt_pkg
 import threading
 from server import PolicyKitService
 from policykit import UK_ACTION_YOUKER
@@ -41,8 +41,8 @@ import cleaner
 from detailinfo.cpuinfo import DetailInfo
 from beautify.sound import Sound
 from beautify.others import Others
-from appcollections.monitorball.monitor_ball import MonitorBall
-from softwarecenter.apt_daemon import AptDaemon
+#from appcollections.monitorball.monitor_ball import MonitorBall
+#from softwarecenter.apt_daemon import AptDaemon
 from beautify.theme import Theme
 log = logging.getLogger('Daemon')
 
@@ -55,15 +55,15 @@ class Daemon(PolicyKitService):
         self.infoconf = DetailInfo()
         self.otherconf = Others()
         self.soundconf = Sound()
-        self.ballconf = MonitorBall()
+#        self.ballconf = MonitorBall()
         self.themeconf = Theme()
-        self.daemonsame = cleaner.SearchTheSame()
-        self.daemonlarge = cleaner.ManageTheLarge()
-        self.daemonunneed = cleaner.CleanTheUnneed()
-        self.daemonclean = cleaner.FunctionOfClean()
+#        self.daemonsame = cleaner.SearchTheSame()
+#        self.daemonlarge = cleaner.ManageTheLarge()
+#        self.daemonunneed = cleaner.CleanTheUnneed()
+#        self.daemonclean = cleaner.FunctionOfClean()
         self.daemononekey = cleaner.OneKeyClean()
-        self.daemoncache = cleaner.CleanTheCache()
-        self.daemonApt = AptDaemon()
+#        self.daemoncache = cleaner.CleanTheCache()
+#        self.daemonApt = AptDaemon()
         #self.daemonApt = AptDaemon(self)
         bus_name = dbus.service.BusName(INTERFACE, bus=bus)
         PolicyKitService.__init__(self, bus_name, UKPATH)
@@ -199,9 +199,9 @@ class Daemon(PolicyKitService):
     
     # -------------------------monitorball-------------------------
     # clean up memory
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
-    def cleanup_memory(self):
-        self.ballconf.cleanup_memory()
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+#    def cleanup_memory(self):
+#        self.ballconf.cleanup_memory()
     # -------------------------monitorball end-------------------------
 
     @dbus.service.signal(INTERFACE, signature='s')

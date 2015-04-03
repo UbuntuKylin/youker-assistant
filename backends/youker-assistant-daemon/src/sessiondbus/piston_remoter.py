@@ -35,7 +35,7 @@ from piston_mini_client import (
     returns_list_of,
     )
 from piston_mini_client.validators import validate_pattern, validate
-from piston_mini_client import APIError
+#from piston_mini_client import APIError
 import httplib2
 
 # These are factored out as constants for if you need to work against a

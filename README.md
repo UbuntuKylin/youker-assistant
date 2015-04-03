@@ -3,15 +3,8 @@ youker-assistant
 
 Attention
 =========
-It supports raring, saucy and trusty, but does not support precise.
+It supports unity and mate for Ubuntu/Ubuntu Kylin..
 
 Depends
 =======
-debhelper (>= 9), dh-translations, libphonon-dev, libqt4-dev, fcitx-libs-dev, pkg-config, python-dev, python (>= 2.6.6-3~), qt4-default, qtchooser, phonon-backend-gstreamer, python-dbus, python-psutil, python-mechanize, python-beautifulsoup, python-pygame
-
-Attention with IDE
-==================
-1. Install backend:
-sudo sh ./backends/youker-assistant-daemon/install.sh
-2. Run:
-Click the 'run' button or press 'F5' in QtCreator.
+debhelper (>= 9),python-dev,python-lxml,python-piston-mini-client,python-xdg,libqt4-dev,pkg-config,python (>= 2.6.6-3~),libglib2.0-dev,libgtop2-dev

@@ -10,4 +10,4 @@ override_dh_auto_configure:
 		youker-assistant.pro
 
 %:
-	dh $@ --with python2,translations --fail-missing --parallel
+	dh $@ --with python2 --fail-missing --parallel

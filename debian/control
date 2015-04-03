@@ -3,18 +3,13 @@ Section: misc
 Priority: optional
 Maintainer: Ubuntu Kylin Team <ubuntukylin-members@list.launchpad.net>
 Build-Depends: debhelper (>= 9),
-               dh-translations,
                python-dev,
                python-lxml,
                python-piston-mini-client,
-               python-imaging,
                python-xdg,
-               python-pywapi,
-               python-tz,
                libqt4-dev,
                pkg-config,
                python (>= 2.6.6-3~),
-               qtchooser,
                libglib2.0-dev,
                libgtop2-dev,
 Standards-Version: 3.9.6
@@ -24,15 +19,10 @@ Vcs-Bzr: lp:youker-assistant
 
 Package: youker-assistant
 Architecture: any
-Depends: phonon-backend-gstreamer,
-         python-dbus,
+Depends: python-dbus,
          python-psutil,
-         python-pywapi,
-         python-tz,
          python-pygame,
          python-compizconfig,
-         python-mechanize,
-         python-beautifulsoup,
          ${misc:Depends},
          ${python:Depends},
          ${shlibs:Depends},
@@ -44,5 +34,5 @@ Description: Integrated tool to aid in routine system maintenance tasks
  . 
  Features currently included:
   * Detecting and displaying general system information
-  * Unity user interface customization
+  * Unity and Mate user interface customization
   * System garbage cleaning
