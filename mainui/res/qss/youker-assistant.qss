@@ -71,6 +71,7 @@ QLabel#backgroundLabel::pressed{
 }
 
 QWidget#transparentWidget {
+   /*border: none;*/
    background-color: transparent;
 }
 

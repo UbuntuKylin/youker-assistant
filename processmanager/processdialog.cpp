@@ -30,6 +30,7 @@ ProcessDialog::ProcessDialog(ProcessManager *plugin, QDialog *parent)
 :QDialog(parent)
 {
     setWindowFlags(Qt::FramelessWindowHint);
+    this->setStyleSheet("QDialog{border: 1px solid gray;border-radius:2px}");//设定边框宽度以及颜色
 
     title_bar = new KylinTitleBar();
     initTitleBar();
@@ -44,6 +45,7 @@ ProcessDialog::ProcessDialog(ProcessManager *plugin, QDialog *parent)
     kill_btn->setObjectName("blackButton");
     kill_btn->setFocusPolicy(Qt::NoFocus);
     tableWidget = new QTableWidget();
+    tableWidget->setStyleSheet("QTableWidget{border: none}");
 
     QHBoxLayout *h_layout = new QHBoxLayout();
     h_layout->addWidget(tip_label);
