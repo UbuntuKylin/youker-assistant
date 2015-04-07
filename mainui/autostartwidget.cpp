@@ -25,14 +25,17 @@
 #include "../dbusproxy/youkersessiondbus.h"
 #include "../component/utils.h"
 
-AutoStartWidget::AutoStartWidget(QWidget *parent, SessionDispatcher *proxy) :
-    QWidget(parent),sessionproxy(proxy),
+//AutoStartWidget::AutoStartWidget(QWidget *parent, SessionDispatcher *proxy) :
+//    QWidget(parent),sessionproxy(proxy),
+AutoStartWidget::AutoStartWidget(QDialog *parent, SessionDispatcher *proxy) :
+    QDialog(parent),sessionproxy(proxy),
     ui(new Ui::AutoStartWidget)
 {
     ui->setupUi(this);
     this->setFixedSize(560, 398);
     setWindowFlags(Qt::FramelessWindowHint);
-//    this->setStyleSheet("QDialog{border: 1px solid gray;border-radius:2px}");
+    this->setStyleSheet("QDialog{border: 1px solid gray;border-radius:2px}");
+    this->setWindowIcon(QIcon(":/res/youker-assistant.png"));
     tip_label = new QLabel();
     num_label = new QLabel();
     on_label = new QLabel();
@@ -83,7 +86,7 @@ AutoStartWidget::AutoStartWidget(QWidget *parent, SessionDispatcher *proxy) :
     tip_layout->addLayout(layout3);
     tip_layout->setSpacing(0);
     tip_layout->setMargin(0);
-    tip_layout->setContentsMargins(20, 0, 20, 0);
+    tip_layout->setContentsMargins(10, 0, 10, 1);
     ui->widget_1->setLayout(tip_layout);
 
 //    QHBoxLayout *tip_layout = new QHBoxLayout();
@@ -101,14 +104,15 @@ AutoStartWidget::AutoStartWidget(QWidget *parent, SessionDispatcher *proxy) :
     status_layout->addWidget(status_label);
     status_layout->setSpacing(0);
     status_layout->setMargin(0);
-    status_layout->setContentsMargins(20, 0, 20, 0);
+    status_layout->setContentsMargins(10, 0, 10, 0);
     ui->widget_2->setLayout(status_layout);
 
     title_bar = new KylinTitleBar(this);
     title_bar->move(0,0);
     title_bar->show();
     initTitleBar();
-    ui->scrollArea->setFixedSize(560,302);
+    ui->scrollArea->setStyleSheet("QScrollArea{border: none}");
+    ui->scrollArea->setFixedSize(556,300);
     ui->scrollArea->setAutoFillBackground(true);
     ui->scrollArea->setBackgroundRole(QPalette::Light);
     this->initConnect();

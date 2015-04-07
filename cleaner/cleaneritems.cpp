@@ -21,12 +21,19 @@
 #include "mainwindow.h"
 #include <QDebug>
 
-CleanerItems::CleanerItems(QStringList &arglist, QStringList &statuslist, int height, const QString title_text, QWidget *parent)
-    : QWidget(parent),titleName(title_text)/*, widgetHeight(height)*/
+//CleanerItems::CleanerItems(QStringList &arglist, QStringList &statuslist, int height, const QString title_text, QWidget *parent)
+//    : QWidget(parent),titleName(title_text)/*, widgetHeight(height)*/
+
+CleanerItems::CleanerItems(QStringList &arglist, QStringList &statuslist, int height, const QString title_text, QDialog *parent)
+    :QDialog(parent),titleName(title_text)
 {
+    setWindowFlags(Qt::FramelessWindowHint);
+    this->setStyleSheet("QDialog{border: 1px solid gray;border-radius:2px}");//设定边框宽度以及颜色
+    this->setWindowIcon(QIcon(":/res/youker-assistant.png"));
+
     this->setFixedSize(410, height);
 //    this->setObjectName("transparentWidget");
-    this->setWindowFlags(Qt::FramelessWindowHint);
+//    this->setWindowFlags(Qt::FramelessWindowHint);
     this->setAutoFillBackground(true);
     QPalette palette;
     palette.setBrush(QPalette::Window, QBrush(Qt::white));

@@ -21,6 +21,7 @@
 #define CLEANLISTWIDGET_H
 
 #include <QWidget>
+#include <QDialog>
 #include "../component/kylintitlebar.h"
 
 class SessionDispatcher;
@@ -30,12 +31,13 @@ namespace Ui {
 class CleanListWidget;
 }
 
-class CleanListWidget : public QWidget
+class CleanListWidget : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit CleanListWidget(QStringList &arglist, const QString title_text = "UbuntuKylin", QWidget *parent = 0/*, SessionDispatcher *proxy = 0*/);
+//    explicit CleanListWidget(QStringList &arglist, const QString title_text = "UbuntuKylin", QWidget *parent = 0/*, SessionDispatcher *proxy = 0*/);
+    explicit CleanListWidget(QStringList &arglist, const QString title_text = "UbuntuKylin", QDialog *parent = 0/*, SessionDispatcher *proxy = 0*/);
     ~CleanListWidget();
     void setLanguage();
     void initConnect();

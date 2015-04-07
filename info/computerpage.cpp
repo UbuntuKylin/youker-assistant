@@ -120,6 +120,8 @@ void ComputerPage::initUI()
     group_box->setLayout(form_layout);
     QVBoxLayout *layout = new QVBoxLayout();
     layout->addWidget(group_box);
+    layout->setMargin(0);
+//    layout->setContentsMargins(10, 10, 10, 10);
     setLayout(layout);
 
     this->setLanguage();

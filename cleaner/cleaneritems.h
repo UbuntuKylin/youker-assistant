@@ -21,17 +21,20 @@
 #define CLEANERITEMS_H
 
 #include <QWidget>
+#include <QDialog>
 #include "../component/kylintitlebar.h"
 
 class MainWindow;
 class QCheckBox;
 class QGroupBox;
 
-class CleanerItems : public QWidget
+//class CleanerItems : public QWidget
+class CleanerItems : public QDialog
 {
     Q_OBJECT
 public:
-    explicit CleanerItems(QStringList &arglist, QStringList &statuslist, int height = 0, const QString title_text = "UbuntuKylin", QWidget *parent = 0);
+//    explicit CleanerItems(QStringList &arglist, QStringList &statuslist, int height = 0, const QString title_text = "UbuntuKylin", QWidget *parent = 0);
+    explicit CleanerItems(QStringList &arglist, QStringList &statuslist, int height = 0, const QString title_text = "UbuntuKylin", QDialog *parent = 0);
     ~CleanerItems();
     void setParentWindow(MainWindow* window) { p_mainwindow = window;}
     void setLanguage();

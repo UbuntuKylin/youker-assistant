@@ -30,6 +30,7 @@ CleanerDetailWidget::CleanerDetailWidget(QWidget *parent, SessionDispatcher *ser
 {
     ui->setupUi(this);
     this->setStyleSheet("QWidget{border: none}");
+    this->setWindowIcon(QIcon(":/res/youker-assistant.png"));
     this->setFixedSize(900, 403);
     this->setAutoFillBackground(true);
 //    this->setObjectName("transparentWidget");
