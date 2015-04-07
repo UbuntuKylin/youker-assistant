@@ -23,13 +23,17 @@
 #include <QCheckBox>
 #include "../component/utils.h"
 
-CleanListWidget::CleanListWidget(QStringList &arglist, const QString title_text, QWidget *parent) :
-    QWidget(parent),titleName(title_text),
+//CleanListWidget::CleanListWidget(QStringList &arglist, const QString title_text, QWidget *parent) :
+//    QWidget(parent),titleName(title_text),
+CleanListWidget::CleanListWidget(QStringList &arglist, const QString title_text, QDialog *parent) :
+    QDialog(parent),titleName(title_text),
     ui(new Ui::CleanListWidget)
 {
     ui->setupUi(this);
     this->setFixedSize(560, 398);
     setWindowFlags(Qt::FramelessWindowHint);
+    this->setStyleSheet("QDialog{border: 1px solid gray;border-radius:2px}");
+    this->setWindowIcon(QIcon(":/res/youker-assistant.png"));
     tip_label = new QLabel();
     num_label = new QLabel();
 
@@ -38,8 +42,10 @@ CleanListWidget::CleanListWidget(QStringList &arglist, const QString title_text,
     palette.setColor(QPalette::Background, QColor(233,238,241));//#e9eef1
     ui->widget_1->setPalette(palette);
 
+    ui->scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->scrollArea->setStyleSheet("QScrollArea{border: none}");
     ui->scrollArea->setAutoFillBackground(true);
-    ui->scrollArea->setBackgroundRole(QPalette::Light);
+    ui->scrollArea->setBackgroundRole(QPalette::Light);//QPalette::Dark
 //    palette.setBrush(QPalette::Window, QBrush(Qt::white));
 //    ui->scrollArea->setPalette(palette);
 
@@ -51,14 +57,14 @@ CleanListWidget::CleanListWidget(QStringList &arglist, const QString title_text,
     tip_layout->addStretch();
     tip_layout->setSpacing(0);
     tip_layout->setMargin(0);
-    tip_layout->setContentsMargins(20, 0, 0, 0);
+    tip_layout->setContentsMargins(10, 0, 0, 0);
     ui->widget_1->setLayout(tip_layout);
 
     title_bar = new KylinTitleBar(this);
     title_bar->move(0,0);
     title_bar->show();
     initTitleBar();
-    ui->scrollArea->setFixedSize(560,333);
+    ui->scrollArea->setFixedSize(556,331);
 
 
     QVBoxLayout *button_layout = new QVBoxLayout;
@@ -73,7 +79,7 @@ CleanListWidget::CleanListWidget(QStringList &arglist, const QString title_text,
         connect(checkbox, SIGNAL(clicked()), this, SLOT(scanAllSubCheckbox()));
         button_layout->addWidget(checkbox);
     }
-    button_layout->setSpacing(20);
+    button_layout->setSpacing(5);
     button_layout->setMargin(0);
     button_layout->setContentsMargins(0, 0, 0, 0);
 

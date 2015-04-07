@@ -31,6 +31,8 @@ KylinFontDialog::KylinFontDialog(/*QSettings *mSettings, QString flag, */QString
     QDialog(parent)
 {
     this->setFixedSize(600, 500);
+    this->setStyleSheet("QDialog{border: 1px solid gray;border-radius:2px}");
+    this->setWindowIcon(QIcon(":/res/youker-assistant.png"));
     this->setAttribute(Qt::WA_DeleteOnClose);
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->setAutoFillBackground(true);
@@ -59,7 +61,10 @@ KylinFontDialog::KylinFontDialog(/*QSettings *mSettings, QString flag, */QString
     cacel_btn->setFixedSize(91, 25);
     cacel_btn->setObjectName("blackButton");
     cacel_btn->setFocusPolicy(Qt::NoFocus);
-
+    font_edit->setStyleSheet("QLineEdit{border:1px solid #bebebe;}");
+    style_edit->setStyleSheet("QLineEdit{border:1px solid #bebebe;}");
+    size_edit->setStyleSheet("QLineEdit{border:1px solid #bebebe;}");
+    sample_edit->setStyleSheet("QLineEdit{border:1px solid #bebebe;}");
 
     style_label->setFixedWidth(140);
     style_edit->setFixedWidth(140);
@@ -67,8 +72,6 @@ KylinFontDialog::KylinFontDialog(/*QSettings *mSettings, QString flag, */QString
     size_label->setFixedWidth(60);
     size_edit->setFixedWidth(60);
     size_view->setFixedWidth(60);
-    ok_btn->setFixedSize(80, 35);
-    cacel_btn->setFixedSize(80, 35);
 
     font_edit->setReadOnly(true);
     font_edit->setFocusProxy(font_view);

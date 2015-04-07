@@ -25,6 +25,7 @@
 ScrollWidget::ScrollWidget(QWidget *parent) :
     QWidget(parent)
 {
+//    this->setStyleSheet("QWidget{border: none}");
     this->setWindowFlags(Qt::FramelessWindowHint);
     widget_count = 0;
     zone_height = 403;

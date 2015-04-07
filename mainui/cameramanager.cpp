@@ -26,6 +26,7 @@
 CameraManager::CameraManager(QWidget *parent, SessionDispatcher *proxy)
 :QDialog(parent),sessionproxy(proxy)
 {
+    this->setStyleSheet("QDialog{border: 1px solid gray;border-radius:2px}");
     this->setFixedSize(500, 271);
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->setAutoFillBackground(true);

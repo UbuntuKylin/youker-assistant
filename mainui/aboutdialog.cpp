@@ -28,6 +28,11 @@ AboutDialog::AboutDialog(QWidget *parent, const QString &version) :
     ui(new Ui::AboutDialog)
 {
     ui->setupUi(this);
+    this->setStyleSheet("QDialog{border: 1px solid gray;border-radius:2px}");
+    this->setWindowIcon(QIcon(":/res/youker-assistant.png"));
+    ui->tabWidget->setStyleSheet("QTabWidget{border:1px solid #bebebe;}");
+    ui->textEdit->setStyleSheet("QLineEdit{border:1px solid #bebebe;}");
+    ui->textEdit_2->setStyleSheet("QLineEdit{border:1px solid #bebebe;}");
     ui->versionlabel->setText(version);
     this->setWindowFlags(Qt::WindowStaysOnTopHint);
     move((QApplication::desktop()->width() - this->width())/2, (QApplication::desktop()->height() - this->height())/2);

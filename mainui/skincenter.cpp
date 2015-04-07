@@ -22,10 +22,11 @@
 #include <QDebug>
 #include <QVBoxLayout>
 
-SkinCenter::SkinCenter(QWidget *parent, Qt::WindowFlags f)
-:QDialog(parent)
+SkinCenter::SkinCenter(QWidget *parent/*, Qt::WindowFlags f*/)
+    :QDialog(parent)
 {
     this->setFixedSize(500, 271);
+    this->setStyleSheet("QDialog{border: 1px solid gray;border-radius:2px}");
     setWindowFlags(Qt::FramelessWindowHint);
     title_bar = new KylinTitleBar();
     list_widget = new KylinListWidget();
@@ -33,9 +34,16 @@ SkinCenter::SkinCenter(QWidget *parent, Qt::WindowFlags f)
     list_widget->setMouseTracking(true);//hover need it
     list_widget->setAutoFillBackground(false);
 
+    QHBoxLayout *list_layout  = new QHBoxLayout();
+    list_layout->addWidget(list_widget);
+    list_layout->setSpacing(0);
+    list_layout->setMargin(0);
+    list_layout->setContentsMargins(1, 0, 1, 1);
+
     QVBoxLayout *layout  = new QVBoxLayout();
     layout->addWidget(title_bar);
-    layout->addWidget(list_widget);
+//    layout->addWidget(list_widget);
+    layout->addLayout(list_layout);
     layout->setSpacing(0);
     layout->setMargin(0);
     layout->setContentsMargins(0, 0, 0, 0);

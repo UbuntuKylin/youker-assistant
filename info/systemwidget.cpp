@@ -27,7 +27,8 @@ SystemWidget::SystemWidget(QWidget *parent, SystemDispatcher *proxy) :
     QWidget(parent),
     systemproxy(proxy)
 {
-    this->setStyleSheet("QWidget{border: none}");
+//    this->setStyleSheet("QWidget{border: none}");
+    this->setStyleSheet("QWidget{background-color: #ffffff}");
     setFixedSize(750, 403);
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTimeValue()));

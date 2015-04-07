@@ -21,6 +21,7 @@
 #define AUTOSTARTWIDGET_H
 
 #include <QWidget>
+#include <QDialog>
 #include "../component/kylinlistwidget.h"
 #include "../component/kylintitlebar.h"
 #include "../component/autogroup.h"
@@ -31,12 +32,13 @@ namespace Ui {
 class AutoStartWidget;
 }
 
-class AutoStartWidget : public QWidget
+class AutoStartWidget : public QDialog//QWidget
 {
     Q_OBJECT
 
 public:
-    explicit AutoStartWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0);
+//    explicit AutoStartWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0);
+    explicit AutoStartWidget(QDialog *parent = 0, SessionDispatcher *proxy = 0);
     ~AutoStartWidget();
     void initConnect();
     void initData();

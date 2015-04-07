@@ -33,7 +33,7 @@ class SkinCenter :public QDialog
 {
   Q_OBJECT
 public:
-    SkinCenter(QWidget *parent = 0, Qt::WindowFlags f = 0);
+    SkinCenter(QWidget *parent = 0/*, Qt::WindowFlags f = 0*/);
     ~SkinCenter();
     void setParentWindow(MainWindow *From) { mainwindow = From;}
     void initBackgroundList();
