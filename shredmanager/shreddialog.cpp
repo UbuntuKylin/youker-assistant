@@ -47,6 +47,7 @@ ShredDialog::ShredDialog(ShredManager *plugin, QDialog *parent)
     toolkits = new Toolkits(0, this->width(), this->height());
 
     select_edit = new QLineEdit();
+    select_edit->setStyleSheet("QLineEdit{border:1px solid #bebebe;}");
     select_edit->setFixedWidth(400);
     select_edit->setReadOnly(true);
     select_btn = new KylinEditButton(select_edit);

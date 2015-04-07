@@ -29,8 +29,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->resize(900, 600);
+    this->setWindowIcon(QIcon(":/res/youker-assistant.png"));
     this->setWindowOpacity(1);
     this->setWindowFlags(Qt::FramelessWindowHint | Qt::Widget);
+    this->setStyleSheet("QMainWindow{border: 1px solid gray;border-radius:2px}");
 
     version = "V2.0.2";
 

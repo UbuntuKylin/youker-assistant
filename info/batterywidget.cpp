@@ -24,8 +24,8 @@ BatteryWidget::BatteryWidget(QWidget *parent, SessionDispatcher *proxy) :
     QWidget(parent),
     sessionproxy(proxy)
 {
+    this->setStyleSheet("QWidget{border: none}");
     setFixedSize(750, 403);
-
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403);
     this->initData();

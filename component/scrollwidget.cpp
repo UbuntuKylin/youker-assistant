@@ -60,17 +60,19 @@ void ScrollWidget::addScrollWidget(ComputerPage *widget)
 {
     if (widget_count == 0) {
         widget->move(0,0);
-        if(widget->page_height > zone->height()) {
-            zone_height = widget->page_height;
-            this->zone->resize(750, zone_height);
-        }
-        else {
-            this->zone->resize(750, 403-3);
-        }
+//        if(widget->page_height > zone->height()) {
+//            zone_height = widget->page_height;
+//            this->zone->resize(750, zone_height);
+//        }
+//        else {
+//            this->zone->resize(750, 403-3);
+//        }
+        zone_height = widget->page_height;
+        this->zone->resize(750, zone_height);
     }
     else {
-        int y = zone_height + PAGESPACE;
-        zone_height += widget->page_height + PAGESPACE;
+        int y = zone_height/* + PAGESPACE*/;
+        zone_height += widget->page_height/* + PAGESPACE*/;
         if(zone_height > zone->height()) {
             this->zone->resize(750, zone_height);
         }

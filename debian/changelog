@@ -3,8 +3,9 @@ youker-assistant (2.0.2) vivid; urgency=low
   * Add mate-desktop-environment settings.
   * Deal with system information for mate.
   * Add restore button for font.
+  * Modify system info display model.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 03 Apr 2015 11:35:19 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 07 Apr 2015 10:25:20 +0800
 
 youker-assistant (2.0.1) vivid; urgency=low
 

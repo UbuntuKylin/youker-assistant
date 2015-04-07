@@ -29,9 +29,10 @@ CleanerDetailWidget::CleanerDetailWidget(QWidget *parent, SessionDispatcher *ser
     ui(new Ui::CleanerDetailWidget)
 {
     ui->setupUi(this);
+    this->setStyleSheet("QWidget{border: none}");
     this->setFixedSize(900, 403);
     this->setAutoFillBackground(true);
-    this->setObjectName("transparentWidget");
+//    this->setObjectName("transparentWidget");
 //    this->setAutoFillBackground(true);
 //    QPalette palette;
 //    palette.setBrush(QPalette::Window, QBrush(Qt::white));

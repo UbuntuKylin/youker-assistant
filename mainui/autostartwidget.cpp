@@ -32,6 +32,7 @@ AutoStartWidget::AutoStartWidget(QWidget *parent, SessionDispatcher *proxy) :
     ui->setupUi(this);
     this->setFixedSize(560, 398);
     setWindowFlags(Qt::FramelessWindowHint);
+//    this->setStyleSheet("QDialog{border: 1px solid gray;border-radius:2px}");
     tip_label = new QLabel();
     num_label = new QLabel();
     on_label = new QLabel();
