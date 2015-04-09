@@ -83,8 +83,10 @@ SettingActionWidget::SettingActionWidget(QString cur_desktop, QWidget *parent)
     touchpad_action->setLanguage(10);
     deadpixel_action = new SettingAction(desktop);
     deadpixel_action->setLanguage(11);
+    conserve_aciton = new SettingAction(desktop);
+    conserve_aciton->setLanguage(12);
     nautilus_action = new SettingAction(desktop);
-    nautilus_action->setLanguage(12);
+    nautilus_action->setLanguage(13);
     stacked_widget->addWidget(main_acion);
     stacked_widget->addWidget(theme_action);
     stacked_widget->addWidget(icon_action);
@@ -97,6 +99,7 @@ SettingActionWidget::SettingActionWidget(QString cur_desktop, QWidget *parent)
     stacked_widget->addWidget(font_action);
     stacked_widget->addWidget(touchpad_action);
     stacked_widget->addWidget(deadpixel_action);
+    stacked_widget->addWidget(conserve_aciton);
     stacked_widget->addWidget(nautilus_action);
 
 
@@ -133,6 +136,7 @@ void SettingActionWidget::initConnect()
     connect(font_action, SIGNAL(showSettingMainWidget()), this, SLOT(displayActionMainPage()));
     connect(touchpad_action, SIGNAL(showSettingMainWidget()), this, SLOT(displayActionMainPage()));
     connect(deadpixel_action, SIGNAL(showSettingMainWidget()), this, SLOT(displayActionMainPage()));
+    connect(conserve_aciton, SIGNAL(showSettingMainWidget()), this, SLOT(displayActionMainPage()));
     connect(nautilus_action, SIGNAL(showSettingMainWidget()), this, SLOT(displayActionMainPage()));
 }
 

@@ -1071,3 +1071,58 @@ QString SessionDispatcher::access_current_desktop_qt() {
 //    QDBusReply<QString> reply = sessioniface->call("judge_desktop_is_cinnamon");
 //    return reply.value();
 //}
+void SessionDispatcher::adjust_screen_gamma_qt(double gamma)
+{
+    sessioniface->call("adjust_screen_gamma", gamma);
+}
+
+double SessionDispatcher::get_screen_gamma_qt()
+{
+    QDBusReply<double> reply = sessioniface->call("get_screen_gamma");
+    return reply.value();
+}
+
+QStringList SessionDispatcher::get_idle_delay_list_qt()
+{
+    QDBusReply<QStringList> reply = sessioniface->call("get_idle_delay_list");
+    return reply.value();
+}
+
+QString SessionDispatcher::get_current_idle_delay_qt()
+{
+    QDBusReply<int> reply = sessioniface->call("get_current_idle_delay");
+    return QString::number(reply.value());
+}
+
+void SessionDispatcher::set_current_idle_delay_qt(int value)
+{
+    sessioniface->call("set_current_idle_delay", value);
+}
+
+bool SessionDispatcher::get_lock_enabled_qt()
+{
+    QDBusReply<bool> reply = sessioniface->call("get_lock_enabled");
+    return reply.value();
+}
+
+void SessionDispatcher::set_lock_enabled_qt(bool value)
+{
+    sessioniface->call("set_lock_enabled", value);
+}
+
+QStringList SessionDispatcher::get_lock_delay_list_qt()
+{
+    QDBusReply<QStringList> reply = sessioniface->call("get_lock_delay_list");
+    return reply.value();
+}
+
+QString SessionDispatcher::get_current_lock_delay_qt()
+{
+    QDBusReply<int> reply = sessioniface->call("get_current_lock_delay");
+    return QString::number(reply.value());
+}
+
+void SessionDispatcher::set_current_lock_delay_qt(int value)
+{
+    sessioniface->call("set_current_lock_delay", value);
+}

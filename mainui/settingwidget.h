@@ -41,6 +41,7 @@
 #include "../setting/fontwidget.h"
 #include "../setting/touchpadwidget.h"
 #include "../setting/deadpixelwidget.h"
+#include "../setting/conservewidget.h"
 #include "../setting/nautiluswidget.h"
 
 class SessionDispatcher;
@@ -74,6 +75,7 @@ private:
     MainWindow *p_mainwindow;
     SessionDispatcher *sessionProxy;
     SystemDispatcher *systemProxy;
+    QString desktop;
 
     QStackedWidget *stacked_widget;
     ThemeWidget *theme_widget;
@@ -87,6 +89,7 @@ private:
     FontWidget *font_widget;
     TouchpadWidget *touchpad_widget;
     DeadpixelWidget *deadpixel_widget;
+    ConserveWidget *conserve_widget;
     NautilusWidget *nautilus_widget;
     QSplitter *h_splitter;
     QWidget *individuation_widget;
@@ -126,13 +129,14 @@ private:
     QPushButton *touch_button;
     QLabel *dot11;
     QPushButton *pixel_button;
+    QLabel *dot12;
+    QPushButton *conserve_button;
 
     QWidget *other_widget;
     QLabel *other_icon;
     QLabel *other_title;
-    QLabel *dot12;
+    QLabel *dot13;
     QPushButton *nautilus_button;
-    QString desktop;
 };
 
 #endif // SETTINGWIDGET_H

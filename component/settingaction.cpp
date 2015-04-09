@@ -149,6 +149,9 @@ void SettingAction::setLanguage(int index)
 //        description_label->setText(tr("Monitor Check."));
         break;
     case 12:
+        title_label->setText(tr("Save energy to let the computer longer standby time"));
+        break;
+    case 13:
         if (this->desktop == "mate")
             title_label->setText(tr("Manage the Caja file manager. Tips: if the thumbnail's cache time or size is set to -1, it will not be checked"));
         else

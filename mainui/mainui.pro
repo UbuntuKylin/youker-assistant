@@ -110,6 +110,7 @@ SOURCES += main.cpp\
     ../setting/fontwidget.cpp \
     ../setting/touchpadwidget.cpp \
     ../setting/deadpixelwidget.cpp \
+    ../setting/conservewidget.cpp \
     ../setting/nautiluswidget.cpp \
     ../component/scrollwidget.cpp \
     ../component/agentlistitem.cpp \
@@ -192,6 +193,7 @@ HEADERS  += mainwindow.h \
     ../setting/fontwidget.h \
     ../setting/touchpadwidget.h \
     ../setting/deadpixelwidget.h \
+    ../setting/conservewidget.h \
     ../setting/nautiluswidget.h \
     ../component/scrollwidget.h \
     ../component/agentlistitem.h \
