@@ -347,6 +347,36 @@ class System():
                 'action-right-click-titlebar',
                 'string', value)
 
+    def get_current_idle_delay(self):
+        return gsettings.get('org.gnome.desktop.session',
+            None, 'idle-delay', 'int')
+
+    def set_current_idle_delay(self, value):
+        gsettings.set('org.gnome.desktop.session',
+            None,
+            'idle-delay',
+            'int', value)
+
+    def get_lock_enabled(self):
+        return gsettings.get('org.gnome.desktop.screensaver',
+            None, 'lock-enabled', 'boolean')
+
+    def set_lock_enabled(self, value):
+        gsettings.set('org.gnome.desktop.screensaver',
+            None,
+            'lock-enabled',
+            'boolean', value)
+
+    def get_current_lock_delay(self):
+        return gsettings.get('org.gnome.desktop.screensaver',
+            None, 'lock-delay', 'int')
+
+    def set_current_lock_delay(self, value):
+        gsettings.set('org.gnome.desktop.screensaver',
+            None,
+            'lock-delay',
+            'int', value)
+
 if __name__ == '__main__':
     gsettings.set('org.compiz.gwd',None,'mouse-wheel-action', 'string', 'shade')
 #    sss = System(None)

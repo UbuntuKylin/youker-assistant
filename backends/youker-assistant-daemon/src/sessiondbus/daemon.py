@@ -23,6 +23,7 @@ import shutil
 import logging
 import tempfile
 import subprocess
+import commands
 import re
 from subprocess import PIPE
 import apt
@@ -140,6 +141,56 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def run_selected_app(self, pkgname):
         run_app(pkgname)
+
+    #---------------------------------conserve energy------------------------------------
+    @dbus.service.method(INTERFACE, in_signature='d', out_signature='')
+    def adjust_screen_gamma(self, gamma):
+        cmd = "xgamma -gamma " + str(gamma)
+        print cmd
+        os.system(cmd)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='d')
+    def get_screen_gamma(self):
+#        p = os.popen("xgamma")
+        status, output = commands.getstatusoutput("xgamma")
+        gamma_list = output.split(" ")
+        gamma = gamma_list[len(gamma_list) - 1]
+        return float(gamma)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_idle_delay_list(self):
+        return ['60', '120', '180', '300', '600', '1800', '3600', '0']
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    def get_current_idle_delay(self):
+        return self.systemconf.get_current_idle_delay()
+
+    @dbus.service.method(INTERFACE, in_signature='i', out_signature='')
+    def set_current_idle_delay(self, value):
+        self.systemconf.set_current_idle_delay(value)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_lock_enabled(self):
+        return self.systemconf.get_lock_enabled()
+
+    @dbus.service.method(INTERFACE, in_signature='b', out_signature='')
+    def set_lock_enabled(self, value):
+        self.systemconf.set_lock_enabled(value)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_lock_delay_list(self):
+        return ['30', '60', '120', '180', '300', '600', '1800', '3600', '0']
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    def get_current_lock_delay(self):
+        return self.systemconf.get_current_lock_delay()
+
+    @dbus.service.method(INTERFACE, in_signature='i', out_signature='')
+    def set_current_lock_delay(self, value):
+        self.systemconf.set_current_lock_delay(value)
+
+
+
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')
     def check_user(self):

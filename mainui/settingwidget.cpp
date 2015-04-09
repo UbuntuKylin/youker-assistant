@@ -48,6 +48,7 @@ SettingWidget::SettingWidget(QString cur_desktop, QWidget *parent) :
     font_widget = NULL;
     touchpad_widget = NULL;
     deadpixel_widget = NULL;
+    conserve_widget = NULL;
     nautilus_widget = NULL;
 
     h_splitter = new QSplitter();
@@ -125,6 +126,7 @@ void SettingWidget::initUI()
     font_widget = new FontWidget(this, sessionProxy, p_mainwindow, desktop);
     touchpad_widget = new TouchpadWidget(this, sessionProxy, desktop);
     deadpixel_widget = new DeadpixelWidget(this);
+    conserve_widget = new ConserveWidget(this, sessionProxy, desktop);
     nautilus_widget = new NautilusWidget(this, sessionProxy);
     stacked_widget->addWidget(h_splitter);
     stacked_widget->addWidget(theme_widget);
@@ -138,6 +140,7 @@ void SettingWidget::initUI()
     stacked_widget->addWidget(font_widget);
     stacked_widget->addWidget(touchpad_widget);
     stacked_widget->addWidget(deadpixel_widget);
+    stacked_widget->addWidget(conserve_widget);
     stacked_widget->addWidget(nautilus_widget);
 
     QHBoxLayout *main_layout = new QHBoxLayout();
@@ -411,11 +414,15 @@ void SettingWidget::initOptionWidget() {
     touch_button = new QPushButton();
     dot11 = new QLabel();
     pixel_button = new QPushButton();
+    dot12 = new QLabel();
+    conserve_button = new QPushButton();
 
     touch_button->setFocusPolicy(Qt::NoFocus);
     touch_button->setObjectName("settingButton");
     pixel_button->setFocusPolicy(Qt::NoFocus);
     pixel_button->setObjectName("settingButton");
+    conserve_button->setFocusPolicy(Qt::NoFocus);
+    conserve_button->setObjectName("settingButton");
 
     QHBoxLayout *title_layout = new QHBoxLayout();
     title_layout->addWidget(option_icon);
@@ -444,10 +451,20 @@ void SettingWidget::initOptionWidget() {
     layout11->setAlignment(dot11, Qt::AlignVCenter);
     layout11->setAlignment(pixel_button, Qt::AlignVCenter);
 
+    QHBoxLayout *layout12 = new QHBoxLayout();
+    layout12->addWidget(dot12);
+    layout12->addWidget(conserve_button);
+    layout12->addStretch();
+    layout12->setSpacing(5);
+    layout12->setContentsMargins(29, 0, 0, 0);
+    layout12->setAlignment(dot12, Qt::AlignVCenter);
+    layout12->setAlignment(conserve_button, Qt::AlignVCenter);
+
     QVBoxLayout *v_layout = new QVBoxLayout();
     v_layout->addLayout(title_layout);
     v_layout->addLayout(layout10);
     v_layout->addLayout(layout11);
+    v_layout->addLayout(layout12);
     v_layout->addStretch();
     v_layout->setSpacing(10);
     v_layout->setContentsMargins(0, 0, 0, 0);
@@ -458,13 +475,17 @@ void SettingWidget::initOptionWidget() {
     option_title->setText(tr("Sys options"));//系统选项
     dot10->setPixmap(QPixmap("://res/dot.png"));
     dot11->setPixmap(QPixmap("://res/dot.png"));
+    dot12->setPixmap(QPixmap("://res/dot.png"));
     touch_button->setText(tr("Touchpad"));//触摸板设置
     pixel_button->setText(tr("Dead pixel check"));//坏点检测
+    conserve_button->setText(tr("Conserving Setting"));
     touch_button->setStatusTip("touchpad");
     pixel_button->setStatusTip("deadpixel");
+    conserve_button->setStatusTip("conserve");
 
     connect(touch_button, SIGNAL(clicked()), this, SLOT(displaySettingSubPage()));
     connect(pixel_button, SIGNAL(clicked()), this, SLOT(displaySettingSubPage()));
+    connect(conserve_button, SIGNAL(clicked()), this, SLOT(displaySettingSubPage()));
 //    connect(pixel_button, SIGNAL(clicked()), this, SLOT(showCheckscreenDialog()));
 }
 
@@ -472,7 +493,7 @@ void SettingWidget::initOtherWidget() {
     other_widget = new QWidget();
     other_icon = new QLabel();
     other_title = new QLabel();
-    dot12 = new QLabel();
+    dot13 = new QLabel();
     nautilus_button = new QPushButton();
 
     nautilus_button->setFocusPolicy(Qt::NoFocus);
@@ -488,18 +509,18 @@ void SettingWidget::initOtherWidget() {
     title_layout->setAlignment(other_icon, Qt::AlignVCenter);
     title_layout->setAlignment(other_title, Qt::AlignVCenter);
 
-    QHBoxLayout *layout12 = new QHBoxLayout();
-    layout12->addWidget(dot12);
-    layout12->addWidget(nautilus_button);
-    layout12->addStretch();
-    layout12->setSpacing(5);
-    layout12->setContentsMargins(29, 0, 0, 0);
-    layout12->setAlignment(dot12, Qt::AlignVCenter);
-    layout12->setAlignment(nautilus_button, Qt::AlignVCenter);
+    QHBoxLayout *layout13 = new QHBoxLayout();
+    layout13->addWidget(dot13);
+    layout13->addWidget(nautilus_button);
+    layout13->addStretch();
+    layout13->setSpacing(5);
+    layout13->setContentsMargins(29, 0, 0, 0);
+    layout13->setAlignment(dot13, Qt::AlignVCenter);
+    layout13->setAlignment(nautilus_button, Qt::AlignVCenter);
 
     QVBoxLayout *v_layout = new QVBoxLayout();
     v_layout->addLayout(title_layout);
-    v_layout->addLayout(layout12);
+    v_layout->addLayout(layout13);
     v_layout->addStretch();
     v_layout->setSpacing(10);
     v_layout->setContentsMargins(0, 0, 0, 0);
@@ -508,7 +529,7 @@ void SettingWidget::initOtherWidget() {
 
     other_icon->setPixmap(QPixmap("://res/other.png"));
     other_title->setText(tr("Others"));//杂项
-    dot12->setPixmap(QPixmap("://res/dot.png"));
+    dot13->setPixmap(QPixmap("://res/dot.png"));
     nautilus_button->setText(tr("File manager"));//文件管理器
     nautilus_button->setStatusTip("nautilus");
 
@@ -571,8 +592,12 @@ void SettingWidget::displaySettingSubPage() {
         stacked_widget->setCurrentIndex(11);
         emit changeActionPage(11);
     }
-    else if (object_name == "nautilus") {
+    else if (object_name == "conserve") {
         stacked_widget->setCurrentIndex(12);
         emit changeActionPage(12);
+    }
+    else if (object_name == "nautilus") {
+        stacked_widget->setCurrentIndex(13);
+        emit changeActionPage(13);
     }
 }

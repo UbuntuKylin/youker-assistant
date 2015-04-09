@@ -269,6 +269,18 @@ public:
     //一键清理扫描
     void onekey_scan_function_qt(QStringList selectedList);
 
+    //-------------------conserve energe----------------
+    void adjust_screen_gamma_qt(double gamma);
+    double get_screen_gamma_qt();
+    QStringList get_idle_delay_list_qt();
+    QString get_current_idle_delay_qt();
+    void set_current_idle_delay_qt(int value);
+    bool get_lock_enabled_qt();
+    void set_lock_enabled_qt(bool value);
+    QStringList get_lock_delay_list_qt();
+    QString get_current_lock_delay_qt();
+    void set_current_lock_delay_qt(int value);
+
 signals:
     void tellAutoModel(const QStringList &data);
     void showAutoModel();

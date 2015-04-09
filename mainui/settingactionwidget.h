@@ -61,6 +61,7 @@ private:
     SettingAction *font_action;
     SettingAction *touchpad_action;
     SettingAction *deadpixel_action;
+    SettingAction *conserve_aciton;
     SettingAction *nautilus_action;
 
     MainWindow *p_mainwindow;
