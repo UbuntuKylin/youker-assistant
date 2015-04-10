@@ -47,13 +47,17 @@ public:
 public slots:
     void setScreenGammaValue(double value);
     void setBrightnessValue(int value);
-    void setIdleDelay(QString value);
+//    void setIdleDelay(QString value);
+    void setIdleDelay(int index);
     void setLockEnabled();
-    void setLockDelay(QString value);
+//    void setLockDelay(QString value);
+    void setLockDelay(int index);
 
 private:
     QDBusInterface *iface;
     SessionDispatcher *sessionproxy;
+    QString current_idle_delay;
+    QString current_lock_delay;
     QLabel *gamma_label;
     QDoubleSpinBox *gamma_slider;
     QLabel *brightness_label;

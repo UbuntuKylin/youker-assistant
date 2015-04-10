@@ -478,7 +478,7 @@ void SettingWidget::initOptionWidget() {
     dot12->setPixmap(QPixmap("://res/dot.png"));
     touch_button->setText(tr("Touchpad"));//触摸板设置
     pixel_button->setText(tr("Dead pixel check"));//坏点检测
-    conserve_button->setText(tr("Conserving Setting"));
+    conserve_button->setText(tr("Energy saving"));
     touch_button->setStatusTip("touchpad");
     pixel_button->setStatusTip("deadpixel");
     conserve_button->setStatusTip("conserve");

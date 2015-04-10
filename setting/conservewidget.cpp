@@ -59,11 +59,11 @@ ConserveWidget::ConserveWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
         brightness_slider->hide();
     }
 
-    gamma_label->setFixedWidth(220);
-    brightness_label->setFixedWidth(220);
-    idle_delay_label->setFixedWidth(220);
-    lock_enabled_label->setFixedWidth(220);
-    lock_delay_label->setFixedWidth(220);
+    gamma_label->setFixedWidth(260);
+    brightness_label->setFixedWidth(260);
+    idle_delay_label->setFixedWidth(260);
+    lock_enabled_label->setFixedWidth(260);
+    lock_delay_label->setFixedWidth(260);
 
     QHBoxLayout *layout0 = new QHBoxLayout();
     layout0->setSpacing(10);
@@ -138,46 +138,81 @@ void ConserveWidget::initData()
     gamma_slider->setValue(sessionproxy->get_screen_gamma_qt());
 
     QDBusReply<int> reply = iface->call("GetPercentage");
-    brightness_slider->setValue(reply.value());
-    brightness_value_label->setText(QString::number(brightness_slider->value()));
+    if (reply.isValid()) {
+        brightness_slider->setValue(reply.value());
+        brightness_value_label->setText(QString::number(brightness_slider->value()));
+    }
+    else
+    {
+        brightness_label->hide();
+        brightness_value_label->hide();
+        brightness_slider->hide();
+    }
 
-    QString current_idle_delay = sessionproxy->get_current_idle_delay_qt();
+    current_idle_delay = sessionproxy->get_current_idle_delay_qt();
     QStringList idledelaylist  = sessionproxy->get_idle_delay_list_qt();
-    idle_delay_combo->clear();
-    idle_delay_combo->clearEditText();
-    idle_delay_combo->addItems(idledelaylist);
+    QStringList huname_idle_list;
+    huname_idle_list << tr("1 minute") << tr("2 minutes") << tr("3 minutes") << tr("5 minutes") << tr("10 minutes") << tr("Half an hour") << tr("1 hour") << tr("never");
     QList<QString>::Iterator it1 = idledelaylist.begin(), itend1 = idledelaylist.end();
     int initIndex1 = 0;
+    bool inHere = false;
     for(;it1 != itend1; it1++,initIndex1++)
     {
-        if(*it1 == current_idle_delay)
+        if(*it1 == current_idle_delay) {
+            inHere = true;
             break;
+        }
     }
+    if (inHere == false) {
+        huname_idle_list << current_idle_delay;
+        initIndex1 = huname_idle_list.length() - 1;
+    }
+    idle_delay_combo->clear();
+    idle_delay_combo->clearEditText();
+    idle_delay_combo->addItems(huname_idle_list);
     idle_delay_combo->setCurrentIndex(initIndex1);
 
     lock_enabled_switch->switchedOn = sessionproxy->get_lock_enabled_qt();
+    if(lock_enabled_switch->switchedOn)
+    {
+        lock_delay_combo->setDisabled(false);
+    }
+    else {
+        lock_delay_combo->setDisabled(true);
+    }
 
-    QString current_lock_delay = sessionproxy->get_current_lock_delay_qt();
+    current_lock_delay = sessionproxy->get_current_lock_delay_qt();
     QStringList lockdelaylist = sessionproxy->get_lock_delay_list_qt();
-    lock_delay_combo->clear();
-    lock_delay_combo->clearEditText();
-    lock_delay_combo->addItems(lockdelaylist);
+    QStringList huname_lock_list;
+    huname_lock_list << tr("30 seconds") << tr("1 minute") << tr("2 minutes") << tr("3 minutes") << tr("5 minutes") << tr("10 minutes") << tr("Half an hour") << tr("1 hour") << tr("Turn off the screen");
     QList<QString>::Iterator it2 = lockdelaylist.begin(), itend2 = lockdelaylist.end();
     int initIndex2 = 0;
+    inHere = false;
     for(;it2 != itend2; it2++,initIndex2++)
     {
-        if(*it2 == current_lock_delay)
+        if(*it2 == current_lock_delay) {
+            inHere = true;
             break;
+        }
     }
+    if (inHere == false) {
+        huname_lock_list << current_lock_delay;
+        initIndex2 = huname_lock_list.length() - 1;
+    }
+    lock_delay_combo->clear();
+    lock_delay_combo->clearEditText();
+    lock_delay_combo->addItems(huname_lock_list);
     lock_delay_combo->setCurrentIndex(initIndex2);
 }
 
 void ConserveWidget::initConnect() {
     connect(gamma_slider, SIGNAL(valueChanged(double)), this, SLOT(setScreenGammaValue(double)));
     connect(brightness_slider, SIGNAL(valueChanged(int)), this, SLOT(setBrightnessValue(int)));
-    connect(idle_delay_combo, SIGNAL(currentIndexChanged(QString)),  this, SLOT(setIdleDelay(QString)));
+//    connect(idle_delay_combo, SIGNAL(currentIndexChanged(QString)),  this, SLOT(setIdleDelay(QString)));
+    connect(idle_delay_combo, SIGNAL(currentIndexChanged(int)),  this, SLOT(setIdleDelay(int)));
     connect(lock_enabled_switch, SIGNAL(clicked()),  this, SLOT(setLockEnabled()));
-    connect(lock_delay_combo, SIGNAL(currentIndexChanged(QString)),  this, SLOT(setLockDelay(QString)));
+//    connect(lock_delay_combo, SIGNAL(currentIndexChanged(QString)),  this, SLOT(setLockDelay(QString)));
+    connect(lock_delay_combo, SIGNAL(currentIndexChanged(int)),  this, SLOT(setLockDelay(int)));
 }
 
 void ConserveWidget::setScreenGammaValue(double value)
@@ -191,17 +226,101 @@ void ConserveWidget::setBrightnessValue(int value)
     iface->call("setPercentage", value);
 }
 
-void ConserveWidget::setIdleDelay(QString value)
+//void ConserveWidget::setIdleDelay(QString value)
+void ConserveWidget::setIdleDelay(int index)
 {
-    sessionproxy->set_current_idle_delay_qt(value.toInt());
+    if (index == 0)
+    {
+        sessionproxy->set_current_idle_delay_qt(60);
+    }
+    else if (index == 1)
+    {
+        sessionproxy->set_current_idle_delay_qt(120);
+    }
+    else if (index == 2)
+    {
+        sessionproxy->set_current_idle_delay_qt(180);
+    }
+    else if (index == 3)
+    {
+        sessionproxy->set_current_idle_delay_qt(300);
+    }
+    else if (index == 4)
+    {
+        sessionproxy->set_current_idle_delay_qt(600);
+    }
+    else if (index == 5)
+    {
+        sessionproxy->set_current_idle_delay_qt(1800);
+    }
+    else if (index == 6)
+    {
+        sessionproxy->set_current_idle_delay_qt(3600);
+    }
+    else if (index == 7)
+    {
+        sessionproxy->set_current_idle_delay_qt(0);
+    }
+    else if (index == 8)
+    {
+        sessionproxy->set_current_idle_delay_qt(current_idle_delay.toInt());
+    }
+//    sessionproxy->set_current_idle_delay_qt(value.toInt());
 }
 
 void ConserveWidget::setLockEnabled()
 {
     sessionproxy->set_lock_enabled_qt(lock_enabled_switch->switchedOn);
+    if (lock_enabled_switch->switchedOn) {
+        lock_delay_combo->setDisabled(false);
+    }
+    else {
+        lock_delay_combo->setDisabled(true);
+    }
 }
 
-void ConserveWidget::setLockDelay(QString value)
+//void ConserveWidget::setLockDelay(QString value)
+void ConserveWidget::setLockDelay(int index)
 {
-    sessionproxy->set_current_lock_delay_qt(value.toInt());
+    if (index == 0)
+    {
+        sessionproxy->set_current_lock_delay_qt(30);
+    }
+    else if (index == 1)
+    {
+        sessionproxy->set_current_lock_delay_qt(60);
+    }
+    else if (index == 2)
+    {
+        sessionproxy->set_current_lock_delay_qt(120);
+    }
+    else if (index == 3)
+    {
+        sessionproxy->set_current_lock_delay_qt(180);
+    }
+    else if (index == 4)
+    {
+        sessionproxy->set_current_lock_delay_qt(300);
+    }
+    else if (index == 5)
+    {
+        sessionproxy->set_current_lock_delay_qt(600);
+    }
+    else if (index == 6)
+    {
+        sessionproxy->set_current_lock_delay_qt(1800);
+    }
+    else if (index == 7)
+    {
+        sessionproxy->set_current_lock_delay_qt(3600);
+    }
+    else if (index == 8)
+    {
+        sessionproxy->set_current_lock_delay_qt(0);
+    }
+    else if (index == 9)
+    {
+        sessionproxy->set_current_lock_delay_qt(current_lock_delay.toInt());
+    }
+//    sessionproxy->set_current_lock_delay_qt(value.toInt());
 }
