@@ -1165,6 +1165,91 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>ConserveWidget</name>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="125"/>
+        <source>Adjust gamma</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="126"/>
+        <source>Adjust brightness</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="127"/>
+        <source>Time before session is considered idle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="128"/>
+        <source>Lock screen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="129"/>
+        <source>Lock delay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="148"/>
+        <location filename="../../setting/conservewidget.cpp" line="180"/>
+        <source>1 minute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="148"/>
+        <location filename="../../setting/conservewidget.cpp" line="180"/>
+        <source>2 minutes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="148"/>
+        <location filename="../../setting/conservewidget.cpp" line="180"/>
+        <source>3 minutes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="148"/>
+        <location filename="../../setting/conservewidget.cpp" line="180"/>
+        <source>5 minutes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="148"/>
+        <location filename="../../setting/conservewidget.cpp" line="180"/>
+        <source>10 minutes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="148"/>
+        <location filename="../../setting/conservewidget.cpp" line="180"/>
+        <source>Half an hour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="148"/>
+        <location filename="../../setting/conservewidget.cpp" line="180"/>
+        <source>1 hour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="148"/>
+        <source>never</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="180"/>
+        <source>30 seconds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="180"/>
+        <source>Turn off the screen</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CpuWidget</name>
     <message>
         <location filename="../../info/cpuwidget.cpp" line="37"/>
@@ -2047,12 +2132,17 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="153"/>
+        <location filename="../../component/settingaction.cpp" line="152"/>
+        <source>Save energy to let the computer longer standby time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../component/settingaction.cpp" line="156"/>
         <source>Manage the Caja file manager. Tips: if the thumbnail&apos;s cache time or size is set to -1, it will not be checked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="155"/>
+        <location filename="../../component/settingaction.cpp" line="158"/>
         <source>Manage the Nautilus file manager. Tips: if the thumbnail&apos;s cache time or size is set to -1, it will not be checked</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2060,7 +2150,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SettingActionWidget</name>
     <message>
-        <location filename="../settingactionwidget.cpp" line="142"/>
+        <location filename="../settingactionwidget.cpp" line="146"/>
         <source>You can perform a full range of customized systems based on personal preferences</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2068,97 +2158,102 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SettingWidget</name>
     <message>
-        <location filename="../settingwidget.cpp" line="247"/>
+        <location filename="../settingwidget.cpp" line="250"/>
         <source>Personalize</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="258"/>
+        <location filename="../settingwidget.cpp" line="261"/>
         <source>ThemeSetting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="259"/>
+        <location filename="../settingwidget.cpp" line="262"/>
         <source>IconSetting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="260"/>
+        <location filename="../settingwidget.cpp" line="263"/>
         <source>MousePointer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="261"/>
+        <location filename="../settingwidget.cpp" line="264"/>
         <source>SoundEffect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="262"/>
+        <location filename="../settingwidget.cpp" line="265"/>
         <source>BootAnimation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="338"/>
+        <location filename="../settingwidget.cpp" line="341"/>
         <source>Desktop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="343"/>
+        <location filename="../settingwidget.cpp" line="346"/>
         <source>Panel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="344"/>
+        <location filename="../settingwidget.cpp" line="347"/>
         <source>StartMenu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="347"/>
+        <location filename="../settingwidget.cpp" line="350"/>
         <source>Custom Launcher</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="348"/>
+        <location filename="../settingwidget.cpp" line="351"/>
         <source>Dash &amp; Panel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="350"/>
+        <location filename="../settingwidget.cpp" line="353"/>
         <source>Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="398"/>
+        <location filename="../settingwidget.cpp" line="401"/>
         <source>Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="400"/>
+        <location filename="../settingwidget.cpp" line="403"/>
         <source>FontSetting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="458"/>
+        <location filename="../settingwidget.cpp" line="475"/>
         <source>Sys options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="461"/>
+        <location filename="../settingwidget.cpp" line="479"/>
         <source>Touchpad</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="462"/>
+        <location filename="../settingwidget.cpp" line="480"/>
         <source>Dead pixel check</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="510"/>
+        <location filename="../settingwidget.cpp" line="481"/>
+        <source>Energy saving</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingwidget.cpp" line="531"/>
         <source>Others</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="512"/>
+        <location filename="../settingwidget.cpp" line="533"/>
         <source>File manager</source>
         <translation type="unfinished"></translation>
     </message>

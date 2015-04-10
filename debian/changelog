@@ -4,8 +4,9 @@ youker-assistant (2.0.2) vivid; urgency=low
   * Deal with system information for mate.
   * Add restore button for font.
   * Modify system info display model.
+  * Add energy conserving model.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 07 Apr 2015 14:41:33 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 10 Apr 2015 10:48:22 +0800
 
 youker-assistant (2.0.1) vivid; urgency=low
 

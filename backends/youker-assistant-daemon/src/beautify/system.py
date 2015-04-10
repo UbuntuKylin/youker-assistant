@@ -348,34 +348,64 @@ class System():
                 'string', value)
 
     def get_current_idle_delay(self):
-        return gsettings.get('org.gnome.desktop.session',
-            None, 'idle-delay', 'int')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.session',
+                None, 'idle-delay', 'int')
+        else:
+            return gsettings.get('org.gnome.desktop.session',
+                None, 'idle-delay', 'uint')
 
     def set_current_idle_delay(self, value):
-        gsettings.set('org.gnome.desktop.session',
-            None,
-            'idle-delay',
-            'int', value)
+        if self.dekstop == "mate":
+            gsettings.set('org.mate.session',
+                None,
+                'idle-delay',
+                'int', value)
+        else:
+            gsettings.set('org.gnome.desktop.session',
+                None,
+                'idle-delay',
+                'uint', value)
 
     def get_lock_enabled(self):
-        return gsettings.get('org.gnome.desktop.screensaver',
-            None, 'lock-enabled', 'boolean')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.screensaver',
+                None, 'lock-enabled', 'boolean')
+        else:
+            return gsettings.get('org.gnome.desktop.screensaver',
+                None, 'lock-enabled', 'boolean')
 
     def set_lock_enabled(self, value):
-        gsettings.set('org.gnome.desktop.screensaver',
-            None,
-            'lock-enabled',
-            'boolean', value)
+        if self.dekstop == "mate":
+            gsettings.set('org.mate.screensaver',
+                None,
+                'lock-enabled',
+                'boolean', value)
+        else:
+            gsettings.set('org.gnome.desktop.screensaver',
+                None,
+                'lock-enabled',
+                'boolean', value)
 
     def get_current_lock_delay(self):
-        return gsettings.get('org.gnome.desktop.screensaver',
-            None, 'lock-delay', 'int')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.screensaver',
+                None, 'lock-delay', 'int')
+        else:
+            return gsettings.get('org.gnome.desktop.screensaver',
+                None, 'lock-delay', 'uint')
 
     def set_current_lock_delay(self, value):
-        gsettings.set('org.gnome.desktop.screensaver',
-            None,
-            'lock-delay',
-            'int', value)
+        if self.dekstop == "mate":
+            gsettings.set('org.mate.screensaver',
+                None,
+                'lock-delay',
+                'int', value)
+        else:
+            gsettings.set('org.gnome.desktop.screensaver',
+                None,
+                'lock-delay',
+                'uint', value)
 
 if __name__ == '__main__':
     gsettings.set('org.compiz.gwd',None,'mouse-wheel-action', 'string', 'shade')

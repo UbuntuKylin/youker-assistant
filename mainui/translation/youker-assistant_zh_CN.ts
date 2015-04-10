@@ -1284,6 +1284,91 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>ConserveWidget</name>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="125"/>
+        <source>Adjust gamma</source>
+        <translation>调整伽马值</translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="126"/>
+        <source>Adjust brightness</source>
+        <translation>调整屏幕亮度</translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="127"/>
+        <source>Time before session is considered idle</source>
+        <translation>在此时间范围内无操作则关闭屏幕</translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="128"/>
+        <source>Lock screen</source>
+        <translation>锁定屏幕</translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="129"/>
+        <source>Lock delay</source>
+        <translation>锁定延时</translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="148"/>
+        <location filename="../../setting/conservewidget.cpp" line="180"/>
+        <source>1 minute</source>
+        <translation>1 分钟</translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="148"/>
+        <location filename="../../setting/conservewidget.cpp" line="180"/>
+        <source>2 minutes</source>
+        <translation>2 分钟</translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="148"/>
+        <location filename="../../setting/conservewidget.cpp" line="180"/>
+        <source>3 minutes</source>
+        <translation>3 分钟</translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="148"/>
+        <location filename="../../setting/conservewidget.cpp" line="180"/>
+        <source>5 minutes</source>
+        <translation>5 分钟</translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="148"/>
+        <location filename="../../setting/conservewidget.cpp" line="180"/>
+        <source>10 minutes</source>
+        <translation>10 分钟</translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="148"/>
+        <location filename="../../setting/conservewidget.cpp" line="180"/>
+        <source>Half an hour</source>
+        <translation>半小时</translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="148"/>
+        <location filename="../../setting/conservewidget.cpp" line="180"/>
+        <source>1 hour</source>
+        <translation>1 小时</translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="148"/>
+        <source>never</source>
+        <translation>从不</translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="180"/>
+        <source>30 seconds</source>
+        <translation>30 秒</translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="180"/>
+        <source>Turn off the screen</source>
+        <translation>关闭屏幕</translation>
+    </message>
+</context>
+<context>
     <name>CpuWidget</name>
     <message>
         <location filename="../../info/cpuwidget.cpp" line="37"/>
@@ -2203,12 +2288,17 @@ p, li { white-space: pre-wrap; }
         <translation>坏点检测</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="153"/>
+        <location filename="../../component/settingaction.cpp" line="152"/>
+        <source>Save energy to let the computer longer standby time</source>
+        <translation>节省电量，让电脑待机时间更长</translation>
+    </message>
+    <message>
+        <location filename="../../component/settingaction.cpp" line="156"/>
         <source>Manage the Caja file manager. Tips: if the thumbnail&apos;s cache time or size is set to -1, it will not be checked</source>
         <translation>管理Caja文件管理器。注意：如果缩略图缓存时间或尺寸被设置为-1，缩略图将不会被清理</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="155"/>
+        <location filename="../../component/settingaction.cpp" line="158"/>
         <source>Manage the Nautilus file manager. Tips: if the thumbnail&apos;s cache time or size is set to -1, it will not be checked</source>
         <translation>管理Nautilus文件管理器。注意：如果缩略图缓存时间或尺寸被设置为-1，缩略图将不会被清理</translation>
     </message>
@@ -2220,7 +2310,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SettingActionWidget</name>
     <message>
-        <location filename="../settingactionwidget.cpp" line="142"/>
+        <location filename="../settingactionwidget.cpp" line="146"/>
         <source>You can perform a full range of customized systems based on personal preferences</source>
         <translation>您可以根据个人喜好对系统进行全方位的定制</translation>
     </message>
@@ -2228,97 +2318,102 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SettingWidget</name>
     <message>
-        <location filename="../settingwidget.cpp" line="247"/>
+        <location filename="../settingwidget.cpp" line="250"/>
         <source>Personalize</source>
         <translation>个性化</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="258"/>
+        <location filename="../settingwidget.cpp" line="261"/>
         <source>ThemeSetting</source>
         <translation>主题设置</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="259"/>
+        <location filename="../settingwidget.cpp" line="262"/>
         <source>IconSetting</source>
         <translation>图标设置</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="260"/>
+        <location filename="../settingwidget.cpp" line="263"/>
         <source>MousePointer</source>
         <translation>鼠标设置</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="261"/>
+        <location filename="../settingwidget.cpp" line="264"/>
         <source>SoundEffect</source>
         <translation>声音效果</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="262"/>
+        <location filename="../settingwidget.cpp" line="265"/>
         <source>BootAnimation</source>
         <translation>开机动画</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="338"/>
+        <location filename="../settingwidget.cpp" line="341"/>
         <source>Desktop</source>
         <translation>桌面</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="343"/>
+        <location filename="../settingwidget.cpp" line="346"/>
         <source>Panel</source>
         <translation>面板</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="344"/>
+        <location filename="../settingwidget.cpp" line="347"/>
         <source>StartMenu</source>
         <translation>启动菜单</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="347"/>
+        <location filename="../settingwidget.cpp" line="350"/>
         <source>Custom Launcher</source>
         <translation>自定义启动器</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="348"/>
+        <location filename="../settingwidget.cpp" line="351"/>
         <source>Dash &amp; Panel</source>
         <translation>搜索和面板</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="350"/>
+        <location filename="../settingwidget.cpp" line="353"/>
         <source>Window</source>
         <translation>窗口</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="398"/>
+        <location filename="../settingwidget.cpp" line="401"/>
         <source>Font</source>
         <translation>字体</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="400"/>
+        <location filename="../settingwidget.cpp" line="403"/>
         <source>FontSetting</source>
         <translation>字体设置</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="458"/>
+        <location filename="../settingwidget.cpp" line="475"/>
         <source>Sys options</source>
         <translation>系统选项</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="461"/>
+        <location filename="../settingwidget.cpp" line="479"/>
         <source>Touchpad</source>
         <translation>触摸板</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="462"/>
+        <location filename="../settingwidget.cpp" line="480"/>
         <source>Dead pixel check</source>
         <translation>坏点检测</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="510"/>
+        <location filename="../settingwidget.cpp" line="481"/>
+        <source>Energy saving</source>
+        <translation>省电设置</translation>
+    </message>
+    <message>
+        <location filename="../settingwidget.cpp" line="531"/>
         <source>Others</source>
         <translation>其他</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="512"/>
+        <location filename="../settingwidget.cpp" line="533"/>
         <source>File manager</source>
         <translation>文件管理器</translation>
     </message>
