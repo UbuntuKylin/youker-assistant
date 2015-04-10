@@ -18,7 +18,6 @@
  */
 
 #include "batterywidget.h"
-//#include <QDebug>
 
 BatteryWidget::BatteryWidget(QWidget *parent, SessionDispatcher *proxy) :
     QWidget(parent),
@@ -46,12 +45,31 @@ void BatteryWidget::initData()
 {
     QMap<QString, QVariant> tmpMap = sessionproxy->read_battery_info_qt();
     QMap<QString,QVariant>::iterator it; //遍历map
+    QStringList powerlist;
+    powerlist << "POWER_SUPPLY_NAME" << "POWER_SUPPLY_MANUFACTURER" << "POWER_SUPPLY_MODEL_NAME" << "POWER_SUPPLY_TECHNOLOGY" << "POWER_SUPPLY_VOLTAGE_NOW" << "POWER_SUPPLY_ENERGY_FULL_DESIGN" << "POWER_SUPPLY_ENERGY_FULL" << "POWER_SUPPLY_ENERGY_NOW" << "POWER_SUPPLY_SERIAL_NUMBER";
     for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
-        if(it.key() != "POWER_SUPPLY_CAPACITY" && it.key() != "POWER_SUPPLY_CYCLE_COUNT" && it.key() != "POWER_SUPPLY_POWER_NOW" && it.key() != "POWER_SUPPLY_PRESENT" && it.key() != "POWER_SUPPLY_STATUS" && it.key() != "POWER_SUPPLY_VOLTAGE_MIN_DESIGN" )
+        QList<QString>::Iterator itstart = powerlist.begin(), itend = powerlist.end();
+        for(;itstart !=itend;itstart++)
         {
-            if (it.value().toString().length() > 0)
-                battery_info_map.insert(it.key(), it.value());
+            if(*itstart == it.key())
+            {
+                if (it.key() == "POWER_SUPPLY_SERIAL_NUMBER")
+                {
+                    if (it.value().toString().replace(" " ,"").length() > 0)
+                        battery_info_map.insert(it.key(), it.value());
+                }
+                else {
+                    if (it.value().toString().length() > 0)
+                        battery_info_map.insert(it.key(), it.value());
+                }
+                break;
+            }
         }
+//        if(it.key() != "POWER_SUPPLY_CAPACITY" && it.key() != "POWER_SUPPLY_CYCLE_COUNT" && it.key() != "POWER_SUPPLY_POWER_NOW" && it.key() != "POWER_SUPPLY_PRESENT" && it.key() != "POWER_SUPPLY_STATUS" && it.key() != "POWER_SUPPLY_VOLTAGE_MIN_DESIGN" )
+//        {
+//            if (it.value().toString().length() > 0)
+//                battery_info_map.insert(it.key(), it.value());
+//        }
     }
 }
 
