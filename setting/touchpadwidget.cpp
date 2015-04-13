@@ -22,6 +22,7 @@
 #include <QLabel>
 #include <QComboBox>
 #include <QRadioButton>
+#include <QButtonGroup>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include "../dbusproxy/youkersessiondbus.h"
@@ -45,6 +46,10 @@ TouchpadWidget::TouchpadWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
     standard_radio->setFocusPolicy(Qt::NoFocus);
 //    standard_radio->setChecked(false);
     standard_radio->setObjectName("standard_radio");
+    QButtonGroup *btnGroup1 = new QButtonGroup();
+    btnGroup1->addButton(features_radio);
+    btnGroup1->addButton(standard_radio);
+
     disable_radio = new QRadioButton();
     disable_radio->setFocusPolicy(Qt::NoFocus);
     disable_radio->setObjectName("disable_radio");
@@ -56,6 +61,10 @@ TouchpadWidget::TouchpadWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
     two_finger_radio->setFocusPolicy(Qt::NoFocus);
 //    two_finger_radio->setChecked(false);
     two_finger_radio->setObjectName("two_finger_radio");
+    QButtonGroup *btnGroup2 = new QButtonGroup();
+    btnGroup2->addButton(disable_radio);
+    btnGroup2->addButton(edge_radio);
+    btnGroup2->addButton(two_finger_radio);
 
     if (this->desktop == "mate") {
         scrollbar_type_label->hide();

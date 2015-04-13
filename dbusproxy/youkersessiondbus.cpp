@@ -1126,3 +1126,67 @@ void SessionDispatcher::set_current_lock_delay_qt(int value)
 {
     sessioniface->call("set_current_lock_delay", value);
 }
+
+QStringList SessionDispatcher::get_sleep_timeout_list_qt()
+{
+    QDBusReply<QStringList> reply = sessioniface->call("get_sleep_timeout_list");
+    return reply.value();
+}
+
+QString SessionDispatcher::get_current_critical_low_qt()
+{
+    QDBusReply<QString> reply = sessioniface->call("get_current_critical_low");
+    return reply.value();
+}
+
+void SessionDispatcher::set_current_critical_low_qt(QString value)
+{
+    sessioniface->call("set_current_critical_low", value);
+}
+
+
+QString SessionDispatcher::get_current_lid_battery_qt()
+{
+    QDBusReply<QString> reply = sessioniface->call("get_current_lid_battery");
+    return reply.value();
+}
+
+void SessionDispatcher::set_current_lid_battery_qt(QString value)
+{
+    sessioniface->call("set_current_lid_battery", value);
+}
+
+
+QString SessionDispatcher::get_current_lid_ac_qt()
+{
+    QDBusReply<QString> reply = sessioniface->call("get_current_lid_ac");
+    return reply.value();
+}
+
+void SessionDispatcher::set_current_lid_ac_qt(QString value)
+{
+    sessioniface->call("set_current_lid_ac", value);
+}
+
+QString SessionDispatcher::get_current_sleep_timeout_battery_qt()
+{
+    QDBusReply<int> reply = sessioniface->call("get_current_sleep_timeout_battery");
+    return QString::number(reply.value());
+}
+
+void SessionDispatcher::set_current_sleep_timeout_battery_qt(int value)
+{
+    sessioniface->call("set_current_sleep_timeout_battery", value);
+}
+
+QString SessionDispatcher::get_current_sleep_timeout_ac_qt()
+{
+    QDBusReply<int> reply = sessioniface->call("get_current_sleep_timeout_ac");
+    return QString::number(reply.value());
+}
+
+void SessionDispatcher::set_current_sleep_timeout_ac_qt(int value)
+{
+    sessioniface->call("set_current_sleep_timeout_ac", value);
+}
+

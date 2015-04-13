@@ -407,6 +407,56 @@ class System():
                 'lock-delay',
                 'uint', value)
 
+    def get_current_critical_low(self):
+        return gsettings.get('org.gnome.settings-daemon.plugins.power',
+            None, 'critical-battery-action', 'string')
+
+    def set_current_critical_low(self, value):
+        gsettings.set('org.gnome.settings-daemon.plugins.power',
+            None,
+            'critical-battery-action',
+            'string', value)
+
+    def get_current_lid_battery(self):
+        return gsettings.get('org.gnome.settings-daemon.plugins.power',
+            None, 'lid-close-battery-action', 'string')
+
+    def set_current_lid_battery(self, value):
+        gsettings.set('org.gnome.settings-daemon.plugins.power',
+            None,
+            'lid-close-battery-action',
+            'string', value)
+
+    def get_current_lid_ac(self):
+        return gsettings.get('org.gnome.settings-daemon.plugins.power',
+            None, 'lid-close-ac-action', 'string')
+
+    def set_current_lid_ac(self, value):
+        gsettings.set('org.gnome.settings-daemon.plugins.power',
+            None,
+            'lid-close-ac-action',
+            'string', value)
+
+    def get_current_sleep_timeout_battery(self):
+        return gsettings.get('org.gnome.settings-daemon.plugins.power',
+            None, 'sleep-inactive-battery-timeout', 'int')
+
+    def set_current_sleep_timeout_battery(self, value):
+        gsettings.set('org.gnome.settings-daemon.plugins.power',
+            None,
+            'sleep-inactive-battery-timeout',
+            'int', value)
+
+    def get_current_sleep_timeout_ac(self):
+        return gsettings.get('org.gnome.settings-daemon.plugins.power',
+            None, 'sleep-inactive-ac-timeout', 'int')
+
+    def set_current_sleep_timeout_ac(self, value):
+        gsettings.set('org.gnome.settings-daemon.plugins.power',
+            None,
+            'sleep-inactive-ac-timeout',
+            'int', value)
+
 if __name__ == '__main__':
     gsettings.set('org.compiz.gwd',None,'mouse-wheel-action', 'string', 'shade')
 #    sss = System(None)

@@ -281,6 +281,19 @@ public:
     QString get_current_lock_delay_qt();
     void set_current_lock_delay_qt(int value);
 
+    QStringList get_sleep_timeout_list_qt();
+    QString get_current_critical_low_qt();
+    void set_current_critical_low_qt(QString value);
+    QString get_current_lid_battery_qt();
+    void set_current_lid_battery_qt(QString value);
+    QString get_current_lid_ac_qt();
+    void set_current_lid_ac_qt(QString value);
+    QString get_current_sleep_timeout_battery_qt();
+    void set_current_sleep_timeout_battery_qt(int value);
+    QString get_current_sleep_timeout_ac_qt();
+    void set_current_sleep_timeout_ac_qt(int value);
+
+
 signals:
     void tellAutoModel(const QStringList &data);
     void showAutoModel();
