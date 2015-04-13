@@ -23,7 +23,6 @@
 #include <QSlider>
 #include <QComboBox>
 #include <QDoubleSpinBox>
-#include <QRadioButton>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include "../dbusproxy/youkersessiondbus.h"

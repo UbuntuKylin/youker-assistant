@@ -21,11 +21,11 @@
 #include <QLabel>
 #include <QComboBox>
 #include <QHBoxLayout>
-//#include <QRadioButton>
+#include <QRadioButton>
 #include <QDoubleSpinBox>
 #include <QSlider>
 #include "../dbusproxy/youkersessiondbus.h"
-#include <QDebug>
+#include <QButtonGroup>
 
 ConserveWidget::ConserveWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_desktop) :
     QWidget(parent),
@@ -53,17 +53,68 @@ ConserveWidget::ConserveWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
     lock_delay_label = new QLabel();
     lock_delay_combo = new QComboBox();
 
+
+    critical_low_label = new QLabel();
+    suspend_low_radio = new QRadioButton();
+    shutdown_radio = new QRadioButton();
+    QButtonGroup *btnGroup1 = new QButtonGroup();
+    btnGroup1->addButton(suspend_low_radio);
+    btnGroup1->addButton(shutdown_radio);
+    suspend_low_radio->setFocusPolicy(Qt::NoFocus);
+    suspend_low_radio->setObjectName("suspend_low_radio");
+    shutdown_radio->setFocusPolicy(Qt::NoFocus);
+    shutdown_radio->setObjectName("shutdown_radio");
+    laptop_lid_battery_label = new QLabel();
+    suspend_lid_battery_radio = new QRadioButton();
+    nothing_battery_radio = new QRadioButton();
+    QButtonGroup *btnGroup2 = new QButtonGroup();
+    btnGroup2->addButton(suspend_lid_battery_radio);
+    btnGroup2->addButton(nothing_battery_radio);
+    suspend_lid_battery_radio->setFocusPolicy(Qt::NoFocus);
+    suspend_lid_battery_radio->setObjectName("suspend_lid_battery_radio");
+    nothing_battery_radio->setFocusPolicy(Qt::NoFocus);
+    nothing_battery_radio->setObjectName("nothing_battery_radio");
+    laptop_lid_ac_label = new QLabel();
+    suspend_lid_ac_radio = new QRadioButton();
+    nothing_ac_radio = new QRadioButton();
+    QButtonGroup *btnGroup3 = new QButtonGroup();
+    btnGroup3->addButton(suspend_lid_ac_radio);
+    btnGroup3->addButton(nothing_ac_radio);
+    suspend_lid_ac_radio->setFocusPolicy(Qt::NoFocus);
+    suspend_lid_ac_radio->setObjectName("suspend_lid_ac_radio");
+    nothing_ac_radio->setFocusPolicy(Qt::NoFocus);
+    nothing_ac_radio->setObjectName("nothing_ac_radio");
+    sleep_battery_label = new QLabel();
+    sleep_battery_combo = new QComboBox();
+    sleep_ac_label = new QLabel();
+    sleep_ac_combo = new QComboBox();
+
+
     if (cur_desktop == "mate") {
         brightness_label->hide();
         brightness_value_label->hide();
         brightness_slider->hide();
     }
 
+//    if(!sessionproxy->judge_power_is_exists_qt())
+//    {
+//        laptop_lid_battery_label->hide();
+//        suspend_lid_battery_radio->hide();
+//        nothing_battery_radio->hide();
+//        sleep_battery_label->hide();
+//        sleep_battery_combo->hide();
+//    }
+
     gamma_label->setFixedWidth(260);
     brightness_label->setFixedWidth(260);
     idle_delay_label->setFixedWidth(260);
     lock_enabled_label->setFixedWidth(260);
     lock_delay_label->setFixedWidth(260);
+    critical_low_label->setFixedWidth(260);
+    laptop_lid_battery_label->setFixedWidth(260);
+    laptop_lid_ac_label->setFixedWidth(260);
+    sleep_battery_label->setFixedWidth(260);
+    sleep_ac_label->setFixedWidth(260);
 
     QHBoxLayout *layout0 = new QHBoxLayout();
     layout0->setSpacing(10);
@@ -91,18 +142,46 @@ ConserveWidget::ConserveWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
     layout4->addWidget(lock_delay_label);
     layout4->addWidget(lock_delay_combo);
     layout4->addStretch();
-//    QHBoxLayout *layout5 = new QHBoxLayout();
-//    layout5->setSpacing(10);
-//    layout5->addWidget(right_click_label);
-//    layout5->addWidget(right_click_combo);
-//    layout5->addStretch();
+    QHBoxLayout *layout5 = new QHBoxLayout();
+    layout5->setSpacing(10);
+    layout5->addWidget(critical_low_label);
+    layout5->addWidget(suspend_low_radio);
+    layout5->addWidget(shutdown_radio);
+//    layout5->addWidget(btnGroup);
+    layout5->addStretch();
+    QHBoxLayout *layout6 = new QHBoxLayout();
+    layout6->setSpacing(10);
+    layout6->addWidget(laptop_lid_battery_label);
+    layout6->addWidget(suspend_lid_battery_radio);
+    layout6->addWidget(nothing_battery_radio);
+    layout6->addStretch();
+    QHBoxLayout *layout7 = new QHBoxLayout();
+    layout7->setSpacing(10);
+    layout7->addWidget(laptop_lid_ac_label);
+    layout7->addWidget(suspend_lid_ac_radio);
+    layout7->addWidget(nothing_ac_radio);
+    layout7->addStretch();
+    QHBoxLayout *layout8 = new QHBoxLayout();
+    layout8->setSpacing(10);
+    layout8->addWidget(sleep_battery_label);
+    layout8->addWidget(sleep_battery_combo);
+    layout8->addStretch();
+    QHBoxLayout *layout9 = new QHBoxLayout();
+    layout9->setSpacing(10);
+    layout9->addWidget(sleep_ac_label);
+    layout9->addWidget(sleep_ac_combo);
+    layout9->addStretch();
     QVBoxLayout *layout = new QVBoxLayout();
     layout->addLayout(layout0);
     layout->addLayout(layout1);
     layout->addLayout(layout2);
     layout->addLayout(layout3);
     layout->addLayout(layout4);
-//    layout->addLayout(layout5);
+    layout->addLayout(layout5);
+    layout->addLayout(layout6);
+    layout->addLayout(layout7);
+    layout->addLayout(layout8);
+    layout->addLayout(layout9);
     layout->addStretch();
     setLayout(layout);
     layout->setSpacing(10);
@@ -127,6 +206,17 @@ void ConserveWidget::setLanguage() {
     idle_delay_label->setText(tr("Time before session is considered idle") + ":");//在一定时间范围内无操作则关闭屏幕
     lock_enabled_label->setText(tr("Lock screen") + ":");//锁定屏幕
     lock_delay_label->setText(tr("Lock delay") + ":");//锁屏延时
+    critical_low_label->setText(tr("Battery critical low action") + ":");//电池严重不足时
+    laptop_lid_battery_label->setText(tr("Laptop lid close action on battery") + ":");//合上盖子时
+    laptop_lid_ac_label->setText(tr("Laptop lid close action on AC") + ":");//合上盖子时
+    sleep_battery_label->setText(tr("Sleep timeout PC when on battery") + ":");//使用电池，在此时间范围内无操作
+    sleep_ac_label->setText(tr("Sleep timeout PC when on AC") + ":");//使用电源，在此时间范围内无操作
+    suspend_low_radio->setText(tr("suspend"));//休眠
+    shutdown_radio->setText(tr("shutdown"));//电源关闭
+    suspend_lid_battery_radio->setText(tr("suspend"));//挂起
+    nothing_battery_radio->setText(tr("nothing"));//不处理
+    suspend_lid_ac_radio->setText(tr("suspend"));//挂起
+    nothing_ac_radio->setText(tr("nothing"));//不处理
 }
 
 void ConserveWidget::initData()
@@ -203,6 +293,80 @@ void ConserveWidget::initData()
     lock_delay_combo->clearEditText();
     lock_delay_combo->addItems(huname_lock_list);
     lock_delay_combo->setCurrentIndex(initIndex2);
+
+    QString critical_low = sessionproxy->get_current_critical_low_qt();
+    if(critical_low == "suspend" ) {
+        suspend_low_radio->setChecked(true);
+        shutdown_radio->setChecked(false);
+    }
+    else if(critical_low == "shutdown") {
+        shutdown_radio->setChecked(true);
+        suspend_low_radio->setChecked(false);
+    }
+    QString laptop_battery = sessionproxy->get_current_lid_battery_qt();
+    if(laptop_battery == "suspend") {
+        suspend_lid_battery_radio->setChecked(true);
+        nothing_battery_radio->setChecked(false);
+    }
+    else if(laptop_battery == "nothing") {
+        nothing_battery_radio->setChecked(true);
+        suspend_lid_battery_radio->setChecked(false);
+    }
+    QString laptop_ac = sessionproxy->get_current_lid_ac_qt();
+    if(laptop_ac == "suspend") {
+        suspend_lid_ac_radio->setChecked(true);
+        nothing_ac_radio->setChecked(false);
+    }
+    else if(laptop_ac == "nothing") {
+        nothing_ac_radio->setChecked(true);
+        suspend_lid_ac_radio->setChecked(false);
+    }
+
+    sleep_timeout_battery = sessionproxy->get_current_sleep_timeout_battery_qt();
+    QStringList batterylist  = sessionproxy->get_sleep_timeout_list_qt();
+    QStringList huname_battery_list;
+    huname_battery_list << tr("5 minutes") << tr("10 minutes") << tr("20 minutes") << tr("Half an hour") << tr("1 hour") << tr("2 hours") << tr("No suspend");
+    QList<QString>::Iterator it3 = batterylist.begin(), itend3 = batterylist.end();
+    int initIndex3 = 0;
+    inHere = false;
+    for(;it3 != itend3; it3++,initIndex3++)
+    {
+        if(*it3 == sleep_timeout_battery) {
+            inHere = true;
+            break;
+        }
+    }
+    if (inHere == false) {
+        huname_battery_list << sleep_timeout_battery;
+        initIndex3 = huname_battery_list.length() - 1;
+    }
+    sleep_battery_combo->clear();
+    sleep_battery_combo->clearEditText();
+    sleep_battery_combo->addItems(huname_battery_list);
+    sleep_battery_combo->setCurrentIndex(initIndex3);
+
+    sleep_timeout_ac = sessionproxy->get_current_sleep_timeout_ac_qt();
+    QStringList aclist  = sessionproxy->get_sleep_timeout_list_qt();
+    QStringList huname_ac_list;
+    huname_ac_list << tr("5 minutes") << tr("10 minutes") << tr("20 minutes") << tr("Half an hour") << tr("1 hour") << tr("2 hours") << tr("No suspend");
+    QList<QString>::Iterator it4 = aclist.begin(), itend4 = aclist.end();
+    int initIndex4 = 0;
+    inHere = false;
+    for(;it4 != itend4; it4++,initIndex4++)
+    {
+        if(*it4 == sleep_timeout_ac) {
+            inHere = true;
+            break;
+        }
+    }
+    if (inHere == false) {
+        huname_ac_list << sleep_timeout_ac;
+        initIndex4 = huname_ac_list.length() - 1;
+    }
+    sleep_ac_combo->clear();
+    sleep_ac_combo->clearEditText();
+    sleep_ac_combo->addItems(huname_ac_list);
+    sleep_ac_combo->setCurrentIndex(initIndex4);
 }
 
 void ConserveWidget::initConnect() {
@@ -213,6 +377,14 @@ void ConserveWidget::initConnect() {
     connect(lock_enabled_switch, SIGNAL(clicked()),  this, SLOT(setLockEnabled()));
 //    connect(lock_delay_combo, SIGNAL(currentIndexChanged(QString)),  this, SLOT(setLockDelay(QString)));
     connect(lock_delay_combo, SIGNAL(currentIndexChanged(int)),  this, SLOT(setLockDelay(int)));
+    connect(suspend_low_radio, SIGNAL(clicked()), this, SLOT(setRadioButtonRowStatus()));
+    connect(shutdown_radio, SIGNAL(clicked()), this, SLOT(setRadioButtonRowStatus()));
+    connect(suspend_lid_battery_radio, SIGNAL(clicked()), this, SLOT(setRadioButtonRowStatus()));
+    connect(nothing_battery_radio, SIGNAL(clicked()), this, SLOT(setRadioButtonRowStatus()));
+    connect(suspend_lid_ac_radio, SIGNAL(clicked()), this, SLOT(setRadioButtonRowStatus()));
+    connect(nothing_ac_radio, SIGNAL(clicked()), this, SLOT(setRadioButtonRowStatus()));
+    connect(sleep_battery_combo, SIGNAL(currentIndexChanged(int)),  this, SLOT(setSleepTimeoutBattery(int)));
+    connect(sleep_ac_combo, SIGNAL(currentIndexChanged(int)),  this, SLOT(setSleepTimeoutAC(int)));
 }
 
 void ConserveWidget::setScreenGammaValue(double value)
@@ -323,4 +495,107 @@ void ConserveWidget::setLockDelay(int index)
         sessionproxy->set_current_lock_delay_qt(current_lock_delay.toInt());
     }
 //    sessionproxy->set_current_lock_delay_qt(value.toInt());
+}
+
+void ConserveWidget::setRadioButtonRowStatus()
+{
+    QObject *obj = sender(); //返回发出信号的对象，用QObject类型接收
+    QRadioButton* pbtn = qobject_cast<QRadioButton*>(obj);
+    QString obj_name = pbtn->objectName();
+    if(obj_name == "suspend_low_radio")
+    {
+        sessionproxy->set_current_critical_low_qt("suspend");
+    }
+    else if(obj_name == "shutdown_radio")
+    {
+        sessionproxy->set_current_critical_low_qt("shutdown");
+    }
+    else if(obj_name == "suspend_lid_battery_radio")
+    {
+        sessionproxy->set_current_lid_battery_qt("suspend");
+    }
+    else if(obj_name == "nothing_battery_radio")
+    {
+        sessionproxy->set_current_lid_battery_qt("nothing");
+    }
+    else if(obj_name == "suspend_lid_ac_radio")
+    {
+        sessionproxy->set_current_lid_ac_qt("suspend");
+    }
+    else if(obj_name == "nothing_ac_radio")
+    {
+        sessionproxy->set_current_lid_ac_qt("nothing");
+    }
+}
+
+void ConserveWidget::setSleepTimeoutBattery(int index)
+{
+    if (index == 0)
+    {
+        sessionproxy->set_current_sleep_timeout_battery_qt(300);
+    }
+    else if (index == 1)
+    {
+        sessionproxy->set_current_sleep_timeout_battery_qt(600);
+    }
+    else if (index == 2)
+    {
+        sessionproxy->set_current_sleep_timeout_battery_qt(1200);
+    }
+    else if (index == 3)
+    {
+        sessionproxy->set_current_sleep_timeout_battery_qt(1800);
+    }
+    else if (index == 4)
+    {
+        sessionproxy->set_current_sleep_timeout_battery_qt(3600);
+    }
+    else if (index == 5)
+    {
+        sessionproxy->set_current_sleep_timeout_battery_qt(7200);
+    }
+    else if (index == 6)
+    {
+        sessionproxy->set_current_sleep_timeout_battery_qt(0);
+    }
+    else if (index == 7)
+    {
+        sessionproxy->set_current_sleep_timeout_battery_qt(sleep_timeout_battery.toInt());
+    }
+}
+
+void ConserveWidget::setSleepTimeoutAC(int index)
+{
+    if (index == 0)
+    {
+        sessionproxy->set_current_sleep_timeout_ac_qt(300);
+    }
+    else if (index == 1)
+    {
+        sessionproxy->set_current_sleep_timeout_ac_qt(600);
+    }
+    else if (index == 2)
+    {
+        sessionproxy->set_current_sleep_timeout_ac_qt(1200);
+    }
+    else if (index == 3)
+    {
+        sessionproxy->set_current_sleep_timeout_ac_qt(1800);
+    }
+    else if (index == 4)
+    {
+        sessionproxy->set_current_sleep_timeout_ac_qt(3600);
+    }
+    else if (index == 5)
+    {
+        sessionproxy->set_current_sleep_timeout_ac_qt(7200);
+    }
+    else if (index == 6)
+    {
+        sessionproxy->set_current_sleep_timeout_ac_qt(0);
+    }
+    else if (index == 7)
+    {
+        sessionproxy->set_current_sleep_timeout_ac_qt(sleep_timeout_ac.toInt());
+    }
 }

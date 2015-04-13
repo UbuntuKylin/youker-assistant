@@ -189,7 +189,49 @@ class SessionDaemon(dbus.service.Object):
     def set_current_lock_delay(self, value):
         self.systemconf.set_current_lock_delay(value)
 
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_sleep_timeout_list(self):
+        return ['300', '600', '1200', '1800', '3600', '7200', '0']
 
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_current_critical_low(self):
+        return self.systemconf.get_current_critical_low()
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def set_current_critical_low(self, value):
+        self.systemconf.set_current_critical_low(value)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_current_lid_battery(self):
+        return self.systemconf.get_current_lid_battery()
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def set_current_lid_battery(self, value):
+        self.systemconf.set_current_lid_battery(value)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_current_lid_ac(self):
+        return self.systemconf.get_current_lid_ac()
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def set_current_lid_ac(self, value):
+        self.systemconf.set_current_lid_ac(value)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    def get_current_sleep_timeout_battery(self):
+        return self.systemconf.get_current_sleep_timeout_battery()
+
+    @dbus.service.method(INTERFACE, in_signature='i', out_signature='')
+    def set_current_sleep_timeout_battery(self, value):
+        self.systemconf.set_current_sleep_timeout_battery(value)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    def get_current_sleep_timeout_ac(self):
+        return self.systemconf.get_current_sleep_timeout_ac()
+
+    @dbus.service.method(INTERFACE, in_signature='i', out_signature='')
+    def set_current_sleep_timeout_ac(self, value):
+        self.systemconf.set_current_sleep_timeout_ac(value)
 
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='')

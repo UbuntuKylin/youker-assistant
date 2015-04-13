@@ -31,6 +31,7 @@ class QLabel;
 class QComboBox;
 class QDoubleSpinBox;
 class QSlider;
+class QRadioButton;
 
 class SessionDispatcher;
 
@@ -52,12 +53,17 @@ public slots:
     void setLockEnabled();
 //    void setLockDelay(QString value);
     void setLockDelay(int index);
+    void setRadioButtonRowStatus();
+    void setSleepTimeoutBattery(int index);
+    void setSleepTimeoutAC(int index);
 
 private:
     QDBusInterface *iface;
     SessionDispatcher *sessionproxy;
     QString current_idle_delay;
     QString current_lock_delay;
+    QString sleep_timeout_battery;
+    QString sleep_timeout_ac;
     QLabel *gamma_label;
     QDoubleSpinBox *gamma_slider;
     QLabel *brightness_label;
@@ -69,6 +75,19 @@ private:
     KylinSwitcher *lock_enabled_switch;
     QLabel *lock_delay_label;
     QComboBox *lock_delay_combo;
+    QLabel *critical_low_label;
+    QRadioButton *suspend_low_radio;
+    QRadioButton *shutdown_radio;
+    QLabel *laptop_lid_battery_label;
+    QRadioButton *suspend_lid_battery_radio;
+    QRadioButton *nothing_battery_radio;
+    QLabel *laptop_lid_ac_label;
+    QRadioButton *suspend_lid_ac_radio;
+    QRadioButton *nothing_ac_radio;
+    QLabel *sleep_battery_label;
+    QComboBox *sleep_battery_combo;
+    QLabel *sleep_ac_label;
+    QComboBox *sleep_ac_combo;
 };
 
 #endif // CONSERVEWIDGET_H
