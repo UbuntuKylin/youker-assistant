@@ -7,7 +7,7 @@ youker-assistant (2.0.2) vivid; urgency=low
   * Add energy conserving model.
   * Fixed battery information(LP: #1430128).
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 10 Apr 2015 14:59:30 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 14 Apr 2015 12:07:13 +0800
 
 youker-assistant (2.0.1) vivid; urgency=low
 

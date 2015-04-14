@@ -408,54 +408,104 @@ class System():
                 'uint', value)
 
     def get_current_critical_low(self):
-        return gsettings.get('org.gnome.settings-daemon.plugins.power',
-            None, 'critical-battery-action', 'string')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.power-manager',
+                None, 'action-critical-battery', 'string')
+        else:
+            return gsettings.get('org.gnome.settings-daemon.plugins.power',
+                None, 'critical-battery-action', 'string')
 
     def set_current_critical_low(self, value):
-        gsettings.set('org.gnome.settings-daemon.plugins.power',
-            None,
-            'critical-battery-action',
-            'string', value)
+        if self.dekstop == "mate":
+            gsettings.set('org.mate.power-manager',
+                None,
+                'action-critical-battery',
+                'string', value)
+        else:
+            gsettings.set('org.gnome.settings-daemon.plugins.power',
+                None,
+                'critical-battery-action',
+                'string', value)
 
     def get_current_lid_battery(self):
-        return gsettings.get('org.gnome.settings-daemon.plugins.power',
-            None, 'lid-close-battery-action', 'string')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.power-manager',
+                None, 'button-lid-battery', 'string')
+        else:
+            return gsettings.get('org.gnome.settings-daemon.plugins.power',
+                None, 'lid-close-battery-action', 'string')
 
     def set_current_lid_battery(self, value):
-        gsettings.set('org.gnome.settings-daemon.plugins.power',
-            None,
-            'lid-close-battery-action',
-            'string', value)
+        if self.dekstop == "mate":
+            gsettings.set('org.mate.power-manager',
+                None,
+                'button-lid-battery',
+                'string', value)
+        else:
+            gsettings.set('org.gnome.settings-daemon.plugins.power',
+                None,
+                'lid-close-battery-action',
+                'string', value)
 
     def get_current_lid_ac(self):
-        return gsettings.get('org.gnome.settings-daemon.plugins.power',
-            None, 'lid-close-ac-action', 'string')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.power-manager',
+                None, 'button-lid-ac', 'string')
+        else:
+            return gsettings.get('org.gnome.settings-daemon.plugins.power',
+                None, 'lid-close-ac-action', 'string')
 
     def set_current_lid_ac(self, value):
-        gsettings.set('org.gnome.settings-daemon.plugins.power',
-            None,
-            'lid-close-ac-action',
-            'string', value)
+        if self.dekstop == "mate":
+            gsettings.set('org.mate.power-manager',
+                None,
+                'button-lid-ac',
+                'string', value)
+        else:
+            gsettings.set('org.gnome.settings-daemon.plugins.power',
+                None,
+                'lid-close-ac-action',
+                'string', value)
 
     def get_current_sleep_timeout_battery(self):
-        return gsettings.get('org.gnome.settings-daemon.plugins.power',
-            None, 'sleep-inactive-battery-timeout', 'int')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.power-manager',
+                None, 'sleep-computer-battery', 'int')
+        else:
+            return gsettings.get('org.gnome.settings-daemon.plugins.power',
+                None, 'sleep-inactive-battery-timeout', 'int')
 
     def set_current_sleep_timeout_battery(self, value):
-        gsettings.set('org.gnome.settings-daemon.plugins.power',
-            None,
-            'sleep-inactive-battery-timeout',
-            'int', value)
+        if self.dekstop == "mate":
+            gsettings.set('org.mate.power-manager',
+                None,
+                'sleep-computer-battery',
+                'int', value)
+        else:
+            gsettings.set('org.gnome.settings-daemon.plugins.power',
+                None,
+                'sleep-inactive-battery-timeout',
+                'int', value)
 
     def get_current_sleep_timeout_ac(self):
-        return gsettings.get('org.gnome.settings-daemon.plugins.power',
-            None, 'sleep-inactive-ac-timeout', 'int')
+        if self.dekstop == "mate":
+            return gsettings.get('org.mate.power-manager',
+                None, 'sleep-computer-ac', 'int')
+        else:
+            return gsettings.get('org.gnome.settings-daemon.plugins.power',
+                None, 'sleep-inactive-ac-timeout', 'int')
 
     def set_current_sleep_timeout_ac(self, value):
-        gsettings.set('org.gnome.settings-daemon.plugins.power',
-            None,
-            'sleep-inactive-ac-timeout',
-            'int', value)
+        if self.dekstop == "mate":
+            gsettings.set('org.mate.power-manager',
+                None,
+                'sleep-computer-ac',
+                'int', value)
+        else:
+            gsettings.set('org.gnome.settings-daemon.plugins.power',
+                None,
+                'sleep-inactive-ac-timeout',
+                'int', value)
 
 if __name__ == '__main__':
     gsettings.set('org.compiz.gwd',None,'mouse-wheel-action', 'string', 'shade')
