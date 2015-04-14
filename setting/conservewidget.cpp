@@ -96,14 +96,17 @@ ConserveWidget::ConserveWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
         brightness_slider->hide();
     }
 
-//    if(!sessionproxy->judge_power_is_exists_qt())
-//    {
-//        laptop_lid_battery_label->hide();
-//        suspend_lid_battery_radio->hide();
-//        nothing_battery_radio->hide();
-//        sleep_battery_label->hide();
-//        sleep_battery_combo->hide();
-//    }
+    if(!sessionproxy->judge_power_is_exists_qt())
+    {
+        critical_low_label->hide();
+        suspend_low_radio->hide();
+        shutdown_radio->hide();
+        laptop_lid_battery_label->hide();
+        suspend_lid_battery_radio->hide();
+        nothing_battery_radio->hide();
+        sleep_battery_label->hide();
+        sleep_battery_combo->hide();
+    }
 
     gamma_label->setFixedWidth(260);
     brightness_label->setFixedWidth(260);
@@ -325,7 +328,7 @@ void ConserveWidget::initData()
     sleep_timeout_battery = sessionproxy->get_current_sleep_timeout_battery_qt();
     QStringList batterylist  = sessionproxy->get_sleep_timeout_list_qt();
     QStringList huname_battery_list;
-    huname_battery_list << tr("5 minutes") << tr("10 minutes") << tr("20 minutes") << tr("Half an hour") << tr("1 hour") << tr("2 hours") << tr("No suspend");
+    huname_battery_list << tr("5 minutes") << tr("10 minutes") << tr("20 minutes") << tr("Half an hour") << tr("1 hour") << tr("2 hours") << tr("never");
     QList<QString>::Iterator it3 = batterylist.begin(), itend3 = batterylist.end();
     int initIndex3 = 0;
     inHere = false;
@@ -348,7 +351,7 @@ void ConserveWidget::initData()
     sleep_timeout_ac = sessionproxy->get_current_sleep_timeout_ac_qt();
     QStringList aclist  = sessionproxy->get_sleep_timeout_list_qt();
     QStringList huname_ac_list;
-    huname_ac_list << tr("5 minutes") << tr("10 minutes") << tr("20 minutes") << tr("Half an hour") << tr("1 hour") << tr("2 hours") << tr("No suspend");
+    huname_ac_list << tr("5 minutes") << tr("10 minutes") << tr("20 minutes") << tr("Half an hour") << tr("1 hour") << tr("2 hours") << tr("never");
     QList<QString>::Iterator it4 = aclist.begin(), itend4 = aclist.end();
     int initIndex4 = 0;
     inHere = false;
