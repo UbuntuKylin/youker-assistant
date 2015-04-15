@@ -29,27 +29,13 @@ NicWidget::NicWidget(QWidget *parent, SystemDispatcher *proxy) :
     setFixedSize(750, 403);
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403);
-    this->initData();
-    if(wire_info_map.count() == 0)
-    {
-        page = NULL;
-    }
-    else {
-        page = new ComputerPage(scroll_widget->zone, tr("NIC Info"));
-        page->setMap(wire_info_map, wire_info_map.value("NetVendor").toString().toUpper());
-        page->initUI();
-        scroll_widget->addScrollWidget(page);
-    }
-    if(wireless_info_map.count() == 0)
-    {
-        page2 = NULL;
-    }
-    else {
-        page2 = new ComputerPage(scroll_widget->zone, tr("WireLess NIC Info"));
-        page2->setMap(wireless_info_map, wireless_info_map.value("WlanVendor").toString().toUpper());
-        page2->initUI();
-        scroll_widget->addScrollWidget(page2);
-    }
+    dataOK = false;
+//    this->initData();
+}
+
+bool NicWidget::getStatus()
+{
+    return this->dataOK;
 }
 
 void NicWidget::initData()
@@ -70,4 +56,25 @@ void NicWidget::initData()
             }
         }
     }
+    if((wire_info_map.count() == 0) || (wire_info_map.count() == 1 && wire_info_map.contains("kylinkobe")))
+    {
+        page = NULL;
+    }
+    else {
+        page = new ComputerPage(scroll_widget->zone, tr("NIC Info"));
+        page->setMap(wire_info_map, wire_info_map.value("NetVendor").toString().toUpper());
+        page->initUI();
+        scroll_widget->addScrollWidget(page);
+    }
+    if((wireless_info_map.count() == 0) || (wireless_info_map.count() == 1 && wireless_info_map.contains("kylinkobe")))
+    {
+        page2 = NULL;
+    }
+    else {
+        page2 = new ComputerPage(scroll_widget->zone, tr("WireLess NIC Info"));
+        page2->setMap(wireless_info_map, wireless_info_map.value("WlanVendor").toString().toUpper());
+        page2->initUI();
+        scroll_widget->addScrollWidget(page2);
+    }
+    dataOK = true;
 }

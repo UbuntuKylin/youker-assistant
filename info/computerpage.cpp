@@ -301,7 +301,7 @@ QString ComputerPage::translatorSwitch(QString orgStr)
         return tr("IDE interface");
     else if(orgStr == "Signal processing controller")//信号处理控制器
         return tr("SP controller");
-    else if(orgStr == "Network controlle")//网络控制器
+    else if(orgStr == "Network controller")//网络控制器
         return tr("Network controller");
     else if(orgStr == "Multimedia audio controller")//多媒体音频控制器
         return tr("Multimedia audio controller");
@@ -423,7 +423,7 @@ QString ComputerPage::translatorSwitch(QString orgStr)
     else if(orgStr == "machine")//内核架构：
         return tr("Kernel Arch");
     else
-        return "";
+        return orgStr;
 }
 
 //void ComputerPage::resizeEvent(QResizeEvent *event)

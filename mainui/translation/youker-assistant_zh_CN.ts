@@ -151,12 +151,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>AudioWidget</name>
     <message>
-        <location filename="../../info/audiowidget.cpp" line="42"/>
+        <location filename="../../info/audiowidget.cpp" line="63"/>
         <source>Audio Info</source>
         <translation>声卡信息</translation>
     </message>
     <message>
-        <location filename="../../info/audiowidget.cpp" line="59"/>
+        <location filename="../../info/audiowidget.cpp" line="80"/>
         <source>Audio Info %1</source>
         <translation>声卡信息%1</translation>
     </message>
@@ -206,7 +206,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>BatteryWidget</name>
     <message>
-        <location filename="../../info/batterywidget.cpp" line="37"/>
+        <location filename="../../info/batterywidget.cpp" line="75"/>
         <source>Battery Info</source>
         <translation>电池信息</translation>
     </message>
@@ -214,7 +214,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>BoardWidget</name>
     <message>
-        <location filename="../../info/boardwidget.cpp" line="36"/>
+        <location filename="../../info/boardwidget.cpp" line="53"/>
         <source>Board Info</source>
         <translation>主板信息</translation>
     </message>
@@ -275,12 +275,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CDRowWidget</name>
     <message>
-        <location filename="../../info/cdrowwidget.cpp" line="50"/>
+        <location filename="../../info/cdrowwidget.cpp" line="79"/>
         <source>CDROM Info</source>
         <translation>光驱信息</translation>
     </message>
     <message>
-        <location filename="../../info/cdrowwidget.cpp" line="67"/>
+        <location filename="../../info/cdrowwidget.cpp" line="96"/>
         <source>CDROM Info %1</source>
         <translation>光驱信息 %1</translation>
     </message>
@@ -1440,7 +1440,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CpuWidget</name>
     <message>
-        <location filename="../../info/cpuwidget.cpp" line="37"/>
+        <location filename="../../info/cpuwidget.cpp" line="54"/>
         <source>CPU Info</source>
         <translation>处理器信息</translation>
     </message>
@@ -1461,7 +1461,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>DesktopWidget</name>
     <message>
-        <location filename="../../info/desktopwidget.cpp" line="37"/>
+        <location filename="../../info/desktopwidget.cpp" line="54"/>
         <source>Desktop Info</source>
         <translation>桌面环境信息</translation>
     </message>
@@ -1538,12 +1538,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>HDWidget</name>
     <message>
-        <location filename="../../info/hdwidget.cpp" line="40"/>
+        <location filename="../../info/hdwidget.cpp" line="60"/>
         <source>HardWare Info</source>
         <translation>硬盘信息</translation>
     </message>
     <message>
-        <location filename="../../info/hdwidget.cpp" line="57"/>
+        <location filename="../../info/hdwidget.cpp" line="77"/>
         <source>HardWare Info %1</source>
         <translation>硬盘信息 %1</translation>
     </message>
@@ -1796,62 +1796,62 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>InfoWidget</name>
     <message>
-        <location filename="../infowidget.cpp" line="36"/>
+        <location filename="../infowidget.cpp" line="41"/>
         <source>Computer</source>
         <translation>电脑概述</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="36"/>
+        <location filename="../infowidget.cpp" line="41"/>
         <source>Desktop</source>
         <translation>桌面环境</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="36"/>
+        <location filename="../infowidget.cpp" line="41"/>
         <source>CPU</source>
         <translation>处理器</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="36"/>
+        <location filename="../infowidget.cpp" line="41"/>
         <source>Memory</source>
         <translation>内存</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="36"/>
+        <location filename="../infowidget.cpp" line="41"/>
         <source>Motherboard</source>
         <translation>主板</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="36"/>
+        <location filename="../infowidget.cpp" line="41"/>
         <source>HD</source>
         <translation>硬盘</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="36"/>
+        <location filename="../infowidget.cpp" line="41"/>
         <source>NIC</source>
         <translation>网卡</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="36"/>
+        <location filename="../infowidget.cpp" line="41"/>
         <source>VGA</source>
         <translation>显卡</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="36"/>
+        <location filename="../infowidget.cpp" line="41"/>
         <source>Audio</source>
         <translation>声卡</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="36"/>
+        <location filename="../infowidget.cpp" line="41"/>
         <source>CD-ROM</source>
         <translation>光驱</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="36"/>
+        <location filename="../infowidget.cpp" line="41"/>
         <source>Battery</source>
         <translation>电池</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="36"/>
+        <location filename="../infowidget.cpp" line="41"/>
         <source>Device Driver</source>
         <translation>设备驱动</translation>
     </message>
@@ -2018,12 +2018,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>MemoryWidget</name>
     <message>
-        <location filename="../../info/memorywidget.cpp" line="42"/>
+        <location filename="../../info/memorywidget.cpp" line="62"/>
         <source>Memory Info</source>
         <translation>内存条信息</translation>
     </message>
     <message>
-        <location filename="../../info/memorywidget.cpp" line="59"/>
+        <location filename="../../info/memorywidget.cpp" line="79"/>
         <source>Memory Info %1</source>
         <translation>内存信息 %1</translation>
     </message>
@@ -2031,12 +2031,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>MonitorWidget</name>
     <message>
-        <location filename="../../info/monitorwidget.cpp" line="40"/>
+        <location filename="../../info/monitorwidget.cpp" line="60"/>
         <source>Monitor Info</source>
         <translation>显示器和显卡信息</translation>
     </message>
     <message>
-        <location filename="../../info/monitorwidget.cpp" line="57"/>
+        <location filename="../../info/monitorwidget.cpp" line="77"/>
         <source>Monitor Info %1</source>
         <translation>显示器和显卡信息 %1</translation>
     </message>
@@ -2105,12 +2105,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>NicWidget</name>
     <message>
-        <location filename="../../info/nicwidget.cpp" line="38"/>
+        <location filename="../../info/nicwidget.cpp" line="64"/>
         <source>NIC Info</source>
         <translation>有线网卡信息</translation>
     </message>
     <message>
-        <location filename="../../info/nicwidget.cpp" line="48"/>
+        <location filename="../../info/nicwidget.cpp" line="74"/>
         <source>WireLess NIC Info</source>
         <translation>无线网卡信息</translation>
     </message>
@@ -2599,18 +2599,18 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SystemWidget</name>
     <message>
-        <location filename="../../info/systemwidget.cpp" line="43"/>
+        <location filename="../../info/systemwidget.cpp" line="83"/>
         <source>Computer Base Info</source>
         <translation>电脑概述</translation>
     </message>
     <message>
-        <location filename="../../info/systemwidget.cpp" line="71"/>
-        <location filename="../../info/systemwidget.cpp" line="75"/>
+        <location filename="../../info/systemwidget.cpp" line="60"/>
+        <location filename="../../info/systemwidget.cpp" line="64"/>
         <source> Minutes</source>
         <translation> 分钟</translation>
     </message>
     <message>
-        <location filename="../../info/systemwidget.cpp" line="75"/>
+        <location filename="../../info/systemwidget.cpp" line="64"/>
         <source> Hours </source>
         <translation> 小时</translation>
     </message>

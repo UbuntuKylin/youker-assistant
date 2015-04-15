@@ -24,6 +24,11 @@ InfoWidget::InfoWidget(QWidget *parent) :
     QWidget(parent)
 {
     this->setFixedSize(900, 403);
+    this->setAutoFillBackground(true);
+    QPalette palette;
+    palette.setBrush(QPalette::Window, QBrush(Qt::white));
+    this->setPalette(palette);
+
     splitter = new QSplitter();
     splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     splitter->setOrientation(Qt::Horizontal);
@@ -87,6 +92,7 @@ void InfoWidget::initUI()
     nic_widget = new NicWidget(this, systemProxy);
     monitor_widget = new MonitorWidget(this, systemProxy);
     audio_widget = new AudioWidget(this, systemProxy);
+
     QMap<QString, QVariant> tmpMap = systemProxy->get_cdrom_info_qt();
     QMap<QString, QVariant>::iterator iter = tmpMap.find("Dvdnum");
     int dvdNum = 0;
@@ -127,7 +133,6 @@ void InfoWidget::initUI()
     }
     category_widget->setCurrentRow(0);
     current_tip = category_widget->currentItem()->statusTip();
-
 
     stacked_widget->addWidget(system_widget);
     stacked_widget->addWidget(desktop_widget);
@@ -191,33 +196,53 @@ void InfoWidget::changeInfoPage(QListWidgetItem *item) {
             stacked_widget->setCurrentWidget(system_widget);
         }
         else if (item->statusTip() == "unity") {
+            if(!desktop_widget->getStatus())
+                desktop_widget->initData();
             stacked_widget->setCurrentWidget(desktop_widget);
         }
         else if (item->statusTip() == "cpu") {
+            if(!cpu_widget->getStatus())
+                cpu_widget->initData();
             stacked_widget->setCurrentWidget(cpu_widget);
         }
         else if (item->statusTip() == "memory") {
+            if(!memory_widget->getStatus())
+                memory_widget->initData();
             stacked_widget->setCurrentWidget(memory_widget);
         }
         else if (item->statusTip() == "board") {
+            if(!board_widget->getStatus())
+                board_widget->initData();
             stacked_widget->setCurrentWidget(board_widget);
         }
         else if (item->statusTip() == "harddisk") {
+            if(!hd_widget->getStatus())
+                hd_widget->initData();
             stacked_widget->setCurrentWidget(hd_widget);
         }
         else if (item->statusTip() == "network") {
+            if(!nic_widget->getStatus())
+                nic_widget->initData();
             stacked_widget->setCurrentWidget(nic_widget);
         }
         else if (item->statusTip() == "monitor") {
+            if(!monitor_widget->getStatus())
+                monitor_widget->initData();
             stacked_widget->setCurrentWidget(monitor_widget);
         }
         else if (item->statusTip() == "audio") {
+            if(!audio_widget->getStatus())
+                audio_widget->initData();
             stacked_widget->setCurrentWidget(audio_widget);
         }
         else if (item->statusTip() == "cdrom") {
+            if(!cdrom_widget->getStatus())
+                cdrom_widget->initData();
             stacked_widget->setCurrentWidget(cdrom_widget);
         }
         else if (item->statusTip() == "battery") {
+            if(!battery_widget->getStatus())
+                battery_widget->initData();
             stacked_widget->setCurrentWidget(battery_widget);
         }
         else if (item->statusTip() == "drive") {

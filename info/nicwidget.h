@@ -34,6 +34,7 @@ class NicWidget : public QWidget
 public:
     explicit NicWidget(QWidget *parent = 0, SystemDispatcher *proxy = 0);
     void initData();
+    bool getStatus();
 
 signals:
 
@@ -46,6 +47,7 @@ private:
     QMap<QString, QVariant> wire_info_map;
     QMap<QString, QVariant> wireless_info_map;
     SystemDispatcher *systemproxy;
+    bool dataOK;
 };
 
 #endif // NICWIDGET_H

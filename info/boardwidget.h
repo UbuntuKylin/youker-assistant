@@ -34,6 +34,7 @@ class BoardWidget : public QWidget
 public:
     explicit BoardWidget(QWidget *parent = 0, SystemDispatcher *proxy = 0);
     void initData();
+    bool getStatus();
 
 signals:
 
@@ -44,6 +45,7 @@ private:
     ComputerPage *page;
     QMap<QString, QVariant> board_info_map;
     SystemDispatcher *systemproxy;
+    bool dataOK;
 };
 
 #endif // BOARDWIDGET_H

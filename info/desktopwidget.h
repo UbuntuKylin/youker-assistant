@@ -34,6 +34,7 @@ class DesktopWidget : public QWidget
 public:
     explicit DesktopWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0);
     void initData();
+    bool getStatus();
 
 signals:
 
@@ -44,6 +45,7 @@ private:
     ComputerPage *page;
     QMap<QString, QVariant> desktop_info_map;
     SessionDispatcher *sessionProxy;
+    bool dataOK;
 };
 
 #endif // DESKTOPWIDGET_H

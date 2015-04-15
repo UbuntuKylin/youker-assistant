@@ -31,8 +31,29 @@ AudioWidget::AudioWidget(QWidget *parent, SystemDispatcher *proxy) :
     setFixedSize(750, 403/* - 10*/);
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403/* - 10*/);
+    dataOK = false;
+//    mulNum = this->initData();
 
-    mulNum = this->initData();
+}
+
+bool AudioWidget::getStatus()
+{
+    return this->dataOK;
+}
+
+void AudioWidget::initData()
+{
+    audio_info_map.clear();
+    audio_info_map = systemproxy->get_audiocard_info_qt();
+    QMap<QString, QVariant>::iterator iter = audio_info_map.find("MulNum");
+    int mulNum = 0;
+    if (iter == audio_info_map.end())
+    {
+        mulNum = 0;
+    }
+    else{
+        mulNum =  iter.value().toInt();
+    }
     if(audio_info_map.count() == 1 && audio_info_map.contains("kylinkobe"))
     {
     }
@@ -75,18 +96,5 @@ AudioWidget::AudioWidget(QWidget *parent, SystemDispatcher *proxy) :
             }
         }
     }
-}
-
-int AudioWidget::initData()
-{
-    audio_info_map.clear();
-    audio_info_map = systemproxy->get_audiocard_info_qt();
-    QMap<QString, QVariant>::iterator iter = audio_info_map.find("MulNum");
-    if (iter == audio_info_map.end())
-    {
-        return 0;
-    }
-    else{
-        return iter.value().toInt();
-    }
+    dataOK = true;
 }

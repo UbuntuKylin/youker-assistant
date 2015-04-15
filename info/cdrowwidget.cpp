@@ -29,6 +29,7 @@ CDRowWidget::CDRowWidget(QWidget *parent, SystemDispatcher *proxy) :
     setFixedSize(750, 403);
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403);
+    dataOK = false;
 //    this->initData();
 //    if(cdrom_info_map.count() == 1 && cdrom_info_map.contains("kylinkobe"))
 //    {
@@ -40,7 +41,35 @@ CDRowWidget::CDRowWidget(QWidget *parent, SystemDispatcher *proxy) :
 //        page->initUI();
 //        scroll_widget->addScrollWidget(page);
 //    }
-    cdNum = this->initData();
+//    cdNum = this->initData();
+
+}
+
+bool CDRowWidget::getStatus()
+{
+    return this->dataOK;
+}
+
+void CDRowWidget::initData()
+{
+//    QMap<QString, QVariant> tmpMap = systemproxy->get_cdrom_info_qt();
+//    QMap<QString,QVariant>::iterator it;
+//    for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
+//        if (it.value().toString().length() > 0) {
+//            cdrom_info_map.insert(it.key(), it.value());
+//        }
+//    }
+    cdrom_info_map.clear();
+    cdrom_info_map = systemproxy->get_cdrom_info_qt();
+    QMap<QString, QVariant>::iterator iter = cdrom_info_map.find("Dvdnum");
+    int cdNum = 0;
+    if (iter == cdrom_info_map.end())
+    {
+        cdNum =  0;
+    }
+    else{
+        cdNum =  iter.value().toInt();
+    }
     if(cdrom_info_map.count() == 1 && cdrom_info_map.contains("kylinkobe"))
     {
     }
@@ -83,25 +112,5 @@ CDRowWidget::CDRowWidget(QWidget *parent, SystemDispatcher *proxy) :
             }
         }
     }
-}
-
-int CDRowWidget::initData()
-{
-//    QMap<QString, QVariant> tmpMap = systemproxy->get_cdrom_info_qt();
-//    QMap<QString,QVariant>::iterator it;
-//    for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
-//        if (it.value().toString().length() > 0) {
-//            cdrom_info_map.insert(it.key(), it.value());
-//        }
-//    }
-    cdrom_info_map.clear();
-    cdrom_info_map = systemproxy->get_cdrom_info_qt();
-    QMap<QString, QVariant>::iterator iter = cdrom_info_map.find("Dvdnum");
-    if (iter == cdrom_info_map.end())
-    {
-        return 0;
-    }
-    else{
-        return iter.value().toInt();
-    }
+    dataOK = true;
 }
