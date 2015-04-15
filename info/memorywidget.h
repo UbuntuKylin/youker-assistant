@@ -32,7 +32,8 @@ class MemoryWidget : public QWidget
     Q_OBJECT
 public:
     explicit MemoryWidget(QWidget *parent = 0, SystemDispatcher *proxy = 0);
-    int initData();
+    void initData();
+    bool getStatus();
 
 signals:
 
@@ -43,7 +44,8 @@ private:
     QMap<QString, QVariant> memory_info_map;
     QMap<QString, QVariant> tmp_info_map;
     SystemDispatcher *systemproxy;
-    int memoryNum;
+//    int memoryNum;
+    bool dataOK;
 };
 
 #endif // MEMORYWIDGET_H

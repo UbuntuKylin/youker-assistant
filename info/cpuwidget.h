@@ -34,6 +34,7 @@ class CpuWidget : public QWidget
 public:
     explicit CpuWidget(QWidget *parent = 0, SystemDispatcher *proxy = 0);
     void initData();
+    bool getStatus();
 
 signals:
 
@@ -44,6 +45,7 @@ private:
     ComputerPage *page;
     QMap<QString, QVariant> cpu_info_map;
     SystemDispatcher *systemproxy;
+    bool dataOK;
 };
 
 #endif // CPUWIDGET_H

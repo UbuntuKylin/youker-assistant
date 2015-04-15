@@ -32,7 +32,8 @@ class CDRowWidget : public QWidget
     Q_OBJECT
 public:
     explicit CDRowWidget(QWidget *parent = 0, SystemDispatcher *proxy = 0);
-    int initData();
+    void initData();
+    bool getStatus();
 
 signals:
 
@@ -43,7 +44,8 @@ private:
     QMap<QString, QVariant> cdrom_info_map;
     QMap<QString, QVariant> tmp_info_map;
     SystemDispatcher *systemproxy;
-    int cdNum;
+//    int cdNum;
+    bool dataOK;
 };
 
 #endif // CDROWWIDGET_H

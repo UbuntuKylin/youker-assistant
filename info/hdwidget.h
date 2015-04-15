@@ -32,7 +32,8 @@ class HDWidget : public QWidget
     Q_OBJECT
 public:
     explicit HDWidget(QWidget *parent = 0, SystemDispatcher *proxy = 0);
-    int initData();
+    void initData();
+    bool getStatus();
 
 signals:
 
@@ -43,7 +44,8 @@ private:
     QMap<QString, QVariant> hd_info_map;
     QMap<QString, QVariant> tmp_info_map;
     SystemDispatcher *systemproxy;
-    int diskNum;
+//    int diskNum;
+    bool dataOK;
 };
 
 #endif // HDWIDGET_H

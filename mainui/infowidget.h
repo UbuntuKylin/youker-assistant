@@ -64,12 +64,9 @@ public:
     void setSystemDbusProxy(SystemDispatcher *dispatcher) { systemProxy = dispatcher;}
     void initUI();
 
-signals:
-
 public slots:
     void changeInfoPage(QListWidgetItem* item);
 
-//    void change_box_index(int index);
 private:
     QSplitter *splitter;
     QListWidget *category_widget;

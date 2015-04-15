@@ -34,6 +34,7 @@ class BatteryWidget : public QWidget
 public:
     explicit BatteryWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0);
     void initData();
+    bool getStatus();
 
 signals:
 
@@ -44,6 +45,7 @@ private:
     ComputerPage *page;
     QMap<QString, QVariant> battery_info_map;
     SessionDispatcher *sessionproxy;
+    bool dataOK;
 };
 
 #endif // BATTERYWIDGET_H

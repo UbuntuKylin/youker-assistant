@@ -29,8 +29,28 @@ MonitorWidget::MonitorWidget(QWidget *parent, SystemDispatcher *proxy) :
     setFixedSize(750, 403);
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403);
+    dataOK = false;
+//    vgaNum = this->initData();
+}
 
-    vgaNum = this->initData();
+bool MonitorWidget::getStatus()
+{
+    return this->dataOK;
+}
+
+void MonitorWidget::initData()
+{
+    monitor_info_map.clear();
+    monitor_info_map = systemproxy->get_monitor_info_qt();
+    QMap<QString, QVariant>::iterator iter = monitor_info_map.find("Vga_num");
+    int vgaNum = 0;
+    if (iter == monitor_info_map.end())
+    {
+        vgaNum = 0;
+    }
+    else{
+        vgaNum = iter.value().toInt();
+    }
     if(monitor_info_map.count() == 1 && monitor_info_map.contains("kylinkobe"))
     {
     }
@@ -73,18 +93,5 @@ MonitorWidget::MonitorWidget(QWidget *parent, SystemDispatcher *proxy) :
             }
         }
     }
-}
-
-int MonitorWidget::initData()
-{
-    monitor_info_map.clear();
-    monitor_info_map = systemproxy->get_monitor_info_qt();
-    QMap<QString, QVariant>::iterator iter = monitor_info_map.find("Vga_num");
-    if (iter == monitor_info_map.end())
-    {
-        return 0;
-    }
-    else{
-        return iter.value().toInt();
-    }
+    dataOK = true;
 }

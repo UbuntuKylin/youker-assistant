@@ -32,7 +32,8 @@ class AudioWidget : public QWidget
     Q_OBJECT
 public:
     explicit AudioWidget(QWidget *parent = 0, SystemDispatcher *proxy = 0);
-    int initData();
+    void initData();
+    bool getStatus();
 
 signals:
 
@@ -43,7 +44,8 @@ private:
     QMap<QString, QVariant> audio_info_map;
     QMap<QString, QVariant> tmp_info_map;
     SystemDispatcher *systemproxy;
-    int mulNum;
+//    int mulNum;
+    bool dataOK;
 };
 
 #endif // AUDIOWIDGET_H

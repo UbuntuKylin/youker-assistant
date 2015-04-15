@@ -31,8 +31,28 @@ MemoryWidget::MemoryWidget(QWidget *parent, SystemDispatcher *proxy) :
     setFixedSize(750, 403);
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403);
-    memoryNum = this->initData();
+    dataOK = false;
+//    memoryNum = this->initData();
+}
 
+bool MemoryWidget::getStatus()
+{
+    return this->dataOK;
+}
+
+void MemoryWidget::initData()
+{
+    memory_info_map.clear();
+    memory_info_map = systemproxy->get_memory_info_qt();
+    QMap<QString, QVariant>::iterator iter = memory_info_map.find("Memnum");
+    int memoryNum = 0;
+    if (iter == memory_info_map.end())
+    {
+        memoryNum = 0;
+    }
+    else{
+        memoryNum = iter.value().toInt();
+    }
     if(memory_info_map.count() == 1 && memory_info_map.contains("kylinkobe"))
     {
     }
@@ -75,18 +95,5 @@ MemoryWidget::MemoryWidget(QWidget *parent, SystemDispatcher *proxy) :
             }
         }
     }
-}
-
-int MemoryWidget::initData()
-{
-    memory_info_map.clear();
-    memory_info_map = systemproxy->get_memory_info_qt();
-    QMap<QString, QVariant>::iterator iter = memory_info_map.find("Memnum");
-    if (iter == memory_info_map.end())
-    {
-        return 0;
-    }
-    else{
-        return iter.value().toInt();
-    }
+    dataOK = true;
 }

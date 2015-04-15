@@ -27,17 +27,13 @@ BoardWidget::BoardWidget(QWidget *parent, SystemDispatcher *proxy) :
     setFixedSize(750, 403);
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403);
-    this->initData();
-    if(board_info_map.count() == 1 && board_info_map.contains("kylinkobe"))
-    {
-        page = NULL;
-    }
-    else {
-        page = new ComputerPage(scroll_widget->zone, tr("Board Info"));
-        page->setMap(board_info_map, board_info_map.value("BoaVendor").toString().toUpper());
-        page->initUI();
-        scroll_widget->addScrollWidget(page);
-    }
+    dataOK = false;
+//    this->initData();
+}
+
+bool BoardWidget::getStatus()
+{
+    return this->dataOK;
 }
 
 void BoardWidget::initData()
@@ -49,4 +45,15 @@ void BoardWidget::initData()
             board_info_map.insert(it.key(), it.value());
         }
     }
+    if(board_info_map.count() == 1 && board_info_map.contains("kylinkobe"))
+    {
+        page = NULL;
+    }
+    else {
+        page = new ComputerPage(scroll_widget->zone, tr("Board Info"));
+        page->setMap(board_info_map, board_info_map.value("BoaVendor").toString().toUpper());
+        page->initUI();
+        scroll_widget->addScrollWidget(page);
+    }
+    dataOK = true;
 }

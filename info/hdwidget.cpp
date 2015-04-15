@@ -29,8 +29,28 @@ HDWidget::HDWidget(QWidget *parent, SystemDispatcher *proxy) :
     setFixedSize(750, 403);
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403);
+    dataOK = false;
+//    diskNum = this->initData();
+}
 
-    diskNum = this->initData();
+bool HDWidget::getStatus()
+{
+    return this->dataOK;
+}
+
+void HDWidget::initData()
+{
+    hd_info_map.clear();
+    hd_info_map = systemproxy->get_harddisk_info_qt();
+    QMap<QString, QVariant>::iterator iter = hd_info_map.find("DiskNum");
+    int diskNum = 0;
+    if (iter == hd_info_map.end())
+    {
+        diskNum = 0;
+    }
+    else{
+        diskNum = iter.value().toInt();
+    }
     if(hd_info_map.count() == 1 && hd_info_map.contains("kylinkobe"))
     {
     }
@@ -73,18 +93,5 @@ HDWidget::HDWidget(QWidget *parent, SystemDispatcher *proxy) :
             }
         }
     }
-}
-
-int HDWidget::initData()
-{
-    hd_info_map.clear();
-    hd_info_map = systemproxy->get_harddisk_info_qt();
-    QMap<QString, QVariant>::iterator iter = hd_info_map.find("DiskNum");
-    if (iter == hd_info_map.end())
-    {
-        return 0;
-    }
-    else{
-        return iter.value().toInt();
-    }
+    dataOK = true;
 }

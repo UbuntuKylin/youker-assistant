@@ -28,17 +28,13 @@ BatteryWidget::BatteryWidget(QWidget *parent, SessionDispatcher *proxy) :
     setFixedSize(750, 403);
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403);
-    this->initData();
-    if(battery_info_map.count() == 1 && battery_info_map.contains("kylinkobe"))
-    {
-        page = NULL;
-    }
-    else {
-        page = new ComputerPage(scroll_widget->zone, tr("Battery Info"));
-        page->setMap(battery_info_map, battery_info_map.value("POWER_SUPPLY_MANUFACTURER").toString().toUpper());
-        page->initUI();
-        scroll_widget->addScrollWidget(page);
-    }
+    dataOK = false;
+//    this->initData();
+}
+
+bool BatteryWidget::getStatus()
+{
+    return this->dataOK;
 }
 
 void BatteryWidget::initData()
@@ -71,5 +67,16 @@ void BatteryWidget::initData()
 //                battery_info_map.insert(it.key(), it.value());
 //        }
     }
+    if(battery_info_map.count() == 1 && battery_info_map.contains("kylinkobe"))
+    {
+        page = NULL;
+    }
+    else {
+        page = new ComputerPage(scroll_widget->zone, tr("Battery Info"));
+        page->setMap(battery_info_map, battery_info_map.value("POWER_SUPPLY_MANUFACTURER").toString().toUpper());
+        page->initUI();
+        scroll_widget->addScrollWidget(page);
+    }
+    dataOK = true;
 }
 
