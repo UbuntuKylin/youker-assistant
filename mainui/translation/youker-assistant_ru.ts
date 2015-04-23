@@ -1673,62 +1673,62 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>InfoWidget</name>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>Computer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>Desktop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>CPU</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>Memory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>Motherboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>HD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>NIC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>VGA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>Audio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>CD-ROM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>Battery</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>Device Driver</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1888,6 +1888,11 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../mainwindow.ui" line="17"/>
         <source>MainWindow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="32"/>
+        <source>Youker Assistant</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

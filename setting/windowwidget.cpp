@@ -164,6 +164,13 @@ void WindowWidget::initData()
     icon_switcher->switchedOn = sessionproxy->get_menus_have_icons_qt();
 
     QString current_wheel_type = sessionproxy->get_current_titlebar_wheel_qt();
+    //FT arm has no org.compiz.gwd.mouse-wheel-action, so is empty
+    if (current_wheel_type.isEmpty())
+    {
+        wheel_label->hide();
+        wheel_combo->hide();
+    }
+
     QStringList wheellist  = sessionproxy->get_titlebar_wheel_qt();
     wheel_combo->clear();
     wheel_combo->clearEditText();

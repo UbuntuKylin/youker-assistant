@@ -29,12 +29,13 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->resize(900, 600);
+    this->setWindowTitle(tr("Youker Assistant"));
     this->setWindowIcon(QIcon(":/res/youker-assistant.png"));
     this->setWindowOpacity(1);
     this->setWindowFlags(Qt::FramelessWindowHint | Qt::Widget);
     this->setStyleSheet("QMainWindow{border: 1px solid gray;border-radius:2px}");
 
-    version = "V2.0.2";
+    version = "V2.0.3";
 
     mSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
     mSettings->setIniCodec("UTF-8");
@@ -313,11 +314,11 @@ void MainWindow::setMainWindowLayout() {
 void MainWindow::display() {
     this->setMainWindowLayout();
 
-    QPropertyAnimation *animation = new QPropertyAnimation(this, "windowOpacity");
-    animation->setDuration(500);
-    animation->setStartValue(0);
-    animation->setEndValue(1);
-    animation->start();
+//    QPropertyAnimation *animation = new QPropertyAnimation(this, "windowOpacity");
+//    animation->setDuration(500);
+//    animation->setStartValue(0);
+//    animation->setEndValue(1);
+//    animation->start();
 
     if (this->isHidden()) {
         int windowWidth = QApplication::desktop()->width();

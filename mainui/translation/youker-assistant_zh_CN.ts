@@ -1796,62 +1796,62 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>InfoWidget</name>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>Computer</source>
         <translation>电脑概述</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>Desktop</source>
         <translation>桌面环境</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>CPU</source>
         <translation>处理器</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>Memory</source>
         <translation>内存</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>Motherboard</source>
         <translation>主板</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>HD</source>
         <translation>硬盘</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>NIC</source>
         <translation>网卡</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>VGA</source>
         <translation>显卡</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>Audio</source>
         <translation>声卡</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>CD-ROM</source>
         <translation>光驱</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>Battery</source>
         <translation>电池</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="41"/>
+        <location filename="../infowidget.cpp" line="42"/>
         <source>Device Driver</source>
         <translation>设备驱动</translation>
     </message>
@@ -2013,6 +2013,11 @@ p, li { white-space: pre-wrap; }
         <source>MainWindow</source>
         <translatorcomment>主界面</translatorcomment>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="32"/>
+        <source>Youker Assistant</source>
+        <translation>优客助手</translation>
     </message>
 </context>
 <context>

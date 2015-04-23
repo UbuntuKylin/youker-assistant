@@ -89,7 +89,7 @@ private:
     QString current_tip;
 //    QList<InfoType> *categoryList;
 
-
+    QString arch;
 //    QWidget *device_content;
 //    QWidget *logo_view;
 //    SystemDispatcher systemproxy;
