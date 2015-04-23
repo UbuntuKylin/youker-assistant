@@ -19,6 +19,7 @@
 
 #include "infowidget.h"
 #include <QDebug>
+#include <QProcess>
 
 InfoWidget::InfoWidget(QWidget *parent) :
     QWidget(parent)
@@ -50,6 +51,8 @@ InfoWidget::InfoWidget(QWidget *parent) :
     stacked_widget = new QStackedWidget(this);//stacked_widget will delete when InfoWidget delete
     stacked_widget->setFocusPolicy(Qt::NoFocus);
     stacked_widget->setAutoFillBackground(true);
+
+    arch = "";
 
     system_widget = NULL;
     desktop_widget = NULL;
@@ -114,6 +117,15 @@ void InfoWidget::initUI()
     }
     driver_widget = new DriverWidget(this/*, systemProxy*/);
 
+    QProcess *p = new QProcess();
+    p->start("uname -p");
+    bool result = p->waitForFinished();
+    if (result) {
+        if (p->canReadLine()){
+            arch = p->readLine();
+            arch = arch.left(arch.length() - 1);
+        }
+    }
 
     for(int i = 0;i < type_list.length();i ++) {
         if(i == 9 && dvdNum == 0){
@@ -121,6 +133,10 @@ void InfoWidget::initUI()
         }
         else if(i == 10 && !power) {
 
+        }
+        else if ((i  == 2 || i == 3 || i == 4) && arch == "aarch64")
+        {
+            // FT arm can not access cpu,memory and board
         }
         else {
             QIcon icon;

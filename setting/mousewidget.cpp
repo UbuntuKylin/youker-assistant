@@ -122,7 +122,7 @@ void MouseWidget::initData()
     int default_value = sessionproxy->get_cursor_size_qt();
     if (this->desktop == "mate")
     {
-        if(default_value == 18) {
+        if(default_value == 18 || default_value == 24) {
             small_size->setChecked(true);
             big_size->setChecked(false);
         }

@@ -159,10 +159,18 @@ class System():
     # set window button alignment left
     def set_window_button_align_left(self):
         if self.dekstop == "mate":
-            gsettings.set('org.mate.Marco.general',
-                None,
-                'button-layout',
-                'string', 'close,maximize,minimize:menu')
+            value = gsettings.get('org.mate.Marco.general',
+                None, 'button-layout', 'string')
+            if "menu" in value:
+                gsettings.set('org.mate.Marco.general',
+                    None,
+                    'button-layout',
+                    'string', 'close,maximize,minimize:menu')
+            else:
+                gsettings.set('org.mate.Marco.general',
+                    None,
+                    'button-layout',
+                    'string', 'close,maximize,minimize')
         else:
             gsettings.set('org.gnome.desktop.wm.preferences',
                 None,
@@ -177,10 +185,18 @@ class System():
     # set window button alignment right
     def set_window_button_align_right(self):
         if self.dekstop == "mate":
-            gsettings.set('org.mate.Marco.general',
-                None,
-                'button-layout',
-                'string', 'menu:minimize,maximize,close')
+            value = gsettings.get('org.mate.Marco.general',
+                None, 'button-layout', 'string')
+            if "menu" in value:
+                gsettings.set('org.mate.Marco.general',
+                    None,
+                    'button-layout',
+                    'string', 'menu:minimize,maximize,close')
+            else:
+                gsettings.set('org.mate.Marco.general',
+                    None,
+                    'button-layout',
+                    'string', ':minimize,maximize,close')
         else:
             gsettings.set('org.gnome.desktop.wm.preferences',
                 None,
@@ -197,9 +213,9 @@ class System():
         if self.dekstop == "mate":
             value = gsettings.get('org.mate.Marco.general',
                 None, 'button-layout', 'string')
-            if value == 'close,maximize,minimize:menu' or value == 'close,minimize,maximize:menu':
+            if value == 'close,maximize,minimize:menu' or value == 'close,minimize,maximize:menu' or value == ':close,minimize,maximize' or value == ':close,maximize,minimize':
                 return 'left'
-            elif value == 'menu:minimize,maximize,close' or value == 'menu:maximize,minimize,close':
+            elif value == 'menu:minimize,maximize,close' or value == 'menu:maximize,minimize,close' or value == ':minimize,maximize,close' or value == ':maximize,minimize,close':
                 return 'right'
         else:
             value = gsettings.get('org.gnome.desktop.wm.preferences',

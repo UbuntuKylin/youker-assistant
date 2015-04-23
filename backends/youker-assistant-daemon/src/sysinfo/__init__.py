@@ -142,13 +142,18 @@ class Sysinfo:
         return platform.node() , platform.processor()
 
     def get_hardwareinfo(self):
+        model_name = ''
+        MemTotal2 = ''
         # CPU
         with open('/proc/cpuinfo') as f:
             for line in f:
                 if line.strip():
                     if line.rstrip('\n').startswith('model name'):
                         model_name = line.rstrip('\n').split(':')[1]
-
+                        break
+                    elif line.rstrip('\n').startswith('Hardware'):
+                        model_name = line.rstrip('\n').split(':')[1].strip()
+                        break
         # Memory
         with open('/proc/meminfo') as f:
             for line in f:
@@ -157,6 +162,7 @@ class Sysinfo:
                         MemTotal = line.rstrip('\n').split(':')[1]
                         MemTotal1 = MemTotal.split(' ')[8]
                         MemTotal2 = GLib.format_size_for_display(int(MemTotal1) * 1024)
+                        break
         return model_name,MemTotal2
 
     def get_codename(self):
