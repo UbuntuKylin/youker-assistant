@@ -799,24 +799,29 @@ def interface_get_subpage_session(session, mode_dic):
                     
         
         if 'chromium' in cookies:
-            if cache['chromium-browser'].is_installed:
-                chcpath = "%s/.config/chromium/Default/Cookies" % homedir
-                if os.path.exists(chcpath):
-                    chcpam = [chcpath, 'cookies', 'host_key']
-                    chromium_cookies_list = cookies_obj.scan_cookies_records(chcpam[0], chcpam[1], chcpam[2])
-                    for value in chromium_cookies_list:
+            try:
+                pkg = cache['chromium-browser']
+            except KeyError:
+                pass
+            else:
+                if pkg.is_installed:
+                    chcpath = "%s/.config/chromium/Default/Cookies" % homedir
+                    if os.path.exists(chcpath):
+                        chcpam = [chcpath, 'cookies', 'host_key']
+                        chromium_cookies_list = cookies_obj.scan_cookies_records(chcpam[0], chcpam[1], chcpam[2])
+                        for value in chromium_cookies_list:
+                            info = []
+                            info.append('Belong:Cookies.chromium')
+                            info.append('Content:%s' % value[0])
+                            info.append('Count:%s' % str(value[-1]))
+                            session.subpage_data_signal(info)
+                    else:
                         info = []
                         info.append('Belong:Cookies.chromium')
-                        info.append('Content:%s' % value[0])
-                        info.append('Count:%s' % str(value[-1]))
+                        info.append('')
                         session.subpage_data_signal(info)
                 else:
-                    info = []
-                    info.append('Belong:Cookies.chromium')
-                    info.append('')
-                    session.subpage_data_signal(info)
-            else:
-                session.subpage_error_signal('Uninstalled:Chromium')
+                    session.subpage_error_signal('Uninstalled:Chromium')
         session.subpage_status_signal('Complete:Cookies')
 
 
@@ -852,25 +857,30 @@ def interface_get_subpage_session(session, mode_dic):
 
         if 'chromium' in history:
             chhpath = "%s/.config/chromium/Default/History" % homedir
-            if cache['chromium-browser'].is_installed:
-                run = common.process_pid("chromium-browser")
-                if not run:
-                    chromium_history_list = brohistory_obj.scan_chromium_history_records(chhpath)
-                    #for single in chromium_history_list:
-                    #    info = []
-                    #    info.append('Belong:History.chromium')
-                    #    info.append('Id:%s' % str(single[0]))
-                    #    info.append('Url:%s' % single[1])
-                    #    info.append('Count:%s' % str(single[2]))
-                    #    session.subpage_data_signal(info)
-                    info = []
-                    info.append('Belong:History.chromium')
-                    info.append('Count:%s' % str(len(chromium_history_list)))
-                    session.subpage_data_signal(info)
-                else:
-                    session.subpage_error_signal('Working:Chromium')
+            try:
+                pkg = cache['chromium-browser']
+            except KeyError:
+                pass
             else:
-                session.subpage_error_signal('Uninstalled:Chromium')
+                if pkg.is_installed:
+                    run = common.process_pid("chromium-browser")
+                    if not run:
+                        chromium_history_list = brohistory_obj.scan_chromium_history_records(chhpath)
+                        #for single in chromium_history_list:
+                        #    info = []
+                        #    info.append('Belong:History.chromium')
+                        #    info.append('Id:%s' % str(single[0]))
+                        #    info.append('Url:%s' % single[1])
+                        #    info.append('Count:%s' % str(single[2]))
+                        #    session.subpage_data_signal(info)
+                        info = []
+                        info.append('Belong:History.chromium')
+                        info.append('Count:%s' % str(len(chromium_history_list)))
+                        session.subpage_data_signal(info)
+                    else:
+                        session.subpage_error_signal('Working:Chromium')
+                else:
+                    session.subpage_error_signal('Uninstalled:Chromium')
 
         if 'system' in history:
             syshistory_obj = systemhistory.SystemHistory()
