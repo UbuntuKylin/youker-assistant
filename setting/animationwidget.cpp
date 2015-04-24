@@ -30,6 +30,7 @@ AnimationWidget::AnimationWidget(QWidget *parent, SystemDispatcher *proxy, MainW
     QWidget(parent),
     systemproxy(proxy), parentWindow(window)
 {
+    dataOK = false;
     title_label = new QLabel();
     left_widget = new QWidget();
     left_widget->setFixedWidth(240);
@@ -165,9 +166,8 @@ AnimationWidget::AnimationWidget(QWidget *parent, SystemDispatcher *proxy, MainW
     main_layout->setContentsMargins(0, 0, 0, 0);
 
     setLayout(main_layout);
-    this->initData();
+//    this->initData();
     this->setLanguage();
-    this->initConnect();
 }
 
 AnimationWidget::~AnimationWidget()
@@ -198,6 +198,11 @@ void AnimationWidget::initConnect() {
 //    connect(back_btn, SIGNAL(clicked()), this, SIGNAL(showSettingMainWidget()));
     connect(custom_btn, SIGNAL(clicked()), this, SLOT(selectCustomAnimation()));
     connect(ok_btn, SIGNAL(clicked()), this, SLOT(setCustomAnimation()));
+}
+
+bool AnimationWidget::getStatus()
+{
+    return this->dataOK;
 }
 
 void AnimationWidget::initData()
@@ -240,6 +245,8 @@ void AnimationWidget::initData()
         list_widget->setItemWidget(item, account_item);
     }
 //    connect(list_widget,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(onItemClicked(QListWidgetItem*)));
+    dataOK = true;
+    this->initConnect();
 }
 
 void AnimationWidget::selectCustomAnimation()

@@ -42,13 +42,38 @@ ThemeWidget::ThemeWidget(QWidget *parent, SessionDispatcher *proxy) :
     //设置QListWidget中的单元项的间距
     list_widget->setSpacing(26);
 
-
+    dataOK = false;
     current_index = 0;
-    QString current_theme = sessionproxy->get_theme_qt();
+    initIndex = 0;
 
+    using_label = new QLabel(list_widget);
+    using_label->setFixedSize(20, 20);
+    using_label->setAutoFillBackground(true);
+    QPalette palette;
+//    palette.setBrush(using_label->backgroundRole(), QBrush(QPixmap("://res/using.png")));
+    palette.setBrush(QPalette::Background, QBrush(QPixmap("://res/checkbox-press.png")));
+    using_label->setPalette(palette);
+    using_label->show();
+//    using_label->move(26, 26);
+
+    //    QHBoxLayout *layout = new QHBoxLayout();
+    //    layout->addWidget(list_widget);
+    //    setLayout(layout);
+    QGridLayout *layout = new QGridLayout();
+    layout->addWidget(list_widget);
+    setLayout(layout);
+}
+
+bool ThemeWidget::getStatus()
+{
+    return this->dataOK;
+}
+
+void ThemeWidget::initData() {
+    QString current_theme = sessionproxy->get_theme_qt();
     QStringList syslist = sessionproxy->get_themes_qt();
     QList<QString>::Iterator it = syslist.begin(), itend = syslist.end();
-    int initIndex = 0;
+    initIndex = 0;
     for(;it != itend; it++,initIndex++)
     {
         if(*it == current_theme)
@@ -72,28 +97,10 @@ ThemeWidget::ThemeWidget(QWidget *parent, SessionDispatcher *proxy) :
         list_widget->insertItem(i, pItem);
     }
 
-
-    using_label = new QLabel(list_widget);
-    using_label->setFixedSize(20, 20);
-    using_label->setAutoFillBackground(true);
-    QPalette palette;
-//    palette.setBrush(using_label->backgroundRole(), QBrush(QPixmap("://res/using.png")));
-    palette.setBrush(QPalette::Background, QBrush(QPixmap("://res/checkbox-press.png")));
-    using_label->setPalette(palette);
-    using_label->show();
-//    using_label->move(26, 26);
-
     //set using logo
     QListWidgetItem *cur_item = list_widget->item(initIndex);
     this->initCurrentTheme(cur_item);
-
-//    QHBoxLayout *layout = new QHBoxLayout();
-//    layout->addWidget(list_widget);
-//    setLayout(layout);
-    QGridLayout *layout = new QGridLayout();
-    layout->addWidget(list_widget);
-    setLayout(layout);
-
+    dataOK = true;
     this->initConnect();
 }
 

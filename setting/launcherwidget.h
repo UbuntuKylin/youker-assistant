@@ -39,6 +39,7 @@ public:
     void setLanguage();
     void initConnect();
     void initData();
+    bool getStatus();
 
 public slots:
     void setIconColouring(QString selectColour);
@@ -53,6 +54,7 @@ public slots:
 
 private:
     SessionDispatcher *sessionproxy;
+    bool dataOK;
     QLabel *size_label;
     QLabel *size_value_label;
     QLabel *hide_label;

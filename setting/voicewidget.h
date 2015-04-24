@@ -38,6 +38,7 @@ public:
     void setLanguage();
     void initConnect();
     void initData();
+    bool getStatus();
 
 public slots:
     void setVoiceTheme(QString selectTheme);
@@ -48,6 +49,7 @@ public slots:
 private:
     SessionDispatcher *sessionproxy;
     SystemDispatcher *systemproxy;
+    bool dataOK;
     QLabel *theme_label;
     QLabel *tip_label;
     QLabel *event_label;

@@ -236,12 +236,38 @@ void CleanerActionWidget::showReciveStatus(const QString &status)
     }
     else if(status == "Complete:All")
     {
+//        doing_label->setText(tr("Scaning......"));
+//        doing_label->hide();
+//        loading_label->stopLoading();
+//        scan_button->hide();
+//        scan_button->setEnabled(true);
+//        clean_button->show();
+//        clean_button->setEnabled(true);
+//        suggest_label->show();
+//        back_button->show();
+    }
+}
+
+void CleanerActionWidget::accordScanOverStatusToChange(bool status)
+{
+    if (status) {
         doing_label->setText(tr("Scaning......"));
         doing_label->hide();
         loading_label->stopLoading();
         scan_button->hide();
         scan_button->setEnabled(true);
         clean_button->show();
+        clean_button->setEnabled(true);
+        suggest_label->show();
+        back_button->show();
+    }
+    else {
+        doing_label->setText(tr("Scaning......"));
+        doing_label->hide();
+        loading_label->stopLoading();
+        scan_button->hide();
+        scan_button->setEnabled(true);
+        clean_button->hide();
         clean_button->setEnabled(true);
         suggest_label->show();
         back_button->show();

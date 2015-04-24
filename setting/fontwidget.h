@@ -38,6 +38,7 @@ public:
     void setLanguage();
     void initConnect();
     void initData();
+    bool getStatus();
 
 public slots:
     void setDefaultFont();
@@ -61,6 +62,7 @@ public slots:
 
 private:
     SessionDispatcher *sessionproxy;
+    bool dataOK;
     MainWindow *parentWindow;
     QLabel *default_font_label;
     QLabel *desktop_font_label;

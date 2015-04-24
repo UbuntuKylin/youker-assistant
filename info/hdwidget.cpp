@@ -25,7 +25,7 @@ HDWidget::HDWidget(QWidget *parent, SystemDispatcher *proxy) :
     systemproxy(proxy)
 {
 //    this->setStyleSheet("QWidget{border: none}");
-    this->setStyleSheet("QWidget{background-color: #ffffff}");
+//    this->setStyleSheet("QWidget{background-color: #ffffff}");
     setFixedSize(750, 403);
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403);

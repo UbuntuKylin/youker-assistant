@@ -53,6 +53,7 @@ signals:
     void clearDetailPage();
     void tranActionAnimaitonSignal();
 //    void tranCleanActionAnimaitonSignal();
+    void tranScanOverSignal(bool status);
 
 private:
     QStackedWidget *statked_widget;

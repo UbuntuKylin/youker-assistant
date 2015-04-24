@@ -39,6 +39,7 @@ public:
     void setLanguage();
     void initConnect();
     void initData();
+    bool getStatus();
 
 //signals:
 //    void showSettingMainWidget();
@@ -50,6 +51,7 @@ public slots:
 private:
     SessionDispatcher *sessionproxy;
     SystemDispatcher *systemproxy;
+    bool dataOK;
     QLabel *theme_label;
     QLabel *size_label;
     QComboBox *theme_combo;

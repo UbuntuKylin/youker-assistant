@@ -61,6 +61,7 @@ public slots:
 signals:
     void notifyMainCheckBox(int status);
 //    void showActionAnimaiton();
+    void sendScanOverStatus(bool status);
 
 private:
     void initTitleBar();
@@ -125,6 +126,9 @@ private:
     QGridLayout *grid_layout;
     int rowIndex;
     int columnIndex;
+    bool scanResult;
+
+//    QLabel *resultLabel;
 };
 
 #endif // CLEANERDETAILWIDGET_H

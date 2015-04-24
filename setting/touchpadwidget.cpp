@@ -32,6 +32,7 @@ TouchpadWidget::TouchpadWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
     sessionproxy(proxy),
     desktop(cur_desktop)
 {
+    dataOK = false;
     touchpad_label = new QLabel();
     horizontal_scrolling_label = new QLabel();
     scrollbar_type_label = new QLabel();
@@ -120,9 +121,8 @@ TouchpadWidget::TouchpadWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
 //    main_layout->setSpacing(0);
 //    main_layout->setContentsMargins(0, 0, 0, 0);
 //    setLayout(main_layout);
-    this->initData();
+//    this->initData();
     this->setLanguage();
-    this->initConnect();
 }
 
 TouchpadWidget::~TouchpadWidget()
@@ -152,6 +152,11 @@ void TouchpadWidget::setLanguage() {
     disable_radio->setText(tr("Disabled"));//禁用
     edge_radio->setText(tr("Edge Scrolling"));//边界滚动
     two_finger_radio->setText(tr("Two-finger Scrolling"));//双指滚动
+}
+
+bool TouchpadWidget::getStatus()
+{
+    return this->dataOK;
 }
 
 void TouchpadWidget::initData()
@@ -206,6 +211,8 @@ void TouchpadWidget::initData()
             edge_radio->setChecked(false);
         }
     }
+    dataOK = true;
+    this->initConnect();
 }
 
 void TouchpadWidget::initConnect() {

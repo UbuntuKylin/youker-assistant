@@ -37,6 +37,7 @@ public:
     void setLanguage();
     void initConnect();
     void initData();
+    bool getStatus();
 
 public slots:
     void setLocation();
@@ -49,6 +50,7 @@ public slots:
 
 private:
     SessionDispatcher *sessionproxy;
+    bool dataOK;
     QLabel *location_label;
     QLabel *mount_media_label;
     QLabel *open_folder_label;

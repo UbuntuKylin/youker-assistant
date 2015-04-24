@@ -36,6 +36,8 @@ public:
     ~ThemeWidget();
     void initConnect();
     void initCurrentTheme(QListWidgetItem *init_item);
+    void initData();
+    bool getStatus();
 
 protected:
     void paintEvent(QPaintEvent *);
@@ -48,6 +50,8 @@ private:
     int current_index;
     QLabel *using_label;
     SessionDispatcher *sessionproxy;
+    bool dataOK;
+    int initIndex;
 };
 
 #endif // THEMEWIDGET_H

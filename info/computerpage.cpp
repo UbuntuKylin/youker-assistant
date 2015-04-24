@@ -65,11 +65,15 @@ void ComputerPage::initUI()
         logo_label->setAutoFillBackground(true);
         logo_label->setScaledContents(true);//自动缩放,显示图像大小自动调整为Qlabel大小
         QPixmap label_pixmap(":/vendor/res/manufacturer/" + vendor + ".jpg");
+        if (label_pixmap.isNull())
+        {
+            label_pixmap = QPixmap(":/vendor/res/manufacturer/UBUNTUKYLIN.jpg");
+        }
         logo_label->setPixmap(label_pixmap);
         logo_label->setFixedSize(label_pixmap.size());
-
-        logo_label->show();
-        logo_label->move(720 - logo_label->width(), 40);
+        logo_label->setGeometry(QRect(720 - logo_label->width(), 40, logo_label->width(), logo_label->height()));
+//        logo_label->show();
+////        logo_label->move(720 - logo_label->width(), 40);
     }
 
     QFont group_box_font = group_box->font();
@@ -115,13 +119,14 @@ void ComputerPage::initUI()
     }
     page_height += ITEMVSPACE*2;//every groupbox has tow separate line
     page_height += 30;
+    page_height += ITEMHSPACE;//ContentsMargin's height
     info_map.clear(); //清空map
 
     group_box->setLayout(form_layout);
     QVBoxLayout *layout = new QVBoxLayout();
     layout->addWidget(group_box);
     layout->setMargin(0);
-//    layout->setContentsMargins(10, 10, 10, 10);
+    layout->setContentsMargins(ITEMHSPACE, ITEMHSPACE, 0, 0);
     setLayout(layout);
 
     this->setLanguage();

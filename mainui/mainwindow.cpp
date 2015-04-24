@@ -681,6 +681,8 @@ void MainWindow::showClearWidget()
         connect(cleaner_widget, SIGNAL(tranActionAnimaitonSignal()),cleaner_action_widget, SLOT(displayAnimation()));
 //        connect(cleaner_widget, SIGNAL(tranCleanActionAnimaitonSignal()),cleaner_action_widget, SLOT(displayCleanAnimation()));
 
+        connect(cleaner_widget, SIGNAL(tranScanOverSignal(bool)),cleaner_action_widget, SLOT(accordScanOverStatusToChange(bool)));
+
         bottom_grid_layout->addWidget(cleaner_widget,0,0);
         content_widget->setLayout(bottom_grid_layout);
         bottom_grid_layout->setSpacing(0);

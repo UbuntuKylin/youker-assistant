@@ -56,7 +56,7 @@ void CleanerWidget::initUI()
     connect(this, SIGNAL(transScanSignal()), main_widget, SLOT(receiveScanSignal()));
     connect(main_widget, SIGNAL(showActionAnimaiton()), this, SIGNAL(tranActionAnimaitonSignal()));
 //    connect(detail_widget, SIGNAL(showActionAnimaiton()), this, SIGNAL(tranCleanActionAnimaitonSignal()));
-
+    connect(detail_widget, SIGNAL(sendScanOverStatus(bool)), this, SIGNAL(tranScanOverSignal(bool)));
 
     connect(this, SIGNAL(clearDetailPage()), detail_widget, SLOT(CleanUIAndData()));
     connect(sessionProxy, SIGNAL(tellCleanerDetailData(QStringList)), detail_widget, SLOT(showReciveData(QStringList)));

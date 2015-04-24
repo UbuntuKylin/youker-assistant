@@ -28,6 +28,7 @@ NautilusWidget::NautilusWidget(QWidget *parent, SessionDispatcher *proxy) :
     QWidget(parent),
     sessionproxy(proxy)
 {
+    dataOK = false;
     location_label = new QLabel();
     mount_media_label = new QLabel();
     open_folder_label = new QLabel();
@@ -153,9 +154,8 @@ NautilusWidget::NautilusWidget(QWidget *parent, SessionDispatcher *proxy) :
 //    main_layout->setSpacing(0);
 //    main_layout->setContentsMargins(0, 0, 0, 0);
 //    setLayout(main_layout);
-    this->initData();
+//    this->initData();
     this->setLanguage();
-    this->initConnect();
 }
 
 NautilusWidget::~NautilusWidget()
@@ -185,6 +185,11 @@ void NautilusWidget::setLanguage() {
     cache_size_label->setText(tr("Maximum thumbnail cache size (MB)") + ":");
 }
 
+bool NautilusWidget::getStatus()
+{
+    return this->dataOK;
+}
+
 void NautilusWidget::initData()
 {
     location_switcher->switchedOn = sessionproxy->get_location_replace_pathbar_qt();
@@ -197,6 +202,8 @@ void NautilusWidget::initData()
     size_value_label->setText(QString::number(icon_size_slider->value()));
     time_value_label->setText(QString::number(cache_time_slider->value()));
     cache_value_label->setText(QString::number(cache_size_slider->value()));
+    dataOK = true;
+    this->initConnect();
 }
 
 void NautilusWidget::initConnect() {

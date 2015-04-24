@@ -44,6 +44,8 @@ CleanerDetailWidget::CleanerDetailWidget(QWidget *parent, SessionDispatcher *ser
     ui->scrollArea->setBackgroundRole(QPalette::Light);
 
     colorFlag = false;
+    scanResult = false;
+    ui->label->hide();
 
     grid_layout = new QGridLayout();
     rowIndex = columnIndex = 0;
@@ -95,6 +97,9 @@ CleanerDetailWidget::~CleanerDetailWidget()
 
 void CleanerDetailWidget::CleanUIAndData()
 {
+    if(!ui->label->isHidden())
+        ui->label->hide();
+    scanResult = false;
     rowIndex = columnIndex = 0;
     appendNum1 = 0;
     appendNum2 = 0;
@@ -129,6 +134,8 @@ void CleanerDetailWidget::showReciveData(const QStringList &data)
     {
         if(data.at(1).contains(":"))
         {
+            if (scanResult == false)
+                scanResult = true;
             cache_apt_list.append(data.at(1).split(":").at(1));
         }
     }
@@ -136,6 +143,8 @@ void CleanerDetailWidget::showReciveData(const QStringList &data)
     {
         if(data.at(1).contains(":"))
         {
+            if (scanResult == false)
+                scanResult = true;
             cache_software_list.append(data.at(1).split(":").at(1));
         }
     }
@@ -143,6 +152,8 @@ void CleanerDetailWidget::showReciveData(const QStringList &data)
     {
         if(data.at(1).contains(":"))
         {
+            if (scanResult == false)
+                scanResult = true;
             cache_thumbnails_list.append(data.at(1).split(":").at(1));
         }
     }
@@ -150,6 +161,8 @@ void CleanerDetailWidget::showReciveData(const QStringList &data)
     {
         if(data.at(1).contains(":"))
         {
+            if (scanResult == false)
+                scanResult = true;
             cache_firefox_list.append(data.at(1).split(":").at(1));
         }
     }
@@ -157,6 +170,8 @@ void CleanerDetailWidget::showReciveData(const QStringList &data)
     {
         if(data.at(1).contains(":"))
         {
+            if (scanResult == false)
+                scanResult = true;
             cache_chromium_list.append(data.at(1).split(":").at(1));
         }
     }
@@ -165,6 +180,8 @@ void CleanerDetailWidget::showReciveData(const QStringList &data)
     {
         if(data.at(1).contains(":"))
         {
+            if (scanResult == false)
+                scanResult = true;
             package_unneed_list.append(data.at(1).split(":").at(1));
         }
     }
@@ -172,6 +189,8 @@ void CleanerDetailWidget::showReciveData(const QStringList &data)
     {
         if(data.at(1).contains(":"))
         {
+            if (scanResult == false)
+                scanResult = true;
             package_oldkernel_list.append(data.at(1).split(":").at(1));
         }
     }
@@ -179,6 +198,8 @@ void CleanerDetailWidget::showReciveData(const QStringList &data)
     {
         if(data.at(1).contains(":"))
         {
+            if (scanResult == false)
+                scanResult = true;
             package_configfile_list.append(data.at(1).split(":").at(1));
         }
     }
@@ -188,6 +209,8 @@ void CleanerDetailWidget::showReciveData(const QStringList &data)
     {
         if(data.at(1).contains(":") && !data.at(1).split(":").at(1).isEmpty())
         {
+            if (scanResult == false)
+                scanResult = true;
             cookies_firefox_list.append(data.at(1).split(":").at(1));
         }
     }
@@ -195,6 +218,8 @@ void CleanerDetailWidget::showReciveData(const QStringList &data)
     {
         if(data.at(1).contains(":") && !data.at(1).split(":").at(1).isEmpty())
         {
+            if (scanResult == false)
+                scanResult = true;
             cookies_chromium_list.append(data.at(1).split(":").at(1));
         }
     }
@@ -204,24 +229,33 @@ void CleanerDetailWidget::showReciveData(const QStringList &data)
     {
         if(data.at(1).contains(":"))
         {
-            if(data.at(1).split(":").at(1).toInt() != 0)
+            if(data.at(1).split(":").at(1).toInt() != 0) {
+                if (scanResult == false)
+                    scanResult = true;
                 trace_firefox_count = data.at(1).split(":").at(1);
+            }
         }
     }
     else if(data.at(0) == "Belong:History.chromium" && !data.at(1).isEmpty())
     {
         if(data.at(1).contains(":"))
         {
-            if(data.at(1).split(":").at(1).toInt() != 0)
+            if(data.at(1).split(":").at(1).toInt() != 0) {
+                if (scanResult == false)
+                    scanResult = true;
                 trace_chromium_count = data.at(1).split(":").at(1);
+            }
         }
     }
     else if(data.at(0) == "Belong:History.system" && !data.at(1).isEmpty())
     {
         if(data.at(1).contains(":"))
         {
-            if(data.at(1).split(":").at(1).toInt() != 0)
+            if(data.at(1).split(":").at(1).toInt() != 0) {
+                if (scanResult == false)
+                    scanResult = true;
                 trace_system_count = data.at(1).split(":").at(1);
+            }
         }
     }
 }
@@ -826,6 +860,9 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
     }
     else if(status == "Complete:All")
     {
+        if(!scanResult)
+            ui->label->show();
+        emit this->sendScanOverStatus(scanResult);
 //        QBoxLayout *main_layout = new QBoxLayout(QBoxLayout::LeftToRight);
 //        if(cache_apt_btn != NULL)
 //            main_layout->addWidget(cache_apt_btn);
@@ -1304,6 +1341,7 @@ void CleanerDetailWidget::showCustomPage()
 
 void CleanerDetailWidget::setLanguage()
 {
+    ui->label->setText(tr("No garbage "));
 //    title_label->setText(tr("Cleaning up the system cache"));
 //    description_label->setText(tr("Deep cleaning up the system cache, to save disk space"));
 }

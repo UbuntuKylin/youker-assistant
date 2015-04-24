@@ -24,7 +24,7 @@ DesktopWidget::DesktopWidget(QWidget *parent, SessionDispatcher *proxy) :
     sessionProxy(proxy)
 {
 //    this->setStyleSheet("QWidget{border: none}");
-    this->setStyleSheet("QWidget{background-color: #ffffff}");
+//    this->setStyleSheet("QWidget{background-color: #ffffff}");
     dataOK = false;
     setFixedSize(750, 403);
     scroll_widget = new ScrollWidget(this);
