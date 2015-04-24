@@ -39,6 +39,7 @@ public:
     void setLanguage();
     void initConnect();
     void initData();
+    bool getStatus();
 
 public slots:
     void setMenuIcon();
@@ -50,6 +51,7 @@ public slots:
 
 private:
     SessionDispatcher *sessionproxy;
+    bool dataOK;
     QLabel *icon_label;
     QLabel *wheel_label;
     QLabel *double_click_label;

@@ -31,6 +31,7 @@ LauncherWidget::LauncherWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
     QWidget(parent),
     sessionproxy(proxy)
 {
+    dataOK = false;
     size_label = new QLabel();
     size_value_label = new QLabel();
     hide_label = new QLabel();
@@ -191,9 +192,8 @@ LauncherWidget::LauncherWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
 //    main_layout->setSpacing(0);
 //    main_layout->setContentsMargins(0, 0, 0, 0);
 //    setLayout(main_layout);
-    this->initData();
+//    this->initData();
     this->setLanguage();
-    this->initConnect();
 }
 
 LauncherWidget::~LauncherWidget()
@@ -223,6 +223,11 @@ void LauncherWidget::setLanguage() {
     hide_top_label->setText(tr("Top panel auto hide") + ":");
     size_bottom_label->setText(tr("Bottom panel icon size") + ":");
     hide_bottom_label->setText(tr("Bottom panel auto hide") + ":");
+}
+
+bool LauncherWidget::getStatus()
+{
+    return this->dataOK;
 }
 
 void LauncherWidget::initData()
@@ -268,6 +273,8 @@ void LauncherWidget::initData()
     size_bottom_value_label->setText(QString::number(size_bottom_slider->value()));
     hide_top_switcher->switchedOn = sessionproxy->get_mate_panel_autohide_qt("top");
     hide_bottom_switcher->switchedOn = sessionproxy->get_mate_panel_autohide_qt("top");
+    dataOK = true;
+    this->initConnect();
 }
 
 void LauncherWidget::initConnect() {

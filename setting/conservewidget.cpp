@@ -32,6 +32,7 @@ ConserveWidget::ConserveWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
     sessionproxy(proxy)
 {
     iface = NULL;
+    dataOK = false;
     gamma_label = new QLabel();
     gamma_slider = new QDoubleSpinBox();
     gamma_slider->setButtonSymbols(QAbstractSpinBox::PlusMinus);
@@ -190,9 +191,8 @@ ConserveWidget::ConserveWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
     layout->setSpacing(10);
     layout->setContentsMargins(20, 20, 0, 0);
 
-    this->initData();
+//    this->initData();
     this->setLanguage();
-    this->initConnect();
 }
 
 ConserveWidget::~ConserveWidget()
@@ -220,6 +220,11 @@ void ConserveWidget::setLanguage() {
     nothing_battery_radio->setText(tr("nothing"));//不处理
     suspend_lid_ac_radio->setText(tr("suspend"));//挂起
     nothing_ac_radio->setText(tr("nothing"));//不处理
+}
+
+bool ConserveWidget::getStatus()
+{
+    return this->dataOK;
 }
 
 void ConserveWidget::initData()
@@ -370,6 +375,8 @@ void ConserveWidget::initData()
     sleep_ac_combo->clearEditText();
     sleep_ac_combo->addItems(huname_ac_list);
     sleep_ac_combo->setCurrentIndex(initIndex4);
+    dataOK = true;
+    this->initConnect();
 }
 
 void ConserveWidget::initConnect() {

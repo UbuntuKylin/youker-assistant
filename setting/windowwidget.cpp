@@ -29,6 +29,7 @@ WindowWidget::WindowWidget(QWidget *parent, SessionDispatcher *proxy, QString cu
     QWidget(parent),
     sessionproxy(proxy)
 {
+    dataOK = false;
     icon_label = new QLabel();
     wheel_label = new QLabel();
     double_click_label = new QLabel();
@@ -116,9 +117,8 @@ WindowWidget::WindowWidget(QWidget *parent, SessionDispatcher *proxy, QString cu
 //    main_layout->setSpacing(0);
 //    main_layout->setContentsMargins(0, 0, 0, 0);
 //    setLayout(main_layout);
-    this->initData();
+//    this->initData();
     this->setLanguage();
-    this->initConnect();
 }
 
 WindowWidget::~WindowWidget()
@@ -147,6 +147,11 @@ void WindowWidget::setLanguage() {
     right_click_label->setText(tr("Titlebar right-click action") + ":");
     left_radio->setText(tr("Left"));
     right_radio->setText(tr("Right"));
+}
+
+bool WindowWidget::getStatus()
+{
+    return this->dataOK;
 }
 
 void WindowWidget::initData()
@@ -225,6 +230,8 @@ void WindowWidget::initData()
             break;
     }
     right_click_combo->setCurrentIndex(initIndex4);
+    dataOK = true;
+    this->initConnect();
 }
 
 void WindowWidget::initConnect() {

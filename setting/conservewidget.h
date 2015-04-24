@@ -44,6 +44,7 @@ public:
     void setLanguage();
     void initConnect();
     void initData();
+    bool getStatus();
 
 public slots:
     void setScreenGammaValue(double value);
@@ -60,6 +61,7 @@ public slots:
 private:
     QDBusInterface *iface;
     SessionDispatcher *sessionproxy;
+    bool dataOK;
     QString current_idle_delay;
     QString current_lock_delay;
     QString sleep_timeout_battery;

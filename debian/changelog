@@ -1,8 +1,10 @@
 youker-assistant (2.0.3) vivid; urgency=low
 
   * Access FT Arm settings and information.
+  * Deal with situation when the scanning garbage is empty.
+  * Display hardware manufacturer logo.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 23 Apr 2015 17:23:00 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 24 Apr 2015 11:43:17 +0800
 
 youker-assistant (2.0.2) vivid; urgency=low
 

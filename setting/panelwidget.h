@@ -40,6 +40,7 @@ public:
     void setLanguage();
     void initConnect();
     void initData();
+    bool getStatus();
 
 //signals:
 //    void showSettingMainWidget();
@@ -61,6 +62,7 @@ public slots:
 
 private:
     SessionDispatcher *sessionproxy;
+    bool dataOK;
     QLabel *blur_label;
     QLabel *transparency_label;
     QLabel *date_format_label;

@@ -37,6 +37,7 @@ public:
     void setLanguage();
     void initConnect();
     void initData();
+    bool getStatus();
 
 public slots:
     void selectCustomAnimation();
@@ -46,6 +47,7 @@ public slots:
 
 private:
     SystemDispatcher *systemproxy;
+    bool dataOK;
     MainWindow *parentWindow;
     QWidget * left_widget;
     QWidget * right_widget;

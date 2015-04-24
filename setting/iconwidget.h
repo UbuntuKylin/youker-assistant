@@ -38,6 +38,7 @@ public:
     void setLanguage();
     void initConnect();
     void initData();
+    bool getStatus();
 
 public slots:
     void changeSwitcherStatus();
@@ -51,7 +52,7 @@ public slots:
 
 private:
     SessionDispatcher *sessionproxy;
-
+    bool dataOK;
     QLabel *theme_label;
     QLabel *show_label;
     QLabel *computer_label;

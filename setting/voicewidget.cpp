@@ -29,6 +29,7 @@ VoiceWidget::VoiceWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispa
     sessionproxy(proxy),
     systemproxy(sproxy)
 {
+    dataOK = false;
     theme_label = new QLabel();
     tip_label = new QLabel();
     event_label = new QLabel();
@@ -88,9 +89,8 @@ VoiceWidget::VoiceWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispa
 //    main_layout->setSpacing(0);
 //    main_layout->setContentsMargins(0, 0, 0, 0);
 //    setLayout(main_layout);
-    this->initData();
+//    this->initData();
     this->setLanguage();
-    this->initConnect();
 }
 
 VoiceWidget::~VoiceWidget()
@@ -109,6 +109,10 @@ void VoiceWidget::setLanguage() {
 
 }
 
+bool VoiceWidget::getStatus()
+{
+    return this->dataOK;
+}
 
 void VoiceWidget::initData()
 {
@@ -130,6 +134,8 @@ void VoiceWidget::initData()
     tip_switcher->switchedOn = sessionproxy->get_login_music_enable_qt();
     event_switcher->switchedOn = sessionproxy->get_sound_event_enable_qt();
     feedback_switcher->switchedOn = sessionproxy->get_input_feedback_sounds_enable_qt();
+    dataOK = true;
+    this->initConnect();
 }
 
 void VoiceWidget::initConnect() {

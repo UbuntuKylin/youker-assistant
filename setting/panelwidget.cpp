@@ -29,6 +29,7 @@ PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_
     QWidget(parent),
     sessionproxy(proxy)
 {
+    dataOK = false;
     blur_label = new QLabel();
     transparency_label = new QLabel();
     date_format_label = new QLabel();
@@ -223,9 +224,8 @@ PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_
 //    main_layout->setSpacing(0);
 //    main_layout->setContentsMargins(0, 0, 0, 0);
 //    setLayout(main_layout);
-    this->initData();
+//    this->initData();
     this->setLanguage();
-    this->initConnect();
 }
 
 PanelWidget::~PanelWidget()
@@ -264,6 +264,11 @@ void PanelWidget::setLanguage() {
     show_desktop_label->setText(tr("Show system") + ":");//Show desktop
     show_icon_label->setText(tr("Show icon") + ":");
     show_places_label->setText(tr("Show places") + ":");
+}
+
+bool PanelWidget::getStatus()
+{
+    return this->dataOK;
 }
 
 void PanelWidget::initData()
@@ -325,6 +330,8 @@ void PanelWidget::initData()
     desktop_switcher->switchedOn = sessionproxy->get_show_desktop_qt();
     icon_switcher->switchedOn = sessionproxy->get_show_icon_qt();
     places_switcher->switchedOn = sessionproxy->get_show_places_qt();
+    dataOK = true;
+    this->initConnect();
 }
 
 void PanelWidget::initConnect() {

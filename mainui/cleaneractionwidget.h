@@ -59,6 +59,7 @@ public slots:
     void displayAnimation();
 //    void displayCleanAnimation();
     void receivePolicyKitSignal(bool status);
+    void accordScanOverStatusToChange(bool status);
 
 signals:
     void showDetailData();

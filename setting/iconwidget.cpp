@@ -28,6 +28,7 @@ IconWidget::IconWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_de
     QWidget(parent),
     sessionproxy(proxy)
 {
+    dataOK = false;
     theme_label = new QLabel();
     show_label = new QLabel();
     computer_label = new QLabel();
@@ -142,9 +143,8 @@ IconWidget::IconWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_de
 //    main_layout->setSpacing(0);
 //    main_layout->setContentsMargins(0, 0, 0, 0);
 //    setLayout(main_layout);
-    this->initData();
+//    this->initData();
     this->setLanguage();
-    this->initConnect();
 }
 
 IconWidget::~IconWidget()
@@ -204,8 +204,14 @@ void IconWidget::setLanguage() {
     disk_label->setText(tr("Mounted Volumes") + ":");
 }
 
+bool IconWidget::getStatus()
+{
+    return this->dataOK;
+}
+
 void IconWidget::initData()
 {
+    qDebug() << "innit.......";
     QString current_icon_theme = sessionproxy->get_icon_theme_qt();
     QStringList iconlist  = sessionproxy->get_icon_themes_qt();
     theme_combo->clear();
@@ -232,6 +238,8 @@ void IconWidget::initData()
     network_switcher->switchedOn = sessionproxy->get_show_network_qt();
     recycle_switcher->switchedOn = sessionproxy->get_show_trash_qt();
     disk_switcher->switchedOn = sessionproxy->get_show_devices_qt();
+    dataOK = true;
+    this->initConnect();
 }
 
 void IconWidget::initConnect() {
@@ -247,6 +255,7 @@ void IconWidget::initConnect() {
 }
 
 void IconWidget::setIconTheme(QString selectTheme) {
+    qDebug() << "111111111" << selectTheme;
     sessionproxy->set_icon_theme_qt(selectTheme);
 }
 

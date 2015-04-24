@@ -29,6 +29,7 @@ FontWidget::FontWidget(QWidget *parent, SessionDispatcher *proxy, MainWindow *wi
     parentWindow(window),
     desktop(cur_desktop)
 {
+    dataOK = false;
     default_font_label = new QLabel();
     desktop_font_label = new QLabel();
     monospace_font_label = new QLabel();
@@ -176,9 +177,8 @@ FontWidget::FontWidget(QWidget *parent, SessionDispatcher *proxy, MainWindow *wi
 //    main_layout->setSpacing(0);
 //    main_layout->setContentsMargins(0, 0, 0, 0);
 //    setLayout(main_layout);
-    this->initData();
+//    this->initData();
     this->setLanguage();
-    this->initConnect();
 }
 
 FontWidget::~FontWidget()
@@ -212,6 +212,11 @@ void FontWidget::setLanguage() {
     restore_monospace_font_btn->setText(tr("Restore"));
     restore_document_font_btn->setText(tr("Restore"));
     restore_titlebar_font_btn->setText(tr("Restore"));
+}
+
+bool FontWidget::getStatus()
+{
+    return this->dataOK;
 }
 
 void FontWidget::initData()
@@ -264,6 +269,8 @@ void FontWidget::initData()
             break;
     }
     antialiasing_combo->setCurrentIndex(index);
+    dataOK = true;
+    this->initConnect();
 }
 
 void FontWidget::initConnect() {

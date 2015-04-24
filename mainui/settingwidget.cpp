@@ -549,55 +549,80 @@ void SettingWidget::displaySettingSubPage() {
     QPushButton *btn = qobject_cast<QPushButton *>(object);
     QString object_name = btn->statusTip();
     if (object_name == "theme") {
-        stacked_widget->setCurrentIndex(1);
         emit changeActionPage(1);
+        if(!theme_widget->getStatus())
+            theme_widget->initData();
+        stacked_widget->setCurrentIndex(1);
+//        stacked_widget->setCurrentWidget(theme_widget);
     }
     else if (object_name == "icon") {
-        stacked_widget->setCurrentIndex(2);
         emit changeActionPage(2);
+        if(!icon_widget->getStatus())
+            icon_widget->initData();
+        stacked_widget->setCurrentIndex(2);
     }
     else if (object_name == "mouse") {
-        stacked_widget->setCurrentIndex(3);
         emit changeActionPage(3);
+        if(!mouse_widget->getStatus())
+            mouse_widget->initData();
+        stacked_widget->setCurrentIndex(3);
     }
     else if (object_name == "voice") {
-        stacked_widget->setCurrentIndex(4);
         emit changeActionPage(4);
+        if(!voice_widget->getStatus())
+            voice_widget->initData();
+        stacked_widget->setCurrentIndex(4);
     }
     else if (object_name == "animation") {
-        stacked_widget->setCurrentIndex(5);
         emit changeActionPage(5);
+        if(!animation_widget->getStatus())
+            animation_widget->initData();
+        stacked_widget->setCurrentIndex(5);
     }
     else if (object_name == "launcher") {
-        stacked_widget->setCurrentIndex(6);
         emit changeActionPage(6);
+        if(!launcher_widget->getStatus())
+            launcher_widget->initData();
+        stacked_widget->setCurrentIndex(6);
     }
     else if (object_name == "panel") {
-        stacked_widget->setCurrentIndex(7);
         emit changeActionPage(7);
+        if(!panel_widget->getStatus())
+            panel_widget->initData();
+        stacked_widget->setCurrentIndex(7);
     }
     else if (object_name == "window") {
-        stacked_widget->setCurrentIndex(8);
         emit changeActionPage(8);
+        if(!window_widget->getStatus())
+            window_widget->initData();
+        stacked_widget->setCurrentIndex(8);
     }
     else if (object_name == "font") {
-        stacked_widget->setCurrentIndex(9);
         emit changeActionPage(9);
+        if(!font_widget->getStatus())
+            font_widget->initData();
+        stacked_widget->setCurrentIndex(9);
     }
     else if (object_name == "touchpad") {
-        stacked_widget->setCurrentIndex(10);
         emit changeActionPage(10);
+        if(!touchpad_widget->getStatus())
+            touchpad_widget->initData();
+        stacked_widget->setCurrentIndex(10);
     }
     else if (object_name == "deadpixel") {
-        stacked_widget->setCurrentIndex(11);
         emit changeActionPage(11);
+        stacked_widget->setCurrentIndex(11);
     }
     else if (object_name == "conserve") {
-        stacked_widget->setCurrentIndex(12);
         emit changeActionPage(12);
+        if(!conserve_widget->getStatus())
+            conserve_widget->initData();
+        stacked_widget->setCurrentIndex(12);
     }
     else if (object_name == "nautilus") {
-        stacked_widget->setCurrentIndex(13);
         emit changeActionPage(13);
+        if(!nautilus_widget->getStatus())
+            nautilus_widget->initData();
+        stacked_widget->setCurrentIndex(13);
     }
 }

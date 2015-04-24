@@ -31,6 +31,7 @@ MouseWidget::MouseWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispa
     systemproxy(sproxy),
     desktop(cur_desktop)
 {
+    dataOK = false;
     theme_label = new QLabel();
     size_label = new QLabel();
     theme_combo = new QComboBox();
@@ -75,9 +76,8 @@ MouseWidget::MouseWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispa
 //    main_layout->setSpacing(0);
 //    main_layout->setContentsMargins(0, 0, 0, 0);
 //    setLayout(main_layout);
-    this->initData();
+//    this->initData();
     this->setLanguage();
-    this->initConnect();
 }
 
 MouseWidget::~MouseWidget()
@@ -104,6 +104,11 @@ void MouseWidget::setLanguage() {
     big_size->setText(tr("Big Size"));
 }
 
+bool MouseWidget::getStatus()
+{
+    return this->dataOK;
+}
+
 void MouseWidget::initData()
 {
     QString current_cursor_theme = sessionproxy->get_cursor_theme_qt();
@@ -120,28 +125,38 @@ void MouseWidget::initData()
     }
     theme_combo->setCurrentIndex(initIndex);
     int default_value = sessionproxy->get_cursor_size_qt();
-    if (this->desktop == "mate")
-    {
-        if(default_value == 18 || default_value == 24) {
-            small_size->setChecked(true);
-            big_size->setChecked(false);
-        }
-        else if(default_value == 48) {
-            big_size->setChecked(true);
-            small_size->setChecked(false);
-        }
+    if(default_value < 48) {
+        small_size->setChecked(true);
+        big_size->setChecked(false);
     }
-    else
-    {
-        if(default_value == 24) {
-            small_size->setChecked(true);
-            big_size->setChecked(false);
-        }
-        else if(default_value == 48) {
-            big_size->setChecked(true);
-            small_size->setChecked(false);
-        }
+    else {
+        big_size->setChecked(true);
+        small_size->setChecked(false);
     }
+//    if (this->desktop == "mate")
+//    {
+//        if(default_value == 18 || default_value == 24) {
+//            small_size->setChecked(true);
+//            big_size->setChecked(false);
+//        }
+//        else if(default_value == 48) {
+//            big_size->setChecked(true);
+//            small_size->setChecked(false);
+//        }
+//    }
+//    else
+//    {
+//        if(default_value == 24) {
+//            small_size->setChecked(true);
+//            big_size->setChecked(false);
+//        }
+//        else if(default_value == 48) {
+//            big_size->setChecked(true);
+//            small_size->setChecked(false);
+//        }
+//    }
+    dataOK = true;
+    this->initConnect();
 }
 
 void MouseWidget::initConnect() {

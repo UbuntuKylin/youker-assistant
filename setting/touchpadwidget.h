@@ -37,6 +37,7 @@ public:
     void setLanguage();
     void initConnect();
     void initData();
+    bool getStatus();
 
 public slots:
     void setRadioButtonRowStatus(/*bool status*/);
@@ -45,6 +46,7 @@ public slots:
 
 private:
     SessionDispatcher *sessionproxy;
+    bool dataOK;
     QLabel *touchpad_label;
     QLabel *horizontal_scrolling_label;
     QLabel *scrollbar_type_label;
