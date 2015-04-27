@@ -70,6 +70,7 @@ signals:
 public slots:
     void displaySettingHomePage();
     void displaySettingSubPage();
+//    void slot_notify_boolean(QString key, bool value);
 
 private:
     MainWindow *p_mainwindow;

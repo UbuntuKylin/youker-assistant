@@ -20,12 +20,12 @@ import os
 import gsettings
 
 class Desktop:
-    dekstop = None
+    desktop = None
 
     def __init__(self):
-        self.dekstop = os.getenv('XDG_CURRENT_DESKTOP')
-        if self.dekstop is None:
-             self.dekstop = os.getenv('XDG_SESSION_DESKTOP')
+        self.desktop = os.getenv('XDG_CURRENT_DESKTOP')
+        if self.desktop is None:
+             self.desktop = os.getenv('XDG_SESSION_DESKTOP')
 
     # ---------------desktopicon---------------
     # -----------------默认值-----------------
@@ -45,7 +45,7 @@ class Desktop:
 
     # show desktop icons, True/False
     def set_show_desktop_icons(self, flag):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.set('org.mate.background',
                 None,
                 'show-desktop-icons',
@@ -58,7 +58,7 @@ class Desktop:
 
     # get is show desktop icons
     def get_show_desktop_icons(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.get('org.mate.background',
                 None, 'show-desktop-icons', 'boolean')
         else:
@@ -66,20 +66,20 @@ class Desktop:
                 None, 'show-desktop-icons', 'boolean')
 
     def set_show_computer(self, flag):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.set('org.mate.caja.desktop',
                 None,
                 'computer-icon-visible',
                 'boolean', flag)
 
     def get_show_computer(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.get('org.mate.caja.desktop',
                 None, 'computer-icon-visible', 'boolean')
 
     # show home folder
     def set_show_homefolder(self, flag):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.set('org.mate.caja.desktop',
                 None,
                 'home-icon-visible',
@@ -92,7 +92,7 @@ class Desktop:
 
     # get show homefolder
     def get_show_homefolder(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.get('org.mate.caja.desktop',
                 None, 'home-icon-visible', 'boolean')
         else:
@@ -101,7 +101,7 @@ class Desktop:
 
     # show network
     def set_show_network(self, flag):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.set('org.mate.caja.desktop',
                 None,
                 'network-icon-visible',
@@ -114,7 +114,7 @@ class Desktop:
 
     # get show network
     def get_show_network(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.get('org.mate.caja.desktop',
                 None, 'network-icon-visible', 'boolean')
         else:
@@ -123,7 +123,7 @@ class Desktop:
 
     # show trash
     def set_show_trash(self, flag):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.set('org.mate.caja.desktop',
                 None,
                 'trash-icon-visible',
@@ -136,7 +136,7 @@ class Desktop:
 
     # get show trash
     def get_show_trash(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.get('org.mate.caja.desktop',
                 None, 'trash-icon-visible', 'boolean')
         else:
@@ -145,7 +145,7 @@ class Desktop:
 
     # show devices
     def set_show_devices(self, flag):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.set('org.mate.caja.desktop',
                 None,
                 'volumes-visible',
@@ -158,7 +158,7 @@ class Desktop:
 
     # get show devices
     def get_show_devices(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.get('org.mate.caja.desktop',
                 None, 'volumes-visible', 'boolean')
         else:

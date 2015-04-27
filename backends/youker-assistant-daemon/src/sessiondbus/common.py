@@ -27,7 +27,12 @@ import re
 import subprocess
 import commands
 
-VERSION = "1.2.0"
+BOOL_TYPE = 1
+INT_TYPE = 2
+DOUBLE_TYPE = 3
+STRING_TYPE = 4
+
+VERSION = "2.0.3"
 str_agent = []
 LEN_AGENT = 10
 

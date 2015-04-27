@@ -44,6 +44,12 @@ SessionDispatcher::SessionDispatcher(QObject *parent)
     QObject::connect(sessioniface, SIGNAL(youkerid_whoami_signal(QString, QString)), this, SLOT(handlerYoukerID(QString, QString)));
     QObject::connect(sessioniface, SIGNAL(youkerid_logout_signal()), this, SLOT(handlerLogoutSuccess()));
     QObject::connect(sessioniface, SIGNAL(youkerid_login_fail_signal()), this, SLOT(handlerLoginFail()));
+
+
+    QObject::connect(sessioniface, SIGNAL(notify_boolean(QString, bool)), this, SLOT(handler_notify_boolean(QString, bool)));
+    QObject::connect(sessioniface, SIGNAL(notify_int(QString, int)), this, SLOT(handler_notify_int(QString, int)));
+    QObject::connect(sessioniface, SIGNAL(notify_double(QString, double)), this, SLOT(handler_notify_double(QString, double)));
+    QObject::connect(sessioniface, SIGNAL(notify_string(QString, QString)), this, SLOT(handler_notify_string(QString, QString)));
 }
 
 SessionDispatcher::~SessionDispatcher() {
@@ -1188,5 +1194,36 @@ QString SessionDispatcher::get_current_sleep_timeout_ac_qt()
 void SessionDispatcher::set_current_sleep_timeout_ac_qt(int value)
 {
     sessioniface->call("set_current_sleep_timeout_ac", value);
+}
+
+// notify changes
+void SessionDispatcher::handler_notify_boolean(QString key, bool value)
+{
+//    if (key == "home-icon-visible")
+//    {
+//        qDebug() << "home-icon-visible->" << value;
+//    }
+//     qDebug() << key;
+//     qDebug() << value;
+    emit bool_value_notify(key, value);
+}
+
+void SessionDispatcher::handler_notify_int(QString key, int value)
+{
+    emit int_value_notify(key, value);
+}
+
+void SessionDispatcher::handler_notify_double(QString key, double value)
+{
+    emit double_value_notify(key, value);
+}
+
+void SessionDispatcher::handler_notify_string(QString key, QString value)
+{
+    if (key == "gtk-theme")
+    {
+        qDebug() << "gtk them......";
+    }
+    emit string_value_notify(key, value);
 }
 

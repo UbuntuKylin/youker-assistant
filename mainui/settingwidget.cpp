@@ -149,7 +149,13 @@ void SettingWidget::initUI()
     main_layout->setContentsMargins(0, 0, 0, 0);
 
     this->setLayout(main_layout);
+
+//    connect(sessionProxy, SIGNAL(bool_value_notify(QString, bool)), this, SLOT(slot_notify_boolean(QString, bool)));
 }
+
+//void SettingWidget::slot_notify_boolean(QString key, bool value)
+//{
+//}
 
 
 void SettingWidget::initIndividuationWidget() {

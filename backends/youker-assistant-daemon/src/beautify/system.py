@@ -21,13 +21,13 @@ import gsettings
 
 class System():
 
-    dekstop = None
+    desktop = None
 
     def __init__(self, sysdaemon):
         self.sysdaemon = sysdaemon
-        self.dekstop = os.getenv('XDG_CURRENT_DESKTOP')
-        if self.dekstop is None:
-             self.dekstop = os.getenv('XDG_SESSION_DESKTOP')
+        self.desktop = os.getenv('XDG_CURRENT_DESKTOP')
+        if self.desktop is None:
+             self.desktop = os.getenv('XDG_SESSION_DESKTOP')
 
     # -----------------默认值-----------------
     # Get Default Value
@@ -75,7 +75,7 @@ class System():
 
     # enable/disable the touchpad
     def set_touchpad_enable(self, flag):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.set('org.mate.peripherals-touchpad',
                 None,
                 'touchpad-enabled',
@@ -88,7 +88,7 @@ class System():
 
     # get is touchpad enable
     def get_touchpad_enable(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.get('org.mate.peripherals-touchpad',
                 None, 'touchpad-enabled', 'boolean')
         else:
@@ -134,7 +134,7 @@ class System():
 
     # set touch scrolling use horizontal True/False
     def set_touchscrolling_use_horizontal(self, flag):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.set('org.mate.peripherals-touchpad',
                 None,
                 'horiz-scroll-enabled',
@@ -147,7 +147,7 @@ class System():
 
     # get is touch scrolling use horizontal
     def get_touchscrolling_use_horizontal(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.get('org.mate.peripherals-touchpad',
                 None, 'horiz-scroll-enabled', 'boolean')
         else:
@@ -158,7 +158,7 @@ class System():
 
     # set window button alignment left
     def set_window_button_align_left(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             value = gsettings.get('org.mate.Marco.general',
                 None, 'button-layout', 'string')
             if "menu" in value:
@@ -184,7 +184,7 @@ class System():
 
     # set window button alignment right
     def set_window_button_align_right(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             value = gsettings.get('org.mate.Marco.general',
                 None, 'button-layout', 'string')
             if "menu" in value:
@@ -210,7 +210,7 @@ class System():
 
     # get window button alignment
     def get_window_button_align(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             value = gsettings.get('org.mate.Marco.general',
                 None, 'button-layout', 'string')
             if value == 'close,maximize,minimize:menu' or value == 'close,minimize,maximize:menu' or value == ':close,minimize,maximize' or value == ':close,maximize,minimize':
@@ -282,14 +282,14 @@ class System():
 #“menu”显示窗口菜单，“lower”将窗口降低到所有窗口之下，还有“none”什么也不做。
     # get titlebar double
     def get_titlebar_options(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return ['none', 'toggle_maximize', 'toggle_maximize_horizontally', 'toggle_maximize_vertically', 'minimize',  'toggle_shade', 'lower', 'menu', 'last']
         else:
             return ['none', 'toggle-maximize', 'toggle-maximize-horizontally', 'toggle-maximize-vertically', 'minimize', 'toggle-shade', 'lower', 'menu', 'last']
 
     # get current titlebar double
     def get_current_titlebar_double(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.get('org.mate.Marco.general',
                 None, 'action-double-click-titlebar', 'string')
         else:
@@ -298,7 +298,7 @@ class System():
 
     # set titlebar double
     def set_titlebar_double(self, value):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.set('org.mate.Marco.general',
                 None,
                 'action-double-click-titlebar',
@@ -316,7 +316,7 @@ class System():
 
     # get current titlebar middle
     def get_current_titlebar_middle(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.get('org.mate.Marco.general',
                 None, 'action-middle-click-titlebar', 'string')
         else:
@@ -325,7 +325,7 @@ class System():
 
     # set titlebar middle
     def set_titlebar_middle(self, value):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.set('org.mate.Marco.general',
                 None,
                 'action-middle-click-titlebar',
@@ -343,7 +343,7 @@ class System():
 
     # get current titlebar right
     def get_current_titlebar_right(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.get('org.mate.Marco.general',
                 None, 'action-right-click-titlebar', 'string')
         else:
@@ -352,7 +352,7 @@ class System():
 
     # set titlebar right
     def set_titlebar_right(self, value):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.set('org.mate.Marco.general',
                 None,
                 'action-right-click-titlebar',
@@ -364,7 +364,7 @@ class System():
                 'string', value)
 
     def get_current_idle_delay(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.get('org.mate.session',
                 None, 'idle-delay', 'int')
         else:
@@ -372,7 +372,7 @@ class System():
                 None, 'idle-delay', 'uint')
 
     def set_current_idle_delay(self, value):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             gsettings.set('org.mate.session',
                 None,
                 'idle-delay',
@@ -384,7 +384,7 @@ class System():
                 'uint', value)
 
     def get_lock_enabled(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.get('org.mate.screensaver',
                 None, 'lock-enabled', 'boolean')
         else:
@@ -392,7 +392,7 @@ class System():
                 None, 'lock-enabled', 'boolean')
 
     def set_lock_enabled(self, value):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             gsettings.set('org.mate.screensaver',
                 None,
                 'lock-enabled',
@@ -404,7 +404,7 @@ class System():
                 'boolean', value)
 
     def get_current_lock_delay(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.get('org.mate.screensaver',
                 None, 'lock-delay', 'int')
         else:
@@ -412,7 +412,7 @@ class System():
                 None, 'lock-delay', 'uint')
 
     def set_current_lock_delay(self, value):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             gsettings.set('org.mate.screensaver',
                 None,
                 'lock-delay',
@@ -424,7 +424,7 @@ class System():
                 'uint', value)
 
     def get_current_critical_low(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.get('org.mate.power-manager',
                 None, 'action-critical-battery', 'string')
         else:
@@ -432,7 +432,7 @@ class System():
                 None, 'critical-battery-action', 'string')
 
     def set_current_critical_low(self, value):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             gsettings.set('org.mate.power-manager',
                 None,
                 'action-critical-battery',
@@ -444,7 +444,7 @@ class System():
                 'string', value)
 
     def get_current_lid_battery(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.get('org.mate.power-manager',
                 None, 'button-lid-battery', 'string')
         else:
@@ -452,7 +452,7 @@ class System():
                 None, 'lid-close-battery-action', 'string')
 
     def set_current_lid_battery(self, value):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             gsettings.set('org.mate.power-manager',
                 None,
                 'button-lid-battery',
@@ -464,7 +464,7 @@ class System():
                 'string', value)
 
     def get_current_lid_ac(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.get('org.mate.power-manager',
                 None, 'button-lid-ac', 'string')
         else:
@@ -472,7 +472,7 @@ class System():
                 None, 'lid-close-ac-action', 'string')
 
     def set_current_lid_ac(self, value):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             gsettings.set('org.mate.power-manager',
                 None,
                 'button-lid-ac',
@@ -484,7 +484,7 @@ class System():
                 'string', value)
 
     def get_current_sleep_timeout_battery(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.get('org.mate.power-manager',
                 None, 'sleep-computer-battery', 'int')
         else:
@@ -492,7 +492,7 @@ class System():
                 None, 'sleep-inactive-battery-timeout', 'int')
 
     def set_current_sleep_timeout_battery(self, value):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             gsettings.set('org.mate.power-manager',
                 None,
                 'sleep-computer-battery',
@@ -504,7 +504,7 @@ class System():
                 'int', value)
 
     def get_current_sleep_timeout_ac(self):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             return gsettings.get('org.mate.power-manager',
                 None, 'sleep-computer-ac', 'int')
         else:
@@ -512,7 +512,7 @@ class System():
                 None, 'sleep-inactive-ac-timeout', 'int')
 
     def set_current_sleep_timeout_ac(self, value):
-        if self.dekstop == "mate":
+        if self.desktop == "mate":
             gsettings.set('org.mate.power-manager',
                 None,
                 'sleep-computer-ac',

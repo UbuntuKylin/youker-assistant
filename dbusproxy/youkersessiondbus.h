@@ -306,6 +306,11 @@ signals:
     void ssoSuccessSignal(QString displayName, QString emailAddress);
     void ssoLoginLogoutSignal(bool loginFlag);
 
+    void bool_value_notify(QString key, bool value);
+    void int_value_notify(QString key, int value);
+    void double_value_notify(QString key, double value);
+    void string_value_notify(QString key, QString value);
+
 public slots:
     void handlerAutoManageData(QStringList data);
 //    void handlerAutoManageData(const QVariantMap &data);
@@ -326,6 +331,12 @@ public slots:
     void handlerYoukerID(QString displayName, QString emailAddress);
     void handlerLogoutSuccess();
     void handlerLoginFail();
+
+    // notify changes
+    void handler_notify_boolean(QString key, bool value);
+    void handler_notify_int(QString key, int value);
+    void handler_notify_double(QString key, double value);
+    void handler_notify_string(QString key, QString value);
 
 private:
     KThread *thread;
