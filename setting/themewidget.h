@@ -44,6 +44,7 @@ protected:
 
 public slots:
     void onItemClicked(QListWidgetItem *selected_item);
+    void themewidget_notify_string(QString key, QString value);
 
 private:
     QListWidget *list_widget;
@@ -52,6 +53,7 @@ private:
     SessionDispatcher *sessionproxy;
     bool dataOK;
     int initIndex;
+    QStringList syslist;
 };
 
 #endif // THEMEWIDGET_H

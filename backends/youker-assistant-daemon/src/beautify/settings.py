@@ -78,6 +78,14 @@ class Settings:
         else:
             raise NotImplemented
 
+    # kobe: test notify func
+#    def connect_notify(self):
+#    #def connect_notify(self, func, data=None):
+##        gs = gio.Settings("org.gnome.nautilus.desktop", None)
+#        self.db.connect("changed::home-icon-visible", self.kobe_test)
+
+#    def kobe_test(self, settings, key):
+#        print "notify test success----------------------------"
 
 if __name__ == '__main__':
     #list_on = ['GB18030', 'UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']

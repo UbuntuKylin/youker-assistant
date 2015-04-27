@@ -93,6 +93,9 @@ POWER_PATH = "/sys/class/power_supply"
 BATTERY_PATH = "/sys/class/power_supply/BAT0"
 BAT_FILE = "/sys/class/power_supply/BAT0/uevent"
 
+from gi.repository import Gio as gio
+from common import (BOOL_TYPE, INT_TYPE, DOUBLE_TYPE, STRING_TYPE)
+
 class SessionDaemon(dbus.service.Object):
     def __init__ (self, mainloop):
         #self.wizardconf = Wizard()
@@ -128,9 +131,80 @@ class SessionDaemon(dbus.service.Object):
         self.display_name = ""
         self.preferred_email = ""
 
+        self.desktop = os.getenv('XDG_CURRENT_DESKTOP')
+        if self.desktop is None:
+             self.desktop = os.getenv('XDG_SESSION_DESKTOP')
+
+        # gtk theme
+        if self.desktop == "mate":
+            self.interface_settings = gio.Settings.new("org.mate.interface")
+        else:
+            self.interface_settings = gio.Settings.new("org.gnome.desktop.interface")
+        self.interface_settings.connect("changed::gtk-theme", self.gio_settings_monitor, STRING_TYPE)
+
+        # icon
+        if self.desktop == "mate":
+#            self.interface_settings = gio.Settings.new("org.mate.interface")
+            self.interface_settings.connect("changed::icon-theme", self.gio_settings_monitor, STRING_TYPE)
+            self.background_settings = gio.Settings.new("org.mate.background")
+            self.background_settings.connect("changed::show-desktop-icons", self.gio_settings_monitor, BOOL_TYPE)
+            self.desktop_settings = gio.Settings.new("org.mate.caja.desktop")
+            for key in ("computer-icon-visible", "home-icon-visible", "network-icon-visible", "trash-icon-visible", "volumes-visible"):
+                self.desktop_settings.connect("changed::%s" % key, self.gio_settings_monitor, BOOL_TYPE)
+        else:
+#            self.interface_settings = gio.Settings.new("org.gnome.desktop.interface")
+            self.interface_settings.connect("changed::icon-theme", self.gio_settings_monitor, STRING_TYPE)
+            self.background_settings = gio.Settings.new("org.gnome.desktop.background")
+            self.background_settings.connect("changed::show-desktop-icons", self.gio_settings_monitor, BOOL_TYPE)
+            self.desktop_settings = gio.Settings.new("org.gnome.nautilus.desktop")
+            for key in ("home-icon-visible", "network-icon-visible", "trash-icon-visible", "volumes-visible"):
+                self.desktop_settings.connect("changed::%s" % key, self.gio_settings_monitor, BOOL_TYPE)
+
+        # mouse
+        if self.desktop == "mate":
+            self.mouse_settings = gio.Settings.new("org.mate.peripherals-mouse")
+            self.mouse_settings.connect("changed::cursor-theme", self.gio_settings_monitor, STRING_TYPE)
+            self.mouse_settings.connect("changed::cursor-size", self.gio_settings_monitor, INT_TYPE)
+        else:
+            self.interface_settings.connect("changed::cursor-theme", self.gio_settings_monitor, STRING_TYPE)
+            self.interface_settings.connect("changed::cursor-size", self.gio_settings_monitor, INT_TYPE)
+
+
+
         bus_name = dbus.service.BusName(INTERFACE, bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
+
+    def gio_settings_monitor(self, settings, key, type):
+#        value = settings.get_boolean("home-icon-visible")#get_int get_string get_string
+        if type == BOOL_TYPE:
+            value = settings.get_boolean(key)
+            self.notify_boolean(key, value)
+        elif type == INT_TYPE:
+            value = settings.get_int(key)
+            self.notify_int(key, value)
+        elif type == DOUBLE_TYPE:
+            value = settings.get_double(key)
+            self.notify_double(key, value)
+        elif type == STRING_TYPE:
+            value = settings.get_string(key)
+            self.notify_string(key, value)
+
+    @dbus.service.signal(INTERFACE, signature='sb')
+    def notify_boolean(self, key, value):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='si')
+    def notify_int(self, key, value):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='sd')
+    def notify_double(self, key, value):
+        pass
+
+    @dbus.service.signal(INTERFACE, signature='ss')
+    def notify_string(self, key, value):
+        pass
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def currently_installed_version(self):
@@ -1724,35 +1798,35 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def access_current_desktop(self):
         '''env |grep XDG_CURRENT_DESKTOP'''
-        dekstop = None
+        desktop = None
         try:
-            dekstop = os.getenv('XDG_CURRENT_DESKTOP')
-            if dekstop is None:
-                 dekstop = os.getenv('XDG_SESSION_DESKTOP')
+            desktop = os.getenv('XDG_CURRENT_DESKTOP')
+            if desktop is None:
+                 desktop = os.getenv('XDG_SESSION_DESKTOP')
         except Exception as e:
             pass
-        return dekstop
+        return desktop
 
 #    # is Unity or not
 #    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
 #    def judge_desktop_is_unity(self):
 #        '''env |grep XDG_CURRENT_DESKTOP'''
-#        dekstop = ''
+#        desktop = ''
 #        try:
-#            dekstop = os.getenv('XDG_CURRENT_DESKTOP')
+#            desktop = os.getenv('XDG_CURRENT_DESKTOP')
 #        except Exception as e:
 #            pass
-#        return dekstop
+#        return desktop
 
 #    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
 #    def judge_desktop_is_cinnamon(self):
 #        '''env |grep XDG_CURRENT_DESKTOP'''
-#        dekstop = ''#X-Cinnamon
+#        desktop = ''#X-Cinnamon
 #        try:
-#            dekstop = os.getenv('XDG_CURRENT_DESKTOP')
+#            desktop = os.getenv('XDG_CURRENT_DESKTOP')
 #        except Exception as e:
 #            pass
-#        return dekstop
+#        return desktop
 
 
     # -------------------------pingback-------------------------

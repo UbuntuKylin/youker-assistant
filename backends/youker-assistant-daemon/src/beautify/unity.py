@@ -22,12 +22,12 @@ from compizsettings import CompizSetting
 
 class Unity:
     '''if compiz: key is icon_size; else if gsettins: key is icon-size'''
-    dekstop = None
+    desktop = None
 
     def __init__(self):
-        self.dekstop = os.getenv('XDG_CURRENT_DESKTOP')
-        if self.dekstop is None:
-             self.dekstop = os.getenv('XDG_SESSION_DESKTOP')
+        self.desktop = os.getenv('XDG_CURRENT_DESKTOP')
+        if self.desktop is None:
+             self.desktop = os.getenv('XDG_SESSION_DESKTOP')
     #    self.setting = CompizSetting("%s.%s" % (name, key))
 
     # ---------------launcher---------------
@@ -178,7 +178,7 @@ class Unity:
         return ['locale-default', '12-hour' , '24-hour', 'custom']
 
     def get_time_format(self):
-#        if self.dekstop == "mate":
+#        if self.desktop == "mate":
 #            return gsettings.get('org.mate.panel',
 #                '/org/mate/panel/objects/clock/prefs/',
 #                'format',
@@ -190,7 +190,7 @@ class Unity:
             'string')
 
     def set_time_format(self, format):
-#        if self.dekstop == "mate":
+#        if self.desktop == "mate":
 #            return gsettings.set('org.mate.panel',
 #                '/org/mate/panel/objects/clock/prefs/',
 #                'format',

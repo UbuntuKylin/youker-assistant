@@ -211,9 +211,8 @@ bool IconWidget::getStatus()
 
 void IconWidget::initData()
 {
-    qDebug() << "innit.......";
     QString current_icon_theme = sessionproxy->get_icon_theme_qt();
-    QStringList iconlist  = sessionproxy->get_icon_themes_qt();
+    /*QStringList */iconlist  = sessionproxy->get_icon_themes_qt();
     theme_combo->clear();
     theme_combo->clearEditText();
     theme_combo->addItems(iconlist);
@@ -252,10 +251,51 @@ void IconWidget::initConnect() {
     connect(network_switcher, SIGNAL(clicked()),  this, SLOT(setNetworkIcon()));
     connect(recycle_switcher, SIGNAL(clicked()),  this, SLOT(setRecycleBinIcon()));
     connect(disk_switcher, SIGNAL(clicked()),  this, SLOT(setDiskIcon()));
+
+    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(iconwidget_notify_string(QString, QString)));
+    connect(sessionproxy, SIGNAL(bool_value_notify(QString, bool)), this, SLOT(iconwidget_notify_boolean(QString, bool)));
+}
+
+void IconWidget::iconwidget_notify_string(QString key, QString value)
+{
+    if (key == "icon-theme") {
+        QList<QString>::Iterator it = iconlist.begin(), itend = iconlist.end();
+        int index = -1;
+        for(;it != itend; it++)
+        {
+            ++index;
+            if(*it == value)
+                break;
+        }
+        if (index > -1)
+            theme_combo->setCurrentIndex(index);
+    }
+}
+
+void IconWidget::iconwidget_notify_boolean(QString key, bool value)
+{
+    if (key == "show-desktop-icons") {
+        show_switcher->switchedOn = value;
+    }
+    else if (key == "computer-icon-visible") {
+        computer_switcher->switchedOn = value;
+    }
+    else if (key == "home-icon-visible")
+    {
+        folder_switcher->switchedOn = value;
+    }
+    else if (key == "network-icon-visible") {
+        network_switcher->switchedOn = value;
+    }
+    else if (key == "trash-icon-visible") {
+        recycle_switcher->switchedOn = value;
+    }
+    else if (key == "volumes-visible") {
+        disk_switcher->switchedOn = value;
+    }
 }
 
 void IconWidget::setIconTheme(QString selectTheme) {
-    qDebug() << "111111111" << selectTheme;
     sessionproxy->set_icon_theme_qt(selectTheme);
 }
 

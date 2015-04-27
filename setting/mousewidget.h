@@ -48,10 +48,14 @@ public slots:
     void setMouseCursorTheme(QString selectTheme);
     void setRadioButtonRowStatus(/*bool status*/);
 
+    void mousewidget_notify_string(QString key, QString value);
+    void mousewidget_notify_int(QString key, int value);
+
 private:
     SessionDispatcher *sessionproxy;
     SystemDispatcher *systemproxy;
     bool dataOK;
+    QStringList cursorlist;
     QLabel *theme_label;
     QLabel *size_label;
     QComboBox *theme_combo;

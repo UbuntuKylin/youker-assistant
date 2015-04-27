@@ -111,8 +111,9 @@ bool MouseWidget::getStatus()
 
 void MouseWidget::initData()
 {
+    //在mate下，默认值为空
     QString current_cursor_theme = sessionproxy->get_cursor_theme_qt();
-    QStringList cursorlist = sessionproxy->get_cursor_themes_qt();
+    /*QStringList */cursorlist = sessionproxy->get_cursor_themes_qt();
     theme_combo->clear();
     theme_combo->clearEditText();
     theme_combo->addItems(cursorlist);
@@ -164,6 +165,39 @@ void MouseWidget::initConnect() {
     connect(theme_combo, SIGNAL(currentIndexChanged(QString)),  this, SLOT(setMouseCursorTheme(QString)));
     connect(small_size, SIGNAL(clicked(/*bool*/)), this, SLOT(setRadioButtonRowStatus(/*bool*/)));
     connect(big_size, SIGNAL(clicked(/*bool*/)), this, SLOT(setRadioButtonRowStatus(/*bool*/)));
+
+    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(mousewidget_notify_string(QString, QString)));
+    connect(sessionproxy, SIGNAL(int_value_notify(QString, int)), this, SLOT(mousewidget_notify_int(QString, int)));
+}
+
+void MouseWidget::mousewidget_notify_string(QString key, QString value)
+{
+    if (key == "cursor-theme") {
+        QList<QString>::Iterator it = cursorlist.begin(), itend = cursorlist.end();
+        int index = -1;
+        for(;it != itend; it++)
+        {
+            ++index;
+            if(*it == value)
+                break;
+        }
+        if (index > -1)
+            theme_combo->setCurrentIndex(index);
+    }
+}
+
+void MouseWidget::mousewidget_notify_int(QString key, int value)
+{
+    if (key == "cursor-size") {
+        if(value < 48) {
+            small_size->setChecked(true);
+            big_size->setChecked(false);
+        }
+        else {
+            big_size->setChecked(true);
+            small_size->setChecked(false);
+        }
+    }
 }
 
 void MouseWidget::setMouseCursorTheme(QString selectTheme)

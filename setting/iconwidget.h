@@ -50,9 +50,14 @@ public slots:
     void setRecycleBinIcon();
     void setDiskIcon();
 
+public slots:
+    void iconwidget_notify_string(QString key, QString value);
+    void iconwidget_notify_boolean(QString key, bool value);
+
 private:
     SessionDispatcher *sessionproxy;
     bool dataOK;
+    QStringList iconlist;
     QLabel *theme_label;
     QLabel *show_label;
     QLabel *computer_label;

@@ -71,7 +71,7 @@ bool ThemeWidget::getStatus()
 
 void ThemeWidget::initData() {
     QString current_theme = sessionproxy->get_theme_qt();
-    QStringList syslist = sessionproxy->get_themes_qt();
+    /*QStringList */syslist = sessionproxy->get_themes_qt();
     QList<QString>::Iterator it = syslist.begin(), itend = syslist.end();
     initIndex = 0;
     for(;it != itend; it++,initIndex++)
@@ -110,6 +110,27 @@ ThemeWidget::~ThemeWidget()
 
 void ThemeWidget::initConnect() {
     connect(list_widget,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(onItemClicked(QListWidgetItem*)));
+    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(themewidget_notify_string(QString, QString)));
+}
+
+void ThemeWidget::themewidget_notify_string(QString key, QString value)
+{
+    if (key == "gtk-theme")
+    {
+        QList<QString>::Iterator it = syslist.begin(), itend = syslist.end();
+        int index = -1;
+        for(;it != itend; it++)
+        {
+            ++index;
+            if(*it == value)
+                break;
+        }
+        if(index > -1)
+        {
+            QListWidgetItem *cur_item = list_widget->item(index);
+            this->initCurrentTheme(cur_item);
+        }
+    }
 }
 
 void ThemeWidget::initCurrentTheme(QListWidgetItem *init_item)
@@ -127,7 +148,6 @@ void ThemeWidget::initCurrentTheme(QListWidgetItem *init_item)
     current_index = nRowIndex;
     init_item->setTextColor(QColor("4f4f4f"));
 }
-
 
 void ThemeWidget::onItemClicked(QListWidgetItem *selected_item)
 {
