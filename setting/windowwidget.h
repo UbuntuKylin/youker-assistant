@@ -49,9 +49,14 @@ public slots:
     void setMouseRightClick(QString selected);
     void setRadioButtonRowStatus();
 
+    void windowwidget_notify_string(QString key, QString value);
+    void windowwidget_notify_bool(QString key, bool value);
+
 private:
     SessionDispatcher *sessionproxy;
     bool dataOK;
+    QStringList wheellist;
+    QStringList titlebar_options;
     QLabel *icon_label;
     QLabel *wheel_label;
     QLabel *double_click_label;

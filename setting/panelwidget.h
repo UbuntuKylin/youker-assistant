@@ -60,9 +60,13 @@ public slots:
     void showIcon();
     void showPlaces();
 
+    void panelwidget_notify_string(QString key, QString value);
+    void panelwidget_notify_bool(QString key, bool value);
+
 private:
     SessionDispatcher *sessionproxy;
     bool dataOK;
+    QStringList powerlist;
     QLabel *blur_label;
     QLabel *transparency_label;
     QLabel *date_format_label;

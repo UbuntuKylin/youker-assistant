@@ -224,6 +224,72 @@ void TouchpadWidget::initConnect() {
     connect(disable_radio, SIGNAL(clicked(/*bool*/)), this, SLOT(setRadioButtonRowStatus(/*bool*/)));
     connect(edge_radio, SIGNAL(clicked(/*bool*/)), this, SLOT(setRadioButtonRowStatus(/*bool*/)));
     connect(two_finger_radio, SIGNAL(clicked(/*bool*/)), this, SLOT(setRadioButtonRowStatus(/*bool*/)));
+
+    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(touchpadwidget_notify_string(QString, QString)));
+    connect(sessionproxy, SIGNAL(bool_value_notify(QString, bool)), this, SLOT(touchpadwidget_notify_bool(QString, bool)));
+    connect(sessionproxy, SIGNAL(int_value_notify(QString, int)), this, SLOT(touchpadwidget_notify_int(QString, int)));
+}
+
+void TouchpadWidget::touchpadwidget_notify_string(QString key, QString value)
+{
+    if (key == "scroll-method") {
+        if(value == "disabled") {
+            disable_radio->setChecked(true);
+            edge_radio->setChecked(false);
+            two_finger_radio->setChecked(false);
+        }
+        else if(value == "edge-scrolling") {
+            edge_radio->setChecked(true);
+            disable_radio->setChecked(false);
+            two_finger_radio->setChecked(false);
+        }
+        else if(value == "two-finger-scrolling") {
+            two_finger_radio->setChecked(true);
+            disable_radio->setChecked(false);
+            edge_radio->setChecked(false);
+        }
+    }
+    else if (key == "scrollbar-mode") {
+        if(value == "overlay-auto") {
+            features_radio->setChecked(true);
+            standard_radio->setChecked(false);
+        }
+        else if(value == "normal") {
+            standard_radio->setChecked(true);
+            features_radio->setChecked(false);
+        }
+    }
+}
+
+void TouchpadWidget::touchpadwidget_notify_bool(QString key, bool value)
+{
+    if (key == "touchpad-enabled") {
+        touchpad_switcher->switchedOn = value;
+    }
+    else if (key == "horiz-scroll-enabled") {
+        horizontal_scrolling_switcher->switchedOn = value;
+    }
+}
+
+void TouchpadWidget::touchpadwidget_notify_int(QString key, int value)
+{
+    if (key == "scroll-method") {
+        if(value == 0) {
+            disable_radio->setChecked(true);
+            edge_radio->setChecked(false);
+            two_finger_radio->setChecked(false);
+        }
+        else if(value == 1) {
+            edge_radio->setChecked(true);
+            disable_radio->setChecked(false);
+            two_finger_radio->setChecked(false);
+        }
+        else if(value == 2) {
+            two_finger_radio->setChecked(true);
+            disable_radio->setChecked(false);
+            edge_radio->setChecked(false);
+        }
+    }
 }
 
 void TouchpadWidget::setTouchpad()

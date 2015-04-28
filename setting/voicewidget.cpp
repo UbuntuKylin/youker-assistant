@@ -117,7 +117,7 @@ bool VoiceWidget::getStatus()
 void VoiceWidget::initData()
 {
     QString current_sound = sessionproxy->get_sound_theme_qt();
-    QStringList soundlist  = systemproxy->get_sound_themes_qt();
+    /*QStringList */soundlist  = systemproxy->get_sound_themes_qt();
     theme_combo->clear();
     theme_combo->clearEditText();
     theme_combo->addItems(soundlist);
@@ -144,6 +144,35 @@ void VoiceWidget::initConnect() {
     connect(tip_switcher, SIGNAL(clicked()),  this, SLOT(setLoginTipVoice()));
     connect(event_switcher, SIGNAL(clicked()),  this, SLOT(setEventVoice()));
     connect(feedback_switcher, SIGNAL(clicked()),  this, SLOT(setInputFeedbackVoice()));
+
+    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(voicewidget_notify_string(QString, QString)));
+    connect(sessionproxy, SIGNAL(bool_value_notify(QString, bool)), this, SLOT(voicewidget_notify_bool(QString, bool)));
+}
+
+void VoiceWidget::voicewidget_notify_string(QString key, QString value)
+{
+    if (key == "theme-name") {
+        QList<QString>::Iterator it = soundlist.begin(), itend = soundlist.end();
+        int index = -1;
+        for(;it != itend; it++)
+        {
+            ++index;
+            if(*it == value)
+                break;
+        }
+        if (index > -1)
+            theme_combo->setCurrentIndex(index);
+    }
+}
+
+void  VoiceWidget::voicewidget_notify_bool(QString key, bool value)
+{
+    if (key == "event-sounds") {
+        event_switcher->switchedOn = value;
+    }
+    else if (key == "input-feedback-sounds") {
+        feedback_switcher->switchedOn = value;
+    }
 }
 
 void VoiceWidget::setVoiceTheme(QString selectTheme) {

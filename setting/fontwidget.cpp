@@ -243,7 +243,7 @@ void FontWidget::initData()
     scaling_slider->setValue(sessionproxy->get_font_zoom_qt());
 
     QString current_smooth = sessionproxy->get_smooth_style_qt();
-    QStringList smoothlist  = sessionproxy->get_smooth_style_list_qt();
+    /*QStringList */smoothlist  = sessionproxy->get_smooth_style_list_qt();
     hinting_combo->clear();
     hinting_combo->clearEditText();
     hinting_combo->addItems(smoothlist);
@@ -257,7 +257,7 @@ void FontWidget::initData()
     hinting_combo->setCurrentIndex(initIndex);
 
     QString current_antialiasing = sessionproxy->get_antialiasing_style_qt();
-    QStringList antialiasinglist  = sessionproxy->get_antialiasing_style_list_qt();
+    /*QStringList */antialiasinglist  = sessionproxy->get_antialiasing_style_list_qt();
     antialiasing_combo->clear();
     antialiasing_combo->clearEditText();
     antialiasing_combo->addItems(antialiasinglist);
@@ -288,7 +288,61 @@ void FontWidget::initConnect() {
     connect(restore_monospace_font_btn, SIGNAL(clicked()), this, SLOT(restore_monospace_font()));
     connect(restore_document_font_btn, SIGNAL(clicked()), this, SLOT(restore_document_font()));
     connect(restore_titlebar_font_btn, SIGNAL(clicked()), this, SLOT(restore_titlebar_font()));
+
+    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(fontwidget_notify_string(QString, QString)));
+    connect(sessionproxy, SIGNAL(double_value_notify(QString, double)), this, SLOT(fontwidget_notify_bool(QString, double)));
 }
+
+void FontWidget::fontwidget_notify_string(QString key, QString value)
+{
+    if (key == "font-name") {
+        default_font_btn->setText(value);
+    }
+    else if (key == "font") {
+        desktop_font_btn->setText(value);
+    }
+    else if (key == "monospace-font-name") {
+        monospace_font_btn->setText(value);
+    }
+    else if (key == "document-font-name") {
+        document_font_btn->setText(value);
+    }
+    else if (key == "titlebar-font") {
+        titlebar_font_btn->setText(value);
+    }
+    else if (key == "hinting") {
+        QList<QString>::Iterator it = smoothlist.begin(), itend = smoothlist.end();
+        int index = -1;
+        for(;it != itend; it++)
+        {
+            ++index;
+            if(*it == value)
+                break;
+        }
+        if (index > -1)
+            hinting_combo->setCurrentIndex(index);
+    }
+    else if (key == "antialiasing") {
+        QList<QString>::Iterator it = antialiasinglist.begin(), itend = antialiasinglist.end();
+        int index = -1;
+        for(;it != itend; it++)
+        {
+            ++index;
+            if(*it == value)
+                break;
+        }
+        if (index > -1)
+            antialiasing_combo->setCurrentIndex(index);
+    }
+}
+
+void FontWidget::fontwidget_notify_bool(QString key, double value)
+{
+    if (key == "text-scaling-factor") {
+         scaling_slider->setValue(value);
+    }
+}
+
 
 void FontWidget::setDefaultFont() {
 //    KylinFontDialog *fontDialog = new KylinFontDialog(mSettings, flag, current_font, 0);

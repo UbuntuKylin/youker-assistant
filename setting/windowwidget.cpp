@@ -176,7 +176,7 @@ void WindowWidget::initData()
         wheel_combo->hide();
     }
 
-    QStringList wheellist  = sessionproxy->get_titlebar_wheel_qt();
+    /*QStringList */wheellist  = sessionproxy->get_titlebar_wheel_qt();
     wheel_combo->clear();
     wheel_combo->clearEditText();
     wheel_combo->addItems(wheellist);
@@ -190,7 +190,7 @@ void WindowWidget::initData()
     wheel_combo->setCurrentIndex(initIndex1);
 
     QString current_double_type = sessionproxy->get_current_titlebar_double_qt();
-    QStringList titlebar_options  = sessionproxy->get_titlebar_options_qt();
+    /*QStringList */titlebar_options  = sessionproxy->get_titlebar_options_qt();
     double_click_combo->clear();
     double_click_combo->clearEditText();
     double_click_combo->addItems(titlebar_options);
@@ -243,6 +243,68 @@ void WindowWidget::initConnect() {
     connect(double_click_combo, SIGNAL(currentIndexChanged(QString)), this, SLOT(setMouseDoubleClick(QString)));
     connect(middle_click_combo, SIGNAL(currentIndexChanged(QString)), this, SLOT(setMouseMiddleClick(QString)));
     connect(right_click_combo, SIGNAL(currentIndexChanged(QString)), this, SLOT(setMouseRightClick(QString)));
+
+    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(windowwidget_notify_string(QString, QString)));
+    connect(sessionproxy, SIGNAL(bool_value_notify(QString, bool)), this, SLOT(windowwidget_notify_bool(QString, bool)));
+}
+
+void WindowWidget::windowwidget_notify_string(QString key, QString value)
+{
+    if (key == "mouse-wheel-action") {
+        QList<QString>::Iterator it = wheellist.begin(), itend = wheellist.end();
+        int index = -1;
+        for(;it != itend; it++)
+        {
+            ++index;
+            if(*it == value)
+                break;
+        }
+        if (index > -1)
+            wheel_combo->setCurrentIndex(index);
+    }
+    else if (key == "action-double-click-titlebar") {
+        QList<QString>::Iterator it = titlebar_options.begin(), itend = titlebar_options.end();
+        int index = -1;
+        for(;it != itend; it++)
+        {
+            ++index;
+            if(*it == value)
+                break;
+        }
+        if (index > -1)
+            double_click_combo->setCurrentIndex(index);
+    }
+    else if (key == "action-middle-click-titlebar") {
+        QList<QString>::Iterator it = titlebar_options.begin(), itend = titlebar_options.end();
+        int index = -1;
+        for(;it != itend; it++)
+        {
+            ++index;
+            if(*it == value)
+                break;
+        }
+        if (index > -1)
+            middle_click_combo->setCurrentIndex(index);
+    }
+    else if (key == "action-right-click-titlebar") {
+        QList<QString>::Iterator it = titlebar_options.begin(), itend = titlebar_options.end();
+        int index = -1;
+        for(;it != itend; it++)
+        {
+            ++index;
+            if(*it == value)
+                break;
+        }
+        if (index > -1)
+            right_click_combo->setCurrentIndex(index);
+    }
+}
+
+void WindowWidget::windowwidget_notify_bool(QString key, bool value)
+{
+    if (key == "menus-have-icons") {
+        icon_switcher->switchedOn = value;
+    }
 }
 
 void WindowWidget::setMenuIcon()
