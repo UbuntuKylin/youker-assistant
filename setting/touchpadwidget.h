@@ -44,6 +44,10 @@ public slots:
     void setTouchpad();
     void setHorizontalScrolling();
 
+    void touchpadwidget_notify_string(QString key, QString value);
+    void touchpadwidget_notify_bool(QString key, bool value);
+    void touchpadwidget_notify_int(QString key, int value);
+
 private:
     SessionDispatcher *sessionproxy;
     bool dataOK;

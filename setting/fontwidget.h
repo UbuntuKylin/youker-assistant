@@ -60,9 +60,14 @@ public slots:
     void restore_document_font();
     void restore_titlebar_font();
 
+    void fontwidget_notify_string(QString key, QString value);
+    void fontwidget_notify_bool(QString key, double value);
+
 private:
     SessionDispatcher *sessionproxy;
     bool dataOK;
+    QStringList smoothlist;
+    QStringList antialiasinglist;
     MainWindow *parentWindow;
     QLabel *default_font_label;
     QLabel *desktop_font_label;

@@ -215,6 +215,41 @@ void NautilusWidget::initConnect() {
     connect(icon_size_slider, SIGNAL(valueChanged(int)), this, SLOT(setIconSizeValue(int)));
     connect(cache_time_slider, SIGNAL(valueChanged(int)), this, SLOT(setCacheTimeValue(int)));
     connect(cache_size_slider, SIGNAL(valueChanged(int)), this, SLOT(setCacheSizeValue(int)));
+
+    connect(sessionproxy, SIGNAL(bool_value_notify(QString, bool)), this, SLOT(nautiluswidget_notify_bool(QString, bool)));
+    connect(sessionproxy, SIGNAL(int_value_notify(QString, int)), this, SLOT(nautiluswidget_notify_int(QString, int)));
+}
+
+void NautilusWidget::nautiluswidget_notify_bool(QString key, bool value)
+{
+    if (key == "always-use-location-entry") {
+        location_switcher->switchedOn = value;
+    }
+    else if (key == "automount") {
+        mount_media_switcher->switchedOn = value;
+    }
+    else if (key == "automount-open") {
+        open_folder_switcher->switchedOn = value;
+    }
+    else if (key == "autorun-never") {
+        autorun_program_switcher->switchedOn = value;
+    }
+}
+
+void NautilusWidget::nautiluswidget_notify_int(QString key, int value)
+{
+    if (key == "thumbnail-size") {
+        icon_size_slider->setValue(value);
+        size_value_label->setText(QString::number(value));
+    }
+    else if (key == "maximum-age") {
+        cache_time_slider->setValue(value);
+        time_value_label->setText(QString::number(value));
+    }
+    else if (key == "maximum-size") {
+        cache_size_slider->setValue(value);
+        cache_value_label->setText(QString::number(value));
+    }
 }
 
 void NautilusWidget::setLocation()

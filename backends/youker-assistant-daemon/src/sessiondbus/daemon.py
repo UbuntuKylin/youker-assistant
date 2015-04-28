@@ -169,7 +169,90 @@ class SessionDaemon(dbus.service.Object):
             self.interface_settings.connect("changed::cursor-theme", self.gio_settings_monitor, STRING_TYPE)
             self.interface_settings.connect("changed::cursor-size", self.gio_settings_monitor, INT_TYPE)
 
+        # voice
+        if self.desktop == "mate":
+            self.sound_settings = gio.Settings.new("org.mate.sound")
+        else:
+            self.sound_settings = gio.Settings.new("org.gnome.desktop.sound")
+        self.sound_settings.connect("changed::theme-name", self.gio_settings_monitor, STRING_TYPE)
+        self.sound_settings.connect("changed::event-sounds", self.gio_settings_monitor, BOOL_TYPE)
+        self.sound_settings.connect("changed::input-feedback-sounds", self.gio_settings_monitor, BOOL_TYPE)
 
+        #panel
+        self.datetime_settings = gio.Settings.new("com.canonical.indicator.datetime")
+        self.datetime_settings.connect("changed::show-seconds", self.gio_settings_monitor, BOOL_TYPE)
+        self.datetime_settings.connect("changed::show-day", self.gio_settings_monitor, BOOL_TYPE)
+        self.datetime_settings.connect("changed::show-date", self.gio_settings_monitor, BOOL_TYPE)
+
+        #power
+        self.power_settings = gio.Settings.new("com.canonical.indicator.power")
+        self.power_settings.connect("changed::icon-policy", self.gio_settings_monitor, STRING_TYPE)
+        self.power_settings.connect("changed::show-time", self.gio_settings_monitor, BOOL_TYPE)
+        self.power_settings.connect("changed::show-percentage", self.gio_settings_monitor, BOOL_TYPE)
+
+        # window
+        self.interface_settings.connect("changed::menus-have-icons", self.gio_settings_monitor, BOOL_TYPE)
+        self.gwd_settings = gio.Settings.new("org.compiz.gwd")
+        self.gwd_settings.connect("changed::mouse-wheel-action", self.gio_settings_monitor, STRING_TYPE)
+        if self.desktop == "mate":
+            self.titlebar_settings = gio.Settings.new("org.mate.Marco.general")
+        else:
+            self.titlebar_settings = gio.Settings.new("org.gnome.desktop.wm.preferences")
+        self.titlebar_settings.connect("changed::action-double-click-titlebar", self.gio_settings_monitor, STRING_TYPE)
+        self.titlebar_settings.connect("changed::action-middle-click-titlebar", self.gio_settings_monitor, STRING_TYPE)
+        self.titlebar_settings.connect("changed::action-right-click-titlebar", self.gio_settings_monitor, STRING_TYPE)
+
+        #font
+        self.interface_settings.connect("changed::font-name", self.gio_settings_monitor, STRING_TYPE)
+        self.desktop_settings.connect("changed::font", self.gio_settings_monitor, STRING_TYPE)
+        self.interface_settings.connect("changed::monospace-font-name", self.gio_settings_monitor, STRING_TYPE)
+        self.interface_settings.connect("changed::document-font-name", self.gio_settings_monitor, STRING_TYPE)
+        self.titlebar_settings.connect("changed::titlebar-font", self.gio_settings_monitor, STRING_TYPE)
+        self.interface_settings.connect("changed::text-scaling-factor", self.gio_settings_monitor, DOUBLE_TYPE)
+        if self.desktop == "mate":
+            self.font_settings = gio.Settings.new("org.mate.font-rendering")
+        else:
+            self.font_settings = gio.Settings.new("org.gnome.settings-daemon.plugins.xsettings")
+        self.font_settings.connect("changed::hinting", self.gio_settings_monitor, STRING_TYPE)
+        self.font_settings.connect("changed::antialiasing", self.gio_settings_monitor, STRING_TYPE)
+
+        # touchpad
+        if self.desktop == "mate":
+            self.touchpad_settings = gio.Settings.new("org.mate.peripherals-touchpad")
+            self.touchpad_settings.connect("changed::scroll-method", self.gio_settings_monitor, INT_TYPE)
+        else:
+            self.touchpad_settings = gio.Settings.new("org.gnome.settings-daemon.peripherals.touchpad")
+            self.touchpad_settings.connect("changed::scroll-method", self.gio_settings_monitor, STRING_TYPE)
+        self.touchpad_settings.connect("changed::touchpad-enabled", self.gio_settings_monitor, BOOL_TYPE)
+        self.touchpad_settings.connect("changed::horiz-scroll-enabled", self.gio_settings_monitor, BOOL_TYPE)
+        self.canonical_interface_settings = gio.Settings.new("com.canonical.desktop.interface")
+        self.canonical_interface_settings.connect("changed::scrollbar-mode", self.gio_settings_monitor, STRING_TYPE)
+
+        #file manager
+        if self.desktop == "mate":
+            self.filemanager_settings = gio.Settings.new("org.mate.caja.preferences")
+        else:
+            self.filemanager_settings = gio.Settings.new("org.gnome.nautilus.preferences")
+        self.filemanager_settings.connect("changed::always-use-location-entry", self.gio_settings_monitor, BOOL_TYPE)
+
+        if self.desktop == "mate":
+            self.mediahanding_settings = gio.Settings.new("org.mate.media-handling")
+        else:
+            self.mediahanding_settings = gio.Settings.new("org.gnome.desktop.media-handling")
+        self.mediahanding_settings.connect("changed::automount", self.gio_settings_monitor, BOOL_TYPE)
+        self.mediahanding_settings.connect("changed::automount-open", self.gio_settings_monitor, BOOL_TYPE)
+        self.mediahanding_settings.connect("changed::autorun-never", self.gio_settings_monitor, BOOL_TYPE)
+        if self.desktop == "mate":
+            self.iconview_settings = gio.Settings.new("org.mate.caja.icon-view")
+        else:
+            self.iconview_settings = gio.Settings.new("org.gnome.nautilus.icon-view")
+        self.iconview_settings.connect("changed::thumbnail-size", self.gio_settings_monitor, INT_TYPE)
+        if self.desktop == "mate":
+            self.thumbnail_settings = gio.Settings.new("org.mate.thumbnail-cache")
+        else:
+            self.thumbnail_settings = gio.Settings.new("org.gnome.desktop.thumbnail-cache")
+        self.thumbnail_settings.connect("changed::maximum-age", self.gio_settings_monitor, INT_TYPE)
+        self.thumbnail_settings.connect("changed::maximum-size", self.gio_settings_monitor, INT_TYPE)
 
         bus_name = dbus.service.BusName(INTERFACE, bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, UKPATH)

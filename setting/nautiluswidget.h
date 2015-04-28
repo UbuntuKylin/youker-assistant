@@ -48,6 +48,9 @@ public slots:
     void setCacheTimeValue(int value);
     void setCacheSizeValue(int value);
 
+    void nautiluswidget_notify_bool(QString key, bool value);
+    void nautiluswidget_notify_int(QString key, int value);
+
 private:
     SessionDispatcher *sessionproxy;
     bool dataOK;

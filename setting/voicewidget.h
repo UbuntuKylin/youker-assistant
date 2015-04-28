@@ -45,11 +45,14 @@ public slots:
     void setLoginTipVoice();
     void setEventVoice();
     void setInputFeedbackVoice();
+    void voicewidget_notify_string(QString key, QString value);
+    void voicewidget_notify_bool(QString key, bool value);
 
 private:
     SessionDispatcher *sessionproxy;
     SystemDispatcher *systemproxy;
     bool dataOK;
+    QStringList soundlist;
     QLabel *theme_label;
     QLabel *tip_label;
     QLabel *event_label;

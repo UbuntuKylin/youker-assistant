@@ -310,7 +310,7 @@ void PanelWidget::initData()
     date_switcher->switchedOn = sessionproxy->get_show_date_qt();
 
     QString cur_power = sessionproxy->get_power_icon_policy_qt();
-    QStringList powerlist  = sessionproxy->get_all_power_icon_policy_qt();
+    /*QStringList */powerlist  = sessionproxy->get_all_power_icon_policy_qt();
     battery_combo->clear();
     battery_combo->clearEditText();
     battery_combo->addItems(powerlist);
@@ -351,6 +351,44 @@ void PanelWidget::initConnect() {
     connect(desktop_switcher, SIGNAL(clicked()),  this, SLOT(showDesktop()));
     connect(icon_switcher, SIGNAL(clicked()),  this, SLOT(showIcon()));
     connect(places_switcher, SIGNAL(clicked()),  this, SLOT(showPlaces()));
+
+    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(panelwidget_notify_string(QString, QString)));
+    connect(sessionproxy, SIGNAL(bool_value_notify(QString, bool)), this, SLOT(panelwidget_notify_bool(QString, bool)));
+}
+
+void PanelWidget::panelwidget_notify_string(QString key, QString value)
+{
+    if (key == "icon-policy") {
+        QList<QString>::Iterator it = powerlist.begin(), itend = powerlist.end();
+        int index = -1;
+        for(;it != itend; it++)
+        {
+            ++index;
+            if(*it == value)
+                break;
+        }
+        if (index > -1)
+            battery_combo->setCurrentIndex(index);
+    }
+}
+
+void PanelWidget::panelwidget_notify_bool(QString key, bool value)
+{
+    if (key == "show-seconds") {
+        second_switcher->switchedOn = value;
+    }
+    else if (key == "show-day") {
+        week_switcher->switchedOn = value;
+    }
+    else if (key == "show-date") {
+        date_switcher->switchedOn = value;
+    }
+    else if (key == "show-time") {
+        battery_time_switcher->switchedOn = value;
+    }
+    else if (key == "show-percentage") {
+        battery_percentage_switcher->switchedOn = value;
+    }
 }
 
 void PanelWidget::setTransparencyValue(double value)

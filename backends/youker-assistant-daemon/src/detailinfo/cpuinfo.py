@@ -757,7 +757,7 @@ class DetailInfo:
 
     def get_network(self):
         net = {}
-        NetProduct,NetVendor,NetBusinfo,NetLogicalname,NetSerial,NetIp,NetLink,NetCapacity = '','','','','','','',''
+        NetProduct,NetVendor,NetDrive,NetBusinfo,NetLogicalname,NetSerial,NetIp,NetLink,NetCapacity = '','','','','','','','',''
         n = os.popen('lspci -vvv')
         network = n.read()
         n.close()
@@ -816,17 +816,19 @@ class DetailInfo:
 
 
 
-
-        n = os.popen('mii-tool -v')
-        network = n.read()
-        n.close()
-        if network :
-            tmp = re.findall("basic status: (.*)",network)
-            if tmp:
-                NetLink = tmp[0]
-            tmp = re.findall('capabilities: (\d*)',network)
-            if tmp:
-                NetCapacity = tmp[0]
+        try:
+            n = os.popen('mii-tool -v')
+            network = n.read()
+            n.close()
+            if network :
+                tmp = re.findall("basic status: (.*)",network)
+                if tmp:
+                    NetLink = tmp[0]
+                tmp = re.findall('capabilities: (\d*)',network)
+                if tmp:
+                    NetCapacity = tmp[0]
+        except Exception, e:
+            print e
         WlanProduct,WlanVendor,WlanBusinfo,WlanLogicalname,WlanSerial,WlanIp,WlanDrive = '','','','','','',''
         n = os.popen('lspci -vvv')
         wlan = n.read()
