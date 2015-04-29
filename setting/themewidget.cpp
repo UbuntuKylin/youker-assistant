@@ -119,14 +119,18 @@ void ThemeWidget::themewidget_notify_string(QString key, QString value)
     {
         QList<QString>::Iterator it = syslist.begin(), itend = syslist.end();
         int index = -1;
+        bool exist = false;
         for(;it != itend; it++)
         {
             ++index;
-            if(*it == value)
+            if(*it == value) {
+                exist = true;
                 break;
+            }
         }
-        if(index > -1)
+        if(exist)
         {
+            exist = false;
             QListWidgetItem *cur_item = list_widget->item(index);
             this->initCurrentTheme(cur_item);
         }

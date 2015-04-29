@@ -154,14 +154,21 @@ void VoiceWidget::voicewidget_notify_string(QString key, QString value)
     if (key == "theme-name") {
         QList<QString>::Iterator it = soundlist.begin(), itend = soundlist.end();
         int index = -1;
+        bool exist = false;
         for(;it != itend; it++)
         {
             ++index;
-            if(*it == value)
+            if(*it == value) {
+                exist = true;
                 break;
+            }
         }
-        if (index > -1)
+        if (exist) {
+            exist = false;
             theme_combo->setCurrentIndex(index);
+        }
+        else
+            theme_combo->setCurrentIndex(-1);
     }
 }
 

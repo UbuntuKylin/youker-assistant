@@ -361,14 +361,21 @@ void PanelWidget::panelwidget_notify_string(QString key, QString value)
     if (key == "icon-policy") {
         QList<QString>::Iterator it = powerlist.begin(), itend = powerlist.end();
         int index = -1;
+        bool exist = false;
         for(;it != itend; it++)
         {
             ++index;
-            if(*it == value)
+            if(*it == value) {
+                exist = true;
                 break;
+            }
         }
-        if (index > -1)
+        if (exist) {
+            exist = false;
             battery_combo->setCurrentIndex(index);
+        }
+        else
+            battery_combo->setCurrentIndex(-1);
     }
 }
 
@@ -388,6 +395,18 @@ void PanelWidget::panelwidget_notify_bool(QString key, bool value)
     }
     else if (key == "show-percentage") {
         battery_percentage_switcher->switchedOn = value;
+    }
+    else if (key == "show-applications") {
+        app_switcher->switchedOn = value;
+    }
+    else if (key == "show-desktop") {
+        desktop_switcher->switchedOn = value;
+    }
+    else if (key == "show-icon") {
+        icon_switcher->switchedOn = value;
+    }
+    else if (key == "show-places") {
+        places_switcher->switchedOn = value;
     }
 }
 

@@ -184,6 +184,23 @@ class SessionDaemon(dbus.service.Object):
         self.datetime_settings.connect("changed::show-day", self.gio_settings_monitor, BOOL_TYPE)
         self.datetime_settings.connect("changed::show-date", self.gio_settings_monitor, BOOL_TYPE)
 
+#        self.toplevels_settings = gio.Settings.new("org.mate.panel.toplevel")
+#        self.toplevels_settings.connect("changed::size", self.gio_settings_monitor_diff, INT_TYPE, "top")
+#        self.toplevels_settings.connect("changed::auto-hide", self.gio_settings_monitor_diff, BOOL_TYPE, "top")
+#        self.bottomlevels_settings = gio.Settings.new("org.mate.panel.toplevel")
+#        self.bottomlevels_settings.connect("changed::size", self.gio_settings_monitor_diff, INT_TYPE, "bottom")
+#        self.bottomlevels_settings.connect("changed::auto-hide", self.gio_settings_monitor_diff, BOOL_TYPE, "bottom")
+#        #self.toplevels_settings = gio.Settings.new("org.mate.panel.toplevel", "/org/mate/panel/toplevels/top/")
+#        #self.bottomlevels_settings = gio.Settings.new("org.mate.panel.toplevel", "/org/mate/panel/toplevels/bottom/")
+
+        # menubar
+        self.menubar_settings = gio.Settings.new("org.mate.panel.menubar")
+        self.menubar_settings.connect("changed::show-applications", self.gio_settings_monitor, BOOL_TYPE)
+        self.menubar_settings.connect("changed::show-desktop", self.gio_settings_monitor, BOOL_TYPE)
+        self.menubar_settings.connect("changed::show-icon", self.gio_settings_monitor, BOOL_TYPE)
+        self.menubar_settings.connect("changed::show-places", self.gio_settings_monitor, BOOL_TYPE)
+
+
         #power
         self.power_settings = gio.Settings.new("com.canonical.indicator.power")
         self.power_settings.connect("changed::icon-policy", self.gio_settings_monitor, STRING_TYPE)
@@ -198,6 +215,7 @@ class SessionDaemon(dbus.service.Object):
             self.titlebar_settings = gio.Settings.new("org.mate.Marco.general")
         else:
             self.titlebar_settings = gio.Settings.new("org.gnome.desktop.wm.preferences")
+        self.titlebar_settings.connect("changed::button-layout", self.gio_settings_monitor, STRING_TYPE)
         self.titlebar_settings.connect("changed::action-double-click-titlebar", self.gio_settings_monitor, STRING_TYPE)
         self.titlebar_settings.connect("changed::action-middle-click-titlebar", self.gio_settings_monitor, STRING_TYPE)
         self.titlebar_settings.connect("changed::action-right-click-titlebar", self.gio_settings_monitor, STRING_TYPE)
@@ -257,6 +275,22 @@ class SessionDaemon(dbus.service.Object):
         bus_name = dbus.service.BusName(INTERFACE, bus=dbus.SessionBus())
         dbus.service.Object.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
+
+    def gio_settings_monitor_diff(self, settings, key, type, diff):
+        if diff == "top":
+            if type == BOOL_TYPE and key == "auto-hide":
+                value = settings.get_boolean(key)
+                self.notify_boolean("auto-hide-top", value)
+            elif type == INT_TYPE and key == "size":
+                value = settings.get_int(key)
+                self.notify_int("size-top", value)
+        elif diff == "bottom":
+            if type == BOOL_TYPE and key == "auto-hide":
+                value = settings.get_boolean(key)
+                self.notify_boolean("auto-hide-bottom", value)
+            elif type == INT_TYPE and key == "size":
+                value = settings.get_int(key)
+                self.notify_int("size-bottom", value)
 
     def gio_settings_monitor(self, settings, key, type):
 #        value = settings.get_boolean("home-icon-visible")#get_int get_string get_string

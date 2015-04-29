@@ -250,53 +250,93 @@ void WindowWidget::initConnect() {
 
 void WindowWidget::windowwidget_notify_string(QString key, QString value)
 {
-    if (key == "mouse-wheel-action") {
+    if (key == "button-layout") {
+        if (value == "close,maximize,minimize:menu" || value == "close,minimize,maximize:menu" || value == "close,minimize,maximize:" || value == "close,maximize,minimize:")
+        {
+            left_radio->setChecked(true);
+            right_radio->setChecked(false);
+        }
+        else if (value == "menu:minimize,maximize,close" || value == "menu:maximize,minimize,close" || value == ":minimize,maximize,close" || value == ":maximize,minimize,close")
+        {
+            right_radio->setChecked(true);
+            left_radio->setChecked(false);
+        }
+    }
+    else if (key == "mouse-wheel-action") {
         QList<QString>::Iterator it = wheellist.begin(), itend = wheellist.end();
         int index = -1;
+        bool exist = false;
         for(;it != itend; it++)
         {
             ++index;
-            if(*it == value)
+            if(*it == value) {
+                exist = true;
                 break;
+            }
         }
-        if (index > -1)
+        if (index > -1) {
+            exist = false;
             wheel_combo->setCurrentIndex(index);
+        }
+        else
+            wheel_combo->setCurrentIndex(-1);
     }
     else if (key == "action-double-click-titlebar") {
         QList<QString>::Iterator it = titlebar_options.begin(), itend = titlebar_options.end();
         int index = -1;
+        bool exist = false;
         for(;it != itend; it++)
         {
             ++index;
-            if(*it == value)
+            if(*it == value) {
+                exist = true;
                 break;
+            }
         }
-        if (index > -1)
+        if (index > -1) {
+            exist = false;
             double_click_combo->setCurrentIndex(index);
+        }
+        else
+            double_click_combo->setCurrentIndex(-1);
     }
     else if (key == "action-middle-click-titlebar") {
         QList<QString>::Iterator it = titlebar_options.begin(), itend = titlebar_options.end();
         int index = -1;
+        bool exist = false;
         for(;it != itend; it++)
         {
             ++index;
-            if(*it == value)
+            if(*it == value) {
+                exist = true;
                 break;
+            }
         }
-        if (index > -1)
+        if (index > -1) {
+            exist = false;
             middle_click_combo->setCurrentIndex(index);
+        }
+        else
+            middle_click_combo->setCurrentIndex(-1);
     }
     else if (key == "action-right-click-titlebar") {
         QList<QString>::Iterator it = titlebar_options.begin(), itend = titlebar_options.end();
         int index = -1;
+        bool exist = false;
         for(;it != itend; it++)
         {
             ++index;
-            if(*it == value)
+            if(*it == value) {
+                exist = true;
                 break;
+            }
         }
-        if (index > -1)
+        if (index > -1) {
+            exist = false;
             right_click_combo->setCurrentIndex(index);
+        }
+        else
+            right_click_combo->setCurrentIndex(-1);
     }
 }
 
