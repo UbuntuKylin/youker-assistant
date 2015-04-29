@@ -52,6 +52,9 @@ public slots:
     void setTopAutoHide();
     void setBottomAutoHide();
 
+    void launcherwidget_notify_bool(QString key, bool value);
+    void launcherwidget_notify_int(QString key, int value);
+
 private:
     SessionDispatcher *sessionproxy;
     bool dataOK;

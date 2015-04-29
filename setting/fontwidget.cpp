@@ -313,26 +313,40 @@ void FontWidget::fontwidget_notify_string(QString key, QString value)
     else if (key == "hinting") {
         QList<QString>::Iterator it = smoothlist.begin(), itend = smoothlist.end();
         int index = -1;
+        bool exist = false;
         for(;it != itend; it++)
         {
             ++index;
-            if(*it == value)
+            if(*it == value) {
+                exist = true;
                 break;
+            }
         }
-        if (index > -1)
+        if (exist) {
+            exist = false;
             hinting_combo->setCurrentIndex(index);
+        }
+        else
+            hinting_combo->setCurrentIndex(-1);
     }
     else if (key == "antialiasing") {
         QList<QString>::Iterator it = antialiasinglist.begin(), itend = antialiasinglist.end();
         int index = -1;
+        bool exist = false;
         for(;it != itend; it++)
         {
             ++index;
-            if(*it == value)
+            if(*it == value) {
+                exist = true;
                 break;
+            }
         }
-        if (index > -1)
+        if (exist) {
+            exist = false;
             antialiasing_combo->setCurrentIndex(index);
+        }
+        else
+            antialiasing_combo->setCurrentIndex(-1);
     }
 }
 

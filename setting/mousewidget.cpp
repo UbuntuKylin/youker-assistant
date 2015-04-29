@@ -175,14 +175,22 @@ void MouseWidget::mousewidget_notify_string(QString key, QString value)
     if (key == "cursor-theme") {
         QList<QString>::Iterator it = cursorlist.begin(), itend = cursorlist.end();
         int index = -1;
+        bool exist = false;
         for(;it != itend; it++)
         {
             ++index;
             if(*it == value)
+            {
+                exist = true;
                 break;
+            }
         }
-        if (index > -1)
+        if (exist) {
+            exist = false;
             theme_combo->setCurrentIndex(index);
+        }
+        else
+            theme_combo->setCurrentIndex(-1);
     }
 }
 

@@ -213,7 +213,7 @@ class System():
         if self.desktop == "mate":
             value = gsettings.get('org.mate.Marco.general',
                 None, 'button-layout', 'string')
-            if value == 'close,maximize,minimize:menu' or value == 'close,minimize,maximize:menu' or value == ':close,minimize,maximize' or value == ':close,maximize,minimize':
+            if value == 'close,maximize,minimize:menu' or value == 'close,minimize,maximize:menu' or value == 'close,minimize,maximize:' or value == 'close,maximize,minimize:':
                 return 'left'
             elif value == 'menu:minimize,maximize,close' or value == 'menu:maximize,minimize,close' or value == ':minimize,maximize,close' or value == ':maximize,minimize,close':
                 return 'right'

@@ -261,14 +261,21 @@ void IconWidget::iconwidget_notify_string(QString key, QString value)
     if (key == "icon-theme") {
         QList<QString>::Iterator it = iconlist.begin(), itend = iconlist.end();
         int index = -1;
+        bool exist = false;
         for(;it != itend; it++)
         {
             ++index;
-            if(*it == value)
+            if(*it == value) {
+                exist = true;
                 break;
+            }
         }
-        if (index > -1)
+        if (exist) {
+            exist = false;
             theme_combo->setCurrentIndex(index);
+        }
+        else
+            theme_combo->setCurrentIndex(-1);
     }
 }
 

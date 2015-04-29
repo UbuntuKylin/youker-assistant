@@ -272,7 +272,7 @@ void LauncherWidget::initData()
     size_bottom_slider->setValue(sessionproxy->get_mate_panel_icon_size_qt("bottom"));
     size_bottom_value_label->setText(QString::number(size_bottom_slider->value()));
     hide_top_switcher->switchedOn = sessionproxy->get_mate_panel_autohide_qt("top");
-    hide_bottom_switcher->switchedOn = sessionproxy->get_mate_panel_autohide_qt("top");
+    hide_bottom_switcher->switchedOn = sessionproxy->get_mate_panel_autohide_qt("bottom");
     dataOK = true;
     this->initConnect();
 }
@@ -289,6 +289,31 @@ void LauncherWidget::initConnect() {
     connect(size_bottom_slider, SIGNAL(valueChanged(int)), this, SLOT(setBottomIconSizeValue(int)));
     connect(hide_top_switcher, SIGNAL(clicked()),  this, SLOT(setTopAutoHide()));
     connect(hide_bottom_switcher, SIGNAL(clicked()),  this, SLOT(setBottomAutoHide()));
+
+    connect(sessionproxy, SIGNAL(bool_value_notify(QString, bool)), this, SLOT(launcherwidget_notify_bool(QString, bool)));
+    connect(sessionproxy, SIGNAL(int_value_notify(QString, int)), this, SLOT(launcherwidget_notify_int(QString, int)));
+}
+
+void LauncherWidget::launcherwidget_notify_bool(QString key, bool value)
+{
+    if (key == "auto-hide-top") {
+        hide_top_switcher->switchedOn = value;
+    }
+    else if (key == "auto-hide-bottom") {
+        hide_bottom_switcher->switchedOn = value;
+    }
+}
+
+void LauncherWidget::launcherwidget_notify_int(QString key, int value)
+{
+    if (key == "size-top") {
+        size_top_slider->setValue(value);
+        size_top_value_label->setText(QString::number(value));
+    }
+    else if (key == "size-bottom") {
+        size_bottom_slider->setValue(value);
+        size_bottom_value_label->setText(QString::number(value));
+    }
 }
 
 void LauncherWidget::setIconSizeValue(int value){
