@@ -61,7 +61,7 @@ public slots:
     void restore_titlebar_font();
 
     void fontwidget_notify_string(QString key, QString value);
-    void fontwidget_notify_bool(QString key, double value);
+    void fontwidget_notify_double(QString key, double value);
 
 private:
     SessionDispatcher *sessionproxy;
