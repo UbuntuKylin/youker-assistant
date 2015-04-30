@@ -290,7 +290,7 @@ void FontWidget::initConnect() {
     connect(restore_titlebar_font_btn, SIGNAL(clicked()), this, SLOT(restore_titlebar_font()));
 
     connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(fontwidget_notify_string(QString, QString)));
-    connect(sessionproxy, SIGNAL(double_value_notify(QString, double)), this, SLOT(fontwidget_notify_bool(QString, double)));
+    connect(sessionproxy, SIGNAL(double_value_notify(QString, double)), this, SLOT(fontwidget_notify_double(QString, double)));
 }
 
 void FontWidget::fontwidget_notify_string(QString key, QString value)
@@ -350,7 +350,7 @@ void FontWidget::fontwidget_notify_string(QString key, QString value)
     }
 }
 
-void FontWidget::fontwidget_notify_bool(QString key, double value)
+void FontWidget::fontwidget_notify_double(QString key, double value)
 {
     if (key == "text-scaling-factor") {
          scaling_slider->setValue(value);

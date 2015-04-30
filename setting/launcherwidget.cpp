@@ -254,7 +254,7 @@ void LauncherWidget::initData()
     else if (cur_index == 4) {
         current_icon_colouring = "each workspace alternating coloring";
     }
-    QStringList colourlist  = sessionproxy->get_all_launcher_icon_colourings_qt();
+    /*QStringList */colourlist  = sessionproxy->get_all_launcher_icon_colourings_qt();
     backgound_combo->clear();
     backgound_combo->clearEditText();
     backgound_combo->addItems(colourlist);
@@ -291,7 +291,15 @@ void LauncherWidget::initConnect() {
     connect(hide_bottom_switcher, SIGNAL(clicked()),  this, SLOT(setBottomAutoHide()));
 
     connect(sessionproxy, SIGNAL(bool_value_notify(QString, bool)), this, SLOT(launcherwidget_notify_bool(QString, bool)));
+    connect(sessionproxy, SIGNAL(double_value_notify(QString, double)), this, SLOT(launcherwidget_notify_double(QString, double)));
     connect(sessionproxy, SIGNAL(int_value_notify(QString, int)), this, SLOT(launcherwidget_notify_int(QString, int)));
+}
+
+void LauncherWidget::launcherwidget_notify_double(QString key, double value)
+{
+    if (key == "launcher-opacity") {
+        transparency_slider->setValue(value);
+    }
 }
 
 void LauncherWidget::launcherwidget_notify_bool(QString key, bool value)
@@ -306,7 +314,52 @@ void LauncherWidget::launcherwidget_notify_bool(QString key, bool value)
 
 void LauncherWidget::launcherwidget_notify_int(QString key, int value)
 {
-    if (key == "size-top") {
+    if (key == "icon-size") {
+        size_slider->setValue(value);
+        size_value_label->setText(QString::number(value));
+    }
+    else if (key == "launcher-hide-mode") {
+        if (value == 0)
+            hide_switcher->switchedOn = false;
+        else if (value == 1)
+            hide_switcher->switchedOn = true;
+    }
+    else if (key == "backlight-mode") {
+        QString current_icon_colouring = "";
+        if (value == 0) {
+            current_icon_colouring = "all programs";
+        }
+        else if (value == 1) {
+            current_icon_colouring = "only run app";
+        }
+        else if (value == 2) {
+            current_icon_colouring = "no coloring";
+        }
+        else if (value == 3) {
+            current_icon_colouring = "edge coloring";
+        }
+        else if (value == 4) {
+            current_icon_colouring = "each workspace alternating coloring";
+        }
+        QList<QString>::Iterator it = colourlist.begin(), itend = colourlist.end();
+        int index = -1;
+        bool exist = false;
+        for(;it != itend; it++)
+        {
+            ++index;
+            if(*it == current_icon_colouring) {
+                exist = true;
+                break;
+            }
+        }
+        if (exist) {
+            exist = false;
+            backgound_combo->setCurrentIndex(index);
+        }
+        else
+            backgound_combo->setCurrentIndex(-1);
+    }
+    else if (key == "size-top") {
         size_top_slider->setValue(value);
         size_top_value_label->setText(QString::number(value));
     }
@@ -316,7 +369,7 @@ void LauncherWidget::launcherwidget_notify_int(QString key, int value)
     }
 }
 
-void LauncherWidget::setIconSizeValue(int value){
+void LauncherWidget::setIconSizeValue(int value) {
     size_value_label->setText(QString::number(value));
     sessionproxy->set_launcher_icon_size_qt(value);
 }

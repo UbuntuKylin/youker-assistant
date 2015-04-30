@@ -52,12 +52,14 @@ public slots:
     void setTopAutoHide();
     void setBottomAutoHide();
 
+    void launcherwidget_notify_double(QString key, double value);
     void launcherwidget_notify_bool(QString key, bool value);
     void launcherwidget_notify_int(QString key, int value);
 
 private:
     SessionDispatcher *sessionproxy;
     bool dataOK;
+    QStringList colourlist;
     QLabel *size_label;
     QLabel *size_value_label;
     QLabel *hide_label;
