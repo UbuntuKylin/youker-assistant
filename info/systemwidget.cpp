@@ -20,7 +20,6 @@
 #include "systemwidget.h"
 #include <QScrollBar>
 #include <QPushButton>
-
 #include <QMap>
 
 SystemWidget::SystemWidget(QWidget *parent, SystemDispatcher *proxy) :

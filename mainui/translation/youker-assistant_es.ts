@@ -307,7 +307,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../cleaneractionwidget.cpp" line="157"/>
-        <source>Clean OK......</source>
+        <source>Clean OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -368,28 +368,37 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../cleaneractionwidget.cpp" line="215"/>
-        <location filename="../cleaneractionwidget.cpp" line="290"/>
         <source>Chromium Browser is running......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../cleaneractionwidget.cpp" line="223"/>
-        <source>Cache Scan OK......</source>
+        <source>Cache Scan OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../cleaneractionwidget.cpp" line="227"/>
-        <source>Cookies Scan OK......</source>
+        <source>Cookies Scan OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../cleaneractionwidget.cpp" line="231"/>
-        <source>History Scan OK......</source>
+        <source>History Scan OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="235"/>
-        <source>Packages Scan OK......</source>
+        <location filename="../cleaneractionwidget.cpp" line="282"/>
+        <source>Firefox Browser does not be installed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../cleaneractionwidget.cpp" line="286"/>
+        <source>Chromium Browser does not be installed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../cleaneractionwidget.cpp" line="290"/>
+        <source>Chromium Browser is running</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -398,13 +407,8 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="282"/>
-        <source>Firefox Browser does not be installed......</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../cleaneractionwidget.cpp" line="286"/>
-        <source>Chromium Browser does not be installed......</source>
+        <location filename="../cleaneractionwidget.cpp" line="235"/>
+        <source>Packages Scan OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -870,7 +874,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../../info/computerpage.cpp" line="268"/>
-        <source>Shell</source>
+        <source>Terminal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2234,102 +2238,102 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SettingWidget</name>
     <message>
-        <location filename="../settingwidget.cpp" line="250"/>
+        <location filename="../settingwidget.cpp" line="256"/>
         <source>Personalize</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="261"/>
+        <location filename="../settingwidget.cpp" line="267"/>
         <source>ThemeSetting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="262"/>
+        <location filename="../settingwidget.cpp" line="268"/>
         <source>IconSetting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="263"/>
+        <location filename="../settingwidget.cpp" line="269"/>
         <source>MousePointer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="264"/>
+        <location filename="../settingwidget.cpp" line="270"/>
         <source>SoundEffect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="265"/>
+        <location filename="../settingwidget.cpp" line="271"/>
         <source>BootAnimation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="341"/>
+        <location filename="../settingwidget.cpp" line="347"/>
         <source>Desktop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="346"/>
+        <location filename="../settingwidget.cpp" line="352"/>
         <source>Panel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="347"/>
+        <location filename="../settingwidget.cpp" line="353"/>
         <source>StartMenu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="350"/>
+        <location filename="../settingwidget.cpp" line="356"/>
         <source>Custom Launcher</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="351"/>
+        <location filename="../settingwidget.cpp" line="357"/>
         <source>Dash &amp; Panel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="353"/>
+        <location filename="../settingwidget.cpp" line="359"/>
         <source>Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="401"/>
+        <location filename="../settingwidget.cpp" line="407"/>
         <source>Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="403"/>
+        <location filename="../settingwidget.cpp" line="409"/>
         <source>FontSetting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="475"/>
+        <location filename="../settingwidget.cpp" line="481"/>
         <source>Sys options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="479"/>
+        <location filename="../settingwidget.cpp" line="485"/>
         <source>Touchpad</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="480"/>
+        <location filename="../settingwidget.cpp" line="486"/>
         <source>Dead pixel check</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="481"/>
+        <location filename="../settingwidget.cpp" line="487"/>
         <source>Energy saving</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="531"/>
+        <location filename="../settingwidget.cpp" line="537"/>
         <source>Others</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="533"/>
+        <location filename="../settingwidget.cpp" line="539"/>
         <source>File manager</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2404,18 +2408,18 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SystemWidget</name>
     <message>
-        <location filename="../../info/systemwidget.cpp" line="83"/>
+        <location filename="../../info/systemwidget.cpp" line="82"/>
         <source>Computer Base Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/systemwidget.cpp" line="60"/>
-        <location filename="../../info/systemwidget.cpp" line="64"/>
+        <location filename="../../info/systemwidget.cpp" line="59"/>
+        <location filename="../../info/systemwidget.cpp" line="63"/>
         <source> Minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/systemwidget.cpp" line="64"/>
+        <location filename="../../info/systemwidget.cpp" line="63"/>
         <source> Hours </source>
         <translation type="unfinished"></translation>
     </message>
@@ -2444,27 +2448,27 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ToolWidget</name>
     <message>
-        <location filename="../toolwidget.cpp" line="38"/>
+        <location filename="../toolwidget.cpp" line="40"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../toolwidget.cpp" line="38"/>
+        <location filename="../toolwidget.cpp" line="40"/>
         <source>Cleanup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../toolwidget.cpp" line="38"/>
+        <location filename="../toolwidget.cpp" line="40"/>
         <source>Sysinfo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../toolwidget.cpp" line="38"/>
+        <location filename="../toolwidget.cpp" line="40"/>
         <source>Feature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../toolwidget.cpp" line="38"/>
+        <location filename="../toolwidget.cpp" line="40"/>
         <source>Toolkits</source>
         <translation type="unfinished"></translation>
     </message>

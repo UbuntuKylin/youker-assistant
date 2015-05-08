@@ -274,7 +274,7 @@ void WindowWidget::windowwidget_notify_string(QString key, QString value)
                 break;
             }
         }
-        if (index > -1) {
+        if (exist) {
             exist = false;
             wheel_combo->setCurrentIndex(index);
         }
@@ -293,7 +293,7 @@ void WindowWidget::windowwidget_notify_string(QString key, QString value)
                 break;
             }
         }
-        if (index > -1) {
+        if (exist) {
             exist = false;
             double_click_combo->setCurrentIndex(index);
         }
@@ -312,7 +312,7 @@ void WindowWidget::windowwidget_notify_string(QString key, QString value)
                 break;
             }
         }
-        if (index > -1) {
+        if (exist) {
             exist = false;
             middle_click_combo->setCurrentIndex(index);
         }
@@ -331,7 +331,7 @@ void WindowWidget::windowwidget_notify_string(QString key, QString value)
                 break;
             }
         }
-        if (index > -1) {
+        if (exist) {
             exist = false;
             right_click_combo->setCurrentIndex(index);
         }

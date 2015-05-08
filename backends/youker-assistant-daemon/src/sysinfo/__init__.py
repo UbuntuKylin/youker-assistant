@@ -59,7 +59,7 @@ class Sysinfo:
 
     def get_sys_msg(self):
         CLIPS_DICT = {}
-        CLIPS_DICT['currrent_user'], CLIPS_DICT['home_path'], CLIPS_DICT['shell'], CLIPS_DICT['language'] = self.get_userinfo()
+        CLIPS_DICT['currrent_user'], CLIPS_DICT['home_path'], CLIPS_DICT['terminal'], CLIPS_DICT['language'] = self.get_userinfo()
         CLIPS_DICT['distribution'] = self.get_distro()
         CLIPS_DICT['desktopenvironment'] = self.get_desktop()
         CLIPS_DICT['hostname'], CLIPS_DICT['platform'] = self.get_systeminfo()
@@ -70,43 +70,64 @@ class Sysinfo:
         dict = {}
         dict['username'] = GLib.get_user_name()
         dict['homedir'] = GLib.get_home_dir()
-        dict['shell'] = GLib.getenv('SHELL')
+        dict['terminal'] = GLib.getenv('SHELL')
         dict['lang'] =  GLib.getenv('LANG')
-        return dict['username'], dict['homedir'],dict['shell'],dict['lang']
+        return dict['username'], dict['homedir'],dict['terminal'],dict['lang']
 
     def get_distro(self):
         '''It should be: DISTRIB_DESCRIPTION="UbuntuKylin 13.10'''
         #FILEPATH  RELEASEPATH
         distro = ""
-        if not os.path.exists(RELEASEPATH):
-            with open(FILEPATH, "r") as fsys:
+        if os.path.exists(RELEASEPATH):
+            with open(RELEASEPATH, "r") as fsys:
                 for line in fsys:
                     if line.startswith("DISTRIB_DESCRIPTION"):
                         tmp = line
                         break
             # kobe: remove '"' and '\n'
             front = tmp.split('=')[1].replace('"', '').replace('\n', '') #(LP: #1240862)
-            if front.startswith("UbuntuKylin") or front.startswith("Ubuntu Kylin"):
-                distro = front + '-' + platform.dist()[2]
-            else:
-                a = platform.dist()[0]
-                b = platform.dist()[1]
-                c = platform.dist()[2]
-                distro = '-'.join((a,b,c))
+            distro = front + '-' + platform.dist()[2]
+        elif os.path.exists("/etc/os-release"):
+            with open("/etc/os-release", "r") as fsys:
+                for line in fsys:
+                    if line.startswith("PRETTY_NAME"):
+                        tmp = line
+                        break
+            distro = tmp.split('=')[1].replace('"', '').replace('\n', '')
         else:
-            with open(RELEASEPATH, "r") as fp:
-                for line in fp:
-                    if line.startswith("DISTRIB_ID"):
-                        tmp1 = line
-                    elif line.startswith("DISTRIB_RELEASE"):
-                        tmp2 = line
-                    elif line.startswith("DISTRIB_CODENAME"):
-                        tmp3 = line
-            # kobe: remove '"' and '\n'
-            id = tmp1.split('=')[1].replace('"', '').replace('\n', '')
-            release = tmp2.split('=')[1].replace('"', '').replace('\n', '')
-            codename = tmp3.split('=')[1].replace('"', '').replace('\n', '')
-            distro = '-'.join((id, release, codename))
+            a = platform.dist()[0]
+            b = platform.dist()[1]
+            c = platform.dist()[2]
+            distro = '-'.join((a,b,c))
+#        if not os.path.exists(RELEASEPATH):
+#            with open(FILEPATH, "r") as fsys:
+#                for line in fsys:
+#                    if line.startswith("DISTRIB_DESCRIPTION"):
+#                        tmp = line
+#                        break
+#            # kobe: remove '"' and '\n'
+#            front = tmp.split('=')[1].replace('"', '').replace('\n', '') #(LP: #1240862)
+#            if front.startswith("UbuntuKylin") or front.startswith("Ubuntu Kylin"):
+#                distro = front + '-' + platform.dist()[2]
+#            else:
+#                a = platform.dist()[0]
+#                b = platform.dist()[1]
+#                c = platform.dist()[2]
+#                distro = '-'.join((a,b,c))
+#        else:
+#            with open(RELEASEPATH, "r") as fp:
+#                for line in fp:
+#                    if line.startswith("DISTRIB_ID"):
+#                        tmp1 = line
+#                    elif line.startswith("DISTRIB_RELEASE"):
+#                        tmp2 = line
+#                    elif line.startswith("DISTRIB_CODENAME"):
+#                        tmp3 = line
+#            # kobe: remove '"' and '\n'
+#            id = tmp1.split('=')[1].replace('"', '').replace('\n', '')
+#            release = tmp2.split('=')[1].replace('"', '').replace('\n', '')
+#            codename = tmp3.split('=')[1].replace('"', '').replace('\n', '')
+#            distro = '-'.join((id, release, codename))
         return distro
 
     def get_desktop(self):

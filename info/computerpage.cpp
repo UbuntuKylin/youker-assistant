@@ -264,8 +264,8 @@ QString ComputerPage::translatorSwitch(QString orgStr)
         return tr("Host Name");
     else if(orgStr == "ram")
         return tr("Memery Capacity");
-    else if(orgStr == "shell")
-        return tr("Shell");
+    else if(orgStr == "terminal")
+        return tr("Terminal");
     else if(orgStr == "distribution")//发行版
         return tr("Distribution");
     else if(orgStr == "language")//语言

@@ -20,6 +20,8 @@
 #include "toolwidget.h"
 #include "../component/kylintoolbutton.h"
 #include "mainwindow.h"
+//#include <QPropertyAnimation>
+//#include <QParallelAnimationGroup>
 
 ToolWidget::ToolWidget(QWidget *parent)
 	: QWidget(parent)
@@ -60,6 +62,7 @@ ToolWidget::ToolWidget(QWidget *parent)
 
     setLayout(button_layout);
     is_move = false;
+//    this->initAnimation();
 }
 
 ToolWidget::~ToolWidget()
@@ -94,3 +97,61 @@ void ToolWidget::showBoxTool()
 {
     this->switchPageIndex("4");
 }
+
+
+//void ToolWidget::initAnimation()
+//{
+//    QPoint home_origPoint(0, 227);
+//    QPoint home_needPoint(0, 274);
+//    QPoint clean_origPoint(180, 197);
+//    QPoint clean_needPoint(180, 150);
+//    QPoint info_origPoint(360, 197);
+//    QPoint info_needPoint(360, 150);
+//    QPoint setting_origPoint(480, 197);
+//    QPoint setting_needPoint(480, 150);
+//    QPoint box_origPoint(720, 197);
+//    QPoint box_needPoint(720, 150);
+
+//    QPropertyAnimation *homeToolAnimation = new QPropertyAnimation(button_list.at(0), "pos");
+//    homeToolAnimation->setDuration(200);
+//    homeToolAnimation->setStartValue(home_origPoint);
+//    homeToolAnimation->setEndValue(home_needPoint);
+
+//    QPropertyAnimation *cleanToolAnimation = new QPropertyAnimation(button_list.at(1), "pos");
+//    cleanToolAnimation->setDuration(200);
+//    cleanToolAnimation->setStartValue(clean_origPoint);
+//    cleanToolAnimation->setEndValue(clean_needPoint);
+
+//    QPropertyAnimation *infoToolAnimation = new QPropertyAnimation(button_list.at(2), "pos");
+//    infoToolAnimation->setDuration(200);
+//    infoToolAnimation->setStartValue(info_origPoint);
+//    infoToolAnimation->setEndValue(info_needPoint);
+
+//    QPropertyAnimation *settingToolAnimation = new QPropertyAnimation(button_list.at(3), "pos");
+//    settingToolAnimation->setDuration(200);
+//    settingToolAnimation->setStartValue(setting_needPoint);
+//    settingToolAnimation->setEndValue(setting_origPoint);
+
+//    QPropertyAnimation *boxToolAnimation = new QPropertyAnimation(button_list.at(4), "pos");
+//    boxToolAnimation->setDuration(200);
+//    boxToolAnimation->setStartValue(box_origPoint);
+//    boxToolAnimation->setEndValue(box_needPoint);
+
+//    openGroup = new QParallelAnimationGroup(this);
+//    openGroup->addAnimation(setting_origPoint);
+//    openGroup->addAnimation(boxToolAnimation);
+
+//    QPropertyAnimation *settingbackToolAnimation = new QPropertyAnimation(button_list.at(3), "pos");
+//    settingbackToolAnimation->setDuration(200);
+//    settingbackToolAnimation->setStartValue(setting_origPoint);
+//    settingbackToolAnimation->setEndValue(setting_needPoint);
+
+//    QPropertyAnimation *boxbackToolAnimation = new QPropertyAnimation(button_list.at(4), "pos");
+//    boxbackToolAnimation->setDuration(200);
+//    boxbackToolAnimation->setStartValue(box_needPoint);
+//    boxbackToolAnimation->setEndValue(box_origPoint);
+
+//    closeGroup = new QParallelAnimationGroup(this);
+//    closeGroup->addAnimation(settingbackToolAnimation);
+//    closeGroup->addAnimation(boxbackToolAnimation);
+//}
