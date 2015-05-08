@@ -154,7 +154,7 @@ void CleanerActionWidget::showCleanOverStatus()
     scan_button->setEnabled(true);
     clean_button->hide();
     back_button->hide();
-    doing_label->setText(tr("Clean OK......"));
+    doing_label->setText(tr("Clean OK"));
 }
 
 void CleanerActionWidget::showCleanerData(const QStringList &data)
@@ -220,19 +220,19 @@ void CleanerActionWidget::showReciveStatus(const QString &status)
 {
     if(status == "Complete:Cache")
     {
-        doing_label->setText(tr("Cache Scan OK......"));
+        doing_label->setText(tr("Cache Scan OK"));
     }
     else if(status == "Complete:Cookies")
     {
-        doing_label->setText(tr("Cookies Scan OK......"));
+        doing_label->setText(tr("Cookies Scan OK"));
     }
     else if(status == "Complete:")
     {
-        doing_label->setText(tr("History Scan OK......"));
+        doing_label->setText(tr("History Scan OK"));
     }
     else if(status == "Complete:Packages")
     {
-        doing_label->setText(tr("Packages Scan OK......"));
+        doing_label->setText(tr("Packages Scan OK"));
     }
     else if(status == "Complete:All")
     {
@@ -279,15 +279,15 @@ void CleanerActionWidget::showReciveError(const QString &status)
     doing_label->setText(tr("Error: ") + status);
     if(status == "Uninstalled:Firefox")
     {
-        doing_label->setText(tr("Firefox Browser does not be installed......"));
+        doing_label->setText(tr("Firefox Browser does not be installed"));
     }
     else if(status == "Uninstalled:Chromium")
     {
-        doing_label->setText(tr("Chromium Browser does not be installed......"));
+        doing_label->setText(tr("Chromium Browser does not be installed"));
     }
     else if(status == "Working:Chromium")
     {
-        doing_label->setText(tr("Chromium Browser is running......"));
+        doing_label->setText(tr("Chromium Browser is running"));
     }
     else
     {

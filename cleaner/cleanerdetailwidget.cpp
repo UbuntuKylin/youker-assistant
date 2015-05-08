@@ -619,7 +619,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
     }
     else if(status == "Complete:History")
     {
-//        doing_label->setText(tr("History Scan OK......"));
+//        doing_label->setText(tr("History Scan OK"));
         if(trace_firefox_count.length() > 0)
         {
 //            trace_firefox_btn = new CommonCheckBox(0, "://res/cache");
@@ -710,7 +710,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
     }
     else if(status == "Complete:Packages")
     {
-//        doing_label->setText(tr("Packages Scan OK......"));
+//        doing_label->setText(tr("Packages Scan OK"));
         if(package_unneed_list.length() > 0)
         {
             package_unneed_items = new CleanListWidget(package_unneed_list, tr("Thumbnails Cache Clean Items"));

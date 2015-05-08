@@ -31,6 +31,7 @@
 #include "../component/kylintoolbutton.h"
 
 class MainWindow;
+//class QParallelAnimationGroup;
 
 class ToolWidget : public QWidget
 {
@@ -40,6 +41,7 @@ public:
     ~ToolWidget();
     void setParentWindow(MainWindow* window) { p_mainwindow = window;}
     void initConnect();
+//    void initAnimation();
 
 signals:
     void turnCurrentPage(int index);
@@ -53,6 +55,8 @@ private:
     bool is_move;
     QList<KylinToolButton *> button_list;
     MainWindow *p_mainwindow;
+//    QParallelAnimationGroup *openGroup;
+//    QParallelAnimationGroup *closeGroup;
 };
 
 #endif // TOOLWIDGET_H
