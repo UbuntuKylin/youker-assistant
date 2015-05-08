@@ -302,6 +302,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../cleaneractionwidget.cpp" line="147"/>
         <location filename="../cleaneractionwidget.cpp" line="254"/>
         <location filename="../cleaneractionwidget.cpp" line="265"/>
+        <location filename="../cleaneractionwidget.cpp" line="338"/>
         <source>Scaning......</source>
         <translation type="unfinished"></translation>
     </message>

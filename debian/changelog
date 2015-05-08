@@ -3,9 +3,9 @@ youker-assistant (2.0.3) vivid; urgency=low
   * Access FT Arm settings and information.
   * Deal with situation when the scanning garbage is empty.
   * Display hardware manufacturer logo.
-  * Add Gio.Settings notify for Unity and Mate settings
+  * Add Gio.Settings notify for Unity and Mate settings.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 30 Apr 2015 11:46:42 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 08 May 2015 17:02:45 +0800
 
 youker-assistant (2.0.2) vivid; urgency=low
 

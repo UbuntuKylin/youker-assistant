@@ -57,15 +57,18 @@ class Unity:
 
     # get launcher auto hide mode
     def get_launcher_autohide(self):
-        value = gsettings.get('org.compiz.unityshell',
-            '/org/compiz/profiles/unity/plugins/unityshell/',
-            'launcher-hide-mode', 'int')
-        if value == 0:
+        try:
+            value = gsettings.get('org.compiz.unityshell',
+                '/org/compiz/profiles/unity/plugins/unityshell/',
+                'launcher-hide-mode', 'int')
+            if value == 0:
+                return False
+            elif value == 1:
+                return True
+            else:
+                return None
+        except Exception, e:
             return False
-        elif value == 1:
-            return True
-        else:
-            return None
 
     # launcher icon size 32-64
     def set_launcher_icon_size(self, size):
@@ -76,9 +79,12 @@ class Unity:
 
     # get launcher icon size
     def get_launcher_icon_size(self):
-        return gsettings.get('org.compiz.unityshell',
-            '/org/compiz/profiles/unity/plugins/unityshell/',
-            'icon-size', 'int')
+        try:
+            return gsettings.get('org.compiz.unityshell',
+                '/org/compiz/profiles/unity/plugins/unityshell/',
+                'icon-size', 'int')
+        except Exception, e:
+            return 0
 
     # launcher 'show desktop' icon True/False
     def set_launcher_have_showdesktopicon(self, flag):
@@ -115,9 +121,12 @@ class Unity:
     #add by kobe
     # 透明度
     def get_launcher_transparency(self):
-        return gsettings.get('org.compiz.unityshell',
-            '/org/compiz/profiles/unity/plugins/unityshell/',
-            'launcher-opacity', 'double')
+        try:
+            return gsettings.get('org.compiz.unityshell',
+                '/org/compiz/profiles/unity/plugins/unityshell/',
+                'launcher-opacity', 'double')
+        except Exception, e:
+            return 0.0
 
     # 'min'    : 0.2, # TODO : Check these min max. Most prolly wrong.
     # 'max'    : 1.0, # But fine since they are ignored anyway.
@@ -134,9 +143,12 @@ class Unity:
         return ['all programs', 'only run app', 'no coloring', 'edge coloring', 'each workspace alternating coloring']
 
     def get_launcher_icon_colouring(self):
-        return gsettings.get('org.compiz.unityshell',
-            '/org/compiz/profiles/unity/plugins/unityshell/',
-            'backlight-mode', 'int')
+        try:
+            return gsettings.get('org.compiz.unityshell',
+                '/org/compiz/profiles/unity/plugins/unityshell/',
+                'backlight-mode', 'int')
+        except Exception, e:
+            return 0
 
     # 'map'       : {0:0,1:1,2:2,3:3,4:4}  0:所有程序，1:仅打开的应用程序，2:不着色，3:边缘着色，4:每个工作区交替着色
     def set_launcher_icon_colouring(self, colouring):
@@ -147,9 +159,12 @@ class Unity:
 
     #Dash背景模糊类型
     def get_dash_blur_experimental(self):
-        return gsettings.get('org.compiz.unityshell',
-            '/org/compiz/profiles/unity/plugins/unityshell/',
-            'dash-blur-experimental', 'int')
+        try:
+            return gsettings.get('org.compiz.unityshell',
+                '/org/compiz/profiles/unity/plugins/unityshell/',
+                'dash-blur-experimental', 'int')
+        except Exception, e:
+            return 0
 
     # 活动模糊smart: 2   静态模糊static:1   非模糊0
     def set_dash_blur_experimental(self, blur):
@@ -160,9 +175,12 @@ class Unity:
 
     #面板菜单透明度
     def get_panel_transparency(self):
-        return gsettings.get('org.compiz.unityshell',
-            '/org/compiz/profiles/unity/plugins/unityshell/',
-            'panel-opacity', 'double')
+        try:
+            return gsettings.get('org.compiz.unityshell',
+                '/org/compiz/profiles/unity/plugins/unityshell/',
+                'panel-opacity', 'double')
+        except Exception, e:
+            return 0.0
 
     # 'min'    : 0.2, # TODO : Check these min max. Most prolly wrong.
     # 'max'    : 8.0, # But fine since they are ignored anyway.

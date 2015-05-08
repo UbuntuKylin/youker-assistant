@@ -1220,10 +1220,9 @@ void SessionDispatcher::handler_notify_double(QString key, double value)
 
 void SessionDispatcher::handler_notify_string(QString key, QString value)
 {
-    if (key == "gtk-theme")
-    {
-        qDebug() << "gtk them......";
-    }
+//    if (key == "gtk-theme")
+//    {
+//    }
     emit string_value_notify(key, value);
 }
 

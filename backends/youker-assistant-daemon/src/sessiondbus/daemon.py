@@ -202,12 +202,13 @@ class SessionDaemon(dbus.service.Object):
             self.power_settings.connect("changed::show-time", self.gio_settings_monitor, BOOL_TYPE)
             self.power_settings.connect("changed::show-percentage", self.gio_settings_monitor, BOOL_TYPE)
 
-        self.toplevels_settings = gio.Settings("org.mate.panel.toplevel", "/org/mate/panel/toplevels/top/")
-        self.toplevels_settings.connect("changed::size", self.gio_settings_monitor_diff, INT_TYPE, "top")
-        self.toplevels_settings.connect("changed::auto-hide", self.gio_settings_monitor_diff, BOOL_TYPE, "top")
-        self.bottomlevels_settings = gio.Settings("org.mate.panel.toplevel", "/org/mate/panel/toplevels/bottom/")
-        self.bottomlevels_settings.connect("changed::size", self.gio_settings_monitor_diff, INT_TYPE, "bottom")
-        self.bottomlevels_settings.connect("changed::auto-hide", self.gio_settings_monitor_diff, BOOL_TYPE, "bottom")
+        if self.desktop == "mate":
+            self.toplevels_settings = gio.Settings("org.mate.panel.toplevel", "/org/mate/panel/toplevels/top/")
+            self.toplevels_settings.connect("changed::size", self.gio_settings_monitor_diff, INT_TYPE, "top")
+            self.toplevels_settings.connect("changed::auto-hide", self.gio_settings_monitor_diff, BOOL_TYPE, "top")
+            self.bottomlevels_settings = gio.Settings("org.mate.panel.toplevel", "/org/mate/panel/toplevels/bottom/")
+            self.bottomlevels_settings.connect("changed::size", self.gio_settings_monitor_diff, INT_TYPE, "bottom")
+            self.bottomlevels_settings.connect("changed::auto-hide", self.gio_settings_monitor_diff, BOOL_TYPE, "bottom")
 
         # kobe: test GConf notify
 ##        kobekey = "/apps/metacity/general/titlebar_font"
@@ -226,11 +227,12 @@ class SessionDaemon(dbus.service.Object):
 #        print gc.get_int('/org/mate/panel/toplevels/top/size')
 
         # menubar
-        self.menubar_settings = gio.Settings.new("org.mate.panel.menubar")
-        self.menubar_settings.connect("changed::show-applications", self.gio_settings_monitor, BOOL_TYPE)
-        self.menubar_settings.connect("changed::show-desktop", self.gio_settings_monitor, BOOL_TYPE)
-        self.menubar_settings.connect("changed::show-icon", self.gio_settings_monitor, BOOL_TYPE)
-        self.menubar_settings.connect("changed::show-places", self.gio_settings_monitor, BOOL_TYPE)
+        if self.desktop == "mate":
+            self.menubar_settings = gio.Settings.new("org.mate.panel.menubar")
+            self.menubar_settings.connect("changed::show-applications", self.gio_settings_monitor, BOOL_TYPE)
+            self.menubar_settings.connect("changed::show-desktop", self.gio_settings_monitor, BOOL_TYPE)
+            self.menubar_settings.connect("changed::show-icon", self.gio_settings_monitor, BOOL_TYPE)
+            self.menubar_settings.connect("changed::show-places", self.gio_settings_monitor, BOOL_TYPE)
 
         # window
         self.interface_settings.connect("changed::menus-have-icons", self.gio_settings_monitor, BOOL_TYPE)
