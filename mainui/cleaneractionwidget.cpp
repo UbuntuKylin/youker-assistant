@@ -335,6 +335,7 @@ void CleanerActionWidget::receivePolicyKitSignal(bool status)
 
 void CleanerActionWidget::onStartButtonClicked()
 {
+    doing_label->setText(tr("Scaning......"));
     emit this->sendScanSignal();
 }
 
@@ -345,6 +346,7 @@ void CleanerActionWidget::onCleanButtonClicked()
 
 void CleanerActionWidget::onBackButtonClicked()
 {
+    doing_label->hide();
     back_button->hide();
     loading_label->stopLoading();
     scan_button->show();
@@ -353,6 +355,5 @@ void CleanerActionWidget::onBackButtonClicked()
 //    back_button->hide();
     suggest_label->show();
 //    result_label->show();
-    doing_label->hide();
     emit this->showMainData();
 }
