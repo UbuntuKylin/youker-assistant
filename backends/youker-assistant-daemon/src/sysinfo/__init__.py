@@ -180,8 +180,8 @@ class Sysinfo:
             for line in f:
                 if line.strip():
                     if line.rstrip('\n').startswith('MemTotal'):
-                        MemTotal = line.rstrip('\n').split(':')[1]
-                        MemTotal1 = MemTotal.split(' ')[8]
+                        MemTotal = line.rstrip('\n').split(':')[1].strip()
+                        MemTotal1 = MemTotal.split(' ')[0]
                         MemTotal2 = GLib.format_size_for_display(int(MemTotal1) * 1024)
                         break
         return model_name,MemTotal2
