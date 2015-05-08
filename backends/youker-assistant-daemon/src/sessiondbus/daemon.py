@@ -184,18 +184,23 @@ class SessionDaemon(dbus.service.Object):
         self.sound_settings.connect("changed::event-sounds", self.gio_settings_monitor, BOOL_TYPE)
         self.sound_settings.connect("changed::input-feedback-sounds", self.gio_settings_monitor, BOOL_TYPE)
 
-        #unity launcher
-        self.unity_settings = gio.Settings("org.compiz.unityshell", "/org/compiz/profiles/unity/plugins/unityshell/")
-        self.unity_settings.connect("changed::icon-size", self.gio_settings_monitor, INT_TYPE)
-        self.unity_settings.connect("changed::launcher-hide-mode", self.gio_settings_monitor, INT_TYPE)
-        self.unity_settings.connect("changed::launcher-opacity", self.gio_settings_monitor, DOUBLE_TYPE)
-        self.unity_settings.connect("changed::backlight-mode", self.gio_settings_monitor, INT_TYPE)
-
-        #panel
-        self.datetime_settings = gio.Settings.new("com.canonical.indicator.datetime")
-        self.datetime_settings.connect("changed::show-seconds", self.gio_settings_monitor, BOOL_TYPE)
-        self.datetime_settings.connect("changed::show-day", self.gio_settings_monitor, BOOL_TYPE)
-        self.datetime_settings.connect("changed::show-date", self.gio_settings_monitor, BOOL_TYPE)
+        if self.desktop == "Unity":
+            #unity launcher
+            self.unity_settings = gio.Settings("org.compiz.unityshell", "/org/compiz/profiles/unity/plugins/unityshell/")
+            self.unity_settings.connect("changed::icon-size", self.gio_settings_monitor, INT_TYPE)
+            self.unity_settings.connect("changed::launcher-hide-mode", self.gio_settings_monitor, INT_TYPE)
+            self.unity_settings.connect("changed::launcher-opacity", self.gio_settings_monitor, DOUBLE_TYPE)
+            self.unity_settings.connect("changed::backlight-mode", self.gio_settings_monitor, INT_TYPE)
+            #panel
+            self.datetime_settings = gio.Settings.new("com.canonical.indicator.datetime")
+            self.datetime_settings.connect("changed::show-seconds", self.gio_settings_monitor, BOOL_TYPE)
+            self.datetime_settings.connect("changed::show-day", self.gio_settings_monitor, BOOL_TYPE)
+            self.datetime_settings.connect("changed::show-date", self.gio_settings_monitor, BOOL_TYPE)
+            #power
+            self.power_settings = gio.Settings.new("com.canonical.indicator.power")
+            self.power_settings.connect("changed::icon-policy", self.gio_settings_monitor, STRING_TYPE)
+            self.power_settings.connect("changed::show-time", self.gio_settings_monitor, BOOL_TYPE)
+            self.power_settings.connect("changed::show-percentage", self.gio_settings_monitor, BOOL_TYPE)
 
         self.toplevels_settings = gio.Settings("org.mate.panel.toplevel", "/org/mate/panel/toplevels/top/")
         self.toplevels_settings.connect("changed::size", self.gio_settings_monitor_diff, INT_TYPE, "top")
@@ -227,16 +232,11 @@ class SessionDaemon(dbus.service.Object):
         self.menubar_settings.connect("changed::show-icon", self.gio_settings_monitor, BOOL_TYPE)
         self.menubar_settings.connect("changed::show-places", self.gio_settings_monitor, BOOL_TYPE)
 
-        #power
-        self.power_settings = gio.Settings.new("com.canonical.indicator.power")
-        self.power_settings.connect("changed::icon-policy", self.gio_settings_monitor, STRING_TYPE)
-        self.power_settings.connect("changed::show-time", self.gio_settings_monitor, BOOL_TYPE)
-        self.power_settings.connect("changed::show-percentage", self.gio_settings_monitor, BOOL_TYPE)
-
         # window
         self.interface_settings.connect("changed::menus-have-icons", self.gio_settings_monitor, BOOL_TYPE)
-        self.gwd_settings = gio.Settings.new("org.compiz.gwd")
-        self.gwd_settings.connect("changed::mouse-wheel-action", self.gio_settings_monitor, STRING_TYPE)
+        if self.desktop == "Unity":
+            self.gwd_settings = gio.Settings.new("org.compiz.gwd")
+            self.gwd_settings.connect("changed::mouse-wheel-action", self.gio_settings_monitor, STRING_TYPE)
         if self.desktop == "mate":
             self.titlebar_settings = gio.Settings.new("org.mate.Marco.general")
         else:
@@ -269,8 +269,9 @@ class SessionDaemon(dbus.service.Object):
             self.touchpad_settings.connect("changed::scroll-method", self.gio_settings_monitor, STRING_TYPE)
         self.touchpad_settings.connect("changed::touchpad-enabled", self.gio_settings_monitor, BOOL_TYPE)
         self.touchpad_settings.connect("changed::horiz-scroll-enabled", self.gio_settings_monitor, BOOL_TYPE)
-        self.canonical_interface_settings = gio.Settings.new("com.canonical.desktop.interface")
-        self.canonical_interface_settings.connect("changed::scrollbar-mode", self.gio_settings_monitor, STRING_TYPE)
+        if self.desktop == "Unity":
+            self.canonical_interface_settings = gio.Settings.new("com.canonical.desktop.interface")
+            self.canonical_interface_settings.connect("changed::scrollbar-mode", self.gio_settings_monitor, STRING_TYPE)
 
         #file manager
         if self.desktop == "mate":
