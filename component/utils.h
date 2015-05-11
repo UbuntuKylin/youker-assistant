@@ -64,4 +64,12 @@ typedef enum{
     BUTTON_SCALED,
 }BUTTONSTATUS;
 
+typedef enum{
+    HOMEPAGE,
+    CLEANPAGE,
+    INFOPAGE,
+    SETTINGPAGE,
+    BOXPAGE,
+}PAGESTATUS;
+
 #endif // UTILS_H
