@@ -137,8 +137,8 @@ void AutoStartWidget::readyReciveData(const QStringList &data)
 void AutoStartWidget::readyShowUI()
 {
     int rowIndex = 0;
-//    QVBoxLayout *v_layout = new QVBoxLayout();
-    QGridLayout *v_layout = new QGridLayout();
+    QVBoxLayout *v_layout = new QVBoxLayout();
+//    QGridLayout *v_layout = new QGridLayout();
     QSignalMapper *signal_mapper = new QSignalMapper(this);
     onNum = offNum = 0;
     num_label->setText(QString::number(data_list.length()));
@@ -158,11 +158,12 @@ void AutoStartWidget::readyShowUI()
             offNum += 1;
         connect(auto_group, SIGNAL(autoStatusChange()), signal_mapper, SLOT(map()));
         signal_mapper->setMapping(auto_group, tmpMap.value("Path"));
-//        v_layout->addWidget(auto_group/*, 0, Qt::AlignBottom*/);
-        v_layout->addWidget(auto_group, rowIndex, 0);
+        v_layout->addWidget(auto_group, 0, Qt::AlignBottom);
+//        v_layout->addWidget(auto_group, rowIndex, 0);
         rowIndex += 1;
         switcher_list.append(auto_group);
     }
+    v_layout->addStretch();
     connect(signal_mapper, SIGNAL(mapped(QString)), this, SLOT(setCurrentItemAutoStatus(QString)));
     on_num_label->setText(QString::number(onNum));
     off_num_label->setText(QString::number(offNum));
