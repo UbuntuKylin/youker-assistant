@@ -36,6 +36,8 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setStyleSheet("QMainWindow{border: 1px solid gray;border-radius:2px}");
 
     version = "V2.0.3";
+    status = HOMEPAGE;
+    statusFlag = false;
 
     mSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
     mSettings->setIniCodec("UTF-8");
@@ -95,7 +97,7 @@ MainWindow::MainWindow(QWidget *parent) :
     main_menu->initConnect();
 
     this->showHomePage();
-//    this->initAnimation();
+    this->initAnimation();
 }
 
 MainWindow::~MainWindow()
@@ -200,55 +202,55 @@ MainWindow::~MainWindow()
 }
 
 
-//void MainWindow::initAnimation()
-//{
-//    QRect mainAcitonRect(0, 0, 900, 150);
-//    QRect origAcitonRect(0, 0, 900, 227);
-//    QPoint origPoint(0, 227);
-//    QPoint needPoint(0, 150);
-//    QRect mainContentRect(0, 197, 900, 403);
-//    QRect origContentRect(0, 274, 900, 326);
+void MainWindow::initAnimation()
+{
+    QRect mainAcitonRect(0, 0, 900, 150);
+    QRect origAcitonRect(0, 0, 900, 227);
+    QPoint origPoint(0, 227);
+    QPoint needPoint(0, 150);
+    QRect mainContentRect(0, 197, 900, 403);
+    QRect origContentRect(0, 274, 900, 326);
 
-//    QPropertyAnimation *mainActionAnimation = new QPropertyAnimation(action_widget, "geometry");
-//    mainActionAnimation->setDuration(1000);
-//    mainActionAnimation->setStartValue(origAcitonRect);
-//    mainActionAnimation->setEndValue(mainAcitonRect);
+    QPropertyAnimation *mainActionAnimation = new QPropertyAnimation(action_widget, "geometry");
+    mainActionAnimation->setDuration(1000);
+    mainActionAnimation->setStartValue(origAcitonRect);
+    mainActionAnimation->setEndValue(mainAcitonRect);
 
-//    QPropertyAnimation *mainToolAnimation = new QPropertyAnimation(tool_widget, "pos");
-//    mainToolAnimation->setDuration(200);
-//    mainToolAnimation->setStartValue(origPoint);
-//    mainToolAnimation->setEndValue(needPoint);
+    QPropertyAnimation *mainToolAnimation = new QPropertyAnimation(tool_widget, "pos");
+    mainToolAnimation->setDuration(200);
+    mainToolAnimation->setStartValue(origPoint);
+    mainToolAnimation->setEndValue(needPoint);
 
-//    QPropertyAnimation *mainContentAnimation = new QPropertyAnimation(content_widget, "geometry");
-//    mainContentAnimation->setDuration(500);
-//    mainContentAnimation->setStartValue(origContentRect);
-//    mainContentAnimation->setEndValue(mainContentRect);
+    QPropertyAnimation *mainContentAnimation = new QPropertyAnimation(content_widget, "geometry");
+    mainContentAnimation->setDuration(500);
+    mainContentAnimation->setStartValue(origContentRect);
+    mainContentAnimation->setEndValue(mainContentRect);
 
-//    openGroup = new QParallelAnimationGroup(this);
-//    openGroup->addAnimation(mainActionAnimation);
-//    openGroup->addAnimation(mainToolAnimation);
-//    openGroup->addAnimation(mainContentAnimation);
+    openGroup = new QParallelAnimationGroup(this);
+    openGroup->addAnimation(mainActionAnimation);
+    openGroup->addAnimation(mainToolAnimation);
+    openGroup->addAnimation(mainContentAnimation);
 
-//    QPropertyAnimation *mainActionBackAnimation = new QPropertyAnimation(action_widget, "geometry");
-//    mainActionBackAnimation->setDuration(1000);
-//    mainActionBackAnimation->setStartValue(mainAcitonRect);
-//    mainActionBackAnimation->setEndValue(origAcitonRect);
+    QPropertyAnimation *mainActionBackAnimation = new QPropertyAnimation(action_widget, "geometry");
+    mainActionBackAnimation->setDuration(1000);
+    mainActionBackAnimation->setStartValue(mainAcitonRect);
+    mainActionBackAnimation->setEndValue(origAcitonRect);
 
-//    QPropertyAnimation *mainToolBackAnimation = new QPropertyAnimation(tool_widget, "pos");
-//    mainToolBackAnimation->setDuration(200);
-//    mainToolBackAnimation->setStartValue(needPoint);
-//    mainToolBackAnimation->setEndValue(origPoint);
+    QPropertyAnimation *mainToolBackAnimation = new QPropertyAnimation(tool_widget, "pos");
+    mainToolBackAnimation->setDuration(200);
+    mainToolBackAnimation->setStartValue(needPoint);
+    mainToolBackAnimation->setEndValue(origPoint);
 
-//    QPropertyAnimation *mainContentBackAnimation = new QPropertyAnimation(content_widget, "geometry");
-//    mainContentBackAnimation->setDuration(500);
-//    mainContentBackAnimation->setStartValue(mainContentRect);
-//    mainContentBackAnimation->setEndValue(origContentRect);
+    QPropertyAnimation *mainContentBackAnimation = new QPropertyAnimation(content_widget, "geometry");
+    mainContentBackAnimation->setDuration(500);
+    mainContentBackAnimation->setStartValue(mainContentRect);
+    mainContentBackAnimation->setEndValue(origContentRect);
 
-//    closeGroup = new QParallelAnimationGroup(this);
-//    closeGroup->addAnimation(mainActionBackAnimation);
-//    closeGroup->addAnimation(mainToolBackAnimation);
-//    closeGroup->addAnimation(mainContentBackAnimation);
-//}
+    closeGroup = new QParallelAnimationGroup(this);
+    closeGroup->addAnimation(mainActionBackAnimation);
+    closeGroup->addAnimation(mainToolBackAnimation);
+    closeGroup->addAnimation(mainContentBackAnimation);
+}
 
 void MainWindow::setTranslator(QTranslator* translator)
 {
@@ -443,27 +445,62 @@ void MainWindow::setCurrentPageIndex(int index)
 {
     if(index == 0)
     {
-//        closeGroup->start();
+        if (status != HOMEPAGE) {
+            statusFlag = true;
+            closeGroup->start();
+            status = HOMEPAGE;
+        }
+        else
+            statusFlag = false;
         this->showHomePage();
     }
     else if(index == 1)
     {
-//        openGroup->start();
+        if (status == HOMEPAGE)
+            statusFlag = true;
+        else
+            statusFlag = false;
+        if (status != CLEANPAGE && statusFlag) {
+            openGroup->start();
+            status = CLEANPAGE;
+        }
+
         this->showClearWidget();
     }
     else if(index == 2)
     {
-//        openGroup->start();
+        if (status == HOMEPAGE)
+            statusFlag = true;
+        else
+            statusFlag = false;
+        if (status != INFOPAGE && statusFlag) {
+            openGroup->start();
+            status = INFOPAGE;
+        }
         this->showInfoWidget();
     }
     else if(index == 3)
     {
-//        openGroup->start();
+        if (status == HOMEPAGE)
+            statusFlag = true;
+        else
+            statusFlag = false;
+        if (status != SETTINGPAGE && statusFlag) {
+            openGroup->start();
+            status = SETTINGPAGE;
+        }
         this->showSettingWidget();
     }
     else if(index == 4)
     {
-//        openGroup->start();
+        if (status == HOMEPAGE)
+            statusFlag = true;
+        else
+            statusFlag = false;
+        if (status != BOXPAGE && statusFlag) {
+            openGroup->start();
+            status = BOXPAGE;
+        }
         this->showBoxWidget();
     }
 }

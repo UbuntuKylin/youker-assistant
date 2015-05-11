@@ -75,7 +75,7 @@ public:
     void reViewTheOrgSkin();
     void changeSkin(QString pciture);
     void restoreSkin();
-//    void initAnimation();
+    void initAnimation();
 
 protected:
     void mousePressEvent(QMouseEvent *event);
@@ -142,8 +142,10 @@ private:
     QSettings * mSettings;
     QString desktop;
 
-//    QParallelAnimationGroup *openGroup;
-//    QParallelAnimationGroup *closeGroup;
+    QParallelAnimationGroup *openGroup;
+    QParallelAnimationGroup *closeGroup;
+    PAGESTATUS status;
+    bool statusFlag;
 };
 
 #endif // MAINWINDOW_H
