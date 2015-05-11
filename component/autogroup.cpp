@@ -25,9 +25,11 @@ AutoGroup::AutoGroup(QWidget *parent) :
     QWidget(parent)
 {
     this->resize(560, 50);
-    splitlabel = new QLabel(this);
-    splitlabel->setGeometry(QRect(0, this->height(), this->width(), 1));
+    splitlabel = new QLabel();
+//    splitlabel->setGeometry(QRect(0, this->height(), this->width(), 1));
+    splitlabel->setFixedHeight(1);
     splitlabel->setStyleSheet("QLabel{background:#aaaaaa;}");
+
     logo_label = new QLabel();
     name_label = new QLabel();
     comment_label = new QLabel();
@@ -50,9 +52,19 @@ AutoGroup::AutoGroup(QWidget *parent) :
     h_layout->setSpacing(10);
     h_layout->setMargin(0);//设置总的外围边框
     h_layout->setContentsMargins(0,0,0,0);
-    setLayout(h_layout);
-}
 
+
+    QVBoxLayout *layout = new QVBoxLayout();
+    layout->addStretch();
+    layout->addLayout(h_layout);
+    layout->addWidget(splitlabel);
+    layout->addStretch();
+//    layout->setSpacing(5);
+    layout->setMargin(0);
+    layout->setContentsMargins(0,0,0,0);
+
+    setLayout(layout);
+}
 
 void AutoGroup::initData(QMap<QString,QString> data)
 {
