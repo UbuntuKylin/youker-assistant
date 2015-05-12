@@ -87,6 +87,7 @@ private:
     QSettings *pSettings;
     QString dateStr;
     QString workFlag;
+    QString scanFinishTime;
 };
 
 #endif // HOMEACTIONWIDGET_H

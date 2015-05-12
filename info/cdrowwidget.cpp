@@ -24,25 +24,12 @@ CDRowWidget::CDRowWidget(QWidget *parent, SystemDispatcher *proxy) :
     QWidget(parent),
     systemproxy(proxy)
 {
-//    this->setStyleSheet("QWidget{border: none}");
-//    this->setStyleSheet("QWidget{background-color: #ffffff}");
+    this->setStyleSheet("QWidget{border: none}");
+    this->setStyleSheet("QWidget{background-color: #ffffff}");
     setFixedSize(750, 403);
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403);
     dataOK = false;
-//    this->initData();
-//    if(cdrom_info_map.count() == 1 && cdrom_info_map.contains("kylinkobe"))
-//    {
-//        page = NULL;
-//    }
-//    else {
-//        page = new ComputerPage(scroll_widget->zone, tr("CDROM Info"));
-//        page->setMap(cdrom_info_map, cdrom_info_map.value("DvdVendor").toString().toUpper());
-//        page->initUI();
-//        scroll_widget->addScrollWidget(page);
-//    }
-//    cdNum = this->initData();
-
 }
 
 bool CDRowWidget::getStatus()
@@ -52,13 +39,6 @@ bool CDRowWidget::getStatus()
 
 void CDRowWidget::initData()
 {
-//    QMap<QString, QVariant> tmpMap = systemproxy->get_cdrom_info_qt();
-//    QMap<QString,QVariant>::iterator it;
-//    for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
-//        if (it.value().toString().length() > 0) {
-//            cdrom_info_map.insert(it.key(), it.value());
-//        }
-//    }
     cdrom_info_map.clear();
     cdrom_info_map = systemproxy->get_cdrom_info_qt();
     QMap<QString, QVariant>::iterator iter = cdrom_info_map.find("Dvdnum");

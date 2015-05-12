@@ -30,6 +30,7 @@ HomeActionWidget::HomeActionWidget(QWidget *parent, QSettings *mSettings)
     is_move = false;
     this->setAutoFillBackground(true);
     this->setObjectName("transparentWidget");
+    scanFinishTime = "";
 
     suggest_label = new QLabel();
     result_label = new QLabel();
@@ -90,8 +91,8 @@ HomeActionWidget::HomeActionWidget(QWidget *parent, QSettings *mSettings)
     QVBoxLayout *layout1 = new QVBoxLayout();
     layout1->addStretch();
     layout1->addWidget(suggest_label);
-    layout1->addWidget(result_label);
     layout1->addWidget(doing_label);
+    layout1->addWidget(result_label);
     layout1->addStretch();
     layout1->setSpacing(15);
     layout1->setContentsMargins(0, 20, 0, 0);
@@ -181,12 +182,73 @@ void HomeActionWidget::finishScanResult(QString msg)
 {
     if(msg == "onekey") {
         doing_label->setText(tr("Scan Over"));//扫描完成
-        result_label->setText(tr("The lastest scan time is ") + this->getCurrentDateTime());
+        result_label->show();
+        QString msg;
+        if (trace.toInt() > 0)
+        {
+            if (cookies.toInt() > 0) {
+                if (garbage == "0.00 B")
+                {
+                    msg = trace + tr(" history trace; ") + cookies + tr(" browser cookies.") ;
+                }
+                else
+                {
+                     msg = trace + tr(" history trace; ") + cookies + tr(" browser cookies; ") + garbage + tr(" garbage.") ;
+                }
+            }
+            else
+            {
+                if (garbage == "0.00 B")
+                {
+                    msg = trace + tr(" history trace.") ;
+                }
+                else
+                {
+                     msg = trace + tr(" history trace; ") + garbage + tr(" garbage.") ;
+                }
+            }
+        }
+        else
+        {
+            if (cookies.toInt() > 0)
+            {
+                if (garbage == "0.00 B")
+                {
+                    msg = cookies + tr(" browser cookies.") ;
+                }
+                else
+                {
+                     msg = cookies + tr(" browser cookies; ") + garbage + tr(" garbage.") ;
+                }
+            }
+            else
+            {
+                if (garbage == "0.00 B")
+                {
+                    msg = "";
+                }
+                else
+                {
+                     msg = garbage + tr(" garbage.") ;
+                }
+            }
+        }
+        if (msg.isEmpty()) {
+            result_label->setText(tr("No garbage."));
+            scan_button->setEnabled(true);
+            clean_button->hide();
+        }
+        else
+        {
+            result_label->setText(msg);
+            clean_button->show();
+            clean_button->setEnabled(true);
+        }
+        scanFinishTime = this->getCurrentDateTime();
+//        result_label->setText(tr("The lastest scan time is ") + this->getCurrentDateTime());
         this->writeSafeScanDate();
         scan_button->hide();
-        clean_button->show();
         back_button->show();
-        clean_button->setEnabled(true);
         loading_label->stopLoading();
     }
 }
@@ -334,6 +396,7 @@ void HomeActionWidget::onCleanButtonClicked()
 
 void HomeActionWidget::onEndButtonClicked()
 {
+    result_label->setText(tr("The lastest scan time is ") + scanFinishTime);
     loading_label->stopLoading();
     scan_button->show();
     scan_button->setEnabled(true);

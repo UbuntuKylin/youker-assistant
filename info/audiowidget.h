@@ -44,7 +44,6 @@ private:
     QMap<QString, QVariant> audio_info_map;
     QMap<QString, QVariant> tmp_info_map;
     SystemDispatcher *systemproxy;
-//    int mulNum;
     bool dataOK;
 };
 

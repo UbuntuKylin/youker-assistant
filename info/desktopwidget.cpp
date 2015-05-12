@@ -23,13 +23,12 @@ DesktopWidget::DesktopWidget(QWidget *parent, SessionDispatcher *proxy) :
     QWidget(parent),
     sessionProxy(proxy)
 {
-//    this->setStyleSheet("QWidget{border: none}");
-//    this->setStyleSheet("QWidget{background-color: #ffffff}");
+    this->setStyleSheet("QWidget{border: none}");
+    this->setStyleSheet("QWidget{background-color: #ffffff}");
     dataOK = false;
     setFixedSize(750, 403);
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403);
-//    this->initData();
 }
 
 bool DesktopWidget::getStatus()
