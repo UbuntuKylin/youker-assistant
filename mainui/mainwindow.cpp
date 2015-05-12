@@ -92,7 +92,6 @@ MainWindow::MainWindow(QWidget *parent) :
     bottom_grid_layout = NULL;
 
     main_menu = new KylinMenu(this);
-
     main_menu->setParentWindow(this);
     main_menu->initConnect();
 
@@ -395,27 +394,26 @@ void MainWindow::changeSkin(QString pciture)
 
 void MainWindow::reViewThePointSkin(QString pciture)
 {
-  if (review_skin_pixmap.isDetached())
-  {
-    review_skin_pixmap.detach();
-  }
-
-  review_skin_pixmap.load(pciture);
-  QPalette palette_back;
-  palette_back.setBrush(QPalette::Background, review_skin_pixmap);
-  action_widget->setPalette(palette_back);
+    if (review_skin_pixmap.isDetached())
+    {
+        review_skin_pixmap.detach();
+    }
+    review_skin_pixmap.load(pciture);
+    QPalette palette_back;
+    palette_back.setBrush(QPalette::Background, review_skin_pixmap);
+    action_widget->setPalette(palette_back);
 }
 
 void MainWindow::reViewTheOrgSkin()
 {
-  if (review_skin_pixmap.isDetached())
-  {
-    review_skin_pixmap.detach();
-  }
-  review_skin_pixmap.load(last_skin_path);
-  QPalette palette_back;
-  palette_back.setBrush(QPalette::Background, review_skin_pixmap);
-  action_widget->setPalette(palette_back);
+    if (review_skin_pixmap.isDetached())
+    {
+        review_skin_pixmap.detach();
+    }
+    review_skin_pixmap.load(last_skin_path);
+    QPalette palette_back;
+    palette_back.setBrush(QPalette::Background, review_skin_pixmap);
+    action_widget->setPalette(palette_back);
 }
 
 void MainWindow::showMainMenu() {

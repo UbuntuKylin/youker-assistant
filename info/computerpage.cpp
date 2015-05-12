@@ -23,6 +23,7 @@
 #include <QLabel>
 #include <QGroupBox>
 #include <QFormLayout>
+#include <QBitmap>
 
 ComputerPage::ComputerPage(QWidget *parent, QString title/*, QString manufacturer*/) :
     QWidget(parent), title_context(title)/*, vendor(manufacturer)*/
@@ -58,23 +59,6 @@ void ComputerPage::setLanguage() {
 void ComputerPage::initUI()
 {
     group_box = new QGroupBox();
-
-    if(!vendor.isEmpty())
-    {
-        logo_label = new QLabel(this);
-        logo_label->setAutoFillBackground(true);
-        logo_label->setScaledContents(true);//自动缩放,显示图像大小自动调整为Qlabel大小
-        QPixmap label_pixmap(":/vendor/res/manufacturer/" + vendor + ".jpg");
-        if (label_pixmap.isNull())
-        {
-            label_pixmap = QPixmap(":/vendor/res/manufacturer/UBUNTUKYLIN.jpg");
-        }
-        logo_label->setPixmap(label_pixmap);
-        logo_label->setFixedSize(label_pixmap.size());
-        logo_label->setGeometry(QRect(720 - logo_label->width(), 40, logo_label->width(), logo_label->height()));
-//        logo_label->show();
-////        logo_label->move(720 - logo_label->width(), 40);
-    }
 
     QFont group_box_font = group_box->font();
     group_box_font.setBold(true);
@@ -128,6 +112,28 @@ void ComputerPage::initUI()
     layout->setMargin(0);
     layout->setContentsMargins(ITEMHSPACE, ITEMHSPACE, 0, 0);
     setLayout(layout);
+
+    if(!vendor.isEmpty())
+    {
+        logo_label = new QLabel(this);
+        logo_label->setAutoFillBackground(true);
+        logo_label->setScaledContents(true);//自动缩放,显示图像大小自动调整为Qlabel大小
+        QPixmap label_pixmap(":/vendor/res/manufacturer/" + vendor + ".jpg");
+        if (label_pixmap.isNull())
+        {
+            label_pixmap = QPixmap(":/vendor/res/manufacturer/UBUNTUKYLIN.jpg");
+        }
+        logo_label->setPixmap(label_pixmap);
+        logo_label->setFixedSize(label_pixmap.size());
+        logo_label->setGeometry(QRect(720 - logo_label->width(), 40, logo_label->width(), logo_label->height()));
+        logo_label->setMask(label_pixmap.mask());
+//        QImage image(":/vendor/res/manufacturer/UBUNTUKYLIN.jpg");
+//        if (!image.isNull()) {
+//            image = image.scaled(logo_label->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+//            logo_label->setPixmap(QPixmap::fromImage(image));
+//        }
+//        logo_label->setGeometry(QRect(720 - logo_label->width(), 40, logo_label->width(), logo_label->height()));
+    }
 
     this->setLanguage();
 }
