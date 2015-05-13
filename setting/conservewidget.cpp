@@ -89,12 +89,22 @@ ConserveWidget::ConserveWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
     sleep_battery_combo = new QComboBox();
     sleep_ac_label = new QLabel();
     sleep_ac_combo = new QComboBox();
+    sleep_battery_display_label = new QLabel();
+    sleep_battery_display_combo = new QComboBox();
+    sleep_ac_display_label = new QLabel();
+    sleep_ac_display_combo = new QComboBox();
 
 
     if (cur_desktop == "mate") {
         brightness_label->hide();
         brightness_value_label->hide();
         brightness_slider->hide();
+    }
+    else {
+        sleep_battery_display_label->hide();
+        sleep_battery_display_combo->hide();
+        sleep_ac_display_label->hide();
+        sleep_ac_display_combo->hide();
     }
 
     if(!sessionproxy->judge_power_is_exists_qt())
@@ -107,6 +117,11 @@ ConserveWidget::ConserveWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
         nothing_battery_radio->hide();
         sleep_battery_label->hide();
         sleep_battery_combo->hide();
+        laptop_lid_ac_label->hide();
+        suspend_lid_ac_radio->hide();
+        nothing_ac_radio->hide();
+        sleep_battery_display_label->hide();
+        sleep_battery_display_combo->hide();
     }
 
     gamma_label->setFixedWidth(260);
@@ -119,6 +134,8 @@ ConserveWidget::ConserveWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
     laptop_lid_ac_label->setFixedWidth(260);
     sleep_battery_label->setFixedWidth(260);
     sleep_ac_label->setFixedWidth(260);
+    sleep_battery_display_label->setFixedWidth(260);
+    sleep_ac_display_label->setFixedWidth(260);
 
     QHBoxLayout *layout0 = new QHBoxLayout();
     layout0->setSpacing(10);
@@ -175,6 +192,17 @@ ConserveWidget::ConserveWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
     layout9->addWidget(sleep_ac_label);
     layout9->addWidget(sleep_ac_combo);
     layout9->addStretch();
+    QHBoxLayout *layout10 = new QHBoxLayout();
+    layout10->setSpacing(10);
+    layout10->addWidget(sleep_battery_display_label);
+    layout10->addWidget(sleep_battery_display_combo);
+    layout10->addStretch();
+    QHBoxLayout *layout11 = new QHBoxLayout();
+    layout11->setSpacing(10);
+    layout11->addWidget(sleep_ac_display_label);
+    layout11->addWidget(sleep_ac_display_combo);
+    layout11->addStretch();
+
     QVBoxLayout *layout = new QVBoxLayout();
     layout->addLayout(layout0);
     layout->addLayout(layout1);
@@ -186,6 +214,8 @@ ConserveWidget::ConserveWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
     layout->addLayout(layout7);
     layout->addLayout(layout8);
     layout->addLayout(layout9);
+    layout->addLayout(layout10);
+    layout->addLayout(layout11);
     layout->addStretch();
     setLayout(layout);
     layout->setSpacing(10);
@@ -212,8 +242,10 @@ void ConserveWidget::setLanguage() {
     critical_low_label->setText(tr("Battery critical low action") + ":");//电池严重不足时
     laptop_lid_battery_label->setText(tr("Laptop lid close action on battery") + ":");//合上盖子时
     laptop_lid_ac_label->setText(tr("Laptop lid close action on AC") + ":");//合上盖子时
-    sleep_battery_label->setText(tr("Sleep timeout PC when on battery") + ":");//使用电池，在此时间范围内无操作
-    sleep_ac_label->setText(tr("Sleep timeout PC when on AC") + ":");//使用电源，在此时间范围内无操作
+    sleep_battery_label->setText(tr("Sleep timeout PC when on battery") + ":");//使用电池，空闲此时间后电脑转入睡眠
+    sleep_ac_label->setText(tr("Sleep timeout PC when on AC") + ":");//使用电源，空闲此时间后电脑转入睡眠
+    sleep_battery_display_label->setText(tr("Sleep timeout display when on battery") + ":");//使用电池，空闲此时间后屏幕转入睡眠
+    sleep_ac_display_label->setText(tr("Sleep timeout display when on AC") + ":");//使用电源，空闲此时间后屏幕转入睡眠
     suspend_low_radio->setText(tr("suspend"));//休眠
     shutdown_radio->setText(tr("shutdown"));//电源关闭
     suspend_lid_battery_radio->setText(tr("suspend"));//挂起
@@ -375,6 +407,53 @@ void ConserveWidget::initData()
     sleep_ac_combo->clearEditText();
     sleep_ac_combo->addItems(huname_ac_list);
     sleep_ac_combo->setCurrentIndex(initIndex4);
+
+
+    sleep_timeout_display_battery = sessionproxy->get_current_sleep_timeout_display_battery_qt();
+    QStringList huname_display_battery_list;
+    huname_display_battery_list << tr("5 minutes") << tr("10 minutes") << tr("20 minutes") << tr("Half an hour") << tr("1 hour") << tr("2 hours") << tr("never");
+    QList<QString>::Iterator it5 = aclist.begin(), itend5 = aclist.end();
+    int initIndex5 = 0;
+    inHere = false;
+    for(;it5 != itend5; it5++,initIndex5++)
+    {
+        if(*it5 == sleep_timeout_display_battery) {
+            inHere = true;
+            break;
+        }
+    }
+    if (inHere == false) {
+        huname_display_battery_list << sleep_timeout_display_battery;
+        initIndex5 = huname_display_battery_list.length() - 1;
+    }
+    sleep_battery_display_combo->clear();
+    sleep_battery_display_combo->clearEditText();
+    sleep_battery_display_combo->addItems(huname_display_battery_list);
+    sleep_battery_display_combo->setCurrentIndex(initIndex5);
+
+
+    sleep_timeout_display_ac = sessionproxy->get_current_sleep_timeout_display_ac_qt();
+    QStringList huname_display_ac_list;
+    huname_display_ac_list << tr("5 minutes") << tr("10 minutes") << tr("20 minutes") << tr("Half an hour") << tr("1 hour") << tr("2 hours") << tr("never");
+    QList<QString>::Iterator it6 = aclist.begin(), itend6 = aclist.end();
+    int initIndex6 = 0;
+    inHere = false;
+    for(;it6 != itend6; it6++,initIndex6++)
+    {
+        if(*it6 == sleep_timeout_display_ac) {
+            inHere = true;
+            break;
+        }
+    }
+    if (inHere == false) {
+        huname_display_ac_list << sleep_timeout_display_ac;
+        initIndex6 = huname_display_ac_list.length() - 1;
+    }
+    sleep_ac_display_combo->clear();
+    sleep_ac_display_combo->clearEditText();
+    sleep_ac_display_combo->addItems(huname_display_ac_list);
+    sleep_ac_display_combo->setCurrentIndex(initIndex6);
+
     dataOK = true;
     this->initConnect();
 }
@@ -395,6 +474,8 @@ void ConserveWidget::initConnect() {
     connect(nothing_ac_radio, SIGNAL(clicked()), this, SLOT(setRadioButtonRowStatus()));
     connect(sleep_battery_combo, SIGNAL(currentIndexChanged(int)),  this, SLOT(setSleepTimeoutBattery(int)));
     connect(sleep_ac_combo, SIGNAL(currentIndexChanged(int)),  this, SLOT(setSleepTimeoutAC(int)));
+    connect(sleep_battery_display_combo, SIGNAL(currentIndexChanged(int)),  this, SLOT(setSleepTimeoutDisplayBattery(int)));
+    connect(sleep_ac_display_combo, SIGNAL(currentIndexChanged(int)),  this, SLOT(setSleepTimeoutDisplayAC(int)));
 }
 
 void ConserveWidget::setScreenGammaValue(double value)
@@ -607,5 +688,77 @@ void ConserveWidget::setSleepTimeoutAC(int index)
     else if (index == 7)
     {
         sessionproxy->set_current_sleep_timeout_ac_qt(sleep_timeout_ac.toInt());
+    }
+}
+
+void ConserveWidget::setSleepTimeoutDisplayBattery(int index)
+{
+    if (index == 0)
+    {
+        sessionproxy->set_current_sleep_timeout_display_battery_qt(300);
+    }
+    else if (index == 1)
+    {
+        sessionproxy->set_current_sleep_timeout_display_battery_qt(600);
+    }
+    else if (index == 2)
+    {
+        sessionproxy->set_current_sleep_timeout_display_battery_qt(1200);
+    }
+    else if (index == 3)
+    {
+        sessionproxy->set_current_sleep_timeout_display_battery_qt(1800);
+    }
+    else if (index == 4)
+    {
+        sessionproxy->set_current_sleep_timeout_display_battery_qt(3600);
+    }
+    else if (index == 5)
+    {
+        sessionproxy->set_current_sleep_timeout_display_battery_qt(7200);
+    }
+    else if (index == 6)
+    {
+        sessionproxy->set_current_sleep_timeout_display_battery_qt(0);
+    }
+    else if (index == 7)
+    {
+        sessionproxy->set_current_sleep_timeout_display_battery_qt(sleep_timeout_battery.toInt());
+    }
+}
+
+void ConserveWidget::setSleepTimeoutDisplayAC(int index)
+{
+    if (index == 0)
+    {
+        sessionproxy->set_current_sleep_timeout_display_ac_qt(300);
+    }
+    else if (index == 1)
+    {
+        sessionproxy->set_current_sleep_timeout_display_ac_qt(600);
+    }
+    else if (index == 2)
+    {
+        sessionproxy->set_current_sleep_timeout_display_ac_qt(1200);
+    }
+    else if (index == 3)
+    {
+        sessionproxy->set_current_sleep_timeout_display_ac_qt(1800);
+    }
+    else if (index == 4)
+    {
+        sessionproxy->set_current_sleep_timeout_display_ac_qt(3600);
+    }
+    else if (index == 5)
+    {
+        sessionproxy->set_current_sleep_timeout_display_ac_qt(7200);
+    }
+    else if (index == 6)
+    {
+        sessionproxy->set_current_sleep_timeout_display_ac_qt(0);
+    }
+    else if (index == 7)
+    {
+        sessionproxy->set_current_sleep_timeout_display_ac_qt(sleep_timeout_battery.toInt());
     }
 }

@@ -483,6 +483,28 @@ class System():
                 'lid-close-ac-action',
                 'string', value)
 
+    #----------------------------------------------------------------------
+    def get_current_sleep_timeout_display_battery(self):
+        return gsettings.get('org.mate.power-manager',
+            None, 'sleep-display-battery', 'int')
+
+    def set_current_sleep_timeout_display_battery(self, value):
+        gsettings.set('org.mate.power-manager',
+            None,
+            'sleep-display-battery',
+            'int', value)
+
+    def get_current_sleep_timeout_display_ac(self):
+        return gsettings.get('org.mate.power-manager',
+            None, 'sleep-display-ac', 'int')
+
+    def set_current_sleep_timeout_display_ac(self, value):
+        gsettings.set('org.mate.power-manager',
+            None,
+            'sleep-display-ac',
+            'int', value)
+    #----------------------------------------------------------------------
+
     def get_current_sleep_timeout_battery(self):
         if self.desktop == "mate":
             return gsettings.get('org.mate.power-manager',

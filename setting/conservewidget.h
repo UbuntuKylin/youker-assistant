@@ -57,6 +57,8 @@ public slots:
     void setRadioButtonRowStatus();
     void setSleepTimeoutBattery(int index);
     void setSleepTimeoutAC(int index);
+    void setSleepTimeoutDisplayBattery(int index);
+    void setSleepTimeoutDisplayAC(int index);
 
 private:
     QDBusInterface *iface;
@@ -66,6 +68,8 @@ private:
     QString current_lock_delay;
     QString sleep_timeout_battery;
     QString sleep_timeout_ac;
+    QString sleep_timeout_display_battery;
+    QString sleep_timeout_display_ac;
     QLabel *gamma_label;
     QDoubleSpinBox *gamma_slider;
     QLabel *brightness_label;
@@ -90,6 +94,11 @@ private:
     QComboBox *sleep_battery_combo;
     QLabel *sleep_ac_label;
     QComboBox *sleep_ac_combo;
+
+    QLabel *sleep_battery_display_label;
+    QComboBox *sleep_battery_display_combo;
+    QLabel *sleep_ac_display_label;
+    QComboBox *sleep_ac_display_combo;
 };
 
 #endif // CONSERVEWIDGET_H

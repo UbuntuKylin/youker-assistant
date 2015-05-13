@@ -1333,149 +1333,173 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ConserveWidget</name>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="207"/>
+        <location filename="../../setting/conservewidget.cpp" line="237"/>
         <source>Adjust gamma</source>
         <translation>调整伽马值</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="208"/>
+        <location filename="../../setting/conservewidget.cpp" line="238"/>
         <source>Adjust brightness</source>
         <translation>调整屏幕亮度</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="209"/>
+        <location filename="../../setting/conservewidget.cpp" line="239"/>
         <source>Time before session is considered idle</source>
         <translation>在此时间范围内无操作则关闭屏幕</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="210"/>
+        <location filename="../../setting/conservewidget.cpp" line="240"/>
         <source>Lock screen</source>
         <translation>锁定屏幕</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="211"/>
+        <location filename="../../setting/conservewidget.cpp" line="241"/>
         <source>Lock delay</source>
         <translation>锁定延时</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="212"/>
+        <location filename="../../setting/conservewidget.cpp" line="242"/>
         <source>Battery critical low action</source>
         <translation>电池严重不足时</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="213"/>
+        <location filename="../../setting/conservewidget.cpp" line="243"/>
         <source>Laptop lid close action on battery</source>
         <translation>使用电池合上盖子时</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="214"/>
+        <location filename="../../setting/conservewidget.cpp" line="244"/>
         <source>Laptop lid close action on AC</source>
         <translation>使用电源合上盖子时</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="215"/>
+        <location filename="../../setting/conservewidget.cpp" line="245"/>
         <source>Sleep timeout PC when on battery</source>
-        <translation>使用电池，空闲此时间后转入睡眠</translation>
+        <translation>使用电池，空闲此时间后电脑转入睡眠</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="216"/>
+        <location filename="../../setting/conservewidget.cpp" line="246"/>
         <source>Sleep timeout PC when on AC</source>
-        <translation>使用电源，空闲此时间后转入睡眠</translation>
+        <translation>使用电源，空闲此时间后电脑转入睡眠</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="217"/>
-        <location filename="../../setting/conservewidget.cpp" line="219"/>
-        <location filename="../../setting/conservewidget.cpp" line="221"/>
+        <location filename="../../setting/conservewidget.cpp" line="247"/>
+        <source>Sleep timeout display when on battery</source>
+        <translation>使用电池，空闲此时间后屏幕转入睡眠</translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="248"/>
+        <source>Sleep timeout display when on AC</source>
+        <translation>使用电源，空闲此时间后屏幕转入睡眠</translation>
+    </message>
+    <message>
+        <location filename="../../setting/conservewidget.cpp" line="249"/>
+        <location filename="../../setting/conservewidget.cpp" line="251"/>
+        <location filename="../../setting/conservewidget.cpp" line="253"/>
         <source>suspend</source>
         <translation>挂起</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="218"/>
+        <location filename="../../setting/conservewidget.cpp" line="250"/>
         <source>shutdown</source>
         <translation>电源关闭</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="220"/>
-        <location filename="../../setting/conservewidget.cpp" line="222"/>
+        <location filename="../../setting/conservewidget.cpp" line="252"/>
+        <location filename="../../setting/conservewidget.cpp" line="254"/>
         <source>nothing</source>
         <translation>不处理</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="253"/>
         <location filename="../../setting/conservewidget.cpp" line="285"/>
+        <location filename="../../setting/conservewidget.cpp" line="317"/>
         <source>1 minute</source>
         <translation>1 分钟</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="253"/>
         <location filename="../../setting/conservewidget.cpp" line="285"/>
+        <location filename="../../setting/conservewidget.cpp" line="317"/>
         <source>2 minutes</source>
         <translation>2 分钟</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="253"/>
         <location filename="../../setting/conservewidget.cpp" line="285"/>
+        <location filename="../../setting/conservewidget.cpp" line="317"/>
         <source>3 minutes</source>
         <translation>3 分钟</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="253"/>
         <location filename="../../setting/conservewidget.cpp" line="285"/>
-        <location filename="../../setting/conservewidget.cpp" line="336"/>
-        <location filename="../../setting/conservewidget.cpp" line="359"/>
+        <location filename="../../setting/conservewidget.cpp" line="317"/>
+        <location filename="../../setting/conservewidget.cpp" line="368"/>
+        <location filename="../../setting/conservewidget.cpp" line="391"/>
+        <location filename="../../setting/conservewidget.cpp" line="414"/>
+        <location filename="../../setting/conservewidget.cpp" line="437"/>
         <source>5 minutes</source>
         <translation>5 分钟</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="253"/>
         <location filename="../../setting/conservewidget.cpp" line="285"/>
-        <location filename="../../setting/conservewidget.cpp" line="336"/>
-        <location filename="../../setting/conservewidget.cpp" line="359"/>
+        <location filename="../../setting/conservewidget.cpp" line="317"/>
+        <location filename="../../setting/conservewidget.cpp" line="368"/>
+        <location filename="../../setting/conservewidget.cpp" line="391"/>
+        <location filename="../../setting/conservewidget.cpp" line="414"/>
+        <location filename="../../setting/conservewidget.cpp" line="437"/>
         <source>10 minutes</source>
         <translation>10 分钟</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="253"/>
         <location filename="../../setting/conservewidget.cpp" line="285"/>
-        <location filename="../../setting/conservewidget.cpp" line="336"/>
-        <location filename="../../setting/conservewidget.cpp" line="359"/>
+        <location filename="../../setting/conservewidget.cpp" line="317"/>
+        <location filename="../../setting/conservewidget.cpp" line="368"/>
+        <location filename="../../setting/conservewidget.cpp" line="391"/>
+        <location filename="../../setting/conservewidget.cpp" line="414"/>
+        <location filename="../../setting/conservewidget.cpp" line="437"/>
         <source>Half an hour</source>
         <translation>半小时</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="253"/>
         <location filename="../../setting/conservewidget.cpp" line="285"/>
-        <location filename="../../setting/conservewidget.cpp" line="336"/>
-        <location filename="../../setting/conservewidget.cpp" line="359"/>
+        <location filename="../../setting/conservewidget.cpp" line="317"/>
+        <location filename="../../setting/conservewidget.cpp" line="368"/>
+        <location filename="../../setting/conservewidget.cpp" line="391"/>
+        <location filename="../../setting/conservewidget.cpp" line="414"/>
+        <location filename="../../setting/conservewidget.cpp" line="437"/>
         <source>1 hour</source>
         <translation>1 小时</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="253"/>
-        <location filename="../../setting/conservewidget.cpp" line="336"/>
-        <location filename="../../setting/conservewidget.cpp" line="359"/>
+        <location filename="../../setting/conservewidget.cpp" line="285"/>
+        <location filename="../../setting/conservewidget.cpp" line="368"/>
+        <location filename="../../setting/conservewidget.cpp" line="391"/>
+        <location filename="../../setting/conservewidget.cpp" line="414"/>
+        <location filename="../../setting/conservewidget.cpp" line="437"/>
         <source>never</source>
         <translation>从不</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="285"/>
+        <location filename="../../setting/conservewidget.cpp" line="317"/>
         <source>30 seconds</source>
         <translation>30 秒</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="285"/>
+        <location filename="../../setting/conservewidget.cpp" line="317"/>
         <source>Turn off the screen</source>
         <translation>关闭屏幕</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="336"/>
-        <location filename="../../setting/conservewidget.cpp" line="359"/>
+        <location filename="../../setting/conservewidget.cpp" line="368"/>
+        <location filename="../../setting/conservewidget.cpp" line="391"/>
+        <location filename="../../setting/conservewidget.cpp" line="414"/>
+        <location filename="../../setting/conservewidget.cpp" line="437"/>
         <source>20 minutes</source>
         <translation>20 分钟</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="336"/>
-        <location filename="../../setting/conservewidget.cpp" line="359"/>
+        <location filename="../../setting/conservewidget.cpp" line="368"/>
+        <location filename="../../setting/conservewidget.cpp" line="391"/>
+        <location filename="../../setting/conservewidget.cpp" line="414"/>
+        <location filename="../../setting/conservewidget.cpp" line="437"/>
         <source>2 hours</source>
         <translation>2 小时</translation>
     </message>

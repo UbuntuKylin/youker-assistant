@@ -288,6 +288,10 @@ public:
     void set_current_lid_battery_qt(QString value);
     QString get_current_lid_ac_qt();
     void set_current_lid_ac_qt(QString value);
+    QString get_current_sleep_timeout_display_battery_qt();
+    void set_current_sleep_timeout_display_battery_qt(int value);
+    QString get_current_sleep_timeout_display_ac_qt();
+    void set_current_sleep_timeout_display_ac_qt(int value);
     QString get_current_sleep_timeout_battery_qt();
     void set_current_sleep_timeout_battery_qt(int value);
     QString get_current_sleep_timeout_ac_qt();

@@ -1174,6 +1174,30 @@ void SessionDispatcher::set_current_lid_ac_qt(QString value)
     sessioniface->call("set_current_lid_ac", value);
 }
 
+
+QString SessionDispatcher::get_current_sleep_timeout_display_battery_qt()
+{
+    QDBusReply<int> reply = sessioniface->call("get_current_sleep_timeout_display_battery");
+    return QString::number(reply.value());
+}
+
+void SessionDispatcher::set_current_sleep_timeout_display_battery_qt(int value)
+{
+    sessioniface->call("set_current_sleep_timeout_display_battery", value);
+}
+
+QString SessionDispatcher::get_current_sleep_timeout_display_ac_qt()
+{
+    QDBusReply<int> reply = sessioniface->call("get_current_sleep_timeout_display_ac");
+    return QString::number(reply.value());
+}
+
+void SessionDispatcher::set_current_sleep_timeout_display_ac_qt(int value)
+{
+    sessioniface->call("set_current_sleep_timeout_display_ac", value);
+}
+
+
 QString SessionDispatcher::get_current_sleep_timeout_battery_qt()
 {
     QDBusReply<int> reply = sessioniface->call("get_current_sleep_timeout_battery");
