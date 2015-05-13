@@ -440,6 +440,22 @@ class SessionDaemon(dbus.service.Object):
         self.systemconf.set_current_lid_ac(value)
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    def get_current_sleep_timeout_display_battery(self):
+        return self.systemconf.get_current_sleep_timeout_display_battery()
+
+    @dbus.service.method(INTERFACE, in_signature='i', out_signature='')
+    def set_current_sleep_timeout_display_battery(self, value):
+        self.systemconf.set_current_sleep_timeout_display_battery(value)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
+    def get_current_sleep_timeout_display_ac(self):
+        return self.systemconf.get_current_sleep_timeout_display_ac()
+
+    @dbus.service.method(INTERFACE, in_signature='i', out_signature='')
+    def set_current_sleep_timeout_display_ac(self, value):
+        self.systemconf.set_current_sleep_timeout_display_ac(value)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='i')
     def get_current_sleep_timeout_battery(self):
         return self.systemconf.get_current_sleep_timeout_battery()
 
