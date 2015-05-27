@@ -24,6 +24,7 @@
 #include "computerpage.h"
 #include "../component/scrollwidget.h"
 #include <QMap>
+//#include <QTimer>
 
 class QVariant;
 class SystemDispatcher;
@@ -33,12 +34,14 @@ class CpuWidget : public QWidget
     Q_OBJECT
 public:
     explicit CpuWidget(QWidget *parent = 0, SystemDispatcher *proxy = 0);
+    ~CpuWidget();
     void initData();
     bool getStatus();
 
 signals:
 
 public slots:
+//    void updateCpuTemp();
 
 private:
     ScrollWidget *scroll_widget;
@@ -46,6 +49,7 @@ private:
     QMap<QString, QVariant> cpu_info_map;
     SystemDispatcher *systemproxy;
     bool dataOK;
+//    QTimer *timer;
 };
 
 #endif // CPUWIDGET_H

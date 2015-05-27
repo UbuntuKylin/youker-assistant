@@ -151,6 +151,7 @@ void AutoStartWidget::readyShowUI()
             tmpMap.insert(tmp_list[j].split(":").at(0), tmp_list[j].split(":").at(1));
         }
         AutoGroup *auto_group = new AutoGroup();
+        auto_group->setFixedHeight(50);
         auto_group->initData(tmpMap);
         if(tmpMap.value("Status") == "true")
             onNum += 1;

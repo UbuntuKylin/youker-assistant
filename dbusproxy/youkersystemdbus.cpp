@@ -40,6 +40,8 @@ SystemDispatcher::SystemDispatcher(QObject *parent)
 }
 
 SystemDispatcher::~SystemDispatcher() {
+    thread->terminate();
+    thread->wait();
     if(thread != NULL) {
         delete thread;
         thread = NULL;
@@ -54,8 +56,13 @@ SystemDispatcher::~SystemDispatcher() {
 void SystemDispatcher::cleanAllSelectItems(QMap<QString, QVariant> selectMap)
 {
     QStringList tmp;
+    QEventLoop q;
     thread->initValues(selectMap, tmp, systemiface, "remove_select_items");
     thread->start();
+    q.exec();
+    if(thread->isFinished()){
+       q.quit();
+    }
 }
 
 //void SystemDispatcher::kill_root_process_qt(QString pid) {
