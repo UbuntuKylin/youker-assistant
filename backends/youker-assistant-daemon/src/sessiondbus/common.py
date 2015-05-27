@@ -147,6 +147,12 @@ def run_app(pkgname):
     cmd = get_run_command(pkgname)
     p = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=False)
 
+def get_output(cmd):
+    '''status =0 : success'''
+    status, output = commands.getstatusoutput(cmd)
+    if status: raise
+    return output
+
 if __name__ == '__main__':
     ip = get_ip()
     print ip

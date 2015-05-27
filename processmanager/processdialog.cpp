@@ -26,6 +26,9 @@
 #include <QDir>
 #include <QProcess>
 
+//pkg-config --cflags libgtop-2.0
+//pkg-config --libs glib-2.0 libgtop-2.0
+
 ProcessDialog::ProcessDialog(ProcessManager *plugin, QDialog *parent)
 :QDialog(parent)
 {

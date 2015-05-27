@@ -53,6 +53,8 @@ SessionDispatcher::SessionDispatcher(QObject *parent)
 }
 
 SessionDispatcher::~SessionDispatcher() {
+    thread->terminate();
+    thread->wait();
     if(thread != NULL) {
         delete thread;
         thread = NULL;

@@ -81,10 +81,13 @@ ProcessInfo::ProcessInfo(pid_t pid)
     }
     info->cpu_time = cpu_time;
     info->start_time = proctime.start_time;
+
+    glibtop_init();
 }
 
 ProcessInfo::~ProcessInfo()
 {
+    glibtop_close();
     g_free(this->name);
     g_free(this->tooltip);
     g_free(this->arguments);
@@ -198,7 +201,7 @@ static void refresh_whose_processes_list (ProcApp *app, const pid_t* pid_list, c
 }
 
 void list_whose_proc_info(ProcApp *app) {
-    glibtop_init();
+//    glibtop_init();
 
     pid_t* pid_list;
     glibtop_proclist proclist;
@@ -242,5 +245,5 @@ void list_whose_proc_info(ProcApp *app) {
     refresh_whose_processes_list (app, pid_list, proclist.number);
 
     g_free (pid_list);
-    glibtop_close();
+//    glibtop_close();
 }

@@ -29,6 +29,20 @@ CpuWidget::CpuWidget(QWidget *parent, SystemDispatcher *proxy) :
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403 - 3);
     dataOK = false;
+//    timer = new QTimer(this);
+//    connect(timer, SIGNAL(timeout()), this, SLOT(updateCpuTemp()));
+}
+
+CpuWidget::~CpuWidget()
+{
+//    disconnect(timer,SIGNAL(timeout()),this,SLOT(updateCpuTemp()));
+//    if(timer->isActive()) {
+//        timer->stop();
+//    }
+//    if (timer != NULL) {
+//        delete timer;
+//        timer = NULL;
+//    }
 }
 
 bool CpuWidget::getStatus()
@@ -57,3 +71,7 @@ void CpuWidget::initData()
     }
     dataOK = true;
 }
+
+//void CpuWidget::updateCpuTemp()
+//{
+//}
