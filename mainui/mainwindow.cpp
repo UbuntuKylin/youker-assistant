@@ -200,7 +200,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 void MainWindow::initAnimation()
 {
     QRect mainAcitonRect(0, 0, 900, 150);
