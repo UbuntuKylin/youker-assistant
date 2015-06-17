@@ -46,7 +46,6 @@
 #include "boxactionwidget.h"
 #include "aboutdialog.h"
 
-
 class QParallelAnimationGroup;
 class SessionDispatcher;
 class SystemDispatcher;

@@ -67,7 +67,7 @@ void MemoryWidget::initData()
                     tmpMap.insert(it.key(), it.value());
                 }
             }
-            page->setMap(tmpMap, "INTEL");
+            page->setMap(tmpMap, "UBUNTUKYLIN");
             page->initUI();
             scroll_widget->addScrollWidget(page);
         }
