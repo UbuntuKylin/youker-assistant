@@ -62,7 +62,7 @@ public:
     ~InfoWidget();
     void setSessionDbusProxy(SessionDispatcher *dispatcher) { sessionProxy = dispatcher;}
     void setSystemDbusProxy(SystemDispatcher *dispatcher) { systemProxy = dispatcher;}
-    void initUI();
+    void initUI(bool has_battery);
 
 public slots:
     void changeInfoPage(QListWidgetItem* item);

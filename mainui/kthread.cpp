@@ -20,17 +20,26 @@
 #include <QDebug>
 #include "kthread.h"
 
+//Thread::Thread(QString message, QObject *parent) :
+//    stopped(false)
+//  , QThread(parent)
+//  , message(message)
+//{
+//}
+
+//Thread *thread = new Thread(name, this);
+
+
 KThread::KThread(QObject *parent):QThread(parent)
 {
 
 }
 
-void KThread::initValues(QMap<QString, QVariant> data, QStringList &arglist, QDBusInterface *systemiface, QString method, QString flag) {
+void KThread::initValues(QMap<QString, QVariant> data, QStringList &arglist, QDBusInterface *systemiface, QString method) {
     iface = systemiface;
     mapData = data;
     methodName = method;
     list = arglist;
-    fileFlag = flag;
 }
 
 KThread::~KThread() {
@@ -56,12 +65,12 @@ void KThread::run() {
         iface->call("call_camera");
     }
     //sso
-    else if(methodName == "slot_do_login_account") {
-        iface->call("slot_do_login_account");
-    }
-    else if(methodName == "check_user") {
-       iface->call("check_user");
-    }
+//    else if(methodName == "slot_do_login_account") {
+//        iface->call("slot_do_login_account");
+//    }
+//    else if(methodName == "check_user") {
+//       iface->call("check_user");
+//    }
 //    else if(methodName == "shredFile") {
 //        QDBusReply<int> reply = iface->call("shredFile", fileFlag);
 //        emit msgSignal(reply.value());

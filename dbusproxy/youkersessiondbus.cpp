@@ -37,7 +37,13 @@ SessionDispatcher::SessionDispatcher(QObject *parent)
     QObject::connect(sessioniface, SIGNAL(subpage_status_signal(QString)), this, SLOT(handlerScanCleanerStatus(QString)));
     QObject::connect(sessioniface, SIGNAL(subpage_error_signal(QString)), this, SLOT(handlerScanCleanerError(QString)));
 
-    thread = new KThread(this);
+//    thread = new KThread(this);
+
+
+    //kobe
+    scan_thread = new KThread(this);
+    onekey_scan_thread = new KThread(this);
+
     QObject::connect(sessioniface, SIGNAL(display_scan_process(QString)), this, SLOT(handler_scan_process(QString)));
     QObject::connect(sessioniface, SIGNAL(scan_complete(QString)), this, SLOT(handler_scan_complete(QString)));
     QObject::connect(sessioniface, SIGNAL(total_data_transmit(QString, QString)), this, SLOT(handler_total_data_transmit(QString,QString)));
@@ -53,12 +59,27 @@ SessionDispatcher::SessionDispatcher(QObject *parent)
 }
 
 SessionDispatcher::~SessionDispatcher() {
-    thread->terminate();
-    thread->wait();
-    if(thread != NULL) {
-        delete thread;
-        thread = NULL;
+    qDebug() << "SessionDispatcher delete......";
+    scan_thread->terminate();
+    scan_thread->wait();
+    if(scan_thread != NULL) {
+        delete scan_thread;
+        scan_thread = NULL;
     }
+    onekey_scan_thread->terminate();
+    onekey_scan_thread->wait();
+    if(onekey_scan_thread != NULL) {
+        delete onekey_scan_thread;
+        onekey_scan_thread = NULL;
+    }
+
+
+//    thread->terminate();
+//    thread->wait();
+//    if(thread != NULL) {
+//        delete thread;
+//        thread = NULL;
+//    }
     this->exit_qt();
     if (sessioniface != NULL) {
         delete sessioniface;
@@ -136,10 +157,17 @@ bool SessionDispatcher::judge_camera_qt() {
 }
 
 void SessionDispatcher::call_camera_qt() {
-    QStringList tmp;
-    QMap<QString, QVariant> data;
-    thread->initValues(data, tmp, sessioniface, "call_camera");
-    thread->start();
+    sessioniface->call("call_camera");
+//    if (thread->isRunning()) {
+//        qDebug() << "camera_thread is running......";
+//    }
+//    else {
+//        qDebug() << "camera_thread is ready to run......";
+//        QStringList tmp;
+//        QMap<QString, QVariant> data;
+//        thread->initValues(data, tmp, sessioniface, "call_camera");
+//        thread->start();
+//    }
 }
 
 bool SessionDispatcher::judge_power_is_exists_qt() {
@@ -228,16 +256,42 @@ void SessionDispatcher::handler_total_data_transmit(QString flag, QString msg) {
 //}
 
 void SessionDispatcher::onekey_scan_function_qt(QStringList selectedList) {
-    QMap<QString, QVariant> data;
-    thread->initValues(data, selectedList, sessioniface, "onekey_scan_function");
-    thread->start();
+//    QMap<QString, QVariant> data;
+//    thread->initValues(data, selectedList, sessioniface, "onekey_scan_function");
+//    thread->start();
+
+    if (scan_thread->isRunning()) {
+        qDebug() << "onekey_scan_thread is running......";
+    }
+    else {
+        qDebug() << "onekey_scan_thread is ready to run......";
+        QMap<QString, QVariant> data;
+        onekey_scan_thread->initValues(data, selectedList, sessioniface, "onekey_scan_function");
+        onekey_scan_thread->start();
+    }
 }
 
 void SessionDispatcher::scanSystemCleanerItems(QMap<QString, QVariant> data)
 {
-    QStringList tmp;
-    thread->initValues(data, tmp, sessioniface, "get_scan_result");
-    thread->start();
+//    QStringList tmp;
+//    thread->initValues(data, tmp, sessioniface, "get_scan_result");
+//    thread->start();
+    if (scan_thread->isRunning()) {
+        qDebug() << "scan_thread is running......";
+    }
+    else {
+        if (scan_thread == NULL)
+            qDebug() << "scan_thread is null, ready to run......";
+        else
+            qDebug() << "scan_thread is not null, ready to run......";
+        QStringList tmp;
+        scan_thread->initValues(data, tmp, sessioniface, "get_scan_result");
+        scan_thread->start();
+//        QElapsedTimer et;
+//        et.start();
+//        while(et.elapsed()<300)
+//            QCoreApplication::processEvents();
+    }
 }
 
 QString SessionDispatcher::getHomePath() {

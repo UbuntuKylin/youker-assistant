@@ -27,7 +27,7 @@
 #include "../dbusproxy/youkersessiondbus.h"
 #include <QButtonGroup>
 
-ConserveWidget::ConserveWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_desktop) :
+ConserveWidget::ConserveWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_desktop, bool has_battery) :
     QWidget(parent),
     sessionproxy(proxy)
 {
@@ -107,7 +107,8 @@ ConserveWidget::ConserveWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
         sleep_ac_display_combo->hide();
     }
 
-    if(!sessionproxy->judge_power_is_exists_qt())
+//    if(!sessionproxy->judge_power_is_exists_qt())
+    if(has_battery == false)
     {
         critical_low_label->hide();
         suspend_low_radio->hide();

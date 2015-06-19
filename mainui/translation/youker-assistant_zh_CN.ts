@@ -193,7 +193,7 @@ p, li { white-space: pre-wrap; }
         <translation>已关闭数目：</translation>
     </message>
     <message>
-        <location filename="../autostartwidget.cpp" line="214"/>
+        <location filename="../autostartwidget.cpp" line="215"/>
         <source>Auto Start</source>
         <translation>自启动</translation>
     </message>
@@ -409,7 +409,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../cleaneractionwidget.cpp" line="147"/>
         <location filename="../cleaneractionwidget.cpp" line="254"/>
         <location filename="../cleaneractionwidget.cpp" line="265"/>
-        <location filename="../cleaneractionwidget.cpp" line="338"/>
+        <location filename="../cleaneractionwidget.cpp" line="339"/>
         <source>Scaning......</source>
         <translation>正在扫描.....</translation>
     </message>
@@ -552,7 +552,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">没有安装Chromium浏览器......</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="330"/>
+        <location filename="../cleaneractionwidget.cpp" line="331"/>
         <source>Ready to Cleanup......</source>
         <translation>准备清理......</translation>
     </message>
@@ -1333,173 +1333,173 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ConserveWidget</name>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="237"/>
+        <location filename="../../setting/conservewidget.cpp" line="238"/>
         <source>Adjust gamma</source>
         <translation>调整伽马值</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="238"/>
+        <location filename="../../setting/conservewidget.cpp" line="239"/>
         <source>Adjust brightness</source>
         <translation>调整屏幕亮度</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="239"/>
+        <location filename="../../setting/conservewidget.cpp" line="240"/>
         <source>Time before session is considered idle</source>
         <translation>在此时间范围内无操作则关闭屏幕</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="240"/>
+        <location filename="../../setting/conservewidget.cpp" line="241"/>
         <source>Lock screen</source>
         <translation>锁定屏幕</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="241"/>
+        <location filename="../../setting/conservewidget.cpp" line="242"/>
         <source>Lock delay</source>
         <translation>锁定延时</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="242"/>
+        <location filename="../../setting/conservewidget.cpp" line="243"/>
         <source>Battery critical low action</source>
         <translation>电池严重不足时</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="243"/>
+        <location filename="../../setting/conservewidget.cpp" line="244"/>
         <source>Laptop lid close action on battery</source>
         <translation>使用电池合上盖子时</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="244"/>
+        <location filename="../../setting/conservewidget.cpp" line="245"/>
         <source>Laptop lid close action on AC</source>
         <translation>使用电源合上盖子时</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="245"/>
+        <location filename="../../setting/conservewidget.cpp" line="246"/>
         <source>Sleep timeout PC when on battery</source>
         <translation>使用电池，空闲此时间后电脑转入睡眠</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="246"/>
+        <location filename="../../setting/conservewidget.cpp" line="247"/>
         <source>Sleep timeout PC when on AC</source>
         <translation>使用电源，空闲此时间后电脑转入睡眠</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="247"/>
+        <location filename="../../setting/conservewidget.cpp" line="248"/>
         <source>Sleep timeout display when on battery</source>
         <translation>使用电池，空闲此时间后屏幕转入睡眠</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="248"/>
+        <location filename="../../setting/conservewidget.cpp" line="249"/>
         <source>Sleep timeout display when on AC</source>
         <translation>使用电源，空闲此时间后屏幕转入睡眠</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="249"/>
-        <location filename="../../setting/conservewidget.cpp" line="251"/>
-        <location filename="../../setting/conservewidget.cpp" line="253"/>
+        <location filename="../../setting/conservewidget.cpp" line="250"/>
+        <location filename="../../setting/conservewidget.cpp" line="252"/>
+        <location filename="../../setting/conservewidget.cpp" line="254"/>
         <source>suspend</source>
         <translation>挂起</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="250"/>
+        <location filename="../../setting/conservewidget.cpp" line="251"/>
         <source>shutdown</source>
         <translation>电源关闭</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="252"/>
-        <location filename="../../setting/conservewidget.cpp" line="254"/>
+        <location filename="../../setting/conservewidget.cpp" line="253"/>
+        <location filename="../../setting/conservewidget.cpp" line="255"/>
         <source>nothing</source>
         <translation>不处理</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="285"/>
-        <location filename="../../setting/conservewidget.cpp" line="317"/>
+        <location filename="../../setting/conservewidget.cpp" line="286"/>
+        <location filename="../../setting/conservewidget.cpp" line="318"/>
         <source>1 minute</source>
         <translation>1 分钟</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="285"/>
-        <location filename="../../setting/conservewidget.cpp" line="317"/>
+        <location filename="../../setting/conservewidget.cpp" line="286"/>
+        <location filename="../../setting/conservewidget.cpp" line="318"/>
         <source>2 minutes</source>
         <translation>2 分钟</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="285"/>
-        <location filename="../../setting/conservewidget.cpp" line="317"/>
+        <location filename="../../setting/conservewidget.cpp" line="286"/>
+        <location filename="../../setting/conservewidget.cpp" line="318"/>
         <source>3 minutes</source>
         <translation>3 分钟</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="285"/>
-        <location filename="../../setting/conservewidget.cpp" line="317"/>
-        <location filename="../../setting/conservewidget.cpp" line="368"/>
-        <location filename="../../setting/conservewidget.cpp" line="391"/>
-        <location filename="../../setting/conservewidget.cpp" line="414"/>
-        <location filename="../../setting/conservewidget.cpp" line="437"/>
+        <location filename="../../setting/conservewidget.cpp" line="286"/>
+        <location filename="../../setting/conservewidget.cpp" line="318"/>
+        <location filename="../../setting/conservewidget.cpp" line="369"/>
+        <location filename="../../setting/conservewidget.cpp" line="392"/>
+        <location filename="../../setting/conservewidget.cpp" line="415"/>
+        <location filename="../../setting/conservewidget.cpp" line="438"/>
         <source>5 minutes</source>
         <translation>5 分钟</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="285"/>
-        <location filename="../../setting/conservewidget.cpp" line="317"/>
-        <location filename="../../setting/conservewidget.cpp" line="368"/>
-        <location filename="../../setting/conservewidget.cpp" line="391"/>
-        <location filename="../../setting/conservewidget.cpp" line="414"/>
-        <location filename="../../setting/conservewidget.cpp" line="437"/>
+        <location filename="../../setting/conservewidget.cpp" line="286"/>
+        <location filename="../../setting/conservewidget.cpp" line="318"/>
+        <location filename="../../setting/conservewidget.cpp" line="369"/>
+        <location filename="../../setting/conservewidget.cpp" line="392"/>
+        <location filename="../../setting/conservewidget.cpp" line="415"/>
+        <location filename="../../setting/conservewidget.cpp" line="438"/>
         <source>10 minutes</source>
         <translation>10 分钟</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="285"/>
-        <location filename="../../setting/conservewidget.cpp" line="317"/>
-        <location filename="../../setting/conservewidget.cpp" line="368"/>
-        <location filename="../../setting/conservewidget.cpp" line="391"/>
-        <location filename="../../setting/conservewidget.cpp" line="414"/>
-        <location filename="../../setting/conservewidget.cpp" line="437"/>
+        <location filename="../../setting/conservewidget.cpp" line="286"/>
+        <location filename="../../setting/conservewidget.cpp" line="318"/>
+        <location filename="../../setting/conservewidget.cpp" line="369"/>
+        <location filename="../../setting/conservewidget.cpp" line="392"/>
+        <location filename="../../setting/conservewidget.cpp" line="415"/>
+        <location filename="../../setting/conservewidget.cpp" line="438"/>
         <source>Half an hour</source>
         <translation>半小时</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="285"/>
-        <location filename="../../setting/conservewidget.cpp" line="317"/>
-        <location filename="../../setting/conservewidget.cpp" line="368"/>
-        <location filename="../../setting/conservewidget.cpp" line="391"/>
-        <location filename="../../setting/conservewidget.cpp" line="414"/>
-        <location filename="../../setting/conservewidget.cpp" line="437"/>
+        <location filename="../../setting/conservewidget.cpp" line="286"/>
+        <location filename="../../setting/conservewidget.cpp" line="318"/>
+        <location filename="../../setting/conservewidget.cpp" line="369"/>
+        <location filename="../../setting/conservewidget.cpp" line="392"/>
+        <location filename="../../setting/conservewidget.cpp" line="415"/>
+        <location filename="../../setting/conservewidget.cpp" line="438"/>
         <source>1 hour</source>
         <translation>1 小时</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="285"/>
-        <location filename="../../setting/conservewidget.cpp" line="368"/>
-        <location filename="../../setting/conservewidget.cpp" line="391"/>
-        <location filename="../../setting/conservewidget.cpp" line="414"/>
-        <location filename="../../setting/conservewidget.cpp" line="437"/>
+        <location filename="../../setting/conservewidget.cpp" line="286"/>
+        <location filename="../../setting/conservewidget.cpp" line="369"/>
+        <location filename="../../setting/conservewidget.cpp" line="392"/>
+        <location filename="../../setting/conservewidget.cpp" line="415"/>
+        <location filename="../../setting/conservewidget.cpp" line="438"/>
         <source>never</source>
         <translation>从不</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="317"/>
+        <location filename="../../setting/conservewidget.cpp" line="318"/>
         <source>30 seconds</source>
         <translation>30 秒</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="317"/>
+        <location filename="../../setting/conservewidget.cpp" line="318"/>
         <source>Turn off the screen</source>
         <translation>关闭屏幕</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="368"/>
-        <location filename="../../setting/conservewidget.cpp" line="391"/>
-        <location filename="../../setting/conservewidget.cpp" line="414"/>
-        <location filename="../../setting/conservewidget.cpp" line="437"/>
+        <location filename="../../setting/conservewidget.cpp" line="369"/>
+        <location filename="../../setting/conservewidget.cpp" line="392"/>
+        <location filename="../../setting/conservewidget.cpp" line="415"/>
+        <location filename="../../setting/conservewidget.cpp" line="438"/>
         <source>20 minutes</source>
         <translation>20 分钟</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="368"/>
-        <location filename="../../setting/conservewidget.cpp" line="391"/>
-        <location filename="../../setting/conservewidget.cpp" line="414"/>
-        <location filename="../../setting/conservewidget.cpp" line="437"/>
+        <location filename="../../setting/conservewidget.cpp" line="369"/>
+        <location filename="../../setting/conservewidget.cpp" line="392"/>
+        <location filename="../../setting/conservewidget.cpp" line="415"/>
+        <location filename="../../setting/conservewidget.cpp" line="438"/>
         <source>2 hours</source>
         <translation>2 小时</translation>
     </message>
@@ -1511,7 +1511,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CpuWidget</name>
     <message>
-        <location filename="../../info/cpuwidget.cpp" line="53"/>
+        <location filename="../../info/cpuwidget.cpp" line="67"/>
         <source>CPU Info</source>
         <translation>处理器信息</translation>
     </message>
@@ -2231,72 +2231,72 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PanelWidget</name>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="249"/>
+        <location filename="../../setting/panelwidget.cpp" line="250"/>
         <source>Dash background blur type</source>
         <translation>搜索框背景模糊类型</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="250"/>
+        <location filename="../../setting/panelwidget.cpp" line="251"/>
         <source>Panel Transparency</source>
         <translation>面板透明度</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="251"/>
+        <location filename="../../setting/panelwidget.cpp" line="252"/>
         <source>Date &amp; time format</source>
         <translation>日期时间格式</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="252"/>
+        <location filename="../../setting/panelwidget.cpp" line="253"/>
         <source>Display seconds</source>
         <translation>显示秒数</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="253"/>
+        <location filename="../../setting/panelwidget.cpp" line="254"/>
         <source>Display week</source>
         <translation>显示星期</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="254"/>
+        <location filename="../../setting/panelwidget.cpp" line="255"/>
         <source>Display the date</source>
         <translation>显示日期</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="255"/>
+        <location filename="../../setting/panelwidget.cpp" line="256"/>
         <source>Display battery icon</source>
         <translation>显示电池图标</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="256"/>
+        <location filename="../../setting/panelwidget.cpp" line="257"/>
         <source>Display battery percentage</source>
         <translation>显示电池百分比</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="257"/>
+        <location filename="../../setting/panelwidget.cpp" line="258"/>
         <source>Display battery remaining time</source>
         <translation>显示电池电量时间</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="259"/>
+        <location filename="../../setting/panelwidget.cpp" line="260"/>
         <source>Smart blur</source>
         <translation>活动模糊</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="260"/>
+        <location filename="../../setting/panelwidget.cpp" line="261"/>
         <source>Static blur</source>
         <translation>静态模糊</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="261"/>
+        <location filename="../../setting/panelwidget.cpp" line="262"/>
         <source>Clear</source>
         <translation>非模糊</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="263"/>
+        <location filename="../../setting/panelwidget.cpp" line="264"/>
         <source>Show applications</source>
         <translation>显示应用程序</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="264"/>
+        <location filename="../../setting/panelwidget.cpp" line="265"/>
         <source>Show system</source>
         <translation>显示系统</translation>
     </message>
@@ -2305,7 +2305,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">显示桌面</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="266"/>
+        <location filename="../../setting/panelwidget.cpp" line="267"/>
         <source>Show places</source>
         <translation>显示位置</translation>
     </message>
@@ -2314,7 +2314,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">显示应用程序</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="265"/>
+        <location filename="../../setting/panelwidget.cpp" line="266"/>
         <source>Show icon</source>
         <translation>显示图标</translation>
     </message>
@@ -2322,28 +2322,73 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ProcessDialog</name>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="93"/>
-        <location filename="../../processmanager/processdialog.cpp" line="127"/>
+        <location filename="../../processmanager/processdialog.cpp" line="96"/>
+        <location filename="../../processmanager/processdialog.cpp" line="130"/>
         <source>Process Manager</source>
         <translation>进程管理器</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="94"/>
+        <location filename="../../processmanager/processdialog.cpp" line="97"/>
         <source>Help you learn more about the program running on the system.</source>
         <translation>帮助您了解和管理系统上运行的进程。</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="95"/>
+        <location filename="../../processmanager/processdialog.cpp" line="98"/>
         <source>Kill Process</source>
         <translation>杀进程</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="255"/>
+        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <source>Command Line</source>
+        <translation>命令行</translation>
+    </message>
+    <message>
+        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <source>User</source>
+        <translation>用户</translation>
+    </message>
+    <message>
+        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <source>ID</source>
+        <translation>ID</translation>
+    </message>
+    <message>
+        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <source>Priority</source>
+        <translation>优先级</translation>
+    </message>
+    <message>
+        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <source>Status</source>
+        <translation>状态</translation>
+    </message>
+    <message>
+        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <source>% Memory</source>
+        <translation>% 内存</translation>
+    </message>
+    <message>
+        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <source>% CPU</source>
+        <translation>% CPU</translation>
+    </message>
+    <message>
+        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <source>CPU Time</source>
+        <translation>CPU时间</translation>
+    </message>
+    <message>
+        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <source>Started</source>
+        <translation>开始于</translation>
+    </message>
+    <message>
+        <location filename="../../processmanager/processdialog.cpp" line="259"/>
         <source>kill process success</source>
         <translation>杀进程成功</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="258"/>
+        <location filename="../../processmanager/processdialog.cpp" line="262"/>
         <source>kill process failed</source>
         <translation>杀进程失败</translation>
     </message>

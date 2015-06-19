@@ -38,7 +38,7 @@ public:
 //    explicit KThread(QStringList &arglist, QDBusInterface *systemiface=0,/* QObject *parent = 0, */QString method="", QString flag="", int size=0);
     ~KThread();
     void stop();
-    void initValues(QMap<QString, QVariant> data, QStringList &arglist, QDBusInterface *systemiface=0,QString method="", QString flag="");
+    void initValues(QMap<QString, QVariant> data, QStringList &arglist, QDBusInterface *systemiface=0,QString method="");
 //signals:
 //  void msgSignal(const int result);//用于向主线程传递
 protected:
@@ -49,6 +49,6 @@ private:
     QMap<QString, QVariant> mapData;
     QStringList list;
     QString methodName;
-    QString fileFlag;
+//    QString fileFlag;
 };
 #endif // KTHREAD_H

@@ -39,7 +39,7 @@ class ConserveWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ConserveWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0, QString cur_desktop = "");
+    explicit ConserveWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0, QString cur_desktop = "", bool has_battery = false);
     ~ConserveWidget();
     void setLanguage();
     void initConnect();

@@ -25,7 +25,7 @@
 #include <QHBoxLayout>
 #include "../dbusproxy/youkersessiondbus.h"
 
-PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_desktop) :
+PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_desktop, bool has_battery) :
     QWidget(parent),
     sessionproxy(proxy)
 {
@@ -200,7 +200,8 @@ PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_
     layout->addLayout(layout4);
     layout->addLayout(layout5);
     layout->addLayout(layout6);
-    if(sessionproxy->judge_power_is_exists_qt())
+//    if(sessionproxy->judge_power_is_exists_qt())
+    if(has_battery)
     {
         layout->addLayout(layout7);
         layout->addLayout(layout8);

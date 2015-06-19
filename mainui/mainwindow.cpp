@@ -338,6 +338,7 @@ void MainWindow::startDbusDaemon()
     sessioninterface = new SessionDispatcher(this);
     systeminterface = new SystemDispatcher(this);
     this->desktop = sessioninterface->access_current_desktop_qt();
+    this->battery = sessioninterface->judge_power_is_exists_qt();
     login_widget->setSessionDbusProxy(sessioninterface);
     sessioninterface->check_user_qt();
     connect(sessioninterface, SIGNAL(ssoSuccessSignal(QString, QString)), login_widget, SLOT(showLoginInfo(QString,QString)));
@@ -618,7 +619,7 @@ void MainWindow::showInfoWidget()
         info_widget = new InfoWidget();
         info_widget->setSessionDbusProxy(sessioninterface);
         info_widget->setSystemDbusProxy(systeminterface);
-        info_widget->initUI();
+        info_widget->initUI(this->battery);
         bottom_grid_layout->addWidget(info_widget,0,0);
         content_widget->setLayout(bottom_grid_layout);
         bottom_grid_layout->setSpacing(0);
@@ -786,7 +787,7 @@ void MainWindow::showSettingWidget()
     {
         if( bottom_grid_layout == NULL )
             bottom_grid_layout = new QGridLayout();
-        setting_widget = new SettingWidget(this->desktop);
+        setting_widget = new SettingWidget(this->desktop, this->battery);
         setting_widget->setParentWindow(this);
         setting_widget->setSessionDbusProxy(sessioninterface);
         setting_widget->setSystemDbusProxy(systeminterface);

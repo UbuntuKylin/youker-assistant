@@ -325,6 +325,7 @@ void CleanerActionWidget::receivePolicyKitSignal(bool status)
     {
         clean_button->show();
         clean_button->setEnabled(false);
+        scan_button->hide();
         loading_label->startLoading();
         suggest_label->hide();
         doing_label->setText(tr("Ready to Cleanup......"));//准备清理......

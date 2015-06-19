@@ -140,6 +140,7 @@ private:
     AboutDialog *aboutDlg;
     QSettings * mSettings;
     QString desktop;
+    bool battery;
 
     QParallelAnimationGroup *openGroup;
     QParallelAnimationGroup *closeGroup;

@@ -23,8 +23,8 @@
 //#include "../dbusproxy/youkersessiondbus.h"
 //#include "mainwindow.h"
 
-SettingWidget::SettingWidget(QString cur_desktop, QWidget *parent) :
-    QWidget(parent), desktop(cur_desktop)
+SettingWidget::SettingWidget(QString cur_desktop, bool has_battery, QWidget *parent) :
+    QWidget(parent), desktop(cur_desktop), battery(has_battery)
 {
     this->setFixedSize(900, 403);
     //set white background color
@@ -121,12 +121,12 @@ void SettingWidget::initUI()
     voice_widget = new VoiceWidget(this, sessionProxy, systemProxy, desktop);
     animation_widget = new AnimationWidget(this, systemProxy, p_mainwindow);
     launcher_widget = new LauncherWidget(this, sessionProxy, desktop);
-    panel_widget = new PanelWidget(this, sessionProxy, desktop);
+    panel_widget = new PanelWidget(this, sessionProxy, desktop, battery);
     window_widget = new WindowWidget(this, sessionProxy, desktop);
     font_widget = new FontWidget(this, sessionProxy, p_mainwindow, desktop);
     touchpad_widget = new TouchpadWidget(this, sessionProxy, desktop);
     deadpixel_widget = new DeadpixelWidget(this);
-    conserve_widget = new ConserveWidget(this, sessionProxy, desktop);
+    conserve_widget = new ConserveWidget(this, sessionProxy, desktop, battery);
     nautilus_widget = new NautilusWidget(this, sessionProxy);
     stacked_widget->addWidget(h_splitter);
     stacked_widget->addWidget(theme_widget);
