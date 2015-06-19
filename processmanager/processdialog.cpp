@@ -149,7 +149,8 @@ void ProcessDialog::showProList() {
     tableWidget->horizontalHeader()->setHighlightSections(false);
     tableWidget->setShowGrid(false);
     QStringList headers;
-    headers << "命令行" << "用户" << "ID" << "优先级" << "状态" << "% 内存" << "% CPU" << "CPU时间" << "开始于";//<< "等候频道";
+//    headers << "命令行" << "用户" << "ID" << "优先级" << "状态" << "% 内存" << "% CPU" << "CPU时间" << "开始于";//<< "等候频道";
+    headers << tr("Command Line") << tr("User") << tr("ID") << tr("Priority") << tr("Status") << tr("% Memory") << tr("% CPU") << tr("CPU Time") << tr("Started");//<< "Waiting Channel";
     tableWidget->setHorizontalHeaderLabels(headers);
     QTableWidgetItem *columnHeaderItem0 = tableWidget->horizontalHeaderItem(0); //获得水平方向表头的Item对象
     QTableWidgetItem *columnHeaderItem1 = tableWidget->horizontalHeaderItem(1);

@@ -84,7 +84,7 @@ InfoWidget::~InfoWidget()
     }
 }
 
-void InfoWidget::initUI()
+void InfoWidget::initUI(bool has_battery)
 {
     system_widget = new SystemWidget(this, systemProxy);
     desktop_widget = new DesktopWidget(this, sessionProxy);
@@ -110,8 +110,9 @@ void InfoWidget::initUI()
     {
         cdrom_widget = new CDRowWidget(this, systemProxy);
     }
-    bool power = sessionProxy->judge_power_is_exists_qt();
-    if(power)
+//    bool power = sessionProxy->judge_power_is_exists_qt();
+//    if(power)
+    if(has_battery)
     {
         battery_widget = new BatteryWidget(this, sessionProxy);
     }
@@ -131,7 +132,10 @@ void InfoWidget::initUI()
         if(i == 9 && dvdNum == 0){
 
         }
-        else if(i == 10 && !power) {
+//        else if(i == 10 && !power) {
+
+//        }
+        else if(i == 10 && !has_battery) {
 
         }
         else if ((i  == 2 || i == 3 || i == 4) && arch == "aarch64")
@@ -163,12 +167,12 @@ void InfoWidget::initUI()
     {
         stacked_widget->addWidget(cdrom_widget);
     }
-    if(power)
+//    if(power)
+    if(has_battery)
     {
         stacked_widget->addWidget(battery_widget);
     }
     stacked_widget->addWidget(driver_widget);
-
 
 //    device_content = new QWidget();
 //    QScrollArea scroll_area1;

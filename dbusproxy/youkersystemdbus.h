@@ -96,6 +96,7 @@ public slots:
 private:
     QDBusInterface *systemiface;
     KThread *thread;
+    KThread *clean_thread;
 };
 
 #endif // YOUKERSYSTEMDBUS_H

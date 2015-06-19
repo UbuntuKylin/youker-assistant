@@ -278,8 +278,9 @@ void HomePage::switchPageIndex(QString index)
             int w_x = p_mainwindow->frameGeometry().topLeft().x() + (900 / 2) - (524  / 2);
             int w_y = p_mainwindow->frameGeometry().topLeft().y() + (600 /2) - (277  / 2);
             camera_manager->move(w_x, w_y);
-            camera_manager->show();
-            camera_manager->raise();
+            camera_manager->exec();
+//            camera_manager->show();
+//            camera_manager->raise();
         }
         else {
             int w_x = p_mainwindow->frameGeometry().topLeft().x() + (900 / 2) - (524  / 2);

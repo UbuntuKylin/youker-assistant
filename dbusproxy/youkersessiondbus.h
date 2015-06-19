@@ -343,7 +343,9 @@ public slots:
     void handler_notify_string(QString key, QString value);
 
 private:
-    KThread *thread;
+//    KThread *thread;
+    KThread *scan_thread;
+    KThread *onekey_scan_thread;
 };
 
 #endif // SESSIONDISPATCHER_H

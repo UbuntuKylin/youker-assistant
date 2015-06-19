@@ -29,6 +29,10 @@ SystemDispatcher::SystemDispatcher(QObject *parent)
                                "com.ubuntukylin.youker",
                                QDBusConnection::systemBus());
     thread = new KThread(this);
+
+    //kobe
+    clean_thread = new KThread(this);
+
     QObject::connect(systemiface,SIGNAL(quit_clean(bool)),this,SLOT(handler_interrupt_clean(bool)));
     QObject::connect(systemiface,SIGNAL(clean_complete_onekey(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
     QObject::connect(systemiface,SIGNAL(clean_error_onekey(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
@@ -46,6 +50,15 @@ SystemDispatcher::~SystemDispatcher() {
         delete thread;
         thread = NULL;
     }
+
+    clean_thread->terminate();
+    clean_thread->wait();
+    if(clean_thread != NULL) {
+        delete clean_thread;
+        clean_thread = NULL;
+    }
+
+
     this->exit_qt();
     if (systemiface != NULL) {
         delete systemiface;
@@ -55,14 +68,28 @@ SystemDispatcher::~SystemDispatcher() {
 
 void SystemDispatcher::cleanAllSelectItems(QMap<QString, QVariant> selectMap)
 {
-    QStringList tmp;
-    QEventLoop q;
-    thread->initValues(selectMap, tmp, systemiface, "remove_select_items");
-    thread->start();
-    q.exec();
-    if(thread->isFinished()){
-       q.quit();
+    if (clean_thread->isRunning()) {
+        qDebug() << "clean_thread is running......";
     }
+    else {
+        if(clean_thread == NULL) {
+            qDebug() << "clean_thread is null, ready to run......";
+        }
+        else
+            qDebug() << "clean_thread is not null, ready to run......";
+        QStringList tmp;
+        QEventLoop q;
+        clean_thread->initValues(selectMap, tmp, systemiface, "remove_select_items");
+        clean_thread->start();
+        q.exec();
+        if(clean_thread->isFinished()){
+           q.quit();
+        }
+    }
+//    QElapsedTimer et;
+//    et.start();
+//    while(et.elapsed()<300)
+//        QCoreApplication::processEvents();
 }
 
 //void SystemDispatcher::kill_root_process_qt(QString pid) {
@@ -312,9 +339,15 @@ QString SystemDispatcher::delete_plymouth_qt(QString plymouthName) {
 }
 
 void SystemDispatcher::clean_by_main_one_key_qt() {
-    QStringList argList;
-    argList << "1" << "1" << "1";
-    QMap<QString, QVariant> data;
-    thread->initValues(data, argList, systemiface, "onekey_clean_crufts_function");
-    thread->start();
+    if (thread->isRunning()) {
+        qDebug() << "onekey_clean_thread is running......";
+    }
+    else {
+        qDebug() << "onekey_clean_thread is ready to run......";
+        QStringList argList;
+        argList << "1" << "1" << "1";
+        QMap<QString, QVariant> data;
+        thread->initValues(data, argList, systemiface, "onekey_clean_crufts_function");
+        thread->start();
+    }
 }

@@ -52,7 +52,7 @@ class SettingWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SettingWidget(QString cur_desktop = "", QWidget *parent = 0);
+    explicit SettingWidget(QString cur_desktop = "", bool has_battery = false, QWidget *parent = 0);
     ~SettingWidget();
     void initIndividuationWidget();
     void initDesktopWidget();
@@ -77,6 +77,7 @@ private:
     SessionDispatcher *sessionProxy;
     SystemDispatcher *systemProxy;
     QString desktop;
+    bool battery;
 
     QStackedWidget *stacked_widget;
     ThemeWidget *theme_widget;
