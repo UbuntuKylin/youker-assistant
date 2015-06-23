@@ -56,7 +56,8 @@ SettingAction::SettingAction(QString cur_desktop, QWidget *parent)
     layout1->addWidget(title_label, 0, Qt::AlignVCenter);
     layout1->setSpacing(20);
     layout1->setMargin(0);
-    layout1->setContentsMargins(20, 20, 0, 0);
+//    layout1->setContentsMargins(20, 20, 0, 0);
+    layout1->setContentsMargins(0, 0, 0, 0);
 
 
 //    QVBoxLayout *layout1 = new QVBoxLayout();
@@ -114,44 +115,44 @@ void SettingAction::setLanguage(int index)
         title_label->setText(tr("Set the sound theme you want"));
 //        description_label->setText(tr("Set the sound theme you want."));
         break;
+//    case 5:
+//        title_label->setText(tr("Click the \"Custom Picture\" button to select the picture you want to add, click the picture you want to set and push the \"OK\" button to complete"));
+////        description_label->setText(tr("Click the \"Custom Picture\" button to select the picture you want to add, click the picture you want to set and push the \"OK\" button to complete."));
+//        break;
     case 5:
-        title_label->setText(tr("Click the \"Custom Picture\" button to select the picture you want to add, click the picture you want to set and push the \"OK\" button to complete"));
-//        description_label->setText(tr("Click the \"Custom Picture\" button to select the picture you want to add, click the picture you want to set and push the \"OK\" button to complete."));
-        break;
-    case 6:
         if (this->desktop == "mate")
             title_label->setText(tr("Setting the panel mode of auto hide and icon size"));
         else
             title_label->setText(tr("Setting the Launcher display mode, Icon size"));
 //        description_label->setText(tr("Setting the Launcher display mode, Icon size."));
         break;
-    case 7:
+    case 6:
         if (this->desktop == "mate")
             title_label->setText(tr("Manage display of the start menu"));
         else
             title_label->setText(tr("Manage Dash and Panel menu settings"));
 //        description_label->setText(tr("Manage Dash and Panel menu settings."));
         break;
-    case 8:
+    case 7:
         title_label->setText(tr("Window Manager settings"));
 //        description_label->setText(tr("Window Manager settings."));
         break;
-    case 9:
+    case 8:
         title_label->setText(tr("According to personal preferences to set the system default font, click the  'Restore' button, can be restored to the state before the font settings"));
 //        description_label->setText(tr("According to personal preferences to set the system default font, click the  'Restore' button, can be restored to the state before the font settings."));
         break;
-    case 10:
+    case 9:
         title_label->setText(tr("Setting the relevant properties of your touchpad,make the operation more convenient"));
 //        description_label->setText(tr("Setting the relevant properties of your touchpad,make the operation more convenient."));
         break;
-    case 11:
+    case 10:
         title_label->setText(tr("Monitor Check"));
 //        description_label->setText(tr("Monitor Check."));
         break;
-    case 12:
+    case 11:
         title_label->setText(tr("Save energy to let the computer longer standby time"));
         break;
-    case 13:
+    case 12:
         if (this->desktop == "mate")
             title_label->setText(tr("Manage the Caja file manager. Tips: if the thumbnail's cache time or size is set to -1, it will not be checked"));
         else

@@ -82,27 +82,27 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="262"/>
+        <location filename="../../setting/animationwidget.cpp" line="261"/>
         <source>Image Files (*.png *.jpg *.gif)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="312"/>
+        <location filename="../../setting/animationwidget.cpp" line="311"/>
         <source>Deleted successfully!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="321"/>
+        <location filename="../../setting/animationwidget.cpp" line="320"/>
         <source>This is the using animation!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="331"/>
+        <location filename="../../setting/animationwidget.cpp" line="330"/>
         <source>This is the default animation!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="341"/>
+        <location filename="../../setting/animationwidget.cpp" line="340"/>
         <source>An unknown error occurred!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -190,9 +190,19 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>BoxWidget</name>
     <message>
-        <location filename="../boxwidget.cpp" line="98"/>
-        <location filename="../boxwidget.cpp" line="102"/>
+        <location filename="../boxwidget.cpp" line="99"/>
+        <location filename="../boxwidget.cpp" line="103"/>
         <source>UbuntuKylin Software Center</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../boxwidget.cpp" line="108"/>
+        <source>Boot Manager</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../boxwidget.cpp" line="108"/>
+        <source>Camera</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -279,141 +289,141 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CleanerActionWidget</name>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="142"/>
+        <location filename="../cleaneractionwidget.cpp" line="149"/>
         <source>Regular cleaning, let your computer remains the relaxed state</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="144"/>
+        <location filename="../cleaneractionwidget.cpp" line="151"/>
         <source>Start Scan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="145"/>
+        <location filename="../cleaneractionwidget.cpp" line="152"/>
         <source>Start Cleanup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="146"/>
+        <location filename="../cleaneractionwidget.cpp" line="153"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="147"/>
-        <location filename="../cleaneractionwidget.cpp" line="254"/>
-        <location filename="../cleaneractionwidget.cpp" line="265"/>
-        <location filename="../cleaneractionwidget.cpp" line="339"/>
+        <location filename="../cleaneractionwidget.cpp" line="154"/>
+        <location filename="../cleaneractionwidget.cpp" line="261"/>
+        <location filename="../cleaneractionwidget.cpp" line="272"/>
+        <location filename="../cleaneractionwidget.cpp" line="346"/>
         <source>Scaning......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="157"/>
+        <location filename="../cleaneractionwidget.cpp" line="164"/>
         <source>Clean OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="164"/>
+        <location filename="../cleaneractionwidget.cpp" line="171"/>
         <source>Cleaning: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="168"/>
+        <location filename="../cleaneractionwidget.cpp" line="175"/>
         <source>, Percent is: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="168"/>
+        <location filename="../cleaneractionwidget.cpp" line="175"/>
         <source>%, Status is: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="176"/>
+        <location filename="../cleaneractionwidget.cpp" line="183"/>
         <source>Clean Firefox history......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="180"/>
+        <location filename="../cleaneractionwidget.cpp" line="187"/>
         <source>Clean Chromium history......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="184"/>
+        <location filename="../cleaneractionwidget.cpp" line="191"/>
         <source>Clean system history......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="189"/>
+        <location filename="../cleaneractionwidget.cpp" line="196"/>
         <source>Clean apt......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="193"/>
+        <location filename="../cleaneractionwidget.cpp" line="200"/>
         <source>Start clean apt......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="198"/>
+        <location filename="../cleaneractionwidget.cpp" line="205"/>
         <source>Clean Firefox Cookie:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="202"/>
+        <location filename="../cleaneractionwidget.cpp" line="209"/>
         <source>Clean Chromium Cookie:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="211"/>
-        <location filename="../cleaneractionwidget.cpp" line="295"/>
+        <location filename="../cleaneractionwidget.cpp" line="218"/>
+        <location filename="../cleaneractionwidget.cpp" line="302"/>
         <source> does not exist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="215"/>
+        <location filename="../cleaneractionwidget.cpp" line="222"/>
         <source>Chromium Browser is running......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="223"/>
+        <location filename="../cleaneractionwidget.cpp" line="230"/>
         <source>Cache Scan OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="227"/>
+        <location filename="../cleaneractionwidget.cpp" line="234"/>
         <source>Cookies Scan OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="231"/>
+        <location filename="../cleaneractionwidget.cpp" line="238"/>
         <source>History Scan OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="282"/>
+        <location filename="../cleaneractionwidget.cpp" line="289"/>
         <source>Firefox Browser does not be installed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="286"/>
+        <location filename="../cleaneractionwidget.cpp" line="293"/>
         <source>Chromium Browser does not be installed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="290"/>
+        <location filename="../cleaneractionwidget.cpp" line="297"/>
         <source>Chromium Browser is running</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="279"/>
+        <location filename="../cleaneractionwidget.cpp" line="286"/>
         <source>Error: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="235"/>
+        <location filename="../cleaneractionwidget.cpp" line="242"/>
         <source>Packages Scan OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="331"/>
+        <location filename="../cleaneractionwidget.cpp" line="338"/>
         <source>Ready to Cleanup......</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1463,191 +1473,191 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>HomeActionWidget</name>
     <message>
-        <location filename="../homeactionwidget.cpp" line="133"/>
-        <location filename="../homeactionwidget.cpp" line="293"/>
+        <location filename="../homeactionwidget.cpp" line="143"/>
+        <location filename="../homeactionwidget.cpp" line="306"/>
         <source>The lastest cleanup time is </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="139"/>
-        <location filename="../homeactionwidget.cpp" line="399"/>
+        <location filename="../homeactionwidget.cpp" line="149"/>
+        <location filename="../homeactionwidget.cpp" line="415"/>
         <source>The lastest scan time is </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="143"/>
+        <location filename="../homeactionwidget.cpp" line="153"/>
         <source>You have not implemented the one key scan and clean-up operation.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="164"/>
+        <location filename="../homeactionwidget.cpp" line="174"/>
         <source>Quick clean up system trash, saving disk space and improving the system efficiency!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="165"/>
+        <location filename="../homeactionwidget.cpp" line="175"/>
         <source>Start Scan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="166"/>
+        <location filename="../homeactionwidget.cpp" line="176"/>
         <source>Start Cleanup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="167"/>
+        <location filename="../homeactionwidget.cpp" line="177"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="168"/>
+        <location filename="../homeactionwidget.cpp" line="178"/>
         <source>Scanning......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="178"/>
+        <location filename="../homeactionwidget.cpp" line="189"/>
         <source>Scanning:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="184"/>
+        <location filename="../homeactionwidget.cpp" line="179"/>
         <source>Scan Over</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="192"/>
-        <location filename="../homeactionwidget.cpp" line="196"/>
-        <location filename="../homeactionwidget.cpp" line="207"/>
+        <location filename="../homeactionwidget.cpp" line="205"/>
+        <location filename="../homeactionwidget.cpp" line="209"/>
+        <location filename="../homeactionwidget.cpp" line="220"/>
         <source> history trace; </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="192"/>
-        <location filename="../homeactionwidget.cpp" line="217"/>
+        <location filename="../homeactionwidget.cpp" line="205"/>
+        <location filename="../homeactionwidget.cpp" line="230"/>
         <source> browser cookies.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="196"/>
-        <location filename="../homeactionwidget.cpp" line="221"/>
+        <location filename="../homeactionwidget.cpp" line="209"/>
+        <location filename="../homeactionwidget.cpp" line="234"/>
         <source> browser cookies; </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="196"/>
-        <location filename="../homeactionwidget.cpp" line="207"/>
-        <location filename="../homeactionwidget.cpp" line="221"/>
-        <location filename="../homeactionwidget.cpp" line="232"/>
+        <location filename="../homeactionwidget.cpp" line="209"/>
+        <location filename="../homeactionwidget.cpp" line="220"/>
+        <location filename="../homeactionwidget.cpp" line="234"/>
+        <location filename="../homeactionwidget.cpp" line="245"/>
         <source> garbage.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="203"/>
+        <location filename="../homeactionwidget.cpp" line="216"/>
         <source> history trace.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="237"/>
+        <location filename="../homeactionwidget.cpp" line="250"/>
         <source>No garbage.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="277"/>
+        <location filename="../homeactionwidget.cpp" line="290"/>
         <source>Cleaning......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="282"/>
+        <location filename="../homeactionwidget.cpp" line="295"/>
         <source>Garbage Cleanup OK......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="285"/>
+        <location filename="../homeactionwidget.cpp" line="298"/>
         <source>History Cleanup OK......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="288"/>
+        <location filename="../homeactionwidget.cpp" line="301"/>
         <source>Cookies Cleanup OK......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="294"/>
+        <location filename="../homeactionwidget.cpp" line="307"/>
         <source>Cleanup Cookies:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="294"/>
+        <location filename="../homeactionwidget.cpp" line="307"/>
         <source>; Garbage:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="294"/>
+        <location filename="../homeactionwidget.cpp" line="307"/>
         <source>; Historical records:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="324"/>
+        <location filename="../homeactionwidget.cpp" line="337"/>
         <source>Cleaning up history trace of Firefox...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="327"/>
+        <location filename="../homeactionwidget.cpp" line="340"/>
         <source>Firefox history trace had been cleared!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="332"/>
+        <location filename="../homeactionwidget.cpp" line="345"/>
         <source>Cleaning up history trace of Chromium...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="335"/>
+        <location filename="../homeactionwidget.cpp" line="348"/>
         <source>Chromium history trace had been cleared!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="340"/>
+        <location filename="../homeactionwidget.cpp" line="353"/>
         <source>Cleaning up Cookies of Firefox...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="343"/>
+        <location filename="../homeactionwidget.cpp" line="356"/>
         <source>Firefox Cookies had been cleared!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="348"/>
+        <location filename="../homeactionwidget.cpp" line="361"/>
         <source>Cleaning up Cookies of Chromium...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="351"/>
+        <location filename="../homeactionwidget.cpp" line="364"/>
         <source>Chromium Cookies had been cleared!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="356"/>
+        <location filename="../homeactionwidget.cpp" line="369"/>
         <source>Apt cache had been cleared!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="359"/>
+        <location filename="../homeactionwidget.cpp" line="372"/>
         <source>Cleaning up Apt cache: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="364"/>
+        <location filename="../homeactionwidget.cpp" line="377"/>
         <source>Software Center cache had been cleared!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="367"/>
+        <location filename="../homeactionwidget.cpp" line="380"/>
         <source>Cleaning up Software Center cache: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="391"/>
+        <location filename="../homeactionwidget.cpp" line="407"/>
         <source>Ready to Cleanup......</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2249,87 +2259,82 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SettingAction</name>
     <message>
-        <location filename="../../component/settingaction.cpp" line="99"/>
+        <location filename="../../component/settingaction.cpp" line="100"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="102"/>
+        <location filename="../../component/settingaction.cpp" line="103"/>
         <source>Choose the theme what you want</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="106"/>
+        <location filename="../../component/settingaction.cpp" line="107"/>
         <source>Set the desktop icon theme and the visibility of desktop icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="114"/>
+        <location filename="../../component/settingaction.cpp" line="115"/>
         <source>Set the sound theme you want</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="118"/>
-        <source>Click the &quot;Custom Picture&quot; button to select the picture you want to add, click the picture you want to set and push the &quot;OK&quot; button to complete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/settingaction.cpp" line="110"/>
+        <location filename="../../component/settingaction.cpp" line="111"/>
         <source>Replace the theme and size of the mouse pointer, and theme change need to restart system</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="123"/>
+        <location filename="../../component/settingaction.cpp" line="124"/>
         <source>Setting the panel mode of auto hide and icon size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="125"/>
+        <location filename="../../component/settingaction.cpp" line="126"/>
         <source>Setting the Launcher display mode, Icon size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="130"/>
+        <location filename="../../component/settingaction.cpp" line="131"/>
         <source>Manage display of the start menu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="132"/>
+        <location filename="../../component/settingaction.cpp" line="133"/>
         <source>Manage Dash and Panel menu settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="136"/>
+        <location filename="../../component/settingaction.cpp" line="137"/>
         <source>Window Manager settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="140"/>
+        <location filename="../../component/settingaction.cpp" line="141"/>
         <source>According to personal preferences to set the system default font, click the  &apos;Restore&apos; button, can be restored to the state before the font settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="144"/>
+        <location filename="../../component/settingaction.cpp" line="145"/>
         <source>Setting the relevant properties of your touchpad,make the operation more convenient</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="148"/>
+        <location filename="../../component/settingaction.cpp" line="149"/>
         <source>Monitor Check</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="152"/>
+        <location filename="../../component/settingaction.cpp" line="153"/>
         <source>Save energy to let the computer longer standby time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="156"/>
+        <location filename="../../component/settingaction.cpp" line="157"/>
         <source>Manage the Caja file manager. Tips: if the thumbnail&apos;s cache time or size is set to -1, it will not be checked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="158"/>
+        <location filename="../../component/settingaction.cpp" line="159"/>
         <source>Manage the Nautilus file manager. Tips: if the thumbnail&apos;s cache time or size is set to -1, it will not be checked</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2367,11 +2372,6 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingwidget.cpp" line="270"/>
         <source>SoundEffect</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingwidget.cpp" line="271"/>
-        <source>BootAnimation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2555,27 +2555,27 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ToolWidget</name>
     <message>
-        <location filename="../toolwidget.cpp" line="40"/>
+        <location filename="../toolwidget.cpp" line="41"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../toolwidget.cpp" line="40"/>
+        <location filename="../toolwidget.cpp" line="41"/>
         <source>Cleanup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../toolwidget.cpp" line="40"/>
+        <location filename="../toolwidget.cpp" line="41"/>
         <source>Sysinfo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../toolwidget.cpp" line="40"/>
+        <location filename="../toolwidget.cpp" line="41"/>
         <source>Feature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../toolwidget.cpp" line="40"/>
+        <location filename="../toolwidget.cpp" line="41"/>
         <source>Toolkits</source>
         <translation type="unfinished"></translation>
     </message>

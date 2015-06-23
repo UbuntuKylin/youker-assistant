@@ -72,11 +72,11 @@ void SystemDispatcher::cleanAllSelectItems(QMap<QString, QVariant> selectMap)
         qDebug() << "clean_thread is running......";
     }
     else {
-        if(clean_thread == NULL) {
-            qDebug() << "clean_thread is null, ready to run......";
-        }
-        else
-            qDebug() << "clean_thread is not null, ready to run......";
+//        if(clean_thread == NULL) {
+//            qDebug() << "clean_thread is null, ready to run......";
+//        }
+//        else
+//            qDebug() << "clean_thread is not null, ready to run......";
         QStringList tmp;
         QEventLoop q;
         clean_thread->initValues(selectMap, tmp, systemiface, "remove_select_items");
@@ -343,7 +343,7 @@ void SystemDispatcher::clean_by_main_one_key_qt() {
         qDebug() << "onekey_clean_thread is running......";
     }
     else {
-        qDebug() << "onekey_clean_thread is ready to run......";
+//        qDebug() << "onekey_clean_thread is ready to run......";
         QStringList argList;
         argList << "1" << "1" << "1";
         QMap<QString, QVariant> data;

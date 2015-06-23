@@ -35,6 +35,7 @@ BoxWidget::BoxWidget(QWidget *parent, QString path) :
     this->setPalette(palette);
 
     list_view = new QListView(this);
+//    list_view = new KylinListView(this);
     list_view->setFocusPolicy(Qt::NoFocus);
     list_view->setAutoFillBackground(true);
     list_view->setIconSize(QSize(48, 48));
@@ -101,6 +102,21 @@ void BoxWidget::initPluginWidget()
     //set tooltip
     pluginModel.setData(qindex, tr("UbuntuKylin Software Center"),Qt::WhatsThisRole);
 
+    QStringList icon_list;
+    icon_list<<"://res/boot"<<"://res/camera";
+    QStringList text_list;
+    text_list << tr("Boot Manager") << tr("Camera");
+    for (int index = 0;index < 2;++index)
+    {
+        pluginModel.insertRows(index + 1,1,QModelIndex());
+        qindex = pluginModel.index(index + 1,0,QModelIndex());
+        pluginModel.setData(qindex, text_list.at(index));
+        //set icon
+        pluginModel.setData(qindex,QIcon(QPixmap(icon_list.at(index))),Qt::DecorationRole);
+        //set tooltip
+        pluginModel.setData(qindex, text_list.at(index),Qt::WhatsThisRole);
+    }
+
     int count =  PluginManager::Instance()->count();
     for (int i = 0;i < count;++i)
     {
@@ -108,8 +124,10 @@ void BoxWidget::initPluginWidget()
         QString picture = ICommon->getPicture();
         QString  pacture_path = QString(":/model/res/plugin/%1").arg(picture);
         pluginModel.setGuid(ICommon->getGuid());
-        pluginModel.insertRows(i + 1,1,QModelIndex());
-        qindex = pluginModel.index(i + 1,0,QModelIndex());
+//        pluginModel.insertRows(i + 1,1,QModelIndex());
+//        qindex = pluginModel.index(i + 1,0,QModelIndex());
+        pluginModel.insertRows(i + 3,1,QModelIndex());
+        qindex = pluginModel.index(i + 3,0,QModelIndex());
         pluginModel.setData(qindex,ICommon->getName());
         pluginModel.setData(qindex,QIcon(QPixmap(pacture_path)),Qt::DecorationRole);
         pluginModel.setData(qindex,ICommon->getName(),Qt::WhatsThisRole);
@@ -122,9 +140,16 @@ void BoxWidget::OnClickListView(const QModelIndex & index)
     {
         sessionProxy->runApp("ubuntu-kylin-software-center");
     }
+    else if(index.row() == 1) {
+        emit this->sendSubIndex(0);
+    }
+    else if(index.row() == 2) {
+        emit this->sendSubIndex(1);
+    }
     else
     {
-        QString guid = pluginModel.getGuid(index.row() - 1);
+//        QString guid = pluginModel.getGuid(index.row() - 1);
+        QString guid = pluginModel.getGuid(index.row() - 3);
         PluginInterface* interface = PluginManager::Instance()->getInterfaceByGuid<PluginInterface>(guid);
         interface->doAction();
     }

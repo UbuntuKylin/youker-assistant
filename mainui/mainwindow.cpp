@@ -61,6 +61,9 @@ MainWindow::MainWindow(QWidget *parent) :
     box_widget = NULL;
     aboutDlg = NULL;
 
+    auto_start = NULL;
+    camera_manager = NULL;
+
     home_action_widget = NULL;
     info_action_widget = NULL;
     cleaner_action_widget = NULL;
@@ -197,6 +200,18 @@ MainWindow::~MainWindow()
         delete mSettings;
         mSettings = NULL;
     }
+
+    if(auto_start != NULL)
+    {
+        delete auto_start;
+        auto_start = NULL;
+    }
+    if(camera_manager != NULL)
+    {
+        delete camera_manager;
+        camera_manager = NULL;
+    }
+
     delete ui;
 }
 
@@ -543,6 +558,7 @@ void MainWindow::showHomePage()
         if( bottom_grid_layout == NULL )
             bottom_grid_layout = new QGridLayout();
         home_page = new HomePage(0, version);
+        connect(home_page, SIGNAL(sendSubIndex(int)), this, SLOT(displaySubPage(int)));
         home_page->setParentWindow(this);
         home_page->initUI();
         home_page->initConnect();
@@ -879,6 +895,7 @@ void MainWindow::showBoxWidget()
             bottom_grid_layout = new QGridLayout();
         box_widget = new BoxWidget(this, getAppDirectory());
         box_widget->setSessionDbusProxy(sessioninterface);
+        connect(box_widget, SIGNAL(sendSubIndex(int)), this, SLOT(displaySubPage(int)));
 //        box_widget = new BoxWidget(this, qApp->applicationDirPath());
         bottom_grid_layout->addWidget(box_widget,0,0);
         this->content_widget->setLayout(bottom_grid_layout);
@@ -915,6 +932,56 @@ void MainWindow::openSkinCenter() {
     skin_center.move(w_x, w_y);
     skin_center.show();
     skin_center.raise();
+}
+
+void MainWindow::displaySubPage(int index)
+{
+    if(index == 0)
+    {
+        if(auto_start == NULL) {
+            auto_start = new AutoStartWidget(0, sessioninterface);
+            connect(sessioninterface, SIGNAL(tellAutoModel(QStringList)), auto_start, SLOT(readyReciveData(QStringList)));
+            connect(sessioninterface, SIGNAL(showAutoModel()), auto_start, SLOT(readyShowUI()));
+            auto_start->initData();
+            int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (560  / 2);
+            int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (398  / 2);
+            auto_start->move(w_x, w_y);
+            auto_start->show();
+            auto_start->raise();
+        }
+        else {
+            int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (560  / 2);
+            int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (398  / 2);
+            auto_start->move(w_x, w_y);
+            auto_start->show();
+            auto_start->raise();
+        }
+    }
+
+    else if(index == 1)
+    {
+        if(camera_manager == NULL) {
+            camera_manager = new CameraManager(0, sessioninterface);
+            if(sessioninterface->judge_camera_qt())
+            {
+                camera_manager->setOKButtonEnable(true);
+            }
+            else{
+                camera_manager->setOKButtonEnable(false);
+            }
+            int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (524  / 2);
+            int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (277  / 2);
+            camera_manager->move(w_x, w_y);
+            camera_manager->exec();
+        }
+        else {
+            int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (524  / 2);
+            int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (277  / 2);
+            camera_manager->move(w_x, w_y);
+            camera_manager->show();
+            camera_manager->raise();
+        }
+    }
 }
 
 void MainWindow::newFeatures()

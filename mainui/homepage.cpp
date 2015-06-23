@@ -54,8 +54,8 @@ HomePage::HomePage(QWidget *parent, const QString &version) :
     more_text_btn = new QPushButton();
     more_btn = new QPushButton();
 
-    auto_start = NULL;
-    camera_manager = NULL;
+//    auto_start = NULL;
+//    camera_manager = NULL;
 
     more_text_btn->setObjectName("checkButton");
 //    more_text_btn->setCursor(Qt::PointingHandCursor);
@@ -94,16 +94,16 @@ HomePage::HomePage(QWidget *parent, const QString &version) :
 
 HomePage::~HomePage()
 {
-    if(auto_start != NULL)
-    {
-        delete auto_start;
-        auto_start = NULL;
-    }
-    if(camera_manager != NULL)
-    {
-        delete camera_manager;
-        camera_manager = NULL;
-    }
+//    if(auto_start != NULL)
+//    {
+//        delete auto_start;
+//        auto_start = NULL;
+//    }
+//    if(camera_manager != NULL)
+//    {
+//        delete camera_manager;
+//        camera_manager = NULL;
+//    }
 }
 
 void HomePage::initUI()
@@ -170,13 +170,13 @@ void HomePage::initUI()
     more_btn->setIconSize(pixmap.size());
 
     QVBoxLayout *more_layout = new QVBoxLayout();
-    more_layout->addStretch();
+//    more_layout->addStretch();
     more_layout->addWidget(more_btn);
     more_layout->addWidget(more_text_btn);
-    more_layout->addStretch();
+//    more_layout->addStretch();
     more_layout->setSpacing(0);
     more_layout->setMargin(0);
-    more_layout->setContentsMargins(0, 0, 0, 0);
+    more_layout->setContentsMargins(0, 8, 0, 0);
 
     button_layout->addStretch();
     button_layout->addLayout(more_layout);
@@ -243,51 +243,56 @@ void HomePage::switchPageIndex(QString index)
 //    int current_index = index.toInt(&ok, 10);
 
     if(index == "0")
-    {
-        if(auto_start == NULL) {
-            auto_start = new AutoStartWidget(0, sessionProxy);
-            connect(sessionProxy, SIGNAL(tellAutoModel(QStringList)), auto_start, SLOT(readyReciveData(QStringList)));
-            connect(sessionProxy, SIGNAL(showAutoModel()), auto_start, SLOT(readyShowUI()));
-            auto_start->initData();
-            int w_x = p_mainwindow->frameGeometry().topLeft().x() + (900 / 2) - (560  / 2);
-            int w_y = p_mainwindow->frameGeometry().topLeft().y() + (600 /2) - (398  / 2);
-            auto_start->move(w_x, w_y);
-            auto_start->show();
-            auto_start->raise();
-        }
-        else {
-            int w_x = p_mainwindow->frameGeometry().topLeft().x() + (900 / 2) - (560  / 2);
-            int w_y = p_mainwindow->frameGeometry().topLeft().y() + (600 /2) - (398  / 2);
-            auto_start->move(w_x, w_y);
-            auto_start->show();
-            auto_start->raise();
-        }
-    }
-
+        emit this->sendSubIndex(0);
     else if(index == "1")
-    {
-        if(camera_manager == NULL) {
-            camera_manager = new CameraManager(0, sessionProxy);
-            if(sessionProxy->judge_camera_qt())
-            {
-                camera_manager->setOKButtonEnable(true);
-            }
-            else{
-                camera_manager->setOKButtonEnable(false);
-            }
-            int w_x = p_mainwindow->frameGeometry().topLeft().x() + (900 / 2) - (524  / 2);
-            int w_y = p_mainwindow->frameGeometry().topLeft().y() + (600 /2) - (277  / 2);
-            camera_manager->move(w_x, w_y);
-            camera_manager->exec();
+        emit this->sendSubIndex(1);
+
+//    if(index == "0")
+//    {
+//        if(auto_start == NULL) {
+//            auto_start = new AutoStartWidget(0, sessionProxy);
+//            connect(sessionProxy, SIGNAL(tellAutoModel(QStringList)), auto_start, SLOT(readyReciveData(QStringList)));
+//            connect(sessionProxy, SIGNAL(showAutoModel()), auto_start, SLOT(readyShowUI()));
+//            auto_start->initData();
+//            int w_x = p_mainwindow->frameGeometry().topLeft().x() + (900 / 2) - (560  / 2);
+//            int w_y = p_mainwindow->frameGeometry().topLeft().y() + (600 /2) - (398  / 2);
+//            auto_start->move(w_x, w_y);
+//            auto_start->show();
+//            auto_start->raise();
+//        }
+//        else {
+//            int w_x = p_mainwindow->frameGeometry().topLeft().x() + (900 / 2) - (560  / 2);
+//            int w_y = p_mainwindow->frameGeometry().topLeft().y() + (600 /2) - (398  / 2);
+//            auto_start->move(w_x, w_y);
+//            auto_start->show();
+//            auto_start->raise();
+//        }
+//    }
+
+//    else if(index == "1")
+//    {
+//        if(camera_manager == NULL) {
+//            camera_manager = new CameraManager(0, sessionProxy);
+//            if(sessionProxy->judge_camera_qt())
+//            {
+//                camera_manager->setOKButtonEnable(true);
+//            }
+//            else{
+//                camera_manager->setOKButtonEnable(false);
+//            }
+//            int w_x = p_mainwindow->frameGeometry().topLeft().x() + (900 / 2) - (524  / 2);
+//            int w_y = p_mainwindow->frameGeometry().topLeft().y() + (600 /2) - (277  / 2);
+//            camera_manager->move(w_x, w_y);
+//            camera_manager->exec();
+////            camera_manager->show();
+////            camera_manager->raise();
+//        }
+//        else {
+//            int w_x = p_mainwindow->frameGeometry().topLeft().x() + (900 / 2) - (524  / 2);
+//            int w_y = p_mainwindow->frameGeometry().topLeft().y() + (600 /2) - (277  / 2);
+//            camera_manager->move(w_x, w_y);
 //            camera_manager->show();
 //            camera_manager->raise();
-        }
-        else {
-            int w_x = p_mainwindow->frameGeometry().topLeft().x() + (900 / 2) - (524  / 2);
-            int w_y = p_mainwindow->frameGeometry().topLeft().y() + (600 /2) - (277  / 2);
-            camera_manager->move(w_x, w_y);
-            camera_manager->show();
-            camera_manager->raise();
-        }
-    }
+//        }
+//    }
 }

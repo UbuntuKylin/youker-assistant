@@ -26,6 +26,7 @@
 #include <QPushButton>
 #include <QListView>
 #include "../component/kylinlistmodel.h"
+//#include "../component/kylinlistview.h"
 
 class SessionDispatcher;
 
@@ -40,6 +41,7 @@ public:
     void setSessionDbusProxy(SessionDispatcher *dispatcher) { sessionProxy = dispatcher;}
 
 signals:
+    void sendSubIndex(int index);
 
 public slots:
   void OnClickListView(const QModelIndex & index);
@@ -48,6 +50,7 @@ public slots:
 
 private:
     QListView *list_view;
+//    KylinListView *list_view;
     KylinListModel pluginModel;
     QString plugin_path;
     SessionDispatcher *sessionProxy;

@@ -49,6 +49,8 @@
 class QParallelAnimationGroup;
 class SessionDispatcher;
 class SystemDispatcher;
+#include "autostartwidget.h"
+#include "cameramanager.h"
 
 namespace Ui {
 class MainWindow;
@@ -93,6 +95,7 @@ public slots:
     void setupConfigure();
     void aboutUs();
     void startDbusDaemon();
+    void displaySubPage(int index);
 
 signals:
     void chanegBoxToolStatus();
@@ -146,6 +149,9 @@ private:
     QParallelAnimationGroup *closeGroup;
     PAGESTATUS status;
     bool statusFlag;
+
+    AutoStartWidget *auto_start;
+    CameraManager *camera_manager;
 };
 
 #endif // MAINWINDOW_H

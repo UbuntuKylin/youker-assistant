@@ -72,6 +72,7 @@ private:
     bool is_move;
     LoadingLabel *loading_label;
     QLabel *suggest_label;
+    QLabel *scan_result_label;
     QLabel *result_label;
     QLabel *doing_label;
     QPushButton *scan_button;

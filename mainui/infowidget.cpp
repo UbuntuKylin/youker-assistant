@@ -46,7 +46,7 @@ InfoWidget::InfoWidget(QWidget *parent) :
     category_widget->setResizeMode(QListView::Adjust);
     category_widget->setViewMode(QListView::ListMode);   //设置QListWidget的显示模式
     category_widget->setMovement(QListView::Static);//设置QListWidget中的单元项不可被拖动
-    category_widget->setSpacing(1);//设置QListWidget中的单元项的间距
+//    category_widget->setSpacing(1);//设置QListWidget中的单元项的间距
 
     stacked_widget = new QStackedWidget(this);//stacked_widget will delete when InfoWidget delete
     stacked_widget->setFocusPolicy(Qt::NoFocus);
@@ -146,7 +146,8 @@ void InfoWidget::initUI(bool has_battery)
             QIcon icon;
             icon.addFile(":/hd/res/hardware/" + icon_list.at(i), QSize(), QIcon::Normal, QIcon::Off);
             QListWidgetItem *item = new QListWidgetItem(type_list.at(i), category_widget);
-            item->setSizeHint(QSize(120,31)); //设置单元项的宽度和高度
+//            item->setSizeHint(QSize(120,31)); //设置单元项的宽度和高度
+            item->setSizeHint(QSize(120,36)); //设置单元项的宽度和高度
             item->setStatusTip(icon_list.at(i));
             item->setIcon(icon);
         }

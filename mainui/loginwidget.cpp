@@ -43,7 +43,7 @@ LoginWidget::LoginWidget(QWidget *parent)
 
     user_label = new QLabel();
     user_label->hide();
-    user_label->setStyleSheet("QLabel{color:#ffffff;font-family: Ubuntu;font-size: 12px;text-align: right;}");
+    user_label->setStyleSheet("QLabel{color:#ffffff;font-family: 方正黑体_GBK;font-size: 12px;text-align: right;}");
     user_label->adjustSize();
 
     logout_btn = new QPushButton();

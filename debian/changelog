@@ -5,8 +5,9 @@ youker-assistant (2.0.3) vivid; urgency=low
   * Display hardware manufacturer logo.
   * Add Gio.Settings notify for Unity and Mate settings.
   * Make interface switching more smoothly.
+  * Adjust the layout of interface.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 19 Jun 2015 14:53:49 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Tue, 23 Jun 2015 15:46:45 +0800
 
 youker-assistant (2.0.2) vivid; urgency=low
 

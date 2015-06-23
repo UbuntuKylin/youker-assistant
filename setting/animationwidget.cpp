@@ -221,7 +221,6 @@ void AnimationWidget::initData()
         }
     }
 
-
     for(int nIndex = 0;nIndex < valid_list.length();++nIndex)
     {
         QString strPath=QString("://res/picture.png");
