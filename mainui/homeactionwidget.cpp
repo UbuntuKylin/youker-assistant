@@ -33,12 +33,12 @@ HomeActionWidget::HomeActionWidget(QWidget *parent, QSettings *mSettings)
     scanFinishTime = "";
 
     suggest_label = new QLabel();
+    scan_result_label = new QLabel();
     result_label = new QLabel();
     doing_label = new QLabel();
-    scan_button = new QPushButton();
-    clean_button = new QPushButton();
-    back_button = new QPushButton();
-    back_button->hide();
+    scan_button = new QPushButton(this);
+    clean_button = new QPushButton(this);
+    back_button = new QPushButton(this);
 
     loading_label = new LoadingLabel();
     loading_label->show();
@@ -50,6 +50,10 @@ HomeActionWidget::HomeActionWidget(QWidget *parent, QSettings *mSettings)
     suggest_label->setObjectName("whiteLabel");
     suggest_label->setWordWrap(true);//QLabel自动换行
     suggest_label->setFixedWidth(460);
+    scan_result_label->setObjectName("whiteLabel");
+    scan_result_label->setWordWrap(true);//QLabel自动换行
+    scan_result_label->setFixedWidth(460);
+    scan_result_label->hide();
     result_label->setWordWrap(true);//QLabel自动换行
     result_label->setObjectName("tipLabel");
     result_label->setFixedWidth(460);
@@ -58,25 +62,30 @@ HomeActionWidget::HomeActionWidget(QWidget *parent, QSettings *mSettings)
     doing_label->hide();
     doing_label->setFixedWidth(460);
 
-    scan_button->setFixedSize(204, 65);
+//    scan_button->setFixedSize(204, 65);
+    scan_button->setGeometry(QRect(680, 100, 204, 65));
     scan_button->setFocusPolicy(Qt::NoFocus);
     QPixmap pixmap("://res/scan.png");
     scan_button->setIcon(pixmap);
     scan_button->setIconSize(pixmap.size());
     scan_button->setObjectName("greenButton");
     scan_button->setEnabled(false);
+    scan_button->show();
 //    QFont scan_font = scan_button->font();
 //    scan_font.setPointSize(16);
 //    scan_button->setFont(scan_font);
-    clean_button->setFixedSize(204, 65);
+//    clean_button->setFixedSize(204, 65);
+    clean_button->setGeometry(QRect(680, 100, 204, 65));
     clean_button->setFocusPolicy(Qt::NoFocus);
     clean_button->setObjectName("greenButton");
     clean_button->hide();
 
     back_button->setFocusPolicy(Qt::NoFocus);
-    back_button->setFixedSize(50, 30);
+//    back_button->setFixedSize(50, 30);
+    back_button->setGeometry(QRect(840, 170, 50, 30));
     back_button->setObjectName("backButton");
     back_button->setObjectName("underlineButton");
+    back_button->hide();
 
     //set underline
     //    QFont font = back_button->font();
@@ -91,6 +100,7 @@ HomeActionWidget::HomeActionWidget(QWidget *parent, QSettings *mSettings)
     QVBoxLayout *layout1 = new QVBoxLayout();
     layout1->addStretch();
     layout1->addWidget(suggest_label);
+    layout1->addWidget(scan_result_label);
     layout1->addWidget(doing_label);
     layout1->addWidget(result_label);
     layout1->addStretch();
@@ -103,19 +113,19 @@ HomeActionWidget::HomeActionWidget(QWidget *parent, QSettings *mSettings)
     layout2->setSpacing(20);
     layout2->setContentsMargins(0, 0, 0, 0);
 
-    QVBoxLayout *layout3 = new QVBoxLayout();
-    layout3->addStretch();
-    layout3->addWidget(scan_button, 0, Qt::AlignRight);
-    layout3->addWidget(clean_button, 0, Qt::AlignRight);
-    layout3->addWidget(back_button, 0, Qt::AlignRight);
-    layout3->addStretch();
-    layout3->setSpacing(10);
-    layout3->setContentsMargins(0, 20, 0, 0);
+//    QVBoxLayout *layout3 = new QVBoxLayout();
+//    layout3->addStretch();
+//    layout3->addWidget(scan_button, 0, Qt::AlignRight);
+//    layout3->addWidget(clean_button, 0, Qt::AlignRight);
+//    layout3->addWidget(back_button, 0, Qt::AlignRight);
+//    layout3->addStretch();
+//    layout3->setSpacing(10);
+//    layout3->setContentsMargins(0, 20, 0, 0);
 
     QHBoxLayout *main_layout = new QHBoxLayout();
     main_layout->addLayout(layout2);
     main_layout->addStretch();
-    main_layout->addLayout(layout3);
+//    main_layout->addLayout(layout3);
     main_layout->setSpacing(0);
     main_layout->setMargin(0);
     main_layout->setContentsMargins(10, 30, 44, 0);
@@ -166,6 +176,7 @@ void HomeActionWidget::setLanguage()
     clean_button->setText(tr("Start Cleanup"));//开始清理
     back_button->setText(tr("Back"));
     doing_label->setText(tr("Scanning......"));//正在扫描......
+    scan_result_label->setText(tr("Scan Over"));
 }
 
 void HomeActionWidget::enableSanButton()
@@ -181,7 +192,9 @@ void HomeActionWidget::getScanResult(QString msg)
 void HomeActionWidget::finishScanResult(QString msg)
 {
     if(msg == "onekey") {
-        doing_label->setText(tr("Scan Over"));//扫描完成
+//        doing_label->setText(tr("Scan Over"));//扫描完成
+        doing_label->hide();
+        scan_result_label->show();
         result_label->show();
         QString msg;
         if (trace.toInt() > 0)
@@ -374,6 +387,7 @@ void HomeActionWidget::onStartButtonClicked()
     scan_button->setEnabled(false);
     loading_label->startLoading();
     suggest_label->hide();
+    scan_result_label->hide();
     result_label->hide();
     doing_label->show();
     QStringList args;
@@ -387,7 +401,9 @@ void HomeActionWidget::onCleanButtonClicked()
     clean_button->setEnabled(false);
     loading_label->startLoading();
     suggest_label->hide();
+    scan_result_label->hide();
     result_label->hide();
+//    doing_label->setObjectName("tipLabel");
     doing_label->setText(tr("Ready to Cleanup......"));//准备清理......
     doing_label->show();
     systemProxy->set_user_homedir_qt();
@@ -403,6 +419,7 @@ void HomeActionWidget::onEndButtonClicked()
     clean_button->hide();
     back_button->hide();
     suggest_label->show();
+    scan_result_label->hide();
     result_label->show();
     doing_label->hide();
 }

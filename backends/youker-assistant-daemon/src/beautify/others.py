@@ -105,11 +105,19 @@ class Others:
 
     def get_image_path(self,name):
         name = name.encode('utf-8')
-        if not os.path.exists('/lib/plymouth/themes/' + name + '/customBG.png') :
-            return False
+#        if not os.path.exists('/lib/plymouth/themes/' + name + '/customBG.png') :
+        if not os.path.exists('/lib/plymouth/themes/' + name + '/' + name + '.script') :
+            if not os.path.exists('/lib/plymouth/themes/' + name + '/youker.script') :
+                if not os.path.exists('/lib/plymouth/themes/' + name + '/customBG.png') :
+                    return "False"
+                else:
+                    return "True"
+            else:
+                return "True"
         else :
-            path = '/lib/plymouth/themes/' + name + '/customBG.png'
-            return path
+            return "True"
+#            path = '/lib/plymouth/themes/' + name + '/customBG.png'
+#            return path
 
     def delete_plymouth(self,plymouthName):
         plymouthName = plymouthName.encode('utf-8')

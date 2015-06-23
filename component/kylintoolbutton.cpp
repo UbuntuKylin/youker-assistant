@@ -18,7 +18,6 @@
  */
 
 #include "kylintoolbutton.h"
-#include <QDebug>
 
 KylinToolButton::KylinToolButton(const QString &pic_name, const QString &text, QWidget *parent)
     :QToolButton(parent)
@@ -51,6 +50,7 @@ KylinToolButton::KylinToolButton(const QString &pic_name, const QString &text, Q
     this->setObjectName("transparentToolButton");
 	mouse_over = false;
 	mouse_press = false;
+    pressed = false;
 }
 
 KylinToolButton::~KylinToolButton()
@@ -63,6 +63,7 @@ void KylinToolButton::enterEvent(QEvent *event)
     if(isEnabled())
     {
         mouse_over = true;
+        this->setMouseHover();
     }
 }
 
@@ -71,6 +72,7 @@ void KylinToolButton::leaveEvent(QEvent *event)
     if(isEnabled())
     {
         mouse_over = false;
+        this->setMouseHover();
     }
 }
 
@@ -83,22 +85,48 @@ void KylinToolButton::mousePressEvent(QMouseEvent *event)
     QToolButton::mousePressEvent(event);
 }
 
-void KylinToolButton::setMousePress(bool is_press)
+void KylinToolButton::setMouseHover()
 {
-    this->mouse_press = is_press;
     if(this->mouse_over)
     {
         this->setIcon(QIcon(hover_icon));
     }
+    else {
+        if(pressed)
+            this->setIcon(QIcon(press_icon));
+        else
+            this->setIcon(QIcon(normal_icon));
+    }
+}
+
+void KylinToolButton::setMousePress(bool is_press)
+{
+    this->mouse_press = is_press;
+
+    if(this->mouse_press)
+    {
+        this->setIcon(QIcon(press_icon));
+        pressed = true;
+    }
     else
     {
-        if(this->mouse_press)
-        {
-            this->setIcon(QIcon(press_icon));
-        }
-        else
-        {
-            this->setIcon(QIcon(normal_icon));
-        }
+        this->setIcon(QIcon(normal_icon));
+        pressed = false;
     }
+
+//    if(this->mouse_over)
+//    {
+//        this->setIcon(QIcon(hover_icon));
+//    }
+//    else
+//    {
+//        if(this->mouse_press)
+//        {
+//            this->setIcon(QIcon(press_icon));
+//        }
+//        else
+//        {
+//            this->setIcon(QIcon(normal_icon));
+//        }
+//    }
 }

@@ -45,9 +45,9 @@ CleanerActionWidget::CleanerActionWidget(QWidget *parent)
     suggest_label = new QLabel();
 //    result_label = new QLabel();
     doing_label = new QLabel();
-    scan_button = new QPushButton();
-    clean_button = new QPushButton();
-    back_button = new QPushButton();
+    scan_button = new QPushButton(this);
+    clean_button = new QPushButton(this);
+    back_button = new QPushButton(this);
     back_button->setObjectName("backButton");
     back_button->hide();
 
@@ -64,17 +64,22 @@ CleanerActionWidget::CleanerActionWidget(QWidget *parent)
     doing_label->setObjectName("tipLabel");
     doing_label->hide();
 
-    scan_button->setFixedSize(182, 58);
+//    scan_button->setFixedSize(182, 58);
+    scan_button->setGeometry(QRect(680, 50, 182, 58));
     scan_button->setFocusPolicy(Qt::NoFocus);
     scan_button->setObjectName("greenButton");
-    clean_button->setFixedSize(182, 58);
+    scan_button->show();
+//    clean_button->setFixedSize(182, 58);
+    clean_button->setGeometry(QRect(680, 50, 182, 58));
     clean_button->setFocusPolicy(Qt::NoFocus);
     clean_button->setObjectName("greenButton");
     clean_button->hide();
 
     back_button->setFocusPolicy(Qt::NoFocus);
-    back_button->setFixedSize(50, 30);
+//    back_button->setFixedSize(50, 30);
+    back_button->setGeometry(QRect(820, 110, 50, 30));
     back_button->setObjectName("underlineButton");
+    back_button->hide();
 
     //set underline
     //    QFont font = back_button->font();
@@ -102,19 +107,21 @@ CleanerActionWidget::CleanerActionWidget(QWidget *parent)
     layout2->setMargin(0);
     layout2->setContentsMargins(0, 0, 0, 0);
 
-    QVBoxLayout *layout3 = new QVBoxLayout();
-    layout3->addStretch();
-    layout3->addWidget(scan_button, 0, Qt::AlignRight);
-    layout3->addWidget(clean_button, 0, Qt::AlignRight);
-    layout3->addWidget(back_button, 0, Qt::AlignRight);
-    layout3->addStretch();
-    layout3->setSpacing(10);
-    layout3->setContentsMargins(0, 20, 0, 0);
+//    QVBoxLayout *layout3 = new QVBoxLayout();
+//    layout3->addStretch();
+//    layout3->addWidget(scan_button, 0, Qt::AlignRight);
+//    layout3->addWidget(clean_button, 0, Qt::AlignRight);
+//    layout3->addWidget(back_button, 0, Qt::AlignRight);
+//    layout3->addStretch();
+//    layout3->setSpacing(10);
+//    layout3->setContentsMargins(0, 20, 0, 0);
+
+
 
     QHBoxLayout *main_layout = new QHBoxLayout();
     main_layout->addLayout(layout2);
     main_layout->addStretch();
-    main_layout->addLayout(layout3);
+//    main_layout->addLayout(layout3);
     main_layout->setSpacing(0);
     main_layout->setMargin(0);
     main_layout->setContentsMargins(13, 20, 44, 0);

@@ -34,7 +34,7 @@
 #include "../setting/iconwidget.h"
 #include "../setting/mousewidget.h"
 #include "../setting/voicewidget.h"
-#include "../setting/animationwidget.h"
+//#include "../setting/animationwidget.h"
 #include "../setting/launcherwidget.h"
 #include "../setting/panelwidget.h"
 #include "../setting/windowwidget.h"
@@ -84,7 +84,7 @@ private:
     IconWidget *icon_widget;
     MouseWidget *mouse_widget;
     VoiceWidget *voice_widget;
-    AnimationWidget *animation_widget;
+//    AnimationWidget *animation_widget;
     LauncherWidget *launcher_widget;
     PanelWidget *panel_widget;
     WindowWidget *window_widget;
@@ -105,8 +105,8 @@ private:
     QPushButton *mouse_button;
     QLabel *dot4;
     QPushButton *voice_button;
-    QLabel *dot5;
-    QPushButton *animation_button;
+//    QLabel *dot5;
+//    QPushButton *animation_button;
 
     QWidget *dekstop_widget;
     QLabel *dekstop_icon;

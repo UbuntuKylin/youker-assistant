@@ -41,7 +41,7 @@ SettingWidget::SettingWidget(QString cur_desktop, bool has_battery, QWidget *par
     icon_widget = NULL;
     mouse_widget = NULL;
     voice_widget = NULL;
-    animation_widget = NULL;
+//    animation_widget = NULL;
     launcher_widget = NULL;
     panel_widget = NULL;
     window_widget = NULL;
@@ -119,7 +119,7 @@ void SettingWidget::initUI()
     icon_widget = new IconWidget(this, sessionProxy, desktop);
     mouse_widget = new MouseWidget(this, sessionProxy, systemProxy, desktop);
     voice_widget = new VoiceWidget(this, sessionProxy, systemProxy, desktop);
-    animation_widget = new AnimationWidget(this, systemProxy, p_mainwindow);
+//    animation_widget = new AnimationWidget(this, systemProxy, p_mainwindow);
     launcher_widget = new LauncherWidget(this, sessionProxy, desktop);
     panel_widget = new PanelWidget(this, sessionProxy, desktop, battery);
     window_widget = new WindowWidget(this, sessionProxy, desktop);
@@ -133,7 +133,7 @@ void SettingWidget::initUI()
     stacked_widget->addWidget(icon_widget);
     stacked_widget->addWidget(mouse_widget);
     stacked_widget->addWidget(voice_widget);
-    stacked_widget->addWidget(animation_widget);
+//    stacked_widget->addWidget(animation_widget);
     stacked_widget->addWidget(launcher_widget);
     stacked_widget->addWidget(panel_widget);
     stacked_widget->addWidget(window_widget);
@@ -170,8 +170,8 @@ void SettingWidget::initIndividuationWidget() {
     mouse_button = new QPushButton();
     dot4 = new QLabel();
     voice_button = new QPushButton();
-    dot5 = new QLabel();
-    animation_button = new QPushButton();
+//    dot5 = new QLabel();
+//    animation_button = new QPushButton();
 
     theme_button->setFocusPolicy(Qt::NoFocus);
     theme_button->setObjectName("settingButton");
@@ -181,8 +181,8 @@ void SettingWidget::initIndividuationWidget() {
     mouse_button->setObjectName("settingButton");
     voice_button->setFocusPolicy(Qt::NoFocus);
     voice_button->setObjectName("settingButton");
-    animation_button->setFocusPolicy(Qt::NoFocus);
-    animation_button->setObjectName("settingButton");
+//    animation_button->setFocusPolicy(Qt::NoFocus);
+//    animation_button->setObjectName("settingButton");
 
     QHBoxLayout *title_layout = new QHBoxLayout();
     title_layout->addWidget(individuation_icon);
@@ -229,14 +229,14 @@ void SettingWidget::initIndividuationWidget() {
     layout4->setAlignment(dot4, Qt::AlignVCenter);
     layout4->setAlignment(voice_button, Qt::AlignVCenter);
 
-    QHBoxLayout *layout5 = new QHBoxLayout();
-    layout5->addWidget(dot5);
-    layout5->addWidget(animation_button);
-    layout5->addStretch();
-    layout5->setSpacing(5);
-    layout5->setContentsMargins(29, 0, 0, 0);
-    layout5->setAlignment(dot5, Qt::AlignVCenter);
-    layout5->setAlignment(animation_button, Qt::AlignVCenter);
+//    QHBoxLayout *layout5 = new QHBoxLayout();
+//    layout5->addWidget(dot5);
+//    layout5->addWidget(animation_button);
+//    layout5->addStretch();
+//    layout5->setSpacing(5);
+//    layout5->setContentsMargins(29, 0, 0, 0);
+//    layout5->setAlignment(dot5, Qt::AlignVCenter);
+//    layout5->setAlignment(animation_button, Qt::AlignVCenter);
 
     QVBoxLayout *v_layout = new QVBoxLayout();
     v_layout->addLayout(title_layout);
@@ -244,7 +244,7 @@ void SettingWidget::initIndividuationWidget() {
     v_layout->addLayout(layout2);
     v_layout->addLayout(layout3);
     v_layout->addLayout(layout4);
-    v_layout->addLayout(layout5);
+//    v_layout->addLayout(layout5);
     v_layout->addStretch();
     v_layout->setSpacing(10);
     v_layout->setContentsMargins(0, 0, 0, 0);
@@ -258,23 +258,23 @@ void SettingWidget::initIndividuationWidget() {
     dot2->setPixmap(QPixmap("://res/dot.png"));
     dot3->setPixmap(QPixmap("://res/dot.png"));
     dot4->setPixmap(QPixmap("://res/dot.png"));
-    dot5->setPixmap(QPixmap(":/res//dot.png"));
+//    dot5->setPixmap(QPixmap(":/res//dot.png"));
     theme_button->setStatusTip("theme");
     icon_button->setStatusTip("icon");
     mouse_button->setStatusTip("mouse");
     voice_button->setStatusTip("voice");
-    animation_button->setStatusTip("animation");
+//    animation_button->setStatusTip("animation");
     theme_button->setText(tr("ThemeSetting"));//主题设置
     icon_button->setText(tr("IconSetting"));//图标配置
     mouse_button->setText(tr("MousePointer"));//鼠标指针
     voice_button->setText(tr("SoundEffect"));//声音效果
-    animation_button->setText(tr("BootAnimation"));//开机动画
+//    animation_button->setText(tr("BootAnimation"));//开机动画
 
     connect(theme_button, SIGNAL(clicked()), this, SLOT(displaySettingSubPage()));
     connect(icon_button, SIGNAL(clicked()), this, SLOT(displaySettingSubPage()));
     connect(mouse_button, SIGNAL(clicked()), this, SLOT(displaySettingSubPage()));
     connect(voice_button, SIGNAL(clicked()), this, SLOT(displaySettingSubPage()));
-    connect(animation_button, SIGNAL(clicked()), this, SLOT(displaySettingSubPage()));
+//    connect(animation_button, SIGNAL(clicked()), this, SLOT(displaySettingSubPage()));
 }
 
 void SettingWidget::initDesktopWidget() {
@@ -579,56 +579,57 @@ void SettingWidget::displaySettingSubPage() {
             voice_widget->initData();
         stacked_widget->setCurrentIndex(4);
     }
-    else if (object_name == "animation") {
-        emit changeActionPage(5);
-        if(!animation_widget->getStatus())
-            animation_widget->initData();
-        stacked_widget->setCurrentIndex(5);
-    }
+//    else if (object_name == "animation") {
+//        emit changeActionPage(5);
+//        if(!animation_widget->getStatus())
+//            animation_widget->initData();
+//        stacked_widget->setCurrentIndex(5);
+//    }
+
     else if (object_name == "launcher") {
-        emit changeActionPage(6);
+        emit changeActionPage(5);
         if(!launcher_widget->getStatus())
             launcher_widget->initData();
-        stacked_widget->setCurrentIndex(6);
+        stacked_widget->setCurrentIndex(5);
     }
     else if (object_name == "panel") {
-        emit changeActionPage(7);
+        emit changeActionPage(6);
         if(!panel_widget->getStatus())
             panel_widget->initData();
-        stacked_widget->setCurrentIndex(7);
+        stacked_widget->setCurrentIndex(6);
     }
     else if (object_name == "window") {
-        emit changeActionPage(8);
+        emit changeActionPage(7);
         if(!window_widget->getStatus())
             window_widget->initData();
-        stacked_widget->setCurrentIndex(8);
+        stacked_widget->setCurrentIndex(7);
     }
     else if (object_name == "font") {
-        emit changeActionPage(9);
+        emit changeActionPage(8);
         if(!font_widget->getStatus())
             font_widget->initData();
-        stacked_widget->setCurrentIndex(9);
+        stacked_widget->setCurrentIndex(8);
     }
     else if (object_name == "touchpad") {
-        emit changeActionPage(10);
+        emit changeActionPage(9);
         if(!touchpad_widget->getStatus())
             touchpad_widget->initData();
-        stacked_widget->setCurrentIndex(10);
+        stacked_widget->setCurrentIndex(9);
     }
     else if (object_name == "deadpixel") {
-        emit changeActionPage(11);
-        stacked_widget->setCurrentIndex(11);
+        emit changeActionPage(10);
+        stacked_widget->setCurrentIndex(10);
     }
     else if (object_name == "conserve") {
-        emit changeActionPage(12);
+        emit changeActionPage(11);
         if(!conserve_widget->getStatus())
             conserve_widget->initData();
-        stacked_widget->setCurrentIndex(12);
+        stacked_widget->setCurrentIndex(11);
     }
     else if (object_name == "nautilus") {
-        emit changeActionPage(13);
+        emit changeActionPage(12);
         if(!nautilus_widget->getStatus())
             nautilus_widget->initData();
-        stacked_widget->setCurrentIndex(13);
+        stacked_widget->setCurrentIndex(12);
     }
 }

@@ -90,6 +90,7 @@ CleanListWidget::CleanListWidget(QStringList &arglist, const QString title_text,
     layout->setMargin(0);
     layout->setContentsMargins(10, 0, 10, 10);
     ui->scrollAreaWidgetContents->setLayout(layout);
+    ui->scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     this->setLanguage();
     this->initConnect();

@@ -21,6 +21,7 @@
 #include "../component/kylintoolbutton.h"
 #include "mainwindow.h"
 //#include <QPropertyAnimation>
+#include <QDebug>
 //#include <QParallelAnimationGroup>
 
 ToolWidget::ToolWidget(QWidget *parent)
@@ -77,6 +78,7 @@ void ToolWidget::switchPageIndex(QString index)
 {
 	bool ok;  
     int current_index = index.toInt(&ok, 10);
+//    qDebug() << "current_index->" << current_index;
 
 	for(int i=0; i<button_list.count(); i++)
 	{

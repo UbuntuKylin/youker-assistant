@@ -54,7 +54,7 @@ private:
     SettingAction *icon_action;
     SettingAction *mouse_action;
     SettingAction *voice_action;
-    SettingAction *animation_action;
+//    SettingAction *animation_action;
     SettingAction *launcher_action;
     SettingAction *panel_action;
     SettingAction *window_action;

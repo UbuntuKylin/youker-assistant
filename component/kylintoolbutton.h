@@ -31,6 +31,8 @@ public:
     explicit KylinToolButton(const QString &pic_name, const QString &text , QWidget *parent = 0);
     ~KylinToolButton();
     void setMousePress(bool is_press);
+    void setMouseHover();
+    bool pressed;
 
 protected:
     void enterEvent(QEvent *event);

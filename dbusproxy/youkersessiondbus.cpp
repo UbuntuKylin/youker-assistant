@@ -59,7 +59,6 @@ SessionDispatcher::SessionDispatcher(QObject *parent)
 }
 
 SessionDispatcher::~SessionDispatcher() {
-    qDebug() << "SessionDispatcher delete......";
     scan_thread->terminate();
     scan_thread->wait();
     if(scan_thread != NULL) {
@@ -264,7 +263,7 @@ void SessionDispatcher::onekey_scan_function_qt(QStringList selectedList) {
         qDebug() << "onekey_scan_thread is running......";
     }
     else {
-        qDebug() << "onekey_scan_thread is ready to run......";
+//        qDebug() << "onekey_scan_thread is ready to run......";
         QMap<QString, QVariant> data;
         onekey_scan_thread->initValues(data, selectedList, sessioniface, "onekey_scan_function");
         onekey_scan_thread->start();
@@ -280,10 +279,10 @@ void SessionDispatcher::scanSystemCleanerItems(QMap<QString, QVariant> data)
         qDebug() << "scan_thread is running......";
     }
     else {
-        if (scan_thread == NULL)
-            qDebug() << "scan_thread is null, ready to run......";
-        else
-            qDebug() << "scan_thread is not null, ready to run......";
+//        if (scan_thread == NULL)
+//            qDebug() << "scan_thread is null, ready to run......";
+//        else
+//            qDebug() << "scan_thread is not null, ready to run......";
         QStringList tmp;
         scan_thread->initValues(data, tmp, sessioniface, "get_scan_result");
         scan_thread->start();

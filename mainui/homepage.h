@@ -28,8 +28,8 @@
 
 class MainWindow;
 class SessionDispatcher;
-#include "autostartwidget.h"
-#include "cameramanager.h"
+//#include "autostartwidget.h"
+//#include "cameramanager.h"
 
 class HomePage : public QWidget
 {
@@ -48,6 +48,9 @@ public slots:
     void switchPageIndex(QString index);
     void checkLastestVersion();
 
+signals:
+    void sendSubIndex(int index);
+
 private:
     QLabel *version_logo;
     QLabel *version_title;
@@ -61,8 +64,8 @@ private:
     QPushButton *more_btn;
     SessionDispatcher *sessionProxy;
     MainWindow *p_mainwindow;
-    AutoStartWidget *auto_start;
-    CameraManager *camera_manager;
+//    AutoStartWidget *auto_start;
+//    CameraManager *camera_manager;
     QString current_version;
 };
 
