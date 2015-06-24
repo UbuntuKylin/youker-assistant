@@ -23,6 +23,9 @@
 #include <QMenu>
 #include <QDesktopServices>
 #include <QUrl>
+#include <QWidgetAction>
+#include <QPushButton>
+#include <QLabel>
 
 class MainWindow;
 
@@ -36,6 +39,9 @@ public:
     void initConnect();
     void setParentWindow(MainWindow* window) { p_mainwindow = window;}
 
+//protected:
+//    virtual bool event(QEvent* e);
+
 private:
     void createActions();
 
@@ -44,12 +50,25 @@ public slots:
     void questionFeedback();
 
 private:
-    QAction *help_action;
-//    QAction *features_action;
-    QAction *feedback_action;
-//    QAction *setting_action;
-    QAction *about_action;
+//    QAction *help_action;
+////    QAction *features_action;
+//    QAction *feedback_action;
+////    QAction *setting_action;
+//    QAction *about_action;
     MainWindow *p_mainwindow;
+
+    QWidget *help_widget;
+    QWidget *feedback_widget;
+    QWidget *about_widget;
+    QWidgetAction *help_widget_action;
+    QWidgetAction *feedback_widget_action;
+    QWidgetAction *about_widget_action;
+    QLabel *help_label;
+    QLabel *feedback_label;
+    QLabel *about_label;
+    QPushButton *help_button;
+    QPushButton *feedback_button;
+    QPushButton *about_button;
 };
 
 #endif // KYLINMENU_H

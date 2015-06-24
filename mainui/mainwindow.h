@@ -77,6 +77,7 @@ public:
     void changeSkin(QString pciture);
     void restoreSkin();
     void initAnimation();
+    int getCurrentBackgroundIndex();
 
 protected:
     void mousePressEvent(QMouseEvent *event);
@@ -122,7 +123,7 @@ private:
     SettingActionWidget *setting_action_widget;
     BoxActionWidget *box_action_widget;
 
-    SkinCenter skin_center;
+    SkinCenter *skin_center;
     KylinMenu *main_menu;
 
     QString version;

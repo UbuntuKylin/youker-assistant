@@ -24,7 +24,7 @@
 #include <QParallelAnimationGroup>
 
 MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent), skin_center(parent),
+    QMainWindow(parent), /*skin_center(parent),*/
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -52,7 +52,8 @@ MainWindow::MainWindow(QWidget *parent) :
     mSettings->sync();
     main_skin_pixmap.load(last_skin_path);
 
-    initSkinCenter();
+//    initSkinCenter();
+    skin_center = NULL;
 
     home_page = NULL;
     info_widget = NULL;
@@ -210,6 +211,11 @@ MainWindow::~MainWindow()
     {
         delete camera_manager;
         camera_manager = NULL;
+    }
+    if(skin_center != NULL)
+    {
+        delete skin_center;
+        skin_center = NULL;
     }
 
     delete ui;
@@ -371,9 +377,27 @@ void MainWindow::startDbusDaemon()
 }
 
 void MainWindow::initSkinCenter() {
-    skin_center.initTitleBar(last_skin_path);
-    skin_center.setParentWindow(this);
-    skin_center.initBackgroundList();
+    skin_center->initTitleBar(last_skin_path);
+    skin_center->setParentWindow(this);
+    skin_center->initBackgroundList();
+//    skin_center.initTitleBar(last_skin_path);
+//    skin_center.setParentWindow(this);
+//    skin_center.initBackgroundList();
+}
+
+int MainWindow::getCurrentBackgroundIndex()
+{
+    int index = 1;
+    mSettings->beginGroup("Background");
+    QString cur_skin_path = mSettings->value("Path").toString();
+    if(!cur_skin_path.isEmpty()) {
+        int  start_pos = cur_skin_path.lastIndexOf("/") + 1;
+        int end_pos = cur_skin_path.length();
+        index = cur_skin_path.mid(start_pos, end_pos-start_pos).replace(".png", "").toInt();
+    }
+    mSettings->endGroup();
+    mSettings->sync();
+    return index;
 }
 
 void MainWindow::restoreSkin()
@@ -433,9 +457,15 @@ void MainWindow::reViewTheOrgSkin()
 
 void MainWindow::showMainMenu() {
     QPoint p = rect().topLeft();
-    p.setX(p.x() + 104);
+    p.setX(p.x() + 107);//104
     p.setY(p.y() + 22);
     main_menu->exec(this->mapToGlobal(p));
+
+//    //向上弹出menu
+//    QPoint pos;
+//    pos.setX(0);
+//    pos.setY(-main_menu->sizeHint().height());
+//    main_menu->exec(title_widget->mapToGlobal(pos));
 }
 
 void MainWindow::closeYoukerAssistant() {
@@ -927,11 +957,30 @@ void MainWindow::showBoxWidget()
 }
 
 void MainWindow::openSkinCenter() {
-    int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (500  / 2);
-    int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (271  / 2);
-    skin_center.move(w_x, w_y);
-    skin_center.show();
-    skin_center.raise();
+//    int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (500  / 2);
+//    int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (271  / 2);
+//    skin_center.move(w_x, w_y);
+//    skin_center.show();
+//    skin_center.raise();
+//    skin_center.setLogo();
+
+    if(skin_center == NULL) {
+        skin_center = new SkinCenter();
+        this->initSkinCenter();
+        int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (500  / 2);
+        int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (271  / 2);
+        skin_center->move(w_x, w_y);
+        skin_center->show();
+        skin_center->raise();
+        skin_center->setLogo();
+    }
+    else {
+        int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (500  / 2);
+        int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (271  / 2);
+        skin_center->move(w_x, w_y);
+        skin_center->show();
+        skin_center->raise();
+    }
 }
 
 void MainWindow::displaySubPage(int index)
