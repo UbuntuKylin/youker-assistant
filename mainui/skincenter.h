@@ -40,6 +40,8 @@ public:
     void setLanguage();
     void initConnect();
     void initTitleBar(const QString &path);
+    void initUsingLogo(QListWidgetItem *init_item);
+    void setLogo();
 
 public slots:
     void onCloseButtonClicked();
@@ -55,6 +57,7 @@ private:
     KylinTitleBar *title_bar;
     KylinListWidget *list_widget;
     QString last_skin_path;
+    QLabel *using_label;
 //    QTimer *delayTimer;
 //    QString titlebar_pic;
 };

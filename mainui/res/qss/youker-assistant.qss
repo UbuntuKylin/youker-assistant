@@ -2,6 +2,13 @@ QSplitter::handle{
     background:lightgray;
 }
 
+QLabel{
+    color:#000000;
+    font-family: "方正黑体_GBK";
+    font-size: 14px;
+    text-align: left;
+}
+
 QLabel#grayLabel{
         color:gray;
 }
@@ -74,6 +81,14 @@ QWidget#transparentWidget {
    /*border: none;*/
    background-color: transparent;
 }
+
+/*QPushButton{
+    background:transparent;
+    color:#000000;
+    font-family: "方正黑体_GBK";
+    font-size: 8px;
+    text-align: center;
+}*/
 
 QPushButton#transparentButton{
     background:transparent;

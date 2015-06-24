@@ -19,6 +19,8 @@
 
 #include "kylinmenu.h"
 #include "../mainui/mainwindow.h"
+#include <QEvent>
+#include <QHelpEvent>
 
 KylinMenu::KylinMenu(QWidget *widget)
     : QMenu(widget)
@@ -30,37 +32,113 @@ KylinMenu::KylinMenu(QWidget *widget)
 
 void KylinMenu::createActions()
 {
-    help_action = new QAction(this);
-//    features_action = new QAction(this);
-    feedback_action = new QAction(this);
-//    setting_action = new QAction(this);
-    about_action = new QAction(this);
+//    help_action = new QAction(this);
+////    features_action = new QAction(this);
+//    feedback_action = new QAction(this);
+////    setting_action = new QAction(this);
+//    about_action = new QAction(this);
 
-    this->addAction(help_action);
-//    this->addAction(features_action);
-    this->addAction(feedback_action);
-//    this->addAction(setting_action);
+    help_widget = new QWidget();
+    feedback_widget = new QWidget();
+    about_widget = new QWidget();
+    help_widget_action = new QWidgetAction(this);
+    feedback_widget_action = new QWidgetAction(this);
+    about_widget_action = new QWidgetAction(this);
+    help_label = new QLabel();
+    feedback_label = new QLabel();
+    about_label = new QLabel();
+    help_button = new QPushButton();
+    feedback_button = new QPushButton();
+    about_button = new QPushButton();
+
+    help_button->setStyleSheet("QPushButton{background:transparent;text-align:left;font-family: 方正黑体_GBK;font-size:14px;color:#666666;}QPushButton:hover{color:#0396DC;}");
+    feedback_button->setStyleSheet("QPushButton{background:transparent;text-align:left;font-family: 方正黑体_GBK;font-size:14px;color:#666666;}QPushButton:hover{color:#0396DC;}");
+    about_button->setStyleSheet("QPushButton{background:transparent;text-align:left;font-family: 方正黑体_GBK;font-size:14px;color:#666666;}QPushButton:hover{color:#0396DC;}");
+
+    QPixmap help_pixmap(":/tool/res/menu/help.png");
+    help_label->setPixmap(help_pixmap);
+    help_label->setFixedSize(help_pixmap.size());
+//    help_button->setIcon(help_pixmap);
+//    help_button->setIconSize(help_pixmap.size());
+    help_button->setFocusPolicy(Qt::NoFocus);
+    help_button->setObjectName("transparentButton");
+
+    QPixmap feedback_pixmap(":/tool/res/menu/feedback.png");
+    feedback_label->setPixmap(feedback_pixmap);
+    feedback_label->setFixedSize(feedback_pixmap.size());
+    feedback_button->setFocusPolicy(Qt::NoFocus);
+    feedback_button->setObjectName("transparentButton");
+
+    QPixmap about_pixmap(":/tool/res/menu/about.png");
+    about_label->setPixmap(about_pixmap);
+    about_label->setFixedSize(about_pixmap.size());
+    about_button->setFocusPolicy(Qt::NoFocus);
+    about_button->setObjectName("transparentButton");
+
+
+    QHBoxLayout *help_layout = new QHBoxLayout();
+    help_layout->addWidget(help_label);
+    help_layout->addWidget(help_button);
+    help_layout->setSpacing(10);
+    help_layout->setContentsMargins(20, 0, 20, 0);
+    help_widget->setLayout(help_layout);
+    help_widget_action->setDefaultWidget(help_widget);
+
+    QHBoxLayout *feedback_layout = new QHBoxLayout();
+    feedback_layout->addWidget(feedback_label);
+    feedback_layout->addWidget(feedback_button);
+    feedback_layout->setSpacing(10);
+    feedback_layout->setContentsMargins(20, 0, 20, 0);
+    feedback_widget->setLayout(feedback_layout);
+    feedback_widget_action->setDefaultWidget(feedback_widget);
+
+    QHBoxLayout *about_layout = new QHBoxLayout();
+    about_layout->addWidget(about_label);
+    about_layout->addWidget(about_button);
+    about_layout->setSpacing(10);
+    about_layout->setContentsMargins(20, 0, 20, 0);
+    about_widget->setLayout(about_layout);
+    about_widget_action->setDefaultWidget(about_widget);
+
+    this->addAction(help_widget_action);
+    this->addAction(feedback_widget_action);
     this->addSeparator();
-    this->addAction(about_action);
+    this->addAction(about_widget_action);
+
+//    this->addAction(help_action);
+////    this->addAction(features_action);
+//    this->addAction(feedback_action);
+////    this->addAction(setting_action);
+//    this->addSeparator();
+//    this->addAction(about_action);
+//    this->addSeparator();
+//    this->addAction(play_widget_action);
 }
 
 void KylinMenu::setLanguage() {
-    help_action->setText(tr("Forum Help"));
-//    features_action->setText(tr("Features"));
-    feedback_action->setText(tr("Feedback"));
-//    setting_action->setText(tr("Set up"));
-    about_action->setText(tr("About us"));
-    help_action->setIcon(QIcon("://res/icon.png"));
-    help_action->setToolTip(tr("Help"));
+//    help_action->setText(tr("Forum Help"));
+////    features_action->setText(tr("Features"));
+//    feedback_action->setText(tr("Feedback"));
+////    setting_action->setText(tr("Set up"));
+//    about_action->setText(tr("About us"));
+//    help_action->setIcon(QIcon("://res/icon.png"));
+//    help_action->setToolTip(tr("Help"));
+
+    help_button->setText(tr("Forum Help"));
+    feedback_button->setText(tr("Feedback"));
+    about_button->setText(tr("About us"));
 }
 
 void KylinMenu::initConnect()
 {
-    connect(help_action, SIGNAL(triggered()), this, SLOT(forumHelp()));
-//    connect(features_action, SIGNAL(triggered()), p_mainwindow, SLOT(newFeatures()));
-    connect(feedback_action, SIGNAL(triggered()), this, SLOT(questionFeedback()));
-//    connect(setting_action, SIGNAL(triggered()), p_mainwindow, SLOT(setupConfigure()));
-    connect(about_action, SIGNAL(triggered()), p_mainwindow, SLOT(aboutUs()));
+//    connect(help_action, SIGNAL(triggered()), this, SLOT(forumHelp()));
+////    connect(features_action, SIGNAL(triggered()), p_mainwindow, SLOT(newFeatures()));
+//    connect(feedback_action, SIGNAL(triggered()), this, SLOT(questionFeedback()));
+////    connect(setting_action, SIGNAL(triggered()), p_mainwindow, SLOT(setupConfigure()));
+//    connect(about_action, SIGNAL(triggered()), p_mainwindow, SLOT(aboutUs()));
+    connect(help_button, SIGNAL(clicked()), this, SLOT(forumHelp()));
+    connect(feedback_button, SIGNAL(clicked()), this, SLOT(questionFeedback()));
+    connect(about_button, SIGNAL(clicked()), p_mainwindow, SLOT(aboutUs()));
 }
 
 void KylinMenu::forumHelp()
@@ -74,3 +152,23 @@ void KylinMenu::questionFeedback()
     QUrl url(QString("https://bugs.launchpad.net/youker-assistant"));
     QDesktopServices::openUrl(url);
 }
+
+//bool KylinMenu::event(QEvent* e)
+//{
+//    switch(e->type())
+//    {
+//        case QEvent::ToolTip:
+//        //show action tooltip instead of widget tooltip
+//        {
+//            QHelpEvent *he = dynamic_cast(e);
+//            QAction *act = actionAt(he->pos());
+//            if(act)
+//            {
+//                QToolTip::showText(he->globalPos(), act->toolTip(), this);
+//                return true;
+//            }
+//        }
+//        break;
+//    }
+//    QMenu::event(e);
+//}
