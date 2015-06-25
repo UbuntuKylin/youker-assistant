@@ -49,6 +49,7 @@ InfoWidget::InfoWidget(QWidget *parent) :
 //    category_widget->setSpacing(1);//设置QListWidget中的单元项的间距
 
     stacked_widget = new QStackedWidget(this);//stacked_widget will delete when InfoWidget delete
+//    stacked_widget->setStyleSheet("QStackedWidget{border: none;}");
     stacked_widget->setFocusPolicy(Qt::NoFocus);
     stacked_widget->setAutoFillBackground(true);
 

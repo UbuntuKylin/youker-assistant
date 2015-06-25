@@ -142,6 +142,7 @@ void ShredDialog::onSelectButtonClicked()
     QStringList fileNameList;
     QString fileName;
     QFileDialog* fd = new QFileDialog(this);
+//    fd->setStyleSheet("QFileDialog{background-color:blue;}");
     fd->resize(500, 471);
     fd->setFilter(tr("Allfile(*)"));
 //    fd->setFilter( "Allfile(*.*);;mp3file(*.mp3);;wmafile(*.wma);;wavefile(*.wav)");

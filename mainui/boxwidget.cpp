@@ -28,6 +28,7 @@ BoxWidget::BoxWidget(QWidget *parent, QString path) :
     QWidget(parent), plugin_path(path)
 {
     this->setFixedSize(900, 403);
+    this->setStyleSheet("QWidget{border: none;}");
     //set white background color
     this->setAutoFillBackground(true);
     QPalette palette;
@@ -59,6 +60,9 @@ BoxWidget::BoxWidget(QWidget *parent, QString path) :
 
     QGridLayout *layout = new QGridLayout();
     layout->addWidget(list_view,0,0);
+    layout->setSpacing(0);
+    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
     setLayout(layout);
 }
 

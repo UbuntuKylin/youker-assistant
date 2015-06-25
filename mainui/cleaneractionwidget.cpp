@@ -61,7 +61,7 @@ CleanerActionWidget::CleanerActionWidget(QWidget *parent)
 //    result_label->setObjectName("tipLabel");
     doing_label->setFixedWidth(550);
     doing_label->setWordWrap(true);//QLabel自动换行
-    doing_label->setObjectName("tipLabel");
+    doing_label->setObjectName("smallWhiteLabel");
     doing_label->hide();
 
 //    scan_button->setFixedSize(182, 58);

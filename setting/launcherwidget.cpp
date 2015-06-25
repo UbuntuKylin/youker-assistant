@@ -28,7 +28,7 @@
 #include "../dbusproxy/youkersessiondbus.h"
 
 LauncherWidget::LauncherWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_desktop) :
-    QWidget(parent),
+    QWidget(parent),desktop(cur_desktop),
     sessionproxy(proxy)
 {
     dataOK = false;
@@ -82,7 +82,8 @@ LauncherWidget::LauncherWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
 //    QSlider *size_bottom_slider;
 //    KylinSwitcher *hide_top_switcher;
 //    KylinSwitcher *icon_bottom_switcher;
-    if (cur_desktop == "mate") {
+
+    if (this->desktop == "mate") {
         size_label->hide();
         size_value_label->hide();
         hide_label->hide();
@@ -232,47 +233,52 @@ bool LauncherWidget::getStatus()
 
 void LauncherWidget::initData()
 {
-    size_slider->setValue(sessionproxy->get_launcher_icon_size_qt());
-    size_value_label->setText(QString::number(size_slider->value()));
-    hide_switcher->switchedOn = sessionproxy->get_launcher_autohide_qt();
-    icon_switcher->switchedOn = sessionproxy->get_launcher_have_showdesktopicon_qt();
-    transparency_slider->setValue(sessionproxy->get_launcher_transparency_qt());
-    int cur_index = sessionproxy->get_launcher_icon_colouring_qt();
-    QString current_icon_colouring = "";
-    if (cur_index == 0) {
-        current_icon_colouring = "all programs";
+    if (this->desktop == "mate") {
+        size_top_slider->setValue(sessionproxy->get_mate_panel_icon_size_qt("top"));
+        size_top_value_label->setText(QString::number(size_top_slider->value()));
+        size_bottom_slider->setValue(sessionproxy->get_mate_panel_icon_size_qt("bottom"));
+        size_bottom_value_label->setText(QString::number(size_bottom_slider->value()));
+        hide_top_switcher->switchedOn = sessionproxy->get_mate_panel_autohide_qt("top");
+        hide_bottom_switcher->switchedOn = sessionproxy->get_mate_panel_autohide_qt("bottom");
     }
-    else if (cur_index == 1) {
-        current_icon_colouring = "only run app";
-    }
-    else if (cur_index == 2) {
-        current_icon_colouring = "no coloring";
-    }
-    else if (cur_index == 3) {
-        current_icon_colouring = "edge coloring";
-    }
-    else if (cur_index == 4) {
-        current_icon_colouring = "each workspace alternating coloring";
-    }
-    /*QStringList */colourlist  = sessionproxy->get_all_launcher_icon_colourings_qt();
-    backgound_combo->clear();
-    backgound_combo->clearEditText();
-    backgound_combo->addItems(colourlist);
-    QList<QString>::Iterator it = colourlist.begin(), itend = colourlist.end();
-    int initIndex = 0;
-    for(;it != itend; it++,initIndex++)
+    else
     {
-        if(*it == current_icon_colouring)
-            break;
+        size_slider->setValue(sessionproxy->get_launcher_icon_size_qt());
+        size_value_label->setText(QString::number(size_slider->value()));
+        hide_switcher->switchedOn = sessionproxy->get_launcher_autohide_qt();
+        icon_switcher->switchedOn = sessionproxy->get_launcher_have_showdesktopicon_qt();
+        transparency_slider->setValue(sessionproxy->get_launcher_transparency_qt());
+        int cur_index = sessionproxy->get_launcher_icon_colouring_qt();
+        QString current_icon_colouring = "";
+        if (cur_index == 0) {
+            current_icon_colouring = "all programs";
+        }
+        else if (cur_index == 1) {
+            current_icon_colouring = "only run app";
+        }
+        else if (cur_index == 2) {
+            current_icon_colouring = "no coloring";
+        }
+        else if (cur_index == 3) {
+            current_icon_colouring = "edge coloring";
+        }
+        else if (cur_index == 4) {
+            current_icon_colouring = "each workspace alternating coloring";
+        }
+        /*QStringList */colourlist  = sessionproxy->get_all_launcher_icon_colourings_qt();
+        backgound_combo->clear();
+        backgound_combo->clearEditText();
+        backgound_combo->addItems(colourlist);
+        QList<QString>::Iterator it = colourlist.begin(), itend = colourlist.end();
+        int initIndex = 0;
+        for(;it != itend; it++,initIndex++)
+        {
+            if(*it == current_icon_colouring)
+                break;
+        }
+        backgound_combo->setCurrentIndex(initIndex);
     }
-    backgound_combo->setCurrentIndex(initIndex);
 
-    size_top_slider->setValue(sessionproxy->get_mate_panel_icon_size_qt("top"));
-    size_top_value_label->setText(QString::number(size_top_slider->value()));
-    size_bottom_slider->setValue(sessionproxy->get_mate_panel_icon_size_qt("bottom"));
-    size_bottom_value_label->setText(QString::number(size_bottom_slider->value()));
-    hide_top_switcher->switchedOn = sessionproxy->get_mate_panel_autohide_qt("top");
-    hide_bottom_switcher->switchedOn = sessionproxy->get_mate_panel_autohide_qt("bottom");
     dataOK = true;
     this->initConnect();
 }

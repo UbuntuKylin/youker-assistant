@@ -55,6 +55,7 @@ public slots:
 private:
     SessionDispatcher *sessionproxy;
     bool dataOK;
+    QString desktop;
     QStringList wheellist;
     QStringList titlebar_options;
     QLabel *icon_label;

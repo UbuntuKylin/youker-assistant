@@ -63,6 +63,7 @@ public slots:
 private:
     QDBusInterface *iface;
     SessionDispatcher *sessionproxy;
+    QString desktop;
     bool dataOK;
     QString current_idle_delay;
     QString current_lock_delay;

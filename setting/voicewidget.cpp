@@ -25,7 +25,7 @@
 #include "../dbusproxy/youkersystemdbus.h"
 
 VoiceWidget::VoiceWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispatcher *sproxy, QString cur_desktop) :
-    QWidget(parent),
+    QWidget(parent),desktop(cur_desktop),
     sessionproxy(proxy),
     systemproxy(sproxy)
 {
@@ -44,7 +44,7 @@ VoiceWidget::VoiceWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispa
     event_label->setFixedWidth(180);
     feedback_label->setFixedWidth(180);
 
-    if (cur_desktop == "mate")
+    if (this->desktop == "mate")
     {
         tip_label->hide();
         tip_switcher->hide();
@@ -131,7 +131,11 @@ void VoiceWidget::initData()
     }
     theme_combo->setCurrentIndex(initIndex);
 
-    tip_switcher->switchedOn = sessionproxy->get_login_music_enable_qt();
+    if (desktop != "mate")
+    {
+        tip_switcher->switchedOn = sessionproxy->get_login_music_enable_qt();
+    }
+
     event_switcher->switchedOn = sessionproxy->get_sound_event_enable_qt();
     feedback_switcher->switchedOn = sessionproxy->get_input_feedback_sounds_enable_qt();
     dataOK = true;

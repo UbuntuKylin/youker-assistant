@@ -44,12 +44,16 @@ public:
     void setParentWindow(MainWindow* window) { p_mainwindow = window;}
     void initUI();
 
+protected:
+    bool eventFilter(QObject *obj, QEvent *event);
+
 public slots:
     void switchPageIndex(QString index);
     void checkLastestVersion();
 
 signals:
     void sendSubIndex(int index);
+    void sendSignal();
 
 private:
     QLabel *version_logo;

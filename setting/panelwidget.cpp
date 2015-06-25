@@ -26,7 +26,7 @@
 #include "../dbusproxy/youkersessiondbus.h"
 
 PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_desktop, bool has_battery) :
-    QWidget(parent),
+    QWidget(parent),desktop(cur_desktop),
     sessionproxy(proxy)
 {
     dataOK = false;
@@ -81,7 +81,7 @@ PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_
     icon_switcher = new KylinSwitcher();
     places_switcher = new KylinSwitcher();
 
-    if (cur_desktop == "mate") {
+    if (this->desktop == "mate") {
         blur_label->hide();
         transparency_label->hide();
         date_format_label->hide();
@@ -274,63 +274,66 @@ bool PanelWidget::getStatus()
 
 void PanelWidget::initData()
 {
-    int default_value = sessionproxy->get_dash_blur_experimental_qt();
-    if(default_value == 2) {
-        smart_radio->setChecked(true);
-        static_radio->setChecked(false);
-        clear_radio->setChecked(false);
+    if(this->desktop == "mate") {
+        app_switcher->switchedOn = sessionproxy->get_show_apps_qt();
+        desktop_switcher->switchedOn = sessionproxy->get_show_desktop_qt();
+        icon_switcher->switchedOn = sessionproxy->get_show_icon_qt();
+        places_switcher->switchedOn = sessionproxy->get_show_places_qt();
     }
-    else if(default_value == 1) {
-        static_radio->setChecked(true);
-        smart_radio->setChecked(false);
-        clear_radio->setChecked(false);
+    else {//unity
+        int default_value = sessionproxy->get_dash_blur_experimental_qt();
+        if(default_value == 2) {
+            smart_radio->setChecked(true);
+            static_radio->setChecked(false);
+            clear_radio->setChecked(false);
+        }
+        else if(default_value == 1) {
+            static_radio->setChecked(true);
+            smart_radio->setChecked(false);
+            clear_radio->setChecked(false);
+        }
+        else if(default_value == 0) {
+            clear_radio->setChecked(true);
+            static_radio->setChecked(false);
+            smart_radio->setChecked(false);
+        }
+        transparency_slider->setValue(sessionproxy->get_panel_transparency_qt());
+        QString cur_format = sessionproxy->get_time_format_qt();
+        QStringList timelist  = sessionproxy->get_all_time_format_qt();
+        date_combo->clear();
+        date_combo->clearEditText();
+        date_combo->addItems(timelist);
+        QList<QString>::Iterator it = timelist.begin(), itend = timelist.end();
+        int initIndex = 0;
+        for(;it != itend; it++,initIndex++)
+        {
+            if(*it == cur_format)
+                break;
+        }
+        date_combo->setCurrentIndex(initIndex);
+
+        second_switcher->switchedOn = sessionproxy->get_show_seconds_qt();
+        week_switcher->switchedOn = sessionproxy->get_show_week_qt();
+        date_switcher->switchedOn = sessionproxy->get_show_date_qt();
+
+        QString cur_power = sessionproxy->get_power_icon_policy_qt();
+        /*QStringList */powerlist  = sessionproxy->get_all_power_icon_policy_qt();
+        battery_combo->clear();
+        battery_combo->clearEditText();
+        battery_combo->addItems(powerlist);
+        QList<QString>::Iterator ite = powerlist.begin(), iteend = powerlist.end();
+        int index = 0;
+        for(;ite != iteend; ite++,index++)
+        {
+            if(*ite == cur_power)
+                break;
+        }
+        battery_combo->setCurrentIndex(index);
+
+        battery_percentage_switcher->switchedOn = sessionproxy->get_show_power_percentage_qt();
+        battery_time_switcher->switchedOn = sessionproxy->get_show_power_time_qt();
     }
-    else if(default_value == 0) {
-        clear_radio->setChecked(true);
-        static_radio->setChecked(false);
-        smart_radio->setChecked(false);
-    }
-    transparency_slider->setValue(sessionproxy->get_panel_transparency_qt());
 
-    QString cur_format = sessionproxy->get_time_format_qt();
-    QStringList timelist  = sessionproxy->get_all_time_format_qt();
-    date_combo->clear();
-    date_combo->clearEditText();
-    date_combo->addItems(timelist);
-    QList<QString>::Iterator it = timelist.begin(), itend = timelist.end();
-    int initIndex = 0;
-    for(;it != itend; it++,initIndex++)
-    {
-        if(*it == cur_format)
-            break;
-    }
-    date_combo->setCurrentIndex(initIndex);
-
-    second_switcher->switchedOn = sessionproxy->get_show_seconds_qt();
-    week_switcher->switchedOn = sessionproxy->get_show_week_qt();
-    date_switcher->switchedOn = sessionproxy->get_show_date_qt();
-
-    QString cur_power = sessionproxy->get_power_icon_policy_qt();
-    /*QStringList */powerlist  = sessionproxy->get_all_power_icon_policy_qt();
-    battery_combo->clear();
-    battery_combo->clearEditText();
-    battery_combo->addItems(powerlist);
-    QList<QString>::Iterator ite = powerlist.begin(), iteend = powerlist.end();
-    int index = 0;
-    for(;ite != iteend; ite++,index++)
-    {
-        if(*ite == cur_power)
-            break;
-    }
-    battery_combo->setCurrentIndex(index);
-
-    battery_percentage_switcher->switchedOn = sessionproxy->get_show_power_percentage_qt();
-    battery_time_switcher->switchedOn = sessionproxy->get_show_power_time_qt();
-
-    app_switcher->switchedOn = sessionproxy->get_show_apps_qt();
-    desktop_switcher->switchedOn = sessionproxy->get_show_desktop_qt();
-    icon_switcher->switchedOn = sessionproxy->get_show_icon_qt();
-    places_switcher->switchedOn = sessionproxy->get_show_places_qt();
     dataOK = true;
     this->initConnect();
 }

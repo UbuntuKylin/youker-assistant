@@ -25,7 +25,7 @@
 #include <QHBoxLayout>
 
 IconWidget::IconWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_desktop) :
-    QWidget(parent),
+    QWidget(parent),desktop(cur_desktop),
     sessionproxy(proxy)
 {
     dataOK = false;
@@ -45,7 +45,7 @@ IconWidget::IconWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_de
     recycle_switcher = new KylinSwitcher();
     disk_switcher = new KylinSwitcher();
 
-    if (cur_desktop != "mate")
+    if (this->desktop != "mate")
     {
         computer_label->hide();
         computer_switcher->hide();
@@ -232,7 +232,12 @@ void IconWidget::initData()
 //    recycle_switcher->setSwitchStatus(sessionproxy->get_show_trash_qt());
 //    disk_switcher->setSwitchStatus(sessionproxy->get_show_devices_qt());
     show_switcher->switchedOn = sessionproxy->get_show_desktop_icons_qt();
-    computer_switcher->switchedOn = sessionproxy->get_show_computer_qt();
+
+    if (this->desktop == "mate")
+    {
+        computer_switcher->switchedOn = sessionproxy->get_show_computer_qt();
+    }
+
     folder_switcher->switchedOn = sessionproxy->get_show_homefolder_qt();
     network_switcher->switchedOn = sessionproxy->get_show_network_qt();
     recycle_switcher->switchedOn = sessionproxy->get_show_trash_qt();
