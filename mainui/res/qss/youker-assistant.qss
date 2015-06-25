@@ -24,6 +24,13 @@ QLabel#whiteLabel{
     text-align: left;
 }
 
+QLabel#smallWhiteLabel{
+    color:#ffffff;
+    font-family: "方正黑体_GBK";
+    font-size: 14px;
+    text-align: left;
+}
+
 QLabel#tipLabel{
     color:#000000;
     font-family: "方正黑体_GBK";
@@ -76,6 +83,15 @@ QLabel#backgroundLabel::pressed{
     font-family: "方正黑体_GBK";
     font-size: 14px;
 }
+
+/*QStackedWidget{
+    border:none;
+    background-color: cornsilk;
+    selection-color: #0a214c;
+    selection-background-color: #C19A6B;
+    font-family: "方正黑体_GBK";
+    color: #000;
+}*/
 
 QWidget#transparentWidget {
    /*border: none;*/
@@ -493,7 +509,7 @@ QTabBar::tab:only-one {
 }
 
 /*-------------------QGroupBox-------------------*/
-QGroupBox {
+/*QGroupBox {
      border: 1px solid #e0e0e0;
      border-radius: 2px;
      margin-top: 15px;
@@ -505,7 +521,7 @@ QGroupBox {
      padding: 6px 3px;
      color: #00609a;
      font-weight:bold;
- }
+ }*/
 
 /*-------------------QMenu-------------------*/
 QMenu {

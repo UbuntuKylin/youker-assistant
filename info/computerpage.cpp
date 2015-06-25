@@ -59,6 +59,7 @@ void ComputerPage::setLanguage() {
 void ComputerPage::initUI()
 {
     group_box = new QGroupBox();
+    group_box->setStyleSheet("QGroupBox{border: 1px solid #e0e0e0;border-radius: 2px;margin-top: 15px;font-size:14px;}QGroupBox:title{subcontrol-origin: margin;subcontrol-position: top left;padding: 6px 3px;color: #00609a;font-family: 方正黑体_GBK;font-weight:bold;}");
 
     QFont group_box_font = group_box->font();
     group_box_font.setBold(true);

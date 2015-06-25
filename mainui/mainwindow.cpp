@@ -65,6 +65,9 @@ MainWindow::MainWindow(QWidget *parent) :
     auto_start = NULL;
     camera_manager = NULL;
 
+    openGroup = NULL;
+    closeGroup = NULL;
+
     home_action_widget = NULL;
     info_action_widget = NULL;
     cleaner_action_widget = NULL;
@@ -216,6 +219,16 @@ MainWindow::~MainWindow()
     {
         delete skin_center;
         skin_center = NULL;
+    }
+    if(openGroup != NULL)
+    {
+        delete openGroup;
+        openGroup = NULL;
+    }
+    if(closeGroup != NULL)
+    {
+        delete closeGroup;
+        closeGroup = NULL;
     }
 
     delete ui;

@@ -50,6 +50,7 @@ HomePage::HomePage(QWidget *parent, const QString &version) :
     version_label = new QLabel();
     box_logo = new QLabel();
     box_title = new QLabel();
+    box_title->installEventFilter(this);
     box_tip = new QLabel();
     more_text_btn = new QPushButton();
     more_btn = new QPushButton();
@@ -213,6 +214,7 @@ void HomePage::initConnect()
     connect(more_text_btn, SIGNAL(clicked()), p_mainwindow, SLOT(showBoxWidget()));
     connect(more_text_btn, SIGNAL(clicked()), p_mainwindow, SIGNAL(chanegBoxToolStatus()));
     connect(check_btn, SIGNAL(clicked()), this, SLOT(checkLastestVersion()));
+    connect(this, SIGNAL(sendSignal()), p_mainwindow, SIGNAL(chanegBoxToolStatus()));
 }
 
 void HomePage::setLanguage()
@@ -295,4 +297,33 @@ void HomePage::switchPageIndex(QString index)
 //            camera_manager->raise();
 //        }
 //    }
+}
+
+bool HomePage::eventFilter(QObject *obj, QEvent *event)
+{
+    if(obj == box_title){
+        if(event->type() == QEvent::MouseButtonRelease){
+            emit this->sendSignal();
+            p_mainwindow->showBoxWidget();
+        }
+//        if(event->type() == QEvent::Enter){
+//            ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn_hover.png"));
+//        }else if(event->type() == QEvent::Leave){
+//            ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
+//        }else if(event->type() == QEvent::MouseButtonPress){
+//            ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn_hover.png"));
+//        }else if(event->type() == QEvent::MouseButtonRelease){
+//            QMouseEvent *me = (QMouseEvent *)event;
+//            QLabel *lb = (QLabel *)obj;
+//            if(me->x() > 0 && me->x() < lb->width() && me->y() > 0 && me->y() < lb->height()){
+//                this->close();
+//                this->destroy();
+//            }else{
+//                ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
+//            }
+//        } else {
+//            return QObject::eventFilter(obj, event);
+//        }
+    }
+    return QObject::eventFilter(obj, event);
 }

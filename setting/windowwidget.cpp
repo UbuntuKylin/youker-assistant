@@ -26,7 +26,7 @@
 #include <QDebug>
 
 WindowWidget::WindowWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_desktop) :
-    QWidget(parent),
+    QWidget(parent),desktop(cur_desktop),
     sessionproxy(proxy)
 {
     dataOK = false;
@@ -48,7 +48,7 @@ WindowWidget::WindowWidget(QWidget *parent, SessionDispatcher *proxy, QString cu
     right_radio->setFocusPolicy(Qt::NoFocus);
     right_radio->setObjectName("rightradio");
 
-    if (cur_desktop == "mate") {
+    if (this->desktop == "mate") {
         icon_label->hide();
         icon_switcher->hide();
     }
@@ -156,17 +156,20 @@ bool WindowWidget::getStatus()
 
 void WindowWidget::initData()
 {
-    QString current_value = sessionproxy->get_window_button_align_qt();
-    if(current_value == "left") {
-        left_radio->setChecked(true);
-        right_radio->setChecked(false);
+    if (this->desktop == "mate") {
+        QString current_value = sessionproxy->get_window_button_align_qt();
+        if(current_value == "left") {
+            left_radio->setChecked(true);
+            right_radio->setChecked(false);
+        }
+        else if(current_value == "right") {
+            right_radio->setChecked(true);
+            left_radio->setChecked(false);
+        }
     }
-    else if(current_value == "right") {
-        right_radio->setChecked(true);
-        left_radio->setChecked(false);
+    else {
+        icon_switcher->switchedOn = sessionproxy->get_menus_have_icons_qt();
     }
-
-    icon_switcher->switchedOn = sessionproxy->get_menus_have_icons_qt();
 
     QString current_wheel_type = sessionproxy->get_current_titlebar_wheel_qt();
     //FT arm has no org.compiz.gwd.mouse-wheel-action, so is empty

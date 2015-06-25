@@ -24,8 +24,7 @@ AudioWidget::AudioWidget(QWidget *parent, SystemDispatcher *proxy) :
     QWidget(parent),
     systemproxy(proxy)
 {
-    this->setStyleSheet("QWidget{border: none}");
-    this->setStyleSheet("QWidget{background-color: #ffffff}");
+    this->setStyleSheet("QWidget{border: none;background-color: #ffffff;}");
     setFixedSize(750, 403/* - 10*/);
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403/* - 10*/);

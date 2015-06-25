@@ -66,6 +66,7 @@ public slots:
 private:
     SessionDispatcher *sessionproxy;
     bool dataOK;
+    QString desktop;
     QStringList powerlist;
     QLabel *blur_label;
     QLabel *transparency_label;

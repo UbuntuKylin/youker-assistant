@@ -240,7 +240,10 @@ void FontWidget::initData()
     monospace_font_btn->setText(monospace_font);
     document_font_btn->setText(document_font);
     titlebar_font_btn->setText(titlebar_font);
-    scaling_slider->setValue(sessionproxy->get_font_zoom_qt());
+
+    if (this->desktop != "mate") {
+        scaling_slider->setValue(sessionproxy->get_font_zoom_qt());
+    }
 
     QString current_smooth = sessionproxy->get_smooth_style_qt();
     /*QStringList */smoothlist  = sessionproxy->get_smooth_style_list_qt();

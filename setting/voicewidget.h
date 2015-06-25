@@ -52,6 +52,7 @@ private:
     SessionDispatcher *sessionproxy;
     SystemDispatcher *systemproxy;
     bool dataOK;
+    QString desktop;
     QStringList soundlist;
     QLabel *theme_label;
     QLabel *tip_label;

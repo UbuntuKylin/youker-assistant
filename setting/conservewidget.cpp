@@ -28,7 +28,7 @@
 #include <QButtonGroup>
 
 ConserveWidget::ConserveWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_desktop, bool has_battery) :
-    QWidget(parent),
+    QWidget(parent),desktop(cur_desktop),
     sessionproxy(proxy)
 {
     iface = NULL;
@@ -95,7 +95,7 @@ ConserveWidget::ConserveWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
     sleep_ac_display_combo = new QComboBox();
 
 
-    if (cur_desktop == "mate") {
+    if (this->desktop == "mate") {
         brightness_label->hide();
         brightness_value_label->hide();
         brightness_slider->hide();
@@ -268,16 +268,65 @@ void ConserveWidget::initData()
                                QDBusConnection::sessionBus());
     gamma_slider->setValue(sessionproxy->get_screen_gamma_qt());
 
-    QDBusReply<int> reply = iface->call("GetPercentage");
-    if (reply.isValid()) {
-        brightness_slider->setValue(reply.value());
-        brightness_value_label->setText(QString::number(brightness_slider->value()));
+    QStringList aclist  = sessionproxy->get_sleep_timeout_list_qt();
+    bool inHere = false;
+    if (this->desktop == "mate") {
+        sleep_timeout_display_battery = sessionproxy->get_current_sleep_timeout_display_battery_qt();
+        QStringList huname_display_battery_list;
+        huname_display_battery_list << tr("5 minutes") << tr("10 minutes") << tr("20 minutes") << tr("Half an hour") << tr("1 hour") << tr("2 hours") << tr("never");
+        QList<QString>::Iterator it5 = aclist.begin(), itend5 = aclist.end();
+        int initIndex5 = 0;
+        inHere = false;
+        for(;it5 != itend5; it5++,initIndex5++)
+        {
+            if(*it5 == sleep_timeout_display_battery) {
+                inHere = true;
+                break;
+            }
+        }
+        if (inHere == false) {
+            huname_display_battery_list << sleep_timeout_display_battery;
+            initIndex5 = huname_display_battery_list.length() - 1;
+        }
+        sleep_battery_display_combo->clear();
+        sleep_battery_display_combo->clearEditText();
+        sleep_battery_display_combo->addItems(huname_display_battery_list);
+        sleep_battery_display_combo->setCurrentIndex(initIndex5);
+
+        sleep_timeout_display_ac = sessionproxy->get_current_sleep_timeout_display_ac_qt();
+        QStringList huname_display_ac_list;
+        huname_display_ac_list << tr("5 minutes") << tr("10 minutes") << tr("20 minutes") << tr("Half an hour") << tr("1 hour") << tr("2 hours") << tr("never");
+        QList<QString>::Iterator it6 = aclist.begin(), itend6 = aclist.end();
+        int initIndex6 = 0;
+        inHere = false;
+        for(;it6 != itend6; it6++,initIndex6++)
+        {
+            if(*it6 == sleep_timeout_display_ac) {
+                inHere = true;
+                break;
+            }
+        }
+        if (inHere == false) {
+            huname_display_ac_list << sleep_timeout_display_ac;
+            initIndex6 = huname_display_ac_list.length() - 1;
+        }
+        sleep_ac_display_combo->clear();
+        sleep_ac_display_combo->clearEditText();
+        sleep_ac_display_combo->addItems(huname_display_ac_list);
+        sleep_ac_display_combo->setCurrentIndex(initIndex6);
     }
-    else
-    {
-        brightness_label->hide();
-        brightness_value_label->hide();
-        brightness_slider->hide();
+    else {
+        QDBusReply<int> reply = iface->call("GetPercentage");
+        if (reply.isValid()) {
+            brightness_slider->setValue(reply.value());
+            brightness_value_label->setText(QString::number(brightness_slider->value()));
+        }
+        else
+        {
+            brightness_label->hide();
+            brightness_value_label->hide();
+            brightness_slider->hide();
+        }
     }
 
     current_idle_delay = sessionproxy->get_current_idle_delay_qt();
@@ -286,7 +335,7 @@ void ConserveWidget::initData()
     huname_idle_list << tr("1 minute") << tr("2 minutes") << tr("3 minutes") << tr("5 minutes") << tr("10 minutes") << tr("Half an hour") << tr("1 hour") << tr("never");
     QList<QString>::Iterator it1 = idledelaylist.begin(), itend1 = idledelaylist.end();
     int initIndex1 = 0;
-    bool inHere = false;
+
     for(;it1 != itend1; it1++,initIndex1++)
     {
         if(*it1 == current_idle_delay) {
@@ -387,7 +436,6 @@ void ConserveWidget::initData()
     sleep_battery_combo->setCurrentIndex(initIndex3);
 
     sleep_timeout_ac = sessionproxy->get_current_sleep_timeout_ac_qt();
-    QStringList aclist  = sessionproxy->get_sleep_timeout_list_qt();
     QStringList huname_ac_list;
     huname_ac_list << tr("5 minutes") << tr("10 minutes") << tr("20 minutes") << tr("Half an hour") << tr("1 hour") << tr("2 hours") << tr("never");
     QList<QString>::Iterator it4 = aclist.begin(), itend4 = aclist.end();
@@ -408,52 +456,6 @@ void ConserveWidget::initData()
     sleep_ac_combo->clearEditText();
     sleep_ac_combo->addItems(huname_ac_list);
     sleep_ac_combo->setCurrentIndex(initIndex4);
-
-
-    sleep_timeout_display_battery = sessionproxy->get_current_sleep_timeout_display_battery_qt();
-    QStringList huname_display_battery_list;
-    huname_display_battery_list << tr("5 minutes") << tr("10 minutes") << tr("20 minutes") << tr("Half an hour") << tr("1 hour") << tr("2 hours") << tr("never");
-    QList<QString>::Iterator it5 = aclist.begin(), itend5 = aclist.end();
-    int initIndex5 = 0;
-    inHere = false;
-    for(;it5 != itend5; it5++,initIndex5++)
-    {
-        if(*it5 == sleep_timeout_display_battery) {
-            inHere = true;
-            break;
-        }
-    }
-    if (inHere == false) {
-        huname_display_battery_list << sleep_timeout_display_battery;
-        initIndex5 = huname_display_battery_list.length() - 1;
-    }
-    sleep_battery_display_combo->clear();
-    sleep_battery_display_combo->clearEditText();
-    sleep_battery_display_combo->addItems(huname_display_battery_list);
-    sleep_battery_display_combo->setCurrentIndex(initIndex5);
-
-
-    sleep_timeout_display_ac = sessionproxy->get_current_sleep_timeout_display_ac_qt();
-    QStringList huname_display_ac_list;
-    huname_display_ac_list << tr("5 minutes") << tr("10 minutes") << tr("20 minutes") << tr("Half an hour") << tr("1 hour") << tr("2 hours") << tr("never");
-    QList<QString>::Iterator it6 = aclist.begin(), itend6 = aclist.end();
-    int initIndex6 = 0;
-    inHere = false;
-    for(;it6 != itend6; it6++,initIndex6++)
-    {
-        if(*it6 == sleep_timeout_display_ac) {
-            inHere = true;
-            break;
-        }
-    }
-    if (inHere == false) {
-        huname_display_ac_list << sleep_timeout_display_ac;
-        initIndex6 = huname_display_ac_list.length() - 1;
-    }
-    sleep_ac_display_combo->clear();
-    sleep_ac_display_combo->clearEditText();
-    sleep_ac_display_combo->addItems(huname_display_ac_list);
-    sleep_ac_display_combo->setCurrentIndex(initIndex6);
 
     dataOK = true;
     this->initConnect();
