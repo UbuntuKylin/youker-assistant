@@ -27,7 +27,12 @@
 #include "../component/kylintitlebar.h"
 #include "../component/kylinlistwidgetitem.h"
 
+#include "../component/cardwidget.h"
+#include "../component/itemcard.h"
+
 class MainWindow;
+//class SystemDispatcher;
+//#include "../dbusproxy/youkersystemdbus.h"
 
 class SkinCenter :public QDialog
 {
@@ -36,30 +41,41 @@ public:
     SkinCenter(QWidget *parent = 0/*, Qt::WindowFlags f = 0*/);
     ~SkinCenter();
     void setParentWindow(MainWindow *From) { mainwindow = From;}
+//    void setSystemDbusProxy(SystemDispatcher* dispatcher) { systemProxy = dispatcher;}
     void initBackgroundList();
-    void setLanguage();
+    void reloadBackgroundList();
+//    void setLanguage();
     void initConnect();
     void initTitleBar(const QString &path);
-    void initUsingLogo(QListWidgetItem *init_item);
-    void setLogo();
+//    void initUsingLogo(QListWidgetItem *init_item);
+//    void setLogo();
 
 public slots:
     void onCloseButtonClicked();
     void changeSkinCenterBackground(QString pciture);
+    void changeEnterBackground(QString pciture);
+    void changeLeaveBackground();
+    void deleteBackground(QString picture);
+    void switchUsingLogo(QString index);
 
 protected:
-//    virtual void	enterEvent (QEvent  *);
-//    virtual void	leaveEvent (QEvent *);
+////    virtual void	enterEvent (QEvent  *);
+////    virtual void	leaveEvent (QEvent *);
     void closeEvent(QCloseEvent *event);
 
 private:
     MainWindow *mainwindow;
     KylinTitleBar *title_bar;
-    KylinListWidget *list_widget;
+    QWidget *skin_widget;
+//    KylinListWidget *list_widget;
     QString last_skin_path;
-    QLabel *using_label;
+//    QLabel *using_label;
 //    QTimer *delayTimer;
 //    QString titlebar_pic;
+
+    CardWidget *list_widget;
+//    SystemDispatcher *systemProxy;
+    QList<ItemCard *> card_list;
 };
 
 #endif // SKINCENTER_H

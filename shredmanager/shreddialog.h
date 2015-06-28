@@ -18,9 +18,11 @@
  */
 
 #include <QDialog>
+#include <QSettings>
 #include "../component/kylineditbutton.h"
 #include "../component/kylintitlebar.h"
 #include "../component/toolkits.h"
+#include "../component/utils.h"
 
 class QLabel;
 class QPushButton;
@@ -37,6 +39,8 @@ public:
   void setLanguage();
   void initConnect();
   void initTitleBar();
+  QString getCurrrentSkinName();
+  void resetSkin();
 
 protected:
     void closeEvent(QCloseEvent *event);
@@ -57,4 +61,5 @@ private:
     QPushButton *shred_btn;
     QPushButton *cacel_btn;
     Toolkits *toolkits;
+    QSettings *shredSettings;
 };

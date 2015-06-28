@@ -30,6 +30,7 @@ HEADERS += \
     filelist.h \
     ../component/alertdialog.h \
     ../component/toolkits.h \
+    ../component/utils.h \
     ../component/kylintitlebar.h \
     ../component/systembutton.h
 

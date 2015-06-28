@@ -43,12 +43,13 @@ class CleanerDetailWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit CleanerDetailWidget(QWidget *parent = 0, SessionDispatcher *seroxy = 0, SystemDispatcher *syproxy = 0, MainWindow *window = 0, Toolkits *kits = 0);
+    explicit CleanerDetailWidget(QWidget *parent = 0, SessionDispatcher *seroxy = 0, SystemDispatcher *syproxy = 0, MainWindow *window = 0, Toolkits *kits = 0, QString skin = ":/background/res/skin/1.png");
     ~CleanerDetailWidget();
     void setUIData();
     void setLanguage();
     void initConnect();
     void getAllSelectedItems();
+    void resetCurrentSkin(QString skin);
 
 public slots:
     void showCustomPage();
@@ -127,6 +128,7 @@ private:
     int rowIndex;
     int columnIndex;
     bool scanResult;
+    QString cur_skin;
 
 //    QLabel *resultLabel;
 };

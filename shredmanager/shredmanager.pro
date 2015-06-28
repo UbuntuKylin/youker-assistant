@@ -25,6 +25,7 @@ HEADERS += \
     shreddialog.h \
     ../component/toolkits.h \
     ../component/alertdialog.h \
+    ../component/utils.h \
     ../component/toolkits.h \
     ../component/kylintitlebar.h \
     ../component/systembutton.h \

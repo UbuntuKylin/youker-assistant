@@ -55,10 +55,13 @@ inst1.files += res/youker-assistant.png
 inst1.path = /usr/share/pixmaps
 inst2.files += ../youker-assistant.desktop
 inst2.path = /usr/share/applications
+inst3.files += res/background/
+inst3.path = /var/lib/youker-assistant-daemon/
 target.source += $$TARGET
 target.path = /usr/bin
 INSTALLS += inst1 \
     inst2 \
+    inst3 \
     target
 
 SOURCES += main.cpp\
@@ -141,7 +144,9 @@ SOURCES += main.cpp\
     ../component/cleangroup.cpp \
     ../component/cleanbutton.cpp \
     ../component/cleansubgroup.cpp \
-    ../component/cleansubbutton.cpp
+    ../component/cleansubbutton.cpp \
+    ../component/cardwidget.cpp \
+    ../component/itemcard.cpp
 
 HEADERS  += mainwindow.h \
     titlewidget.h \
@@ -224,7 +229,9 @@ HEADERS  += mainwindow.h \
     ../component/cleangroup.h \
     ../component/cleanbutton.h \
     ../component/cleansubgroup.h \
-    ../component/cleansubbutton.h
+    ../component/cleansubbutton.h \
+    ../component/cardwidget.h \
+    ../component/itemcard.h
 
 FORMS    += mainwindow.ui \
     ../component/quibo.ui \
@@ -232,7 +239,8 @@ FORMS    += mainwindow.ui \
     autostartwidget.ui \
     aboutdialog.ui \
     ../cleaner/cleanlistwidget.ui \
-    ../cleaner/cleanerdetailwidget.ui
+    ../cleaner/cleanerdetailwidget.ui \
+    ../component/itemcard.ui
 
 RESOURCES += \
     img.qrc

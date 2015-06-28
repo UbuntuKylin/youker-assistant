@@ -78,6 +78,10 @@ public:
     void restoreSkin();
     void initAnimation();
     int getCurrentBackgroundIndex();
+    QString getCurrentBackgroundName();
+    QString getCurrentBackgroundAbsName();
+    QStringList filterSkin();
+    bool deleteFile(QString filename);
 
 protected:
     void mousePressEvent(QMouseEvent *event);
@@ -153,6 +157,8 @@ private:
 
     AutoStartWidget *auto_start;
     CameraManager *camera_manager;
+
+//    QStringList skinlist;
 };
 
 #endif // MAINWINDOW_H

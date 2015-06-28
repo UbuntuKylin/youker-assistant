@@ -66,6 +66,12 @@ SystemDispatcher::~SystemDispatcher() {
     }
 }
 
+bool SystemDispatcher::delete_file_qt(QString filename)
+{
+    QDBusReply<bool> reply = systemiface->call("delete_file", filename);
+    return reply.value();
+}
+
 void SystemDispatcher::cleanAllSelectItems(QMap<QString, QVariant> selectMap)
 {
     if (clean_thread->isRunning()) {

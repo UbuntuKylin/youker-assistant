@@ -25,6 +25,7 @@
 #include <QFileDialog>
 #include <QDir>
 #include <QProcess>
+#include <QDebug>
 
 //pkg-config --cflags libgtop-2.0
 //pkg-config --libs glib-2.0 libgtop-2.0
@@ -36,6 +37,10 @@ ProcessDialog::ProcessDialog(ProcessManager *plugin, QDialog *parent)
     this->setStyleSheet("QDialog{border: 1px solid gray;border-radius:2px}");//设定边框宽度以及颜色
     this->setWindowIcon(QIcon(":/res/youker-assistant.png"));
     title_bar = new KylinTitleBar();
+
+    proSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
+    proSettings->setIniCodec("UTF-8");
+
     initTitleBar();
 
     this->setFixedSize(850, 476);
@@ -89,6 +94,12 @@ ProcessDialog::~ProcessDialog()
     if(timer->isActive()) {
         timer->stop();
     }
+    if (proSettings != NULL)
+    {
+        proSettings->sync();
+        delete proSettings;
+        proSettings = NULL;
+    }
 }
 
 void ProcessDialog::setLanguage()
@@ -124,11 +135,65 @@ void ProcessDialog::closeEvent(QCloseEvent *event)
 //  emit SignalClose();
 }
 
+QString ProcessDialog::getCurrrentSkinName()
+{
+    proSettings->beginGroup("Background");
+    QString skin = proSettings->value("Path").toString();
+    if(skin.isEmpty()) {
+        skin = ":/background/res/skin/1.png";
+    }
+    else {
+        QStringList skinlist;
+        QString path = "/var/lib/youker-assistant-daemon/background/";
+        QDir picdir(path);
+        picdir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
+        picdir.setSorting(QDir::Size | QDir::Reversed);
+        QStringList filters;
+        filters << "*.jpg" << "*.png";
+        picdir.setNameFilters(filters);
+        QFileInfoList list = picdir.entryInfoList();
+        if(list.size() < 1) {
+            skinlist << ":/background/res/skin/1.png" << ":/background/res/skin/2.png" << ":/background/res/skin/3.png" << ":/background/res/skin/4.png";
+        }
+        else {
+            for (int j = 0; j < list.size(); ++j) {
+                QFileInfo fileInfo = list.at(j);
+                skinlist << path + fileInfo.fileName();
+            }
+            skinlist << ":/background/res/skin/1.png" << ":/background/res/skin/2.png" << ":/background/res/skin/3.png" << ":/background/res/skin/4.png";
+        }
+
+        QList<QString>::Iterator it = skinlist.begin(), itend = skinlist.end();
+        bool flag = false;
+        for(;it != itend; it++)
+        {
+            if(*it == skin) {
+                flag = true;
+                break;
+            }
+        }
+        if (flag == false) {
+            skin = skinlist.at(0);
+        }
+    }
+    proSettings->endGroup();
+    proSettings->sync();
+    return skin;
+}
+
 void ProcessDialog::initTitleBar()
 {
+    QString skin = this->getCurrrentSkinName();
     title_bar->setTitleWidth(850);
     title_bar->setTitleName(tr("Process Manager"));
-    title_bar->setTitleBackgound(":/background/res/skin/1.png");
+//    title_bar->setTitleBackgound(":/background/res/skin/1.png");
+    title_bar->setTitleBackgound(skin);
+}
+
+void ProcessDialog::resetSkin()
+{
+    QString skin = this->getCurrrentSkinName();
+    title_bar->resetBackground(skin);
 }
 
 void ProcessDialog::showProList() {

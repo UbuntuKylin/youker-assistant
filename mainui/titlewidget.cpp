@@ -32,6 +32,10 @@ TitleWidget::TitleWidget(QWidget *parent)
     close_button->loadPixmap(":/sys/res/sysBtn/close_button.png");
     skin_button->loadPixmap(":/sys/res/sysBtn/skin_button.png");
     main_menu_button->loadPixmap(":/sys/res/sysBtn/main_menu.png");
+    min_button->setFocusPolicy(Qt::NoFocus);
+    close_button->setFocusPolicy(Qt::NoFocus);
+    skin_button->setFocusPolicy(Qt::NoFocus);
+    main_menu_button->setFocusPolicy(Qt::NoFocus);
 
     QHBoxLayout *title_layout = new QHBoxLayout();
     title_layout->addWidget(close_button, 0, Qt::AlignTop);

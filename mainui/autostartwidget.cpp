@@ -27,7 +27,7 @@
 
 //AutoStartWidget::AutoStartWidget(QWidget *parent, SessionDispatcher *proxy) :
 //    QWidget(parent),sessionproxy(proxy),
-AutoStartWidget::AutoStartWidget(QDialog *parent, SessionDispatcher *proxy) :
+AutoStartWidget::AutoStartWidget(QDialog *parent, SessionDispatcher *proxy, QString skin) :
     QDialog(parent),sessionproxy(proxy),
     ui(new Ui::AutoStartWidget)
 {
@@ -110,7 +110,7 @@ AutoStartWidget::AutoStartWidget(QDialog *parent, SessionDispatcher *proxy) :
     title_bar = new KylinTitleBar(this);
     title_bar->move(0,0);
     title_bar->show();
-    initTitleBar();
+    initTitleBar(skin);
     ui->scrollArea->setStyleSheet("QScrollArea{border: none}");
     ui->scrollArea->setFixedSize(556,300);
     ui->scrollArea->setAutoFillBackground(true);
@@ -209,11 +209,17 @@ void AutoStartWidget::initConnect()
     connect(title_bar,SIGNAL(closeDialog()), this, SLOT(onCloseButtonClicked()));
 }
 
-void AutoStartWidget::initTitleBar()
+void AutoStartWidget::initTitleBar(QString skin)
 {
     title_bar->setTitleWidth(560);
     title_bar->setTitleName(tr("Auto Start"));
-    title_bar->setTitleBackgound(":/background/res/skin/1.png");
+//    title_bar->setTitleBackgound(":/background/res/skin/1.png");
+    title_bar->setTitleBackgound(skin);
+}
+
+void AutoStartWidget::resetTitleSkin(QString skin)
+{
+    title_bar->resetBackground(skin);
 }
 
 void AutoStartWidget::onCloseButtonClicked()

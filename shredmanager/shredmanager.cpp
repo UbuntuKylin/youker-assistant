@@ -54,6 +54,7 @@ void  ShredManager::doAction()
 {
     int windowWidth = QApplication::desktop()->width();
     int windowHeight = QApplication::desktop()->height();
+    shred_dialog.resetSkin();
     shred_dialog.move((windowWidth - 500) / 2,(windowHeight - 471) / 2);
     shred_dialog.show();
     shred_dialog.raise();

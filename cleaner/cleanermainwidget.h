@@ -32,10 +32,11 @@ class CleanerMainWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit CleanerMainWidget(QWidget *parent = 0, SessionDispatcher *seroxy = 0, MainWindow *window = 0, Toolkits *kits = 0);
+    explicit CleanerMainWidget(QWidget *parent = 0, SessionDispatcher *seroxy = 0, MainWindow *window = 0, Toolkits *kits = 0, QString skin = ":/background/res/skin/1.png");
     ~CleanerMainWidget();
     void setLanguage();
     void getAllSelectedItems();
+    void resetCurrentSkin(QString skin);
 
 public slots:
     void onButtonClicked();

@@ -22,7 +22,7 @@
 #include "../mainui/mainwindow.h"
 #include "../component/cleangroup.h"
 
-CleanerMainWidget::CleanerMainWidget(QWidget *parent, SessionDispatcher *seroxy, MainWindow *window, Toolkits *kits)
+CleanerMainWidget::CleanerMainWidget(QWidget *parent, SessionDispatcher *seroxy, MainWindow *window, Toolkits *kits, QString skin)
     : QWidget(parent), sessionproxy(seroxy), parentWindow(window), toolKits(kits)
 {
     this->setFixedSize(900, 403);
@@ -37,7 +37,7 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, SessionDispatcher *seroxy,
     QStringList cache_list, status_list;
     cache_list << tr("Cleanup Package Cache") << tr("Cleanup Software Center Cache") << tr("Cleanup Thumbnails Cache") << tr("Cleanup FireFox Cache") << tr("Cleanup Chromium Cache");
     status_list << "apt" << "software-center" << "thumbnails" << "firefox" << "chromium";
-    cache_items = new CleanerItems(cache_list, status_list, 280, tr("Cache Items"));
+    cache_items = new CleanerItems(cache_list, status_list, skin, 280, tr("Cache Items"));
 //    cache_btn = new KylinCheckBox(0, "://res/cache.png");
     cache_btn = new CleanGroup(0, "://res/cache");
 //    cache_btn->setFixedSize(260, 130);
@@ -52,7 +52,7 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, SessionDispatcher *seroxy,
     package_list << tr("Uninstall unnecessary procedures") << tr("Uninstall old kernel packages") << tr("Cleanup software configfile");
     status_list.clear();
     status_list << "unneed" << "oldkernel" << "configfile";
-    package_items = new CleanerItems(package_list, status_list, 200, tr("Package Items"));
+    package_items = new CleanerItems(package_list, status_list, skin, 200, tr("Package Items"));
 //    package_btn = new KylinCheckBox(0, "://res/package.png");
     package_btn = new CleanGroup(0, "://res/cache");
 //    package_btn->setFixedSize(260, 130);
@@ -67,7 +67,7 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, SessionDispatcher *seroxy,
     cookies_list << tr("Cleanup the Cookies saving in Firefox") << tr("Cleanup the Cookies saving in Chromium");
     status_list.clear();
     status_list << "firefox" << "chromium";
-    cookies_items = new CleanerItems(cookies_list, status_list, 170, tr("Cookies Items"));
+    cookies_items = new CleanerItems(cookies_list, status_list, skin, 170, tr("Cookies Items"));
 //    cookies_btn = new KylinCheckBox(0, "://res/cookie.png");
     cookies_btn = new CleanGroup(0, "://res/cache");
 //    cookies_btn->setFixedSize(260, 130);
@@ -82,7 +82,7 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, SessionDispatcher *seroxy,
     trace_list << tr("Clean up the Firefox Internet records") << tr("Clean up the Chromium Internet records") << tr("Clean up the recently opened documents records");
     status_list.clear();
     status_list << "firefox" << "chromium" << "system";
-    trace_items = new CleanerItems(trace_list, status_list, 200, tr("Trace Items"));
+    trace_items = new CleanerItems(trace_list, status_list, skin, 200, tr("Trace Items"));
 //    trace_btn = new KylinCheckBox(0, "://res/trace.png");
     trace_btn = new CleanGroup(0, "://res/cache");
 //    trace_btn->setFixedSize(260, 130);
@@ -158,6 +158,18 @@ void CleanerMainWidget::setLanguage()
 {
     tip_label->setText(tr("Please select the items you want to clean"));
 //    main_checkbox->setText(tr("All"));
+}
+
+void CleanerMainWidget::resetCurrentSkin(QString skin)
+{
+    if(cache_items != NULL)
+        cache_items->resetTitleSkin(skin);
+    if(cache_items != NULL)
+        trace_items->resetTitleSkin(skin);
+    if(cache_items != NULL)
+        package_items->resetTitleSkin(skin);
+    if(cache_items != NULL)
+        cookies_items->resetTitleSkin(skin);
 }
 
 void CleanerMainWidget::receiveScanSignal()

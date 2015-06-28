@@ -22,10 +22,11 @@
 #include <QVBoxLayout>
 #include <QCheckBox>
 #include "../component/utils.h"
+#include <QDebug>
 
 //CleanListWidget::CleanListWidget(QStringList &arglist, const QString title_text, QWidget *parent) :
 //    QWidget(parent),titleName(title_text),
-CleanListWidget::CleanListWidget(QStringList &arglist, const QString title_text, QDialog *parent) :
+CleanListWidget::CleanListWidget(QStringList &arglist, QString skin, const QString title_text, QDialog *parent) :
     QDialog(parent),titleName(title_text),
     ui(new Ui::CleanListWidget)
 {
@@ -63,7 +64,7 @@ CleanListWidget::CleanListWidget(QStringList &arglist, const QString title_text,
     title_bar = new KylinTitleBar(this);
     title_bar->move(0,0);
     title_bar->show();
-    initTitleBar();
+    initTitleBar(skin);
     ui->scrollArea->setFixedSize(556,331);
 
 
@@ -167,12 +168,19 @@ void CleanListWidget::initConnect()
     connect(title_bar,SIGNAL(closeDialog()), this, SLOT(onCloseButtonClicked()));
 }
 
-void CleanListWidget::initTitleBar()
+void CleanListWidget::initTitleBar(QString skin)
 {
     title_bar->setTitleWidth(560);
     title_bar->setTitleName(titleName);
-    title_bar->setTitleBackgound(":/background/res/skin/1.png");
+//    title_bar->setTitleBackgound(":/background/res/skin/1.png");
+    title_bar->setTitleBackgound(skin);
 }
+
+void CleanListWidget::resetTitleSkin(QString skin)
+{
+    title_bar->resetBackground(skin);
+}
+
 
 void CleanListWidget::onCloseButtonClicked()
 {
