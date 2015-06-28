@@ -38,11 +38,12 @@ class AutoStartWidget : public QDialog//QWidget
 
 public:
 //    explicit AutoStartWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0);
-    explicit AutoStartWidget(QDialog *parent = 0, SessionDispatcher *proxy = 0);
+    explicit AutoStartWidget(QDialog *parent = 0, SessionDispatcher *proxy = 0, QString skin = ":/background/res/skin/1.png");
     ~AutoStartWidget();
     void initConnect();
     void initData();
     void scanAllSwitcher();
+    void resetTitleSkin(QString skin);
 
 public slots:
     void onCloseButtonClicked();
@@ -52,7 +53,7 @@ public slots:
     void readyShowUI();
 
 private:
-    void initTitleBar();
+    void initTitleBar(QString skin);
 
 private:
     Ui::AutoStartWidget *ui;

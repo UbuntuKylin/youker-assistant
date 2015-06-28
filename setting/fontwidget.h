@@ -33,12 +33,13 @@ class FontWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit FontWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0, MainWindow *window = 0, QString cur_desktop = "");
+    explicit FontWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0, MainWindow *window = 0, QString cur_desktop = "", QString skin = ":/background/res/skin/1.png");
     ~FontWidget();
     void setLanguage();
     void initConnect();
     void initData();
     bool getStatus();
+    void resetCurrentSkin(QString skin);
 
 public slots:
     void setDefaultFont();
@@ -98,6 +99,7 @@ private:
     QString document_font;
     QString titlebar_font;
     QString desktop;
+    QString cur_skin;
 };
 
 #endif // FONTWIDGET_H

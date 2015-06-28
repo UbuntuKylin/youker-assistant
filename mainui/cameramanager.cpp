@@ -23,7 +23,7 @@
 #include <QVBoxLayout>
 #include "../dbusproxy/youkersessiondbus.h"
 
-CameraManager::CameraManager(QWidget *parent, SessionDispatcher *proxy)
+CameraManager::CameraManager(QWidget *parent, SessionDispatcher *proxy, QString skin)
 :QDialog(parent),sessionproxy(proxy)
 {
     this->setStyleSheet("QDialog{border: 1px solid gray;border-radius:2px}");
@@ -35,7 +35,7 @@ CameraManager::CameraManager(QWidget *parent, SessionDispatcher *proxy)
     this->setPalette(palette);
 
     title_bar = new KylinTitleBar();
-    initTitleBar();
+    initTitleBar(skin);
     msg_label = new QLabel();
     msg_label->setWordWrap(true);//QLabel自动换行
     msg_label->setFixedWidth(480);
@@ -139,9 +139,15 @@ void CameraManager::onCloseButtonClicked()
     this->close();
 }
 
-void CameraManager::initTitleBar()
+void CameraManager::initTitleBar(QString skin)
 {
     title_bar->setTitleWidth(500);
     title_bar->setTitleName(tr("Camera Manager"));
-    title_bar->setTitleBackgound(":/background/res/skin/1.png");
+//    title_bar->setTitleBackgound(":/background/res/skin/1.png");
+    title_bar->setTitleBackgound(skin);
+}
+
+void CameraManager::resetTitleSkin(QString skin)
+{
+    title_bar->resetBackground(skin);
 }

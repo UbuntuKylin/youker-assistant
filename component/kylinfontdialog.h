@@ -37,13 +37,14 @@ class KylinFontDialog : public QDialog
     Q_OBJECT
     
 public:
-    explicit KylinFontDialog(/*QSettings *mSettings = 0, QString flag = "", */QString cur_font = "", QWidget *parent = 0);
+    explicit KylinFontDialog(/*QSettings *mSettings = 0, QString flag = "", */QString cur_font = "", QString skin = ":/background/res/skin/1.png", QWidget *parent = 0);
     ~KylinFontDialog();
     void initDialog();
     void setLanguage();
     void initConnect();
-    void initTitleBar();
+    void initTitleBar(QString skin);
     void updateSampleFont();
+    void resetTitleSkin(QString skin);
 
 public slots:
     void onCacelButtonClicked();

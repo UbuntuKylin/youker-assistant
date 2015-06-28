@@ -37,11 +37,12 @@ class CleanListWidget : public QDialog
 
 public:
 //    explicit CleanListWidget(QStringList &arglist, const QString title_text = "UbuntuKylin", QWidget *parent = 0/*, SessionDispatcher *proxy = 0*/);
-    explicit CleanListWidget(QStringList &arglist, const QString title_text = "UbuntuKylin", QDialog *parent = 0/*, SessionDispatcher *proxy = 0*/);
+    explicit CleanListWidget(QStringList &arglist, QString skin = ":/background/res/skin/1.png", const QString title_text = "UbuntuKylin", QDialog *parent = 0/*, SessionDispatcher *proxy = 0*/);
     ~CleanListWidget();
     void setLanguage();
     void initConnect();
     QStringList getSelectedItems();
+    void resetTitleSkin(QString skin);
 
 public slots:
     void resetSubCheckbox(int status);
@@ -52,7 +53,7 @@ signals:
     void notifyMainCheckBox(int status);
 
 private:
-    void initTitleBar();
+    void initTitleBar(QString skin);
 
 private:
     Ui::CleanListWidget *ui;

@@ -46,6 +46,8 @@ public:
     //首页一键清理
     void clean_by_main_one_key_qt();
 
+    bool delete_file_qt(QString filename);
+
     //-----------------------sound------------------------
     QStringList get_sound_themes_qt();
 //    Q_INVOKABLE QStringList get_sounds_qt();

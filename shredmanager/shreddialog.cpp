@@ -41,6 +41,9 @@ ShredDialog::ShredDialog(ShredManager *plugin, QDialog *parent)
     this->setFixedSize(500, 471);
     process_plugin = plugin;
 
+    shredSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
+    shredSettings->setIniCodec("UTF-8");
+
     title_bar = new KylinTitleBar();
     initTitleBar();
 
@@ -93,7 +96,12 @@ ShredDialog::ShredDialog(ShredManager *plugin, QDialog *parent)
 
 ShredDialog::~ShredDialog()
 {
-
+    if (shredSettings != NULL)
+    {
+        shredSettings->sync();
+        delete shredSettings;
+        shredSettings = NULL;
+    }
 }
 
 void ShredDialog::setLanguage()
@@ -124,11 +132,65 @@ void ShredDialog::onCloseButtonClicked()
 ////    this->hide();
 //}
 
+QString ShredDialog::getCurrrentSkinName()
+{
+    shredSettings->beginGroup("Background");
+    QString skin = shredSettings->value("Path").toString();
+    if(skin.isEmpty()) {
+        skin = ":/background/res/skin/1.png";
+    }
+    else {
+        QStringList skinlist;
+        QString path = "/var/lib/youker-assistant-daemon/background/";
+        QDir picdir(path);
+        picdir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
+        picdir.setSorting(QDir::Size | QDir::Reversed);
+        QStringList filters;
+        filters << "*.jpg" << "*.png";
+        picdir.setNameFilters(filters);
+        QFileInfoList list = picdir.entryInfoList();
+        if(list.size() < 1) {
+            skinlist << ":/background/res/skin/1.png" << ":/background/res/skin/2.png" << ":/background/res/skin/3.png" << ":/background/res/skin/4.png";
+        }
+        else {
+            for (int j = 0; j < list.size(); ++j) {
+                QFileInfo fileInfo = list.at(j);
+                skinlist << path + fileInfo.fileName();
+            }
+            skinlist << ":/background/res/skin/1.png" << ":/background/res/skin/2.png" << ":/background/res/skin/3.png" << ":/background/res/skin/4.png";
+        }
+
+        QList<QString>::Iterator it = skinlist.begin(), itend = skinlist.end();
+        bool flag = false;
+        for(;it != itend; it++)
+        {
+            if(*it == skin) {
+                flag = true;
+                break;
+            }
+        }
+        if (flag == false) {
+            skin = skinlist.at(0);
+        }
+    }
+    shredSettings->endGroup();
+    shredSettings->sync();
+    return skin;
+}
+
 void ShredDialog::initTitleBar()
 {
+    QString skin = this->getCurrrentSkinName();
     title_bar->setTitleWidth(500);
     title_bar->setTitleName(tr("Shred Manager"));
-    title_bar->setTitleBackgound(":/background/res/skin/1.png");
+//    title_bar->setTitleBackgound(":/background/res/skin/1.png");
+    title_bar->setTitleBackgound(skin);
+}
+
+void ShredDialog::resetSkin()
+{
+    QString skin = this->getCurrrentSkinName();
+    title_bar->resetBackground(skin);
 }
 
 //void ShredDialog::onSelecteComboActivated(int index)

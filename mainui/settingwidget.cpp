@@ -113,7 +113,7 @@ SettingWidget::~SettingWidget()
     }
 }
 
-void SettingWidget::initUI()
+void SettingWidget::initUI(QString skin)
 {
     theme_widget = new ThemeWidget(this, sessionProxy);
     icon_widget = new IconWidget(this, sessionProxy, desktop);
@@ -123,7 +123,7 @@ void SettingWidget::initUI()
     launcher_widget = new LauncherWidget(this, sessionProxy, desktop);
     panel_widget = new PanelWidget(this, sessionProxy, desktop, battery);
     window_widget = new WindowWidget(this, sessionProxy, desktop);
-    font_widget = new FontWidget(this, sessionProxy, p_mainwindow, desktop);
+    font_widget = new FontWidget(this, sessionProxy, p_mainwindow, desktop, skin);
     touchpad_widget = new TouchpadWidget(this, sessionProxy, desktop);
     deadpixel_widget = new DeadpixelWidget(this);
     conserve_widget = new ConserveWidget(this, sessionProxy, desktop, battery);
@@ -156,7 +156,11 @@ void SettingWidget::initUI()
 //void SettingWidget::slot_notify_boolean(QString key, bool value)
 //{
 //}
-
+void SettingWidget::resetSkin(QString skin)
+{
+    if(font_widget != NULL)
+        font_widget->resetCurrentSkin(skin);
+}
 
 void SettingWidget::initIndividuationWidget() {
     individuation_widget = new QWidget(this);

@@ -47,10 +47,10 @@ CleanerWidget::~CleanerWidget()
 
 }
 
-void CleanerWidget::initUI()
+void CleanerWidget::initUI(QString skin)
 {
-    main_widget = new CleanerMainWidget(this, sessionProxy, p_mainwindow, toolKits);
-    detail_widget = new CleanerDetailWidget(this, sessionProxy, systemProxy, p_mainwindow, toolKits);
+    main_widget = new CleanerMainWidget(this, sessionProxy, p_mainwindow, toolKits, skin);
+    detail_widget = new CleanerDetailWidget(this, sessionProxy, systemProxy, p_mainwindow, toolKits ,skin);
     connect(this, SIGNAL(transCleanSignal()), detail_widget, SLOT(receiveCleanSignal()));
 
     connect(this, SIGNAL(transScanSignal()), main_widget, SLOT(receiveScanSignal()));
@@ -70,6 +70,14 @@ void CleanerWidget::initUI()
     layout1->setContentsMargins(0, 0, 0, 0);
 
     setLayout(layout1);
+}
+
+void CleanerWidget::resetSkin(QString skin)
+{
+    if(main_widget != NULL)
+        main_widget->resetCurrentSkin(skin);
+    if(detail_widget != NULL)
+        detail_widget->resetCurrentSkin(skin);
 }
 
 void CleanerWidget::displayDetailPage()

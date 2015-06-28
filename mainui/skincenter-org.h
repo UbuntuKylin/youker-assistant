@@ -17,46 +17,49 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CAMERAMANAGER_H
-#define CAMERAMANAGER_H
+#ifndef SKINCENTER_H
+#define SKINCENTER_H
 
 #include <QDialog>
+//#include <QTimer>
 
 #include "../component/kylinlistwidget.h"
 #include "../component/kylintitlebar.h"
+#include "../component/kylinlistwidgetitem.h"
 
-class SessionDispatcher;
 class MainWindow;
-class CameraManager :public QDialog
+
+class SkinCenter :public QDialog
 {
   Q_OBJECT
 public:
-    CameraManager(QWidget *parent = 0, SessionDispatcher *proxy = 0, QString skin = ":/background/res/skin/1.png");
-    ~CameraManager();
+    SkinCenter(QWidget *parent = 0/*, Qt::WindowFlags f = 0*/);
+    ~SkinCenter();
     void setParentWindow(MainWindow *From) { mainwindow = From;}
-//    void initBackgroundList();
+    void initBackgroundList();
     void setLanguage();
     void initConnect();
-    void setOKButtonEnable(bool enable);
-    void resetTitleSkin(QString skin);
+    void initTitleBar(const QString &path);
+    void initUsingLogo(QListWidgetItem *init_item);
+    void setLogo();
 
 public slots:
     void onCloseButtonClicked();
-    void onOKButtonClicked();
-    void onViewButtonClicked();
+    void changeSkinCenterBackground(QString pciture);
 
-private:
-    void initTitleBar(QString skin);
+protected:
+//    virtual void	enterEvent (QEvent  *);
+//    virtual void	leaveEvent (QEvent *);
+    void closeEvent(QCloseEvent *event);
 
 private:
     MainWindow *mainwindow;
-    SessionDispatcher *sessionproxy;
     KylinTitleBar *title_bar;
-    QLabel *msg_label;
-    QLabel *tip_label;
-    QLabel *description_label;
-    QPushButton *okBtn;
-    QPushButton *viewBtn;
+    KylinListWidget *list_widget;
+    QString last_skin_path;
+    QLabel *using_label;
+//    QTimer *delayTimer;
+//    QString titlebar_pic;
 };
 
-#endif // CAMERAMANAGER_H
+#endif // SKINCENTER_H

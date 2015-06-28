@@ -77,6 +77,26 @@ class Daemon(PolicyKitService):
     def set_homedir(self, homedir):
         self.soundconf.set_homedir(homedir)
 
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
+    def delete_file(self, filename):
+        filename = filename.encode('utf-8')
+#        output = open("/tmp/default.txt", 'w+')
+#        output.write(filename)
+#        output.close()
+#        fp = open("/tmp/default.txt", "w")
+#        print >> fp, "--------------"
+#        print >> fp, filename
+#        print >> fp, "------22222222--------"
+#        fp.close()
+#        if os.path.exists(filename):
+        if os.path.isfile(filename):
+            try:
+                os.remove(filename)
+                return True
+            except os.error:
+                pass
+        return False
+
     # set cursor theme
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
     def set_cursor_theme_with_root(self, theme):

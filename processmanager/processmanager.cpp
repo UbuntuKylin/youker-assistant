@@ -18,6 +18,7 @@
  */
 
 #include "processmanager.h"
+#include <QDebug>
 
 ProcessManager::ProcessManager(QObject *parent)
 :QObject(parent), process_dialog(this)
@@ -27,7 +28,6 @@ ProcessManager::ProcessManager(QObject *parent)
 
 ProcessManager::~ProcessManager()
 {
-
 }
 
 QString ProcessManager::getGuid()
@@ -54,6 +54,7 @@ void  ProcessManager::doAction()
 {
     int windowWidth = QApplication::desktop()->width();
     int windowHeight = QApplication::desktop()->height();
+    process_dialog.resetSkin();
     process_dialog.move((windowWidth - 850) / 2,(windowHeight - 476) / 2);
     process_dialog.show();
     process_dialog.raise();

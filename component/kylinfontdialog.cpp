@@ -27,7 +27,7 @@
 #include <QHBoxLayout>
 #include <QLineEdit>
 
-KylinFontDialog::KylinFontDialog(/*QSettings *mSettings, QString flag, */QString cur_font, QWidget *parent) :
+KylinFontDialog::KylinFontDialog(/*QSettings *mSettings, QString flag, */QString cur_font, QString skin, QWidget *parent) :
     QDialog(parent)
 {
     this->setFixedSize(600, 500);
@@ -38,7 +38,7 @@ KylinFontDialog::KylinFontDialog(/*QSettings *mSettings, QString flag, */QString
     this->setAutoFillBackground(true);
 
     title_bar = new KylinTitleBar();
-    initTitleBar();
+    initTitleBar(skin);
 
     cur_tip_label = new QLabel();
     cur_font_label = new QLabel();
@@ -211,11 +211,12 @@ void KylinFontDialog::onOKButtonClicked() {
     }
 }
 
-void KylinFontDialog::initTitleBar()
+void KylinFontDialog::initTitleBar(QString skin)
 {
     title_bar->setTitleWidth(600);
     title_bar->setTitleName(tr("Font Dialog"));
-    title_bar->setTitleBackgound(":/background/res/skin/1.png");
+//    title_bar->setTitleBackgound(":/background/res/skin/1.png");
+    title_bar->setTitleBackgound(skin);
 }
 
 void KylinFontDialog::initDialog() {
@@ -366,6 +367,11 @@ void KylinFontDialog::updateSize(QModelIndex index) {
         cur_font_label->setText(curStr);
         updateSampleFont();
     }
+}
+
+void KylinFontDialog::resetTitleSkin(QString skin)
+{
+    title_bar->resetBackground(skin);
 }
 
 bool KylinFontDialog::eventFilter(QObject *obj, QEvent *event) {

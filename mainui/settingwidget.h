@@ -62,7 +62,9 @@ public:
     void setParentWindow(MainWindow* window) { p_mainwindow = window;}
     void setSessionDbusProxy(SessionDispatcher *dispatcher) { sessionProxy = dispatcher;}
     void setSystemDbusProxy(SystemDispatcher *dispatcher) { systemProxy = dispatcher;}
-    void initUI();
+    void initUI(QString skin);
+    void resetSkin(QString skin);
+
 
 signals:
     void changeActionPage(int index);

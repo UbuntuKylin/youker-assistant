@@ -41,7 +41,8 @@ public:
     void setSessionDbusProxy(SessionDispatcher* dispatcher) { sessionProxy = dispatcher;}
     void setSystemDbusProxy(SystemDispatcher* dispatcher) { systemProxy = dispatcher;}
     void setToolKits(Toolkits* kits) { toolKits = kits;}
-    void initUI();
+    void initUI(QString skin);
+    void resetSkin(QString skin);
 
 public slots:
     void displayDetailPage();

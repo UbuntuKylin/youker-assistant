@@ -25,10 +25,12 @@
 #include <QTableWidget>
 #include <QDebug>
 #include <QHeaderView>
+#include <QSettings>
 
 #include "procman.h"
 #include "procapp.h"
 #include "filelist.h"
+#include "../component/utils.h"
 #include "../component/toolkits.h"
 #include "../component/kylintitlebar.h"
 
@@ -47,6 +49,8 @@ public:
   void initConnect();
   void initTitleBar();
   void showProList();
+  QString getCurrrentSkinName();
+  void resetSkin();
   ProcApp *app;
 
 protected:
@@ -68,4 +72,5 @@ private:
   QTimer *timer;
   Toolkits *toolkits;
   KylinTitleBar *title_bar;
+  QSettings *proSettings;
 };

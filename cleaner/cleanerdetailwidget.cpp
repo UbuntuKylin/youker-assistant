@@ -24,8 +24,8 @@
 #include <QDebug>
 #include <QBoxLayout>
 
-CleanerDetailWidget::CleanerDetailWidget(QWidget *parent, SessionDispatcher *seroxy, SystemDispatcher *syproxy, MainWindow *window, Toolkits *kits)
-    : QWidget(parent), sessionproxy(seroxy), systemproxy(syproxy), parentWindow(window), toolKits(kits),
+CleanerDetailWidget::CleanerDetailWidget(QWidget *parent, SessionDispatcher *seroxy, SystemDispatcher *syproxy, MainWindow *window, Toolkits *kits, QString skin)
+    : QWidget(parent), sessionproxy(seroxy), systemproxy(syproxy), parentWindow(window), toolKits(kits),cur_skin(skin),
     ui(new Ui::CleanerDetailWidget)
 {
     ui->setupUi(this);
@@ -266,7 +266,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
     {
         if(cache_apt_list.length() > 0)
         {
-            cache_apt_items = new CleanListWidget(cache_apt_list, tr("Apt Cache Clean Items"));
+            cache_apt_items = new CleanListWidget(cache_apt_list, this->cur_skin, tr("Apt Cache Clean Items"));
 //            cache_apt_btn = new CommonCheckBox(0, "://res/cache");
             cache_apt_btn = new CleanSubGroup(0, "://res/item");
 //            cache_apt_btn->setFixedSize(160, 130);
@@ -316,7 +316,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         }
         if(cache_software_list.length() > 0)
         {
-            cache_software_items = new CleanListWidget(cache_software_list, tr("Software Cache Clean Items"));
+            cache_software_items = new CleanListWidget(cache_software_list, this->cur_skin, tr("Software Cache Clean Items"));
 //            cache_software_btn = new CommonCheckBox(0, "://res/cache");
             cache_software_btn = new CleanSubGroup(0, "://res/item");
 //            cache_software_btn->setFixedSize(160, 130);
@@ -366,7 +366,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         }
         if(cache_thumbnails_list.length() > 0)
         {
-            cache_thumbnails_items = new CleanListWidget(cache_thumbnails_list, tr("Thumbnails Cache Clean Items"));
+            cache_thumbnails_items = new CleanListWidget(cache_thumbnails_list, this->cur_skin,  tr("Thumbnails Cache Clean Items"));
 //            cache_thumbnails_btn = new CommonCheckBox(0, "://res/cache");
             cache_thumbnails_btn = new CleanSubGroup(0, "://res/item");
 //            cache_thumbnails_btn->setFixedSize(160, 130);
@@ -417,7 +417,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
 
         if(cache_firefox_list.length() > 0)
         {
-            cache_firefox_items = new CleanListWidget(cache_firefox_list, tr("Software Cache Clean Items"));
+            cache_firefox_items = new CleanListWidget(cache_firefox_list, this->cur_skin,  tr("Software Cache Clean Items"));
 //            cache_firefox_btn = new CommonCheckBox(0, "://res/cache");
             cache_firefox_btn = new CleanSubGroup(0, "://res/item");
 //            cache_firefox_btn->setFixedSize(160, 130);
@@ -465,7 +465,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         }
         if(cache_chromium_list.length() > 0)
         {
-            cache_chromium_items = new CleanListWidget(cache_chromium_list, tr("Thumbnails Cache Clean Items"));
+            cache_chromium_items = new CleanListWidget(cache_chromium_list, this->cur_skin, tr("Thumbnails Cache Clean Items"));
 //            cache_chromium_btn = new CommonCheckBox(0, "://res/cache");
             cache_chromium_btn = new CleanSubGroup(0, "://res/item");
 //            cache_chromium_btn->setFixedSize(160, 130);
@@ -518,7 +518,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
 //        doing_label->setText(tr("Cookies Scan OK......"));
         if(cookies_firefox_list.length() > 0)
         {
-            cookies_firefox_items = new CleanListWidget(cookies_firefox_list, tr("Thumbnails Cache Clean Items"));
+            cookies_firefox_items = new CleanListWidget(cookies_firefox_list, this->cur_skin, tr("Thumbnails Cache Clean Items"));
 //            cookies_firefox_btn = new CommonCheckBox(0, "://res/cookie");
             cookies_firefox_btn = new CleanSubGroup(0, "://res/item");
 //            cookies_firefox_btn->setFixedSize(160, 130);
@@ -568,7 +568,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         }
         if(cookies_chromium_list.length() > 0)
         {
-            cookies_chromium_items = new CleanListWidget(cookies_chromium_list, tr("Thumbnails Cache Clean Items"));
+            cookies_chromium_items = new CleanListWidget(cookies_chromium_list, this->cur_skin, tr("Thumbnails Cache Clean Items"));
 //            cookies_chromium_btn = new CommonCheckBox(0, "://res/cache");
             cookies_chromium_btn = new CleanSubGroup(0, "://res/item");
 //            cookies_chromium_btn->setFixedSize(160, 130);
@@ -713,7 +713,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
 //        doing_label->setText(tr("Packages Scan OK"));
         if(package_unneed_list.length() > 0)
         {
-            package_unneed_items = new CleanListWidget(package_unneed_list, tr("Thumbnails Cache Clean Items"));
+            package_unneed_items = new CleanListWidget(package_unneed_list, this->cur_skin, tr("Thumbnails Cache Clean Items"));
 //            package_unneed_btn = new CommonCheckBox(0, "://res/cache");
             package_unneed_btn = new CleanSubGroup(0, "://res/item");
 //            package_unneed_btn->setFixedSize(160, 130);
@@ -762,7 +762,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         }
         if(package_oldkernel_list.length() > 0)
         {
-            package_oldkernel_items = new CleanListWidget(package_oldkernel_list, tr("Thumbnails Cache Clean Items"));
+            package_oldkernel_items = new CleanListWidget(package_oldkernel_list, this->cur_skin, tr("Thumbnails Cache Clean Items"));
 //            package_oldkernel_btn = new CommonCheckBox(0, "://res/cache");
             package_oldkernel_btn = new CleanSubGroup(0, "://res/item");
 //            package_oldkernel_btn->setFixedSize(160, 130);
@@ -811,7 +811,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         }
         if(package_configfile_list.length() > 0)
         {
-            package_configfile_items = new CleanListWidget(package_configfile_list, tr("Thumbnails Cache Clean Items"));
+            package_configfile_items = new CleanListWidget(package_configfile_list, this->cur_skin, tr("Thumbnails Cache Clean Items"));
 //            package_configfile_btn = new CommonCheckBox(0, "://res/cache");
             package_configfile_btn = new CleanSubGroup(0, "://res/item");
 //            package_configfile_btn->setFixedSize(160, 130);
@@ -1344,6 +1344,33 @@ void CleanerDetailWidget::setLanguage()
     ui->label->setText(tr("No garbage "));
 //    title_label->setText(tr("Cleaning up the system cache"));
 //    description_label->setText(tr("Deep cleaning up the system cache, to save disk space"));
+}
+
+void CleanerDetailWidget::resetCurrentSkin(QString skin)
+{
+    this->cur_skin = skin;
+
+    //can remove this code
+    if(cache_apt_items != NULL)
+        cache_apt_items->resetTitleSkin(skin);
+    if(cache_software_items != NULL)
+        cache_software_items->resetTitleSkin(skin);
+    if(cache_thumbnails_items != NULL)
+        cache_thumbnails_items->resetTitleSkin(skin);
+    if(cache_firefox_items != NULL)
+        cache_firefox_items->resetTitleSkin(skin);
+    if(cache_chromium_items != NULL)
+        cache_chromium_items->resetTitleSkin(skin);
+    if(cookies_firefox_items != NULL)
+        cookies_firefox_items->resetTitleSkin(skin);
+    if(cookies_chromium_items != NULL)
+        cookies_chromium_items->resetTitleSkin(skin);
+    if(package_unneed_items != NULL)
+        package_unneed_items->resetTitleSkin(skin);
+    if(package_oldkernel_items != NULL)
+        package_oldkernel_items->resetTitleSkin(skin);
+    if(package_configfile_items != NULL)
+        package_configfile_items->resetTitleSkin(skin);
 }
 
 void CleanerDetailWidget::receiveCleanSignal()

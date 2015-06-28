@@ -23,11 +23,12 @@
 #include "../dbusproxy/youkersessiondbus.h"
 #include "../mainui/mainwindow.h"
 
-FontWidget::FontWidget(QWidget *parent, SessionDispatcher *proxy, MainWindow *window, QString cur_desktop) :
+FontWidget::FontWidget(QWidget *parent, SessionDispatcher *proxy, MainWindow *window, QString cur_desktop, QString skin) :
     QWidget(parent),
     sessionproxy(proxy),
     parentWindow(window),
-    desktop(cur_desktop)
+    desktop(cur_desktop),
+    cur_skin(skin)
 {
     dataOK = false;
     default_font_label = new QLabel();
@@ -363,7 +364,7 @@ void FontWidget::fontwidget_notify_double(QString key, double value)
 
 void FontWidget::setDefaultFont() {
 //    KylinFontDialog *fontDialog = new KylinFontDialog(mSettings, flag, current_font, 0);
-    KylinFontDialog *fontDialog = new KylinFontDialog(current_font, 0);
+    KylinFontDialog *fontDialog = new KylinFontDialog(current_font, this->cur_skin, 0);
     connect(fontDialog, SIGNAL(rebackCurrentFont(QString)), this, SLOT(resetDefaultFont(QString)));
     int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (600  / 2);
     int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (500  / 2);
@@ -378,7 +379,7 @@ void FontWidget::resetDefaultFont(QString cur_font)
 }
 
 void FontWidget::setDesktopFont() {
-    KylinFontDialog *fontDialog = new KylinFontDialog(desktop_font, 0);
+    KylinFontDialog *fontDialog = new KylinFontDialog(desktop_font, this->cur_skin, 0);
     connect(fontDialog, SIGNAL(rebackCurrentFont(QString)), this, SLOT(resetDesktopFont(QString)));
     int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (600  / 2);
     int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (500  / 2);
@@ -392,8 +393,13 @@ void FontWidget::resetDesktopFont(QString cur_font)
     desktop_font_btn->setText(cur_font);
 }
 
+void FontWidget::resetCurrentSkin(QString skin)
+{
+    this->cur_skin = skin;
+}
+
 void FontWidget::setMonospaceFont() {
-    KylinFontDialog *fontDialog = new KylinFontDialog(monospace_font, 0);
+    KylinFontDialog *fontDialog = new KylinFontDialog(monospace_font, this->cur_skin, 0);
     connect(fontDialog, SIGNAL(rebackCurrentFont(QString)), this, SLOT(resetMonospaceFont(QString)));
     int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (600  / 2);
     int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (500  / 2);
@@ -408,7 +414,7 @@ void FontWidget::resetMonospaceFont(QString cur_font)
 }
 
 void FontWidget::setDocumentFont() {
-    KylinFontDialog *fontDialog = new KylinFontDialog(document_font, 0);
+    KylinFontDialog *fontDialog = new KylinFontDialog(document_font, this->cur_skin, 0);
     connect(fontDialog, SIGNAL(rebackCurrentFont(QString)), this, SLOT(resetDocumentFont(QString)));
     int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (600  / 2);
     int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (500  / 2);
@@ -423,7 +429,7 @@ void FontWidget::resetDocumentFont(QString cur_font)
 }
 
 void FontWidget::setTitlebarFont() {
-    KylinFontDialog *fontDialog = new KylinFontDialog(titlebar_font, 0);
+    KylinFontDialog *fontDialog = new KylinFontDialog(titlebar_font, this->cur_skin, 0);
     connect(fontDialog, SIGNAL(rebackCurrentFont(QString)), this, SLOT(resetTitlebarFont(QString)));
     int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (600  / 2);
     int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (500  / 2);

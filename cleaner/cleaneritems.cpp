@@ -24,7 +24,7 @@
 //CleanerItems::CleanerItems(QStringList &arglist, QStringList &statuslist, int height, const QString title_text, QWidget *parent)
 //    : QWidget(parent),titleName(title_text)/*, widgetHeight(height)*/
 
-CleanerItems::CleanerItems(QStringList &arglist, QStringList &statuslist, int height, const QString title_text, QDialog *parent)
+CleanerItems::CleanerItems(QStringList &arglist, QStringList &statuslist, QString skin, int height, const QString title_text, QDialog *parent)
     :QDialog(parent),titleName(title_text)
 {
     setWindowFlags(Qt::FramelessWindowHint);
@@ -40,7 +40,7 @@ CleanerItems::CleanerItems(QStringList &arglist, QStringList &statuslist, int he
     this->setPalette(palette);
 
     title_bar = new KylinTitleBar();
-    initTitleBar();
+    initTitleBar(skin);
 
     QVBoxLayout *button_layout = new QVBoxLayout;
     int count = arglist.count();
@@ -57,9 +57,9 @@ CleanerItems::CleanerItems(QStringList &arglist, QStringList &statuslist, int he
 //        signal_mapper->setMapping(checkbox, QString::number(i, 10));
         button_layout->addWidget(checkbox);
     }
-    button_layout->setSpacing(20);
+    button_layout->setSpacing(15);
     button_layout->setMargin(0);
-    button_layout->setContentsMargins(0, 0, 0, 0);
+    button_layout->setContentsMargins(0, 10, 0, 0);
 //    connect(signal_mapper, SIGNAL(mapped(QString)), this, SLOT(switchPageIndex(QString)));
 //    setLayout(button_layout);
 
@@ -71,9 +71,10 @@ CleanerItems::CleanerItems(QStringList &arglist, QStringList &statuslist, int he
     btn_layout->addStretch();
     btn_layout->addWidget(okBtn);
     btn_layout->setMargin(0);
-    btn_layout->setContentsMargins(0, 0, 18, 10);
+    btn_layout->setContentsMargins(0, 0, 15, 10);
 
     group_box = new QGroupBox();
+    group_box->setStyleSheet("QGroupBox{border: 1px solid #e0e0e0;border-radius: 2px;margin-top: 15px;font-size:14px;}QGroupBox:title{subcontrol-origin: margin;subcontrol-position: top left;padding: 6px 3px;color: #00609a;font-family: 方正黑体_GBK;font-weight:bold;}");
     group_box->setTitle(titleName);
     QFont group_box_font = group_box->font();
     group_box_font.setBold(true);
@@ -85,7 +86,7 @@ CleanerItems::CleanerItems(QStringList &arglist, QStringList &statuslist, int he
     QHBoxLayout *group_layout = new QHBoxLayout();
     group_layout->addWidget(group_box);
     group_layout->setMargin(0);
-    group_layout->setContentsMargins(10, 10, 10, 10);
+    group_layout->setContentsMargins(10, 10, 10, 0);
 
     QVBoxLayout *main_layout  = new QVBoxLayout();
     main_layout->addWidget(title_bar);
@@ -118,11 +119,17 @@ void CleanerItems::onCloseButtonClicked()
     this->close();
 }
 
-void CleanerItems::initTitleBar()
+void CleanerItems::initTitleBar(QString skin)
 {
     title_bar->setTitleWidth(410);
     title_bar->setTitleName(titleName);
-    title_bar->setTitleBackgound(":/background/res/skin/1.png");
+//    title_bar->setTitleBackgound(":/background/res/skin/1.png");
+    title_bar->setTitleBackgound(skin);
+}
+
+void CleanerItems::resetTitleSkin(QString skin)
+{
+    title_bar->resetBackground(skin);
 }
 
 int CleanerItems::getItemCount()

@@ -42,14 +42,41 @@ MainWindow::MainWindow(QWidget *parent) :
     mSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
     mSettings->setIniCodec("UTF-8");
 
+
+    //judge has skin or not in /var/lib/youker-assistant-daemon/background/
     mSettings->beginGroup("Background");
     last_skin_path = mSettings->value("Path").toString();
     if(last_skin_path.isEmpty()) {
         last_skin_path = ":/background/res/skin/1.png";
         mSettings->setValue("Path", last_skin_path);
     }
+//    else if (last_skin_path == ":/background/res/skin/1.png" ||last_skin_path == ":/background/res/skin/2.png" ||last_skin_path == ":/background/res/skin/3.png" ||last_skin_path == ":/background/res/skin/4.png" ) {
+//    }
+    else {
+        QStringList skinlist = this->filterSkin();
+//        if(tmp_skin == ":/background/res/skin/1.png") {
+//            mSettings->setValue("Path", last_skin_path);
+//        }
+//        else{
+        QList<QString>::Iterator it = skinlist.begin(), itend = skinlist.end();
+        bool flag = false;
+        for(;it != itend; it++)
+        {
+            if(*it == last_skin_path) {
+                flag = true;
+                break;
+            }
+        }
+        if (flag == false) {
+            last_skin_path = skinlist.at(0);
+            mSettings->setValue("Path", last_skin_path);
+        }
+//        }
+    }
+
     mSettings->endGroup();
     mSettings->sync();
+//    last_skin_path = "/var/lib/youker-assistant-daemon/background/蓝色海洋.png";
     main_skin_pixmap.load(last_skin_path);
 
 //    initSkinCenter();
@@ -198,9 +225,9 @@ MainWindow::~MainWindow()
         delete toolKits;
         toolKits = NULL;
     }
-    mSettings->sync();
     if (mSettings != NULL)
     {
+        mSettings->sync();
         delete mSettings;
         mSettings = NULL;
     }
@@ -232,6 +259,45 @@ MainWindow::~MainWindow()
     }
 
     delete ui;
+}
+
+bool MainWindow::deleteFile(QString filename)
+{
+    bool result = systeminterface->delete_file_qt(filename);
+    qDebug ()  << "001 result->" << result;
+    return result;
+//        if (result)
+//            qDebug () << "Delete " << filename << " Success";
+//        else
+//                qDebug () << "Delete " << filename << " Failed";
+//    return true;
+}
+
+QStringList MainWindow::filterSkin()
+{
+    QStringList skinlist;
+    QString path = "/var/lib/youker-assistant-daemon/background/";
+    QDir picdir(path);
+    picdir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
+    picdir.setSorting(QDir::Size | QDir::Reversed);
+    QStringList filters;
+    filters << "*.jpg" << "*.png";
+    picdir.setNameFilters(filters);
+    QFileInfoList list = picdir.entryInfoList();
+    if(list.size() < 1) {
+        skinlist << ":/background/res/skin/1.png" << ":/background/res/skin/2.png" << ":/background/res/skin/3.png" << ":/background/res/skin/4.png";
+//        return ":/background/res/skin/1.png";
+    }
+    else {
+        for (int j = 0; j < list.size(); ++j) {
+            QFileInfo fileInfo = list.at(j);
+            skinlist << path + fileInfo.fileName();
+        }
+        skinlist << ":/background/res/skin/1.png" << ":/background/res/skin/2.png" << ":/background/res/skin/3.png" << ":/background/res/skin/4.png";
+//        QFileInfo fileInfo = list.at(0);
+//        return path + fileInfo.fileName();
+    }
+    return skinlist;
 }
 
 void MainWindow::initAnimation()
@@ -393,6 +459,7 @@ void MainWindow::initSkinCenter() {
     skin_center->initTitleBar(last_skin_path);
     skin_center->setParentWindow(this);
     skin_center->initBackgroundList();
+    //    skin_center->setSystemDbusProxy(systeminterface);
 //    skin_center.initTitleBar(last_skin_path);
 //    skin_center.setParentWindow(this);
 //    skin_center.initBackgroundList();
@@ -411,6 +478,31 @@ int MainWindow::getCurrentBackgroundIndex()
     mSettings->endGroup();
     mSettings->sync();
     return index;
+}
+
+QString MainWindow::getCurrentBackgroundName()
+{
+    QString cur_skin_path;
+    mSettings->beginGroup("Background");
+    cur_skin_path = mSettings->value("Path").toString();
+    if(!cur_skin_path.isEmpty()) {
+        int  start_pos = cur_skin_path.lastIndexOf("/") + 1;
+        int end_pos = cur_skin_path.length();
+        cur_skin_path = cur_skin_path.mid(start_pos, end_pos-start_pos);
+    }
+    mSettings->endGroup();
+    mSettings->sync();
+    return cur_skin_path;
+}
+
+QString MainWindow::getCurrentBackgroundAbsName()
+{
+    QString cur_skin_path;
+    mSettings->beginGroup("Background");
+    cur_skin_path = mSettings->value("Path").toString();
+    mSettings->endGroup();
+    mSettings->sync();
+    return cur_skin_path;
 }
 
 void MainWindow::restoreSkin()
@@ -442,6 +534,17 @@ void MainWindow::changeSkin(QString pciture)
     mSettings->setValue("Path", pciture);
     mSettings->endGroup();
     mSettings->sync();
+
+    if(auto_start != NULL) {
+        auto_start->resetTitleSkin(last_skin_path);
+    }
+    if(camera_manager != NULL) {
+        camera_manager->resetTitleSkin(last_skin_path);
+    }
+    if(setting_widget != NULL)
+        setting_widget->resetSkin(last_skin_path);
+    if(cleaner_widget != NULL)
+        cleaner_widget->resetSkin(last_skin_path);
 }
 
 void MainWindow::reViewThePointSkin(QString pciture)
@@ -763,7 +866,7 @@ void MainWindow::showClearWidget()
         cleaner_widget->setSystemDbusProxy(systeminterface);
         cleaner_widget->setToolKits(toolKits);
         cleaner_widget->setParentWindow(this);
-        cleaner_widget->initUI();
+        cleaner_widget->initUI(last_skin_path);
         connect(cleaner_action_widget, SIGNAL(showDetailData()),cleaner_widget, SLOT(displayDetailPage()));
         connect(cleaner_action_widget, SIGNAL(showMainData()),cleaner_widget, SLOT(displayMainPage()));
         connect(cleaner_action_widget, SIGNAL(sendCleanSignal()),cleaner_widget, SIGNAL(transCleanSignal()));
@@ -850,7 +953,7 @@ void MainWindow::showSettingWidget()
         setting_widget->setParentWindow(this);
         setting_widget->setSessionDbusProxy(sessioninterface);
         setting_widget->setSystemDbusProxy(systeminterface);
-        setting_widget->initUI();
+        setting_widget->initUI(last_skin_path);
         connect(setting_widget, SIGNAL(changeActionPage(int)), setting_action_widget, SLOT(displayActionSubPage(int)));
         connect(setting_action_widget, SIGNAL(notifyContentPageToMain()), setting_widget, SLOT(displaySettingHomePage()));
         bottom_grid_layout->addWidget(setting_widget,0,0);
@@ -985,7 +1088,7 @@ void MainWindow::openSkinCenter() {
         skin_center->move(w_x, w_y);
         skin_center->show();
         skin_center->raise();
-        skin_center->setLogo();
+//        skin_center->setLogo();
     }
     else {
         int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (500  / 2);
@@ -1001,7 +1104,7 @@ void MainWindow::displaySubPage(int index)
     if(index == 0)
     {
         if(auto_start == NULL) {
-            auto_start = new AutoStartWidget(0, sessioninterface);
+            auto_start = new AutoStartWidget(0, sessioninterface, last_skin_path);
             connect(sessioninterface, SIGNAL(tellAutoModel(QStringList)), auto_start, SLOT(readyReciveData(QStringList)));
             connect(sessioninterface, SIGNAL(showAutoModel()), auto_start, SLOT(readyShowUI()));
             auto_start->initData();
@@ -1023,7 +1126,7 @@ void MainWindow::displaySubPage(int index)
     else if(index == 1)
     {
         if(camera_manager == NULL) {
-            camera_manager = new CameraManager(0, sessioninterface);
+            camera_manager = new CameraManager(0, sessioninterface, last_skin_path);
             if(sessioninterface->judge_camera_qt())
             {
                 camera_manager->setOKButtonEnable(true);
