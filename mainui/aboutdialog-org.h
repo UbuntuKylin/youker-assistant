@@ -21,37 +21,25 @@
 #define ABOUTDIALOG_H
 
 #include <QDialog>
-#include "../component/kylintitlebar.h"
-#include <QTextEdit>
+
+namespace Ui {
+class AboutDialog;
+}
 
 class AboutDialog : public QDialog
 {
     Q_OBJECT
     
 public:
-    explicit AboutDialog(QWidget *parent = 0, const QString &version="", QString skin = ":/background/res/skin/1.png");
+    explicit AboutDialog(QWidget *parent = 0, const QString &version="");
     ~AboutDialog();
-    void initConnect();
-    void resetTitleSkin(QString skin);
     
-public slots:
-    void onCloseBtnClicked();
+private slots:
+    void on_closeBtn_clicked();
     void openUrl(QString url);
-    void onAboutBtnClicked();
-    void onContributorBtnClicked();
 
 private:
-    KylinTitleBar *title_bar;
-    QPushButton *aboutBtn;
-    QPushButton *contributorBtn;
-    QLabel *aboutIndicator;
-    QLabel *contributorIndicator;
-    QTextEdit *aboutEdit;
-    QTextEdit *contributorEdit;
-    QLabel *iconLabel;
-    QLabel *nameLabel;
-    QLabel *versionLabel;
-    QLabel *linkLabel;
+    Ui::AboutDialog *ui;
 };
 
 #endif // ABOUTDIALOG_H

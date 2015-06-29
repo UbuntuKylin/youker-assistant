@@ -374,6 +374,7 @@ void FontWidget::setDefaultFont() {
 
 void FontWidget::resetDefaultFont(QString cur_font)
 {
+    this->current_font = cur_font;
     sessionproxy->set_font_qt(cur_font);
     default_font_btn->setText(cur_font);
 }
@@ -389,6 +390,7 @@ void FontWidget::setDesktopFont() {
 
 void FontWidget::resetDesktopFont(QString cur_font)
 {
+    this->desktop_font = cur_font;
     sessionproxy->set_desktop_font_qt(cur_font);
     desktop_font_btn->setText(cur_font);
 }
@@ -409,6 +411,7 @@ void FontWidget::setMonospaceFont() {
 
 void FontWidget::resetMonospaceFont(QString cur_font)
 {
+    this->monospace_font = cur_font;
     sessionproxy->set_monospace_font_qt(cur_font);
     monospace_font_btn->setText(cur_font);
 }
@@ -424,6 +427,7 @@ void FontWidget::setDocumentFont() {
 
 void FontWidget::resetDocumentFont(QString cur_font)
 {
+    this->document_font = cur_font;
     sessionproxy->set_document_font_qt(cur_font);
     document_font_btn->setText(cur_font);
 }
@@ -439,6 +443,7 @@ void FontWidget::setTitlebarFont() {
 
 void FontWidget::resetTitlebarFont(QString cur_font)
 {
+    this->titlebar_font = cur_font;
     sessionproxy->set_window_title_font_qt(cur_font);
     titlebar_font_btn->setText(cur_font);
 }

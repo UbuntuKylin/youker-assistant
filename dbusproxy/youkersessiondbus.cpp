@@ -91,9 +91,9 @@ void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
 }
 
-QString SessionDispatcher::checkNewVersion()
+QStringList SessionDispatcher::checkNewVersion()
 {
-    QDBusReply<QString> reply = sessioniface->call("currently_installed_version");
+    QDBusReply<QStringList> reply = sessioniface->call("currently_installed_version");
     return reply.value();
 }
 

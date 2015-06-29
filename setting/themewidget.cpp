@@ -41,6 +41,10 @@ ThemeWidget::ThemeWidget(QWidget *parent, SessionDispatcher *proxy) :
     list_widget->setMovement(QListView::Static);
     //设置QListWidget中的单元项的间距
     list_widget->setSpacing(26);
+//    QPalette palette1;
+//    palette1.setBrush(QPalette::Normal, QPalette::Highlight, Qt::black);
+//    palette1.setBrush(QPalette::Inactive, QPalette::Highlight, Qt::black);
+//    list_widget->setPalette(palette1);
 
     dataOK = false;
     current_index = 0;
@@ -93,8 +97,18 @@ void ThemeWidget::initData() {
         pItem->setSizeHint(QSize(130,130));
 //        pItem->setFlags(Qt::ItemIsSelectable);
 //        pItem->setBackgroundColor(QColor(0, 0, 255, 127));
-        pItem->setTextColor(QColor(0, 0, 255, 127));
+//        pItem->setTextColor(QColor(0, 0, 255, 127));//0629
         list_widget->insertItem(i, pItem);
+
+//        QListWidgetItem *pItem = new QListWidgetItem(QIcon(pixmap.scaled(QSize(106,106))), tr("%1").arg(syslist[i]), list_widget);
+//        QWidget *wContainer = new QWidget(list_widget);
+////        wContainer->setStyleSheet("QWidget{background:transparent url(://res/menu-big-hover.png);}");
+//        wContainer->resize(130, 130);
+//        QLabel *label = new QLabel();
+//        label->setStyleSheet("QLabel{background-image:url('://res/menu-big-hover.png')}");
+//        QHBoxLayout *hLayout = new QHBoxLayout(wContainer);
+//        hLayout->addWidget(label);
+//        list_widget->setItemWidget(pItem,wContainer);
     }
 
     //set using logo
@@ -148,7 +162,8 @@ void ThemeWidget::initCurrentTheme(QListWidgetItem *init_item)
 //    using_label->move(p.x(), p.y());
     //reset current item status
     QListWidgetItem *pre_item = list_widget->item(current_index);
-    pre_item->setTextColor(QColor(0, 0, 255, 127));
+//    pre_item->setTextColor(QColor(0, 0, 255, 127));//0629
+    pre_item->setTextColor(QColor("4f4f4f"));
     current_index = nRowIndex;
     init_item->setTextColor(QColor("4f4f4f"));
 }
@@ -172,7 +187,9 @@ void ThemeWidget::onItemClicked(QListWidgetItem *selected_item)
 
     //reset current item status
     QListWidgetItem *pre_item = list_widget->item(current_index);
-    pre_item->setTextColor(QColor(0, 0, 255, 127));
+//    pre_item->setTextColor(QColor(0, 0, 255, 127));
+    pre_item->setTextColor(QColor("4f4f4f"));
+    pre_item->setBackground(Qt::white);
 
     current_index = nRowIndex;
 //    item->setBackgroundColor(QColor(0, 0, 255, 127));

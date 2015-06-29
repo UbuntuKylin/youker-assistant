@@ -310,12 +310,12 @@ void MainWindow::initAnimation()
     QRect origContentRect(0, 274, 900, 326);
 
     QPropertyAnimation *mainActionAnimation = new QPropertyAnimation(action_widget, "geometry");
-    mainActionAnimation->setDuration(1000);
+    mainActionAnimation->setDuration(500);
     mainActionAnimation->setStartValue(origAcitonRect);
     mainActionAnimation->setEndValue(mainAcitonRect);
 
     QPropertyAnimation *mainToolAnimation = new QPropertyAnimation(tool_widget, "pos");
-    mainToolAnimation->setDuration(200);
+    mainToolAnimation->setDuration(500);
     mainToolAnimation->setStartValue(origPoint);
     mainToolAnimation->setEndValue(needPoint);
 
@@ -330,12 +330,12 @@ void MainWindow::initAnimation()
     openGroup->addAnimation(mainContentAnimation);
 
     QPropertyAnimation *mainActionBackAnimation = new QPropertyAnimation(action_widget, "geometry");
-    mainActionBackAnimation->setDuration(1000);
+    mainActionBackAnimation->setDuration(500);
     mainActionBackAnimation->setStartValue(mainAcitonRect);
     mainActionBackAnimation->setEndValue(origAcitonRect);
 
     QPropertyAnimation *mainToolBackAnimation = new QPropertyAnimation(tool_widget, "pos");
-    mainToolBackAnimation->setDuration(200);
+    mainToolBackAnimation->setDuration(500);
     mainToolBackAnimation->setStartValue(needPoint);
     mainToolBackAnimation->setEndValue(origPoint);
 
@@ -541,10 +541,15 @@ void MainWindow::changeSkin(QString pciture)
     if(camera_manager != NULL) {
         camera_manager->resetTitleSkin(last_skin_path);
     }
-    if(setting_widget != NULL)
+    if(setting_widget != NULL) {
         setting_widget->resetSkin(last_skin_path);
-    if(cleaner_widget != NULL)
+    }
+    if(cleaner_widget != NULL) {
         cleaner_widget->resetSkin(last_skin_path);
+    }
+    if(aboutDlg != NULL) {
+        aboutDlg->resetTitleSkin(last_skin_path);
+    }
 }
 
 void MainWindow::reViewThePointSkin(QString pciture)
@@ -1165,7 +1170,7 @@ void MainWindow::aboutUs()
     int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (398  / 2);
     if(aboutDlg == NULL)
     {
-        aboutDlg = new AboutDialog(0, version);
+        aboutDlg = new AboutDialog(0, version, last_skin_path);
         aboutDlg->move(w_x, w_y);
         aboutDlg->show();
         aboutDlg->raise();

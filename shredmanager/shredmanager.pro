@@ -14,6 +14,14 @@ CONFIG += plugin
 INCLUDEPATH += ../shredmanager
 DESTDIR = ../libs
 
+UI_DIR += $$PWD/../tmp/shredmanager/
+
+RCC_DIR += $$PWD/../tmp/shredmanager/
+
+MOC_DIR += $$PWD/../tmp/shredmanager/
+
+OBJECTS_DIR = $$PWD/../obj/shredmanager
+
 target.source += $$TARGET
 target.path = /var/lib/youker-assistant-daemon/libs/
 INSTALLS +=target

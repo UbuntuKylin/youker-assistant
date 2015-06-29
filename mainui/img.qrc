@@ -158,6 +158,7 @@
         <file>res/item_uncheck.png</file>
         <file>res/background.jpg</file>
         <file>res/clothes.png</file>
+        <file>res/indicator.png</file>
     </qresource>
     <qresource prefix="/sys">
         <file>res/sysBtn/close_button.png</file>

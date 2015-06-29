@@ -36,7 +36,7 @@ public:
     void getAutoStartAppStatus();
     bool getSingleAutoStartStatus(QString abs_path);
     void changeAutoStartAppStatus(QString appName);
-    QString checkNewVersion();
+    QStringList checkNewVersion();
     void runApp(QString pkgname);
     void scanSystemCleanerItems(QMap<QString, QVariant> data);
     void check_user_qt();
