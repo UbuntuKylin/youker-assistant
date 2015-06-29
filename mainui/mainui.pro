@@ -237,7 +237,7 @@ FORMS    += mainwindow.ui \
     ../component/quibo.ui \
     ../component/alertdialog.ui \
     autostartwidget.ui \
-    aboutdialog.ui \
+#    aboutdialog.ui \
     ../cleaner/cleanlistwidget.ui \
     ../cleaner/cleanerdetailwidget.ui \
     ../component/itemcard.ui

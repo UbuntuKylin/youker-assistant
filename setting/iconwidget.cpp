@@ -30,7 +30,7 @@ IconWidget::IconWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_de
 {
     dataOK = false;
     theme_label = new QLabel();
-    show_label = new QLabel();
+//    show_label = new QLabel();
     computer_label = new QLabel();
 
     folder_label = new QLabel();
@@ -38,7 +38,7 @@ IconWidget::IconWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_de
     recycle_label = new QLabel();
     disk_label = new QLabel();
     theme_combo = new QComboBox();
-    show_switcher = new KylinSwitcher();
+//    show_switcher = new KylinSwitcher();
     computer_switcher = new KylinSwitcher();
     folder_switcher = new KylinSwitcher();
     network_switcher = new KylinSwitcher();
@@ -52,7 +52,7 @@ IconWidget::IconWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_de
     }
 
     theme_label->setFixedWidth(150);
-    show_label->setFixedWidth(150);
+//    show_label->setFixedWidth(150);
     computer_label->setFixedWidth(150);
     folder_label->setFixedWidth(150);
     network_label->setFixedWidth(150);
@@ -67,11 +67,11 @@ IconWidget::IconWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_de
     layout1->addWidget(theme_label);
     layout1->addWidget(theme_combo);
     layout1->addStretch();
-    QHBoxLayout *layout2 = new QHBoxLayout();
-    layout2->setSpacing(10);
-    layout2->addWidget(show_label);
-    layout2->addWidget(show_switcher);
-    layout2->addStretch();
+//    QHBoxLayout *layout2 = new QHBoxLayout();
+//    layout2->setSpacing(10);
+//    layout2->addWidget(show_label);
+//    layout2->addWidget(show_switcher);
+//    layout2->addStretch();
     QHBoxLayout *layout3 = new QHBoxLayout();
     layout3->setSpacing(10);
     layout3->addWidget(computer_label);
@@ -99,7 +99,7 @@ IconWidget::IconWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_de
     layout7->addStretch();
     QVBoxLayout *layout = new QVBoxLayout();
     layout->addLayout(layout1);
-    layout->addLayout(layout2);
+//    layout->addLayout(layout2);
     layout->addLayout(layout3);
     layout->addLayout(layout4);
     layout->addLayout(layout5);
@@ -196,7 +196,7 @@ void IconWidget::setLanguage() {
 //    description_label->setText(tr("Set the desktop icon theme and the visibility of desktop icons."));
 //    back_btn->setText(tr("Back"));
     theme_label->setText(tr("Icon theme") + ":");
-    show_label->setText(tr("Show Desktop Icons") + ":");
+//    show_label->setText(tr("Show Desktop Icons") + ":");
     computer_label->setText(tr("Computer") + ":");
     folder_label->setText(tr("Home Folder") + ":");
     network_label->setText(tr("Network") + ":");
@@ -231,7 +231,7 @@ void IconWidget::initData()
 //    network_switcher->setSwitchStatus(sessionproxy->get_show_network_qt());
 //    recycle_switcher->setSwitchStatus(sessionproxy->get_show_trash_qt());
 //    disk_switcher->setSwitchStatus(sessionproxy->get_show_devices_qt());
-    show_switcher->switchedOn = sessionproxy->get_show_desktop_icons_qt();
+//    show_switcher->switchedOn = sessionproxy->get_show_desktop_icons_qt();
 
     if (this->desktop == "mate")
     {
@@ -250,7 +250,7 @@ void IconWidget::initConnect() {
 //    connect(back_btn, SIGNAL(clicked()), this, SIGNAL(showSettingMainWidget()));
 //    connect(theme_combo, SIGNAL(currentIndexChanged(int)),  this, SLOT(setIconTheme()));
     connect(theme_combo, SIGNAL(currentIndexChanged(QString)),  this, SLOT(setIconTheme(QString)));
-    connect(show_switcher, SIGNAL(clicked()),  this, SLOT(setShowDesktopIcons()));
+//    connect(show_switcher, SIGNAL(clicked()),  this, SLOT(setShowDesktopIcons()));
     connect(computer_switcher, SIGNAL(clicked()),  this, SLOT(setComputerIcon()));
     connect(folder_switcher, SIGNAL(clicked()),  this, SLOT(setFolderIcon()));
     connect(network_switcher, SIGNAL(clicked()),  this, SLOT(setNetworkIcon()));
@@ -286,10 +286,10 @@ void IconWidget::iconwidget_notify_string(QString key, QString value)
 
 void IconWidget::iconwidget_notify_boolean(QString key, bool value)
 {
-    if (key == "show-desktop-icons") {
-        show_switcher->switchedOn = value;
-    }
-    else if (key == "computer-icon-visible") {
+//    if (key == "show-desktop-icons") {
+//        show_switcher->switchedOn = value;
+//    }
+    if (key == "computer-icon-visible") {
         computer_switcher->switchedOn = value;
     }
     else if (key == "home-icon-visible")
@@ -311,9 +311,9 @@ void IconWidget::setIconTheme(QString selectTheme) {
     sessionproxy->set_icon_theme_qt(selectTheme);
 }
 
-void IconWidget::setShowDesktopIcons() {
-    sessionproxy->set_show_desktop_icons_qt(show_switcher->switchedOn);
-}
+//void IconWidget::setShowDesktopIcons() {
+//    sessionproxy->set_show_desktop_icons_qt(show_switcher->switchedOn);
+//}
 
 void IconWidget::setComputerIcon() {
     sessionproxy->set_show_computer_qt(computer_switcher->switchedOn);

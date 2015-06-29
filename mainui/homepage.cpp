@@ -52,19 +52,19 @@ HomePage::HomePage(QWidget *parent, const QString &version) :
     box_title = new QLabel();
     box_title->installEventFilter(this);
     box_tip = new QLabel();
-    more_text_btn = new QPushButton();
-    more_btn = new QPushButton();
+//    more_text_btn = new QPushButton();
+//    more_btn = new QPushButton();
 
 //    auto_start = NULL;
 //    camera_manager = NULL;
 
-    more_text_btn->setObjectName("checkButton");
+//    more_text_btn->setObjectName("checkButton");
 //    more_text_btn->setCursor(Qt::PointingHandCursor);
-    more_text_btn->setCursor(Qt::OpenHandCursor);
-    more_text_btn->setFocusPolicy(Qt::NoFocus);
-    QFont font = more_text_btn->font();
-    font.setUnderline(true);
-    more_text_btn->setFont(font);
+//    more_text_btn->setCursor(Qt::OpenHandCursor);
+//    more_text_btn->setFocusPolicy(Qt::NoFocus);
+//    QFont font = more_text_btn->font();
+//    font.setUnderline(true);
+//    more_text_btn->setFont(font);
 
     check_btn->setObjectName("checkButton");
     check_btn->setCursor(Qt::PointingHandCursor);
@@ -80,8 +80,8 @@ HomePage::HomePage(QWidget *parent, const QString &version) :
     version_tip->setWordWrap(true);//QLabel自动换行
     box_tip->setWordWrap(true);//QLabel自动换行
     box_tip->setFixedWidth(380);
-    more_btn->setObjectName("transparentButton");
-    more_btn->setCursor(Qt::PointingHandCursor);
+//    more_btn->setObjectName("transparentButton");
+//    more_btn->setCursor(Qt::PointingHandCursor);
 
     version_logo->setFixedSize(65, 65);
     version_logo->setPixmap(QPixmap("://res/version.png"));
@@ -147,10 +147,10 @@ void HomePage::initUI()
 
     QStringList icon_list;
 //    icon_list<<"://res/ubuntukylin-software-center"<<"://res/boot"<<"://res/camera";
-    icon_list<<"://res/boot"<<"://res/camera";
+    icon_list<<"://res/boot"<<"://res/camera" << "://res/more.png";
     QStringList text_list;
 //    text_list<< tr("Youker Softeware Center") << tr("Boot Manager") << tr("Camera");
-    text_list << tr("Boot Manager") << tr("Camera");
+    text_list << tr("Boot Manager") << tr("Camera") << tr("More");
     QHBoxLayout *button_layout = new QHBoxLayout();
     QSignalMapper *signal_mapper = new QSignalMapper(this);
     for(int i=0; i<icon_list.size(); i++)
@@ -165,26 +165,26 @@ void HomePage::initUI()
     connect(signal_mapper, SIGNAL(mapped(QString)), this, SLOT(switchPageIndex(QString)));
 
 
-    more_btn->setFocusPolicy(Qt::NoFocus);
-    QPixmap pixmap("://res/more.png");
-    more_btn->setIcon(pixmap);
-    more_btn->setIconSize(pixmap.size());
+//    more_btn->setFocusPolicy(Qt::NoFocus);
+//    QPixmap pixmap("://res/more.png");
+//    more_btn->setIcon(pixmap);
+//    more_btn->setIconSize(pixmap.size());
 
-    QVBoxLayout *more_layout = new QVBoxLayout();
-//    more_layout->addStretch();
-    more_layout->addWidget(more_btn);
-    more_layout->addWidget(more_text_btn);
-//    more_layout->addStretch();
-    more_layout->setSpacing(0);
-    more_layout->setMargin(0);
-    more_layout->setContentsMargins(0, 8, 0, 0);
+//    QVBoxLayout *more_layout = new QVBoxLayout();
+////    more_layout->addStretch();
+//    more_layout->addWidget(more_btn);
+//    more_layout->addWidget(more_text_btn);
+////    more_layout->addStretch();
+//    more_layout->setSpacing(0);
+//    more_layout->setMargin(0);
+//    more_layout->setContentsMargins(0, 8, 0, 0);
 
-    button_layout->addStretch();
-    button_layout->addLayout(more_layout);
-//    button_layout->addWidget(more_btn, 0, Qt::AlignTop);
-    button_layout->setSpacing(20);
-    button_layout->setMargin(0);
-    button_layout->setContentsMargins(0, 0, 0, 0);
+//    button_layout->addStretch();
+//    button_layout->addLayout(more_layout);
+////    button_layout->addWidget(more_btn, 0, Qt::AlignTop);
+//    button_layout->setSpacing(20);
+//    button_layout->setMargin(0);
+//    button_layout->setContentsMargins(0, 0, 0, 0);
 
     QHBoxLayout *layout5 = new QHBoxLayout();
     layout5->addWidget(box_logo);
@@ -209,10 +209,11 @@ void HomePage::initUI()
 
 void HomePage::initConnect()
 {
-    connect(more_btn, SIGNAL(clicked()), p_mainwindow, SLOT(showBoxWidget()));
-    connect(more_btn, SIGNAL(clicked()), p_mainwindow, SIGNAL(chanegBoxToolStatus()));
-    connect(more_text_btn, SIGNAL(clicked()), p_mainwindow, SLOT(showBoxWidget()));
-    connect(more_text_btn, SIGNAL(clicked()), p_mainwindow, SIGNAL(chanegBoxToolStatus()));
+    connect(this, SIGNAL(moreSignal()), p_mainwindow, SIGNAL(chanegBoxToolStatus()));
+//    connect(more_btn, SIGNAL(clicked()), p_mainwindow, SLOT(showBoxWidget()));
+//    connect(more_btn, SIGNAL(clicked()), p_mainwindow, SIGNAL(chanegBoxToolStatus()));
+//    connect(more_text_btn, SIGNAL(clicked()), p_mainwindow, SLOT(showBoxWidget()));
+//    connect(more_text_btn, SIGNAL(clicked()), p_mainwindow, SIGNAL(chanegBoxToolStatus()));
     connect(check_btn, SIGNAL(clicked()), this, SLOT(checkLastestVersion()));
     connect(this, SIGNAL(sendSignal()), p_mainwindow, SIGNAL(chanegBoxToolStatus()));
 }
@@ -224,8 +225,8 @@ void HomePage::setLanguage()
     check_btn->setText(tr("Check new version"));
     box_title->setText(tr("Common toolbox"));
     box_tip->setText(tr("Fast and practical, making the system more personalized"));
-    more_text_btn->setText(tr("More"));
-    more_btn->setToolTip(tr("More"));
+//    more_text_btn->setText(tr("More"));
+//    more_btn->setToolTip(tr("More"));
 }
 
 void HomePage::initBoxTool()
@@ -235,8 +236,23 @@ void HomePage::initBoxTool()
 
 void HomePage::checkLastestVersion()
 {
-    QString version = sessionProxy->checkNewVersion();
-    version_label->setText(version);
+    QStringList version_list = sessionProxy->checkNewVersion();
+    if(version_list.length() == 1) {
+        version_label->setText(version_list.at(0));
+    }
+    if(version_list.length() == 4) {
+//        qDebug() << version_list;
+        version_label->setText(version_list.at(0));
+//        if(version_list.at(3) == "1") {
+//            qDebug() << "Neet to UPdate......";
+//        }
+//        else if(version_list.at(3) == "0") {
+//            qDebug() << "Unneccesary to UPdate......";
+//        }
+    }
+    else {
+        version_label->setText("");
+    }
 }
 
 void HomePage::switchPageIndex(QString index)
@@ -248,6 +264,10 @@ void HomePage::switchPageIndex(QString index)
         emit this->sendSubIndex(0);
     else if(index == "1")
         emit this->sendSubIndex(1);
+    else if(index == "2") {
+        p_mainwindow->showBoxWidget();
+        emit this->moreSignal();
+    }
 
 //    if(index == "0")
 //    {

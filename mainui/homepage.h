@@ -54,6 +54,7 @@ public slots:
 signals:
     void sendSubIndex(int index);
     void sendSignal();
+    void moreSignal();
 
 private:
     QLabel *version_logo;
@@ -64,8 +65,8 @@ private:
     QLabel *box_logo;
     QLabel *box_title;
     QLabel *box_tip;
-    QPushButton *more_text_btn;
-    QPushButton *more_btn;
+//    QPushButton *more_text_btn;
+//    QPushButton *more_btn;
     SessionDispatcher *sessionProxy;
     MainWindow *p_mainwindow;
 //    AutoStartWidget *auto_start;

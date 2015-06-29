@@ -43,7 +43,7 @@ public:
 public slots:
     void changeSwitcherStatus();
     void setIconTheme(QString selectTheme);
-    void setShowDesktopIcons();
+//    void setShowDesktopIcons();
     void setComputerIcon();
     void setFolderIcon();
     void setNetworkIcon();
@@ -60,14 +60,14 @@ private:
     QString desktop;
     QStringList iconlist;
     QLabel *theme_label;
-    QLabel *show_label;
+//    QLabel *show_label;
     QLabel *computer_label;
     QLabel *folder_label;
     QLabel *network_label;
     QLabel *recycle_label;
     QLabel *disk_label;
     QComboBox *theme_combo;
-    KylinSwitcher *show_switcher;
+//    KylinSwitcher *show_switcher;
     KylinSwitcher *computer_switcher;
     KylinSwitcher *folder_switcher;
     KylinSwitcher *network_switcher;

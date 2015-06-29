@@ -7,7 +7,7 @@ youker-assistant (2.0.3) vivid; urgency=low
   * Make interface switching more smoothly.
   * Adjust the layout of interface.
   * Beautify skin center, menu, info module and setting module.
-  * Rewrite skin center.
+  * Rewrite skin center and aboutdialog.
 
  -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Sun, 28 Jun 2015 19:03:06 +0800
 

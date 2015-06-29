@@ -354,11 +354,21 @@ class SessionDaemon(dbus.service.Object):
     def notify_string(self, key, value):
         pass
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def currently_installed_version(self):
+        apt_list = []
         cache = apt.Cache()
         pkg = cache['youker-assistant']
-        return pkg.installed.version
+        apt_list.append(pkg.installed.version)
+        # 0:installed; 1: version in source list
+        if len(pkg.versions) == 2:
+            apt_list.append(pkg.versions[0].version)
+            apt_list.append(pkg.versions[1].version)
+            if pkg.versions[0].version < pkg.versions[1].version:
+                apt_list.append("1")
+            else:
+                apt_list.append("0")
+        return apt_list
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def run_selected_app(self, pkgname):

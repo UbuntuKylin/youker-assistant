@@ -16,6 +16,15 @@ DESTDIR = ../libs
 CONFIG += link_pkgconfig
 PKGCONFIG += libgtop-2.0
 
+UI_DIR += $$PWD/../tmp/processmanager/
+
+RCC_DIR += $$PWD/../tmp/processmanager/
+
+MOC_DIR += $$PWD/../tmp/processmanager/
+
+OBJECTS_DIR = $$PWD/../obj/processmanager
+
+
 target.source += $$TARGET
 target.path = /var/lib/youker-assistant-daemon/libs/
 INSTALLS +=target

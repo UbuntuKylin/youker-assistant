@@ -34,15 +34,15 @@ ItemCard::ItemCard(QString title, QWidget *parent) :
     delayTimer = new QTimer(this);
     connect(delayTimer, SIGNAL(timeout()), this, SLOT(slotShowDelayAnimation()));
 
-//    ui->deleteWidget->setWindowOpacity(0.5);
-    ui->deleteWidget->setStyleSheet("QWidget{background: transparent;}");
-//    ui->deleteWidget->setAttribute(Qt::WA_TranslucentBackground, true);
-    ui->deleteWidget->setAutoFillBackground(true);
-    QPalette palette = ui->deleteWidget->palette();
-    palette.setColor(QPalette::Background, QColor(100,100,100,50));
-//    palette.setBrush(QPalette::Window, QBrush(Qt::lightGray));
-//    palette.setBrush(QPalette::Base, QBrush(QColor(255,0,0,0)));
-    ui->deleteWidget->setPalette(palette);
+//    ui->deleteWidget->setAutoFillBackground(true);
+//    QPalette palette = ui->deleteWidget->palette();
+////    palette.setColor(QPalette::Background, QColor(100,100,100,50));
+//    palette.setBrush(QPalette::Window, QBrush(Qt::red));
+////    palette.setBrush(QPalette::Base, QBrush(QColor(255,0,0,0)));
+//    ui->deleteWidget->setPalette(palette);
+
+//    ui->deleteWidget->setStyleSheet("QWidget{background:transparent url(:/background/res/skin/1.png);icon-size:20px 5px}");
+    ui->deleteWidget->setStyleSheet("QWidget{background:transparent url(://res/menu-big-hover.png);}");
 
 
     ui->deleteBtn->setFocusPolicy(Qt::NoFocus);
