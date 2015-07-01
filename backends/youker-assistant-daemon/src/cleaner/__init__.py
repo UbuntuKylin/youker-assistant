@@ -881,6 +881,25 @@ def interface_get_subpage_session(session, mode_dic):
                         session.subpage_error_signal('Working:Chromium')
                 else:
                     session.subpage_error_signal('Uninstalled:Chromium')
+        if 'bash' in history:
+            path = os.path.join(homedir, ".bash_history")
+            size = 0
+            if os.path.exists(path):
+                size = common.confirm_filesize_unit(os.path.getsize(path))
+            else:
+                path = ''
+            
+            info = []
+            info.append('Belong:History.bash')
+            info.append('Size:%s' % str(size))
+            info.append('Path:%s' % path)
+            session.subpage_data_signal(info)
+
+        if 'X11' in history:
+            x11_list = [os.path.join(homedir, x) for x in os.listdir(homedir) if x.startswith(".xsession-errors")]
+            for value in x11_list:
+                info = append_cacheinfo_to_list('History.X11', value)
+                session.subpage_data_signal(info)
 
         if 'system' in history:
             syshistory_obj = systemhistory.SystemHistory()
