@@ -21,6 +21,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QWidget>
 #include <QPixmap>
 #include <QSettings>
 
@@ -38,25 +39,22 @@
 #include "../component/kylinmenu.h"
 #include "../component/utils.h"
 #include "../component/toolkits.h"
-
 #include "homeactionwidget.h"
 #include "infoactionwidget.h"
 #include "cleaneractionwidget.h"
 #include "settingactionwidget.h"
 #include "boxactionwidget.h"
 #include "aboutdialog.h"
+#include "upgradedialog.h"
 
 class QParallelAnimationGroup;
 class SessionDispatcher;
 class SystemDispatcher;
+class ShadowWidget;
 #include "autostartwidget.h"
 #include "cameramanager.h"
 
-namespace Ui {
-class MainWindow;
-}
-
-class MainWindow : public QMainWindow
+class MainWindow : public QDialog
 {
     Q_OBJECT
 
@@ -64,14 +62,10 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void setTranslator(QTranslator* translator);
-    void setMainWindowLayout();
     void display();
     void initConnect();
-    void initSkinCenter();
-    void showHomePage();
-    void showInfoWidget();
-    void showClearWidget();
-    void showSettingWidget();
+    void initHomePage();
+    void initOtherPages();
     void reViewThePointSkin(QString pciture);
     void reViewTheOrgSkin();
     void changeSkin(QString pciture);
@@ -82,16 +76,18 @@ public:
     QString getCurrentBackgroundAbsName();
     QStringList filterSkin();
     bool deleteFile(QString filename);
+    bool CopyFile(QString filename);
 
 protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void closeEvent(QCloseEvent *);
+//    virtual void paintEvent(QPaintEvent *event);
 
 public slots:
-    void showBoxWidget();
     void openSkinCenter();
+    void openUpgradePage(/*QStringList version_list*/);
     void showMainMenu();
     void closeYoukerAssistant();
     void setCurrentPageIndex(int index);
@@ -101,26 +97,29 @@ public slots:
     void aboutUs();
     void startDbusDaemon();
     void displaySubPage(int index);
+    void upAnimFinished();
+    void closeAnimFinished();
 
 signals:
     void chanegBoxToolStatus();
 
 private:
-    Ui::MainWindow *ui;
-    QBoxLayout *main_layout;
-    QGridLayout *top_grid_layout;
-    QGridLayout *bottom_grid_layout;
+    QStackedWidget *topStack;
+    QStackedWidget *bottomStack;
+//    QGridLayout *top_grid_layout;
+//    QGridLayout *bottom_grid_layout;
     TitleWidget *title_widget;
-    ActionWidget *action_widget;
+    ActionWidget *default_action_widget;
+    ActionWidget *other_action_widget;
     ToolWidget *tool_widget;
     LoginWidget *login_widget;
-    ContentWidget *content_widget;
+    ContentWidget *default_content_widget;
+    ContentWidget *other_content_widget;
     HomePage *home_page;
     InfoWidget *info_widget;
     CleanerWidget *cleaner_widget;
     SettingWidget *setting_widget;
     BoxWidget *box_widget;
-
     HomeActionWidget *home_action_widget;
     InfoActionWidget *info_action_widget;
     CleanerActionWidget *cleaner_action_widget;
@@ -146,19 +145,21 @@ private:
     SessionDispatcher *sessioninterface;
     Toolkits *toolKits;
     AboutDialog *aboutDlg;
-    QSettings * mSettings;
+    QSettings *mSettings;
     QString desktop;
     bool battery;
 
-    QParallelAnimationGroup *openGroup;
-    QParallelAnimationGroup *closeGroup;
+    QParallelAnimationGroup *spreadGroup;
+    QParallelAnimationGroup *gatherGroup;
     PAGESTATUS status;
     bool statusFlag;
 
     AutoStartWidget *auto_start;
     CameraManager *camera_manager;
+    UpgradeDialog *upgrade_dialog;
 
 //    QStringList skinlist;
+    ShadowWidget *shadow_widget;
 };
 
 #endif // MAINWINDOW_H

@@ -20,147 +20,178 @@
 #include "QDesktopWidget"
 
 #include "aboutdialog.h"
-//#include "ui_aboutdialog.h"
 #include <QtGui>
+#include <QPropertyAnimation>
+#include <QParallelAnimationGroup>
 
 AboutDialog::AboutDialog(QWidget *parent, const QString &version, QString skin) :
     QDialog(parent)
 {
     this->setWindowFlags(Qt::FramelessWindowHint);
 //    this->setWindowFlags(Qt::WindowStaysOnTopHint);
-    this->setFixedSize(560, 398);
-    this->setStyleSheet("QDialog{border: 1px solid gray;border-radius:2px}");
+    this->setFixedSize(442, 326);
+    this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
 
-    title_bar = new KylinTitleBar();
-//    title_bar->setGeometry(QRect(0, 0, 400, 32));
-    title_bar->setTitleName(tr("About"));
-    title_bar->setTitleWidth(560);
-    title_bar->setTitleBackgound(skin);
+    aboutGroup = NULL;
+    contributorGroup = NULL;
 
-    iconLabel = new QLabel();
-    nameLabel = new QLabel();
-    versionLabel = new QLabel();
-    linkLabel = new QLabel();
-    iconLabel->setFixedSize(64, 64);
-    iconLabel->setStyleSheet("QLabel{background-image:url(':/res/youker-assistant.png')}");
+    baseWidget = new QWidget(this);
+    baseWidget->setGeometry(QRect(0, 0, 442, 82));
+//    baseWidget->setStyleSheet("QWidget{background:transparent url(://res/menu-big-hover.png);}");
+    baseWidget->setAutoFillBackground(true);
+//    QPixmap label_pixmap(skin);
+//    logo_label->setPixmap(label_pixmap);
+//    logo_label->setFixedSize(label_pixmap.size());
+
+//    QPixmap label_pixmap(skin);
+//    qDebug() << label_pixmap.size();
+
+    QPalette palette;
+    palette.setBrush(QPalette::Background, QBrush(QPixmap(skin)));
+    baseWidget->setPalette(palette);
+
+    close_btn = new SystemButton(baseWidget);
+    close_btn->setFocusPolicy(Qt::NoFocus);
+    close_btn->loadPixmap(":/sys/res/sysBtn/close_button.png");
+
+    iconLabel = new QLabel(baseWidget);
+    iconLabel->setGeometry(QRect(380, 20, 44, 44));
+    nameLabel = new QLabel(baseWidget);
+    nameLabel->setGeometry(QRect(71, 0, 300, 30));
+//    linkLabel = new QLabel();
+//    iconLabel->setStyleSheet("QLabel{background-image:url(':/res/youker-assistant.png')}");
+
+    QImage image(":/res/youker-assistant.png");
+    image = image.scaled(QSize(44, 44), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    iconLabel->setPixmap(QPixmap::fromImage(image));
+
+    nameLabel->setStyleSheet("QLabel{color:#ffffff;font-family: 方正黑体_GBK;font-size: 12px;text-align: center;font-weight:bold;}");
     nameLabel->setAlignment(Qt::AlignCenter);
-    nameLabel->setText(tr("Youker Assisant"));
-    versionLabel->setAlignment(Qt::AlignCenter);
-    versionLabel->setText(version);
-    linkLabel->setAlignment(Qt::AlignRight);
-    linkLabel->setText(QString::fromLocal8Bit("<a style='color: green;' href = https://launchpad.net/youker-assistant> home page</a>"));
+    nameLabel->setText(tr("Youker Assisant") + " " + version);
+//    linkLabel->setAlignment(Qt::AlignRight);
+//    linkLabel->setText(QString::fromLocal8Bit("<a style='color: green;' href = https://launchpad.net/youker-assistant> home page</a>"));
 
-    QVBoxLayout *v_layout = new QVBoxLayout();
-    v_layout->addWidget(nameLabel);
-    v_layout->addWidget(versionLabel);
-    QHBoxLayout *h_layout = new QHBoxLayout();
-    h_layout->addWidget(iconLabel, 0, Qt::AlignVCenter);
-    h_layout->addStretch();
-    h_layout->addLayout(v_layout);
-    h_layout->addStretch();
-    h_layout->addWidget(linkLabel, 0, Qt::AlignVCenter);
-    h_layout->setContentsMargins(10, 0, 10, 0);
-
-    aboutBtn = new QPushButton();
+    aboutBtn = new QPushButton(baseWidget);
     aboutBtn->setText(tr("About"));
-    contributorBtn = new QPushButton();
+    aboutBtn->setGeometry(QRect(10, 50, 60, 24));
+    contributorBtn = new QPushButton(baseWidget);
     contributorBtn->setText(tr("Contributor"));
+    contributorBtn->setGeometry(QRect(75, 50, 60, 24));
 
-    aboutIndicator = new QLabel();
-    aboutIndicator->setFixedSize(53, 5);
-    contributorIndicator = new QLabel();
-    contributorIndicator->setFixedSize(53, 5);
-    aboutIndicator->setStyleSheet("QLabel{background-image:url('://res/indicator.png');background-position:center;}");
-    contributorIndicator->setStyleSheet("QLabel{background-image:url('://res/indicator.png');background-position:center;}");
-    contributorIndicator->hide();
+    indicator = new QLabel(baseWidget);
+    indicator->setStyleSheet("QLabel{background-image:url('://res/underline.png');background-position:center;}");
+    indicator->setGeometry(QRect(10, 75, 60, 2));
+//    aboutIndicator = new QLabel(baseWidget);
+//    aboutIndicator->setGeometry(QRect(10, 75, 60, 2));
+//    contributorIndicator = new QLabel(baseWidget);
+//    contributorIndicator->setGeometry(QRect(75, 75, 60, 2));
+//    aboutIndicator->setStyleSheet("QLabel{background-image:url('://res/underline.png');background-position:center;}");
+//    contributorIndicator->setStyleSheet("QLabel{background-image:url('://res/underline.png');background-position:center;}");
+//    contributorIndicator->hide();
 
-    QVBoxLayout *about_layout = new QVBoxLayout();
-    about_layout->addWidget(aboutBtn, 0, Qt::AlignHCenter);
-    about_layout->addWidget(aboutIndicator, 0, Qt::AlignHCenter);
-    QVBoxLayout *contri_layout = new QVBoxLayout();
-    contri_layout->addWidget(contributorBtn, 0, Qt::AlignHCenter);
-    contri_layout->addWidget(contributorIndicator, 0, Qt::AlignHCenter);
-
-    QHBoxLayout *btn_layout = new QHBoxLayout();
-    btn_layout->addLayout(about_layout);
-    btn_layout->addLayout(contri_layout);
-    btn_layout->addStretch();
-    btn_layout->setSpacing(5);
-    btn_layout->setContentsMargins(20, 0, 0, 0);
-
-    aboutEdit = new QTextEdit();
-    contributorEdit = new QTextEdit();
-    aboutEdit->setFixedSize(500, 230);
-    contributorEdit->setFixedSize(500, 230);
+//    aboutEdit = new QTextEdit(this);
+    aboutEdit = new QTextBrowser(this);
+    aboutEdit->setOpenLinks(true);
+    aboutEdit->setOpenExternalLinks(true);
+    contributorEdit = new QTextEdit(this);
+    aboutEdit->setGeometry(QRect(17, 92, 408, 200));
+    contributorEdit->setGeometry(QRect(17, 92, 408, 200));
     aboutEdit->setReadOnly(true);
     contributorEdit->setReadOnly(true);
-    aboutEdit->setText(tr("      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions. \n      The software is still under development. Please visit www.ubuntukylin.com for more information. Welcome everyone to join with us. youker-assistant Homepage: https://launchpad.net/youker-assistant."));
+    aboutEdit->append(tr("      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions. \n      The software is still under development. Please visit www.ubuntukylin.com for more information. Welcome everyone to join with us. youker-assistant Homepage: "));
+    aboutEdit->append(QString::fromLocal8Bit("<a href=\"https://launchpad.net/youker-assistant\">https://launchpad.net/youker-assistant</a>"));
     contributorEdit->setText(tr("Maintainer:\nUbuntu Kylin Team <ubuntukylin-members@list.launchpad.net>"));
     contributorEdit->hide();
-
-    QHBoxLayout *edit_layout = new QHBoxLayout();
-    edit_layout->addWidget(aboutEdit);
-    edit_layout->addWidget(contributorEdit);
-    edit_layout->setContentsMargins(20, 0, 20, 0);
 
     aboutBtn->setFocusPolicy(Qt::NoFocus);
     aboutBtn->setObjectName("transparentButton");
     contributorBtn->setFocusPolicy(Qt::NoFocus);
     contributorBtn->setObjectName("transparentButton");
-    aboutBtn->setFixedWidth(100);
-    contributorBtn->setFixedWidth(100);
-    aboutBtn->setStyleSheet("QPushButton{background:transparent;text-align:center;font-family: 方正黑体_GBK;font-size:14px;color:#666666;}QPushButton:hover{color:#0396DC;}");
-    contributorBtn->setStyleSheet("QPushButton{background:transparent;text-align:center;font-family: 方正黑体_GBK;font-size:14px;color:#666666;}QPushButton:hover{color:#0396DC;}");
-
-    aboutEdit->setStyleSheet("QLineEdit{border:1px solid #bebebe;}");
-    contributorEdit->setStyleSheet("QLineEdit{border:1px solid #bebebe;}");
-
-    QVBoxLayout *layout = new QVBoxLayout();
-    layout->addWidget(title_bar);
-    layout->addLayout(h_layout);
-    layout->addLayout(btn_layout);
-    layout->addLayout(edit_layout);
-    layout->addStretch();
-    layout->setMargin(0);
-    layout->setSpacing(5);
-    layout->setContentsMargins(0, 0, 0, 0);
-    this->setLayout(layout);
-
+    aboutBtn->setStyleSheet("QPushButton{background:transparent;text-align:center;font-family: 方正黑体_GBK;font-size:14px;color:#ffffff;}");//QPushButton:hover{color:#666666;}
+    contributorBtn->setStyleSheet("QPushButton{background:transparent;text-align:center;font-family: 方正黑体_GBK;font-size:14px;color:#ffffff;}");//QPushButton:hover{color:#666666;}
+//    aboutEdit->setStyleSheet("QLineEdit{border:1px solid #bebebe;}");
+//    contributorEdit->setStyleSheet("QLineEdit{border:1px solid #bebebe;}");
+    aboutEdit->setStyleSheet("QTextBrowser{border:none;font-family: 方正黑体_GBK;font-size:14px;}");
+    contributorEdit->setStyleSheet("QTextEdit{border:none;font-family: 方正黑体_GBK;font-size:14px;}");
+    okBtn = new QPushButton(this);
+    okBtn->setGeometry(QRect(334, 295, 90, 25));
+    okBtn->setObjectName("blackButton");
+    okBtn->setFocusPolicy(Qt::NoFocus);
+    okBtn->setText(tr("Close"));
+    this->initAnimation();
     this->initConnect();
 }
 
 AboutDialog::~AboutDialog()
 {
+    if(aboutGroup != NULL)
+    {
+        delete aboutGroup;
+        aboutGroup = NULL;
+    }
+    if(contributorGroup != NULL)
+    {
+        delete contributorGroup;
+        contributorGroup = NULL;
+    }
+}
 
+void AboutDialog::initAnimation()
+{
+    QRect mainAcitonRect(10, 75, 60, 2);
+    QRect origAcitonRect(75, 75, 60, 2);
+
+    QPropertyAnimation *aboutAnimation = new QPropertyAnimation(indicator, "geometry");
+    aboutAnimation->setDuration(300);
+    aboutAnimation->setStartValue(origAcitonRect);
+    aboutAnimation->setEndValue(mainAcitonRect);
+
+    aboutGroup = new QParallelAnimationGroup(this);
+    aboutGroup->addAnimation(aboutAnimation);
+
+    QPropertyAnimation *contributorAnimation = new QPropertyAnimation(indicator, "geometry");
+    contributorAnimation->setDuration(300);
+    contributorAnimation->setStartValue(mainAcitonRect);
+    contributorAnimation->setEndValue(origAcitonRect);
+
+    contributorGroup = new QParallelAnimationGroup(this);
+    contributorGroup->addAnimation(contributorAnimation);
 }
 
 void AboutDialog::initConnect()
 {
     connect(aboutBtn, SIGNAL(clicked()), this, SLOT(onAboutBtnClicked()));
     connect(contributorBtn, SIGNAL(clicked()), this, SLOT(onContributorBtnClicked()));
-    connect(title_bar,SIGNAL(closeDialog()), this, SLOT(onCloseBtnClicked()));
-    connect(linkLabel,SIGNAL(linkActivated(QString)),this,SLOT(openUrl(QString)));
+    connect(close_btn, SIGNAL(clicked()), this, SLOT(onCloseBtnClicked()));
+    connect(okBtn, SIGNAL(clicked()), this, SLOT(onCloseBtnClicked()));
+//    connect(title_bar,SIGNAL(closeDialog()), this, SLOT(onCloseBtnClicked()));
+//    connect(linkLabel,SIGNAL(linkActivated(QString)),this,SLOT(openUrl(QString)));
 }
 
 void AboutDialog::onAboutBtnClicked()
 {
+    aboutGroup->start();
     aboutEdit->show();
-    aboutIndicator->show();
+//    aboutIndicator->show();
     contributorEdit->hide();
-    contributorIndicator->hide();
+//    contributorIndicator->hide();
 }
 
 void AboutDialog::onContributorBtnClicked()
 {
+    contributorGroup->start();
     contributorEdit->show();
-    contributorIndicator->show();
+//    contributorIndicator->show();
     aboutEdit->hide();
-    aboutIndicator->hide();
+//    aboutIndicator->hide();
 }
 
 void AboutDialog::resetTitleSkin(QString skin)
 {
-    title_bar->resetBackground(skin);
+//    title_bar->resetBackground(skin);
+    QPalette palette;
+    palette.setBrush(QPalette::Background, QBrush(QPixmap(skin)));
+    baseWidget->setPalette(palette);
 }
 
 void AboutDialog::onCloseBtnClicked()
@@ -171,4 +202,29 @@ void AboutDialog::onCloseBtnClicked()
 void AboutDialog::openUrl(QString url)
 {
     QDesktopServices::openUrl(QUrl(url));
+}
+
+void AboutDialog::mousePressEvent(QMouseEvent *event)
+{
+    if(event->button() == Qt::LeftButton)
+    {
+        mouse_press = true;
+        drag_pos = event->globalPos() - this->frameGeometry().topLeft();
+        event->accept();
+    }
+}
+
+void AboutDialog::mouseReleaseEvent(QMouseEvent *)
+{
+    mouse_press = false;
+}
+
+void AboutDialog::mouseMoveEvent(QMouseEvent *event)
+{
+    if(mouse_press)
+    {
+        QPoint move_pos = event->globalPos();
+        move(move_pos - drag_pos);
+        event->accept();
+    }
 }

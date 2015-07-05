@@ -29,7 +29,8 @@ KylinTitleBar::KylinTitleBar(QWidget *parent) :
     this->setAutoFillBackground(true);
 
     title_label = new QLabel();
-    title_label->setAlignment(Qt::AlignCenter);
+//    title_label->setAlignment(Qt::AlignCenter);
+    title_label->setStyleSheet("QLabel{color:#ffffff;font-family: 方正黑体_GBK;font-size: 14px;text-align: center;font-weight:bold;}");
     logo_label = new QLabel();
     logo_label->setFixedSize(22, 22);
     logo_label->setFrameShape(QFrame::NoFrame);
@@ -101,12 +102,12 @@ void KylinTitleBar::resizeEvent(QResizeEvent *event)
 
     //title and font
     title_label->setText(title_content);
-    QPalette objPalette = palette();
-    objPalette.setColor(QPalette::WindowText, Qt::white);
-    title_label->setPalette(objPalette);
-    QFont &objFont = const_cast<QFont&>(font());
-    objFont.setWeight(QFont::Bold);
-    title_label->setFont(objFont);
+//    QPalette objPalette = palette();
+//    objPalette.setColor(QPalette::WindowText, Qt::white);
+//    title_label->setPalette(objPalette);
+//    QFont &objFont = const_cast<QFont&>(font());
+//    objFont.setWeight(QFont::Bold);
+//    title_label->setFont(objFont);
 }
 
 void KylinTitleBar::mousePressEvent ( QMouseEvent *event)

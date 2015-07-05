@@ -51,7 +51,7 @@ CleanerActionWidget::CleanerActionWidget(QWidget *parent)
     back_button->setObjectName("backButton");
     back_button->hide();
 
-    loading_label = new LoadingLabel(this, false);
+    loading_label = new LoadingLabel(this, "clean");
     loading_label->show();
 
     suggest_label->setObjectName("whiteLabel");

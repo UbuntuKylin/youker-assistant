@@ -41,6 +41,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent)
 
 
     //kobe
+    check_thread = new KThread(this);
     scan_thread = new KThread(this);
     onekey_scan_thread = new KThread(this);
 
@@ -56,9 +57,17 @@ SessionDispatcher::SessionDispatcher(QObject *parent)
     QObject::connect(sessioniface, SIGNAL(notify_int(QString, int)), this, SLOT(handler_notify_int(QString, int)));
     QObject::connect(sessioniface, SIGNAL(notify_double(QString, double)), this, SLOT(handler_notify_double(QString, double)));
     QObject::connect(sessioniface, SIGNAL(notify_string(QString, QString)), this, SLOT(handler_notify_string(QString, QString)));
+
+    QObject::connect(sessioniface, SIGNAL(check_source_list_signal(bool)), this, SIGNAL(receive_source_list_signal(bool)));
 }
 
 SessionDispatcher::~SessionDispatcher() {
+    check_thread->terminate();
+    check_thread->wait();
+    if(check_thread != NULL) {
+        delete check_thread;
+        check_thread = NULL;
+    }
     scan_thread->terminate();
     scan_thread->wait();
     if(scan_thread != NULL) {
@@ -95,6 +104,22 @@ QStringList SessionDispatcher::checkNewVersion()
 {
     QDBusReply<QStringList> reply = sessioniface->call("currently_installed_version");
     return reply.value();
+}
+
+bool SessionDispatcher::start_check_source_useable_qt()
+{
+//    QDBusReply<bool> reply = sessioniface->call("start_check_source_useable");
+//    return reply.value();
+    if (check_thread->isRunning()) {
+        qDebug() << "check_thread is running......";
+    }
+    else {
+        QMap<QString, QVariant> data;
+        QStringList tmplist;
+        check_thread->initValues(data, tmplist, sessioniface, "start_check_source_useable");
+        check_thread->start();
+        qDebug() << "check_thread is ready to run......";
+    }
 }
 
 void SessionDispatcher::runApp(QString pkgname)

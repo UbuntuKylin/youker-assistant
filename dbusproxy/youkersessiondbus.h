@@ -86,7 +86,7 @@ public:
     bool set_show_devices_qt(bool flag);
     bool get_show_devices_qt();
 
-
+    bool start_check_source_useable_qt();
 //    Q_INVOKABLE bool get_show_cinnamon_desktop_icons_qt();
 //    Q_INVOKABLE bool set_show_cinnamon_desktop_icons_qt(bool flag);
 //    Q_INVOKABLE bool get_show_cinnamon_computer_qt();
@@ -315,6 +315,8 @@ signals:
     void double_value_notify(QString key, double value);
     void string_value_notify(QString key, QString value);
 
+    void receive_source_list_signal(bool result);
+
 public slots:
     void handlerAutoManageData(QStringList data);
 //    void handlerAutoManageData(const QVariantMap &data);
@@ -344,6 +346,7 @@ public slots:
 
 private:
 //    KThread *thread;
+    KThread *check_thread;
     KThread *scan_thread;
     KThread *onekey_scan_thread;
 };

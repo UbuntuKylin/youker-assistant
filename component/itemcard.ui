@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>212</width>
-    <height>100</height>
+    <width>132</width>
+    <height>87</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QWidget" name="baseWidget" native="true">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>212</width>
-     <height>100</height>
+     <x>1</x>
+     <y>1</y>
+     <width>130</width>
+     <height>67</height>
     </rect>
    </property>
    <widget class="QLabel" name="icon">
@@ -27,37 +27,21 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>212</width>
-      <height>100</height>
+      <width>130</width>
+      <height>67</height>
      </rect>
     </property>
     <property name="text">
      <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="name">
-    <property name="geometry">
-     <rect>
-      <x>5</x>
-      <y>77</y>
-      <width>202</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="using_label">
     <property name="geometry">
      <rect>
-      <x>5</x>
-      <y>2</y>
-      <width>17</width>
-      <height>26</height>
+      <x>104</x>
+      <y>5</y>
+      <width>22</width>
+      <height>22</height>
      </rect>
     </property>
     <property name="text">
@@ -68,25 +52,51 @@
   <widget class="QWidget" name="deleteWidget" native="true">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>100</y>
-     <width>212</width>
-     <height>32</height>
+     <x>1</x>
+     <y>50</y>
+     <width>130</width>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QPushButton" name="deleteBtn">
     <property name="geometry">
      <rect>
       <x>3</x>
-      <y>3</y>
-      <width>26</width>
-      <height>26</height>
+      <y>2</y>
+      <width>16</width>
+      <height>14</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
+  </widget>
+  <widget class="QLabel" name="name">
+   <property name="geometry">
+    <rect>
+     <x>5</x>
+     <y>67</y>
+     <width>122</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QWidget" name="coverWidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>132</width>
+     <height>69</height>
+    </rect>
+   </property>
   </widget>
  </widget>
  <resources/>

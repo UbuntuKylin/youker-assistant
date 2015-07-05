@@ -27,6 +27,7 @@ HomeActionWidget::HomeActionWidget(QWidget *parent, QSettings *mSettings)
 {
 //    this->resize(900, 227);
     this->setFixedSize(900, 227);
+//    setWindowOpacity(0.6);
     is_move = false;
     this->setAutoFillBackground(true);
     this->setObjectName("transparentWidget");
@@ -40,7 +41,7 @@ HomeActionWidget::HomeActionWidget(QWidget *parent, QSettings *mSettings)
     clean_button = new QPushButton(this);
     back_button = new QPushButton(this);
 
-    loading_label = new LoadingLabel();
+    loading_label = new LoadingLabel(this, "firstkey");
     loading_label->show();
 //    movie_label->setScaledContents(true);//设置movie_label自动缩放,显示图像大小自动调整为Qlabel大小
 //    QPixmap label_pixmap("");

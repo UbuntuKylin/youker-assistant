@@ -55,6 +55,13 @@ CardWidget::CardWidget(int cardwidth, int cardheight, int space, QWidget *parent
 //   setLayout(v_layout);
 }
 
+CardWidget::~CardWidget() {
+    if(cardPanel != NULL)  {
+        delete cardPanel;
+        cardPanel = NULL;
+    }
+}
+
 void CardWidget::calculate_data()
 {
     this->scrollArea->setGeometry(-1, -1, this->width() + 2, this->height() + 2);

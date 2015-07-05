@@ -32,10 +32,12 @@ class ItemCard : public QWidget
     Q_OBJECT
     
 public:
-    explicit ItemCard(QString title = "", QWidget *parent = 0);
+    explicit ItemCard(QString title = "", bool flag = false, QWidget *parent = 0);//true:custom; false:system
     ~ItemCard();
     void switchAnimation();
     void showUsingLogo(bool flag);
+    void resetdislayDelBtnValue(bool flag);
+    QString getCardName();
 
 public slots:
     void slotShowDelayAnimation();
@@ -47,6 +49,7 @@ signals:
     void sendEnterBackground(QString name);
     void sendLeaveBackground();
     void sendDelteSignal(QString name);
+    void sendAddSignal();
 
 protected:
     void enterEvent(QEvent *);
@@ -62,6 +65,7 @@ private:
     int py;
     QString iconDir;
     QString iconpath;
+    bool dislayDelBtn;
 };
 
 #endif // ITEMCARD_H
