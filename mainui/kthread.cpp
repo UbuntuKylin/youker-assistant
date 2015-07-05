@@ -64,6 +64,16 @@ void KThread::run() {
     else if(methodName == "call_camera") {
         iface->call("call_camera");
     }
+    else if(methodName == "install") {
+        iface->call("install", "youker-assistant");
+    }
+    else if(methodName == "update") {
+        iface->call("update");
+    }
+    else if(methodName == "start_check_source_useable") {
+        qDebug() << "start 2222222222";
+        iface->call("start_check_source_useable");
+    }
     //sso
 //    else if(methodName == "slot_do_login_account") {
 //        iface->call("slot_do_login_account");

@@ -33,6 +33,8 @@ SettingWidget::SettingWidget(QString cur_desktop, bool has_battery, QWidget *par
     palette.setBrush(QPalette::Window, QBrush(Qt::white));
     this->setPalette(palette);
 
+    this->qtui = NULL;
+
 //    this->mainwindow_width = 850;
 //    this->mainwindow_height = 600;
 
@@ -47,7 +49,7 @@ SettingWidget::SettingWidget(QString cur_desktop, bool has_battery, QWidget *par
     window_widget = NULL;
     font_widget = NULL;
     touchpad_widget = NULL;
-    deadpixel_widget = NULL;
+//    deadpixel_widget = NULL;
     conserve_widget = NULL;
     nautilus_widget = NULL;
 
@@ -111,6 +113,11 @@ SettingWidget::~SettingWidget()
         delete stacked_widget;
         stacked_widget = NULL;
     }
+    if(qtui != NULL)
+    {
+        delete qtui;
+        qtui = NULL;
+    }
 }
 
 void SettingWidget::initUI(QString skin)
@@ -125,7 +132,7 @@ void SettingWidget::initUI(QString skin)
     window_widget = new WindowWidget(this, sessionProxy, desktop);
     font_widget = new FontWidget(this, sessionProxy, p_mainwindow, desktop, skin);
     touchpad_widget = new TouchpadWidget(this, sessionProxy, desktop);
-    deadpixel_widget = new DeadpixelWidget(this);
+//    deadpixel_widget = new DeadpixelWidget(this);
     conserve_widget = new ConserveWidget(this, sessionProxy, desktop, battery);
     nautilus_widget = new NautilusWidget(this, sessionProxy);
     stacked_widget->addWidget(h_splitter);
@@ -139,7 +146,7 @@ void SettingWidget::initUI(QString skin)
     stacked_widget->addWidget(window_widget);
     stacked_widget->addWidget(font_widget);
     stacked_widget->addWidget(touchpad_widget);
-    stacked_widget->addWidget(deadpixel_widget);
+//    stacked_widget->addWidget(deadpixel_widget);
     stacked_widget->addWidget(conserve_widget);
     stacked_widget->addWidget(nautilus_widget);
 
@@ -494,7 +501,8 @@ void SettingWidget::initOptionWidget() {
     conserve_button->setStatusTip("conserve");
 
     connect(touch_button, SIGNAL(clicked()), this, SLOT(displaySettingSubPage()));
-    connect(pixel_button, SIGNAL(clicked()), this, SLOT(displaySettingSubPage()));
+//    connect(pixel_button, SIGNAL(clicked()), this, SLOT(displaySettingSubPage()));
+    connect(pixel_button, SIGNAL(clicked()), this, SLOT(startMonitorCheck()));
     connect(conserve_button, SIGNAL(clicked()), this, SLOT(displaySettingSubPage()));
 //    connect(pixel_button, SIGNAL(clicked()), this, SLOT(showCheckscreenDialog()));
 }
@@ -546,6 +554,15 @@ void SettingWidget::initOtherWidget() {
     connect(nautilus_button, SIGNAL(clicked()), this, SLOT(displaySettingSubPage()));
 }
 
+void SettingWidget::startMonitorCheck() {
+    if (this->qtui)
+    {
+        delete this->qtui;
+        this->qtui = NULL;
+    }
+    this->qtui = new QUIBO();
+}
+
 void SettingWidget::displaySettingHomePage() {
     stacked_widget->setCurrentIndex(0);
 }
@@ -562,26 +579,29 @@ void SettingWidget::displaySettingSubPage() {
         emit changeActionPage(1);
         if(!theme_widget->getStatus())
             theme_widget->initData();
-        stacked_widget->setCurrentIndex(1);
-//        stacked_widget->setCurrentWidget(theme_widget);
+//        stacked_widget->setCurrentIndex(1);
+        stacked_widget->setCurrentWidget(theme_widget);
     }
     else if (object_name == "icon") {
         emit changeActionPage(2);
         if(!icon_widget->getStatus())
             icon_widget->initData();
-        stacked_widget->setCurrentIndex(2);
+//        stacked_widget->setCurrentIndex(2);
+        stacked_widget->setCurrentWidget(icon_widget);
     }
     else if (object_name == "mouse") {
         emit changeActionPage(3);
         if(!mouse_widget->getStatus())
             mouse_widget->initData();
-        stacked_widget->setCurrentIndex(3);
+//        stacked_widget->setCurrentIndex(3);
+        stacked_widget->setCurrentWidget(mouse_widget);
     }
     else if (object_name == "voice") {
         emit changeActionPage(4);
         if(!voice_widget->getStatus())
             voice_widget->initData();
-        stacked_widget->setCurrentIndex(4);
+//        stacked_widget->setCurrentIndex(4);
+        stacked_widget->setCurrentWidget(voice_widget);
     }
 //    else if (object_name == "animation") {
 //        emit changeActionPage(5);
@@ -594,46 +614,53 @@ void SettingWidget::displaySettingSubPage() {
         emit changeActionPage(5);
         if(!launcher_widget->getStatus())
             launcher_widget->initData();
-        stacked_widget->setCurrentIndex(5);
+//        stacked_widget->setCurrentIndex(5);
+        stacked_widget->setCurrentWidget(launcher_widget);
     }
     else if (object_name == "panel") {
         emit changeActionPage(6);
         if(!panel_widget->getStatus())
             panel_widget->initData();
-        stacked_widget->setCurrentIndex(6);
+//        stacked_widget->setCurrentIndex(6);
+        stacked_widget->setCurrentWidget(panel_widget);
     }
     else if (object_name == "window") {
         emit changeActionPage(7);
         if(!window_widget->getStatus())
             window_widget->initData();
-        stacked_widget->setCurrentIndex(7);
+//        stacked_widget->setCurrentIndex(7);
+        stacked_widget->setCurrentWidget(window_widget);
     }
     else if (object_name == "font") {
         emit changeActionPage(8);
         if(!font_widget->getStatus())
             font_widget->initData();
-        stacked_widget->setCurrentIndex(8);
+//        stacked_widget->setCurrentIndex(8);
+        stacked_widget->setCurrentWidget(font_widget);
     }
     else if (object_name == "touchpad") {
         emit changeActionPage(9);
         if(!touchpad_widget->getStatus())
             touchpad_widget->initData();
-        stacked_widget->setCurrentIndex(9);
+//        stacked_widget->setCurrentIndex(9);
+        stacked_widget->setCurrentWidget(touchpad_widget);
     }
-    else if (object_name == "deadpixel") {
-        emit changeActionPage(10);
-        stacked_widget->setCurrentIndex(10);
-    }
+//    else if (object_name == "deadpixel") {
+//        emit changeActionPage(10);
+//        stacked_widget->setCurrentIndex(10);
+//    }
     else if (object_name == "conserve") {
         emit changeActionPage(11);
         if(!conserve_widget->getStatus())
             conserve_widget->initData();
-        stacked_widget->setCurrentIndex(11);
+//        stacked_widget->setCurrentIndex(11);
+        stacked_widget->setCurrentWidget(conserve_widget);
     }
     else if (object_name == "nautilus") {
         emit changeActionPage(12);
         if(!nautilus_widget->getStatus())
             nautilus_widget->initData();
-        stacked_widget->setCurrentIndex(12);
+//        stacked_widget->setCurrentIndex(12);
+        stacked_widget->setCurrentWidget(nautilus_widget);
     }
 }

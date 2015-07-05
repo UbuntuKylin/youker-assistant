@@ -18,6 +18,7 @@
  */
 
 #include "kylintoolbutton.h"
+#include <QDebug>
 
 KylinToolButton::KylinToolButton(const QString &pic_name, const QString &text, QWidget *parent)
     :QToolButton(parent)
@@ -80,7 +81,8 @@ void KylinToolButton::mousePressEvent(QMouseEvent *event)
 {
     if(isEnabled() && event->button() == Qt::LeftButton)
     {
-        emit clicked();
+        //kobe: don't emit, it will emit by click it self.
+//        emit clicked();
     }
     QToolButton::mousePressEvent(event);
 }

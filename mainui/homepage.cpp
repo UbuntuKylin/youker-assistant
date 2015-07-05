@@ -46,8 +46,8 @@ HomePage::HomePage(QWidget *parent, const QString &version) :
     version_logo = new QLabel();
     version_title = new QLabel();
     version_tip = new QLabel();
-    check_btn = new QPushButton();
-    version_label = new QLabel();
+//    check_btn = new QPushButton();
+//    version_label = new QLabel();
     box_logo = new QLabel();
     box_title = new QLabel();
     box_title->installEventFilter(this);
@@ -66,10 +66,10 @@ HomePage::HomePage(QWidget *parent, const QString &version) :
 //    font.setUnderline(true);
 //    more_text_btn->setFont(font);
 
-    check_btn->setObjectName("checkButton");
-    check_btn->setCursor(Qt::PointingHandCursor);
-    check_btn->setFocusPolicy(Qt::NoFocus);
-    version_label->setObjectName("smallgrayLabel");
+//    check_btn->setObjectName("checkButton");
+//    check_btn->setCursor(Qt::PointingHandCursor);
+//    check_btn->setFocusPolicy(Qt::NoFocus);
+//    version_label->setObjectName("smallgrayLabel");
     version_title->setObjectName("bigblackLabel");
     box_title->setObjectName("bigblackLabel");
     version_tip->setAlignment(Qt::AlignLeft);
@@ -111,8 +111,8 @@ void HomePage::initUI()
 {
     QHBoxLayout *layout1 = new QHBoxLayout();
     layout1->addWidget(version_title);
-    layout1->addWidget(check_btn);
-    layout1->addWidget(version_label);
+//    layout1->addWidget(check_btn);
+//    layout1->addWidget(version_label);
     layout1->addStretch();
     layout1->setMargin(0);
     layout1->setSpacing(5);
@@ -214,7 +214,7 @@ void HomePage::initConnect()
 //    connect(more_btn, SIGNAL(clicked()), p_mainwindow, SIGNAL(chanegBoxToolStatus()));
 //    connect(more_text_btn, SIGNAL(clicked()), p_mainwindow, SLOT(showBoxWidget()));
 //    connect(more_text_btn, SIGNAL(clicked()), p_mainwindow, SIGNAL(chanegBoxToolStatus()));
-    connect(check_btn, SIGNAL(clicked()), this, SLOT(checkLastestVersion()));
+//    connect(check_btn, SIGNAL(clicked()), this, SLOT(checkLastestVersion()));
     connect(this, SIGNAL(sendSignal()), p_mainwindow, SIGNAL(chanegBoxToolStatus()));
 }
 
@@ -222,7 +222,7 @@ void HomePage::setLanguage()
 {
     version_title->setText(tr("Current Version Number") + "    " + current_version);
     version_tip->setText(tr("Update to the lastest version, make it work better"));
-    check_btn->setText(tr("Check new version"));
+//    check_btn->setText(tr("Check new version"));
     box_title->setText(tr("Common toolbox"));
     box_tip->setText(tr("Fast and practical, making the system more personalized"));
 //    more_text_btn->setText(tr("More"));
@@ -234,26 +234,28 @@ void HomePage::initBoxTool()
 
 }
 
-void HomePage::checkLastestVersion()
-{
-    QStringList version_list = sessionProxy->checkNewVersion();
-    if(version_list.length() == 1) {
-        version_label->setText(version_list.at(0));
-    }
-    if(version_list.length() == 4) {
-//        qDebug() << version_list;
-        version_label->setText(version_list.at(0));
+//void HomePage::checkLastestVersion()
+//{
+//    QStringList version_list = sessionProxy->checkNewVersion();
+//    if(version_list.length() == 1) {
+//        version_label->setText(version_list.at(0));
+//    }
+//    if(version_list.length() == 4) {
+//         version_label->setText(version_list.at(2));
 //        if(version_list.at(3) == "1") {
 //            qDebug() << "Neet to UPdate......";
+//            p_mainwindow->openUpgradePage(version_list);
+////            systemProxy->update_myself();
 //        }
-//        else if(version_list.at(3) == "0") {
+//        else {
 //            qDebug() << "Unneccesary to UPdate......";
+//            p_mainwindow->openUpgradePage(version_list);
 //        }
-    }
-    else {
-        version_label->setText("");
-    }
-}
+//    }
+//    else {
+//        version_label->setText("");
+//    }
+//}
 
 void HomePage::switchPageIndex(QString index)
 {
@@ -265,7 +267,7 @@ void HomePage::switchPageIndex(QString index)
     else if(index == "1")
         emit this->sendSubIndex(1);
     else if(index == "2") {
-        p_mainwindow->showBoxWidget();
+//        p_mainwindow->showBoxWidget();
         emit this->moreSignal();
     }
 
@@ -324,7 +326,7 @@ bool HomePage::eventFilter(QObject *obj, QEvent *event)
     if(obj == box_title){
         if(event->type() == QEvent::MouseButtonRelease){
             emit this->sendSignal();
-            p_mainwindow->showBoxWidget();
+//            p_mainwindow->showBoxWidget();
         }
 //        if(event->type() == QEvent::Enter){
 //            ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn_hover.png"));

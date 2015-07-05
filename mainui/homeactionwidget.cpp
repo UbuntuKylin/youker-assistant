@@ -27,6 +27,7 @@ HomeActionWidget::HomeActionWidget(QWidget *parent, QSettings *mSettings)
 {
 //    this->resize(900, 227);
     this->setFixedSize(900, 227);
+//    setWindowOpacity(0.6);
     is_move = false;
     this->setAutoFillBackground(true);
     this->setObjectName("transparentWidget");
@@ -40,7 +41,7 @@ HomeActionWidget::HomeActionWidget(QWidget *parent, QSettings *mSettings)
     clean_button = new QPushButton(this);
     back_button = new QPushButton(this);
 
-    loading_label = new LoadingLabel();
+    loading_label = new LoadingLabel(this, "firstkey");
     loading_label->show();
 //    movie_label->setScaledContents(true);//设置movie_label自动缩放,显示图像大小自动调整为Qlabel大小
 //    QPixmap label_pixmap("");
@@ -55,10 +56,10 @@ HomeActionWidget::HomeActionWidget(QWidget *parent, QSettings *mSettings)
     scan_result_label->setFixedWidth(460);
     scan_result_label->hide();
     result_label->setWordWrap(true);//QLabel自动换行
-    result_label->setObjectName("tipLabel");
+    result_label->setObjectName("smallWhiteLabel");
     result_label->setFixedWidth(460);
     doing_label->setWordWrap(true);//QLabel自动换行
-    doing_label->setObjectName("tipLabel");
+    doing_label->setObjectName("smallWhiteLabel");
     doing_label->hide();
     doing_label->setFixedWidth(460);
 
@@ -403,7 +404,6 @@ void HomeActionWidget::onCleanButtonClicked()
     suggest_label->hide();
     scan_result_label->hide();
     result_label->hide();
-//    doing_label->setObjectName("tipLabel");
     doing_label->setText(tr("Ready to Cleanup......"));//准备清理......
     doing_label->show();
     systemProxy->set_user_homedir_qt();

@@ -40,9 +40,10 @@
 #include "../setting/windowwidget.h"
 #include "../setting/fontwidget.h"
 #include "../setting/touchpadwidget.h"
-#include "../setting/deadpixelwidget.h"
+//#include "../setting/deadpixelwidget.h"
 #include "../setting/conservewidget.h"
 #include "../setting/nautiluswidget.h"
+#include "../component/quibo.h"
 
 class SessionDispatcher;
 class SystemDispatcher;
@@ -73,6 +74,7 @@ public slots:
     void displaySettingHomePage();
     void displaySettingSubPage();
 //    void slot_notify_boolean(QString key, bool value);
+    void startMonitorCheck();
 
 private:
     MainWindow *p_mainwindow;
@@ -80,6 +82,7 @@ private:
     SystemDispatcher *systemProxy;
     QString desktop;
     bool battery;
+    QUIBO *qtui;
 
     QStackedWidget *stacked_widget;
     ThemeWidget *theme_widget;
@@ -92,7 +95,7 @@ private:
     WindowWidget *window_widget;
     FontWidget *font_widget;
     TouchpadWidget *touchpad_widget;
-    DeadpixelWidget *deadpixel_widget;
+//    DeadpixelWidget *deadpixel_widget;
     ConserveWidget *conserve_widget;
     NautilusWidget *nautilus_widget;
     QSplitter *h_splitter;

@@ -551,7 +551,7 @@ QMenu::icon:checked {
 
 QMenu::separator {
     height: 1px;
-    background: #222222;
+    background: #e0e0e0;/*#222222*/
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 1px;

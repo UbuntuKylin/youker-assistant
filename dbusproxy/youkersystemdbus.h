@@ -45,8 +45,10 @@ public:
     void set_user_homedir_qt();
     //首页一键清理
     void clean_by_main_one_key_qt();
-
+    bool copy_file_qt(QString filename);
     bool delete_file_qt(QString filename);
+    bool update_myself();
+    bool update_source();
 
     //-----------------------sound------------------------
     QStringList get_sound_themes_qt();
@@ -86,6 +88,10 @@ signals:
     void finishCleanWorkMainError(QString msg);
     void quickCleanProcess(QString type, QString status);
 
+    //apt
+    void get_fetch_signal(QString msg_type, QStringList msg);
+    void get_apt_signal(QString msg_type, QStringList msg);
+
 public slots:
     void handler_interrupt_clean(bool status);
     void handler_clear_rubbish_main_onekey(QString msg);
@@ -94,6 +100,10 @@ public slots:
     void handlerCleanerSubPageDataSignal(QStringList data);
     void handlerCleanerSubPageStatusSignal(QString status, QString domain);
     void handlerCleanerSubPageErrorSignal(QString status);
+
+    //apt
+//    void handlerFetchSignal(QString msg_type, QStringList msg);
+//    void handlerAptSignal(QString msg_type, QStringList msg);
 
 private:
     QDBusInterface *systemiface;

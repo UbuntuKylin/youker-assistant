@@ -31,6 +31,7 @@ class CardWidget : public QWidget
     Q_OBJECT
 public:
     explicit CardWidget(int cardwidth = 0, int cardheight = 0, int space = 0, QWidget *parent = 0);
+    ~CardWidget();
     void calculate_data();
     void add_card(QWidget *card);
     void clear_card();

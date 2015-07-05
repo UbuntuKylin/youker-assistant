@@ -21,26 +21,71 @@
 #include "mainwindow.h"
 #include <QDebug>
 #include <QVBoxLayout>
+#include <QPropertyAnimation>
+#include <QParallelAnimationGroup>
 
-SkinCenter::SkinCenter(QWidget *parent/*, Qt::WindowFlags f*/)
+SkinCenter::SkinCenter(QWidget *parent, QString skin/*, Qt::WindowFlags f*/)
     :QDialog(parent)
 {
-    this->setFixedSize(500, 271);
+    this->setFixedSize(442, 340);
+    this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
 //    this->setStyleSheet("QDialog{border: 1px solid gray;border-radius:2px}");
-    this->setStyleSheet("QDialog{border: none;background-color: #ffffff;}");
+//    this->setStyleSheet("QDialog{border: none;background-color: #ffffff;}");
     setWindowFlags(Qt::FramelessWindowHint);
-    title_bar = new KylinTitleBar();
+//    title_bar = new KylinTitleBar(this);
+    last_skin_path = skin;
+    aboutGroup = NULL;
+    contributorGroup = NULL;
 
-    skin_widget = new QWidget();
+    baseWidget = new QWidget(this);
+    baseWidget->setGeometry(QRect(0, 0, 442, 82));
+    baseWidget->setAutoFillBackground(true);
+
+    QPalette palette;
+    palette.setBrush(QPalette::Background, QBrush(QPixmap(skin)));
+    baseWidget->setPalette(palette);
+
+    close_btn = new SystemButton(baseWidget);
+    close_btn->setFocusPolicy(Qt::NoFocus);
+    close_btn->loadPixmap(":/sys/res/sysBtn/close_button.png");
+
+    label = new QLabel(baseWidget);
+    label->setGeometry(QRect(71, 0, 300, 30));
+    label->setStyleSheet("QLabel{color:#ffffff;font-family: 方正黑体_GBK;font-size: 12px;text-align: center;font-weight:bold;}");
+    label->setAlignment(Qt::AlignCenter);
+    label->setText(tr("Skin Setting"));
+
+    skin_widget = new QWidget(this);
+//    skin_widget->setGeometry(QRect(6, 92, 430, 230));
+    skin_widget->setGeometry(QRect(15, 93, 420, 240));
     list_widget = NULL;
 
-    QVBoxLayout *layout  = new QVBoxLayout();
-    layout->addWidget(title_bar);
-    layout->addWidget(skin_widget);
-    layout->setSpacing(10);
-    layout->setMargin(0);
-    layout->setContentsMargins(0, 0, 0, 0);
-    setLayout(layout);
+    custom_list_widget = NULL;
+
+
+    sysBtn = new QPushButton(baseWidget);
+    sysBtn->setText(tr("Default"));
+    sysBtn->setGeometry(QRect(10, 50, 60, 24));
+    customBtn = new QPushButton(baseWidget);
+    customBtn->setText(tr("Custom"));
+    customBtn->setGeometry(QRect(75, 50, 60, 24));
+    indicator = new QLabel(baseWidget);
+    indicator->setStyleSheet("QLabel{background-image:url('://res/underline.png');background-position:center;}");
+    indicator->setGeometry(QRect(10, 75, 60, 2));
+    sysBtn->setFocusPolicy(Qt::NoFocus);
+    sysBtn->setObjectName("transparentButton");
+    customBtn->setFocusPolicy(Qt::NoFocus);
+    customBtn->setObjectName("transparentButton");
+    sysBtn->setStyleSheet("QPushButton{background:transparent;text-align:center;font-family: 方正黑体_GBK;font-size:14px;color:#ffffff;}");//QPushButton:hover{color:#666666;}
+    customBtn->setStyleSheet("QPushButton{background:transparent;text-align:center;font-family: 方正黑体_GBK;font-size:14px;color:#ffffff;}");//QPushButton:hover{color:#666666;}
+
+//    QVBoxLayout *layout  = new QVBoxLayout();
+//    layout->addWidget(title_bar);
+//    layout->addWidget(skin_widget);
+//    layout->setSpacing(10);
+//    layout->setMargin(0);
+//    layout->setContentsMargins(0, 0, 0, 0);
+//    setLayout(layout);
 
 //    list_widget = new KylinListWidget();
 //    connect(list_widget, SIGNAL(sendBackgroundName(QString)), this, SLOT(changeSkinCenterBackground(QString)));
@@ -86,18 +131,29 @@ SkinCenter::SkinCenter(QWidget *parent/*, Qt::WindowFlags f*/)
 ////    delayTimer = QTimer();
 
 //    this->setLanguage();
+    this->initAnimation();
     this->initConnect();
 }
 
 SkinCenter::~SkinCenter()
 {
-    if(title_bar != NULL) {
-        delete title_bar;
-        title_bar = NULL;
-    }
+//    if(title_bar != NULL) {
+//        delete title_bar;
+//        title_bar = NULL;
+//    }
     if(skin_widget != NULL) {
         delete skin_widget;
         skin_widget = NULL;
+    }
+    if(aboutGroup != NULL)
+    {
+        delete aboutGroup;
+        aboutGroup = NULL;
+    }
+    if(contributorGroup != NULL)
+    {
+        delete contributorGroup;
+        contributorGroup = NULL;
     }
 //    disconnect(delayTimer,SIGNAL(timeout()),this,SLOT(changeAnimationStep()));
 //    if(delayTimer->isActive()) {
@@ -114,10 +170,53 @@ SkinCenter::~SkinCenter()
 
 //}
 
+void SkinCenter::initAnimation()
+{
+    QRect mainAcitonRect(10, 75, 60, 2);
+    QRect origAcitonRect(75, 75, 60, 2);
+
+    QPropertyAnimation *aboutAnimation = new QPropertyAnimation(indicator, "geometry");
+    aboutAnimation->setDuration(300);
+    aboutAnimation->setStartValue(origAcitonRect);
+    aboutAnimation->setEndValue(mainAcitonRect);
+
+    aboutGroup = new QParallelAnimationGroup(this);
+    aboutGroup->addAnimation(aboutAnimation);
+
+    QPropertyAnimation *contributorAnimation = new QPropertyAnimation(indicator, "geometry");
+    contributorAnimation->setDuration(300);
+    contributorAnimation->setStartValue(mainAcitonRect);
+    contributorAnimation->setEndValue(origAcitonRect);
+
+    contributorGroup = new QParallelAnimationGroup(this);
+    contributorGroup->addAnimation(contributorAnimation);
+}
+
 void SkinCenter::initConnect()
 {
-    connect(title_bar,SIGNAL(closeDialog()), this, SLOT(onCloseButtonClicked()));
+//    connect(title_bar,SIGNAL(closeDialog()), this, SLOT(onCloseButtonClicked()));
+    connect(close_btn, SIGNAL(clicked()), this, SLOT(onCloseButtonClicked()));
+    connect(sysBtn,SIGNAL(clicked()), this, SLOT(showSystem()));
+    connect(customBtn,SIGNAL(clicked()), this, SLOT(showCustom()));
 //    connect(delayTimer, SIGNAL(timeout()), this, SLOT(changeAnimationStep()));
+}
+
+void SkinCenter::showSystem()
+{
+    aboutGroup->start();
+    if(list_widget != NULL)
+        list_widget->show();
+    if(custom_list_widget != NULL)
+        custom_list_widget->hide();
+}
+
+void SkinCenter::showCustom()
+{
+    contributorGroup->start();
+    if(custom_list_widget != NULL)
+        custom_list_widget->show();
+    if(list_widget != NULL)
+        list_widget->hide();
 }
 
 void SkinCenter::onCloseButtonClicked()
@@ -129,7 +228,11 @@ void SkinCenter::changeSkinCenterBackground(QString pciture)
 {
 //    int index = 1;
     last_skin_path = pciture;
-    title_bar->resetBackground(last_skin_path);
+    QPalette palette;
+    palette.setBrush(QPalette::Background, QBrush(QPixmap(last_skin_path)));
+    baseWidget->setPalette(palette);
+
+//    title_bar->resetBackground(last_skin_path);
 //    int  start_pos = pciture.lastIndexOf("/") + 1;
 //    int end_pos = pciture.length();
 //    index = pciture.mid(start_pos, end_pos-start_pos).replace(".png", "").toInt();
@@ -144,22 +247,28 @@ void SkinCenter::changeSkinCenterBackground(QString pciture)
 void SkinCenter::changeEnterBackground(QString pciture)
 {
     mainwindow->reViewThePointSkin(pciture);
-    title_bar->resetBackground(pciture);
+//    title_bar->resetBackground(pciture);
+    QPalette palette;
+    palette.setBrush(QPalette::Background, QBrush(QPixmap(pciture)));
+    baseWidget->setPalette(palette);
 }
 
 void SkinCenter::changeLeaveBackground()
 {
     mainwindow->reViewTheOrgSkin();
-    title_bar->resetBackground(last_skin_path);
+//    title_bar->resetBackground(last_skin_path);
+    QPalette palette;
+    palette.setBrush(QPalette::Background, QBrush(QPixmap(last_skin_path)));
+    baseWidget->setPalette(palette);
 }
 
 void SkinCenter::deleteBackground(QString picture)
 {
-//    qDebug() << picture;
     bool result = mainwindow->deleteFile(picture);
     if (result)
     {
-        list_widget->clear_card();
+//        list_widget->clear_card();
+        custom_list_widget->clear_card();
         this->reloadBackgroundList();
         QString conf_skin = mainwindow->getCurrentBackgroundAbsName();
         if (conf_skin == picture)
@@ -167,16 +276,15 @@ void SkinCenter::deleteBackground(QString picture)
     }
 }
 
-void SkinCenter::initBackgroundList()
+void SkinCenter::initSysBackgroundList()
 {
 //    self.winListWidget = CardWidget(427, 88, 6, self.ui.winpageWidget)
 //    self.winListWidget.setGeometry(0, 50, 860 + 6 + (20 - 6) / 2, 516)
 //    self.winListWidget.calculate_data()
 //    list_widget = new CardWidget(200, 88, 6, this->skin_widget);
-    list_widget = new CardWidget(212, 100, 20, this->skin_widget);
-    list_widget->setGeometry(QRect(30, 0, 500, 239));
+    list_widget = new CardWidget(130, 87, 10, this->skin_widget);
+    list_widget->setGeometry(QRect(0, 0, 420, 240));
     list_widget->calculate_data();
-
     QDir picdir("/var/lib/youker-assistant-daemon/background");
     picdir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     picdir.setSorting(QDir::Size | QDir::Reversed);
@@ -191,7 +299,8 @@ void SkinCenter::initBackgroundList()
     for (int j = 0; j < list.size(); ++j) {
         QFileInfo fileInfo = list.at(j);
 //        qDebug() << fileInfo.fileName();
-         ItemCard *card = new ItemCard(fileInfo.fileName(), list_widget->cardPanel);
+         ItemCard *card = new ItemCard(fileInfo.fileName(), false, list_widget->cardPanel);
+//         card->resetdislayDelBtnValue(true);//test
          card_list.append(card);
          if(cur_skin == fileInfo.fileName())
              card->showUsingLogo(true);
@@ -202,9 +311,47 @@ void SkinCenter::initBackgroundList()
          connect(card, SIGNAL(sendBackgroundName(QString)), this, SLOT(changeSkinCenterBackground(QString)));
          connect(card, SIGNAL(sendEnterBackground(QString)), this, SLOT(changeEnterBackground(QString)));
          connect(card, SIGNAL(sendLeaveBackground()), this, SLOT(changeLeaveBackground()));
-         connect(card, SIGNAL(sendDelteSignal(QString)), this, SLOT(deleteBackground(QString)));
+//         connect(card, SIGNAL(sendDelteSignal(QString)), this, SLOT(deleteBackground(QString)));
     }
 
+
+
+
+//    custom_list_widget = new CardWidget(212, 100, 20, this->skin_widget);
+    custom_list_widget = new CardWidget(130, 87, 10, this->skin_widget);
+    custom_list_widget->hide();
+//    custom_list_widget->setGeometry(QRect(30, 0, 500, 239));
+    custom_list_widget->setGeometry(QRect(0, 0, 420, 240));
+    custom_list_widget->calculate_data();
+    QDir customdir("/var/lib/youker-assistant-daemon/custom");
+    customdir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
+    customdir.setSorting(QDir::Size | QDir::Reversed);
+    customdir.setNameFilters(filters);
+    QFileInfoList custom_list = customdir.entryInfoList();
+    QString cur_custom_skin = mainwindow->getCurrentBackgroundName();
+    custom_card_list.clear();
+//    qDebug() << "getCurrentBackgroundName->" << mainwindow->getCurrentBackgroundName();
+    QSignalMapper *custom_mapper = new QSignalMapper(this);
+    for (int j = 0; j < custom_list.size(); ++j) {
+        QFileInfo fileInfo = custom_list.at(j);
+        ItemCard *card = new ItemCard(fileInfo.fileName(), true, custom_list_widget->cardPanel);
+        card->resetdislayDelBtnValue(true);
+        custom_card_list.append(card);
+        if(cur_custom_skin == fileInfo.fileName())
+            card->showUsingLogo(true);
+        custom_list_widget->add_card(card);
+        connect(card, SIGNAL(sendBackgroundName(QString)), custom_mapper, SLOT(map()));
+        custom_mapper->setMapping(card, QString::number(j, 10));
+        connect(custom_mapper, SIGNAL(mapped(QString)), this, SLOT(switchCusteomUsingLogo(QString)));
+        connect(card, SIGNAL(sendBackgroundName(QString)), this, SLOT(changeSkinCenterBackground(QString)));
+        connect(card, SIGNAL(sendEnterBackground(QString)), this, SLOT(changeEnterBackground(QString)));
+        connect(card, SIGNAL(sendLeaveBackground()), this, SLOT(changeLeaveBackground()));
+        connect(card, SIGNAL(sendDelteSignal(QString)), this, SLOT(deleteBackground(QString)));
+    }
+    ItemCard *card = new ItemCard("://res/create.png", true, custom_list_widget->cardPanel);
+    custom_card_list.append(card);
+    custom_list_widget->add_card(card);
+    connect(card, SIGNAL(sendAddSignal()), this, SLOT(addCustomBackground()));
 //    list_widget->setIconSize(QSize(150, 100));
 //    list_widget->setResizeMode(QListView::Adjust);
 //    list_widget->setViewMode(QListView::IconMode);
@@ -232,10 +379,13 @@ void SkinCenter::initBackgroundList()
 
 void SkinCenter::reloadBackgroundList()
 {
-    list_widget->setGeometry(QRect(0,2, 500, 230));
-    list_widget->calculate_data();
+//    list_widget->setGeometry(QRect(0,2, 500, 230));
+//    list_widget->calculate_data();
+    custom_list_widget->setGeometry(QRect(0,2, 500, 230));
+    custom_list_widget->calculate_data();
 
-    QDir picdir("/var/lib/youker-assistant-daemon/background");
+//    QDir picdir("/var/lib/youker-assistant-daemon/background");
+    QDir picdir("/var/lib/youker-assistant-daemon/custom");
     picdir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     picdir.setSorting(QDir::Size | QDir::Reversed);
     QStringList filters;
@@ -243,25 +393,86 @@ void SkinCenter::reloadBackgroundList()
     picdir.setNameFilters(filters);
     QFileInfoList list = picdir.entryInfoList();
     QString cur_skin = mainwindow->getCurrentBackgroundName();
-    card_list.clear();
+//    card_list.clear();
+    custom_card_list.clear();
     QSignalMapper *signal_mapper = new QSignalMapper(this);
     for (int j = 0; j < list.size(); ++j) {
         QFileInfo fileInfo = list.at(j);
-//        qDebug() << fileInfo.fileName();
-        ItemCard *card = new ItemCard(fileInfo.fileName(), list_widget->cardPanel);
+//        ItemCard *card = new ItemCard(fileInfo.fileName(), list_widget->cardPanel);
+        ItemCard *card = new ItemCard(fileInfo.fileName(), true, custom_list_widget->cardPanel);
+        card->resetdislayDelBtnValue(true);
         card->show();
-        card_list.append(card);
+//        card_list.append(card);
+        custom_card_list.append(card);
         if(cur_skin == fileInfo.fileName())
             card->showUsingLogo(true);
-        list_widget->add_card(card);
+//        list_widget->add_card(card);
+        custom_list_widget->add_card(card);
         connect(card, SIGNAL(sendBackgroundName(QString)), signal_mapper, SLOT(map()));
         signal_mapper->setMapping(card, QString::number(j, 10));
-        connect(signal_mapper, SIGNAL(mapped(QString)), this, SLOT(switchUsingLogo(QString)));
+//        connect(signal_mapper, SIGNAL(mapped(QString)), this, SLOT(switchUsingLogo(QString)));
+        connect(signal_mapper, SIGNAL(mapped(QString)), this, SLOT(switchCusteomUsingLogo(QString)));
         connect(card, SIGNAL(sendBackgroundName(QString)), this, SLOT(changeSkinCenterBackground(QString)));
         connect(card, SIGNAL(sendEnterBackground(QString)), this, SLOT(changeEnterBackground(QString)));
         connect(card, SIGNAL(sendLeaveBackground()), this, SLOT(changeLeaveBackground()));
         connect(card, SIGNAL(sendDelteSignal(QString)), this, SLOT(deleteBackground(QString)));
     }
+    ItemCard *card = new ItemCard("://res/create.png", true, custom_list_widget->cardPanel);
+    card->show();
+    custom_card_list.append(card);
+    custom_list_widget->add_card(card);
+    connect(card, SIGNAL(sendAddSignal()), this, SLOT(addCustomBackground()));
+}
+
+void SkinCenter::addCustomBackground()
+{
+    QStringList fileNameList;
+    QString fileName;
+    QFileDialog* fd = new QFileDialog(this);
+    fd->resize(500, 471);
+    fd->setFilter("Allfile(*.*);;png(*.png);;jpg(*.jpg)");
+    fd->setViewMode(QFileDialog::List);
+    if (fd->exec() == QDialog::Accepted)
+    {
+        fileNameList = fd->selectedFiles();
+        fileName = fileNameList[0];
+        qDebug() << "select pic name ->" << fileName;
+        bool result = mainwindow->CopyFile(fileName);
+        if(result == true) {
+            custom_list_widget->clear_card();
+            this->reloadBackgroundList();
+            int  start_pos = fileName.lastIndexOf("/") + 1;
+            int end_pos = fileName.length();
+            QString icon_name = "/var/lib/youker-assistant-daemon/custom/";
+            QString abs_name = icon_name.append(fileName.mid(start_pos, end_pos-start_pos));
+//            qDebug() << "abs_name->" << abs_name;
+            this->changeSkinCenterBackground(abs_name);
+
+            //change custom using logo
+            for(int i=0; i<custom_card_list.count() - 1; i++)
+            {
+                ItemCard *card = custom_card_list.at(i);
+                qDebug() << card->getCardName();
+                if(card->getCardName() == abs_name)
+                {
+                    card->showUsingLogo(true);
+                }
+                else
+                {
+                    card->showUsingLogo(false);
+                }
+            }
+
+            //change system using logo
+            for(int i=0; i<card_list.count(); i++)
+            {
+                ItemCard *card = card_list.at(i);
+                card->showUsingLogo(false);
+            }
+        }
+    }
+    else
+        fd->close();
 }
 
 void SkinCenter::switchUsingLogo(QString index)
@@ -281,15 +492,45 @@ void SkinCenter::switchUsingLogo(QString index)
             card->showUsingLogo(false);
         }
     }
+    //change custom using logo
+    for(int i=0; i<custom_card_list.count()-1; i++)
+    {
+        ItemCard *card = custom_card_list.at(i);
+        card->showUsingLogo(false);
+    }
 }
 
-void SkinCenter::initTitleBar(const QString &path)
+void SkinCenter::switchCusteomUsingLogo(QString index)
 {
-    title_bar->setTitleWidth(500);
-    title_bar->setTitleName(tr("Skin Center"));
-    last_skin_path = path;
-    title_bar->setTitleBackgound(last_skin_path);
+    bool ok;
+    int current_index = index.toInt(&ok, 10);
+    for(int i=0; i<custom_card_list.count(); i++)
+    {
+        ItemCard *card = custom_card_list.at(i);
+        if(current_index == i)
+        {
+            card->showUsingLogo(true);
+        }
+        else
+        {
+            card->showUsingLogo(false);
+        }
+    }
+    //change ystem using logo
+    for(int i=0; i<card_list.count(); i++)
+    {
+        ItemCard *card = card_list.at(i);
+        card->showUsingLogo(false);
+    }
 }
+
+//void SkinCenter::initTitleBar(const QString &path)
+//{
+//    title_bar->setTitleWidth(500);
+//    title_bar->setTitleName(tr("Skin Center"));
+//    last_skin_path = path;
+//    title_bar->setTitleBackgound(last_skin_path);
+//}
 
 //void SkinCenter::setLogo()
 //{
@@ -339,9 +580,36 @@ void SkinCenter::initTitleBar(const QString &path)
 ////    if(delayTimer->isActive())
 ////        delayTimer->stop();
 ////}
+void SkinCenter::mousePressEvent(QMouseEvent *event)
+{
+    if(event->button() == Qt::LeftButton)
+    {
+        mouse_press = true;
+        drag_pos = event->globalPos() - this->frameGeometry().topLeft();
+        event->accept();
+    }
+}
+
+void SkinCenter::mouseReleaseEvent(QMouseEvent *)
+{
+    mouse_press = false;
+}
+
+void SkinCenter::mouseMoveEvent(QMouseEvent *event)
+{
+    if(mouse_press)
+    {
+        QPoint move_pos = event->globalPos();
+        move(move_pos - drag_pos);
+        event->accept();
+    }
+}
 
 void SkinCenter::closeEvent(QCloseEvent *event)
 {
-    title_bar->setTitleBackgound(last_skin_path);
+//    title_bar->setTitleBackgound(last_skin_path);
+    QPalette palette;
+    palette.setBrush(QPalette::Background, QBrush(QPixmap(last_skin_path)));
+    baseWidget->setPalette(palette);
     mainwindow->restoreSkin();
 }

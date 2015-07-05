@@ -159,6 +159,19 @@
         <file>res/background.jpg</file>
         <file>res/clothes.png</file>
         <file>res/indicator.png</file>
+        <file>res/underline.png</file>
+        <file>res/choose.png</file>
+        <file>res/conceal.png</file>
+        <file>res/remove.png</file>
+        <file>res/skin-cover.png</file>
+        <file>res/theme-cover.png</file>
+        <file>res/create.png</file>
+        <file>res/no-net.png</file>
+        <file>res/retry-hover.png</file>
+        <file>res/retry-press.png</file>
+        <file>res/retry.png</file>
+        <file>res/upgrade-normal.png</file>
+        <file>res/upgrade-ok.png</file>
     </qresource>
     <qresource prefix="/sys">
         <file>res/sysBtn/close_button.png</file>
@@ -392,6 +405,7 @@
         <file>res/menu/home-press.png</file>
         <file>res/menu/sysinfo-press.png</file>
         <file>res/menu/toolkits-press.png</file>
+        <file>res/menu/upgrade.png</file>
     </qresource>
     <qresource prefix="/movie">
         <file>res/loading/1.png</file>
@@ -430,6 +444,74 @@
         <file>res/loading/small/7.png</file>
         <file>res/loading/small/8.png</file>
         <file>res/loading/small/9.png</file>
+        <file>res/upgrading/10.png</file>
+        <file>res/upgrading/11.png</file>
+        <file>res/upgrading/12.png</file>
+        <file>res/upgrading/13.png</file>
+        <file>res/upgrading/14.png</file>
+        <file>res/upgrading/15.png</file>
+        <file>res/upgrading/16.png</file>
+        <file>res/upgrading/17.png</file>
+        <file>res/upgrading/18.png</file>
+        <file>res/upgrading/19.png</file>
+        <file>res/upgrading/20.png</file>
+        <file>res/upgrading/21.png</file>
+        <file>res/upgrading/22.png</file>
+        <file>res/upgrading/23.png</file>
+        <file>res/upgrading/24.png</file>
+        <file>res/upgrading/25.png</file>
+        <file>res/upgrading/26.png</file>
+        <file>res/upgrading/27.png</file>
+        <file>res/upgrading/28.png</file>
+        <file>res/upgrading/29.png</file>
+        <file>res/upgrading/30.png</file>
+        <file>res/upgrading/31.png</file>
+        <file>res/upgrading/32.png</file>
+        <file>res/working/10.png</file>
+        <file>res/working/11.png</file>
+        <file>res/working/12.png</file>
+        <file>res/working/13.png</file>
+        <file>res/working/14.png</file>
+        <file>res/working/15.png</file>
+        <file>res/working/16.png</file>
+        <file>res/working/17.png</file>
+        <file>res/working/18.png</file>
+        <file>res/working/19.png</file>
+        <file>res/working/20.png</file>
+        <file>res/working/21.png</file>
+        <file>res/working/22.png</file>
+        <file>res/working/23.png</file>
+        <file>res/working/24.png</file>
+        <file>res/working/25.png</file>
+        <file>res/working/26.png</file>
+        <file>res/working/27.png</file>
+        <file>res/working/28.png</file>
+        <file>res/working/29.png</file>
+        <file>res/working/30.png</file>
+        <file>res/working/31.png</file>
+        <file>res/working/32.png</file>
+        <file>res/working/33.png</file>
+        <file>res/working/34.png</file>
+        <file>res/working/35.png</file>
+        <file>res/working/36.png</file>
+        <file>res/upgrading/1.png</file>
+        <file>res/upgrading/2.png</file>
+        <file>res/upgrading/3.png</file>
+        <file>res/upgrading/4.png</file>
+        <file>res/upgrading/5.png</file>
+        <file>res/upgrading/6.png</file>
+        <file>res/upgrading/7.png</file>
+        <file>res/upgrading/8.png</file>
+        <file>res/upgrading/9.png</file>
+        <file>res/working/1.png</file>
+        <file>res/working/2.png</file>
+        <file>res/working/3.png</file>
+        <file>res/working/4.png</file>
+        <file>res/working/5.png</file>
+        <file>res/working/6.png</file>
+        <file>res/working/7.png</file>
+        <file>res/working/8.png</file>
+        <file>res/working/9.png</file>
     </qresource>
     <qresource prefix="/gtk">
         <file>res/theme/Ambiance.png</file>

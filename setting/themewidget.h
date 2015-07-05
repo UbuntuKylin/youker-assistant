@@ -21,6 +21,8 @@
 #define THEMEWIDGET_H
 
 #include <QWidget>
+#include "../component/normalwidget.h"
+#include "../component/normalcard.h"
 
 class SessionDispatcher;
 class QLabel;
@@ -35,25 +37,21 @@ public:
     explicit ThemeWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0);
     ~ThemeWidget();
     void initConnect();
-    void initCurrentTheme(QListWidgetItem *init_item);
     void initData();
     bool getStatus();
 
-protected:
-    void paintEvent(QPaintEvent *);
-
 public slots:
-    void onItemClicked(QListWidgetItem *selected_item);
     void themewidget_notify_string(QString key, QString value);
+    void switchUsingLogo(QString index);
+    void changeTheme(QString name);
 
 private:
-    QListWidget *list_widget;
-    int current_index;
-    QLabel *using_label;
     SessionDispatcher *sessionproxy;
     bool dataOK;
-    int initIndex;
     QStringList syslist;
+    NormalWidget *list_widget;
+    QList<NormalCard *> card_list;
+    QLabel *label;
 };
 
 #endif // THEMEWIDGET_H

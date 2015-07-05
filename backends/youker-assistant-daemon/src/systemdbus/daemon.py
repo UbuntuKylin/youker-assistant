@@ -34,6 +34,7 @@ from gi.repository import GObject
 #import aptsources.sourceslist
 #import apt_pkg
 import threading
+import thread
 from server import PolicyKitService
 from policykit import UK_ACTION_YOUKER
 import time
@@ -50,6 +51,48 @@ log = logging.getLogger('Daemon')
 INTERFACE = 'com.ubuntukylin.youker'
 UKPATH = '/'
 
+#------------------------------------apt start----------------------------
+from apt_handler import AppActions, AptHandler, WorkitemError
+#class WorkItem:
+#     def __init__(self, pkgname, action, kwargs):
+#        self.pkgname = pkgname
+#        self.action = action
+#        self.kwargs = kwargs
+
+#class WorkThread(threading.Thread):
+#    def __init__(self, dbusDaemon):
+#        threading.Thread.__init__(self)
+#        self.dbusDaemon = dbusDaemon
+#        print "$$$$$$$$$$$$$$ ", type(self.dbusDaemon)
+
+#    def run(self):
+#        while(True):
+#            if len(self.dbusDaemon.worklist) == 0:
+#                time.sleep(0.2)
+#                continue
+
+#            self.dbusDaemon.mutex.acquire()
+#            item = self.dbusDaemon.worklist.pop(0)  #get first item and remove it from list
+#            self.dbusDaemon.mutex.release()
+
+#            try:
+#                func = getattr(self.dbusDaemon.aptHandler, item.action)
+#                if func is None:
+#                    print "Error action: ", item
+
+#                res = func(item.pkgname,item.kwargs)
+#                if res is False:
+#                    print "Action exec failed..."
+#            except WorkitemError as e:
+#                kwarg = {"apt_appname": item.pkgname,
+#                        "apt_percent": str(-e.errornum),
+#                        "action": str(item.action),
+#                        }
+#                self.dbusDaemon.youker_apt_signal("apt_error", kwarg)
+
+#            time.sleep(0.3)
+#------------------------------------apt end----------------------------
+
 class Daemon(PolicyKitService):
     def __init__ (self, bus, mainloop):
         self.infoconf = DetailInfo()
@@ -65,6 +108,16 @@ class Daemon(PolicyKitService):
 #        self.daemoncache = cleaner.CleanTheCache()
 #        self.daemonApt = AptDaemon()
         #self.daemonApt = AptDaemon(self)
+
+        #--------------apt start----------------
+        self.aptHandler = AptHandler(self)
+#        self.worklist = []
+#        self.mutex = threading.RLock()
+#        self.worker_thread = WorkThread(self)
+#        self.worker_thread.setDaemon(True)
+#        self.worker_thread.start()
+        #--------------apt end----------------
+
         bus_name = dbus.service.BusName(INTERFACE, bus=bus)
         PolicyKitService.__init__(self, bus_name, UKPATH)
         self.mainloop = mainloop
@@ -73,9 +126,90 @@ class Daemon(PolicyKitService):
     def exit(self):
         self.mainloop.quit()
 
+    #--------------apt start----------------
+#    def add_worker_item(self, item):
+#        print "####add_worker_item:", item
+#        self.mutex.acquire()
+#        self.worklist.append(item)
+#        self.mutex.release()
+
+    # package download status signal
+    '''parm mean
+        type:
+            start:start download
+            stop:all work is finish
+            done:all items download finished
+            fail:download failed
+            fetch:one item download finished
+            pulse:download status, this msg given a string like dict
+        msg:
+            a message of type, sometimes is None
+    '''
+    @dbus.service.signal(INTERFACE, signature='sas')
+    def youker_fetch_signal(self, type, msg):
+        pass
+
+    # package install/update/remove signal
+    '''parm mean
+        type:
+            start:start work
+            stop:work finish
+            error:got a error
+            pulse:work status, this msg given a string like dict
+        msg:
+            a message of type, sometimes is None
+    '''
+    @dbus.service.signal(INTERFACE, signature='sas')
+    def youker_apt_signal(self, type, msg):
+        pass
+
+    # install package sa:youker_fetch_signal() and youker_apt_signal()
+    #sudo apt-get install youker-assistant=1.3.1-0ubuntu1
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b', sender_keyword='sender')
+    def install(self, pkgName, sender=None):
+        print "####install: ",pkgName
+#        item = WorkItem(pkgName, AppActions.INSTALL, None)
+#        self.add_worker_item(item)
+        self.aptHandler.install(pkgName)
+        print "####install return"
+        return True
+
+    def start_update_source_list(self):
+        self.aptHandler.update()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b', sender_keyword='sender')
+    def update(self, sender=None):
+        thread.start_new_thread(self.start_update_source_list, ())
+#        self.aptHandler.update()
+        return True
+
+#    @dbus.service.method(INTERFACE, in_signature='as', out_signature='b', sender_keyword='sender')
+#    def upgrade(self, pkgNames, sender=None):
+#        print "####upgrade: ", pkgNames
+#        item = WorkItem(pkgNames, AppActions.UPGRADE, None)
+#        self.add_worker_item(item)
+#        #        self.aptHandler.upgrade_pkg(pkgName)
+#        print "####upgrade return"
+#        return True
+    #--------------apt end----------------
+
+
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def set_homedir(self, homedir):
         self.soundconf.set_homedir(homedir)
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
+    def copy_file(self, filename):
+        des_path = '/var/lib/youker-assistant-daemon/custom'
+        filename = filename.encode('utf-8')
+        if not os.path.exists(des_path):
+            os.makedirs(des_path)
+        try:
+            shutil.copy(filename, des_path)
+            return True
+        except os.error:
+            pass
+        return False
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
     def delete_file(self, filename):
