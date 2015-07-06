@@ -321,6 +321,64 @@ QComboBox::drop-down{
     background-color:#64b5f6;
 }
 
+/*QComboBox {
+     border: 1px solid #32435E;
+     border-radius: 1px;
+     padding: 1px 18px 1px 3px;
+     min-width: 150px;
+}*/
+/*非编辑状态下，鼠标移到控件上的背景色和边框色*/
+/*QComboBox::hover{
+    background-color:#a6d7ff;
+    border-color:#5D8B9E;
+}*/
+/*QComboBox:editable {
+    background: #14ACF5;
+}*/
+
+/*非编辑状态下默认底色和编辑状态下鼠标移到非选中项的底色*/
+/*QComboBox:!editable, QComboBox::drop-down:editable {
+    background: #14ACF5;
+}*/
+
+/* QComboBox gets the "on" state when the popup is open */
+/*编辑状态下鼠标移到被勾选项时的底色*/
+/*QComboBox:!editable:on, QComboBox::drop-down:editable:on {
+    background:gray;
+}*/
+/* shift the text when the popup opens */
+/*QComboBox:on {
+     padding-top: 3px;
+     padding-left: 4px;
+}*/
+
+/*右侧箭头图标的处理*/
+/*QComboBox::drop-down {
+     subcontrol-origin: padding;
+     subcontrol-position: top right;
+     width: 15px;
+     border-left-width: 1px;*/
+     /*border-left-color: #64b5f6;*//*箭头左侧分割线颜色*/
+     /*border-left-style: solid; *//* just a single line */
+     /*border-top-right-radius: 1px; *//* same radius as the QComboBox */
+     /*border-bottom-right-radius: 1px;
+}*/
+
+/*QComboBox::down-arrow {
+     image: url(://res/arrow-normal.png);
+}*/
+/* shift the arrow when popup is open */
+/*QComboBox::down-arrow:on {
+     top: 1px;
+     left: 1px;
+}*/
+
+/*QComboBox QAbstractItemView {
+     border: 1px solid #ffffff;
+     selection-background-color: #9B9B9B;
+     background: #e9eef0;
+}*/
+
 /*-------------------QScrollBar-------------------*/
 QScrollBar:vertical{
     margin:0px 0px 0px 0px;
@@ -551,7 +609,7 @@ QMenu::icon:checked {
 
 QMenu::separator {
     height: 1px;
-    background: #222222;
+    background: #e0e0e0;/*#222222*/
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 1px;

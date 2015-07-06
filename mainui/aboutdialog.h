@@ -23,6 +23,10 @@
 #include <QDialog>
 #include "../component/kylintitlebar.h"
 #include <QTextEdit>
+#include <QTextBrowser>
+#include "../component/systembutton.h"
+
+class QParallelAnimationGroup;
 
 class AboutDialog : public QDialog
 {
@@ -33,6 +37,7 @@ public:
     ~AboutDialog();
     void initConnect();
     void resetTitleSkin(QString skin);
+    void initAnimation();
     
 public slots:
     void onCloseBtnClicked();
@@ -40,18 +45,32 @@ public slots:
     void onAboutBtnClicked();
     void onContributorBtnClicked();
 
+protected:
+    void mousePressEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+
 private:
-    KylinTitleBar *title_bar;
+//    KylinTitleBar *title_bar;
+    QPoint drag_pos; //移动的距离
+    bool mouse_press; //按下鼠标左键
+    QWidget *baseWidget;
+    SystemButton *close_btn;
     QPushButton *aboutBtn;
     QPushButton *contributorBtn;
-    QLabel *aboutIndicator;
-    QLabel *contributorIndicator;
-    QTextEdit *aboutEdit;
+    QLabel *indicator;
+//    QLabel *aboutIndicator;
+//    QLabel *contributorIndicator;
+//    QTextEdit *aboutEdit;
+    QTextBrowser *aboutEdit;
     QTextEdit *contributorEdit;
     QLabel *iconLabel;
     QLabel *nameLabel;
-    QLabel *versionLabel;
-    QLabel *linkLabel;
+    QPushButton *okBtn;
+//    QLabel *versionLabel;
+//    QLabel *linkLabel;
+    QParallelAnimationGroup *aboutGroup;
+    QParallelAnimationGroup *contributorGroup;
 };
 
 #endif // ABOUTDIALOG_H

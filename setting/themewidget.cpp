@@ -29,43 +29,12 @@ ThemeWidget::ThemeWidget(QWidget *parent, SessionDispatcher *proxy) :
     QWidget(parent),
     sessionproxy(proxy)
 {
-    //创建QListWidget部件
-    list_widget = new QListWidget(this);
-    list_widget->setFocusPolicy(Qt::NoFocus);
-    //设置QListWidget中的单元项的图片大小
-    list_widget->setIconSize(QSize(106, 106));
-    list_widget->setResizeMode(QListView::Adjust);
-    //设置QListWidget的显示模式
-    list_widget->setViewMode(QListView::IconMode);
-    //设置QListWidget中的单元项不可被拖动
-    list_widget->setMovement(QListView::Static);
-    //设置QListWidget中的单元项的间距
-    list_widget->setSpacing(26);
-//    QPalette palette1;
-//    palette1.setBrush(QPalette::Normal, QPalette::Highlight, Qt::black);
-//    palette1.setBrush(QPalette::Inactive, QPalette::Highlight, Qt::black);
-//    list_widget->setPalette(palette1);
-
+    label = new QLabel(this);
+    label->setObjectName("tipLabel");
+    label->setGeometry(QRect(30, 15, 860, 20));
+    label->setText(tr("Please choose theme which you need"));
+    list_widget = NULL;
     dataOK = false;
-    current_index = 0;
-    initIndex = 0;
-
-    using_label = new QLabel(list_widget);
-    using_label->setFixedSize(20, 20);
-    using_label->setAutoFillBackground(true);
-    QPalette palette;
-//    palette.setBrush(using_label->backgroundRole(), QBrush(QPixmap("://res/using.png")));
-    palette.setBrush(QPalette::Background, QBrush(QPixmap("://res/checkbox-press.png")));
-    using_label->setPalette(palette);
-    using_label->show();
-//    using_label->move(26, 26);
-
-    //    QHBoxLayout *layout = new QHBoxLayout();
-    //    layout->addWidget(list_widget);
-    //    setLayout(layout);
-    QGridLayout *layout = new QGridLayout();
-    layout->addWidget(list_widget);
-    setLayout(layout);
 }
 
 bool ThemeWidget::getStatus()
@@ -74,46 +43,28 @@ bool ThemeWidget::getStatus()
 }
 
 void ThemeWidget::initData() {
+//    list_widget = new NormalWidget(150, 150, 20, this);
+    list_widget = new NormalWidget(119, 139, 20, this);
+    list_widget->setGeometry(QRect(30, 55, 860, 330));
+    list_widget->calculate_data();
+
     QString current_theme = sessionproxy->get_theme_qt();
     /*QStringList */syslist = sessionproxy->get_themes_qt();
-    QList<QString>::Iterator it = syslist.begin(), itend = syslist.end();
-    initIndex = 0;
-    for(;it != itend; it++,initIndex++)
-    {
-        if(*it == current_theme)
-            break;
-    }
-
+    card_list.clear();
+    QSignalMapper *signal_mapper = new QSignalMapper(this);
     for(int i = 0; i<syslist.length(); ++i)
     {
-        QString strPath=QString(":/gtk/res/theme/" + syslist[i] + ".png");
-        QPixmap pixmap(strPath);
-        if(pixmap.isNull())
-        {
-            pixmap = QPixmap(":/gtk/res/theme/disappear.png");
+        NormalCard *card = new NormalCard(syslist[i], list_widget->cardPanel);
+        card_list.append(card);
+        if(current_theme == syslist[i]) {
+            card->showUsingLogo(true);
         }
-        //伸缩106*106
-        QListWidgetItem *pItem = new QListWidgetItem(QIcon(pixmap.scaled(QSize(106,106))), tr("%1").arg(syslist[i]));
-        pItem->setSizeHint(QSize(130,130));
-//        pItem->setFlags(Qt::ItemIsSelectable);
-//        pItem->setBackgroundColor(QColor(0, 0, 255, 127));
-//        pItem->setTextColor(QColor(0, 0, 255, 127));//0629
-        list_widget->insertItem(i, pItem);
-
-//        QListWidgetItem *pItem = new QListWidgetItem(QIcon(pixmap.scaled(QSize(106,106))), tr("%1").arg(syslist[i]), list_widget);
-//        QWidget *wContainer = new QWidget(list_widget);
-////        wContainer->setStyleSheet("QWidget{background:transparent url(://res/menu-big-hover.png);}");
-//        wContainer->resize(130, 130);
-//        QLabel *label = new QLabel();
-//        label->setStyleSheet("QLabel{background-image:url('://res/menu-big-hover.png')}");
-//        QHBoxLayout *hLayout = new QHBoxLayout(wContainer);
-//        hLayout->addWidget(label);
-//        list_widget->setItemWidget(pItem,wContainer);
+        list_widget->add_card(card);
+        connect(card, SIGNAL(sendSelectThemeName(QString)), signal_mapper, SLOT(map()));
+        signal_mapper->setMapping(card, QString::number(i, 10));
+        connect(signal_mapper, SIGNAL(mapped(QString)), this, SLOT(switchUsingLogo(QString)));
+        connect(card, SIGNAL(sendSelectThemeName(QString)), this, SLOT(changeTheme(QString)));
     }
-
-    //set using logo
-    QListWidgetItem *cur_item = list_widget->item(initIndex);
-    this->initCurrentTheme(cur_item);
     dataOK = true;
     this->initConnect();
 }
@@ -123,9 +74,32 @@ ThemeWidget::~ThemeWidget()
 }
 
 void ThemeWidget::initConnect() {
-    connect(list_widget,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(onItemClicked(QListWidgetItem*)));
     connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(themewidget_notify_string(QString, QString)));
 }
+
+void ThemeWidget::switchUsingLogo(QString index)
+{
+    bool ok;
+    int current_index = index.toInt(&ok, 10);
+    for(int i=0; i<card_list.count(); i++)
+    {
+        NormalCard *card = card_list.at(i);
+        if(current_index == i)
+        {
+            card->showUsingLogo(true);
+        }
+        else
+        {
+            card->showUsingLogo(false);
+        }
+    }
+}
+
+void ThemeWidget::changeTheme(QString name)
+{
+    sessionproxy->set_theme_qt(name);
+}
+
 
 void ThemeWidget::themewidget_notify_string(QString key, QString value)
 {
@@ -145,65 +119,7 @@ void ThemeWidget::themewidget_notify_string(QString key, QString value)
         if(exist)
         {
             exist = false;
-            QListWidgetItem *cur_item = list_widget->item(index);
-            this->initCurrentTheme(cur_item);
+            this->switchUsingLogo(QString::number(index, 10));
         }
     }
-}
-
-void ThemeWidget::initCurrentTheme(QListWidgetItem *init_item)
-{
-    int nRowIndex = list_widget->row(init_item);
-    QRect rect = list_widget->visualItemRect(init_item);
-//    QPoint p = rect.topLeft();
-//    using_label->move(p.x(), p.y());
-    QPoint p = rect.bottomRight();
-    using_label->move(p.x()-20, p.y()-40);
-//    using_label->move(p.x(), p.y());
-    //reset current item status
-    QListWidgetItem *pre_item = list_widget->item(current_index);
-//    pre_item->setTextColor(QColor(0, 0, 255, 127));//0629
-    pre_item->setTextColor(QColor("4f4f4f"));
-    current_index = nRowIndex;
-    init_item->setTextColor(QColor("4f4f4f"));
-}
-
-void ThemeWidget::onItemClicked(QListWidgetItem *selected_item)
-{
-    if(!selected_item)
-    {
-        return;
-    }
-    sessionproxy->set_theme_qt(selected_item->text());
-
-    int nRowIndex = list_widget->row(selected_item);
-    QRect rect = list_widget->visualItemRect(selected_item);
-//    QPoint p = rect.topLeft();
-    QPoint p = rect.bottomRight();
-    using_label->move(p.x()-20, p.y()-40);
-//    p.setX(p.x() + 58);
-//    p.setY(p.y() + 29);
-//    using_label->move(p.x(), p.y());
-
-    //reset current item status
-    QListWidgetItem *pre_item = list_widget->item(current_index);
-//    pre_item->setTextColor(QColor(0, 0, 255, 127));
-    pre_item->setTextColor(QColor("4f4f4f"));
-    pre_item->setBackground(Qt::white);
-
-    current_index = nRowIndex;
-//    item->setBackgroundColor(QColor(0, 0, 255, 127));
-    selected_item->setTextColor(QColor("4f4f4f"));
-//    selected_item->setSizeHint(QSize(130,130));
-}
-
-void ThemeWidget::paintEvent(QPaintEvent *)
-{
-    //kobe: if the scrollbar move, the using_label should move the the select item
-    QListWidgetItem *select_item = list_widget->item(current_index);
-    QRect rect = list_widget->visualItemRect(select_item);
-//    QPoint p = rect.topLeft();
-//    using_label->move(p.x(), p.y());
-    QPoint p = rect.bottomRight();
-    using_label->move(p.x()-20, p.y()-40);
 }

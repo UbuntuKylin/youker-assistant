@@ -42,19 +42,19 @@ ToolWidget::ToolWidget(QWidget *parent)
 
 	QHBoxLayout *button_layout = new QHBoxLayout();
 
-	QSignalMapper *signal_mapper = new QSignalMapper(this);
+    QSignalMapper *signal_mapper = new QSignalMapper(this);
     for(int i=0; i<icon_list.size(); i++)
 	{
         KylinToolButton *tool_button = new KylinToolButton(icon_list.at(i), text_list.at(i));
         tool_button->setFixedSize(180, 47);
 		button_list.append(tool_button);
-		connect(tool_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
-		signal_mapper->setMapping(tool_button, QString::number(i, 10));
-
+        connect(tool_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
+//        connect(tool_button, SIGNAL(clicked()), this, SLOT(test()));
+        signal_mapper->setMapping(tool_button, QString::number(i, 10));
 		button_layout->addWidget(tool_button, 0, Qt::AlignBottom);
 	}
-    this->switchPageIndex(0);
-    connect(signal_mapper, SIGNAL(mapped(QString)), this, SLOT(switchPageIndex(QString)));
+    this->switchSelectedPageIndex(0);
+    connect(signal_mapper, SIGNAL(mapped(QString)), this, SLOT(switchSelectedPageIndex(QString)));
 
 	button_layout->addStretch();
 	button_layout->setSpacing(8);
@@ -66,6 +66,10 @@ ToolWidget::ToolWidget(QWidget *parent)
 //    this->initAnimation();
 }
 
+void ToolWidget::test() {
+    qDebug() << "test...........";
+}
+
 ToolWidget::~ToolWidget()
 {
 }
@@ -74,11 +78,10 @@ void ToolWidget::initConnect() {
     connect(this, SIGNAL(turnCurrentPage(int)), p_mainwindow, SLOT(setCurrentPageIndex(int)));
 }
 
-void ToolWidget::switchPageIndex(QString index)
+void ToolWidget::switchSelectedPageIndex(QString index)
 {
 	bool ok;  
     int current_index = index.toInt(&ok, 10);
-//    qDebug() << "current_index->" << current_index;
 
 	for(int i=0; i<button_list.count(); i++)
 	{
@@ -97,7 +100,7 @@ void ToolWidget::switchPageIndex(QString index)
 
 void ToolWidget::showBoxTool()
 {
-    this->switchPageIndex("4");
+    this->switchSelectedPageIndex("4");
 }
 
 

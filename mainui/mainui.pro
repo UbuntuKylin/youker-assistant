@@ -57,11 +57,14 @@ inst2.files += ../youker-assistant.desktop
 inst2.path = /usr/share/applications
 inst3.files += res/background/
 inst3.path = /var/lib/youker-assistant-daemon/
+inst4.files += res/custom/
+inst4.path = /var/lib/youker-assistant-daemon/
 target.source += $$TARGET
 target.path = /usr/bin
 INSTALLS += inst1 \
     inst2 \
     inst3 \
+    inst4 \
     target
 
 SOURCES += main.cpp\
@@ -112,7 +115,7 @@ SOURCES += main.cpp\
     ../setting/windowwidget.cpp \
     ../setting/fontwidget.cpp \
     ../setting/touchpadwidget.cpp \
-    ../setting/deadpixelwidget.cpp \
+#    ../setting/deadpixelwidget.cpp \
     ../setting/conservewidget.cpp \
     ../setting/nautiluswidget.cpp \
     ../component/scrollwidget.cpp \
@@ -146,7 +149,11 @@ SOURCES += main.cpp\
     ../component/cleansubgroup.cpp \
     ../component/cleansubbutton.cpp \
     ../component/cardwidget.cpp \
-    ../component/itemcard.cpp
+    ../component/itemcard.cpp \
+    upgradedialog.cpp \
+    ../component/normalwidget.cpp \
+    ../component/normalcard.cpp \
+    shadowwidget.cpp
 
 HEADERS  += mainwindow.h \
     titlewidget.h \
@@ -197,7 +204,7 @@ HEADERS  += mainwindow.h \
     ../setting/windowwidget.h \
     ../setting/fontwidget.h \
     ../setting/touchpadwidget.h \
-    ../setting/deadpixelwidget.h \
+#    ../setting/deadpixelwidget.h \
     ../setting/conservewidget.h \
     ../setting/nautiluswidget.h \
     ../component/scrollwidget.h \
@@ -231,16 +238,21 @@ HEADERS  += mainwindow.h \
     ../component/cleansubgroup.h \
     ../component/cleansubbutton.h \
     ../component/cardwidget.h \
-    ../component/itemcard.h
+    ../component/itemcard.h \
+    upgradedialog.h \
+    ../component/normalwidget.h \
+    ../component/normalcard.h \
+    shadowwidget.h
 
-FORMS    += mainwindow.ui \
+FORMS    += \
     ../component/quibo.ui \
     ../component/alertdialog.ui \
     autostartwidget.ui \
 #    aboutdialog.ui \
     ../cleaner/cleanlistwidget.ui \
     ../cleaner/cleanerdetailwidget.ui \
-    ../component/itemcard.ui
+    ../component/itemcard.ui \
+    ../component/normalcard.ui
 
 RESOURCES += \
     img.qrc

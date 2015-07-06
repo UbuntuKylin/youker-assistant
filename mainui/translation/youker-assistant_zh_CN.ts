@@ -4,28 +4,43 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="../aboutdialog.ui" line="26"/>
-        <location filename="../aboutdialog.ui" line="42"/>
+        <location filename="../aboutdialog.cpp" line="70"/>
+        <source>Youker Assisant</source>
+        <translation>优客助手</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="75"/>
         <source>About</source>
         <translatorcomment>关于本软件</translatorcomment>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.ui" line="70"/>
-        <location filename="../aboutdialog.ui" line="165"/>
-        <source>Youker Assistant</source>
-        <translatorcomment>优客助手</translatorcomment>
-        <translation>优客助手</translation>
+        <location filename="../aboutdialog.cpp" line="101"/>
+        <source>      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions. 
+      The software is still under development. Please visit www.ubuntukylin.com for more information. Welcome everyone to join with us. youker-assistant Homepage: </source>
+        <translation>      优客助手是由Ubuntu Kylin团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器以及监控球等功能。
+      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 www.ubuntukylin.com 了解软件的最新进展并反馈问题，欢迎广大优客一起参与。优客助手主页：</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.ui" line="105"/>
+        <location filename="../aboutdialog.cpp" line="103"/>
+        <source>Maintainer:
+Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
+        <translation>维护者：
+Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</translation>
+    </message>
+    <message>
+        <source>Youker Assistant</source>
+        <translatorcomment>优客助手</translatorcomment>
+        <translation type="obsolete">优客助手</translation>
+    </message>
+    <message>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:11pt;&quot;&gt;      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions. &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:11pt;&quot;&gt;      The software is still under development. Please visit www.ubuntukylin.com for more information. Welcome everyone to join with us. youker-assistant Homepage: https://launchpad.net/youker-assistant.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -33,14 +48,13 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 www.ubuntukylin.com 了解软件的最新进展并反馈问题，欢迎广大优客一起参与。优客助手主页：https://launchpad.net/youker-assistant 。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.ui" line="131"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt;&quot;&gt;Maintainer&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Droid Sans Fallback&apos;; font-size:11pt;&quot;&gt;:&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:11px; margin-bottom:11px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt;&quot;&gt;Ubuntu Kylin Team &amp;lt;ubuntukylin-members@list.launchpad.net&amp;gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -62,7 +76,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 www.ubuntukylin.com 了解软件的最新进展并反馈问题，欢迎广大优客一起参与。优客助手主页：https://launchpad.net/youker-assistant 。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.ui" line="116"/>
+        <location filename="../aboutdialog.cpp" line="78"/>
         <source>Contributor</source>
         <translation>贡献者</translation>
     </message>
@@ -81,12 +95,11 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:11px; margin-bottom:11px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Ubuntu Kylin Team &amp;lt;ubuntukylin-members@list.launchpad.net&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.ui" line="181"/>
         <source>&lt;a href=https://launchpad.net/youker-assistant&gt;home page&lt;/a&gt;</source>
-        <translation>&lt;a href=https://launchpad.net/youker-assistant&gt;主页&lt;/a&gt;</translation>
+        <translation type="obsolete">&lt;a href=https://launchpad.net/youker-assistant&gt;主页&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.ui" line="199"/>
+        <location filename="../aboutdialog.cpp" line="120"/>
         <source>Close</source>
         <translatorcomment>关闭</translatorcomment>
         <translation>关闭</translation>
@@ -375,7 +388,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CleanListWidget</name>
     <message>
-        <location filename="../../cleaner/cleanlistwidget.cpp" line="52"/>
+        <location filename="../../cleaner/cleanlistwidget.cpp" line="53"/>
         <source>Clean Items:</source>
         <translation>清理项：</translation>
     </message>
@@ -570,99 +583,114 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CleanerDetailWidget</name>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="269"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="299"/>
         <source>Apt Cache Clean Items</source>
         <translation>Apt缓存清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="275"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="305"/>
         <source>Apt Cache count:</source>
         <translation>Apt缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="319"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="420"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="349"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="450"/>
         <source>Software Cache Clean Items</source>
         <translation>软件中心缓存清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="325"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="355"/>
         <source>Software Cache count:</source>
         <translation>软件中心缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="369"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="468"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="521"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="571"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="716"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="765"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="814"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="399"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="498"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="551"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="601"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="799"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="848"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="897"/>
         <source>Thumbnails Cache Clean Items</source>
         <translation>缩略图缓存清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="375"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="405"/>
         <source>Thumbnails Cache Count:</source>
         <translation>缩略图缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="425"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="455"/>
         <source>Firefox Cache Count:</source>
         <translation>Firefox浏览器缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="473"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="503"/>
         <source>Chromium Cache Count:</source>
         <translation>Chromium浏览器缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="526"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="556"/>
         <source>Firefox Cookies Count:</source>
         <translation>Firefox Cookies总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="576"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="606"/>
         <source>Chromium Cookies Count:</source>
         <translation>Chromium Cookies总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="630"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="660"/>
         <source>Firefox History Count:</source>
         <translation>Firefox 历史记录总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="670"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="700"/>
         <source>Chromium History Count:</source>
         <translation>Chromium历史记录总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="693"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="723"/>
         <source>System History Count:</source>
         <translation>系统历史痕迹总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="721"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="747"/>
+        <source>Command history size:</source>
+        <translation>命令历史记录大小：</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="767"/>
+        <source>Debug log Items</source>
+        <translation>调试日志项</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="770"/>
+        <source>Debug log:</source>
+        <translation>调试日志：</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="804"/>
         <source>Package Unneed Count:</source>
         <translation>不需要的包总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="770"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="853"/>
         <source>Package oldkernel Count:</source>
         <translation>旧内核包总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="819"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="902"/>
         <source>Package configfile Count:</source>
         <translation>包配置文件总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1344"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1505"/>
         <source>No garbage </source>
         <translation>没有扫描到垃圾</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1354"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1545"/>
         <source>Clean args is empty!</source>
         <translation>清理参数为空！</translation>
     </message>
@@ -676,7 +704,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CleanerItems</name>
     <message>
-        <location filename="../../cleaner/cleaneritems.cpp" line="150"/>
+        <location filename="../../cleaner/cleaneritems.cpp" line="157"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
@@ -779,42 +807,52 @@ p, li { white-space: pre-wrap; }
         <translation>清除上网、游戏、购物等记录</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="82"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
         <source>Clean up the Firefox Internet records</source>
         <translation>清理火狐访问记录</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="82"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
         <source>Clean up the Chromium Internet records</source>
         <translation>清理Chromium访问记录</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="82"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
         <source>Clean up the recently opened documents records</source>
         <translation>清理最近打开的文件记录</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="85"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
+        <source>Delete the command history</source>
+        <translation>删除命令历史记录</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
+        <source>Delete the debug logs</source>
+        <translation>删除调试日志</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="86"/>
         <source>Trace Items</source>
         <translation>访问痕迹选项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="89"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="90"/>
         <source>History trace</source>
         <translation>历史痕迹</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="89"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="90"/>
         <source>Cleaning the internet and opened documents recently records</source>
         <translation>清除浏览器和系统使用痕迹</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="159"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="160"/>
         <source>Please select the items you want to clean</source>
         <translation>请选择您想清理的选项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="168"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="181"/>
         <source>Scan args is empty!</source>
         <translation>扫描参数为空！</translation>
     </message>
@@ -1529,14 +1567,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>DeadpixelWidget</name>
     <message>
-        <location filename="../../setting/deadpixelwidget.cpp" line="75"/>
         <source>Left-click to change the color, right-click to exit from this detection.</source>
-        <translation>鼠标左键点击更改颜色，右键点击退出坏点检测。</translation>
+        <translation type="obsolete">鼠标左键点击更改颜色，右键点击退出坏点检测。</translation>
     </message>
     <message>
-        <location filename="../../setting/deadpixelwidget.cpp" line="76"/>
         <source>OK</source>
-        <translation>确定</translation>
+        <translation type="obsolete">确定</translation>
     </message>
 </context>
 <context>
@@ -1558,60 +1594,60 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>FontWidget</name>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="86"/>
         <location filename="../../setting/fontwidget.cpp" line="87"/>
         <location filename="../../setting/fontwidget.cpp" line="88"/>
         <location filename="../../setting/fontwidget.cpp" line="89"/>
         <location filename="../../setting/fontwidget.cpp" line="90"/>
+        <location filename="../../setting/fontwidget.cpp" line="91"/>
         <source>Click here to change font</source>
         <translation>点击此处更换字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="202"/>
+        <location filename="../../setting/fontwidget.cpp" line="203"/>
         <source>Default Font</source>
         <translation>默认字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="203"/>
+        <location filename="../../setting/fontwidget.cpp" line="204"/>
         <source>Desktop Font</source>
         <translation>桌面字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="204"/>
+        <location filename="../../setting/fontwidget.cpp" line="205"/>
         <source>Monospace Font</source>
         <translation>等宽字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="205"/>
+        <location filename="../../setting/fontwidget.cpp" line="206"/>
         <source>Document Font</source>
         <translation>文档字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="206"/>
+        <location filename="../../setting/fontwidget.cpp" line="207"/>
         <source>Titlebar Font</source>
         <translation>标题栏字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="207"/>
+        <location filename="../../setting/fontwidget.cpp" line="208"/>
         <source>Global Font Scaling</source>
         <translation>全局字体缩放</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="208"/>
+        <location filename="../../setting/fontwidget.cpp" line="209"/>
         <source>Hinting</source>
         <translation>平滑</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="209"/>
+        <location filename="../../setting/fontwidget.cpp" line="210"/>
         <source>Antialiasing</source>
         <translation>反锯齿</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="210"/>
         <location filename="../../setting/fontwidget.cpp" line="211"/>
         <location filename="../../setting/fontwidget.cpp" line="212"/>
         <location filename="../../setting/fontwidget.cpp" line="213"/>
         <location filename="../../setting/fontwidget.cpp" line="214"/>
+        <location filename="../../setting/fontwidget.cpp" line="215"/>
         <source>Restore</source>
         <translation>恢复默认</translation>
     </message>
@@ -1632,191 +1668,191 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>HomeActionWidget</name>
     <message>
-        <location filename="../homeactionwidget.cpp" line="143"/>
-        <location filename="../homeactionwidget.cpp" line="306"/>
+        <location filename="../homeactionwidget.cpp" line="144"/>
+        <location filename="../homeactionwidget.cpp" line="307"/>
         <source>The lastest cleanup time is </source>
         <translation>上一次清理时间是</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="149"/>
-        <location filename="../homeactionwidget.cpp" line="414"/>
+        <location filename="../homeactionwidget.cpp" line="150"/>
+        <location filename="../homeactionwidget.cpp" line="415"/>
         <source>The lastest scan time is </source>
         <translation>上一次扫描时间是</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="153"/>
+        <location filename="../homeactionwidget.cpp" line="154"/>
         <source>You have not implemented the one key scan and clean-up operation.</source>
         <translation>您还没有执行过一键扫描和一键清理操作。</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="174"/>
+        <location filename="../homeactionwidget.cpp" line="175"/>
         <source>Quick clean up system trash, saving disk space and improving the system efficiency!</source>
         <translation>一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="175"/>
+        <location filename="../homeactionwidget.cpp" line="176"/>
         <source>Start Scan</source>
         <translation>开始扫描</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="176"/>
+        <location filename="../homeactionwidget.cpp" line="177"/>
         <source>Start Cleanup</source>
         <translation>开始清理</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="177"/>
+        <location filename="../homeactionwidget.cpp" line="178"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="178"/>
+        <location filename="../homeactionwidget.cpp" line="179"/>
         <source>Scanning......</source>
         <translation>正在扫描.....</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="189"/>
+        <location filename="../homeactionwidget.cpp" line="190"/>
         <source>Scanning:</source>
         <translation>正在扫描：</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="179"/>
+        <location filename="../homeactionwidget.cpp" line="180"/>
         <source>Scan Over</source>
         <translation>扫描完成</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="205"/>
-        <location filename="../homeactionwidget.cpp" line="209"/>
-        <location filename="../homeactionwidget.cpp" line="220"/>
+        <location filename="../homeactionwidget.cpp" line="206"/>
+        <location filename="../homeactionwidget.cpp" line="210"/>
+        <location filename="../homeactionwidget.cpp" line="221"/>
         <source> history trace; </source>
         <translation> 条历史痕迹；</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="205"/>
-        <location filename="../homeactionwidget.cpp" line="230"/>
+        <location filename="../homeactionwidget.cpp" line="206"/>
+        <location filename="../homeactionwidget.cpp" line="231"/>
         <source> browser cookies.</source>
         <translation> 条浏览器Cookies。</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="209"/>
-        <location filename="../homeactionwidget.cpp" line="234"/>
+        <location filename="../homeactionwidget.cpp" line="210"/>
+        <location filename="../homeactionwidget.cpp" line="235"/>
         <source> browser cookies; </source>
         <translation> 条浏览器Cookies；</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="209"/>
-        <location filename="../homeactionwidget.cpp" line="220"/>
-        <location filename="../homeactionwidget.cpp" line="234"/>
-        <location filename="../homeactionwidget.cpp" line="245"/>
+        <location filename="../homeactionwidget.cpp" line="210"/>
+        <location filename="../homeactionwidget.cpp" line="221"/>
+        <location filename="../homeactionwidget.cpp" line="235"/>
+        <location filename="../homeactionwidget.cpp" line="246"/>
         <source> garbage.</source>
         <translation> 垃圾。</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="216"/>
+        <location filename="../homeactionwidget.cpp" line="217"/>
         <source> history trace.</source>
         <translation> 条历史痕迹。</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="250"/>
+        <location filename="../homeactionwidget.cpp" line="251"/>
         <source>No garbage.</source>
         <translation>没有扫描到垃圾。</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="290"/>
+        <location filename="../homeactionwidget.cpp" line="291"/>
         <source>Cleaning......</source>
         <translation>正在清理.......</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="295"/>
+        <location filename="../homeactionwidget.cpp" line="296"/>
         <source>Garbage Cleanup OK......</source>
         <translation>垃圾清理完成......</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="298"/>
+        <location filename="../homeactionwidget.cpp" line="299"/>
         <source>History Cleanup OK......</source>
         <translation>历史记录清理完成......</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="301"/>
+        <location filename="../homeactionwidget.cpp" line="302"/>
         <source>Cookies Cleanup OK......</source>
         <translation>Cookies清理完成......</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="307"/>
+        <location filename="../homeactionwidget.cpp" line="308"/>
         <source>Cleanup Cookies:</source>
         <translation>清理了Cookies：</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="307"/>
+        <location filename="../homeactionwidget.cpp" line="308"/>
         <source>; Garbage:</source>
         <translation>；垃圾：</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="307"/>
+        <location filename="../homeactionwidget.cpp" line="308"/>
         <source>; Historical records:</source>
         <translation>；历史记录：</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="337"/>
+        <location filename="../homeactionwidget.cpp" line="338"/>
         <source>Cleaning up history trace of Firefox...</source>
         <translation>正在清理Firefox浏览器的历史痕迹......</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="340"/>
+        <location filename="../homeactionwidget.cpp" line="341"/>
         <source>Firefox history trace had been cleared!</source>
         <translation>Firefox浏览器历史痕迹清理完成！</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="345"/>
+        <location filename="../homeactionwidget.cpp" line="346"/>
         <source>Cleaning up history trace of Chromium...</source>
         <translation>正在清理Chromium浏览器的历史痕迹......</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="348"/>
+        <location filename="../homeactionwidget.cpp" line="349"/>
         <source>Chromium history trace had been cleared!</source>
         <translation>Chromium浏览器的历史痕迹清理完成！</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="353"/>
+        <location filename="../homeactionwidget.cpp" line="354"/>
         <source>Cleaning up Cookies of Firefox...</source>
         <translation>正在清理Firefox浏览器的Cookies......</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="356"/>
+        <location filename="../homeactionwidget.cpp" line="357"/>
         <source>Firefox Cookies had been cleared!</source>
         <translation>Firefox浏览器的Cookies清理完成！</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="361"/>
+        <location filename="../homeactionwidget.cpp" line="362"/>
         <source>Cleaning up Cookies of Chromium...</source>
         <translation>正在清理Chromium浏览器的Cookies......</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="364"/>
+        <location filename="../homeactionwidget.cpp" line="365"/>
         <source>Chromium Cookies had been cleared!</source>
         <translation>Chromium浏览器的Cookies清理完成！</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="369"/>
+        <location filename="../homeactionwidget.cpp" line="370"/>
         <source>Apt cache had been cleared!</source>
         <translation>Apt缓存清理完成！</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="372"/>
+        <location filename="../homeactionwidget.cpp" line="373"/>
         <source>Cleaning up Apt cache: </source>
         <translation>正在清理Apt缓存：</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="377"/>
+        <location filename="../homeactionwidget.cpp" line="378"/>
         <source>Software Center cache had been cleared!</source>
         <translation>软件中心缓存清理完成！</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="380"/>
+        <location filename="../homeactionwidget.cpp" line="381"/>
         <source>Cleaning up Software Center cache: </source>
         <translation>正在清理软件中心缓存：</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="406"/>
+        <location filename="../homeactionwidget.cpp" line="407"/>
         <source>Ready to Cleanup......</source>
         <translation>准备清理......</translation>
     </message>
@@ -1824,43 +1860,56 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>HomePage</name>
     <message>
-        <location filename="../homepage.cpp" line="153"/>
+        <location filename="../homepage.cpp" line="154"/>
         <source>Boot Manager</source>
         <translation>启动项管理</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="153"/>
+        <location filename="../homepage.cpp" line="154"/>
         <source>Camera</source>
         <translation>摄像头</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="222"/>
+        <location filename="../homepage.cpp" line="225"/>
         <source>Current Version Number</source>
         <translation>当前版本号</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="223"/>
+        <location filename="../homepage.cpp" line="226"/>
         <source>Update to the lastest version, make it work better</source>
         <translation>更新至最新版本，使软件更好用</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="224"/>
-        <source>Check new version</source>
-        <translation>检查最新版本</translation>
+        <location filename="../homepage.cpp" line="227"/>
+        <source>updating on the backend</source>
+        <translation>正在后台升级</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="225"/>
+        <location filename="../homepage.cpp" line="248"/>
+        <source>Upgrade is complete</source>
+        <translation>升级完成</translation>
+    </message>
+    <message>
+        <location filename="../homepage.cpp" line="250"/>
+        <source>Updating on the backend</source>
+        <translation>正在后台升级</translation>
+    </message>
+    <message>
+        <source>Check new version</source>
+        <translation type="obsolete">检查最新版本</translation>
+    </message>
+    <message>
+        <location filename="../homepage.cpp" line="228"/>
         <source>Common toolbox</source>
         <translation>工具箱</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="226"/>
+        <location filename="../homepage.cpp" line="229"/>
         <source>Fast and practical, making the system more personalized</source>
         <translation>更快更好，让系统更具个性化</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="227"/>
-        <location filename="../homepage.cpp" line="228"/>
+        <location filename="../homepage.cpp" line="154"/>
         <source>More</source>
         <translation>更多</translation>
     </message>
@@ -1873,9 +1922,8 @@ p, li { white-space: pre-wrap; }
         <translation>图标主题</translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="199"/>
         <source>Show Desktop Icons</source>
-        <translation>显示桌面图标</translation>
+        <translation type="obsolete">显示桌面图标</translation>
     </message>
     <message>
         <location filename="../../setting/iconwidget.cpp" line="200"/>
@@ -1975,6 +2023,15 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>ItemCard</name>
+    <message>
+        <location filename="../../component/itemcard.ui" line="14"/>
+        <source>Form</source>
+        <translatorcomment>框</translatorcomment>
+        <translation></translation>
+    </message>
+</context>
+<context>
     <name>KylinFontDialog</name>
     <message>
         <location filename="../../component/kylinfontdialog.cpp" line="174"/>
@@ -2030,17 +2087,22 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>KylinMenu</name>
     <message>
-        <location filename="../../component/kylinmenu.cpp" line="127"/>
+        <location filename="../../component/kylinmenu.cpp" line="143"/>
+        <source>Check and update</source>
+        <translation>检查更新</translation>
+    </message>
+    <message>
+        <location filename="../../component/kylinmenu.cpp" line="144"/>
         <source>Forum Help</source>
         <translation>论坛求助</translation>
     </message>
     <message>
-        <location filename="../../component/kylinmenu.cpp" line="128"/>
+        <location filename="../../component/kylinmenu.cpp" line="145"/>
         <source>Feedback</source>
         <translation>问题反馈</translation>
     </message>
     <message>
-        <location filename="../../component/kylinmenu.cpp" line="129"/>
+        <location filename="../../component/kylinmenu.cpp" line="146"/>
         <source>About us</source>
         <translation>关于我们</translation>
     </message>
@@ -2126,13 +2188,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.ui" line="17"/>
-        <source>MainWindow</source>
-        <translatorcomment>主界面</translatorcomment>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="32"/>
+        <location filename="../mainwindow.cpp" line="30"/>
         <source>Youker Assistant</source>
         <translation>优客助手</translation>
     </message>
@@ -2238,6 +2294,14 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>NormalCard</name>
+    <message>
+        <location filename="../../component/normalcard.ui" line="14"/>
+        <source>Form</source>
+        <translation>框</translation>
+    </message>
+</context>
+<context>
     <name>PanelWidget</name>
     <message>
         <location filename="../../setting/panelwidget.cpp" line="250"/>
@@ -2331,73 +2395,73 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ProcessDialog</name>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="96"/>
-        <location filename="../../processmanager/processdialog.cpp" line="130"/>
+        <location filename="../../processmanager/processdialog.cpp" line="107"/>
+        <location filename="../../processmanager/processdialog.cpp" line="188"/>
         <source>Process Manager</source>
         <translation>进程管理器</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="97"/>
+        <location filename="../../processmanager/processdialog.cpp" line="108"/>
         <source>Help you learn more about the program running on the system.</source>
         <translation>帮助您了解和管理系统上运行的进程。</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="98"/>
+        <location filename="../../processmanager/processdialog.cpp" line="109"/>
         <source>Kill Process</source>
         <translation>杀进程</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>Command Line</source>
         <translation>命令行</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>User</source>
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>ID</source>
         <translation>ID</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>Priority</source>
         <translation>优先级</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>Status</source>
         <translation>状态</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>% Memory</source>
         <translation>% 内存</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>% CPU</source>
         <translation>% CPU</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>CPU Time</source>
         <translation>CPU时间</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>Started</source>
         <translation>开始于</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="259"/>
+        <location filename="../../processmanager/processdialog.cpp" line="324"/>
         <source>kill process success</source>
         <translation>杀进程成功</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="262"/>
+        <location filename="../../processmanager/processdialog.cpp" line="327"/>
         <source>kill process failed</source>
         <translation>杀进程失败</translation>
     </message>
@@ -2553,27 +2617,27 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SettingWidget</name>
     <message>
-        <location filename="../settingwidget.cpp" line="256"/>
+        <location filename="../settingwidget.cpp" line="267"/>
         <source>Personalize</source>
         <translation>个性化</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="267"/>
+        <location filename="../settingwidget.cpp" line="278"/>
         <source>ThemeSetting</source>
         <translation>主题设置</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="268"/>
+        <location filename="../settingwidget.cpp" line="279"/>
         <source>IconSetting</source>
         <translation>图标设置</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="269"/>
+        <location filename="../settingwidget.cpp" line="280"/>
         <source>MousePointer</source>
         <translation>鼠标设置</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="270"/>
+        <location filename="../settingwidget.cpp" line="281"/>
         <source>SoundEffect</source>
         <translation>声音效果</translation>
     </message>
@@ -2582,72 +2646,72 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">开机动画</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="347"/>
+        <location filename="../settingwidget.cpp" line="358"/>
         <source>Desktop</source>
         <translation>桌面</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="352"/>
+        <location filename="../settingwidget.cpp" line="363"/>
         <source>Panel</source>
         <translation>面板</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="353"/>
+        <location filename="../settingwidget.cpp" line="364"/>
         <source>StartMenu</source>
         <translation>启动菜单</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="356"/>
+        <location filename="../settingwidget.cpp" line="367"/>
         <source>Custom Launcher</source>
         <translation>自定义启动器</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="357"/>
+        <location filename="../settingwidget.cpp" line="368"/>
         <source>Dash &amp; Panel</source>
         <translation>搜索和面板</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="359"/>
+        <location filename="../settingwidget.cpp" line="370"/>
         <source>Window</source>
         <translation>窗口</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="407"/>
+        <location filename="../settingwidget.cpp" line="418"/>
         <source>Font</source>
         <translation>字体</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="409"/>
+        <location filename="../settingwidget.cpp" line="420"/>
         <source>FontSetting</source>
         <translation>字体设置</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="481"/>
+        <location filename="../settingwidget.cpp" line="492"/>
         <source>Sys options</source>
         <translation>系统选项</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="485"/>
+        <location filename="../settingwidget.cpp" line="496"/>
         <source>Touchpad</source>
         <translation>触摸板</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="486"/>
+        <location filename="../settingwidget.cpp" line="497"/>
         <source>Dead pixel check</source>
         <translation>坏点检测</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="487"/>
+        <location filename="../settingwidget.cpp" line="498"/>
         <source>Energy saving</source>
         <translation>省电设置</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="537"/>
+        <location filename="../settingwidget.cpp" line="549"/>
         <source>Others</source>
         <translation>其他</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="539"/>
+        <location filename="../settingwidget.cpp" line="551"/>
         <source>File manager</source>
         <translation>文件管理器</translation>
     </message>
@@ -2655,35 +2719,35 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ShredDialog</name>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="101"/>
-        <location filename="../../shredmanager/shreddialog.cpp" line="130"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="109"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="185"/>
         <source>Shred Manager</source>
         <translation>文件粉碎机</translation>
     </message>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="102"/>
-        <location filename="../../shredmanager/shreddialog.cpp" line="176"/>
-        <location filename="../../shredmanager/shreddialog.cpp" line="188"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="110"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="238"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="250"/>
         <source>No select any file which need to be shredded</source>
         <translation>没有选择需要粉碎的文件</translation>
     </message>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="103"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="111"/>
         <source>Shred File</source>
         <translation>粉碎文件</translation>
     </message>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="104"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="112"/>
         <source>Deselect</source>
         <translation>取消粉碎</translation>
     </message>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="147"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="209"/>
         <source>Allfile(*)</source>
         <translation>所有文件(*)</translation>
     </message>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="164"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="226"/>
         <source>Select file!</source>
         <translation>选择文件！</translation>
     </message>
@@ -2696,12 +2760,12 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">所有文件(*)</translation>
     </message>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="175"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="237"/>
         <source>Shred successfully!</source>
         <translation>粉碎成功！</translation>
     </message>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="181"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="243"/>
         <source>Shred failed!</source>
         <translation>粉碎失败！</translation>
     </message>
@@ -2722,9 +2786,23 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SkinCenter</name>
     <message>
-        <location filename="../skincenter.cpp" line="150"/>
         <source>Skin Center</source>
-        <translation>皮肤中心</translation>
+        <translation type="obsolete">皮肤中心</translation>
+    </message>
+    <message>
+        <location filename="../skincenter.cpp" line="56"/>
+        <source>Skin Setting</source>
+        <translation>皮肤设置</translation>
+    </message>
+    <message>
+        <location filename="../skincenter.cpp" line="67"/>
+        <source>Default</source>
+        <translation>默认皮肤</translation>
+    </message>
+    <message>
+        <location filename="../skincenter.cpp" line="70"/>
+        <source>Custom</source>
+        <translation>自定义</translation>
     </message>
 </context>
 <context>
@@ -2783,9 +2861,9 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ThemeWidget</name>
     <message>
-        <location filename="../../setting/themewidget.cpp" line="92"/>
-        <source>%1</source>
-        <translation></translation>
+        <location filename="../../setting/themewidget.cpp" line="35"/>
+        <source>Please choose theme which you need</source>
+        <translation>选择您需要的主题</translation>
     </message>
 </context>
 <context>
@@ -2879,6 +2957,155 @@ p, li { white-space: pre-wrap; }
         <location filename="../../setting/touchpadwidget.cpp" line="154"/>
         <source>Two-finger Scrolling</source>
         <translation>双指滚动</translation>
+    </message>
+</context>
+<context>
+    <name>UpgradeDialog</name>
+    <message>
+        <location filename="../upgradedialog.cpp" line="52"/>
+        <source>check and update</source>
+        <translation>检查更新</translation>
+    </message>
+    <message>
+        <source>Is working, please wait a moment.</source>
+        <translation type="obsolete">正在工作，请稍等。</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="94"/>
+        <location filename="../upgradedialog.cpp" line="388"/>
+        <source>Current verison:</source>
+        <translation>当前版本：</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="130"/>
+        <source>Official version</source>
+        <translation>正式版</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="153"/>
+        <source>An error occurred!</source>
+        <translation>出错了！无法升级</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="154"/>
+        <source>Network or local sources anomaly</source>
+        <translation>网络或源地址连接失败，升级未成功</translation>
+    </message>
+    <message>
+        <source>Testing network and local sources......</source>
+        <translation type="obsolete">正在检查网络和本地源......</translation>
+    </message>
+    <message>
+        <source>you can visit &lt;a style=&apos;color: green;&apos; href = https://launchpad.net/youker-assistant&gt; UK website&lt;/a&gt; to download the lastest deb package.</source>
+        <translation type="obsolete">您可以访问 &lt;a style=&apos;color: green;&apos; href = https://launchpad.net/youker-assistant&gt; UK website&lt;/a&gt; 去下载最新的deb包.</translation>
+    </message>
+    <message>
+        <source>you can visit the&lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com/applications/showimg.php?lang=cn&amp;id=14&gt; UK official website&lt;/a&gt; to download the lastest deb package.</source>
+        <translation type="obsolete">您可以访问 &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com/applications/showimg.php?lang=cn&amp;id=14&gt; UK 官网&lt;/a&gt; 下载最新的deb包.</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="155"/>
+        <location filename="../upgradedialog.cpp" line="269"/>
+        <source>Testing network and local sources...</source>
+        <translation>正在检查网络和本地源...</translation>
+    </message>
+    <message>
+        <source>you can visit the&lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com/applications/showimg.php?lang=cn&amp;id=14&gt; UK official website&lt;/a&gt; to download the lastest deb package</source>
+        <translation type="obsolete">您可以访问 &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; UK 官网&lt;/a&gt; 下载最新的deb包</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="163"/>
+        <source>Retry</source>
+        <translation>重试</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="176"/>
+        <source>Finish</source>
+        <translation>完成</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="183"/>
+        <source>Upgrade</source>
+        <translation>升级</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="245"/>
+        <location filename="../upgradedialog.cpp" line="328"/>
+        <source>Start to update the local sources</source>
+        <translation>开始更新本地源</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="324"/>
+        <source>Start to download</source>
+        <translation>开始下载</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="373"/>
+        <source>Updating local sources...</source>
+        <translation>正在更新本地源...</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="387"/>
+        <source>Youker Assistant is the latest version</source>
+        <translation>优客助手已更新至最新版本</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="400"/>
+        <source>Start to install</source>
+        <translation>开始安装</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="335"/>
+        <source>Download completely</source>
+        <translation>下载完成</translation>
+    </message>
+    <message>
+        <source>you can visit the&lt;a style=&apos;color: green;&apos; href = http://www.ubuntukylin.com/applications/showimg.php?lang=cn&amp;id=14&gt; UK official website &lt;/a&gt;to download the lastest deb package.</source>
+        <translation type="obsolete">您可以访问 &lt;a style=&apos;color: green;&apos; href = http://www.ubuntukylin.com/applications/showimg.php?lang=cn&amp;id=14&gt; UK 官网 &lt;/a&gt;下载最新的deb包.</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="346"/>
+        <source>Local sources updated</source>
+        <translation>源更新完毕</translation>
+    </message>
+    <message>
+        <source>No found</source>
+        <translation type="obsolete">没有发现新版本</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="356"/>
+        <source>Found a new version</source>
+        <translation>发现新版本</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="144"/>
+        <source>New version:</source>
+        <translation>新版本号：</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="158"/>
+        <source>you can visit the&lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; UK official website&lt;/a&gt; to download the lastest deb package</source>
+        <translation>您可以访问 &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; UK 官网&lt;/a&gt; 下载最新的deb包</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="351"/>
+        <location filename="../upgradedialog.cpp" line="365"/>
+        <source>Not found</source>
+        <translation>没有发现新版本</translation>
+    </message>
+    <message>
+        <source>you can visit the&lt;a style=&apos;color: green;&apos; href = https://launchpad.net/youker-assistant&gt; UK official website &lt;/a&gt;to download the lastest deb package.</source>
+        <translation type="obsolete">您可以访问 &lt;a style=&apos;color: green;&apos; href = https://launchpad.net/youker-assistant&gt; UK 官网 &lt;/a&gt;去下载最新的deb包.</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="408"/>
+        <source>Upgrading the main program...</source>
+        <translation>正在升级主程序...</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="459"/>
+        <source>Start to upgrade the main program</source>
+        <translation>开始升级主程序</translation>
     </message>
 </context>
 <context>

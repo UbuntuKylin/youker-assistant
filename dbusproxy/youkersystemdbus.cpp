@@ -41,6 +41,12 @@ SystemDispatcher::SystemDispatcher(QObject *parent)
     QObject::connect(systemiface,SIGNAL(subpage_data_signal(QStringList)),this,SLOT(handlerCleanerSubPageDataSignal(QStringList)));
     QObject::connect(systemiface,SIGNAL(subpage_status_signal(QString, QString)),this,SLOT(handlerCleanerSubPageStatusSignal(QString, QString)));
     QObject::connect(systemiface,SIGNAL(subpage_error_signal(QString)),this,SLOT(handlerCleanerSubPageErrorSignal(QString)));
+
+
+    QObject::connect(systemiface,SIGNAL(youker_fetch_signal(QString, QStringList)),this,SIGNAL(get_fetch_signal(QString, QStringList)));
+    QObject::connect(systemiface,SIGNAL(youker_apt_signal(QString, QStringList)),this,SIGNAL(get_apt_signal(QString, QStringList)));
+//    QObject::connect(systemiface,SIGNAL(youker_fetch_signal(QString, QStringList)),this,SLOT(handlerFetchSignal(QString, QStringList)));
+//    QObject::connect(systemiface,SIGNAL(youker_apt_signal(QString, QStringList)),this,SLOT(handlerAptSignal(QString, QStringList)));
 }
 
 SystemDispatcher::~SystemDispatcher() {
@@ -64,6 +70,57 @@ SystemDispatcher::~SystemDispatcher() {
         delete systemiface;
         systemiface = NULL;
     }
+}
+
+//void SystemDispatcher::handlerFetchSignal(QString msg_type, QStringList msg)
+//{
+//    qDebug() << "fecth----->" << msg_type;
+//    qDebug() << msg;
+//}
+
+//void SystemDispatcher::handlerAptSignal(QString msg_type, QStringList msg)
+//{
+//    qDebug() << "apt----->" << msg_type;
+//    qDebug() << msg;
+//}
+
+
+bool SystemDispatcher::update_myself()
+{
+    QStringList tmp;
+    QMap<QString, QVariant> data;
+    QEventLoop q;
+    KThread *apt_thread = new KThread(0);
+    apt_thread->initValues(data, tmp, systemiface, "install");
+    apt_thread->start();
+    q.exec();
+    if(apt_thread->isFinished()){
+       q.quit();
+    }
+    return true;
+//    QDBusReply<bool> reply = systemiface->call("install", "youker-assistant");
+//    return reply.value();
+}
+
+bool SystemDispatcher::update_source()
+{
+    QStringList tmp;
+    QMap<QString, QVariant> data;
+    QEventLoop q;
+    KThread *source_thread = new KThread(0);
+    source_thread->initValues(data, tmp, systemiface, "update");
+    source_thread->start();
+    q.exec();
+    if(source_thread->isFinished()){
+       q.quit();
+    }
+    return true;
+}
+
+bool SystemDispatcher::copy_file_qt(QString filename)
+{
+    QDBusReply<bool> reply = systemiface->call("copy_file", filename);
+    return reply.value();
 }
 
 bool SystemDispatcher::delete_file_qt(QString filename)
@@ -101,6 +158,11 @@ void SystemDispatcher::cleanAllSelectItems(QMap<QString, QVariant> selectMap)
 //void SystemDispatcher::kill_root_process_qt(QString pid) {
 //    systemiface->call("kill_root_process", pid);
 //}
+
+bool SystemDispatcher::kill_uk_process_qt() {
+    QDBusReply<bool> reply = systemiface->call("kill_uk_process");
+    return reply.value();
+}
 
 bool SystemDispatcher::set_cursor_theme_with_root_qt(QString theme) {
     QDBusReply<bool> reply = systemiface->call("set_cursor_theme_with_root", theme);

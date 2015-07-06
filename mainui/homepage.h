@@ -28,6 +28,7 @@
 
 class MainWindow;
 class SessionDispatcher;
+class SystemDispatcher;
 //#include "autostartwidget.h"
 //#include "cameramanager.h"
 
@@ -41,6 +42,7 @@ public:
     void initBoxTool();
     void initConnect();
     void setSessionDbusProxy(SessionDispatcher *dispatcher) { sessionProxy = dispatcher;}
+    void setSystemDbusProxy(SystemDispatcher *dispatcher) { systemProxy = dispatcher;}
     void setParentWindow(MainWindow* window) { p_mainwindow = window;}
     void initUI();
 
@@ -49,25 +51,30 @@ protected:
 
 public slots:
     void switchPageIndex(QString index);
-    void checkLastestVersion();
+//    void checkLastestVersion();
+    void displayBackedBtn(bool flag);
+    void onCheckBtnClicked();
+    void hideBackedBtn();
 
 signals:
     void sendSubIndex(int index);
     void sendSignal();
     void moreSignal();
+    void sendOpenUpgrade();
 
 private:
     QLabel *version_logo;
     QLabel *version_title;
     QLabel *version_tip;
     QPushButton *check_btn;
-    QLabel *version_label;
+//    QLabel *version_label;
     QLabel *box_logo;
     QLabel *box_title;
     QLabel *box_tip;
 //    QPushButton *more_text_btn;
 //    QPushButton *more_btn;
     SessionDispatcher *sessionProxy;
+    SystemDispatcher *systemProxy;
     MainWindow *p_mainwindow;
 //    AutoStartWidget *auto_start;
 //    CameraManager *camera_manager;

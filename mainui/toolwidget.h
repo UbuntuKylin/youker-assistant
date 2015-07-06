@@ -47,8 +47,9 @@ signals:
     void turnCurrentPage(int index);
 
 public slots:
-    void switchPageIndex(QString index);
+    void switchSelectedPageIndex(QString index);
     void showBoxTool();
+    void test();
 
 private:
     QPoint press_point;//鼠标按下去的点

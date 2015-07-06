@@ -37,23 +37,32 @@ void KylinMenu::createActions()
 //    feedback_action = new QAction(this);
 ////    setting_action = new QAction(this);
 //    about_action = new QAction(this);
-
+    check_widget = new QWidget();
     help_widget = new QWidget();
     feedback_widget = new QWidget();
     about_widget = new QWidget();
+    check_widget_action = new QWidgetAction(this);
     help_widget_action = new QWidgetAction(this);
     feedback_widget_action = new QWidgetAction(this);
     about_widget_action = new QWidgetAction(this);
+    check_label = new QLabel();
     help_label = new QLabel();
     feedback_label = new QLabel();
     about_label = new QLabel();
+    check_button = new QPushButton();
     help_button = new QPushButton();
     feedback_button = new QPushButton();
     about_button = new QPushButton();
-
+    check_button->setStyleSheet("QPushButton{background:transparent;text-align:left;font-family: 方正黑体_GBK;font-size:14px;color:#666666;}QPushButton:hover{color:#0396DC;}");
     help_button->setStyleSheet("QPushButton{background:transparent;text-align:left;font-family: 方正黑体_GBK;font-size:14px;color:#666666;}QPushButton:hover{color:#0396DC;}");
     feedback_button->setStyleSheet("QPushButton{background:transparent;text-align:left;font-family: 方正黑体_GBK;font-size:14px;color:#666666;}QPushButton:hover{color:#0396DC;}");
     about_button->setStyleSheet("QPushButton{background:transparent;text-align:left;font-family: 方正黑体_GBK;font-size:14px;color:#666666;}QPushButton:hover{color:#0396DC;}");
+
+    QPixmap check_pixmap(":/tool/res/menu/upgrade.png");
+    check_label->setPixmap(check_pixmap);
+    check_label->setFixedSize(check_pixmap.size());
+    check_button->setFocusPolicy(Qt::NoFocus);
+    check_button->setObjectName("transparentButton");
 
     QPixmap help_pixmap(":/tool/res/menu/help.png");
     help_label->setPixmap(help_pixmap);
@@ -75,6 +84,13 @@ void KylinMenu::createActions()
     about_button->setFocusPolicy(Qt::NoFocus);
     about_button->setObjectName("transparentButton");
 
+    QHBoxLayout *check_layout = new QHBoxLayout();
+    check_layout->addWidget(check_label);
+    check_layout->addWidget(check_button);
+    check_layout->setSpacing(10);
+    check_layout->setContentsMargins(20, 0, 20, 0);
+    check_widget->setLayout(check_layout);
+    check_widget_action->setDefaultWidget(check_widget);
 
     QHBoxLayout *help_layout = new QHBoxLayout();
     help_layout->addWidget(help_label);
@@ -100,6 +116,7 @@ void KylinMenu::createActions()
     about_widget->setLayout(about_layout);
     about_widget_action->setDefaultWidget(about_widget);
 
+    this->addAction(check_widget_action);
     this->addAction(help_widget_action);
     this->addAction(feedback_widget_action);
     this->addSeparator();
@@ -123,7 +140,7 @@ void KylinMenu::setLanguage() {
 //    about_action->setText(tr("About us"));
 //    help_action->setIcon(QIcon("://res/icon.png"));
 //    help_action->setToolTip(tr("Help"));
-
+    check_button->setText(tr("Check and update"));
     help_button->setText(tr("Forum Help"));
     feedback_button->setText(tr("Feedback"));
     about_button->setText(tr("About us"));
@@ -136,6 +153,7 @@ void KylinMenu::initConnect()
 //    connect(feedback_action, SIGNAL(triggered()), this, SLOT(questionFeedback()));
 ////    connect(setting_action, SIGNAL(triggered()), p_mainwindow, SLOT(setupConfigure()));
 //    connect(about_action, SIGNAL(triggered()), p_mainwindow, SLOT(aboutUs()));
+    connect(check_button, SIGNAL(clicked()), p_mainwindow, SLOT(openUpgradePage()));
     connect(help_button, SIGNAL(clicked()), this, SLOT(forumHelp()));
     connect(feedback_button, SIGNAL(clicked()), this, SLOT(questionFeedback()));
     connect(about_button, SIGNAL(clicked()), p_mainwindow, SLOT(aboutUs()));

@@ -22,14 +22,24 @@
 #include <QBitmap>
 #include <QDebug>
 
-LoadingLabel::LoadingLabel(QWidget *parent, bool flag) :
-    QLabel(parent), bigFlag(flag)
+LoadingLabel::LoadingLabel(QWidget *parent, QString flag) :
+    QLabel(parent), category(flag)
 {
-    if(bigFlag) {
+    if(category == "firstkey") {
+        page_count = 18;
         this->setFixedSize(150, 150);
     }
-    else {
+    else if(category == "clean") {
+        page_count = 18;
         this->setFixedSize(96, 96);
+    }
+    else if(category == "upgrading") {
+        page_count = 32;
+        this->setFixedSize(182, 181);
+    }
+    else if(category == "working") {
+        page_count = 36;
+        this->setFixedSize(182, 181);
     }
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground, true);
@@ -60,10 +70,12 @@ LoadingLabel::~LoadingLabel()
 
 void LoadingLabel::changeAnimationStep()
 {
-    if(currentpage == 18)
+
+    if(currentpage == this->page_count)
     {
         currentpage = 0;
     }
+//    qDebug() << currentpage;
     QPixmap cur_pix = png_vector.at(currentpage);
     this->setPixmap(cur_pix);
     setMask(QBitmap(cur_pix.mask()));
@@ -73,11 +85,19 @@ void LoadingLabel::changeAnimationStep()
 void LoadingLabel::loadAllPictures()
 {
     QString path;
-    if(bigFlag)
+    if(category == "firstkey") {
         path = ":/movie/res/loading/";
-    else
+    }
+    else if(category == "clean") {
         path = ":/movie/res/loading/small/";
-    for(int i =1; i< 19; i++)
+    }
+    else if(category == "upgrading") {
+        path = ":/movie/res/upgrading/";
+    }
+    else if(category == "working") {
+        path = ":/movie/res/working/";
+    }
+    for(int i =1; i <= this->page_count; i++)
     {
         QPixmap img = QPixmap(path + QString::number(i, 10) + ".png");
         png_vector.append(img);
@@ -87,7 +107,10 @@ void LoadingLabel::loadAllPictures()
 void LoadingLabel::startLoading()
 {
     currentpage = 0;
-    timer->start(60);
+    if(category == "upgrading" || category == "working")
+        timer->start(50);
+    else
+        timer->start(60);
 }
 
 void LoadingLabel::stopLoading()

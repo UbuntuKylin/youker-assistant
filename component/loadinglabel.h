@@ -29,7 +29,7 @@ class LoadingLabel : public QLabel
 {
     Q_OBJECT
 public:
-    explicit LoadingLabel(QWidget *parent = 0, bool flag = true);//flag=ture:big picture;flag=false:small picture
+    explicit LoadingLabel(QWidget *parent = 0, QString flag = "");//flag=ture:big picture;flag=false:small picture
     ~LoadingLabel();
     void loadAllPictures();
     void startLoading();
@@ -42,7 +42,8 @@ private:
     QTimer *timer;
     QVector<QPixmap> png_vector;
     int currentpage;
-    int bigFlag;
+    int page_count;
+    QString category;
 };
 
 #endif // LOADINLABEL_H

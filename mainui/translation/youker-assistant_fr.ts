@@ -4,49 +4,34 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="../aboutdialog.ui" line="26"/>
-        <location filename="../aboutdialog.ui" line="42"/>
+        <location filename="../aboutdialog.cpp" line="70"/>
+        <source>Youker Assisant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="75"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.ui" line="70"/>
-        <location filename="../aboutdialog.ui" line="165"/>
-        <source>Youker Assistant</source>
+        <location filename="../aboutdialog.cpp" line="101"/>
+        <source>      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions. 
+      The software is still under development. Please visit www.ubuntukylin.com for more information. Welcome everyone to join with us. youker-assistant Homepage: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.ui" line="105"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:11pt;&quot;&gt;      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:11pt;&quot;&gt;      The software is still under development. Please visit www.ubuntukylin.com for more information. Welcome everyone to join with us. youker-assistant Homepage: https://launchpad.net/youker-assistant.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../aboutdialog.cpp" line="103"/>
+        <source>Maintainer:
+Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.ui" line="131"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt;&quot;&gt;Maintainer&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Droid Sans Fallback&apos;; font-size:11pt;&quot;&gt;:&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:11px; margin-bottom:11px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt;&quot;&gt;Ubuntu Kylin Team &amp;lt;ubuntukylin-members@list.launchpad.net&amp;gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.ui" line="116"/>
+        <location filename="../aboutdialog.cpp" line="78"/>
         <source>Contributor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.ui" line="181"/>
-        <source>&lt;a href=https://launchpad.net/youker-assistant&gt;home page&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.ui" line="199"/>
+        <location filename="../aboutdialog.cpp" line="120"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
@@ -268,7 +253,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CleanListWidget</name>
     <message>
-        <location filename="../../cleaner/cleanlistwidget.cpp" line="52"/>
+        <location filename="../../cleaner/cleanlistwidget.cpp" line="53"/>
         <source>Clean Items:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -436,99 +421,114 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="269"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="299"/>
         <source>Apt Cache Clean Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="275"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="305"/>
         <source>Apt Cache count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="319"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="420"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="349"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="450"/>
         <source>Software Cache Clean Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="325"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="355"/>
         <source>Software Cache count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="369"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="468"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="521"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="571"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="716"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="765"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="814"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="399"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="498"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="551"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="601"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="799"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="848"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="897"/>
         <source>Thumbnails Cache Clean Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="375"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="405"/>
         <source>Thumbnails Cache Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="425"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="455"/>
         <source>Firefox Cache Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="473"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="503"/>
         <source>Chromium Cache Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="526"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="556"/>
         <source>Firefox Cookies Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="576"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="606"/>
         <source>Chromium Cookies Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="630"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="660"/>
         <source>Firefox History Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="670"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="700"/>
         <source>Chromium History Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="693"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="723"/>
         <source>System History Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="721"/>
-        <source>Package Unneed Count:</source>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="747"/>
+        <source>Command history size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="767"/>
+        <source>Debug log Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanerdetailwidget.cpp" line="770"/>
+        <source>Debug log:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="804"/>
+        <source>Package Unneed Count:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="853"/>
         <source>Package oldkernel Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="819"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="902"/>
         <source>Package configfile Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1344"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1505"/>
         <source>No garbage </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1354"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1545"/>
         <source>Clean args is empty!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -536,7 +536,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CleanerItems</name>
     <message>
-        <location filename="../../cleaner/cleaneritems.cpp" line="150"/>
+        <location filename="../../cleaner/cleaneritems.cpp" line="157"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
@@ -639,42 +639,52 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="82"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
         <source>Clean up the Firefox Internet records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="82"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
         <source>Clean up the Chromium Internet records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="82"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
         <source>Clean up the recently opened documents records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="85"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
+        <source>Delete the command history</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
+        <source>Delete the debug logs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="86"/>
         <source>Trace Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="89"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="90"/>
         <source>History trace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="89"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="90"/>
         <source>Cleaning the internet and opened documents recently records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="159"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="160"/>
         <source>Please select the items you want to clean</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="168"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="181"/>
         <source>Scan args is empty!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1368,19 +1378,6 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>DeadpixelWidget</name>
-    <message>
-        <location filename="../../setting/deadpixelwidget.cpp" line="75"/>
-        <source>Left-click to change the color, right-click to exit from this detection.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/deadpixelwidget.cpp" line="76"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>DesktopWidget</name>
     <message>
         <location filename="../../info/desktopwidget.cpp" line="52"/>
@@ -1399,60 +1396,60 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>FontWidget</name>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="86"/>
         <location filename="../../setting/fontwidget.cpp" line="87"/>
         <location filename="../../setting/fontwidget.cpp" line="88"/>
         <location filename="../../setting/fontwidget.cpp" line="89"/>
         <location filename="../../setting/fontwidget.cpp" line="90"/>
+        <location filename="../../setting/fontwidget.cpp" line="91"/>
         <source>Click here to change font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="202"/>
+        <location filename="../../setting/fontwidget.cpp" line="203"/>
         <source>Default Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="203"/>
+        <location filename="../../setting/fontwidget.cpp" line="204"/>
         <source>Desktop Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="204"/>
+        <location filename="../../setting/fontwidget.cpp" line="205"/>
         <source>Monospace Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="205"/>
+        <location filename="../../setting/fontwidget.cpp" line="206"/>
         <source>Document Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="206"/>
+        <location filename="../../setting/fontwidget.cpp" line="207"/>
         <source>Titlebar Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="207"/>
+        <location filename="../../setting/fontwidget.cpp" line="208"/>
         <source>Global Font Scaling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="208"/>
+        <location filename="../../setting/fontwidget.cpp" line="209"/>
         <source>Hinting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="209"/>
+        <location filename="../../setting/fontwidget.cpp" line="210"/>
         <source>Antialiasing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="210"/>
         <location filename="../../setting/fontwidget.cpp" line="211"/>
         <location filename="../../setting/fontwidget.cpp" line="212"/>
         <location filename="../../setting/fontwidget.cpp" line="213"/>
         <location filename="../../setting/fontwidget.cpp" line="214"/>
+        <location filename="../../setting/fontwidget.cpp" line="215"/>
         <source>Restore</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1473,191 +1470,191 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>HomeActionWidget</name>
     <message>
-        <location filename="../homeactionwidget.cpp" line="143"/>
-        <location filename="../homeactionwidget.cpp" line="306"/>
+        <location filename="../homeactionwidget.cpp" line="144"/>
+        <location filename="../homeactionwidget.cpp" line="307"/>
         <source>The lastest cleanup time is </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="149"/>
-        <location filename="../homeactionwidget.cpp" line="414"/>
+        <location filename="../homeactionwidget.cpp" line="150"/>
+        <location filename="../homeactionwidget.cpp" line="415"/>
         <source>The lastest scan time is </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="153"/>
+        <location filename="../homeactionwidget.cpp" line="154"/>
         <source>You have not implemented the one key scan and clean-up operation.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="174"/>
+        <location filename="../homeactionwidget.cpp" line="175"/>
         <source>Quick clean up system trash, saving disk space and improving the system efficiency!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="175"/>
+        <location filename="../homeactionwidget.cpp" line="176"/>
         <source>Start Scan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="176"/>
+        <location filename="../homeactionwidget.cpp" line="177"/>
         <source>Start Cleanup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="177"/>
+        <location filename="../homeactionwidget.cpp" line="178"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="178"/>
+        <location filename="../homeactionwidget.cpp" line="179"/>
         <source>Scanning......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="189"/>
+        <location filename="../homeactionwidget.cpp" line="190"/>
         <source>Scanning:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="179"/>
+        <location filename="../homeactionwidget.cpp" line="180"/>
         <source>Scan Over</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="205"/>
-        <location filename="../homeactionwidget.cpp" line="209"/>
-        <location filename="../homeactionwidget.cpp" line="220"/>
+        <location filename="../homeactionwidget.cpp" line="206"/>
+        <location filename="../homeactionwidget.cpp" line="210"/>
+        <location filename="../homeactionwidget.cpp" line="221"/>
         <source> history trace; </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="205"/>
-        <location filename="../homeactionwidget.cpp" line="230"/>
+        <location filename="../homeactionwidget.cpp" line="206"/>
+        <location filename="../homeactionwidget.cpp" line="231"/>
         <source> browser cookies.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="209"/>
-        <location filename="../homeactionwidget.cpp" line="234"/>
+        <location filename="../homeactionwidget.cpp" line="210"/>
+        <location filename="../homeactionwidget.cpp" line="235"/>
         <source> browser cookies; </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="209"/>
-        <location filename="../homeactionwidget.cpp" line="220"/>
-        <location filename="../homeactionwidget.cpp" line="234"/>
-        <location filename="../homeactionwidget.cpp" line="245"/>
+        <location filename="../homeactionwidget.cpp" line="210"/>
+        <location filename="../homeactionwidget.cpp" line="221"/>
+        <location filename="../homeactionwidget.cpp" line="235"/>
+        <location filename="../homeactionwidget.cpp" line="246"/>
         <source> garbage.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="216"/>
+        <location filename="../homeactionwidget.cpp" line="217"/>
         <source> history trace.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="250"/>
+        <location filename="../homeactionwidget.cpp" line="251"/>
         <source>No garbage.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="290"/>
+        <location filename="../homeactionwidget.cpp" line="291"/>
         <source>Cleaning......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="295"/>
+        <location filename="../homeactionwidget.cpp" line="296"/>
         <source>Garbage Cleanup OK......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="298"/>
+        <location filename="../homeactionwidget.cpp" line="299"/>
         <source>History Cleanup OK......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="301"/>
+        <location filename="../homeactionwidget.cpp" line="302"/>
         <source>Cookies Cleanup OK......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="307"/>
+        <location filename="../homeactionwidget.cpp" line="308"/>
         <source>Cleanup Cookies:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="307"/>
+        <location filename="../homeactionwidget.cpp" line="308"/>
         <source>; Garbage:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="307"/>
+        <location filename="../homeactionwidget.cpp" line="308"/>
         <source>; Historical records:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="337"/>
+        <location filename="../homeactionwidget.cpp" line="338"/>
         <source>Cleaning up history trace of Firefox...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="340"/>
+        <location filename="../homeactionwidget.cpp" line="341"/>
         <source>Firefox history trace had been cleared!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="345"/>
+        <location filename="../homeactionwidget.cpp" line="346"/>
         <source>Cleaning up history trace of Chromium...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="348"/>
+        <location filename="../homeactionwidget.cpp" line="349"/>
         <source>Chromium history trace had been cleared!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="353"/>
+        <location filename="../homeactionwidget.cpp" line="354"/>
         <source>Cleaning up Cookies of Firefox...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="356"/>
+        <location filename="../homeactionwidget.cpp" line="357"/>
         <source>Firefox Cookies had been cleared!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="361"/>
+        <location filename="../homeactionwidget.cpp" line="362"/>
         <source>Cleaning up Cookies of Chromium...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="364"/>
+        <location filename="../homeactionwidget.cpp" line="365"/>
         <source>Chromium Cookies had been cleared!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="369"/>
+        <location filename="../homeactionwidget.cpp" line="370"/>
         <source>Apt cache had been cleared!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="372"/>
+        <location filename="../homeactionwidget.cpp" line="373"/>
         <source>Cleaning up Apt cache: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="377"/>
+        <location filename="../homeactionwidget.cpp" line="378"/>
         <source>Software Center cache had been cleared!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="380"/>
+        <location filename="../homeactionwidget.cpp" line="381"/>
         <source>Cleaning up Software Center cache: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="406"/>
+        <location filename="../homeactionwidget.cpp" line="407"/>
         <source>Ready to Cleanup......</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1665,43 +1662,52 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>HomePage</name>
     <message>
-        <location filename="../homepage.cpp" line="153"/>
+        <location filename="../homepage.cpp" line="154"/>
         <source>Boot Manager</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="153"/>
+        <location filename="../homepage.cpp" line="154"/>
         <source>Camera</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="222"/>
+        <location filename="../homepage.cpp" line="225"/>
         <source>Current Version Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="223"/>
+        <location filename="../homepage.cpp" line="226"/>
         <source>Update to the lastest version, make it work better</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="224"/>
-        <source>Check new version</source>
+        <location filename="../homepage.cpp" line="227"/>
+        <source>updating on the backend</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="225"/>
+        <location filename="../homepage.cpp" line="228"/>
         <source>Common toolbox</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="226"/>
+        <location filename="../homepage.cpp" line="229"/>
         <source>Fast and practical, making the system more personalized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="227"/>
-        <location filename="../homepage.cpp" line="228"/>
+        <location filename="../homepage.cpp" line="248"/>
+        <source>Upgrade is complete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../homepage.cpp" line="250"/>
+        <source>Updating on the backend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../homepage.cpp" line="154"/>
         <source>More</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1711,11 +1717,6 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../setting/iconwidget.cpp" line="198"/>
         <source>Icon theme</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/iconwidget.cpp" line="199"/>
-        <source>Show Desktop Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1816,6 +1817,14 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>ItemCard</name>
+    <message>
+        <location filename="../../component/itemcard.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>KylinFontDialog</name>
     <message>
         <location filename="../../component/kylinfontdialog.cpp" line="174"/>
@@ -1871,17 +1880,22 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>KylinMenu</name>
     <message>
-        <location filename="../../component/kylinmenu.cpp" line="127"/>
+        <location filename="../../component/kylinmenu.cpp" line="143"/>
+        <source>Check and update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../component/kylinmenu.cpp" line="144"/>
         <source>Forum Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/kylinmenu.cpp" line="128"/>
+        <location filename="../../component/kylinmenu.cpp" line="145"/>
         <source>Feedback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/kylinmenu.cpp" line="129"/>
+        <location filename="../../component/kylinmenu.cpp" line="146"/>
         <source>About us</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1963,12 +1977,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.ui" line="17"/>
-        <source>MainWindow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="32"/>
+        <location filename="../mainwindow.cpp" line="30"/>
         <source>Youker Assistant</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2074,6 +2083,14 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>NormalCard</name>
+    <message>
+        <location filename="../../component/normalcard.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PanelWidget</name>
     <message>
         <location filename="../../setting/panelwidget.cpp" line="250"/>
@@ -2159,73 +2176,73 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ProcessDialog</name>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="96"/>
-        <location filename="../../processmanager/processdialog.cpp" line="130"/>
+        <location filename="../../processmanager/processdialog.cpp" line="107"/>
+        <location filename="../../processmanager/processdialog.cpp" line="188"/>
         <source>Process Manager</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="97"/>
+        <location filename="../../processmanager/processdialog.cpp" line="108"/>
         <source>Help you learn more about the program running on the system.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="98"/>
+        <location filename="../../processmanager/processdialog.cpp" line="109"/>
         <source>Kill Process</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>Command Line</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>Priority</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>Status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>% Memory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>% CPU</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>CPU Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="153"/>
+        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>Started</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="259"/>
+        <location filename="../../processmanager/processdialog.cpp" line="324"/>
         <source>kill process success</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="262"/>
+        <location filename="../../processmanager/processdialog.cpp" line="327"/>
         <source>kill process failed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2345,97 +2362,97 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SettingWidget</name>
     <message>
-        <location filename="../settingwidget.cpp" line="256"/>
+        <location filename="../settingwidget.cpp" line="267"/>
         <source>Personalize</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="267"/>
+        <location filename="../settingwidget.cpp" line="278"/>
         <source>ThemeSetting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="268"/>
+        <location filename="../settingwidget.cpp" line="279"/>
         <source>IconSetting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="269"/>
+        <location filename="../settingwidget.cpp" line="280"/>
         <source>MousePointer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="270"/>
+        <location filename="../settingwidget.cpp" line="281"/>
         <source>SoundEffect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="347"/>
+        <location filename="../settingwidget.cpp" line="358"/>
         <source>Desktop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="352"/>
+        <location filename="../settingwidget.cpp" line="363"/>
         <source>Panel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="353"/>
+        <location filename="../settingwidget.cpp" line="364"/>
         <source>StartMenu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="356"/>
+        <location filename="../settingwidget.cpp" line="367"/>
         <source>Custom Launcher</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="357"/>
+        <location filename="../settingwidget.cpp" line="368"/>
         <source>Dash &amp; Panel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="359"/>
+        <location filename="../settingwidget.cpp" line="370"/>
         <source>Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="407"/>
+        <location filename="../settingwidget.cpp" line="418"/>
         <source>Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="409"/>
+        <location filename="../settingwidget.cpp" line="420"/>
         <source>FontSetting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="481"/>
+        <location filename="../settingwidget.cpp" line="492"/>
         <source>Sys options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="485"/>
+        <location filename="../settingwidget.cpp" line="496"/>
         <source>Touchpad</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="486"/>
+        <location filename="../settingwidget.cpp" line="497"/>
         <source>Dead pixel check</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="487"/>
+        <location filename="../settingwidget.cpp" line="498"/>
         <source>Energy saving</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="537"/>
+        <location filename="../settingwidget.cpp" line="549"/>
         <source>Others</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="539"/>
+        <location filename="../settingwidget.cpp" line="551"/>
         <source>File manager</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2443,45 +2460,45 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ShredDialog</name>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="101"/>
-        <location filename="../../shredmanager/shreddialog.cpp" line="130"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="109"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="185"/>
         <source>Shred Manager</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="102"/>
-        <location filename="../../shredmanager/shreddialog.cpp" line="176"/>
-        <location filename="../../shredmanager/shreddialog.cpp" line="188"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="110"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="238"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="250"/>
         <source>No select any file which need to be shredded</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="103"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="111"/>
         <source>Shred File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="104"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="112"/>
         <source>Deselect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="147"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="209"/>
         <source>Allfile(*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="164"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="226"/>
         <source>Select file!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="175"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="237"/>
         <source>Shred successfully!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../shredmanager/shreddialog.cpp" line="181"/>
+        <location filename="../../shredmanager/shreddialog.cpp" line="243"/>
         <source>Shred failed!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2502,8 +2519,18 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SkinCenter</name>
     <message>
-        <location filename="../skincenter.cpp" line="150"/>
-        <source>Skin Center</source>
+        <location filename="../skincenter.cpp" line="56"/>
+        <source>Skin Setting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skincenter.cpp" line="67"/>
+        <source>Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skincenter.cpp" line="70"/>
+        <source>Custom</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2529,8 +2556,8 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ThemeWidget</name>
     <message>
-        <location filename="../../setting/themewidget.cpp" line="92"/>
-        <source>%1</source>
+        <location filename="../../setting/themewidget.cpp" line="35"/>
+        <source>Please choose theme which you need</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2620,6 +2647,123 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../setting/touchpadwidget.cpp" line="154"/>
         <source>Two-finger Scrolling</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UpgradeDialog</name>
+    <message>
+        <location filename="../upgradedialog.cpp" line="52"/>
+        <source>check and update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="94"/>
+        <location filename="../upgradedialog.cpp" line="388"/>
+        <source>Current verison:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="130"/>
+        <source>Official version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="153"/>
+        <source>An error occurred!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="154"/>
+        <source>Network or local sources anomaly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="158"/>
+        <source>you can visit the&lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; UK official website&lt;/a&gt; to download the lastest deb package</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="163"/>
+        <source>Retry</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="176"/>
+        <source>Finish</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="183"/>
+        <source>Upgrade</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="245"/>
+        <location filename="../upgradedialog.cpp" line="328"/>
+        <source>Start to update the local sources</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="324"/>
+        <source>Start to download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="373"/>
+        <source>Updating local sources...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="387"/>
+        <source>Youker Assistant is the latest version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="400"/>
+        <source>Start to install</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="335"/>
+        <source>Download completely</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="346"/>
+        <source>Local sources updated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="356"/>
+        <source>Found a new version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="144"/>
+        <source>New version:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="351"/>
+        <location filename="../upgradedialog.cpp" line="365"/>
+        <source>Not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="155"/>
+        <location filename="../upgradedialog.cpp" line="269"/>
+        <source>Testing network and local sources...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="408"/>
+        <source>Upgrading the main program...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="459"/>
+        <source>Start to upgrade the main program</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

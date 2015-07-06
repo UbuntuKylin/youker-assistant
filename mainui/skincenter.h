@@ -31,6 +31,7 @@
 #include "../component/itemcard.h"
 
 class MainWindow;
+class QParallelAnimationGroup;
 //class SystemDispatcher;
 //#include "../dbusproxy/youkersystemdbus.h"
 
@@ -38,17 +39,18 @@ class SkinCenter :public QDialog
 {
   Q_OBJECT
 public:
-    SkinCenter(QWidget *parent = 0/*, Qt::WindowFlags f = 0*/);
+    SkinCenter(QWidget *parent = 0, QString skin = ":/background/res/skin/1.png"/*, Qt::WindowFlags f = 0*/);
     ~SkinCenter();
     void setParentWindow(MainWindow *From) { mainwindow = From;}
 //    void setSystemDbusProxy(SystemDispatcher* dispatcher) { systemProxy = dispatcher;}
-    void initBackgroundList();
+    void initSysBackgroundList();
     void reloadBackgroundList();
 //    void setLanguage();
     void initConnect();
     void initTitleBar(const QString &path);
 //    void initUsingLogo(QListWidgetItem *init_item);
 //    void setLogo();
+    void initAnimation();
 
 public slots:
     void onCloseButtonClicked();
@@ -57,25 +59,46 @@ public slots:
     void changeLeaveBackground();
     void deleteBackground(QString picture);
     void switchUsingLogo(QString index);
+    void switchCusteomUsingLogo(QString index);
+    void showSystem();
+    void showCustom();
+    void addCustomBackground();
 
 protected:
+    void mousePressEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
 ////    virtual void	enterEvent (QEvent  *);
 ////    virtual void	leaveEvent (QEvent *);
     void closeEvent(QCloseEvent *event);
 
 private:
     MainWindow *mainwindow;
-    KylinTitleBar *title_bar;
+    QPoint drag_pos; //移动的距离
+    bool mouse_press; //按下鼠标左键
+    QWidget *baseWidget;
+    SystemButton *close_btn;
+    QLabel *indicator;
+    QLabel *label;
+//    KylinTitleBar *title_bar;
     QWidget *skin_widget;
 //    KylinListWidget *list_widget;
     QString last_skin_path;
 //    QLabel *using_label;
 //    QTimer *delayTimer;
 //    QString titlebar_pic;
+    QPushButton *sysBtn;
+    QPushButton *customBtn;
 
     CardWidget *list_widget;
 //    SystemDispatcher *systemProxy;
     QList<ItemCard *> card_list;
+
+    CardWidget *custom_list_widget;
+    QList<ItemCard *> custom_card_list;
+
+    QParallelAnimationGroup *aboutGroup;
+    QParallelAnimationGroup *contributorGroup;
 };
 
 #endif // SKINCENTER_H

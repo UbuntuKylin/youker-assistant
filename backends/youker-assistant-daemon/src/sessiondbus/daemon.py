@@ -43,6 +43,7 @@ from xml.dom.minidom import parseString
 import re
 import json
 import locale
+import aptsources.sourceslist
 
 import datetime
 HOME = os.path.expandvars('$HOME')
@@ -360,14 +361,22 @@ class SessionDaemon(dbus.service.Object):
         cache = apt.Cache()
         pkg = cache['youker-assistant']
         apt_list.append(pkg.installed.version)
-        # 0:installed; 1: version in source list
         if len(pkg.versions) == 2:
-            apt_list.append(pkg.versions[0].version)
-            apt_list.append(pkg.versions[1].version)
-            if pkg.versions[0].version < pkg.versions[1].version:
-                apt_list.append("1")
-            else:
+            if pkg.versions[0].version == pkg.versions[1].version:
+                apt_list.append(pkg.versions[0].version)
+                apt_list.append(pkg.versions[1].version)
                 apt_list.append("0")
+            else:
+                if pkg.installed.version == pkg.versions[0].version:
+                    if pkg.versions[0].version < pkg.versions[1].version:
+                        apt_list.append(pkg.versions[0].version)
+                        apt_list.append(pkg.versions[1].version)
+                        apt_list.append("1")
+                elif pkg.installed.version == pkg.versions[1].version:
+                    if pkg.versions[1].version < pkg.versions[0].version:
+                        apt_list.append(pkg.versions[1].version)
+                        apt_list.append(pkg.versions[0].version)
+                        apt_list.append("1")
         return apt_list
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
@@ -1930,6 +1939,46 @@ class SessionDaemon(dbus.service.Object):
     def subpage_error_signal(self, error):
         pass
     #----END---------------------New-Youker-------------------------
+
+    @dbus.service.signal(INTERFACE, signature='b')
+    def check_source_list_signal(self, result):
+        pass
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def start_check_source_useable(self):
+        source_urllist = []
+        bad_source_urllist = []
+        good_source_urllist = []
+        source = aptsources.sourceslist.SourcesList()
+        for item in source.list:
+            if item.str()[0:4] == "deb " and item.str()[0:9] != "deb cdrom":
+                #print type(item.str()[4:].split()),item.str()[4:].split()
+                source_list = item.str()[4:].split()
+                if source_list[0].endswith("/") is True:
+                    str = source_list[0] + "dists"
+                else:
+                    str = source_list[0] + "/dists"
+                source_list[0] = str
+                if len(source_list)>3:
+                    urlend = source_list[2:]
+                    for item in urlend:
+                        urlbegin = source_list[0:2]
+                        urlbegin.append(item)
+                        source_urllist.append(urlbegin)
+                else:
+                    source_urllist.append(source_list)
+        for urllist in source_urllist:
+            source_url = '/'.join(urllist)
+            try:
+                response = urllib2.urlopen(source_url,timeout=5)
+                good_source_urllist.append(source_url)
+            except Exception, e:
+                print e
+                bad_source_urllist.append(source_url)
+        if good_source_urllist == []:
+            self.check_source_list_signal(False)
+        else:
+            self.check_source_list_signal(True)
 
     # -------------------------monitorball-------------------------
 #    # get cpu percent
