@@ -615,6 +615,16 @@ class Daemon(PolicyKitService):
             for pkgName in packagecache:
                 cleaner.interface_remove_package_system(self, pkgName)
 
+        bashhistory = mode_dic.get('bash-history', [])
+        if bashhistory:
+            for tmpName in bashhistory:
+                cleaner.interface_remove_file_system(self, tmpName)
+        
+        x11history = mode_dic.get('x11-history', [])
+        if bashhistory:
+            for tmpName in x11history:
+                cleaner.interface_remove_file_system(self, tmpName)
+
         firefoxhistory = mode_dic.get('firefox-history', [])
         if firefoxhistory:
             cleaner.interface_remove_firefox_history_system(self)

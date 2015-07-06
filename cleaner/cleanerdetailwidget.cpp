@@ -121,6 +121,7 @@ void CleanerDetailWidget::CleanUIAndData()
     trace_chromium_count.clear();
     trace_system_count.clear();
     trace_bash_size.clear();
+    trace_bash_path.clear();
     trace_x11_list.clear();
 
     //clear ui
@@ -270,6 +271,7 @@ void CleanerDetailWidget::showReciveData(const QStringList &data)
             if (scanResult == false)
                 scanResult = true;
             trace_bash_size= data.at(1).split(":").at(1);
+            trace_bash_path= data.at(2).split(":").at(1);
         }
 //        qDebug() << "bash------------";
 //        qDebug() << data.at(1);//"Size:55.67 KB"
@@ -743,8 +745,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             trace_bash_btn = new CleanSubGroup(0, "://res/item");
             trace_bash_btn->hideCustomButton();
             trace_bash_btn->setStatusTip("history-bash");
-//            trace_bash_btn->setLabelText(tr("Command history size:"), trace_system_count.toInt());
-            trace_bash_btn->setLabelText(tr("Command history size:"), 24);
+            trace_bash_btn->setLabelStringText(tr("Command history size:"), trace_bash_size);
             if(grid_layout == NULL)
             {
                 grid_layout = new QGridLayout();
@@ -1666,7 +1667,7 @@ void CleanerDetailWidget::getAllSelectedItems()
     //kobe
     if(trace_bash_btn != NULL && trace_bash_btn->getCheckBoxStatus() != 0)
     {
-       argsData.insert("bash-history", QStringList() << trace_bash_size);
+       argsData.insert("bash-history", QStringList() << trace_bash_path);
     }
     if(trace_x11_btn != NULL && trace_x11_btn->getCheckBoxStatus() != 0)
     {
