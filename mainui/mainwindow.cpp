@@ -978,6 +978,9 @@ void MainWindow::openUpgradePage(/*QStringList version_list*/)
         upgrade_dialog = new UpgradeDialog(0, "V2.0.3", last_skin_path);
         upgrade_dialog->setSystemDbusProxy(systeminterface);
         upgrade_dialog->setSessionDbusProxy(sessioninterface);
+        connect(home_page, SIGNAL(sendOpenUpgrade()), this, SLOT(openUpgradePageAgain()));
+        connect(upgrade_dialog, SIGNAL(showBackendBtnSignal(bool)), home_page, SLOT(displayBackedBtn(bool)));
+        connect(upgrade_dialog,SIGNAL(close_signal()), this, SLOT(closeYoukerAssistant()));
         connect(systeminterface,SIGNAL(get_fetch_signal(QString, QStringList)),upgrade_dialog,SLOT(receiveFetchSignal(QString, QStringList)));
         connect(systeminterface,SIGNAL(get_apt_signal(QString, QStringList)),upgrade_dialog,SLOT(receiveAptSignal(QString, QStringList)));
         connect(sessioninterface,SIGNAL(receive_source_list_signal(bool)),upgrade_dialog,SLOT(receiveCheckResultSignal(bool)));
@@ -991,8 +994,18 @@ void MainWindow::openUpgradePage(/*QStringList version_list*/)
         upgrade_dialog->move(w_x, w_y);
         upgrade_dialog->show();
         upgrade_dialog->raise();
+        home_page->hideBackedBtn();
 //        upgrade_dialog->startAccessData();
     }
+}
+
+void MainWindow::openUpgradePageAgain()
+{
+    int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (334  / 2);
+    int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (470  / 2);
+    upgrade_dialog->move(w_x, w_y);
+    upgrade_dialog->show();
+    upgrade_dialog->raise();
 }
 
 void MainWindow::displaySubPage(int index)

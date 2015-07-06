@@ -52,17 +52,21 @@ protected:
 public slots:
     void switchPageIndex(QString index);
 //    void checkLastestVersion();
+    void displayBackedBtn(bool flag);
+    void onCheckBtnClicked();
+    void hideBackedBtn();
 
 signals:
     void sendSubIndex(int index);
     void sendSignal();
     void moreSignal();
+    void sendOpenUpgrade();
 
 private:
     QLabel *version_logo;
     QLabel *version_title;
     QLabel *version_tip;
-//    QPushButton *check_btn;
+    QPushButton *check_btn;
 //    QLabel *version_label;
     QLabel *box_logo;
     QLabel *box_title;

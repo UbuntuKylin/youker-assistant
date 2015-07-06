@@ -32,6 +32,7 @@ UpgradeDialog::UpgradeDialog(QWidget *parent, const QString &version, QString sk
     this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
 
     isBusy = false;
+    cur_version = version;
 
     baseWidget = new QWidget(this);
     baseWidget->setGeometry(QRect(0, 0, 334, 191));
@@ -50,42 +51,42 @@ UpgradeDialog::UpgradeDialog(QWidget *parent, const QString &version, QString sk
     nameLabel->setAlignment(Qt::AlignCenter);
     nameLabel->setText(tr("check and update"));
 
-    msg_label = new QLabel(baseWidget);
-    msg_label->setGeometry(QRect(10, 50, 324, 20));
-    msg_label->setStyleSheet("QLabel{color:#FF0000;font-family: 方正黑体_GBK;font-size: 14px;text-align: center;}");
-    msg_label->setAlignment(Qt::AlignCenter);
-    msg_label->setText(tr("Is working, please wait a moment."));
-    msg_label->hide();
+//    msg_label = new QLabel(baseWidget);
+//    msg_label->setGeometry(QRect(10, 40, 324, 20));
+//    msg_label->setStyleSheet("QLabel{color:#FF0000;font-family: 方正黑体_GBK;font-size: 14px;text-align: center;}");
+//    msg_label->setAlignment(Qt::AlignCenter);
+//    msg_label->setText(tr("Is working, please wait a moment."));
+//    msg_label->hide();
 
     net_icon_label = new QLabel(this);
-    net_icon_label->setGeometry(QRect(76, 91, 182, 181));
+    net_icon_label->setGeometry(QRect(76, 64, 182, 181));
     net_icon_label->setStyleSheet("QLabel{background-image:url(':/res/no-net.png')}");
     net_icon_label->hide();
 
     normal_icon_label = new QLabel(this);
-    normal_icon_label->setGeometry(QRect(76, 91, 182, 181));
-    normal_icon_label->setStyleSheet("QLabel{background-image:url(':/res/upgrade-normal.png');color:#ffffff;font-family: 方正黑体_GBK;font-size: 20px;text-align: center;}");
+    normal_icon_label->setGeometry(QRect(76, 64, 182, 181));
+    normal_icon_label->setStyleSheet("QLabel{background-image:url(':/res/upgrade-normal.png');color:#ffffff;font-family: 方正黑体_GBK;font-size: 22px;text-align: center;}");
     normal_icon_label->setAlignment(Qt::AlignCenter);
     normal_icon_label->hide();
 
     ok_icon_label = new QLabel(this);
-    ok_icon_label->setGeometry(QRect(76, 91, 182, 181));
+    ok_icon_label->setGeometry(QRect(76, 64, 182, 181));
     ok_icon_label->setStyleSheet("QLabel{background-image:url(':/res/upgrade-ok.png')}");
     ok_icon_label->hide();
 
     work_loading_label = new LoadingLabel(this, "working");
-    work_loading_label->setGeometry(QRect(76, 91, 182, 181));
+    work_loading_label->setGeometry(QRect(76, 64, 182, 181));
     work_loading_label->show();
 
     upgrade_loading_label = new LoadingLabel(this, "upgrading");
-    upgrade_loading_label->setGeometry(QRect(76, 91, 182, 181));
+    upgrade_loading_label->setGeometry(QRect(76, 64, 182, 181));
     upgrade_loading_label->hide();
 
 //    movie_label = new QLabel(this);
 //    movie_label->setGeometry(QRect(76, 91, 182, 181));
 //    movie = new QMovie("://res/move.gif");
 //    movie_label->setMovie(movie);
-    timer = new QTimer(this);
+//    timer = new QTimer(this);
 
     version_label = new QLabel(this);
     version_label->setObjectName("smallgrayLabel");
@@ -93,46 +94,71 @@ UpgradeDialog::UpgradeDialog(QWidget *parent, const QString &version, QString sk
     version_label->setText(tr("Current verison:") + version);
     doing_label = new QLabel(this);
     doing_label->setWordWrap(true);//QLabel自动换行
-    doing_label->setStyleSheet("QLabel{color:#000000;font-family: 方正黑体_GBK;font-size: 13px;text-align: center;}");
+    doing_label->setStyleSheet("QLabel{color:#000000;font-family: 方正黑体_GBK;font-size: 22px;text-align: center;}");
     doing_label->setAlignment(Qt::AlignCenter);
-    doing_label->setGeometry(QRect(10, 280, 324, 20));
+    doing_label->setGeometry(QRect(10, 264, 324, 30));
 
     error_label = new QLabel(this);
-    error_label->setGeometry(QRect(10, 280, 324, 30));
+    error_label->setGeometry(QRect(10, 264, 324, 30));
     error_label->setWordWrap(true);//QLabel自动换行
-    error_label->setStyleSheet("QLabel{color:#000000;font-family: 方正黑体_GBK;font-size: 20px;text-align: center;}");
+    error_label->setStyleSheet("QLabel{color:#000000;font-family: 方正黑体_GBK;font-size: 22px;text-align: center;}");
     error_label->setAlignment(Qt::AlignCenter);
     error_label->hide();
     tip_label = new QLabel(this);
-    tip_label->setGeometry(QRect(10, 310, 324, 20));
+    tip_label->setGeometry(QRect(10, 294, 324, 30));
     tip_label->setWordWrap(true);//QLabel自动换行
-    tip_label->setStyleSheet("QLabel{color:#b2b2b2;font-family: 方正黑体_GBK;font-size: 13px;text-align: center;}");
+    tip_label->setStyleSheet("QLabel{color:#999999;font-family: 方正黑体_GBK;font-size: 12px;text-align: center;}");
     tip_label->setAlignment(Qt::AlignCenter);
     tip_label->hide();
 
     visit_label = new QLabel(this);
-    visit_label->setGeometry(QRect(10, 310, 324, 20));
+    visit_label->setGeometry(QRect(10, 294, 324, 30));
     visit_label->setWordWrap(true);//QLabel自动换行
-    visit_label->setStyleSheet("QLabel{color:#b2b2b2;font-family: 方正黑体_GBK;font-size: 13px;text-align: center;}");
+    visit_label->setStyleSheet("QLabel{color:#999999;font-family: 方正黑体_GBK;font-size: 12px;text-align: center;}");
     visit_label->setAlignment(Qt::AlignCenter);
-    visit_label->hide();
+//    visit_label->hide();
 
-    new_label = new QLabel(this);
+    new_widget = new QWidget(this);
+    new_widget->setGeometry(QRect(17, 264, 300, 80));
+    new_widget->setStyleSheet("QWidget{background:transparent; border:1px solid #3f96e4;}");
+    new_widget->hide();
+    official_label = new QLabel(new_widget);
+    official_label->setWordWrap(true);//QLabel自动换行
+    official_label->setStyleSheet("QLabel{border:none;color:#000000;font-family: 方正黑体_GBK;font-size: 13px;text-align: center;}");//background: transparent;
+    official_label->setAlignment(Qt::AlignCenter);
+    official_label->setGeometry(QRect(0, 15, 60, 30));
+    official_label->setText(tr("Official version"));
+    hook_label = new QLabel(new_widget);
+//    hook_label->setGeometry(QRect(18, 32, 23, 16));
+    hook_label->setGeometry(QRect(18, 50, 23, 16));
+    hook_label->setStyleSheet("QLabel{background: transparent;border:none;background-image:url(':/res/hook.png')}");
+
+    vline = new QLabel(new_widget);
+    vline->setGeometry(QRect(60, 0, 1, 80));
+    vline->setStyleSheet("QLabel{background-color:#3f96e4;}");
+//    new_label = new QLabel(this);
+    new_label = new QLabel(new_widget);
     new_label->setWordWrap(true);//QLabel自动换行
-    new_label->setStyleSheet("QLabel{color:#000000;font-family: 方正黑体_GBK;font-size: 13px;text-align: center;}");
-    new_label->setAlignment(Qt::AlignCenter);
-    new_label->setGeometry(QRect(10, 280, 324, 20));
-    new_label->hide();
+    new_label->setStyleSheet("QLabel{border:none;color:#000000;font-family: 方正黑体_GBK;font-size: 16px;text-align: left;}");//background: transparent;
+    new_label->setGeometry(QRect(70, 10, 220, 30));
+    new_label->setText(tr("New version:"));
+//    new_label->setGeometry(QRect(10, 264, 324, 20));
+//    new_label->hide();
+    new_num_label = new QLabel(new_widget);
+    new_num_label->setWordWrap(true);//QLabel自动换行
+//    new_num_label->setObjectName("smallgrayLabel");
+    new_num_label->setStyleSheet("QLabel{border:none;color:#000000;font-family: 方正黑体_GBK;font-size: 16px;text-align: left;}");//background: transparent;
+    new_num_label->setGeometry(QRect(70, 40, 220, 30));
 
     error_label->setText(tr("An error occurred!"));
     tip_label->setText(tr("Network or local sources anomaly"));
-    doing_label->setText(tr("Testing network and local sources......"));
+    doing_label->setText(tr("Testing network and local sources..."));
 //    visit_label->setText(tr("you can visit ") + QString::fromLocal8Bit("<a style='color: green;' href = https://launchpad.net/youker-assistant> UK official website </a>") + tr("to download the lastest deb package"));
 //    visit_label->setText(tr("you can visit ") + tr("<a style='color: green;' href = https://launchpad.net/youker-assistant> UK official website </a>") + tr("to download the lastest deb package"));
-    visit_label->setText(tr("you can visit the<a style='color: green;' href = https://launchpad.net/youker-assistant> UK official website </a>to download the lastest deb package."));
+    visit_label->setText(tr("you can visit the<a style='color: #3f96e4;' href = http://www.ubuntukylin.com> UK official website</a> to download the lastest deb package"));
     retryBtn = new QPushButton(this);
     retryBtn->setFocusPolicy(Qt::NoFocus);
-    retryBtn->setStyleSheet("QPushButton{background-image:url('://res/retry.png');border:0px;}QPushButton:hover{background:url('://res/retry-hover.png');}QPushButton:pressed{background:url('://res/retry-press.png');}");
+    retryBtn->setStyleSheet("QPushButton{background-image:url('://res/retry.png');border:0px;color:#ffffff;font-family: 方正黑体_GBK;font-size: 30px;}QPushButton:hover{background:url('://res/retry-hover.png');}QPushButton:pressed{background:url('://res/retry-press.png');}");
     retryBtn->hide();
     retryBtn->setText(tr("Retry"));
     retryBtn->setGeometry(QRect(74, 350, 186, 56));
@@ -145,7 +171,7 @@ UpgradeDialog::UpgradeDialog(QWidget *parent, const QString &version, QString sk
                                               "QProgressBar:chunk{background-color:#b1dcff;}");
     okBtn = new QPushButton(this);
     okBtn->setFocusPolicy(Qt::NoFocus);
-    okBtn->setStyleSheet("QPushButton{background-image:url('://res/retry.png');border:0px;}QPushButton:hover{background:url('://res/retry-hover.png');}QPushButton:pressed{background:url('://res/retry-press.png');}");
+    okBtn->setStyleSheet("QPushButton{background-image:url('://res/retry.png');border:0px;color:#ffffff;font-family: 方正黑体_GBK;font-size: 30px;}QPushButton:hover{background:url('://res/retry-hover.png');}QPushButton:pressed{background:url('://res/retry-press.png');}");
     okBtn->hide();
     okBtn->setText(tr("Finish"));
     okBtn->setGeometry(QRect(74, 350, 186, 56));
@@ -160,7 +186,7 @@ UpgradeDialog::UpgradeDialog(QWidget *parent, const QString &version, QString sk
     splitlabel = new QLabel(this);
     splitlabel->setGeometry(QRect(0, 430, 334, 1));
     splitlabel->setFixedHeight(1);
-    splitlabel->setStyleSheet("QLabel{background:#aaaaaa;}");
+    splitlabel->setStyleSheet("QLabel{background:#e0e0e0;}");
     this->initConnect();
 }
 
@@ -170,14 +196,14 @@ UpgradeDialog::~UpgradeDialog()
 //        delete movie;
 //        movie = NULL;
 //    }
-    if (timer != NULL) {
-        disconnect(timer,SIGNAL(timeout()),this,SLOT(slotDisappearTip()));
-        if(timer->isActive()) {
-            timer->stop();
-        }
-        delete timer;
-        timer = NULL;
-    }
+//    if (timer != NULL) {
+//        disconnect(timer,SIGNAL(timeout()),this,SLOT(slotDisappearTip()));
+//        if(timer->isActive()) {
+//            timer->stop();
+//        }
+//        delete timer;
+//        timer = NULL;
+//    }
 }
 
 void UpgradeDialog::initConnect()
@@ -185,15 +211,15 @@ void UpgradeDialog::initConnect()
     connect(close_btn, SIGNAL(clicked()), this, SLOT(onCloseBtnClicked()));
     connect(retryBtn, SIGNAL(clicked()), this, SLOT(onRetryBtnClicked()));
     connect(upgradeBtn, SIGNAL(clicked()), this, SLOT(onUpgradeBtnClicked()));
-    connect(okBtn, SIGNAL(clicked()), this, SLOT(onOkBtnClicked()));
-    connect(timer, SIGNAL(timeout()), this, SLOT(slotDisappearTip()));
+    connect(okBtn, SIGNAL(clicked()), this, SIGNAL(close_signal()));
+//    connect(timer, SIGNAL(timeout()), this, SLOT(slotDisappearTip()));
     connect(visit_label,SIGNAL(linkActivated(QString)),this,SLOT(openUrl(QString)));
 }
 
-void UpgradeDialog::slotDisappearTip()
-{
-    msg_label->hide();
-}
+//void UpgradeDialog::slotDisappearTip()
+//{
+//    msg_label->hide();
+//}
 
 void UpgradeDialog::openUrl(QString url)
 {
@@ -211,6 +237,7 @@ void UpgradeDialog::showErrorComponents()
     tip_label->show();
     retryBtn->show();
     doing_label->hide();
+    visit_label->hide();
 }
 
 void UpgradeDialog::showUpdateSourceComponents()
@@ -239,8 +266,9 @@ void UpgradeDialog::onRetryBtnClicked()
     retryBtn->hide();
     work_loading_label->show();
     work_loading_label->startLoading();
-    doing_label->setText(tr("Testing network and local sources......"));
+    doing_label->setText(tr("Testing network and local sources..."));
     doing_label->show();
+    visit_label->show();
 //    movie_label->show();
 //    movie->start();
     sessionProxy->start_check_source_useable_qt();
@@ -261,6 +289,29 @@ void UpgradeDialog::receiveCheckResultSignal(bool result)
         this->isBusy = true;
         this->showUpdateSourceComponents();
         systemProxy->update_source();
+
+        //test by kobe
+//        progressbar->hide();
+//        visit_label->hide();
+//        work_loading_label->stopLoading();
+//        work_loading_label->hide();
+//        normal_icon_label->show();
+//        doing_label->setText(tr("Local sources updated"));
+//        QStringList version_list = sessionProxy->checkNewVersion();
+//        qDebug() << version_list;//("1.2.0-0ubuntu1", "1.2.0-0ubuntu1", "1.3.1-0ubuntu1", "1")
+//        if(version_list.length() == 4) {
+//            if(version_list.at(3) == "1") {
+//                normal_icon_label->setText(tr("Found a new version"));
+//                new_widget->show();
+//                this->cur_version = version_list.at(2);
+//                new_num_label->setText(this->cur_version);
+//                upgradeBtn->show();
+//                doing_label->hide();
+//            }
+//            else {
+//                normal_icon_label->setText(tr("Not found"));
+//            }
+//        }
     }
 }
 
@@ -303,8 +354,10 @@ void UpgradeDialog::receiveFetchSignal(QString msg_type, QStringList msg)
         //         version_label->setText(version_list.at(2));
                 if(version_list.at(3) == "1") {
                     normal_icon_label->setText(tr("Found a new version"));
-                    new_label->show();
-                    new_label->setText(tr("New version:") + version_list.at(2));
+//                    new_label->show();
+                    new_widget->show();
+                    this->cur_version = version_list.at(2);
+                    new_num_label->setText(this->cur_version);
                     upgradeBtn->show();
                     doing_label->hide();
                 }
@@ -331,12 +384,14 @@ void UpgradeDialog::receiveAptSignal(QString msg_type, QStringList msg)
             this->isBusy = false;
             ok_icon_label->show();
             okBtn->show();
-            doing_label->setText("Youker Assistant is the latest version");
+            doing_label->setText(tr("Youker Assistant is the latest version"));
+            version_label->setText(tr("Current verison:") + this->cur_version);
             upgrade_loading_label->stopLoading();
             upgrade_loading_label->hide();
             progressbar->setValue(100);
             progressbar->hide();
-            visit_label->hide();
+            emit this->showBackendBtnSignal(true);
+//            visit_label->hide();
         }
     }
     else if(msg_type == "apt_start")
@@ -374,26 +429,28 @@ void UpgradeDialog::resetVersionNumber(QStringList version_list)
 
 void UpgradeDialog::onCloseBtnClicked()
 {
+//    if (timer->isActive())
+//        timer->stop();
     if(this->isBusy) {
-        msg_label->show();
-        timer->start(3000);
+        emit this->showBackendBtnSignal(false);
     }
-    else {
-        if (timer->isActive())
-            timer->stop();
-        this->close();
-    }
-}
-
-void UpgradeDialog::onOkBtnClicked()
-{
-
+    this->close();
+//    if(this->isBusy) {
+//        msg_label->show();
+//        timer->start(3000);
+//    }
+//    else {
+//        if (timer->isActive())
+//            timer->stop();
+//        this->close();
+//    }
 }
 
 void UpgradeDialog::onUpgradeBtnClicked()
 {
     this->isBusy = true;
-    new_label->hide();
+//    new_label->hide();
+    new_widget->hide();
     upgradeBtn->hide();
     normal_icon_label->hide();
     upgrade_loading_label->show();

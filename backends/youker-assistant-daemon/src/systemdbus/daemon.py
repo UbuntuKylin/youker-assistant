@@ -163,6 +163,9 @@ class Daemon(PolicyKitService):
     def youker_apt_signal(self, type, msg):
         pass
 
+    def start_install_uk(self, pkgName):
+        self.aptHandler.install(pkgName)
+
     # install package sa:youker_fetch_signal() and youker_apt_signal()
     #sudo apt-get install youker-assistant=1.3.1-0ubuntu1
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='b', sender_keyword='sender')
@@ -170,7 +173,8 @@ class Daemon(PolicyKitService):
         print "####install: ",pkgName
 #        item = WorkItem(pkgName, AppActions.INSTALL, None)
 #        self.add_worker_item(item)
-        self.aptHandler.install(pkgName)
+#        self.aptHandler.install(pkgName)
+        thread.start_new_thread(self.start_install_uk, (pkgName,))
         print "####install return"
         return True
 
@@ -242,6 +246,12 @@ class Daemon(PolicyKitService):
         if not status:
             return False
         cmd = 'kill -9 %s' % pid
+        subprocess.Popen(cmd, shell=True, close_fds=True)#加上close_fds=True,避免子进程一直存在
+        return True
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def kill_uk_process(self):
+        cmd = 'killall youker-assistant'
         subprocess.Popen(cmd, shell=True, close_fds=True)#加上close_fds=True,避免子进程一直存在
         return True
 
@@ -585,15 +595,16 @@ class Daemon(PolicyKitService):
 #-----START-----------NEW-YOUKER---------------------------
 #
 
-    @dbus.service.method(INTERFACE, in_signature='a{sv}', out_signature='', sender_keyword='sender')
-    def remove_select_items(self, mode_dic, sender=None):
-        status = self._check_permission(sender, UK_ACTION_YOUKER)
-        if not status:
-            self.quit_clean(False)
-#            self.quit_clean_work()
-            return
-        else:
-            self.quit_clean(True)
+#    @dbus.service.method(INTERFACE, in_signature='a{sv}', out_signature='', sender_keyword='sender')
+#    def remove_select_items(self, mode_dic, sender=None):
+#        status = self._check_permission(sender, UK_ACTION_YOUKER)
+#        if not status:
+#            self.quit_clean(False)
+##            self.quit_clean_work()
+#            return
+#        else:
+#            self.quit_clean(True)
+    def start_clean_all(self, mode_dic):
         filecache = mode_dic.get('file', [])
         if filecache:
             for tmpName in filecache:
@@ -627,6 +638,16 @@ class Daemon(PolicyKitService):
                 cleaner.interface_remove_chromium_cookies_system(self, domain)
 
         self.subpage_status_signal('Complete:All', "finish")
+
+    @dbus.service.method(INTERFACE, in_signature='a{sv}', out_signature='', sender_keyword='sender')
+    def remove_select_items(self, mode_dic, sender=None):
+        status = self._check_permission(sender, UK_ACTION_YOUKER)
+        if not status:
+            self.quit_clean(False)
+            return
+        else:
+            self.quit_clean(True)
+        thread.start_new_thread(self.start_clean_all, (mode_dic,))
 #    @dbus.service.method(INTERFACE, in_signature='s', out_signature='', sender_keyword='sender')
 #    def remove_file(self, fp):
 #        status = self._check_permission(sender, UK_ACTION_YOUKER)

@@ -421,99 +421,114 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="269"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="299"/>
         <source>Apt Cache Clean Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="275"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="305"/>
         <source>Apt Cache count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="319"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="420"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="349"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="450"/>
         <source>Software Cache Clean Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="325"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="355"/>
         <source>Software Cache count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="369"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="468"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="521"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="571"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="716"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="765"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="814"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="399"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="498"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="551"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="601"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="799"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="848"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="897"/>
         <source>Thumbnails Cache Clean Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="375"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="405"/>
         <source>Thumbnails Cache Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="425"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="455"/>
         <source>Firefox Cache Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="473"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="503"/>
         <source>Chromium Cache Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="526"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="556"/>
         <source>Firefox Cookies Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="576"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="606"/>
         <source>Chromium Cookies Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="630"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="660"/>
         <source>Firefox History Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="670"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="700"/>
         <source>Chromium History Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="693"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="723"/>
         <source>System History Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="721"/>
-        <source>Package Unneed Count:</source>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="747"/>
+        <source>Command history size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="767"/>
+        <source>Debug log Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanerdetailwidget.cpp" line="770"/>
+        <source>Debug log:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="804"/>
+        <source>Package Unneed Count:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="853"/>
         <source>Package oldkernel Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="819"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="902"/>
         <source>Package configfile Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1344"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1505"/>
         <source>No garbage </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1381"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1545"/>
         <source>Clean args is empty!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -624,42 +639,52 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="82"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
         <source>Clean up the Firefox Internet records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="82"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
         <source>Clean up the Chromium Internet records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="82"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
         <source>Clean up the recently opened documents records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="85"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
+        <source>Delete the command history</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
+        <source>Delete the debug logs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="86"/>
         <source>Trace Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="89"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="90"/>
         <source>History trace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="89"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="90"/>
         <source>Cleaning the internet and opened documents recently records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="159"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="160"/>
         <source>Please select the items you want to clean</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="180"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="181"/>
         <source>Scan args is empty!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1637,37 +1662,52 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>HomePage</name>
     <message>
-        <location filename="../homepage.cpp" line="153"/>
+        <location filename="../homepage.cpp" line="154"/>
         <source>Boot Manager</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="153"/>
+        <location filename="../homepage.cpp" line="154"/>
         <source>Camera</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="223"/>
+        <location filename="../homepage.cpp" line="225"/>
         <source>Current Version Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="224"/>
+        <location filename="../homepage.cpp" line="226"/>
         <source>Update to the lastest version, make it work better</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="226"/>
+        <location filename="../homepage.cpp" line="227"/>
+        <source>updating on the backend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../homepage.cpp" line="228"/>
         <source>Common toolbox</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="227"/>
+        <location filename="../homepage.cpp" line="229"/>
         <source>Fast and practical, making the system more personalized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="153"/>
+        <location filename="../homepage.cpp" line="248"/>
+        <source>Upgrade is complete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../homepage.cpp" line="250"/>
+        <source>Updating on the backend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../homepage.cpp" line="154"/>
         <source>More</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2613,110 +2653,116 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>UpgradeDialog</name>
     <message>
-        <location filename="../upgradedialog.cpp" line="51"/>
+        <location filename="../upgradedialog.cpp" line="52"/>
         <source>check and update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="57"/>
-        <source>Is working, please wait a moment.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../upgradedialog.cpp" line="93"/>
+        <location filename="../upgradedialog.cpp" line="94"/>
+        <location filename="../upgradedialog.cpp" line="388"/>
         <source>Current verison:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="127"/>
+        <location filename="../upgradedialog.cpp" line="130"/>
+        <source>Official version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="153"/>
         <source>An error occurred!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="128"/>
+        <location filename="../upgradedialog.cpp" line="154"/>
         <source>Network or local sources anomaly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="129"/>
-        <location filename="../upgradedialog.cpp" line="242"/>
-        <source>Testing network and local sources......</source>
+        <location filename="../upgradedialog.cpp" line="158"/>
+        <source>you can visit the&lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; UK official website&lt;/a&gt; to download the lastest deb package</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="137"/>
+        <location filename="../upgradedialog.cpp" line="163"/>
         <source>Retry</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="150"/>
+        <location filename="../upgradedialog.cpp" line="176"/>
         <source>Finish</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="157"/>
+        <location filename="../upgradedialog.cpp" line="183"/>
         <source>Upgrade</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="218"/>
-        <location filename="../upgradedialog.cpp" line="277"/>
+        <location filename="../upgradedialog.cpp" line="245"/>
+        <location filename="../upgradedialog.cpp" line="328"/>
         <source>Start to update the local sources</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="273"/>
+        <location filename="../upgradedialog.cpp" line="324"/>
         <source>Start to download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="320"/>
+        <location filename="../upgradedialog.cpp" line="373"/>
         <source>Updating local sources...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="345"/>
+        <location filename="../upgradedialog.cpp" line="387"/>
+        <source>Youker Assistant is the latest version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="400"/>
         <source>Start to install</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="284"/>
+        <location filename="../upgradedialog.cpp" line="335"/>
         <source>Download completely</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="132"/>
-        <source>you can visit the&lt;a style=&apos;color: green;&apos; href = https://launchpad.net/youker-assistant&gt; UK official website &lt;/a&gt;to download the lastest deb package.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../upgradedialog.cpp" line="295"/>
+        <location filename="../upgradedialog.cpp" line="346"/>
         <source>Local sources updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="305"/>
+        <location filename="../upgradedialog.cpp" line="356"/>
         <source>Found a new version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="307"/>
+        <location filename="../upgradedialog.cpp" line="144"/>
         <source>New version:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="300"/>
-        <location filename="../upgradedialog.cpp" line="312"/>
+        <location filename="../upgradedialog.cpp" line="351"/>
+        <location filename="../upgradedialog.cpp" line="365"/>
         <source>Not found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="353"/>
+        <location filename="../upgradedialog.cpp" line="155"/>
+        <location filename="../upgradedialog.cpp" line="269"/>
+        <source>Testing network and local sources...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="408"/>
         <source>Upgrading the main program...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="402"/>
+        <location filename="../upgradedialog.cpp" line="459"/>
         <source>Start to upgrade the main program</source>
         <translation type="unfinished"></translation>
     </message>

@@ -88,6 +88,7 @@ protected:
 public slots:
     void openSkinCenter();
     void openUpgradePage(/*QStringList version_list*/);
+    void openUpgradePageAgain();
     void showMainMenu();
     void closeYoukerAssistant();
     void setCurrentPageIndex(int index);

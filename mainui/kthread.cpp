@@ -71,7 +71,6 @@ void KThread::run() {
         iface->call("update");
     }
     else if(methodName == "start_check_source_useable") {
-        qDebug() << "start 2222222222";
         iface->call("start_check_source_useable");
     }
     //sso
