@@ -93,6 +93,17 @@ void CleanSubGroup::setLabelText(const QString &title, int count)
         name_label->setToolTip(title + QString::number(count));
 }
 
+void CleanSubGroup::setLabelStringText(const QString &title, QString size)
+{
+    QFont ft;
+    QFontMetrics fm(ft);
+    QString elided_text = fm.elidedText(title, Qt::ElideRight, 100);
+    name_label->setText(elided_text);
+    description_label->setText(size);
+    if(elided_text.endsWith("…"))
+        name_label->setToolTip(title + size);
+}
+
 void CleanSubGroup::hideCustomButton()
 {
     custom_btn->hide();
