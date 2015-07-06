@@ -100,6 +100,9 @@ private:
     CleanSubGroup *trace_firefox_btn;
     CleanSubGroup *trace_chromium_btn;
     CleanSubGroup *trace_system_btn;
+    CleanSubGroup *trace_bash_btn;
+    CleanListWidget *trace_x11_items ;
+    CleanSubGroup *trace_x11_btn;
 
     QStringList cache_apt_list;
     QStringList cache_software_list;
@@ -114,6 +117,8 @@ private:
     QString trace_firefox_count;
     QString trace_chromium_count;
     QString trace_system_count;
+    QString trace_bash_size;
+    QStringList trace_x11_list;
 
     bool colorFlag;
     QBoxLayout *main_layout;

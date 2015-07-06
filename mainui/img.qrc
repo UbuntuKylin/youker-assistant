@@ -172,6 +172,7 @@
         <file>res/retry.png</file>
         <file>res/upgrade-normal.png</file>
         <file>res/upgrade-ok.png</file>
+        <file>res/hook.png</file>
     </qresource>
     <qresource prefix="/sys">
         <file>res/sysBtn/close_button.png</file>

@@ -583,99 +583,114 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CleanerDetailWidget</name>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="269"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="299"/>
         <source>Apt Cache Clean Items</source>
         <translation>Apt缓存清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="275"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="305"/>
         <source>Apt Cache count:</source>
         <translation>Apt缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="319"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="420"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="349"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="450"/>
         <source>Software Cache Clean Items</source>
         <translation>软件中心缓存清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="325"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="355"/>
         <source>Software Cache count:</source>
         <translation>软件中心缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="369"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="468"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="521"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="571"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="716"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="765"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="814"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="399"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="498"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="551"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="601"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="799"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="848"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="897"/>
         <source>Thumbnails Cache Clean Items</source>
         <translation>缩略图缓存清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="375"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="405"/>
         <source>Thumbnails Cache Count:</source>
         <translation>缩略图缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="425"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="455"/>
         <source>Firefox Cache Count:</source>
         <translation>Firefox浏览器缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="473"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="503"/>
         <source>Chromium Cache Count:</source>
         <translation>Chromium浏览器缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="526"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="556"/>
         <source>Firefox Cookies Count:</source>
         <translation>Firefox Cookies总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="576"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="606"/>
         <source>Chromium Cookies Count:</source>
         <translation>Chromium Cookies总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="630"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="660"/>
         <source>Firefox History Count:</source>
         <translation>Firefox 历史记录总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="670"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="700"/>
         <source>Chromium History Count:</source>
         <translation>Chromium历史记录总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="693"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="723"/>
         <source>System History Count:</source>
         <translation>系统历史痕迹总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="721"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="747"/>
+        <source>Command history size:</source>
+        <translation>命令历史记录大小：</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="767"/>
+        <source>Debug log Items</source>
+        <translation>调试日志项</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="770"/>
+        <source>Debug log:</source>
+        <translation>调试日志：</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="804"/>
         <source>Package Unneed Count:</source>
         <translation>不需要的包总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="770"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="853"/>
         <source>Package oldkernel Count:</source>
         <translation>旧内核包总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="819"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="902"/>
         <source>Package configfile Count:</source>
         <translation>包配置文件总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1344"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1505"/>
         <source>No garbage </source>
         <translation>没有扫描到垃圾</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1381"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1545"/>
         <source>Clean args is empty!</source>
         <translation>清理参数为空！</translation>
     </message>
@@ -792,42 +807,52 @@ p, li { white-space: pre-wrap; }
         <translation>清除上网、游戏、购物等记录</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="82"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
         <source>Clean up the Firefox Internet records</source>
         <translation>清理火狐访问记录</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="82"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
         <source>Clean up the Chromium Internet records</source>
         <translation>清理Chromium访问记录</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="82"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
         <source>Clean up the recently opened documents records</source>
         <translation>清理最近打开的文件记录</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="85"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
+        <source>Delete the command history</source>
+        <translation>删除命令历史记录</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
+        <source>Delete the debug logs</source>
+        <translation>删除调试日志</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="86"/>
         <source>Trace Items</source>
         <translation>访问痕迹选项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="89"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="90"/>
         <source>History trace</source>
         <translation>历史痕迹</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="89"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="90"/>
         <source>Cleaning the internet and opened documents recently records</source>
         <translation>清除浏览器和系统使用痕迹</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="159"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="160"/>
         <source>Please select the items you want to clean</source>
         <translation>请选择您想清理的选项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="180"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="181"/>
         <source>Scan args is empty!</source>
         <translation>扫描参数为空！</translation>
     </message>
@@ -1835,41 +1860,56 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>HomePage</name>
     <message>
-        <location filename="../homepage.cpp" line="153"/>
+        <location filename="../homepage.cpp" line="154"/>
         <source>Boot Manager</source>
         <translation>启动项管理</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="153"/>
+        <location filename="../homepage.cpp" line="154"/>
         <source>Camera</source>
         <translation>摄像头</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="223"/>
+        <location filename="../homepage.cpp" line="225"/>
         <source>Current Version Number</source>
         <translation>当前版本号</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="224"/>
+        <location filename="../homepage.cpp" line="226"/>
         <source>Update to the lastest version, make it work better</source>
         <translation>更新至最新版本，使软件更好用</translation>
+    </message>
+    <message>
+        <location filename="../homepage.cpp" line="227"/>
+        <source>updating on the backend</source>
+        <translation>正在后台升级</translation>
+    </message>
+    <message>
+        <location filename="../homepage.cpp" line="248"/>
+        <source>Upgrade is complete</source>
+        <translation>升级完成</translation>
+    </message>
+    <message>
+        <location filename="../homepage.cpp" line="250"/>
+        <source>Updating on the backend</source>
+        <translation>正在后台升级</translation>
     </message>
     <message>
         <source>Check new version</source>
         <translation type="obsolete">检查最新版本</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="226"/>
+        <location filename="../homepage.cpp" line="228"/>
         <source>Common toolbox</source>
         <translation>工具箱</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="227"/>
+        <location filename="../homepage.cpp" line="229"/>
         <source>Fast and practical, making the system more personalized</source>
         <translation>更快更好，让系统更具个性化</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="153"/>
+        <location filename="../homepage.cpp" line="154"/>
         <source>More</source>
         <translation>更多</translation>
     </message>
@@ -2922,83 +2962,109 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>UpgradeDialog</name>
     <message>
-        <location filename="../upgradedialog.cpp" line="51"/>
+        <location filename="../upgradedialog.cpp" line="52"/>
         <source>check and update</source>
         <translation>检查更新</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="57"/>
         <source>Is working, please wait a moment.</source>
-        <translation>正在工作，请稍等。</translation>
+        <translation type="obsolete">正在工作，请稍等。</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="93"/>
+        <location filename="../upgradedialog.cpp" line="94"/>
+        <location filename="../upgradedialog.cpp" line="388"/>
         <source>Current verison:</source>
         <translation>当前版本：</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="127"/>
+        <location filename="../upgradedialog.cpp" line="130"/>
+        <source>Official version</source>
+        <translation>正式版</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="153"/>
         <source>An error occurred!</source>
-        <translation>出错了！</translation>
+        <translation>出错了！无法升级</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="128"/>
+        <location filename="../upgradedialog.cpp" line="154"/>
         <source>Network or local sources anomaly</source>
-        <translation>网络或本地源有异常</translation>
+        <translation>网络或源地址连接失败，升级未成功</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="129"/>
-        <location filename="../upgradedialog.cpp" line="242"/>
         <source>Testing network and local sources......</source>
-        <translation>正在检查网络和本地源......</translation>
+        <translation type="obsolete">正在检查网络和本地源......</translation>
     </message>
     <message>
         <source>you can visit &lt;a style=&apos;color: green;&apos; href = https://launchpad.net/youker-assistant&gt; UK website&lt;/a&gt; to download the lastest deb package.</source>
         <translation type="obsolete">您可以访问 &lt;a style=&apos;color: green;&apos; href = https://launchpad.net/youker-assistant&gt; UK website&lt;/a&gt; 去下载最新的deb包.</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="137"/>
+        <source>you can visit the&lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com/applications/showimg.php?lang=cn&amp;id=14&gt; UK official website&lt;/a&gt; to download the lastest deb package.</source>
+        <translation type="obsolete">您可以访问 &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com/applications/showimg.php?lang=cn&amp;id=14&gt; UK 官网&lt;/a&gt; 下载最新的deb包.</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="155"/>
+        <location filename="../upgradedialog.cpp" line="269"/>
+        <source>Testing network and local sources...</source>
+        <translation>正在检查网络和本地源...</translation>
+    </message>
+    <message>
+        <source>you can visit the&lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com/applications/showimg.php?lang=cn&amp;id=14&gt; UK official website&lt;/a&gt; to download the lastest deb package</source>
+        <translation type="obsolete">您可以访问 &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; UK 官网&lt;/a&gt; 下载最新的deb包</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="163"/>
         <source>Retry</source>
         <translation>重试</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="150"/>
+        <location filename="../upgradedialog.cpp" line="176"/>
         <source>Finish</source>
         <translation>完成</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="157"/>
+        <location filename="../upgradedialog.cpp" line="183"/>
         <source>Upgrade</source>
         <translation>升级</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="218"/>
-        <location filename="../upgradedialog.cpp" line="277"/>
+        <location filename="../upgradedialog.cpp" line="245"/>
+        <location filename="../upgradedialog.cpp" line="328"/>
         <source>Start to update the local sources</source>
         <translation>开始更新本地源</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="273"/>
+        <location filename="../upgradedialog.cpp" line="324"/>
         <source>Start to download</source>
         <translation>开始下载</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="320"/>
+        <location filename="../upgradedialog.cpp" line="373"/>
         <source>Updating local sources...</source>
         <translation>正在更新本地源...</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="345"/>
+        <location filename="../upgradedialog.cpp" line="387"/>
+        <source>Youker Assistant is the latest version</source>
+        <translation>优客助手已更新至最新版本</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="400"/>
         <source>Start to install</source>
         <translation>开始安装</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="284"/>
+        <location filename="../upgradedialog.cpp" line="335"/>
         <source>Download completely</source>
         <translation>下载完成</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="295"/>
+        <source>you can visit the&lt;a style=&apos;color: green;&apos; href = http://www.ubuntukylin.com/applications/showimg.php?lang=cn&amp;id=14&gt; UK official website &lt;/a&gt;to download the lastest deb package.</source>
+        <translation type="obsolete">您可以访问 &lt;a style=&apos;color: green;&apos; href = http://www.ubuntukylin.com/applications/showimg.php?lang=cn&amp;id=14&gt; UK 官网 &lt;/a&gt;下载最新的deb包.</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="346"/>
         <source>Local sources updated</source>
         <translation>源更新完毕</translation>
     </message>
@@ -3007,33 +3073,37 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">没有发现新版本</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="305"/>
+        <location filename="../upgradedialog.cpp" line="356"/>
         <source>Found a new version</source>
         <translation>发现新版本</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="307"/>
+        <location filename="../upgradedialog.cpp" line="144"/>
         <source>New version:</source>
         <translation>新版本号：</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="300"/>
-        <location filename="../upgradedialog.cpp" line="312"/>
+        <location filename="../upgradedialog.cpp" line="158"/>
+        <source>you can visit the&lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; UK official website&lt;/a&gt; to download the lastest deb package</source>
+        <translation>您可以访问 &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; UK 官网&lt;/a&gt; 下载最新的deb包</translation>
+    </message>
+    <message>
+        <location filename="../upgradedialog.cpp" line="351"/>
+        <location filename="../upgradedialog.cpp" line="365"/>
         <source>Not found</source>
         <translation>没有发现新版本</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="132"/>
         <source>you can visit the&lt;a style=&apos;color: green;&apos; href = https://launchpad.net/youker-assistant&gt; UK official website &lt;/a&gt;to download the lastest deb package.</source>
-        <translation>您可以访问 &lt;a style=&apos;color: green;&apos; href = https://launchpad.net/youker-assistant&gt; UK 官网&lt;/a&gt;去下载最新的deb包.</translation>
+        <translation type="obsolete">您可以访问 &lt;a style=&apos;color: green;&apos; href = https://launchpad.net/youker-assistant&gt; UK 官网 &lt;/a&gt;去下载最新的deb包.</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="353"/>
+        <location filename="../upgradedialog.cpp" line="408"/>
         <source>Upgrading the main program...</source>
         <translation>正在升级主程序...</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="402"/>
+        <location filename="../upgradedialog.cpp" line="459"/>
         <source>Start to upgrade the main program</source>
         <translation>开始升级主程序</translation>
     </message>

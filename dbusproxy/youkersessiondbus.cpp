@@ -118,7 +118,7 @@ bool SessionDispatcher::start_check_source_useable_qt()
         QStringList tmplist;
         check_thread->initValues(data, tmplist, sessioniface, "start_check_source_useable");
         check_thread->start();
-        qDebug() << "check_thread is ready to run......";
+//        qDebug() << "check_thread is ready to run......";
     }
 }
 

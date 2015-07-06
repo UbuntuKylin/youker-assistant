@@ -78,11 +78,12 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, SessionDispatcher *seroxy,
     //点击按钮后，显示子页面
     connect(cookies_btn, SIGNAL(clicked()), this, SLOT(onButtonClicked()));
 
+    ////Debug logs调试日志   command history  命令历史记录
     QStringList trace_list;
-    trace_list << tr("Clean up the Firefox Internet records") << tr("Clean up the Chromium Internet records") << tr("Clean up the recently opened documents records");
+    trace_list << tr("Clean up the Firefox Internet records") << tr("Clean up the Chromium Internet records") << tr("Clean up the recently opened documents records") << tr("Delete the command history") << tr("Delete the debug logs");
     status_list.clear();
-    status_list << "firefox" << "chromium" << "system";
-    trace_items = new CleanerItems(trace_list, status_list, skin, 200, tr("Trace Items"));
+    status_list << "firefox" << "chromium" << "system" << "bash" << "X11";
+    trace_items = new CleanerItems(trace_list, status_list, skin, 280, tr("Trace Items"));
 //    trace_btn = new KylinCheckBox(0, "://res/trace.png");
     trace_btn = new CleanGroup(0, "://res/cache");
 //    trace_btn->setFixedSize(260, 130);
@@ -164,17 +165,17 @@ void CleanerMainWidget::resetCurrentSkin(QString skin)
 {
     if(cache_items != NULL)
         cache_items->resetTitleSkin(skin);
-    if(cache_items != NULL)
+    if(trace_items != NULL)
         trace_items->resetTitleSkin(skin);
-    if(cache_items != NULL)
+    if(package_items != NULL)
         package_items->resetTitleSkin(skin);
-    if(cache_items != NULL)
+    if(cookies_items != NULL)
         cookies_items->resetTitleSkin(skin);
 }
 
 void CleanerMainWidget::receiveScanSignal()
 {
-    this->getAllSelectedItems();
+    this->getAllScanSelectedItems();
     if(argsMap.empty())
     {
         toolKits->alertMSG(parentWindow->geometry().topLeft().x(), parentWindow->geometry().topLeft().y(), tr("Scan args is empty!"));
@@ -187,7 +188,7 @@ void CleanerMainWidget::receiveScanSignal()
     }
 }
 
-void CleanerMainWidget::getAllSelectedItems()
+void CleanerMainWidget::getAllScanSelectedItems()
 {
     argsMap.clear();
     QStringList cacheTmp;

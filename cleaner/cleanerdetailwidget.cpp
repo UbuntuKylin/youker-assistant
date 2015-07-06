@@ -76,6 +76,9 @@ CleanerDetailWidget::CleanerDetailWidget(QWidget *parent, SessionDispatcher *ser
     trace_firefox_btn = NULL;
     trace_chromium_btn = NULL;
     trace_system_btn = NULL;
+    trace_bash_btn = NULL;
+    trace_x11_btn = NULL;
+    trace_x11_items = NULL;
 
     appendNum1 = 0;
     appendNum2 = 0;
@@ -117,6 +120,8 @@ void CleanerDetailWidget::CleanUIAndData()
     trace_firefox_count.clear();
     trace_chromium_count.clear();
     trace_system_count.clear();
+    trace_bash_size.clear();
+    trace_x11_list.clear();
 
     //clear ui
     while(grid_layout != NULL && grid_layout->count() > 0)
@@ -256,6 +261,31 @@ void CleanerDetailWidget::showReciveData(const QStringList &data)
                     scanResult = true;
                 trace_system_count = data.at(1).split(":").at(1);
             }
+        }
+    }
+    else if(data.at(0) == "Belong:History.bash" && !data.at(1).isEmpty() && !data.at(2).isEmpty())
+    {
+        if(data.at(1).contains(":"))
+        {
+            if (scanResult == false)
+                scanResult = true;
+            trace_bash_size= data.at(1).split(":").at(1);
+        }
+//        qDebug() << "bash------------";
+//        qDebug() << data.at(1);//"Size:55.67 KB"
+//        qDebug() << data.at(2);/"Path:/home/kobe/.bash_history"
+    }
+    else if(data.at(0) == "Belong:History.X11")// && !data.at(1).isEmpty() && !data.at(2).isEmpty()
+    {
+//        qDebug() << "x11------------";
+//        qDebug() << data.at(1);//Path:/home/kobe/.xsession-errors
+//        qDebug() << data.at(2);//Type:file
+//        qDebug() << data.at(3);//Size:0.98 KB
+        if(data.at(1).contains(":"))
+        {
+            if (scanResult == false)
+                scanResult = true;
+            trace_x11_list.append(data.at(1).split(":").at(1));
         }
     }
 }
@@ -707,6 +737,59 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
                 columnIndex += 1;
             }
         }
+        //kobe
+        if(trace_bash_size.length() > 0)
+        {
+            trace_bash_btn = new CleanSubGroup(0, "://res/item");
+            trace_bash_btn->hideCustomButton();
+            trace_bash_btn->setStatusTip("history-bash");
+//            trace_bash_btn->setLabelText(tr("Command history size:"), trace_system_count.toInt());
+            trace_bash_btn->setLabelText(tr("Command history size:"), 24);
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
+            if(columnIndex < 5)
+            {
+                grid_layout->addWidget(trace_bash_btn, rowIndex, columnIndex);
+                columnIndex += 1;
+            }
+            else {
+                rowIndex += 1;
+                columnIndex = 0;
+                grid_layout->addWidget(trace_bash_btn, rowIndex, columnIndex);
+                columnIndex += 1;
+            }
+        }
+
+        if(trace_x11_list.length() > 0)
+        {
+            trace_x11_items = new CleanListWidget(trace_x11_list, this->cur_skin, tr("Debug log Items"));
+            trace_x11_btn = new CleanSubGroup(0, "://res/item");
+            trace_x11_btn->setStatusTip("x11-history");
+            trace_x11_btn->setLabelText(tr("Debug log:"), trace_x11_list.length());
+            //子checkbox的状态被改变时，重新设置总按钮的状态
+            connect(trace_x11_items, SIGNAL(notifyMainCheckBox(int)), trace_x11_btn, SLOT(resetMainStatus(int)));
+            //点击自定义按钮后，根据总按钮的状态去改变子checkbox的状态
+            connect(trace_x11_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
+            //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
+            connect(trace_x11_btn, SIGNAL(spreadStatus(int)), trace_x11_items, SLOT(resetSubCheckbox(int)));
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
+            if(columnIndex < 5)
+            {
+                grid_layout->addWidget(trace_x11_btn, rowIndex, columnIndex);
+                columnIndex += 1;
+            }
+            else {
+                rowIndex += 1;
+                columnIndex = 0;
+                grid_layout->addWidget(trace_x11_btn, rowIndex, columnIndex);
+                columnIndex += 1;
+            }
+        }
     }
     else if(status == "Complete:Packages")
     {
@@ -938,6 +1021,9 @@ void CleanerDetailWidget::showCustomPage()
         if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
             package_configfile_items->hide();
         }
+        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
+            trace_x11_items->hide();
+        }
     }
     else if(object_name == "cache-software")
     {
@@ -978,6 +1064,9 @@ void CleanerDetailWidget::showCustomPage()
         if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
             package_configfile_items->hide();
         }
+        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
+            trace_x11_items->hide();
+        }
     }
     else if(object_name == "cache-thumbnails")
     {
@@ -1017,6 +1106,9 @@ void CleanerDetailWidget::showCustomPage()
         }
         if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
             package_configfile_items->hide();
+        }
+        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
+            trace_x11_items->hide();
         }
     }
 
@@ -1061,6 +1153,9 @@ void CleanerDetailWidget::showCustomPage()
         if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
             package_configfile_items->hide();
         }
+        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
+            trace_x11_items->hide();
+        }
     }
 
     else if(object_name == "cache-chromium")
@@ -1102,6 +1197,9 @@ void CleanerDetailWidget::showCustomPage()
         if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
             package_configfile_items->hide();
         }
+        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
+            trace_x11_items->hide();
+        }
     }
     else if(object_name == "cookes-firefox")
     {
@@ -1142,6 +1240,9 @@ void CleanerDetailWidget::showCustomPage()
         if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
             package_configfile_items->hide();
         }
+        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
+            trace_x11_items->hide();
+        }
     }
     else if(object_name == "cookes-chromium")
     {
@@ -1181,6 +1282,9 @@ void CleanerDetailWidget::showCustomPage()
         }
         if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
             package_configfile_items->hide();
+        }
+        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
+            trace_x11_items->hide();
         }
     }
 
@@ -1224,6 +1328,9 @@ void CleanerDetailWidget::showCustomPage()
         if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
             package_configfile_items->hide();
         }
+        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
+            trace_x11_items->hide();
+        }
     }
     else if(object_name == "package-oldkernel")
     {
@@ -1263,6 +1370,9 @@ void CleanerDetailWidget::showCustomPage()
         }
         if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
             package_configfile_items->hide();
+        }
+        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
+            trace_x11_items->hide();
         }
     }
     else if(object_name == "package-configfile")
@@ -1304,6 +1414,9 @@ void CleanerDetailWidget::showCustomPage()
         if(package_oldkernel_items != NULL && !package_oldkernel_items->isHidden()) {
             package_oldkernel_items->hide();
         }
+        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
+            trace_x11_items->hide();
+        }
     }
     else if(object_name == "history-firefox" || object_name == "history-chromium") {
         if(cache_apt_items != NULL && !cache_apt_items->isHidden()) {
@@ -1335,6 +1448,54 @@ void CleanerDetailWidget::showCustomPage()
         }
         if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
             package_configfile_items->hide();
+        }
+        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
+            trace_x11_items->hide();
+        }
+    }
+
+    //kobe
+    else if(object_name == "x11-history")
+    {
+        if(trace_x11_items->isHidden()) {
+            int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
+            int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
+            trace_x11_items->move(w_x, w_y);
+            trace_x11_items->show();
+        }
+        else
+        {
+            trace_x11_items->hide();
+        }
+        if(cache_apt_items != NULL && !cache_apt_items->isHidden()) {
+            cache_apt_items->hide();
+        }
+        if(cache_software_items != NULL && !cache_software_items->isHidden()) {
+            cache_software_items->hide();
+        }
+        if(cache_thumbnails_items != NULL && !cache_thumbnails_items->isHidden()) {
+            cache_thumbnails_items->hide();
+        }
+        if(cache_firefox_items != NULL && !cache_firefox_items->isHidden()) {
+            cache_firefox_items->hide();
+        }
+        if(cache_chromium_items != NULL && !cache_chromium_items->isHidden()) {
+            cache_chromium_items->hide();
+        }
+        if(cookies_firefox_items != NULL && !cookies_firefox_items->isHidden()) {
+            cookies_firefox_items->hide();
+        }
+        if(cookies_chromium_items != NULL && !cookies_chromium_items->isHidden()) {
+            cookies_chromium_items->hide();
+        }
+        if(package_oldkernel_items != NULL && !package_oldkernel_items->isHidden()) {
+            package_oldkernel_items->hide();
+        }
+        if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
+            package_configfile_items->hide();
+        }
+        if(package_unneed_items != NULL && !package_unneed_items->isHidden()) {
+            package_unneed_items->hide();
         }
     }
 }
@@ -1371,6 +1532,9 @@ void CleanerDetailWidget::resetCurrentSkin(QString skin)
         package_oldkernel_items->resetTitleSkin(skin);
     if(package_configfile_items != NULL)
         package_configfile_items->resetTitleSkin(skin);
+    //kobe
+    if(trace_x11_items != NULL)
+        trace_x11_items->resetTitleSkin(skin);
 }
 
 void CleanerDetailWidget::receiveCleanSignal()
@@ -1382,7 +1546,7 @@ void CleanerDetailWidget::receiveCleanSignal()
     }
     else
     {
-//        qDebug() << "args is.........." << argsData;
+        qDebug() << "args is.........." << argsData;
         systemproxy->set_user_homedir_qt();
         systemproxy->cleanAllSelectItems(argsData);
     }
@@ -1405,6 +1569,7 @@ void CleanerDetailWidget::getAllSelectedItems()
     QStringList packageTmp;
     QStringList firefoxcookieTmp;
     QStringList chromiumcookieTmp;
+    QStringList traceTmp;
 
     if(cache_apt_btn != NULL && cache_apt_btn->getCheckBoxStatus() != 0)
     {
@@ -1498,6 +1663,19 @@ void CleanerDetailWidget::getAllSelectedItems()
     {
        argsData.insert("system-history", QStringList() << trace_system_count);
     }
+    //kobe
+    if(trace_bash_btn != NULL && trace_bash_btn->getCheckBoxStatus() != 0)
+    {
+       argsData.insert("bash-history", QStringList() << trace_bash_size);
+    }
+    if(trace_x11_btn != NULL && trace_x11_btn->getCheckBoxStatus() != 0)
+    {
+        QStringList tmp = trace_x11_items->getSelectedItems();
+        for(int i = 0; i<tmp.length();i++)
+        {
+            traceTmp.append(tmp.at(i));
+        }
+    }
 
     if(fileTmp.length() > 0)
         argsData.insert("file", fileTmp);
@@ -1507,4 +1685,7 @@ void CleanerDetailWidget::getAllSelectedItems()
         argsData.insert("firefox-cookie", firefoxcookieTmp);
     if(chromiumcookieTmp.length() > 0)
         argsData.insert("chromium-cookie", chromiumcookieTmp);
+    //kobe
+    if(traceTmp.length() > 0)
+        argsData.insert("x11-history", traceTmp);
 }

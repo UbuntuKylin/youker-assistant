@@ -35,6 +35,7 @@ public:
     void exit_qt();
 
     void cleanAllSelectItems(QMap<QString, QVariant> selectMap);
+    bool kill_uk_process_qt();
     //杀掉root用户的进程
 //    void kill_root_process_qt(QString pid);
     //得到SystemDbus的验证值，可以通过其判断该服务是否正在运行

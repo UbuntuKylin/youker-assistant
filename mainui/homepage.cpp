@@ -46,7 +46,8 @@ HomePage::HomePage(QWidget *parent, const QString &version) :
     version_logo = new QLabel();
     version_title = new QLabel();
     version_tip = new QLabel();
-//    check_btn = new QPushButton();
+    check_btn = new QPushButton();
+    check_btn->hide();
 //    version_label = new QLabel();
     box_logo = new QLabel();
     box_title = new QLabel();
@@ -66,9 +67,9 @@ HomePage::HomePage(QWidget *parent, const QString &version) :
 //    font.setUnderline(true);
 //    more_text_btn->setFont(font);
 
-//    check_btn->setObjectName("checkButton");
-//    check_btn->setCursor(Qt::PointingHandCursor);
-//    check_btn->setFocusPolicy(Qt::NoFocus);
+    check_btn->setObjectName("checkButton");
+    check_btn->setCursor(Qt::PointingHandCursor);
+    check_btn->setFocusPolicy(Qt::NoFocus);
 //    version_label->setObjectName("smallgrayLabel");
     version_title->setObjectName("bigblackLabel");
     box_title->setObjectName("bigblackLabel");
@@ -111,7 +112,7 @@ void HomePage::initUI()
 {
     QHBoxLayout *layout1 = new QHBoxLayout();
     layout1->addWidget(version_title);
-//    layout1->addWidget(check_btn);
+    layout1->addWidget(check_btn);
 //    layout1->addWidget(version_label);
     layout1->addStretch();
     layout1->setMargin(0);
@@ -215,6 +216,7 @@ void HomePage::initConnect()
 //    connect(more_text_btn, SIGNAL(clicked()), p_mainwindow, SLOT(showBoxWidget()));
 //    connect(more_text_btn, SIGNAL(clicked()), p_mainwindow, SIGNAL(chanegBoxToolStatus()));
 //    connect(check_btn, SIGNAL(clicked()), this, SLOT(checkLastestVersion()));
+    connect(check_btn, SIGNAL(clicked()), this, SLOT(onCheckBtnClicked()));
     connect(this, SIGNAL(sendSignal()), p_mainwindow, SIGNAL(chanegBoxToolStatus()));
 }
 
@@ -222,7 +224,7 @@ void HomePage::setLanguage()
 {
     version_title->setText(tr("Current Version Number") + "    " + current_version);
     version_tip->setText(tr("Update to the lastest version, make it work better"));
-//    check_btn->setText(tr("Check new version"));
+    check_btn->setText(tr("updating on the backend"));
     box_title->setText(tr("Common toolbox"));
     box_tip->setText(tr("Fast and practical, making the system more personalized"));
 //    more_text_btn->setText(tr("More"));
@@ -232,6 +234,26 @@ void HomePage::setLanguage()
 void HomePage::initBoxTool()
 {
 
+}
+
+void HomePage::onCheckBtnClicked()
+{
+    emit this->sendOpenUpgrade();
+    check_btn->hide();
+}
+
+void HomePage::displayBackedBtn(bool flag)
+{
+    if(flag)
+        check_btn->setText(tr("Upgrade is complete"));
+    else
+        check_btn->setText(tr("Updating on the backend"));
+    check_btn->show();
+}
+
+void HomePage::hideBackedBtn()
+{
+    check_btn->hide();
 }
 
 //void HomePage::checkLastestVersion()

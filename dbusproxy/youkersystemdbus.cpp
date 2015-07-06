@@ -89,9 +89,14 @@ bool SystemDispatcher::update_myself()
 {
     QStringList tmp;
     QMap<QString, QVariant> data;
+    QEventLoop q;
     KThread *apt_thread = new KThread(0);
     apt_thread->initValues(data, tmp, systemiface, "install");
     apt_thread->start();
+    q.exec();
+    if(apt_thread->isFinished()){
+       q.quit();
+    }
     return true;
 //    QDBusReply<bool> reply = systemiface->call("install", "youker-assistant");
 //    return reply.value();
@@ -153,6 +158,11 @@ void SystemDispatcher::cleanAllSelectItems(QMap<QString, QVariant> selectMap)
 //void SystemDispatcher::kill_root_process_qt(QString pid) {
 //    systemiface->call("kill_root_process", pid);
 //}
+
+bool SystemDispatcher::kill_uk_process_qt() {
+    QDBusReply<bool> reply = systemiface->call("kill_uk_process");
+    return reply.value();
+}
 
 bool SystemDispatcher::set_cursor_theme_with_root_qt(QString theme) {
     QDBusReply<bool> reply = systemiface->call("set_cursor_theme_with_root", theme);

@@ -27,8 +27,8 @@
 #include "../dbusproxy/youkersystemdbus.h"
 #include "../dbusproxy/youkersessiondbus.h"
 
-class QMovie;
-class QTimer;
+//class QMovie;
+//class QTimer;
 class LoadingLabel;
 
 class UpgradeDialog : public QDialog
@@ -56,9 +56,12 @@ public slots:
     void checkLastestVersion();
     void receiveCheckResultSignal(bool result);
     void onRetryBtnClicked();
-    void slotDisappearTip();
+//    void slotDisappearTip();
     void openUrl(QString url);
-    void onOkBtnClicked();
+
+signals:
+    void close_signal();
+    void showBackendBtnSignal(bool flag);
 
 protected:
     void mousePressEvent(QMouseEvent *event);
@@ -83,17 +86,23 @@ private:
     QLabel *tip_label;
     QLabel *splitlabel;
     QLabel *version_label;
+    QWidget *new_widget;
+    QLabel *hook_label;
+    QLabel *official_label;
+    QLabel *vline;
     QLabel *new_label;
+    QLabel *new_num_label;
     QPushButton *retryBtn;
     QPushButton *upgradeBtn;
     QPushButton *okBtn;
     SystemDispatcher *systemProxy;
     SessionDispatcher *sessionProxy;
     bool isBusy;
-    QMovie *movie;
-    QLabel *movie_label;
-    QTimer *timer;
-    QLabel *msg_label;
+//    QMovie *movie;
+//    QLabel *movie_label;
+//    QTimer *timer;
+//    QLabel *msg_label;
+    QString cur_version;
 };
 
 #endif // UPGRADEDIALOG_H
