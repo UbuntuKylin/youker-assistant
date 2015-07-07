@@ -118,6 +118,7 @@ private:
     QString trace_chromium_count;
     QString trace_system_count;
     QString trace_bash_size;
+    QString trace_bash_path;
     QStringList trace_x11_list;
 
     bool colorFlag;
