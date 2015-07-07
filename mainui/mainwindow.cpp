@@ -152,37 +152,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-//    if (top_grid_layout != NULL)
-//    {
-//        delete top_grid_layout;
-//        top_grid_layout = NULL;
-//    }
-//    if (bottom_grid_layout != NULL)
-//    {
-//        delete bottom_grid_layout;
-//        bottom_grid_layout = NULL;
-//    }
-
-
-
-//    if(default_action_widget != NULL) {
-//        delete default_action_widget;
-//        default_action_widget = NULL;
-//    }
-//    if(other_action_widget != NULL) {
-//        delete other_action_widget;
-//        other_action_widget = NULL;
-//    }
-//    if(default_content_widget != NULL) {
-//        delete default_content_widget;
-//        default_content_widget = NULL;
-//    }
-//    if(other_content_widget != NULL) {
-//        delete other_content_widget;
-//        other_content_widget = NULL;
-//    }
-
-
     if (home_page != NULL)
     {
         delete home_page;
@@ -208,35 +177,10 @@ MainWindow::~MainWindow()
         delete box_widget;
         box_widget = NULL;
     }
-//    if (main_menu != NULL)
-//    {
-//        delete main_menu;
-//        main_menu = NULL;
-//    }
-//    if (home_action_widget != NULL)
-//    {
-//        delete home_action_widget;
-//        home_action_widget = NULL;
-//    }
-    if (info_action_widget != NULL)
-    {
-        delete info_action_widget;
-        info_action_widget = NULL;
-    }
-    if (cleaner_action_widget != NULL)
-    {
-        delete cleaner_action_widget;
-        cleaner_action_widget = NULL;
-    }
     if (setting_action_widget != NULL)
     {
         delete setting_action_widget;
         setting_action_widget = NULL;
-    }
-    if (box_action_widget != NULL)
-    {
-        delete box_action_widget;
-        box_action_widget = NULL;
     }
     if (sessioninterface != NULL)
     {
@@ -280,16 +224,6 @@ MainWindow::~MainWindow()
         delete skin_center;
         skin_center = NULL;
     }
-//    if(spreadGroup != NULL)
-//    {
-//        delete spreadGroup;
-//        spreadGroup = NULL;
-//    }
-//    if(gatherGroup != NULL)
-//    {
-//        delete gatherGroup;
-//        gatherGroup = NULL;
-//    }
     if(upgrade_dialog != NULL)
     {
         delete upgrade_dialog;
@@ -578,16 +512,16 @@ void MainWindow::startDbusDaemon()
 void MainWindow::initOtherPages()
 {
     if(cleaner_action_widget == NULL)
-        cleaner_action_widget = new CleanerActionWidget();
+        cleaner_action_widget = new CleanerActionWidget(this);
     topStack->addWidget(cleaner_action_widget);
     if(info_action_widget == NULL)
-        info_action_widget = new InfoActionWidget();
+        info_action_widget = new InfoActionWidget(this);
     topStack->addWidget(info_action_widget);
     if(setting_action_widget == NULL)
         setting_action_widget = new SettingActionWidget();
     topStack->addWidget(setting_action_widget);
     if(box_action_widget == NULL)
-        box_action_widget = new BoxActionWidget();
+        box_action_widget = new BoxActionWidget(this);
     topStack->addWidget(box_action_widget);
 
     if(cleaner_widget == NULL)
@@ -601,6 +535,17 @@ void MainWindow::initOtherPages()
     connect(cleaner_action_widget, SIGNAL(showMainData()),cleaner_widget, SLOT(displayMainPage()));
     connect(cleaner_action_widget, SIGNAL(sendCleanSignal()),cleaner_widget, SIGNAL(transCleanSignal()));
     connect(systeminterface, SIGNAL(sendCleanOverSignal()), cleaner_widget, SLOT(displayMainPage()));
+    connect(systeminterface, SIGNAL(sendCleanOverSignal()), cleaner_action_widget, SLOT(displayOrgPage()));
+    //kobe
+    connect(systeminterface, SIGNAL(policykitCleanSignal(bool)), cleaner_action_widget, SLOT(receivePolicyKitSignal(bool)));
+    connect(systeminterface, SIGNAL(sendCleanOverSignal()), cleaner_action_widget, SLOT(showCleanOverStatus()));
+    connect(systeminterface, SIGNAL(tellCleanerMainData(QStringList)), cleaner_action_widget, SLOT(showCleanerData(QStringList)));
+    connect(systeminterface, SIGNAL(tellCleanerMainStatus(QString, QString)), cleaner_action_widget, SLOT(showCleanerStatus(QString, QString)));
+    connect(systeminterface, SIGNAL(sendCleanErrorSignal(QString)), cleaner_action_widget, SLOT(showCleanerError(QString)));
+    connect(sessioninterface, SIGNAL(tellCleanerDetailStatus(QString)), cleaner_action_widget, SLOT(showCleanReciveStatus(QString)));
+    connect(sessioninterface, SIGNAL(tellCleanerDetailError(QString)), cleaner_action_widget, SLOT(showCleanReciveError(QString)));
+
+
     connect(cleaner_action_widget, SIGNAL(sendScanSignal()),cleaner_widget, SIGNAL(transScanSignal()));
     connect(cleaner_widget, SIGNAL(tranActionAnimaitonSignal()),cleaner_action_widget, SLOT(displayAnimation()));
     connect(cleaner_widget, SIGNAL(tranScanOverSignal(bool)),cleaner_action_widget, SLOT(accordScanOverStatusToChange(bool)));

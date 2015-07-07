@@ -58,11 +58,11 @@ LoadingLabel::LoadingLabel(QWidget *parent, QString flag) :
 
 LoadingLabel::~LoadingLabel()
 {
-    disconnect(timer,SIGNAL(timeout()),this,SLOT(changeAnimationStep()));
-    if(timer->isActive()) {
-        timer->stop();
-    }
     if (timer != NULL) {
+        disconnect(timer,SIGNAL(timeout()),this,SLOT(changeAnimationStep()));
+        if(timer->isActive()) {
+            timer->stop();
+        }
         delete timer;
         timer = NULL;
     }

@@ -231,16 +231,118 @@ PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_
 
 PanelWidget::~PanelWidget()
 {
-//    if(label != NULL)
-//    {
-//        delete label;
-//        label = NULL;
-//    }
-//    if(back_btn != NULL)
-//    {
-//        delete back_btn;
-//        back_btn = NULL;
-//    }
+    if (blur_label != NULL) {
+        delete blur_label;
+        blur_label = NULL;
+    }
+    if (transparency_label != NULL) {
+        delete transparency_label;
+        transparency_label = NULL;
+    }
+    if (date_format_label != NULL) {
+        delete date_format_label;
+        date_format_label = NULL;
+    }
+    if (second_label != NULL) {
+        delete second_label;
+        second_label = NULL;
+    }
+    if (week_label != NULL) {
+        delete week_label;
+        week_label = NULL;
+    }
+    if (date_label != NULL) {
+        delete date_label;
+        date_label = NULL;
+    }
+    if (battery_icon_label != NULL) {
+        delete battery_icon_label;
+        battery_icon_label = NULL;
+    }
+    if (battery_percentage_label != NULL) {
+        delete battery_percentage_label;
+        battery_percentage_label = NULL;
+    }
+    if (battery_time_label != NULL) {
+        delete battery_time_label;
+        battery_time_label = NULL;
+    }
+    if (show_app_label != NULL) {
+        delete show_app_label;
+        show_app_label = NULL;
+    }
+    if (show_desktop_label != NULL) {
+        delete show_desktop_label;
+        show_desktop_label = NULL;
+    }
+    if (show_icon_label != NULL) {
+        delete show_icon_label;
+        show_icon_label = NULL;
+    }
+    if (show_places_label != NULL) {
+        delete show_places_label;
+        show_places_label = NULL;
+    }
+    if (smart_radio != NULL) {
+        delete smart_radio;
+        smart_radio = NULL;
+    }
+    if (static_radio != NULL) {
+        delete static_radio;
+        static_radio = NULL;
+    }
+    if (clear_radio != NULL) {
+        delete clear_radio;
+        clear_radio = NULL;
+    }
+    if (transparency_slider != NULL) {
+        delete transparency_slider;
+        transparency_slider = NULL;
+    }
+    if (date_combo != NULL) {
+        delete date_combo;
+        date_combo = NULL;
+    }
+    if (second_switcher != NULL) {
+        delete second_switcher;
+        second_switcher = NULL;
+    }
+    if (week_switcher != NULL) {
+        delete week_switcher;
+        week_switcher = NULL;
+    }
+    if (date_switcher != NULL) {
+        delete date_switcher;
+        date_switcher = NULL;
+    }
+    if (battery_combo != NULL) {
+        delete battery_combo;
+        battery_combo = NULL;
+    }
+    if (battery_percentage_switcher != NULL) {
+        delete battery_percentage_switcher;
+        battery_percentage_switcher = NULL;
+    }
+    if (battery_time_switcher != NULL) {
+        delete battery_time_switcher;
+        battery_time_switcher = NULL;
+    }
+    if (app_switcher != NULL) {
+        delete app_switcher;
+        app_switcher = NULL;
+    }
+    if (desktop_switcher != NULL) {
+        delete desktop_switcher;
+        desktop_switcher = NULL;
+    }
+    if (icon_switcher != NULL) {
+        delete icon_switcher;
+        icon_switcher = NULL;
+    }
+    if (places_switcher != NULL) {
+        delete places_switcher;
+        places_switcher = NULL;
+    }
 }
 
 void PanelWidget::setLanguage() {

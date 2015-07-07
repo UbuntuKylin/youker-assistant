@@ -24,23 +24,17 @@
 //CleanerItems::CleanerItems(QStringList &arglist, QStringList &statuslist, int height, const QString title_text, QWidget *parent)
 //    : QWidget(parent),titleName(title_text)/*, widgetHeight(height)*/
 
-CleanerItems::CleanerItems(QStringList &arglist, QStringList &statuslist, QString skin, int height, const QString title_text, QDialog *parent)
-    :QDialog(parent),titleName(title_text)
+CleanerItems::CleanerItems(QStringList &arglist, QStringList &statuslist, QString skin, int height, const QString title_text, QWidget *parent)
+    :QWidget(parent),titleName(title_text)
 {
     setWindowFlags(Qt::FramelessWindowHint);
-    this->setStyleSheet("QDialog{border: 1px solid gray;border-radius:2px}");//设定边框宽度以及颜色
-    this->setWindowIcon(QIcon(":/res/youker-assistant.png"));
-
-    this->setFixedSize(410, height);
+    this->setFixedSize(900, 403);
 //    this->setObjectName("transparentWidget");
 //    this->setWindowFlags(Qt::FramelessWindowHint);
     this->setAutoFillBackground(true);
     QPalette palette;
     palette.setBrush(QPalette::Window, QBrush(Qt::white));
     this->setPalette(palette);
-
-    title_bar = new KylinTitleBar();
-    initTitleBar(skin);
 
     QVBoxLayout *button_layout = new QVBoxLayout;
     int count = arglist.count();
@@ -89,7 +83,7 @@ CleanerItems::CleanerItems(QStringList &arglist, QStringList &statuslist, QStrin
     group_layout->setContentsMargins(10, 10, 10, 0);
 
     QVBoxLayout *main_layout  = new QVBoxLayout();
-    main_layout->addWidget(title_bar);
+//    main_layout->addWidget(title_bar);
     main_layout->addLayout(group_layout);
 //    main_layout->addWidget(group_box);
     main_layout->addStretch();
@@ -105,43 +99,33 @@ CleanerItems::CleanerItems(QStringList &arglist, QStringList &statuslist, QStrin
 
 CleanerItems::~CleanerItems()
 {
-    if(title_bar != NULL) {
-        delete title_bar;
-        title_bar = NULL;
-    }
-    if(okBtn != NULL) {
-        delete okBtn;
-        okBtn = NULL;
-    }
-    if(group_box != NULL) {
-        delete group_box;
-        group_box = NULL;
-    }
+
 }
 
 void CleanerItems::initConnect()
 {
-    connect(title_bar,SIGNAL(closeDialog()), this, SLOT(onCloseButtonClicked()));
+//    connect(title_bar,SIGNAL(closeDialog()), this, SLOT(onCloseButtonClicked()));
     connect(okBtn,SIGNAL(clicked()), this, SLOT(onCloseButtonClicked()));
 }
 
 void CleanerItems::onCloseButtonClicked()
 {
+    emit this->sendoksignal();
     this->close();
 }
 
-void CleanerItems::initTitleBar(QString skin)
-{
-    title_bar->setTitleWidth(410);
-    title_bar->setTitleName(titleName);
-//    title_bar->setTitleBackgound(":/background/res/skin/1.png");
-    title_bar->setTitleBackgound(skin);
-}
+//void CleanerItems::initTitleBar(QString skin)
+//{
+//    title_bar->setTitleWidth(410);
+//    title_bar->setTitleName(titleName);
+////    title_bar->setTitleBackgound(":/background/res/skin/1.png");
+//    title_bar->setTitleBackgound(skin);
+//}
 
-void CleanerItems::resetTitleSkin(QString skin)
-{
-    title_bar->resetBackground(skin);
-}
+//void CleanerItems::resetTitleSkin(QString skin)
+//{
+//    title_bar->resetBackground(skin);
+//}
 
 int CleanerItems::getItemCount()
 {

@@ -123,16 +123,58 @@ WindowWidget::WindowWidget(QWidget *parent, SessionDispatcher *proxy, QString cu
 
 WindowWidget::~WindowWidget()
 {
-//    if(label != NULL)
-//    {
-//        delete label;
-//        label = NULL;
-//    }
-//    if(back_btn != NULL)
-//    {
-//        delete back_btn;
-//        back_btn = NULL;
-//    }
+    if (icon_label != NULL) {
+        delete icon_label;
+        icon_label = NULL;
+    }
+    if (wheel_label != NULL) {
+        delete wheel_label;
+        wheel_label = NULL;
+    }
+    if (double_click_label != NULL) {
+        delete double_click_label;
+        double_click_label = NULL;
+    }
+    if (middle_click_label != NULL) {
+        delete middle_click_label;
+        middle_click_label = NULL;
+    }
+    if (right_click_label != NULL) {
+        delete right_click_label;
+        right_click_label = NULL;
+    }
+    if (icon_switcher != NULL) {
+        delete icon_switcher;
+        icon_switcher = NULL;
+    }
+    if (wheel_combo != NULL) {
+        delete wheel_combo;
+        wheel_combo = NULL;
+    }
+    if (double_click_combo != NULL) {
+        delete double_click_combo;
+        double_click_combo = NULL;
+    }
+    if (middle_click_combo != NULL) {
+        delete middle_click_combo;
+        middle_click_combo = NULL;
+    }
+    if (right_click_combo != NULL) {
+        delete right_click_combo;
+        right_click_combo = NULL;
+    }
+    if (position_label != NULL) {
+        delete position_label;
+        position_label = NULL;
+    }
+    if (left_radio != NULL) {
+        delete left_radio;
+        left_radio = NULL;
+    }
+    if (right_radio != NULL) {
+        delete right_radio;
+        right_radio = NULL;
+    }
 }
 
 void WindowWidget::setLanguage() {

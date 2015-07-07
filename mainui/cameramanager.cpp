@@ -92,6 +92,30 @@ CameraManager::CameraManager(QWidget *parent, SessionDispatcher *proxy, QString 
 
 CameraManager::~CameraManager()
 {
+    if(title_bar != NULL) {
+        delete title_bar;
+        title_bar = NULL;
+    }
+    if(msg_label != NULL) {
+        delete msg_label;
+        msg_label = NULL;
+    }
+    if(tip_label != NULL) {
+        delete tip_label;
+        tip_label = NULL;
+    }
+    if(description_label != NULL) {
+        delete description_label;
+        description_label = NULL;
+    }
+    if(okBtn != NULL) {
+        delete okBtn;
+        okBtn = NULL;
+    }
+    if(viewBtn != NULL) {
+        delete viewBtn;
+        viewBtn = NULL;
+    }
 }
 
 void CameraManager::setLanguage()

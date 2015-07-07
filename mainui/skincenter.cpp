@@ -137,14 +137,6 @@ SkinCenter::SkinCenter(QWidget *parent, QString skin/*, Qt::WindowFlags f*/)
 
 SkinCenter::~SkinCenter()
 {
-//    if(title_bar != NULL) {
-//        delete title_bar;
-//        title_bar = NULL;
-//    }
-    if(skin_widget != NULL) {
-        delete skin_widget;
-        skin_widget = NULL;
-    }
     if(aboutGroup != NULL)
     {
         delete aboutGroup;

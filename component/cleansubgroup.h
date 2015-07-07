@@ -30,6 +30,7 @@ class CleanSubGroup : public QWidget
     Q_OBJECT
 public:
     explicit CleanSubGroup(QWidget *parent = 0, const QString &picture= "");
+    ~CleanSubGroup();
     void setLabelText(const QString &title, int count);
     void setLabelStringText(const QString &title, QString size);
     int getCheckBoxStatus();

@@ -99,6 +99,14 @@ CleanListWidget::CleanListWidget(QStringList &arglist, QString skin, const QStri
 
 CleanListWidget::~CleanListWidget()
 {
+    if(tip_label != NULL) {
+        delete tip_label;
+        tip_label = NULL;
+    }
+    if(num_label != NULL) {
+        delete num_label;
+        num_label = NULL;
+    }
     delete ui;
 }
 

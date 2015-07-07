@@ -51,7 +51,7 @@ private:
     QPoint  press_point;
     QPoint  move_point;
     bool left_btn_pressed;
-    QLabel *logo_label;
+//    QLabel *logo_label;
     QLabel *title_label;
     int title_width;
     QString title_content;

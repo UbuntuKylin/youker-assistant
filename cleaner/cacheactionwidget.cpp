@@ -64,7 +64,18 @@ CacheActionWidget::CacheActionWidget(QWidget *parent)
 
 CacheActionWidget::~CacheActionWidget()
 {
-
+    if(img_label != NULL) {
+        delete img_label;
+        img_label = NULL;
+    }
+    if(title_label != NULL) {
+        delete title_label;
+        title_label = NULL;
+    }
+    if(description_label != NULL) {
+        delete description_label;
+        description_label = NULL;
+    }
 }
 
 void CacheActionWidget::setLanguage()

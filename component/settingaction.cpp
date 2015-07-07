@@ -91,9 +91,19 @@ SettingAction::SettingAction(QString cur_desktop, QWidget *parent)
 
 SettingAction::~SettingAction()
 {
-
+    if(back_btn != NULL) {
+        delete back_btn;
+        back_btn = NULL;
+    }
+    if(img_label != NULL) {
+        delete img_label;
+        img_label = NULL;
+    }
+    if(title_label != NULL) {
+        delete title_label;
+        title_label = NULL;
+    }
 }
-
 
 void SettingAction::setLanguage(int index)
 {

@@ -199,16 +199,90 @@ LauncherWidget::LauncherWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
 
 LauncherWidget::~LauncherWidget()
 {
-//    if(label != NULL)
-//    {
-//        delete label;
-//        label = NULL;
-//    }
-//    if(back_btn != NULL)
-//    {
-//        delete back_btn;
-//        back_btn = NULL;
-//    }
+    if (size_label != NULL) {
+        delete size_label;
+        size_label = NULL;
+    }
+    if (size_value_label != NULL) {
+        delete size_value_label;
+        size_value_label = NULL;
+    }
+    if (hide_label != NULL) {
+        delete hide_label;
+        hide_label = NULL;
+    }
+    if (icon_label != NULL) {
+        delete icon_label;
+        icon_label = NULL;
+    }
+    if (transparency_label != NULL) {
+        delete transparency_label;
+        transparency_label = NULL;
+    }
+    if (background_label != NULL) {
+        delete background_label;
+        background_label = NULL;
+    }
+    if (size_top_label != NULL) {
+        delete size_top_label;
+        size_top_label = NULL;
+    }
+    if (hide_top_label != NULL) {
+        delete hide_top_label;
+        hide_top_label = NULL;
+    }
+    if (size_top_value_label != NULL) {
+        delete size_top_value_label;
+        size_top_value_label = NULL;
+    }
+    if (size_bottom_label != NULL) {
+        delete size_bottom_label;
+        size_bottom_label = NULL;
+    }
+    if (hide_bottom_label != NULL) {
+        delete hide_bottom_label;
+        hide_bottom_label = NULL;
+    }
+    if (size_bottom_value_label != NULL) {
+        delete size_bottom_value_label;
+        size_bottom_value_label = NULL;
+    }
+    if (size_slider != NULL) {
+        delete size_slider;
+        size_slider = NULL;
+    }
+    if (hide_switcher != NULL) {
+        delete hide_switcher;
+        hide_switcher = NULL;
+    }
+    if (icon_switcher != NULL) {
+        delete icon_switcher;
+        icon_switcher = NULL;
+    }
+    if (transparency_slider != NULL) {
+        delete transparency_slider;
+        transparency_slider = NULL;
+    }
+    if (backgound_combo != NULL) {
+        delete backgound_combo;
+        backgound_combo = NULL;
+    }
+    if (size_top_slider != NULL) {
+        delete size_top_slider;
+        size_top_slider = NULL;
+    }
+    if (size_bottom_slider != NULL) {
+        delete size_bottom_slider;
+        size_bottom_slider = NULL;
+    }
+    if (hide_top_switcher != NULL) {
+        delete hide_top_switcher;
+        hide_top_switcher = NULL;
+    }
+    if (hide_bottom_switcher != NULL) {
+        delete hide_bottom_switcher;
+        hide_bottom_switcher = NULL;
+    }
 }
 
 void LauncherWidget::setLanguage() {

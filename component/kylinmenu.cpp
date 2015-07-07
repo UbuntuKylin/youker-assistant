@@ -29,6 +29,69 @@ KylinMenu::KylinMenu(QWidget *widget)
     this->setLanguage();
 }
 
+KylinMenu::~KylinMenu()
+{
+    if(check_label != NULL)
+    {
+        delete check_label;
+        check_label = NULL;
+    }
+    if(help_label != NULL)
+    {
+        delete help_label;
+        help_label = NULL;
+    }
+    if(feedback_label != NULL)
+    {
+        delete feedback_label;
+        feedback_label = NULL;
+    }
+    if(about_label != NULL)
+    {
+        delete about_label;
+        about_label = NULL;
+    }
+    if(check_button != NULL)
+    {
+        delete check_button;
+        check_button = NULL;
+    }
+    if(help_button != NULL)
+    {
+        delete help_button;
+        help_button = NULL;
+    }
+    if(feedback_button != NULL)
+    {
+        delete feedback_button;
+        feedback_button = NULL;
+    }
+    if(about_button != NULL)
+    {
+        delete about_button;
+        about_button = NULL;
+    }
+    if(check_widget != NULL)
+    {
+        delete check_widget;
+        check_widget = NULL;
+    }
+    if(help_widget != NULL)
+    {
+        delete help_widget;
+        help_widget = NULL;
+    }
+    if(feedback_widget != NULL)
+    {
+        delete feedback_widget;
+        feedback_widget = NULL;
+    }
+    if(about_widget != NULL)
+    {
+        delete about_widget;
+        about_widget = NULL;
+    }
+}
 
 void KylinMenu::createActions()
 {

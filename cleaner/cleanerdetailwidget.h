@@ -121,22 +121,11 @@ private:
     QString trace_bash_path;
     QStringList trace_x11_list;
 
-    bool colorFlag;
-    QBoxLayout *main_layout;
-    QHBoxLayout *layout1;
-    QHBoxLayout *layout2;
-    QHBoxLayout *layout3;
-    int appendNum1;
-    int appendNum2;
-    int appendNum3;
-
     QGridLayout *grid_layout;
     int rowIndex;
     int columnIndex;
     bool scanResult;
     QString cur_skin;
-
-//    QLabel *resultLabel;
 };
 
 #endif // CLEANERDETAILWIDGET_H

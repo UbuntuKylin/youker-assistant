@@ -35,6 +35,7 @@ class KylinMenu : public QMenu
 
 public:
     explicit KylinMenu(QWidget *parent = 0);
+    ~KylinMenu();
     void setLanguage();
     void initConnect();
     void setParentWindow(MainWindow* window) { p_mainwindow = window;}

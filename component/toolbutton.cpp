@@ -46,6 +46,18 @@ ToolButton::ToolButton(QWidget *parent) :
     this->setLayout(layout);
 }
 
+ToolButton::~ToolButton()
+{
+    if(iconLabel != NULL) {
+        delete iconLabel;
+        iconLabel = NULL;
+    }
+    if(textLabel != NULL) {
+        delete textLabel;
+        textLabel = NULL;
+    }
+}
+
 void ToolButton::setIcon(const QString &icon)
 {
     QPixmap pixmap(icon);

@@ -116,10 +116,81 @@ SettingActionWidget::SettingActionWidget(QString cur_desktop, QWidget *parent)
 
 SettingActionWidget::~SettingActionWidget()
 {
-    if(stacked_widget != NULL)
+    if(img_label != NULL)
     {
-        delete stacked_widget;
-        stacked_widget = NULL;
+        delete img_label;
+        img_label = NULL;
+    }
+    if(title_label != NULL)
+    {
+        delete title_label;
+        title_label = NULL;
+    }
+    if(main_acion != NULL)
+    {
+        delete main_acion;
+        main_acion = NULL;
+    }
+    if(theme_action != NULL)
+    {
+        delete theme_action;
+        theme_action = NULL;
+    }
+    if(icon_action != NULL)
+    {
+        delete icon_action;
+        icon_action = NULL;
+    }
+    if(mouse_action != NULL)
+    {
+        delete mouse_action;
+        mouse_action = NULL;
+    }
+    if(voice_action != NULL)
+    {
+        delete voice_action;
+        voice_action = NULL;
+    }
+    if(launcher_action != NULL)
+    {
+        delete launcher_action;
+        launcher_action = NULL;
+    }
+    if(panel_action != NULL)
+    {
+        delete panel_action;
+        panel_action = NULL;
+    }
+    if(window_action != NULL)
+    {
+        delete window_action;
+        window_action = NULL;
+    }
+    if(font_action != NULL)
+    {
+        delete font_action;
+        font_action = NULL;
+    }
+    if(touchpad_action != NULL)
+    {
+        delete touchpad_action;
+        touchpad_action = NULL;
+    }
+    if(deadpixel_action != NULL)
+    {
+        delete deadpixel_action;
+        deadpixel_action = NULL;
+    }
+
+    if(conserve_aciton != NULL)
+    {
+        delete conserve_aciton;
+        conserve_aciton = NULL;
+    }
+    if(nautilus_action != NULL)
+    {
+        delete nautilus_action;
+        nautilus_action = NULL;
     }
 }
 

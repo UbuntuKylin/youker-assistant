@@ -127,16 +127,50 @@ TouchpadWidget::TouchpadWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
 
 TouchpadWidget::~TouchpadWidget()
 {
-//    if(label != NULL)
-//    {
-//        delete label;
-//        label = NULL;
-//    }
-//    if(back_btn != NULL)
-//    {
-//        delete back_btn;
-//        back_btn = NULL;
-//    }
+    if (touchpad_label != NULL) {
+        delete touchpad_label;
+        touchpad_label = NULL;
+    }
+    if (horizontal_scrolling_label != NULL) {
+        delete horizontal_scrolling_label;
+        horizontal_scrolling_label = NULL;
+    }
+    if (scrollbar_type_label != NULL) {
+        delete scrollbar_type_label;
+        scrollbar_type_label = NULL;
+    }
+    if (scrolling_mode_label != NULL) {
+        delete scrolling_mode_label;
+        scrolling_mode_label = NULL;
+    }
+    if (touchpad_switcher != NULL) {
+        delete touchpad_switcher;
+        touchpad_switcher = NULL;
+    }
+    if (horizontal_scrolling_switcher != NULL) {
+        delete horizontal_scrolling_switcher;
+        horizontal_scrolling_switcher = NULL;
+    }
+    if (features_radio != NULL) {
+        delete features_radio;
+        features_radio = NULL;
+    }
+    if (standard_radio != NULL) {
+        delete standard_radio;
+        standard_radio = NULL;
+    }
+    if (disable_radio != NULL) {
+        delete disable_radio;
+        disable_radio = NULL;
+    }
+    if (edge_radio != NULL) {
+        delete edge_radio;
+        edge_radio = NULL;
+    }
+    if (two_finger_radio != NULL) {
+        delete two_finger_radio;
+        two_finger_radio = NULL;
+    }
 }
 
 void TouchpadWidget::setLanguage() {

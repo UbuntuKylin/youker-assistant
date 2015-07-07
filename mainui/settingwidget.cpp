@@ -53,7 +53,7 @@ SettingWidget::SettingWidget(QString cur_desktop, bool has_battery, QWidget *par
     conserve_widget = NULL;
     nautilus_widget = NULL;
 
-    h_splitter = new QSplitter();
+    h_splitter = new QSplitter(this);
     h_splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     h_splitter->setOrientation(Qt::Horizontal);
     h_splitter->setHandleWidth(1);
@@ -108,10 +108,179 @@ SettingWidget::SettingWidget(QString cur_desktop, bool has_battery, QWidget *par
 
 SettingWidget::~SettingWidget()
 {
-    if(stacked_widget != NULL)
+
+    if(individuation_icon != NULL)
     {
-        delete stacked_widget;
-        stacked_widget = NULL;
+        delete individuation_icon;
+        individuation_icon = NULL;
+    }
+    if(individuation_title != NULL)
+    {
+        delete individuation_title;
+        individuation_title = NULL;
+    }
+    if(dekstop_icon != NULL)
+    {
+        delete dekstop_icon;
+        dekstop_icon = NULL;
+    }
+    if(dekstop_title != NULL)
+    {
+        delete dekstop_title;
+        dekstop_title = NULL;
+    }
+
+
+
+    if(font_icon != NULL)
+    {
+        delete font_icon;
+        font_icon = NULL;
+    }
+    if(font_title != NULL)
+    {
+        delete font_title;
+        font_title = NULL;
+    }
+    if(option_icon != NULL)
+    {
+        delete option_icon;
+        option_icon = NULL;
+    }
+    if(option_title != NULL)
+    {
+        delete option_title;
+        option_title = NULL;
+    }
+    if(other_icon != NULL)
+    {
+        delete other_icon;
+        other_icon = NULL;
+    }
+    if(other_title != NULL)
+    {
+        delete other_title;
+        other_title = NULL;
+    }
+    if(dot1 != NULL)
+    {
+        delete dot1;
+        dot1 = NULL;
+    }
+    if(dot2 != NULL)
+    {
+        delete dot2;
+        dot2 = NULL;
+    }
+    if(dot3 != NULL)
+    {
+        delete dot3;
+        dot3 = NULL;
+    }
+    if(dot4 != NULL)
+    {
+        delete dot4;
+        dot4 = NULL;
+    }
+    if(dot6 != NULL)
+    {
+        delete dot6;
+        dot6 = NULL;
+    }
+    if(dot7 != NULL)
+    {
+        delete dot7;
+        dot7 = NULL;
+    }
+    if(dot8 != NULL)
+    {
+        delete dot8;
+        dot8 = NULL;
+    }
+    if(dot9 != NULL)
+    {
+        delete dot9;
+        dot9 = NULL;
+    }
+    if(dot10 != NULL)
+    {
+        delete dot10;
+        dot10 = NULL;
+    }
+    if(dot11 != NULL)
+    {
+        delete dot11;
+        dot11 = NULL;
+    }
+    if(dot12 != NULL)
+    {
+        delete dot12;
+        dot12 = NULL;
+    }
+    if(dot13 != NULL)
+    {
+        delete dot13;
+        dot13 = NULL;
+    }
+    if(theme_button != NULL)
+    {
+        delete theme_button;
+        theme_button = NULL;
+    }
+    if(icon_button != NULL)
+    {
+        delete icon_button;
+        icon_button = NULL;
+    }
+    if(mouse_button != NULL)
+    {
+        delete mouse_button;
+        mouse_button = NULL;
+    }
+    if(voice_button != NULL)
+    {
+        delete voice_button;
+        voice_button = NULL;
+    }
+    if(launcher_button != NULL)
+    {
+        delete launcher_button;
+        launcher_button = NULL;
+    }
+    if(panel_button != NULL)
+    {
+        delete panel_button;
+        panel_button = NULL;
+    }
+    if(window_button != NULL)
+    {
+        delete window_button;
+        window_button = NULL;
+    }
+    if(font_button != NULL)
+    {
+        delete font_button;
+        font_button = NULL;
+    }
+    if(touch_button != NULL)
+    {
+        delete touch_button;
+        touch_button = NULL;
+    }
+    if(pixel_button != NULL)
+    {
+        delete pixel_button;
+        pixel_button = NULL;
+    }
+    if(conserve_button != NULL)
+    {
+        delete conserve_button;
+        conserve_button = NULL;
+    }
+    if(nautilus_button != NULL)
+    {
+        delete nautilus_button;
+        nautilus_button = NULL;
     }
     if(qtui != NULL)
     {
@@ -289,7 +458,7 @@ void SettingWidget::initIndividuationWidget() {
 }
 
 void SettingWidget::initDesktopWidget() {
-    dekstop_widget = new QWidget();
+    dekstop_widget = new QWidget(this);
     dekstop_icon = new QLabel();
     dekstop_title = new QLabel();
     dot6 = new QLabel();
@@ -378,7 +547,7 @@ void SettingWidget::initDesktopWidget() {
 }
 
 void SettingWidget::initFontWidget() {
-    fonts_widget = new QWidget();
+    fonts_widget = new QWidget(this);
     font_icon = new QLabel();
     font_title = new QLabel();
     dot9 = new QLabel();
@@ -424,7 +593,7 @@ void SettingWidget::initFontWidget() {
 }
 
 void SettingWidget::initOptionWidget() {
-    option_widget = new QWidget();
+    option_widget = new QWidget(this);
     option_icon = new QLabel();
     option_title = new QLabel();
     dot10 = new QLabel();
@@ -508,7 +677,7 @@ void SettingWidget::initOptionWidget() {
 }
 
 void SettingWidget::initOtherWidget() {
-    other_widget = new QWidget();
+    other_widget = new QWidget(this);
     other_icon = new QLabel();
     other_title = new QLabel();
     dot13 = new QLabel();

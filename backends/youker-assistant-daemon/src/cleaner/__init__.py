@@ -886,14 +886,14 @@ def interface_get_subpage_session(session, mode_dic):
             size = 0
             if os.path.exists(path):
                 size = common.confirm_filesize_unit(os.path.getsize(path))
+                info = []
+                info.append('Belong:History.bash')
+                info.append('Size:%s' % str(size))
+                info.append('Path:%s' % path)
+                session.subpage_data_signal(info)
             else:
-                path = ''
+                pass
             
-            info = []
-            info.append('Belong:History.bash')
-            info.append('Size:%s' % str(size))
-            info.append('Path:%s' % path)
-            session.subpage_data_signal(info)
 
         if 'X11' in history:
             x11_list = [os.path.join(homedir, x) for x in os.listdir(homedir) if x.startswith(".xsession-errors")]
@@ -949,8 +949,8 @@ def interface_get_subpage_session(session, mode_dic):
 
 
 def interface_remove_file_system(system, fp):
+        filepath = fp.encode("UTF-8")
         if os.path.exists(fp):
-            filepath = fp.encode("UTF-8")
             info = []
             if os.path.isdir(filepath):
                 info.append('Path:%s' % filepath)
@@ -995,7 +995,7 @@ def interface_remove_chromium_history_system(system):
 def interface_remove_firefox_cookies_system(system, domain):
     homedir = return_homedir_sysdaemon()
     firefox_cookies_obj = cookiesclean.CookiesClean(homedir)
-    print(domain)
+    #print(domain)
 
     ffcpath = "%s/.mozilla/firefox/%s/cookies.sqlite" % (homedir, common.analytical_profiles_file(homedir))
     ffcpam = [ffcpath, 'moz_cookies', 'baseDomain', domain]
@@ -1019,7 +1019,7 @@ def interface_remove_package_system(system, packagename):
             try:
                 pkg = cache[packagename]
             except KeyError:
-                system.subpage_error_signal('Non-existent:%s' % pkgname)
+                system.subpage_error_signal('Non-existent:%s' % packagename)
             if pkg.is_installed:
                 pkg.mark_delete()
             else:

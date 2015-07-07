@@ -109,7 +109,7 @@ SOURCES += main.cpp\
     ../setting/iconwidget.cpp \
     ../setting/mousewidget.cpp \
     ../setting/voicewidget.cpp \
-    ../setting/animationwidget.cpp \
+#    ../setting/animationwidget.cpp \
     ../setting/launcherwidget.cpp \
     ../setting/panelwidget.cpp \
     ../setting/windowwidget.cpp \
@@ -198,7 +198,7 @@ HEADERS  += mainwindow.h \
     ../setting/iconwidget.h \
     ../setting/mousewidget.h \
     ../setting/voicewidget.h \
-    ../setting/animationwidget.h \
+#    ../setting/animationwidget.h \
     ../setting/launcherwidget.h \
     ../setting/panelwidget.h \
     ../setting/windowwidget.h \

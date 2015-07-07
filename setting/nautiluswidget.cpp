@@ -160,16 +160,74 @@ NautilusWidget::NautilusWidget(QWidget *parent, SessionDispatcher *proxy) :
 
 NautilusWidget::~NautilusWidget()
 {
-//    if(label != NULL)
-//    {
-//        delete label;
-//        label = NULL;
-//    }
-//    if(back_btn != NULL)
-//    {
-//        delete back_btn;
-//        back_btn = NULL;
-//    }
+    if (location_label != NULL) {
+        delete location_label;
+        location_label = NULL;
+    }
+    if (mount_media_label != NULL) {
+        delete mount_media_label;
+        mount_media_label = NULL;
+    }
+    if (open_folder_label != NULL) {
+        delete open_folder_label;
+        open_folder_label = NULL;
+    }
+    if (autorun_program_label != NULL) {
+        delete autorun_program_label;
+        autorun_program_label = NULL;
+    }
+    if (icon_size_label != NULL) {
+        delete icon_size_label;
+        icon_size_label = NULL;
+    }
+    if (size_value_label != NULL) {
+        delete size_value_label;
+        size_value_label = NULL;
+    }
+    if (cache_time_label != NULL) {
+        delete cache_time_label;
+        cache_time_label = NULL;
+    }
+    if (time_value_label != NULL) {
+        delete time_value_label;
+        time_value_label = NULL;
+    }
+    if (cache_size_label != NULL) {
+        delete cache_size_label;
+        cache_size_label = NULL;
+    }
+    if (cache_value_label != NULL) {
+        delete cache_value_label;
+        cache_value_label = NULL;
+    }
+    if (location_switcher != NULL) {
+        delete location_switcher;
+        location_switcher = NULL;
+    }
+    if (mount_media_switcher != NULL) {
+        delete mount_media_switcher;
+        mount_media_switcher = NULL;
+    }
+    if (open_folder_switcher != NULL) {
+        delete open_folder_switcher;
+        open_folder_switcher = NULL;
+    }
+    if (autorun_program_switcher != NULL) {
+        delete autorun_program_switcher;
+        autorun_program_switcher = NULL;
+    }
+    if (icon_size_slider != NULL) {
+        delete icon_size_slider;
+        icon_size_slider = NULL;
+    }
+    if (cache_time_slider != NULL) {
+        delete cache_time_slider;
+        cache_time_slider = NULL;
+    }
+    if (cache_size_slider != NULL) {
+        delete cache_size_slider;
+        cache_size_slider = NULL;
+    }
 }
 
 void NautilusWidget::setLanguage() {
