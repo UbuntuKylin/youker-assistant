@@ -42,7 +42,7 @@ MainWindow::MainWindow(QWidget *parent) :
     mSettings->setIniCodec("UTF-8");
 
 
-    //judge has skin or not in /var/lib/youker-assistant-daemon/background/
+    //judge has skin or not in /var/lib/youker-assistant-daemon/default/
     mSettings->beginGroup("Background");
     last_skin_path = mSettings->value("Path").toString();
     if(last_skin_path.isEmpty()) {
@@ -246,7 +246,7 @@ bool MainWindow::CopyFile(QString filename)
 QStringList MainWindow::filterSkin()
 {
     QStringList skinlist;
-    QString path = "/var/lib/youker-assistant-daemon/background/";
+    QString path = "/var/lib/youker-assistant-daemon/default/";
     QString path2 = "/var/lib/youker-assistant-daemon/custom/";
     QDir picdir(path);
     picdir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);

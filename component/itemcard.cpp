@@ -37,7 +37,7 @@ ItemCard::ItemCard(QString title, bool flag, QWidget *parent) :
     if(flag)
         iconDir = "/var/lib/youker-assistant-daemon/custom/";
     else
-        iconDir = "/var/lib/youker-assistant-daemon/background/";
+        iconDir = "/var/lib/youker-assistant-daemon/default/";
 
 //    delayTimer = new QTimer(this);
 //    connect(delayTimer, SIGNAL(timeout()), this, SLOT(slotShowDelayAnimation()));

@@ -277,7 +277,7 @@ void SkinCenter::initSysBackgroundList()
     list_widget = new CardWidget(130, 87, 10, this->skin_widget);
     list_widget->setGeometry(QRect(0, 0, 420, 240));
     list_widget->calculate_data();
-    QDir picdir("/var/lib/youker-assistant-daemon/background");
+    QDir picdir("/var/lib/youker-assistant-daemon/default");
     picdir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     picdir.setSorting(QDir::Size | QDir::Reversed);
     QStringList filters;
@@ -376,7 +376,7 @@ void SkinCenter::reloadBackgroundList()
     custom_list_widget->setGeometry(QRect(0,2, 500, 230));
     custom_list_widget->calculate_data();
 
-//    QDir picdir("/var/lib/youker-assistant-daemon/background");
+//    QDir picdir("/var/lib/youker-assistant-daemon/default");
     QDir picdir("/var/lib/youker-assistant-daemon/custom");
     picdir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     picdir.setSorting(QDir::Size | QDir::Reversed);
