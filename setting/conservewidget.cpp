@@ -232,6 +232,118 @@ ConserveWidget::~ConserveWidget()
         delete iface;
         iface = NULL;
     }
+    if (gamma_label != NULL) {
+        delete gamma_label;
+        gamma_label = NULL;
+    }
+    if (gamma_slider != NULL) {
+        delete gamma_slider;
+        gamma_slider = NULL;
+    }
+    if (brightness_label != NULL) {
+        delete brightness_label;
+        brightness_label = NULL;
+    }
+    if (brightness_value_label != NULL) {
+        delete brightness_value_label;
+        brightness_value_label = NULL;
+    }
+    if (brightness_slider != NULL) {
+        delete brightness_slider;
+        brightness_slider = NULL;
+    }
+    if (idle_delay_label != NULL) {
+        delete idle_delay_label;
+        idle_delay_label = NULL;
+    }
+    if (idle_delay_combo != NULL) {
+        delete idle_delay_combo;
+        idle_delay_combo = NULL;
+    }
+    if (lock_enabled_label != NULL) {
+        delete lock_enabled_label;
+        lock_enabled_label = NULL;
+    }
+    if (lock_enabled_switch != NULL) {
+        delete lock_enabled_switch;
+        lock_enabled_switch = NULL;
+    }
+    if (lock_delay_label != NULL) {
+        delete lock_delay_label;
+        lock_delay_label = NULL;
+    }
+    if (lock_delay_combo != NULL) {
+        delete lock_delay_combo;
+        lock_delay_combo = NULL;
+    }
+    if (critical_low_label != NULL) {
+        delete critical_low_label;
+        critical_low_label = NULL;
+    }
+    if (suspend_low_radio != NULL) {
+        delete suspend_low_radio;
+        suspend_low_radio = NULL;
+    }
+    if (shutdown_radio != NULL) {
+        delete shutdown_radio;
+        shutdown_radio = NULL;
+    }
+    if (laptop_lid_battery_label != NULL) {
+        delete laptop_lid_battery_label;
+        laptop_lid_battery_label = NULL;
+    }
+    if (suspend_lid_battery_radio != NULL) {
+        delete suspend_lid_battery_radio;
+        suspend_lid_battery_radio = NULL;
+    }
+    if (nothing_battery_radio != NULL) {
+        delete nothing_battery_radio;
+        nothing_battery_radio = NULL;
+    }
+    if (laptop_lid_ac_label != NULL) {
+        delete laptop_lid_ac_label;
+        laptop_lid_ac_label = NULL;
+    }
+    if (suspend_lid_ac_radio != NULL) {
+        delete suspend_lid_ac_radio;
+        suspend_lid_ac_radio = NULL;
+    }
+    if (nothing_ac_radio != NULL) {
+        delete nothing_ac_radio;
+        nothing_ac_radio = NULL;
+    }
+    if (sleep_battery_label != NULL) {
+        delete sleep_battery_label;
+        sleep_battery_label = NULL;
+    }
+    if (sleep_battery_combo != NULL) {
+        delete sleep_battery_combo;
+        sleep_battery_combo = NULL;
+    }
+    if (sleep_ac_label != NULL) {
+        delete sleep_ac_label;
+        sleep_ac_label = NULL;
+    }
+    if (sleep_ac_combo != NULL) {
+        delete sleep_ac_combo;
+        sleep_ac_combo = NULL;
+    }
+    if (sleep_battery_display_label != NULL) {
+        delete sleep_battery_display_label;
+        sleep_battery_display_label = NULL;
+    }
+    if (sleep_battery_display_combo != NULL) {
+        delete sleep_battery_display_combo;
+        sleep_battery_display_combo = NULL;
+    }
+    if (sleep_ac_display_label != NULL) {
+        delete sleep_ac_display_label;
+        sleep_ac_display_label = NULL;
+    }
+    if (sleep_ac_display_combo != NULL) {
+        delete sleep_ac_display_combo;
+        sleep_ac_display_combo = NULL;
+    }
 }
 
 void ConserveWidget::setLanguage() {

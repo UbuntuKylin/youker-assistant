@@ -96,16 +96,34 @@ HomePage::HomePage(QWidget *parent, const QString &version) :
 
 HomePage::~HomePage()
 {
-//    if(auto_start != NULL)
-//    {
-//        delete auto_start;
-//        auto_start = NULL;
-//    }
-//    if(camera_manager != NULL)
-//    {
-//        delete camera_manager;
-//        camera_manager = NULL;
-//    }
+    if(version_logo != NULL) {
+        delete version_logo;
+        version_logo = NULL;
+    }
+    if(version_title != NULL) {
+        delete version_title;
+        version_title = NULL;
+    }
+    if(version_tip != NULL) {
+        delete version_tip;
+        version_tip = NULL;
+    }
+    if(check_btn != NULL) {
+        delete check_btn;
+        check_btn = NULL;
+    }
+    if(box_logo != NULL) {
+        delete box_logo;
+        box_logo = NULL;
+    }
+    if(box_title != NULL) {
+        delete box_title;
+        box_title = NULL;
+    }
+    if(box_tip != NULL) {
+        delete box_tip;
+        box_tip = NULL;
+    }
 }
 
 void HomePage::initUI()

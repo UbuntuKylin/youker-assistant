@@ -21,43 +21,36 @@
 #define CLEANERITEMS_H
 
 #include <QWidget>
-#include <QDialog>
-#include "../component/kylintitlebar.h"
+#include <QPushButton>
 
 class MainWindow;
 class QCheckBox;
 class QGroupBox;
 
-//class CleanerItems : public QWidget
-class CleanerItems : public QDialog
+class CleanerItems : public QWidget
 {
     Q_OBJECT
 public:
-//    explicit CleanerItems(QStringList &arglist, QStringList &statuslist, int height = 0, const QString title_text = "UbuntuKylin", QWidget *parent = 0);
-    explicit CleanerItems(QStringList &arglist, QStringList &statuslist, QString skin = ":/background/res/skin/1.png", int height = 0, const QString title_text = "UbuntuKylin", QDialog *parent = 0);
+    explicit CleanerItems(QStringList &arglist, QStringList &statuslist, QString skin = ":/background/res/skin/1.png", int height = 0, const QString title_text = "UbuntuKylin", QWidget *parent = 0);
     ~CleanerItems();
     void setParentWindow(MainWindow* window) { p_mainwindow = window;}
     void setLanguage();
     void initConnect();
     int getItemCount();
     QStringList getSelectedItems();
-    void resetTitleSkin(QString skin);
 
 public slots:
     void resetSubCheckbox(int status);
     void scanAllSubCheckbox();
     void onCloseButtonClicked();
 
-private:
-    void initTitleBar(QString skin);
-
 signals:
     void notifyMainCheckBox(int status);
+    void sendoksignal();
 
 private:
     QList<QCheckBox *> checkbox_list;
     MainWindow *p_mainwindow;
-    KylinTitleBar *title_bar;
     QString titleName;
     QPushButton *okBtn;
     QGroupBox *group_box;

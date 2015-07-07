@@ -160,7 +160,22 @@ HomeActionWidget::HomeActionWidget(QWidget *parent, QSettings *mSettings)
 
 HomeActionWidget::~HomeActionWidget()
 {
-
+    if(suggest_label != NULL) {
+        delete suggest_label;
+        suggest_label = NULL;
+    }
+    if(scan_result_label != NULL) {
+        delete scan_result_label;
+        scan_result_label = NULL;
+    }
+    if(result_label != NULL) {
+        delete result_label;
+        result_label = NULL;
+    }
+    if(doing_label != NULL) {
+        delete doing_label;
+        doing_label = NULL;
+    }
 }
 
 void HomeActionWidget::initConnect()

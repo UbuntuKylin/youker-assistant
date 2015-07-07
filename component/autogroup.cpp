@@ -66,6 +66,34 @@ AutoGroup::AutoGroup(QWidget *parent) :
     setLayout(layout);
 }
 
+AutoGroup::~AutoGroup()
+{
+    if(logo_label != NULL)
+    {
+        delete logo_label;
+        logo_label = NULL;
+    }
+    if(name_label != NULL)
+    {
+        delete name_label;
+        name_label = NULL;
+    }
+    if(comment_label != NULL)
+    {
+        delete comment_label;
+        comment_label = NULL;
+    }
+    if(switcher != NULL)
+    {
+        delete switcher;
+        switcher = NULL;
+    }
+    if(splitlabel != NULL)
+    {
+        delete splitlabel;
+        splitlabel = NULL;
+    }
+}
 void AutoGroup::initData(QMap<QString,QString> data)
 {
     dekstopFile = data.value("Path");

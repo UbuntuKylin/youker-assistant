@@ -61,6 +61,7 @@ private:
     QString titleName;
     QPushButton *okBtn;
     QGroupBox *group_box;
+    QString cur_skin;
 };
 
 #endif // CLEANERITEMS_H

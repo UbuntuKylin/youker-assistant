@@ -166,7 +166,70 @@ KylinFontDialog::~KylinFontDialog()
         delete sizemodel;
         sizemodel = NULL;
     }
-//    delete ui;
+    if (title_bar != NULL) {
+        delete title_bar;
+        title_bar = NULL;
+    }
+    if (cur_tip_label != NULL) {
+        delete cur_tip_label;
+        cur_tip_label = NULL;
+    }
+    if (cur_font_label != NULL) {
+        delete cur_font_label;
+        cur_font_label = NULL;
+    }
+    if (font_label != NULL) {
+        delete font_label;
+        font_label = NULL;
+    }
+    if (style_label != NULL) {
+        delete style_label;
+        style_label = NULL;
+    }
+    if (size_label != NULL) {
+        delete size_label;
+        size_label = NULL;
+    }
+    if (font_edit != NULL) {
+        delete font_edit;
+        font_edit = NULL;
+    }
+    if (style_edit != NULL) {
+        delete style_edit;
+        style_edit = NULL;
+    }
+    if (size_edit != NULL) {
+        delete size_edit;
+        size_edit = NULL;
+    }
+    if (font_view != NULL) {
+        delete font_view;
+        font_view = NULL;
+    }
+    if (style_view != NULL) {
+        delete style_view;
+        style_view = NULL;
+    }
+    if (size_view != NULL) {
+        delete size_view;
+        size_view = NULL;
+    }
+    if (sample_label != NULL) {
+        delete sample_label;
+        sample_label = NULL;
+    }
+    if (sample_edit != NULL) {
+        delete sample_edit;
+        sample_edit = NULL;
+    }
+    if (ok_btn != NULL) {
+        delete ok_btn;
+        ok_btn = NULL;
+    }
+    if (cacel_btn != NULL) {
+        delete cacel_btn;
+        cacel_btn = NULL;
+    }
 }
 
 void KylinFontDialog::setLanguage()

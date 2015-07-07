@@ -105,18 +105,7 @@ CleanerItems::CleanerItems(QStringList &arglist, QStringList &statuslist, QStrin
 
 CleanerItems::~CleanerItems()
 {
-    if(title_bar != NULL) {
-        delete title_bar;
-        title_bar = NULL;
-    }
-    if(okBtn != NULL) {
-        delete okBtn;
-        okBtn = NULL;
-    }
-    if(group_box != NULL) {
-        delete group_box;
-        group_box = NULL;
-    }
+
 }
 
 void CleanerItems::initConnect()

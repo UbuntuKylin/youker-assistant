@@ -68,7 +68,6 @@ BoxWidget::BoxWidget(QWidget *parent, QString path) :
 
 BoxWidget::~BoxWidget()
 {
-
 }
 
 void BoxWidget::displayBoxHomePage() {

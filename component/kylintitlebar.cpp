@@ -31,14 +31,14 @@ KylinTitleBar::KylinTitleBar(QWidget *parent) :
     title_label = new QLabel();
 //    title_label->setAlignment(Qt::AlignCenter);
     title_label->setStyleSheet("QLabel{color:#ffffff;font-family: 方正黑体_GBK;font-size: 14px;text-align: center;font-weight:bold;}");
-    logo_label = new QLabel();
-    logo_label->setFixedSize(22, 22);
-    logo_label->setFrameShape(QFrame::NoFrame);
-    logo_label->setAutoFillBackground(true);
+//    logo_label = new QLabel();
+//    logo_label->setFixedSize(22, 22);
+//    logo_label->setFrameShape(QFrame::NoFrame);
+//    logo_label->setAutoFillBackground(true);
+//    logo_label->setScaledContents(true);//自动缩放,显示图像大小自动调整为Qlabel大小
+//    QPixmap label_pixmap("://res/icon.png");
+//    logo_label->setPixmap(label_pixmap);
 
-    logo_label->setScaledContents(true);//自动缩放,显示图像大小自动调整为Qlabel大小
-    QPixmap label_pixmap("://res/icon.png");
-    logo_label->setPixmap(label_pixmap);
 //    logo_label->setFixedSize(label_pixmap.size());
 //    QPalette palette;
 //    palette.setBrush(QPalette::Background, QBrush(QPixmap("://res/logo.png")));
@@ -66,7 +66,7 @@ KylinTitleBar::KylinTitleBar(QWidget *parent) :
     main_layout->addStretch();
     main_layout->addWidget(title_label, 0, Qt::AlignVCenter);
     main_layout->addStretch();
-    main_layout->addWidget(logo_label, 0, Qt::AlignVCenter);
+//    main_layout->addWidget(logo_label, 0, Qt::AlignVCenter);
 //    main_layout->addLayout(label_layout);
 
     main_layout->setSpacing(0);
@@ -80,6 +80,16 @@ KylinTitleBar::KylinTitleBar(QWidget *parent) :
 
 KylinTitleBar::~KylinTitleBar(void)
 {
+    if(title_label != NULL)
+    {
+        delete title_label;
+        title_label = NULL;
+    }
+    if(close_btn != NULL)
+    {
+        delete close_btn;
+        close_btn = NULL;
+    }
 }
 
 void KylinTitleBar::resetBackground(QString name)

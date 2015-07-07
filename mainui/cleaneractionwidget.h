@@ -49,13 +49,13 @@ public slots:
     void onStartButtonClicked();
     void onCleanButtonClicked();
     void onBackButtonClicked();
-    void showReciveStatus(const QString &status);
-    void showReciveError(const QString &status);
+    void showCleanReciveStatus(const QString &status);
+    void showCleanReciveError(const QString &status);
     void showCleanOverStatus();
     void showCleanerData(const QStringList &data);
     void showCleanerStatus(const QString &status, const QString &domain);
     void showCleanerError(const QString &status);
-
+    void displayOrgPage();
     void displayAnimation();
 //    void displayCleanAnimation();
     void receivePolicyKitSignal(bool status);

@@ -31,6 +31,7 @@ class AutoGroup : public QWidget
     Q_OBJECT
 public:
     explicit AutoGroup(QWidget *parent = 0);
+    ~AutoGroup();
     void initData(QMap<QString,QString> data);
     QString dekstopFile;
     bool getSwitcherStatus();

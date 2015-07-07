@@ -62,6 +62,7 @@ private:
     QMap<QString, QVariant> argsMap;
     SessionDispatcher *sessionproxy;
     Toolkits *toolKits;
+//    QStackedWidget *scanWidgets;
 };
 
 #endif // CLEANERMAINWIDGET_H

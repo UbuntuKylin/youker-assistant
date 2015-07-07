@@ -30,12 +30,12 @@ InfoWidget::InfoWidget(QWidget *parent) :
     palette.setBrush(QPalette::Window, QBrush(Qt::white));
     this->setPalette(palette);
 
-    splitter = new QSplitter();
+    splitter = new QSplitter(this);
     splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     splitter->setOrientation(Qt::Horizontal);
     splitter->setHandleWidth(1);
 
-    category_widget = new QListWidget();
+    category_widget = new QListWidget(this);
     category_widget->setFixedSize(150, 403);
     category_widget->setFocusPolicy(Qt::NoFocus);
     category_widget->setObjectName("infoList");
@@ -73,16 +73,6 @@ InfoWidget::InfoWidget(QWidget *parent) :
 
 InfoWidget::~InfoWidget()
 {
-    if(category_widget != NULL)
-    {
-        delete category_widget;
-        category_widget = NULL;
-    }
-    if(stacked_widget != NULL)
-    {
-        delete stacked_widget;
-        stacked_widget = NULL;
-    }
 }
 
 void InfoWidget::initUI(bool has_battery)

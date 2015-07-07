@@ -30,6 +30,7 @@ class ToolButton : public QWidget
     Q_OBJECT
 public:
     explicit ToolButton(QWidget *parent = 0);
+    ~ToolButton();
     void setIcon(const QString &icon);
     void setText(const QString &text);
     void setToolButtonStatus(BUTTONSTATUS status);

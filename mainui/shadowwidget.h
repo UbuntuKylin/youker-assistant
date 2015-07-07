@@ -38,17 +38,12 @@ public:
         widget_color = color;
     }
 
-signals:
-
-public slots:
-
 protected:
     void paintEvent(QPaintEvent *);
 
 private:
     qreal widget_opacity;
     QColor  widget_color;
-
 };
 
 #endif // SHADOWWIDGET_H

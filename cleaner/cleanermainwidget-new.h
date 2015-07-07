@@ -22,12 +22,15 @@
 
 #include <QWidget>
 #include <QStackedWidget>
+#include <QLabel>
+#include <QMap>
 #include "cleaneritems.h"
 
 class MainWindow;
 class CleanGroup;
 class SessionDispatcher;
 class Toolkits;
+class QParallelAnimationGroup;
 
 class CleanerMainWidget : public QWidget
 {
@@ -38,10 +41,13 @@ public:
     void setLanguage();
     void getAllScanSelectedItems();
     void resetCurrentSkin(QString skin);
+    void initAnimation();
 
 public slots:
     void onButtonClicked();
     void receiveScanSignal();
+    void showCleanMainPage();
+    void onUpGroupFinished();
 
 signals:
     void showActionAnimaiton();
@@ -49,7 +55,7 @@ signals:
 private:
     MainWindow *parentWindow;
     QLabel *tip_label;
-
+    QWidget *baseWidget;
     CleanGroup *cache_btn;
     CleanerItems *cache_items;
     CleanGroup *package_btn;
@@ -62,6 +68,9 @@ private:
     QMap<QString, QVariant> argsMap;
     SessionDispatcher *sessionproxy;
     Toolkits *toolKits;
+    QStackedWidget *scanWidgets;
+    QParallelAnimationGroup *m_upGroup;
+    QParallelAnimationGroup *m_downGroup;
 };
 
 #endif // CLEANERMAINWIDGET_H

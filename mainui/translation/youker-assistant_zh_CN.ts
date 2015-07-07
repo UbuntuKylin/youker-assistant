@@ -116,49 +116,40 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>AnimationWidget</name>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="191"/>
         <source>Please select a picture as boot animation</source>
-        <translation>请选择一个图片作为开机动画</translation>
+        <translation type="obsolete">请选择一个图片作为开机动画</translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="192"/>
         <source>Custom Picture</source>
-        <translation>自定义图片</translation>
+        <translation type="obsolete">自定义图片</translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="193"/>
         <source>Optional BootAnimation</source>
-        <translation>可选启动动画</translation>
+        <translation type="obsolete">可选启动动画</translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="194"/>
         <source>OK</source>
-        <translation>确定</translation>
+        <translation type="obsolete">确定</translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="261"/>
         <source>Image Files (*.png *.jpg *.gif)</source>
-        <translation>图片文件(*.png *.jpg *.gif)</translation>
+        <translation type="obsolete">图片文件(*.png *.jpg *.gif)</translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="311"/>
         <source>Deleted successfully!</source>
-        <translation>删除成功！</translation>
+        <translation type="obsolete">删除成功！</translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="320"/>
         <source>This is the using animation!</source>
-        <translation>该动画为当前使用动画！</translation>
+        <translation type="obsolete">该动画为当前使用动画！</translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="330"/>
         <source>This is the default animation!</source>
-        <translation>该动画为系统默认动画！</translation>
+        <translation type="obsolete">该动画为系统默认动画！</translation>
     </message>
     <message>
-        <location filename="../../setting/animationwidget.cpp" line="340"/>
         <source>An unknown error occurred!</source>
-        <translation>发生未知错误！</translation>
+        <translation type="obsolete">发生未知错误！</translation>
     </message>
 </context>
 <context>
@@ -206,7 +197,7 @@ p, li { white-space: pre-wrap; }
         <translation>已关闭数目：</translation>
     </message>
     <message>
-        <location filename="../autostartwidget.cpp" line="215"/>
+        <location filename="../autostartwidget.cpp" line="248"/>
         <source>Auto Start</source>
         <translation>自启动</translation>
     </message>
@@ -235,12 +226,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>BoxActionWidget</name>
     <message>
-        <location filename="../boxactionwidget.cpp" line="70"/>
+        <location filename="../boxactionwidget.cpp" line="81"/>
         <source>Provide a practical and lightweight tool, create fast and convenient experience for you</source>
         <translation>提供轻巧使用工具，为您打造快捷方便的体验</translation>
     </message>
     <message>
-        <location filename="../boxactionwidget.cpp" line="71"/>
+        <location filename="../boxactionwidget.cpp" line="82"/>
         <source>More App</source>
         <translation>更多应用</translation>
     </message>
@@ -248,18 +239,18 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>BoxWidget</name>
     <message>
-        <location filename="../boxwidget.cpp" line="103"/>
-        <location filename="../boxwidget.cpp" line="107"/>
+        <location filename="../boxwidget.cpp" line="102"/>
+        <location filename="../boxwidget.cpp" line="106"/>
         <source>UbuntuKylin Software Center</source>
         <translation>优客软件中心</translation>
     </message>
     <message>
-        <location filename="../boxwidget.cpp" line="112"/>
+        <location filename="../boxwidget.cpp" line="111"/>
         <source>Boot Manager</source>
         <translation>启动项管理</translation>
     </message>
     <message>
-        <location filename="../boxwidget.cpp" line="112"/>
+        <location filename="../boxwidget.cpp" line="111"/>
         <source>Camera</source>
         <translation>摄像头</translation>
     </message>
@@ -311,12 +302,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CacheActionWidget</name>
     <message>
-        <location filename="../../cleaner/cacheactionwidget.cpp" line="72"/>
+        <location filename="../../cleaner/cacheactionwidget.cpp" line="83"/>
         <source>Cleaning up the system cache</source>
         <translation>清理系统缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cacheactionwidget.cpp" line="73"/>
+        <location filename="../../cleaner/cacheactionwidget.cpp" line="84"/>
         <source>Deep cleaning up the system cache, to save disk space</source>
         <translation>深度清理系统缓存，节省磁盘空间</translation>
     </message>
@@ -355,32 +346,32 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CameraManager</name>
     <message>
-        <location filename="../cameramanager.cpp" line="99"/>
+        <location filename="../cameramanager.cpp" line="123"/>
         <source>NO found camara</source>
         <translation>未发现摄像头</translation>
     </message>
     <message>
-        <location filename="../cameramanager.cpp" line="100"/>
+        <location filename="../cameramanager.cpp" line="124"/>
         <source>An application to take pictures with the device camera.</source>
         <translation>一个使用摄像头拍照的应用。</translation>
     </message>
     <message>
-        <location filename="../cameramanager.cpp" line="101"/>
+        <location filename="../cameramanager.cpp" line="125"/>
         <source>Press the [ESC] button to take picture and turn the camera off , the photo saved in home directory by default.</source>
         <translation>按[退出]键拍照并关闭摄像头，照片默认保存在家目录下。</translation>
     </message>
     <message>
-        <location filename="../cameramanager.cpp" line="102"/>
+        <location filename="../cameramanager.cpp" line="126"/>
         <source>Open camera</source>
         <translation>打开摄像头</translation>
     </message>
     <message>
-        <location filename="../cameramanager.cpp" line="103"/>
+        <location filename="../cameramanager.cpp" line="127"/>
         <source>View Photos</source>
         <translation>浏览照片</translation>
     </message>
     <message>
-        <location filename="../cameramanager.cpp" line="145"/>
+        <location filename="../cameramanager.cpp" line="169"/>
         <source>Camera Manager</source>
         <translation>摄像头管理</translation>
     </message>
@@ -409,30 +400,30 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CleanerActionWidget</name>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="149"/>
+        <location filename="../cleaneractionwidget.cpp" line="156"/>
         <source>Regular cleaning, let your computer remains the relaxed state</source>
         <translation>经常清理，让电脑保持最轻松的状态</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="151"/>
+        <location filename="../cleaneractionwidget.cpp" line="158"/>
         <source>Start Scan</source>
         <translation>开始扫描</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="152"/>
+        <location filename="../cleaneractionwidget.cpp" line="159"/>
         <source>Start Cleanup</source>
         <translation>开始清理</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="153"/>
+        <location filename="../cleaneractionwidget.cpp" line="160"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="154"/>
-        <location filename="../cleaneractionwidget.cpp" line="261"/>
-        <location filename="../cleaneractionwidget.cpp" line="272"/>
-        <location filename="../cleaneractionwidget.cpp" line="346"/>
+        <location filename="../cleaneractionwidget.cpp" line="161"/>
+        <location filename="../cleaneractionwidget.cpp" line="268"/>
+        <location filename="../cleaneractionwidget.cpp" line="279"/>
+        <location filename="../cleaneractionwidget.cpp" line="353"/>
         <source>Scaning......</source>
         <translation>正在扫描.....</translation>
     </message>
@@ -441,88 +432,88 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">清理完毕......</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="164"/>
+        <location filename="../cleaneractionwidget.cpp" line="171"/>
         <source>Clean OK</source>
         <translation>清理完毕</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="171"/>
+        <location filename="../cleaneractionwidget.cpp" line="178"/>
         <source>Cleaning: </source>
         <translation>正在清理：</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="175"/>
+        <location filename="../cleaneractionwidget.cpp" line="182"/>
         <source>, Percent is: </source>
         <translation>，进度为：</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="175"/>
+        <location filename="../cleaneractionwidget.cpp" line="182"/>
         <source>%, Status is: </source>
         <translation>%，状态为：</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="183"/>
+        <location filename="../cleaneractionwidget.cpp" line="190"/>
         <source>Clean Firefox history......</source>
         <translation>清理Firefox浏览器历史记录......</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="187"/>
+        <location filename="../cleaneractionwidget.cpp" line="194"/>
         <source>Clean Chromium history......</source>
         <translation>清理Chromium浏览器历史记录......</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="191"/>
+        <location filename="../cleaneractionwidget.cpp" line="198"/>
         <source>Clean system history......</source>
         <translation>清理系统历史痕迹......</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="196"/>
+        <location filename="../cleaneractionwidget.cpp" line="203"/>
         <source>Clean apt......</source>
         <translation>清理Apt......</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="200"/>
+        <location filename="../cleaneractionwidget.cpp" line="207"/>
         <source>Start clean apt......</source>
         <translation>开始清理Apt......</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="205"/>
+        <location filename="../cleaneractionwidget.cpp" line="212"/>
         <source>Clean Firefox Cookie:</source>
         <translation>清理Firefox浏览器Cookie：</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="209"/>
+        <location filename="../cleaneractionwidget.cpp" line="216"/>
         <source>Clean Chromium Cookie:</source>
         <translation>清理Chromium浏览器Cookie：</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="218"/>
-        <location filename="../cleaneractionwidget.cpp" line="302"/>
+        <location filename="../cleaneractionwidget.cpp" line="225"/>
+        <location filename="../cleaneractionwidget.cpp" line="309"/>
         <source> does not exist</source>
         <translation>不存在</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="222"/>
+        <location filename="../cleaneractionwidget.cpp" line="229"/>
         <source>Chromium Browser is running......</source>
         <translation>Chromium浏览器正在运行中......</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="230"/>
+        <location filename="../cleaneractionwidget.cpp" line="237"/>
         <source>Cache Scan OK</source>
         <translation>缓存扫描完成</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="234"/>
+        <location filename="../cleaneractionwidget.cpp" line="241"/>
         <source>Cookies Scan OK</source>
         <translation>Cookies扫描完成</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="238"/>
+        <location filename="../cleaneractionwidget.cpp" line="245"/>
         <source>History Scan OK</source>
         <translation>历史记录扫描完成</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="242"/>
+        <location filename="../cleaneractionwidget.cpp" line="249"/>
         <source>Packages Scan OK</source>
         <translation>包扫描完成</translation>
     </message>
@@ -531,17 +522,17 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">包扫描完成</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="289"/>
+        <location filename="../cleaneractionwidget.cpp" line="296"/>
         <source>Firefox Browser does not be installed</source>
         <translation>没有安装Firefox浏览器</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="293"/>
+        <location filename="../cleaneractionwidget.cpp" line="300"/>
         <source>Chromium Browser does not be installed</source>
         <translation>没有安装Chromium浏览器</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="297"/>
+        <location filename="../cleaneractionwidget.cpp" line="304"/>
         <source>Chromium Browser is running</source>
         <translation>Chromium浏览器正在运行中</translation>
     </message>
@@ -562,7 +553,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">包扫描完成......</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="286"/>
+        <location filename="../cleaneractionwidget.cpp" line="293"/>
         <source>Error: </source>
         <translation>错误：</translation>
     </message>
@@ -575,7 +566,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">没有安装Chromium浏览器......</translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="338"/>
+        <location filename="../cleaneractionwidget.cpp" line="345"/>
         <source>Ready to Cleanup......</source>
         <translation>准备清理......</translation>
     </message>
@@ -583,114 +574,122 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CleanerDetailWidget</name>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="299"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="348"/>
         <source>Apt Cache Clean Items</source>
         <translation>Apt缓存清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="305"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="354"/>
         <source>Apt Cache count:</source>
         <translation>Apt缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="349"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="450"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="380"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="444"/>
         <source>Software Cache Clean Items</source>
         <translation>软件中心缓存清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="355"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="386"/>
         <source>Software Cache count:</source>
         <translation>软件中心缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="399"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="498"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="551"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="601"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="799"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="848"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="897"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="411"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="474"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="697"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="727"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="757"/>
         <source>Thumbnails Cache Clean Items</source>
         <translation>缩略图缓存清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="405"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="417"/>
         <source>Thumbnails Cache Count:</source>
         <translation>缩略图缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="455"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="449"/>
         <source>Firefox Cache Count:</source>
         <translation>Firefox浏览器缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="503"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="479"/>
         <source>Chromium Cache Count:</source>
         <translation>Chromium浏览器缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="556"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="508"/>
+        <source>Firefox Cookies Clean Items</source>
+        <translation>Firefox Cookies 清理项</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="513"/>
         <source>Firefox Cookies Count:</source>
         <translation>Firefox Cookies总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="606"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="538"/>
+        <source>Chromium Cookies Clean Items</source>
+        <translation>Chromium Cookies 清理项</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="543"/>
         <source>Chromium Cookies Count:</source>
         <translation>Chromium Cookies总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="660"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="577"/>
         <source>Firefox History Count:</source>
         <translation>Firefox 历史记录总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="700"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="599"/>
         <source>Chromium History Count:</source>
         <translation>Chromium历史记录总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="723"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="622"/>
         <source>System History Count:</source>
         <translation>系统历史痕迹总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="747"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="645"/>
         <source>Command history size:</source>
         <translation>命令历史记录大小：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="767"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="665"/>
         <source>Debug log Items</source>
         <translation>调试日志项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="770"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="668"/>
         <source>Debug log:</source>
         <translation>调试日志：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="804"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="702"/>
         <source>Package Unneed Count:</source>
         <translation>不需要的包总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="853"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="732"/>
         <source>Package oldkernel Count:</source>
         <translation>旧内核包总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="902"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="762"/>
         <source>Package configfile Count:</source>
         <translation>包配置文件总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1505"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="883"/>
         <source>No garbage </source>
         <translation>没有扫描到垃圾</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1545"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="922"/>
         <source>Clean args is empty!</source>
         <translation>清理参数为空！</translation>
     </message>
@@ -704,7 +703,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CleanerItems</name>
     <message>
-        <location filename="../../cleaner/cleaneritems.cpp" line="157"/>
+        <location filename="../../cleaner/cleaneritems.cpp" line="168"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
@@ -712,147 +711,147 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CleanerMainWidget</name>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="38"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="39"/>
         <source>Cleanup Package Cache</source>
         <translation>清理包缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="38"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="39"/>
         <source>Cleanup Software Center Cache</source>
         <translation>清理软件中心缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="38"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="39"/>
         <source>Cleanup Thumbnails Cache</source>
         <translation>清理缩略图缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="38"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="39"/>
         <source>Cleanup FireFox Cache</source>
         <translation>清理火狐浏览器缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="38"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="39"/>
         <source>Cleanup Chromium Cache</source>
         <translation>清理chromium缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="40"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="41"/>
         <source>Cache Items</source>
         <translation>缓存选项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="45"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="47"/>
         <source>System Cache</source>
         <translation>系统缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="45"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="47"/>
         <source>Cleanup  cache of system, software-center, thumbnails and browser</source>
         <translation>清除包、缩略图和浏览器缓存等</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="52"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="54"/>
         <source>Uninstall unnecessary procedures</source>
         <translation>卸载不必要的程序</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="52"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="54"/>
         <source>Uninstall old kernel packages</source>
         <translation>卸载旧版本内核</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="52"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="54"/>
         <source>Cleanup software configfile</source>
         <translation>清理软件残余配置文件</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="55"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="57"/>
         <source>Package Items</source>
         <translation>包选项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="59"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="62"/>
         <source>Packages and configfile</source>
         <translation>包垃圾和残余配置文件</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="59"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="62"/>
         <source>Cleaning up the software that installed by other software bundled, old kernel packages and configfile, to improve system performance</source>
         <translation>清除不必要的程序、旧内核包和配置</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="67"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="70"/>
         <source>Cleanup the Cookies saving in Firefox</source>
         <translation>清理火狐浏览器的Cookies</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="67"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="70"/>
         <source>Cleanup the Cookies saving in Chromium</source>
         <translation>清理Chromium浏览器的Cookies</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="70"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="73"/>
         <source>Cookies Items</source>
         <translation>Cookies选项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="74"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="78"/>
         <source>Cookies</source>
         <translation>Cookies</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="74"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="78"/>
         <source>Clean up user login information, support Firefox and Chromium browser</source>
         <translation>清除上网、游戏、购物等记录</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="86"/>
         <source>Clean up the Firefox Internet records</source>
         <translation>清理火狐访问记录</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="86"/>
         <source>Clean up the Chromium Internet records</source>
         <translation>清理Chromium访问记录</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="86"/>
         <source>Clean up the recently opened documents records</source>
         <translation>清理最近打开的文件记录</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="86"/>
         <source>Delete the command history</source>
         <translation>删除命令历史记录</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="83"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="86"/>
         <source>Delete the debug logs</source>
         <translation>删除调试日志</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="86"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="89"/>
         <source>Trace Items</source>
         <translation>访问痕迹选项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="90"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="94"/>
         <source>History trace</source>
         <translation>历史痕迹</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="90"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="94"/>
         <source>Cleaning the internet and opened documents recently records</source>
         <translation>清除浏览器和系统使用痕迹</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="160"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="125"/>
         <source>Please select the items you want to clean</source>
         <translation>请选择您想清理的选项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="181"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="145"/>
         <source>Scan args is empty!</source>
         <translation>扫描参数为空！</translation>
     </message>
@@ -867,209 +866,209 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ComputerPage</name>
     <message>
-        <location filename="../../info/computerpage.cpp" line="56"/>
-        <location filename="../../info/computerpage.cpp" line="93"/>
-        <location filename="../../info/computerpage.cpp" line="98"/>
-        <location filename="../../info/computerpage.cpp" line="100"/>
+        <location filename="../../info/computerpage.cpp" line="71"/>
+        <location filename="../../info/computerpage.cpp" line="108"/>
+        <location filename="../../info/computerpage.cpp" line="113"/>
+        <location filename="../../info/computerpage.cpp" line="115"/>
         <source>%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="86"/>
-        <location filename="../../info/computerpage.cpp" line="90"/>
+        <location filename="../../info/computerpage.cpp" line="101"/>
+        <location filename="../../info/computerpage.cpp" line="105"/>
         <source> Minutes</source>
         <translation> 分钟</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="90"/>
+        <location filename="../../info/computerpage.cpp" line="105"/>
         <source> Hours </source>
         <translation> 小时</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="150"/>
-        <location filename="../../info/computerpage.cpp" line="297"/>
+        <location filename="../../info/computerpage.cpp" line="165"/>
+        <location filename="../../info/computerpage.cpp" line="312"/>
         <source>Audio Model</source>
         <translation>声卡型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="152"/>
-        <location filename="../../info/computerpage.cpp" line="232"/>
-        <location filename="../../info/computerpage.cpp" line="245"/>
-        <location filename="../../info/computerpage.cpp" line="340"/>
-        <location filename="../../info/computerpage.cpp" line="385"/>
-        <location filename="../../info/computerpage.cpp" line="401"/>
+        <location filename="../../info/computerpage.cpp" line="167"/>
+        <location filename="../../info/computerpage.cpp" line="247"/>
+        <location filename="../../info/computerpage.cpp" line="260"/>
+        <location filename="../../info/computerpage.cpp" line="355"/>
+        <location filename="../../info/computerpage.cpp" line="400"/>
         <location filename="../../info/computerpage.cpp" line="416"/>
+        <location filename="../../info/computerpage.cpp" line="431"/>
         <source>Vendor</source>
         <translation>制造商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="154"/>
-        <location filename="../../info/computerpage.cpp" line="359"/>
-        <location filename="../../info/computerpage.cpp" line="389"/>
-        <location filename="../../info/computerpage.cpp" line="407"/>
+        <location filename="../../info/computerpage.cpp" line="169"/>
+        <location filename="../../info/computerpage.cpp" line="374"/>
+        <location filename="../../info/computerpage.cpp" line="404"/>
+        <location filename="../../info/computerpage.cpp" line="422"/>
         <source>Bus Address</source>
         <translation>总线地址</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="156"/>
+        <location filename="../../info/computerpage.cpp" line="171"/>
         <source>Audio Driver</source>
         <translation>声卡驱动</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="159"/>
-        <location filename="../../info/computerpage.cpp" line="234"/>
-        <location filename="../../info/computerpage.cpp" line="329"/>
-        <location filename="../../info/computerpage.cpp" line="391"/>
+        <location filename="../../info/computerpage.cpp" line="174"/>
+        <location filename="../../info/computerpage.cpp" line="249"/>
+        <location filename="../../info/computerpage.cpp" line="344"/>
+        <location filename="../../info/computerpage.cpp" line="406"/>
         <source>Device Name</source>
         <translation>设备名</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="161"/>
+        <location filename="../../info/computerpage.cpp" line="176"/>
         <source>Manufacturer</source>
         <translation>发行商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="202"/>
-        <location filename="../../info/computerpage.cpp" line="418"/>
+        <location filename="../../info/computerpage.cpp" line="217"/>
+        <location filename="../../info/computerpage.cpp" line="433"/>
         <source>Model</source>
         <translation>型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="204"/>
+        <location filename="../../info/computerpage.cpp" line="219"/>
         <source>Technology</source>
         <translation>技术</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="206"/>
+        <location filename="../../info/computerpage.cpp" line="221"/>
         <source>Voltage</source>
         <translation>电压</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="208"/>
+        <location filename="../../info/computerpage.cpp" line="223"/>
         <source>Energy Designed</source>
         <translation>能量（设计）</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="210"/>
+        <location filename="../../info/computerpage.cpp" line="225"/>
         <source>Energy Full</source>
         <translation>满时能量</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="212"/>
+        <location filename="../../info/computerpage.cpp" line="227"/>
         <source>Energy Now</source>
         <translation>能量</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="214"/>
-        <location filename="../../info/computerpage.cpp" line="221"/>
-        <location filename="../../info/computerpage.cpp" line="238"/>
-        <location filename="../../info/computerpage.cpp" line="247"/>
-        <location filename="../../info/computerpage.cpp" line="333"/>
-        <location filename="../../info/computerpage.cpp" line="342"/>
-        <location filename="../../info/computerpage.cpp" line="411"/>
-        <location filename="../../info/computerpage.cpp" line="422"/>
+        <location filename="../../info/computerpage.cpp" line="229"/>
+        <location filename="../../info/computerpage.cpp" line="236"/>
+        <location filename="../../info/computerpage.cpp" line="253"/>
+        <location filename="../../info/computerpage.cpp" line="262"/>
+        <location filename="../../info/computerpage.cpp" line="348"/>
+        <location filename="../../info/computerpage.cpp" line="357"/>
+        <location filename="../../info/computerpage.cpp" line="426"/>
+        <location filename="../../info/computerpage.cpp" line="437"/>
         <source>Serial Number</source>
         <translation>序列号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="217"/>
+        <location filename="../../info/computerpage.cpp" line="232"/>
         <source>Motherboard Model</source>
         <translation>主板型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="219"/>
+        <location filename="../../info/computerpage.cpp" line="234"/>
         <source>Motherboard Vendor</source>
         <translation>主板产商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="223"/>
+        <location filename="../../info/computerpage.cpp" line="238"/>
         <source>BIOS Vendor</source>
         <translation>BIOS产商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="225"/>
+        <location filename="../../info/computerpage.cpp" line="240"/>
         <source>BIOS Version</source>
         <translation>BIOS版本</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="227"/>
+        <location filename="../../info/computerpage.cpp" line="242"/>
         <source>Release Date</source>
         <translation>发布日期</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="230"/>
+        <location filename="../../info/computerpage.cpp" line="245"/>
         <source>CD-ROM Model</source>
         <translation>光驱型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="236"/>
-        <location filename="../../info/computerpage.cpp" line="331"/>
+        <location filename="../../info/computerpage.cpp" line="251"/>
+        <location filename="../../info/computerpage.cpp" line="346"/>
         <source>Firmware Version</source>
         <translation>固件版本</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="243"/>
-        <location filename="../../info/computerpage.cpp" line="269"/>
+        <location filename="../../info/computerpage.cpp" line="258"/>
+        <location filename="../../info/computerpage.cpp" line="284"/>
         <source>CPU</source>
         <translation>处理器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="249"/>
+        <location filename="../../info/computerpage.cpp" line="264"/>
         <source>Socket/Slot</source>
         <translation>插座／插槽</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="251"/>
+        <location filename="../../info/computerpage.cpp" line="266"/>
         <source>Maximum Frequency</source>
         <translation>最大主频</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="253"/>
+        <location filename="../../info/computerpage.cpp" line="268"/>
         <source>Current Frequency</source>
         <translation>当前主频</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="255"/>
+        <location filename="../../info/computerpage.cpp" line="270"/>
         <source>FSB</source>
         <translation>前端总线</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="257"/>
+        <location filename="../../info/computerpage.cpp" line="272"/>
         <source>Core Number</source>
         <translation>核心数目</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="259"/>
+        <location filename="../../info/computerpage.cpp" line="274"/>
         <source>Thread</source>
         <translation>线程</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="261"/>
+        <location filename="../../info/computerpage.cpp" line="276"/>
         <source>L1 Cache</source>
         <translation>１级缓存</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="263"/>
+        <location filename="../../info/computerpage.cpp" line="278"/>
         <source>L2 Cache</source>
         <translation>２级缓存</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="267"/>
+        <location filename="../../info/computerpage.cpp" line="282"/>
         <source>Desktop Environment</source>
         <translation>桌面环境</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="271"/>
+        <location filename="../../info/computerpage.cpp" line="286"/>
         <source>Host Name</source>
         <translation>主机名</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="273"/>
+        <location filename="../../info/computerpage.cpp" line="288"/>
         <source>Memery Capacity</source>
         <translation>内存容量</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="275"/>
+        <location filename="../../info/computerpage.cpp" line="290"/>
         <source>Terminal</source>
         <translation>终端</translation>
     </message>
@@ -1078,172 +1077,172 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Shell终端</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="277"/>
+        <location filename="../../info/computerpage.cpp" line="292"/>
         <source>Distribution</source>
         <translation>发行版</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="279"/>
+        <location filename="../../info/computerpage.cpp" line="294"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="281"/>
+        <location filename="../../info/computerpage.cpp" line="296"/>
         <source>User</source>
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="283"/>
+        <location filename="../../info/computerpage.cpp" line="298"/>
         <source>Home Folder</source>
         <translation>用户主目录</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="287"/>
+        <location filename="../../info/computerpage.cpp" line="302"/>
         <source>Host bridge</source>
         <translation>主桥</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="289"/>
+        <location filename="../../info/computerpage.cpp" line="304"/>
         <source>VGA Model</source>
         <translation>VGA兼容控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="291"/>
+        <location filename="../../info/computerpage.cpp" line="306"/>
         <source>USB Model</source>
         <translation>USB控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="293"/>
+        <location filename="../../info/computerpage.cpp" line="308"/>
         <source>Communication Model</source>
         <translation>通信控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="295"/>
+        <location filename="../../info/computerpage.cpp" line="310"/>
         <source>Ethernet Model</source>
         <translation>以太网控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="299"/>
+        <location filename="../../info/computerpage.cpp" line="314"/>
         <source>PCI bridge</source>
         <translation>PCI桥</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="301"/>
+        <location filename="../../info/computerpage.cpp" line="316"/>
         <source>ISA bridge</source>
         <translation>ISA桥</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="303"/>
+        <location filename="../../info/computerpage.cpp" line="318"/>
         <source>SATA Model</source>
         <translation>SATA控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="305"/>
+        <location filename="../../info/computerpage.cpp" line="320"/>
         <source>SMBus</source>
         <translation>系统管理总线</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="307"/>
+        <location filename="../../info/computerpage.cpp" line="322"/>
         <source>System peripheral</source>
         <translation>系统外围</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="309"/>
+        <location filename="../../info/computerpage.cpp" line="324"/>
         <source>Driver in use</source>
         <translation>使用的驱动</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="311"/>
+        <location filename="../../info/computerpage.cpp" line="326"/>
         <source>existing drivers</source>
         <translation>可选的驱动</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="313"/>
+        <location filename="../../info/computerpage.cpp" line="328"/>
         <source>IDE interface</source>
         <translation>IDE接口</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="315"/>
+        <location filename="../../info/computerpage.cpp" line="330"/>
         <source>SP controller</source>
         <translation>信号处理控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="317"/>
+        <location filename="../../info/computerpage.cpp" line="332"/>
         <source>Network controller</source>
         <translation>网络控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="319"/>
+        <location filename="../../info/computerpage.cpp" line="334"/>
         <source>Multimedia audio controller</source>
         <translation>多媒体音频控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="323"/>
+        <location filename="../../info/computerpage.cpp" line="338"/>
         <source>HDD Model</source>
         <translation>硬盘型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="325"/>
+        <location filename="../../info/computerpage.cpp" line="340"/>
         <source>HDD Vendor</source>
         <translation>硬盘厂商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="327"/>
+        <location filename="../../info/computerpage.cpp" line="342"/>
         <source>HDD Capacity</source>
         <translation>硬盘容量</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="336"/>
+        <location filename="../../info/computerpage.cpp" line="351"/>
         <source>Slot Number</source>
         <translation>插槽号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="338"/>
+        <location filename="../../info/computerpage.cpp" line="353"/>
         <source>Memory Model</source>
         <translation>内存型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="344"/>
+        <location filename="../../info/computerpage.cpp" line="359"/>
         <source>Memory Size</source>
         <translation>内存大小</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="346"/>
+        <location filename="../../info/computerpage.cpp" line="361"/>
         <source>Data Width</source>
         <translation>数据宽度</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="348"/>
+        <location filename="../../info/computerpage.cpp" line="363"/>
         <source>Memory Info</source>
         <translation>内存条信息</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="351"/>
+        <location filename="../../info/computerpage.cpp" line="366"/>
         <source>Graphics Card Model</source>
         <translation>显卡型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="353"/>
+        <location filename="../../info/computerpage.cpp" line="368"/>
         <source>Current Graphics Card</source>
         <translation>当前显卡</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="355"/>
+        <location filename="../../info/computerpage.cpp" line="370"/>
         <source>Graphics Card Vendor</source>
         <translation>显卡制造商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="357"/>
+        <location filename="../../info/computerpage.cpp" line="372"/>
         <source>Graphics Driver</source>
         <translation>显卡驱动</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="361"/>
+        <location filename="../../info/computerpage.cpp" line="376"/>
         <source>Gamma</source>
         <translation>伽马值</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="363"/>
+        <location filename="../../info/computerpage.cpp" line="378"/>
         <source>Screen Size(inch)</source>
         <translation>屏幕尺寸（英寸）</translation>
     </message>
@@ -1252,128 +1251,128 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">屏幕尺寸</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="365"/>
+        <location filename="../../info/computerpage.cpp" line="380"/>
         <source>Max Resolution</source>
         <translation>最大分辨率</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="367"/>
+        <location filename="../../info/computerpage.cpp" line="382"/>
         <source>Current Interface</source>
         <translation>当前接口</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="369"/>
+        <location filename="../../info/computerpage.cpp" line="384"/>
         <source>Monitor Model</source>
         <translation>显示器型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="371"/>
+        <location filename="../../info/computerpage.cpp" line="386"/>
         <source>Visual Area</source>
         <translation>可视面积</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="373"/>
+        <location filename="../../info/computerpage.cpp" line="388"/>
         <source>Support Interface</source>
         <translation>支持接口</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="375"/>
+        <location filename="../../info/computerpage.cpp" line="390"/>
         <source>Monitor Manufacturers</source>
         <translation>显示器制造商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="377"/>
+        <location filename="../../info/computerpage.cpp" line="392"/>
         <source>Date of production/Week</source>
         <translation>生产日期/周</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="379"/>
+        <location filename="../../info/computerpage.cpp" line="394"/>
         <source>Date of production/Year</source>
         <translation>生产日期/年</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="383"/>
+        <location filename="../../info/computerpage.cpp" line="398"/>
         <source>NIC Model</source>
         <translation>有线网卡型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="387"/>
+        <location filename="../../info/computerpage.cpp" line="402"/>
         <source>NIC Driver</source>
         <translation>有线网卡驱动</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="393"/>
-        <location filename="../../info/computerpage.cpp" line="413"/>
+        <location filename="../../info/computerpage.cpp" line="408"/>
+        <location filename="../../info/computerpage.cpp" line="428"/>
         <source>IP Address</source>
         <translation>IP地址</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="395"/>
+        <location filename="../../info/computerpage.cpp" line="410"/>
         <source>Mac Address</source>
         <translation>MAC地址</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="397"/>
+        <location filename="../../info/computerpage.cpp" line="412"/>
         <source>Connection Status</source>
         <translation>连接状态</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="399"/>
+        <location filename="../../info/computerpage.cpp" line="414"/>
         <source>Max Bandwidth</source>
         <translation>最大带宽</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="403"/>
+        <location filename="../../info/computerpage.cpp" line="418"/>
         <source>WLan NIC Driver</source>
         <translation>无线网卡驱动</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="405"/>
+        <location filename="../../info/computerpage.cpp" line="420"/>
         <source>WLan NIC Model</source>
         <translation>网卡型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="409"/>
+        <location filename="../../info/computerpage.cpp" line="424"/>
         <source>Device Name:</source>
         <translation>设备名称：</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="420"/>
+        <location filename="../../info/computerpage.cpp" line="435"/>
         <source>Version</source>
         <translation>电脑版本</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="424"/>
+        <location filename="../../info/computerpage.cpp" line="439"/>
         <source>Hostname</source>
         <translation>主机名</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="426"/>
+        <location filename="../../info/computerpage.cpp" line="441"/>
         <source>Running Time</source>
         <translation>持续运行时间</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="428"/>
+        <location filename="../../info/computerpage.cpp" line="443"/>
         <source>OS Types</source>
         <translation>操作系统类型</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="430"/>
+        <location filename="../../info/computerpage.cpp" line="445"/>
         <source>OS Version</source>
         <translation>操作系统版本</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="432"/>
+        <location filename="../../info/computerpage.cpp" line="447"/>
         <source>Kernel Bit</source>
         <translation>系统位数</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="434"/>
+        <location filename="../../info/computerpage.cpp" line="449"/>
         <source>Kernel Version</source>
         <translation>内核版本</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="436"/>
+        <location filename="../../info/computerpage.cpp" line="451"/>
         <source>Kernel Arch</source>
         <translation>内核架构</translation>
     </message>
@@ -1381,173 +1380,173 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ConserveWidget</name>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="238"/>
+        <location filename="../../setting/conservewidget.cpp" line="350"/>
         <source>Adjust gamma</source>
         <translation>调整伽马值</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="239"/>
+        <location filename="../../setting/conservewidget.cpp" line="351"/>
         <source>Adjust brightness</source>
         <translation>调整屏幕亮度</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="240"/>
+        <location filename="../../setting/conservewidget.cpp" line="352"/>
         <source>Time before session is considered idle</source>
         <translation>在此时间范围内无操作则关闭屏幕</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="241"/>
+        <location filename="../../setting/conservewidget.cpp" line="353"/>
         <source>Lock screen</source>
         <translation>锁定屏幕</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="242"/>
+        <location filename="../../setting/conservewidget.cpp" line="354"/>
         <source>Lock delay</source>
         <translation>锁定延时</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="243"/>
+        <location filename="../../setting/conservewidget.cpp" line="355"/>
         <source>Battery critical low action</source>
         <translation>电池严重不足时</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="244"/>
+        <location filename="../../setting/conservewidget.cpp" line="356"/>
         <source>Laptop lid close action on battery</source>
         <translation>使用电池合上盖子时</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="245"/>
+        <location filename="../../setting/conservewidget.cpp" line="357"/>
         <source>Laptop lid close action on AC</source>
         <translation>使用电源合上盖子时</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="246"/>
+        <location filename="../../setting/conservewidget.cpp" line="358"/>
         <source>Sleep timeout PC when on battery</source>
         <translation>使用电池，空闲此时间后电脑转入睡眠</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="247"/>
+        <location filename="../../setting/conservewidget.cpp" line="359"/>
         <source>Sleep timeout PC when on AC</source>
         <translation>使用电源，空闲此时间后电脑转入睡眠</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="248"/>
+        <location filename="../../setting/conservewidget.cpp" line="360"/>
         <source>Sleep timeout display when on battery</source>
         <translation>使用电池，空闲此时间后屏幕转入睡眠</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="249"/>
+        <location filename="../../setting/conservewidget.cpp" line="361"/>
         <source>Sleep timeout display when on AC</source>
         <translation>使用电源，空闲此时间后屏幕转入睡眠</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="250"/>
-        <location filename="../../setting/conservewidget.cpp" line="252"/>
-        <location filename="../../setting/conservewidget.cpp" line="254"/>
+        <location filename="../../setting/conservewidget.cpp" line="362"/>
+        <location filename="../../setting/conservewidget.cpp" line="364"/>
+        <location filename="../../setting/conservewidget.cpp" line="366"/>
         <source>suspend</source>
         <translation>挂起</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="251"/>
+        <location filename="../../setting/conservewidget.cpp" line="363"/>
         <source>shutdown</source>
         <translation>电源关闭</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="253"/>
-        <location filename="../../setting/conservewidget.cpp" line="255"/>
+        <location filename="../../setting/conservewidget.cpp" line="365"/>
+        <location filename="../../setting/conservewidget.cpp" line="367"/>
         <source>nothing</source>
         <translation>不处理</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="335"/>
-        <location filename="../../setting/conservewidget.cpp" line="367"/>
+        <location filename="../../setting/conservewidget.cpp" line="447"/>
+        <location filename="../../setting/conservewidget.cpp" line="479"/>
         <source>1 minute</source>
         <translation>1 分钟</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="335"/>
-        <location filename="../../setting/conservewidget.cpp" line="367"/>
+        <location filename="../../setting/conservewidget.cpp" line="447"/>
+        <location filename="../../setting/conservewidget.cpp" line="479"/>
         <source>2 minutes</source>
         <translation>2 分钟</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="335"/>
-        <location filename="../../setting/conservewidget.cpp" line="367"/>
+        <location filename="../../setting/conservewidget.cpp" line="447"/>
+        <location filename="../../setting/conservewidget.cpp" line="479"/>
         <source>3 minutes</source>
         <translation>3 分钟</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="276"/>
-        <location filename="../../setting/conservewidget.cpp" line="298"/>
-        <location filename="../../setting/conservewidget.cpp" line="335"/>
-        <location filename="../../setting/conservewidget.cpp" line="367"/>
-        <location filename="../../setting/conservewidget.cpp" line="418"/>
-        <location filename="../../setting/conservewidget.cpp" line="440"/>
+        <location filename="../../setting/conservewidget.cpp" line="388"/>
+        <location filename="../../setting/conservewidget.cpp" line="410"/>
+        <location filename="../../setting/conservewidget.cpp" line="447"/>
+        <location filename="../../setting/conservewidget.cpp" line="479"/>
+        <location filename="../../setting/conservewidget.cpp" line="530"/>
+        <location filename="../../setting/conservewidget.cpp" line="552"/>
         <source>5 minutes</source>
         <translation>5 分钟</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="276"/>
-        <location filename="../../setting/conservewidget.cpp" line="298"/>
-        <location filename="../../setting/conservewidget.cpp" line="335"/>
-        <location filename="../../setting/conservewidget.cpp" line="367"/>
-        <location filename="../../setting/conservewidget.cpp" line="418"/>
-        <location filename="../../setting/conservewidget.cpp" line="440"/>
+        <location filename="../../setting/conservewidget.cpp" line="388"/>
+        <location filename="../../setting/conservewidget.cpp" line="410"/>
+        <location filename="../../setting/conservewidget.cpp" line="447"/>
+        <location filename="../../setting/conservewidget.cpp" line="479"/>
+        <location filename="../../setting/conservewidget.cpp" line="530"/>
+        <location filename="../../setting/conservewidget.cpp" line="552"/>
         <source>10 minutes</source>
         <translation>10 分钟</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="276"/>
-        <location filename="../../setting/conservewidget.cpp" line="298"/>
-        <location filename="../../setting/conservewidget.cpp" line="335"/>
-        <location filename="../../setting/conservewidget.cpp" line="367"/>
-        <location filename="../../setting/conservewidget.cpp" line="418"/>
-        <location filename="../../setting/conservewidget.cpp" line="440"/>
+        <location filename="../../setting/conservewidget.cpp" line="388"/>
+        <location filename="../../setting/conservewidget.cpp" line="410"/>
+        <location filename="../../setting/conservewidget.cpp" line="447"/>
+        <location filename="../../setting/conservewidget.cpp" line="479"/>
+        <location filename="../../setting/conservewidget.cpp" line="530"/>
+        <location filename="../../setting/conservewidget.cpp" line="552"/>
         <source>Half an hour</source>
         <translation>半小时</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="276"/>
-        <location filename="../../setting/conservewidget.cpp" line="298"/>
-        <location filename="../../setting/conservewidget.cpp" line="335"/>
-        <location filename="../../setting/conservewidget.cpp" line="367"/>
-        <location filename="../../setting/conservewidget.cpp" line="418"/>
-        <location filename="../../setting/conservewidget.cpp" line="440"/>
+        <location filename="../../setting/conservewidget.cpp" line="388"/>
+        <location filename="../../setting/conservewidget.cpp" line="410"/>
+        <location filename="../../setting/conservewidget.cpp" line="447"/>
+        <location filename="../../setting/conservewidget.cpp" line="479"/>
+        <location filename="../../setting/conservewidget.cpp" line="530"/>
+        <location filename="../../setting/conservewidget.cpp" line="552"/>
         <source>1 hour</source>
         <translation>1 小时</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="276"/>
-        <location filename="../../setting/conservewidget.cpp" line="298"/>
-        <location filename="../../setting/conservewidget.cpp" line="335"/>
-        <location filename="../../setting/conservewidget.cpp" line="418"/>
-        <location filename="../../setting/conservewidget.cpp" line="440"/>
+        <location filename="../../setting/conservewidget.cpp" line="388"/>
+        <location filename="../../setting/conservewidget.cpp" line="410"/>
+        <location filename="../../setting/conservewidget.cpp" line="447"/>
+        <location filename="../../setting/conservewidget.cpp" line="530"/>
+        <location filename="../../setting/conservewidget.cpp" line="552"/>
         <source>never</source>
         <translation>从不</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="367"/>
+        <location filename="../../setting/conservewidget.cpp" line="479"/>
         <source>30 seconds</source>
         <translation>30 秒</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="367"/>
+        <location filename="../../setting/conservewidget.cpp" line="479"/>
         <source>Turn off the screen</source>
         <translation>关闭屏幕</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="276"/>
-        <location filename="../../setting/conservewidget.cpp" line="298"/>
-        <location filename="../../setting/conservewidget.cpp" line="418"/>
-        <location filename="../../setting/conservewidget.cpp" line="440"/>
+        <location filename="../../setting/conservewidget.cpp" line="388"/>
+        <location filename="../../setting/conservewidget.cpp" line="410"/>
+        <location filename="../../setting/conservewidget.cpp" line="530"/>
+        <location filename="../../setting/conservewidget.cpp" line="552"/>
         <source>20 minutes</source>
         <translation>20 分钟</translation>
     </message>
     <message>
-        <location filename="../../setting/conservewidget.cpp" line="276"/>
-        <location filename="../../setting/conservewidget.cpp" line="298"/>
-        <location filename="../../setting/conservewidget.cpp" line="418"/>
-        <location filename="../../setting/conservewidget.cpp" line="440"/>
+        <location filename="../../setting/conservewidget.cpp" line="388"/>
+        <location filename="../../setting/conservewidget.cpp" line="410"/>
+        <location filename="../../setting/conservewidget.cpp" line="530"/>
+        <location filename="../../setting/conservewidget.cpp" line="552"/>
         <source>2 hours</source>
         <translation>2 小时</translation>
     </message>
@@ -1603,51 +1602,51 @@ p, li { white-space: pre-wrap; }
         <translation>点击此处更换字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="203"/>
+        <location filename="../../setting/fontwidget.cpp" line="277"/>
         <source>Default Font</source>
         <translation>默认字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="204"/>
+        <location filename="../../setting/fontwidget.cpp" line="278"/>
         <source>Desktop Font</source>
         <translation>桌面字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="205"/>
+        <location filename="../../setting/fontwidget.cpp" line="279"/>
         <source>Monospace Font</source>
         <translation>等宽字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="206"/>
+        <location filename="../../setting/fontwidget.cpp" line="280"/>
         <source>Document Font</source>
         <translation>文档字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="207"/>
+        <location filename="../../setting/fontwidget.cpp" line="281"/>
         <source>Titlebar Font</source>
         <translation>标题栏字体</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="208"/>
+        <location filename="../../setting/fontwidget.cpp" line="282"/>
         <source>Global Font Scaling</source>
         <translation>全局字体缩放</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="209"/>
+        <location filename="../../setting/fontwidget.cpp" line="283"/>
         <source>Hinting</source>
         <translation>平滑</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="210"/>
+        <location filename="../../setting/fontwidget.cpp" line="284"/>
         <source>Antialiasing</source>
         <translation>反锯齿</translation>
     </message>
     <message>
-        <location filename="../../setting/fontwidget.cpp" line="211"/>
-        <location filename="../../setting/fontwidget.cpp" line="212"/>
-        <location filename="../../setting/fontwidget.cpp" line="213"/>
-        <location filename="../../setting/fontwidget.cpp" line="214"/>
-        <location filename="../../setting/fontwidget.cpp" line="215"/>
+        <location filename="../../setting/fontwidget.cpp" line="285"/>
+        <location filename="../../setting/fontwidget.cpp" line="286"/>
+        <location filename="../../setting/fontwidget.cpp" line="287"/>
+        <location filename="../../setting/fontwidget.cpp" line="288"/>
+        <location filename="../../setting/fontwidget.cpp" line="289"/>
         <source>Restore</source>
         <translation>恢复默认</translation>
     </message>
@@ -1669,13 +1668,13 @@ p, li { white-space: pre-wrap; }
     <name>HomeActionWidget</name>
     <message>
         <location filename="../homeactionwidget.cpp" line="144"/>
-        <location filename="../homeactionwidget.cpp" line="307"/>
+        <location filename="../homeactionwidget.cpp" line="322"/>
         <source>The lastest cleanup time is </source>
         <translation>上一次清理时间是</translation>
     </message>
     <message>
         <location filename="../homeactionwidget.cpp" line="150"/>
-        <location filename="../homeactionwidget.cpp" line="415"/>
+        <location filename="../homeactionwidget.cpp" line="430"/>
         <source>The lastest scan time is </source>
         <translation>上一次扫描时间是</translation>
     </message>
@@ -1685,174 +1684,174 @@ p, li { white-space: pre-wrap; }
         <translation>您还没有执行过一键扫描和一键清理操作。</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="175"/>
+        <location filename="../homeactionwidget.cpp" line="190"/>
         <source>Quick clean up system trash, saving disk space and improving the system efficiency!</source>
         <translation>一键清理系统垃圾，帮您节省磁盘空间，让系统运行更加有效率！</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="176"/>
+        <location filename="../homeactionwidget.cpp" line="191"/>
         <source>Start Scan</source>
         <translation>开始扫描</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="177"/>
+        <location filename="../homeactionwidget.cpp" line="192"/>
         <source>Start Cleanup</source>
         <translation>开始清理</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="178"/>
+        <location filename="../homeactionwidget.cpp" line="193"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="179"/>
+        <location filename="../homeactionwidget.cpp" line="194"/>
         <source>Scanning......</source>
         <translation>正在扫描.....</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="190"/>
+        <location filename="../homeactionwidget.cpp" line="205"/>
         <source>Scanning:</source>
         <translation>正在扫描：</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="180"/>
+        <location filename="../homeactionwidget.cpp" line="195"/>
         <source>Scan Over</source>
         <translation>扫描完成</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="206"/>
-        <location filename="../homeactionwidget.cpp" line="210"/>
         <location filename="../homeactionwidget.cpp" line="221"/>
+        <location filename="../homeactionwidget.cpp" line="225"/>
+        <location filename="../homeactionwidget.cpp" line="236"/>
         <source> history trace; </source>
         <translation> 条历史痕迹；</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="206"/>
-        <location filename="../homeactionwidget.cpp" line="231"/>
+        <location filename="../homeactionwidget.cpp" line="221"/>
+        <location filename="../homeactionwidget.cpp" line="246"/>
         <source> browser cookies.</source>
         <translation> 条浏览器Cookies。</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="210"/>
-        <location filename="../homeactionwidget.cpp" line="235"/>
+        <location filename="../homeactionwidget.cpp" line="225"/>
+        <location filename="../homeactionwidget.cpp" line="250"/>
         <source> browser cookies; </source>
         <translation> 条浏览器Cookies；</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="210"/>
-        <location filename="../homeactionwidget.cpp" line="221"/>
-        <location filename="../homeactionwidget.cpp" line="235"/>
-        <location filename="../homeactionwidget.cpp" line="246"/>
+        <location filename="../homeactionwidget.cpp" line="225"/>
+        <location filename="../homeactionwidget.cpp" line="236"/>
+        <location filename="../homeactionwidget.cpp" line="250"/>
+        <location filename="../homeactionwidget.cpp" line="261"/>
         <source> garbage.</source>
         <translation> 垃圾。</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="217"/>
+        <location filename="../homeactionwidget.cpp" line="232"/>
         <source> history trace.</source>
         <translation> 条历史痕迹。</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="251"/>
+        <location filename="../homeactionwidget.cpp" line="266"/>
         <source>No garbage.</source>
         <translation>没有扫描到垃圾。</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="291"/>
+        <location filename="../homeactionwidget.cpp" line="306"/>
         <source>Cleaning......</source>
         <translation>正在清理.......</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="296"/>
+        <location filename="../homeactionwidget.cpp" line="311"/>
         <source>Garbage Cleanup OK......</source>
         <translation>垃圾清理完成......</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="299"/>
+        <location filename="../homeactionwidget.cpp" line="314"/>
         <source>History Cleanup OK......</source>
         <translation>历史记录清理完成......</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="302"/>
+        <location filename="../homeactionwidget.cpp" line="317"/>
         <source>Cookies Cleanup OK......</source>
         <translation>Cookies清理完成......</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="308"/>
+        <location filename="../homeactionwidget.cpp" line="323"/>
         <source>Cleanup Cookies:</source>
         <translation>清理了Cookies：</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="308"/>
+        <location filename="../homeactionwidget.cpp" line="323"/>
         <source>; Garbage:</source>
         <translation>；垃圾：</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="308"/>
+        <location filename="../homeactionwidget.cpp" line="323"/>
         <source>; Historical records:</source>
         <translation>；历史记录：</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="338"/>
+        <location filename="../homeactionwidget.cpp" line="353"/>
         <source>Cleaning up history trace of Firefox...</source>
         <translation>正在清理Firefox浏览器的历史痕迹......</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="341"/>
+        <location filename="../homeactionwidget.cpp" line="356"/>
         <source>Firefox history trace had been cleared!</source>
         <translation>Firefox浏览器历史痕迹清理完成！</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="346"/>
+        <location filename="../homeactionwidget.cpp" line="361"/>
         <source>Cleaning up history trace of Chromium...</source>
         <translation>正在清理Chromium浏览器的历史痕迹......</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="349"/>
+        <location filename="../homeactionwidget.cpp" line="364"/>
         <source>Chromium history trace had been cleared!</source>
         <translation>Chromium浏览器的历史痕迹清理完成！</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="354"/>
+        <location filename="../homeactionwidget.cpp" line="369"/>
         <source>Cleaning up Cookies of Firefox...</source>
         <translation>正在清理Firefox浏览器的Cookies......</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="357"/>
+        <location filename="../homeactionwidget.cpp" line="372"/>
         <source>Firefox Cookies had been cleared!</source>
         <translation>Firefox浏览器的Cookies清理完成！</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="362"/>
+        <location filename="../homeactionwidget.cpp" line="377"/>
         <source>Cleaning up Cookies of Chromium...</source>
         <translation>正在清理Chromium浏览器的Cookies......</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="365"/>
+        <location filename="../homeactionwidget.cpp" line="380"/>
         <source>Chromium Cookies had been cleared!</source>
         <translation>Chromium浏览器的Cookies清理完成！</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="370"/>
+        <location filename="../homeactionwidget.cpp" line="385"/>
         <source>Apt cache had been cleared!</source>
         <translation>Apt缓存清理完成！</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="373"/>
+        <location filename="../homeactionwidget.cpp" line="388"/>
         <source>Cleaning up Apt cache: </source>
         <translation>正在清理Apt缓存：</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="378"/>
+        <location filename="../homeactionwidget.cpp" line="393"/>
         <source>Software Center cache had been cleared!</source>
         <translation>软件中心缓存清理完成！</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="381"/>
+        <location filename="../homeactionwidget.cpp" line="396"/>
         <source>Cleaning up Software Center cache: </source>
         <translation>正在清理软件中心缓存：</translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="407"/>
+        <location filename="../homeactionwidget.cpp" line="422"/>
         <source>Ready to Cleanup......</source>
         <translation>准备清理......</translation>
     </message>
@@ -1860,37 +1859,37 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>HomePage</name>
     <message>
-        <location filename="../homepage.cpp" line="154"/>
+        <location filename="../homepage.cpp" line="172"/>
         <source>Boot Manager</source>
         <translation>启动项管理</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="154"/>
+        <location filename="../homepage.cpp" line="172"/>
         <source>Camera</source>
         <translation>摄像头</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="225"/>
+        <location filename="../homepage.cpp" line="243"/>
         <source>Current Version Number</source>
         <translation>当前版本号</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="226"/>
+        <location filename="../homepage.cpp" line="244"/>
         <source>Update to the lastest version, make it work better</source>
         <translation>更新至最新版本，使软件更好用</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="227"/>
+        <location filename="../homepage.cpp" line="245"/>
         <source>updating on the backend</source>
         <translation>正在后台升级</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="248"/>
+        <location filename="../homepage.cpp" line="266"/>
         <source>Upgrade is complete</source>
         <translation>升级完成</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="250"/>
+        <location filename="../homepage.cpp" line="268"/>
         <source>Updating on the backend</source>
         <translation>正在后台升级</translation>
     </message>
@@ -1899,17 +1898,17 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">检查最新版本</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="228"/>
+        <location filename="../homepage.cpp" line="246"/>
         <source>Common toolbox</source>
         <translation>工具箱</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="229"/>
+        <location filename="../homepage.cpp" line="247"/>
         <source>Fast and practical, making the system more personalized</source>
         <translation>更快更好，让系统更具个性化</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="154"/>
+        <location filename="../homepage.cpp" line="172"/>
         <source>More</source>
         <translation>更多</translation>
     </message>
@@ -1917,7 +1916,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>IconWidget</name>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="198"/>
+        <location filename="../../setting/iconwidget.cpp" line="210"/>
         <source>Icon theme</source>
         <translation>图标主题</translation>
     </message>
@@ -1926,27 +1925,27 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">显示桌面图标</translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="200"/>
+        <location filename="../../setting/iconwidget.cpp" line="212"/>
         <source>Computer</source>
         <translation>计算机</translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="201"/>
+        <location filename="../../setting/iconwidget.cpp" line="213"/>
         <source>Home Folder</source>
         <translation>用户主目录</translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="202"/>
+        <location filename="../../setting/iconwidget.cpp" line="214"/>
         <source>Network</source>
         <translation>网络</translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="203"/>
+        <location filename="../../setting/iconwidget.cpp" line="215"/>
         <source>Trash</source>
         <translation>回收站</translation>
     </message>
     <message>
-        <location filename="../../setting/iconwidget.cpp" line="204"/>
+        <location filename="../../setting/iconwidget.cpp" line="216"/>
         <source>Mounted Volumes</source>
         <translation>挂载卷</translation>
     </message>
@@ -1954,7 +1953,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>InfoActionWidget</name>
     <message>
-        <location filename="../infoactionwidget.cpp" line="61"/>
+        <location filename="../infoactionwidget.cpp" line="68"/>
         <source>Understand hardware information, provide more convenient channel to obtain hardware information</source>
         <translation>了解电脑硬件详细信息，为用户提供更加方便的获取硬件信息渠道</translation>
     </message>
@@ -2034,52 +2033,52 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>KylinFontDialog</name>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="174"/>
+        <location filename="../../component/kylinfontdialog.cpp" line="237"/>
         <source>Current Font</source>
         <translation>当前字体</translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="175"/>
+        <location filename="../../component/kylinfontdialog.cpp" line="238"/>
         <source>Font</source>
         <translation>字体</translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="176"/>
+        <location filename="../../component/kylinfontdialog.cpp" line="239"/>
         <source>Style</source>
         <translation>风格</translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="177"/>
+        <location filename="../../component/kylinfontdialog.cpp" line="240"/>
         <source>Size</source>
         <translation>大小</translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="178"/>
+        <location filename="../../component/kylinfontdialog.cpp" line="241"/>
         <source>View</source>
         <translation>视图</translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="179"/>
+        <location filename="../../component/kylinfontdialog.cpp" line="242"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="180"/>
+        <location filename="../../component/kylinfontdialog.cpp" line="243"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="203"/>
+        <location filename="../../component/kylinfontdialog.cpp" line="266"/>
         <source>Tips</source>
         <translation>提示</translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="204"/>
+        <location filename="../../component/kylinfontdialog.cpp" line="267"/>
         <source>You haven&apos;t change the font, please choose the font!</source>
         <translation>您没有更改字体，请选择需要更改的字体！</translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="217"/>
+        <location filename="../../component/kylinfontdialog.cpp" line="280"/>
         <source>Font Dialog</source>
         <translation>字体对话框</translation>
     </message>
@@ -2087,22 +2086,22 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>KylinMenu</name>
     <message>
-        <location filename="../../component/kylinmenu.cpp" line="143"/>
+        <location filename="../../component/kylinmenu.cpp" line="206"/>
         <source>Check and update</source>
         <translation>检查更新</translation>
     </message>
     <message>
-        <location filename="../../component/kylinmenu.cpp" line="144"/>
+        <location filename="../../component/kylinmenu.cpp" line="207"/>
         <source>Forum Help</source>
         <translation>论坛求助</translation>
     </message>
     <message>
-        <location filename="../../component/kylinmenu.cpp" line="145"/>
+        <location filename="../../component/kylinmenu.cpp" line="208"/>
         <source>Feedback</source>
         <translation>问题反馈</translation>
     </message>
     <message>
-        <location filename="../../component/kylinmenu.cpp" line="146"/>
+        <location filename="../../component/kylinmenu.cpp" line="209"/>
         <source>About us</source>
         <translation>关于我们</translation>
     </message>
@@ -2127,47 +2126,47 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>LauncherWidget</name>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="218"/>
+        <location filename="../../setting/launcherwidget.cpp" line="292"/>
         <source>Launcher icon size</source>
         <translation>启动器图标尺寸</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="219"/>
+        <location filename="../../setting/launcherwidget.cpp" line="293"/>
         <source>Launcher hide mode</source>
         <translation>启动器自动隐藏</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="220"/>
+        <location filename="../../setting/launcherwidget.cpp" line="294"/>
         <source>Display desktop icon</source>
         <translation>显示桌面图标</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="221"/>
+        <location filename="../../setting/launcherwidget.cpp" line="295"/>
         <source>Launcher Transparency</source>
         <translation>启动器透明度</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="222"/>
+        <location filename="../../setting/launcherwidget.cpp" line="296"/>
         <source>Icon Background</source>
         <translation>图标背景</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="223"/>
+        <location filename="../../setting/launcherwidget.cpp" line="297"/>
         <source>Top panel icon size</source>
         <translation>顶部面板图标大小</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="224"/>
+        <location filename="../../setting/launcherwidget.cpp" line="298"/>
         <source>Top panel auto hide</source>
         <translation>顶部面板自动隐藏</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="225"/>
+        <location filename="../../setting/launcherwidget.cpp" line="299"/>
         <source>Bottom panel icon size</source>
         <translation>底部面板图标大小</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="226"/>
+        <location filename="../../setting/launcherwidget.cpp" line="300"/>
         <source>Bottom panel auto hide</source>
         <translation>底部面板自动隐藏</translation>
     </message>
@@ -2175,12 +2174,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>LoginWidget</name>
     <message>
-        <location filename="../loginwidget.cpp" line="117"/>
+        <location filename="../loginwidget.cpp" line="137"/>
         <source>Login Youker Account</source>
         <translation>登录优客帐号</translation>
     </message>
     <message>
-        <location filename="../loginwidget.cpp" line="118"/>
+        <location filename="../loginwidget.cpp" line="138"/>
         <source>Logout</source>
         <translation>注销</translation>
     </message>
@@ -2222,22 +2221,22 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>MouseWidget</name>
     <message>
-        <location filename="../../setting/mousewidget.cpp" line="101"/>
+        <location filename="../../setting/mousewidget.cpp" line="111"/>
         <source>Mouse Pointer Theme</source>
         <translation>鼠标指针主题</translation>
     </message>
     <message>
-        <location filename="../../setting/mousewidget.cpp" line="102"/>
+        <location filename="../../setting/mousewidget.cpp" line="112"/>
         <source>Cursor Pointer Size</source>
         <translation>光标指针大小</translation>
     </message>
     <message>
-        <location filename="../../setting/mousewidget.cpp" line="103"/>
+        <location filename="../../setting/mousewidget.cpp" line="113"/>
         <source>Small Size</source>
         <translation>小号</translation>
     </message>
     <message>
-        <location filename="../../setting/mousewidget.cpp" line="104"/>
+        <location filename="../../setting/mousewidget.cpp" line="114"/>
         <source>Big Size</source>
         <translation>大号</translation>
     </message>
@@ -2245,37 +2244,37 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>NautilusWidget</name>
     <message>
-        <location filename="../../setting/nautiluswidget.cpp" line="179"/>
+        <location filename="../../setting/nautiluswidget.cpp" line="237"/>
         <source>Display entry location</source>
         <translation>路径输入框取代路径栏</translation>
     </message>
     <message>
-        <location filename="../../setting/nautiluswidget.cpp" line="180"/>
+        <location filename="../../setting/nautiluswidget.cpp" line="238"/>
         <source>Automatically mount media</source>
         <translation>自动挂载媒体</translation>
     </message>
     <message>
-        <location filename="../../setting/nautiluswidget.cpp" line="181"/>
+        <location filename="../../setting/nautiluswidget.cpp" line="239"/>
         <source>Automatically open a folder</source>
         <translation>自动打开文件夹</translation>
     </message>
     <message>
-        <location filename="../../setting/nautiluswidget.cpp" line="182"/>
+        <location filename="../../setting/nautiluswidget.cpp" line="240"/>
         <source>Prompt autorun programs</source>
         <translation>提示自动运行的程序</translation>
     </message>
     <message>
-        <location filename="../../setting/nautiluswidget.cpp" line="183"/>
+        <location filename="../../setting/nautiluswidget.cpp" line="241"/>
         <source>Thumbnail icon size (pixels)</source>
         <translation>缩略图图标尺寸（像素）</translation>
     </message>
     <message>
-        <location filename="../../setting/nautiluswidget.cpp" line="184"/>
+        <location filename="../../setting/nautiluswidget.cpp" line="242"/>
         <source>Thumbnail cache time (days)</source>
         <translation>缩略图缓存时间（天数）</translation>
     </message>
     <message>
-        <location filename="../../setting/nautiluswidget.cpp" line="185"/>
+        <location filename="../../setting/nautiluswidget.cpp" line="243"/>
         <source>Maximum thumbnail cache size (MB)</source>
         <translation>最大缩略图缓存尺寸（MB）</translation>
     </message>
@@ -2304,72 +2303,72 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PanelWidget</name>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="250"/>
+        <location filename="../../setting/panelwidget.cpp" line="352"/>
         <source>Dash background blur type</source>
         <translation>搜索框背景模糊类型</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="251"/>
+        <location filename="../../setting/panelwidget.cpp" line="353"/>
         <source>Panel Transparency</source>
         <translation>面板透明度</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="252"/>
+        <location filename="../../setting/panelwidget.cpp" line="354"/>
         <source>Date &amp; time format</source>
         <translation>日期时间格式</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="253"/>
+        <location filename="../../setting/panelwidget.cpp" line="355"/>
         <source>Display seconds</source>
         <translation>显示秒数</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="254"/>
+        <location filename="../../setting/panelwidget.cpp" line="356"/>
         <source>Display week</source>
         <translation>显示星期</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="255"/>
+        <location filename="../../setting/panelwidget.cpp" line="357"/>
         <source>Display the date</source>
         <translation>显示日期</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="256"/>
+        <location filename="../../setting/panelwidget.cpp" line="358"/>
         <source>Display battery icon</source>
         <translation>显示电池图标</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="257"/>
+        <location filename="../../setting/panelwidget.cpp" line="359"/>
         <source>Display battery percentage</source>
         <translation>显示电池百分比</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="258"/>
+        <location filename="../../setting/panelwidget.cpp" line="360"/>
         <source>Display battery remaining time</source>
         <translation>显示电池电量时间</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="260"/>
+        <location filename="../../setting/panelwidget.cpp" line="362"/>
         <source>Smart blur</source>
         <translation>活动模糊</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="261"/>
+        <location filename="../../setting/panelwidget.cpp" line="363"/>
         <source>Static blur</source>
         <translation>静态模糊</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="262"/>
+        <location filename="../../setting/panelwidget.cpp" line="364"/>
         <source>Clear</source>
         <translation>非模糊</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="264"/>
+        <location filename="../../setting/panelwidget.cpp" line="366"/>
         <source>Show applications</source>
         <translation>显示应用程序</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="265"/>
+        <location filename="../../setting/panelwidget.cpp" line="367"/>
         <source>Show system</source>
         <translation>显示系统</translation>
     </message>
@@ -2378,7 +2377,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">显示桌面</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="267"/>
+        <location filename="../../setting/panelwidget.cpp" line="369"/>
         <source>Show places</source>
         <translation>显示位置</translation>
     </message>
@@ -2387,7 +2386,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">显示应用程序</translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="266"/>
+        <location filename="../../setting/panelwidget.cpp" line="368"/>
         <source>Show icon</source>
         <translation>显示图标</translation>
     </message>
@@ -2502,17 +2501,17 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SettingAction</name>
     <message>
-        <location filename="../../component/settingaction.cpp" line="100"/>
+        <location filename="../../component/settingaction.cpp" line="110"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="103"/>
+        <location filename="../../component/settingaction.cpp" line="113"/>
         <source>Choose the theme what you want</source>
         <translation>选择您需要的主题</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="107"/>
+        <location filename="../../component/settingaction.cpp" line="117"/>
         <source>Set the desktop icon theme and the visibility of desktop icons</source>
         <translation>设置桌面图标主题和桌面图标的可见性</translation>
     </message>
@@ -2529,7 +2528,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">更换鼠标指针主题和大小，主题更改需要重新系统才能生效。</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="115"/>
+        <location filename="../../component/settingaction.cpp" line="125"/>
         <source>Set the sound theme you want</source>
         <translation>设置您需要的声音主题</translation>
     </message>
@@ -2542,62 +2541,62 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">设置启动器的显示模式、图标尺寸。</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="111"/>
+        <location filename="../../component/settingaction.cpp" line="121"/>
         <source>Replace the theme and size of the mouse pointer, and theme change need to restart system</source>
         <translation>更换鼠标指针主题和大小，主题更改需要重新系统才能生效</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="124"/>
+        <location filename="../../component/settingaction.cpp" line="134"/>
         <source>Setting the panel mode of auto hide and icon size</source>
         <translation>设置面板自动隐藏模式和面板图标大小</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="126"/>
+        <location filename="../../component/settingaction.cpp" line="136"/>
         <source>Setting the Launcher display mode, Icon size</source>
         <translation>设置启动器的显示模式、图标尺寸</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="131"/>
+        <location filename="../../component/settingaction.cpp" line="141"/>
         <source>Manage display of the start menu</source>
         <translation>管理启动菜单的显示</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="133"/>
+        <location filename="../../component/settingaction.cpp" line="143"/>
         <source>Manage Dash and Panel menu settings</source>
         <translation>管理Dash搜索和面板菜单的设置</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="137"/>
+        <location filename="../../component/settingaction.cpp" line="147"/>
         <source>Window Manager settings</source>
         <translation>窗口管理器设置</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="141"/>
+        <location filename="../../component/settingaction.cpp" line="151"/>
         <source>According to personal preferences to set the system default font, click the  &apos;Restore&apos; button, can be restored to the state before the font settings</source>
         <translation>根据个人喜好设置系统默认字体，单击＂恢复默认＂按钮，可以将对应的字体恢复到设置前状态</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="145"/>
+        <location filename="../../component/settingaction.cpp" line="155"/>
         <source>Setting the relevant properties of your touchpad,make the operation more convenient</source>
         <translation>通过调整您触摸板的相关设置，使操作更加便捷</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="149"/>
+        <location filename="../../component/settingaction.cpp" line="159"/>
         <source>Monitor Check</source>
         <translation>坏点检测</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="153"/>
+        <location filename="../../component/settingaction.cpp" line="163"/>
         <source>Save energy to let the computer longer standby time</source>
         <translation>节省电量，让电脑待机时间更长</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="157"/>
+        <location filename="../../component/settingaction.cpp" line="167"/>
         <source>Manage the Caja file manager. Tips: if the thumbnail&apos;s cache time or size is set to -1, it will not be checked</source>
         <translation>管理Caja文件管理器。注意：如果缩略图缓存时间或尺寸被设置为-1，缩略图将不会被清理</translation>
     </message>
     <message>
-        <location filename="../../component/settingaction.cpp" line="159"/>
+        <location filename="../../component/settingaction.cpp" line="169"/>
         <source>Manage the Nautilus file manager. Tips: if the thumbnail&apos;s cache time or size is set to -1, it will not be checked</source>
         <translation>管理Nautilus文件管理器。注意：如果缩略图缓存时间或尺寸被设置为-1，缩略图将不会被清理</translation>
     </message>
@@ -2609,7 +2608,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SettingActionWidget</name>
     <message>
-        <location filename="../settingactionwidget.cpp" line="146"/>
+        <location filename="../settingactionwidget.cpp" line="217"/>
         <source>You can perform a full range of customized systems based on personal preferences</source>
         <translation>您可以根据个人喜好对系统进行全方位的定制</translation>
     </message>
@@ -2617,27 +2616,27 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SettingWidget</name>
     <message>
-        <location filename="../settingwidget.cpp" line="267"/>
+        <location filename="../settingwidget.cpp" line="436"/>
         <source>Personalize</source>
         <translation>个性化</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="278"/>
+        <location filename="../settingwidget.cpp" line="447"/>
         <source>ThemeSetting</source>
         <translation>主题设置</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="279"/>
+        <location filename="../settingwidget.cpp" line="448"/>
         <source>IconSetting</source>
         <translation>图标设置</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="280"/>
+        <location filename="../settingwidget.cpp" line="449"/>
         <source>MousePointer</source>
         <translation>鼠标设置</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="281"/>
+        <location filename="../settingwidget.cpp" line="450"/>
         <source>SoundEffect</source>
         <translation>声音效果</translation>
     </message>
@@ -2646,72 +2645,72 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">开机动画</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="358"/>
+        <location filename="../settingwidget.cpp" line="527"/>
         <source>Desktop</source>
         <translation>桌面</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="363"/>
+        <location filename="../settingwidget.cpp" line="532"/>
         <source>Panel</source>
         <translation>面板</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="364"/>
+        <location filename="../settingwidget.cpp" line="533"/>
         <source>StartMenu</source>
         <translation>启动菜单</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="367"/>
+        <location filename="../settingwidget.cpp" line="536"/>
         <source>Custom Launcher</source>
         <translation>自定义启动器</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="368"/>
+        <location filename="../settingwidget.cpp" line="537"/>
         <source>Dash &amp; Panel</source>
         <translation>搜索和面板</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="370"/>
+        <location filename="../settingwidget.cpp" line="539"/>
         <source>Window</source>
         <translation>窗口</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="418"/>
+        <location filename="../settingwidget.cpp" line="587"/>
         <source>Font</source>
         <translation>字体</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="420"/>
+        <location filename="../settingwidget.cpp" line="589"/>
         <source>FontSetting</source>
         <translation>字体设置</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="492"/>
+        <location filename="../settingwidget.cpp" line="661"/>
         <source>Sys options</source>
         <translation>系统选项</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="496"/>
+        <location filename="../settingwidget.cpp" line="665"/>
         <source>Touchpad</source>
         <translation>触摸板</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="497"/>
+        <location filename="../settingwidget.cpp" line="666"/>
         <source>Dead pixel check</source>
         <translation>坏点检测</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="498"/>
+        <location filename="../settingwidget.cpp" line="667"/>
         <source>Energy saving</source>
         <translation>省电设置</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="549"/>
+        <location filename="../settingwidget.cpp" line="718"/>
         <source>Others</source>
         <translation>其他</translation>
     </message>
     <message>
-        <location filename="../settingwidget.cpp" line="551"/>
+        <location filename="../settingwidget.cpp" line="720"/>
         <source>File manager</source>
         <translation>文件管理器</translation>
     </message>
@@ -2869,12 +2868,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>TipDialog</name>
     <message>
-        <location filename="../../component/tipdialog.cpp" line="74"/>
+        <location filename="../../component/tipdialog.cpp" line="86"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
-        <location filename="../../component/tipdialog.cpp" line="97"/>
+        <location filename="../../component/tipdialog.cpp" line="109"/>
         <source>Tip Dialog</source>
         <translation>提示框</translation>
     </message>
@@ -2910,17 +2909,17 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>TouchpadWidget</name>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="146"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="180"/>
         <source>Enable touchpad</source>
         <translation>启用/禁用触摸板</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="147"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="181"/>
         <source>Enable horizontal scrolling</source>
         <translation>触摸板横向滚动</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="148"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="182"/>
         <source>Scrollbar type</source>
         <translation>滚动条类型</translation>
     </message>
@@ -2929,32 +2928,32 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">触摸板滚动触发方式</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="149"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="183"/>
         <source>Touchpad scrolling mode</source>
         <translation>触摸板滚动模式</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="150"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="184"/>
         <source>Features Type</source>
         <translation>特色类型</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="151"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="185"/>
         <source>Standard Type</source>
         <translation>标准类型</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="152"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="186"/>
         <source>Disabled</source>
         <translation>禁用</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="153"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="187"/>
         <source>Edge Scrolling</source>
         <translation>边界滚动</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="154"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="188"/>
         <source>Two-finger Scrolling</source>
         <translation>双指滚动</translation>
     </message>
@@ -3111,22 +3110,22 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>VoiceWidget</name>
     <message>
-        <location filename="../../setting/voicewidget.cpp" line="105"/>
+        <location filename="../../setting/voicewidget.cpp" line="136"/>
         <source>Sound theme</source>
         <translation>声音主题</translation>
     </message>
     <message>
-        <location filename="../../setting/voicewidget.cpp" line="106"/>
+        <location filename="../../setting/voicewidget.cpp" line="137"/>
         <source>Login tone</source>
         <translation>登录提示音</translation>
     </message>
     <message>
-        <location filename="../../setting/voicewidget.cpp" line="107"/>
+        <location filename="../../setting/voicewidget.cpp" line="138"/>
         <source>Event sounds</source>
         <translation>事件声音</translation>
     </message>
     <message>
-        <location filename="../../setting/voicewidget.cpp" line="108"/>
+        <location filename="../../setting/voicewidget.cpp" line="139"/>
         <source>Input feedback sounds</source>
         <translation>输入反馈声音</translation>
     </message>
@@ -3134,42 +3133,42 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>WindowWidget</name>
     <message>
-        <location filename="../../setting/windowwidget.cpp" line="142"/>
+        <location filename="../../setting/windowwidget.cpp" line="184"/>
         <source>Arrangement of buttons on the titlebar</source>
         <translation>标题栏按钮布局</translation>
     </message>
     <message>
-        <location filename="../../setting/windowwidget.cpp" line="143"/>
+        <location filename="../../setting/windowwidget.cpp" line="185"/>
         <source>Menu with icons</source>
         <translation>菜单项旁显示图标</translation>
     </message>
     <message>
-        <location filename="../../setting/windowwidget.cpp" line="144"/>
+        <location filename="../../setting/windowwidget.cpp" line="186"/>
         <source>Titlebar mouse wheel action</source>
         <translation>标题栏鼠标滚轮动作</translation>
     </message>
     <message>
-        <location filename="../../setting/windowwidget.cpp" line="145"/>
+        <location filename="../../setting/windowwidget.cpp" line="187"/>
         <source>Titlebar double-click action</source>
         <translation>标题栏双击动作</translation>
     </message>
     <message>
-        <location filename="../../setting/windowwidget.cpp" line="146"/>
+        <location filename="../../setting/windowwidget.cpp" line="188"/>
         <source>Titlebar middle-click action</source>
         <translation>标题栏中键动作</translation>
     </message>
     <message>
-        <location filename="../../setting/windowwidget.cpp" line="147"/>
+        <location filename="../../setting/windowwidget.cpp" line="189"/>
         <source>Titlebar right-click action</source>
         <translation>标题栏右键动作</translation>
     </message>
     <message>
-        <location filename="../../setting/windowwidget.cpp" line="148"/>
+        <location filename="../../setting/windowwidget.cpp" line="190"/>
         <source>Left</source>
         <translation>左边</translation>
     </message>
     <message>
-        <location filename="../../setting/windowwidget.cpp" line="149"/>
+        <location filename="../../setting/windowwidget.cpp" line="191"/>
         <source>Right</source>
         <translation>右边</translation>
     </message>

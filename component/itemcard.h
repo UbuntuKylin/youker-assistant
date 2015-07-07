@@ -58,8 +58,8 @@ protected:
 
 private:
     Ui::ItemCard *ui;
-    QTimer *switchTimer;
-    QTimer *delayTimer;
+//    QTimer *switchTimer;
+//    QTimer *delayTimer;
     bool showDelay;
     QString switchDirection;
     int py;
