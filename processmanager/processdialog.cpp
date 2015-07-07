@@ -144,7 +144,7 @@ QString ProcessDialog::getCurrrentSkinName()
     }
     else {
         QStringList skinlist;
-        QString path = "/var/lib/youker-assistant-daemon/background/";
+        QString path = "/var/lib/youker-assistant-daemon/default/";
         QDir picdir(path);
         picdir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
         picdir.setSorting(QDir::Size | QDir::Reversed);
