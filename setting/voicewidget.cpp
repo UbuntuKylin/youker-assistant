@@ -95,7 +95,38 @@ VoiceWidget::VoiceWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispa
 
 VoiceWidget::~VoiceWidget()
 {
-
+    if (theme_label != NULL) {
+        delete theme_label;
+        theme_label = NULL;
+    }
+    if (tip_label != NULL) {
+        delete tip_label;
+        tip_label = NULL;
+    }
+    if (event_label != NULL) {
+        delete event_label;
+        event_label = NULL;
+    }
+    if (feedback_label != NULL) {
+        delete feedback_label;
+        feedback_label = NULL;
+    }
+    if (theme_combo != NULL) {
+        delete theme_combo;
+        theme_combo = NULL;
+    }
+    if (tip_switcher != NULL) {
+        delete tip_switcher;
+        tip_switcher = NULL;
+    }
+    if (event_switcher != NULL) {
+        delete event_switcher;
+        event_switcher = NULL;
+    }
+    if (feedback_switcher != NULL) {
+        delete feedback_switcher;
+        feedback_switcher = NULL;
+    }
 }
 
 void VoiceWidget::setLanguage() {

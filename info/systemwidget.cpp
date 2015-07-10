@@ -37,11 +37,11 @@ SystemWidget::SystemWidget(QWidget *parent, SystemDispatcher *proxy) :
 
 SystemWidget::~SystemWidget()
 {
-    disconnect(timer,SIGNAL(timeout()),this,SLOT(updateTimeValue()));
-    if(timer->isActive()) {
-        timer->stop();
-    }
     if (timer != NULL) {
+        disconnect(timer,SIGNAL(timeout()),this,SLOT(updateTimeValue()));
+        if(timer->isActive()) {
+            timer->stop();
+        }
         delete timer;
         timer = NULL;
     }

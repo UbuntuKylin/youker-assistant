@@ -67,6 +67,18 @@ TipDialog::TipDialog(QWidget *parent, QString msg)
 
 TipDialog::~TipDialog()
 {
+    if(title_bar != NULL) {
+        delete title_bar;
+        title_bar = NULL;
+    }
+    if(msg_label != NULL) {
+        delete msg_label;
+        msg_label = NULL;
+    }
+    if(okBtn != NULL) {
+        delete okBtn;
+        okBtn = NULL;
+    }
 }
 
 void TipDialog::setLanguage()

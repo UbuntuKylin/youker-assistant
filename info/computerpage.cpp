@@ -50,6 +50,21 @@ ComputerPage::~ComputerPage()
         delete time_label;
         time_label = NULL;
     }
+    if(logo_label != NULL)
+    {
+        delete logo_label;
+        logo_label = NULL;
+    }
+    if(form_layout != NULL)
+    {
+        delete form_layout;
+        form_layout = NULL;
+    }
+    if(group_box != NULL)
+    {
+        delete group_box;
+        group_box = NULL;
+    }
 }
 
 void ComputerPage::setLanguage() {

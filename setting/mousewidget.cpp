@@ -82,16 +82,26 @@ MouseWidget::MouseWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispa
 
 MouseWidget::~MouseWidget()
 {
-//    if(label != NULL)
-//    {
-//        delete label;
-//        label = NULL;
-//    }
-//    if(back_btn != NULL)
-//    {
-//        delete back_btn;
-//        back_btn = NULL;
-//    }
+    if (theme_label != NULL) {
+        delete theme_label;
+        theme_label = NULL;
+    }
+    if (size_label != NULL) {
+        delete size_label;
+        size_label = NULL;
+    }
+    if (theme_combo != NULL) {
+        delete theme_combo;
+        theme_combo = NULL;
+    }
+    if (small_size != NULL) {
+        delete small_size;
+        small_size = NULL;
+    }
+    if (big_size != NULL) {
+        delete big_size;
+        big_size = NULL;
+    }
 }
 
 void MouseWidget::setLanguage() {

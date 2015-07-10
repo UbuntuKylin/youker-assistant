@@ -126,22 +126,16 @@ private:
     CleanerActionWidget *cleaner_action_widget;
     SettingActionWidget *setting_action_widget;
     BoxActionWidget *box_action_widget;
-
     SkinCenter *skin_center;
     KylinMenu *main_menu;
-
     QString version;
-
     QPoint drag_pos; //移动的距离
     bool mouse_press; //按下鼠标左键
-
     QTranslator* translator; //翻译器
     LANGUAGE current_language; //当前语言
-
     QPixmap main_skin_pixmap;
     QString last_skin_path;
     QPixmap review_skin_pixmap;
-
     SystemDispatcher *systeminterface;
     SessionDispatcher *sessioninterface;
     Toolkits *toolKits;
@@ -149,16 +143,13 @@ private:
     QSettings *mSettings;
     QString desktop;
     bool battery;
-
     QParallelAnimationGroup *spreadGroup;
     QParallelAnimationGroup *gatherGroup;
     PAGESTATUS status;
     bool statusFlag;
-
     AutoStartWidget *auto_start;
     CameraManager *camera_manager;
     UpgradeDialog *upgrade_dialog;
-
 //    QStringList skinlist;
     ShadowWidget *shadow_widget;
 };

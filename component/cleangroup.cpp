@@ -54,6 +54,25 @@ CleanGroup::CleanGroup(QWidget *parent, const QString &picture) :
     this->setLayout(main_layout);
 }
 
+CleanGroup::~CleanGroup()
+{
+    if(img_btn != NULL)
+    {
+        delete img_btn;
+        img_btn = NULL;
+    }
+    if(name_label != NULL)
+    {
+        delete name_label;
+        name_label = NULL;
+    }
+    if(description_label != NULL)
+    {
+        delete description_label;
+        description_label = NULL;
+    }
+}
+
 void CleanGroup::setLabelText(const QString &name, const QString &desc)
 {
     QFont ft;

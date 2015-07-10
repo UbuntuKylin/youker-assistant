@@ -83,7 +83,6 @@ private:
     QString desktop;
     bool battery;
     QUIBO *qtui;
-
     QStackedWidget *stacked_widget;
     ThemeWidget *theme_widget;
     IconWidget *icon_widget;

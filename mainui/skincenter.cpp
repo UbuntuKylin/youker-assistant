@@ -137,14 +137,6 @@ SkinCenter::SkinCenter(QWidget *parent, QString skin/*, Qt::WindowFlags f*/)
 
 SkinCenter::~SkinCenter()
 {
-//    if(title_bar != NULL) {
-//        delete title_bar;
-//        title_bar = NULL;
-//    }
-    if(skin_widget != NULL) {
-        delete skin_widget;
-        skin_widget = NULL;
-    }
     if(aboutGroup != NULL)
     {
         delete aboutGroup;
@@ -285,7 +277,7 @@ void SkinCenter::initSysBackgroundList()
     list_widget = new CardWidget(130, 87, 10, this->skin_widget);
     list_widget->setGeometry(QRect(0, 0, 420, 240));
     list_widget->calculate_data();
-    QDir picdir("/var/lib/youker-assistant-daemon/background");
+    QDir picdir("/var/lib/youker-assistant-daemon/default");
     picdir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     picdir.setSorting(QDir::Size | QDir::Reversed);
     QStringList filters;
@@ -384,7 +376,7 @@ void SkinCenter::reloadBackgroundList()
     custom_list_widget->setGeometry(QRect(0,2, 500, 230));
     custom_list_widget->calculate_data();
 
-//    QDir picdir("/var/lib/youker-assistant-daemon/background");
+//    QDir picdir("/var/lib/youker-assistant-daemon/default");
     QDir picdir("/var/lib/youker-assistant-daemon/custom");
     picdir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     picdir.setSorting(QDir::Size | QDir::Reversed);

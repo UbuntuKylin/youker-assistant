@@ -48,13 +48,24 @@ ScrollWidget::ScrollWidget(QWidget *parent) :
     scroll_area->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scroll_area->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
-   v_layout = new QVBoxLayout();
+   QVBoxLayout *v_layout = new QVBoxLayout();
    v_layout->addWidget(scroll_area);
    v_layout->setSpacing(0);//设置间隔
    v_layout->setMargin(0);//设置总的外围边框
 //   v_layout->setContentsMargins(5, 5, 5, 5);
 
    setLayout(v_layout);
+}
+
+ScrollWidget::~ScrollWidget() {
+    if(zone != NULL) {
+        delete zone;
+        zone = NULL;
+    }
+    if(scroll_area != NULL) {
+        delete scroll_area;
+        scroll_area = NULL;
+    }
 }
 
 void ScrollWidget::addScrollWidget(ComputerPage *widget)

@@ -76,6 +76,30 @@ CleanSubGroup::CleanSubGroup(QWidget *parent, const QString &picture) :
     this->initConnect();
 }
 
+CleanSubGroup::~CleanSubGroup()
+{
+    if(img_btn != NULL)
+    {
+        delete img_btn;
+        img_btn = NULL;
+    }
+    if(name_label != NULL)
+    {
+        delete name_label;
+        name_label = NULL;
+    }
+    if(description_label != NULL)
+    {
+        delete description_label;
+        description_label = NULL;
+    }
+    if(custom_btn != NULL)
+    {
+        delete custom_btn;
+        custom_btn = NULL;
+    }
+}
+
 void CleanSubGroup::initConnect()
 {
     connect(img_btn, SIGNAL(clicked()), this, SLOT(onZoneClicked()));

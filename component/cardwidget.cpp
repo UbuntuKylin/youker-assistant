@@ -64,7 +64,8 @@ CardWidget::~CardWidget() {
 
 void CardWidget::calculate_data()
 {
-    this->scrollArea->setGeometry(-1, -1, this->width() + 2, this->height() + 2);
+//    this->scrollArea->setGeometry(-1, -1, this->width() + 2, this->height() + 2);
+    this->scrollArea->setGeometry(0, 0, this->width(), this->height());
     this->cardPanel->setGeometry(0, 0, this->width(), this->height());
     this->number_per_row = (this->width() + this->cardspace) / (this->itemwidth + this->cardspace);
 }

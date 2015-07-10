@@ -55,7 +55,7 @@ inst1.files += res/youker-assistant.png
 inst1.path = /usr/share/pixmaps
 inst2.files += ../youker-assistant.desktop
 inst2.path = /usr/share/applications
-inst3.files += res/background/
+inst3.files += res/default/
 inst3.path = /var/lib/youker-assistant-daemon/
 inst4.files += res/custom/
 inst4.path = /var/lib/youker-assistant-daemon/
@@ -109,7 +109,7 @@ SOURCES += main.cpp\
     ../setting/iconwidget.cpp \
     ../setting/mousewidget.cpp \
     ../setting/voicewidget.cpp \
-    ../setting/animationwidget.cpp \
+#    ../setting/animationwidget.cpp \
     ../setting/launcherwidget.cpp \
     ../setting/panelwidget.cpp \
     ../setting/windowwidget.cpp \
@@ -198,7 +198,7 @@ HEADERS  += mainwindow.h \
     ../setting/iconwidget.h \
     ../setting/mousewidget.h \
     ../setting/voicewidget.h \
-    ../setting/animationwidget.h \
+#    ../setting/animationwidget.h \
     ../setting/launcherwidget.h \
     ../setting/panelwidget.h \
     ../setting/windowwidget.h \

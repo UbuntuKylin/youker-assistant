@@ -32,7 +32,6 @@ class SessionDispatcher : public QObject
 public:
     explicit SessionDispatcher(QObject *parent = 0);
     ~SessionDispatcher();
-    QDBusInterface *sessioniface;
     void getAutoStartAppStatus();
     bool getSingleAutoStartStatus(QString abs_path);
     void changeAutoStartAppStatus(QString appName);
@@ -345,7 +344,7 @@ public slots:
     void handler_notify_string(QString key, QString value);
 
 private:
-//    KThread *thread;
+    QDBusInterface *sessioniface;
     KThread *check_thread;
     KThread *scan_thread;
     KThread *onekey_scan_thread;

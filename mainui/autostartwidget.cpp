@@ -120,6 +120,39 @@ AutoStartWidget::AutoStartWidget(QDialog *parent, SessionDispatcher *proxy, QStr
 
 AutoStartWidget::~AutoStartWidget()
 {
+//    KylinTitleBar *title_bar;
+    if(tip_label != NULL) {
+        delete tip_label;
+        tip_label = NULL;
+    }
+    if(num_label != NULL) {
+        delete num_label;
+        num_label = NULL;
+    }
+    if(on_label != NULL) {
+        delete on_label;
+        on_label = NULL;
+    }
+    if(on_num_label != NULL) {
+        delete on_num_label;
+        on_num_label = NULL;
+    }
+    if(off_label != NULL) {
+        delete off_label;
+        off_label = NULL;
+    }
+    if(off_num_label != NULL) {
+        delete off_num_label;
+        off_num_label = NULL;
+    }
+    if(name_label != NULL) {
+        delete name_label;
+        name_label = NULL;
+    }
+    if(status_label != NULL) {
+        delete status_label;
+        status_label = NULL;
+    }
     delete ui;
 }
 

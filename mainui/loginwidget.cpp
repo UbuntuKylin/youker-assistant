@@ -71,6 +71,26 @@ LoginWidget::LoginWidget(QWidget *parent)
 
 LoginWidget::~LoginWidget()
 {
+    if(login_button != NULL)
+    {
+        delete login_button;
+        login_button = NULL;
+    }
+    if(logo_label != NULL)
+    {
+        delete logo_label;
+        logo_label = NULL;
+    }
+    if(user_label != NULL)
+    {
+        delete user_label;
+        user_label = NULL;
+    }
+    if(logout_btn != NULL)
+    {
+        delete logout_btn;
+        logout_btn = NULL;
+    }
 }
 
 void LoginWidget::initConnect()

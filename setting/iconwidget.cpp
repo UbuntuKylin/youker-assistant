@@ -149,42 +149,54 @@ IconWidget::IconWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_de
 
 IconWidget::~IconWidget()
 {
-//    if(title_label != NULL)
-//    {
-//        delete title_label;
-//        title_label = NULL;
-//    }
-//    if(description_label != NULL)
-//    {
-//        delete description_label;
-//        description_label = NULL;
-//    }
-//    if(back_btn != NULL)
-//    {
-//        delete back_btn;
-//        back_btn = NULL;
-//    }
-//    if(switcher != NULL)
-//    {
-//        delete switcher;
-//        switcher = NULL;
-//    }
-
-//    if(splitter != NULL)
-//    {
-//        delete splitter;
-//        splitter = NULL;
-//    }
-//    if(top_widget != NULL)
-//    {
-//        delete top_widget;
-//        top_widget = NULL;
-//    }
-//    if(bottom_widget != NULL)
-//    {
-//        delete bottom_widget;
-//        bottom_widget = NULL;
-//    }
+    if (theme_label != NULL) {
+        delete theme_label;
+        theme_label = NULL;
+    }
+    if (computer_label != NULL) {
+        delete computer_label;
+        computer_label = NULL;
+    }
+    if (folder_label != NULL) {
+        delete folder_label;
+        folder_label = NULL;
+    }
+    if (network_label != NULL) {
+        delete network_label;
+        network_label = NULL;
+    }
+    if (recycle_label != NULL) {
+        delete recycle_label;
+        recycle_label = NULL;
+    }
+    if (disk_label != NULL) {
+        delete disk_label;
+        disk_label = NULL;
+    }
+    if (theme_combo != NULL) {
+        delete theme_combo;
+        theme_combo = NULL;
+    }
+    if (computer_switcher != NULL) {
+        delete computer_switcher;
+        computer_switcher = NULL;
+    }
+    if (folder_switcher != NULL) {
+        delete folder_switcher;
+        folder_switcher = NULL;
+    }
+    if (network_switcher != NULL) {
+        delete network_switcher;
+        network_switcher = NULL;
+    }
+    if (recycle_switcher != NULL) {
+        delete recycle_switcher;
+        recycle_switcher = NULL;
+    }
+    if (disk_switcher != NULL) {
+        delete disk_switcher;
+        disk_switcher = NULL;
+    }
 }
 
 void IconWidget::changeSwitcherStatus() {

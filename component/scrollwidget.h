@@ -32,12 +32,12 @@ class ScrollWidget : public QWidget
     Q_OBJECT
 public:
     explicit ScrollWidget(QWidget *parent = 0);
+    ~ScrollWidget();
     void addScrollWidget(ComputerPage *widget);
     QWidget *zone;
 
 private:
     QScrollArea *scroll_area;
-    QVBoxLayout *v_layout;
     int widget_count;
     int zone_height;
 };

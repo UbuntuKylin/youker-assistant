@@ -184,16 +184,90 @@ FontWidget::FontWidget(QWidget *parent, SessionDispatcher *proxy, MainWindow *wi
 
 FontWidget::~FontWidget()
 {
-//    if(label != NULL)
-//    {
-//        delete label;
-//        label = NULL;
-//    }
-//    if(back_btn != NULL)
-//    {
-//        delete back_btn;
-//        back_btn = NULL;
-//    }
+    if (default_font_label != NULL) {
+        delete default_font_label;
+        default_font_label = NULL;
+    }
+    if (desktop_font_label != NULL) {
+        delete desktop_font_label;
+        desktop_font_label = NULL;
+    }
+    if (monospace_font_label != NULL) {
+        delete monospace_font_label;
+        monospace_font_label = NULL;
+    }
+    if (document_font_label != NULL) {
+        delete document_font_label;
+        document_font_label = NULL;
+    }
+    if (titlebar_font_label != NULL) {
+        delete titlebar_font_label;
+        titlebar_font_label = NULL;
+    }
+    if (scaling_label != NULL) {
+        delete scaling_label;
+        scaling_label = NULL;
+    }
+    if (hinting_label != NULL) {
+        delete hinting_label;
+        hinting_label = NULL;
+    }
+    if (antialiasing_label != NULL) {
+        delete antialiasing_label;
+        antialiasing_label = NULL;
+    }
+    if (default_font_btn != NULL) {
+        delete default_font_btn;
+        default_font_btn = NULL;
+    }
+    if (desktop_font_btn != NULL) {
+        delete desktop_font_btn;
+        desktop_font_btn = NULL;
+    }
+    if (monospace_font_btn != NULL) {
+        delete monospace_font_btn;
+        monospace_font_btn = NULL;
+    }
+    if (document_font_btn != NULL) {
+        delete document_font_btn;
+        document_font_btn = NULL;
+    }
+    if (titlebar_font_btn != NULL) {
+        delete titlebar_font_btn;
+        titlebar_font_btn = NULL;
+    }
+    if (scaling_slider != NULL) {
+        delete scaling_slider;
+        scaling_slider = NULL;
+    }
+    if (hinting_combo != NULL) {
+        delete hinting_combo;
+        hinting_combo = NULL;
+    }
+    if (antialiasing_combo != NULL) {
+        delete antialiasing_combo;
+        antialiasing_combo = NULL;
+    }
+    if (restore_default_font_btn != NULL) {
+        delete restore_default_font_btn;
+        restore_default_font_btn = NULL;
+    }
+    if (restore_desktop_font_btn != NULL) {
+        delete restore_desktop_font_btn;
+        restore_desktop_font_btn = NULL;
+    }
+    if (restore_monospace_font_btn != NULL) {
+        delete restore_monospace_font_btn;
+        restore_monospace_font_btn = NULL;
+    }
+    if (restore_document_font_btn != NULL) {
+        delete restore_document_font_btn;
+        restore_document_font_btn = NULL;
+    }
+    if (restore_titlebar_font_btn != NULL) {
+        delete restore_titlebar_font_btn;
+        restore_titlebar_font_btn = NULL;
+    }
 }
 
 void FontWidget::setLanguage() {

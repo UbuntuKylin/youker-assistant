@@ -134,7 +134,14 @@ CleanerActionWidget::CleanerActionWidget(QWidget *parent)
 
 CleanerActionWidget::~CleanerActionWidget()
 {
-
+    if(suggest_label != NULL) {
+        delete suggest_label;
+        suggest_label = NULL;
+    }
+    if(doing_label != NULL) {
+        delete doing_label;
+        doing_label = NULL;
+    }
 }
 
 void CleanerActionWidget::initConnect()
@@ -223,7 +230,7 @@ void CleanerActionWidget::showCleanerError(const QString &status)
     }
 }
 
-void CleanerActionWidget::showReciveStatus(const QString &status)
+void CleanerActionWidget::showCleanReciveStatus(const QString &status)
 {
     if(status == "Complete:Cache")
     {
@@ -281,7 +288,7 @@ void CleanerActionWidget::accordScanOverStatusToChange(bool status)
     }
 }
 
-void CleanerActionWidget::showReciveError(const QString &status)
+void CleanerActionWidget::showCleanReciveError(const QString &status)
 {
     doing_label->setText(tr("Error: ") + status);
     if(status == "Uninstalled:Firefox")
@@ -350,6 +357,17 @@ void CleanerActionWidget::onStartButtonClicked()
 void CleanerActionWidget::onCleanButtonClicked()
 {
     emit this->sendCleanSignal();
+}
+
+void CleanerActionWidget::displayOrgPage()
+{
+    doing_label->hide();
+    back_button->hide();
+//    loading_label->stopLoading();
+    scan_button->show();
+    scan_button->setEnabled(true);
+    clean_button->hide();
+    suggest_label->show();
 }
 
 void CleanerActionWidget::onBackButtonClicked()

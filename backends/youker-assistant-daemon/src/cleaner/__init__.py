@@ -23,6 +23,7 @@ import shutil
 import commands
 import threading
 import ctypes
+import time
 from apt.progress.base import InstallProgress
 
 import historyclean
@@ -69,6 +70,7 @@ class OneKeyClean():
                 tempf_list = objhg.scan_firefox_history_records(filepathf)
                 for onef in tempf_list:
                     sesdaemon.display_scan_process(onef[1])
+                    time.sleep(0.001)
                     #sesdaemon.display_scan_process_msg(onef[1])
                     historysize += onef[2]
             filepathc = "%s/.config/chromium/Default/History" % homedir
@@ -78,6 +80,7 @@ class OneKeyClean():
                     tempc_list = objhg.scan_chromium_history_records(filepathc)
                     for onec in tempc_list:
                         sesdaemon.display_scan_process(onec[1])
+                        time.sleep(0.001)
                         #sesdaemon.display_scan_process_msg(onec[1])
                         historysize += onec[2]
             total_dic['history'] = str(historysize)
@@ -91,6 +94,7 @@ class OneKeyClean():
                 tempff_list = objcg.scan_cookies_records(pamf[0], pamf[1], pamf[2])
                 for oneff in tempff_list:
                     sesdaemon.display_scan_process(oneff[0])
+                    time.sleep(0.01)
                     #sesdaemon.display_scan_process_msg(oneff[0])
                     cookiessize += oneff[1]
             filepathcc = "%s/.config/chromium/Default/Cookies" % homedir
@@ -99,6 +103,7 @@ class OneKeyClean():
                 tempcc_list = objcg.scan_cookies_records(pamc[0], pamc[1], pamc[2])
                 for onecc in tempcc_list:
                     sesdaemon.display_scan_process(onecc[0])
+                    time.sleep(0.01)
                     #sesdaemon.display_scan_process_msg(onecc[0])
                     cookiessize += onecc[1]
             total_dic['cookies'] = str(cookiessize)
@@ -110,12 +115,14 @@ class OneKeyClean():
             temp_apt_list = objcache.scan_apt_cache(apt_path)
             for oneapt in temp_apt_list:
                 sesdaemon.display_scan_process(oneapt)
+                time.sleep(0.1)
                 #sesdaemon.display_scan_process_msg(oneapt)
                 cachesize += os.path.getsize(oneapt)
             swcenterpath = '%s/.cache/software-center' % homedir
             temp_swcenter_list = objcache.public_scan_cache(swcenterpath)
             for oneswcenter in temp_swcenter_list:
                 sesdaemon.display_scan_process(oneswcenter)
+                time.sleep(0.1)
                 #sesdaemon.display_scan_process_msg(oneswcenter)
                 if os.path.isdir(oneswcenter):
                     cachesize += common.get_dir_size(oneswcenter)

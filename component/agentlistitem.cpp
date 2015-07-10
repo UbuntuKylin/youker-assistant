@@ -48,6 +48,16 @@ AgentListItem::AgentListItem(QWidget *parent) :
 
 AgentListItem::~AgentListItem()
 {
+    if(label != NULL)
+    {
+        delete label;
+        label = NULL;
+    }
+    if(delede_button != NULL)
+    {
+        delete delede_button;
+        delede_button = NULL;
+    }
 }
 
 void AgentListItem::setCurrentItemName(QString name)

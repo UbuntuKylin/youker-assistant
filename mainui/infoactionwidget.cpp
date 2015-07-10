@@ -52,7 +52,14 @@ InfoActionWidget::InfoActionWidget(QWidget *parent)
 
 InfoActionWidget::~InfoActionWidget()
 {
-
+    if(img_label != NULL) {
+        delete img_label;
+        img_label = NULL;
+    }
+    if(suggest_label != NULL) {
+        delete suggest_label;
+        suggest_label = NULL;
+    }
 }
 
 

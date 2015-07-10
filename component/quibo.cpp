@@ -40,6 +40,10 @@ QUIBO::QUIBO(QWidget *parent) :
 }
 
 QUIBO::~QUIBO() {
+    if(colors != NULL) {
+        delete colors;
+        colors = NULL;
+    }
     delete ui;
 }
 

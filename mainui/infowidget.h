@@ -85,7 +85,6 @@ private:
     CDRowWidget *cdrom_widget;
     BatteryWidget *battery_widget;
     DriverWidget *driver_widget;
-    QWidget *right_widget;
     QString current_tip;
 //    QList<InfoType> *categoryList;
 

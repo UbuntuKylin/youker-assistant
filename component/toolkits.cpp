@@ -33,6 +33,34 @@ Toolkits::Toolkits(QObject *parent, int width, int height) :
     this->alertBG->hide();
 }
 
+Toolkits::~Toolkits()
+{
+    if(alertGOE != NULL) {
+        delete alertGOE;
+        alertGOE = NULL;
+    }
+    if(alertBG != NULL) {
+        delete alertBG;
+        alertBG = NULL;
+    }
+    if (alertTimer != NULL) {
+        disconnect(alertTimer,SIGNAL(timeout()),this,SLOT(updateAlert()));
+        if(alertTimer->isActive()) {
+            alertTimer->stop();
+        }
+        delete alertTimer;
+        alertTimer = NULL;
+    }
+    if (alertDelayTimer != NULL) {
+        disconnect(alertDelayTimer,SIGNAL(timeout()),this,SLOT(hideAlert()));
+        if(alertDelayTimer->isActive()) {
+            alertDelayTimer->stop();
+        }
+        delete alertDelayTimer;
+        alertDelayTimer = NULL;
+    }
+}
+
 //启动alert提示
 void Toolkits::alertMSG(int x, int y, const QString &alertText) {
     this->alert_x = x + (this->parent_width / 2) - (this->alert_width  / 2);

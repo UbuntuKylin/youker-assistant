@@ -61,7 +61,18 @@ BoxActionWidget::BoxActionWidget(QWidget *parent)
 
 BoxActionWidget::~BoxActionWidget()
 {
-
+    if(img_label != NULL) {
+        delete img_label;
+        img_label = NULL;
+    }
+    if(title_label != NULL) {
+        delete title_label;
+        title_label = NULL;
+    }
+    if(more_btn != NULL) {
+        delete more_btn;
+        more_btn = NULL;
+    }
 }
 
 

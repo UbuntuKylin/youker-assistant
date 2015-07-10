@@ -43,7 +43,6 @@ CleanerDetailWidget::CleanerDetailWidget(QWidget *parent, SessionDispatcher *ser
     ui->scrollArea->setAutoFillBackground(true);
     ui->scrollArea->setBackgroundRole(QPalette::Light);
 
-    colorFlag = false;
     scanResult = false;
     ui->label->hide();
 
@@ -80,16 +79,67 @@ CleanerDetailWidget::CleanerDetailWidget(QWidget *parent, SessionDispatcher *ser
     trace_x11_btn = NULL;
     trace_x11_items = NULL;
 
-    appendNum1 = 0;
-    appendNum2 = 0;
-    appendNum3 = 0;
-
     ui->scrollAreaWidgetContents->setLayout(grid_layout);
     this->setLanguage();
 }
 
 CleanerDetailWidget::~CleanerDetailWidget()
 {
+    if(cache_apt_items != NULL)
+    {
+        delete cache_apt_items;
+        cache_apt_items = NULL;
+    }
+    if(cache_software_items != NULL)
+    {
+        delete cache_software_items;
+        cache_software_items = NULL;
+    }
+    if(cache_thumbnails_items != NULL)
+    {
+        delete cache_thumbnails_items;
+        cache_thumbnails_items = NULL;
+    }
+    if(cache_firefox_items != NULL)
+    {
+        delete cache_firefox_items;
+        cache_firefox_items = NULL;
+    }
+    if(cache_chromium_items != NULL)
+    {
+        delete cache_chromium_items;
+        cache_chromium_items = NULL;
+    }
+    if(package_unneed_items != NULL)
+    {
+        delete package_unneed_items;
+        package_unneed_items = NULL;
+    }
+    if(package_oldkernel_items != NULL)
+    {
+        delete package_oldkernel_items;
+        package_oldkernel_items = NULL;
+    }
+    if(package_configfile_items != NULL)
+    {
+        delete package_configfile_items;
+        package_configfile_items = NULL;
+    }
+    if(cookies_firefox_items != NULL)
+    {
+        delete cookies_firefox_items;
+        cookies_firefox_items = NULL;
+    }
+    if(cookies_chromium_items != NULL)
+    {
+        delete cookies_chromium_items;
+        cookies_chromium_items = NULL;
+    }
+    if(trace_x11_items != NULL)
+    {
+        delete trace_x11_items;
+        trace_x11_items = NULL;
+    }
     if(grid_layout != NULL)
     {
         delete grid_layout;
@@ -104,9 +154,6 @@ void CleanerDetailWidget::CleanUIAndData()
         ui->label->hide();
     scanResult = false;
     rowIndex = columnIndex = 0;
-    appendNum1 = 0;
-    appendNum2 = 0;
-    appendNum3 = 0;
     cache_apt_list.clear();
     cache_software_list.clear();
     cache_thumbnails_list.clear();
@@ -311,24 +358,6 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             connect(cache_apt_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(cache_apt_btn, SIGNAL(spreadStatus(int)), cache_apt_items, SLOT(resetSubCheckbox(int)));
-//            if(appendNum1 < 4)
-//            {
-//                layout1->addWidget(cache_apt_btn);
-//                appendNum1 += 1;
-//            }
-//            else
-//            {
-//                if(appendNum2 < 4)
-//                {
-//                    layout2->addWidget(cache_apt_btn);
-//                    appendNum2 += 1;
-//                }
-//                else
-//                {
-//                    layout3->addWidget(cache_apt_btn);
-//                    appendNum3 += 1;
-//                }
-//            }
             if(grid_layout == NULL)
             {
                 grid_layout = new QGridLayout();
@@ -376,25 +405,6 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
                 grid_layout->addWidget(cache_software_btn, rowIndex, columnIndex);
                 columnIndex += 1;
             }
-//            if(appendNum1 < 4)
-//            {
-//                layout1->addWidget(cache_software_btn);
-//                appendNum1 += 1;
-//            }
-//            else
-//            {
-//                if(appendNum2 < 4)
-//                {
-//                    layout2->addWidget(cache_software_btn);
-//                    appendNum2 += 1;
-//                }
-//                else
-//                {
-//                    layout3->addWidget(cache_software_btn);
-//                    appendNum3 += 1;
-//                }
-//            }
-
         }
         if(cache_thumbnails_list.length() > 0)
         {
@@ -426,24 +436,6 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
                 grid_layout->addWidget(cache_thumbnails_btn, rowIndex, columnIndex);
                 columnIndex += 1;
             }
-//            if(appendNum1 < 4)
-//            {
-//                layout1->addWidget(cache_thumbnails_btn);
-//                appendNum1 += 1;
-//            }
-//            else
-//            {
-//                if(appendNum2 < 4)
-//                {
-//                    layout2->addWidget(cache_thumbnails_btn);
-//                    appendNum2 += 1;
-//                }
-//                else
-//                {
-//                    layout3->addWidget(cache_thumbnails_btn);
-//                    appendNum3 += 1;
-//                }
-//            }
         }
 
 
@@ -476,24 +468,6 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
                 grid_layout->addWidget(cache_firefox_btn, rowIndex, columnIndex);
                 columnIndex += 1;
             }
-//            if(appendNum1 < 4)
-//            {
-//                layout1->addWidget(cache_firefox_btn);
-//                appendNum1 += 1;
-//            }
-//            else
-//            {
-//                if(appendNum2 < 4)
-//                {
-//                    layout2->addWidget(cache_firefox_btn);
-//                    appendNum2 += 1;
-//                }
-//                else
-//                {
-//                    layout3->addWidget(cache_firefox_btn);
-//                    appendNum3 += 1;
-//                }
-//            }
         }
         if(cache_chromium_list.length() > 0)
         {
@@ -524,25 +498,6 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
                 grid_layout->addWidget(cache_chromium_btn, rowIndex, columnIndex);
                 columnIndex += 1;
             }
-
-//            if(appendNum1 < 4)
-//            {
-//                layout1->addWidget(cache_chromium_btn);
-//                appendNum1 += 1;
-//            }
-//            else
-//            {
-//                if(appendNum2 < 4)
-//                {
-//                    layout2->addWidget(cache_chromium_btn);
-//                    appendNum2 += 1;
-//                }
-//                else
-//                {
-//                    layout3->addWidget(cache_chromium_btn);
-//                    appendNum3 += 1;
-//                }
-//            }
         }
     }
     else if(status == "Complete:Cookies")
@@ -550,7 +505,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
 //        doing_label->setText(tr("Cookies Scan OK......"));
         if(cookies_firefox_list.length() > 0)
         {
-            cookies_firefox_items = new CleanListWidget(cookies_firefox_list, this->cur_skin, tr("Thumbnails Cache Clean Items"));
+            cookies_firefox_items = new CleanListWidget(cookies_firefox_list, this->cur_skin, tr("Firefox Cookies Clean Items"));
 //            cookies_firefox_btn = new CommonCheckBox(0, "://res/cookie");
             cookies_firefox_btn = new CleanSubGroup(0, "://res/item");
 //            cookies_firefox_btn->setFixedSize(160, 130);
@@ -577,30 +532,10 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
                 grid_layout->addWidget(cookies_firefox_btn, rowIndex, columnIndex);
                 columnIndex += 1;
             }
-
-//            if(appendNum1 < 4)
-//            {
-//                layout1->addWidget(cookies_firefox_btn);
-//                appendNum1 += 1;
-//            }
-//            else
-//            {
-//                if(appendNum2 < 4)
-//                {
-//                    layout2->addWidget(cookies_firefox_btn);
-//                    appendNum2 += 1;
-//                }
-//                else
-//                {
-//                    layout3->addWidget(cookies_firefox_btn);
-//                    appendNum3 += 1;
-//                }
-//            }
-
         }
         if(cookies_chromium_list.length() > 0)
         {
-            cookies_chromium_items = new CleanListWidget(cookies_chromium_list, this->cur_skin, tr("Thumbnails Cache Clean Items"));
+            cookies_chromium_items = new CleanListWidget(cookies_chromium_list, this->cur_skin, tr("Chromium Cookies Clean Items"));
 //            cookies_chromium_btn = new CommonCheckBox(0, "://res/cache");
             cookies_chromium_btn = new CleanSubGroup(0, "://res/item");
 //            cookies_chromium_btn->setFixedSize(160, 130);
@@ -627,26 +562,6 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
                 grid_layout->addWidget(cookies_chromium_btn, rowIndex, columnIndex);
                 columnIndex += 1;
             }
-
-
-//            if(appendNum1 < 4)
-//            {
-//                layout1->addWidget(cookies_chromium_btn);
-//                appendNum1 += 1;
-//            }
-//            else
-//            {
-//                if(appendNum2 < 4)
-//                {
-//                    layout2->addWidget(cookies_chromium_btn);
-//                    appendNum2 += 1;
-//                }
-//                else
-//                {
-//                    layout3->addWidget(cookies_chromium_btn);
-//                    appendNum3 += 1;
-//                }
-//            }
         }
     }
     else if(status == "Complete:History")
@@ -675,24 +590,6 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
                 grid_layout->addWidget(trace_firefox_btn, rowIndex, columnIndex);
                 columnIndex += 1;
             }
-//            if(appendNum1 < 4)
-//            {
-//                layout1->addWidget(trace_firefox_btn);
-//                appendNum1 += 1;
-//            }
-//            else
-//            {
-//                if(appendNum2 < 4)
-//                {
-//                    layout2->addWidget(trace_firefox_btn);
-//                    appendNum2 += 1;
-//                }
-//                else
-//                {
-//                    layout3->addWidget(trace_firefox_btn);
-//                    appendNum3 += 1;
-//                }
-//            }
         }
         if(trace_chromium_count.length() > 0)
         {
@@ -740,7 +637,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             }
         }
         //kobe
-        if(trace_bash_size.length() > 0)
+        if(!trace_bash_path.isEmpty())
         {
             trace_bash_btn = new CleanSubGroup(0, "://res/item");
             trace_bash_btn->hideCustomButton();
@@ -824,25 +721,6 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
                 grid_layout->addWidget(package_unneed_btn, rowIndex, columnIndex);
                 columnIndex += 1;
             }
-
-//            if(appendNum1 < 4)
-//            {
-//                layout1->addWidget(package_unneed_btn);
-//                appendNum1 += 1;
-//            }
-//            else
-//            {
-//                if(appendNum2 < 4)
-//                {
-//                    layout2->addWidget(package_unneed_btn);
-//                    appendNum2 += 1;
-//                }
-//                else
-//                {
-//                    layout3->addWidget(package_unneed_btn);
-//                    appendNum3 += 1;
-//                }
-//            }
         }
         if(package_oldkernel_list.length() > 0)
         {
@@ -873,25 +751,6 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
                 grid_layout->addWidget(package_oldkernel_btn, rowIndex, columnIndex);
                 columnIndex += 1;
             }
-
-//            if(appendNum1 < 4)
-//            {
-//                layout1->addWidget(package_oldkernel_btn);
-//                appendNum1 += 1;
-//            }
-//            else
-//            {
-//                if(appendNum2 < 4)
-//                {
-//                    layout2->addWidget(package_oldkernel_btn);
-//                    appendNum2 += 1;
-//                }
-//                else
-//                {
-//                    layout3->addWidget(package_oldkernel_btn);
-//                    appendNum3 += 1;
-//                }
-//            }
         }
         if(package_configfile_list.length() > 0)
         {
@@ -922,24 +781,6 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
                 grid_layout->addWidget(package_configfile_btn, rowIndex, columnIndex);
                 columnIndex += 1;
             }
-//            if(appendNum1 < 4)
-//            {
-//                layout1->addWidget(package_configfile_btn);
-//                appendNum1 += 1;
-//            }
-//            else
-//            {
-//                if(appendNum2 < 4)
-//                {
-//                    layout2->addWidget(package_configfile_btn);
-//                    appendNum2 += 1;
-//                }
-//                else
-//                {
-//                    layout3->addWidget(package_configfile_btn);
-//                    appendNum3 += 1;
-//                }
-//            }
         }
     }
     else if(status == "Complete:All")
@@ -947,31 +788,6 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         if(!scanResult)
             ui->label->show();
         emit this->sendScanOverStatus(scanResult);
-//        QBoxLayout *main_layout = new QBoxLayout(QBoxLayout::LeftToRight);
-//        if(cache_apt_btn != NULL)
-//            main_layout->addWidget(cache_apt_btn);
-//        if(cache_software_btn != NULL)
-//            main_layout->addWidget(cache_software_btn);
-//        if(cache_thumbnails_btn != NULL)
-//            main_layout->addWidget(cache_thumbnails_btn);
-//        if(cache_firefox_btn != NULL)
-//             main_layout->addWidget(cache_firefox_btn);
-//         if(cache_chromium_btn != NULL)
-//             main_layout->addWidget(cache_chromium_btn);
-//         if(cookies_firefox_btn != NULL)
-//              main_layout->addWidget(cookies_firefox_btn);
-//          if(cookies_chromium_btn != NULL)
-//              main_layout->addWidget(cookies_chromium_btn);
-//          if(package_unneed_btn != NULL)
-//              main_layout->addWidget(package_unneed_btn);
-//          if(package_oldkernel_btn != NULL)
-//               main_layout->addWidget(package_oldkernel_btn);
-//           if(package_configfile_btn != NULL)
-//               main_layout->addWidget(package_configfile_btn);
-//        main_layout->setSpacing(30);
-//        main_layout->setMargin(0);
-//        main_layout->setContentsMargins(0,0,0,0);
-//        setLayout(main_layout);
     }
 }
 
@@ -983,522 +799,83 @@ void CleanerDetailWidget::showCustomPage()
     QString object_name = checkbox->statusTip();
     if(object_name == "cache-apt")
     {
-//        if(cache_apt_items != NULL)
-//        {
-        if(cache_apt_items->isHidden()) {
-            int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
-            int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
-            cache_apt_items->move(w_x, w_y);
-            cache_apt_items->show();
-        }
-        else
-        {
-            cache_apt_items->hide();
-        }
-        if(cache_software_items != NULL && !cache_software_items->isHidden()) {
-            cache_software_items->hide();
-        }
-        if(cache_thumbnails_items != NULL && !cache_thumbnails_items->isHidden()) {
-            cache_thumbnails_items->hide();
-        }
-        if(cache_firefox_items != NULL && !cache_firefox_items->isHidden()) {
-            cache_firefox_items->hide();
-        }
-        if(cache_chromium_items != NULL && !cache_chromium_items->isHidden()) {
-            cache_chromium_items->hide();
-        }
-        if(cookies_firefox_items != NULL && !cookies_firefox_items->isHidden()) {
-            cookies_firefox_items->hide();
-        }
-        if(cookies_chromium_items != NULL && !cookies_chromium_items->isHidden()) {
-            cookies_chromium_items->hide();
-        }
-        if(package_unneed_items != NULL && !package_unneed_items->isHidden()) {
-            package_unneed_items->hide();
-        }
-        if(package_oldkernel_items != NULL && !package_oldkernel_items->isHidden()) {
-            package_oldkernel_items->hide();
-        }
-        if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
-            package_configfile_items->hide();
-        }
-        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
-            trace_x11_items->hide();
-        }
+        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
+        int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
+        cache_apt_items->move(w_x, w_y);
+        cache_apt_items->exec();
     }
     else if(object_name == "cache-software")
     {
-        if(cache_software_items->isHidden()) {
-            int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
-            int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
-            cache_software_items->move(w_x, w_y);
-            cache_software_items->show();
-        }
-        else
-        {
-            cache_software_items->hide();
-        }
-        if(cache_apt_items != NULL && !cache_apt_items->isHidden()) {
-            cache_apt_items->hide();
-        }
-        if(cache_thumbnails_items != NULL && !cache_thumbnails_items->isHidden()) {
-            cache_thumbnails_items->hide();
-        }
-        if(cache_firefox_items != NULL && !cache_firefox_items->isHidden()) {
-            cache_firefox_items->hide();
-        }
-        if(cache_chromium_items != NULL && !cache_chromium_items->isHidden()) {
-            cache_chromium_items->hide();
-        }
-        if(cookies_firefox_items != NULL && !cookies_firefox_items->isHidden()) {
-            cookies_firefox_items->hide();
-        }
-        if(cookies_chromium_items != NULL && !cookies_chromium_items->isHidden()) {
-            cookies_chromium_items->hide();
-        }
-        if(package_unneed_items != NULL && !package_unneed_items->isHidden()) {
-            package_unneed_items->hide();
-        }
-        if(package_oldkernel_items != NULL && !package_oldkernel_items->isHidden()) {
-            package_oldkernel_items->hide();
-        }
-        if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
-            package_configfile_items->hide();
-        }
-        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
-            trace_x11_items->hide();
-        }
+        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
+        int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
+        cache_software_items->move(w_x, w_y);
+        cache_software_items->exec();
     }
     else if(object_name == "cache-thumbnails")
     {
-        if(cache_thumbnails_items->isHidden()) {
-            int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
-            int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
-            cache_thumbnails_items->move(w_x, w_y);
-            cache_thumbnails_items->show();
-        }
-        else
-        {
-            cache_thumbnails_items->hide();
-        }
-        if(cache_apt_items != NULL && !cache_apt_items->isHidden()) {
-            cache_apt_items->hide();
-        }
-        if(cache_software_items != NULL && !cache_software_items->isHidden()) {
-            cache_software_items->hide();
-        }
-        if(cache_firefox_items != NULL && !cache_firefox_items->isHidden()) {
-            cache_firefox_items->hide();
-        }
-        if(cache_chromium_items != NULL && !cache_chromium_items->isHidden()) {
-            cache_chromium_items->hide();
-        }
-        if(cookies_firefox_items != NULL && !cookies_firefox_items->isHidden()) {
-            cookies_firefox_items->hide();
-        }
-        if(cookies_chromium_items != NULL && !cookies_chromium_items->isHidden()) {
-            cookies_chromium_items->hide();
-        }
-        if(package_unneed_items != NULL && !package_unneed_items->isHidden()) {
-            package_unneed_items->hide();
-        }
-        if(package_oldkernel_items != NULL && !package_oldkernel_items->isHidden()) {
-            package_oldkernel_items->hide();
-        }
-        if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
-            package_configfile_items->hide();
-        }
-        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
-            trace_x11_items->hide();
-        }
+        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
+        int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
+        cache_thumbnails_items->move(w_x, w_y);
+        cache_thumbnails_items->exec();
     }
-
-
-
     else if(object_name == "cache-firefox")
     {
-        if(cache_firefox_items->isHidden()) {
-            int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
-            int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
-            cache_firefox_items->move(w_x, w_y);
-            cache_firefox_items->show();
-        }
-        else
-        {
-            cache_firefox_items->hide();
-        }
-        if(cache_apt_items != NULL && !cache_apt_items->isHidden()) {
-            cache_apt_items->hide();
-        }
-        if(cache_software_items != NULL && !cache_software_items->isHidden()) {
-            cache_software_items->hide();
-        }
-        if(cache_thumbnails_items != NULL && !cache_thumbnails_items->isHidden()) {
-            cache_thumbnails_items->hide();
-        }
-        if(cache_chromium_items != NULL && !cache_chromium_items->isHidden()) {
-            cache_chromium_items->hide();
-        }
-        if(cookies_firefox_items != NULL && !cookies_firefox_items->isHidden()) {
-            cookies_firefox_items->hide();
-        }
-        if(cookies_chromium_items != NULL && !cookies_chromium_items->isHidden()) {
-            cookies_chromium_items->hide();
-        }
-        if(package_unneed_items != NULL && !package_unneed_items->isHidden()) {
-            package_unneed_items->hide();
-        }
-        if(package_oldkernel_items != NULL && !package_oldkernel_items->isHidden()) {
-            package_oldkernel_items->hide();
-        }
-        if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
-            package_configfile_items->hide();
-        }
-        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
-            trace_x11_items->hide();
-        }
+        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
+        int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
+        cache_firefox_items->move(w_x, w_y);
+        cache_firefox_items->exec();
     }
-
     else if(object_name == "cache-chromium")
     {
-        if(cache_chromium_items->isHidden()) {
-            int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
-            int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
-            cache_chromium_items->move(w_x, w_y);
-            cache_chromium_items->show();
-        }
-        else
-        {
-            cache_chromium_items->hide();
-        }
-        if(cache_apt_items != NULL && !cache_apt_items->isHidden()) {
-            cache_apt_items->hide();
-        }
-        if(cache_software_items != NULL && !cache_software_items->isHidden()) {
-            cache_software_items->hide();
-        }
-        if(cache_thumbnails_items != NULL && !cache_thumbnails_items->isHidden()) {
-            cache_thumbnails_items->hide();
-        }
-        if(cache_firefox_items != NULL && !cache_firefox_items->isHidden()) {
-            cache_firefox_items->hide();
-        }
-        if(cookies_firefox_items != NULL && !cookies_firefox_items->isHidden()) {
-            cookies_firefox_items->hide();
-        }
-        if(cookies_chromium_items != NULL && !cookies_chromium_items->isHidden()) {
-            cookies_chromium_items->hide();
-        }
-        if(package_unneed_items != NULL && !package_unneed_items->isHidden()) {
-            package_unneed_items->hide();
-        }
-        if(package_oldkernel_items != NULL && !package_oldkernel_items->isHidden()) {
-            package_oldkernel_items->hide();
-        }
-        if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
-            package_configfile_items->hide();
-        }
-        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
-            trace_x11_items->hide();
-        }
+        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
+        int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
+        cache_chromium_items->move(w_x, w_y);
+        cache_chromium_items->exec();
     }
     else if(object_name == "cookes-firefox")
     {
-        if(cookies_firefox_items->isHidden()) {
-            int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
-            int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
-            cookies_firefox_items->move(w_x, w_y);
-            cookies_firefox_items->show();
-        }
-        else
-        {
-            cookies_firefox_items->hide();
-        }
-        if(cache_apt_items != NULL && !cache_apt_items->isHidden()) {
-            cache_apt_items->hide();
-        }
-        if(cache_software_items != NULL && !cache_software_items->isHidden()) {
-            cache_software_items->hide();
-        }
-        if(cache_thumbnails_items != NULL && !cache_thumbnails_items->isHidden()) {
-            cache_thumbnails_items->hide();
-        }
-        if(cache_firefox_items != NULL && !cache_firefox_items->isHidden()) {
-            cache_firefox_items->hide();
-        }
-        if(cache_chromium_items != NULL && !cache_chromium_items->isHidden()) {
-            cache_chromium_items->hide();
-        }
-        if(cookies_chromium_items != NULL && !cookies_chromium_items->isHidden()) {
-            cookies_chromium_items->hide();
-        }
-        if(package_unneed_items != NULL && !package_unneed_items->isHidden()) {
-            package_unneed_items->hide();
-        }
-        if(package_oldkernel_items != NULL && !package_oldkernel_items->isHidden()) {
-            package_oldkernel_items->hide();
-        }
-        if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
-            package_configfile_items->hide();
-        }
-        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
-            trace_x11_items->hide();
-        }
+        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
+        int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
+        cookies_firefox_items->move(w_x, w_y);
+        cookies_firefox_items->exec();
     }
     else if(object_name == "cookes-chromium")
     {
-        if(cookies_chromium_items->isHidden()) {
-            int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
-            int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
-            cookies_chromium_items->move(w_x, w_y);
-            cookies_chromium_items->show();
-        }
-        else
-        {
-            cookies_chromium_items->hide();
-        }
-        if(cache_apt_items != NULL && !cache_apt_items->isHidden()) {
-            cache_apt_items->hide();
-        }
-        if(cache_software_items != NULL && !cache_software_items->isHidden()) {
-            cache_software_items->hide();
-        }
-        if(cache_thumbnails_items != NULL && !cache_thumbnails_items->isHidden()) {
-            cache_thumbnails_items->hide();
-        }
-        if(cache_firefox_items != NULL && !cache_firefox_items->isHidden()) {
-            cache_firefox_items->hide();
-        }
-        if(cache_chromium_items != NULL && !cache_chromium_items->isHidden()) {
-            cache_chromium_items->hide();
-        }
-        if(cookies_firefox_items != NULL && !cookies_firefox_items->isHidden()) {
-            cookies_firefox_items->hide();
-        }
-        if(package_unneed_items != NULL && !package_unneed_items->isHidden()) {
-            package_unneed_items->hide();
-        }
-        if(package_oldkernel_items != NULL && !package_oldkernel_items->isHidden()) {
-            package_oldkernel_items->hide();
-        }
-        if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
-            package_configfile_items->hide();
-        }
-        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
-            trace_x11_items->hide();
-        }
+        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
+        int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
+        cookies_chromium_items->move(w_x, w_y);
+        cookies_chromium_items->exec();
     }
-
-
     else if(object_name == "package-unneed")
     {
-        if(package_unneed_items->isHidden()) {
-            int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
-            int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
-            package_unneed_items->move(w_x, w_y);
-            package_unneed_items->show();
-        }
-        else
-        {
-            package_unneed_items->hide();
-        }
-        if(cache_apt_items != NULL && !cache_apt_items->isHidden()) {
-            cache_apt_items->hide();
-        }
-        if(cache_software_items != NULL && !cache_software_items->isHidden()) {
-            cache_software_items->hide();
-        }
-        if(cache_thumbnails_items != NULL && !cache_thumbnails_items->isHidden()) {
-            cache_thumbnails_items->hide();
-        }
-        if(cache_firefox_items != NULL && !cache_firefox_items->isHidden()) {
-            cache_firefox_items->hide();
-        }
-        if(cache_chromium_items != NULL && !cache_chromium_items->isHidden()) {
-            cache_chromium_items->hide();
-        }
-        if(cookies_firefox_items != NULL && !cookies_firefox_items->isHidden()) {
-            cookies_firefox_items->hide();
-        }
-        if(cookies_chromium_items != NULL && !cookies_chromium_items->isHidden()) {
-            cookies_chromium_items->hide();
-        }
-        if(package_oldkernel_items != NULL && !package_oldkernel_items->isHidden()) {
-            package_oldkernel_items->hide();
-        }
-        if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
-            package_configfile_items->hide();
-        }
-        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
-            trace_x11_items->hide();
-        }
+        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
+        int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
+        package_unneed_items->move(w_x, w_y);
+        package_unneed_items->exec();
     }
     else if(object_name == "package-oldkernel")
     {
-        if(package_oldkernel_items->isHidden()) {
-            int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
-            int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
-            package_oldkernel_items->move(w_x, w_y);
-            package_oldkernel_items->show();
-        }
-        else
-        {
-            package_oldkernel_items->hide();
-        }
-        if(cache_apt_items != NULL && !cache_apt_items->isHidden()) {
-            cache_apt_items->hide();
-        }
-        if(cache_software_items != NULL && !cache_software_items->isHidden()) {
-            cache_software_items->hide();
-        }
-        if(cache_thumbnails_items != NULL && !cache_thumbnails_items->isHidden()) {
-            cache_thumbnails_items->hide();
-        }
-        if(cache_firefox_items != NULL && !cache_firefox_items->isHidden()) {
-            cache_firefox_items->hide();
-        }
-        if(cache_chromium_items != NULL && !cache_chromium_items->isHidden()) {
-            cache_chromium_items->hide();
-        }
-        if(cookies_firefox_items != NULL && !cookies_firefox_items->isHidden()) {
-            cookies_firefox_items->hide();
-        }
-        if(cookies_chromium_items != NULL && !cookies_chromium_items->isHidden()) {
-            cookies_chromium_items->hide();
-        }
-        if(package_unneed_items != NULL && !package_unneed_items->isHidden()) {
-            package_unneed_items->hide();
-        }
-        if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
-            package_configfile_items->hide();
-        }
-        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
-            trace_x11_items->hide();
-        }
+        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
+        int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
+        package_oldkernel_items->move(w_x, w_y);
+        package_oldkernel_items->exec();
     }
     else if(object_name == "package-configfile")
     {
-        if(package_configfile_items->isHidden()) {
-            int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
-            int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
-            package_configfile_items->move(w_x, w_y);
-            package_configfile_items->show();
-        }
-        else
-        {
-            package_configfile_items->hide();
-        }
-        if(cache_apt_items != NULL && !cache_apt_items->isHidden()) {
-            cache_apt_items->hide();
-        }
-        if(cache_software_items != NULL && !cache_software_items->isHidden()) {
-            cache_software_items->hide();
-        }
-        if(cache_thumbnails_items != NULL && !cache_thumbnails_items->isHidden()) {
-            cache_thumbnails_items->hide();
-        }
-        if(cache_firefox_items != NULL && !cache_firefox_items->isHidden()) {
-            cache_firefox_items->hide();
-        }
-        if(cache_chromium_items != NULL && !cache_chromium_items->isHidden()) {
-            cache_chromium_items->hide();
-        }
-        if(cookies_firefox_items != NULL && !cookies_firefox_items->isHidden()) {
-            cookies_firefox_items->hide();
-        }
-        if(cookies_chromium_items != NULL && !cookies_chromium_items->isHidden()) {
-            cookies_chromium_items->hide();
-        }
-        if(package_unneed_items != NULL && !package_unneed_items->isHidden()) {
-            package_unneed_items->hide();
-        }
-        if(package_oldkernel_items != NULL && !package_oldkernel_items->isHidden()) {
-            package_oldkernel_items->hide();
-        }
-        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
-            trace_x11_items->hide();
-        }
+        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
+        int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
+        package_configfile_items->move(w_x, w_y);
+        package_configfile_items->exec();
     }
-    else if(object_name == "history-firefox" || object_name == "history-chromium") {
-        if(cache_apt_items != NULL && !cache_apt_items->isHidden()) {
-            cache_apt_items->hide();
-        }
-        if(cache_software_items != NULL && !cache_software_items->isHidden()) {
-            cache_software_items->hide();
-        }
-        if(cache_thumbnails_items != NULL && !cache_thumbnails_items->isHidden()) {
-            cache_thumbnails_items->hide();
-        }
-        if(cache_firefox_items != NULL && !cache_firefox_items->isHidden()) {
-            cache_firefox_items->hide();
-        }
-        if(cache_chromium_items != NULL && !cache_chromium_items->isHidden()) {
-            cache_chromium_items->hide();
-        }
-        if(cookies_firefox_items != NULL && !cookies_firefox_items->isHidden()) {
-            cookies_firefox_items->hide();
-        }
-        if(cookies_chromium_items != NULL && !cookies_chromium_items->isHidden()) {
-            cookies_chromium_items->hide();
-        }
-        if(package_unneed_items != NULL && !package_unneed_items->isHidden()) {
-            package_unneed_items->hide();
-        }
-        if(package_oldkernel_items != NULL && !package_oldkernel_items->isHidden()) {
-            package_oldkernel_items->hide();
-        }
-        if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
-            package_configfile_items->hide();
-        }
-        if(trace_x11_items != NULL && !trace_x11_items->isHidden()) {
-            trace_x11_items->hide();
-        }
-    }
-
-    //kobe
     else if(object_name == "x11-history")
     {
-        if(trace_x11_items->isHidden()) {
-            int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
-            int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
-            trace_x11_items->move(w_x, w_y);
-            trace_x11_items->show();
-        }
-        else
-        {
-            trace_x11_items->hide();
-        }
-        if(cache_apt_items != NULL && !cache_apt_items->isHidden()) {
-            cache_apt_items->hide();
-        }
-        if(cache_software_items != NULL && !cache_software_items->isHidden()) {
-            cache_software_items->hide();
-        }
-        if(cache_thumbnails_items != NULL && !cache_thumbnails_items->isHidden()) {
-            cache_thumbnails_items->hide();
-        }
-        if(cache_firefox_items != NULL && !cache_firefox_items->isHidden()) {
-            cache_firefox_items->hide();
-        }
-        if(cache_chromium_items != NULL && !cache_chromium_items->isHidden()) {
-            cache_chromium_items->hide();
-        }
-        if(cookies_firefox_items != NULL && !cookies_firefox_items->isHidden()) {
-            cookies_firefox_items->hide();
-        }
-        if(cookies_chromium_items != NULL && !cookies_chromium_items->isHidden()) {
-            cookies_chromium_items->hide();
-        }
-        if(package_oldkernel_items != NULL && !package_oldkernel_items->isHidden()) {
-            package_oldkernel_items->hide();
-        }
-        if(package_configfile_items != NULL && !package_configfile_items->isHidden()) {
-            package_configfile_items->hide();
-        }
-        if(package_unneed_items != NULL && !package_unneed_items->isHidden()) {
-            package_unneed_items->hide();
-        }
+        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
+        int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
+        trace_x11_items->move(w_x, w_y);
+        trace_x11_items->exec();
     }
+//    else if(object_name == "history-firefox" || object_name == "history-chromium" || object_name == "history-system"|| object_name == "history-bash" ) {
+//    }
 }
 
 void CleanerDetailWidget::setLanguage()
@@ -1533,7 +910,6 @@ void CleanerDetailWidget::resetCurrentSkin(QString skin)
         package_oldkernel_items->resetTitleSkin(skin);
     if(package_configfile_items != NULL)
         package_configfile_items->resetTitleSkin(skin);
-    //kobe
     if(trace_x11_items != NULL)
         trace_x11_items->resetTitleSkin(skin);
 }
@@ -1547,7 +923,7 @@ void CleanerDetailWidget::receiveCleanSignal()
     }
     else
     {
-        qDebug() << "args is.........." << argsData;
+//        qDebug() << "args is.........." << argsData;
         systemproxy->set_user_homedir_qt();
         systemproxy->cleanAllSelectItems(argsData);
     }
@@ -1686,7 +1062,6 @@ void CleanerDetailWidget::getAllSelectedItems()
         argsData.insert("firefox-cookie", firefoxcookieTmp);
     if(chromiumcookieTmp.length() > 0)
         argsData.insert("chromium-cookie", chromiumcookieTmp);
-    //kobe
     if(traceTmp.length() > 0)
         argsData.insert("x11-history", traceTmp);
 }
