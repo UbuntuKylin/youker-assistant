@@ -175,24 +175,24 @@ void SessionDispatcher::handlerScanCleanerError(QString status)
     emit this->tellCleanerDetailError(status);
 }
 
-bool SessionDispatcher::judge_camera_qt() {
-    QDBusReply<bool> reply = sessioniface->call("judge_camera");
-    return reply.value();
-}
+//bool SessionDispatcher::judge_camera_qt() {
+//    QDBusReply<bool> reply = sessioniface->call("judge_camera");
+//    return reply.value();
+//}
 
-void SessionDispatcher::call_camera_qt() {
-    sessioniface->call("call_camera");
-//    if (thread->isRunning()) {
-//        qDebug() << "camera_thread is running......";
-//    }
-//    else {
-//        qDebug() << "camera_thread is ready to run......";
-//        QStringList tmp;
-//        QMap<QString, QVariant> data;
-//        thread->initValues(data, tmp, sessioniface, "call_camera");
-//        thread->start();
-//    }
-}
+//void SessionDispatcher::call_camera_qt() {
+//    sessioniface->call("call_camera");
+////    if (thread->isRunning()) {
+////        qDebug() << "camera_thread is running......";
+////    }
+////    else {
+////        qDebug() << "camera_thread is ready to run......";
+////        QStringList tmp;
+////        QMap<QString, QVariant> data;
+////        thread->initValues(data, tmp, sessioniface, "call_camera");
+////        thread->start();
+////    }
+//}
 
 bool SessionDispatcher::judge_power_is_exists_qt() {
     QDBusReply<bool> reply = sessioniface->call("judge_power_is_exists");

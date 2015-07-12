@@ -29,7 +29,7 @@ class ToolButton : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ToolButton(QWidget *parent = 0);
+    explicit ToolButton(QWidget *parent = 0, bool whiteflag = false);
     ~ToolButton();
     void setIcon(const QString &icon);
     void setText(const QString &text);

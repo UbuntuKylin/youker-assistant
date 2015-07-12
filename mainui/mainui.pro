@@ -13,7 +13,9 @@ DESTDIR = ../
 TEMPLATE = app
 CONFIG += qt \
     warn_on \
-    release
+    release \
+    link_pkgconfig
+PKGCONFIG += opencv
 INCLUDEPATH += .
 
 include(../qtsingleapplication/src/qtsingleapplication.pri)

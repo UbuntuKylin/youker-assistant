@@ -25,7 +25,7 @@
 #include <QFont>
 #include <QFontMetrics>
 
-ToolButton::ToolButton(QWidget *parent) :
+ToolButton::ToolButton(QWidget *parent, bool whiteflag) :
     QWidget(parent)
 {
     this->setWindowFlags(Qt::FramelessWindowHint);
@@ -38,7 +38,10 @@ ToolButton::ToolButton(QWidget *parent) :
     this->setPalette(palette);
     iconLabel = new QLabel;
     textLabel = new QLabel;
-    textLabel->setObjectName("backgroundLabel");
+    if(whiteflag)
+        textLabel->setObjectName("backgroundWhiteLabel");
+    else
+        textLabel->setObjectName("backgroundLabel");
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(iconLabel, 0, Qt::AlignCenter);
     layout->addWidget(textLabel, 0, Qt::AlignHCenter);

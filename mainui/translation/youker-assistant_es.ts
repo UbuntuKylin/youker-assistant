@@ -172,33 +172,18 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>CameraManager</name>
     <message>
-        <location filename="../cameramanager.cpp" line="123"/>
-        <source>NO found camara</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../cameramanager.cpp" line="124"/>
-        <source>An application to take pictures with the device camera.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../cameramanager.cpp" line="125"/>
-        <source>Press the [ESC] button to take picture and turn the camera off , the photo saved in home directory by default.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../cameramanager.cpp" line="126"/>
-        <source>Open camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../cameramanager.cpp" line="127"/>
+        <location filename="../cameramanager.cpp" line="74"/>
         <source>View Photos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cameramanager.cpp" line="169"/>
-        <source>Camera Manager</source>
+        <location filename="../cameramanager.cpp" line="85"/>
+        <source>The camera is out of question, &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; Refresh&lt;/a&gt; to call it out ~</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../cameramanager.cpp" line="285"/>
+        <source>Camera</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1937,7 +1922,7 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="30"/>
+        <location filename="../mainwindow.cpp" line="31"/>
         <source>Youker Assistant</source>
         <translation type="unfinished"></translation>
     </message>

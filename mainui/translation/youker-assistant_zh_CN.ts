@@ -346,34 +346,43 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CameraManager</name>
     <message>
-        <location filename="../cameramanager.cpp" line="123"/>
         <source>NO found camara</source>
-        <translation>未发现摄像头</translation>
+        <translation type="obsolete">未发现摄像头</translation>
     </message>
     <message>
-        <location filename="../cameramanager.cpp" line="124"/>
         <source>An application to take pictures with the device camera.</source>
-        <translation>一个使用摄像头拍照的应用。</translation>
+        <translation type="obsolete">一个使用摄像头拍照的应用。</translation>
     </message>
     <message>
-        <location filename="../cameramanager.cpp" line="125"/>
         <source>Press the [ESC] button to take picture and turn the camera off , the photo saved in home directory by default.</source>
-        <translation>按[退出]键拍照并关闭摄像头，照片默认保存在家目录下。</translation>
+        <translation type="obsolete">按[退出]键拍照并关闭摄像头，照片默认保存在家目录下。</translation>
     </message>
     <message>
-        <location filename="../cameramanager.cpp" line="126"/>
         <source>Open camera</source>
-        <translation>打开摄像头</translation>
+        <translation type="obsolete">打开摄像头</translation>
     </message>
     <message>
-        <location filename="../cameramanager.cpp" line="127"/>
+        <location filename="../cameramanager.cpp" line="74"/>
         <source>View Photos</source>
         <translation>浏览照片</translation>
     </message>
     <message>
-        <location filename="../cameramanager.cpp" line="169"/>
+        <location filename="../cameramanager.cpp" line="85"/>
+        <source>The camera is out of question, &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; Refresh&lt;/a&gt; to call it out ~</source>
+        <translation>摄像头出问题了， &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; 刷新&lt;/a&gt; 去召唤它～</translation>
+    </message>
+    <message>
+        <source>The camera is out of question, &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; Refresh&lt;/a&gt; to call it out</source>
+        <translation type="obsolete">摄像头出问题了， &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; 刷新&lt;/a&gt; 去召唤它～</translation>
+    </message>
+    <message>
+        <location filename="../cameramanager.cpp" line="285"/>
+        <source>Camera</source>
+        <translation>摄像头</translation>
+    </message>
+    <message>
         <source>Camera Manager</source>
-        <translation>摄像头管理</translation>
+        <translation type="obsolete">摄像头管理</translation>
     </message>
 </context>
 <context>
@@ -2187,7 +2196,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="30"/>
+        <location filename="../mainwindow.cpp" line="31"/>
         <source>Youker Assistant</source>
         <translation>优客助手</translation>
     </message>

@@ -65,6 +65,7 @@ ItemCard::ItemCard(QString title, bool flag, QWidget *parent) :
     if(title == "://res/create.png") {
         iconpath = title;
         ui->name->hide();
+        this->setCursor(Qt::PointingHandCursor);
     }
     else {
         iconpath = iconDir.append(title);

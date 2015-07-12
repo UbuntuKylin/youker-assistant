@@ -22,6 +22,7 @@
 #include <QPropertyAnimation>
 #include <QParallelAnimationGroup>
 #include "shadowwidget.h"
+#include "cameramanager.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QDialog(parent)/*skin_center(parent),*/
@@ -32,7 +33,8 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowOpacity(1);
     this->setWindowFlags(Qt::FramelessWindowHint | Qt::Widget);
 //    this->setAttribute(Qt::WA_TranslucentBackground);
-    this->setStyleSheet("QMainWindow{border: 1px solid gray;border-radius:2px}");
+//    this->setStyleSheet("QMainWindow{border: 1px solid gray;border-radius:2px}");
+    this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
 
     version = "V2.0.3";
     status = HOMEPAGE;
@@ -81,7 +83,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     auto_start = NULL;
     upgrade_dialog = NULL;
-    camera_manager = NULL;
+//    camera_manager = NULL;
 
     spreadGroup = NULL;
     gatherGroup = NULL;
@@ -214,11 +216,11 @@ MainWindow::~MainWindow()
         delete auto_start;
         auto_start = NULL;
     }
-    if(camera_manager != NULL)
-    {
-        delete camera_manager;
-        camera_manager = NULL;
-    }
+//    if(camera_manager != NULL)
+//    {
+//        delete camera_manager;
+//        camera_manager = NULL;
+//    }
     if(skin_center != NULL)
     {
         delete skin_center;
@@ -650,9 +652,9 @@ void MainWindow::changeSkin(QString pciture)
     if(auto_start != NULL) {
         auto_start->resetTitleSkin(last_skin_path);
     }
-    if(camera_manager != NULL) {
-        camera_manager->resetTitleSkin(last_skin_path);
-    }
+//    if(camera_manager != NULL) {
+//        camera_manager->resetTitleSkin(last_skin_path);
+//    }
     if(setting_widget != NULL) {
         setting_widget->resetSkin(last_skin_path);
     }
@@ -979,27 +981,24 @@ void MainWindow::displaySubPage(int index)
 
     else if(index == 1)
     {
-        if(camera_manager == NULL) {
-            camera_manager = new CameraManager(0, sessioninterface, last_skin_path);
-            if(sessioninterface->judge_camera_qt())
-            {
-                camera_manager->setOKButtonEnable(true);
-            }
-            else{
-                camera_manager->setOKButtonEnable(false);
-            }
-            int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (524  / 2);
-            int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (277  / 2);
-            camera_manager->move(w_x, w_y);
-            camera_manager->exec();
-        }
-        else {
-            int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (524  / 2);
-            int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (277  / 2);
-            camera_manager->move(w_x, w_y);
-            camera_manager->show();
-            camera_manager->raise();
-        }
+        CameraManager *camera_manager = new CameraManager(0, sessioninterface, last_skin_path);
+        int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (622  / 2);
+        int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (480  / 2);
+        camera_manager->move(w_x, w_y);
+        camera_manager->exec();
+//        if(camera_manager == NULL) {
+//            camera_manager = new CameraManager(0, sessioninterface, last_skin_path);
+//            int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (622  / 2);
+//            int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (480  / 2);
+//            camera_manager->move(w_x, w_y);
+//            camera_manager->exec();
+//        }
+//        else {
+//            int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (622  / 2);
+//            int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (480  / 2);
+//            camera_manager->move(w_x, w_y);
+//            camera_manager->exec();
+//        }
     }
 }
 

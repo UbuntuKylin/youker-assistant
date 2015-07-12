@@ -50,8 +50,12 @@ HomePage::HomePage(QWidget *parent, const QString &version) :
     check_btn->hide();
 //    version_label = new QLabel();
     box_logo = new QLabel();
-    box_title = new QLabel();
-    box_title->installEventFilter(this);
+    box_title = new QPushButton();
+    box_title->setFixedWidth(120);
+    box_title->setCursor(Qt::PointingHandCursor);
+    box_title->setFocusPolicy(Qt::NoFocus);
+    box_title->setStyleSheet("QPushButton{background:transparent;text-align:left;font-family: 方正黑体_GBK;font-size:24px;color:#000000;}QPushButton:hover{color:#3f96e4;}");
+//    box_title->installEventFilter(this);
     box_tip = new QLabel();
 //    more_text_btn = new QPushButton();
 //    more_btn = new QPushButton();
@@ -72,7 +76,7 @@ HomePage::HomePage(QWidget *parent, const QString &version) :
     check_btn->setFocusPolicy(Qt::NoFocus);
 //    version_label->setObjectName("smallgrayLabel");
     version_title->setObjectName("bigblackLabel");
-    box_title->setObjectName("bigblackLabel");
+//    box_title->setObjectName("bigblackLabel");
     version_tip->setAlignment(Qt::AlignLeft);
     version_tip->setObjectName("smallgrayLabel");
     version_tip->setFixedWidth(380);
@@ -175,6 +179,7 @@ void HomePage::initUI()
     for(int i=0; i<icon_list.size(); i++)
     {
         ToolButton *tool_button = new ToolButton;
+        tool_button->setFocusPolicy(Qt::NoFocus);
         tool_button->setIcon(icon_list.at(i));
         tool_button->setText(text_list.at(i));
         connect(tool_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
@@ -236,6 +241,7 @@ void HomePage::initConnect()
 //    connect(check_btn, SIGNAL(clicked()), this, SLOT(checkLastestVersion()));
     connect(check_btn, SIGNAL(clicked()), this, SLOT(onCheckBtnClicked()));
     connect(this, SIGNAL(sendSignal()), p_mainwindow, SIGNAL(chanegBoxToolStatus()));
+    connect(box_title, SIGNAL(clicked()), this, SIGNAL(sendSignal()));
 }
 
 void HomePage::setLanguage()
@@ -361,31 +367,31 @@ void HomePage::switchPageIndex(QString index)
 //    }
 }
 
-bool HomePage::eventFilter(QObject *obj, QEvent *event)
-{
-    if(obj == box_title){
-        if(event->type() == QEvent::MouseButtonRelease){
-            emit this->sendSignal();
-//            p_mainwindow->showBoxWidget();
-        }
-//        if(event->type() == QEvent::Enter){
-//            ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn_hover.png"));
-//        }else if(event->type() == QEvent::Leave){
-//            ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
-//        }else if(event->type() == QEvent::MouseButtonPress){
-//            ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn_hover.png"));
-//        }else if(event->type() == QEvent::MouseButtonRelease){
-//            QMouseEvent *me = (QMouseEvent *)event;
-//            QLabel *lb = (QLabel *)obj;
-//            if(me->x() > 0 && me->x() < lb->width() && me->y() > 0 && me->y() < lb->height()){
-//                this->close();
-//                this->destroy();
-//            }else{
-//                ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
-//            }
-//        } else {
-//            return QObject::eventFilter(obj, event);
+//bool HomePage::eventFilter(QObject *obj, QEvent *event)
+//{
+//    if(obj == box_title){
+//        if(event->type() == QEvent::MouseButtonRelease){
+//            emit this->sendSignal();
+////            p_mainwindow->showBoxWidget();
 //        }
-    }
-    return QObject::eventFilter(obj, event);
-}
+////        if(event->type() == QEvent::Enter){
+////            ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn_hover.png"));
+////        }else if(event->type() == QEvent::Leave){
+////            ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
+////        }else if(event->type() == QEvent::MouseButtonPress){
+////            ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn_hover.png"));
+////        }else if(event->type() == QEvent::MouseButtonRelease){
+////            QMouseEvent *me = (QMouseEvent *)event;
+////            QLabel *lb = (QLabel *)obj;
+////            if(me->x() > 0 && me->x() < lb->width() && me->y() > 0 && me->y() < lb->height()){
+////                this->close();
+////                this->destroy();
+////            }else{
+////                ui->btn_close->setPixmap(QPixmap(":/pixmap/image/closeBtn.png"));
+////            }
+////        } else {
+////            return QObject::eventFilter(obj, event);
+////        }
+//    }
+//    return QObject::eventFilter(obj, event);
+//}

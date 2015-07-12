@@ -33,7 +33,7 @@ CleanListWidget::CleanListWidget(QStringList &arglist, QString skin, const QStri
     ui->setupUi(this);
     this->setFixedSize(560, 398);
     setWindowFlags(Qt::FramelessWindowHint);
-    this->setStyleSheet("QDialog{border: 1px solid gray;border-radius:2px}");
+    this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
     this->setWindowIcon(QIcon(":/res/youker-assistant.png"));
     tip_label = new QLabel();
     num_label = new QLabel();

@@ -41,8 +41,8 @@ public:
     void check_user_qt();
     //打开文件夹
     void open_folder_qt(QString path);
-    bool judge_camera_qt();
-    void call_camera_qt();
+//    bool judge_camera_qt();
+//    void call_camera_qt();
     QMap<QString, QVariant> batteryInfo;
     bool judge_power_is_exists_qt();
     QMap<QString, QVariant> read_battery_info_qt();

@@ -59,7 +59,7 @@ HomeActionWidget::HomeActionWidget(QWidget *parent, QSettings *mSettings)
     result_label->setObjectName("smallWhiteLabel");
     result_label->setFixedWidth(460);
     doing_label->setWordWrap(true);//QLabel自动换行
-    doing_label->setObjectName("smallWhiteLabel");
+    doing_label->setObjectName("whiteLabel");
     doing_label->hide();
     doing_label->setFixedWidth(460);
 

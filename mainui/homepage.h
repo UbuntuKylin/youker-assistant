@@ -46,8 +46,8 @@ public:
     void setParentWindow(MainWindow* window) { p_mainwindow = window;}
     void initUI();
 
-protected:
-    bool eventFilter(QObject *obj, QEvent *event);
+//protected:
+//    bool eventFilter(QObject *obj, QEvent *event);
 
 public slots:
     void switchPageIndex(QString index);
@@ -69,7 +69,7 @@ private:
     QPushButton *check_btn;
 //    QLabel *version_label;
     QLabel *box_logo;
-    QLabel *box_title;
+    QPushButton *box_title;
     QLabel *box_tip;
 //    QPushButton *more_text_btn;
 //    QPushButton *more_btn;
