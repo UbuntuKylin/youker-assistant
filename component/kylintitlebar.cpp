@@ -28,8 +28,14 @@ KylinTitleBar::KylinTitleBar(QWidget *parent) :
     this->setFixedHeight(32);
     this->setAutoFillBackground(true);
 
-    title_label = new QLabel();
-//    title_label->setAlignment(Qt::AlignCenter);
+//    min_btn = new SystemButton();
+    close_btn = new SystemButton(this);
+    close_btn->setFocusPolicy(Qt::NoFocus);
+//    min_btn->loadPixmap(":/sys/res/sysBtn/min_button.png");
+    close_btn->loadPixmap(":/sys/res/sysBtn/close_button.png");
+
+    title_label = new QLabel(this);
+    title_label->setAlignment(Qt::AlignCenter);
     title_label->setStyleSheet("QLabel{color:#ffffff;font-family: 方正黑体_GBK;font-size: 14px;text-align: center;font-weight:bold;}");
 //    logo_label = new QLabel();
 //    logo_label->setFixedSize(22, 22);
@@ -51,28 +57,22 @@ KylinTitleBar::KylinTitleBar(QWidget *parent) :
 //    label_layout->setMargin(0);
 //    label_layout->setContentsMargins(2, 2, 0, 0);
 
-//    min_btn = new SystemButton();
-    close_btn = new SystemButton();
-    close_btn->setFocusPolicy(Qt::NoFocus);
-//    min_btn->loadPixmap(":/sys/res/sysBtn/min_button.png");
-    close_btn->loadPixmap(":/sys/res/sysBtn/close_button.png");
-
 //    QHBoxLayout *btn_layout = new QHBoxLayout();
 //    btn_layout->addWidget(min_btn, 0, Qt::AlignTop);
 //    btn_layout->addWidget(close_btn, 0, Qt::AlignVCenter);
-    QHBoxLayout *main_layout = new QHBoxLayout();
-    main_layout->addWidget(close_btn, 0, Qt::AlignVCenter);
+//    QHBoxLayout *main_layout = new QHBoxLayout();
+//    main_layout->addWidget(close_btn, 0, Qt::AlignVCenter);
 //    main_layout->addLayout(btn_layout);
-    main_layout->addStretch();
-    main_layout->addWidget(title_label, 0, Qt::AlignVCenter);
-    main_layout->addStretch();
+//    main_layout->addStretch();
+//    main_layout->addWidget(title_label, 0, Qt::AlignVCenter);
+//    main_layout->addStretch();
 //    main_layout->addWidget(logo_label, 0, Qt::AlignVCenter);
 //    main_layout->addLayout(label_layout);
 
-    main_layout->setSpacing(0);
-    main_layout->setMargin(0);
-    main_layout->setContentsMargins(0, 0, 2, 0);
-    setLayout(main_layout);
+//    main_layout->setSpacing(0);
+//    main_layout->setMargin(0);
+//    main_layout->setContentsMargins(0, 0, 2, 0);
+//    setLayout(main_layout);
 
 //    connect(min_btn, SIGNAL(clicked()), this, SIGNAL(showMinDialog()));
     connect(close_btn, SIGNAL(clicked()), this, SIGNAL(closeDialog()));
@@ -112,6 +112,8 @@ void KylinTitleBar::resizeEvent(QResizeEvent *event)
 
     //title and font
     title_label->setText(title_content);
+    title_label->setGeometry(QRect(40, 0, title_width- 80, 32));
+//    title_label->setGeometry(QRect(40, 0, 40, 32));
 //    QPalette objPalette = palette();
 //    objPalette.setColor(QPalette::WindowText, Qt::white);
 //    title_label->setPalette(objPalette);

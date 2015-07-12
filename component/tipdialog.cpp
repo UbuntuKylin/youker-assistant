@@ -25,7 +25,7 @@
 TipDialog::TipDialog(QWidget *parent, QString msg)
     :QDialog(parent), message(msg)
 {
-    this->setStyleSheet("QDialog{border: 1px solid gray;border-radius:2px}");
+    this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
     this->setFixedSize(410, 180);
     setWindowFlags(Qt::FramelessWindowHint);
 

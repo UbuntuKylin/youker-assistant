@@ -98,6 +98,7 @@ private:
     SystemDispatcher *systemProxy;
     SessionDispatcher *sessionProxy;
     bool isBusy;
+    bool upgradeOver;
 //    QMovie *movie;
 //    QLabel *movie_label;
 //    QTimer *timer;

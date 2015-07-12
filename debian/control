@@ -12,6 +12,7 @@ Build-Depends: debhelper (>= 9),
                python (>= 2.6.6-3~),
                libglib2.0-dev,
                libgtop2-dev,
+               libopencv-dev,
 Standards-Version: 3.9.6
 Homepage: https://launchpad.net/youker-assistant
 Vcs-Browser: https://code.launchpad.net/~ubuntukylin-members/youker-assistant/trunk
@@ -21,7 +22,6 @@ Package: youker-assistant
 Architecture: any
 Depends: python-dbus,
          python-psutil,
-         python-pygame,
          python-compizconfig,
          ${misc:Depends},
          ${python:Depends},

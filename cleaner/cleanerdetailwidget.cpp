@@ -29,10 +29,14 @@ CleanerDetailWidget::CleanerDetailWidget(QWidget *parent, SessionDispatcher *ser
     ui(new Ui::CleanerDetailWidget)
 {
     ui->setupUi(this);
-    this->setStyleSheet("QWidget{border: none}");
+//    this->setStyleSheet("QWidget{border: none}");
+    this->setObjectName("transparentWidget");
     this->setWindowIcon(QIcon(":/res/youker-assistant.png"));
     this->setFixedSize(900, 403);
     this->setAutoFillBackground(true);
+    QPalette palette;
+    palette.setBrush(QPalette::Window, QBrush(Qt::white));
+    this->setPalette(palette);
 //    this->setObjectName("transparentWidget");
 //    this->setAutoFillBackground(true);
 //    QPalette palette;
@@ -347,7 +351,8 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cache_apt_items = new CleanListWidget(cache_apt_list, this->cur_skin, tr("Apt Cache Clean Items"));
 //            cache_apt_btn = new CommonCheckBox(0, "://res/cache");
-            cache_apt_btn = new CleanSubGroup(0, "://res/item");
+            cache_apt_btn = new CleanSubGroup(0, "://res/janitor/apt");
+            cache_apt_btn->setFocusPolicy(Qt::NoFocus);
 //            cache_apt_btn->setFixedSize(160, 130);
 //            cache_apt_btn->setFixedSize(160, 200);
             cache_apt_btn->setStatusTip("cache-apt");
@@ -379,7 +384,8 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cache_software_items = new CleanListWidget(cache_software_list, this->cur_skin, tr("Software Cache Clean Items"));
 //            cache_software_btn = new CommonCheckBox(0, "://res/cache");
-            cache_software_btn = new CleanSubGroup(0, "://res/item");
+            cache_software_btn = new CleanSubGroup(0, "://res/janitor/software");
+            cache_software_btn->setFocusPolicy(Qt::NoFocus);
 //            cache_software_btn->setFixedSize(160, 130);
 //            cache_software_btn->setFixedSize(160, 200);
             cache_software_btn->setStatusTip("cache-software");
@@ -410,7 +416,8 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cache_thumbnails_items = new CleanListWidget(cache_thumbnails_list, this->cur_skin,  tr("Thumbnails Cache Clean Items"));
 //            cache_thumbnails_btn = new CommonCheckBox(0, "://res/cache");
-            cache_thumbnails_btn = new CleanSubGroup(0, "://res/item");
+            cache_thumbnails_btn = new CleanSubGroup(0, "://res/janitor/thumbnails");
+            cache_thumbnails_btn->setFocusPolicy(Qt::NoFocus);
 //            cache_thumbnails_btn->setFixedSize(160, 130);
 //            cache_thumbnails_btn->setFixedSize(160, 200);
             cache_thumbnails_btn->setStatusTip("cache-thumbnails");
@@ -443,7 +450,8 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cache_firefox_items = new CleanListWidget(cache_firefox_list, this->cur_skin,  tr("Software Cache Clean Items"));
 //            cache_firefox_btn = new CommonCheckBox(0, "://res/cache");
-            cache_firefox_btn = new CleanSubGroup(0, "://res/item");
+            cache_firefox_btn = new CleanSubGroup(0, "://res/janitor/firefox");
+            cache_firefox_btn->setFocusPolicy(Qt::NoFocus);
 //            cache_firefox_btn->setFixedSize(160, 130);
             cache_firefox_btn->setStatusTip("cache-firefox");
             cache_firefox_btn->setLabelText(tr("Firefox Cache Count:"), cache_firefox_list.length());
@@ -473,7 +481,8 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cache_chromium_items = new CleanListWidget(cache_chromium_list, this->cur_skin, tr("Thumbnails Cache Clean Items"));
 //            cache_chromium_btn = new CommonCheckBox(0, "://res/cache");
-            cache_chromium_btn = new CleanSubGroup(0, "://res/item");
+            cache_chromium_btn = new CleanSubGroup(0, "://res/janitor/chromium");
+            cache_chromium_btn->setFocusPolicy(Qt::NoFocus);
 //            cache_chromium_btn->setFixedSize(160, 130);
             cache_chromium_btn->setStatusTip("cache-chromium");
             cache_chromium_btn->setLabelText(tr("Chromium Cache Count:"), cache_chromium_list.length());
@@ -507,7 +516,8 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cookies_firefox_items = new CleanListWidget(cookies_firefox_list, this->cur_skin, tr("Firefox Cookies Clean Items"));
 //            cookies_firefox_btn = new CommonCheckBox(0, "://res/cookie");
-            cookies_firefox_btn = new CleanSubGroup(0, "://res/item");
+            cookies_firefox_btn = new CleanSubGroup(0, "://res/janitor/firefox");
+            cookies_firefox_btn->setFocusPolicy(Qt::NoFocus);
 //            cookies_firefox_btn->setFixedSize(160, 130);
             cookies_firefox_btn->setStatusTip("cookes-firefox");
             cookies_firefox_btn->setLabelText(tr("Firefox Cookies Count:"), cookies_firefox_list.length());
@@ -537,7 +547,8 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cookies_chromium_items = new CleanListWidget(cookies_chromium_list, this->cur_skin, tr("Chromium Cookies Clean Items"));
 //            cookies_chromium_btn = new CommonCheckBox(0, "://res/cache");
-            cookies_chromium_btn = new CleanSubGroup(0, "://res/item");
+            cookies_chromium_btn = new CleanSubGroup(0, "://res/janitor/chromium");
+            cookies_chromium_btn->setFocusPolicy(Qt::NoFocus);
 //            cookies_chromium_btn->setFixedSize(160, 130);
             cookies_chromium_btn->setStatusTip("cookes-chromium");
             cookies_chromium_btn->setLabelText(tr("Chromium Cookies Count:"), cookies_chromium_list.length());
@@ -570,7 +581,8 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         if(trace_firefox_count.length() > 0)
         {
 //            trace_firefox_btn = new CommonCheckBox(0, "://res/cache");
-            trace_firefox_btn = new CleanSubGroup(0, "://res/item");
+            trace_firefox_btn = new CleanSubGroup(0, "://res/janitor/firefox");
+            trace_firefox_btn->setFocusPolicy(Qt::NoFocus);
 //            trace_firefox_btn->setFixedSize(160, 130);
             trace_firefox_btn->hideCustomButton();
             trace_firefox_btn->setStatusTip("history-firefox");
@@ -593,7 +605,8 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         }
         if(trace_chromium_count.length() > 0)
         {
-            trace_chromium_btn = new CleanSubGroup(0, "://res/item");
+            trace_chromium_btn = new CleanSubGroup(0, "://res/janitor/chromium");
+            trace_chromium_btn->setFocusPolicy(Qt::NoFocus);
             trace_chromium_btn->hideCustomButton();
             trace_chromium_btn->setStatusTip("history-chromium");
             trace_chromium_btn->setLabelText(tr("Chromium History Count:"), trace_chromium_count.toInt());
@@ -616,7 +629,8 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
 
         if(trace_system_count.length() > 0)
         {
-            trace_system_btn = new CleanSubGroup(0, "://res/item");
+            trace_system_btn = new CleanSubGroup(0, "://res/janitor/trace");
+            trace_system_btn->setFocusPolicy(Qt::NoFocus);
             trace_system_btn->hideCustomButton();
             trace_system_btn->setStatusTip("history-system");
             trace_system_btn->setLabelText(tr("System History Count:"), trace_system_count.toInt());
@@ -639,7 +653,8 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         //kobe
         if(!trace_bash_path.isEmpty())
         {
-            trace_bash_btn = new CleanSubGroup(0, "://res/item");
+            trace_bash_btn = new CleanSubGroup(0, "://res/janitor/trace");
+            trace_bash_btn->setFocusPolicy(Qt::NoFocus);
             trace_bash_btn->hideCustomButton();
             trace_bash_btn->setStatusTip("history-bash");
             trace_bash_btn->setLabelStringText(tr("Command history size:"), trace_bash_size);
@@ -663,7 +678,8 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         if(trace_x11_list.length() > 0)
         {
             trace_x11_items = new CleanListWidget(trace_x11_list, this->cur_skin, tr("Debug log Items"));
-            trace_x11_btn = new CleanSubGroup(0, "://res/item");
+            trace_x11_btn = new CleanSubGroup(0, "://res/janitor/debug");
+            trace_x11_btn->setFocusPolicy(Qt::NoFocus);
             trace_x11_btn->setStatusTip("x11-history");
             trace_x11_btn->setLabelText(tr("Debug log:"), trace_x11_list.length());
             //子checkbox的状态被改变时，重新设置总按钮的状态
@@ -696,7 +712,8 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             package_unneed_items = new CleanListWidget(package_unneed_list, this->cur_skin, tr("Thumbnails Cache Clean Items"));
 //            package_unneed_btn = new CommonCheckBox(0, "://res/cache");
-            package_unneed_btn = new CleanSubGroup(0, "://res/item");
+            package_unneed_btn = new CleanSubGroup(0, "://res/janitor/package");
+            package_unneed_btn->setFocusPolicy(Qt::NoFocus);
 //            package_unneed_btn->setFixedSize(160, 130);
             package_unneed_btn->setStatusTip("package-unneed");
             package_unneed_btn->setLabelText(tr("Package Unneed Count:"),package_unneed_list.length());
@@ -726,7 +743,8 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             package_oldkernel_items = new CleanListWidget(package_oldkernel_list, this->cur_skin, tr("Thumbnails Cache Clean Items"));
 //            package_oldkernel_btn = new CommonCheckBox(0, "://res/cache");
-            package_oldkernel_btn = new CleanSubGroup(0, "://res/item");
+            package_oldkernel_btn = new CleanSubGroup(0, "://res/janitor/package");
+            package_oldkernel_btn->setFocusPolicy(Qt::NoFocus);
 //            package_oldkernel_btn->setFixedSize(160, 130);
             package_oldkernel_btn->setStatusTip("package-oldkernel");
             package_oldkernel_btn->setLabelText(tr("Package oldkernel Count:"), package_oldkernel_list.length());
@@ -756,7 +774,8 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             package_configfile_items = new CleanListWidget(package_configfile_list, this->cur_skin, tr("Thumbnails Cache Clean Items"));
 //            package_configfile_btn = new CommonCheckBox(0, "://res/cache");
-            package_configfile_btn = new CleanSubGroup(0, "://res/item");
+            package_configfile_btn = new CleanSubGroup(0, "://res/janitor/package");
+            package_configfile_btn->setFocusPolicy(Qt::NoFocus);
 //            package_configfile_btn->setFixedSize(160, 130);
             package_configfile_btn->setStatusTip("package-configfile");
             package_configfile_btn->setLabelText(tr("Package configfile Count:"),package_configfile_list.length());

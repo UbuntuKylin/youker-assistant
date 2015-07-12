@@ -31,7 +31,7 @@ KylinFontDialog::KylinFontDialog(/*QSettings *mSettings, QString flag, */QString
     QDialog(parent)
 {
     this->setFixedSize(600, 500);
-    this->setStyleSheet("QDialog{border: 1px solid gray;border-radius:2px}");
+    this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
     this->setWindowIcon(QIcon(":/res/youker-assistant.png"));
     this->setAttribute(Qt::WA_DeleteOnClose);
     this->setWindowFlags(Qt::FramelessWindowHint);

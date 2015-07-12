@@ -41,6 +41,7 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, SessionDispatcher *seroxy,
     cache_items = new CleanerItems(cache_list, status_list, skin, 280, tr("Cache Items"));
 //    cache_btn = new KylinCheckBox(0, "://res/cache.png");
     cache_btn = new CleanGroup(this, "://res/cache");
+    cache_btn->setFocusPolicy(Qt::NoFocus);
     cache_btn->setGeometry(QRect(10, 50, 260, 150));
 //    cache_btn->setFixedSize(260, 130);
     cache_btn->setStatusTip("cache");
@@ -56,7 +57,8 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, SessionDispatcher *seroxy,
     status_list << "unneed" << "oldkernel" << "configfile";
     package_items = new CleanerItems(package_list, status_list, skin, 200, tr("Package Items"));
 //    package_btn = new KylinCheckBox(0, "://res/package.png");
-    package_btn = new CleanGroup(this, "://res/cache");
+    package_btn = new CleanGroup(this, "://res/package");
+    package_btn->setFocusPolicy(Qt::NoFocus);
     package_btn->setGeometry(QRect(320, 50, 260, 150));
 //    package_btn->setFixedSize(260, 130);
     package_btn->setLabelText(tr("Packages and configfile"), tr("Cleaning up the software that installed by other software bundled, old kernel packages and configfile, to improve system performance"));//包垃圾   清除不必要的程序、旧内核包、配置文件
@@ -72,7 +74,8 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, SessionDispatcher *seroxy,
     status_list << "firefox" << "chromium";
     cookies_items = new CleanerItems(cookies_list, status_list, skin, 170, tr("Cookies Items"));
 //    cookies_btn = new KylinCheckBox(0, "://res/cookie.png");
-    cookies_btn = new CleanGroup(this, "://res/cache");
+    cookies_btn = new CleanGroup(this, "://res/cookie");
+    cookies_btn->setFocusPolicy(Qt::NoFocus);
     cookies_btn->setGeometry(QRect(630, 50, 260, 150));
 //    cookies_btn->setFixedSize(260, 130);
     cookies_btn->setLabelText(tr("Cookies"), tr("Clean up user login information, support Firefox and Chromium browser"));//清除上网、游戏、购物等记录
@@ -88,7 +91,8 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, SessionDispatcher *seroxy,
     status_list << "firefox" << "chromium" << "system" << "bash" << "X11";
     trace_items = new CleanerItems(trace_list, status_list, skin, 280, tr("Trace Items"));
 //    trace_btn = new KylinCheckBox(0, "://res/trace.png");
-    trace_btn = new CleanGroup(this, "://res/cache");
+    trace_btn = new CleanGroup(this, "://res/trace");
+    trace_btn->setFocusPolicy(Qt::NoFocus);
     trace_btn->setGeometry(QRect(10, 240, 260, 150));
 //    trace_btn->setFixedSize(260, 130);
     trace_btn->setLabelText(tr("History trace"), tr("Cleaning the internet and opened documents recently records"));//使用痕迹    清除浏览器和系统使用痕迹

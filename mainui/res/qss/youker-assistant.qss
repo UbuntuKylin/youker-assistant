@@ -65,6 +65,11 @@ QLabel#tipLabel{
     text-align: left;
 }
 
+QLabel#backgroundWhiteLabel{
+    color:#ffffff;
+    font-family: "方正黑体_GBK";
+    font-size: 14px;
+}
 
 QLabel#backgroundLabel{
     color:#b2b2b2;
@@ -111,17 +116,20 @@ QPushButton#transparentButton{
 }
 
 QPushButton#settingButton{
-    color:rgb(0, 120, 230);
+    /*color:rgb(0, 120, 230);*/
+    color:#00609a;
     background:transparent;
     text-align: left;
 }
 
 QPushButton#settingButton:hover{
-    color:rgb(50, 150, 255);
+    /*color:rgb(50, 150, 255);*/
+    color:#3f96e4;
 }
 
 QPushButton#settingButton:pressed{
-    color:rgb(50, 150, 255);
+    /*color:rgb(50, 150, 255);*/
+    color:#3f96e4;
 }
 
 QPushButton#backgroundButton{
@@ -488,7 +496,7 @@ QListWidget#animationListWidget::item:selected {
 }
 
 QListWidget#infoList{
-    border:1px solid #d5e3ec;
+    border:1px solid #e0e0e0;/*#d5e3ec*/
     border-radius:4px;
 }
 
@@ -624,7 +632,7 @@ QMenu::indicator {
 /*-------------------QRadioButton-------------------*/
 QRadioButton {
   spacing: 5px;
-  font-size: 12px;
+  font-size: 14px;
   color:#000000;
   font-family: "方正黑体_GBK";
 }

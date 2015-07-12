@@ -62,7 +62,7 @@ from beautify.sound import Sound
 from beautify.filemanager import FileManager
 from beautify.cloudconfig import CloudConfig
 from sysinfo import Sysinfo
-from camera.capture import Capture
+#from camera.capture import Capture
 #from weather.weatherinfo import WeatherInfo
 #from weather.yahoo import YahooWeather
 from common import *
@@ -800,15 +800,15 @@ class SessionDaemon(dbus.service.Object):
 #        return self.ip_addr
 
     # True: has camera, False: no camera
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
-    def judge_camera(self):
-        if not hasattr(self, 'capturemode'):
-            self.capturemode = Capture()
-        return self.capturemode.judge_camera()
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+#    def judge_camera(self):
+#        if not hasattr(self, 'capturemode'):
+#            self.capturemode = Capture()
+#        return self.capturemode.judge_camera()
 
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
-    def call_camera(self):
-        self.capturemode.call_camera()
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+#    def call_camera(self):
+#        self.capturemode.call_camera()
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
     def judge_power_is_exists(self):

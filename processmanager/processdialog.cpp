@@ -34,7 +34,7 @@ ProcessDialog::ProcessDialog(ProcessManager *plugin, QDialog *parent)
 :QDialog(parent)
 {
     setWindowFlags(Qt::FramelessWindowHint);
-    this->setStyleSheet("QDialog{border: 1px solid gray;border-radius:2px}");//设定边框宽度以及颜色
+    this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
     this->setWindowIcon(QIcon(":/res/youker-assistant.png"));
     title_bar = new KylinTitleBar();
 

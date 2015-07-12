@@ -24,7 +24,7 @@ import commands
 import threading
 import ctypes
 from apt.progress.base import InstallProgress
-
+import time
 import historyclean
 import cookiesclean
 import searchsame
@@ -60,7 +60,7 @@ class OneKeyClean():
         flag_dic = {'history': False, 'cookies': False, 'cache': False}
         for mode in mode_list:
             flag_dic['%s' % mode] = True
-
+        time.sleep(1)
         if flag_dic['history']:
             historysize = 0
             objhg = historyclean.HistoryClean(homedir)
@@ -82,6 +82,7 @@ class OneKeyClean():
                         historysize += onec[2]
             total_dic['history'] = str(historysize)
             sesdaemon.total_data_transmit('h', total_dic['history'])
+        time.sleep(1)
         if flag_dic['cookies']:
             cookiessize = 0
             objcg = cookiesclean.CookiesClean(homedir)
@@ -103,6 +104,7 @@ class OneKeyClean():
                     cookiessize += onecc[1]
             total_dic['cookies'] = str(cookiessize)
             sesdaemon.total_data_transmit('k', total_dic['cookies'])
+        time.sleep(1)
         if flag_dic['cache']:
             cachesize = 0
             objcache = cacheclean.CacheClean()
@@ -130,6 +132,7 @@ class OneKeyClean():
         for mode in mode_list:
             flag_dic['%s' % mode] = True
         #if flag_dic['cache']:
+        time.sleep(1)
         if mode_list[0] in '1':
             try:
                 objclean = FunctionOfClean()
@@ -152,6 +155,7 @@ class OneKeyClean():
             else:
                 sysdaemon.clean_complete_onekey('c')
         #if flag_dic['history']:
+        time.sleep(1)
         if mode_list[1] in '1':
             try:
                 sysdaemon.status_for_quick_clean('firefoxhistory', 'start')
@@ -172,6 +176,7 @@ class OneKeyClean():
                 sysdaemon.clean_complete_onekey('h')
                 
         #if flag_dic['cookies']:
+        time.sleep(1)
         if mode_list[2] in '1':
             try:
                 objcc = cookiesclean.CookiesClean(homedir)

@@ -154,8 +154,6 @@
         <file>res/package_logo_gray.png</file>
         <file>res/trace_logo.png</file>
         <file>res/trace_logo_gray.png</file>
-        <file>res/item_check.png</file>
-        <file>res/item_uncheck.png</file>
         <file>res/background.jpg</file>
         <file>res/clothes.png</file>
         <file>res/indicator.png</file>
@@ -173,6 +171,28 @@
         <file>res/upgrade-normal.png</file>
         <file>res/upgrade-ok.png</file>
         <file>res/hook.png</file>
+        <file>res/janitor/apt_check.png</file>
+        <file>res/janitor/apt_uncheck.png</file>
+        <file>res/janitor/chromium_check.png</file>
+        <file>res/janitor/chromium_uncheck.png</file>
+        <file>res/janitor/debug_check.png</file>
+        <file>res/janitor/debug_uncheck.png</file>
+        <file>res/janitor/firefox_check.png</file>
+        <file>res/janitor/firefox_uncheck.png</file>
+        <file>res/janitor/package_check.png</file>
+        <file>res/janitor/package_uncheck.png</file>
+        <file>res/janitor/software_check.png</file>
+        <file>res/janitor/software_uncheck.png</file>
+        <file>res/janitor/thumbnails_check.png</file>
+        <file>res/janitor/thumbnails_uncheck.png</file>
+        <file>res/janitor/trace_check.png</file>
+        <file>res/janitor/trace_uncheck.png</file>
+        <file>res/catch.png</file>
+        <file>res/catch-hover.png</file>
+        <file>res/view.png</file>
+        <file>res/camera-default.png</file>
+        <file>res/camera-error.png</file>
+        <file>res/catch-disable.png</file>
     </qresource>
     <qresource prefix="/sys">
         <file>res/sysBtn/close_button.png</file>

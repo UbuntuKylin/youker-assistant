@@ -32,6 +32,7 @@ UpgradeDialog::UpgradeDialog(QWidget *parent, const QString &version, QString sk
     this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
 
     isBusy = false;
+    upgradeOver = false;
     cur_version = version;
 
     baseWidget = new QWidget(this);
@@ -382,6 +383,7 @@ void UpgradeDialog::receiveAptSignal(QString msg_type, QStringList msg)
     {
         if( msg.length() == 3 && msg.at(0) == "youker-assistant" && msg.at(1) == "200" && msg.at(2) == "install") {
             this->isBusy = false;
+            this->upgradeOver = true;
             ok_icon_label->show();
             okBtn->show();
             doing_label->setText(tr("Youker Assistant is the latest version"));
@@ -433,6 +435,9 @@ void UpgradeDialog::onCloseBtnClicked()
 //        timer->stop();
     if(this->isBusy) {
         emit this->showBackendBtnSignal(false);
+    }
+    else if(this->upgradeOver) {
+        emit this->close_signal();
     }
     this->close();
 //    if(this->isBusy) {

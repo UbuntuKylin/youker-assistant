@@ -28,7 +28,7 @@ AutoGroup::AutoGroup(QWidget *parent) :
     splitlabel = new QLabel();
 //    splitlabel->setGeometry(QRect(0, this->height(), this->width(), 1));
     splitlabel->setFixedHeight(1);
-    splitlabel->setStyleSheet("QLabel{background:#aaaaaa;}");
+    splitlabel->setStyleSheet("QLabel{background:#e0e0e0;}");
 
     logo_label = new QLabel();
     name_label = new QLabel();
