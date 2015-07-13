@@ -172,17 +172,17 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>CameraManager</name>
     <message>
-        <location filename="../cameramanager.cpp" line="74"/>
+        <location filename="../cameramanager.cpp" line="81"/>
         <source>View Photos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cameramanager.cpp" line="85"/>
+        <location filename="../cameramanager.cpp" line="92"/>
         <source>The camera is out of question, &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; Refresh&lt;/a&gt; to call it out ~</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cameramanager.cpp" line="285"/>
+        <location filename="../cameramanager.cpp" line="295"/>
         <source>Camera</source>
         <translation type="unfinished"></translation>
     </message>
@@ -232,120 +232,120 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <location filename="../cleaneractionwidget.cpp" line="161"/>
-        <location filename="../cleaneractionwidget.cpp" line="268"/>
-        <location filename="../cleaneractionwidget.cpp" line="279"/>
-        <location filename="../cleaneractionwidget.cpp" line="353"/>
+        <location filename="../cleaneractionwidget.cpp" line="269"/>
+        <location filename="../cleaneractionwidget.cpp" line="280"/>
+        <location filename="../cleaneractionwidget.cpp" line="359"/>
         <source>Scaning......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="171"/>
+        <location filename="../cleaneractionwidget.cpp" line="172"/>
         <source>Clean OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="178"/>
+        <location filename="../cleaneractionwidget.cpp" line="179"/>
         <source>Cleaning: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="182"/>
+        <location filename="../cleaneractionwidget.cpp" line="183"/>
         <source>, Percent is: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="182"/>
+        <location filename="../cleaneractionwidget.cpp" line="183"/>
         <source>%, Status is: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="190"/>
+        <location filename="../cleaneractionwidget.cpp" line="191"/>
         <source>Clean Firefox history......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="194"/>
+        <location filename="../cleaneractionwidget.cpp" line="195"/>
         <source>Clean Chromium history......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="198"/>
+        <location filename="../cleaneractionwidget.cpp" line="199"/>
         <source>Clean system history......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="203"/>
+        <location filename="../cleaneractionwidget.cpp" line="204"/>
         <source>Clean apt......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="207"/>
+        <location filename="../cleaneractionwidget.cpp" line="208"/>
         <source>Start clean apt......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="212"/>
+        <location filename="../cleaneractionwidget.cpp" line="213"/>
         <source>Clean Firefox Cookie:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="216"/>
+        <location filename="../cleaneractionwidget.cpp" line="217"/>
         <source>Clean Chromium Cookie:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="225"/>
-        <location filename="../cleaneractionwidget.cpp" line="309"/>
+        <location filename="../cleaneractionwidget.cpp" line="226"/>
+        <location filename="../cleaneractionwidget.cpp" line="310"/>
         <source> does not exist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="229"/>
+        <location filename="../cleaneractionwidget.cpp" line="230"/>
         <source>Chromium Browser is running......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="237"/>
+        <location filename="../cleaneractionwidget.cpp" line="238"/>
         <source>Cache Scan OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="241"/>
+        <location filename="../cleaneractionwidget.cpp" line="242"/>
         <source>Cookies Scan OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="245"/>
+        <location filename="../cleaneractionwidget.cpp" line="246"/>
         <source>History Scan OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="296"/>
+        <location filename="../cleaneractionwidget.cpp" line="297"/>
         <source>Firefox Browser does not be installed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="300"/>
+        <location filename="../cleaneractionwidget.cpp" line="301"/>
         <source>Chromium Browser does not be installed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="304"/>
+        <location filename="../cleaneractionwidget.cpp" line="305"/>
         <source>Chromium Browser is running</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="293"/>
+        <location filename="../cleaneractionwidget.cpp" line="294"/>
         <source>Error: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="249"/>
+        <location filename="../cleaneractionwidget.cpp" line="250"/>
         <source>Packages Scan OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cleaneractionwidget.cpp" line="345"/>
+        <location filename="../cleaneractionwidget.cpp" line="347"/>
         <source>Ready to Cleanup......</source>
         <translation type="unfinished"></translation>
     </message>
@@ -358,122 +358,122 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="348"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="352"/>
         <source>Apt Cache Clean Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="354"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="359"/>
         <source>Apt Cache count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="380"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="444"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="385"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="451"/>
         <source>Software Cache Clean Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="386"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="392"/>
         <source>Software Cache count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="411"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="474"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="697"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="727"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="757"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="417"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="482"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="713"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="744"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="775"/>
         <source>Thumbnails Cache Clean Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="417"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="424"/>
         <source>Thumbnails Cache Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="449"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="457"/>
         <source>Firefox Cache Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="479"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="488"/>
         <source>Chromium Cache Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="508"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="517"/>
         <source>Firefox Cookies Clean Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="513"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="523"/>
         <source>Firefox Cookies Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="538"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="548"/>
         <source>Chromium Cookies Clean Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="543"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="554"/>
         <source>Chromium Cookies Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="577"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="589"/>
         <source>Firefox History Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="599"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="612"/>
         <source>Chromium History Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="622"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="636"/>
         <source>System History Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="645"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="660"/>
         <source>Command history size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="665"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="680"/>
         <source>Debug log Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="668"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="684"/>
         <source>Debug log:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="702"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="719"/>
         <source>Package Unneed Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="732"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="750"/>
         <source>Package oldkernel Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="762"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="781"/>
         <source>Package configfile Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="883"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="902"/>
         <source>No garbage </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="922"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="941"/>
         <source>Clean args is empty!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -519,117 +519,117 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="47"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="48"/>
         <source>System Cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="47"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="48"/>
         <source>Cleanup  cache of system, software-center, thumbnails and browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="54"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="55"/>
         <source>Uninstall unnecessary procedures</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="54"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="55"/>
         <source>Uninstall old kernel packages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="54"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="55"/>
         <source>Cleanup software configfile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="57"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="58"/>
         <source>Package Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="62"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="64"/>
         <source>Packages and configfile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="62"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="64"/>
         <source>Cleaning up the software that installed by other software bundled, old kernel packages and configfile, to improve system performance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="70"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="72"/>
         <source>Cleanup the Cookies saving in Firefox</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="70"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="72"/>
         <source>Cleanup the Cookies saving in Chromium</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="73"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="75"/>
         <source>Cookies Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="78"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="81"/>
         <source>Cookies</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="78"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="81"/>
         <source>Clean up user login information, support Firefox and Chromium browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="86"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="89"/>
         <source>Clean up the Firefox Internet records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="86"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="89"/>
         <source>Clean up the Chromium Internet records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="86"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="89"/>
         <source>Clean up the recently opened documents records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="86"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="89"/>
         <source>Delete the command history</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="86"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="89"/>
         <source>Delete the debug logs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="89"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="92"/>
         <source>Trace Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="94"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="98"/>
         <source>History trace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="94"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="98"/>
         <source>Cleaning the internet and opened documents recently records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="125"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="129"/>
         <source>Please select the items you want to clean</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="145"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="149"/>
         <source>Scan args is empty!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1416,13 +1416,13 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     <name>HomeActionWidget</name>
     <message>
         <location filename="../homeactionwidget.cpp" line="144"/>
-        <location filename="../homeactionwidget.cpp" line="322"/>
+        <location filename="../homeactionwidget.cpp" line="326"/>
         <source>The lastest cleanup time is </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../homeactionwidget.cpp" line="150"/>
-        <location filename="../homeactionwidget.cpp" line="430"/>
+        <location filename="../homeactionwidget.cpp" line="436"/>
         <source>The lastest scan time is </source>
         <translation type="unfinished"></translation>
     </message>
@@ -1453,6 +1453,7 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <location filename="../homeactionwidget.cpp" line="194"/>
+        <location filename="../homeactionwidget.cpp" line="408"/>
         <source>Scanning......</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1504,102 +1505,102 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="306"/>
+        <location filename="../homeactionwidget.cpp" line="311"/>
         <source>Cleaning......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="311"/>
+        <location filename="../homeactionwidget.cpp" line="315"/>
         <source>Garbage Cleanup OK......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="314"/>
+        <location filename="../homeactionwidget.cpp" line="318"/>
         <source>History Cleanup OK......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="317"/>
+        <location filename="../homeactionwidget.cpp" line="321"/>
         <source>Cookies Cleanup OK......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="323"/>
+        <location filename="../homeactionwidget.cpp" line="327"/>
         <source>Cleanup Cookies:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="323"/>
+        <location filename="../homeactionwidget.cpp" line="327"/>
         <source>; Garbage:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="323"/>
+        <location filename="../homeactionwidget.cpp" line="327"/>
         <source>; Historical records:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="353"/>
+        <location filename="../homeactionwidget.cpp" line="358"/>
         <source>Cleaning up history trace of Firefox...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="356"/>
+        <location filename="../homeactionwidget.cpp" line="361"/>
         <source>Firefox history trace had been cleared!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="361"/>
+        <location filename="../homeactionwidget.cpp" line="366"/>
         <source>Cleaning up history trace of Chromium...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="364"/>
+        <location filename="../homeactionwidget.cpp" line="369"/>
         <source>Chromium history trace had been cleared!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="369"/>
+        <location filename="../homeactionwidget.cpp" line="374"/>
         <source>Cleaning up Cookies of Firefox...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="372"/>
+        <location filename="../homeactionwidget.cpp" line="377"/>
         <source>Firefox Cookies had been cleared!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="377"/>
+        <location filename="../homeactionwidget.cpp" line="382"/>
         <source>Cleaning up Cookies of Chromium...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="380"/>
+        <location filename="../homeactionwidget.cpp" line="385"/>
         <source>Chromium Cookies had been cleared!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="385"/>
+        <location filename="../homeactionwidget.cpp" line="390"/>
         <source>Apt cache had been cleared!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="388"/>
+        <location filename="../homeactionwidget.cpp" line="393"/>
         <source>Cleaning up Apt cache: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="393"/>
+        <location filename="../homeactionwidget.cpp" line="398"/>
         <source>Software Center cache had been cleared!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="396"/>
+        <location filename="../homeactionwidget.cpp" line="401"/>
         <source>Cleaning up Software Center cache: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homeactionwidget.cpp" line="422"/>
+        <location filename="../homeactionwidget.cpp" line="428"/>
         <source>Ready to Cleanup......</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1607,52 +1608,52 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>HomePage</name>
     <message>
-        <location filename="../homepage.cpp" line="172"/>
+        <location filename="../homepage.cpp" line="176"/>
         <source>Boot Manager</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="172"/>
+        <location filename="../homepage.cpp" line="176"/>
         <source>Camera</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="243"/>
+        <location filename="../homepage.cpp" line="249"/>
         <source>Current Version Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="244"/>
+        <location filename="../homepage.cpp" line="250"/>
         <source>Update to the lastest version, make it work better</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="245"/>
+        <location filename="../homepage.cpp" line="251"/>
         <source>updating on the backend</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="246"/>
+        <location filename="../homepage.cpp" line="252"/>
         <source>Common toolbox</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="247"/>
+        <location filename="../homepage.cpp" line="253"/>
         <source>Fast and practical, making the system more personalized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="266"/>
+        <location filename="../homepage.cpp" line="272"/>
         <source>Upgrade is complete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="268"/>
+        <location filename="../homepage.cpp" line="274"/>
         <source>Updating on the backend</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="172"/>
+        <location filename="../homepage.cpp" line="176"/>
         <source>More</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2598,116 +2599,116 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>UpgradeDialog</name>
     <message>
-        <location filename="../upgradedialog.cpp" line="52"/>
+        <location filename="../upgradedialog.cpp" line="53"/>
         <source>check and update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="94"/>
-        <location filename="../upgradedialog.cpp" line="388"/>
+        <location filename="../upgradedialog.cpp" line="95"/>
+        <location filename="../upgradedialog.cpp" line="390"/>
         <source>Current verison:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="130"/>
+        <location filename="../upgradedialog.cpp" line="131"/>
         <source>Official version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="153"/>
+        <location filename="../upgradedialog.cpp" line="154"/>
         <source>An error occurred!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="154"/>
+        <location filename="../upgradedialog.cpp" line="155"/>
         <source>Network or local sources anomaly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="158"/>
+        <location filename="../upgradedialog.cpp" line="159"/>
         <source>you can visit the&lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; UK official website&lt;/a&gt; to download the lastest deb package</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="163"/>
+        <location filename="../upgradedialog.cpp" line="164"/>
         <source>Retry</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="176"/>
+        <location filename="../upgradedialog.cpp" line="177"/>
         <source>Finish</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="183"/>
+        <location filename="../upgradedialog.cpp" line="184"/>
         <source>Upgrade</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="245"/>
-        <location filename="../upgradedialog.cpp" line="328"/>
+        <location filename="../upgradedialog.cpp" line="246"/>
+        <location filename="../upgradedialog.cpp" line="329"/>
         <source>Start to update the local sources</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="324"/>
+        <location filename="../upgradedialog.cpp" line="325"/>
         <source>Start to download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="373"/>
+        <location filename="../upgradedialog.cpp" line="374"/>
         <source>Updating local sources...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="387"/>
+        <location filename="../upgradedialog.cpp" line="389"/>
         <source>Youker Assistant is the latest version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="400"/>
+        <location filename="../upgradedialog.cpp" line="402"/>
         <source>Start to install</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="335"/>
+        <location filename="../upgradedialog.cpp" line="336"/>
         <source>Download completely</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="346"/>
+        <location filename="../upgradedialog.cpp" line="347"/>
         <source>Local sources updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="356"/>
+        <location filename="../upgradedialog.cpp" line="357"/>
         <source>Found a new version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="144"/>
+        <location filename="../upgradedialog.cpp" line="145"/>
         <source>New version:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="351"/>
-        <location filename="../upgradedialog.cpp" line="365"/>
+        <location filename="../upgradedialog.cpp" line="352"/>
+        <location filename="../upgradedialog.cpp" line="366"/>
         <source>Not found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="155"/>
-        <location filename="../upgradedialog.cpp" line="269"/>
+        <location filename="../upgradedialog.cpp" line="156"/>
+        <location filename="../upgradedialog.cpp" line="270"/>
         <source>Testing network and local sources...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="408"/>
+        <location filename="../upgradedialog.cpp" line="410"/>
         <source>Upgrading the main program...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="459"/>
+        <location filename="../upgradedialog.cpp" line="464"/>
         <source>Start to upgrade the main program</source>
         <translation type="unfinished"></translation>
     </message>

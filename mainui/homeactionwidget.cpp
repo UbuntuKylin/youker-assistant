@@ -299,13 +299,17 @@ void HomeActionWidget::getCleanResult(QString msg/*, QString flag*/)
 //    if(flag == "onekey") {
     if (msg == "yes") {//在弹出输入密码验证时，点击了取消按钮
         loading_label->stopLoading();
+        clean_button->show();
         clean_button->setEnabled(true);
+        back_button->show();
     }
-    if (msg == "no") {//在弹出输入密码验证时，输入密码，验证通过，此时让动态图片开始显示
+    else if (msg == "no") {//在弹出输入密码验证时，输入密码，验证通过，此时让动态图片开始显示
         //show dynamic image
+        clean_button->show();
+        clean_button->setEnabled(false);
+        back_button->hide();
         doing_label->setText(tr("Cleaning......"));//正在清理......
         loading_label->startLoading();
-        clean_button->setEnabled(false);
     }
     else if (msg == "c") {
         doing_label->setText(tr("Garbage Cleanup OK......"));
@@ -329,6 +333,7 @@ void HomeActionWidget::getCleanResult(QString msg/*, QString flag*/)
         scan_button->setEnabled(true);
         clean_button->hide();
         clean_button->setEnabled(true);
+        back_button->hide();
     }
 //    }
 }
@@ -400,6 +405,7 @@ void HomeActionWidget::getCleaningMessage(QString type, QString status)
 
 void HomeActionWidget::onStartButtonClicked()
 {
+    doing_label->setText(tr("Scanning......"));//正在扫描......
     scan_button->setEnabled(false);
     loading_label->startLoading();
     suggest_label->hide();
@@ -413,8 +419,8 @@ void HomeActionWidget::onStartButtonClicked()
 
 void HomeActionWidget::onCleanButtonClicked()
 {
-    clean_button->show();
-    clean_button->setEnabled(false);
+    clean_button->hide();
+    back_button->hide();
     loading_label->startLoading();
     suggest_label->hide();
     scan_result_label->hide();
