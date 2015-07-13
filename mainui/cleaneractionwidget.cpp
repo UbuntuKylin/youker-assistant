@@ -167,6 +167,7 @@ void CleanerActionWidget::showCleanOverStatus()
     scan_button->show();
     scan_button->setEnabled(true);
     clean_button->hide();
+    clean_button->setEnabled(true);
     back_button->hide();
     doing_label->setText(tr("Clean OK"));
 }
@@ -339,11 +340,16 @@ void CleanerActionWidget::receivePolicyKitSignal(bool status)
     {
         clean_button->show();
         clean_button->setEnabled(false);
+        back_button->hide();//0713
         scan_button->hide();
         loading_label->startLoading();
         suggest_label->hide();
         doing_label->setText(tr("Ready to Cleanup......"));//准备清理......
         doing_label->show();
+    }
+    else {
+        clean_button->show();
+        back_button->show();
     }
 }
 
@@ -356,6 +362,8 @@ void CleanerActionWidget::onStartButtonClicked()
 
 void CleanerActionWidget::onCleanButtonClicked()
 {
+    clean_button->hide();
+    back_button->hide();
     emit this->sendCleanSignal();
 }
 
