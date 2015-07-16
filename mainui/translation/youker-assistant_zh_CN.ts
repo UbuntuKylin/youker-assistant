@@ -15,14 +15,34 @@
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="101"/>
-        <source>      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions. 
-      The software is still under development. Please visit www.ubuntukylin.com for more information. Welcome everyone to join with us. youker-assistant Homepage: </source>
-        <translation>      优客助手是由Ubuntu Kylin团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器以及监控球等功能。
-      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 www.ubuntukylin.com 了解软件的最新进展并反馈问题，欢迎广大优客一起参与。优客助手主页：</translation>
+        <location filename="../aboutdialog.cpp" line="102"/>
+        <source>      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions.</source>
+        <translation>      优客助手是由Ubuntu Kylin团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器以及监控球等功能。</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="103"/>
+        <source>      The software is still under development. Please visit </source>
+        <translation>      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 </translation>
+    </message>
+    <message>
+        <source>      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions. 
+      The software is still under development. Please visit </source>
+        <translation type="obsolete">      优客助手是由Ubuntu Kylin团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器以及监控球等功能。
+      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 </translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="103"/>
+        <source> for more information. Welcome everyone to join with us. youker-assistant Homepage: </source>
+        <translation> 了解软件的最新进展并反馈问题，欢迎广大优客一起参与。优客助手主页：</translation>
+    </message>
+    <message>
+        <source>      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions. 
+      The software is still under development. Please visit www.ubuntukylin.com for more information. Welcome everyone to join with us. youker-assistant Homepage: </source>
+        <translation type="obsolete">      优客助手是由Ubuntu Kylin团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器以及监控球等功能。
+      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 www.ubuntukylin.com 了解软件的最新进展并反馈问题，欢迎广大优客一起参与。优客助手主页：</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="105"/>
         <source>Maintainer:
 Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>维护者：
@@ -99,7 +119,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">&lt;a href=https://launchpad.net/youker-assistant&gt;主页&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="120"/>
+        <location filename="../aboutdialog.cpp" line="122"/>
         <source>Close</source>
         <translatorcomment>关闭</translatorcomment>
         <translation>关闭</translation>
@@ -2812,6 +2832,11 @@ p, li { white-space: pre-wrap; }
         <location filename="../skincenter.cpp" line="70"/>
         <source>Custom</source>
         <translation>自定义</translation>
+    </message>
+    <message>
+        <location filename="../skincenter.cpp" line="426"/>
+        <source>Image Files(*.jpg *.png)</source>
+        <translation>图片文件(*.jpg *.png)</translation>
     </message>
 </context>
 <context>

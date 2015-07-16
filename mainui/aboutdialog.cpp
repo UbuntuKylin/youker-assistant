@@ -98,8 +98,10 @@ AboutDialog::AboutDialog(QWidget *parent, const QString &version, QString skin) 
     contributorEdit->setGeometry(QRect(17, 92, 408, 200));
     aboutEdit->setReadOnly(true);
     contributorEdit->setReadOnly(true);
-    aboutEdit->append(tr("      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions. \n      The software is still under development. Please visit www.ubuntukylin.com for more information. Welcome everyone to join with us. youker-assistant Homepage: "));
-    aboutEdit->append(QString::fromLocal8Bit("<a href=\"https://launchpad.net/youker-assistant\">https://launchpad.net/youker-assistant</a>"));
+//    aboutEdit->append(tr("      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions. \n      The software is still under development. Please visit www.ubuntukylin.com for more information. Welcome everyone to join with us. youker-assistant Homepage: "));
+    aboutEdit->append(tr("      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions."));
+    aboutEdit->append(tr("      The software is still under development. Please visit ") + QString::fromLocal8Bit("<a style='color: #3f96e4;' href = http://www.ubuntukylin.com>www.ubuntukylin.com</a>") + tr(" for more information. Welcome everyone to join with us. youker-assistant Homepage: "));
+    aboutEdit->append(QString::fromLocal8Bit("<a style='color: #3f96e4;' href=\"https://launchpad.net/youker-assistant\">https://launchpad.net/youker-assistant</a>"));
     contributorEdit->setText(tr("Maintainer:\nUbuntu Kylin Team <ubuntukylin-members@list.launchpad.net>"));
     contributorEdit->hide();
 
