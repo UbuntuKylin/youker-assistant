@@ -27,7 +27,7 @@
 UpgradeDialog::UpgradeDialog(QWidget *parent, const QString &version, QString skin) :
     QDialog(parent)
 {
-    this->setWindowFlags(Qt::FramelessWindowHint);
+    this->setWindowFlags(Qt::FramelessWindowHint |Qt::WindowStaysOnTopHint);
     this->setFixedSize(334, 470);
     this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
 
@@ -346,7 +346,7 @@ void UpgradeDialog::receiveFetchSignal(QString msg_type, QStringList msg)
             normal_icon_label->show();
             doing_label->setText(tr("Local sources updated"));
             QStringList version_list = sessionProxy->checkNewVersion();
-            qDebug() << version_list;//("1.2.0-0ubuntu1", "1.2.0-0ubuntu1", "1.3.1-0ubuntu1", "1")
+//            qDebug() << version_list;//("1.2.0-0ubuntu1", "1.2.0-0ubuntu1", "1.3.1-0ubuntu1", "1")
             if(version_list.length() == 1) {
 //                version_label->setText(version_list.at(0));
                 normal_icon_label->setText(tr("Not found"));

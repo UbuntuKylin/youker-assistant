@@ -361,7 +361,9 @@ class SessionDaemon(dbus.service.Object):
         cache = apt.Cache()
         pkg = cache['youker-assistant']
         apt_list.append(pkg.installed.version)
+        print pkg.installed.version
         if len(pkg.versions) == 2:
+            print pkg.versions[0].version, pkg.versions[1].version
             if pkg.versions[0].version == pkg.versions[1].version:
                 apt_list.append(pkg.versions[0].version)
                 apt_list.append(pkg.versions[1].version)
