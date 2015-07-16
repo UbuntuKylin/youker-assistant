@@ -360,25 +360,49 @@ class SessionDaemon(dbus.service.Object):
         apt_list = []
         cache = apt.Cache()
         pkg = cache['youker-assistant']
-        apt_list.append(pkg.installed.version)
-        print pkg.installed.version
+        installed_version = pkg.installed.version
+#        print installed_version
+        if ":" in installed_version:
+            info = installed_version.split(":")
+            apt_list.append(info.at(1))
+        else:
+            apt_list.append(installed_version)
+#        print pkg.installed.version#1:2.0.3-0~704~ubuntu15.04.1
         if len(pkg.versions) == 2:
-            print pkg.versions[0].version, pkg.versions[1].version
+#            print pkg.versions[0].version, pkg.versions[1].version
             if pkg.versions[0].version == pkg.versions[1].version:
                 apt_list.append(pkg.versions[0].version)
                 apt_list.append(pkg.versions[1].version)
                 apt_list.append("0")
             else:
+                tmp_installed = ''
+                tmp_unstalled = ''
                 if pkg.installed.version == pkg.versions[0].version:
-                    if pkg.versions[0].version < pkg.versions[1].version:
-                        apt_list.append(pkg.versions[0].version)
-                        apt_list.append(pkg.versions[1].version)
+                    if ":" in pkg.versions[0].version:
+                        tmp_installed = pkg.versions[0].version.split(":").at(1)
+                    else:
+                        tmp_installed = pkg.versions[0].version
+                    if ":" in pkg.versions[1].version:
+                        tmp_unstalled = pkg.versions[1].version.split(":").at(1)
+                    else:
+                        tmp_unstalled = pkg.versions[1].version
+                    if tmp_installed < tmp_unstalled:
+                        apt_list.append(tmp_installed)
+                        apt_list.append(tmp_unstalled)
                         apt_list.append("1")
                 elif pkg.installed.version == pkg.versions[1].version:
-                    if pkg.versions[1].version < pkg.versions[0].version:
-                        apt_list.append(pkg.versions[1].version)
-                        apt_list.append(pkg.versions[0].version)
-                        apt_list.append("1")
+                        if ":" in pkg.versions[1].version:
+                            tmp_installed = pkg.versions[1].version.split(":").at(1)
+                        else:
+                            tmp_installed = pkg.versions[1].version
+                        if ":" in pkg.versions[0].version:
+                            tmp_unstalled = pkg.versions[0].version.split(":").at(1)
+                        else:
+                            tmp_unstalled = pkg.versions[0].version
+                        if tmp_installed < tmp_unstalled:
+                            apt_list.append(tmp_installed)
+                            apt_list.append(tmp_unstalled)
+                            apt_list.append("1")
         return apt_list
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')

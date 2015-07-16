@@ -12,8 +12,9 @@ youker-assistant (2.0.3) vivid; urgency=low
   * Delete debug logs and command history.
   * Rewrite camera module and replace pygame with opencv.
   * Make dash blur experimental normal(LP: #1430118).
+  * Modify custom skin filter(LP: #1475074).
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 16 Jul 2015 09:54:35 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 16 Jul 2015 13:34:35 +0800
 
 youker-assistant (2.0.2) vivid; urgency=low
 

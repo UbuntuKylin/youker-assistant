@@ -309,6 +309,7 @@ QToolButton#transparentToolButton::pressed{
 QComboBox{
     border:1px solid #32435E;
     width: 150px;
+    height: 24px;
 }
 
 QComboBox::hover{
@@ -317,7 +318,7 @@ QComboBox::hover{
 }
 
 QComboBox QAbstractItemView::item{
-    height:20px;
+    height:24px;
 }
 
 QComboBox::down-arrow{
