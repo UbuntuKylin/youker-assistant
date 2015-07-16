@@ -2813,6 +2813,11 @@ p, li { white-space: pre-wrap; }
         <source>Custom</source>
         <translation>自定义</translation>
     </message>
+    <message>
+        <location filename="../skincenter.cpp" line="426"/>
+        <source>Image Files(*.jpg *.png)</source>
+        <translation>图片文件(*.jpg *.png)</translation>
+    </message>
 </context>
 <context>
     <name>SystemDispatcher</name>

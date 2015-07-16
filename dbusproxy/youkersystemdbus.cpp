@@ -90,7 +90,8 @@ bool SystemDispatcher::update_myself()
     QStringList tmp;
     QMap<QString, QVariant> data;
     QEventLoop q;
-    KThread *apt_thread = new KThread(0);
+    KThread *apt_thread = new KThread(this);
+//    connect(apt_thread, SIGNAL(finished()), apt_thread, SLOT(deleteLater()));
     apt_thread->initValues(data, tmp, systemiface, "install");
     apt_thread->start();
     q.exec();
@@ -107,7 +108,8 @@ bool SystemDispatcher::update_source()
     QStringList tmp;
     QMap<QString, QVariant> data;
     QEventLoop q;
-    KThread *source_thread = new KThread(0);
+    KThread *source_thread = new KThread(this);
+//    connect(source_thread, SIGNAL(finished()), source_thread, SLOT(deleteLater()));
     source_thread->initValues(data, tmp, systemiface, "update");
     source_thread->start();
     q.exec();

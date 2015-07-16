@@ -422,13 +422,14 @@ void SkinCenter::addCustomBackground()
     QString fileName;
     QFileDialog* fd = new QFileDialog(this);
     fd->resize(500, 471);
-    fd->setFilter("Allfile(*.*);;png(*.png);;jpg(*.jpg)");
+//    fd->setFilter("Allfile(*.*);;png(*.png);;jpg(*.jpg)");
+    fd->setNameFilter(tr("Image Files(*.jpg *.png)"));
     fd->setViewMode(QFileDialog::List);
     if (fd->exec() == QDialog::Accepted)
     {
         fileNameList = fd->selectedFiles();
         fileName = fileNameList[0];
-        qDebug() << "select pic name ->" << fileName;
+//        qDebug() << "select pic name ->" << fileName;
         bool result = mainwindow->CopyFile(fileName);
         if(result == true) {
             custom_list_widget->clear_card();

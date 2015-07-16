@@ -2479,6 +2479,11 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <source>Custom</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../skincenter.cpp" line="426"/>
+        <source>Image Files(*.jpg *.png)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SystemWidget</name>

@@ -536,15 +536,15 @@ void PanelWidget::setRadioButtonRowStatus(/*bool status*/)
     QString obj_name = pbtn->objectName();
     if(obj_name == "smart_radio")
     {
-        sessionproxy->set_cursor_size_qt(24);
+        sessionproxy->set_dash_blur_experimental_qt(2);
     }
     else if(obj_name == "static_radio")
     {
-        sessionproxy->set_cursor_size_qt(48);
+        sessionproxy->set_dash_blur_experimental_qt(1);
     }
     else if(obj_name == "clear_radio")
     {
-        sessionproxy->set_cursor_size_qt(48);
+        sessionproxy->set_dash_blur_experimental_qt(0);
     }
 }
 
