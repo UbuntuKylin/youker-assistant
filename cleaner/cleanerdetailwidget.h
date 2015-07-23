@@ -122,8 +122,9 @@ private:
     QStringList trace_x11_list;
 
     QGridLayout *grid_layout;
-    int rowIndex;
-    int columnIndex;
+//    int rowIndex;
+//    int columnIndex;
+    int subCount;
     bool scanResult;
     QString cur_skin;
 };

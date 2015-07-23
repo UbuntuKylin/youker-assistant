@@ -33,9 +33,11 @@ SkinCenter::SkinCenter(QWidget *parent, QString skin/*, Qt::WindowFlags f*/)
 //    this->setStyleSheet("QDialog{border: none;background-color: #ffffff;}");
     setWindowFlags(Qt::FramelessWindowHint);
 //    title_bar = new KylinTitleBar(this);
+
     last_skin_path = skin;
     aboutGroup = NULL;
     contributorGroup = NULL;
+//    mouse_enter = false;
 
     baseWidget = new QWidget(this);
     baseWidget->setGeometry(QRect(0, 0, 442, 82));
@@ -573,6 +575,31 @@ void SkinCenter::switchCusteomUsingLogo(QString index)
 ////    if(delayTimer->isActive())
 ////        delayTimer->stop();
 ////}
+
+//void SkinCenter::paintEvent(QPaintEvent *)
+//{
+//    if(mouse_enter)
+//    {
+//        //绘制边框
+//        QPainter painter(this);
+//        QPen pen(QColor("red"));
+//        painter.setPen(pen);
+//        painter.drawRoundRect(0,0,this->width()-1, this->height()-1, 5, 5);
+//    }
+//}
+
+//void SkinCenter::enterEvent(QEvent *)
+//{
+//    mouse_enter = true;
+//    update();
+//}
+
+//void SkinCenter::leaveEvent(QEvent *)
+//{
+//    mouse_enter = false;
+//    update();
+//}
+
 void SkinCenter::mousePressEvent(QMouseEvent *event)
 {
     if(event->button() == Qt::LeftButton)

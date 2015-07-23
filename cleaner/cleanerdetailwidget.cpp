@@ -47,11 +47,12 @@ CleanerDetailWidget::CleanerDetailWidget(QWidget *parent, SessionDispatcher *ser
     ui->scrollArea->setAutoFillBackground(true);
     ui->scrollArea->setBackgroundRole(QPalette::Light);
 
+    subCount = 0;
     scanResult = false;
     ui->label->hide();
 
     grid_layout = new QGridLayout();
-    rowIndex = columnIndex = 0;
+//    rowIndex = columnIndex = 0;
 
     cache_apt_items = NULL;
     cache_apt_btn = NULL;
@@ -157,7 +158,8 @@ void CleanerDetailWidget::CleanUIAndData()
     if(!ui->label->isHidden())
         ui->label->hide();
     scanResult = false;
-    rowIndex = columnIndex = 0;
+    subCount = 0;
+//    rowIndex = columnIndex = 0;
     cache_apt_list.clear();
     cache_software_list.clear();
     cache_thumbnails_list.clear();
@@ -367,18 +369,19 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             {
                 grid_layout = new QGridLayout();
             }
-            if(columnIndex < 5)
-            {
-                grid_layout->addWidget(cache_apt_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
-            else {
-                rowIndex += 1;
-                columnIndex = 0;
-                grid_layout->addWidget(cache_apt_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
-
+            grid_layout->addWidget(cache_apt_btn, subCount/5, subCount%5);
+            subCount += 1;
+//            if(columnIndex < 5)
+//            {
+//                grid_layout->addWidget(cache_apt_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
+//            else {
+//                rowIndex += 1;
+//                columnIndex = 0;
+//                grid_layout->addWidget(cache_apt_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
         }
         if(cache_software_list.length() > 0)
         {
@@ -400,17 +403,19 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             {
                 grid_layout = new QGridLayout();
             }
-            if(columnIndex < 5)
-            {
-                grid_layout->addWidget(cache_software_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
-            else {
-                rowIndex += 1;
-                columnIndex = 0;
-                grid_layout->addWidget(cache_software_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
+            grid_layout->addWidget(cache_software_btn, subCount/5, subCount%5);
+             subCount += 1;
+//            if(columnIndex < 5)
+//            {
+//                grid_layout->addWidget(cache_software_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
+//            else {
+//                rowIndex += 1;
+//                columnIndex = 0;
+//                grid_layout->addWidget(cache_software_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
         }
         if(cache_thumbnails_list.length() > 0)
         {
@@ -432,17 +437,19 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             {
                 grid_layout = new QGridLayout();
             }
-            if(columnIndex < 5)
-            {
-                grid_layout->addWidget(cache_thumbnails_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
-            else {
-                rowIndex += 1;
-                columnIndex = 0;
-                grid_layout->addWidget(cache_thumbnails_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
+            grid_layout->addWidget(cache_thumbnails_btn, subCount/5, subCount%5);
+            subCount += 1;
+//            if(columnIndex < 5)
+//            {
+//                grid_layout->addWidget(cache_thumbnails_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
+//            else {
+//                rowIndex += 1;
+//                columnIndex = 0;
+//                grid_layout->addWidget(cache_thumbnails_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
         }
 
 
@@ -465,17 +472,19 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             {
                 grid_layout = new QGridLayout();
             }
-            if(columnIndex < 5)
-            {
-                grid_layout->addWidget(cache_firefox_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
-            else {
-                rowIndex += 1;
-                columnIndex = 0;
-                grid_layout->addWidget(cache_firefox_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
+            grid_layout->addWidget(cache_firefox_btn, subCount/5, subCount%5);
+            subCount += 1;
+//            if(columnIndex < 5)
+//            {
+//                grid_layout->addWidget(cache_firefox_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
+//            else {
+//                rowIndex += 1;
+//                columnIndex = 0;
+//                grid_layout->addWidget(cache_firefox_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
         }
         if(cache_chromium_list.length() > 0)
         {
@@ -496,17 +505,19 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             {
                 grid_layout = new QGridLayout();
             }
-            if(columnIndex < 5)
-            {
-                grid_layout->addWidget(cache_chromium_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
-            else {
-                rowIndex += 1;
-                columnIndex = 0;
-                grid_layout->addWidget(cache_chromium_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
+            grid_layout->addWidget(cache_chromium_btn, subCount/5, subCount%5);
+            subCount += 1;
+//            if(columnIndex < 5)
+//            {
+//                grid_layout->addWidget(cache_chromium_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
+//            else {
+//                rowIndex += 1;
+//                columnIndex = 0;
+//                grid_layout->addWidget(cache_chromium_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
         }
     }
     else if(status == "Complete:Cookies")
@@ -531,17 +542,19 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             {
                 grid_layout = new QGridLayout();
             }
-            if(columnIndex < 5)
-            {
-                grid_layout->addWidget(cookies_firefox_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
-            else {
-                rowIndex += 1;
-                columnIndex = 0;
-                grid_layout->addWidget(cookies_firefox_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
+            grid_layout->addWidget(cookies_firefox_btn, subCount/5, subCount%5);
+            subCount += 1;
+//            if(columnIndex < 5)
+//            {
+//                grid_layout->addWidget(cookies_firefox_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
+//            else {
+//                rowIndex += 1;
+//                columnIndex = 0;
+//                grid_layout->addWidget(cookies_firefox_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
         }
         if(cookies_chromium_list.length() > 0)
         {
@@ -562,17 +575,19 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             {
                 grid_layout = new QGridLayout();
             }
-            if(columnIndex < 5)
-            {
-                grid_layout->addWidget(cookies_chromium_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
-            else {
-                rowIndex += 1;
-                columnIndex = 0;
-                grid_layout->addWidget(cookies_chromium_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
+            grid_layout->addWidget(cookies_chromium_btn, subCount/5, subCount%5);
+            subCount += 1;
+//            if(columnIndex < 5)
+//            {
+//                grid_layout->addWidget(cookies_chromium_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
+//            else {
+//                rowIndex += 1;
+//                columnIndex = 0;
+//                grid_layout->addWidget(cookies_chromium_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
         }
     }
     else if(status == "Complete:History")
@@ -591,17 +606,19 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             {
                 grid_layout = new QGridLayout();
             }
-            if(columnIndex < 5)
-            {
-                grid_layout->addWidget(trace_firefox_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
-            else {
-                rowIndex += 1;
-                columnIndex = 0;
-                grid_layout->addWidget(trace_firefox_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
+            grid_layout->addWidget(trace_firefox_btn, subCount/5, subCount%5);
+            subCount += 1;
+//            if(columnIndex < 5)
+//            {
+//                grid_layout->addWidget(trace_firefox_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
+//            else {
+//                rowIndex += 1;
+//                columnIndex = 0;
+//                grid_layout->addWidget(trace_firefox_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
         }
         if(trace_chromium_count.length() > 0)
         {
@@ -614,17 +631,19 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             {
                 grid_layout = new QGridLayout();
             }
-            if(columnIndex < 5)
-            {
-                grid_layout->addWidget(trace_chromium_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
-            else {
-                rowIndex += 1;
-                columnIndex = 0;
-                grid_layout->addWidget(trace_chromium_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
+            grid_layout->addWidget(trace_chromium_btn, subCount/5, subCount%5);
+            subCount += 1;
+//            if(columnIndex < 5)
+//            {
+//                grid_layout->addWidget(trace_chromium_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
+//            else {
+//                rowIndex += 1;
+//                columnIndex = 0;
+//                grid_layout->addWidget(trace_chromium_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
         }
 
         if(trace_system_count.length() > 0)
@@ -638,17 +657,19 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             {
                 grid_layout = new QGridLayout();
             }
-            if(columnIndex < 5)
-            {
-                grid_layout->addWidget(trace_system_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
-            else {
-                rowIndex += 1;
-                columnIndex = 0;
-                grid_layout->addWidget(trace_system_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
+            grid_layout->addWidget(trace_system_btn, subCount/5, subCount%5);
+            subCount += 1;
+//            if(columnIndex < 5)
+//            {
+//                grid_layout->addWidget(trace_system_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
+//            else {
+//                rowIndex += 1;
+//                columnIndex = 0;
+//                grid_layout->addWidget(trace_system_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
         }
         //kobe
         if(!trace_bash_path.isEmpty())
@@ -662,17 +683,19 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             {
                 grid_layout = new QGridLayout();
             }
-            if(columnIndex < 5)
-            {
-                grid_layout->addWidget(trace_bash_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
-            else {
-                rowIndex += 1;
-                columnIndex = 0;
-                grid_layout->addWidget(trace_bash_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
+            grid_layout->addWidget(trace_bash_btn, subCount/5, subCount%5);
+            subCount += 1;
+//            if(columnIndex < 5)
+//            {
+//                grid_layout->addWidget(trace_bash_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
+//            else {
+//                rowIndex += 1;
+//                columnIndex = 0;
+//                grid_layout->addWidget(trace_bash_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
         }
 
         if(trace_x11_list.length() > 0)
@@ -692,17 +715,19 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             {
                 grid_layout = new QGridLayout();
             }
-            if(columnIndex < 5)
-            {
-                grid_layout->addWidget(trace_x11_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
-            else {
-                rowIndex += 1;
-                columnIndex = 0;
-                grid_layout->addWidget(trace_x11_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
+            grid_layout->addWidget(trace_x11_btn, subCount/5, subCount%5);
+            subCount += 1;
+//            if(columnIndex < 5)
+//            {
+//                grid_layout->addWidget(trace_x11_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
+//            else {
+//                rowIndex += 1;
+//                columnIndex = 0;
+//                grid_layout->addWidget(trace_x11_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
         }
     }
     else if(status == "Complete:Packages")
@@ -727,17 +752,19 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             {
                 grid_layout = new QGridLayout();
             }
-            if(columnIndex < 5)
-            {
-                grid_layout->addWidget(package_unneed_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
-            else {
-                rowIndex += 1;
-                columnIndex = 0;
-                grid_layout->addWidget(package_unneed_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
+            grid_layout->addWidget(package_unneed_btn, subCount/5, subCount%5);
+            subCount += 1;
+//            if(columnIndex < 5)
+//            {
+//                grid_layout->addWidget(package_unneed_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
+//            else {
+//                rowIndex += 1;
+//                columnIndex = 0;
+//                grid_layout->addWidget(package_unneed_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
         }
         if(package_oldkernel_list.length() > 0)
         {
@@ -758,17 +785,19 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             {
                 grid_layout = new QGridLayout();
             }
-            if(columnIndex < 5)
-            {
-                grid_layout->addWidget(package_oldkernel_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
-            else {
-                rowIndex += 1;
-                columnIndex = 0;
-                grid_layout->addWidget(package_oldkernel_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
+            grid_layout->addWidget(package_oldkernel_btn, subCount/5, subCount%5);
+            subCount += 1;
+//            if(columnIndex < 5)
+//            {
+//                grid_layout->addWidget(package_oldkernel_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
+//            else {
+//                rowIndex += 1;
+//                columnIndex = 0;
+//                grid_layout->addWidget(package_oldkernel_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
         }
         if(package_configfile_list.length() > 0)
         {
@@ -789,17 +818,19 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             {
                 grid_layout = new QGridLayout();
             }
-            if(columnIndex < 5)
-            {
-                grid_layout->addWidget(package_configfile_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
-            else {
-                rowIndex += 1;
-                columnIndex = 0;
-                grid_layout->addWidget(package_configfile_btn, rowIndex, columnIndex);
-                columnIndex += 1;
-            }
+            grid_layout->addWidget(package_configfile_btn, subCount/5, subCount%5);
+            subCount += 1;
+//            if(columnIndex < 5)
+//            {
+//                grid_layout->addWidget(package_configfile_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
+//            else {
+//                rowIndex += 1;
+//                columnIndex = 0;
+//                grid_layout->addWidget(package_configfile_btn, rowIndex, columnIndex);
+//                columnIndex += 1;
+//            }
         }
     }
     else if(status == "Complete:All")

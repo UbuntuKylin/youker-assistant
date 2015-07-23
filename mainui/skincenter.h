@@ -71,10 +71,14 @@ protected:
 ////    virtual void	enterEvent (QEvent  *);
 ////    virtual void	leaveEvent (QEvent *);
     void closeEvent(QCloseEvent *event);
+//    void paintEvent(QPaintEvent *event);
+//    void enterEvent(QEvent *event);
+//    void leaveEvent(QEvent *event);
 
 private:
     MainWindow *mainwindow;
     QPoint drag_pos; //移动的距离
+//    bool mouse_enter;
     bool mouse_press; //按下鼠标左键
     QWidget *baseWidget;
     SystemButton *close_btn;
