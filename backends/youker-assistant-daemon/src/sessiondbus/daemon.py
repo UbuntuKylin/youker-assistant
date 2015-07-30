@@ -33,7 +33,7 @@ import dbus.service
 import dbus.mainloop.glib
 import time
 import threading
-
+import platform
 import cleaner
 from autostartmanage import autostartmanage
 #import pywapi
@@ -2055,6 +2055,11 @@ class SessionDaemon(dbus.service.Object):
         except Exception as e:
             pass
         return desktop
+
+    # is x86 or aarch64
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def access_current_machine(self):
+        return platform.machine()
 
 #    # is Unity or not
 #    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')

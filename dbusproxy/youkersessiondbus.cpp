@@ -1148,6 +1148,11 @@ QString SessionDispatcher::access_current_desktop_qt() {
     return reply.value();
 }
 
+QString SessionDispatcher::access_current_machine_qt() {
+    QDBusReply<QString> reply = sessioniface->call("access_current_machine");
+    return reply.value();
+}
+
 //QString SessionDispatcher::judge_desktop_is_unity_qt() {
 //    QDBusReply<QString> reply = sessioniface->call("judge_desktop_is_unity");
 //    return reply.value();

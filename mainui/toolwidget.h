@@ -37,7 +37,7 @@ class ToolWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ToolWidget(QWidget *parent = 0);
+    explicit ToolWidget(QWidget *parent = 0, QString arch = "");
     ~ToolWidget();
     void setParentWindow(MainWindow* window) { p_mainwindow = window;}
     void initConnect();
@@ -49,13 +49,13 @@ signals:
 public slots:
     void switchSelectedPageIndex(QString index);
     void showBoxTool();
-    void test();
 
 private:
     QPoint press_point;//鼠标按下去的点
     bool is_move;
     QList<KylinToolButton *> button_list;
     MainWindow *p_mainwindow;
+    QString cur_arch;
 //    QParallelAnimationGroup *openGroup;
 //    QParallelAnimationGroup *closeGroup;
 };

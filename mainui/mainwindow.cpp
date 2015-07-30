@@ -24,8 +24,8 @@
 #include "shadowwidget.h"
 #include "cameramanager.h"
 
-MainWindow::MainWindow(QWidget *parent) :
-    QDialog(parent)/*skin_center(parent),*/
+MainWindow::MainWindow(QString cur_arch, QWidget *parent) :
+    QDialog(parent), arch(cur_arch)/*skin_center(parent),*/
 {
     this->resize(900, 600);
     this->setWindowTitle(tr("Youker Assistant"));
@@ -35,7 +35,6 @@ MainWindow::MainWindow(QWidget *parent) :
 //    this->setAttribute(Qt::WA_TranslucentBackground);
 //    this->setStyleSheet("QMainWindow{border: 1px solid gray;border-radius:2px}");
     this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
-
     version = "V2.0.3";
     status = HOMEPAGE;
     statusFlag = false;
@@ -118,20 +117,27 @@ MainWindow::MainWindow(QWidget *parent) :
     default_action_widget->setPalette(palette_back);
     other_action_widget->setPalette(palette_back);
 
-    tool_widget = new ToolWidget(this);
+    tool_widget = new ToolWidget(this, this->arch);
     tool_widget->setGeometry(QRect(0, 227, 900, 47));
     tool_widget->setParentWindow(this);
     connect(this, SIGNAL(chanegBoxToolStatus()), tool_widget, SLOT(showBoxTool()));
     tool_widget->initConnect();
 
-    title_widget = new TitleWidget(this);
-    title_widget->move(0, 0);
+    title_widget = new TitleWidget(this, this->arch);
+    if (this->arch == "aarch64")
+        title_widget->move(756, 0);
+    else
+        title_widget->move(0, 0);
     connect(title_widget, SIGNAL(closeApp()), this, SLOT(closeYoukerAssistant()));
     title_widget->setParentWindow(this);
     title_widget->initConnect();
 
+//
     login_widget = new LoginWidget(this);
-    login_widget->move(585, 0);//900 - login_widget(220) - right_align(15) = 665
+    if (this->arch == "aarch64")
+        login_widget->hide();
+    else
+        login_widget->move(585, 0);//900 - login_widget(220) - right_align(15) = 665
 
     default_content_widget = new ContentWidget(this);
     default_content_widget->setGeometry(QRect(0, 274, 900, 326));
@@ -399,10 +405,13 @@ void MainWindow::upAnimFinished()
     shadow_widget->hide();
     if(title_widget->isHidden())
         title_widget->show();
-    if(status == BOXPAGE && login_widget->isHidden())
-        login_widget->show();
-    else
-        login_widget->hide();
+    if (this->arch != "aarch64")
+    {
+        if(status == BOXPAGE && login_widget->isHidden())
+            login_widget->show();
+        else
+            login_widget->hide();
+    }
 }
 
 void MainWindow::closeAnimFinished()
@@ -410,8 +419,10 @@ void MainWindow::closeAnimFinished()
     tool_widget->show();
     if(title_widget->isHidden())
         title_widget->show();
-    if(login_widget->isHidden())
+    if (this->arch != "aarch64" && login_widget->isHidden())
+    {
         login_widget->show();
+    }
     shadow_widget->hide();
 }
 
@@ -492,6 +503,7 @@ void MainWindow::startDbusDaemon()
     sessioninterface = new SessionDispatcher(this);
     systeminterface = new SystemDispatcher(this);
     this->desktop = sessioninterface->access_current_desktop_qt();
+//    this->machine = sessioninterface->access_current_machine_qt();
     this->battery = sessioninterface->judge_power_is_exists_qt();
     login_widget->setSessionDbusProxy(sessioninterface);
     sessioninterface->check_user_qt();
@@ -554,7 +566,7 @@ void MainWindow::initOtherPages()
     bottomStack->addWidget(cleaner_widget);
 
     if(info_widget == NULL)
-        info_widget = new InfoWidget();
+        info_widget = new InfoWidget(this->arch);
     info_widget->setSessionDbusProxy(sessioninterface);
     info_widget->setSystemDbusProxy(systeminterface);
     info_widget->initUI(this->battery);
@@ -696,10 +708,20 @@ void MainWindow::reViewTheOrgSkin()
 }
 
 void MainWindow::showMainMenu() {
-    QPoint p = rect().topLeft();
-    p.setX(p.x() + 107);//104
-    p.setY(p.y() + 22);
-    main_menu->exec(this->mapToGlobal(p));
+    if (this->arch == "aarch64")
+    {
+        QPoint p = rect().topRight();
+        p.setX(p.x() - 180);
+        p.setY(p.y() + 22);
+        main_menu->exec(this->mapToGlobal(p));
+    }
+    else
+    {
+        QPoint p = rect().topLeft();
+        p.setX(p.x() + 107);//104
+        p.setY(p.y() + 22);
+        main_menu->exec(this->mapToGlobal(p));
+    }
 
 //    //向上弹出menu
 //    QPoint pos;
@@ -734,8 +756,10 @@ void MainWindow::setCurrentPageIndex(int index)
             tool_widget->hide();
             if(title_widget->isVisible())
                 title_widget->hide();
-            if(login_widget->isVisible())
+            if (this->arch != "aarch64" && login_widget->isVisible())
+            {
                 login_widget->hide();
+            }
             gatherGroup->start();
             status = HOMEPAGE;
         }
@@ -755,7 +779,7 @@ void MainWindow::setCurrentPageIndex(int index)
             tool_widget->hide();
             if(title_widget->isVisible())
                 title_widget->hide();
-            if(login_widget->isVisible())
+            if (this->arch != "aarch64" && login_widget->isVisible())
                 login_widget->hide();
 //            topStack->setCurrentIndex(0);
 //            bottomStack->setCurrentIndex(0);
@@ -765,7 +789,7 @@ void MainWindow::setCurrentPageIndex(int index)
             status = CLEANPAGE;
         }
         else {
-            if (login_widget->isVisible())
+            if (this->arch != "aarch64" && login_widget->isVisible())
                 login_widget->hide();
 //            topStack->setCurrentIndex(0);
 //            bottomStack->setCurrentIndex(0);
@@ -786,7 +810,7 @@ void MainWindow::setCurrentPageIndex(int index)
             tool_widget->hide();
             if(title_widget->isVisible())
                 title_widget->hide();
-            if(login_widget->isVisible())
+            if (this->arch != "aarch64" && login_widget->isVisible())
                 login_widget->hide();
 //            topStack->setCurrentIndex(1);
 //            bottomStack->setCurrentIndex(1);
@@ -796,7 +820,7 @@ void MainWindow::setCurrentPageIndex(int index)
             status = INFOPAGE;
         }
         else {
-            if (login_widget->isVisible())
+            if (this->arch != "aarch64" && login_widget->isVisible())
                 login_widget->hide();
 //            topStack->setCurrentIndex(1);
 //            bottomStack->setCurrentIndex(1);
@@ -810,56 +834,87 @@ void MainWindow::setCurrentPageIndex(int index)
             statusFlag = true;
         else
             statusFlag = false;
-        if (status != SETTINGPAGE && statusFlag) {
-            shadow_widget->show();
-            tool_widget->hide();
-            if(title_widget->isVisible())
-                title_widget->hide();
-            if(login_widget->isVisible())
-                login_widget->hide();
-//            topStack->setCurrentIndex(2);
-//            bottomStack->setCurrentIndex(2);
-            topStack->setCurrentWidget(setting_action_widget);
-            bottomStack->setCurrentWidget(setting_widget);
-            spreadGroup->start();
-            status = SETTINGPAGE;
+        if (this->arch == "aarch64")
+        {
+            if (status != BOXPAGE && statusFlag) {
+                shadow_widget->show();
+                tool_widget->hide();
+                if(title_widget->isVisible())
+                    title_widget->hide();
+                if (this->arch != "aarch64" && login_widget->isVisible())
+                    login_widget->hide();
+    //            topStack->setCurrentIndex(3);
+    //            bottomStack->setCurrentIndex(3);
+                topStack->setCurrentWidget(box_action_widget);
+                bottomStack->setCurrentWidget(box_widget);
+                spreadGroup->start();
+                status = BOXPAGE;
+            }
+            else {
+                if (this->arch != "aarch64" && login_widget->isHidden())
+                    login_widget->show();
+    //            topStack->setCurrentIndex(3);
+    //            bottomStack->setCurrentIndex(3);
+                topStack->setCurrentWidget(box_action_widget);
+                bottomStack->setCurrentWidget(box_widget);
+            }
         }
-        else {
-            if (login_widget->isVisible())
-                login_widget->hide();
-//            topStack->setCurrentIndex(2);
-//            bottomStack->setCurrentIndex(2);
-            topStack->setCurrentWidget(setting_action_widget);
-            bottomStack->setCurrentWidget(setting_widget);
+        else
+        {
+            if (status != SETTINGPAGE && statusFlag) {
+                shadow_widget->show();
+                tool_widget->hide();
+                if(title_widget->isVisible())
+                    title_widget->hide();
+                if (this->arch != "aarch64" && login_widget->isVisible())
+                    login_widget->hide();
+    //            topStack->setCurrentIndex(2);
+    //            bottomStack->setCurrentIndex(2);
+                topStack->setCurrentWidget(setting_action_widget);
+                bottomStack->setCurrentWidget(setting_widget);
+                spreadGroup->start();
+                status = SETTINGPAGE;
+            }
+            else {
+                if (this->arch != "aarch64" && login_widget->isVisible())
+                        login_widget->hide();
+    //            topStack->setCurrentIndex(2);
+    //            bottomStack->setCurrentIndex(2);
+                topStack->setCurrentWidget(setting_action_widget);
+                bottomStack->setCurrentWidget(setting_widget);
+            }
         }
     }
     else if(index == 4)
     {
-        if (status == HOMEPAGE)
-            statusFlag = true;
-        else
-            statusFlag = false;
-        if (status != BOXPAGE && statusFlag) {
-            shadow_widget->show();
-            tool_widget->hide();
-            if(title_widget->isVisible())
-                title_widget->hide();
-            if(login_widget->isVisible())
-                login_widget->hide();
-//            topStack->setCurrentIndex(3);
-//            bottomStack->setCurrentIndex(3);
-            topStack->setCurrentWidget(box_action_widget);
-            bottomStack->setCurrentWidget(box_widget);
-            spreadGroup->start();
-            status = BOXPAGE;
-        }
-        else {
-            if (login_widget->isHidden())
-                login_widget->show();
-//            topStack->setCurrentIndex(3);
-//            bottomStack->setCurrentIndex(3);
-            topStack->setCurrentWidget(box_action_widget);
-            bottomStack->setCurrentWidget(box_widget);
+        if (this->arch != "aarch64")
+        {
+            if (status == HOMEPAGE)
+                statusFlag = true;
+            else
+                statusFlag = false;
+            if (status != BOXPAGE && statusFlag) {
+                shadow_widget->show();
+                tool_widget->hide();
+                if(title_widget->isVisible())
+                    title_widget->hide();
+                if (this->arch != "aarch64" && login_widget->isVisible())
+                    login_widget->hide();
+    //            topStack->setCurrentIndex(3);
+    //            bottomStack->setCurrentIndex(3);
+                topStack->setCurrentWidget(box_action_widget);
+                bottomStack->setCurrentWidget(box_widget);
+                spreadGroup->start();
+                status = BOXPAGE;
+            }
+            else {
+                if (this->arch != "aarch64" && login_widget->isHidden())
+                    login_widget->show();
+    //            topStack->setCurrentIndex(3);
+    //            bottomStack->setCurrentIndex(3);
+                topStack->setCurrentWidget(box_action_widget);
+                bottomStack->setCurrentWidget(box_widget);
+            }
         }
     }
 }

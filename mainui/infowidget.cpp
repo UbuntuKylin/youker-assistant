@@ -19,10 +19,10 @@
 
 #include "infowidget.h"
 #include <QDebug>
-#include <QProcess>
+//#include <QProcess>
 
-InfoWidget::InfoWidget(QWidget *parent) :
-    QWidget(parent)
+InfoWidget::InfoWidget(QString machine, QWidget *parent) :
+    QWidget(parent), arch(machine)
 {
     this->setFixedSize(900, 403);
     this->setAutoFillBackground(true);
@@ -53,7 +53,7 @@ InfoWidget::InfoWidget(QWidget *parent) :
     stacked_widget->setFocusPolicy(Qt::NoFocus);
     stacked_widget->setAutoFillBackground(true);
 
-    arch = "";
+//    arch = "";
 
     system_widget = NULL;
     desktop_widget = NULL;
@@ -109,29 +109,26 @@ void InfoWidget::initUI(bool has_battery)
     }
     driver_widget = new DriverWidget(this/*, systemProxy*/);
 
-    QProcess *p = new QProcess();
-    p->start("uname -p");
-    bool result = p->waitForFinished();
-    if (result) {
-        if (p->canReadLine()){
-            arch = p->readLine();
-            arch = arch.left(arch.length() - 1);
-        }
-    }
+//    QProcess *p = new QProcess();
+//    p->start("uname -p");
+//    bool result = p->waitForFinished();
+//    if (result) {
+//        if (p->canReadLine()){
+//            arch = p->readLine();
+//            arch = arch.left(arch.length() - 1);
+//        }
+//    }
 
     for(int i = 0;i < type_list.length();i ++) {
-        if(i == 9 && dvdNum == 0){
+        if(i == 9 && dvdNum == 0) {
 
         }
-//        else if(i == 10 && !power) {
-
-//        }
         else if(i == 10 && !has_battery) {
 
         }
-        else if ((i  == 2 || i == 3 || i == 4) && arch == "aarch64")
+        else if (i == 4 && arch == "aarch64")
         {
-            // FT arm can not access cpu,memory and board
+            // FT arm can not access board
         }
         else {
             QIcon icon;

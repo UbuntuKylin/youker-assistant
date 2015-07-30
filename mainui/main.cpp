@@ -80,6 +80,16 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
+    QString arch = "";
+
+#ifdef __x86_64__
+        arch = "x86_64";
+#elif __i386__
+        arch = "i386";
+#elif __aarch64__
+        arch = "aarch64";
+#endif
+
     QString locale = QLocale::system().name();
     QTranslator translator;
     if(locale == "zh_CN" || locale == "es" || locale == "fr" || locale == "de" || locale == "ru") {//中文 西班牙语 法语 德语 俄语
@@ -101,7 +111,7 @@ int main(int argc, char *argv[])
     qApp->setStyleSheet(qss.readAll());
     qss.close();
 
-    MainWindow w;
+    MainWindow w(arch);
     w.setTranslator(&translator);
     w.display();
 

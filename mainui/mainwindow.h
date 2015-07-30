@@ -59,7 +59,7 @@ class MainWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QString cur_arch = "", QWidget *parent = 0);
     ~MainWindow();
     void setTranslator(QTranslator* translator);
     void display();
@@ -142,6 +142,8 @@ private:
     AboutDialog *aboutDlg;
     QSettings *mSettings;
     QString desktop;
+//    QString machine;
+    QString arch;
     bool battery;
     QParallelAnimationGroup *spreadGroup;
     QParallelAnimationGroup *gatherGroup;

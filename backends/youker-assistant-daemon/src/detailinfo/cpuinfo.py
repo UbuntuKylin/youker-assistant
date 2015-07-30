@@ -29,6 +29,11 @@ import platform
 import gettext
 from gettext import gettext as _
 from gettext import ngettext as __
+
+CPU_CURRENT_FREQ = ""
+CPU_MAX_FREQ = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"
+MEMORY = "/sys/phytium1500a_info"
+
 class DetailInfo:
 #Computer：			
 #   ComVendor		    制造商
@@ -145,6 +150,13 @@ class DetailInfo:
 
     def __init__(self):
         self.lshwstr = ''
+        self.machine = platform.machine()
+#        print platform.platform()
+#        print platform.version()
+#        print platform.architecture()
+#        print platform.node()
+#        print platform.processor()
+#        print platform.uname()
 
     def ctoascii(self,buf):
         ch = str(buf)
@@ -441,50 +453,88 @@ class DetailInfo:
     def get_cpu(self):
         # CPU
         Cpu = {}
-        hw = os.popen("dmidecode -t processor")
-        cpuin = hw.read()
-        hw.close()
-        CpuVersion,CpuVendor,CpuSlot,CpuSerial,CpuCapacity,CpuSize,CpuClock,cpu_cores,cpu_siblings,clflush_size,cache_size = '','','','','','','','','','',''
-        if cpuin :
-            tmp = re.findall("Version: (.*)",cpuin)
-            if tmp :
-                CpuVersion = tmp[0]
-            tmp = re.findall("Manufacturer: (.*)",cpuin)
-            if tmp :
-                CpuVendor = tmp[0]
-            tmp = re.findall("Socket Designation: (.*)",cpuin)
-            if tmp :
-                CpuSlot = tmp[0]
-            tmp = re.findall("Serial Number: (.*)",cpuin)
-            if tmp :
-                CpuSerial = tmp[0]
-            tmp = re.findall("Max Speed: (.*)",cpuin)
-            if tmp :
-                CpuCapacity = tmp[0]
-            tmp = re.findall("Current Speed: (.*)",cpuin)
-            if tmp :
-                CpuSize = tmp[0]
-            tmp = re.findall("External Clock: (.*)",cpuin)
-            if tmp :
-                CpuClock = tmp[0]
-        CpuVendor = self.get_url(CpuVendor,CpuVersion)
-        Cpu['CpuVersion'],Cpu['CpuVendor'],Cpu['CpuSlot'],Cpu['CpuSerial'],Cpu['CpuCapacity'],Cpu['CpuSize'],Cpu['CpuClock'] = self.strip(CpuVersion),self.strip(CpuVendor),self.strip(CpuSlot),self.strip(CpuSerial),self.strip(CpuCapacity),self.strip(CpuSize),self.strip(CpuClock)
-        with open('/proc/cpuinfo') as f:
-            for line in f:
-                if line.strip():
-                    if line.rstrip('\n').startswith('vendor_id'):
-                         vendor = line.rstrip('\n').split(':')[1]
-                    elif line.rstrip('\n').startswith('cpu cores'):
-                         cpu_cores = line.rstrip('\n').split(':')[1]
-                    elif line.rstrip('\n').startswith('siblings'):
-                         cpu_siblings = line.rstrip('\n').split(':')[1]
-                    elif line.rstrip('\n').startswith('clflush size'):
-                         clflush_size = line.rstrip('\n').split(':')[1]
-                         clflush_size = filter(str.isdigit,clflush_size)
-                    elif line.rstrip('\n').startswith('cache size'):
-                         cache_size = line.rstrip('\n').split(':')[1]
-                         cache_size = filter(str.isdigit,cache_size)
-        Cpu['cpu_cores'],Cpu['cpu_siblings'],Cpu['clflush_size'],Cpu['cache_size'] = cpu_cores,cpu_siblings,clflush_size,cache_size
+        if self.machine == "aarch64":
+            if os.path.exists(CPU_MAX_FREQ):
+                fp = open(CPU_MAX_FREQ, "r")
+                info = fp.read()
+                tmp = float(info.strip()) / (1000 * 1000)
+                freq = str("%.1f" % tmp)
+                fp.close()
+                Cpu['CpuVersion'] = "1500a v1.0"
+                Cpu['CpuVendor'] = "phytium(飞腾)"
+                Cpu['CpuCapacity'] = "%s GHz" % freq
+                Cpu['cpu_cores'] = "4 核"
+                Cpu['cpu_siblings'] = "4 线程/核"
+                Cpu['clflush_size'] = "32 KB"
+                Cpu['cache_size'] = "2 MB"
+            else:
+                #处理器版本
+                Cpu['CpuVersion'] = "1500a v1.0"
+                #制造商 phytium
+                Cpu['CpuVendor'] = "phytium(飞腾)"
+                #插槽
+                #Cpu['CpuSlot'] = "插槽"
+                #序列号
+                #Cpu['CpuSerial'] = "序列号"
+                #最大主频
+                Cpu['CpuCapacity'] = "1800 MHz"
+                #当前主频
+                #Cpu['CpuSize']= "当前主频"
+                #前端总线
+                #Cpu['CpuClock'] = "前端总线"
+                #内核数
+                Cpu['cpu_cores'] = "4 核"
+                #线程数
+                Cpu['cpu_siblings'] = "4 线程/核"
+                #一级缓存
+                Cpu['clflush_size'] = "32 KB"
+                #二级缓存
+                Cpu['cache_size'] = "2 MB"
+        else:
+            hw = os.popen("dmidecode -t processor")
+            cpuin = hw.read()
+            hw.close()
+            CpuVersion,CpuVendor,CpuSlot,CpuSerial,CpuCapacity,CpuSize,CpuClock,cpu_cores,cpu_siblings,clflush_size,cache_size = '','','','','','','','','','',''
+            if cpuin :
+                tmp = re.findall("Version: (.*)",cpuin)
+                if tmp :
+                    CpuVersion = tmp[0]
+                tmp = re.findall("Manufacturer: (.*)",cpuin)
+                if tmp :
+                    CpuVendor = tmp[0]
+                tmp = re.findall("Socket Designation: (.*)",cpuin)
+                if tmp :
+                    CpuSlot = tmp[0]
+                tmp = re.findall("Serial Number: (.*)",cpuin)
+                if tmp :
+                    CpuSerial = tmp[0]
+                tmp = re.findall("Max Speed: (.*)",cpuin)
+                if tmp :
+                    CpuCapacity = tmp[0]
+                tmp = re.findall("Current Speed: (.*)",cpuin)
+                if tmp :
+                    CpuSize = tmp[0]
+                tmp = re.findall("External Clock: (.*)",cpuin)
+                if tmp :
+                    CpuClock = tmp[0]
+            CpuVendor = self.get_url(CpuVendor,CpuVersion)
+            Cpu['CpuVersion'],Cpu['CpuVendor'],Cpu['CpuSlot'],Cpu['CpuSerial'],Cpu['CpuCapacity'],Cpu['CpuSize'],Cpu['CpuClock'] = self.strip(CpuVersion),self.strip(CpuVendor),self.strip(CpuSlot),self.strip(CpuSerial),self.strip(CpuCapacity),self.strip(CpuSize),self.strip(CpuClock)
+            with open('/proc/cpuinfo') as f:
+                for line in f:
+                    if line.strip():
+                        if line.rstrip('\n').startswith('vendor_id'):
+                             vendor = line.rstrip('\n').split(':')[1]
+                        elif line.rstrip('\n').startswith('cpu cores'):
+                             cpu_cores = line.rstrip('\n').split(':')[1]
+                        elif line.rstrip('\n').startswith('siblings'):
+                             cpu_siblings = line.rstrip('\n').split(':')[1]
+                        elif line.rstrip('\n').startswith('clflush size'):
+                             clflush_size = line.rstrip('\n').split(':')[1]
+                             clflush_size = filter(str.isdigit,clflush_size)
+                        elif line.rstrip('\n').startswith('cache size'):
+                             cache_size = line.rstrip('\n').split(':')[1]
+                             cache_size = filter(str.isdigit,cache_size)
+            Cpu['cpu_cores'],Cpu['cpu_siblings'],Cpu['clflush_size'],Cpu['cache_size'] = cpu_cores,cpu_siblings,clflush_size,cache_size
         return Cpu
 
     def get_board(self):
@@ -525,91 +575,145 @@ class DetailInfo:
     def get_memory(self):
         #Memory Device
         Mem = {}
-        MemInfo,MemWidth,Memnum,MemSlot,MemProduct,MemVendor,MemSerial,MemSize,BioVendor = "","","","","","",'','',''
-        hw = os.popen("dmidecode -t memory")
-        memory = hw.read()
-        hw.close()
-        num = 0
-        q = re.findall('Memory Device\n',memory)
-        if q :
-            memory = memory[memory.index("Memory Device\n")+len("Memory Device\n"):]
-        else :
-            memory = ''
-        if memory :
-            mark = re.findall("Data Width: (.*)",memory)
-            if mark :
-                for k in mark :
-                    if not k == 'Unknown':
-                        num += 1
-                        if MemWidth :
-                            MemWidth += "<1_1>" + k
-                        else :
-                            MemWidth = k
-            Memnum = str(num)
-            tmp = re.findall("Bank Locator: (.*)",memory)
-            i = 0
-            if tmp :
-                for k in mark :
-                    i += 1
-                    if not k == 'Unknown':
-                        if MemSlot :
-                            MemSlot +="<1_1>"+ tmp[i-1]
-                        else :
-                            MemSlot = tmp[i-1]
-            tmp = re.findall("Part Number: (.*)",memory)
-            i = 0
-            if tmp :
-                for k in mark :
-                    i += 1
-                    if not k == 'Unknown':
-                        if MemProduct :
-                            MemProduct += "<1_1>" + tmp[i-1]
-                        else :
-                            MemProduct = tmp[i-1]
-            tmp = re.findall("Manufacturer: (.*)",memory)
-            i = 0
-            if tmp :
-                for k in mark :
-                    i += 1
-                    if not k == 'Unknown':
-                        if MemVendor :
-                            MemVendor += "<1_1>" + tmp[i-1]
-                        else :
-                            MemVendor = tmp[i-1]
-            tmp = re.findall("Serial Number: (.*)",memory)
-            i = 0
-            if tmp :
-                for k in mark :
-                    i += 1
-                    if not k == 'Unknown':
-                        if MemSerial :
-                            MemSerial += "<1_1>" + tmp[i-1]
-                        else :
-                            MemSerial = tmp[i-1]
-            tmp = re.findall("Size: (.*)",memory)
-            i = 0
-            if tmp :
-                for k in mark :
-                    i += 1
-                    if not k == 'Unknown':
-                        if MemSize :
-                            MemSize += "<1_1>" + tmp[i-1]
-                        else :
-                            MemSize = tmp[i-1]
-            tmp0 = self.strip(re.findall("Form Factor: (.*)",memory))
-            tmp1 = self.strip(re.findall("Type: (.*)",memory))
-            tmp2 = self.strip(re.findall("Type Detail: (.*)",memory))
-            tmp3 = self.strip(re.findall("Speed: (.*)",memory))
-            i = 0
-            if tmp0 and tmp1 and tmp2 and tmp3 :
-                for k in mark :
-                    i += 1
-                    if not k == 'Unknown':
-                        if MemInfo :
-                            MemInfo += "<1_1>" + tmp0[i-1] + ' ' + tmp1[i-1] + ' ' + tmp2[i-1] + ' ' + tmp3[i-1]
-                        else :
-                            MemInfo = tmp0[i-1] + ' ' + tmp1[i-1] + ' ' + tmp2[i-1] + ' ' + tmp3[i-1]
-        Mem["MemInfo"],Mem["MemWidth"],Mem["MemSlot"],Mem["MemProduct"],Mem["MemVendor"],Mem["MemSerial"],Mem["MemSize"],Mem["Memnum"] = MemInfo,self.strip(MemWidth),self.strip(MemSlot),self.strip(MemProduct),self.strip(MemVendor),self.strip(MemSerial),self.strip(MemSize),self.strip(Memnum)
+        if self.machine == "aarch64":
+            if os.path.exists(MEMORY):
+                memnum = 0
+                all_exists = []
+                total = [ f for f in os.listdir(MEMORY) if f.startswith("memory")]
+
+                for p in total:
+                    exists = os.path.join(MEMORY, p)
+                    if os.stat(exists).st_size:
+    #                    memnum += 1
+                        all_exists.append(exists)
+
+    #            Mem["Memnum"] = str(memnum)
+                for i in all_exists:
+                    fp = open(i, "r")
+                    info = fp.read()
+                    fp.close
+    #                dic = dict([tuple(x.split(":")) for x in info.split("\n") if x])
+                    dic = dict([tuple(x.split(":")) for x in info.split("\n") if x and ":" in x])
+                    if dic in(None, {}):
+                        continue
+                    else:
+                        memnum += 1
+                    #if Mem.get("MemInfo") == None:
+                    #    Mem["MemInfo"] = "DDR3 " + dic["Speed"]
+                    #else:
+                    #    Mem["MemInfo"] +=  "<1_1>" + "DDR3 " + dic["Speed"]
+                    if Mem.get("MemSlot") == None:
+                        Mem["MemSlot"] = dic["Bank Locator"]
+                    else:
+                        Mem["MemSlot"] +=  "<1_1>" + str(dic["Bank Locator"])
+                    if Mem.get("MemSize") == None:
+                        Mem["MemSize"] = dic["Size"]
+                    else:
+                        Mem["MemSize"] += "<1_1>" + str(dic["Size"])
+                    if Mem.get("MemVendor") == None:
+                        Mem["MemVendor"] = str(dic["Manufacturer ID"].upper())
+                    else:
+                        Mem["MemVendor"] += "<1_1>" + str(dic["Manufacturer ID"].upper())
+                    if Mem.get("MemWidth") == None:
+                        Mem["MemWidth"] = "64 bits"
+                    else:
+                        Mem["MemWidth"] += "<1_1>" + "64 bits"
+                Mem["Memnum"] = str(memnum)
+            else:
+                Mem["Memnum"] = "1"
+                Mem["MemWidth"] = "64 bits"
+                Mem["MemInfo"] = "DDR3"
+                fp = open("/proc/meminfo", "r")
+                info = fp.read()
+                fp.close()
+                dic = dict([tuple(x.split(":")) for x in info.split("\n") if x])
+                Mem["MemSize"] = dic["MemTotal"].strip()
+        else:
+            MemInfo,MemWidth,Memnum,MemSlot,MemProduct,MemVendor,MemSerial,MemSize,BioVendor = "","","","","","",'','',''
+            hw = os.popen("dmidecode -t memory")
+            memory = hw.read()
+            hw.close()
+            num = 0
+            q = re.findall('Memory Device\n',memory)
+            if q :
+                memory = memory[memory.index("Memory Device\n")+len("Memory Device\n"):]
+            else :
+                memory = ''
+            if memory :
+                mark = re.findall("Data Width: (.*)",memory)
+                if mark :
+                    for k in mark :
+                        if not k == 'Unknown':
+                            num += 1
+                            if MemWidth :
+                                MemWidth += "<1_1>" + k
+                            else :
+                                MemWidth = k
+                Memnum = str(num)
+                tmp = re.findall("Bank Locator: (.*)",memory)
+                i = 0
+                if tmp :
+                    for k in mark :
+                        i += 1
+                        if not k == 'Unknown':
+                            if MemSlot :
+                                MemSlot +="<1_1>"+ tmp[i-1]
+                            else :
+                                MemSlot = tmp[i-1]
+                tmp = re.findall("Part Number: (.*)",memory)
+                i = 0
+                if tmp :
+                    for k in mark :
+                        i += 1
+                        if not k == 'Unknown':
+                            if MemProduct :
+                                MemProduct += "<1_1>" + tmp[i-1]
+                            else :
+                                MemProduct = tmp[i-1]
+                tmp = re.findall("Manufacturer: (.*)",memory)
+                i = 0
+                if tmp :
+                    for k in mark :
+                        i += 1
+                        if not k == 'Unknown':
+                            if MemVendor :
+                                MemVendor += "<1_1>" + tmp[i-1]
+                            else :
+                                MemVendor = tmp[i-1]
+                tmp = re.findall("Serial Number: (.*)",memory)
+                i = 0
+                if tmp :
+                    for k in mark :
+                        i += 1
+                        if not k == 'Unknown':
+                            if MemSerial :
+                                MemSerial += "<1_1>" + tmp[i-1]
+                            else :
+                                MemSerial = tmp[i-1]
+                tmp = re.findall("Size: (.*)",memory)
+                i = 0
+                if tmp :
+                    for k in mark :
+                        i += 1
+                        if not k == 'Unknown':
+                            if MemSize :
+                                MemSize += "<1_1>" + tmp[i-1]
+                            else :
+                                MemSize = tmp[i-1]
+                tmp0 = self.strip(re.findall("Form Factor: (.*)",memory))
+                tmp1 = self.strip(re.findall("Type: (.*)",memory))
+                tmp2 = self.strip(re.findall("Type Detail: (.*)",memory))
+                tmp3 = self.strip(re.findall("Speed: (.*)",memory))
+                i = 0
+                if tmp0 and tmp1 and tmp2 and tmp3 :
+                    for k in mark :
+                        i += 1
+                        if not k == 'Unknown':
+                            if MemInfo :
+                                MemInfo += "<1_1>" + tmp0[i-1] + ' ' + tmp1[i-1] + ' ' + tmp2[i-1] + ' ' + tmp3[i-1]
+                            else :
+                                MemInfo = tmp0[i-1] + ' ' + tmp1[i-1] + ' ' + tmp2[i-1] + ' ' + tmp3[i-1]
+            Mem["MemInfo"],Mem["MemWidth"],Mem["MemSlot"],Mem["MemProduct"],Mem["MemVendor"],Mem["MemSerial"],Mem["MemSize"],Mem["Memnum"] = MemInfo,self.strip(MemWidth),self.strip(MemSlot),self.strip(MemProduct),self.strip(MemVendor),self.strip(MemSerial),self.strip(MemSize),self.strip(Memnum)
         return Mem
 
     def get_monitor(self):

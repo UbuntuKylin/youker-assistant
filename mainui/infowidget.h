@@ -58,7 +58,7 @@ class InfoWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit InfoWidget(QWidget *parent = 0);
+    explicit InfoWidget(QString machine = "", QWidget *parent = 0);
     ~InfoWidget();
     void setSessionDbusProxy(SessionDispatcher *dispatcher) { sessionProxy = dispatcher;}
     void setSystemDbusProxy(SystemDispatcher *dispatcher) { systemProxy = dispatcher;}

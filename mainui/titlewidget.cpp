@@ -20,7 +20,7 @@
 #include "titlewidget.h"
 #include "mainwindow.h"
 
-TitleWidget::TitleWidget(QWidget *parent)
+TitleWidget::TitleWidget(QWidget *parent, QString arch)
 	: QWidget(parent)
 {
     this->setFixedSize(900, 36);
@@ -38,19 +38,29 @@ TitleWidget::TitleWidget(QWidget *parent)
     main_menu_button->setFocusPolicy(Qt::NoFocus);
 
     QHBoxLayout *title_layout = new QHBoxLayout();
-    title_layout->addWidget(close_button, 0, Qt::AlignTop);
-    title_layout->addWidget(min_button, 0, Qt::AlignTop);
-    title_layout->addWidget(skin_button, 0, Qt::AlignTop);
-    title_layout->addWidget(main_menu_button, 0, Qt::AlignTop);
+    if(arch == "aarch64")
+    {
+        title_layout->addWidget(main_menu_button, 0, Qt::AlignTop);
+        title_layout->addWidget(skin_button, 0, Qt::AlignTop);
+        title_layout->addWidget(min_button, 0, Qt::AlignTop);
+        title_layout->addWidget(close_button, 0, Qt::AlignTop);
+    }
+    else
+    {
+        title_layout->addWidget(close_button, 0, Qt::AlignTop);
+        title_layout->addWidget(min_button, 0, Qt::AlignTop);
+        title_layout->addWidget(skin_button, 0, Qt::AlignTop);
+        title_layout->addWidget(main_menu_button, 0, Qt::AlignTop);
+    }
 
     title_layout->addStretch();
-	title_layout->setSpacing(0);
+    title_layout->setSpacing(0);
     title_layout->setContentsMargins(0, 0, 5, 0);
 
-	QVBoxLayout *main_layout = new QVBoxLayout();
-	main_layout->addLayout(title_layout);
-	main_layout->setSpacing(0);
-	main_layout->setContentsMargins(0, 0, 0, 0);
+    QVBoxLayout *main_layout = new QVBoxLayout();
+    main_layout->addLayout(title_layout);
+    main_layout->setSpacing(0);
+    main_layout->setContentsMargins(0, 0, 0, 0);
 
     setLayout(main_layout);
 

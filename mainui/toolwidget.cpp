@@ -24,8 +24,8 @@
 #include <QDebug>
 //#include <QParallelAnimationGroup>
 
-ToolWidget::ToolWidget(QWidget *parent)
-	: QWidget(parent)
+ToolWidget::ToolWidget(QWidget *parent, QString arch)
+    : QWidget(parent), cur_arch(arch)
 {
     this->setFixedSize(900, 47);
 //    this->setGeometry(0, 227, 900, 47);
@@ -35,10 +35,16 @@ ToolWidget::ToolWidget(QWidget *parent)
     this->setPalette(palette);
 
     QStringList icon_list;
-    icon_list<<":/tool/res/menu/home"<<":/tool/res/menu/cleanup"<<":/tool/res/menu/sysinfo"<<":/tool/res/menu/feature"<<":/tool/res/menu/toolkits";
-
     QStringList text_list;
-    text_list<< tr("Home") << tr("Cleanup") << tr("Sysinfo") << tr("Feature") << tr("Toolkits");
+    if(this->cur_arch == "aarch64")
+    {
+        icon_list<<":/tool/res/menu/home"<<":/tool/res/menu/cleanup"<<":/tool/res/menu/sysinfo"<<":/tool/res/menu/toolkits";
+        text_list<< tr("Home") << tr("Cleanup") << tr("Sysinfo") << tr("Toolkits");
+    }
+    else {
+        icon_list<<":/tool/res/menu/home"<<":/tool/res/menu/cleanup"<<":/tool/res/menu/sysinfo"<<":/tool/res/menu/feature"<<":/tool/res/menu/toolkits";
+        text_list<< tr("Home") << tr("Cleanup") << tr("Sysinfo") << tr("Feature") << tr("Toolkits");
+    }
 
 	QHBoxLayout *button_layout = new QHBoxLayout();
 
@@ -49,7 +55,6 @@ ToolWidget::ToolWidget(QWidget *parent)
         tool_button->setFixedSize(180, 47);
 		button_list.append(tool_button);
         connect(tool_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
-//        connect(tool_button, SIGNAL(clicked()), this, SLOT(test()));
         signal_mapper->setMapping(tool_button, QString::number(i, 10));
 		button_layout->addWidget(tool_button, 0, Qt::AlignBottom);
 	}
@@ -64,10 +69,6 @@ ToolWidget::ToolWidget(QWidget *parent)
     setLayout(button_layout);
     is_move = false;
 //    this->initAnimation();
-}
-
-void ToolWidget::test() {
-    qDebug() << "test...........";
 }
 
 ToolWidget::~ToolWidget()
@@ -100,7 +101,14 @@ void ToolWidget::switchSelectedPageIndex(QString index)
 
 void ToolWidget::showBoxTool()
 {
-    this->switchSelectedPageIndex("4");
+    if(this->cur_arch == "aarch64")
+    {
+        this->switchSelectedPageIndex("3");
+    }
+    else
+    {
+        this->switchSelectedPageIndex("4");
+    }
 }
 
 

@@ -263,6 +263,7 @@ public:
     void set_thumbnail_cache_size_qt(int size);
     int get_thumbnail_cache_size_qt();
     QString access_current_desktop_qt();
+    QString access_current_machine_qt();
 //    Q_INVOKABLE QString judge_desktop_is_unity_qt();
 //    Q_INVOKABLE QString judge_desktop_is_cinnamon_qt();
     //一键清理扫描

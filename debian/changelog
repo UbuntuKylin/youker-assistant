@@ -1,5 +1,12 @@
+youker-assistant (2.0.4) wily; urgency=low
+
+  * Distinguish system structure.
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 30 Jul 2015 11:28:25 +0800
+
 youker-assistant (2.0.3) wily; urgency=low
 
+  * Access FT Arm settings and information.
   * Deal with situation when the scanning garbage is empty.
   * Display hardware manufacturer logo.
   * Add Gio.Settings notify for Unity and Mate settings.
@@ -14,7 +21,7 @@ youker-assistant (2.0.3) wily; urgency=low
   * Modify custom skin filter(LP: #1475074).
   * Modify cleanerdetailwidget.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 24 Jul 2015 15:44:32 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 16 Jul 2015 13:34:35 +0800
 
 youker-assistant (2.0.2) vivid; urgency=low
 
