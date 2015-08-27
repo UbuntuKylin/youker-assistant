@@ -603,122 +603,122 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CleanerDetailWidget</name>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="352"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="354"/>
         <source>Apt Cache Clean Items</source>
         <translation>Apt缓存清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="359"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="361"/>
         <source>Apt Cache count:</source>
         <translation>Apt缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="385"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="451"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="388"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="458"/>
         <source>Software Cache Clean Items</source>
         <translation>软件中心缓存清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="392"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="395"/>
         <source>Software Cache count:</source>
         <translation>软件中心缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="417"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="482"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="713"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="744"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="775"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="422"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="491"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="738"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="771"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="804"/>
         <source>Thumbnails Cache Clean Items</source>
         <translation>缩略图缓存清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="424"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="429"/>
         <source>Thumbnails Cache Count:</source>
         <translation>缩略图缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="457"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="464"/>
         <source>Firefox Cache Count:</source>
         <translation>Firefox浏览器缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="488"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="497"/>
         <source>Chromium Cache Count:</source>
         <translation>Chromium浏览器缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="517"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="528"/>
         <source>Firefox Cookies Clean Items</source>
         <translation>Firefox Cookies 清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="523"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="534"/>
         <source>Firefox Cookies Count:</source>
         <translation>Firefox Cookies总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="548"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="561"/>
         <source>Chromium Cookies Clean Items</source>
         <translation>Chromium Cookies 清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="554"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="567"/>
         <source>Chromium Cookies Count:</source>
         <translation>Chromium Cookies总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="589"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="604"/>
         <source>Firefox History Count:</source>
         <translation>Firefox 历史记录总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="612"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="629"/>
         <source>Chromium History Count:</source>
         <translation>Chromium历史记录总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="636"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="655"/>
         <source>System History Count:</source>
         <translation>系统历史痕迹总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="660"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="681"/>
         <source>Command history size:</source>
         <translation>命令历史记录大小：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="680"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="703"/>
         <source>Debug log Items</source>
         <translation>调试日志项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="684"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="707"/>
         <source>Debug log:</source>
         <translation>调试日志：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="719"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="744"/>
         <source>Package Unneed Count:</source>
         <translation>不需要的包总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="750"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="777"/>
         <source>Package oldkernel Count:</source>
         <translation>旧内核包总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="781"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="810"/>
         <source>Package configfile Count:</source>
         <translation>包配置文件总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="902"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="933"/>
         <source>No garbage </source>
         <translation>没有扫描到垃圾</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="941"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="972"/>
         <source>Clean args is empty!</source>
         <translation>清理参数为空！</translation>
     </message>
@@ -2573,7 +2573,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../component/settingaction.cpp" line="121"/>
         <source>Replace the theme and size of the mouse pointer, and theme change need to restart system</source>
-        <translation>更换鼠标指针主题和大小，主题更改需要重新系统才能生效</translation>
+        <translation>更换鼠标指针主题和大小，主题更改需要重启系统才能生效</translation>
     </message>
     <message>
         <location filename="../../component/settingaction.cpp" line="134"/>
@@ -2819,22 +2819,22 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">皮肤中心</translation>
     </message>
     <message>
-        <location filename="../skincenter.cpp" line="56"/>
+        <location filename="../skincenter.cpp" line="58"/>
         <source>Skin Setting</source>
         <translation>皮肤设置</translation>
     </message>
     <message>
-        <location filename="../skincenter.cpp" line="67"/>
+        <location filename="../skincenter.cpp" line="69"/>
         <source>Default</source>
         <translation>默认皮肤</translation>
     </message>
     <message>
-        <location filename="../skincenter.cpp" line="70"/>
+        <location filename="../skincenter.cpp" line="72"/>
         <source>Custom</source>
         <translation>自定义</translation>
     </message>
     <message>
-        <location filename="../skincenter.cpp" line="426"/>
+        <location filename="../skincenter.cpp" line="428"/>
         <source>Image Files(*.jpg *.png)</source>
         <translation>图片文件(*.jpg *.png)</translation>
     </message>
@@ -2916,27 +2916,31 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ToolWidget</name>
     <message>
-        <location filename="../toolwidget.cpp" line="41"/>
+        <location filename="../toolwidget.cpp" line="42"/>
+        <location filename="../toolwidget.cpp" line="46"/>
         <source>Home</source>
         <translation>优客首页</translation>
     </message>
     <message>
-        <location filename="../toolwidget.cpp" line="41"/>
+        <location filename="../toolwidget.cpp" line="42"/>
+        <location filename="../toolwidget.cpp" line="46"/>
         <source>Cleanup</source>
         <translation>系统清理</translation>
     </message>
     <message>
-        <location filename="../toolwidget.cpp" line="41"/>
+        <location filename="../toolwidget.cpp" line="42"/>
+        <location filename="../toolwidget.cpp" line="46"/>
         <source>Sysinfo</source>
         <translation>系统信息</translation>
     </message>
     <message>
-        <location filename="../toolwidget.cpp" line="41"/>
+        <location filename="../toolwidget.cpp" line="46"/>
         <source>Feature</source>
         <translation>系统美化</translation>
     </message>
     <message>
-        <location filename="../toolwidget.cpp" line="41"/>
+        <location filename="../toolwidget.cpp" line="42"/>
+        <location filename="../toolwidget.cpp" line="46"/>
         <source>Toolkits</source>
         <translation>功能大全</translation>
     </message>

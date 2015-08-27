@@ -1,8 +1,9 @@
 youker-assistant (2.0.4) wily; urgency=low
 
   * Distinguish system structure.
+  * Modify translations(LP: #1480175).
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 30 Jul 2015 11:28:25 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 27 Aug 2015 20:04:05 +0800
 
 youker-assistant (2.0.3) wily; urgency=low
 
