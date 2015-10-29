@@ -35,7 +35,7 @@ MainWindow::MainWindow(QString cur_arch, QWidget *parent) :
 //    this->setAttribute(Qt::WA_TranslucentBackground);
 //    this->setStyleSheet("QMainWindow{border: 1px solid gray;border-radius:2px}");
     this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
-    version = "V2.0.3";
+    version = "V2.0.5";
     status = HOMEPAGE;
     statusFlag = false;
 
@@ -977,7 +977,7 @@ void MainWindow::openUpgradePage(/*QStringList version_list*/)
     if(upgrade_dialog == NULL)
     {
 //        upgrade_dialog = new UpgradeDialog(0, version_list.at(2), last_skin_path);
-        upgrade_dialog = new UpgradeDialog(0, "V2.0.3", last_skin_path);
+        upgrade_dialog = new UpgradeDialog(0, this->version, last_skin_path);
         upgrade_dialog->setSystemDbusProxy(systeminterface);
         upgrade_dialog->setSessionDbusProxy(sessioninterface);
         connect(home_page, SIGNAL(sendOpenUpgrade()), this, SLOT(openUpgradePageAgain()));
