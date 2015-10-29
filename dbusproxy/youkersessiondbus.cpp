@@ -100,6 +100,12 @@ void SessionDispatcher::exit_qt() {
     sessioniface->call("exit");
 }
 
+QString SessionDispatcher::get_os_release_qt()
+{
+    QDBusReply<QString> reply = sessioniface->call("get_os_release");
+    return reply.value();
+}
+
 QStringList SessionDispatcher::checkNewVersion()
 {
     QDBusReply<QStringList> reply = sessioniface->call("currently_installed_version");

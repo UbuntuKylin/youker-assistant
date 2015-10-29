@@ -75,18 +75,18 @@ class CloudConfig(threading.Thread):
             'icon-size', 'int')
 
     # 触摸板设置-----------------------------------
-        self.write_conf(sections, 'touchpad_enable',
-            'org.gnome.settings-daemon.peripherals.touchpad',
-            None, 'touchpad-enabled', 'boolean')
-        self.write_conf(sections, 'touch_horizontal_scrolling',
-            'org.gnome.settings-daemon.peripherals.touchpad',
-            None, 'horiz-scroll-enabled', 'boolean')
-        self.write_conf(sections, 'type_scroll_bar',
-            'com.canonical.desktop.interface',
-            None, 'scrollbar-mode', 'string')
-        self.write_conf(sections, 'touchpad_scrolling_mode',
-            'org.gnome.settings-daemon.peripherals.touchpad',
-            None, 'scroll-method', 'string')
+#        self.write_conf(sections, 'touchpad_enable',
+#            'org.gnome.settings-daemon.peripherals.touchpad',
+#            None, 'touchpad-enabled', 'boolean')
+#        self.write_conf(sections, 'touch_horizontal_scrolling',
+#            'org.gnome.settings-daemon.peripherals.touchpad',
+#            None, 'horiz-scroll-enabled', 'boolean')
+#        self.write_conf(sections, 'type_scroll_bar',
+#            'com.canonical.desktop.interface',
+#            None, 'scrollbar-mode', 'string')
+#        self.write_conf(sections, 'touchpad_scrolling_mode',
+#            'org.gnome.settings-daemon.peripherals.touchpad',
+#            None, 'scroll-method', 'string')
 
     # 字体设置-------------------------------------
         self.write_conf(sections, 'default_font',
