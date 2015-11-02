@@ -156,18 +156,24 @@ QString CameraManager::getHomePath() {
 }
 
 int CameraManager::countCamaras() {
-   cv::VideoCapture temp_camera;
-   int maxTested = 10;
-   for (int i = 0; i < maxTested; i++){
-     cv::VideoCapture temp_camera(i);
-     bool res = (!temp_camera.isOpened());
-     temp_camera.release();
-     if (res)
-     {
-       return i;
-     }
-   }
-   return maxTested;
+    cv::VideoCapture temp_camera;
+    int maxTested = 10;
+    for (int i = 0; i < maxTested; i++) {
+//        try {
+//            cv::VideoCapture temp_camera(i);
+//        }
+//        catch(cv::Exception& e) {
+//            qDebug() << e.what();
+//        }
+        cv::VideoCapture temp_camera(i);
+        bool res = (!temp_camera.isOpened());
+        temp_camera.release();
+        if (res)
+        {
+            return i;
+        }
+    }
+    return maxTested;
 }
 
 void CameraManager::setOKButtonEnable(bool enable)
