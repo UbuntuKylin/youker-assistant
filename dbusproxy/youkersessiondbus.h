@@ -47,6 +47,8 @@ public:
     bool judge_power_is_exists_qt();
     QMap<QString, QVariant> read_battery_info_qt();
 
+    QString get_os_release_qt();
+
     //弹出登录框
     void popup_login_dialog();
     void popup_register_dialog();

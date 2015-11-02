@@ -1,9 +1,11 @@
-youker-assistant (2.0.4) wily; urgency=low
+youker-assistant (2.0.5) wily; urgency=low
 
   * Distinguish system structure.
   * Modify translations(LP: #1480175).
+  * Wily replaces org.gnome.settings-daemon.peripherals.touchpad with org.gnome.desktop.peripherals.touchpad.
+  * Fixed session dbus daemon(LP: #1475090).
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 27 Aug 2015 20:04:05 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 02 Nov 2015 10:31:15 +0800
 
 youker-assistant (2.0.3) wily; urgency=low
 

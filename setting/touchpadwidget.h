@@ -63,6 +63,7 @@ private:
     QRadioButton *edge_radio;
     QRadioButton *two_finger_radio;
     QString desktop;
+    QString release;
 };
 
 #endif // TOUCHPADWIDGET_H

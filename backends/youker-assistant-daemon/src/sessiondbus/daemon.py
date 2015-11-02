@@ -60,7 +60,7 @@ from beautify.theme import Theme
 from beautify.system import System
 from beautify.sound import Sound
 from beautify.filemanager import FileManager
-from beautify.cloudconfig import CloudConfig
+#from beautify.cloudconfig import CloudConfig
 from sysinfo import Sysinfo
 #from camera.capture import Capture
 #from weather.weatherinfo import WeatherInfo
@@ -109,7 +109,7 @@ class SessionDaemon(dbus.service.Object):
 #        self.ip_addr = None
         self.distrowatch = []
         self.ubuntukylin_dict = dict()
-        self.cloudconf = CloudConfig(self)
+#        self.cloudconf = CloudConfig(self)
         self.sysconf = Sysinfo()
         self.desktopconf = Desktop()
         self.unityconf = Unity()
@@ -267,11 +267,15 @@ class SessionDaemon(dbus.service.Object):
         if self.desktop == "mate":
             self.touchpad_settings = gio.Settings.new("org.mate.peripherals-touchpad")
             self.touchpad_settings.connect("changed::scroll-method", self.gio_settings_monitor, INT_TYPE)
+            self.touchpad_settings.connect("changed::touchpad-enabled", self.gio_settings_monitor, BOOL_TYPE)
+            self.touchpad_settings.connect("changed::horiz-scroll-enabled", self.gio_settings_monitor, BOOL_TYPE)
         else:
-            self.touchpad_settings = gio.Settings.new("org.gnome.settings-daemon.peripherals.touchpad")
-            self.touchpad_settings.connect("changed::scroll-method", self.gio_settings_monitor, STRING_TYPE)
-        self.touchpad_settings.connect("changed::touchpad-enabled", self.gio_settings_monitor, BOOL_TYPE)
-        self.touchpad_settings.connect("changed::horiz-scroll-enabled", self.gio_settings_monitor, BOOL_TYPE)
+            release_info = platform.platform()
+            if "15.10-wily" not in release_info:
+                self.touchpad_settings = gio.Settings.new("org.gnome.settings-daemon.peripherals.touchpad")
+                self.touchpad_settings.connect("changed::scroll-method", self.gio_settings_monitor, STRING_TYPE)
+                self.touchpad_settings.connect("changed::touchpad-enabled", self.gio_settings_monitor, BOOL_TYPE)
+                self.touchpad_settings.connect("changed::horiz-scroll-enabled", self.gio_settings_monitor, BOOL_TYPE)
         if self.desktop == "Unity":
             self.canonical_interface_settings = gio.Settings.new("com.canonical.desktop.interface")
             self.canonical_interface_settings.connect("changed::scrollbar-mode", self.gio_settings_monitor, STRING_TYPE)
@@ -354,6 +358,10 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.signal(INTERFACE, signature='ss')
     def notify_string(self, key, value):
         pass
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_os_release(self):
+        return platform.platform()
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def currently_installed_version(self):
@@ -869,14 +877,14 @@ class SessionDaemon(dbus.service.Object):
             return bat_dict
 
     # a dbus method which download and use kuaipan cloud conf by kobe
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
-    def download_kysoft_cloud_conf(self):
-        self.cloudconf.download_kysoft_cloud_conf()
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+#    def download_kysoft_cloud_conf(self):
+#        self.cloudconf.download_kysoft_cloud_conf()
 
     # a dbus method which upload conf to kuaipan cloud by kobe
-    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
-    def upload_kysoft_cloud_conf(self):
-        self.cloudconf.upload_kysoft_cloud_conf()
+#    @dbus.service.method(INTERFACE, in_signature='', out_signature='')
+#    def upload_kysoft_cloud_conf(self):
+#        self.cloudconf.upload_kysoft_cloud_conf()
 
     # a dbus signal which download and use kuaipan cloud conf by kobe
     @dbus.service.signal(INTERFACE, signature='s')
