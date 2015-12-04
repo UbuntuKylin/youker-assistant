@@ -76,7 +76,6 @@ void CardWidget::add_card(QWidget *card)
     int y = int(this->cardcount / this->number_per_row) * (this->itemheight + this->cardspace);
 
     int nowHeight = y + this->itemheight;
-//    qDebug() << "nowHeight-> "  << nowHeight;
     if(nowHeight >= this->cardPanel->height())
         this->cardPanel->resize(this->cardPanel->width(), nowHeight);
     card->move(x, y);

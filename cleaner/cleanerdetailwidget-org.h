@@ -128,12 +128,6 @@ private:
     int subCount;
     bool scanResult;
     QString cur_skin;
-
-    int number_per_row;
-    int itemwidth;
-    int itemheight;
-    int cardspace;
-    QList <CleanSubGroup *> cardlist;
 };
 
 #endif // CLEANERDETAILWIDGET_H

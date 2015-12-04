@@ -27,11 +27,14 @@
 MainWindow::MainWindow(QString cur_arch, QWidget *parent) :
     QDialog(parent), arch(cur_arch)/*skin_center(parent),*/
 {
-    this->resize(900, 600);
+//    this->resize(900, 600);
+    this->setFixedSize(900, 600);
+    this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowMinimizeButtonHint | Qt::WindowSystemMenuHint);
+//    this->setAttribute(Qt::WA_TranslucentBackground, true);
     this->setWindowTitle(tr("Youker Assistant"));
     this->setWindowIcon(QIcon(":/res/youker-assistant.png"));
     this->setWindowOpacity(1);
-    this->setWindowFlags(Qt::FramelessWindowHint | Qt::Widget);
+//    this->setWindowFlags(Qt::FramelessWindowHint | Qt::Widget);
 //    this->setAttribute(Qt::WA_TranslucentBackground);
 //    this->setStyleSheet("QMainWindow{border: 1px solid gray;border-radius:2px}");
     this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
@@ -1088,13 +1091,17 @@ void MainWindow::aboutUs()
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
+//    if(event->button() == Qt::LeftButton)
+//    {
+//        mouse_press = true;
+//        drag_pos = event->globalPos() - this->frameGeometry().topLeft();
+//        event->accept();
+//    }
     if(event->button() == Qt::LeftButton)
     {
         mouse_press = true;
-        drag_pos = event->globalPos() - this->frameGeometry().topLeft();
-        event->accept();
     }
-//    drag_pos = event->globalPos() - pos();
+    drag_pos = event->globalPos() - pos();
 }
 
 void MainWindow::mouseReleaseEvent(QMouseEvent *)
@@ -1110,7 +1117,7 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         QPoint move_pos = event->globalPos();
         move(move_pos - drag_pos);
         setWindowOpacity(0.9);
-        event->accept();
+//        event->accept();
     }
 }
 

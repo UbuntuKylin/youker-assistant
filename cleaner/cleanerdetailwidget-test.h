@@ -34,10 +34,13 @@ class Toolkits;
 class MainWindow;
 class CleanSubGroup;
 
+//1110
+class CardWidget;
+class ItemCard;
 
-namespace Ui {
-class CleanerDetailWidget;
-}
+//namespace Ui {
+//class CleanerDetailWidget;
+//}
 
 class CleanerDetailWidget : public QWidget
 {
@@ -69,7 +72,7 @@ private:
     void initTitleBar();
 
 private:
-    Ui::CleanerDetailWidget *ui;
+//    Ui::CleanerDetailWidget *ui;
     MainWindow *parentWindow;
     SessionDispatcher *sessionproxy;
     SystemDispatcher *systemproxy;
@@ -122,18 +125,19 @@ private:
     QString trace_bash_path;
     QStringList trace_x11_list;
 
-    QGridLayout *grid_layout;
+//    QGridLayout *grid_layout;
 //    int rowIndex;
 //    int columnIndex;
     int subCount;
     bool scanResult;
     QString cur_skin;
 
-    int number_per_row;
-    int itemwidth;
-    int itemheight;
-    int cardspace;
-    QList <CleanSubGroup *> cardlist;
+
+    //1110
+    CardWidget *custom_list_widget;
+//    QList<CleanSubGroup *> custom_card_list;
+    QList<ItemCard *> custom_card_list;
+    QWidget *skin_widget;
 };
 
 #endif // CLEANERDETAILWIDGET_H

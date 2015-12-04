@@ -27,7 +27,8 @@
 CleanSubGroup::CleanSubGroup(QWidget *parent, const QString &picture) :
     QWidget(parent), tristateStatus(2)
 {
-    this->setAttribute(Qt::WA_TranslucentBackground);
+    this->setStyleSheet("QWidget{background:transparent;}");
+//    this->setAttribute(Qt::WA_TranslucentBackground);
     this->setFixedSize(160, 110);
     this->setFocusPolicy(Qt::NoFocus);
     img_btn = new CleanSubButton();

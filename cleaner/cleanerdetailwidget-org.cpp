@@ -43,11 +43,6 @@ CleanerDetailWidget::CleanerDetailWidget(QWidget *parent, SessionDispatcher *ser
 //    palette.setBrush(QPalette::Window, QBrush(Qt::white));
 //    this->setPalette(palette);
 
-    this->number_per_row = -1;
-    this->itemwidth = 160;
-    this->itemheight = 110;
-    this->cardspace = 10;
-
     ui->scrollArea->setFixedSize(900, 403);
     ui->scrollArea->setAutoFillBackground(true);
     ui->scrollArea->setBackgroundRole(QPalette::Light);
@@ -56,7 +51,7 @@ CleanerDetailWidget::CleanerDetailWidget(QWidget *parent, SessionDispatcher *ser
     scanResult = false;
     ui->label->hide();
 
-//    grid_layout = new QGridLayout();
+    grid_layout = new QGridLayout();
 //    rowIndex = columnIndex = 0;
 
     cache_apt_items = NULL;
@@ -89,8 +84,7 @@ CleanerDetailWidget::CleanerDetailWidget(QWidget *parent, SessionDispatcher *ser
     trace_x11_btn = NULL;
     trace_x11_items = NULL;
 
-//    ui->scrollAreaWidgetContents->setLayout(grid_layout);
-    this->number_per_row = (this->width() + this->cardspace - 60) / (this->itemwidth + this->cardspace);
+    ui->scrollAreaWidgetContents->setLayout(grid_layout);
     this->setLanguage();
 }
 
@@ -151,11 +145,11 @@ CleanerDetailWidget::~CleanerDetailWidget()
         delete trace_x11_items;
         trace_x11_items = NULL;
     }
-//    if(grid_layout != NULL)
-//    {
-//        delete grid_layout;
-//        grid_layout = NULL;
-//    }
+    if(grid_layout != NULL)
+    {
+        delete grid_layout;
+        grid_layout = NULL;
+    }
     delete ui;
 }
 
@@ -184,25 +178,12 @@ void CleanerDetailWidget::CleanUIAndData()
     trace_x11_list.clear();
 
     //clear ui
-//    foreach (QObject *child, ui->scrollAreaWidgetContents->children()) {
-//        QWidget *widget = static_cast<QWidget *>(child);
-//        widget->deleteLater();
-//    }
-    for(int i=0; i<cardlist.count(); i++)
+    while(grid_layout != NULL && grid_layout->count() > 0)
     {
-        CleanSubGroup *card = cardlist.at(i);
-        delete card;
-        card = NULL;
+        QWidget* widget = grid_layout->itemAt(0)->widget();
+        grid_layout->removeWidget(widget);
+        delete widget;
     }
-    cardlist.clear();
-    ui->scrollAreaWidgetContents->setGeometry(0, 0, this->width(), this->height());
-    this->subCount = 0;
-//    while(grid_layout != NULL && grid_layout->count() > 0)
-//    {
-//        QWidget* widget = grid_layout->itemAt(0)->widget();
-//        grid_layout->removeWidget(widget);
-//        delete widget;
-//    }
 }
 
 void CleanerDetailWidget::showReciveData(const QStringList &data)
@@ -372,7 +353,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cache_apt_items = new CleanListWidget(cache_apt_list, this->cur_skin, tr("Apt Cache Clean Items"));
 //            cache_apt_btn = new CommonCheckBox(0, "://res/cache");
-            cache_apt_btn = new CleanSubGroup(this, "://res/janitor/apt");
+            cache_apt_btn = new CleanSubGroup(0, "://res/janitor/apt");
             cache_apt_btn->setFocusPolicy(Qt::NoFocus);
 //            cache_apt_btn->setFixedSize(160, 130);
 //            cache_apt_btn->setFixedSize(160, 200);
@@ -384,22 +365,12 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             connect(cache_apt_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(cache_apt_btn, SIGNAL(spreadStatus(int)), cache_apt_items, SLOT(resetSubCheckbox(int)));
-//            if(grid_layout == NULL)
-//            {
-//                grid_layout = new QGridLayout();
-//            }
-//            grid_layout->addWidget(cache_apt_btn, subCount/5, subCount%5);
-            int x = int(this->subCount % this->number_per_row) * (this->itemwidth + this->cardspace) + 30;
-            int y = int(this->subCount / this->number_per_row) * (this->itemheight + this->cardspace) + 30;
-            int nowHeight = y + this->itemheight;
-            if(nowHeight >= ui->scrollAreaWidgetContents->height())
-                ui->scrollAreaWidgetContents->resize(ui->scrollAreaWidgetContents->width(), nowHeight);
-            cache_apt_btn->move(x, y);
-            cache_apt_btn->show();
-            cardlist.append(cache_apt_btn);
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
+            grid_layout->addWidget(cache_apt_btn, subCount/5, subCount%5);
             subCount += 1;
-
-
 //            if(columnIndex < 5)
 //            {
 //                grid_layout->addWidget(cache_apt_btn, rowIndex, columnIndex);
@@ -416,7 +387,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cache_software_items = new CleanListWidget(cache_software_list, this->cur_skin, tr("Software Cache Clean Items"));
 //            cache_software_btn = new CommonCheckBox(0, "://res/cache");
-            cache_software_btn = new CleanSubGroup(this, "://res/janitor/software");
+            cache_software_btn = new CleanSubGroup(0, "://res/janitor/software");
             cache_software_btn->setFocusPolicy(Qt::NoFocus);
 //            cache_software_btn->setFixedSize(160, 130);
 //            cache_software_btn->setFixedSize(160, 200);
@@ -428,23 +399,12 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             connect(cache_software_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(cache_software_btn, SIGNAL(spreadStatus(int)), cache_software_items, SLOT(resetSubCheckbox(int)));
-
-            int x = int(this->subCount % this->number_per_row) * (this->itemwidth + this->cardspace) + 30;
-            int y = int(this->subCount / this->number_per_row) * (this->itemheight + this->cardspace) + 30;
-            int nowHeight = y + this->itemheight;
-            if(nowHeight >= ui->scrollAreaWidgetContents->height())
-                ui->scrollAreaWidgetContents->resize(ui->scrollAreaWidgetContents->width(), nowHeight);
-            cache_software_btn->move(x, y);
-            cache_software_btn->show();
-            cardlist.append(cache_software_btn);
-            subCount += 1;
-
-            //            if(grid_layout == NULL)
-//            {
-//                grid_layout = new QGridLayout();
-//            }
-//            grid_layout->addWidget(cache_software_btn, subCount/5, subCount%5);
-//             subCount += 1;
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
+            grid_layout->addWidget(cache_software_btn, subCount/5, subCount%5);
+             subCount += 1;
 //            if(columnIndex < 5)
 //            {
 //                grid_layout->addWidget(cache_software_btn, rowIndex, columnIndex);
@@ -461,7 +421,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cache_thumbnails_items = new CleanListWidget(cache_thumbnails_list, this->cur_skin,  tr("Thumbnails Cache Clean Items"));
 //            cache_thumbnails_btn = new CommonCheckBox(0, "://res/cache");
-            cache_thumbnails_btn = new CleanSubGroup(this, "://res/janitor/thumbnails");
+            cache_thumbnails_btn = new CleanSubGroup(0, "://res/janitor/thumbnails");
             cache_thumbnails_btn->setFocusPolicy(Qt::NoFocus);
 //            cache_thumbnails_btn->setFixedSize(160, 130);
 //            cache_thumbnails_btn->setFixedSize(160, 200);
@@ -473,23 +433,12 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             connect(cache_thumbnails_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(cache_thumbnails_btn, SIGNAL(spreadStatus(int)), cache_thumbnails_items, SLOT(resetSubCheckbox(int)));
-
-            int x = int(this->subCount % this->number_per_row) * (this->itemwidth + this->cardspace) + 30;
-            int y = int(this->subCount / this->number_per_row) * (this->itemheight + this->cardspace) + 30;
-            int nowHeight = y + this->itemheight;
-            if(nowHeight >= ui->scrollAreaWidgetContents->height())
-                ui->scrollAreaWidgetContents->resize(ui->scrollAreaWidgetContents->width(), nowHeight);
-            cache_thumbnails_btn->move(x, y);
-            cache_thumbnails_btn->show();
-            cardlist.append(cache_thumbnails_btn);
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
+            grid_layout->addWidget(cache_thumbnails_btn, subCount/5, subCount%5);
             subCount += 1;
-
-            //            if(grid_layout == NULL)
-//            {
-//                grid_layout = new QGridLayout();
-//            }
-//            grid_layout->addWidget(cache_thumbnails_btn, subCount/5, subCount%5);
-//            subCount += 1;
 //            if(columnIndex < 5)
 //            {
 //                grid_layout->addWidget(cache_thumbnails_btn, rowIndex, columnIndex);
@@ -508,7 +457,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cache_firefox_items = new CleanListWidget(cache_firefox_list, this->cur_skin,  tr("Software Cache Clean Items"));
 //            cache_firefox_btn = new CommonCheckBox(0, "://res/cache");
-            cache_firefox_btn = new CleanSubGroup(this, "://res/janitor/firefox");
+            cache_firefox_btn = new CleanSubGroup(0, "://res/janitor/firefox");
             cache_firefox_btn->setFocusPolicy(Qt::NoFocus);
 //            cache_firefox_btn->setFixedSize(160, 130);
             cache_firefox_btn->setStatusTip("cache-firefox");
@@ -519,22 +468,12 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             connect(cache_firefox_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(cache_firefox_btn, SIGNAL(spreadStatus(int)), cache_firefox_items, SLOT(resetSubCheckbox(int)));
-
-            int x = int(this->subCount % this->number_per_row) * (this->itemwidth + this->cardspace) + 30;
-            int y = int(this->subCount / this->number_per_row) * (this->itemheight + this->cardspace) + 30;
-            int nowHeight = y + this->itemheight;
-            if(nowHeight >= ui->scrollAreaWidgetContents->height())
-                ui->scrollAreaWidgetContents->resize(ui->scrollAreaWidgetContents->width(), nowHeight);
-            cache_firefox_btn->move(x, y);
-            cache_firefox_btn->show();
-            cardlist.append(cache_firefox_btn);
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
+            grid_layout->addWidget(cache_firefox_btn, subCount/5, subCount%5);
             subCount += 1;
-            //            if(grid_layout == NULL)
-//            {
-//                grid_layout = new QGridLayout();
-//            }
-//            grid_layout->addWidget(cache_firefox_btn, subCount/5, subCount%5);
-//            subCount += 1;
 //            if(columnIndex < 5)
 //            {
 //                grid_layout->addWidget(cache_firefox_btn, rowIndex, columnIndex);
@@ -551,7 +490,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cache_chromium_items = new CleanListWidget(cache_chromium_list, this->cur_skin, tr("Thumbnails Cache Clean Items"));
 //            cache_chromium_btn = new CommonCheckBox(0, "://res/cache");
-            cache_chromium_btn = new CleanSubGroup(this, "://res/janitor/chromium");
+            cache_chromium_btn = new CleanSubGroup(0, "://res/janitor/chromium");
             cache_chromium_btn->setFocusPolicy(Qt::NoFocus);
 //            cache_chromium_btn->setFixedSize(160, 130);
             cache_chromium_btn->setStatusTip("cache-chromium");
@@ -562,22 +501,12 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             connect(cache_chromium_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(cache_chromium_btn, SIGNAL(spreadStatus(int)), cache_chromium_items, SLOT(resetSubCheckbox(int)));
-
-            int x = int(this->subCount % this->number_per_row) * (this->itemwidth + this->cardspace) + 30;
-            int y = int(this->subCount / this->number_per_row) * (this->itemheight + this->cardspace) + 30;
-            int nowHeight = y + this->itemheight;
-            if(nowHeight >= ui->scrollAreaWidgetContents->height())
-                ui->scrollAreaWidgetContents->resize(ui->scrollAreaWidgetContents->width(), nowHeight);
-            cache_chromium_btn->move(x, y);
-            cache_chromium_btn->show();
-            cardlist.append(cache_chromium_btn);
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
+            grid_layout->addWidget(cache_chromium_btn, subCount/5, subCount%5);
             subCount += 1;
-//            if(grid_layout == NULL)
-//            {
-//                grid_layout = new QGridLayout();
-//            }
-//            grid_layout->addWidget(cache_chromium_btn, subCount/5, subCount%5);
-//            subCount += 1;
 //            if(columnIndex < 5)
 //            {
 //                grid_layout->addWidget(cache_chromium_btn, rowIndex, columnIndex);
@@ -598,7 +527,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cookies_firefox_items = new CleanListWidget(cookies_firefox_list, this->cur_skin, tr("Firefox Cookies Clean Items"));
 //            cookies_firefox_btn = new CommonCheckBox(0, "://res/cookie");
-            cookies_firefox_btn = new CleanSubGroup(this, "://res/janitor/firefox");
+            cookies_firefox_btn = new CleanSubGroup(0, "://res/janitor/firefox");
             cookies_firefox_btn->setFocusPolicy(Qt::NoFocus);
 //            cookies_firefox_btn->setFixedSize(160, 130);
             cookies_firefox_btn->setStatusTip("cookes-firefox");
@@ -609,23 +538,12 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             connect(cookies_firefox_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(cookies_firefox_btn, SIGNAL(spreadStatus(int)), cookies_firefox_items, SLOT(resetSubCheckbox(int)));
-
-
-            int x = int(this->subCount % this->number_per_row) * (this->itemwidth + this->cardspace) + 30;
-            int y = int(this->subCount / this->number_per_row) * (this->itemheight + this->cardspace) + 30;
-            int nowHeight = y + this->itemheight;
-            if(nowHeight >= ui->scrollAreaWidgetContents->height())
-                ui->scrollAreaWidgetContents->resize(ui->scrollAreaWidgetContents->width(), nowHeight);
-            cookies_firefox_btn->move(x, y);
-            cookies_firefox_btn->show();
-            cardlist.append(cookies_firefox_btn);
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
+            grid_layout->addWidget(cookies_firefox_btn, subCount/5, subCount%5);
             subCount += 1;
-//            if(grid_layout == NULL)
-//            {
-//                grid_layout = new QGridLayout();
-//            }
-//            grid_layout->addWidget(cookies_firefox_btn, subCount/5, subCount%5);
-//            subCount += 1;
 //            if(columnIndex < 5)
 //            {
 //                grid_layout->addWidget(cookies_firefox_btn, rowIndex, columnIndex);
@@ -642,7 +560,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             cookies_chromium_items = new CleanListWidget(cookies_chromium_list, this->cur_skin, tr("Chromium Cookies Clean Items"));
 //            cookies_chromium_btn = new CommonCheckBox(0, "://res/cache");
-            cookies_chromium_btn = new CleanSubGroup(this, "://res/janitor/chromium");
+            cookies_chromium_btn = new CleanSubGroup(0, "://res/janitor/chromium");
             cookies_chromium_btn->setFocusPolicy(Qt::NoFocus);
 //            cookies_chromium_btn->setFixedSize(160, 130);
             cookies_chromium_btn->setStatusTip("cookes-chromium");
@@ -653,22 +571,12 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             connect(cookies_chromium_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(cookies_chromium_btn, SIGNAL(spreadStatus(int)), cookies_chromium_items, SLOT(resetSubCheckbox(int)));
-
-            int x = int(this->subCount % this->number_per_row) * (this->itemwidth + this->cardspace) + 30;
-            int y = int(this->subCount / this->number_per_row) * (this->itemheight + this->cardspace) + 30;
-            int nowHeight = y + this->itemheight;
-            if(nowHeight >= ui->scrollAreaWidgetContents->height())
-                ui->scrollAreaWidgetContents->resize(ui->scrollAreaWidgetContents->width(), nowHeight);
-            cookies_chromium_btn->move(x, y);
-            cookies_chromium_btn->show();
-            cardlist.append(cookies_chromium_btn);
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
+            grid_layout->addWidget(cookies_chromium_btn, subCount/5, subCount%5);
             subCount += 1;
-//            if(grid_layout == NULL)
-//            {
-//                grid_layout = new QGridLayout();
-//            }
-//            grid_layout->addWidget(cookies_chromium_btn, subCount/5, subCount%5);
-//            subCount += 1;
 //            if(columnIndex < 5)
 //            {
 //                grid_layout->addWidget(cookies_chromium_btn, rowIndex, columnIndex);
@@ -688,28 +596,18 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         if(trace_firefox_count.length() > 0)
         {
 //            trace_firefox_btn = new CommonCheckBox(0, "://res/cache");
-            trace_firefox_btn = new CleanSubGroup(this, "://res/janitor/firefox");
+            trace_firefox_btn = new CleanSubGroup(0, "://res/janitor/firefox");
             trace_firefox_btn->setFocusPolicy(Qt::NoFocus);
 //            trace_firefox_btn->setFixedSize(160, 130);
             trace_firefox_btn->hideCustomButton();
             trace_firefox_btn->setStatusTip("history-firefox");
             trace_firefox_btn->setLabelText(tr("Firefox History Count:"), trace_firefox_count.toInt());
-
-            int x = int(this->subCount % this->number_per_row) * (this->itemwidth + this->cardspace) + 30;
-            int y = int(this->subCount / this->number_per_row) * (this->itemheight + this->cardspace) + 30;
-            int nowHeight = y + this->itemheight;
-            if(nowHeight >= ui->scrollAreaWidgetContents->height())
-                ui->scrollAreaWidgetContents->resize(ui->scrollAreaWidgetContents->width(), nowHeight);
-            trace_firefox_btn->move(x, y);
-            trace_firefox_btn->show();
-            cardlist.append(trace_firefox_btn);
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
+            grid_layout->addWidget(trace_firefox_btn, subCount/5, subCount%5);
             subCount += 1;
-//            if(grid_layout == NULL)
-//            {
-//                grid_layout = new QGridLayout();
-//            }
-//            grid_layout->addWidget(trace_firefox_btn, subCount/5, subCount%5);
-//            subCount += 1;
 //            if(columnIndex < 5)
 //            {
 //                grid_layout->addWidget(trace_firefox_btn, rowIndex, columnIndex);
@@ -724,27 +622,17 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         }
         if(trace_chromium_count.length() > 0)
         {
-            trace_chromium_btn = new CleanSubGroup(this, "://res/janitor/chromium");
+            trace_chromium_btn = new CleanSubGroup(0, "://res/janitor/chromium");
             trace_chromium_btn->setFocusPolicy(Qt::NoFocus);
             trace_chromium_btn->hideCustomButton();
             trace_chromium_btn->setStatusTip("history-chromium");
             trace_chromium_btn->setLabelText(tr("Chromium History Count:"), trace_chromium_count.toInt());
-
-            int x = int(this->subCount % this->number_per_row) * (this->itemwidth + this->cardspace) + 30;
-            int y = int(this->subCount / this->number_per_row) * (this->itemheight + this->cardspace) + 30;
-            int nowHeight = y + this->itemheight;
-            if(nowHeight >= ui->scrollAreaWidgetContents->height())
-                ui->scrollAreaWidgetContents->resize(ui->scrollAreaWidgetContents->width(), nowHeight);
-            trace_chromium_btn->move(x, y);
-            trace_chromium_btn->show();
-            cardlist.append(trace_chromium_btn);
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
+            grid_layout->addWidget(trace_chromium_btn, subCount/5, subCount%5);
             subCount += 1;
-//            if(grid_layout == NULL)
-//            {
-//                grid_layout = new QGridLayout();
-//            }
-//            grid_layout->addWidget(trace_chromium_btn, subCount/5, subCount%5);
-//            subCount += 1;
 //            if(columnIndex < 5)
 //            {
 //                grid_layout->addWidget(trace_chromium_btn, rowIndex, columnIndex);
@@ -760,28 +648,17 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
 
         if(trace_system_count.length() > 0)
         {
-            trace_system_btn = new CleanSubGroup(this, "://res/janitor/trace");
+            trace_system_btn = new CleanSubGroup(0, "://res/janitor/trace");
             trace_system_btn->setFocusPolicy(Qt::NoFocus);
             trace_system_btn->hideCustomButton();
             trace_system_btn->setStatusTip("history-system");
             trace_system_btn->setLabelText(tr("System History Count:"), trace_system_count.toInt());
-
-
-            int x = int(this->subCount % this->number_per_row) * (this->itemwidth + this->cardspace) + 30;
-            int y = int(this->subCount / this->number_per_row) * (this->itemheight + this->cardspace) + 30;
-            int nowHeight = y + this->itemheight;
-            if(nowHeight >= ui->scrollAreaWidgetContents->height())
-                ui->scrollAreaWidgetContents->resize(ui->scrollAreaWidgetContents->width(), nowHeight);
-            trace_system_btn->move(x, y);
-            trace_system_btn->show();
-            cardlist.append(trace_system_btn);
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
+            grid_layout->addWidget(trace_system_btn, subCount/5, subCount%5);
             subCount += 1;
-//            if(grid_layout == NULL)
-//            {
-//                grid_layout = new QGridLayout();
-//            }
-//            grid_layout->addWidget(trace_system_btn, subCount/5, subCount%5);
-//            subCount += 1;
 //            if(columnIndex < 5)
 //            {
 //                grid_layout->addWidget(trace_system_btn, rowIndex, columnIndex);
@@ -797,28 +674,17 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         //kobe
         if(!trace_bash_path.isEmpty())
         {
-            trace_bash_btn = new CleanSubGroup(this, "://res/janitor/trace");
+            trace_bash_btn = new CleanSubGroup(0, "://res/janitor/trace");
             trace_bash_btn->setFocusPolicy(Qt::NoFocus);
             trace_bash_btn->hideCustomButton();
             trace_bash_btn->setStatusTip("history-bash");
             trace_bash_btn->setLabelStringText(tr("Command history size:"), trace_bash_size);
-
-
-            int x = int(this->subCount % this->number_per_row) * (this->itemwidth + this->cardspace) + 30;
-            int y = int(this->subCount / this->number_per_row) * (this->itemheight + this->cardspace) + 30;
-            int nowHeight = y + this->itemheight;
-            if(nowHeight >= ui->scrollAreaWidgetContents->height())
-                ui->scrollAreaWidgetContents->resize(ui->scrollAreaWidgetContents->width(), nowHeight);
-            trace_bash_btn->move(x, y);
-            trace_bash_btn->show();
-            cardlist.append(trace_bash_btn);
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
+            grid_layout->addWidget(trace_bash_btn, subCount/5, subCount%5);
             subCount += 1;
-//            if(grid_layout == NULL)
-//            {
-//                grid_layout = new QGridLayout();
-//            }
-//            grid_layout->addWidget(trace_bash_btn, subCount/5, subCount%5);
-//            subCount += 1;
 //            if(columnIndex < 5)
 //            {
 //                grid_layout->addWidget(trace_bash_btn, rowIndex, columnIndex);
@@ -835,7 +701,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         if(trace_x11_list.length() > 0)
         {
             trace_x11_items = new CleanListWidget(trace_x11_list, this->cur_skin, tr("Debug log Items"));
-            trace_x11_btn = new CleanSubGroup(this, "://res/janitor/debug");
+            trace_x11_btn = new CleanSubGroup(0, "://res/janitor/debug");
             trace_x11_btn->setFocusPolicy(Qt::NoFocus);
             trace_x11_btn->setStatusTip("x11-history");
             trace_x11_btn->setLabelText(tr("Debug log:"), trace_x11_list.length());
@@ -845,22 +711,12 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             connect(trace_x11_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(trace_x11_btn, SIGNAL(spreadStatus(int)), trace_x11_items, SLOT(resetSubCheckbox(int)));
-
-            int x = int(this->subCount % this->number_per_row) * (this->itemwidth + this->cardspace) + 30;
-            int y = int(this->subCount / this->number_per_row) * (this->itemheight + this->cardspace) + 30;
-            int nowHeight = y + this->itemheight;
-            if(nowHeight >= ui->scrollAreaWidgetContents->height())
-                ui->scrollAreaWidgetContents->resize(ui->scrollAreaWidgetContents->width(), nowHeight);
-            trace_x11_btn->move(x, y);
-            trace_x11_btn->show();
-            cardlist.append(trace_x11_btn);
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
+            grid_layout->addWidget(trace_x11_btn, subCount/5, subCount%5);
             subCount += 1;
-//            if(grid_layout == NULL)
-//            {
-//                grid_layout = new QGridLayout();
-//            }
-//            grid_layout->addWidget(trace_x11_btn, subCount/5, subCount%5);
-//            subCount += 1;
 //            if(columnIndex < 5)
 //            {
 //                grid_layout->addWidget(trace_x11_btn, rowIndex, columnIndex);
@@ -881,7 +737,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             package_unneed_items = new CleanListWidget(package_unneed_list, this->cur_skin, tr("Thumbnails Cache Clean Items"));
 //            package_unneed_btn = new CommonCheckBox(0, "://res/cache");
-            package_unneed_btn = new CleanSubGroup(this, "://res/janitor/package");
+            package_unneed_btn = new CleanSubGroup(0, "://res/janitor/package");
             package_unneed_btn->setFocusPolicy(Qt::NoFocus);
 //            package_unneed_btn->setFixedSize(160, 130);
             package_unneed_btn->setStatusTip("package-unneed");
@@ -892,22 +748,12 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             connect(package_unneed_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(package_unneed_btn, SIGNAL(spreadStatus(int)), package_unneed_items, SLOT(resetSubCheckbox(int)));
-
-            int x = int(this->subCount % this->number_per_row) * (this->itemwidth + this->cardspace) + 30;
-            int y = int(this->subCount / this->number_per_row) * (this->itemheight + this->cardspace) + 30;
-            int nowHeight = y + this->itemheight;
-            if(nowHeight >= ui->scrollAreaWidgetContents->height())
-                ui->scrollAreaWidgetContents->resize(ui->scrollAreaWidgetContents->width(), nowHeight);
-            package_unneed_btn->move(x, y);
-            package_unneed_btn->show();
-            cardlist.append(package_unneed_btn);
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
+            grid_layout->addWidget(package_unneed_btn, subCount/5, subCount%5);
             subCount += 1;
-//            if(grid_layout == NULL)
-//            {
-//                grid_layout = new QGridLayout();
-//            }
-//            grid_layout->addWidget(package_unneed_btn, subCount/5, subCount%5);
-//            subCount += 1;
 //            if(columnIndex < 5)
 //            {
 //                grid_layout->addWidget(package_unneed_btn, rowIndex, columnIndex);
@@ -924,7 +770,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             package_oldkernel_items = new CleanListWidget(package_oldkernel_list, this->cur_skin, tr("Thumbnails Cache Clean Items"));
 //            package_oldkernel_btn = new CommonCheckBox(0, "://res/cache");
-            package_oldkernel_btn = new CleanSubGroup(this, "://res/janitor/package");
+            package_oldkernel_btn = new CleanSubGroup(0, "://res/janitor/package");
             package_oldkernel_btn->setFocusPolicy(Qt::NoFocus);
 //            package_oldkernel_btn->setFixedSize(160, 130);
             package_oldkernel_btn->setStatusTip("package-oldkernel");
@@ -935,22 +781,12 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             connect(package_oldkernel_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(package_oldkernel_btn, SIGNAL(spreadStatus(int)), package_oldkernel_items, SLOT(resetSubCheckbox(int)));
-
-            int x = int(this->subCount % this->number_per_row) * (this->itemwidth + this->cardspace) + 30;
-            int y = int(this->subCount / this->number_per_row) * (this->itemheight + this->cardspace) + 30;
-            int nowHeight = y + this->itemheight;
-            if(nowHeight >= ui->scrollAreaWidgetContents->height())
-                ui->scrollAreaWidgetContents->resize(ui->scrollAreaWidgetContents->width(), nowHeight);
-            package_oldkernel_btn->move(x, y);
-            package_oldkernel_btn->show();
-            cardlist.append(package_oldkernel_btn);
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
+            grid_layout->addWidget(package_oldkernel_btn, subCount/5, subCount%5);
             subCount += 1;
-//            if(grid_layout == NULL)
-//            {
-//                grid_layout = new QGridLayout();
-//            }
-//            grid_layout->addWidget(package_oldkernel_btn, subCount/5, subCount%5);
-//            subCount += 1;
 //            if(columnIndex < 5)
 //            {
 //                grid_layout->addWidget(package_oldkernel_btn, rowIndex, columnIndex);
@@ -967,7 +803,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
         {
             package_configfile_items = new CleanListWidget(package_configfile_list, this->cur_skin, tr("Thumbnails Cache Clean Items"));
 //            package_configfile_btn = new CommonCheckBox(0, "://res/cache");
-            package_configfile_btn = new CleanSubGroup(this, "://res/janitor/package");
+            package_configfile_btn = new CleanSubGroup(0, "://res/janitor/package");
             package_configfile_btn->setFocusPolicy(Qt::NoFocus);
 //            package_configfile_btn->setFixedSize(160, 130);
             package_configfile_btn->setStatusTip("package-configfile");
@@ -978,22 +814,12 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
             connect(package_configfile_btn, SIGNAL(customButtonClicked()), this, SLOT(showCustomPage()));
             //点击总按钮后，根据总按钮的状态去改变子checkbox的状态
             connect(package_configfile_btn, SIGNAL(spreadStatus(int)), package_configfile_items, SLOT(resetSubCheckbox(int)));
-
-            int x = int(this->subCount % this->number_per_row) * (this->itemwidth + this->cardspace) + 30;
-            int y = int(this->subCount / this->number_per_row) * (this->itemheight + this->cardspace) + 30;
-            int nowHeight = y + this->itemheight;
-            if(nowHeight >= ui->scrollAreaWidgetContents->height())
-                ui->scrollAreaWidgetContents->resize(ui->scrollAreaWidgetContents->width(), nowHeight);
-            package_configfile_btn->move(x, y);
-            package_configfile_btn->show();
-            cardlist.append(package_configfile_btn);
+            if(grid_layout == NULL)
+            {
+                grid_layout = new QGridLayout();
+            }
+            grid_layout->addWidget(package_configfile_btn, subCount/5, subCount%5);
             subCount += 1;
-//            if(grid_layout == NULL)
-//            {
-//                grid_layout = new QGridLayout();
-//            }
-//            grid_layout->addWidget(package_configfile_btn, subCount/5, subCount%5);
-//            subCount += 1;
 //            if(columnIndex < 5)
 //            {
 //                grid_layout->addWidget(package_configfile_btn, rowIndex, columnIndex);

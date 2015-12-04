@@ -155,7 +155,8 @@ SOURCES += main.cpp\
     upgradedialog.cpp \
     ../component/normalwidget.cpp \
     ../component/normalcard.cpp \
-    shadowwidget.cpp
+    shadowwidget.cpp \
+    ../component/basewidget.cpp
 
 HEADERS  += mainwindow.h \
     titlewidget.h \
@@ -244,7 +245,8 @@ HEADERS  += mainwindow.h \
     upgradedialog.h \
     ../component/normalwidget.h \
     ../component/normalcard.h \
-    shadowwidget.h
+    shadowwidget.h \
+    ../component/basewidget.h
 
 FORMS    += \
     ../component/quibo.ui \
