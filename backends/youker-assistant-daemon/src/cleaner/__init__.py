@@ -262,6 +262,7 @@ class CleanTheHistory():
     #                sesdaemon.browser_status_by_history('cruning')
     #        else:
     #            sesdaemon.history_transmit_complete('cuninstall')
+
     def get_history_crufts(self, flag):
         homedir = common.return_homedir_sesdaemon()
         objhg = historyclean.HistoryClean(homedir)
