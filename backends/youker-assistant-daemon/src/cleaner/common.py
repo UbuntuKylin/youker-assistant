@@ -44,7 +44,7 @@ def get_dir_size(path):
 
 def process_pid(pname):
     pid = None
-    processinfo = psutil.get_process_list()
+    processinfo = psutil.process_iter()
     for one in processinfo:
         one_str = str(one)
         patt = re.compile(pname, re.I)

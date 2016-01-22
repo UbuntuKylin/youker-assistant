@@ -270,12 +270,18 @@ class SessionDaemon(dbus.service.Object):
             self.touchpad_settings.connect("changed::touchpad-enabled", self.gio_settings_monitor, BOOL_TYPE)
             self.touchpad_settings.connect("changed::horiz-scroll-enabled", self.gio_settings_monitor, BOOL_TYPE)
         else:
-            release_info = platform.platform()
-            if "15.10-wily" not in release_info:
+            # 20160119
+            if "org.gnome.settings-daemon.peripherals.touchpad" in gio.Settings.list_schemas():
                 self.touchpad_settings = gio.Settings.new("org.gnome.settings-daemon.peripherals.touchpad")
                 self.touchpad_settings.connect("changed::scroll-method", self.gio_settings_monitor, STRING_TYPE)
                 self.touchpad_settings.connect("changed::touchpad-enabled", self.gio_settings_monitor, BOOL_TYPE)
                 self.touchpad_settings.connect("changed::horiz-scroll-enabled", self.gio_settings_monitor, BOOL_TYPE)
+#            release_info = platform.platform()
+#            if "15.10-wily" not in release_info:
+#                self.touchpad_settings = gio.Settings.new("org.gnome.settings-daemon.peripherals.touchpad")
+#                self.touchpad_settings.connect("changed::scroll-method", self.gio_settings_monitor, STRING_TYPE)
+#                self.touchpad_settings.connect("changed::touchpad-enabled", self.gio_settings_monitor, BOOL_TYPE)
+#                self.touchpad_settings.connect("changed::horiz-scroll-enabled", self.gio_settings_monitor, BOOL_TYPE)
         if self.desktop == "Unity":
             self.canonical_interface_settings = gio.Settings.new("com.canonical.desktop.interface")
             self.canonical_interface_settings.connect("changed::scrollbar-mode", self.gio_settings_monitor, STRING_TYPE)

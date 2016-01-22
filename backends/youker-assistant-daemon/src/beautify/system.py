@@ -19,11 +19,12 @@
 import os
 import gsettings
 import platform
+from gi.repository import Gio as gio
 
 class System():
 
     desktop = None
-    wily = False
+    touchpad_remove = False
 
     def __init__(self, sysdaemon):
         self.sysdaemon = sysdaemon
@@ -31,8 +32,13 @@ class System():
         if self.desktop is None:
              self.desktop = os.getenv('XDG_SESSION_DESKTOP')
         release_info = platform.platform()
-        if "15.10-wily" in release_info:
-            self.wily = True
+        # 20160119
+        if "org.gnome.settings-daemon.peripherals.touchpad" in gio.Settings.list_schemas():
+            self.touchpad_remove = False
+        else:
+            self.touchpad_remove = True
+#        if "15.10-wily" in release_info:
+#            self.touchpad_remove = True
 
     # -----------------默认值-----------------
     # Get Default Value
@@ -87,7 +93,7 @@ class System():
                 'boolean', flag)
         else:
             # kobe1510
-            if self.wily:
+            if self.touchpad_remove:
                 return False
             else:
                 return gsettings.set('org.gnome.settings-daemon.peripherals.touchpad',
@@ -102,7 +108,7 @@ class System():
                 None, 'touchpad-enabled', 'boolean')
         else:
             # kobe1510
-            if self.wily:
+            if self.touchpad_remove:
                 return False
             else:
                 return gsettings.get('org.gnome.settings-daemon.peripherals.touchpad',
@@ -110,7 +116,7 @@ class System():
 
     def set_touchscrolling_mode_disabled(self):
         # kobe1510
-        if self.wily:
+        if self.touchpad_remove:
             return gsettings.set('org.gnome.desktop.peripherals.touchpad',
                 None,
                 'scroll-method',
@@ -124,7 +130,7 @@ class System():
     # set touch scrolling mode edge
     def set_touchscrolling_mode_edge(self):
         # kobe1510
-        if self.wily:
+        if self.touchpad_remove:
             return gsettings.set('org.gnome.desktop.peripherals.touchpad',
                 None,
                 'scroll-method',
@@ -138,7 +144,7 @@ class System():
     # set touch scrolling mode two-finger
     def set_touchscrolling_mode_twofinger(self):
         # kobe1510
-        if self.wily:
+        if self.touchpad_remove:
             return gsettings.set('org.gnome.desktop.peripherals.touchpad',
                 None,
                 'scroll-method',
@@ -152,7 +158,7 @@ class System():
     # get touchpad scrolling mode
     def get_touchscrolling_mode(self):
         # kobe1510
-        if self.wily:
+        if self.touchpad_remove:
             return gsettings.get('org.gnome.desktop.peripherals.touchpad',
                 None, 'scroll-method', 'string')
         else:
@@ -180,7 +186,7 @@ class System():
                 'boolean', flag)
         else:
             # kobe1510
-            if self.wily:
+            if self.touchpad_remove:
                 return False
             else:
                 return gsettings.set('org.gnome.settings-daemon.peripherals.touchpad',
@@ -195,7 +201,7 @@ class System():
                 None, 'horiz-scroll-enabled', 'boolean')
         else:
             # kobe1510
-            if self.wily:
+            if self.touchpad_remove:
                 return False
             else:
                 return gsettings.get('org.gnome.settings-daemon.peripherals.touchpad',

@@ -2,7 +2,7 @@ TEMPLATE = subdirs
 SUBDIRS = \
     mainui \
     shredmanager \
-    processmanager \
+#    processmanager \
     backends
 
 TRANSLATIONS += \

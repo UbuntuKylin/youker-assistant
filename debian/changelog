@@ -1,3 +1,12 @@
+youker-assistant (2.0.6) xenial; urgency=low
+
+  * Deal with org.gnome.settings-daemon.peripherals.touchpad.
+  * Replace psutil.get_process_list with psutil.process_iter.
+  * Optimized scan display interface.
+  * Remove processmanager.
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Fri, 22 Jan 2016 09:24:04 +0800
+
 youker-assistant (2.0.5) wily; urgency=low
 
   * Distinguish system structure.
