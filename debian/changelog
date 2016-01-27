@@ -1,4 +1,4 @@
-youker-assistant (2.0.6) xenial; urgency=low
+youker-assistant (2.0.6-0ubuntu1) xenial; urgency=low
 
   * Deal with org.gnome.settings-daemon.peripherals.touchpad.
   * Replace psutil.get_process_list with psutil.process_iter.
