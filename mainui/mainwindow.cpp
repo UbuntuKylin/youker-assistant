@@ -38,7 +38,7 @@ MainWindow::MainWindow(QString cur_arch, QWidget *parent) :
 //    this->setAttribute(Qt::WA_TranslucentBackground);
 //    this->setStyleSheet("QMainWindow{border: 1px solid gray;border-radius:2px}");
     this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
-    version = "V2.0.5";
+    version = "V2.0.7";
     status = HOMEPAGE;
     statusFlag = false;
 

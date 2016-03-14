@@ -22,6 +22,9 @@ Package: youker-assistant
 Architecture: any
 Depends: python-dbus,
          python-psutil,
+         python-lxml,
+         python-xdg,
+         python-piston-mini-client,
          python-compizconfig,
          ${misc:Depends},
          ${python:Depends},
