@@ -147,6 +147,6 @@ void AutoStart::onMinButtonClicked()
 void AutoStart::initTitleBar()
 {
     title_bar->setTitleWidth(500);
-    title_bar->setTitleName(tr("Auto Start"));
+    title_bar->setTitleName(tr("Boot Manager"));
     title_bar->setTitleBackgound(":/background/res/skin/1.png");
 }

@@ -95,7 +95,7 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <location filename="../autostartwidget.cpp" line="248"/>
-        <source>Auto Start</source>
+        <source>Boot Manager</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -191,7 +191,7 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cameramanager.cpp" line="295"/>
+        <location filename="../cameramanager.cpp" line="301"/>
         <source>Camera</source>
         <translation type="unfinished"></translation>
     </message>
@@ -212,7 +212,7 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>CleanSubGroup</name>
     <message>
-        <location filename="../../component/cleansubgroup.cpp" line="51"/>
+        <location filename="../../component/cleansubgroup.cpp" line="52"/>
         <source>Custom</source>
         <translation type="unfinished"></translation>
     </message>
@@ -367,122 +367,122 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="354"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="373"/>
         <source>Apt Cache Clean Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="361"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="380"/>
         <source>Apt Cache count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="388"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="458"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="417"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="509"/>
         <source>Software Cache Clean Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="395"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="424"/>
         <source>Software Cache count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="422"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="491"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="738"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="771"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="804"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="462"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="552"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="882"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="925"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="968"/>
         <source>Thumbnails Cache Clean Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="429"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="469"/>
         <source>Thumbnails Cache Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="464"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="515"/>
         <source>Firefox Cache Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="497"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="558"/>
         <source>Chromium Cache Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="528"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="599"/>
         <source>Firefox Cookies Clean Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="534"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="605"/>
         <source>Firefox Cookies Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="561"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="643"/>
         <source>Chromium Cookies Clean Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="567"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="649"/>
         <source>Chromium Cookies Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="604"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="696"/>
         <source>Firefox History Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="629"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="731"/>
         <source>Chromium History Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="655"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="767"/>
         <source>System History Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="681"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="804"/>
         <source>Command history size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="703"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="837"/>
         <source>Debug log Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="707"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="841"/>
         <source>Debug log:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="744"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="888"/>
         <source>Package Unneed Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="777"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="931"/>
         <source>Package oldkernel Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="810"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="974"/>
         <source>Package configfile Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="933"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1107"/>
         <source>No garbage </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="972"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1146"/>
         <source>Clean args is empty!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1932,7 +1932,7 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="31"/>
+        <location filename="../mainwindow.cpp" line="34"/>
         <source>Youker Assistant</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2125,93 +2125,6 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     <message>
         <location filename="../../setting/panelwidget.cpp" line="368"/>
         <source>Show icon</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ProcessDialog</name>
-    <message>
-        <location filename="../../processmanager/processdialog.cpp" line="107"/>
-        <location filename="../../processmanager/processdialog.cpp" line="188"/>
-        <source>Process Manager</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../processmanager/processdialog.cpp" line="108"/>
-        <source>Help you learn more about the program running on the system.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../processmanager/processdialog.cpp" line="109"/>
-        <source>Kill Process</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../processmanager/processdialog.cpp" line="218"/>
-        <source>Command Line</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../processmanager/processdialog.cpp" line="218"/>
-        <source>User</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../processmanager/processdialog.cpp" line="218"/>
-        <source>ID</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../processmanager/processdialog.cpp" line="218"/>
-        <source>Priority</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../processmanager/processdialog.cpp" line="218"/>
-        <source>Status</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../processmanager/processdialog.cpp" line="218"/>
-        <source>% Memory</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../processmanager/processdialog.cpp" line="218"/>
-        <source>% CPU</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../processmanager/processdialog.cpp" line="218"/>
-        <source>CPU Time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../processmanager/processdialog.cpp" line="218"/>
-        <source>Started</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../processmanager/processdialog.cpp" line="324"/>
-        <source>kill process success</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../processmanager/processdialog.cpp" line="327"/>
-        <source>kill process failed</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ProcessManager</name>
-    <message>
-        <location filename="../../processmanager/processmanager.cpp" line="40"/>
-        <source>Process Manager</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../processmanager/processmanager.cpp" line="45"/>
-        <source>Help user to kill process</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2569,47 +2482,47 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>TouchpadWidget</name>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="180"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="192"/>
         <source>Enable touchpad</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="181"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="193"/>
         <source>Enable horizontal scrolling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="182"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="194"/>
         <source>Scrollbar type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="183"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="195"/>
         <source>Touchpad scrolling mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="184"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="196"/>
         <source>Features Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="185"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="197"/>
         <source>Standard Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="186"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="198"/>
         <source>Disabled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="187"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="199"/>
         <source>Edge Scrolling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="188"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="200"/>
         <source>Two-finger Scrolling</source>
         <translation type="unfinished"></translation>
     </message>
