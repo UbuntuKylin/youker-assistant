@@ -218,8 +218,12 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../autostartwidget.cpp" line="248"/>
+        <source>Boot Manager</source>
+        <translation>启动项管理</translation>
+    </message>
+    <message>
         <source>Auto Start</source>
-        <translation>自启动</translation>
+        <translation type="obsolete">自启动</translation>
     </message>
     <message>
         <location filename="../autostartwidget.ui" line="14"/>
@@ -396,7 +400,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">摄像头出问题了， &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; 刷新&lt;/a&gt; 去召唤它～</translation>
     </message>
     <message>
-        <location filename="../cameramanager.cpp" line="295"/>
+        <location filename="../cameramanager.cpp" line="301"/>
         <source>Camera</source>
         <translation>摄像头</translation>
     </message>
@@ -421,7 +425,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CleanSubGroup</name>
     <message>
-        <location filename="../../component/cleansubgroup.cpp" line="51"/>
+        <location filename="../../component/cleansubgroup.cpp" line="52"/>
         <source>Custom</source>
         <translation>自定义</translation>
     </message>
@@ -603,122 +607,122 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CleanerDetailWidget</name>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="354"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="373"/>
         <source>Apt Cache Clean Items</source>
         <translation>Apt缓存清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="361"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="380"/>
         <source>Apt Cache count:</source>
         <translation>Apt缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="388"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="458"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="417"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="509"/>
         <source>Software Cache Clean Items</source>
         <translation>软件中心缓存清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="395"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="424"/>
         <source>Software Cache count:</source>
         <translation>软件中心缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="422"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="491"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="738"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="771"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="804"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="462"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="552"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="882"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="925"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="968"/>
         <source>Thumbnails Cache Clean Items</source>
         <translation>缩略图缓存清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="429"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="469"/>
         <source>Thumbnails Cache Count:</source>
         <translation>缩略图缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="464"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="515"/>
         <source>Firefox Cache Count:</source>
         <translation>Firefox浏览器缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="497"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="558"/>
         <source>Chromium Cache Count:</source>
         <translation>Chromium浏览器缓存总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="528"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="599"/>
         <source>Firefox Cookies Clean Items</source>
         <translation>Firefox Cookies 清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="534"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="605"/>
         <source>Firefox Cookies Count:</source>
         <translation>Firefox Cookies总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="561"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="643"/>
         <source>Chromium Cookies Clean Items</source>
         <translation>Chromium Cookies 清理项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="567"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="649"/>
         <source>Chromium Cookies Count:</source>
         <translation>Chromium Cookies总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="604"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="696"/>
         <source>Firefox History Count:</source>
         <translation>Firefox 历史记录总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="629"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="731"/>
         <source>Chromium History Count:</source>
         <translation>Chromium历史记录总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="655"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="767"/>
         <source>System History Count:</source>
         <translation>系统历史痕迹总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="681"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="804"/>
         <source>Command history size:</source>
         <translation>命令历史记录大小：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="703"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="837"/>
         <source>Debug log Items</source>
         <translation>调试日志项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="707"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="841"/>
         <source>Debug log:</source>
         <translation>调试日志：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="744"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="888"/>
         <source>Package Unneed Count:</source>
         <translation>不需要的包总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="777"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="931"/>
         <source>Package oldkernel Count:</source>
         <translation>旧内核包总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="810"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="974"/>
         <source>Package configfile Count:</source>
         <translation>包配置文件总数：</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="933"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1107"/>
         <source>No garbage </source>
         <translation>没有扫描到垃圾</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="972"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1146"/>
         <source>Clean args is empty!</source>
         <translation>清理参数为空！</translation>
     </message>
@@ -2217,7 +2221,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="31"/>
+        <location filename="../mainwindow.cpp" line="34"/>
         <source>Youker Assistant</source>
         <translation>优客助手</translation>
     </message>
@@ -2424,89 +2428,67 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ProcessDialog</name>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="107"/>
-        <location filename="../../processmanager/processdialog.cpp" line="188"/>
         <source>Process Manager</source>
-        <translation>进程管理器</translation>
+        <translation type="obsolete">进程管理器</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="108"/>
         <source>Help you learn more about the program running on the system.</source>
-        <translation>帮助您了解和管理系统上运行的进程。</translation>
+        <translation type="obsolete">帮助您了解和管理系统上运行的进程。</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="109"/>
         <source>Kill Process</source>
-        <translation>杀进程</translation>
+        <translation type="obsolete">杀进程</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>Command Line</source>
-        <translation>命令行</translation>
+        <translation type="obsolete">命令行</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>User</source>
-        <translation>用户</translation>
+        <translation type="obsolete">用户</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>ID</source>
-        <translation>ID</translation>
+        <translation type="obsolete">ID</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>Priority</source>
-        <translation>优先级</translation>
+        <translation type="obsolete">优先级</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>Status</source>
-        <translation>状态</translation>
+        <translation type="obsolete">状态</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>% Memory</source>
-        <translation>% 内存</translation>
+        <translation type="obsolete">% 内存</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>% CPU</source>
-        <translation>% CPU</translation>
+        <translation type="obsolete">% CPU</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>CPU Time</source>
-        <translation>CPU时间</translation>
+        <translation type="obsolete">CPU时间</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="218"/>
         <source>Started</source>
-        <translation>开始于</translation>
+        <translation type="obsolete">开始于</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="324"/>
         <source>kill process success</source>
-        <translation>杀进程成功</translation>
+        <translation type="obsolete">杀进程成功</translation>
     </message>
     <message>
-        <location filename="../../processmanager/processdialog.cpp" line="327"/>
         <source>kill process failed</source>
-        <translation>杀进程失败</translation>
+        <translation type="obsolete">杀进程失败</translation>
     </message>
 </context>
 <context>
     <name>ProcessManager</name>
     <message>
-        <location filename="../../processmanager/processmanager.cpp" line="40"/>
         <source>Process Manager</source>
-        <translation>进程管理器</translation>
-    </message>
-    <message>
-        <location filename="../../processmanager/processmanager.cpp" line="45"/>
-        <source>Help user to kill process</source>
-        <translatorcomment>帮助用户杀进程</translatorcomment>
-        <translation></translation>
+        <translation type="obsolete">进程管理器</translation>
     </message>
 </context>
 <context>
@@ -2948,17 +2930,17 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>TouchpadWidget</name>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="180"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="192"/>
         <source>Enable touchpad</source>
         <translation>启用/禁用触摸板</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="181"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="193"/>
         <source>Enable horizontal scrolling</source>
         <translation>触摸板横向滚动</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="182"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="194"/>
         <source>Scrollbar type</source>
         <translation>滚动条类型</translation>
     </message>
@@ -2967,32 +2949,32 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">触摸板滚动触发方式</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="183"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="195"/>
         <source>Touchpad scrolling mode</source>
         <translation>触摸板滚动模式</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="184"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="196"/>
         <source>Features Type</source>
         <translation>特色类型</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="185"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="197"/>
         <source>Standard Type</source>
         <translation>标准类型</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="186"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="198"/>
         <source>Disabled</source>
         <translation>禁用</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="187"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="199"/>
         <source>Edge Scrolling</source>
         <translation>边界滚动</translation>
     </message>
     <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="188"/>
+        <location filename="../../setting/touchpadwidget.cpp" line="200"/>
         <source>Two-finger Scrolling</source>
         <translation>双指滚动</translation>
     </message>

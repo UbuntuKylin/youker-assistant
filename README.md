@@ -12,3 +12,9 @@ debhelper (>= 9),python-dev,python-lxml,python-piston-mini-client,python-xdg,lib
 Launchpad
 =======
 https://launchpad.net/youker-assistant
+
+Internationalization
+=======
+lupdate youker-assistant.pro
+linguist youker-assistant_zh_CN.ts
+lrelease youker-assistant.pro

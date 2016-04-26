@@ -32,7 +32,7 @@ INT_TYPE = 2
 DOUBLE_TYPE = 3
 STRING_TYPE = 4
 
-VERSION = "2.0.5"
+VERSION = "2.0.7"
 str_agent = []
 LEN_AGENT = 10
 
