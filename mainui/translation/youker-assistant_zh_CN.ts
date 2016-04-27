@@ -2254,7 +2254,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="34"/>
+        <location filename="../mainwindow.cpp" line="48"/>
+        <source>Kylin Assistant</source>
+        <translation>麒麟助手</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="53"/>
         <source>Youker Assistant</source>
         <translation>优客助手</translation>
     </message>

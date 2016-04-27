@@ -1960,7 +1960,12 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="34"/>
+        <location filename="../mainwindow.cpp" line="48"/>
+        <source>Kylin Assistant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="53"/>
         <source>Youker Assistant</source>
         <translation type="unfinished"></translation>
     </message>

@@ -81,7 +81,7 @@ PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_
     icon_switcher = new KylinSwitcher();
     places_switcher = new KylinSwitcher();
 
-    if (this->desktop == "mate") {
+    if (this->desktop == "mate" || this->desktop == "MATE") {
         blur_label->hide();
         transparency_label->hide();
         date_format_label->hide();
@@ -376,7 +376,7 @@ bool PanelWidget::getStatus()
 
 void PanelWidget::initData()
 {
-    if(this->desktop == "mate") {
+    if(this->desktop == "mate" || this->desktop == "MATE") {
         app_switcher->switchedOn = sessionproxy->get_show_apps_qt();
         desktop_switcher->switchedOn = sessionproxy->get_show_desktop_qt();
         icon_switcher->switchedOn = sessionproxy->get_show_icon_qt();

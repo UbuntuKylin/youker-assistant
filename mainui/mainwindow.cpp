@@ -27,11 +27,35 @@
 MainWindow::MainWindow(QString cur_arch, QWidget *parent) :
     QDialog(parent), arch(cur_arch)/*skin_center(parent),*/
 {
-//    this->resize(900, 600);
-    this->setFixedSize(900, 600);
-    this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowMinimizeButtonHint | Qt::WindowSystemMenuHint);
-//    this->setAttribute(Qt::WA_TranslucentBackground, true);
-    this->setWindowTitle(tr("Youker Assistant"));
+    this->osName = accessOSName();
+//    char *dsk;
+//    dsk = getenv("XDG_CURRENT_DESKTOP");
+
+
+    this->desktop = qgetenv("XDG_CURRENT_DESKTOP");
+    if(this->desktop.isEmpty())
+        this->desktop = qgetenv("XDG_SESSION_DESKTOP");
+//    qDebug() << this->desktop;
+//    qDebug() << QString::compare(this->desktop, "mate", Qt::CaseInsensitive/*Qt::CaseInsensitive*/);
+
+//    this->osName = "Kylin";
+//    if (this->arch == "aarch64" || this->osName == "Kylin") {
+    if (this->desktop == "MATE" || this->desktop == "mate") {
+        this->isTopLevel();
+        this->resize(900, 600);
+        this->setAutoFillBackground(true);
+        this->setWindowFlags(Qt::FramelessWindowHint | Qt::Widget);
+        this->setWindowTitle(tr("Kylin Assistant"));
+    }
+    else {
+        this->setFixedSize(900, 600);
+        this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowMinimizeButtonHint | Qt::WindowSystemMenuHint);
+        this->setWindowTitle(tr("Youker Assistant"));
+    }
+
+//    this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowMinimizeButtonHint | Qt::WindowSystemMenuHint);
+////    this->setAttribute(Qt::WA_TranslucentBackground, true);
+
     this->setWindowIcon(QIcon(":/res/youker-assistant.png"));
     this->setWindowOpacity(1);
 //    this->setWindowFlags(Qt::FramelessWindowHint | Qt::Widget);
@@ -42,7 +66,7 @@ MainWindow::MainWindow(QString cur_arch, QWidget *parent) :
     status = HOMEPAGE;
     statusFlag = false;
 
-    this->osName = accessOSName();
+
 
     mSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
     mSettings->setIniCodec("UTF-8");
@@ -596,7 +620,7 @@ void MainWindow::startDbusDaemon()
 {
     sessioninterface = new SessionDispatcher(this);
     systeminterface = new SystemDispatcher(this);
-    this->desktop = sessioninterface->access_current_desktop_qt();
+//    this->desktop = sessioninterface->access_current_desktop_qt();
 //    this->osName = systeminterface->get_os_name_qt();
 //    this->machine = sessioninterface->access_current_machine_qt();//x86_64
     this->battery = sessioninterface->judge_power_is_exists_qt();

@@ -49,7 +49,7 @@ class Sound:
             raise NotImplemented
     # ----------------------------------
     def set_input_feedback_sounds_enable(self, flag):
-        if self.desktop == "mate":
+        if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.set('org.mate.sound',
                 None,
                 'input-feedback-sounds',
@@ -61,7 +61,7 @@ class Sound:
                 'boolean', flag)
 
     def get_input_feedback_sounds_enable(self):
-        if self.desktop == "mate":
+        if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.get('org.mate.sound',
                 None, 'input-feedback-sounds', 'boolean')
         else:
@@ -69,7 +69,7 @@ class Sound:
                 None, 'input-feedback-sounds', 'boolean')
 
     def set_sound_event_enable(self, flag):
-        if self.desktop == "mate":
+        if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.set('org.mate.sound',
                 None,
                 'event-sounds',
@@ -81,7 +81,7 @@ class Sound:
                 'boolean', flag)
 
     def get_sound_event_enable(self):
-        if self.desktop == "mate":
+        if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.get('org.mate.sound',
                 None, 'event-sounds', 'boolean')
         else:
@@ -135,7 +135,7 @@ class Sound:
 
     # get current sound theme
     def get_sound_theme(self):
-        if self.desktop == "mate":
+        if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.get('org.mate.sound',
                 None, 'theme-name', 'string')
         else:
@@ -144,7 +144,7 @@ class Sound:
 
     # set sound theme
     def set_sound_theme(self, theme):
-        if self.desktop == "mate":
+        if self.desktop == "mate" or self.desktop == "MATE":
             gstheme = gsettings.get_schema('org.mate.sound')
             gstheme.set_string('theme-name',theme)
         else:

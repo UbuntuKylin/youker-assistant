@@ -144,7 +144,7 @@ void MouseWidget::initData()
         big_size->setChecked(true);
         small_size->setChecked(false);
     }
-//    if (this->desktop == "mate")
+//    if (this->desktop == "mate" || this->desktop == "MATE")
 //    {
 //        if(default_value == 18 || default_value == 24) {
 //            small_size->setChecked(true);
@@ -231,7 +231,7 @@ void MouseWidget::setRadioButtonRowStatus(/*bool status*/)
     QString obj_name = pbtn->objectName();
     if(obj_name == "smallradio")
     {
-        if (this->desktop == "mate")
+        if (this->desktop == "mate" || this->desktop == "MATE")
             sessionproxy->set_cursor_size_qt(18);
         else
             sessionproxy->set_cursor_size_qt(24);

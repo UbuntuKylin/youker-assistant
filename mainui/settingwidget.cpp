@@ -528,7 +528,7 @@ void SettingWidget::initDesktopWidget() {
     dot6->setPixmap(QPixmap("://res/dot.png"));
     dot7->setPixmap(QPixmap("://res/dot.png"));
     dot8->setPixmap(QPixmap("://res/dot.png"));
-    if (this->desktop == "mate") {
+    if (this->desktop == "mate" || this->desktop == "MATE") {
         launcher_button->setText(tr("Panel"));//面板
         panel_button->setText(tr("StartMenu"));//启动菜单
     }

@@ -45,7 +45,7 @@ IconWidget::IconWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_de
     recycle_switcher = new KylinSwitcher();
     disk_switcher = new KylinSwitcher();
 
-    if (this->desktop != "mate")
+    if (this->desktop != "mate" && this->desktop != "MATE")
     {
         computer_label->hide();
         computer_switcher->hide();
@@ -245,7 +245,7 @@ void IconWidget::initData()
 //    disk_switcher->setSwitchStatus(sessionproxy->get_show_devices_qt());
 //    show_switcher->switchedOn = sessionproxy->get_show_desktop_icons_qt();
 
-    if (this->desktop == "mate")
+    if (this->desktop == "mate" || this->desktop == "MATE")
     {
         computer_switcher->switchedOn = sessionproxy->get_show_computer_qt();
     }

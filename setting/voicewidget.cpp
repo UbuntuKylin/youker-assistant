@@ -44,7 +44,7 @@ VoiceWidget::VoiceWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispa
     event_label->setFixedWidth(180);
     feedback_label->setFixedWidth(180);
 
-    if (this->desktop == "mate")
+    if (this->desktop == "mate" || this->desktop == "MATE")
     {
         tip_label->hide();
         tip_switcher->hide();
@@ -162,7 +162,7 @@ void VoiceWidget::initData()
     }
     theme_combo->setCurrentIndex(initIndex);
 
-    if (desktop != "mate")
+    if (desktop != "mate" && desktop != "MATE")
     {
         tip_switcher->switchedOn = sessionproxy->get_login_music_enable_qt();
     }

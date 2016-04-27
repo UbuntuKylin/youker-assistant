@@ -44,133 +44,134 @@ class CloudConfig(threading.Thread):
 
     # Save system configuration
     def save_configuration_to_local_file(self, file_name):
-        self.conf.read(file_name)
-        sections = self.conf.sections()
+        pass
+#        self.conf.read(file_name)
+#        sections = self.conf.sections()
 
-    # 桌面图标显示控制-----------------------------
-        self.write_conf(sections, 'show_desktop_icons',
-            'org.gnome.desktop.background',
-            None, 'show-desktop-icons', 'boolean')
-        self.write_conf(sections, 'show_homefolder',
-            'org.gnome.nautilus.desktop',
-            None, 'home-icon-visible', 'boolean')
-        self.write_conf(sections, 'show_network',
-            'org.gnome.nautilus.desktop',
-            None, 'network-icon-visible', 'boolean')
-        self.write_conf(sections, 'show_trash',
-            'org.gnome.nautilus.desktop',
-            None, 'trash-icon-visible', 'boolean')
-        self.write_conf(sections, 'show_devices',
-            'org.gnome.nautilus.desktop',
-            None, 'volumes-visible', 'boolean')
+#    # 桌面图标显示控制-----------------------------
+#        self.write_conf(sections, 'show_desktop_icons',
+#            'org.gnome.desktop.background',
+#            None, 'show-desktop-icons', 'boolean')
+#        self.write_conf(sections, 'show_homefolder',
+#            'org.gnome.nautilus.desktop',
+#            None, 'home-icon-visible', 'boolean')
+#        self.write_conf(sections, 'show_network',
+#            'org.gnome.nautilus.desktop',
+#            None, 'network-icon-visible', 'boolean')
+#        self.write_conf(sections, 'show_trash',
+#            'org.gnome.nautilus.desktop',
+#            None, 'trash-icon-visible', 'boolean')
+#        self.write_conf(sections, 'show_devices',
+#            'org.gnome.nautilus.desktop',
+#            None, 'volumes-visible', 'boolean')
 
-    # 启动器设置----------------------------------
-        self.write_conf(sections, 'launcher_autohide',
-            'org.compiz.unityshell',
-            '/org/compiz/profiles/unity/plugins/unityshell/',
-            'launcher-hide-mode', 'int')
-        self.write_conf(sections, 'launcher_icon_size',
-            'org.compiz.unityshell',
-            '/org/compiz/profiles/unity/plugins/unityshell/',
-            'icon-size', 'int')
+#    # 启动器设置----------------------------------
+#        self.write_conf(sections, 'launcher_autohide',
+#            'org.compiz.unityshell',
+#            '/org/compiz/profiles/unity/plugins/unityshell/',
+#            'launcher-hide-mode', 'int')
+#        self.write_conf(sections, 'launcher_icon_size',
+#            'org.compiz.unityshell',
+#            '/org/compiz/profiles/unity/plugins/unityshell/',
+#            'icon-size', 'int')
 
-    # 触摸板设置-----------------------------------
-#        self.write_conf(sections, 'touchpad_enable',
-#            'org.gnome.settings-daemon.peripherals.touchpad',
-#            None, 'touchpad-enabled', 'boolean')
-#        self.write_conf(sections, 'touch_horizontal_scrolling',
-#            'org.gnome.settings-daemon.peripherals.touchpad',
-#            None, 'horiz-scroll-enabled', 'boolean')
-#        self.write_conf(sections, 'type_scroll_bar',
-#            'com.canonical.desktop.interface',
-#            None, 'scrollbar-mode', 'string')
-#        self.write_conf(sections, 'touchpad_scrolling_mode',
-#            'org.gnome.settings-daemon.peripherals.touchpad',
-#            None, 'scroll-method', 'string')
+#    # 触摸板设置-----------------------------------
+##        self.write_conf(sections, 'touchpad_enable',
+##            'org.gnome.settings-daemon.peripherals.touchpad',
+##            None, 'touchpad-enabled', 'boolean')
+##        self.write_conf(sections, 'touch_horizontal_scrolling',
+##            'org.gnome.settings-daemon.peripherals.touchpad',
+##            None, 'horiz-scroll-enabled', 'boolean')
+##        self.write_conf(sections, 'type_scroll_bar',
+##            'com.canonical.desktop.interface',
+##            None, 'scrollbar-mode', 'string')
+##        self.write_conf(sections, 'touchpad_scrolling_mode',
+##            'org.gnome.settings-daemon.peripherals.touchpad',
+##            None, 'scroll-method', 'string')
 
-    # 字体设置-------------------------------------
-        self.write_conf(sections, 'default_font',
-            'org.gnome.desktop.interface',
-            None, 'font-name', 'string')
-        self.write_conf(sections, 'desktop_font',
-            'org.gnome.nautilus.desktop',
-            None, 'font', 'string')
-        self.write_conf(sections, 'document_font',
-            'org.gnome.desktop.interface',
-            None, 'document-font-name', 'string')
-        self.write_conf(sections, 'monospace_font',
-            'org.gnome.desktop.interface',
-            None, 'monospace-font-name', 'string')
-        self.write_conf(sections, 'window_title_font',
-            'org.gnome.desktop.wm.preferences',
-            None, 'titlebar-font', 'string')
-        self.write_conf(sections, 'font_zoom',
-            'org.gnome.desktop.interface',
-            None, 'text-scaling-factor', 'double')
-        self.write_conf(sections, 'font_hinting',
-            'org.gnome.settings-daemon.plugins.xsettings',
-            None, 'hinting', 'string')
-        self.write_conf(sections, 'font_antialiasing',
-            'org.gnome.settings-daemon.plugins.xsettings',
-            None, 'antialiasing', 'string')
-
-    # 主题设置-------------------------------------
-        #self.write_conf(sections, 'gtk_theme',
-        #    'org.gnome.desktop.interface',
-        #    None, 'gtk-theme', 'string')
-#        self.write_conf(sections, 'window_theme',
+#    # 字体设置-------------------------------------
+#        self.write_conf(sections, 'default_font',
+#            'org.gnome.desktop.interface',
+#            None, 'font-name', 'string')
+#        self.write_conf(sections, 'desktop_font',
+#            'org.gnome.nautilus.desktop',
+#            None, 'font', 'string')
+#        self.write_conf(sections, 'document_font',
+#            'org.gnome.desktop.interface',
+#            None, 'document-font-name', 'string')
+#        self.write_conf(sections, 'monospace_font',
+#            'org.gnome.desktop.interface',
+#            None, 'monospace-font-name', 'string')
+#        self.write_conf(sections, 'window_title_font',
 #            'org.gnome.desktop.wm.preferences',
-#            None, 'theme', 'string')
-        self.write_conf(sections, 'icon_theme',
-            'org.gnome.desktop.interface',
-            None, 'icon-theme', 'string')
+#            None, 'titlebar-font', 'string')
+#        self.write_conf(sections, 'font_zoom',
+#            'org.gnome.desktop.interface',
+#            None, 'text-scaling-factor', 'double')
+#        self.write_conf(sections, 'font_hinting',
+#            'org.gnome.settings-daemon.plugins.xsettings',
+#            None, 'hinting', 'string')
+#        self.write_conf(sections, 'font_antialiasing',
+#            'org.gnome.settings-daemon.plugins.xsettings',
+#            None, 'antialiasing', 'string')
 
-    # 窗口设置--------------------------------------
-        self.write_conf(sections, 'window_button',
-            'org.gnome.desktop.wm.preferences',
-            None, 'button-layout', 'string')
-        self.write_conf(sections, 'menus_have_icons',
-            'org.gnome.desktop.interface',
-            None, 'menus-have-icons', 'boolean')
-        self.write_conf(sections, 'titlebar_wheel',
-            'org.compiz.gwd',
-            None, 'mouse-wheel-action', 'string')
-        self.write_conf(sections, 'titlebar_double',
-            'org.gnome.desktop.wm.preferences',
-            None, 'action-double-click-titlebar', 'string')
-        self.write_conf(sections, 'titlebar_middle',
-            'org.gnome.desktop.wm.preferences',
-            None, 'action-middle-click-titlebar', 'string')
-        self.write_conf(sections, 'titlebar_right',
-            'org.gnome.desktop.wm.preferences',
-            None, 'action-right-click-titlebar', 'string')
+#    # 主题设置-------------------------------------
+#        #self.write_conf(sections, 'gtk_theme',
+#        #    'org.gnome.desktop.interface',
+#        #    None, 'gtk-theme', 'string')
+##        self.write_conf(sections, 'window_theme',
+##            'org.gnome.desktop.wm.preferences',
+##            None, 'theme', 'string')
+#        self.write_conf(sections, 'icon_theme',
+#            'org.gnome.desktop.interface',
+#            None, 'icon-theme', 'string')
 
-    # 文件管理器-----------------------------------
-        self.write_conf(sections, 'location_replace_pathbar',
-            'org.gnome.nautilus.preferences',
-            None, 'always-use-location-entry', 'boolean')
-        self.write_conf(sections, 'auto_mount_media',
-            'org.gnome.desktop.media-handling',
-            None, 'automount', 'boolean')
-        self.write_conf(sections, 'auto_open_folder',
-            'org.gnome.desktop.media-handling',
-            None, 'automount-open', 'boolean')
-        self.write_conf(sections, 'prompt_autorun_programs',
-            'org.gnome.desktop.media-handling',
-            None, 'autorun-never', 'boolean')
-        self.write_conf(sections, 'thumbnail_icon_size',
-            'org.gnome.nautilus.icon-view',
-            None, 'thumbnail-size', 'int')
-        self.write_conf(sections, 'thumbnail_cache_time',
-            'org.gnome.desktop.thumbnail-cache',
-            None, 'maximum-age', 'int')
-        self.write_conf(sections, 'thumbnail_cache_size',
-            'org.gnome.desktop.thumbnail-cache',
-            None, 'maximum-size', 'int')
+#    # 窗口设置--------------------------------------
+#        self.write_conf(sections, 'window_button',
+#            'org.gnome.desktop.wm.preferences',
+#            None, 'button-layout', 'string')
+#        self.write_conf(sections, 'menus_have_icons',
+#            'org.gnome.desktop.interface',
+#            None, 'menus-have-icons', 'boolean')
+#        self.write_conf(sections, 'titlebar_wheel',
+#            'org.compiz.gwd',
+#            None, 'mouse-wheel-action', 'string')
+#        self.write_conf(sections, 'titlebar_double',
+#            'org.gnome.desktop.wm.preferences',
+#            None, 'action-double-click-titlebar', 'string')
+#        self.write_conf(sections, 'titlebar_middle',
+#            'org.gnome.desktop.wm.preferences',
+#            None, 'action-middle-click-titlebar', 'string')
+#        self.write_conf(sections, 'titlebar_right',
+#            'org.gnome.desktop.wm.preferences',
+#            None, 'action-right-click-titlebar', 'string')
 
-        fd = open(file_name, 'w')
-        self.conf.write(fd)
-        fd.close()
+#    # 文件管理器-----------------------------------
+#        self.write_conf(sections, 'location_replace_pathbar',
+#            'org.gnome.nautilus.preferences',
+#            None, 'always-use-location-entry', 'boolean')
+#        self.write_conf(sections, 'auto_mount_media',
+#            'org.gnome.desktop.media-handling',
+#            None, 'automount', 'boolean')
+#        self.write_conf(sections, 'auto_open_folder',
+#            'org.gnome.desktop.media-handling',
+#            None, 'automount-open', 'boolean')
+#        self.write_conf(sections, 'prompt_autorun_programs',
+#            'org.gnome.desktop.media-handling',
+#            None, 'autorun-never', 'boolean')
+#        self.write_conf(sections, 'thumbnail_icon_size',
+#            'org.gnome.nautilus.icon-view',
+#            None, 'thumbnail-size', 'int')
+#        self.write_conf(sections, 'thumbnail_cache_time',
+#            'org.gnome.desktop.thumbnail-cache',
+#            None, 'maximum-age', 'int')
+#        self.write_conf(sections, 'thumbnail_cache_size',
+#            'org.gnome.desktop.thumbnail-cache',
+#            None, 'maximum-size', 'int')
+
+#        fd = open(file_name, 'w')
+#        self.conf.write(fd)
+#        fd.close()
 
     # system settings
     def setconf(self, conf_id):

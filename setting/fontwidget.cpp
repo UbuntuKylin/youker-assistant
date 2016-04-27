@@ -90,7 +90,7 @@ FontWidget::FontWidget(QWidget *parent, SessionDispatcher *proxy, MainWindow *wi
     document_font_btn->setToolTip(tr("Click here to change font"));
     titlebar_font_btn->setToolTip(tr("Click here to change font"));
 
-    if (this->desktop == "mate") {
+    if (this->desktop == "mate" || this->desktop == "MATE") {
         scaling_label->hide();
         scaling_slider->hide();
     }
@@ -301,7 +301,7 @@ void FontWidget::initData()
     if(desktop_font.isEmpty())
     {
 //        sessionproxy->set_desktop_font_qt_default();
-        if (this->desktop == "mate")
+        if (this->desktop == "mate" || this->desktop == "MATE")
             sessionproxy->set_desktop_font_qt("Sans 10");
         else
             sessionproxy->set_desktop_font_qt("Ubuntu 11");
@@ -316,7 +316,7 @@ void FontWidget::initData()
     document_font_btn->setText(document_font);
     titlebar_font_btn->setText(titlebar_font);
 
-    if (this->desktop != "mate") {
+    if (this->desktop != "mate" || this->desktop == "MATE") {
         scaling_slider->setValue(sessionproxy->get_font_zoom_qt());
     }
 
@@ -539,7 +539,7 @@ void FontWidget::setFontAntialiasing(QString selected)
 
 void FontWidget::restore_default_font()
 {
-    if (this->desktop == "mate") {
+    if (this->desktop == "mate" || this->desktop == "MATE") {
         sessionproxy->set_default_font_string_qt("org.mate.interface", "font-name", "string");
         default_font_btn->setText(sessionproxy->get_default_font_string_qt("org.mate.interface", "font-name"));
     }
@@ -551,7 +551,7 @@ void FontWidget::restore_default_font()
 
 void FontWidget::restore_desktop_font()
 {
-    if (this->desktop == "mate") {
+    if (this->desktop == "mate" || this->desktop == "MATE") {
         sessionproxy->set_default_font_string_qt("org.mate.caja.desktop", "font", "string");
         desktop_font_btn->setText(sessionproxy->get_default_font_string_qt("org.mate.caja.desktop", "font"));
     }
@@ -563,7 +563,7 @@ void FontWidget::restore_desktop_font()
 
 void FontWidget::restore_monospace_font()
 {
-    if (this->desktop == "mate") {
+    if (this->desktop == "mate" || this->desktop == "MATE") {
         sessionproxy->set_default_font_string_qt("org.mate.interface", "monospace-font-name", "string");
         monospace_font_btn->setText(sessionproxy->get_default_font_string_qt("org.mate.interface", "monospace-font-name"));
     }
@@ -575,7 +575,7 @@ void FontWidget::restore_monospace_font()
 
 void FontWidget::restore_document_font()
 {
-    if (this->desktop == "mate") {
+    if (this->desktop == "mate" || this->desktop == "MATE") {
         sessionproxy->set_default_font_string_qt("org.mate.interface", "document-font-name", "string");
         document_font_btn->setText(sessionproxy->get_default_font_string_qt("org.mate.interface", "document-font-name"));
     }
@@ -587,7 +587,7 @@ void FontWidget::restore_document_font()
 
 void FontWidget::restore_titlebar_font()
 {
-    if (this->desktop == "mate") {
+    if (this->desktop == "mate" || this->desktop == "MATE") {
         sessionproxy->set_default_font_string_qt("org.mate.Marco.general", "titlebar-font", "string");
         titlebar_font_btn->setText(sessionproxy->get_default_font_string_qt("org.mate.Marco.general", "titlebar-font"));
     }

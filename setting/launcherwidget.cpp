@@ -83,7 +83,7 @@ LauncherWidget::LauncherWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
 //    KylinSwitcher *hide_top_switcher;
 //    KylinSwitcher *icon_bottom_switcher;
 
-    if (this->desktop == "mate") {
+    if (this->desktop == "mate" || this->desktop == "MATE") {
         size_label->hide();
         size_value_label->hide();
         hide_label->hide();
@@ -307,7 +307,7 @@ bool LauncherWidget::getStatus()
 
 void LauncherWidget::initData()
 {
-    if (this->desktop == "mate") {
+    if (this->desktop == "mate" || this->desktop == "MATE") {
         size_top_slider->setValue(sessionproxy->get_mate_panel_icon_size_qt("top"));
         size_top_value_label->setText(QString::number(size_top_slider->value()));
         size_bottom_slider->setValue(sessionproxy->get_mate_panel_icon_size_qt("bottom"));

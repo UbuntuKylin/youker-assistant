@@ -130,14 +130,14 @@ void SettingAction::setLanguage(int index)
 ////        description_label->setText(tr("Click the \"Custom Picture\" button to select the picture you want to add, click the picture you want to set and push the \"OK\" button to complete."));
 //        break;
     case 5:
-        if (this->desktop == "mate")
+        if (this->desktop == "mate" || this->desktop == "MATE")
             title_label->setText(tr("Setting the panel mode of auto hide and icon size"));
         else
             title_label->setText(tr("Setting the Launcher display mode, Icon size"));
 //        description_label->setText(tr("Setting the Launcher display mode, Icon size."));
         break;
     case 6:
-        if (this->desktop == "mate")
+        if (this->desktop == "mate" || this->desktop == "MATE")
             title_label->setText(tr("Manage display of the start menu"));
         else
             title_label->setText(tr("Manage Dash and Panel menu settings"));
@@ -163,7 +163,7 @@ void SettingAction::setLanguage(int index)
         title_label->setText(tr("Save energy to let the computer longer standby time"));
         break;
     case 12:
-        if (this->desktop == "mate")
+        if (this->desktop == "mate" || this->desktop == "MATE")
             title_label->setText(tr("Manage the Caja file manager. Tips: if the thumbnail's cache time or size is set to -1, it will not be checked"));
         else
             title_label->setText(tr("Manage the Nautilus file manager. Tips: if the thumbnail's cache time or size is set to -1, it will not be checked"));
