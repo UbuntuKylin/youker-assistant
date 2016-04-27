@@ -34,7 +34,7 @@ class BoxWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit BoxWidget(QWidget *parent = 0, QString path = "");
+    explicit BoxWidget(QWidget *parent = 0, QString arch = "", QString os = "", QString path = "");
     ~BoxWidget();
     void loadPlugins();
     void initPluginWidget();
@@ -52,6 +52,8 @@ private:
     QListView *list_view;
 //    KylinListView *list_view;
     KylinListModel pluginModel;
+    QString osname;
+    QString osarch;
     QString plugin_path;
     SessionDispatcher *sessionProxy;
 };

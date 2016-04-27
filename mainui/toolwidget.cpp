@@ -24,8 +24,8 @@
 #include <QDebug>
 //#include <QParallelAnimationGroup>
 
-ToolWidget::ToolWidget(QWidget *parent, QString arch)
-    : QWidget(parent), cur_arch(arch)
+ToolWidget::ToolWidget(QWidget *parent, QString arch, QString os)
+    : QWidget(parent), cur_arch(arch), osname(os)
 {
     this->setFixedSize(900, 47);
 //    this->setGeometry(0, 227, 900, 47);
@@ -36,10 +36,10 @@ ToolWidget::ToolWidget(QWidget *parent, QString arch)
 
     QStringList icon_list;
     QStringList text_list;
-    if(this->cur_arch == "aarch64")
+    if(this->cur_arch == "aarch64" || this->osname == "Kylin")
     {
         icon_list<<":/tool/res/menu/home"<<":/tool/res/menu/cleanup"<<":/tool/res/menu/sysinfo"<<":/tool/res/menu/toolkits";
-        text_list<< tr("Home") << tr("Cleanup") << tr("Sysinfo") << tr("Toolkits");
+        text_list<< tr("KylinHome") << tr("Cleanup") << tr("Sysinfo") << tr("Toolkits");
     }
     else {
         icon_list<<":/tool/res/menu/home"<<":/tool/res/menu/cleanup"<<":/tool/res/menu/sysinfo"<<":/tool/res/menu/feature"<<":/tool/res/menu/toolkits";
@@ -101,7 +101,7 @@ void ToolWidget::switchSelectedPageIndex(QString index)
 
 void ToolWidget::showBoxTool()
 {
-    if(this->cur_arch == "aarch64")
+    if(this->cur_arch == "aarch64" || this->osname == "Kylin")
     {
         this->switchSelectedPageIndex("3");
     }

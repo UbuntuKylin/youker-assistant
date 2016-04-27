@@ -151,6 +151,7 @@ class DetailInfo:
     def __init__(self):
         self.lshwstr = ''
         self.machine = platform.machine()
+        self.osname = self.read_os_name()
 #        print platform.platform()
 #        print platform.version()
 #        print platform.architecture()
@@ -189,6 +190,41 @@ class DetailInfo:
                 minutes = seconds / 60
                 upminutes = str(minutes)
         return upminutes
+
+    def read_os_name(self):
+        platValue = platform.platform()
+        if os.path.exists("/etc/ubuntukylin-release"):
+            with open("/etc/ubuntukylin-release", "r") as fsys:
+                for line in fsys:
+                    if line.startswith("DISTRIB_DESCRIPTION"):
+                        tmp = line
+                        break
+            # kobe: remove '"' and '\n'
+            front = tmp.split('=')[1].replace('"', '').replace('\n', '')
+            platValue = front
+        elif os.path.exists("/etc/os-release"):
+            with open("/etc/os-release", "r") as fsys:
+                for line in fsys:
+                    if line.startswith("NAME"):
+                        tmp = line
+                        break
+            # kobe: remove '"' and '\n'
+            front = tmp.split('=')[1].replace('"', '').replace('\n', '')
+            platValue = front
+        else:
+            with open("/etc/lsb-release", "r") as fp:
+                for line in fp:
+                    if line.startswith("DISTRIB_DESCRIPTION"):
+                        tmp = line
+                        break
+            # kobe: remove '"' and '\n'
+            id = tmp.split('=')[1].replace('"', '').replace('\n', '')
+            platValue = id
+
+        return platValue
+
+    def get_os_name(self):
+        return self.osname
 
     def get_url(self,v,p):
         vendors = {
@@ -386,38 +422,38 @@ class DetailInfo:
                 minutes = seconds / 60
                 uptime = str(minutes)
 
-        platValue = platform.platform()
-        if os.path.exists("/etc/ubuntukylin-release"):
-            with open("/etc/ubuntukylin-release", "r") as fsys:
-                for line in fsys:
-                    if line.startswith("DISTRIB_DESCRIPTION"):
-                        tmp = line
-                        break
-            # kobe: remove '"' and '\n'
-            front = tmp.split('=')[1].replace('"', '').replace('\n', '')
-            platValue = front
-#            if front.startswith("UbuntuKylin") or front.startswith("Ubuntu Kylin"):
-#                platValue = platValue.replace('Ubuntu', 'Ubuntu Kylin')
-        elif os.path.exists("/etc/os-release"):
-            with open("/etc/os-release", "r") as fsys:
-                for line in fsys:
-                    if line.startswith("NAME"):
-                        tmp = line
-                        break
-            # kobe: remove '"' and '\n'
-            front = tmp.split('=')[1].replace('"', '').replace('\n', '')
-            platValue = front
-#            if front.startswith("UbuntuKylin") or front.startswith("Ubuntu Kylin"):
-#                platValue = platValue.replace('Ubuntu', 'Ubuntu Kylin')
-        else:
-            with open("/etc/lsb-release", "r") as fp:
-                for line in fp:
-                    if line.startswith("DISTRIB_DESCRIPTION"):
-                        tmp = line
-                        break
-            # kobe: remove '"' and '\n'
-            id = tmp.split('=')[1].replace('"', '').replace('\n', '')
-            platValue = id
+#        platValue = platform.platform()
+#        if os.path.exists("/etc/ubuntukylin-release"):
+#            with open("/etc/ubuntukylin-release", "r") as fsys:
+#                for line in fsys:
+#                    if line.startswith("DISTRIB_DESCRIPTION"):
+#                        tmp = line
+#                        break
+#            # kobe: remove '"' and '\n'
+#            front = tmp.split('=')[1].replace('"', '').replace('\n', '')
+#            platValue = front
+##            if front.startswith("UbuntuKylin") or front.startswith("Ubuntu Kylin"):
+##                platValue = platValue.replace('Ubuntu', 'Ubuntu Kylin')
+#        elif os.path.exists("/etc/os-release"):
+#            with open("/etc/os-release", "r") as fsys:
+#                for line in fsys:
+#                    if line.startswith("NAME"):
+#                        tmp = line
+#                        break
+#            # kobe: remove '"' and '\n'
+#            front = tmp.split('=')[1].replace('"', '').replace('\n', '')
+#            platValue = front
+##            if front.startswith("UbuntuKylin") or front.startswith("Ubuntu Kylin"):
+##                platValue = platValue.replace('Ubuntu', 'Ubuntu Kylin')
+#        else:
+#            with open("/etc/lsb-release", "r") as fp:
+#                for line in fp:
+#                    if line.startswith("DISTRIB_DESCRIPTION"):
+#                        tmp = line
+#                        break
+#            # kobe: remove '"' and '\n'
+#            id = tmp.split('=')[1].replace('"', '').replace('\n', '')
+#            platValue = id
 #            if "Ubuntu" in platValue:
 #                platValue = platValue.replace('Ubuntu', id)
 
@@ -444,7 +480,8 @@ class DetailInfo:
 #            if "Ubuntu" in platValue:
 #                platValue = platValue.replace('Ubuntu', id)
 
-        Com['platform'] = platValue
+#        Com['platform'] = platValue
+        Com['platform'] = self.osname
 
         #Com['node'], Com['uptime'], Com['system'], Com['platform'],Com['architecture'], Com['release'], Com['machine'] = platform.node(),uptime,platform.system(),platform.platform(),platform.architecture()[0],platform.release(),platform.machine()
         Com['node'], Com['uptime'], Com['system'], Com['architecture'], Com['release'], Com['machine'] = platform.node(),uptime,platform.system(),platform.architecture()[0],platform.release(),platform.machine()

@@ -38,9 +38,11 @@ MainWindow::MainWindow(QString cur_arch, QWidget *parent) :
 //    this->setAttribute(Qt::WA_TranslucentBackground);
 //    this->setStyleSheet("QMainWindow{border: 1px solid gray;border-radius:2px}");
     this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
-    version = "V2.0.7";
+    version = "V2.0.8";
     status = HOMEPAGE;
     statusFlag = false;
+
+    this->osName = accessOSName();
 
     mSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
     mSettings->setIniCodec("UTF-8");
@@ -120,27 +122,29 @@ MainWindow::MainWindow(QString cur_arch, QWidget *parent) :
     default_action_widget->setPalette(palette_back);
     other_action_widget->setPalette(palette_back);
 
-    tool_widget = new ToolWidget(this, this->arch);
+    tool_widget = new ToolWidget(this, this->arch, this->osName);
     tool_widget->setGeometry(QRect(0, 227, 900, 47));
     tool_widget->setParentWindow(this);
     connect(this, SIGNAL(chanegBoxToolStatus()), tool_widget, SLOT(showBoxTool()));
     tool_widget->initConnect();
 
-    title_widget = new TitleWidget(this, this->arch);
-    if (this->arch == "aarch64")
+    title_widget = new TitleWidget(this, this->arch, this->osName);
+    if (this->arch == "aarch64" || this->osName == "Kylin")
         title_widget->move(756, 0);
-    else
+    else {
         title_widget->move(0, 0);
+    }
     connect(title_widget, SIGNAL(closeApp()), this, SLOT(closeYoukerAssistant()));
     title_widget->setParentWindow(this);
     title_widget->initConnect();
 
 //
     login_widget = new LoginWidget(this);
-    if (this->arch == "aarch64")
+    if (this->arch == "aarch64" || this->osName == "Kylin")
         login_widget->hide();
-    else
+    else {
         login_widget->move(585, 0);//900 - login_widget(220) - right_align(15) = 665
+    }
 
     default_content_widget = new ContentWidget(this);
     default_content_widget->setGeometry(QRect(0, 274, 900, 326));
@@ -240,6 +244,91 @@ MainWindow::~MainWindow()
         delete upgrade_dialog;
         upgrade_dialog = NULL;
     }
+}
+
+QString MainWindow::accessOSName()
+{
+
+    QString osname = "";
+    QString tmp = "";
+
+    QFile osfile("/etc/os-release");
+    if(osfile.exists()) {
+        if(!osfile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            qDebug() << "Can't open os-release!" << endl;
+        }
+        else {
+            while(!osfile.atEnd()) {
+                QByteArray line = osfile.readLine();
+                QString str(line);
+                if (str.startsWith("NAME")) {
+                    tmp = str;
+                    break;
+                }
+            }
+            osfile.close();
+        }
+    }
+    if(tmp.length() > 0 && tmp.contains("=")) {
+        osname = QString(tmp.split("=").at(1)).replace("\"", "").replace("\n","").trimmed();
+    }
+    if(osname.length() > 0) {
+        return osname;
+    }
+
+    osname = "";
+    tmp = "";
+    QFile ukfile("/etc/ubuntukylin-release");
+    if(ukfile.exists()) {
+        if(!ukfile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            qDebug() << "Can't open ubuntukylin-release!" << endl;
+        }
+        else {
+            while(!ukfile.atEnd()) {
+                QByteArray line = ukfile.readLine();
+                QString str(line);
+                if (str.startsWith("DISTRIB_DESCRIPTION")) {
+                    tmp = str;
+                    break;
+                }
+            }
+            ukfile.close();
+        }
+    }
+    if(tmp.length() > 0 && tmp.contains("=")) {
+        osname = QString(tmp.split("=").at(1)).replace("\"", "").replace("\n","").trimmed();
+    }
+    if(osname.length() > 0) {
+        return osname;
+    }
+
+    osname = "";
+    tmp = "";
+    QFile lsbfile("/etc/lsb-release");
+    if(lsbfile.exists()) {
+        if(!lsbfile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            qDebug() << "Can't open lsb-release!" << endl;
+        }
+        else {
+            while(!lsbfile.atEnd()) {
+                QByteArray line = lsbfile.readLine();
+                QString str(line);
+                if (str.startsWith("DISTRIB_DESCRIPTION")) {
+                    tmp = str;
+                    break;
+                }
+            }
+            lsbfile.close();
+        }
+    }
+    if(tmp.length() > 0 && tmp.contains("=")) {
+        osname = QString(tmp.split("=").at(1)).replace("\"", "").replace("\n","").trimmed();
+    }
+    if(osname.length() > 0) {
+        return osname;
+    }
+
+    return "Ubuntu Kylin";
 }
 
 bool MainWindow::deleteFile(QString filename)
@@ -408,12 +497,14 @@ void MainWindow::upAnimFinished()
     shadow_widget->hide();
     if(title_widget->isHidden())
         title_widget->show();
-    if (this->arch != "aarch64")
+    if (this->arch != "aarch64" && this->osName != "Kylin")
     {
-        if(status == BOXPAGE && login_widget->isHidden())
+        if(status == BOXPAGE && login_widget->isHidden()) {
             login_widget->show();
-        else
+        }
+        else {
             login_widget->hide();
+        }
     }
 }
 
@@ -422,7 +513,7 @@ void MainWindow::closeAnimFinished()
     tool_widget->show();
     if(title_widget->isHidden())
         title_widget->show();
-    if (this->arch != "aarch64" && login_widget->isHidden())
+    if (this->arch != "aarch64" && this->osName != "Kylin" && login_widget->isHidden())
     {
         login_widget->show();
     }
@@ -506,10 +597,12 @@ void MainWindow::startDbusDaemon()
     sessioninterface = new SessionDispatcher(this);
     systeminterface = new SystemDispatcher(this);
     this->desktop = sessioninterface->access_current_desktop_qt();
-//    this->machine = sessioninterface->access_current_machine_qt();
+//    this->osName = systeminterface->get_os_name_qt();
+//    this->machine = sessioninterface->access_current_machine_qt();//x86_64
     this->battery = sessioninterface->judge_power_is_exists_qt();
     login_widget->setSessionDbusProxy(sessioninterface);
-    sessioninterface->check_user_qt();
+    if (this->arch != "aarch64" && this->osName != "Kylin")
+        sessioninterface->check_user_qt();
     connect(sessioninterface, SIGNAL(ssoSuccessSignal(QString, QString)), login_widget, SLOT(showLoginInfo(QString,QString)));
     connect(sessioninterface, SIGNAL(ssoLoginLogoutSignal(bool)), login_widget, SLOT(showLoginAndLogoutStatus(bool)));
     home_action_widget->setSessionDbusProxy(sessioninterface);
@@ -586,7 +679,7 @@ void MainWindow::initOtherPages()
     bottomStack->addWidget(setting_widget);
 
     if(box_widget == NULL)
-        box_widget = new BoxWidget(this, getAppDirectory());
+        box_widget = new BoxWidget(this, this->arch, this->osName, getAppDirectory());
     box_widget->setSessionDbusProxy(sessioninterface);
     connect(box_widget, SIGNAL(sendSubIndex(int)), this, SLOT(displaySubPage(int)));
     bottomStack->addWidget(box_widget);
@@ -711,7 +804,7 @@ void MainWindow::reViewTheOrgSkin()
 }
 
 void MainWindow::showMainMenu() {
-    if (this->arch == "aarch64")
+    if (this->arch == "aarch64" || this->osName == "Kylin")
     {
         QPoint p = rect().topRight();
         p.setX(p.x() - 180);
@@ -753,13 +846,15 @@ void MainWindow::setCurrentPageIndex(int index)
 {
     if(index == 0)
     {
+        if (this->arch == "aarch64" || this->osName == "Kylin")
+            login_widget->hide();
         if (status != HOMEPAGE) {
             statusFlag = true;
             shadow_widget->show();
             tool_widget->hide();
             if(title_widget->isVisible())
                 title_widget->hide();
-            if (this->arch != "aarch64" && login_widget->isVisible())
+            if (this->arch != "aarch64" && this->osName == "Kylin" && login_widget->isVisible())
             {
                 login_widget->hide();
             }
@@ -771,6 +866,8 @@ void MainWindow::setCurrentPageIndex(int index)
     }
     else if(index == 1)
     {
+        if (this->arch == "aarch64" || this->osName == "Kylin")
+            login_widget->hide();
         if (status == HOMEPAGE) {
             statusFlag = true;
         }
@@ -782,8 +879,9 @@ void MainWindow::setCurrentPageIndex(int index)
             tool_widget->hide();
             if(title_widget->isVisible())
                 title_widget->hide();
-            if (this->arch != "aarch64" && login_widget->isVisible())
+            if (this->arch != "aarch64" && this->osName != "Kylin" && login_widget->isVisible()) {
                 login_widget->hide();
+            }
 //            topStack->setCurrentIndex(0);
 //            bottomStack->setCurrentIndex(0);
             topStack->setCurrentWidget(cleaner_action_widget);
@@ -792,8 +890,9 @@ void MainWindow::setCurrentPageIndex(int index)
             status = CLEANPAGE;
         }
         else {
-            if (this->arch != "aarch64" && login_widget->isVisible())
+            if (this->arch != "aarch64" && this->osName != "Kylin" && login_widget->isVisible()) {
                 login_widget->hide();
+            }
 //            topStack->setCurrentIndex(0);
 //            bottomStack->setCurrentIndex(0);
             topStack->setCurrentWidget(cleaner_action_widget);
@@ -802,6 +901,8 @@ void MainWindow::setCurrentPageIndex(int index)
     }
     else if(index == 2)
     {
+        if (this->arch == "aarch64" || this->osName == "Kylin")
+            login_widget->hide();
         if (status == HOMEPAGE) {
             statusFlag = true;
         }
@@ -813,8 +914,9 @@ void MainWindow::setCurrentPageIndex(int index)
             tool_widget->hide();
             if(title_widget->isVisible())
                 title_widget->hide();
-            if (this->arch != "aarch64" && login_widget->isVisible())
+            if (this->arch != "aarch64" && this->osName != "Kylin" && login_widget->isVisible()) {
                 login_widget->hide();
+            }
 //            topStack->setCurrentIndex(1);
 //            bottomStack->setCurrentIndex(1);
             topStack->setCurrentWidget(info_action_widget);
@@ -823,8 +925,9 @@ void MainWindow::setCurrentPageIndex(int index)
             status = INFOPAGE;
         }
         else {
-            if (this->arch != "aarch64" && login_widget->isVisible())
+            if (this->arch != "aarch64" && this->osName != "Kylin" && login_widget->isVisible()) {
                 login_widget->hide();
+            }
 //            topStack->setCurrentIndex(1);
 //            bottomStack->setCurrentIndex(1);
             topStack->setCurrentWidget(info_action_widget);
@@ -837,15 +940,14 @@ void MainWindow::setCurrentPageIndex(int index)
             statusFlag = true;
         else
             statusFlag = false;
-        if (this->arch == "aarch64")
+        if (this->arch == "aarch64" || this->osName == "Kylin")
         {
+            login_widget->hide();
             if (status != BOXPAGE && statusFlag) {
                 shadow_widget->show();
                 tool_widget->hide();
                 if(title_widget->isVisible())
                     title_widget->hide();
-                if (this->arch != "aarch64" && login_widget->isVisible())
-                    login_widget->hide();
     //            topStack->setCurrentIndex(3);
     //            bottomStack->setCurrentIndex(3);
                 topStack->setCurrentWidget(box_action_widget);
@@ -854,8 +956,6 @@ void MainWindow::setCurrentPageIndex(int index)
                 status = BOXPAGE;
             }
             else {
-                if (this->arch != "aarch64" && login_widget->isHidden())
-                    login_widget->show();
     //            topStack->setCurrentIndex(3);
     //            bottomStack->setCurrentIndex(3);
                 topStack->setCurrentWidget(box_action_widget);
@@ -869,8 +969,9 @@ void MainWindow::setCurrentPageIndex(int index)
                 tool_widget->hide();
                 if(title_widget->isVisible())
                     title_widget->hide();
-                if (this->arch != "aarch64" && login_widget->isVisible())
+                if (this->arch != "aarch64" && this->osName != "Kylin" && login_widget->isVisible()) {
                     login_widget->hide();
+                }
     //            topStack->setCurrentIndex(2);
     //            bottomStack->setCurrentIndex(2);
                 topStack->setCurrentWidget(setting_action_widget);
@@ -879,8 +980,9 @@ void MainWindow::setCurrentPageIndex(int index)
                 status = SETTINGPAGE;
             }
             else {
-                if (this->arch != "aarch64" && login_widget->isVisible())
-                        login_widget->hide();
+                if (this->arch != "aarch64" && this->osName != "Kylin" && login_widget->isVisible()) {
+                    login_widget->hide();
+                }
     //            topStack->setCurrentIndex(2);
     //            bottomStack->setCurrentIndex(2);
                 topStack->setCurrentWidget(setting_action_widget);
@@ -890,7 +992,7 @@ void MainWindow::setCurrentPageIndex(int index)
     }
     else if(index == 4)
     {
-        if (this->arch != "aarch64")
+        if (this->arch != "aarch64" && this->osName != "Kylin")
         {
             if (status == HOMEPAGE)
                 statusFlag = true;
@@ -901,8 +1003,9 @@ void MainWindow::setCurrentPageIndex(int index)
                 tool_widget->hide();
                 if(title_widget->isVisible())
                     title_widget->hide();
-                if (this->arch != "aarch64" && login_widget->isVisible())
+                if (login_widget->isVisible()) {
                     login_widget->hide();
+                }
     //            topStack->setCurrentIndex(3);
     //            bottomStack->setCurrentIndex(3);
                 topStack->setCurrentWidget(box_action_widget);
@@ -911,8 +1014,9 @@ void MainWindow::setCurrentPageIndex(int index)
                 status = BOXPAGE;
             }
             else {
-                if (this->arch != "aarch64" && login_widget->isHidden())
+                if (login_widget->isHidden()) {
                     login_widget->show();
+                }
     //            topStack->setCurrentIndex(3);
     //            bottomStack->setCurrentIndex(3);
                 topStack->setCurrentWidget(box_action_widget);
@@ -1076,7 +1180,7 @@ void MainWindow::aboutUs()
     int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (326  / 2);
     if(aboutDlg == NULL)
     {
-        aboutDlg = new AboutDialog(0, version, last_skin_path);
+        aboutDlg = new AboutDialog(0, version, last_skin_path, this->arch, this->osName);
         aboutDlg->move(w_x, w_y);
         aboutDlg->show();
         aboutDlg->raise();

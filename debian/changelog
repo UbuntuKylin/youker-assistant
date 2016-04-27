@@ -1,12 +1,13 @@
-youker-assistant (2.0.7-0ubuntu1) xenial; urgency=low
+youker-assistant (2.0.8-0ubuntu1) xenial; urgency=low
 
   * Deal with org.gnome.settings-daemon.peripherals.touchpad.
   * Replace psutil.get_process_list with psutil.process_iter.
   * Optimized scan display interface.
   * Remove processmanager.
   * Modified control file for python 2.7.
+  * Add depends for python 2.7.
 
- -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Mon, 14 Mar 2016 10:12:24 +0800
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Wed, 27 Apr 2016 09:49:25 +0800
 
 youker-assistant (2.0.5) wily; urgency=low
 

@@ -20,7 +20,7 @@
 #include "titlewidget.h"
 #include "mainwindow.h"
 
-TitleWidget::TitleWidget(QWidget *parent, QString arch)
+TitleWidget::TitleWidget(QWidget *parent, QString arch, QString os)
 	: QWidget(parent)
 {
     this->setFixedSize(900, 36);
@@ -38,7 +38,7 @@ TitleWidget::TitleWidget(QWidget *parent, QString arch)
     main_menu_button->setFocusPolicy(Qt::NoFocus);
 
     QHBoxLayout *title_layout = new QHBoxLayout();
-    if(arch == "aarch64")
+    if(arch == "aarch64" || os == "Kylin")
     {
         title_layout->addWidget(main_menu_button, 0, Qt::AlignTop);
         title_layout->addWidget(skin_button, 0, Qt::AlignTop);

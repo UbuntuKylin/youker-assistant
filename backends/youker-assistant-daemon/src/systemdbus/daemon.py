@@ -267,6 +267,10 @@ class Daemon(PolicyKitService):
     def get_computer_info(self):
         return self.infoconf.get_computer()
 
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_os_name(self):
+        return self.infoconf.get_os_name()
+
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_cpu_info(self):
         return self.infoconf.get_cpu()

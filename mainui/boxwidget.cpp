@@ -24,8 +24,8 @@
 #include <QGridLayout>
 #include "../dbusproxy/youkersessiondbus.h"
 
-BoxWidget::BoxWidget(QWidget *parent, QString path) :
-    QWidget(parent), plugin_path(path)
+BoxWidget::BoxWidget(QWidget *parent, QString arch, QString os, QString path) :
+    QWidget(parent), osarch(arch), osname(os), plugin_path(path)
 {
     this->setFixedSize(900, 403);
     this->setStyleSheet("QWidget{border: none;}");
@@ -98,12 +98,21 @@ void BoxWidget::initPluginWidget()
 //    pluginModel.setData(qindex,tr("      "));
     pluginModel.insertRows(0,1,QModelIndex());
     QModelIndex qindex = pluginModel.index(0,0,QModelIndex());
-    //set text
-    pluginModel.setData(qindex, tr("UbuntuKylin Software Center"));
+
+    if(this->osarch == "aarch64" || this->osname == "Kylin") {
+        //set text
+        pluginModel.setData(qindex, tr("Kylin Software Center"));
+        //set tooltip
+        pluginModel.setData(qindex, tr("Kylin Software Center"),Qt::WhatsThisRole);
+    }
+    else {
+        //set text
+        pluginModel.setData(qindex, tr("UbuntuKylin Software Center"));
+        //set tooltip
+        pluginModel.setData(qindex, tr("UbuntuKylin Software Center"),Qt::WhatsThisRole);
+    }
     //set icon
     pluginModel.setData(qindex,QIcon(QPixmap("://res/ubuntukylin-software-center.png")),Qt::DecorationRole);
-    //set tooltip
-    pluginModel.setData(qindex, tr("UbuntuKylin Software Center"),Qt::WhatsThisRole);
 
     QStringList icon_list;
     icon_list<<"://res/boot"<<"://res/camera";
@@ -141,7 +150,10 @@ void BoxWidget::OnClickListView(const QModelIndex & index)
 {
     if(index.row() == 0)
     {
-        sessionProxy->runApp("ubuntu-kylin-software-center");
+        if(this->osarch == "aarch64" || this->osname == "Kylin")
+            sessionProxy->runApp("kylin-software-center");
+        else
+            sessionProxy->runApp("ubuntu-kylin-software-center");
     }
     else if(index.row() == 1) {
         emit this->sendSubIndex(0);

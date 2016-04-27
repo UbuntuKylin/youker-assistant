@@ -36,7 +36,7 @@ class TitleWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit TitleWidget(QWidget *parent = 0, QString arch = "");
+    explicit TitleWidget(QWidget *parent = 0, QString arch = "", QString os = "");
     ~TitleWidget();
     void setParentWindow(MainWindow* window) { p_mainwindow = window;}
     void initConnect();

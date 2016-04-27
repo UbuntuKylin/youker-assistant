@@ -171,6 +171,12 @@ bool SystemDispatcher::set_cursor_theme_with_root_qt(QString theme) {
     return reply.value();
 }
 
+QString SystemDispatcher::get_os_name_qt()
+{
+    QDBusReply<QString> reply = systemiface->call("get_os_name");
+    return reply.value();
+}
+
 QMap<QString, QVariant> SystemDispatcher::get_computer_info_qt() {
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_computer_info");
     if (reply.isValid()) {

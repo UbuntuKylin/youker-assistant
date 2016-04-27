@@ -68,6 +68,7 @@ public:
     QString delete_plymouth_qt(QString plymouthName);
 
     //得到当前系统和桌面的详细信息
+    QString get_os_name_qt();
     QMap<QString, QVariant> get_computer_info_qt();
     QMap<QString, QVariant> get_cpu_info_qt();
     QMap<QString, QVariant> get_memory_info_qt();

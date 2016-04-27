@@ -4,23 +4,50 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="../aboutdialog.cpp" line="70"/>
+        <location filename="../aboutdialog.cpp" line="71"/>
+        <source>Kylin Assisant</source>
+        <translation>麒麟助手</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="73"/>
         <source>Youker Assisant</source>
         <translation>优客助手</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="75"/>
+        <location filename="../aboutdialog.cpp" line="78"/>
         <source>About</source>
         <translatorcomment>关于本软件</translatorcomment>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="102"/>
-        <source>      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions.</source>
-        <translation>      优客助手是由Ubuntu Kylin团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器以及监控球等功能。</translation>
+        <location filename="../aboutdialog.cpp" line="105"/>
+        <source>Maintainer:
+Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
+        <translation>维护者：
+麒麟团队 &lt;ubuntukylin-members@list.launchpad.net&gt;</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="103"/>
+        <location filename="../aboutdialog.cpp" line="106"/>
+        <source>      Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.</source>
+        <translation>      麒麟助手是由麒麟团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器等功能。</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="107"/>
+        <source> for more information. Welcome everyone to join with us. kylin-assistant Homepage: </source>
+        <translation> 了解软件的最新进展并反馈问题，欢迎广大用户和爱好者一起参与。麒麟助手主页：</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="111"/>
+        <source>      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, system customization, task manager, and some other functions.</source>
+        <translation>      优客助手是由Ubuntu Kylin团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器等功能。</translation>
+    </message>
+    <message>
+        <source>      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions.</source>
+        <translation type="obsolete">      优客助手是由Ubuntu Kylin团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器以及监控球等功能。</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="107"/>
+        <location filename="../aboutdialog.cpp" line="112"/>
         <source>      The software is still under development. Please visit </source>
         <translation>      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 </translation>
     </message>
@@ -31,7 +58,7 @@
       各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 </translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="103"/>
+        <location filename="../aboutdialog.cpp" line="112"/>
         <source> for more information. Welcome everyone to join with us. youker-assistant Homepage: </source>
         <translation> 了解软件的最新进展并反馈问题，欢迎广大优客一起参与。优客助手主页：</translation>
     </message>
@@ -42,7 +69,7 @@
       各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 www.ubuntukylin.com 了解软件的最新进展并反馈问题，欢迎广大优客一起参与。优客助手主页：</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="105"/>
+        <location filename="../aboutdialog.cpp" line="110"/>
         <source>Maintainer:
 Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>维护者：
@@ -96,7 +123,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 www.ubuntukylin.com 了解软件的最新进展并反馈问题，欢迎广大优客一起参与。优客助手主页：https://launchpad.net/youker-assistant 。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="78"/>
+        <location filename="../aboutdialog.cpp" line="81"/>
         <source>Contributor</source>
         <translation>贡献者</translation>
     </message>
@@ -119,7 +146,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">&lt;a href=https://launchpad.net/youker-assistant&gt;主页&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="122"/>
+        <location filename="../aboutdialog.cpp" line="132"/>
         <source>Close</source>
         <translatorcomment>关闭</translatorcomment>
         <translation>关闭</translation>
@@ -263,18 +290,24 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>BoxWidget</name>
     <message>
-        <location filename="../boxwidget.cpp" line="102"/>
+        <location filename="../boxwidget.cpp" line="104"/>
         <location filename="../boxwidget.cpp" line="106"/>
+        <source>Kylin Software Center</source>
+        <translation>麒麟软件中心</translation>
+    </message>
+    <message>
+        <location filename="../boxwidget.cpp" line="110"/>
+        <location filename="../boxwidget.cpp" line="112"/>
         <source>UbuntuKylin Software Center</source>
         <translation>优客软件中心</translation>
     </message>
     <message>
-        <location filename="../boxwidget.cpp" line="111"/>
+        <location filename="../boxwidget.cpp" line="120"/>
         <source>Boot Manager</source>
         <translation>启动项管理</translation>
     </message>
     <message>
-        <location filename="../boxwidget.cpp" line="111"/>
+        <location filename="../boxwidget.cpp" line="120"/>
         <source>Camera</source>
         <translation>摄像头</translation>
     </message>
@@ -2898,7 +2931,6 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ToolWidget</name>
     <message>
-        <location filename="../toolwidget.cpp" line="42"/>
         <location filename="../toolwidget.cpp" line="46"/>
         <source>Home</source>
         <translation>优客首页</translation>
@@ -2914,6 +2946,11 @@ p, li { white-space: pre-wrap; }
         <location filename="../toolwidget.cpp" line="46"/>
         <source>Sysinfo</source>
         <translation>系统信息</translation>
+    </message>
+    <message>
+        <location filename="../toolwidget.cpp" line="42"/>
+        <source>KylinHome</source>
+        <translation>麒麟首页</translation>
     </message>
     <message>
         <location filename="../toolwidget.cpp" line="46"/>

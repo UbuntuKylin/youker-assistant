@@ -209,8 +209,10 @@ int zero_data(struct file_info *info)
         return FAILED;
     }
 
-    if (write_pass(info))
+    if (write_pass(info)) {
+        free(info->buf);
         return FAILED;
+    }
 
     free(info->buf);
     return SUCCESS;

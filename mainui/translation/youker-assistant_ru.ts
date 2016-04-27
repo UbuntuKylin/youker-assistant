@@ -4,43 +4,65 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="../aboutdialog.cpp" line="70"/>
+        <location filename="../aboutdialog.cpp" line="73"/>
         <source>Youker Assisant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="75"/>
+        <location filename="../aboutdialog.cpp" line="78"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="102"/>
-        <source>      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="103"/>
+        <location filename="../aboutdialog.cpp" line="112"/>
         <source> for more information. Welcome everyone to join with us. youker-assistant Homepage: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="103"/>
+        <location filename="../aboutdialog.cpp" line="107"/>
+        <location filename="../aboutdialog.cpp" line="112"/>
         <source>      The software is still under development. Please visit </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="71"/>
+        <source>Kylin Assisant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="105"/>
         <source>Maintainer:
+Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="106"/>
+        <source>      Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="107"/>
+        <source> for more information. Welcome everyone to join with us. kylin-assistant Homepage: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="110"/>
+        <source>Maintainer:
 Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="78"/>
+        <location filename="../aboutdialog.cpp" line="81"/>
         <source>Contributor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="122"/>
+        <location filename="../aboutdialog.cpp" line="111"/>
+        <source>      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, system customization, task manager, and some other functions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="132"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
@@ -136,18 +158,24 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>BoxWidget</name>
     <message>
-        <location filename="../boxwidget.cpp" line="102"/>
+        <location filename="../boxwidget.cpp" line="104"/>
         <location filename="../boxwidget.cpp" line="106"/>
+        <source>Kylin Software Center</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../boxwidget.cpp" line="110"/>
+        <location filename="../boxwidget.cpp" line="112"/>
         <source>UbuntuKylin Software Center</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../boxwidget.cpp" line="111"/>
+        <location filename="../boxwidget.cpp" line="120"/>
         <source>Boot Manager</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../boxwidget.cpp" line="111"/>
+        <location filename="../boxwidget.cpp" line="120"/>
         <source>Camera</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2450,7 +2478,6 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>ToolWidget</name>
     <message>
-        <location filename="../toolwidget.cpp" line="42"/>
         <location filename="../toolwidget.cpp" line="46"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
@@ -2465,6 +2492,11 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <location filename="../toolwidget.cpp" line="42"/>
         <location filename="../toolwidget.cpp" line="46"/>
         <source>Sysinfo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../toolwidget.cpp" line="42"/>
+        <source>KylinHome</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

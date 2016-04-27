@@ -77,6 +77,7 @@ public:
     QStringList filterSkin();
     bool deleteFile(QString filename);
     bool CopyFile(QString filename);
+    QString accessOSName();
 
 protected:
     void mousePressEvent(QMouseEvent *event);
@@ -143,6 +144,7 @@ private:
     QSettings *mSettings;
     QString desktop;
 //    QString machine;
+    QString osName;
     QString arch;
     bool battery;
     QParallelAnimationGroup *spreadGroup;

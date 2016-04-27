@@ -18,3 +18,24 @@ Internationalization
 lupdate youker-assistant.pro
 linguist youker-assistant_zh_CN.ts
 lrelease youker-assistant.pro
+
+
+
+
+
+
+
+FT Version:
+1)changelog like this:
+youker-assistant (2.0.7kord) juniper; urgency=low
+
+2)youker-assistant.dekstop
+
+3)debian/source/format
+replace quilt with native
+
+
+DEBUG:
+gdb python
+set args start_sessiondbus.py
+run

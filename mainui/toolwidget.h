@@ -37,7 +37,7 @@ class ToolWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ToolWidget(QWidget *parent = 0, QString arch = "");
+    explicit ToolWidget(QWidget *parent = 0, QString arch = "", QString os = "");
     ~ToolWidget();
     void setParentWindow(MainWindow* window) { p_mainwindow = window;}
     void initConnect();
@@ -56,6 +56,7 @@ private:
     QList<KylinToolButton *> button_list;
     MainWindow *p_mainwindow;
     QString cur_arch;
+    QString osname;
 //    QParallelAnimationGroup *openGroup;
 //    QParallelAnimationGroup *closeGroup;
 };

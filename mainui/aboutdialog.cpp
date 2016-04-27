@@ -24,7 +24,7 @@
 #include <QPropertyAnimation>
 #include <QParallelAnimationGroup>
 
-AboutDialog::AboutDialog(QWidget *parent, const QString &version, QString skin) :
+AboutDialog::AboutDialog(QWidget *parent, const QString &version, QString skin, QString arch, QString os):
     QDialog(parent)
 {
     this->setWindowFlags(Qt::FramelessWindowHint);
@@ -67,7 +67,10 @@ AboutDialog::AboutDialog(QWidget *parent, const QString &version, QString skin) 
 
     nameLabel->setStyleSheet("QLabel{color:#ffffff;font-family: 方正黑体_GBK;font-size: 12px;text-align: center;font-weight:bold;}");
     nameLabel->setAlignment(Qt::AlignCenter);
-    nameLabel->setText(tr("Youker Assisant") + " " + version);
+    if (arch == "aarch64" || os == "Kylin")
+        nameLabel->setText(tr("Kylin Assisant") + " " + version);
+    else
+        nameLabel->setText(tr("Youker Assisant") + " " + version);
 //    linkLabel->setAlignment(Qt::AlignRight);
 //    linkLabel->setText(QString::fromLocal8Bit("<a style='color: green;' href = https://launchpad.net/youker-assistant> home page</a>"));
 
@@ -98,11 +101,18 @@ AboutDialog::AboutDialog(QWidget *parent, const QString &version, QString skin) 
     contributorEdit->setGeometry(QRect(17, 92, 408, 200));
     aboutEdit->setReadOnly(true);
     contributorEdit->setReadOnly(true);
-//    aboutEdit->append(tr("      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions. \n      The software is still under development. Please visit www.ubuntukylin.com for more information. Welcome everyone to join with us. youker-assistant Homepage: "));
-    aboutEdit->append(tr("      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions."));
-    aboutEdit->append(tr("      The software is still under development. Please visit ") + QString::fromLocal8Bit("<a style='color: #3f96e4;' href = http://www.ubuntukylin.com>www.ubuntukylin.com</a>") + tr(" for more information. Welcome everyone to join with us. youker-assistant Homepage: "));
+    if (arch == "aarch64" || os == "Kylin") {
+        contributorEdit->setText(tr("Maintainer:\nKylin Team <ubuntukylin-members@list.launchpad.net>"));
+        aboutEdit->append(tr("      Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions."));
+        aboutEdit->append(tr("      The software is still under development. Please visit ") + QString::fromLocal8Bit("<a style='color: #3f96e4;' href = http://www.ubuntukylin.com>www.ubuntukylin.com</a>") + tr(" for more information. Welcome everyone to join with us. kylin-assistant Homepage: "));
+    }
+    else {
+        contributorEdit->setText(tr("Maintainer:\nUbuntu Kylin Team <ubuntukylin-members@list.launchpad.net>"));
+        aboutEdit->append(tr("      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, system customization, task manager, and some other functions."));
+        aboutEdit->append(tr("      The software is still under development. Please visit ") + QString::fromLocal8Bit("<a style='color: #3f96e4;' href = http://www.ubuntukylin.com>www.ubuntukylin.com</a>") + tr(" for more information. Welcome everyone to join with us. youker-assistant Homepage: "));
+    }
     aboutEdit->append(QString::fromLocal8Bit("<a style='color: #3f96e4;' href=\"https://launchpad.net/youker-assistant\">https://launchpad.net/youker-assistant</a>"));
-    contributorEdit->setText(tr("Maintainer:\nUbuntu Kylin Team <ubuntukylin-members@list.launchpad.net>"));
+
     contributorEdit->hide();
 
     aboutBtn->setFocusPolicy(Qt::NoFocus);
