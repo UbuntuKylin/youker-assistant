@@ -80,7 +80,7 @@ void MemoryWidget::initData()
                 QMap<QString, QVariant>::iterator  itend = memory_info_map.end();
                 for (;itbegin != itend; ++itbegin)
                 {
-                    if(itbegin.key() != "Memnum") {
+                    if(itbegin.key() != "Memnum" && itbegin.value().toString().contains("<1_1>")) {
                         QString result = itbegin.value().toString().split("<1_1>").at(i);
                         if (result.length() > 0) {
                             tmp_info_map.insert(itbegin.key(), result);

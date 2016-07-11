@@ -30,13 +30,14 @@ CleanerDetailWidget::CleanerDetailWidget(QWidget *parent, SessionDispatcher *ser
 {
     ui->setupUi(this);
 //    this->setStyleSheet("QWidget{border: none}");
+    this->setFixedSize(900, 403);
     this->setObjectName("transparentWidget");
     this->setWindowIcon(QIcon(":/res/youker-assistant.png"));
-    this->setFixedSize(900, 403);
-    this->setAutoFillBackground(true);
+
+    /*this->setAutoFillBackground(true);
     QPalette palette;
     palette.setBrush(QPalette::Window, QBrush(Qt::white));
-    this->setPalette(palette);
+    this->setPalette(palette);*/
 //    this->setObjectName("transparentWidget");
 //    this->setAutoFillBackground(true);
 //    QPalette palette;
@@ -48,6 +49,7 @@ CleanerDetailWidget::CleanerDetailWidget(QWidget *parent, SessionDispatcher *ser
     this->itemheight = 110;
     this->cardspace = 10;
 
+    ui->scrollAreaWidgetContents->setGeometry(0, 0, this->width(), this->height());
     ui->scrollArea->setFixedSize(900, 403);
     ui->scrollArea->setAutoFillBackground(true);
     ui->scrollArea->setBackgroundRole(QPalette::Light);
@@ -70,12 +72,12 @@ CleanerDetailWidget::CleanerDetailWidget(QWidget *parent, SessionDispatcher *ser
     cache_chromium_items = NULL;
     cache_chromium_btn = NULL;
 
-    package_unneed_items = NULL;
-    package_unneed_btn = NULL;
-    package_oldkernel_items = NULL;
-    package_oldkernel_btn = NULL;
-    package_configfile_items = NULL;
-    package_configfile_btn = NULL;
+//    package_unneed_items = NULL;
+//    package_unneed_btn = NULL;
+//    package_oldkernel_items = NULL;
+//    package_oldkernel_btn = NULL;
+//    package_configfile_items = NULL;
+//    package_configfile_btn = NULL;
 
     cookies_firefox_items = NULL;
     cookies_firefox_btn = NULL;
@@ -121,7 +123,7 @@ CleanerDetailWidget::~CleanerDetailWidget()
         delete cache_chromium_items;
         cache_chromium_items = NULL;
     }
-    if(package_unneed_items != NULL)
+    /*if(package_unneed_items != NULL)
     {
         delete package_unneed_items;
         package_unneed_items = NULL;
@@ -135,7 +137,7 @@ CleanerDetailWidget::~CleanerDetailWidget()
     {
         delete package_configfile_items;
         package_configfile_items = NULL;
-    }
+    }*/
     if(cookies_firefox_items != NULL)
     {
         delete cookies_firefox_items;
@@ -171,9 +173,9 @@ void CleanerDetailWidget::CleanUIAndData()
     cache_thumbnails_list.clear();
     cache_firefox_list.clear();
     cache_chromium_list.clear();
-    package_unneed_list.clear();
+    /*package_unneed_list.clear();
     package_oldkernel_list.clear();
-    package_configfile_list.clear();
+    package_configfile_list.clear();*/
     cookies_firefox_list.clear();
     cookies_chromium_list.clear();
     trace_firefox_count.clear();
@@ -254,7 +256,7 @@ void CleanerDetailWidget::showReciveData(const QStringList &data)
         }
     }
     //----------------------------------------------------------------Package---------------------------
-    else if(data.at(0) == "Belong:Packages.unneed" && !data.at(1).isEmpty())
+    /*else if(data.at(0) == "Belong:Packages.unneed" && !data.at(1).isEmpty())
     {
         if(data.at(1).contains(":"))
         {
@@ -280,7 +282,7 @@ void CleanerDetailWidget::showReciveData(const QStringList &data)
                 scanResult = true;
             package_configfile_list.append(data.at(1).split(":").at(1));
         }
-    }
+    }*/
 
     //----------------------------------------------------------------Cookies---------------------------
     else if(data.at(0) == "Belong:Cookies.firefox" && !data.at(1).isEmpty())
@@ -874,7 +876,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
 //            }
         }
     }
-    else if(status == "Complete:Packages")
+    /*else if(status == "Complete:Packages")
     {
 //        doing_label->setText(tr("Packages Scan OK"));
         if(package_unneed_list.length() > 0)
@@ -1006,7 +1008,7 @@ void CleanerDetailWidget::showReciveStatus(const QString &status)
 //                columnIndex += 1;
 //            }
         }
-    }
+    }*/
     else if(status == "Complete:All")
     {
         if(!scanResult)
@@ -1070,7 +1072,7 @@ void CleanerDetailWidget::showCustomPage()
         cookies_chromium_items->move(w_x, w_y);
         cookies_chromium_items->exec();
     }
-    else if(object_name == "package-unneed")
+    /*else if(object_name == "package-unneed")
     {
         int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
         int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
@@ -1090,7 +1092,7 @@ void CleanerDetailWidget::showCustomPage()
         int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
         package_configfile_items->move(w_x, w_y);
         package_configfile_items->exec();
-    }
+    }*/
     else if(object_name == "x11-history")
     {
         int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
@@ -1128,12 +1130,12 @@ void CleanerDetailWidget::resetCurrentSkin(QString skin)
         cookies_firefox_items->resetTitleSkin(skin);
     if(cookies_chromium_items != NULL)
         cookies_chromium_items->resetTitleSkin(skin);
-    if(package_unneed_items != NULL)
+    /*if(package_unneed_items != NULL)
         package_unneed_items->resetTitleSkin(skin);
     if(package_oldkernel_items != NULL)
         package_oldkernel_items->resetTitleSkin(skin);
     if(package_configfile_items != NULL)
-        package_configfile_items->resetTitleSkin(skin);
+        package_configfile_items->resetTitleSkin(skin);*/
     if(trace_x11_items != NULL)
         trace_x11_items->resetTitleSkin(skin);
 }
@@ -1167,7 +1169,7 @@ void CleanerDetailWidget::getAllSelectedItems()
 {
     argsData.clear();
     QStringList fileTmp;
-    QStringList packageTmp;
+//    QStringList packageTmp;
     QStringList firefoxcookieTmp;
     QStringList chromiumcookieTmp;
     QStringList traceTmp;
@@ -1212,7 +1214,7 @@ void CleanerDetailWidget::getAllSelectedItems()
             fileTmp.append(tmp.at(i));
         }
     }
-    if(package_unneed_btn != NULL && package_unneed_btn->getCheckBoxStatus() != 0)
+    /*if(package_unneed_btn != NULL && package_unneed_btn->getCheckBoxStatus() != 0)
     {
         QStringList tmp = package_unneed_items->getSelectedItems();
         for(int i = 0; i<tmp.length();i++)
@@ -1235,7 +1237,7 @@ void CleanerDetailWidget::getAllSelectedItems()
         {
             packageTmp.append(tmp.at(i));
         }
-    }
+    }*/
     if(cookies_firefox_btn != NULL && cookies_firefox_btn->getCheckBoxStatus() != 0)
     {
         QStringList tmp = cookies_firefox_items->getSelectedItems();
@@ -1280,8 +1282,8 @@ void CleanerDetailWidget::getAllSelectedItems()
 
     if(fileTmp.length() > 0)
         argsData.insert("file", fileTmp);
-    if(packageTmp.length() > 0)
-        argsData.insert("package", packageTmp);
+//    if(packageTmp.length() > 0)
+//        argsData.insert("package", packageTmp);
     if(firefoxcookieTmp.length() > 0)
         argsData.insert("firefox-cookie", firefoxcookieTmp);
     if(chromiumcookieTmp.length() > 0)

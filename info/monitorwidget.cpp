@@ -39,7 +39,17 @@ bool MonitorWidget::getStatus()
 void MonitorWidget::initData()
 {
     monitor_info_map.clear();
-    monitor_info_map = systemproxy->get_monitor_info_qt();
+//    monitor_info_map = systemproxy->get_monitor_info_qt();
+
+    //0711
+    monitor_info_map.insert("Mon_chip", "Intel(R) HD Graphics 4400");
+    monitor_info_map.insert("Vga_Drive", "i915<1_1>nouveau");
+    monitor_info_map.insert("Vga_businfo", "pci@0000:00:02.0 <1_1>pci@0000:04:00.0");
+    monitor_info_map.insert("Vga_num", "2");
+    monitor_info_map.insert("Vga_product", "Intel Corporation Haswell-ULT Integrated Graphics Controller (rev 09) (prog-if 00 [VGA controller])<1_1>NVIDIA Corporation GF117M [GeForce 610M/710M/810M/820M / GT 620M/625M/630M/720M] (rev a1) (prog-if 00 [VGA controller]");
+    monitor_info_map.insert("Vga_vendor", "Intel<1_1>Nvidia");
+
+
     QMap<QString, QVariant>::iterator iter = monitor_info_map.find("Vga_num");
     int vgaNum = 0;
     if (iter == monitor_info_map.end())
@@ -78,7 +88,7 @@ void MonitorWidget::initData()
                 QMap<QString, QVariant>::iterator  itend = monitor_info_map.end();
                 for (;itbegin != itend; ++itbegin)
                 {
-                    if(itbegin.key() != "Vga_num") {
+                    if(itbegin.key() != "Vga_num" && itbegin.value().toString().contains("<1_1>")) {
                         QString result = itbegin.value().toString().split("<1_1>").at(i);
                         if (result.length() > 0) {
                             tmp_info_map.insert(itbegin.key(), result);

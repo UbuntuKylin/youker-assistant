@@ -42,7 +42,8 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, SessionDispatcher *seroxy,
 //    cache_btn = new KylinCheckBox(0, "://res/cache.png");
     cache_btn = new CleanGroup(this, "://res/cache");
     cache_btn->setFocusPolicy(Qt::NoFocus);
-    cache_btn->setGeometry(QRect(10, 50, 260, 150));
+//    cache_btn->setGeometry(QRect(10, 50, 260, 150));
+    cache_btn->setGeometry(QRect(10, 150, 260, 150));
 //    cache_btn->setFixedSize(260, 130);
     cache_btn->setStatusTip("cache");
     cache_btn->setLabelText(tr("System Cache"), tr("Cleanup  cache of system, software-center, thumbnails and browser"));//系统缓存垃圾    清除包、软件中心、缩略图和浏览器缓存
@@ -51,7 +52,8 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, SessionDispatcher *seroxy,
     //点击按钮后，显示子页面
     connect(cache_btn, SIGNAL(clicked()), this, SLOT(onButtonClicked()));
 
-    QStringList package_list;
+    //20160711
+    /*QStringList package_list;
     package_list << tr("Uninstall unnecessary procedures") << tr("Uninstall old kernel packages") << tr("Cleanup software configfile");
     status_list.clear();
     status_list << "unneed" << "oldkernel" << "configfile";
@@ -66,7 +68,7 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, SessionDispatcher *seroxy,
     //子checkbox的状态被改变时，重新设置总按钮的状态
     connect(package_items, SIGNAL(notifyMainCheckBox(int)), package_btn, SLOT(resetMainStatus(int)));
     //点击按钮后，显示子页面
-    connect(package_btn, SIGNAL(clicked()), this, SLOT(onButtonClicked()));
+    connect(package_btn, SIGNAL(clicked()), this, SLOT(onButtonClicked()));*/
 
     QStringList cookies_list;
     cookies_list << tr("Cleanup the Cookies saving in Firefox") << tr("Cleanup the Cookies saving in Chromium");
@@ -76,7 +78,8 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, SessionDispatcher *seroxy,
 //    cookies_btn = new KylinCheckBox(0, "://res/cookie.png");
     cookies_btn = new CleanGroup(this, "://res/cookie");
     cookies_btn->setFocusPolicy(Qt::NoFocus);
-    cookies_btn->setGeometry(QRect(630, 50, 260, 150));
+    cookies_btn->setGeometry(QRect(320, 150, 260, 150));
+//    cookies_btn->setGeometry(QRect(630, 50, 260, 150));
 //    cookies_btn->setFixedSize(260, 130);
     cookies_btn->setLabelText(tr("Cookies"), tr("Clean up user login information, support Firefox and Chromium browser"));//清除上网、游戏、购物等记录
     cookies_btn->setStatusTip("cookies");
@@ -93,7 +96,8 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, SessionDispatcher *seroxy,
 //    trace_btn = new KylinCheckBox(0, "://res/trace.png");
     trace_btn = new CleanGroup(this, "://res/trace");
     trace_btn->setFocusPolicy(Qt::NoFocus);
-    trace_btn->setGeometry(QRect(10, 240, 260, 150));
+//    trace_btn->setGeometry(QRect(10, 240, 260, 150));
+    trace_btn->setGeometry(QRect(630, 150, 260, 150));
 //    trace_btn->setFixedSize(260, 130);
     trace_btn->setLabelText(tr("History trace"), tr("Cleaning the internet and opened documents recently records"));//使用痕迹    清除浏览器和系统使用痕迹
     trace_btn->setStatusTip("trace");
@@ -110,10 +114,10 @@ CleanerMainWidget::~CleanerMainWidget()
         delete cache_items;
         cache_items = NULL;
     }
-    if(package_items != NULL) {
-        delete package_items;
-        package_items = NULL;
-    }
+//    if(package_items != NULL) {
+//        delete package_items;
+//        package_items = NULL;
+//    }
     if(cookies_items != NULL) {
         delete cookies_items;
         cookies_items = NULL;
@@ -135,8 +139,8 @@ void CleanerMainWidget::resetCurrentSkin(QString skin)
         cache_items->resetTitleSkin(skin);
     if(trace_items != NULL)
         trace_items->resetTitleSkin(skin);
-    if(package_items != NULL)
-        package_items->resetTitleSkin(skin);
+//    if(package_items != NULL)
+//        package_items->resetTitleSkin(skin);
     if(cookies_items != NULL)
         cookies_items->resetTitleSkin(skin);
 }
@@ -160,7 +164,7 @@ void CleanerMainWidget::getAllScanSelectedItems()
 {
     argsMap.clear();
     QStringList cacheTmp;
-    QStringList packageTmp;
+//    QStringList packageTmp;
     QStringList cookieTmp;
     QStringList historyTmp;
 
@@ -173,14 +177,14 @@ void CleanerMainWidget::getAllScanSelectedItems()
         }
     }
 
-    if(package_btn != NULL && package_btn->getCheckBoxStatus() != 0)
-    {
-        QStringList tmp = package_items->getSelectedItems();
-        for(int i = 0; i<tmp.length();i++)
-        {
-            packageTmp.append(tmp.at(i));
-        }
-    }
+//    if(package_btn != NULL && package_btn->getCheckBoxStatus() != 0)
+//    {
+//        QStringList tmp = package_items->getSelectedItems();
+//        for(int i = 0; i<tmp.length();i++)
+//        {
+//            packageTmp.append(tmp.at(i));
+//        }
+//    }
 
     if(cookies_btn != NULL && cookies_btn->getCheckBoxStatus() != 0)
     {
@@ -201,8 +205,8 @@ void CleanerMainWidget::getAllScanSelectedItems()
     }
     if(cacheTmp.length() > 0)
         argsMap.insert("Cache", cacheTmp);
-    if(packageTmp.length() > 0)
-        argsMap.insert("Packages", packageTmp);
+//    if(packageTmp.length() > 0)
+//        argsMap.insert("Packages", packageTmp);
     if(cookieTmp.length() > 0)
         argsMap.insert("Cookies", cookieTmp);
     if(historyTmp.length() > 0)
@@ -222,13 +226,13 @@ void CleanerMainWidget::onButtonClicked()
         cache_items->move(w_x, w_y);
         cache_items->exec();
     }
-    else if(object_name == "package")
-    {
-        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
-        int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (200  / 2);
-        package_items->move(w_x, w_y);
-        package_items->exec();
-    }
+//    if(object_name == "package")
+//    {
+//        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
+//        int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (200  / 2);
+//        package_items->move(w_x, w_y);
+//        package_items->exec();
+//    }
     if(object_name == "cookies")
     {
         int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);

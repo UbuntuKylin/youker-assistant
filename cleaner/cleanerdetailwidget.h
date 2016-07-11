@@ -86,12 +86,12 @@ private:
     CleanListWidget *cache_chromium_items ;
     CleanSubGroup *cache_chromium_btn;
 
-    CleanListWidget *package_unneed_items ;
+    /*CleanListWidget *package_unneed_items ;
     CleanSubGroup *package_unneed_btn;
     CleanListWidget *package_oldkernel_items ;
     CleanSubGroup *package_oldkernel_btn;
     CleanListWidget *package_configfile_items ;
-    CleanSubGroup *package_configfile_btn;
+    CleanSubGroup *package_configfile_btn;*/
 
     CleanListWidget *cookies_firefox_items ;
     CleanSubGroup *cookies_firefox_btn;
@@ -110,9 +110,9 @@ private:
     QStringList cache_thumbnails_list;
     QStringList cache_firefox_list;
     QStringList cache_chromium_list;
-    QStringList package_unneed_list;
+    /*QStringList package_unneed_list;
     QStringList package_oldkernel_list;
-    QStringList package_configfile_list;
+    QStringList package_configfile_list;*/
     QStringList cookies_firefox_list;
     QStringList cookies_chromium_list;
     QString trace_firefox_count;

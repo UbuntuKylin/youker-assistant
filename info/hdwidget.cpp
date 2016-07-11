@@ -40,6 +40,16 @@ void HDWidget::initData()
 {
     hd_info_map.clear();
     hd_info_map = systemproxy->get_harddisk_info_qt();
+
+    //0711
+//    hd_info_map.insert("DiskCapacity", "465.8 GiB, 500107862016 bytes<1_1>14.9 GiB, 16013942784 bytes");
+//    hd_info_map.insert("DiskFw", "0002LIM1<1_1>U21B001");
+//    hd_info_map.insert("DiskName", "/dev/sda<1_1>/dev/sdb");
+//    hd_info_map.insert("DiskNum", "2");
+//    hd_info_map.insert("DiskProduct", "ST500LM021-1KJ152<1_1>SanDisk SSD U110 16GB");
+//    hd_info_map.insert("DiskSerial", "W6227R7B<1_1>144116411501");
+//    hd_info_map.insert("DiskVendor", "Seagate<1_1>Seagate");
+
     QMap<QString, QVariant>::iterator iter = hd_info_map.find("DiskNum");
     int diskNum = 0;
     if (iter == hd_info_map.end())
@@ -78,7 +88,7 @@ void HDWidget::initData()
                 QMap<QString, QVariant>::iterator  itend = hd_info_map.end();
                 for (;itbegin != itend; ++itbegin)
                 {
-                    if(itbegin.key() != "DiskNum") {
+                    if(itbegin.key() != "DiskNum" && itbegin.value().toString().contains("<1_1>")) {
                         QString result = itbegin.value().toString().split("<1_1>").at(i);
                         if (result.length() > 0) {
                             tmp_info_map.insert(itbegin.key(), result);

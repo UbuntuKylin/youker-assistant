@@ -52,8 +52,8 @@ private:
 
     CleanGroup *cache_btn;
     CleanerItems *cache_items;
-    CleanGroup *package_btn;
-    CleanerItems *package_items;
+//    CleanGroup *package_btn;
+//    CleanerItems *package_items;
     CleanGroup *cookies_btn;
     CleanerItems *cookies_items;
     CleanGroup *trace_btn;
