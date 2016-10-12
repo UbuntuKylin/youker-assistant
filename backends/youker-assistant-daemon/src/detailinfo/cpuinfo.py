@@ -639,18 +639,33 @@ class DetailInfo:
                     #    Mem["MemInfo"] = "DDR3 " + dic["Speed"]
                     #else:
                     #    Mem["MemInfo"] +=  "<1_1>" + "DDR3 " + dic["Speed"]
+                    if dic["Bank Locator"]:
+                        median = str(dic["Bank Locator"])
+                    else:
+                        median = '$'
                     if Mem.get("MemSlot") == None:
-                        Mem["MemSlot"] = dic["Bank Locator"]
+                        Mem["MemSlot"] = median
                     else:
-                        Mem["MemSlot"] +=  "<1_1>" + str(dic["Bank Locator"])
+                        Mem["MemSlot"] +=  "<1_1>" + median
+
+                    if dic["Size"]:
+                        median = str(dic["Size"])
+                    else:
+                        median = '$'
                     if Mem.get("MemSize") == None:
-                        Mem["MemSize"] = dic["Size"]
+                        Mem["MemSize"] = median
                     else:
-                        Mem["MemSize"] += "<1_1>" + str(dic["Size"])
+                        Mem["MemSize"] += "<1_1>" + median
+
+                    if dic["Manufacturer ID"]:
+                        median = str(dic["Manufacturer ID"].upper())
+                    else:
+                        median = '$'
                     if Mem.get("MemVendor") == None:
-                        Mem["MemVendor"] = str(dic["Manufacturer ID"].upper())
+                        Mem["MemVendor"] = median
                     else:
-                        Mem["MemVendor"] += "<1_1>" + str(dic["Manufacturer ID"].upper())
+                        Mem["MemVendor"] += "<1_1>" + median
+
                     if Mem.get("MemWidth") == None:
                         Mem["MemWidth"] = "64 bits"
                     else:
@@ -819,24 +834,39 @@ class DetailInfo:
             while re.findall('VGA compatible controller: ',vga) :
                 tmp = vga[vga.index('VGA compatible controller: ') - 8:]
                 vga = tmp[30:]
+                if tmp[:8]:
+                    median = 'pci@0000:' + tmp[:8]
+                else:
+                    median = '$'
                 if Vga_businfo:
-                    Vga_businfo += "<1_1>" + 'pci@0000:' + tmp[:8]
-                else :
-                    Vga_businfo = 'pci@0000:' + tmp[:8]
+                    Vga_businfo += "<1_1>" + median
+                else:
+                    Vga_businfo = median
+                
+                pro = re.findall('VGA compatible controller: (.*)',tmp)
+                if pro:
+                    median = pro[0]
+                    median_2 = self.get_url('',pro[0])
+                else:
+                    median = '$'
+                    median_2 = '$'
                 if Vga_product:
-                    pro = re.findall('VGA compatible controller: (.*)',tmp)
-                    Vga_product += "<1_1>" + pro[0]
-                    Vga_vendor += "<1_1>" + self.get_url('',pro[0])
-                else :
-                    pro = re.findall('VGA compatible controller: (.*)',tmp)
-                    Vga_product = pro[0]
-                    Vga_vendor = self.get_url('',pro[0])
+                    Vga_product += "<1_1>" + median
+                    Vga_vendor += "<1_1>" + median_2
+                else:
+                    Vga_product = median
+                    Vga_vendor = median_2
+
                 Vga_num += 1
                 tmp = re.findall('Kernel driver in use: (.*)',tmp)
+                if tmp:
+                    median = tmp[0]
+                else:
+                    median = '$'
                 if Vga_Drive:
-                    Vga_Drive += "<1_1>" + tmp[0]
+                    Vga_Drive += "<1_1>" + median
                 else :
-                    Vga_Drive = tmp[0]
+                    Vga_Drive = median
 
         if (ret.get('Mon_vendor')):
             if (ret.get('Mon_product')):
@@ -885,43 +915,63 @@ class DetailInfo:
                     tmp = re.findall("Model=(.*), F",strin)
                     if not tmp and DiskProduct:
                         continue
-                    if tmp :
-                        if DiskProduct :
-                            DiskProduct += "<1_1>"+tmp[0]
-                        else :
-                            DiskProduct = tmp[0]
-                        i = 0
-                        while i < len(disk_manufacturers):
-                            ven = re.compile(disk_manufacturers[i],re.I)
-                            tm = ven.findall(tmp[0])
-                            if tm :
-                                if DiskVendor :
-                                    DiskVendor += "<1_1>" + disk_manufacturers[i+1]
-                                else :
-                                    DiskVendor += disk_manufacturers[i+1]
-                                i = len(disk_manufacturers)
-                            i += 2
+                    if tmp:
+                        median = tmp[0]
+                    else:
+                        median = '$'
+                    if DiskProduct :
+                        DiskProduct += "<1_1>" + median
+                    else:
+                        DiskProduct = median
+                    i = 0
+                    tm = ''
+                    while i < len(disk_manufacturers):
+                        ven = re.compile(disk_manufacturers[i],re.I)
+                        tm = ven.findall(tmp[0])
+                        if tm:
+                            break;
+                        i += 2
+                    if tm:
+                        median = disk_manufacturers[i+1]
+                    else:
+                        median = '$'
+                    if DiskVendor :
+                        DiskVendor += "<1_1>" + median
+                    else:
+                        DiskVendor += median
+
                     tmp = re.findall("FwRev=(.*), ",strin)
                     if tmp :
-                        if DiskFw :
-                            DiskFw += "<1_1>" +tmp[0]
-                        else :
-                            DiskFw = tmp[0]
+                        median = tmp[0]
+                    else:
+                        median = '$'
+                    if DiskFw :
+                        DiskFw += "<1_1>" + median
+                    else:
+                        DiskFw = median
+
                     tmp = re.findall("SerialNo=(.*)",strin)
                     if tmp :
-                        if DiskSerial :
-                            DiskSerial += "<1_1>" +tmp[0]
-                        else :
-                            DiskSerial = tmp[0]
+                        median = tmp[0]
+                    else:
+                        median = '$'
+                    if DiskSerial :
+                        DiskSerial += "<1_1>" + median
+                    else :
+                        DiskSerial = median
+
                     ds = os.popen("fdisk -l %s" % k)
                     d = ds.read()
                     ds.close()
                     tmp = re.findall("%s: (.*)," % k,d)
                     if tmp:
-                        if DiskCapacity :
-                            DiskCapacity += "<1_1>" +tmp[0]
-                        else :
-                            DiskCapacity = tmp[0]
+                        median = tmp[0]
+                    else:
+                        median = '$'
+                    if DiskCapacity :
+                        DiskCapacity += "<1_1>" + median
+                    else :
+                        DiskCapacity = median
                     disknum  += 1
                     if DiskName :
                         DiskName += "<1_1>" + k

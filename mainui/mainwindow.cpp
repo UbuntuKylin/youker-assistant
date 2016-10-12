@@ -35,7 +35,7 @@ MainWindow::MainWindow(QString cur_arch, QWidget *parent) :
     this->desktop = qgetenv("XDG_CURRENT_DESKTOP");
     if(this->desktop.isEmpty())
         this->desktop = qgetenv("XDG_SESSION_DESKTOP");
-//    qDebug() << this->desktop;
+//        qDebug() << this->desktop;
 //    qDebug() << QString::compare(this->desktop, "mate", Qt::CaseInsensitive/*Qt::CaseInsensitive*/);
 
 //    this->osName = "Kylin";
@@ -62,7 +62,7 @@ MainWindow::MainWindow(QString cur_arch, QWidget *parent) :
 //    this->setAttribute(Qt::WA_TranslucentBackground);
 //    this->setStyleSheet("QMainWindow{border: 1px solid gray;border-radius:2px}");
     this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
-    version = "V2.0.8";
+    version = "V2.0.9";
     status = HOMEPAGE;
     statusFlag = false;
 

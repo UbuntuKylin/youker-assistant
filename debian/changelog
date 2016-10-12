@@ -1,3 +1,10 @@
+youker-assistant (2.0.9) xenial; urgency=low
+
+  * Add depends.
+  * Modify cpuinfo.py.
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Wed, 12 Oct 2016 23:12:34 +0800
+
 youker-assistant (2.0.8-0ubuntu1) xenial; urgency=low
 
   * Deal with org.gnome.settings-daemon.peripherals.touchpad.
