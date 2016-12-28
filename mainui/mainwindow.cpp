@@ -62,7 +62,7 @@ MainWindow::MainWindow(QString cur_arch, QWidget *parent) :
 //    this->setAttribute(Qt::WA_TranslucentBackground);
 //    this->setStyleSheet("QMainWindow{border: 1px solid gray;border-radius:2px}");
     this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
-    version = "V2.0.9";
+    version = "V2.1.2";//20161228
     status = HOMEPAGE;
     statusFlag = false;
 
@@ -1083,7 +1083,7 @@ void MainWindow::initHomePage()
 
 void MainWindow::openSkinCenter() {
     if(skin_center == NULL) {
-        skin_center = new SkinCenter(0, last_skin_path);
+        skin_center = new SkinCenter(0, last_skin_path, this->arch, this->osName);//20161228
         skin_center->setParentWindow(this);
         skin_center->initSysBackgroundList();
         int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (442  / 2);
@@ -1108,7 +1108,7 @@ void MainWindow::openUpgradePage(/*QStringList version_list*/)
     if(upgrade_dialog == NULL)
     {
 //        upgrade_dialog = new UpgradeDialog(0, version_list.at(2), last_skin_path);
-        upgrade_dialog = new UpgradeDialog(0, this->version, last_skin_path);
+        upgrade_dialog = new UpgradeDialog(0, this->version, last_skin_path, this->arch, this->osName);//20161228
         upgrade_dialog->setSystemDbusProxy(systeminterface);
         upgrade_dialog->setSessionDbusProxy(sessioninterface);
         connect(home_page, SIGNAL(sendOpenUpgrade()), this, SLOT(openUpgradePageAgain()));

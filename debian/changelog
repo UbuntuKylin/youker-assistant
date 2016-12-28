@@ -1,3 +1,10 @@
+youker-assistant (2.1.2) xenial; urgency=low
+
+  * Fixed ip address, memory info and hdinfo.
+  * Adjust the close button position accord to desktop environment.
+
+ -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Wed, 28 Dec 2016 12:03:36 +0800
+
 youker-assistant (2.0.9) xenial; urgency=low
 
   * Add depends.

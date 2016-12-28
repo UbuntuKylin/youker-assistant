@@ -55,7 +55,8 @@ AboutDialog::AboutDialog(QWidget *parent, const QString &version, QString skin, 
     close_btn->loadPixmap(":/sys/res/sysBtn/close_button.png");
 
     iconLabel = new QLabel(baseWidget);
-    iconLabel->setGeometry(QRect(380, 20, 44, 44));
+    //iconLabel->setGeometry(QRect(380, 20, 44, 44));
+    iconLabel->setGeometry(QRect(360, 36, 44, 44));//20161228
     nameLabel = new QLabel(baseWidget);
     nameLabel->setGeometry(QRect(71, 0, 300, 30));
 //    linkLabel = new QLabel();
@@ -67,10 +68,14 @@ AboutDialog::AboutDialog(QWidget *parent, const QString &version, QString skin, 
 
     nameLabel->setStyleSheet("QLabel{color:#ffffff;font-family: 方正黑体_GBK;font-size: 12px;text-align: center;font-weight:bold;}");
     nameLabel->setAlignment(Qt::AlignCenter);
-    if (arch == "aarch64" || os == "Kylin")
+    if (arch == "aarch64" || os == "Kylin") {//20161228
+        close_btn->move(442-36, 0);
         nameLabel->setText(tr("Kylin Assisant") + " " + version);
-    else
+    }
+    else {
+        close_btn->move(0, 0);
         nameLabel->setText(tr("Youker Assisant") + " " + version);
+    }
 //    linkLabel->setAlignment(Qt::AlignRight);
 //    linkLabel->setText(QString::fromLocal8Bit("<a style='color: green;' href = https://launchpad.net/youker-assistant> home page</a>"));
 

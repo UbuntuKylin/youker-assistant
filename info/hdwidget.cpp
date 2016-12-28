@@ -71,7 +71,8 @@ void HDWidget::initData()
             QMap<QString,QVariant>::iterator it;
             for ( it = hd_info_map.begin(); it != hd_info_map.end(); ++it ) {
                 if (it.value().toString().length() > 0) {
-                    tmpMap.insert(it.key(), it.value());
+                    if (QString::compare(it.value().toString(), "$", Qt::CaseInsensitive) != 0)//20161228
+                        tmpMap.insert(it.key(), it.value());
                 }
             }
             page->setMap(tmpMap, hd_info_map.value("DiskVendor").toString().toUpper());
@@ -91,7 +92,8 @@ void HDWidget::initData()
                     if(itbegin.key() != "DiskNum" && itbegin.value().toString().contains("<1_1>")) {
                         QString result = itbegin.value().toString().split("<1_1>").at(i);
                         if (result.length() > 0) {
-                            tmp_info_map.insert(itbegin.key(), result);
+                            if (QString::compare(result, "$", Qt::CaseInsensitive) != 0)//20161228
+                                tmp_info_map.insert(itbegin.key(), result);
                         }
                     }
                 }

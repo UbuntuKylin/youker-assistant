@@ -36,7 +36,7 @@ class UpgradeDialog : public QDialog
     Q_OBJECT
     
 public:
-    explicit UpgradeDialog(QWidget *parent = 0, const QString &version="", QString skin = ":/background/res/skin/1.png");
+    explicit UpgradeDialog(QWidget *parent = 0, const QString &version="", QString skin = ":/background/res/skin/1.png", QString arch = "", QString os = "");//20161228
     ~UpgradeDialog();
     void initConnect();
     void resetTitleSkin(QString skin);

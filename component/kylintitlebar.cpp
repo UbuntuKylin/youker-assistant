@@ -100,6 +100,18 @@ void KylinTitleBar::resetBackground(QString name)
     setPalette(palette_widget);
 }
 
+//20161228
+void KylinTitleBar::setTitleWidth(int width)
+{
+    title_width = width;
+
+#ifdef __aarch64__
+    close_btn->move(title_width - 36, 0);
+#else
+    close_btn->move(0, 0);
+#endif
+}
+
 void KylinTitleBar::resizeEvent(QResizeEvent *event)
 {
     //width

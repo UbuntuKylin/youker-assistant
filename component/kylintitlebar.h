@@ -32,7 +32,7 @@ class KylinTitleBar : public QWidget
 public:
     explicit KylinTitleBar(QWidget *parent = 0);
     virtual ~KylinTitleBar();
-    void setTitleWidth(int width) { title_width = width;}
+    void setTitleWidth(int width);// { title_width = width;}20161228
     void setTitleName(QString title) { title_content = title;}
     void setTitleBackgound(QString img) { backgroud_image = img;}
     void resetBackground(QString name);

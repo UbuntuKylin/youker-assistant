@@ -23,8 +23,8 @@
 #include "../component/loadinglabel.h"
 #include <QtGui>
 #include <QDebug>
-
-UpgradeDialog::UpgradeDialog(QWidget *parent, const QString &version, QString skin) :
+//20161228
+UpgradeDialog::UpgradeDialog(QWidget *parent, const QString &version, QString skin, QString arch, QString os) :
     QDialog(parent)
 {
     this->setWindowFlags(Qt::FramelessWindowHint |Qt::WindowStaysOnTopHint);
@@ -45,6 +45,12 @@ UpgradeDialog::UpgradeDialog(QWidget *parent, const QString &version, QString sk
     close_btn = new SystemButton(baseWidget);
     close_btn->setFocusPolicy(Qt::NoFocus);
     close_btn->loadPixmap(":/sys/res/sysBtn/close_button.png");
+    if (arch == "aarch64" || os == "Kylin") {//20161228
+        close_btn->move(334-36, 0);
+    }
+    else {
+        close_btn->move(0, 0);
+    }
 
     nameLabel = new QLabel(baseWidget);
     nameLabel->setGeometry(QRect(37, 0, 260, 30));

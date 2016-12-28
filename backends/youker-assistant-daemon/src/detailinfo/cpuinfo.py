@@ -26,6 +26,7 @@ import struct
 import math
 import binascii
 import platform
+from gi.repository import GLib#20161228
 import gettext
 from gettext import gettext as _
 from gettext import ngettext as __
@@ -671,7 +672,7 @@ class DetailInfo:
                     else:
                         Mem["MemWidth"] += "<1_1>" + "64 bits"
                 Mem["Memnum"] = str(memnum)
-            else:
+            if Mem in (None, '', '[]', {}) or  Mem["Memnum"] == '0':#20161228
                 Mem["Memnum"] = "1"
                 Mem["MemWidth"] = "64 bits"
                 Mem["MemInfo"] = "DDR3"
@@ -679,7 +680,8 @@ class DetailInfo:
                 info = fp.read()
                 fp.close()
                 dic = dict([tuple(x.split(":")) for x in info.split("\n") if x])
-                Mem["MemSize"] = dic["MemTotal"].strip()
+                MemTotal = dic["MemTotal"].strip().split(' ')[0]
+                Mem["MemSize"] = GLib.format_size_for_display(int(MemTotal) * 1024)
         else:
             MemInfo,MemWidth,Memnum,MemSlot,MemProduct,MemVendor,MemSerial,MemSize,BioVendor = "","","","","","",'','',''
             hw = os.popen("dmidecode -t memory")
@@ -1019,7 +1021,8 @@ class DetailInfo:
         for name in interface:
             name=name.strip()
             # remove 'wlan'
-            if name.startswith('eth'):
+            #if name.startswith('eth'):
+            if name is not "lo":#20161228
                 try:
                     sk = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
                     ipaddr=socket.inet_ntoa(fcntl.ioctl(

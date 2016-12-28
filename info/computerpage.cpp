@@ -109,11 +109,13 @@ void ComputerPage::initUI()
             page_height += time_label->height();
         }
         else{
-            QLabel *label = new QLabel();
-            label->setText(tr("%1").arg(it.value().toString()));
-            label->setFixedHeight(ITEMHEIGHT);
-            form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), label);
-            page_height += label->height();
+            if (it.key().length() > 0 && it.value().toString().length() > 0) {//20161228
+                QLabel *label = new QLabel();
+                label->setText(tr("%1").arg(it.value().toString()));
+                label->setFixedHeight(ITEMHEIGHT);
+                form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), label);
+                page_height += label->height();
+            }
         }
         page_height += ITEMVSPACE;
     }

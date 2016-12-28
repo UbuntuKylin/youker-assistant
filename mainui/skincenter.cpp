@@ -24,7 +24,8 @@
 #include <QPropertyAnimation>
 #include <QParallelAnimationGroup>
 
-SkinCenter::SkinCenter(QWidget *parent, QString skin/*, Qt::WindowFlags f*/)
+//20161228
+SkinCenter::SkinCenter(QWidget *parent, QString skin, QString arch, QString os)
     :QDialog(parent)
 {
     this->setFixedSize(442, 340);
@@ -50,6 +51,12 @@ SkinCenter::SkinCenter(QWidget *parent, QString skin/*, Qt::WindowFlags f*/)
     close_btn = new SystemButton(baseWidget);
     close_btn->setFocusPolicy(Qt::NoFocus);
     close_btn->loadPixmap(":/sys/res/sysBtn/close_button.png");
+    if (arch == "aarch64" || os == "Kylin") {//20161228
+        close_btn->move(442-36, 0);
+    }
+    else {
+        close_btn->move(0, 0);
+    }
 
     label = new QLabel(baseWidget);
     label->setGeometry(QRect(71, 0, 300, 30));

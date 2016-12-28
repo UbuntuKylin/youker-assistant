@@ -39,7 +39,7 @@ class SkinCenter :public QDialog
 {
   Q_OBJECT
 public:
-    SkinCenter(QWidget *parent = 0, QString skin = ":/background/res/skin/1.png"/*, Qt::WindowFlags f = 0*/);
+    SkinCenter(QWidget *parent = 0, QString skin = ":/background/res/skin/1.png", QString arch = "", QString os = "");//20161228
     ~SkinCenter();
     void setParentWindow(MainWindow *From) { mainwindow = From;}
 //    void setSystemDbusProxy(SystemDispatcher* dispatcher) { systemProxy = dispatcher;}
