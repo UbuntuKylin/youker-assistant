@@ -772,6 +772,23 @@ class DetailInfo:
 
     def get_monitor(self):
         #Monitor
+#        ret = {'Mon_chip': 'CAICOS',
+#        'Mon_gamma': '2.20',
+#        'Mon_in': '24.1',
+#        'Mon_maxmode': '1920x1200',
+#        'Mon_output': 'HDMI-0',
+#        'Mon_product': 'DELL U2413',
+#        'Mon_size': '51.8cm x 32.4cm',
+#        'Mon_support': "['HDMI-0', 'VGA-0']",
+#        'Mon_vendor': 'DELL',
+#        'Mon_week': '13',
+#        'Mon_year': '2015',
+#        'Vga_Drive': 'radeon',
+#        'Vga_businfo': 'pci@0000:02:00.0',
+#        'Vga_num': '1',
+#        'Vga_product': 'Advanced Micro Devices, Inc. [AMD/ATI] Caicos XT [Radeon HD 7470/8470 / R5 235/310 OEM] (prog-if 00 [VGA controller])',
+#        'Vga_vendor': 'ATI'}
+#        return ret
         ret = {}
         with open('/var/log/Xorg.0.log','r') as fp:
     	    info = fp.read()

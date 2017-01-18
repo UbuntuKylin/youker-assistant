@@ -1,6 +1,7 @@
 youker-assistant (2.1.3) xenial; urgency=low
 
   * Translation for arm64.
+  * Repair the bug about graphics.
 
  -- lixiang <lixiang@kylinos.cn>  Wed, 18 Jan 2017 15:35:07 +0800
 
