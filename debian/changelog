@@ -1,3 +1,9 @@
+youker-assistant (2.1.3) xenial; urgency=low
+
+  * Translation for arm64.
+
+ -- lixiang <lixiang@kylinos.cn>  Wed, 18 Jan 2017 15:35:07 +0800
+
 youker-assistant (2.1.2) xenial; urgency=low
 
   * Fixed ip address, memory info and hdinfo.

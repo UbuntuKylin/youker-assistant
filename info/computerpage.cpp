@@ -111,7 +111,16 @@ void ComputerPage::initUI()
         else{
             if (it.key().length() > 0 && it.value().toString().length() > 0) {//20161228
                 QLabel *label = new QLabel();
-                label->setText(tr("%1").arg(it.value().toString()));
+                if (QString::compare(it.value().toString(), "1500a v1.0 64 bits", Qt::CaseInsensitive) == 0)//2017
+                    label->setText(tr("%1").arg(this->translatorSwitch(it.value().toString())));
+                else if (QString::compare(it.value().toString(), "phytium", Qt::CaseInsensitive) == 0)//2017
+                    label->setText(tr("%1").arg(this->translatorSwitch(it.value().toString())));
+                else if (QString::compare(it.value().toString(), "4 cores", Qt::CaseInsensitive) == 0)//2017
+                    label->setText(tr("%1").arg(this->translatorSwitch(it.value().toString())));
+                else if (QString::compare(it.value().toString(), "4 thread/core", Qt::CaseInsensitive) == 0)//2017
+                    label->setText(tr("%1").arg(this->translatorSwitch(it.value().toString())));
+                else
+                    label->setText(tr("%1").arg(it.value().toString()));
                 label->setFixedHeight(ITEMHEIGHT);
                 form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), label);
                 page_height += label->height();
@@ -278,6 +287,16 @@ QString ComputerPage::translatorSwitch(QString orgStr)
         return tr("L1 Cache");
     else if(orgStr == "cache_size")//二级缓存：
         return tr("L2 Cache");
+
+
+    else if(orgStr == "1500a v1.0 64 bits")//1500a v1.0 64位
+        return tr("1500a v1.0 64 bits");
+    else if(orgStr == "phytium")//飞腾
+        return tr("phytium");
+    else if(orgStr == "4 cores")//4核
+        return tr("4 cores");
+    else if(orgStr == "4 thread/core")//4线程/核
+        return tr("4 thread/core");
 
 
     else if(orgStr == "desktopenvironment")//桌面环境

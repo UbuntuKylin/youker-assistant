@@ -498,18 +498,18 @@ class DetailInfo:
                 tmp = float(info.strip()) / (1000 * 1000)
                 freq = str("%.1f" % tmp)
                 fp.close()
-                Cpu['CpuVersion'] = "1500a v1.0"
-                Cpu['CpuVendor'] = "phytium(飞腾)"
+                Cpu['CpuVersion'] = "1500a v1.0 64 bits"
+                Cpu['CpuVendor'] = "phytium"#(飞腾)
                 Cpu['CpuCapacity'] = "%s GHz" % freq
-                Cpu['cpu_cores'] = "4 核"
-                Cpu['cpu_siblings'] = "4 线程/核"
+                Cpu['cpu_cores'] = "4 cores"#4 核
+                Cpu['cpu_siblings'] = "4 thread/core"#4 线程/核
                 Cpu['clflush_size'] = "32 KB"
                 Cpu['cache_size'] = "2 MB"
             else:
                 #处理器版本
-                Cpu['CpuVersion'] = "1500a v1.0"
+                Cpu['CpuVersion'] = "1500a v1.0 64 bits"
                 #制造商 phytium
-                Cpu['CpuVendor'] = "phytium(飞腾)"
+                Cpu['CpuVendor'] = "phytium"#(飞腾)
                 #插槽
                 #Cpu['CpuSlot'] = "插槽"
                 #序列号
@@ -521,9 +521,9 @@ class DetailInfo:
                 #前端总线
                 #Cpu['CpuClock'] = "前端总线"
                 #内核数
-                Cpu['cpu_cores'] = "4 核"
+                Cpu['cpu_cores'] = "4 cores"#4 核
                 #线程数
-                Cpu['cpu_siblings'] = "4 线程/核"
+                Cpu['cpu_siblings'] = "4 thread/core"#4 线程/核
                 #一级缓存
                 Cpu['clflush_size'] = "32 KB"
                 #二级缓存

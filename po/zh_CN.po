@@ -897,12 +897,32 @@ msgstr "线程"
 #: ../../info/computerpage.cpp:220
 msgctxt "ComputerPage|"
 msgid "L1 Cache"
-msgstr "１级缓存"
+msgstr "1级缓存"
 
 #: ../../info/computerpage.cpp:222
 msgctxt "ComputerPage|"
 msgid "L2 Cache"
-msgstr "２级缓存"
+msgstr "2级缓存"
+
+#: ../../info/computerpage.cpp:222
+msgctxt "ComputerPage|"
+msgid "1500a v1.0 64 bits"
+msgstr "1500a v1.0 64位"
+
+#: ../../info/computerpage.cpp:222
+msgctxt "ComputerPage|"
+msgid "phytium"
+msgstr "飞腾"
+
+#: ../../info/computerpage.cpp:222
+msgctxt "ComputerPage|"
+msgid "4 cores"
+msgstr "4核"
+
+#: ../../info/computerpage.cpp:222
+msgctxt "ComputerPage|"
+msgid "4 thread/core"
+msgstr "4线程/核"
 
 #: ../../info/computerpage.cpp:226
 msgctxt "ComputerPage|"

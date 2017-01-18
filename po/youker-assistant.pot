@@ -803,6 +803,26 @@ msgctxt "ComputerPage|"
 msgid "L2 Cache"
 msgstr ""
 
+#: ../../info/computerpage.cpp:222
+msgctxt "ComputerPage|"
+msgid "1500a v1.0 64 bits"
+msgstr ""
+
+#: ../../info/computerpage.cpp:222
+msgctxt "ComputerPage|"
+msgid "phytium"
+msgstr ""
+
+#: ../../info/computerpage.cpp:222
+msgctxt "ComputerPage|"
+msgid "4 cores"
+msgstr ""
+
+#: ../../info/computerpage.cpp:222
+msgctxt "ComputerPage|"
+msgid "4 thread/core"
+msgstr ""
+
 #: ../../info/computerpage.cpp:226
 msgctxt "ComputerPage|"
 msgid "Desktop Environment"
