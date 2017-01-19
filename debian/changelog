@@ -1,4 +1,4 @@
-youker-assistant (2.1.3) xenial; urgency=low
+youker-assistant (2.1.4) xenial; urgency=low
 
   * Translation for arm64.
   * Repair the bug about graphics.
