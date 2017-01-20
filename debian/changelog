@@ -1,3 +1,9 @@
+youker-assistant (2.1.5) xenial; urgency=low
+
+  * change disk capacity from 1024 to 1000
+
+ -- hebing <hebing@kylinos.cn>  Fri, 20 Jan 2017 14:38:02 +0800
+
 youker-assistant (2.1.4) xenial; urgency=low
 
   * Translation for arm64.

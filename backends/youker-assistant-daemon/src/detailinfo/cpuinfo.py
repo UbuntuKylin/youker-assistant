@@ -26,6 +26,8 @@ import struct
 import math
 import binascii
 import platform
+import commands
+
 from gi.repository import GLib#20161228
 import gettext
 from gettext import gettext as _
@@ -985,6 +987,19 @@ class DetailInfo:
                     tmp = re.findall("%s: (.*)," % k,d)
                     if tmp:
                         median = tmp[0]
+                    else:
+                        median = '$'
+                    ### add by hebing at 2017.01.20
+                    ### NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+                    disklist = []
+                    status, output = commands.getstatusoutput("lsblk -ab")
+                    for line in output.split("\n"):
+                        value = line.split()
+                        if value[1].split(":")[0] == "8" and value[5] == "disk":
+                            if value[2] == "0":
+                                disklist.append(int(value[3]))
+                    if not status:
+                        median = str(sum(disklist) / 1000 / 1000 / 1000) + "G"
                     else:
                         median = '$'
                     if DiskCapacity :
