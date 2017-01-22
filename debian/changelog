@@ -1,6 +1,7 @@
 youker-assistant (2.1.5) xenial; urgency=low
 
   * Hardware sensor information for arm64.
+  * change disk capacity from 1024 to 1000.
 
  -- lixiang <lixiang@kylinos.cn>  Sun, 22 Jan 2017 23:49:39 +0800
 
