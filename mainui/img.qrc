@@ -223,6 +223,7 @@
         <file>res/hardware/monitor.png</file>
         <file>res/hardware/network.png</file>
         <file>res/hardware/unity.png</file>
+        <file>res/hardware/sensor.png</file>
     </qresource>
     <qresource prefix="/vendor">
         <file>res/manufacturer/3COM.jpg</file>

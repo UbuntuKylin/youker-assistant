@@ -43,8 +43,12 @@ public:
         info_map = tmp;
         vendor = manufacturer;
     }
+    void setsensor(bool flag) {
+        sensor = flag;
+    }
     QString translatorSwitch(QString orgStr);
     void resetTimeValue(QString value);
+    void resetSensor(QMap<QString, QVariant> value);
 
 signals:
 
@@ -60,6 +64,43 @@ private:
     QLabel *time_label;
     QGroupBox *group_box;
     QFormLayout *form_layout;
+    bool sensor;
+
+
+    QLabel *in0_label;
+    QLabel *in2_label;
+    QLabel *in3_label;
+    QLabel *in5_label;
+    QLabel *in6_label;
+    QLabel *tr1_label;
+    QLabel *tr2_label;
+    QLabel *tr3_label;
+    QLabel *tr4_label;
+    QLabel *tr5_label;
+    QLabel *tr6_label;
+    QLabel *fanin1_label;
+ /*
+    else if(orgStr == "IN0")//内存参考电压
+        return tr("Memory reference voltage");
+    else if(orgStr == "IN2")//SATA控制器电压
+        return tr("SATA controller voltage");
+    else if(orgStr == "IN3")//内存电压
+        return tr("Memory voltage");
+    else if(orgStr == "IN5")//CPU管脚电压
+        return tr("CPU pin voltage");
+    else if(orgStr == "IN6")//桥片电压
+        return tr("Bridge voltage");
+    else if(orgStr == "TR4")//CPU核电压
+        return tr("CPU core voltage");
+    else if(orgStr == "TR5")//CPU温度
+        return tr("CPU temperature");
+    else if(orgStr == "TR6")//主板温度
+        return tr("Motherboard temperature");
+    else if(orgStr == "FANIN1")//CPU风扇转速
+        return tr("CPU fan speed");
+//    ATX_3V3    TR1
+//    ATX_5V    TR2
+//    ATX_12V   TR3*/
 };
 
 #endif // COMPUTERPAGE_H

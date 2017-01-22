@@ -39,8 +39,8 @@ InfoWidget::InfoWidget(QString machine, QWidget *parent) :
     category_widget->setFixedSize(150, 403);
     category_widget->setFocusPolicy(Qt::NoFocus);
     category_widget->setObjectName("infoList");
-    type_list << tr("Computer") << tr("Desktop") << tr("CPU") << tr("Memory") << tr("Motherboard") << tr("HD") << tr("NIC") << tr("VGA") << tr("Audio") << tr("CD-ROM") << tr("Battery") << tr("Device Driver");
-    icon_list << "computer"<< "unity" << "cpu"<<"memory"<<"board"<<"harddisk"<<"network"<<"monitor"<<"audio"<<"cdrom"<<"battery"<<"drive";
+    type_list << tr("Computer") << tr("Desktop") << tr("CPU") << tr("Memory") << tr("Motherboard") << tr("HD") << tr("NIC") << tr("VGA") << tr("Audio") << tr("CD-ROM") << tr("Battery") << tr("Sensor") << tr("Device Driver");
+    icon_list << "computer"<< "unity" << "cpu"<<"memory"<<"board"<<"harddisk"<<"network"<<"monitor"<<"audio"<<"cdrom"<<"battery" <<"sensor"<<"drive";
 
     category_widget->setIconSize(QSize(16, 16));//设置QListWidget中的单元项的图片大小
     category_widget->setResizeMode(QListView::Adjust);
@@ -57,6 +57,7 @@ InfoWidget::InfoWidget(QString machine, QWidget *parent) :
 
     system_widget = NULL;
     desktop_widget = NULL;
+    sensor_widget = NULL;
     cpu_widget = NULL;
     memory_widget = NULL;
     board_widget = NULL;
@@ -130,6 +131,9 @@ void InfoWidget::initUI(bool has_battery)
         {
             // FT arm can not access board
         }
+        else if (i == 11 && arch != "aarch64") {
+            //x86 no sensor
+        }
         else {
             QIcon icon;
             icon.addFile(":/hd/res/hardware/" + icon_list.at(i), QSize(), QIcon::Normal, QIcon::Off);
@@ -160,6 +164,10 @@ void InfoWidget::initUI(bool has_battery)
     if(has_battery)
     {
         stacked_widget->addWidget(battery_widget);
+    }
+    if (arch == "aarch64") {
+        sensor_widget = new SensorWieget(this, systemProxy);
+        stacked_widget->addWidget(sensor_widget);
     }
     stacked_widget->addWidget(driver_widget);
 
@@ -254,9 +262,12 @@ void InfoWidget::changeInfoPage(QListWidgetItem *item) {
                 battery_widget->initData();
             stacked_widget->setCurrentWidget(battery_widget);
         }
+        else if (item->statusTip() == "sensor") {
+            stacked_widget->setCurrentWidget(sensor_widget);
+        }
         else if (item->statusTip() == "drive") {
             stacked_widget->setCurrentWidget(driver_widget);
         }
-        this->current_tip =  item->statusTip();
+        this->current_tip = item->statusTip();
     }
 }

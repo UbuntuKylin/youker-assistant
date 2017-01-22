@@ -29,12 +29,26 @@ ComputerPage::ComputerPage(QWidget *parent, QString title/*, QString manufacture
     QWidget(parent), title_context(title)/*, vendor(manufacturer)*/
 {
     this->setWindowFlags(Qt::FramelessWindowHint);
+    sensor = false;
     page_height = 0;
     title_label = NULL;
-    time_label =NULL;
+    time_label = NULL;
     logo_label = NULL;
     group_box = NULL;
     form_layout = NULL;
+
+    in0_label = NULL;
+    in2_label = NULL;
+    in3_label = NULL;
+    in5_label = NULL;
+    in6_label = NULL;
+    tr1_label = NULL;
+    tr2_label = NULL;
+    tr3_label = NULL;
+    tr4_label = NULL;
+    tr5_label = NULL;
+    tr6_label = NULL;
+    fanin1_label = NULL;
 }
 
 ComputerPage::~ComputerPage()
@@ -54,6 +68,66 @@ ComputerPage::~ComputerPage()
     {
         delete logo_label;
         logo_label = NULL;
+    }
+    if(in0_label != NULL)
+    {
+        delete in0_label;
+        in0_label = NULL;
+    }
+    if(in2_label != NULL)
+    {
+        delete in2_label;
+        in2_label = NULL;
+    }
+    if(in3_label != NULL)
+    {
+        delete in3_label;
+        in3_label = NULL;
+    }
+    if(in5_label != NULL)
+    {
+        delete in5_label;
+        in5_label = NULL;
+    }
+    if(in6_label != NULL)
+    {
+        delete in6_label;
+        in6_label = NULL;
+    }
+    if(tr1_label != NULL)
+    {
+        delete tr1_label;
+        tr1_label = NULL;
+    }
+    if(tr2_label != NULL)
+    {
+        delete tr2_label;
+        tr2_label = NULL;
+    }
+    if(tr3_label != NULL)
+    {
+        delete tr3_label;
+        tr3_label = NULL;
+    }
+    if(tr4_label != NULL)
+    {
+        delete tr4_label;
+        tr4_label = NULL;
+    }
+    if(tr5_label != NULL)
+    {
+        delete tr5_label;
+        tr5_label = NULL;
+    }
+    if(tr6_label != NULL)
+    {
+        delete tr6_label;
+        tr6_label = NULL;
+    }
+    if(fanin1_label != NULL)
+    {
+        delete fanin1_label;
+        fanin1_label = NULL;
     }
     if(form_layout != NULL)
     {
@@ -87,46 +161,136 @@ void ComputerPage::initUI()
     form_layout->setHorizontalSpacing(ITEMHSPACE);
     form_layout->setRowWrapPolicy(QFormLayout::DontWrapRows);
     form_layout->setFieldGrowthPolicy(QFormLayout::FieldsStayAtSizeHint);
-
     QMap<QString,QVariant>::iterator it; //遍历map
-    for ( it = info_map.begin(); it != info_map.end(); ++it ) {
-        if(it.key() == "uptime")
-        {
-            time_label = new QLabel();
-            int time_value = it.value().toInt();
-            int hour_value = time_value/60;
-            int minutes_value =time_value%60;
-            if(hour_value < 1)
-            {
-                time_label->setText(QString::number(minutes_value) + tr(" Minutes"));//分钟
+    if (sensor) {
+        in0_label = new QLabel();
+        in2_label = new QLabel();
+        in3_label = new QLabel();
+        in5_label = new QLabel();
+        in6_label = new QLabel();
+        tr1_label = new QLabel();
+        tr2_label = new QLabel();
+        tr3_label = new QLabel();
+        tr4_label = new QLabel();
+        tr5_label = new QLabel();
+        tr6_label = new QLabel();
+        fanin1_label = new QLabel();
+        in0_label->setFixedHeight(ITEMHEIGHT);
+        in2_label->setFixedHeight(ITEMHEIGHT);
+        in3_label->setFixedHeight(ITEMHEIGHT);
+        in5_label->setFixedHeight(ITEMHEIGHT);
+        in6_label->setFixedHeight(ITEMHEIGHT);
+        tr1_label->setFixedHeight(ITEMHEIGHT);
+        tr2_label->setFixedHeight(ITEMHEIGHT);
+        tr3_label->setFixedHeight(ITEMHEIGHT);
+        tr4_label->setFixedHeight(ITEMHEIGHT);
+        tr5_label->setFixedHeight(ITEMHEIGHT);
+        tr6_label->setFixedHeight(ITEMHEIGHT);
+        fanin1_label->setFixedHeight(ITEMHEIGHT);
+        for (it = info_map.begin(); it != info_map.end(); ++it ) {
+            if(it.key() == "IN0") {
+                in0_label->setText(it.value().toString());
+                form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), in0_label);
+                page_height += in0_label->height();
             }
-            else
-            {
-                time_label->setText(QString::number(hour_value) + tr(" Hours ") + QString::number(minutes_value) + tr(" Minutes"));//小时 分钟
+            else if(it.key() == "IN2") {
+                in2_label->setText(it.value().toString());
+                form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), in2_label);
+                page_height += in2_label->height();
             }
-            time_label->setFixedHeight(ITEMHEIGHT);
-            form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), time_label);
-            page_height += time_label->height();
+            else if(it.key() == "IN3") {
+                in3_label->setText(it.value().toString());
+                form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), in3_label);
+                page_height += in3_label->height();
+            }
+            else if(it.key() == "IN5") {
+                in5_label->setText(it.value().toString());
+                form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), in5_label);
+                page_height += in5_label->height();
+            }
+            else if(it.key() == "IN6") {
+                in6_label->setText(it.value().toString());
+                form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), in6_label);
+                page_height += in6_label->height();
+            }
+            else if(it.key() == "TR1") {
+                tr1_label->setText(it.value().toString());
+                form_layout->addRow("ATX_3V3", tr1_label);
+                page_height += tr1_label->height();
+            }
+            else if(it.key() == "TR2") {
+                tr2_label->setText(it.value().toString());
+                form_layout->addRow("ATX_5V", tr2_label);
+                page_height += tr2_label->height();
+            }
+            else if(it.key() == "TR3") {
+                tr3_label->setText(it.value().toString());
+                form_layout->addRow("ATX_12V", tr3_label);
+                page_height += tr3_label->height();
+            }
+            else if(it.key() == "TR4") {
+                tr4_label->setText(it.value().toString());
+                form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), tr4_label);
+                page_height += tr4_label->height();
+            }
+            else if(it.key() == "TR5") {
+                tr5_label->setText(it.value().toString());
+                form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), tr5_label);
+                page_height += tr5_label->height();
+            }
+            else if(it.key() == "TR6") {
+                tr6_label->setText(it.value().toString());
+                form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), tr6_label);
+                page_height += tr6_label->height();
+            }
+            else if(it.key() == "FANIN1") {
+                fanin1_label->setText(it.value().toString());
+                form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), fanin1_label);
+                page_height += fanin1_label->height();
+            }
+            page_height += ITEMVSPACE;
         }
-        else{
-            if (it.key().length() > 0 && it.value().toString().length() > 0) {//20161228
-                QLabel *label = new QLabel();
-                if (QString::compare(it.value().toString(), "1500a v1.0 64 bits", Qt::CaseInsensitive) == 0)//2017
-                    label->setText(tr("%1").arg(this->translatorSwitch(it.value().toString())));
-                else if (QString::compare(it.value().toString(), "phytium", Qt::CaseInsensitive) == 0)//2017
-                    label->setText(tr("%1").arg(this->translatorSwitch(it.value().toString())));
-                else if (QString::compare(it.value().toString(), "4 cores", Qt::CaseInsensitive) == 0)//2017
-                    label->setText(tr("%1").arg(this->translatorSwitch(it.value().toString())));
-                else if (QString::compare(it.value().toString(), "4 thread/core", Qt::CaseInsensitive) == 0)//2017
-                    label->setText(tr("%1").arg(this->translatorSwitch(it.value().toString())));
+    }
+    else {
+        for (it = info_map.begin(); it != info_map.end(); ++it ) {
+            if(it.key() == "uptime")
+            {
+                time_label = new QLabel();
+                int time_value = it.value().toInt();
+                int hour_value = time_value/60;
+                int minutes_value =time_value%60;
+                if(hour_value < 1)
+                {
+                    time_label->setText(QString::number(minutes_value) + tr(" Minutes"));//分钟
+                }
                 else
-                    label->setText(tr("%1").arg(it.value().toString()));
-                label->setFixedHeight(ITEMHEIGHT);
-                form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), label);
-                page_height += label->height();
+                {
+                    time_label->setText(QString::number(hour_value) + tr(" Hours ") + QString::number(minutes_value) + tr(" Minutes"));//小时 分钟
+                }
+                time_label->setFixedHeight(ITEMHEIGHT);
+                form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), time_label);
+                page_height += time_label->height();
             }
+            else{
+                if (it.key().length() > 0 && it.value().toString().length() > 0) {//20161228
+                    QLabel *label = new QLabel();
+                    if (QString::compare(it.value().toString(), "1500a v1.0 64 bits", Qt::CaseInsensitive) == 0)//2017
+                        label->setText(tr("%1").arg(this->translatorSwitch(it.value().toString())));
+                    else if (QString::compare(it.value().toString(), "phytium", Qt::CaseInsensitive) == 0)//2017
+                        label->setText(tr("%1").arg(this->translatorSwitch(it.value().toString())));
+                    else if (QString::compare(it.value().toString(), "4 cores", Qt::CaseInsensitive) == 0)//2017
+                        label->setText(tr("%1").arg(this->translatorSwitch(it.value().toString())));
+                    else if (QString::compare(it.value().toString(), "4 thread/core", Qt::CaseInsensitive) == 0)//2017
+                        label->setText(tr("%1").arg(this->translatorSwitch(it.value().toString())));
+                    else
+                        label->setText(tr("%1").arg(it.value().toString()));
+                    label->setFixedHeight(ITEMHEIGHT);
+                    form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), label);
+                    page_height += label->height();
+                }
+            }
+            page_height += ITEMVSPACE;
         }
-        page_height += ITEMVSPACE;
     }
     page_height += ITEMVSPACE*2;//every groupbox has tow separate line
     page_height += 30;
@@ -168,6 +332,11 @@ void ComputerPage::initUI()
 void ComputerPage::resetTimeValue(QString value)
 {
     time_label->setText(value);
+}
+
+void ComputerPage::resetSensor(QMap<QString, QVariant> value)
+{
+
 }
 
 QString ComputerPage::translatorSwitch(QString orgStr)
@@ -470,6 +639,25 @@ QString ComputerPage::translatorSwitch(QString orgStr)
         return tr("Kernel Version");
     else if(orgStr == "machine")//内核架构：
         return tr("Kernel Arch");
+
+    else if(orgStr == "IN0")//内存参考电压
+        return tr("Memory reference voltage");
+    else if(orgStr == "IN2")//SATA控制器电压
+        return tr("SATA controller voltage");
+    else if(orgStr == "IN3")//内存电压
+        return tr("Memory voltage");
+    else if(orgStr == "IN5")//CPU管脚电压
+        return tr("CPU pin voltage");
+    else if(orgStr == "IN6")//桥片电压
+        return tr("Bridge voltage");
+    else if(orgStr == "TR4")//CPU核电压
+        return tr("CPU core voltage");
+    else if(orgStr == "TR5")//CPU温度
+        return tr("CPU temperature");
+    else if(orgStr == "TR6")//主板温度
+        return tr("Motherboard temperature");
+    else if(orgStr == "FANIN1")//CPU风扇转速
+        return tr("CPU fan speed");
     else
         return orgStr;
 }

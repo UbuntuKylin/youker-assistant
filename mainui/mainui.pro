@@ -106,6 +106,7 @@ SOURCES += main.cpp\
     ../info/cdrowwidget.cpp \
     ../info/batterywidget.cpp \
     ../info/driverwidget.cpp \
+    ../info/sensorwidget.cpp \
     ../info/computerpage.cpp \
     ../setting/themewidget.cpp \
     ../setting/iconwidget.cpp \
@@ -196,6 +197,7 @@ HEADERS  += mainwindow.h \
     ../info/cdrowwidget.h \
     ../info/batterywidget.h \
     ../info/driverwidget.h \
+    ../info/sensorwidget.h \
     ../info/computerpage.h \
     ../setting/themewidget.h \
     ../setting/iconwidget.h \

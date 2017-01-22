@@ -47,7 +47,7 @@
 #include "../info/cdrowwidget.h"
 #include "../info/batterywidget.h"
 #include "../info/driverwidget.h"
-
+#include "../info/sensorwidget.h"
 #include <QScrollArea>
 //#include "../dbusproxy/youkersystemdbus.h"
 class SessionDispatcher;
@@ -85,6 +85,7 @@ private:
     CDRowWidget *cdrom_widget;
     BatteryWidget *battery_widget;
     DriverWidget *driver_widget;
+    SensorWieget *sensor_widget;
     QString current_tip;
 //    QList<InfoType> *categoryList;
 

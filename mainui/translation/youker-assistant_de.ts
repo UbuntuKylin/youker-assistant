@@ -626,530 +626,584 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>ComputerPage</name>
     <message>
-        <location filename="../../info/computerpage.cpp" line="71"/>
-        <location filename="../../info/computerpage.cpp" line="108"/>
-        <location filename="../../info/computerpage.cpp" line="115"/>
-        <location filename="../../info/computerpage.cpp" line="117"/>
-        <location filename="../../info/computerpage.cpp" line="119"/>
-        <location filename="../../info/computerpage.cpp" line="121"/>
-        <location filename="../../info/computerpage.cpp" line="123"/>
-        <location filename="../../info/computerpage.cpp" line="125"/>
+        <location filename="../../info/computerpage.cpp" line="145"/>
+        <location filename="../../info/computerpage.cpp" line="193"/>
+        <location filename="../../info/computerpage.cpp" line="198"/>
+        <location filename="../../info/computerpage.cpp" line="203"/>
+        <location filename="../../info/computerpage.cpp" line="208"/>
+        <location filename="../../info/computerpage.cpp" line="213"/>
+        <location filename="../../info/computerpage.cpp" line="233"/>
+        <location filename="../../info/computerpage.cpp" line="238"/>
+        <location filename="../../info/computerpage.cpp" line="243"/>
+        <location filename="../../info/computerpage.cpp" line="248"/>
+        <location filename="../../info/computerpage.cpp" line="271"/>
+        <location filename="../../info/computerpage.cpp" line="278"/>
+        <location filename="../../info/computerpage.cpp" line="280"/>
+        <location filename="../../info/computerpage.cpp" line="282"/>
+        <location filename="../../info/computerpage.cpp" line="284"/>
+        <location filename="../../info/computerpage.cpp" line="286"/>
+        <location filename="../../info/computerpage.cpp" line="288"/>
         <source>%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="101"/>
-        <location filename="../../info/computerpage.cpp" line="105"/>
+        <location filename="../../info/computerpage.cpp" line="264"/>
+        <location filename="../../info/computerpage.cpp" line="268"/>
         <source> Minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="105"/>
+        <location filename="../../info/computerpage.cpp" line="268"/>
         <source> Hours </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="176"/>
-        <location filename="../../info/computerpage.cpp" line="333"/>
+        <location filename="../../info/computerpage.cpp" line="345"/>
+        <location filename="../../info/computerpage.cpp" line="502"/>
         <source>Audio Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="178"/>
-        <location filename="../../info/computerpage.cpp" line="258"/>
-        <location filename="../../info/computerpage.cpp" line="271"/>
-        <location filename="../../info/computerpage.cpp" line="376"/>
-        <location filename="../../info/computerpage.cpp" line="421"/>
-        <location filename="../../info/computerpage.cpp" line="437"/>
-        <location filename="../../info/computerpage.cpp" line="452"/>
+        <location filename="../../info/computerpage.cpp" line="347"/>
+        <location filename="../../info/computerpage.cpp" line="427"/>
+        <location filename="../../info/computerpage.cpp" line="440"/>
+        <location filename="../../info/computerpage.cpp" line="545"/>
+        <location filename="../../info/computerpage.cpp" line="590"/>
+        <location filename="../../info/computerpage.cpp" line="606"/>
+        <location filename="../../info/computerpage.cpp" line="621"/>
         <source>Vendor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="180"/>
-        <location filename="../../info/computerpage.cpp" line="395"/>
-        <location filename="../../info/computerpage.cpp" line="425"/>
-        <location filename="../../info/computerpage.cpp" line="443"/>
+        <location filename="../../info/computerpage.cpp" line="349"/>
+        <location filename="../../info/computerpage.cpp" line="564"/>
+        <location filename="../../info/computerpage.cpp" line="594"/>
+        <location filename="../../info/computerpage.cpp" line="612"/>
         <source>Bus Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="182"/>
+        <location filename="../../info/computerpage.cpp" line="351"/>
         <source>Audio Driver</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="185"/>
-        <location filename="../../info/computerpage.cpp" line="260"/>
-        <location filename="../../info/computerpage.cpp" line="365"/>
-        <location filename="../../info/computerpage.cpp" line="427"/>
+        <location filename="../../info/computerpage.cpp" line="354"/>
+        <location filename="../../info/computerpage.cpp" line="429"/>
+        <location filename="../../info/computerpage.cpp" line="534"/>
+        <location filename="../../info/computerpage.cpp" line="596"/>
         <source>Device Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="187"/>
+        <location filename="../../info/computerpage.cpp" line="356"/>
         <source>Manufacturer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="228"/>
-        <location filename="../../info/computerpage.cpp" line="454"/>
+        <location filename="../../info/computerpage.cpp" line="397"/>
+        <location filename="../../info/computerpage.cpp" line="623"/>
         <source>Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="230"/>
+        <location filename="../../info/computerpage.cpp" line="399"/>
         <source>Technology</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="232"/>
+        <location filename="../../info/computerpage.cpp" line="401"/>
         <source>Voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="234"/>
+        <location filename="../../info/computerpage.cpp" line="403"/>
         <source>Energy Designed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="236"/>
+        <location filename="../../info/computerpage.cpp" line="405"/>
         <source>Energy Full</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="238"/>
+        <location filename="../../info/computerpage.cpp" line="407"/>
         <source>Energy Now</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="240"/>
-        <location filename="../../info/computerpage.cpp" line="247"/>
-        <location filename="../../info/computerpage.cpp" line="264"/>
-        <location filename="../../info/computerpage.cpp" line="273"/>
-        <location filename="../../info/computerpage.cpp" line="369"/>
-        <location filename="../../info/computerpage.cpp" line="378"/>
-        <location filename="../../info/computerpage.cpp" line="447"/>
-        <location filename="../../info/computerpage.cpp" line="458"/>
+        <location filename="../../info/computerpage.cpp" line="409"/>
+        <location filename="../../info/computerpage.cpp" line="416"/>
+        <location filename="../../info/computerpage.cpp" line="433"/>
+        <location filename="../../info/computerpage.cpp" line="442"/>
+        <location filename="../../info/computerpage.cpp" line="538"/>
+        <location filename="../../info/computerpage.cpp" line="547"/>
+        <location filename="../../info/computerpage.cpp" line="616"/>
+        <location filename="../../info/computerpage.cpp" line="627"/>
         <source>Serial Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="243"/>
+        <location filename="../../info/computerpage.cpp" line="412"/>
         <source>Motherboard Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="245"/>
+        <location filename="../../info/computerpage.cpp" line="414"/>
         <source>Motherboard Vendor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="249"/>
+        <location filename="../../info/computerpage.cpp" line="418"/>
         <source>BIOS Vendor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="251"/>
+        <location filename="../../info/computerpage.cpp" line="420"/>
         <source>BIOS Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="253"/>
+        <location filename="../../info/computerpage.cpp" line="422"/>
         <source>Release Date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="256"/>
+        <location filename="../../info/computerpage.cpp" line="425"/>
         <source>CD-ROM Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="262"/>
-        <location filename="../../info/computerpage.cpp" line="367"/>
+        <location filename="../../info/computerpage.cpp" line="431"/>
+        <location filename="../../info/computerpage.cpp" line="536"/>
         <source>Firmware Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="269"/>
-        <location filename="../../info/computerpage.cpp" line="305"/>
+        <location filename="../../info/computerpage.cpp" line="438"/>
+        <location filename="../../info/computerpage.cpp" line="474"/>
         <source>CPU</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="275"/>
+        <location filename="../../info/computerpage.cpp" line="444"/>
         <source>Socket/Slot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="277"/>
+        <location filename="../../info/computerpage.cpp" line="446"/>
         <source>Maximum Frequency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="279"/>
+        <location filename="../../info/computerpage.cpp" line="448"/>
         <source>Current Frequency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="281"/>
+        <location filename="../../info/computerpage.cpp" line="450"/>
         <source>FSB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="283"/>
+        <location filename="../../info/computerpage.cpp" line="452"/>
         <source>Core Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="285"/>
+        <location filename="../../info/computerpage.cpp" line="454"/>
         <source>Thread</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="287"/>
+        <location filename="../../info/computerpage.cpp" line="456"/>
         <source>L1 Cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="289"/>
+        <location filename="../../info/computerpage.cpp" line="458"/>
         <source>L2 Cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="293"/>
+        <location filename="../../info/computerpage.cpp" line="462"/>
         <source>1500a v1.0 64 bits</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="295"/>
+        <location filename="../../info/computerpage.cpp" line="464"/>
         <source>phytium</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="297"/>
+        <location filename="../../info/computerpage.cpp" line="466"/>
         <source>4 cores</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="299"/>
+        <location filename="../../info/computerpage.cpp" line="468"/>
         <source>4 thread/core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="303"/>
+        <location filename="../../info/computerpage.cpp" line="472"/>
         <source>Desktop Environment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="307"/>
+        <location filename="../../info/computerpage.cpp" line="476"/>
         <source>Host Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="309"/>
+        <location filename="../../info/computerpage.cpp" line="478"/>
         <source>Memery Capacity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="311"/>
+        <location filename="../../info/computerpage.cpp" line="480"/>
         <source>Terminal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="313"/>
+        <location filename="../../info/computerpage.cpp" line="482"/>
         <source>Distribution</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="315"/>
+        <location filename="../../info/computerpage.cpp" line="484"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="317"/>
+        <location filename="../../info/computerpage.cpp" line="486"/>
         <source>User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="319"/>
+        <location filename="../../info/computerpage.cpp" line="488"/>
         <source>Home Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="323"/>
+        <location filename="../../info/computerpage.cpp" line="492"/>
         <source>Host bridge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="325"/>
+        <location filename="../../info/computerpage.cpp" line="494"/>
         <source>VGA Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="327"/>
+        <location filename="../../info/computerpage.cpp" line="496"/>
         <source>USB Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="329"/>
+        <location filename="../../info/computerpage.cpp" line="498"/>
         <source>Communication Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="331"/>
+        <location filename="../../info/computerpage.cpp" line="500"/>
         <source>Ethernet Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="335"/>
+        <location filename="../../info/computerpage.cpp" line="504"/>
         <source>PCI bridge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="337"/>
+        <location filename="../../info/computerpage.cpp" line="506"/>
         <source>ISA bridge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="339"/>
+        <location filename="../../info/computerpage.cpp" line="508"/>
         <source>SATA Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="341"/>
+        <location filename="../../info/computerpage.cpp" line="510"/>
         <source>SMBus</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="343"/>
+        <location filename="../../info/computerpage.cpp" line="512"/>
         <source>System peripheral</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="345"/>
+        <location filename="../../info/computerpage.cpp" line="514"/>
         <source>Driver in use</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="347"/>
+        <location filename="../../info/computerpage.cpp" line="516"/>
         <source>existing drivers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="349"/>
+        <location filename="../../info/computerpage.cpp" line="518"/>
         <source>IDE interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="351"/>
+        <location filename="../../info/computerpage.cpp" line="520"/>
         <source>SP controller</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="353"/>
+        <location filename="../../info/computerpage.cpp" line="522"/>
         <source>Network controller</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="355"/>
+        <location filename="../../info/computerpage.cpp" line="524"/>
         <source>Multimedia audio controller</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="359"/>
+        <location filename="../../info/computerpage.cpp" line="528"/>
         <source>HDD Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="361"/>
+        <location filename="../../info/computerpage.cpp" line="530"/>
         <source>HDD Vendor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="363"/>
+        <location filename="../../info/computerpage.cpp" line="532"/>
         <source>HDD Capacity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="372"/>
+        <location filename="../../info/computerpage.cpp" line="541"/>
         <source>Slot Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="374"/>
+        <location filename="../../info/computerpage.cpp" line="543"/>
         <source>Memory Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="380"/>
+        <location filename="../../info/computerpage.cpp" line="549"/>
         <source>Memory Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="382"/>
+        <location filename="../../info/computerpage.cpp" line="551"/>
         <source>Data Width</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="384"/>
+        <location filename="../../info/computerpage.cpp" line="553"/>
         <source>Memory Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="387"/>
+        <location filename="../../info/computerpage.cpp" line="556"/>
         <source>Graphics Card Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="389"/>
+        <location filename="../../info/computerpage.cpp" line="558"/>
         <source>Current Graphics Card</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="391"/>
+        <location filename="../../info/computerpage.cpp" line="560"/>
         <source>Graphics Card Vendor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="393"/>
+        <location filename="../../info/computerpage.cpp" line="562"/>
         <source>Graphics Driver</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="397"/>
+        <location filename="../../info/computerpage.cpp" line="566"/>
         <source>Gamma</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="399"/>
+        <location filename="../../info/computerpage.cpp" line="568"/>
         <source>Screen Size(inch)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="401"/>
+        <location filename="../../info/computerpage.cpp" line="570"/>
         <source>Max Resolution</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="403"/>
+        <location filename="../../info/computerpage.cpp" line="572"/>
         <source>Current Interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="405"/>
+        <location filename="../../info/computerpage.cpp" line="574"/>
         <source>Monitor Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="407"/>
+        <location filename="../../info/computerpage.cpp" line="576"/>
         <source>Visual Area</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="409"/>
+        <location filename="../../info/computerpage.cpp" line="578"/>
         <source>Support Interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="411"/>
+        <location filename="../../info/computerpage.cpp" line="580"/>
         <source>Monitor Manufacturers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="413"/>
+        <location filename="../../info/computerpage.cpp" line="582"/>
         <source>Date of production/Week</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="415"/>
+        <location filename="../../info/computerpage.cpp" line="584"/>
         <source>Date of production/Year</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="419"/>
+        <location filename="../../info/computerpage.cpp" line="588"/>
         <source>NIC Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="423"/>
+        <location filename="../../info/computerpage.cpp" line="592"/>
         <source>NIC Driver</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="429"/>
-        <location filename="../../info/computerpage.cpp" line="449"/>
+        <location filename="../../info/computerpage.cpp" line="598"/>
+        <location filename="../../info/computerpage.cpp" line="618"/>
         <source>IP Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="431"/>
+        <location filename="../../info/computerpage.cpp" line="600"/>
         <source>Mac Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="433"/>
+        <location filename="../../info/computerpage.cpp" line="602"/>
         <source>Connection Status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="435"/>
+        <location filename="../../info/computerpage.cpp" line="604"/>
         <source>Max Bandwidth</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="439"/>
+        <location filename="../../info/computerpage.cpp" line="608"/>
         <source>WLan NIC Driver</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="441"/>
+        <location filename="../../info/computerpage.cpp" line="610"/>
         <source>WLan NIC Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="445"/>
+        <location filename="../../info/computerpage.cpp" line="614"/>
         <source>Device Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="456"/>
+        <location filename="../../info/computerpage.cpp" line="625"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="460"/>
+        <location filename="../../info/computerpage.cpp" line="629"/>
         <source>Hostname</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="462"/>
+        <location filename="../../info/computerpage.cpp" line="631"/>
         <source>Running Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="464"/>
+        <location filename="../../info/computerpage.cpp" line="633"/>
         <source>OS Types</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="466"/>
+        <location filename="../../info/computerpage.cpp" line="635"/>
         <source>OS Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="468"/>
+        <location filename="../../info/computerpage.cpp" line="637"/>
         <source>Kernel Bit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="470"/>
+        <location filename="../../info/computerpage.cpp" line="639"/>
         <source>Kernel Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="472"/>
+        <location filename="../../info/computerpage.cpp" line="641"/>
         <source>Kernel Arch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../info/computerpage.cpp" line="644"/>
+        <source>Memory reference voltage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../info/computerpage.cpp" line="646"/>
+        <source>SATA controller voltage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../info/computerpage.cpp" line="648"/>
+        <source>Memory voltage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../info/computerpage.cpp" line="650"/>
+        <source>CPU pin voltage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../info/computerpage.cpp" line="652"/>
+        <source>Bridge voltage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../info/computerpage.cpp" line="654"/>
+        <source>CPU core voltage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../info/computerpage.cpp" line="656"/>
+        <source>CPU temperature</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../info/computerpage.cpp" line="658"/>
+        <source>Motherboard temperature</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../info/computerpage.cpp" line="660"/>
+        <source>CPU fan speed</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1774,6 +1828,11 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <source>Device Driver</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../infowidget.cpp" line="42"/>
+        <source>Sensor</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ItemCard</name>
@@ -2142,6 +2201,14 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     <message>
         <location filename="../../component/quibo.ui" line="14"/>
         <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SensorWieget</name>
+    <message>
+        <location filename="../../info/sensorwidget.cpp" line="76"/>
+        <source>Hardware sensor information</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
