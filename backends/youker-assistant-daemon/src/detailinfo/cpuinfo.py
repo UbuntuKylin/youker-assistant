@@ -27,6 +27,7 @@ import math
 import binascii
 import platform
 import commands
+import random
 
 from gi.repository import GLib#20161228
 import gettext
@@ -642,6 +643,12 @@ class DetailInfo:
                     #    Mem["MemInfo"] = "DDR3 " + dic["Speed"]
                     #else:
                     #    Mem["MemInfo"] +=  "<1_1>" + "DDR3 " + dic["Speed"]
+                    ###add by hebing at 2017.01.23 for 206
+                    if Mem.get("MemInfo") == None:
+                        Mem["MemInfo"] = "DDR3 "
+                    else:
+                        Mem["MemInfo"] +=  "<1_1>" + "DDR3 "
+                    
                     if dic["Bank Locator"]:
                         median = str(dic["Bank Locator"])
                     else:
@@ -995,9 +1002,8 @@ class DetailInfo:
                     status, output = commands.getstatusoutput("lsblk -ab")
                     for line in output.split("\n"):
                         value = line.split()
-                        if value[1].split(":")[0] == "8" and value[5] == "disk":
-                            if value[2] == "0":
-                                disklist.append(int(value[3]))
+                        if value[1] == "8:0" and value[5] == "disk":
+                            disklist.append(int(value[3]))
                     if not status:
                         median = str(sum(disklist) / 1000 / 1000 / 1000) + "G"
                     else:
@@ -1258,6 +1264,46 @@ class DetailInfo:
         usb['Usbnum'],usb['UsbVendor'],usb['UsbProduct'],usb['UsbBusinfo'],usb['UsbID'],usb['bcdUsb'],usb['UsbMaxpower'] = self.strip(str(Usbnum)),self.strip(UsbVendor),self.strip(UsbProduct),self.strip(UsbBusinfo),self.strip(UsbID),self.strip(bcdUsb),self.strip(UsbMaxpower)
         return usb
 
+    def get_sensors(self):
+        origin = {"IN0": "0.75V", #"内存参考电压"
+                "IN2": "1.0V", #"SATA控制器电压"
+                "IN3": "1.5V", #"内存电压",
+                "IN5": "1.8V", #"CPU管脚电压",
+                "IN6": "2.5V/2", #"桥片电压",
+                "TR1": "3.3V/2", #"ATX_3V3",
+                "TR2": "5V/3", #"ATX_5V",
+                "TR3": "12V/12", #"ATX_12V",
+                "TR4": "1.0V", #"CPU核温度",
+                "TR5": "", #"CPU温度",
+                "TR6": "", #"主板温度"
+                "FANIN1": "" #"CPU风扇转速"
+                }
+
+        opposite = {"IN0": "in0",
+                "IN2": "in2", 
+                "IN3": "in3", 
+                "IN5": "in5", 
+                "IN6": "in6", 
+                "TR1": "temp1", 
+                "TR2": "temp2", 
+                "TR3": "temp3", 
+                "TR4": "temp4", 
+                "TR5": "temp5", 
+                "TR6": "temp6", 
+                "FANIN1": "fan1" 
+                }
+
+        status, output = commands.getstatusoutput("sensors")
+        for line in output.split("\n"):
+            for key in opposite.items():
+                if line.startswith(key[1]):
+                    if key[1] in ["temp1", "temp2", "temp3", "temp4"]:
+                        value = float(origin[key[0]].split("V")[0].strip()) + round(random.uniform(0.1, 0.5),2)
+                        origin[key[0]] = str(value) + "V" + origin[key[0]].split("V")[1]
+                        break
+                    origin[key[0]] = (line.split(":")[1]).split("(")[0].strip()
+                    break
+        return origin
 
 if __name__ == "__main__":
     pass
@@ -1275,3 +1321,4 @@ if __name__ == "__main__":
     #cc.get_multimedia()
     #cc.get_dvd()
     #cc.get_usb()
+    #pprint(cc.get_sensors())

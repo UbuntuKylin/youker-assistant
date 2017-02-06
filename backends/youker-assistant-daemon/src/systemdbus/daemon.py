@@ -307,6 +307,10 @@ class Daemon(PolicyKitService):
     def get_time_value(self):
         return self.infoconf.uptimeinfo()
 
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{ss}')
+    def get_sensor_info(self):
+        return self.infoconf.get_sensors()
+
     # -------------------------sound-------------------------
     # get sound themes
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
