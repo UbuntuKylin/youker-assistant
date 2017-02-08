@@ -30,13 +30,51 @@ import commands
 import random
 
 from gi.repository import GLib#20161228
+import locale
 import gettext
-from gettext import gettext as _
-from gettext import ngettext as __
+#from gettext import gettext as _
+#from gettext import ngettext as __
+locale.setlocale(locale.LC_ALL, "")
+gettext.bindtextdomain("youker-assistant", "/usr/share/locale")
+gettext.textdomain("youker-assistant")
+_ = gettext.gettext
 
 CPU_CURRENT_FREQ = ""
 CPU_MAX_FREQ = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"
 MEMORY = "/sys/phytium1500a_info"
+
+def get_interface_mac(interface):
+    DEVICE_NAME_LEN = 15
+    MAC_START = 18
+    MAC_END = 24
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        info = fcntl.ioctl(s.fileno(), 0x8927, struct.pack('256s', interface[:DEVICE_NAME_LEN]))
+        return ''.join(['%02x:' % ord(char) for char in info[MAC_START:MAC_END]])[:-1]
+    except Exception as e:
+        return "unknown"
+
+def get_interface_ip(interface):
+    DEVICE_NAME_LEN = 15
+    IP_START = 20
+    IP_END = 24
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        info = fcntl.ioctl(s.fileno(), 0x8915, struct.pack('256s', interface[:DEVICE_NAME_LEN]))
+        return ''.join(['%s.' % ord(char) for char in info[IP_START:IP_END]])[:-1]
+    except Exception as e:
+        return "unknown"
+    #try:
+    #    sk = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    #    ip = socket.inet_ntoa(fcntl.ioctl(
+    #        sk.fileno(),
+    #        0x8915, # SIOCGIFADDR
+    #        struct.pack('256s', netItem[:15])
+    #    )[20:24])
+    #    return ip
+    #except Exception as e:
+    #    return "unknown"
+
 
 class DetailInfo:
 #Computer：			
@@ -485,7 +523,8 @@ class DetailInfo:
 #                platValue = platValue.replace('Ubuntu', id)
 
 #        Com['platform'] = platValue
-        Com['platform'] = self.osname
+#        Com['platform'] = self.osname
+        Com['osname'] = self.osname
 
         #Com['node'], Com['uptime'], Com['system'], Com['platform'],Com['architecture'], Com['release'], Com['machine'] = platform.node(),uptime,platform.system(),platform.platform(),platform.architecture()[0],platform.release(),platform.machine()
         Com['node'], Com['uptime'], Com['system'], Com['architecture'], Com['release'], Com['machine'] = platform.node(),uptime,platform.system(),platform.architecture()[0],platform.release(),platform.machine()
@@ -498,16 +537,34 @@ class DetailInfo:
             if os.path.exists(CPU_MAX_FREQ):
                 fp = open(CPU_MAX_FREQ, "r")
                 info = fp.read()
+                fp.close()
                 tmp = float(info.strip()) / (1000 * 1000)
                 freq = str("%.1f" % tmp)
-                fp.close()
+                #processor
                 Cpu['CpuVersion'] = "1500a v1.0 64 bits"
                 Cpu['CpuVendor'] = "phytium"#(飞腾)
                 Cpu['CpuCapacity'] = "%s GHz" % freq
-                Cpu['cpu_cores'] = "4 cores"#4 核
-                Cpu['cpu_siblings'] = "4 thread/core"#4 线程/核
-                Cpu['clflush_size'] = "32 KB"
-                Cpu['cache_size'] = "2 MB"
+                #Cpu['cpu_cores'] = "4 cores"#4 核
+                if os.path.exists('/proc/cpuinfo'):
+                    fp = open('/proc/cpuinfo', "r")
+                    info = fp.read()
+                    fp.close()
+                    cnt = info.count("processor")
+                    Cpu['cpu_cores'] = _("%d cores") % cnt
+                    with open('/proc/cpuinfo') as f:
+                        for line in f:
+                            if line.strip():
+                                if line.rstrip('\n').startswith('model name'):
+                                    modelName = line.rstrip('\n').split(':')[1].strip().strip('\n')
+                                    if "phytium" in modelName:
+                                        Cpu['CpuVersion'] = _("%s v1.0 64 bits") % modelName
+                                        Cpu['CpuVendor'] = "phytium"#(飞腾)
+                                    else:
+                                        Cpu['CpuVersion'] = modelName
+                                    break
+                #Cpu['cpu_siblings'] = "4 thread/core"#4 线程/核
+                #Cpu['clflush_size'] = "32 KB"
+                #Cpu['cache_size'] = "2 MB"
             else:
                 #处理器版本
                 Cpu['CpuVersion'] = "1500a v1.0 64 bits"
@@ -526,11 +583,11 @@ class DetailInfo:
                 #内核数
                 Cpu['cpu_cores'] = "4 cores"#4 核
                 #线程数
-                Cpu['cpu_siblings'] = "4 thread/core"#4 线程/核
+                #Cpu['cpu_siblings'] = "4 thread/core"#4 线程/核
                 #一级缓存
-                Cpu['clflush_size'] = "32 KB"
+                #Cpu['clflush_size'] = "32 KB"
                 #二级缓存
-                Cpu['cache_size'] = "2 MB"
+                #Cpu['cache_size'] = "2 MB"
         else:
             hw = os.popen("dmidecode -t processor")
             cpuin = hw.read()
@@ -1021,22 +1078,90 @@ class DetailInfo:
         dis['DiskNum'],dis['DiskProduct'],dis['DiskVendor'],dis['DiskCapacity'],dis['DiskName'],dis['DiskFw'],dis['DiskSerial'] = self.strip(str(disknum)),self.strip(DiskProduct),self.strip(DiskVendor),self.strip(DiskCapacity),self.strip(DiskName),self.strip(DiskFw),self.strip(DiskSerial)
         return dis
 
+    #kobe:测试发现服务器上有个网卡名为：lxcbr0，其通过lspci -vvv找不到对应的信息
     def get_network(self):
         net = {}
-        NetProduct,NetVendor,NetDrive,NetBusinfo,NetLogicalname,NetSerial,NetIp,NetLink,NetCapacity = '','','','','','','','',''
+        NetNum = 0
+        #NetList = []
+        NetProduct,NetVendor,NetDrive,NetBusinfo,NetLogicalname,NetSerial,NetIp,NetLink,NetCapacity,Subsystem = '','','','','','','','','',''
+        fp=os.popen("ifconfig -s|grep -v Iface|grep -v lo|awk '{print $1}'")
+        interface = fp.readlines()
+        fp.close()
+        ip_dic={}
+        for name in interface:
+            name = name.strip()
+            if name is not "lo":#20161228
+                mac = get_interface_mac(name)
+                if NetSerial:
+                    NetSerial += "<1_1>" + mac
+                else:
+                    NetSerial = mac
+                ip = get_interface_ip(name)
+                if NetIp:
+                    NetIp += "<1_1>" + ip
+                else:
+                    NetIp = ip
+                NetNum += 1
+                #NetList.append(name)
+                if NetLogicalname:
+                    NetLogicalname += "<1_1>" + name
+                else:
+                    NetLogicalname = name
+
         n = os.popen('lspci -vvv')
         network = n.read()
         n.close()
-        if network :
-            if re.findall('Ethernet controller: ',network):
-                tmp = network[network.index('Ethernet controller: ')-8:] 
-                NetBusinfo = 'pci@0000:' + tmp[:8]
-                pro = re.findall('Ethernet controller: (.*)',tmp)
-                NetProduct = pro[0]
-                NetVendor = self.get_url('',pro[0])
-                tmp =  re.findall('Kernel driver in use: (.*)',tmp)
-                NetDrive = tmp[0]
-
+        bus = re.findall('Ethernet controller: ', network)
+        if bus:
+            #tmp =network network[network.index('Ethernet controller: ')-8:]
+            #network = network[network.index('Ethernet controller: ')+len('Ethernet controller: '):]
+            #addr = network.index('Ethernet controller: ')
+            #network = network[:network.index('Ethernet controller: ')-1]
+            #print network
+            while bus:
+                st = network[:network.index('Ethernet controller: ')-1]
+                tmp = network[st.rindex('\n')+1:network.index('Ethernet controller: ')-1]
+                if tmp:
+                    if NetBusinfo:
+                        NetBusinfo += "<1_1>" + 'pci@0000:' + tmp
+                    else:
+                        NetBusinfo = 'pci@0000:' + tmp
+                network = network[network.index('Ethernet controller: '):]
+                tmp = network[network.index('Ethernet controller: ')+len('Ethernet controller: '):network.index('\n')]
+                if tmp:
+                    if NetVendor:
+                        NetVendor += "<1_1>" + self.get_url('', tmp)
+                    else:
+                        NetVendor = self.get_url('', tmp)
+                    if NetProduct:
+                        NetProduct += "<1_1>" + tmp
+                    else:
+                        NetProduct = tmp 
+                network = network[network.index('Ethernet controller: ')+len('Ethernet controller: '):]
+                idx = network[network.index('Subsystem: '):]
+                tmp = idx[idx.index('Subsystem: ')+len('Subsystem: '):idx.index('\n')]
+                if tmp:
+                    if Subsystem:
+                        Subsystem += "<1_1>" + tmp
+                    else:
+                        Subsystem = tmp  
+                idx = network[network.index('Kernel driver in use: '):]
+                tmp = idx[idx.index('Kernel driver in use: ')+len('Kernel driver in use: '):idx.index('\n')]
+                if tmp:
+                    if NetDrive:
+                        NetDrive += "<1_1>" + tmp
+                    else:
+                        NetDrive = tmp
+                bus = re.findall('Ethernet controller: ', network)
+        #if network :
+        #    if re.findall('Ethernet controller: ',network):
+        #        tmp = network[network.index('Ethernet controller: ')-8:] 
+        #        NetBusinfo = 'pci@0000:' + tmp[:8]
+        #        pro = re.findall('Ethernet controller: (.*)',tmp)
+        #        NetProduct = pro[0]
+        #        NetVendor = self.get_url('',pro[0])
+        #        tmp =  re.findall('Kernel driver in use: (.*)',tmp)
+        #        NetDrive = tmp[0]
         #n = os.popen('ifconfig eth')
         #network = n.read()
         #n.close()
@@ -1052,37 +1177,43 @@ class DetailInfo:
         #        NetIp = ip
         # modify by kobe(LP: #1310882 )
         # -------------------get eth interface and ip address-------------------
-        fp=os.popen("ifconfig -s|grep -v Iface|grep -v lo|awk '{print $1}'")
-        interface=fp.readlines()
-        fp.close()
-        ip_dic={}
-        for name in interface:
-            name=name.strip()
-            # remove 'wlan'
-            #if name.startswith('eth'):
-            if name is not "lo":#20161228
-                try:
-                    sk = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-                    ipaddr=socket.inet_ntoa(fcntl.ioctl(
-                        sk.fileno(),
-                        0x8915, # SIOCGIFADDR
-                        struct.pack('256s', name[:15])
-                    )[20:24])
-                    ip_dic[name]=ipaddr
-                except Exception as e:
-                    print e
-        if len(ip_dic) == 0:
-            NetLogicalname = 'N/A'
-            NetIp = 'N/A'
-        else:
-            NetLogicalname =  ip_dic.keys()[0]
-            NetIp =  ip_dic.values()[0]
+        #fp=os.popen("ifconfig -s|grep -v Iface|grep -v lo|awk '{print $1}'")
+        #interface=fp.readlines()
+        #fp.close()
+        #print interface
+        #ip_dic={}
+        #devName = ''
+        #for name in interface:
+        #    name=name.strip()
+        #    if devName:
+        #        devName += "<1_1>" + name
+        #    else:
+        #        devName = name
+        #    # remove 'wlan'
+        #    #if name.startswith('eth'):
+        #    if name is not "lo":#20161228
+        #print NetList
+        #for netItem in NetList:
+        #    try:
+        #        sk = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        #        ipaddr=socket.inet_ntoa(fcntl.ioctl(
+        #            sk.fileno(),
+        #            0x8915, # SIOCGIFADDR
+        #            struct.pack('256s', netItem[:15])
+        #        )[20:24])
+        #        ip_dic[netItem]=ipaddr
+        #    except Exception as e:
+        #        print e
+        #print ip_dic
+        #if len(ip_dic) == 0:
+        #    #NetLogicalname = 'N/A'
+        #    NetIp = 'N/A'
+        #else:
+        #    #NetLogicalname =  ip_dic.keys()[0]
+        #    NetIp =  ip_dic.values()[0]
         # -------------------get mac address-------------------
-        mac_addr = uuid.UUID(int = uuid.getnode()).hex[-12:]
-        NetSerial = ":".join([mac_addr[e:e+2] for e in range(0,11,2)])
-
-
-
+        #mac_addr = uuid.UUID(int = uuid.getnode()).hex[-12:]
+        #NetSerial = ":".join([mac_addr[e:e+2] for e in range(0,11,2)])
         try:
             n = os.popen('mii-tool -v')
             network = n.read()
@@ -1122,7 +1253,7 @@ class DetailInfo:
                 ip = tmp[0][tmp[0].index(':')+len(':'):]
                 ip = ip[: ip.index(' ')]
                 WlanIp = ip
-
+        net['NetNum'] = NetNum
         net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetSerial'],net['NetIp'],net['NetLink'],net['NetCapacity'],net['NetDrive'],net['WlanProduct'],net['WlanVendor'],net['WlanBusinfo'],net['WlanLogicalname'],net['WlanSerial'],net['WlanIp'],net['WlanDrive'] = self.strip(NetProduct),self.strip(NetVendor),self.strip(NetBusinfo),self.strip(NetLogicalname),self.strip(NetSerial),self.strip(NetIp),self.strip(NetLink),self.strip(NetCapacity),self.strip(NetDrive),self.strip(WlanProduct),self.strip(WlanVendor),self.strip(WlanBusinfo),self.strip(WlanLogicalname),self.strip(WlanSerial),self.strip(WlanIp),self.strip(WlanDrive)
         return net
 

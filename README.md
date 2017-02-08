@@ -19,7 +19,12 @@ lupdate youker-assistant.pro
 linguist youker-assistant_zh_CN.ts
 lrelease youker-assistant.pro
 
-
+Python Internationalization
+=======
+xgettext -k_ -o youker-assistant.pot cpuinfo.py
+youker-assistant.pot:修改charset为utf-8
+cp youker-assistant.pot youker-assistant.po
+msgfmt -o youker-assistant.mo youker-assistant.po
 
 
 

@@ -87,6 +87,7 @@ void InfoWidget::initUI(bool has_battery)
     nic_widget = new NicWidget(this, systemProxy);
     monitor_widget = new MonitorWidget(this, systemProxy);
     audio_widget = new AudioWidget(this, systemProxy);
+    serverOrDesktop = sessionProxy->get_os_release_qt();
 
     QMap<QString, QVariant> tmpMap = systemProxy->get_cdrom_info_qt();
     QMap<QString, QVariant>::iterator iter = tmpMap.find("Dvdnum");
@@ -134,6 +135,9 @@ void InfoWidget::initUI(bool has_battery)
         else if (i == 11 && arch != "aarch64") {
             //x86 no sensor
         }
+        else if (i == 11 && arch == "aarch64" && serverOrDesktop.contains("server")) {
+            //arm server no sensor
+        }
         else {
             QIcon icon;
             icon.addFile(":/hd/res/hardware/" + icon_list.at(i), QSize(), QIcon::Normal, QIcon::Off);
@@ -165,7 +169,7 @@ void InfoWidget::initUI(bool has_battery)
     {
         stacked_widget->addWidget(battery_widget);
     }
-    if (arch == "aarch64") {
+    if (arch == "aarch64" && !serverOrDesktop.contains("server")) {//20170206
         sensor_widget = new SensorWieget(this, systemProxy);
         stacked_widget->addWidget(sensor_widget);
     }

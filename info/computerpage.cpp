@@ -271,19 +271,29 @@ void ComputerPage::initUI()
                 form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), time_label);
                 page_height += time_label->height();
             }
-            else{
-                if (it.key().length() > 0 && it.value().toString().length() > 0) {//20161228
+            else {
+                QString valueStr = it.value().toString().trimmed();
+                if (QString::compare(valueStr, "UNKOWN", Qt::CaseInsensitive) == 0 || QString::compare(valueStr, "UNKNOWN", Qt::CaseInsensitive) == 0) {//for arm memory
+                    //do nothing
+                }
+                else if (it.key().length() > 0 && valueStr.length() > 0) {//20161228
                     QLabel *label = new QLabel();
-                    if (QString::compare(it.value().toString(), "1500a v1.0 64 bits", Qt::CaseInsensitive) == 0)//2017
-                        label->setText(tr("%1").arg(this->translatorSwitch(it.value().toString())));
-                    else if (QString::compare(it.value().toString(), "phytium", Qt::CaseInsensitive) == 0)//2017
-                        label->setText(tr("%1").arg(this->translatorSwitch(it.value().toString())));
-                    else if (QString::compare(it.value().toString(), "4 cores", Qt::CaseInsensitive) == 0)//2017
-                        label->setText(tr("%1").arg(this->translatorSwitch(it.value().toString())));
-                    else if (QString::compare(it.value().toString(), "4 thread/core", Qt::CaseInsensitive) == 0)//2017
-                        label->setText(tr("%1").arg(this->translatorSwitch(it.value().toString())));
+                    if (QString::compare(valueStr, "1500a v1.0 64 bits", Qt::CaseInsensitive) == 0)//2017
+                        label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
+                    else if (QString::compare(valueStr, "phytium", Qt::CaseInsensitive) == 0)//2017
+                        label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
+                    else if (QString::compare(valueStr, "4 cores", Qt::CaseInsensitive) == 0)//2017
+                        label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
+                    else if (QString::compare(valueStr, "4 thread/core", Qt::CaseInsensitive) == 0)//2017
+                        label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
+                    else if (QString::compare(valueStr, "32bit", Qt::CaseInsensitive) == 0)//2017
+                        label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
+                    else if (QString::compare(valueStr, "64bit", Qt::CaseInsensitive) == 0)//2017
+                        label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
+                    else if (QString::compare(valueStr, "64 bits", Qt::CaseInsensitive) == 0)//2017
+                        label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
                     else
-                        label->setText(tr("%1").arg(it.value().toString()));
+                        label->setText(tr("%1").arg(valueStr));
                     label->setFixedHeight(ITEMHEIGHT);
                     form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), label);
                     page_height += label->height();
@@ -487,7 +497,6 @@ QString ComputerPage::translatorSwitch(QString orgStr)
     else if(orgStr == "home_path")//用户主目录
         return tr("Home Folder");
 
-
     else if(orgStr == "Host bridge")//主桥
         return tr("Host bridge");
     else if(orgStr == "VGA compatible controller")//VGA兼容控制器
@@ -631,7 +640,7 @@ QString ComputerPage::translatorSwitch(QString orgStr)
         return tr("Running Time");
     else if(orgStr == "system")//操作系统类型：
         return tr("OS Types");
-    else if(orgStr == "platform")//操作系统版本：
+    else if(orgStr == "osname")//操作系统版本：
         return tr("OS Version");
     else if(orgStr == "architecture")//系统位数：
         return tr("Kernel Bit");
@@ -639,6 +648,10 @@ QString ComputerPage::translatorSwitch(QString orgStr)
         return tr("Kernel Version");
     else if(orgStr == "machine")//内核架构：
         return tr("Kernel Arch");
+    else if (orgStr == "32bit")
+        return tr("32bit");
+    else if (orgStr == "64bit" || orgStr == "64 bits")
+        return tr("64bit");
 
     else if(orgStr == "IN0")//内存参考电压
         return tr("Memory reference voltage");

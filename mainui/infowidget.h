@@ -88,7 +88,7 @@ private:
     SensorWieget *sensor_widget;
     QString current_tip;
 //    QList<InfoType> *categoryList;
-
+    QString serverOrDesktop;
     QString arch;
 //    QWidget *device_content;
 //    QWidget *logo_view;

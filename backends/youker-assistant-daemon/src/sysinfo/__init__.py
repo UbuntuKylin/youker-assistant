@@ -62,7 +62,7 @@ class Sysinfo:
         CLIPS_DICT['currrent_user'], CLIPS_DICT['home_path'], CLIPS_DICT['terminal'], CLIPS_DICT['language'] = self.get_userinfo()
         CLIPS_DICT['distribution'] = self.get_distro()
         CLIPS_DICT['desktopenvironment'] = self.get_desktop()
-        CLIPS_DICT['hostname'], CLIPS_DICT['platform'] = self.get_systeminfo()
+        CLIPS_DICT['hostname'], CLIPS_DICT['machine'] = self.get_systeminfo()
         CLIPS_DICT['cpu'], CLIPS_DICT['ram'] = self.get_hardwareinfo()
         return CLIPS_DICT
 
