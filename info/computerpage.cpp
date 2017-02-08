@@ -278,23 +278,29 @@ void ComputerPage::initUI()
                 }
                 else if (it.key().length() > 0 && valueStr.length() > 0) {//20161228
                     QLabel *label = new QLabel();
-                    if (QString::compare(valueStr, "1500a v1.0 64 bits", Qt::CaseInsensitive) == 0)//2017
-                        label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
-                    else if (QString::compare(valueStr, "phytium", Qt::CaseInsensitive) == 0)//2017
-                        label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
-                    else if (QString::compare(valueStr, "4 cores", Qt::CaseInsensitive) == 0)//2017
-                        label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
-                    else if (QString::compare(valueStr, "4 thread/core", Qt::CaseInsensitive) == 0)//2017
-                        label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
-                    else if (QString::compare(valueStr, "32bit", Qt::CaseInsensitive) == 0)//2017
-                        label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
-                    else if (QString::compare(valueStr, "64bit", Qt::CaseInsensitive) == 0)//2017
-                        label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
-                    else if (QString::compare(valueStr, "64 bits", Qt::CaseInsensitive) == 0)//2017
-                        label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
-                    else
-                        label->setText(tr("%1").arg(valueStr));
-                    label->setFixedHeight(ITEMHEIGHT);
+                    if (it.key() == "cpu_cores") {
+                        label->setText(tr("%1 cores").arg(valueStr));
+                    }
+                    else if (it.key() == "CpuVersion" && valueStr.contains("v1.0")) {
+                        label->setText(tr("%1 64bit").arg(valueStr));
+                    }
+                    else {
+                        if (QString::compare(valueStr, "1500a v1.0 64 bits", Qt::CaseInsensitive) == 0)//2017
+                            label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
+                        else if (QString::compare(valueStr, "phytium", Qt::CaseInsensitive) == 0)//2017
+                            label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
+                        else if (QString::compare(valueStr, "4 cores", Qt::CaseInsensitive) == 0)//2017
+                            label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
+                        else if (QString::compare(valueStr, "4 thread/core", Qt::CaseInsensitive) == 0)//2017
+                            label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
+                        else if (QString::compare(valueStr, "32bit", Qt::CaseInsensitive) == 0)//2017
+                            label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
+                        else if (QString::compare(valueStr, "64bit", Qt::CaseInsensitive) == 0)//2017
+                            label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
+                        else
+                            label->setText(tr("%1").arg(valueStr));
+                    }
+                    label->setFixedHeight(ITEMHEIGHT); 
                     form_layout->addRow(tr("%1").arg(this->translatorSwitch(it.key())), label);
                     page_height += label->height();
                 }
@@ -468,8 +474,8 @@ QString ComputerPage::translatorSwitch(QString orgStr)
         return tr("L2 Cache");
 
 
-    else if(orgStr == "1500a v1.0 64 bits")//1500a v1.0 64位
-        return tr("1500a v1.0 64 bits");
+//    else if(orgStr == "1500a v1.0 64 bits")//1500a v1.0 64位
+//        return tr("1500a v1.0 64 bits");
     else if(orgStr == "phytium")//飞腾
         return tr("phytium");
     else if(orgStr == "4 cores")//4核

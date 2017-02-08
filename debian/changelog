@@ -1,8 +1,9 @@
 youker-assistant (2.1.7) juniper; urgency=low
 
-  * integrate sensors's ui and backend
+  * integrate sensors's ui and backend.
+  * Support multiple network card display.
 
- -- lixiang <lixiang@kylinos.cn>  Mon, 06 Feb 2017 16:11:07 +0800
+ -- lixiang <lixiang@kylinos.cn>  Wed, 08 Feb 2017 13:49:27 +0800
 
 youker-assistant (2.1.5) xenial; urgency=low
 

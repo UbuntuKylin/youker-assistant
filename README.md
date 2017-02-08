@@ -25,7 +25,7 @@ xgettext -k_ -o youker-assistant.pot cpuinfo.py
 youker-assistant.pot:修改charset为utf-8
 cp youker-assistant.pot youker-assistant.po
 msgfmt -o youker-assistant.mo youker-assistant.po
-
+(sudo cp youker-assistant.mo /usr/share/locale/zh_CN/LC_MESSAGES/)
 
 
 

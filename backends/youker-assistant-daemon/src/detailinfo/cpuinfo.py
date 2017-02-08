@@ -32,12 +32,12 @@ import random
 from gi.repository import GLib#20161228
 import locale
 import gettext
-#from gettext import gettext as _
-#from gettext import ngettext as __
-locale.setlocale(locale.LC_ALL, "")
-gettext.bindtextdomain("youker-assistant", "/usr/share/locale")
-gettext.textdomain("youker-assistant")
-_ = gettext.gettext
+##from gettext import gettext as _
+##from gettext import ngettext as __
+#locale.setlocale(locale.LC_ALL, "")
+#gettext.bindtextdomain("youker-assistant", "/usr/share/locale")
+#gettext.textdomain("youker-assistant")
+#_ = gettext.gettext
 
 CPU_CURRENT_FREQ = ""
 CPU_MAX_FREQ = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"
@@ -541,7 +541,7 @@ class DetailInfo:
                 tmp = float(info.strip()) / (1000 * 1000)
                 freq = str("%.1f" % tmp)
                 #processor
-                Cpu['CpuVersion'] = "1500a v1.0 64 bits"
+                Cpu['CpuVersion'] = "1500a v1.0 64bit"
                 Cpu['CpuVendor'] = "phytium"#(飞腾)
                 Cpu['CpuCapacity'] = "%s GHz" % freq
                 #Cpu['cpu_cores'] = "4 cores"#4 核
@@ -550,14 +550,16 @@ class DetailInfo:
                     info = fp.read()
                     fp.close()
                     cnt = info.count("processor")
-                    Cpu['cpu_cores'] = _("%d cores") % cnt
+#                    Cpu['cpu_cores'] = _("%d cores") % cnt
+                    Cpu['cpu_cores'] = cnt
                     with open('/proc/cpuinfo') as f:
                         for line in f:
                             if line.strip():
                                 if line.rstrip('\n').startswith('model name'):
                                     modelName = line.rstrip('\n').split(':')[1].strip().strip('\n')
                                     if "phytium" in modelName:
-                                        Cpu['CpuVersion'] = _("%s v1.0 64 bits") % modelName
+#                                        Cpu['CpuVersion'] = _("%s v1.0") % modelName
+                                        Cpu['CpuVersion'] = "%s v1.0" % modelName
                                         Cpu['CpuVendor'] = "phytium"#(飞腾)
                                     else:
                                         Cpu['CpuVersion'] = modelName
@@ -567,7 +569,7 @@ class DetailInfo:
                 #Cpu['cache_size'] = "2 MB"
             else:
                 #处理器版本
-                Cpu['CpuVersion'] = "1500a v1.0 64 bits"
+                Cpu['CpuVersion'] = "1500a v1.0"
                 #制造商 phytium
                 Cpu['CpuVendor'] = "phytium"#(飞腾)
                 #插槽
@@ -734,13 +736,13 @@ class DetailInfo:
                         Mem["MemVendor"] += "<1_1>" + median
 
                     if Mem.get("MemWidth") == None:
-                        Mem["MemWidth"] = "64 bits"
+                        Mem["MemWidth"] = "64bit"
                     else:
-                        Mem["MemWidth"] += "<1_1>" + "64 bits"
+                        Mem["MemWidth"] += "<1_1>" + "64bit"
                 Mem["Memnum"] = str(memnum)
             if Mem in (None, '', '[]', {}) or  Mem["Memnum"] == '0':#20161228
                 Mem["Memnum"] = "1"
-                Mem["MemWidth"] = "64 bits"
+                Mem["MemWidth"] = "64bit"
                 Mem["MemInfo"] = "DDR3"
                 fp = open("/proc/meminfo", "r")
                 info = fp.read()
