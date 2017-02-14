@@ -1402,37 +1402,42 @@ class DetailInfo:
                 "IN2": "1.0V", #"SATA控制器电压"
                 "IN3": "1.5V", #"内存电压",
                 "IN5": "1.8V", #"CPU管脚电压",
-                "IN6": "2.5V/2", #"桥片电压",
-                "TR1": "3.3V/2", #"ATX_3V3",
-                "TR2": "5V/3", #"ATX_5V",
-                "TR3": "12V/12", #"ATX_12V",
-                "TR4": "1.0V", #"CPU核温度",
+                "IN6": "1.25 V", #"桥片电压",
+                "TR1": "1.65 V", #"ATX_3V3",
+                "TR2": "1.67 V", #"ATX_5V",
+                "TR3": "1.0 V", #"ATX_12V",
+                "TR4": "1.0 V", #"CPU核电压",
                 "TR5": "", #"CPU温度",
                 "TR6": "", #"主板温度"
                 "FANIN1": "" #"CPU风扇转速"
                 }
 
         opposite = {"IN0": "in0",
-                "IN2": "in2", 
-                "IN3": "in3", 
-                "IN5": "in5", 
-                "IN6": "in6", 
-                "TR1": "temp1", 
-                "TR2": "temp2", 
-                "TR3": "temp3", 
-                "TR4": "temp4", 
-                "TR5": "temp5", 
-                "TR6": "temp6", 
-                "FANIN1": "fan1" 
+                "IN2": "in2",
+                "IN3": "in3",
+                "IN5": "in5",
+                "IN6": "in6",
+                "TR1": "in17",
+                "TR2": "in18",
+                "TR3": "in19",
+                "TR4": "in20",
+                "TR5": "temp5",
+                "TR6": "temp6",
+                "FANIN1": "fan1"
+                }
+
+        product = {"in17": 2,
+                "in18": 3,
+                "in19": 12,
                 }
 
         status, output = commands.getstatusoutput("sensors")
         for line in output.split("\n"):
             for key in opposite.items():
-                if line.startswith(key[1]):
-                    if key[1] in ["temp1", "temp2", "temp3", "temp4"]:
-                        value = float(origin[key[0]].split("V")[0].strip()) + round(random.uniform(0.1, 0.5),2)
-                        origin[key[0]] = str(value) + "V" + origin[key[0]].split("V")[1]
+                if line.split(":")[0] == key[1]:
+                    if key[1] in ["in17", "in18", "in19"]:
+                        value = (line.split(":")[1]).split("(")[0].strip()
+                        origin[key[0]] = value[0:1] + str(float(value[1:-1]) * product[key[1]]) + " V"
                         break
                     origin[key[0]] = (line.split(":")[1]).split("(")[0].strip()
                     break
