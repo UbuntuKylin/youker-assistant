@@ -192,7 +192,7 @@ QMap<QString, QVariant> SystemDispatcher::get_computer_info_qt() {
 }
 
 QMap<QString, QVariant> SystemDispatcher::get_sensor_info_qt() {
-    QMap<QString, QVariant> value;
+    /*QMap<QString, QVariant> value;
     value.insert("IN0", "0.75V");
     value.insert("IN2", "1.0V");
     value.insert("IN3", "1.5V");
@@ -205,18 +205,17 @@ QMap<QString, QVariant> SystemDispatcher::get_sensor_info_qt() {
     value.insert("TR5", "45℃");
     value.insert("TR6", "50℃");
     value.insert("FANIN1", "1800");
-    return value;
-    /*QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_computer_info");
+    return value;*/
+    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_sensor_info");
     if (reply.isValid()) {
         QMap<QString, QVariant> value = reply.value();
         return value;
     }
     else {
-        qDebug() << "get computer info failed!";
         QMap<QString, QVariant> value;
         value.insert("kylinkobe", "kylinkobe");
         return value;
-    }*/
+    }
 }
 
 QMap<QString, QVariant> SystemDispatcher::get_cpu_info_qt() {
