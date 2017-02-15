@@ -32,7 +32,6 @@ INT_TYPE = 2
 DOUBLE_TYPE = 3
 STRING_TYPE = 4
 
-VERSION = "2.1.7"
 str_agent = []
 LEN_AGENT = 10
 
@@ -94,10 +93,6 @@ def get_distro_info():
 #            return id
 #    else:
 #        return 'unknown'
-
-# youker-assistant version
-def get_uk_version():
-    return VERSION
 
 def get_ip_again():
     ret = ''

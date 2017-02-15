@@ -23,8 +23,9 @@
 #include <QtGui>
 #include <QPropertyAnimation>
 #include <QParallelAnimationGroup>
+#include "../component/utils.h"
 
-AboutDialog::AboutDialog(QWidget *parent, const QString &version, QString skin, QString arch, QString os):
+AboutDialog::AboutDialog(QWidget *parent, /*const QString &version, */QString skin, QString arch, QString os):
     QDialog(parent)
 {
     this->setWindowFlags(Qt::FramelessWindowHint);
@@ -70,11 +71,11 @@ AboutDialog::AboutDialog(QWidget *parent, const QString &version, QString skin, 
     nameLabel->setAlignment(Qt::AlignCenter);
     if (arch == "aarch64" || os == "Kylin") {//20161228
         close_btn->move(442-36, 0);
-        nameLabel->setText(tr("Kylin Assisant") + " " + version);
+        nameLabel->setText(tr("Kylin Assisant") + " " + VERSION);
     }
     else {
         close_btn->move(0, 0);
-        nameLabel->setText(tr("Youker Assisant") + " " + version);
+        nameLabel->setText(tr("Youker Assisant") + " " + VERSION);
     }
 //    linkLabel->setAlignment(Qt::AlignRight);
 //    linkLabel->setText(QString::fromLocal8Bit("<a style='color: green;' href = https://launchpad.net/youker-assistant> home page</a>"));

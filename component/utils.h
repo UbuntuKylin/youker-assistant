@@ -28,6 +28,8 @@
 #define PAGESPACE 20
 #define ITEMWIDTH 650
 
+#define VERSION "V2.2.0"
+
 const QString YOUKER_COMPANY_SETTING = "ubuntukylin/youker-assistant";
 const QString YOUKER_SETTING_FILE_NAME_SETTING = "youker-assistant";
 

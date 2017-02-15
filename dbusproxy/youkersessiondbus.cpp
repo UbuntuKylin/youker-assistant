@@ -1311,6 +1311,24 @@ void SessionDispatcher::set_current_sleep_timeout_ac_qt(int value)
     sessioniface->call("set_current_sleep_timeout_ac", value);
 }
 
+QString SessionDispatcher::get_current_launcher_position_qt()
+{
+    QDBusReply<QString> reply = sessioniface->call("get_current_launcher_position");
+    return reply.value();
+}
+
+QStringList SessionDispatcher::get_all_launcher_position_qt()
+{
+    QDBusReply<QStringList> reply = sessioniface->call("get_all_launcher_position");
+    return reply.value();
+}
+
+bool SessionDispatcher::set_launcher_position_qt(QString position)
+{
+    QDBusReply<bool> reply = sessioniface->call("set_launcher_position", position);
+    return reply.value();
+}
+
 // notify changes
 void SessionDispatcher::handler_notify_boolean(QString key, bool value)
 {

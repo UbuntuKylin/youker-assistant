@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=youker-assistant
-Name[zh_CN]=优客助手
+Name[zh_CN]=麒麟助手
 Comment=youker-assistant
-Comment[zh_CN]=优客助手
+Comment[zh_CN]=麒麟助手
 Keywords=Settings;Cleaning;Customization
 Exec=/usr/bin/youker-assistant %u
 Icon=youker-assistant.png

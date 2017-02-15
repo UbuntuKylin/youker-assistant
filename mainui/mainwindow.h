@@ -129,7 +129,7 @@ private:
     BoxActionWidget *box_action_widget;
     SkinCenter *skin_center;
     KylinMenu *main_menu;
-    QString version;
+//    QString version;
     QPoint drag_pos; //移动的距离
     bool mouse_press; //按下鼠标左键
     QTranslator* translator; //翻译器

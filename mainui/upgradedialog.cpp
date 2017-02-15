@@ -21,10 +21,11 @@
 
 #include "upgradedialog.h"
 #include "../component/loadinglabel.h"
+#include "../component/utils.h"
 #include <QtGui>
 #include <QDebug>
 //20161228
-UpgradeDialog::UpgradeDialog(QWidget *parent, const QString &version, QString skin, QString arch, QString os) :
+UpgradeDialog::UpgradeDialog(QWidget *parent, /*const QString &version, */QString skin, QString arch, QString os) :
     QDialog(parent)
 {
     this->setWindowFlags(Qt::FramelessWindowHint |Qt::WindowStaysOnTopHint);
@@ -33,7 +34,8 @@ UpgradeDialog::UpgradeDialog(QWidget *parent, const QString &version, QString sk
 
     isBusy = false;
     upgradeOver = false;
-    cur_version = version;
+//    cur_version = version;
+    cur_version = VERSION;
 
     baseWidget = new QWidget(this);
     baseWidget->setGeometry(QRect(0, 0, 334, 191));
@@ -98,7 +100,7 @@ UpgradeDialog::UpgradeDialog(QWidget *parent, const QString &version, QString sk
     version_label = new QLabel(this);
     version_label->setObjectName("smallgrayLabel");
     version_label->setGeometry(QRect(10, 440, 324, 20));
-    version_label->setText(tr("Current verison:") + version);
+    version_label->setText(tr("Current verison:") + VERSION);
     doing_label = new QLabel(this);
     doing_label->setWordWrap(true);//QLabel自动换行
     doing_label->setStyleSheet("QLabel{color:#000000;font-family: 方正黑体_GBK;font-size: 22px;text-align: center;}");
@@ -352,7 +354,7 @@ void UpgradeDialog::receiveFetchSignal(QString msg_type, QStringList msg)
             normal_icon_label->show();
             doing_label->setText(tr("Local sources updated"));
             QStringList version_list = sessionProxy->checkNewVersion();
-//            qDebug() << version_list;//("1.2.0-0ubuntu1", "1.2.0-0ubuntu1", "1.3.1-0ubuntu1", "1")
+//            qDebug() << version_list << "=====" << version_list.length();//("1.2.0-0ubuntu1", "1.2.0-0ubuntu1", "1.3.1-0ubuntu1", "1")
             if(version_list.length() == 1) {
 //                version_label->setText(version_list.at(0));
                 normal_icon_label->setText(tr("Not found"));

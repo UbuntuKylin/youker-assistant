@@ -51,16 +51,19 @@ public slots:
     void setBottomIconSizeValue(int value);
     void setTopAutoHide();
     void setBottomAutoHide();
+    void setLauncherPosition(QString position);
 
     void launcherwidget_notify_double(QString key, double value);
     void launcherwidget_notify_bool(QString key, bool value);
     void launcherwidget_notify_int(QString key, int value);
+    void launcherwidget_notify_string(QString key, QString value);
 
 private:
     SessionDispatcher *sessionproxy;
     bool dataOK;
     QString desktop;
     QStringList colourlist;
+    QStringList positionlist;
     QLabel *size_label;
     QLabel *size_value_label;
     QLabel *hide_label;
@@ -73,6 +76,7 @@ private:
     QLabel *size_bottom_label;
     QLabel *hide_bottom_label;
     QLabel *size_bottom_value_label;
+    QLabel *position_label;
     QSlider *size_slider;
     KylinSwitcher *hide_switcher;
     KylinSwitcher *icon_switcher;
@@ -82,6 +86,7 @@ private:
     QSlider *size_bottom_slider;
     KylinSwitcher *hide_top_switcher;
     KylinSwitcher *hide_bottom_switcher;
+    QComboBox *position_combo;
 };
 
 #endif // LAUNCHERWIDGET_H

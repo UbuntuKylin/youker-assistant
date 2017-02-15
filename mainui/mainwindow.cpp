@@ -62,7 +62,7 @@ MainWindow::MainWindow(QString cur_arch, QWidget *parent) :
 //    this->setAttribute(Qt::WA_TranslucentBackground);
 //    this->setStyleSheet("QMainWindow{border: 1px solid gray;border-radius:2px}");
     this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
-    version = "V2.1.7";//20161228
+//    version = "V2.2.0";
     status = HOMEPAGE;
     statusFlag = false;
 
@@ -1068,7 +1068,7 @@ void MainWindow::initHomePage()
     {
 //        if( bottom_grid_layout == NULL )
         QGridLayout *home_bottom_grid_layout = new QGridLayout();
-        home_page = new HomePage(0, version);
+        home_page = new HomePage(0/*, version*/);
         connect(home_page, SIGNAL(sendSubIndex(int)), this, SLOT(displaySubPage(int)));
         home_page->setParentWindow(this);
         home_page->initUI();
@@ -1108,7 +1108,7 @@ void MainWindow::openUpgradePage(/*QStringList version_list*/)
     if(upgrade_dialog == NULL)
     {
 //        upgrade_dialog = new UpgradeDialog(0, version_list.at(2), last_skin_path);
-        upgrade_dialog = new UpgradeDialog(0, this->version, last_skin_path, this->arch, this->osName);//20161228
+        upgrade_dialog = new UpgradeDialog(0, /*this->version, */last_skin_path, this->arch, this->osName);//20161228
         upgrade_dialog->setSystemDbusProxy(systeminterface);
         upgrade_dialog->setSessionDbusProxy(sessioninterface);
         connect(home_page, SIGNAL(sendOpenUpgrade()), this, SLOT(openUpgradePageAgain()));
@@ -1204,7 +1204,7 @@ void MainWindow::aboutUs()
     int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (326  / 2);
     if(aboutDlg == NULL)
     {
-        aboutDlg = new AboutDialog(0, version, last_skin_path, this->arch, this->osName);
+        aboutDlg = new AboutDialog(0, /*version, */last_skin_path, this->arch, this->osName);
         aboutDlg->move(w_x, w_y);
         aboutDlg->show();
         aboutDlg->raise();

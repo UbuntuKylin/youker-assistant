@@ -44,6 +44,7 @@ LauncherWidget::LauncherWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
     size_bottom_label = new QLabel();
     hide_bottom_label = new QLabel();
     size_bottom_value_label = new QLabel();
+    position_label = new QLabel();
 
 //    QLabel *size_top_label;
 //    QLabel *hide_top_label;
@@ -78,6 +79,8 @@ LauncherWidget::LauncherWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
     hide_top_switcher = new KylinSwitcher();
     hide_bottom_switcher = new KylinSwitcher();
 
+    position_combo = new QComboBox();
+
 //    QSlider *size_top_slider;
 //    QSlider *size_bottom_slider;
 //    KylinSwitcher *hide_top_switcher;
@@ -90,11 +93,13 @@ LauncherWidget::LauncherWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
         icon_label->hide();
         transparency_label->hide();
         background_label->hide();
+        position_label->hide();
         size_slider->hide();
         hide_switcher->hide();
         icon_switcher->hide();
         transparency_slider->hide();;
         backgound_combo->hide();
+        position_combo->hide();
     }
     else
     {
@@ -119,6 +124,7 @@ LauncherWidget::LauncherWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
     hide_top_label->setFixedWidth(180);
     size_bottom_label->setFixedWidth(180);
     hide_bottom_label->setFixedWidth(180);
+    position_label->setFixedWidth(180);
 
     QHBoxLayout *layout1 = new QHBoxLayout();
     layout1->setSpacing(10);
@@ -169,9 +175,16 @@ LauncherWidget::LauncherWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
     layout9->addWidget(hide_bottom_label);
     layout9->addWidget(hide_bottom_switcher);
     layout9->addStretch();
+    QHBoxLayout *layout10 = new QHBoxLayout();
+    layout10->setSpacing(10);
+    layout10->addWidget(position_label);
+    layout10->addWidget(position_combo);
+    layout10->addStretch();
+
     QVBoxLayout *layout = new QVBoxLayout();
     layout->addLayout(layout1);
     layout->addLayout(layout2);
+    layout->addLayout(layout10);
     layout->addLayout(layout3);
     layout->addLayout(layout4);
     layout->addLayout(layout5);
@@ -231,6 +244,10 @@ LauncherWidget::~LauncherWidget()
         delete hide_top_label;
         hide_top_label = NULL;
     }
+    if (position_label != NULL) {
+        delete position_label;
+        position_label = NULL;
+    }
     if (size_top_value_label != NULL) {
         delete size_top_value_label;
         size_top_value_label = NULL;
@@ -283,6 +300,11 @@ LauncherWidget::~LauncherWidget()
         delete hide_bottom_switcher;
         hide_bottom_switcher = NULL;
     }
+    if (position_combo != NULL) {
+        delete position_combo;
+        position_combo = NULL;
+    }
+
 }
 
 void LauncherWidget::setLanguage() {
@@ -298,6 +320,7 @@ void LauncherWidget::setLanguage() {
     hide_top_label->setText(tr("Top panel auto hide") + ":");
     size_bottom_label->setText(tr("Bottom panel icon size") + ":");
     hide_bottom_label->setText(tr("Bottom panel auto hide") + ":");
+    position_label->setText(tr("Launcher position") + ":");
 }
 
 bool LauncherWidget::getStatus()
@@ -351,6 +374,20 @@ void LauncherWidget::initData()
                 break;
         }
         backgound_combo->setCurrentIndex(initIndex);
+
+        QString current_position = sessionproxy->get_current_launcher_position_qt();
+        positionlist  = sessionproxy->get_all_launcher_position_qt();
+        position_combo->clear();
+        position_combo->clearEditText();
+        position_combo->addItems(positionlist);
+        QList<QString>::Iterator it2 = positionlist.begin(), itend2 = positionlist.end();
+        initIndex = 0;
+        for(;it2 != itend2; it2++,initIndex++)
+        {
+            if(*it2 == current_position)
+                break;
+        }
+        position_combo->setCurrentIndex(initIndex);
     }
 
     dataOK = true;
@@ -364,6 +401,7 @@ void LauncherWidget::initConnect() {
     connect(icon_switcher, SIGNAL(clicked()),  this, SLOT(setDisplayDesktopIcon()));
     connect(transparency_slider, SIGNAL(valueChanged(double)), this, SLOT(setTransparencyValue(double)));
     connect(backgound_combo, SIGNAL(currentIndexChanged(QString)),  this, SLOT(setIconColouring(QString)));
+    connect(position_combo, SIGNAL(currentIndexChanged(QString)),  this, SLOT(setLauncherPosition(QString)));
 
     connect(size_top_slider, SIGNAL(valueChanged(int)), this, SLOT(setTopIconSizeValue(int)));
     connect(size_bottom_slider, SIGNAL(valueChanged(int)), this, SLOT(setBottomIconSizeValue(int)));
@@ -373,6 +411,7 @@ void LauncherWidget::initConnect() {
     connect(sessionproxy, SIGNAL(bool_value_notify(QString, bool)), this, SLOT(launcherwidget_notify_bool(QString, bool)));
     connect(sessionproxy, SIGNAL(double_value_notify(QString, double)), this, SLOT(launcherwidget_notify_double(QString, double)));
     connect(sessionproxy, SIGNAL(int_value_notify(QString, int)), this, SLOT(launcherwidget_notify_int(QString, int)));
+    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(launcherwidget_notify_string(QString, QString)));
 }
 
 void LauncherWidget::launcherwidget_notify_double(QString key, double value)
@@ -449,6 +488,29 @@ void LauncherWidget::launcherwidget_notify_int(QString key, int value)
     }
 }
 
+void LauncherWidget::launcherwidget_notify_string(QString key, QString value)
+{
+    if (key == "launcher-position") {
+        QList<QString>::Iterator it = positionlist.begin(), itend = positionlist.end();
+        int index = -1;
+        bool exist = false;
+        for(;it != itend; it++)
+        {
+            ++index;
+            if(*it == value) {
+                exist = true;
+                break;
+            }
+        }
+        if (exist) {
+            exist = false;
+            position_combo->setCurrentIndex(index);
+        }
+        else
+            position_combo->setCurrentIndex(-1);
+    }
+}
+
 void LauncherWidget::setIconSizeValue(int value) {
     size_value_label->setText(QString::number(value));
     sessionproxy->set_launcher_icon_size_qt(value);
@@ -501,4 +563,8 @@ void LauncherWidget::setTopAutoHide() {
 
 void LauncherWidget::setBottomAutoHide() {
     sessionproxy->set_mate_panel_autohide_qt("bottom", hide_bottom_switcher->switchedOn);
+}
+
+void LauncherWidget::setLauncherPosition(QString position) {
+    sessionproxy->set_launcher_position_qt(position);
 }

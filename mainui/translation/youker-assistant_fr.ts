@@ -4,65 +4,65 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="../aboutdialog.cpp" line="77"/>
+        <location filename="../aboutdialog.cpp" line="78"/>
         <source>Youker Assisant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="83"/>
+        <location filename="../aboutdialog.cpp" line="84"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="117"/>
+        <location filename="../aboutdialog.cpp" line="118"/>
         <source> for more information. Welcome everyone to join with us. youker-assistant Homepage: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="112"/>
-        <location filename="../aboutdialog.cpp" line="117"/>
+        <location filename="../aboutdialog.cpp" line="113"/>
+        <location filename="../aboutdialog.cpp" line="118"/>
         <source>      The software is still under development. Please visit </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="73"/>
+        <location filename="../aboutdialog.cpp" line="74"/>
         <source>Kylin Assisant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="110"/>
+        <location filename="../aboutdialog.cpp" line="111"/>
         <source>Maintainer:
 Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="111"/>
+        <location filename="../aboutdialog.cpp" line="112"/>
         <source>      Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="112"/>
+        <location filename="../aboutdialog.cpp" line="113"/>
         <source> for more information. Welcome everyone to join with us. kylin-assistant Homepage: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="115"/>
+        <location filename="../aboutdialog.cpp" line="116"/>
         <source>Maintainer:
 Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="86"/>
+        <location filename="../aboutdialog.cpp" line="87"/>
         <source>Contributor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="116"/>
+        <location filename="../aboutdialog.cpp" line="117"/>
         <source>      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, system customization, task manager, and some other functions.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="137"/>
+        <location filename="../aboutdialog.cpp" line="138"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1692,52 +1692,52 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>HomePage</name>
     <message>
-        <location filename="../homepage.cpp" line="176"/>
+        <location filename="../homepage.cpp" line="177"/>
         <source>Boot Manager</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="176"/>
+        <location filename="../homepage.cpp" line="177"/>
         <source>Camera</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="249"/>
+        <location filename="../homepage.cpp" line="250"/>
         <source>Current Version Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="250"/>
+        <location filename="../homepage.cpp" line="251"/>
         <source>Update to the lastest version, make it work better</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="251"/>
+        <location filename="../homepage.cpp" line="252"/>
         <source>updating on the backend</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="252"/>
+        <location filename="../homepage.cpp" line="253"/>
         <source>Common toolbox</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="253"/>
+        <location filename="../homepage.cpp" line="254"/>
         <source>Fast and practical, making the system more personalized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="272"/>
+        <location filename="../homepage.cpp" line="273"/>
         <source>Upgrade is complete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="274"/>
+        <location filename="../homepage.cpp" line="275"/>
         <source>Updating on the backend</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="176"/>
+        <location filename="../homepage.cpp" line="177"/>
         <source>More</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1951,48 +1951,53 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>LauncherWidget</name>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="292"/>
+        <location filename="../../setting/launcherwidget.cpp" line="314"/>
         <source>Launcher icon size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="293"/>
+        <location filename="../../setting/launcherwidget.cpp" line="315"/>
         <source>Launcher hide mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="294"/>
+        <location filename="../../setting/launcherwidget.cpp" line="316"/>
         <source>Display desktop icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="295"/>
+        <location filename="../../setting/launcherwidget.cpp" line="317"/>
         <source>Launcher Transparency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="296"/>
+        <location filename="../../setting/launcherwidget.cpp" line="318"/>
         <source>Icon Background</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="297"/>
+        <location filename="../../setting/launcherwidget.cpp" line="319"/>
         <source>Top panel icon size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="298"/>
+        <location filename="../../setting/launcherwidget.cpp" line="320"/>
         <source>Top panel auto hide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="299"/>
+        <location filename="../../setting/launcherwidget.cpp" line="321"/>
         <source>Bottom panel icon size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="300"/>
+        <location filename="../../setting/launcherwidget.cpp" line="322"/>
         <source>Bottom panel auto hide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../setting/launcherwidget.cpp" line="323"/>
+        <source>Launcher position</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2632,116 +2637,116 @@ Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>UpgradeDialog</name>
     <message>
-        <location filename="../upgradedialog.cpp" line="59"/>
+        <location filename="../upgradedialog.cpp" line="61"/>
         <source>check and update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="101"/>
-        <location filename="../upgradedialog.cpp" line="396"/>
+        <location filename="../upgradedialog.cpp" line="103"/>
+        <location filename="../upgradedialog.cpp" line="398"/>
         <source>Current verison:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="137"/>
+        <location filename="../upgradedialog.cpp" line="139"/>
         <source>Official version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="160"/>
+        <location filename="../upgradedialog.cpp" line="162"/>
         <source>An error occurred!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="161"/>
+        <location filename="../upgradedialog.cpp" line="163"/>
         <source>Network or local sources anomaly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="165"/>
+        <location filename="../upgradedialog.cpp" line="167"/>
         <source>you can visit the&lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; UK official website&lt;/a&gt; to download the lastest deb package</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="170"/>
+        <location filename="../upgradedialog.cpp" line="172"/>
         <source>Retry</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="183"/>
+        <location filename="../upgradedialog.cpp" line="185"/>
         <source>Finish</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="190"/>
+        <location filename="../upgradedialog.cpp" line="192"/>
         <source>Upgrade</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="252"/>
-        <location filename="../upgradedialog.cpp" line="335"/>
+        <location filename="../upgradedialog.cpp" line="254"/>
+        <location filename="../upgradedialog.cpp" line="337"/>
         <source>Start to update the local sources</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="331"/>
+        <location filename="../upgradedialog.cpp" line="333"/>
         <source>Start to download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="380"/>
+        <location filename="../upgradedialog.cpp" line="382"/>
         <source>Updating local sources...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="395"/>
+        <location filename="../upgradedialog.cpp" line="397"/>
         <source>Youker Assistant is the latest version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="408"/>
+        <location filename="../upgradedialog.cpp" line="410"/>
         <source>Start to install</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="342"/>
+        <location filename="../upgradedialog.cpp" line="344"/>
         <source>Download completely</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="353"/>
+        <location filename="../upgradedialog.cpp" line="355"/>
         <source>Local sources updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="363"/>
+        <location filename="../upgradedialog.cpp" line="365"/>
         <source>Found a new version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="151"/>
+        <location filename="../upgradedialog.cpp" line="153"/>
         <source>New version:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="358"/>
-        <location filename="../upgradedialog.cpp" line="372"/>
+        <location filename="../upgradedialog.cpp" line="360"/>
+        <location filename="../upgradedialog.cpp" line="374"/>
         <source>Not found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="162"/>
-        <location filename="../upgradedialog.cpp" line="276"/>
+        <location filename="../upgradedialog.cpp" line="164"/>
+        <location filename="../upgradedialog.cpp" line="278"/>
         <source>Testing network and local sources...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="416"/>
+        <location filename="../upgradedialog.cpp" line="418"/>
         <source>Upgrading the main program...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="470"/>
+        <location filename="../upgradedialog.cpp" line="472"/>
         <source>Start to upgrade the main program</source>
         <translation type="unfinished"></translation>
     </message>

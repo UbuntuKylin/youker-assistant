@@ -188,6 +188,9 @@ class SessionDaemon(dbus.service.Object):
         self.sound_settings.connect("changed::input-feedback-sounds", self.gio_settings_monitor, BOOL_TYPE)
 
         if self.desktop == "Unity":
+            #unity launcher position
+            self.unity_launcher_position = gio.Settings.new("com.canonical.Unity.Launcher")
+            self.unity_launcher_position.connect("changed::launcher-position", self.gio_settings_monitor, STRING_TYPE)
             #unity launcher
             self.unity_settings = gio.Settings("org.compiz.unityshell", "/org/compiz/profiles/unity/plugins/unityshell/")
             self.unity_settings.connect("changed::icon-size", self.gio_settings_monitor, INT_TYPE)
@@ -1310,6 +1313,21 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='i', out_signature='b')
     def set_launcher_icon_colouring(self, colouring):
         return self.unityconf.set_launcher_icon_colouring(colouring)
+
+
+
+    #Launcher position
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_all_launcher_position(self):
+        return self.unityconf.get_all_launcher_position()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_current_launcher_position(self):
+        return self.unityconf.get_current_launcher_position()
+
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
+    def set_launcher_position(self, position):
+        return self.unityconf.set_launcher_position(position)
 
     # Dash背景模糊类型
     @dbus.service.method(INTERFACE, in_signature='', out_signature='i')

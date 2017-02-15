@@ -1,3 +1,16 @@
+youker-assistant (2.2.0) juniper; urgency=low
+
+  * Fixed the ℃  display.
+  * Set launcher position.
+
+ -- lixiang <lixiang@kylinos.cn>  Wed, 15 Feb 2017 10:32:06 +0800
+
+youker-assistant (2.1.9) juniper; urgency=low
+
+  * change get_sensor because the kernel update
+
+ -- hebing <hebing@kylinos.cn>  Tue, 14 Feb 2017 14:30:58 +0800
+
 youker-assistant (2.1.8) juniper; urgency=low
 
   * integrate sensors's ui and backend.

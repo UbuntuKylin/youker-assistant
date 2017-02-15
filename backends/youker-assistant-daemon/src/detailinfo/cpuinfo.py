@@ -1439,6 +1439,9 @@ class DetailInfo:
                         value = (line.split(":")[1]).split("(")[0].strip()
                         origin[key[0]] = value[0:1] + str(float(value[1:-1]) * product[key[1]]) + " V"
                         break
+                    if key[1] in ["temp5", "temp6"]:
+                        origin[key[0]] = ((line.split(":")[1]).split("(")[0].strip())[0:5] + u"℃ "
+                        break
                     origin[key[0]] = (line.split(":")[1]).split("(")[0].strip()
                     break
         return origin

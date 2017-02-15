@@ -36,7 +36,7 @@ class HomePage : public QWidget
 {
     Q_OBJECT
 public:
-    explicit HomePage(QWidget *parent = 0, const QString &version = "");
+    explicit HomePage(QWidget *parent = 0/*, const QString &version = ""*/);
     ~HomePage();
     void setLanguage();
     void initBoxTool();

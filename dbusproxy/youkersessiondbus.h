@@ -121,6 +121,10 @@ public:
     QStringList get_all_launcher_icon_colourings_qt();
     int get_launcher_icon_colouring_qt();
     bool set_launcher_icon_colouring_qt(int colouring);
+    //Launcher position
+    QString get_current_launcher_position_qt();
+    QStringList get_all_launcher_position_qt();
+    bool set_launcher_position_qt(QString position);
     //Dash背景模糊类型
     int get_dash_blur_experimental_qt();
     bool set_dash_blur_experimental_qt(int blur);

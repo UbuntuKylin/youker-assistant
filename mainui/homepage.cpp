@@ -22,8 +22,9 @@
 #include <QDebug>
 #include "mainwindow.h"
 #include "../component/toolbutton.h"
+#include "../component/utils.h"
 
-HomePage::HomePage(QWidget *parent, const QString &version) :
+HomePage::HomePage(QWidget *parent/*, const QString &version*/) :
     QWidget(parent)
 {
     this->setFixedSize(900, 326);
@@ -42,7 +43,7 @@ HomePage::HomePage(QWidget *parent, const QString &version) :
 //    QPixmap pixmap("://res/scan.png");
 //    scan_button->setIcon(pixmap);
 //    scan_button->setIconSize(pixmap.size());
-    current_version = version;
+    current_version = VERSION;
     version_logo = new QLabel();
     version_title = new QLabel();
     version_tip = new QLabel();

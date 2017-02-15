@@ -157,6 +157,21 @@ class Unity:
             'backlight-mode',
             'int', colouring)
 
+    def get_all_launcher_position(self):
+        return ['Left', 'Bottom']
+
+    def get_current_launcher_position(self):
+        return gsettings.get('com.canonical.Unity.Launcher',
+            None,
+            'launcher-position',
+            'string')
+
+    def set_launcher_position(self, position):
+        return gsettings.set('com.canonical.Unity.Launcher',
+            None,
+            'launcher-position',
+            'string', position)
+
     #Dash背景模糊类型
     def get_dash_blur_experimental(self):
         try:

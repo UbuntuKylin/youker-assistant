@@ -4,40 +4,40 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="../aboutdialog.cpp" line="73"/>
+        <location filename="../aboutdialog.cpp" line="74"/>
         <source>Kylin Assisant</source>
         <translation>麒麟助手</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="77"/>
+        <location filename="../aboutdialog.cpp" line="78"/>
         <source>Youker Assisant</source>
         <translation>优客助手</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="83"/>
+        <location filename="../aboutdialog.cpp" line="84"/>
         <source>About</source>
         <translatorcomment>关于本软件</translatorcomment>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="110"/>
+        <location filename="../aboutdialog.cpp" line="111"/>
         <source>Maintainer:
 Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>维护者：
 麒麟团队 &lt;ubuntukylin-members@list.launchpad.net&gt;</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="111"/>
+        <location filename="../aboutdialog.cpp" line="112"/>
         <source>      Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.</source>
         <translation>      麒麟助手是由麒麟团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器等功能。</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="112"/>
+        <location filename="../aboutdialog.cpp" line="113"/>
         <source> for more information. Welcome everyone to join with us. kylin-assistant Homepage: </source>
         <translation> 了解软件的最新进展并反馈问题，欢迎广大用户和爱好者一起参与。麒麟助手主页：</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="116"/>
+        <location filename="../aboutdialog.cpp" line="117"/>
         <source>      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, system customization, task manager, and some other functions.</source>
         <translation>      优客助手是由Ubuntu Kylin团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器等功能。</translation>
     </message>
@@ -46,8 +46,8 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="obsolete">      优客助手是由Ubuntu Kylin团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器以及监控球等功能。</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="112"/>
-        <location filename="../aboutdialog.cpp" line="117"/>
+        <location filename="../aboutdialog.cpp" line="113"/>
+        <location filename="../aboutdialog.cpp" line="118"/>
         <source>      The software is still under development. Please visit </source>
         <translation>      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 </translation>
     </message>
@@ -58,7 +58,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
       各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 </translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="117"/>
+        <location filename="../aboutdialog.cpp" line="118"/>
         <source> for more information. Welcome everyone to join with us. youker-assistant Homepage: </source>
         <translation> 了解软件的最新进展并反馈问题，欢迎广大优客一起参与。优客助手主页：</translation>
     </message>
@@ -69,7 +69,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
       各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 www.ubuntukylin.com 了解软件的最新进展并反馈问题，欢迎广大优客一起参与。优客助手主页：</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="115"/>
+        <location filename="../aboutdialog.cpp" line="116"/>
         <source>Maintainer:
 Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>维护者：
@@ -123,7 +123,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 www.ubuntukylin.com 了解软件的最新进展并反馈问题，欢迎广大优客一起参与。优客助手主页：https://launchpad.net/youker-assistant 。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="86"/>
+        <location filename="../aboutdialog.cpp" line="87"/>
         <source>Contributor</source>
         <translation>贡献者</translation>
     </message>
@@ -146,7 +146,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">&lt;a href=https://launchpad.net/youker-assistant&gt;主页&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="137"/>
+        <location filename="../aboutdialog.cpp" line="138"/>
         <source>Close</source>
         <translatorcomment>关闭</translatorcomment>
         <translation>关闭</translation>
@@ -2017,37 +2017,37 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>HomePage</name>
     <message>
-        <location filename="../homepage.cpp" line="176"/>
+        <location filename="../homepage.cpp" line="177"/>
         <source>Boot Manager</source>
         <translation>启动项管理</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="176"/>
+        <location filename="../homepage.cpp" line="177"/>
         <source>Camera</source>
         <translation>摄像头</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="249"/>
+        <location filename="../homepage.cpp" line="250"/>
         <source>Current Version Number</source>
         <translation>当前版本号</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="250"/>
+        <location filename="../homepage.cpp" line="251"/>
         <source>Update to the lastest version, make it work better</source>
         <translation>更新至最新版本，使软件更好用</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="251"/>
+        <location filename="../homepage.cpp" line="252"/>
         <source>updating on the backend</source>
         <translation>正在后台升级</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="272"/>
+        <location filename="../homepage.cpp" line="273"/>
         <source>Upgrade is complete</source>
         <translation>升级完成</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="274"/>
+        <location filename="../homepage.cpp" line="275"/>
         <source>Updating on the backend</source>
         <translation>正在后台升级</translation>
     </message>
@@ -2056,17 +2056,17 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">检查最新版本</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="252"/>
+        <location filename="../homepage.cpp" line="253"/>
         <source>Common toolbox</source>
         <translation>工具箱</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="253"/>
+        <location filename="../homepage.cpp" line="254"/>
         <source>Fast and practical, making the system more personalized</source>
         <translation>更快更好，让系统更具个性化</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="176"/>
+        <location filename="../homepage.cpp" line="177"/>
         <source>More</source>
         <translation>更多</translation>
     </message>
@@ -2289,49 +2289,54 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>LauncherWidget</name>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="292"/>
+        <location filename="../../setting/launcherwidget.cpp" line="314"/>
         <source>Launcher icon size</source>
         <translation>启动器图标尺寸</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="293"/>
+        <location filename="../../setting/launcherwidget.cpp" line="315"/>
         <source>Launcher hide mode</source>
         <translation>启动器自动隐藏</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="294"/>
+        <location filename="../../setting/launcherwidget.cpp" line="316"/>
         <source>Display desktop icon</source>
         <translation>显示桌面图标</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="295"/>
+        <location filename="../../setting/launcherwidget.cpp" line="317"/>
         <source>Launcher Transparency</source>
         <translation>启动器透明度</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="296"/>
+        <location filename="../../setting/launcherwidget.cpp" line="318"/>
         <source>Icon Background</source>
         <translation>图标背景</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="297"/>
+        <location filename="../../setting/launcherwidget.cpp" line="319"/>
         <source>Top panel icon size</source>
         <translation>顶部面板图标大小</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="298"/>
+        <location filename="../../setting/launcherwidget.cpp" line="320"/>
         <source>Top panel auto hide</source>
         <translation>顶部面板自动隐藏</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="299"/>
+        <location filename="../../setting/launcherwidget.cpp" line="321"/>
         <source>Bottom panel icon size</source>
         <translation>底部面板图标大小</translation>
     </message>
     <message>
-        <location filename="../../setting/launcherwidget.cpp" line="300"/>
+        <location filename="../../setting/launcherwidget.cpp" line="322"/>
         <source>Bottom panel auto hide</source>
         <translation>底部面板自动隐藏</translation>
+    </message>
+    <message>
+        <location filename="../../setting/launcherwidget.cpp" line="323"/>
+        <source>Launcher position</source>
+        <translation>启动器位置</translation>
     </message>
 </context>
 <context>
@@ -3133,7 +3138,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>UpgradeDialog</name>
     <message>
-        <location filename="../upgradedialog.cpp" line="59"/>
+        <location filename="../upgradedialog.cpp" line="61"/>
         <source>check and update</source>
         <translation>检查更新</translation>
     </message>
@@ -3142,23 +3147,23 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">正在工作，请稍等。</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="101"/>
-        <location filename="../upgradedialog.cpp" line="396"/>
+        <location filename="../upgradedialog.cpp" line="103"/>
+        <location filename="../upgradedialog.cpp" line="398"/>
         <source>Current verison:</source>
         <translation>当前版本：</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="137"/>
+        <location filename="../upgradedialog.cpp" line="139"/>
         <source>Official version</source>
         <translation>正式版</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="160"/>
+        <location filename="../upgradedialog.cpp" line="162"/>
         <source>An error occurred!</source>
         <translation>出错了！无法升级</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="161"/>
+        <location filename="../upgradedialog.cpp" line="163"/>
         <source>Network or local sources anomaly</source>
         <translation>网络或源地址连接失败，升级未成功</translation>
     </message>
@@ -3175,8 +3180,8 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">您可以访问 &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com/applications/showimg.php?lang=cn&amp;id=14&gt; UK 官网&lt;/a&gt; 下载最新的deb包.</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="162"/>
-        <location filename="../upgradedialog.cpp" line="276"/>
+        <location filename="../upgradedialog.cpp" line="164"/>
+        <location filename="../upgradedialog.cpp" line="278"/>
         <source>Testing network and local sources...</source>
         <translation>正在检查网络和本地源...</translation>
     </message>
@@ -3185,48 +3190,48 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">您可以访问 &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; UK 官网&lt;/a&gt; 下载最新的deb包</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="170"/>
+        <location filename="../upgradedialog.cpp" line="172"/>
         <source>Retry</source>
         <translation>重试</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="183"/>
+        <location filename="../upgradedialog.cpp" line="185"/>
         <source>Finish</source>
         <translation>完成</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="190"/>
+        <location filename="../upgradedialog.cpp" line="192"/>
         <source>Upgrade</source>
         <translation>升级</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="252"/>
-        <location filename="../upgradedialog.cpp" line="335"/>
+        <location filename="../upgradedialog.cpp" line="254"/>
+        <location filename="../upgradedialog.cpp" line="337"/>
         <source>Start to update the local sources</source>
         <translation>开始更新本地源</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="331"/>
+        <location filename="../upgradedialog.cpp" line="333"/>
         <source>Start to download</source>
         <translation>开始下载</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="380"/>
+        <location filename="../upgradedialog.cpp" line="382"/>
         <source>Updating local sources...</source>
         <translation>正在更新本地源...</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="395"/>
+        <location filename="../upgradedialog.cpp" line="397"/>
         <source>Youker Assistant is the latest version</source>
         <translation>优客助手已更新至最新版本</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="408"/>
+        <location filename="../upgradedialog.cpp" line="410"/>
         <source>Start to install</source>
         <translation>开始安装</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="342"/>
+        <location filename="../upgradedialog.cpp" line="344"/>
         <source>Download completely</source>
         <translation>下载完成</translation>
     </message>
@@ -3235,7 +3240,7 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">您可以访问 &lt;a style=&apos;color: green;&apos; href = http://www.ubuntukylin.com/applications/showimg.php?lang=cn&amp;id=14&gt; UK 官网 &lt;/a&gt;下载最新的deb包.</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="353"/>
+        <location filename="../upgradedialog.cpp" line="355"/>
         <source>Local sources updated</source>
         <translation>源更新完毕</translation>
     </message>
@@ -3244,23 +3249,23 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">没有发现新版本</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="363"/>
+        <location filename="../upgradedialog.cpp" line="365"/>
         <source>Found a new version</source>
         <translation>发现新版本</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="151"/>
+        <location filename="../upgradedialog.cpp" line="153"/>
         <source>New version:</source>
         <translation>新版本号：</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="165"/>
+        <location filename="../upgradedialog.cpp" line="167"/>
         <source>you can visit the&lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; UK official website&lt;/a&gt; to download the lastest deb package</source>
         <translation>您可以访问 &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; UK 官网&lt;/a&gt; 下载最新的deb包</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="358"/>
-        <location filename="../upgradedialog.cpp" line="372"/>
+        <location filename="../upgradedialog.cpp" line="360"/>
+        <location filename="../upgradedialog.cpp" line="374"/>
         <source>Not found</source>
         <translation>没有发现新版本</translation>
     </message>
@@ -3269,12 +3274,12 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">您可以访问 &lt;a style=&apos;color: green;&apos; href = https://launchpad.net/youker-assistant&gt; UK 官网 &lt;/a&gt;去下载最新的deb包.</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="416"/>
+        <location filename="../upgradedialog.cpp" line="418"/>
         <source>Upgrading the main program...</source>
         <translation>正在升级主程序...</translation>
     </message>
     <message>
-        <location filename="../upgradedialog.cpp" line="470"/>
+        <location filename="../upgradedialog.cpp" line="472"/>
         <source>Start to upgrade the main program</source>
         <translation>开始升级主程序</translation>
     </message>

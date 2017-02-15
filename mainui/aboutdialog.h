@@ -33,7 +33,7 @@ class AboutDialog : public QDialog
     Q_OBJECT
     
 public:
-    explicit AboutDialog(QWidget *parent = 0, const QString &version="", QString skin = ":/background/res/skin/1.png", QString arch = "", QString os = "");
+    explicit AboutDialog(QWidget *parent = 0, /*const QString &version="", */QString skin = ":/background/res/skin/1.png", QString arch = "", QString os = "");
     ~AboutDialog();
     void initConnect();
     void resetTitleSkin(QString skin);
