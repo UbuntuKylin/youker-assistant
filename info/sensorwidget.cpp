@@ -48,21 +48,49 @@ SensorWieget::~SensorWieget()
 void SensorWieget::updateTimeValue()
 {
     QMap<QString, QVariant> tmpMap = systemproxy->get_sensor_info_qt();
-    QMap<QString,QVariant>::iterator it;
-    for (it = tmpMap.begin(); it != tmpMap.end(); ++it) {
-        if (it.value().toString().length() > 0) {
-            sensor_info_map.insert(it.key(), it.value());
-        }
+    if (tmpMap.isEmpty() || tmpMap.count() <= 0) {
+
     }
-    if(sensor_info_map.count() > 0) {
-        page->resetSensor(sensor_info_map);
+    else {
+        sensor_info_map.clear();
+        QMap<QString,QVariant>::iterator it;
+        for (it = tmpMap.begin(); it != tmpMap.end(); ++it) {
+            if (it.value().toString().length() > 0) {
+                sensor_info_map.insert(it.key(), it.value());
+            }
+        }
+        if (!sensor_info_map.isEmpty() && sensor_info_map.count() > 0) {
+            page->resetSensor(sensor_info_map);
+        }
     }
 }
 
 void SensorWieget::initData()
 {
     QMap<QString, QVariant> tmpMap = systemproxy->get_sensor_info_qt();
-    QMap<QString,QVariant>::iterator it;
+    if (tmpMap.isEmpty() || tmpMap.count() <= 0) {
+        page = NULL;
+    }
+    else {
+        QMap<QString,QVariant>::iterator it;
+        for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
+            if (it.value().toString().length() > 0) {
+                sensor_info_map.insert(it.key(), it.value());
+            }
+        }
+        if (sensor_info_map.isEmpty() || sensor_info_map.count() <= 0) {
+            page = NULL;
+        }
+        else {
+            page = new ComputerPage(scroll_widget->zone, tr("Hardware sensor information"));
+            page->setMap(sensor_info_map, "");
+            page->setsensor(true);
+            page->initUI();
+            scroll_widget->addScrollWidget(page);
+            timer->start(1000*4);
+        }
+    }
+    /*QMap<QString,QVariant>::iterator it;
     for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
         if (it.value().toString().length() > 0) {
             sensor_info_map.insert(it.key(), it.value());
@@ -79,5 +107,5 @@ void SensorWieget::initData()
         page->initUI();
         scroll_widget->addScrollWidget(page);
         timer->start(1000*4);
-    }
+    }*/
 }

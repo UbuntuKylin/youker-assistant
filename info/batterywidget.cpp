@@ -38,7 +38,43 @@ bool BatteryWidget::getStatus()
 void BatteryWidget::initData()
 {
     QMap<QString, QVariant> tmpMap = sessionproxy->read_battery_info_qt();
-    QMap<QString,QVariant>::iterator it; //遍历map
+    if (tmpMap.isEmpty() || tmpMap.count() <= 0) {
+        page = NULL;
+    }
+    else {
+        QMap<QString,QVariant>::iterator it; //遍历map
+        QStringList powerlist;
+        powerlist << "POWER_SUPPLY_NAME" << "POWER_SUPPLY_MANUFACTURER" << "POWER_SUPPLY_MODEL_NAME" << "POWER_SUPPLY_TECHNOLOGY" << "POWER_SUPPLY_VOLTAGE_NOW" << "POWER_SUPPLY_ENERGY_FULL_DESIGN" << "POWER_SUPPLY_ENERGY_FULL" << "POWER_SUPPLY_ENERGY_NOW" << "POWER_SUPPLY_SERIAL_NUMBER";
+        for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
+            QList<QString>::Iterator itstart = powerlist.begin(), itend = powerlist.end();
+            for(;itstart !=itend;itstart++)
+            {
+                if(*itstart == it.key())
+                {
+                    if (it.key() == "POWER_SUPPLY_SERIAL_NUMBER")
+                    {
+                        if (it.value().toString().replace(" " ,"").length() > 0)
+                            battery_info_map.insert(it.key(), it.value());
+                    }
+                    else {
+                        if (it.value().toString().length() > 0)
+                            battery_info_map.insert(it.key(), it.value());
+                    }
+                    break;
+                }
+            }
+        }
+        if(battery_info_map.isEmpty() || battery_info_map.count() <= 0) {
+            page = NULL;
+        }
+        else {
+            page = new ComputerPage(scroll_widget->zone, tr("Battery Info"));
+            page->setMap(battery_info_map, battery_info_map.value("POWER_SUPPLY_MANUFACTURER").toString().toUpper());
+            page->initUI();
+            scroll_widget->addScrollWidget(page);
+        }
+    }
+    /*QMap<QString,QVariant>::iterator it; //遍历map
     QStringList powerlist;
     powerlist << "POWER_SUPPLY_NAME" << "POWER_SUPPLY_MANUFACTURER" << "POWER_SUPPLY_MODEL_NAME" << "POWER_SUPPLY_TECHNOLOGY" << "POWER_SUPPLY_VOLTAGE_NOW" << "POWER_SUPPLY_ENERGY_FULL_DESIGN" << "POWER_SUPPLY_ENERGY_FULL" << "POWER_SUPPLY_ENERGY_NOW" << "POWER_SUPPLY_SERIAL_NUMBER";
     for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
@@ -65,8 +101,7 @@ void BatteryWidget::initData()
 //                battery_info_map.insert(it.key(), it.value());
 //        }
     }
-    if(battery_info_map.count() == 1 && battery_info_map.contains("kylinkobe"))
-    {
+    if(battery_info_map.count() == 1 && battery_info_map.contains("kylinkobe")) {
         page = NULL;
     }
     else {
@@ -74,7 +109,7 @@ void BatteryWidget::initData()
         page->setMap(battery_info_map, battery_info_map.value("POWER_SUPPLY_MANUFACTURER").toString().toUpper());
         page->initUI();
         scroll_widget->addScrollWidget(page);
-    }
+    }*/
     dataOK = true;
 }
 

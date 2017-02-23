@@ -588,11 +588,34 @@ void MainWindow::changeLanguage(LANGUAGE language)
 //	system_tray->translateLanguage();
 }
 
-void MainWindow::display() {
+void MainWindow::display(int count)
+{
     if (this->isHidden()) {
-        int windowWidth = QApplication::desktop()->width();
-        int windowHeight = QApplication::desktop()->height();
-        this->move((windowWidth - this->width()) / 2,(windowHeight - this->height()) / 2);
+        int windowWidth, windowHeight = 0;
+        if (count < 2) {
+            windowWidth = QApplication::desktop()->width();
+            windowHeight = QApplication::desktop()->height();
+            this->move((windowWidth - this->width()) / 2,(windowHeight - this->height()) / 2);
+        }
+        else {
+            /*this->setGeometry(QApplication::desktop()->screenGeometry(1));
+            int a_width = 0;
+            for (int i=0;i<count;i++) {
+                if (i != 1)
+                    a_width += QApplication::desktop()->screenGeometry(i).width();//QRect QApplication::desktop->screenGeometry(1);根据当前的屏幕序号获取屏幕宽高等属性
+            }
+            windowWidth = QApplication::desktop()->width() - a_width;//QApplication::desktop()->width();获取虚拟屏幕全宽，注意这个比较猛，是获取的总宽度，对于横向扩展屏来说，也就是 屏幕1+ 屏幕2 + ... 的宽度
+            windowHeight = QApplication::desktop()->screenGeometry(1).height();
+            qDebug() << windowWidth;//3286   1024   1920  1366
+            qDebug() << windowHeight;//1080   768    1080  768
+            qDebug() << this->width();//900
+            qDebug() << this->height();//600
+            this->move((windowWidth - this->width()) / 2,(windowHeight - this->height()) / 2);*/
+            windowWidth = QApplication::desktop()->screenGeometry(0).width();
+            windowHeight = QApplication::desktop()->screenGeometry(0).height();
+            this->move((windowWidth - this->width()) / 2,(windowHeight - this->height()) / 2);
+        }
+
         this->show();
         this->raise();
         QTimer::singleShot(100, this, SLOT(startDbusDaemon()));

@@ -1,9 +1,10 @@
-youker-assistant (2.2.0) juniper; urgency=low
+youker-assistant (2.2.1) juniper; urgency=low
 
   * Fixed the ℃  display.
   * Set launcher position.
+  * Multi screen display normal.
 
- -- lixiang <lixiang@kylinos.cn>  Wed, 15 Feb 2017 10:32:06 +0800
+ -- lixiang <lixiang@kylinos.cn>  Thu, 23 Feb 2017 11:47:21 +0800
 
 youker-assistant (2.1.9) juniper; urgency=low
 

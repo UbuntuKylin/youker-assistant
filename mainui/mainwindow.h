@@ -62,7 +62,7 @@ public:
     explicit MainWindow(QString cur_arch = "", QWidget *parent = 0);
     ~MainWindow();
     void setTranslator(QTranslator* translator);
-    void display();
+    void display(int display);
     void initConnect();
     void initHomePage();
     void initOtherPages();

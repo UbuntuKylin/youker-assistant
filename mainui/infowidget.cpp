@@ -89,15 +89,20 @@ void InfoWidget::initUI(bool has_battery)
     audio_widget = new AudioWidget(this, systemProxy);
     serverOrDesktop = sessionProxy->get_os_release_qt();
 
-    QMap<QString, QVariant> tmpMap = systemProxy->get_cdrom_info_qt();
-    QMap<QString, QVariant>::iterator iter = tmpMap.find("Dvdnum");
     int dvdNum = 0;
-    if (iter == tmpMap.end())
-    {
+    QMap<QString, QVariant> tmpMap = systemProxy->get_cdrom_info_qt();
+    if (tmpMap.isEmpty()) {
         dvdNum = 0;
     }
-    else{
-        dvdNum = iter.value().toInt();
+    else {
+        QMap<QString, QVariant>::iterator iter = tmpMap.find("Dvdnum");
+        if (iter == tmpMap.end())
+        {
+            dvdNum = 0;
+        }
+        else{
+            dvdNum = iter.value().toInt();
+        }
     }
     if(dvdNum != 0)
     {

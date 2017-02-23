@@ -67,7 +67,28 @@ void SystemWidget::updateTimeValue()
 void SystemWidget::initData()
 {
     QMap<QString, QVariant> tmpMap = systemproxy->get_computer_info_qt();
-    QMap<QString,QVariant>::iterator it;
+    if (tmpMap.isEmpty() || tmpMap.count() <= 0) {
+        page = NULL;
+    }
+    else {
+        QMap<QString,QVariant>::iterator it;
+        for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
+            if (it.value().toString().length() > 0) {
+                sys_info_map.insert(it.key(), it.value());
+            }
+        }
+        if(sys_info_map.isEmpty() || sys_info_map.count() <= 0) {
+            page = NULL;
+        }
+        else {
+            page = new ComputerPage(scroll_widget->zone, tr("Computer Base Info"));
+            page->setMap(sys_info_map, sys_info_map.value("ComVendor").toString().toUpper());
+            page->initUI();
+            scroll_widget->addScrollWidget(page);
+            timer->start(1000*4);
+        }
+    }
+    /*QMap<QString,QVariant>::iterator it;
     for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
         if (it.value().toString().length() > 0) {
             sys_info_map.insert(it.key(), it.value());
@@ -83,5 +104,5 @@ void SystemWidget::initData()
         page->initUI();
         scroll_widget->addScrollWidget(page);
         timer->start(1000*4);
-    }
+    }*/
 }

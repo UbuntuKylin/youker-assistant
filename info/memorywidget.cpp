@@ -42,7 +42,58 @@ void MemoryWidget::initData()
 {
     memory_info_map.clear();
     memory_info_map = systemproxy->get_memory_info_qt();
-    QMap<QString, QVariant>::iterator iter = memory_info_map.find("Memnum");
+    if (memory_info_map.isEmpty() || memory_info_map.count() <= 0) {
+
+    }
+    else {
+        QMap<QString, QVariant>::iterator iter = memory_info_map.find("Memnum");
+        int memoryNum = 0;
+        if (iter == memory_info_map.end()) {
+            memoryNum = 0;
+        }
+        else{
+            memoryNum = iter.value().toInt();
+        }
+        if(memoryNum == 0) {
+        }
+        else {
+            if(memoryNum == 1) {
+                ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("Memory Info"));
+                memory_info_map.remove("Memnum");
+                QMap<QString, QVariant> tmpMap;
+                QMap<QString,QVariant>::iterator it;
+                for ( it = memory_info_map.begin(); it != memory_info_map.end(); ++it ) {
+                    if (it.value().toString().length() > 0) {
+                        tmpMap.insert(it.key(), it.value());
+                    }
+                }
+                page->setMap(tmpMap, "UBUNTUKYLIN");
+                page->initUI();
+                scroll_widget->addScrollWidget(page);
+            }
+            else if(memoryNum > 1) {
+                for(int i=0;i<memoryNum;i++) {
+                    ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("Memory Info %1").arg(i+1));
+                    tmp_info_map.clear();
+                    QMap<QString, QVariant>::iterator itbegin = memory_info_map.begin();
+                    QMap<QString, QVariant>::iterator  itend = memory_info_map.end();
+                    for (;itbegin != itend; ++itbegin) {
+                        if(itbegin.key() != "Memnum" && itbegin.value().toString().contains("<1_1>")) {
+                            QString result = itbegin.value().toString().split("<1_1>").at(i);
+                            if (result.length() > 0) {
+                                tmp_info_map.insert(itbegin.key(), result);
+                            }
+                        }
+                    }
+                    page->setMap(tmp_info_map, tmp_info_map.value("MemVendor").toString().toUpper());
+                    page->initUI();
+                    scroll_widget->addScrollWidget(page);
+                }
+            }
+        }
+    }
+
+    /*QMap<QString, QVariant>::iterator iter = memory_info_map.find("Memnum");
     int memoryNum = 0;
     if (iter == memory_info_map.end())
     {
@@ -92,6 +143,6 @@ void MemoryWidget::initData()
                 scroll_widget->addScrollWidget(page);
             }
         }
-    }
+    }*/
     dataOK = true;
 }

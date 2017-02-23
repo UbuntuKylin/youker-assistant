@@ -177,21 +177,24 @@ QString SystemDispatcher::get_os_name_qt()
     return reply.value();
 }
 
-QMap<QString, QVariant> SystemDispatcher::get_computer_info_qt() {
+QMap<QString, QVariant> SystemDispatcher::get_computer_info_qt()
+{
+    QMap<QString, QVariant> value;
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_computer_info");
     if (reply.isValid()) {
-        QMap<QString, QVariant> value = reply.value();
+        value = reply.value();
         return value;
     }
     else {
         qDebug() << "get computer info failed!";
-        QMap<QString, QVariant> value;
-        value.insert("kylinkobe", "kylinkobe");
+//        QMap<QString, QVariant> value;
+//        value.insert("kylinkobe", "kylinkobe");
         return value;
     }
 }
 
-QMap<QString, QVariant> SystemDispatcher::get_sensor_info_qt() {
+QMap<QString, QVariant> SystemDispatcher::get_sensor_info_qt()
+{
     /*QMap<QString, QVariant> value;
     value.insert("IN0", "0.75V");
     value.insert("IN2", "1.0V");
@@ -206,70 +209,79 @@ QMap<QString, QVariant> SystemDispatcher::get_sensor_info_qt() {
     value.insert("TR6", "50℃");
     value.insert("FANIN1", "1800");
     return value;*/
+    QMap<QString, QVariant> value;
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_sensor_info");
     if (reply.isValid()) {
-        QMap<QString, QVariant> value = reply.value();
+        value = reply.value();
         return value;
     }
     else {
-        QMap<QString, QVariant> value;
-        value.insert("kylinkobe", "kylinkobe");
+//        QMap<QString, QVariant> value;
+//        value.insert("kylinkobe", "kylinkobe");
         return value;
     }
 }
 
-QMap<QString, QVariant> SystemDispatcher::get_cpu_info_qt() {
+QMap<QString, QVariant> SystemDispatcher::get_cpu_info_qt()
+{
+    QMap<QString, QVariant> value;
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_cpu_info");
     if (reply.isValid()) {
-        QMap<QString, QVariant> value = reply.value();
+        value = reply.value();
         return value;
     }
     else {
         qDebug() << "get cpu info failed!";
-        QMap<QString, QVariant> value;
-        value.insert("kylinkobe", "kylinkobe");
+//        QMap<QString, QVariant> value;
+//        value.insert("kylinkobe", "kylinkobe");
         return value;
     }
 }
 
-QMap<QString, QVariant> SystemDispatcher::get_memory_info_qt() {
+QMap<QString, QVariant> SystemDispatcher::get_memory_info_qt()
+{
+    QMap<QString, QVariant> value;
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_memory_info");
     if (reply.isValid()) {
-        QMap<QString, QVariant> value = reply.value();
+        value = reply.value();
         return value;
     }
     else {
         qDebug() << "get memory info failed!";
-        QMap<QString, QVariant> value;
-        value.insert("kylinkobe", "kylinkobe");
+//        QMap<QString, QVariant> value;
+//        value.insert("kylinkobe", "kylinkobe");
         return value;
     }
 }
 
-QMap<QString, QVariant> SystemDispatcher::get_board_info_qt() {
+QMap<QString, QVariant> SystemDispatcher::get_board_info_qt()
+{
+    QMap<QString, QVariant> value;
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_board_info");
     if (reply.isValid()) {
-        QMap<QString, QVariant> value = reply.value();
+        value = reply.value();
         return value;
     }
     else {
         qDebug() << "get board info failed!";
-        QMap<QString, QVariant> value;
-        value.insert("kylinkobe", "kylinkobe");
+//        QMap<QString, QVariant> value;
+//        value.insert("kylinkobe", "kylinkobe");
         return value;
     }
 }
 
-QMap<QString, QVariant> SystemDispatcher::get_harddisk_info_qt() {
+QMap<QString, QVariant> SystemDispatcher::get_harddisk_info_qt()
+{
+    QMap<QString, QVariant> value;
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_harddisk_info");
     if (reply.isValid()) {
-        QMap<QString, QVariant> value = reply.value();
+        value = reply.value();
         return value;
     }
     else {
         qDebug() << "get harddisk info failed!";
-        QMap<QString, QVariant> value;
-        value.insert("kylinkobe", "kylinkobe");
+//        QMap<QString, QVariant> value;
+//        value.insert("kylinkobe", "kylinkobe");
         return value;
     }
 }
@@ -288,44 +300,50 @@ QMap<QString, QVariant> SystemDispatcher::get_networkcard_info_qt() {
     }
 }
 
-QMap<QString, QVariant> SystemDispatcher::get_monitor_info_qt() {
+QMap<QString, QVariant> SystemDispatcher::get_monitor_info_qt()
+{
+    QMap<QString, QVariant> value;
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_monitor_info");
     if (reply.isValid()) {
-        QMap<QString, QVariant> value = reply.value();
+        value = reply.value();
         return value;
     }
     else {
         qDebug() << "get monitor info failed!";
-        QMap<QString, QVariant> value;
-        value.insert("kylinkobe", "kylinkobe");
+//        QMap<QString, QVariant> value;
+//        value.insert("kylinkobe", "kylinkobe");
         return value;
     }
 }
 
-QMap<QString, QVariant> SystemDispatcher::get_cdrom_info_qt() {
+QMap<QString, QVariant> SystemDispatcher::get_cdrom_info_qt()
+{
+    QMap<QString, QVariant> value;
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_cdrom_info");
     if (reply.isValid()) {
-        QMap<QString, QVariant> value = reply.value();
+        value = reply.value();
         return value;
     }
     else {
         qDebug() << "get cdrom info failed!";
-        QMap<QString, QVariant> value;
-        value.insert("kylinkobe", "kylinkobe");
+//        QMap<QString, QVariant> value;
+//        value.insert("kylinkobe", "kylinkobe");
         return value;
     }
 }
 
-QMap<QString, QVariant> SystemDispatcher::get_audiocard_info_qt() {
+QMap<QString, QVariant> SystemDispatcher::get_audiocard_info_qt()
+{
+    QMap<QString, QVariant> value;
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_audiocard_info");
     if (reply.isValid()) {
-        QMap<QString, QVariant> value = reply.value();
+        value = reply.value();
         return value;
     }
     else {
         qDebug() << "get audiocard info failed!";
-        QMap<QString, QVariant> value;
-        value.insert("kylinkobe", "kylinkobe");
+//        QMap<QString, QVariant> value;
+//        value.insert("kylinkobe", "kylinkobe");
         return value;
     }
 }

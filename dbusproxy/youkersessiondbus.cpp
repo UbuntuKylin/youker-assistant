@@ -205,10 +205,12 @@ bool SessionDispatcher::judge_power_is_exists_qt() {
     return reply.value();
 }
 
-QMap<QString, QVariant> SessionDispatcher::read_battery_info_qt() {
+QMap<QString, QVariant> SessionDispatcher::read_battery_info_qt()
+{
+    QMap<QString, QVariant> value;
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("read_battery_info");
     if (reply.isValid()) {
-        QMap<QString, QVariant> value = reply.value();
+        value = reply.value();
         if (value.contains("POWER_SUPPLY_VOLTAGE_NOW")) {
             value["POWER_SUPPLY_VOLTAGE_NOW"] =  QString::number(value["POWER_SUPPLY_VOLTAGE_NOW"].toDouble()/1000000, 'f', 1) + "V";
         }
@@ -225,8 +227,8 @@ QMap<QString, QVariant> SessionDispatcher::read_battery_info_qt() {
     }
     else {
         qDebug() << "get battery_message failed!";
-        QMap<QString, QVariant> value;
-        value.insert("kylinkobe", "kylinkobe");
+//        QMap<QString, QVariant> value;
+//        value.insert("kylinkobe", "kylinkobe");
         return value;
     }
 }
@@ -334,10 +336,12 @@ QString SessionDispatcher::getHomePath() {
 //    return reply.value();
 //}
 
-QMap<QString, QVariant>  SessionDispatcher::get_system_message_qt() {
+QMap<QString, QVariant>  SessionDispatcher::get_system_message_qt()
+{
+    QMap<QString, QVariant> value;
     QDBusReply<QMap<QString, QVariant> > reply = sessioniface->call("get_system_message");
     if (reply.isValid()) {
-        QMap<QString, QVariant> value = reply.value();
+        value = reply.value();
         return value;
 //        systemInfo.clear();
 //        systemInfo = value;
@@ -349,8 +353,8 @@ QMap<QString, QVariant>  SessionDispatcher::get_system_message_qt() {
     }
     else {
         qDebug() << "get pc_message failed!";
-        QMap<QString, QVariant> value;
-        value.insert("kylinkobe", "kylinkobe");
+//        QMap<QString, QVariant> value;
+//        value.insert("kylinkobe", "kylinkobe");
         return value;
     }
 }

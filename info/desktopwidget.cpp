@@ -38,7 +38,27 @@ bool DesktopWidget::getStatus()
 void DesktopWidget::initData()
 {
     QMap<QString, QVariant> tmpMap = sessionProxy->get_system_message_qt();
-    QMap<QString,QVariant>::iterator it;
+    if (tmpMap.isEmpty() || tmpMap.count() <= 0) {
+        page = NULL;
+    }
+    else {
+        QMap<QString,QVariant>::iterator it;
+        for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
+            if (it.value().toString().length() > 0) {
+                desktop_info_map.insert(it.key(), it.value());
+            }
+        }
+        if(desktop_info_map.isEmpty() || desktop_info_map.count() <= 0) {
+            page = NULL;
+        }
+        else {
+            page = new ComputerPage(scroll_widget->zone, tr("Desktop Info"));
+            page->setMap(desktop_info_map, "UBUNTUKYLIN");
+            page->initUI();
+            scroll_widget->addScrollWidget(page);
+        }
+    }
+    /*QMap<QString,QVariant>::iterator it;
     for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
         if (it.value().toString().length() > 0) {
             desktop_info_map.insert(it.key(), it.value());
@@ -53,6 +73,6 @@ void DesktopWidget::initData()
         page->setMap(desktop_info_map, "UBUNTUKYLIN");
         page->initUI();
         scroll_widget->addScrollWidget(page);
-    }
+    }*/
     dataOK = true;
 }
