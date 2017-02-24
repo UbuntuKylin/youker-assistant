@@ -1,10 +1,11 @@
-youker-assistant (2.2.1) juniper; urgency=low
+youker-assistant (2.2.2) juniper; urgency=low
 
   * Fixed the ℃  display.
   * Set launcher position.
   * Multi screen display normal.
+  * Display virtual network card info.
 
- -- lixiang <lixiang@kylinos.cn>  Thu, 23 Feb 2017 11:47:21 +0800
+ -- lixiang <lixiang@kylinos.cn>  Fri, 24 Feb 2017 11:51:18 +0800
 
 youker-assistant (2.1.9) juniper; urgency=low
 

@@ -286,16 +286,18 @@ QMap<QString, QVariant> SystemDispatcher::get_harddisk_info_qt()
     }
 }
 
-QMap<QString, QVariant> SystemDispatcher::get_networkcard_info_qt() {
+QMap<QString, QVariant> SystemDispatcher::get_networkcard_info_qt()
+{
+    QMap<QString, QVariant> value;
     QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_networkcard_info");
     if (reply.isValid()) {
-        QMap<QString, QVariant> value = reply.value();
+        value = reply.value();
         return value;
     }
     else {
         qDebug() << "get networkcard info failed!";
-        QMap<QString, QVariant> value;
-        value.insert("kylinkobe", "kylinkobe");
+//        QMap<QString, QVariant> value;
+//        value.insert("kylinkobe", "kylinkobe");
         return value;
     }
 }

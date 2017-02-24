@@ -64,11 +64,25 @@ void NicWidget::initData()
         else {
             netNum = iter.value().toInt();
         }
-        if(wire_info_map.count() == 1 && wire_info_map.contains("kylinkobe")) {
+        if(wire_info_map.isEmpty() || wire_info_map.count() <= 0) {
         }
         else {
             if(netNum == 1) {
-                ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("NIC Info"));
+                ComputerPage *page = NULL;
+                if (wire_info_map.contains("NetLogicalname")) {
+                    QMap<QString,QVariant>::iterator iter = wire_info_map.find("NetLogicalname");
+                    QString netcard = iter.value().toString();
+                    if (netcard.startsWith("veth") || netcard.startsWith("virbr")) {
+                        page = new ComputerPage(scroll_widget->zone, tr("Vir NIC Info"));
+                    }
+                    else {
+                        page = new ComputerPage(scroll_widget->zone, tr("NIC Info"));
+                    }
+                }
+                else {
+                    page = new ComputerPage(scroll_widget->zone, tr("NIC Info"));
+                }
+//                ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("NIC Info"));
                 wire_info_map.remove("NetNum");
                 QMap<QString, QVariant> tmpMap;
                 QMap<QString,QVariant>::iterator it;
@@ -83,9 +97,13 @@ void NicWidget::initData()
                 scroll_widget->addScrollWidget(page);
             }
             else if(netNum > 1) {
+                int vir = 0;
+                int nic = 0;
+                bool pageInit = false;
                 for(int i=0;i<netNum;i++) {
-                    ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("NIC Info %1").arg(i+1));
+                    ComputerPage *page = NULL;
                     tmp_info_map.clear();
+                    pageInit = false;
                     QMap<QString, QVariant>::iterator itbegin = wire_info_map.begin();
                     QMap<QString, QVariant>::iterator  itend = wire_info_map.end();
                     for (;itbegin != itend; ++itbegin) {
@@ -94,8 +112,24 @@ void NicWidget::initData()
                             if (len > i) {
                                 QString result = itbegin.value().toString().split("<1_1>").at(i);
                                 if (result.length() > 0) {
-                                    if (QString::compare(result, "$", Qt::CaseInsensitive) != 0)//20161228
+                                    if (QString::compare(result, "$", Qt::CaseInsensitive) != 0) {
                                         tmp_info_map.insert(itbegin.key(), result);
+                                        if (itbegin.key() == "NetLogicalname") {
+                                            if (result.startsWith("veth") || result.startsWith("virbr")) {
+                                                if (!pageInit) {
+                                                    vir ++;
+                                                    page = new ComputerPage(scroll_widget->zone, tr("Vir NIC Info %1").arg(vir));
+                                                }
+                                            }
+                                            else {
+                                                if (!pageInit) {
+                                                    nic ++;
+                                                    page = new ComputerPage(scroll_widget->zone, tr("NIC Info %1").arg(nic));
+                                                }
+                                            }
+                                            pageInit = true;
+                                        }
+                                    }
                                 }
                             }
                             else {
@@ -103,6 +137,7 @@ void NicWidget::initData()
                             }
                         }
                     }
+//                    ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("NIC Info %1").arg(i+1));
                     page->setMap(tmp_info_map, tmp_info_map.value("NetVendor").toString().toUpper());
                     page->initUI();
                     scroll_widget->addScrollWidget(page);
