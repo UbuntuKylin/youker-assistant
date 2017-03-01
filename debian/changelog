@@ -1,4 +1,4 @@
-youker-assistant (2.2.3) juniper; urgency=low
+youker-assistant (2.2.4) juniper; urgency=low
 
   * Fixed the ℃  display.
   * Set launcher position.
