@@ -1167,7 +1167,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../../info/computerpage.cpp" line="496"/>
         <source>Terminal</source>
-        <translation>终端</translation>
+        <translation>用户命令解释器</translation>
     </message>
     <message>
         <location filename="../../info/computerpage.cpp" line="658"/>
