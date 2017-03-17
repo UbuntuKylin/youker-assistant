@@ -43,9 +43,9 @@ public slots:
 private:
     ScrollWidget *scroll_widget;
 //    ComputerPage *page;
-    ComputerPage *page2;
+//    ComputerPage *page2;
     QMap<QString, QVariant> wire_info_map;
-    QMap<QString, QVariant> wireless_info_map;
+//    QMap<QString, QVariant> wireless_info_map;
     QMap<QString, QVariant> tmp_info_map;
     SystemDispatcher *systemproxy;
     bool dataOK;

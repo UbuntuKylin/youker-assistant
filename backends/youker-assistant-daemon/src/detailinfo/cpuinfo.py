@@ -75,6 +75,19 @@ def get_interface_ip(interface):
     #except Exception as e:
     #    return "unknown"
 
+def get_interface_driver(interface):
+    cmd = "ethtool -i %s |grep 'driver:'" % interface
+    fp = os.popen(cmd)
+    msg = fp.read().strip('\n')
+    fp.close()
+    if msg:
+        tmp = re.findall('driver: (.*)', msg)
+        if tmp[0] in [None, '']:
+            return "unknown"
+        else:
+            return tmp[0]
+    else:
+        return "unknown"
 
 class DetailInfo:
 #Computer：			
@@ -1080,8 +1093,170 @@ class DetailInfo:
         dis['DiskNum'],dis['DiskProduct'],dis['DiskVendor'],dis['DiskCapacity'],dis['DiskName'],dis['DiskFw'],dis['DiskSerial'] = self.strip(str(disknum)),self.strip(DiskProduct),self.strip(DiskVendor),self.strip(DiskCapacity),self.strip(DiskName),self.strip(DiskFw),self.strip(DiskSerial)
         return dis
 
-    #kobe:测试发现服务器上有个网卡名为：lxcbr0，其通过lspci -vvv找不到对应的信息
+    # writed by kobe 20170318
     def get_network(self):
+        net = {}
+        NetNum = 0
+        NetType,NetProduct,NetVendor,NetDrive,NetBusinfo,NetLogicalname,NetSerial,NetIp = '','','','','','','',''
+        fp=os.popen("ifconfig -s|grep -v Iface|grep -v lo|awk '{print $1}' | wc -l");
+        NetNum = int(fp.read().strip('\n'))
+        net['NetNum'] = NetNum
+        fp.close()
+        try:
+            fp = os.popen("lshw -C network");
+            lines = fp.readlines()
+            fp.close()
+            if lines:
+                for line in lines:
+                    if ":" in line:
+                        line = line.strip()
+                        if "description:" in line:
+                            tmp = re.findall('description: (.*)', line)
+                            if tmp[0] in [None, '']:
+                                if NetType:
+                                    NetType += "<1_1>" + "unknown"
+                                else:
+                                    NetType = "unknown"
+                            else:
+                                if NetType:
+                                    NetType += "<1_1>" + tmp[0]
+                                else:
+                                    NetType = tmp[0]
+                        elif "product:" in line:
+                            tmp = re.findall('product: (.*)', line)
+                            if tmp[0] in [None, '']:
+                                if NetProduct:
+                                    NetProduct += "<1_1>" + "unknown"
+                                else:
+                                    NetProduct = "unknown"
+                            else:
+                                if NetProduct:
+                                    NetProduct += "<1_1>" + tmp[0]
+                                else:
+                                    NetProduct = tmp[0]
+                        elif "vendor:" in line:
+                            tmp = re.findall('vendor: (.*)', line)
+                            if tmp[0] in [None, '']:
+                                if NetVendor:
+                                    NetVendor += "<1_1>" + "unknown"
+                                else:
+                                    NetVendor = "unknown"
+                            else:
+                                if NetVendor:
+                                    NetVendor += "<1_1>" + tmp[0]
+                                else:
+                                    NetVendor = tmp[0]
+                        elif "bus info:" in line:
+                            tmp = re.findall('bus info: (.*)', line)
+                            if tmp[0] in [None, '']:
+                                if NetBusinfo:
+                                    NetBusinfo += "<1_1>" + "unknown"
+                                else:
+                                    NetBusinfo = "unknown"
+                            else:
+                                if NetBusinfo:
+                                    NetBusinfo += "<1_1>" + tmp[0]
+                                else:
+                                    NetBusinfo = tmp[0]
+                        elif "serial:" in line:
+                            tmp = re.findall('serial: (.*)', line)
+                            if tmp[0] in [None, '']:
+                                if NetSerial:
+                                    NetSerial += "<1_1>" + "unknown"
+                                else:
+                                    NetSerial = "unknown"
+                            else:
+                                if NetSerial:
+                                    NetSerial += "<1_1>" + tmp[0]
+                                else:
+                                    NetSerial = tmp[0]
+                        elif "logical name:" in line:
+                            tmp = re.findall('logical name: (.*)', line)
+                            if tmp[0] in [None, '']:
+                                if NetLogicalname:
+                                    NetLogicalname += "<1_1>" + "unknown"
+                                else:
+                                    NetLogicalname = "unknown"
+                                if NetIp:
+                                    NetIp += "<1_1>" + "unknown"
+                                else:
+                                    NetIp = "unknown"
+                                if NetDrive:
+                                    NetDrive += "<1_1>" + "unknown"
+                                else:
+                                    NetDrive = "unknown"
+#                                if NetType:
+#                                    NetType += "<1_1>unknown"
+#                                else:
+#                                    NetType = "unknown"
+                            else:
+                                if NetLogicalname:
+                                    NetLogicalname += "<1_1>" + tmp[0]
+                                else:
+                                    NetLogicalname = tmp[0]
+#                                if tmp[0].startswith('veth') or tmp[0].startswith('virbr'):
+#                                    if NetType:
+#                                        NetType += "<1_1>VNIC"
+#                                    else:
+#                                        NetType = "VNIC"
+#                                else:
+#                                    if NetType:
+#                                        NetType += "<1_1>unknown"
+#                                    else:
+#                                        NetType = "unknown"
+                                ip = get_interface_ip(tmp[0])
+                                if ip in [None, '']:
+                                    if NetIp:
+                                        NetIp += "<1_1>" + "unknown"
+                                    else:
+                                        NetIp = "unknown"
+                                else:
+                                    if NetIp:
+                                        NetIp += "<1_1>" + ip
+                                    else:
+                                        NetIp = ip
+                                driver = get_interface_driver(tmp[0])#enp0s25  wlp3s0
+                                if driver in [None, '']:
+                                    if NetDrive:
+                                        NetDrive += "<1_1>" + "unknown"
+                                    else:
+                                        NetDrive = "unknown"
+                                else:
+                                    if NetDrive:
+                                        NetDrive += "<1_1>" + driver
+                                    else:
+                                        NetDrive = driver
+
+#                for line in lines:
+#                    if ":" in line:
+#                        line = line.strip()
+#                        if "description:" in line:
+#                            tmp = re.findall('description: (.*)', line)
+#                            if tmp[0] in [None, '']:
+#                                if NetType:
+#                                    NetType += "<1_1>" + "unknown"
+#                                else:
+#                                    NetType = "unknown"
+#                            else:
+#                                if NetType:
+#                                    NetType += "<1_1>" + tmp[0]
+#                                else:
+#                                    NetType = tmp[0]
+            net['NetType'],net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetSerial'],net['NetIp'],net['NetDrive'] = self.strip(NetType), self.strip(NetProduct),self.strip(NetVendor),self.strip(NetBusinfo),self.strip(NetLogicalname),self.strip(NetSerial),self.strip(NetIp), self.strip(NetDrive)
+            return net
+        except Exception as e:
+            return net
+#        print NetType
+#        print NetProduct
+#        print NetVendor
+#        print NetBusinfo
+#        print NetSerial
+#        print NetLogicalname
+#        print NetIp
+#        print NetDrive
+
+    #kobe:测试发现服务器上有个网卡名为：lxcbr0，其通过lspci -vvv找不到对应的信息
+    def get_network_test(self):
         net = {}
         NetNum = 0
         #NetList = []

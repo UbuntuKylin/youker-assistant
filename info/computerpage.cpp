@@ -297,6 +297,12 @@ void ComputerPage::initUI()
                             label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
                         else if (QString::compare(valueStr, "64bit", Qt::CaseInsensitive) == 0)//2017
                             label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
+                        else if (QString::compare(valueStr, "Ethernet interface", Qt::CaseInsensitive) == 0) {
+                            label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
+                        }
+                        else if (QString::compare(valueStr, "Wireless interface", Qt::CaseInsensitive)  == 0) {
+                            label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
+                        }
                         else
                             label->setText(tr("%1").arg(valueStr));
                     }
@@ -599,10 +605,10 @@ QString ComputerPage::translatorSwitch(QString orgStr)
         return tr("Date of production/Year");
 
 
-    else if(orgStr == "NetVendor")//有线网卡型号：
-        return tr("NIC Model");
-    else if(orgStr == "NetProduct")//制造商：
+    else if(orgStr == "NetVendor")//制造商：
         return tr("Vendor");
+    else if(orgStr == "NetProduct")//网卡型号：
+        return tr("NIC Model");
     else if(orgStr == "NetDrive")//有线网卡驱动：
         return tr("NIC Driver");
     else if(orgStr == "NetBusinfo")//总线地址：
@@ -631,6 +637,18 @@ QString ComputerPage::translatorSwitch(QString orgStr)
         return tr("Serial Number");
     else if(orgStr == "WlanIp")//IP地址：
         return tr("IP Address");
+    else if (orgStr == "VNIC") {
+        return tr("VNIC");
+    }
+    else if (orgStr == "NetType") {
+        return tr("NetType");
+    }
+    else if (orgStr == "Ethernet interface") {
+        return tr("Ethernet interface");
+    }
+    else if (orgStr == "Wireless interface") {
+        return tr("Wireless interface");
+    }
 
     else if(orgStr == "ComVendor")//制造商：
         return tr("Vendor");
