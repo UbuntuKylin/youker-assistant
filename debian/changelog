@@ -1,10 +1,16 @@
-youker-assistant (2.2.5) zesty; urgency=low
+youker-assistant (2.2.6) zesty; urgency=low
 
-  * Fixed the ℃  display.
   * Set launcher position.
   * Multi screen display normal.
   * Display virtual network card info.
   * Display right network info.
+
+ -- lixiang <lixiang@kylinos.cn>  Mon, 20 Mar 2017 11:32:41 +0800
+
+youker-assistant (2.2.4) zesty; urgency=low
+
+  * Fixed the ℃  display.
+  * Fixed some bug about information.
 
  -- lixiang <lixiang@kylinos.cn>  Fri, 17 Mar 2017 15:09:41 +0800
 
