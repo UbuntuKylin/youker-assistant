@@ -13,7 +13,7 @@ Build-Depends: debhelper (>= 9),
                libglib2.0-dev,
                libgtop2-dev,
                libopencv-dev,
-Standards-Version: 3.9.6
+Standards-Version: 3.9.8
 Homepage: https://launchpad.net/youker-assistant
 Vcs-Browser: https://code.launchpad.net/~ubuntukylin-members/youker-assistant/trunk
 Vcs-Bzr: lp:youker-assistant

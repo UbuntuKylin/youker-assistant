@@ -1,12 +1,13 @@
-youker-assistant (2.2.7) zesty; urgency=low
+youker-assistant (2.2.7-0ubuntu1) zesty; urgency=low
 
   * Call cheese.
   * Free some list struct.
   * Modify os release information.
+  * Resolved lintian warning.
 
  -- lixiang <lixiang@kylinos.cn>  Thu, 23 Mar 2017 10:17:31 +0800
 
-youker-assistant (2.2.6) zesty; urgency=low
+youker-assistant (2.2.6-0ubuntu1) zesty; urgency=low
 
   * Set launcher position.
   * Multi screen display normal.
@@ -15,48 +16,48 @@ youker-assistant (2.2.6) zesty; urgency=low
 
  -- lixiang <lixiang@kylinos.cn>  Mon, 20 Mar 2017 11:32:41 +0800
 
-youker-assistant (2.2.4) zesty; urgency=low
+youker-assistant (2.2.4-0ubuntu1) zesty; urgency=low
 
   * Fixed the ℃  display.
   * Fixed some bug about information.
 
  -- lixiang <lixiang@kylinos.cn>  Fri, 17 Mar 2017 15:09:41 +0800
 
-youker-assistant (2.1.9) juniper; urgency=low
+youker-assistant (2.1.9-0ubuntu1) xenial; urgency=low
 
   * change get_sensor because the kernel update
 
  -- hebing <hebing@kylinos.cn>  Tue, 14 Feb 2017 14:30:58 +0800
 
-youker-assistant (2.1.8) juniper; urgency=low
+youker-assistant (2.1.8-0ubuntu1) xenial; urgency=low
 
   * integrate sensors's ui and backend.
   * Support multiple network card display.
 
  -- hebing <hebing@kylinos.cn>  Wed, 08 Feb 2017 13:49:27 +0800
 
-youker-assistant (2.1.5) xenial; urgency=low
+youker-assistant (2.1.5-0ubuntu1) xenial; urgency=low
 
   * Hardware sensor information for arm64.
   * change disk capacity from 1024 to 1000.
 
  -- lixiang <lixiang@kylinos.cn>  Sun, 22 Jan 2017 23:49:39 +0800
 
-youker-assistant (2.1.4) xenial; urgency=low
+youker-assistant (2.1.4-0ubuntu1) xenial; urgency=low
 
   * Translation for arm64.
   * Repair the bug about graphics.
 
  -- lixiang <lixiang@kylinos.cn>  Wed, 18 Jan 2017 15:35:07 +0800
 
-youker-assistant (2.1.2) xenial; urgency=low
+youker-assistant (2.1.2-0ubuntu1) xenial; urgency=low
 
   * Fixed ip address, memory info and hdinfo.
   * Adjust the close button position accord to desktop environment.
 
  -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Wed, 28 Dec 2016 12:03:36 +0800
 
-youker-assistant (2.0.9) xenial; urgency=low
+youker-assistant (2.0.9-0ubuntu1) xenial; urgency=low
 
   * Add depends.
   * Modify cpuinfo.py.
