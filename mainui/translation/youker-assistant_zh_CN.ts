@@ -244,7 +244,7 @@ p, li { white-space: pre-wrap; }
         <translation>已关闭数目：</translation>
     </message>
     <message>
-        <location filename="../autostartwidget.cpp" line="248"/>
+        <location filename="../autostartwidget.cpp" line="255"/>
         <source>Boot Manager</source>
         <translation>启动项管理</translation>
     </message>
@@ -938,9 +938,10 @@ p, li { white-space: pre-wrap; }
         <location filename="../../info/computerpage.cpp" line="297"/>
         <location filename="../../info/computerpage.cpp" line="299"/>
         <location filename="../../info/computerpage.cpp" line="301"/>
-        <location filename="../../info/computerpage.cpp" line="303"/>
-        <location filename="../../info/computerpage.cpp" line="305"/>
-        <location filename="../../info/computerpage.cpp" line="308"/>
+        <location filename="../../info/computerpage.cpp" line="304"/>
+        <location filename="../../info/computerpage.cpp" line="307"/>
+        <location filename="../../info/computerpage.cpp" line="310"/>
+        <location filename="../../info/computerpage.cpp" line="313"/>
         <source>%1</source>
         <translation></translation>
     </message>
@@ -965,170 +966,170 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">% 64位</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="365"/>
-        <location filename="../../info/computerpage.cpp" line="521"/>
+        <location filename="../../info/computerpage.cpp" line="370"/>
+        <location filename="../../info/computerpage.cpp" line="526"/>
         <source>Audio Model</source>
         <translation>声卡型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="367"/>
-        <location filename="../../info/computerpage.cpp" line="447"/>
-        <location filename="../../info/computerpage.cpp" line="460"/>
-        <location filename="../../info/computerpage.cpp" line="564"/>
-        <location filename="../../info/computerpage.cpp" line="607"/>
-        <location filename="../../info/computerpage.cpp" line="625"/>
-        <location filename="../../info/computerpage.cpp" line="652"/>
+        <location filename="../../info/computerpage.cpp" line="372"/>
+        <location filename="../../info/computerpage.cpp" line="452"/>
+        <location filename="../../info/computerpage.cpp" line="465"/>
+        <location filename="../../info/computerpage.cpp" line="569"/>
+        <location filename="../../info/computerpage.cpp" line="612"/>
+        <location filename="../../info/computerpage.cpp" line="630"/>
+        <location filename="../../info/computerpage.cpp" line="657"/>
         <source>Vendor</source>
         <translation>制造商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="369"/>
-        <location filename="../../info/computerpage.cpp" line="583"/>
-        <location filename="../../info/computerpage.cpp" line="613"/>
-        <location filename="../../info/computerpage.cpp" line="631"/>
+        <location filename="../../info/computerpage.cpp" line="374"/>
+        <location filename="../../info/computerpage.cpp" line="588"/>
+        <location filename="../../info/computerpage.cpp" line="618"/>
+        <location filename="../../info/computerpage.cpp" line="636"/>
         <source>Bus Address</source>
         <translation>总线地址</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="371"/>
+        <location filename="../../info/computerpage.cpp" line="376"/>
         <source>Audio Driver</source>
         <translation>声卡驱动</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="374"/>
-        <location filename="../../info/computerpage.cpp" line="449"/>
-        <location filename="../../info/computerpage.cpp" line="553"/>
-        <location filename="../../info/computerpage.cpp" line="615"/>
+        <location filename="../../info/computerpage.cpp" line="379"/>
+        <location filename="../../info/computerpage.cpp" line="454"/>
+        <location filename="../../info/computerpage.cpp" line="558"/>
+        <location filename="../../info/computerpage.cpp" line="620"/>
         <source>Device Name</source>
         <translation>设备名</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="376"/>
+        <location filename="../../info/computerpage.cpp" line="381"/>
         <source>Manufacturer</source>
         <translation>发行商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="417"/>
-        <location filename="../../info/computerpage.cpp" line="654"/>
+        <location filename="../../info/computerpage.cpp" line="422"/>
+        <location filename="../../info/computerpage.cpp" line="659"/>
         <source>Model</source>
         <translation>型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="419"/>
+        <location filename="../../info/computerpage.cpp" line="424"/>
         <source>Technology</source>
         <translation>技术</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="421"/>
+        <location filename="../../info/computerpage.cpp" line="426"/>
         <source>Voltage</source>
         <translation>电压</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="423"/>
+        <location filename="../../info/computerpage.cpp" line="428"/>
         <source>Energy Designed</source>
         <translation>能量（设计）</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="425"/>
+        <location filename="../../info/computerpage.cpp" line="430"/>
         <source>Energy Full</source>
         <translation>满时能量</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="427"/>
+        <location filename="../../info/computerpage.cpp" line="432"/>
         <source>Energy Now</source>
         <translation>能量</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="429"/>
-        <location filename="../../info/computerpage.cpp" line="436"/>
-        <location filename="../../info/computerpage.cpp" line="453"/>
-        <location filename="../../info/computerpage.cpp" line="462"/>
-        <location filename="../../info/computerpage.cpp" line="557"/>
-        <location filename="../../info/computerpage.cpp" line="566"/>
-        <location filename="../../info/computerpage.cpp" line="635"/>
-        <location filename="../../info/computerpage.cpp" line="658"/>
+        <location filename="../../info/computerpage.cpp" line="434"/>
+        <location filename="../../info/computerpage.cpp" line="441"/>
+        <location filename="../../info/computerpage.cpp" line="458"/>
+        <location filename="../../info/computerpage.cpp" line="467"/>
+        <location filename="../../info/computerpage.cpp" line="562"/>
+        <location filename="../../info/computerpage.cpp" line="571"/>
+        <location filename="../../info/computerpage.cpp" line="640"/>
+        <location filename="../../info/computerpage.cpp" line="663"/>
         <source>Serial Number</source>
         <translation>序列号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="432"/>
+        <location filename="../../info/computerpage.cpp" line="437"/>
         <source>Motherboard Model</source>
         <translation>主板型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="434"/>
+        <location filename="../../info/computerpage.cpp" line="439"/>
         <source>Motherboard Vendor</source>
         <translation>主板产商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="438"/>
+        <location filename="../../info/computerpage.cpp" line="443"/>
         <source>BIOS Vendor</source>
         <translation>BIOS产商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="440"/>
+        <location filename="../../info/computerpage.cpp" line="445"/>
         <source>BIOS Version</source>
         <translation>BIOS版本</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="442"/>
+        <location filename="../../info/computerpage.cpp" line="447"/>
         <source>Release Date</source>
         <translation>发布日期</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="445"/>
+        <location filename="../../info/computerpage.cpp" line="450"/>
         <source>CD-ROM Model</source>
         <translation>光驱型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="451"/>
-        <location filename="../../info/computerpage.cpp" line="555"/>
+        <location filename="../../info/computerpage.cpp" line="456"/>
+        <location filename="../../info/computerpage.cpp" line="560"/>
         <source>Firmware Version</source>
         <translation>固件版本</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="458"/>
-        <location filename="../../info/computerpage.cpp" line="494"/>
+        <location filename="../../info/computerpage.cpp" line="463"/>
+        <location filename="../../info/computerpage.cpp" line="499"/>
         <source>CPU</source>
         <translation>处理器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="464"/>
+        <location filename="../../info/computerpage.cpp" line="469"/>
         <source>Socket/Slot</source>
         <translation>插座／插槽</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="466"/>
+        <location filename="../../info/computerpage.cpp" line="471"/>
         <source>Maximum Frequency</source>
         <translation>最大主频</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="468"/>
+        <location filename="../../info/computerpage.cpp" line="473"/>
         <source>Current Frequency</source>
         <translation>当前主频</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="470"/>
+        <location filename="../../info/computerpage.cpp" line="475"/>
         <source>FSB</source>
         <translation>前端总线</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="472"/>
+        <location filename="../../info/computerpage.cpp" line="477"/>
         <source>Core Number</source>
         <translation>核心数目</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="474"/>
+        <location filename="../../info/computerpage.cpp" line="479"/>
         <source>Thread</source>
         <translation>线程</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="476"/>
+        <location filename="../../info/computerpage.cpp" line="481"/>
         <source>L1 Cache</source>
         <translation>１级缓存</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="478"/>
+        <location filename="../../info/computerpage.cpp" line="483"/>
         <source>L2 Cache</source>
         <translation>２级缓存</translation>
     </message>
@@ -1137,92 +1138,97 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">1500a v1.0 64位</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="484"/>
+        <location filename="../../info/computerpage.cpp" line="489"/>
         <source>phytium</source>
         <translation>飞腾</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="486"/>
+        <location filename="../../info/computerpage.cpp" line="491"/>
         <source>4 cores</source>
         <translation>4核</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="488"/>
+        <location filename="../../info/computerpage.cpp" line="493"/>
         <source>4 thread/core</source>
         <translation>4线程/核</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="492"/>
+        <location filename="../../info/computerpage.cpp" line="497"/>
         <source>Desktop Environment</source>
         <translation>桌面环境</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="496"/>
+        <location filename="../../info/computerpage.cpp" line="501"/>
         <source>Host Name</source>
         <translation>主机名</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="498"/>
+        <location filename="../../info/computerpage.cpp" line="503"/>
         <source>Memery Capacity</source>
         <translation>内存容量</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="500"/>
+        <location filename="../../info/computerpage.cpp" line="505"/>
         <source>Terminal</source>
         <translation>用户命令解释器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="674"/>
+        <location filename="../../info/computerpage.cpp" line="679"/>
         <source>32bit</source>
         <translation>32位</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="676"/>
+        <location filename="../../info/computerpage.cpp" line="681"/>
         <source>64bit</source>
         <translation>64位</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="679"/>
+        <location filename="../../info/computerpage.cpp" line="683"/>
+        <source>YHKylin community</source>
+        <translation>银河麒麟社区版</translation>
+    </message>
+    <message>
+        <location filename="../../info/computerpage.cpp" line="686"/>
         <source>Memory reference voltage</source>
         <translation>内存参考电压</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="681"/>
+        <location filename="../../info/computerpage.cpp" line="688"/>
         <source>SATA controller voltage</source>
         <translation>SATA控制器电压</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="683"/>
+        <location filename="../../info/computerpage.cpp" line="690"/>
         <source>Memory voltage</source>
         <translation>内存电压</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="685"/>
+        <location filename="../../info/computerpage.cpp" line="692"/>
         <source>CPU pin voltage</source>
         <translation>CPU管脚电压</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="687"/>
+        <location filename="../../info/computerpage.cpp" line="694"/>
         <source>Bridge voltage</source>
         <translation>桥片电压</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="689"/>
+        <location filename="../../info/computerpage.cpp" line="696"/>
         <source>CPU core voltage</source>
         <translation>CPU核电压</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="691"/>
+        <location filename="../../info/computerpage.cpp" line="698"/>
         <source>CPU temperature</source>
         <translation>CPU温度</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="693"/>
+        <location filename="../../info/computerpage.cpp" line="700"/>
         <source>Motherboard temperature</source>
         <translation>主板温度</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="695"/>
+        <location filename="../../info/computerpage.cpp" line="702"/>
         <source>CPU fan speed</source>
         <translation>CPU风扇转速</translation>
     </message>
@@ -1236,172 +1242,172 @@ p, li { white-space: pre-wrap; }
         <translation>%1 64位</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="502"/>
+        <location filename="../../info/computerpage.cpp" line="507"/>
         <source>Distribution</source>
         <translation>发行版</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="504"/>
+        <location filename="../../info/computerpage.cpp" line="509"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="506"/>
+        <location filename="../../info/computerpage.cpp" line="511"/>
         <source>User</source>
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="508"/>
+        <location filename="../../info/computerpage.cpp" line="513"/>
         <source>Home Folder</source>
         <translation>用户主目录</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="511"/>
+        <location filename="../../info/computerpage.cpp" line="516"/>
         <source>Host bridge</source>
         <translation>主桥</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="513"/>
+        <location filename="../../info/computerpage.cpp" line="518"/>
         <source>VGA Model</source>
         <translation>VGA兼容控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="515"/>
+        <location filename="../../info/computerpage.cpp" line="520"/>
         <source>USB Model</source>
         <translation>USB控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="517"/>
+        <location filename="../../info/computerpage.cpp" line="522"/>
         <source>Communication Model</source>
         <translation>通信控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="519"/>
+        <location filename="../../info/computerpage.cpp" line="524"/>
         <source>Ethernet Model</source>
         <translation>以太网控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="523"/>
+        <location filename="../../info/computerpage.cpp" line="528"/>
         <source>PCI bridge</source>
         <translation>PCI桥</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="525"/>
+        <location filename="../../info/computerpage.cpp" line="530"/>
         <source>ISA bridge</source>
         <translation>ISA桥</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="527"/>
+        <location filename="../../info/computerpage.cpp" line="532"/>
         <source>SATA Model</source>
         <translation>SATA控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="529"/>
+        <location filename="../../info/computerpage.cpp" line="534"/>
         <source>SMBus</source>
         <translation>系统管理总线</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="531"/>
+        <location filename="../../info/computerpage.cpp" line="536"/>
         <source>System peripheral</source>
         <translation>系统外围</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="533"/>
+        <location filename="../../info/computerpage.cpp" line="538"/>
         <source>Driver in use</source>
         <translation>使用的驱动</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="535"/>
+        <location filename="../../info/computerpage.cpp" line="540"/>
         <source>existing drivers</source>
         <translation>可选的驱动</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="537"/>
+        <location filename="../../info/computerpage.cpp" line="542"/>
         <source>IDE interface</source>
         <translation>IDE接口</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="539"/>
+        <location filename="../../info/computerpage.cpp" line="544"/>
         <source>SP controller</source>
         <translation>信号处理控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="541"/>
+        <location filename="../../info/computerpage.cpp" line="546"/>
         <source>Network controller</source>
         <translation>网络控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="543"/>
+        <location filename="../../info/computerpage.cpp" line="548"/>
         <source>Multimedia audio controller</source>
         <translation>多媒体音频控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="547"/>
+        <location filename="../../info/computerpage.cpp" line="552"/>
         <source>HDD Model</source>
         <translation>硬盘型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="549"/>
+        <location filename="../../info/computerpage.cpp" line="554"/>
         <source>HDD Vendor</source>
         <translation>硬盘厂商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="551"/>
+        <location filename="../../info/computerpage.cpp" line="556"/>
         <source>HDD Capacity</source>
         <translation>硬盘容量</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="560"/>
+        <location filename="../../info/computerpage.cpp" line="565"/>
         <source>Slot Number</source>
         <translation>插槽号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="562"/>
+        <location filename="../../info/computerpage.cpp" line="567"/>
         <source>Memory Model</source>
         <translation>内存型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="568"/>
+        <location filename="../../info/computerpage.cpp" line="573"/>
         <source>Memory Size</source>
         <translation>内存大小</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="570"/>
+        <location filename="../../info/computerpage.cpp" line="575"/>
         <source>Data Width</source>
         <translation>数据宽度</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="572"/>
+        <location filename="../../info/computerpage.cpp" line="577"/>
         <source>Memory Info</source>
         <translation>内存条信息</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="575"/>
+        <location filename="../../info/computerpage.cpp" line="580"/>
         <source>Graphics Card Model</source>
         <translation>显卡型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="577"/>
+        <location filename="../../info/computerpage.cpp" line="582"/>
         <source>Current Graphics Card</source>
         <translation>当前显卡</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="579"/>
+        <location filename="../../info/computerpage.cpp" line="584"/>
         <source>Graphics Card Vendor</source>
         <translation>显卡制造商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="581"/>
+        <location filename="../../info/computerpage.cpp" line="586"/>
         <source>Graphics Driver</source>
         <translation>显卡驱动</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="585"/>
+        <location filename="../../info/computerpage.cpp" line="590"/>
         <source>Gamma</source>
         <translation>伽马值</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="587"/>
+        <location filename="../../info/computerpage.cpp" line="592"/>
         <source>Screen Size(inch)</source>
         <translation>屏幕尺寸（英寸）</translation>
     </message>
@@ -1410,148 +1416,148 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">屏幕尺寸</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="589"/>
+        <location filename="../../info/computerpage.cpp" line="594"/>
         <source>Max Resolution</source>
         <translation>最大分辨率</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="591"/>
+        <location filename="../../info/computerpage.cpp" line="596"/>
         <source>Current Interface</source>
         <translation>当前接口</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="593"/>
+        <location filename="../../info/computerpage.cpp" line="598"/>
         <source>Monitor Model</source>
         <translation>显示器型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="595"/>
+        <location filename="../../info/computerpage.cpp" line="600"/>
         <source>Visual Area</source>
         <translation>可视面积</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="597"/>
+        <location filename="../../info/computerpage.cpp" line="602"/>
         <source>Support Interface</source>
         <translation>支持接口</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="599"/>
+        <location filename="../../info/computerpage.cpp" line="604"/>
         <source>Monitor Manufacturers</source>
         <translation>显示器制造商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="601"/>
+        <location filename="../../info/computerpage.cpp" line="606"/>
         <source>Date of production/Week</source>
         <translation>生产日期/周</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="603"/>
+        <location filename="../../info/computerpage.cpp" line="608"/>
         <source>Date of production/Year</source>
         <translation>生产日期/年</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="609"/>
+        <location filename="../../info/computerpage.cpp" line="614"/>
         <source>NIC Model</source>
         <translation>网卡型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="611"/>
+        <location filename="../../info/computerpage.cpp" line="616"/>
         <source>NIC Driver</source>
         <translation>网卡驱动</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="617"/>
-        <location filename="../../info/computerpage.cpp" line="637"/>
+        <location filename="../../info/computerpage.cpp" line="622"/>
+        <location filename="../../info/computerpage.cpp" line="642"/>
         <source>IP Address</source>
         <translation>IP地址</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="619"/>
+        <location filename="../../info/computerpage.cpp" line="624"/>
         <source>Mac Address</source>
         <translation>MAC地址</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="621"/>
+        <location filename="../../info/computerpage.cpp" line="626"/>
         <source>Connection Status</source>
         <translation>连接状态</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="623"/>
+        <location filename="../../info/computerpage.cpp" line="628"/>
         <source>Max Bandwidth</source>
         <translation>最大带宽</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="627"/>
+        <location filename="../../info/computerpage.cpp" line="632"/>
         <source>WLan NIC Driver</source>
         <translation>无线网卡驱动</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="629"/>
+        <location filename="../../info/computerpage.cpp" line="634"/>
         <source>WLan NIC Model</source>
         <translation>网卡型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="633"/>
+        <location filename="../../info/computerpage.cpp" line="638"/>
         <source>Device Name:</source>
         <translation>设备名称：</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="639"/>
+        <location filename="../../info/computerpage.cpp" line="644"/>
         <source>VNIC</source>
         <translation>虚拟网卡</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="642"/>
+        <location filename="../../info/computerpage.cpp" line="647"/>
         <source>NetType</source>
         <translation>网卡类型</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="645"/>
+        <location filename="../../info/computerpage.cpp" line="650"/>
         <source>Ethernet interface</source>
         <translation>以太网接口</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="648"/>
+        <location filename="../../info/computerpage.cpp" line="653"/>
         <source>Wireless interface</source>
         <translation>无线网接口</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="656"/>
+        <location filename="../../info/computerpage.cpp" line="661"/>
         <source>Version</source>
         <translation>电脑版本</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="660"/>
+        <location filename="../../info/computerpage.cpp" line="665"/>
         <source>Hostname</source>
         <translation>主机名</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="662"/>
+        <location filename="../../info/computerpage.cpp" line="667"/>
         <source>Running Time</source>
         <translation>持续运行时间</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="664"/>
+        <location filename="../../info/computerpage.cpp" line="669"/>
         <source>OS Types</source>
         <translation>操作系统类型</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="666"/>
+        <location filename="../../info/computerpage.cpp" line="671"/>
         <source>OS Version</source>
         <translation>操作系统版本</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="668"/>
+        <location filename="../../info/computerpage.cpp" line="673"/>
         <source>Kernel Bit</source>
         <translation>系统位数</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="670"/>
+        <location filename="../../info/computerpage.cpp" line="675"/>
         <source>Kernel Version</source>
         <translation>内核版本</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="672"/>
+        <location filename="../../info/computerpage.cpp" line="677"/>
         <source>Kernel Arch</source>
         <translation>内核架构</translation>
     </message>
@@ -2039,37 +2045,37 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>HomePage</name>
     <message>
-        <location filename="../homepage.cpp" line="177"/>
+        <location filename="../homepage.cpp" line="184"/>
         <source>Boot Manager</source>
         <translation>启动项管理</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="177"/>
+        <location filename="../homepage.cpp" line="184"/>
         <source>Camera</source>
         <translation>摄像头</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="250"/>
+        <location filename="../homepage.cpp" line="259"/>
         <source>Current Version Number</source>
         <translation>当前版本号</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="251"/>
+        <location filename="../homepage.cpp" line="260"/>
         <source>Update to the lastest version, make it work better</source>
         <translation>更新至最新版本，使软件更好用</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="252"/>
+        <location filename="../homepage.cpp" line="261"/>
         <source>updating on the backend</source>
         <translation>正在后台升级</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="273"/>
+        <location filename="../homepage.cpp" line="282"/>
         <source>Upgrade is complete</source>
         <translation>升级完成</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="275"/>
+        <location filename="../homepage.cpp" line="284"/>
         <source>Updating on the backend</source>
         <translation>正在后台升级</translation>
     </message>
@@ -2078,17 +2084,17 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">检查最新版本</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="253"/>
+        <location filename="../homepage.cpp" line="262"/>
         <source>Common toolbox</source>
         <translation>工具箱</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="254"/>
+        <location filename="../homepage.cpp" line="263"/>
         <source>Fast and practical, making the system more personalized</source>
         <translation>更快更好，让系统更具个性化</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="177"/>
+        <location filename="../homepage.cpp" line="184"/>
         <source>More</source>
         <translation>更多</translation>
     </message>
@@ -2997,7 +3003,7 @@ p, li { white-space: pre-wrap; }
         <translation>自定义</translation>
     </message>
     <message>
-        <location filename="../skincenter.cpp" line="435"/>
+        <location filename="../skincenter.cpp" line="456"/>
         <source>Image Files(*.jpg *.png)</source>
         <translation>图片文件(*.jpg *.png)</translation>
     </message>

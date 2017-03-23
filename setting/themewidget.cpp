@@ -71,6 +71,13 @@ void ThemeWidget::initData() {
 
 ThemeWidget::~ThemeWidget()
 {
+    for(int i=0; i<card_list.count(); i++)
+    {
+        NormalCard *card = card_list.at(i);
+        delete card;
+        card = NULL;
+    }
+    card_list.clear();
 }
 
 void ThemeWidget::initConnect() {

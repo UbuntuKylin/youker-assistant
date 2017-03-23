@@ -129,6 +129,13 @@ HomePage::~HomePage()
         delete box_tip;
         box_tip = NULL;
     }
+    for(int i=0; i<item_list.count(); i++)
+    {
+        ToolButton *btn = item_list.at(i);
+        delete btn;
+        btn = NULL;
+    }
+    item_list.clear();
 }
 
 void HomePage::initUI()
@@ -186,6 +193,8 @@ void HomePage::initUI()
         connect(tool_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
         signal_mapper->setMapping(tool_button, QString::number(i, 10));
         button_layout->addWidget(tool_button);
+        item_list.append(tool_button);
+
     }
     connect(signal_mapper, SIGNAL(mapped(QString)), this, SLOT(switchPageIndex(QString)));
 

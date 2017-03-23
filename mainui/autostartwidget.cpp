@@ -153,6 +153,13 @@ AutoStartWidget::~AutoStartWidget()
         delete status_label;
         status_label = NULL;
     }
+    for(int i=0; i<switcher_list.count(); i++)
+    {
+        AutoGroup *autoitem = switcher_list.at(i);
+        delete autoitem;
+        autoitem = NULL;
+    }
+    switcher_list.clear();
     delete ui;
 }
 

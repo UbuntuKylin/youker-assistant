@@ -47,7 +47,7 @@ UpgradeDialog::UpgradeDialog(QWidget *parent, /*const QString &version, */QStrin
     close_btn = new SystemButton(baseWidget);
     close_btn->setFocusPolicy(Qt::NoFocus);
     close_btn->loadPixmap(":/sys/res/sysBtn/close_button.png");
-    if (arch == "aarch64" || os == "Kylin") {//20161228
+    if (arch == "aarch64" || os == "Kylin"|| os == "YHKylin") {//20161228
         close_btn->move(334-36, 0);
     }
     else {

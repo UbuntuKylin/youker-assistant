@@ -303,6 +303,9 @@ void ComputerPage::initUI()
                         else if (QString::compare(valueStr, "Wireless interface", Qt::CaseInsensitive)  == 0) {
                             label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
                         }
+                        else if (QString::compare(valueStr, "YHKylin community", Qt::CaseInsensitive)  == 0) {
+                            label->setText(tr("%1").arg(this->translatorSwitch(valueStr)));
+                        }
                         else
                             label->setText(tr("%1").arg(valueStr));
                     }
@@ -676,6 +679,8 @@ QString ComputerPage::translatorSwitch(QString orgStr)
         return tr("32bit");
     else if (orgStr == "64bit" || orgStr == "64 bits")
         return tr("64bit");
+    else if (orgStr == "YHKylin community")
+        return tr("YHKylin community");
 
     else if(orgStr == "IN0")//内存参考电压
         return tr("Memory reference voltage");

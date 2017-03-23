@@ -266,16 +266,35 @@ class DetailInfo:
             # kobe: remove '"' and '\n'
             front = tmp.split('=')[1].replace('"', '').replace('\n', '')
             platValue = front
+
+            if front == "Kylin" or front == "YHKylin":
+                with open("/etc/lsb-release", "r") as fp:
+                    for line in fp:
+                        if line.startswith("DISTRIB_VERSION_TYPE"):
+                            tmp = line
+                            # kobe: remove '"' and '\n'
+                            id = tmp.split('=')[1].replace('"', '').replace('\n', '')
+                            if id == "community":
+                                platValue = "YHKylin community"
+                            break
         else:
+            community = ""
+            id = ""
             with open("/etc/lsb-release", "r") as fp:
                 for line in fp:
-                    if line.startswith("DISTRIB_DESCRIPTION"):
+                    if line.startswith("DISTRIB_ID"):#if line.startswith("DISTRIB_DESCRIPTION"):
                         tmp = line
-                        break
-            # kobe: remove '"' and '\n'
-            id = tmp.split('=')[1].replace('"', '').replace('\n', '')
+                        # kobe: remove '"' and '\n'
+                        id = tmp.split('=')[1].replace('"', '').replace('\n', '')
+                    elif line.startswith("DISTRIB_VERSION_TYPE"):
+                        tmp = line
+                        # kobe: remove '"' and '\n'
+                        community = tmp.split('=')[1].replace('"', '').replace('\n', '')
+#                        break
             platValue = id
-
+            if id == "Kylin" or id == "YHKylin":
+                if community == "community":
+                    platValue = "YHKylin community"
         return platValue
 
     def get_os_name(self):

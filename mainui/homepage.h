@@ -29,6 +29,7 @@
 class MainWindow;
 class SessionDispatcher;
 class SystemDispatcher;
+class ToolButton;
 //#include "autostartwidget.h"
 //#include "cameramanager.h"
 
@@ -79,6 +80,7 @@ private:
 //    AutoStartWidget *auto_start;
 //    CameraManager *camera_manager;
     QString current_version;
+    QList<ToolButton *> item_list;
 };
 
 #endif // HOMEPAGE_H

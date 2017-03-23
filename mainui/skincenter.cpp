@@ -51,7 +51,7 @@ SkinCenter::SkinCenter(QWidget *parent, QString skin, QString arch, QString os)
     close_btn = new SystemButton(baseWidget);
     close_btn->setFocusPolicy(Qt::NoFocus);
     close_btn->loadPixmap(":/sys/res/sysBtn/close_button.png");
-    if (arch == "aarch64" || os == "Kylin") {//20161228
+    if (arch == "aarch64" || os == "Kylin" || os == "YHKylin") {//20161228
         close_btn->move(442-36, 0);
     }
     else {
@@ -156,6 +156,21 @@ SkinCenter::~SkinCenter()
         delete contributorGroup;
         contributorGroup = NULL;
     }
+    for(int i=0; i<card_list.count(); i++)
+    {
+        ItemCard *card = card_list.at(i);
+        delete card;
+        card = NULL;
+    }
+    card_list.clear();
+    for(int i=0; i<custom_card_list.count(); i++)
+    {
+        ItemCard *card = custom_card_list.at(i);
+        delete card;
+        card = NULL;
+    }
+    custom_card_list.clear();
+
 //    disconnect(delayTimer,SIGNAL(timeout()),this,SLOT(changeAnimationStep()));
 //    if(delayTimer->isActive()) {
 //        delayTimer->stop();
@@ -395,6 +410,12 @@ void SkinCenter::reloadBackgroundList()
     QFileInfoList list = picdir.entryInfoList();
     QString cur_skin = mainwindow->getCurrentBackgroundName();
 //    card_list.clear();
+    for(int i=0; i<custom_card_list.count(); i++)
+    {
+        ItemCard *card = custom_card_list.at(i);
+        delete card;
+        card = NULL;
+    }
     custom_card_list.clear();
     QSignalMapper *signal_mapper = new QSignalMapper(this);
     for (int j = 0; j < list.size(); ++j) {

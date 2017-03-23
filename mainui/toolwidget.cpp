@@ -36,7 +36,7 @@ ToolWidget::ToolWidget(QWidget *parent, QString arch, QString os)
 
     QStringList icon_list;
     QStringList text_list;
-    if(this->cur_arch == "aarch64" || this->osname == "Kylin")
+    if(this->cur_arch == "aarch64" || this->osname == "Kylin" || this->osname == "YHKylin")
     {
         icon_list<<":/tool/res/menu/home"<<":/tool/res/menu/cleanup"<<":/tool/res/menu/sysinfo"<<":/tool/res/menu/toolkits";
         text_list<< tr("KylinHome") << tr("Cleanup") << tr("Sysinfo") << tr("Toolkits");
@@ -73,6 +73,13 @@ ToolWidget::ToolWidget(QWidget *parent, QString arch, QString os)
 
 ToolWidget::~ToolWidget()
 {
+    for(int i=0; i<button_list.count(); i++)
+    {
+        KylinToolButton *btn = button_list.at(i);
+        delete btn;
+        btn = NULL;
+    }
+    button_list.clear();
 }
 
 void ToolWidget::initConnect() {
@@ -101,7 +108,7 @@ void ToolWidget::switchSelectedPageIndex(QString index)
 
 void ToolWidget::showBoxTool()
 {
-    if(this->cur_arch == "aarch64" || this->osname == "Kylin")
+    if(this->cur_arch == "aarch64" || this->osname == "Kylin" || this->osname == "YHKylin")
     {
         this->switchSelectedPageIndex("3");
     }

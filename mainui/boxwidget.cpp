@@ -99,7 +99,7 @@ void BoxWidget::initPluginWidget()
     pluginModel.insertRows(0,1,QModelIndex());
     QModelIndex qindex = pluginModel.index(0,0,QModelIndex());
 
-    if(this->osarch == "aarch64" || this->osname == "Kylin") {
+    if(this->osarch == "aarch64" || this->osname == "Kylin" || this->osname == "YHKylin") {
         //set text
         pluginModel.setData(qindex, tr("Kylin Software Center"));
         //set tooltip
@@ -129,7 +129,7 @@ void BoxWidget::initPluginWidget()
         pluginModel.setData(qindex, text_list.at(index),Qt::WhatsThisRole);
     }
 
-    int count =  PluginManager::Instance()->count();
+    int count = PluginManager::Instance()->count();
     for (int i = 0;i < count;++i)
     {
         PluginInterface* ICommon = PluginManager::Instance()->getInterfaceByindex<PluginInterface>(i);
@@ -150,7 +150,7 @@ void BoxWidget::OnClickListView(const QModelIndex & index)
 {
     if(index.row() == 0)
     {
-        if(this->osarch == "aarch64" || this->osname == "Kylin")
+        if(this->osarch == "aarch64" || this->osname == "Kylin" || this->osname == "YHKylin")
             sessionProxy->runApp("kylin-software-center");
         else
             sessionProxy->runApp("ubuntu-kylin-software-center");
@@ -159,7 +159,10 @@ void BoxWidget::OnClickListView(const QModelIndex & index)
         emit this->sendSubIndex(0);
     }
     else if(index.row() == 2) {
-        emit this->sendSubIndex(1);
+        if(this->osarch == "aarch64" || this->osname == "Kylin" || this->osname == "YHKylin")
+            sessionProxy->runApp("cheese");
+        else
+            emit this->sendSubIndex(1);
     }
     else
     {
