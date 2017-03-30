@@ -85,7 +85,7 @@ void SensorWieget::initData()
             page = new ComputerPage(scroll_widget->zone, tr("Hardware sensor information"));
             page->setMap(sensor_info_map, "");
             page->setsensor(true);
-            page->initUI();
+            page->initUI(false);
             scroll_widget->addScrollWidget(page);
             timer->start(1000*4);
         }

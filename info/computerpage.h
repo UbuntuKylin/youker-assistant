@@ -27,8 +27,11 @@
 #include "../dbusproxy/youkersystemdbus.h"
 
 class QLabel;
+class QComboBox;
+class QRadioButton;
 class QGroupBox;
 class QFormLayout;
+class QHBoxLayout;
 
 class ComputerPage : public QWidget
 {
@@ -38,7 +41,7 @@ public:
     ~ComputerPage();
     void setLanguage();
     int page_height;
-    void initUI();
+    void initUI(bool cpu);
     void setMap(QMap<QString ,QVariant> tmp, const QString &manufacturer) {
         info_map = tmp;
         vendor = manufacturer;
@@ -46,13 +49,13 @@ public:
     void setsensor(bool flag) {
         sensor = flag;
     }
+    void setSystemDbusProxy(SystemDispatcher* dispatcher) { systemProxy = dispatcher;}
     QString translatorSwitch(QString orgStr);
     void resetTimeValue(QString value);
     void resetSensor(QMap<QString, QVariant> value);
 
-signals:
-
 public slots:
+    void setRadioButtonRowStatus();
 
 private:
     QString title_context;
@@ -65,7 +68,11 @@ private:
     QGroupBox *group_box;
     QFormLayout *form_layout;
     bool sensor;
-
+    QRadioButton *ondemand_radio;
+    QRadioButton *powersave_radio;
+    QRadioButton *performance_radio;
+    SystemDispatcher *systemProxy;
+    QHBoxLayout *layout;
 
     QLabel *in0_label;
     QLabel *in2_label;

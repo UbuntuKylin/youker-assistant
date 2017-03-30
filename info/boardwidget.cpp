@@ -54,7 +54,7 @@ void BoardWidget::initData()
         else {
             page = new ComputerPage(scroll_widget->zone, tr("Board Info"));
             page->setMap(board_info_map, board_info_map.value("BoaVendor").toString().toUpper());
-            page->initUI();
+            page->initUI(false);
             scroll_widget->addScrollWidget(page);
         }
     }

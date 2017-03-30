@@ -81,7 +81,7 @@ void NicWidget::initData()
                 else {
                     page->setMap(tmpMap, "");
                 }
-                page->initUI();
+                page->initUI(false);
                 scroll_widget->addScrollWidget(page);
             }
             else if(netNum > 1) {
@@ -114,7 +114,7 @@ void NicWidget::initData()
                     else {
                         page->setMap(tmp_info_map, "");
                     }
-                    page->initUI();
+                    page->initUI(false);
                     scroll_widget->addScrollWidget(page);
                 }
             }

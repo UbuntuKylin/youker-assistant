@@ -68,7 +68,7 @@ void AudioWidget::initData()
                     }
                 }
                 page->setMap(tmpMap, audio_info_map.value("MulVendor").toString().toUpper());
-                page->initUI();
+                page->initUI(false);
                 scroll_widget->addScrollWidget(page);
             }
             else if(mulNum > 1)
@@ -89,7 +89,7 @@ void AudioWidget::initData()
                         }
                     }
                     page->setMap(tmp_info_map, tmp_info_map.value("MulVendor").toString().toUpper());
-                    page->initUI();
+                    page->initUI(false);
                     scroll_widget->addScrollWidget(page);
                 }
             }

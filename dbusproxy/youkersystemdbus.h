@@ -34,6 +34,10 @@ public:
     //退出systemdbus服务
     void exit_qt();
 
+    void adjust_cpufreq_scaling_governer_qt(QString value);
+    QStringList get_cpufreq_scaling_governer_list_qt();
+    QString get_current_cpufreq_scaling_governer_qt();
+
     void cleanAllSelectItems(QMap<QString, QVariant> selectMap);
     bool kill_uk_process_qt();
     //杀掉root用户的进程

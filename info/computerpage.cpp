@@ -21,14 +21,16 @@
 #include "../component/utils.h"
 #include <QDebug>
 #include <QLabel>
+#include <QComboBox>
 #include <QGroupBox>
 #include <QFormLayout>
 #include <QBitmap>
+#include <QRadioButton>
 
 ComputerPage::ComputerPage(QWidget *parent, QString title/*, QString manufacturer*/) :
     QWidget(parent), title_context(title)/*, vendor(manufacturer)*/
 {
-    this->setWindowFlags(Qt::FramelessWindowHint);
+//    this->setWindowFlags(Qt::FramelessWindowHint);
     sensor = false;
     page_height = 0;
     title_label = NULL;
@@ -36,6 +38,10 @@ ComputerPage::ComputerPage(QWidget *parent, QString title/*, QString manufacture
     logo_label = NULL;
     group_box = NULL;
     form_layout = NULL;
+    ondemand_radio = NULL;
+    powersave_radio = NULL;
+    performance_radio = NULL;
+    layout = NULL;
 
     in0_label = NULL;
     in2_label = NULL;
@@ -68,6 +74,26 @@ ComputerPage::~ComputerPage()
     {
         delete logo_label;
         logo_label = NULL;
+    }
+    if(ondemand_radio != NULL)
+    {
+        delete ondemand_radio;
+        ondemand_radio = NULL;
+    }
+    if(powersave_radio != NULL)
+    {
+        delete powersave_radio;
+        powersave_radio = NULL;
+    }
+    if(performance_radio != NULL)
+    {
+        delete performance_radio;
+        performance_radio = NULL;
+    }
+    if(layout != NULL)
+    {
+        delete layout;
+        layout = NULL;
     }
     if(in0_label != NULL)
     {
@@ -145,7 +171,7 @@ void ComputerPage::setLanguage() {
     group_box->setTitle(tr("%1").arg(title_context));
 }
 
-void ComputerPage::initUI()
+void ComputerPage::initUI(bool cpu)
 {
     group_box = new QGroupBox();
     group_box->setStyleSheet("QGroupBox{border: 1px solid #e0e0e0;border-radius: 2px;margin-top: 15px;font-size:14px;}QGroupBox:title{subcontrol-origin: margin;subcontrol-position: top left;padding: 6px 3px;color: #00609a;font-family: 方正黑体_GBK;font-weight:bold;}");
@@ -317,6 +343,84 @@ void ComputerPage::initUI()
             page_height += ITEMVSPACE;
         }
     }
+
+
+    if (cpu) {
+        if (systemProxy) {
+            QStringList cpulist = systemProxy->get_cpufreq_scaling_governer_list_qt();
+            if (cpulist.length() > 0) {
+                ondemand_radio = new QRadioButton();
+                ondemand_radio->setFocusPolicy(Qt::NoFocus);
+                ondemand_radio->setFixedHeight(ITEMHEIGHT);
+                ondemand_radio->setText(tr("Ondemand"));
+                ondemand_radio->setObjectName("ondemandradio");
+                ondemand_radio->setChecked(false);
+                ondemand_radio->hide();
+                powersave_radio = new QRadioButton();
+                powersave_radio->setFixedHeight(ITEMHEIGHT);
+                powersave_radio->setFocusPolicy(Qt::NoFocus);
+                powersave_radio->setText(tr("Powersave"));
+                powersave_radio->setObjectName("powersaveradio");
+                powersave_radio->setChecked(false);
+                powersave_radio->hide();
+                performance_radio = new QRadioButton();
+                performance_radio->setFixedHeight(ITEMHEIGHT);
+                performance_radio->setFocusPolicy(Qt::NoFocus);
+                performance_radio->setText(tr("Performance"));
+                performance_radio->setObjectName("performanceradio");
+                performance_radio->setChecked(false);
+                performance_radio->hide();
+                connect(ondemand_radio, SIGNAL(clicked()), this, SLOT(setRadioButtonRowStatus()));
+                connect(powersave_radio, SIGNAL(clicked()), this, SLOT(setRadioButtonRowStatus()));
+                connect(performance_radio, SIGNAL(clicked()), this, SLOT(setRadioButtonRowStatus()));
+                layout = new QHBoxLayout();
+                layout->setSpacing(10);
+                layout->addWidget(ondemand_radio);
+                layout->addWidget(powersave_radio);
+                layout->addWidget(performance_radio);
+                layout->addStretch();
+
+                QString cur_cpu = systemProxy->get_current_cpufreq_scaling_governer_qt();
+                QList<QString>::Iterator it = cpulist.begin(), itend = cpulist.end();
+                bool showed = false;
+                for(;it != itend; it++)
+                {
+                    if(*it == "ondemand") {
+                        if (cur_cpu == *it) {
+                            ondemand_radio->setChecked(true);
+                            powersave_radio->setChecked(false);
+                            performance_radio->setChecked(false);
+                        }
+                        ondemand_radio->show();
+                        showed = true;
+                    }
+                    else if(*it == "powersave") {
+                        if (cur_cpu == *it) {
+                            powersave_radio->setChecked(true);
+                            ondemand_radio->setChecked(false);
+                            performance_radio->setChecked(false);
+                        }
+                        powersave_radio->show();
+                        showed = true;
+                    }
+                    else if(*it == "performance") {
+                        if (cur_cpu == *it) {
+                            performance_radio->setChecked(true);
+                            ondemand_radio->setChecked(false);
+                            powersave_radio->setChecked(false);
+                        }
+                        performance_radio->show();
+                        showed = true;
+                    }
+                }
+                if (showed) {
+                    form_layout->addRow(tr("CPU FM mode"), layout);
+                    page_height += ITEMHEIGHT;
+                }
+            }
+        }
+    }
+
     page_height += ITEMVSPACE*2;//every groupbox has tow separate line
     page_height += 30;
     page_height += ITEMHSPACE;//ContentsMargin's height
@@ -353,6 +457,23 @@ void ComputerPage::initUI()
 
     this->setLanguage();
 }
+
+void ComputerPage::setRadioButtonRowStatus()
+{
+    QObject *obj = sender(); //返回发出信号的对象，用QObject类型接收
+    QRadioButton* pbtn = qobject_cast<QRadioButton*>(obj);
+    QString obj_name = pbtn->objectName();
+    if(obj_name == "ondemandradio") {
+        systemProxy->adjust_cpufreq_scaling_governer_qt("ondemand");
+    }
+    else if(obj_name == "powersaveradio") {
+        systemProxy->adjust_cpufreq_scaling_governer_qt("powersave");
+    }
+    else if(obj_name == "performanceradio") {
+        systemProxy->adjust_cpufreq_scaling_governer_qt("performance");
+    }
+}
+
 
 void ComputerPage::resetTimeValue(QString value)
 {

@@ -68,7 +68,7 @@ void MemoryWidget::initData()
                     }
                 }
                 page->setMap(tmpMap, "UBUNTUKYLIN");
-                page->initUI();
+                page->initUI(false);
                 scroll_widget->addScrollWidget(page);
             }
             else if(memoryNum > 1) {
@@ -86,7 +86,7 @@ void MemoryWidget::initData()
                         }
                     }
                     page->setMap(tmp_info_map, tmp_info_map.value("MemVendor").toString().toUpper());
-                    page->initUI();
+                    page->initUI(false);
                     scroll_widget->addScrollWidget(page);
                 }
             }

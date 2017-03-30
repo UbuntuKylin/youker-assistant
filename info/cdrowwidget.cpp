@@ -63,7 +63,7 @@ void CDRowWidget::initData()
                     }
                 }
                 page->setMap(tmpMap, cdrom_info_map.value("DvdVendor").toString().toUpper());
-                page->initUI();
+                page->initUI(false);
                 scroll_widget->addScrollWidget(page);
             }
             else if(cdNum > 1)
@@ -84,7 +84,7 @@ void CDRowWidget::initData()
                         }
                     }
                     page->setMap(tmp_info_map, tmp_info_map.value("DvdVendor").toString().toUpper());
-                    page->initUI();
+                    page->initUI(false);
                     scroll_widget->addScrollWidget(page);
                 }
             }

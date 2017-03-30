@@ -202,6 +202,43 @@ class Daemon(PolicyKitService):
     def set_homedir(self, homedir):
         self.soundconf.set_homedir(homedir)
 
+    @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
+    def adjust_cpufreq_scaling_governer(self, value):
+#        cmd = 'echo %s > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor' % value
+#        os.system(cmd)
+        fpath = os.path.expanduser("/sys/devices/system/cpu/")
+        for line in os.listdir(fpath):
+            line = line.strip('\n')
+            #pattern = re.compile(r'cpu.*[0-9]$')
+            pattern = re.compile(r'cpu.*\d\Z')
+            m = pattern.match(line)
+            if m:
+#                print line
+                filepath = "/sys/devices/system/cpu/%s/cpufreq/scaling_governor" % line
+                if os.path.exists(filepath):
+#                   print filepath
+                    cmd = 'echo %s > %s' % (value, filepath)
+                    os.system(cmd)
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_cpufreq_scaling_governer_list(self):
+        cmd = "cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors"
+        fp = os.popen(cmd)
+        msg = fp.read().strip('\n')
+        fp.close()
+        cpulist = []
+        if msg not in ['', None]:
+            cpulist = msg.split(' ')
+        return cpulist
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
+    def get_current_cpufreq_scaling_governer(self):
+        cmd = "cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
+        fp = os.popen(cmd)
+        msg = fp.read().strip('\n')
+        fp.close()
+        return msg
+
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='b')
     def copy_file(self, filename):
         des_path = '/var/lib/youker-assistant-daemon/custom'

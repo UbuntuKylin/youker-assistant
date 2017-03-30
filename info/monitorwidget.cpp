@@ -74,7 +74,7 @@ void MonitorWidget::initData()
                     }
                 }
                 page->setMap(tmpMap, monitor_info_map.value("Vga_vendor").toString().toUpper());
-                page->initUI();
+                page->initUI(false);
                 scroll_widget->addScrollWidget(page);
             }
             else if(vgaNum > 1) {
@@ -92,7 +92,7 @@ void MonitorWidget::initData()
                         }
                     }
                     page->setMap(tmp_info_map, tmp_info_map.value("Vga_vendor").toString().toUpper());
-                    page->initUI();
+                    page->initUI(false);
                     scroll_widget->addScrollWidget(page);
                 }
             }

@@ -70,7 +70,7 @@ void BatteryWidget::initData()
         else {
             page = new ComputerPage(scroll_widget->zone, tr("Battery Info"));
             page->setMap(battery_info_map, battery_info_map.value("POWER_SUPPLY_MANUFACTURER").toString().toUpper());
-            page->initUI();
+            page->initUI(false);
             scroll_widget->addScrollWidget(page);
         }
     }

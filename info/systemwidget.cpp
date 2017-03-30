@@ -83,7 +83,7 @@ void SystemWidget::initData()
         else {
             page = new ComputerPage(scroll_widget->zone, tr("Computer Base Info"));
             page->setMap(sys_info_map, sys_info_map.value("ComVendor").toString().toUpper());
-            page->initUI();
+            page->initUI(false);
             scroll_widget->addScrollWidget(page);
             timer->start(1000*4);
         }

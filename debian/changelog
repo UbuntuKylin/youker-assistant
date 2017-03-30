@@ -1,11 +1,12 @@
-youker-assistant (2.2.7-0ubuntu1) zesty; urgency=low
+youker-assistant (2.2.7-0ubuntu2) zesty; urgency=low
 
   * Call cheese.
   * Free some list struct.
   * Modify os release information.
   * Resolved lintian warning.
+  * Set Cpu FM mode.
 
- -- lixiang <lixiang@kylinos.cn>  Thu, 23 Mar 2017 10:17:31 +0800
+ -- lixiang <lixiang@kylinos.cn>  Thu, 30 Mar 2017 10:37:12 +0800
 
 youker-assistant (2.2.6-0ubuntu1) zesty; urgency=low
 

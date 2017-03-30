@@ -67,8 +67,9 @@ void CpuWidget::initData()
         }
         else {
             page = new ComputerPage(scroll_widget->zone, tr("CPU Info"));
+            page->setSystemDbusProxy(systemproxy);
             page->setMap(cpu_info_map, cpu_info_map.value("CpuVendor").toString().toUpper());
-            page->initUI();
+            page->initUI(true);
             scroll_widget->addScrollWidget(page);
         }
     }

@@ -34,7 +34,7 @@ DriverWidget::DriverWidget(QWidget *parent/*, SystemDispatcher *proxy*/) :
     {
         page = new ComputerPage(scroll_widget->zone, tr("Driver Info"));
         page->setMap(driver_info_map,"");
-        page->initUI();
+        page->initUI(false);
         scroll_widget->addScrollWidget(page);
     }
     else {

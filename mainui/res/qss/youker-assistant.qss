@@ -325,7 +325,7 @@ QComboBox::down-arrow{
     image:url(://res/arrow-normal.png);
 }
 
-QComboBox::drop-down{
+QComboBox::drop-down {
     border:0px;
     background-color:#64b5f6;
 }

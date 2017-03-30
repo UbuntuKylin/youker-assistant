@@ -77,7 +77,7 @@ void HDWidget::initData()
                     }
                 }
                 page->setMap(tmpMap, hd_info_map.value("DiskVendor").toString().toUpper());
-                page->initUI();
+                page->initUI(false);
                 scroll_widget->addScrollWidget(page);
             }
             else if(diskNum > 1) {
@@ -96,7 +96,7 @@ void HDWidget::initData()
                         }
                     }
                     page->setMap(tmp_info_map, tmp_info_map.value("DiskVendor").toString().toUpper());
-                    page->initUI();
+                    page->initUI(false);
                     scroll_widget->addScrollWidget(page);
                 }
             }

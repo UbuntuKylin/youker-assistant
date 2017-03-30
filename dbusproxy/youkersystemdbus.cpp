@@ -84,6 +84,28 @@ SystemDispatcher::~SystemDispatcher() {
 //    qDebug() << msg;
 //}
 
+void SystemDispatcher::adjust_cpufreq_scaling_governer_qt(QString value)
+{
+    systemiface->call("adjust_cpufreq_scaling_governer", value);
+}
+
+QStringList SystemDispatcher::get_cpufreq_scaling_governer_list_qt()
+{
+    QDBusReply<QStringList> reply = systemiface->call("get_cpufreq_scaling_governer_list");
+    return reply.value();
+}
+
+QString SystemDispatcher::get_current_cpufreq_scaling_governer_qt()
+{
+    QDBusReply<QString> reply = systemiface->call("get_current_cpufreq_scaling_governer");
+    return reply.value();
+}
+
+//void SystemDispatcher::handlerCleanerSubPageDataSignal(QStringList data)
+//{
+//    emit this->tellCleanerMainData(data);
+//}
+
 
 bool SystemDispatcher::update_myself()
 {
