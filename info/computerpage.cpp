@@ -480,9 +480,61 @@ void ComputerPage::resetTimeValue(QString value)
     time_label->setText(value);
 }
 
-void ComputerPage::resetSensor(QMap<QString, QVariant> value)
+void ComputerPage::resetSensor(QMap<QString, QVariant> sensormap)
 {
-
+    if (sensor) {
+        QMap<QString,QVariant>::iterator it; //遍历map
+        for (it = sensormap.begin(); it != sensormap.end(); ++it ) {
+            if(it.key() == "IN0") {
+                if (in0_label)
+                    in0_label->setText(it.value().toString());
+            }
+            else if(it.key() == "IN2") {
+                if (in2_label)
+                    in2_label->setText(it.value().toString());
+            }
+            else if(it.key() == "IN3") {
+                if (in3_label)
+                    in3_label->setText(it.value().toString());
+            }
+            else if(it.key() == "IN5") {
+                if (in5_label)
+                    in5_label->setText(it.value().toString());
+            }
+            else if(it.key() == "IN6") {
+                if (in6_label)
+                    in6_label->setText(it.value().toString());
+            }
+            else if(it.key() == "TR1") {
+                if (tr1_label)
+                    tr1_label->setText(it.value().toString());
+            }
+            else if(it.key() == "TR2") {
+                if (tr2_label)
+                    tr2_label->setText(it.value().toString());
+            }
+            else if(it.key() == "TR3") {
+                if (tr3_label)
+                    tr3_label->setText(it.value().toString());
+            }
+            else if(it.key() == "TR4") {
+                if (tr4_label)
+                    tr4_label->setText(it.value().toString());
+            }
+            else if(it.key() == "TR5") {
+                if (tr5_label)
+                    tr5_label->setText(it.value().toString());
+            }
+            else if(it.key() == "TR6") {
+                if (tr6_label)
+                    tr6_label->setText(it.value().toString());
+            }
+            else if(it.key() == "FANIN1") {
+                if (fanin1_label)
+                    fanin1_label->setText(it.value().toString());
+            }
+        }
+    }
 }
 
 QString ComputerPage::translatorSwitch(QString orgStr)

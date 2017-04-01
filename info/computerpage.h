@@ -52,7 +52,7 @@ public:
     void setSystemDbusProxy(SystemDispatcher* dispatcher) { systemProxy = dispatcher;}
     QString translatorSwitch(QString orgStr);
     void resetTimeValue(QString value);
-    void resetSensor(QMap<QString, QVariant> value);
+    void resetSensor(QMap<QString, QVariant> sensormap);
 
 public slots:
     void setRadioButtonRowStatus();

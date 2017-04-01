@@ -204,21 +204,34 @@ class Daemon(PolicyKitService):
 
     @dbus.service.method(INTERFACE, in_signature='s', out_signature='')
     def adjust_cpufreq_scaling_governer(self, value):
-#        cmd = 'echo %s > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor' % value
-#        os.system(cmd)
-        fpath = os.path.expanduser("/sys/devices/system/cpu/")
-        for line in os.listdir(fpath):
-            line = line.strip('\n')
-            #pattern = re.compile(r'cpu.*[0-9]$')
-            pattern = re.compile(r'cpu.*\d\Z')
-            m = pattern.match(line)
-            if m:
-#                print line
-                filepath = "/sys/devices/system/cpu/%s/cpufreq/scaling_governor" % line
-                if os.path.exists(filepath):
-#                   print filepath
-                    cmd = 'echo %s > %s' % (value, filepath)
-                    os.system(cmd)
+        cpufreq_file = "/etc/init.d/cpufrequtils"
+        oldvalue = ''
+        if os.path.exists(cpufreq_file):
+            fp = open(cpufreq_file, "rw+")
+            line = fp.readline()
+            while line:
+                if line.startswith("GOVERNOR="):
+                    if value not in line:
+                        oldvalue = line.split("=")[1].replace('"', '').replace('\n', '')
+                        break
+                line = fp.readline()
+            fp.close()
+            if oldvalue not in ['', None] and value not in ['', None]:
+                cmd = "sed -i 's/%s/%s/g' %s" % (oldvalue, value, cpufreq_file)
+                os.system(cmd)
+                os.system('service cpufrequtils restart')
+        else:
+            fpath = os.path.expanduser("/sys/devices/system/cpu/")
+            for line in os.listdir(fpath):
+                line = line.strip('\n')
+                #pattern = re.compile(r'cpu.*[0-9]$')
+                pattern = re.compile(r'cpu.*\d\Z')
+                m = pattern.match(line)
+                if m:
+                    filepath = "/sys/devices/system/cpu/%s/cpufreq/scaling_governor" % line
+                    if os.path.exists(filepath):
+                        cmd = 'echo %s > %s' % (value, filepath)
+                        os.system(cmd)
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def get_cpufreq_scaling_governer_list(self):
