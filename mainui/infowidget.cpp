@@ -76,7 +76,7 @@ InfoWidget::~InfoWidget()
 {
 }
 
-void InfoWidget::initUI(bool has_battery)
+void InfoWidget::initUI(bool has_battery, bool has_sensor)
 {
     system_widget = new SystemWidget(this, systemProxy);
     desktop_widget = new DesktopWidget(this, sessionProxy);
@@ -116,6 +116,10 @@ void InfoWidget::initUI(bool has_battery)
     }
     driver_widget = new DriverWidget(this/*, systemProxy*/);
 
+    if (has_sensor) {
+        sensor_widget = new SensorWieget(this, systemProxy);
+    }
+
 //    QProcess *p = new QProcess();
 //    p->start("uname -p");
 //    bool result = p->waitForFinished();
@@ -137,12 +141,15 @@ void InfoWidget::initUI(bool has_battery)
         {
             // FT arm can not access board
         }
-        else if (i == 11 && arch != "aarch64") {
-            //x86 no sensor
+        else if (i == 11 && !has_sensor) {
+
         }
-        else if (i == 11 && arch == "aarch64" && serverOrDesktop.contains("server")) {
-            //arm server no sensor
-        }
+//        else if (i == 11 && arch != "aarch64") {
+//            //x86 no sensor
+//        }
+//        else if (i == 11 && arch == "aarch64" && serverOrDesktop.contains("server")) {
+//            //arm server no sensor
+//        }
         else {
             QIcon icon;
             icon.addFile(":/hd/res/hardware/" + icon_list.at(i), QSize(), QIcon::Normal, QIcon::Off);
@@ -174,8 +181,8 @@ void InfoWidget::initUI(bool has_battery)
     {
         stacked_widget->addWidget(battery_widget);
     }
-    if (arch == "aarch64" && !serverOrDesktop.contains("server")) {//20170206
-        sensor_widget = new SensorWieget(this, systemProxy);
+//    if (arch == "aarch64" && !serverOrDesktop.contains("server")) {//20170206
+    if (has_sensor) {
         stacked_widget->addWidget(sensor_widget);
     }
     stacked_widget->addWidget(driver_widget);

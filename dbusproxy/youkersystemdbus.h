@@ -73,6 +73,7 @@ public:
 
     //得到当前系统和桌面的详细信息
     QString get_os_name_qt();
+    bool judge_sensors_exists_qt();
     QMap<QString, QVariant> get_computer_info_qt();
     QMap<QString, QVariant> get_sensor_info_qt();
     QMap<QString, QVariant> get_cpu_info_qt();

@@ -1591,16 +1591,40 @@ class DetailInfo:
         usb['Usbnum'],usb['UsbVendor'],usb['UsbProduct'],usb['UsbBusinfo'],usb['UsbID'],usb['bcdUsb'],usb['UsbMaxpower'] = self.strip(str(Usbnum)),self.strip(UsbVendor),self.strip(UsbProduct),self.strip(UsbBusinfo),self.strip(UsbID),self.strip(bcdUsb),self.strip(UsbMaxpower)
         return usb
 
+    def judge_sensors_exists(self):
+        if os.path.exists("/usr/bin/sensors"):
+            r = os.popen("/usr/bin/sensors")
+            text = r.read()
+            r.close()
+            if "w83795g-i2c-1-2c" in text:
+                return True
+            else:
+                return False
+        return False
+
     def get_sensors(self):
-        origin = {"IN0": "0.75V", #"内存参考电压"
-                "IN2": "1.0V", #"SATA控制器电压"
-                "IN3": "1.5V", #"内存电压",
-                "IN5": "1.8V", #"CPU管脚电压",
-                "IN6": "1.25 V", #"桥片电压",
-                "TR1": "1.65 V", #"ATX_3V3",
-                "TR2": "1.67 V", #"ATX_5V",
-                "TR3": "1.0 V", #"ATX_12V",
-                "TR4": "1.0 V", #"CPU核电压",
+#        origin = {"IN0": "0.75V", #"内存参考电压"
+#                "IN2": "1.0V", #"SATA控制器电压"
+#                "IN3": "1.5V", #"内存电压",
+#                "IN5": "1.8V", #"CPU管脚电压",
+#                "IN6": "1.25 V", #"桥片电压",
+#                "TR1": "1.65 V", #"ATX_3V3",
+#                "TR2": "1.67 V", #"ATX_5V",
+#                "TR3": "1.0 V", #"ATX_12V",
+#                "TR4": "1.0 V", #"CPU核电压",
+#                "TR5": "", #"CPU温度",
+#                "TR6": "", #"主板温度"
+#                "FANIN1": "" #"CPU风扇转速"
+#                }
+        origin = {"IN0": "", #"内存参考电压"
+                "IN2": "", #"SATA控制器电压"
+                "IN3": "", #"内存电压",
+                "IN5": "", #"CPU管脚电压",
+                "IN6": "", #"桥片电压",
+                "TR1": "", #"ATX_3V3",
+                "TR2": "", #"ATX_5V",
+                "TR3": "", #"ATX_12V",
+                "TR4": "", #"CPU核电压",
                 "TR5": "", #"CPU温度",
                 "TR6": "", #"主板温度"
                 "FANIN1": "" #"CPU风扇转速"

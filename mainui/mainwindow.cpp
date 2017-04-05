@@ -647,6 +647,7 @@ void MainWindow::startDbusDaemon()
 //    this->osName = systeminterface->get_os_name_qt();
 //    this->machine = sessioninterface->access_current_machine_qt();//x86_64
     this->battery = sessioninterface->judge_power_is_exists_qt();
+    this->sensor = systeminterface->judge_sensors_exists_qt();
     login_widget->setSessionDbusProxy(sessioninterface);
     if (this->arch != "aarch64" && this->osName != "Kylin" && this->osName != "YHKylin")
         sessioninterface->check_user_qt();
@@ -712,7 +713,7 @@ void MainWindow::initOtherPages()
         info_widget = new InfoWidget(this->arch);
     info_widget->setSessionDbusProxy(sessioninterface);
     info_widget->setSystemDbusProxy(systeminterface);
-    info_widget->initUI(this->battery);
+    info_widget->initUI(this->battery, this->sensor);
     bottomStack->addWidget(info_widget);
 
     if(setting_widget == NULL)

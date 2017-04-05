@@ -215,6 +215,11 @@ QMap<QString, QVariant> SystemDispatcher::get_computer_info_qt()
     }
 }
 
+bool SystemDispatcher::judge_sensors_exists_qt() {
+    QDBusReply<bool> reply = systemiface->call("judge_sensors_exists");
+    return reply.value();
+}
+
 QMap<QString, QVariant> SystemDispatcher::get_sensor_info_qt()
 {
     /*QMap<QString, QVariant> value;

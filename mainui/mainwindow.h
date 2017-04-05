@@ -147,6 +147,7 @@ private:
     QString osName;
     QString arch;
     bool battery;
+    bool sensor;
     QParallelAnimationGroup *spreadGroup;
     QParallelAnimationGroup *gatherGroup;
     PAGESTATUS status;

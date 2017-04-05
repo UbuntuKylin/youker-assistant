@@ -19,7 +19,7 @@ Vcs-Browser: https://code.launchpad.net/~ubuntukylin-members/youker-assistant/tr
 Vcs-Bzr: lp:youker-assistant
 
 Package: youker-assistant
-Architecture: any
+Architecture: amd64 arm64 armhf i386 
 Depends: python-dbus,
          python-psutil,
          python-lxml,
@@ -33,7 +33,7 @@ Depends: python-dbus,
          lm-sensors,
          ethtool,
          lshw,
-         dmidecode,
+         dmidecode [amd64 arm64 armhf i386],
          cpufrequtils,
          ${misc:Depends},
          ${python:Depends},
