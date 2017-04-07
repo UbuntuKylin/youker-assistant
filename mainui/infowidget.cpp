@@ -70,10 +70,18 @@ InfoWidget::InfoWidget(QString machine, QWidget *parent) :
     driver_widget = NULL;
 
     connect(category_widget,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(changeInfoPage(QListWidgetItem*)));
+
+
+    connect(&m_workerThread, SIGNAL(resultReady(QMap<QString, QVariant>)), this, SLOT(handleResults(QMap<QString, QVariant>)));
+//    connect(&m_workerThread, SIGNAL(finished()), workerThread, SLOT(deleteLater()));
+    connect(&m_workerThread, SIGNAL(finished()), this, SLOT(threadFinish()));
+
 }
 
 InfoWidget::~InfoWidget()
 {
+    m_workerThread.quit();
+    m_workerThread.deleteLater();
 }
 
 void InfoWidget::initUI(bool has_battery, bool has_sensor)
@@ -85,6 +93,7 @@ void InfoWidget::initUI(bool has_battery, bool has_sensor)
     board_widget = new BoardWidget(this, systemProxy);
     hd_widget = new HDWidget(this, systemProxy);
     nic_widget = new NicWidget(this, systemProxy);
+    connect(this, SIGNAL(emit_network_info(QMap<QString, QVariant>)), nic_widget, SLOT(slot_network_info(QMap<QString, QVariant>)));
     monitor_widget = new MonitorWidget(this, systemProxy);
     audio_widget = new AudioWidget(this, systemProxy);
     serverOrDesktop = sessionProxy->get_os_release_qt();
@@ -221,6 +230,32 @@ void InfoWidget::initUI(bool has_battery, bool has_sensor)
     main_layout->setMargin(0);
     main_layout->setContentsMargins(0, 0, 0, 0);
     this->setLayout(main_layout);
+
+    m_workerThread.initInterface(systemProxy);
+}
+
+// 开启线程
+void InfoWidget::startThread()
+{
+//    WorkerThread *workerThread = new WorkerThread(this);
+//    connect(workerThread, SIGNAL(resultReady(QMap<QString, QVariant>)), this, SLOT(handleResults(QMap<QString, QVariant>)));
+//    // 线程结束后，自动销毁
+//    connect(workerThread, SIGNAL(finished()), workerThread, SLOT(deleteLater()));
+//    workerThread->start();
+
+    if (!m_workerThread.isRunning())
+        m_workerThread.start();
+}
+
+void InfoWidget::handleResults(QMap<QString, QVariant> value)
+{
+//    qDebug() << "Handle Thread : " << QThread::currentThreadId();// << "  value=" << value;
+    emit this->emit_network_info(value);
+}
+
+void InfoWidget::threadFinish()
+{
+//    qDebug() << "threadFinish";
 }
 
 void InfoWidget::changeInfoPage(QListWidgetItem *item) {
@@ -229,53 +264,53 @@ void InfoWidget::changeInfoPage(QListWidgetItem *item) {
             stacked_widget->setCurrentWidget(system_widget);
         }
         else if (item->statusTip() == "unity") {
-            if(!desktop_widget->getStatus())
-                desktop_widget->initData();
+//            if(!desktop_widget->getStatus())
+            desktop_widget->initData();
             stacked_widget->setCurrentWidget(desktop_widget);
         }
         else if (item->statusTip() == "cpu") {
-            if(!cpu_widget->getStatus())
-                cpu_widget->initData();
+//            if(!cpu_widget->getStatus())
+            cpu_widget->initData();
             stacked_widget->setCurrentWidget(cpu_widget);
         }
         else if (item->statusTip() == "memory") {
-            if(!memory_widget->getStatus())
-                memory_widget->initData();
+//            if(!memory_widget->getStatus())
+            memory_widget->initData();
             stacked_widget->setCurrentWidget(memory_widget);
         }
         else if (item->statusTip() == "board") {
-            if(!board_widget->getStatus())
-                board_widget->initData();
+//            if(!board_widget->getStatus())
+            board_widget->initData();
             stacked_widget->setCurrentWidget(board_widget);
         }
         else if (item->statusTip() == "harddisk") {
-            if(!hd_widget->getStatus())
-                hd_widget->initData();
+//            if(!hd_widget->getStatus())
+            hd_widget->initData();
             stacked_widget->setCurrentWidget(hd_widget);
         }
         else if (item->statusTip() == "network") {
-            if(!nic_widget->getStatus())
-                nic_widget->initData();
+//                nic_widget->initData();
+            this->startThread();
             stacked_widget->setCurrentWidget(nic_widget);
         }
         else if (item->statusTip() == "monitor") {
-            if(!monitor_widget->getStatus())
-                monitor_widget->initData();
+//            if(!monitor_widget->getStatus())
+            monitor_widget->initData();
             stacked_widget->setCurrentWidget(monitor_widget);
         }
         else if (item->statusTip() == "audio") {
-            if(!audio_widget->getStatus())
-                audio_widget->initData();
+//            if(!audio_widget->getStatus())
+            audio_widget->initData();
             stacked_widget->setCurrentWidget(audio_widget);
         }
         else if (item->statusTip() == "cdrom") {
-            if(!cdrom_widget->getStatus())
-                cdrom_widget->initData();
+//            if(!cdrom_widget->getStatus())
+            cdrom_widget->initData();
             stacked_widget->setCurrentWidget(cdrom_widget);
         }
         else if (item->statusTip() == "battery") {
-            if(!battery_widget->getStatus())
-                battery_widget->initData();
+//            if(!battery_widget->getStatus())
+            battery_widget->initData();
             stacked_widget->setCurrentWidget(battery_widget);
         }
         else if (item->statusTip() == "sensor") {

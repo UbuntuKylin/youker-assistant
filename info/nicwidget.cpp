@@ -31,14 +31,131 @@ NicWidget::NicWidget(QWidget *parent, SystemDispatcher *proxy) :
     dataOK = false;
 }
 
+NicWidget::~NicWidget()
+{
+    this->clear_page_list();
+    if (scroll_widget != NULL) {
+        delete scroll_widget;
+        scroll_widget = NULL;
+    }
+}
+
+void NicWidget::clear_page_list()
+{
+    for(int i=0; i<page_list.count(); i++)
+    {
+        ComputerPage *page = page_list.at(i);
+        delete page;
+        page = NULL;
+    }
+    page_list.clear();
+    if (scroll_widget)
+        scroll_widget->resetWidget();
+}
+
 bool NicWidget::getStatus()
 {
     return this->dataOK;
 }
 
+void NicWidget::slot_network_info(QMap<QString, QVariant> info)
+{
+//    qDebug() << "slot_network_info=" << info;
+    this->clear_page_list();
+    wire_info_map.clear();
+    wire_info_map = info;
+    if (wire_info_map.isEmpty() || wire_info_map.count() <= 1) {//may be wire_info_map only contains NetNum
+
+    }
+    else {
+        QMap<QString, QVariant>::iterator iter = wire_info_map.find("NetNum");
+        int netNum = 0;
+        if (iter == wire_info_map.end()) {
+            netNum = 0;
+        }
+        else{
+            netNum = iter.value().toInt();
+        }
+        wire_info_map.remove("NetNum");
+//        qDebug() << netNum;
+        if(netNum == 0) {
+        }
+        else {
+            if(netNum == 1) {
+                if (wire_info_map.contains("NetLogicalname")) {
+                    QMap<QString,QVariant>::iterator iter = wire_info_map.find("NetLogicalname");
+                    QString netcard = iter.value().toString();
+                    if (netcard.startsWith("veth") || netcard.startsWith("virbr")) {
+                        wire_info_map["NetType"] = "VNIC";
+                    }
+                }
+                ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("NIC Info"));
+                page_list.append(page);
+                QMap<QString, QVariant> tmpMap;
+                QMap<QString,QVariant>::iterator it;
+                for ( it = wire_info_map.begin(); it != wire_info_map.end(); ++it ) {
+                    if (it.value().toString().length() > 0) {
+                        tmpMap.insert(it.key(), it.value());
+                    }
+                }
+                if (wire_info_map.value("NetVendor").toString().toUpper().contains("INTEL")) {
+                    page->setMap(tmpMap, "INTEL");
+                }
+                else if (wire_info_map.value("NetVendor").toString().toUpper().contains("REALTEK")) {
+                    page->setMap(tmpMap, "REALTEK");
+                }
+                else {
+                    page->setMap(tmpMap, "");
+                }
+                page->initUI(false);
+                scroll_widget->addScrollWidget(page);
+                page->show();
+            }
+            else if(netNum > 1) {
+                for(int i=0;i<netNum;i++) {
+                    ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("NIC Info %1").arg(i+1));
+                    page_list.append(page);
+                    tmp_info_map.clear();
+                    QMap<QString, QVariant>::iterator itbegin = wire_info_map.begin();
+                    QMap<QString, QVariant>::iterator  itend = wire_info_map.end();
+                    for (;itbegin != itend; ++itbegin) {
+                        if(itbegin.value().toString().contains("<1_1>")) {
+                            QStringList tmplist = itbegin.value().toString().split("<1_1>");
+                            if (tmplist.length() >= i) {
+                                QString result = tmplist.at(i);
+                                if (result.length() > 0)
+                                    tmp_info_map.insert(itbegin.key(), result);
+                            }
+                        }
+                    }
+                    if (tmp_info_map.contains("NetLogicalname")) {
+                        if (tmp_info_map.value("NetLogicalname").toString().startsWith("veth") || tmp_info_map.value("NetLogicalname").toString().startsWith("virbr")) {
+                            tmp_info_map["NetType"] = QVariant("VNIC");
+                        }
+                    }
+//                    qDebug() << "tmp_info_map=" << tmp_info_map;
+                    if (tmp_info_map.value("NetVendor").toString().toUpper().contains("INTEL")) {
+                        page->setMap(tmp_info_map, "INTEL");
+                    }
+                    else if (tmp_info_map.value("NetVendor").toString().toUpper().contains("REALTEK")) {
+                        page->setMap(tmp_info_map, "REALTEK");
+                    }
+                    else {
+                        page->setMap(tmp_info_map, "");
+                    }
+                    page->initUI(false);
+                    scroll_widget->addScrollWidget(page);
+                    page->show();
+                }
+            }
+        }
+    }
+//    dataOK = true;
+}
+
 void NicWidget::initData()
 {
-    wire_info_map.clear();
+    /*wire_info_map.clear();
     wire_info_map = systemproxy->get_networkcard_info_qt();
     if (wire_info_map.isEmpty() || wire_info_map.count() <= 1) {//may be wire_info_map only contains NetNum
 
@@ -120,7 +237,7 @@ void NicWidget::initData()
             }
         }
     }
-    dataOK = true;
+    dataOK = true;*/
 
 
 

@@ -32,8 +32,10 @@ class HDWidget : public QWidget
     Q_OBJECT
 public:
     explicit HDWidget(QWidget *parent = 0, SystemDispatcher *proxy = 0);
+    ~HDWidget();
     void initData();
     bool getStatus();
+    void clear_page_list();
 
 signals:
 
@@ -45,6 +47,7 @@ private:
     QMap<QString, QVariant> tmp_info_map;
     SystemDispatcher *systemproxy;
     bool dataOK;
+    QList<ComputerPage *> page_list;
 };
 
 #endif // HDWIDGET_H

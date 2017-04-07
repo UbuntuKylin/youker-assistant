@@ -42,6 +42,18 @@ DriverWidget::DriverWidget(QWidget *parent/*, SystemDispatcher *proxy*/) :
     }
 }
 
+DriverWidget::~DriverWidget()
+{
+    if (page != NULL) {
+        delete page;
+        page = NULL;
+    }
+    if (scroll_widget != NULL) {
+        delete scroll_widget;
+        scroll_widget = NULL;
+    }
+}
+
 void DriverWidget::initData()
 {
     DeviceManager manager;

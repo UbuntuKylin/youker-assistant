@@ -33,8 +33,10 @@ class DesktopWidget : public QWidget
     Q_OBJECT
 public:
     explicit DesktopWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0);
+    ~DesktopWidget();
     void initData();
     bool getStatus();
+    void clear_page_list();
 
 signals:
 

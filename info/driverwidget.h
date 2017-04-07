@@ -31,6 +31,7 @@ class DriverWidget : public QWidget
     Q_OBJECT
 public:
     explicit DriverWidget(QWidget *parent = 0/*, SystemDispatcher *proxy = 0*/);
+    ~DriverWidget();
     void initData();
 
 signals:

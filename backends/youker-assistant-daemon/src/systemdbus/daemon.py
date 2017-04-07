@@ -339,7 +339,7 @@ class Daemon(PolicyKitService):
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_networkcard_info(self):
-        return self.infoconf.get_network()
+        return self.infoconf.get_network(self)
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_monitor_info(self):

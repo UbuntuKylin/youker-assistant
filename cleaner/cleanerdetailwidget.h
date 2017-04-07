@@ -134,6 +134,7 @@ private:
     int itemheight;
     int cardspace;
     QList <CleanSubGroup *> cardlist;
+//    QList<ComputerPage *> page_list;
 };
 
 #endif // CLEANERDETAILWIDGET_H

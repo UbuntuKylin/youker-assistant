@@ -35,6 +35,7 @@ public:
     ~ScrollWidget();
     void addScrollWidget(ComputerPage *widget);
     QWidget *zone;
+    void resetWidget();
 
 private:
     QScrollArea *scroll_area;

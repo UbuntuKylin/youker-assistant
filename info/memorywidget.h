@@ -32,8 +32,10 @@ class MemoryWidget : public QWidget
     Q_OBJECT
 public:
     explicit MemoryWidget(QWidget *parent = 0, SystemDispatcher *proxy = 0);
+    ~MemoryWidget();
     void initData();
     bool getStatus();
+    void clear_page_list();
 
 signals:
 
@@ -45,6 +47,7 @@ private:
     QMap<QString, QVariant> tmp_info_map;
     SystemDispatcher *systemproxy;
     bool dataOK;
+    QList<ComputerPage *> page_list;
 };
 
 #endif // MEMORYWIDGET_H

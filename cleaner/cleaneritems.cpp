@@ -105,6 +105,13 @@ CleanerItems::CleanerItems(QStringList &arglist, QStringList &statuslist, QStrin
 
 CleanerItems::~CleanerItems()
 {
+    for(int i=0; i<checkbox_list.count(); i++)
+    {
+        QCheckBox *box = checkbox_list.at(i);
+        delete box;
+        box = NULL;
+    }
+    checkbox_list.clear();
     if(title_bar != NULL) {
         delete title_bar;
         title_bar = NULL;

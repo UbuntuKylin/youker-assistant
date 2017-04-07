@@ -1114,13 +1114,15 @@ class DetailInfo:
 
     # writed by kobe 20170318
     def get_network(self):
+#        net = {'NetNum': 2, 'NetSerial': '00:23:81:21:e4:0b', 'NetProduct': '82574L Gigabit Network Connection', 'NetLogicalname': 'enp1s0', 'NetDrive': 'e1000e', 'NetIp': 'unknown', 'NetType': 'Ethernet interface', 'NetVendor': 'Intel Corporation', 'NetBusinfo': 'pci@0000:01:00.0'}
+#        return net
         net = {}
         NetNum = 0
         NetType,NetProduct,NetVendor,NetDrive,NetBusinfo,NetLogicalname,NetSerial,NetIp = '','','','','','','',''
-        fp=os.popen("ifconfig -s|grep -v Iface|grep -v lo|awk '{print $1}' | wc -l");
-        NetNum = int(fp.read().strip('\n'))
-        net['NetNum'] = NetNum
-        fp.close()
+#        fp=os.popen("ifconfig -s|grep -v Iface|grep -v lo|awk '{print $1}' | wc -l");
+#        NetNum = int(fp.read().strip('\n'))
+#        net['NetNum'] = NetNum
+#        fp.close()
         try:
             fp = os.popen("lshw -C network");
             lines = fp.readlines()
@@ -1131,6 +1133,7 @@ class DetailInfo:
                         line = line.strip()
                         if "description:" in line:
                             tmp = re.findall('description: (.*)', line)
+                            NetNum += 1
                             if tmp[0] in [None, '']:
                                 if NetType:
                                     NetType += "<1_1>" + "unknown"
@@ -1261,6 +1264,7 @@ class DetailInfo:
 #                                    NetType += "<1_1>" + tmp[0]
 #                                else:
 #                                    NetType = tmp[0]
+            net['NetNum'] = NetNum
             net['NetType'],net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetSerial'],net['NetIp'],net['NetDrive'] = self.strip(NetType), self.strip(NetProduct),self.strip(NetVendor),self.strip(NetBusinfo),self.strip(NetLogicalname),self.strip(NetSerial),self.strip(NetIp), self.strip(NetDrive)
             return net
         except Exception as e:

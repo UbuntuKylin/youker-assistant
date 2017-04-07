@@ -1,3 +1,11 @@
+youker-assistant (2.2.8-0ubuntu1) zesty; urgency=low
+
+  * Access information of network cards with QThread.
+  * Refresh the hardware information when the page is switched.
+  * Free memory when hardware information page is switched.
+
+ -- lixiang <lixiang@kylinos.cn>  Fri, 07 Apr 2017 16:40:29 +0800
+
 youker-assistant (2.2.7-0ubuntu2) zesty; urgency=low
 
   [ lixiang ]

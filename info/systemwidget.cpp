@@ -28,6 +28,7 @@ SystemWidget::SystemWidget(QWidget *parent, SystemDispatcher *proxy) :
 {
     this->setStyleSheet("QWidget{border: none;background-color: #ffffff;}");
     setFixedSize(750, 403);
+    page = NULL;
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTimeValue()));
     scroll_widget = new ScrollWidget(this);
@@ -45,6 +46,21 @@ SystemWidget::~SystemWidget()
         delete timer;
         timer = NULL;
     }
+    this->clear_page_list();
+    if (scroll_widget != NULL) {
+        delete scroll_widget;
+        scroll_widget = NULL;
+    }
+}
+
+void SystemWidget::clear_page_list()
+{
+    if (page != NULL) {
+        delete page;
+        page = NULL;
+    }
+    if (scroll_widget)
+        scroll_widget->resetWidget();
 }
 
 void SystemWidget::updateTimeValue()
@@ -66,6 +82,7 @@ void SystemWidget::updateTimeValue()
 
 void SystemWidget::initData()
 {
+    this->clear_page_list();
     QMap<QString, QVariant> tmpMap = systemproxy->get_computer_info_qt();
     if (tmpMap.isEmpty() || tmpMap.count() <= 0) {
         page = NULL;

@@ -175,6 +175,7 @@ HEADERS  += mainwindow.h \
     settingwidget.h \
     boxwidget.h \
     pluginmanager.h \
+    ../component/workthread.h \
     ../component/plugininterface.h \
     ../component/kylinlistmodel.h \
     ../component/utils.h \

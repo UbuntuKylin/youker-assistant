@@ -31,6 +31,28 @@ HDWidget::HDWidget(QWidget *parent, SystemDispatcher *proxy) :
     dataOK = false;
 }
 
+HDWidget::~HDWidget()
+{
+    this->clear_page_list();
+    if (scroll_widget != NULL) {
+        delete scroll_widget;
+        scroll_widget = NULL;
+    }
+}
+
+void HDWidget::clear_page_list()
+{
+    for(int i=0; i<page_list.count(); i++)
+    {
+        ComputerPage *page = page_list.at(i);
+        delete page;
+        page = NULL;
+    }
+    page_list.clear();
+    if (scroll_widget)
+        scroll_widget->resetWidget();
+}
+
 bool HDWidget::getStatus()
 {
     return this->dataOK;
@@ -38,6 +60,7 @@ bool HDWidget::getStatus()
 
 void HDWidget::initData()
 {
+    this->clear_page_list();
     hd_info_map.clear();
     hd_info_map = systemproxy->get_harddisk_info_qt();
 
@@ -67,6 +90,7 @@ void HDWidget::initData()
         else {
             if(diskNum == 1) {
                 ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("HardWare Info"));
+                page_list.append(page);
                 hd_info_map.remove("DiskNum");
                 QMap<QString, QVariant> tmpMap;
                 QMap<QString,QVariant>::iterator it;
@@ -83,6 +107,7 @@ void HDWidget::initData()
             else if(diskNum > 1) {
                 for(int i=0;i<diskNum;i++) {
                     ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("HardWare Info %1").arg(i+1));
+                    page_list.append(page);
                     tmp_info_map.clear();
                     QMap<QString, QVariant>::iterator itbegin = hd_info_map.begin();
                     QMap<QString, QVariant>::iterator  itend = hd_info_map.end();
@@ -155,5 +180,5 @@ void HDWidget::initData()
             }
         }
     }*/
-    dataOK = true;
+//    dataOK = true;
 }

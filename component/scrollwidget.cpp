@@ -92,3 +92,9 @@ void ScrollWidget::addScrollWidget(ComputerPage *widget)
     }
     widget_count ++;
 }
+
+void ScrollWidget::resetWidget()
+{
+    widget_count = 0;
+    zone_height = 403;
+}

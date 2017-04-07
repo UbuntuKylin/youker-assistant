@@ -31,6 +31,28 @@ MonitorWidget::MonitorWidget(QWidget *parent, SystemDispatcher *proxy) :
     dataOK = false;
 }
 
+MonitorWidget::~MonitorWidget()
+{
+    this->clear_page_list();
+    if (scroll_widget != NULL) {
+        delete scroll_widget;
+        scroll_widget = NULL;
+    }
+}
+
+void MonitorWidget::clear_page_list()
+{
+    for(int i=0; i<page_list.count(); i++)
+    {
+        ComputerPage *page = page_list.at(i);
+        delete page;
+        page = NULL;
+    }
+    page_list.clear();
+    if (scroll_widget)
+        scroll_widget->resetWidget();
+}
+
 bool MonitorWidget::getStatus()
 {
     return this->dataOK;
@@ -38,6 +60,7 @@ bool MonitorWidget::getStatus()
 
 void MonitorWidget::initData()
 {
+    this->clear_page_list();
     monitor_info_map.clear();
     monitor_info_map = systemproxy->get_monitor_info_qt();
 
@@ -65,6 +88,7 @@ void MonitorWidget::initData()
         else {
             if(vgaNum == 1) {
                 ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("Monitor Info"));
+                page_list.append(page);
                 monitor_info_map.remove("Vga_num");
                 QMap<QString, QVariant> tmpMap;
                 QMap<QString,QVariant>::iterator it;
@@ -80,6 +104,7 @@ void MonitorWidget::initData()
             else if(vgaNum > 1) {
                 for(int i=0;i<vgaNum;i++) {
                     ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("Monitor Info %1").arg(i+1));
+                    page_list.append(page);
                     tmp_info_map.clear();
                     QMap<QString, QVariant>::iterator itbegin = monitor_info_map.begin();
                     QMap<QString, QVariant>::iterator  itend = monitor_info_map.end();
@@ -150,5 +175,5 @@ void MonitorWidget::initData()
             }
         }
     }*/
-    dataOK = true;
+//    dataOK = true;
 }

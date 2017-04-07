@@ -32,8 +32,10 @@ class MonitorWidget : public QWidget
     Q_OBJECT
 public:
     explicit MonitorWidget(QWidget *parent = 0, SystemDispatcher *proxy = 0);
+    ~MonitorWidget();
     void initData();
     bool getStatus();
+    void clear_page_list();
 
 signals:
 
@@ -45,6 +47,7 @@ private:
     QMap<QString, QVariant> tmp_info_map;
     SystemDispatcher *systemproxy;
     bool dataOK;
+    QList<ComputerPage *> page_list;
 };
 
 #endif // MONITORWIDGET_H

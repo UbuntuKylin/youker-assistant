@@ -53,6 +53,7 @@
 class SessionDispatcher;
 class SystemDispatcher;
 
+#include "../component/workthread.h"
 
 class InfoWidget : public QWidget
 {
@@ -64,8 +65,16 @@ public:
     void setSystemDbusProxy(SystemDispatcher *dispatcher) { systemProxy = dispatcher;}
     void initUI(bool has_battery, bool has_sensor);
 
+
+    void startThread();
+
 public slots:
     void changeInfoPage(QListWidgetItem* item);
+    void handleResults(QMap<QString, QVariant> value);
+    void threadFinish();
+
+signals:
+    void emit_network_info(QMap<QString, QVariant> info);
 
 private:
     QSplitter *splitter;
@@ -95,6 +104,8 @@ private:
 //    SystemDispatcher systemproxy;
     SessionDispatcher *sessionProxy;
     SystemDispatcher *systemProxy;
+
+    WorkerThread m_workerThread;
 };
 
 #endif // INFOWIDGET_H

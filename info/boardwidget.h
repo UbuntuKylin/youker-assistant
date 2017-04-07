@@ -33,8 +33,10 @@ class BoardWidget : public QWidget
     Q_OBJECT
 public:
     explicit BoardWidget(QWidget *parent = 0, SystemDispatcher *proxy = 0);
+    ~BoardWidget();
     void initData();
     bool getStatus();
+    void clear_page_list();
 
 signals:
 

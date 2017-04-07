@@ -31,6 +31,28 @@ AudioWidget::AudioWidget(QWidget *parent, SystemDispatcher *proxy) :
     dataOK = false;
 }
 
+AudioWidget::~AudioWidget()
+{
+    this->clear_page_list();
+    if (scroll_widget != NULL) {
+        delete scroll_widget;
+        scroll_widget = NULL;
+    }
+}
+
+void AudioWidget::clear_page_list()
+{
+    for(int i=0; i<page_list.count(); i++)
+    {
+        ComputerPage *page = page_list.at(i);
+        delete page;
+        page = NULL;
+    }
+    page_list.clear();
+    if (scroll_widget)
+        scroll_widget->resetWidget();
+}
+
 bool AudioWidget::getStatus()
 {
     return this->dataOK;
@@ -38,6 +60,7 @@ bool AudioWidget::getStatus()
 
 void AudioWidget::initData()
 {
+    this->clear_page_list();
     audio_info_map.clear();
     audio_info_map = systemproxy->get_audiocard_info_qt();
 
@@ -59,6 +82,7 @@ void AudioWidget::initData()
             if(mulNum == 1)
             {
                 ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("Audio Info"));
+                page_list.append(page);
                 audio_info_map.remove("MulNum");
                 QMap<QString, QVariant> tmpMap;
                 QMap<QString,QVariant>::iterator it;
@@ -76,6 +100,7 @@ void AudioWidget::initData()
                 for(int i=0;i<mulNum;i++)
                 {
                     ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("Audio Info %1").arg(i+1));
+                    page_list.append(page);
                     tmp_info_map.clear();
                     QMap<QString, QVariant>::iterator itbegin = audio_info_map.begin();
                     QMap<QString, QVariant>::iterator  itend = audio_info_map.end();
@@ -147,5 +172,5 @@ void AudioWidget::initData()
             }
         }
     }*/
-    dataOK = true;
+//    dataOK = true;
 }

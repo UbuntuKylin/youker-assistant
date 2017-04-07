@@ -33,8 +33,10 @@ class BatteryWidget : public QWidget
     Q_OBJECT
 public:
     explicit BatteryWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0);
+    ~BatteryWidget();
     void initData();
     bool getStatus();
+    void clear_page_list();
 
 signals:
 

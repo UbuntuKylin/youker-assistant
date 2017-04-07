@@ -25,9 +25,29 @@ BoardWidget::BoardWidget(QWidget *parent, SystemDispatcher *proxy) :
 {
     this->setStyleSheet("QWidget{border: none;background-color: #ffffff;}");
     setFixedSize(750, 403);
+    page = NULL;
     scroll_widget = new ScrollWidget(this);
     scroll_widget->setGeometry(0, 0, 750, 403);
     dataOK = false;
+}
+
+BoardWidget::~BoardWidget()
+{
+    this->clear_page_list();
+    if (scroll_widget != NULL) {
+        delete scroll_widget;
+        scroll_widget = NULL;
+    }
+}
+
+void BoardWidget::clear_page_list()
+{
+    if (page != NULL) {
+        delete page;
+        page = NULL;
+    }
+    if (scroll_widget)
+        scroll_widget->resetWidget();
 }
 
 bool BoardWidget::getStatus()
@@ -37,6 +57,7 @@ bool BoardWidget::getStatus()
 
 void BoardWidget::initData()
 {
+    this->clear_page_list();
     QMap<QString, QVariant> tmpMap = systemproxy->get_board_info_qt();
     if (tmpMap.isEmpty() || tmpMap.count() <= 0) {
         page = NULL;
@@ -74,5 +95,5 @@ void BoardWidget::initData()
         page->initUI();
         scroll_widget->addScrollWidget(page);
     }*/
-    dataOK = true;
+//    dataOK = true;
 }

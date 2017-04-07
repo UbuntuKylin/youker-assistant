@@ -36,6 +36,7 @@ public:
     explicit SystemWidget(QWidget *parent = 0, SystemDispatcher *proxy = 0);
     ~SystemWidget();
     void initData();
+    void clear_page_list();
 
 signals:
 

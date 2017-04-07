@@ -26,6 +26,7 @@ SensorWieget::SensorWieget(QWidget *parent, SystemDispatcher *proxy) :
 {
     this->setStyleSheet("QWidget{border: none;background-color: #ffffff;}");
     setFixedSize(750, 403);
+    page = NULL;
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTimeValue()));
     scroll_widget = new ScrollWidget(this);
@@ -43,6 +44,22 @@ SensorWieget::~SensorWieget()
         delete timer;
         timer = NULL;
     }
+    this->clear_page_list();
+    if (scroll_widget != NULL) {
+        delete scroll_widget;
+        scroll_widget = NULL;
+    }
+}
+
+
+void SensorWieget::clear_page_list()
+{
+    if (page != NULL) {
+        delete page;
+        page = NULL;
+    }
+    if (scroll_widget)
+        scroll_widget->resetWidget();
 }
 
 void SensorWieget::updateTimeValue()

@@ -35,6 +35,7 @@ public:
     explicit SensorWieget(QWidget *parent = 0, SystemDispatcher *proxy = 0);
     ~SensorWieget();
     void initData();
+    void clear_page_list();
 
 signals:
 

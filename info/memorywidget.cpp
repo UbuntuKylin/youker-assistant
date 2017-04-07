@@ -33,6 +33,28 @@ MemoryWidget::MemoryWidget(QWidget *parent, SystemDispatcher *proxy) :
     dataOK = false;
 }
 
+MemoryWidget::~MemoryWidget()
+{
+    this->clear_page_list();
+    if (scroll_widget != NULL) {
+        delete scroll_widget;
+        scroll_widget = NULL;
+    }
+}
+
+void MemoryWidget::clear_page_list()
+{
+    for(int i=0; i<page_list.count(); i++)
+    {
+        ComputerPage *page = page_list.at(i);
+        delete page;
+        page = NULL;
+    }
+    page_list.clear();
+    if (scroll_widget)
+        scroll_widget->resetWidget();
+}
+
 bool MemoryWidget::getStatus()
 {
     return this->dataOK;
@@ -40,6 +62,7 @@ bool MemoryWidget::getStatus()
 
 void MemoryWidget::initData()
 {
+    this->clear_page_list();
     memory_info_map.clear();
     memory_info_map = systemproxy->get_memory_info_qt();
     if (memory_info_map.isEmpty() || memory_info_map.count() <= 0) {
@@ -59,6 +82,7 @@ void MemoryWidget::initData()
         else {
             if(memoryNum == 1) {
                 ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("Memory Info"));
+                page_list.append(page);
                 memory_info_map.remove("Memnum");
                 QMap<QString, QVariant> tmpMap;
                 QMap<QString,QVariant>::iterator it;
@@ -74,6 +98,7 @@ void MemoryWidget::initData()
             else if(memoryNum > 1) {
                 for(int i=0;i<memoryNum;i++) {
                     ComputerPage *page = new ComputerPage(scroll_widget->zone, tr("Memory Info %1").arg(i+1));
+                    page_list.append(page);
                     tmp_info_map.clear();
                     QMap<QString, QVariant>::iterator itbegin = memory_info_map.begin();
                     QMap<QString, QVariant>::iterator  itend = memory_info_map.end();
@@ -144,5 +169,5 @@ void MemoryWidget::initData()
             }
         }
     }*/
-    dataOK = true;
+//    dataOK = true;
 }

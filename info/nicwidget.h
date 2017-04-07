@@ -33,12 +33,15 @@ class NicWidget : public QWidget
     Q_OBJECT
 public:
     explicit NicWidget(QWidget *parent = 0, SystemDispatcher *proxy = 0);
+    ~NicWidget();
     void initData();
     bool getStatus();
+    void clear_page_list();
 
 signals:
 
 public slots:
+    void slot_network_info(QMap<QString, QVariant> info);
 
 private:
     ScrollWidget *scroll_widget;
@@ -49,6 +52,7 @@ private:
     QMap<QString, QVariant> tmp_info_map;
     SystemDispatcher *systemproxy;
     bool dataOK;
+    QList<ComputerPage *> page_list;
 };
 
 #endif // NICWIDGET_H
