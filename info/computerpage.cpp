@@ -59,6 +59,13 @@ ComputerPage::ComputerPage(QWidget *parent, QString title/*, QString manufacture
 
 ComputerPage::~ComputerPage()
 {
+    for(int i=0; i<label_list.count(); i++)
+    {
+        QLabel *label = label_list.at(i);
+        delete label;
+        label = NULL;
+    }
+    label_list.clear();
     page_height = 0;
     if(title_label != NULL)
     {
@@ -304,6 +311,7 @@ void ComputerPage::initUI(bool cpu)
                 }
                 else if (it.key().length() > 0 && valueStr.length() > 0) {//20161228
                     QLabel *label = new QLabel();
+                    label_list.append(label);
                     if (it.key() == "cpu_cores") {
                         label->setText(tr("%1 cores").arg(valueStr));
                     }
