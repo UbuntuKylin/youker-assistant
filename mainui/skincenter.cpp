@@ -410,12 +410,13 @@ void SkinCenter::reloadBackgroundList()
     QFileInfoList list = picdir.entryInfoList();
     QString cur_skin = mainwindow->getCurrentBackgroundName();
 //    card_list.clear();
-    for(int i=0; i<custom_card_list.count(); i++)
-    {
-        ItemCard *card = custom_card_list.at(i);
-        delete card;
-        card = NULL;
-    }
+    //no need to call this code, because it have called custom_list_widget->clear_card();
+//    for(int i=0; i<custom_card_list.count(); i++)
+//    {
+//        ItemCard *card = custom_card_list.at(i);
+//        delete card;
+//        card = NULL;
+//    }
     custom_card_list.clear();
     QSignalMapper *signal_mapper = new QSignalMapper(this);
     for (int j = 0; j < list.size(); ++j) {

@@ -86,6 +86,7 @@ private:
     QLabel *tr5_label;
     QLabel *tr6_label;
     QLabel *fanin1_label;
+    QList<QLabel *> label_list;
  /*
     else if(orgStr == "IN0")//内存参考电压
         return tr("Memory reference voltage");

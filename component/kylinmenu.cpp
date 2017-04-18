@@ -224,12 +224,14 @@ void KylinMenu::initConnect()
 
 void KylinMenu::forumHelp()
 {
+    this->close();
     QUrl url(QString("http://www.ubuntukylin.com/ukylin/forum.php"));
     QDesktopServices::openUrl(url);
 }
 
 void KylinMenu::questionFeedback()
 {
+    this->close();
     QUrl url(QString("https://bugs.launchpad.net/youker-assistant"));
     QDesktopServices::openUrl(url);
 }
