@@ -1092,7 +1092,8 @@ void MainWindow::initHomePage()
     {
 //        if( bottom_grid_layout == NULL )
         QGridLayout *home_bottom_grid_layout = new QGridLayout();
-        home_page = new HomePage(0/*, version*/);
+//        home_page = new HomePage(0/*, version*/);
+        home_page = new HomePage(this, this->arch, this->osName/*, version*/);
         connect(home_page, SIGNAL(sendSubIndex(int)), this, SLOT(displaySubPage(int)));
         home_page->setParentWindow(this);
         home_page->initUI();

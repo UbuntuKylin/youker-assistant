@@ -37,7 +37,7 @@ class HomePage : public QWidget
 {
     Q_OBJECT
 public:
-    explicit HomePage(QWidget *parent = 0/*, const QString &version = ""*/);
+    explicit HomePage(QWidget *parent = 0, QString arch = "", QString os = ""/*, const QString &version = ""*/);
     ~HomePage();
     void setLanguage();
     void initBoxTool();
@@ -80,6 +80,8 @@ private:
 //    AutoStartWidget *auto_start;
 //    CameraManager *camera_manager;
     QString current_version;
+    QString osname;
+    QString osarch;
     QList<ToolButton *> item_list;
 };
 

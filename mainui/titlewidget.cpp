@@ -40,7 +40,7 @@ TitleWidget::TitleWidget(QWidget *parent, QString arch, QString os)
     QHBoxLayout *title_layout = new QHBoxLayout();
     if(arch == "aarch64" || os == "Kylin" || os == "YHKylin")
     {
-        title_layout->addWidget(main_menu_button, 0, Qt::AlignTop);
+//        title_layout->addWidget(main_menu_button, 0, Qt::AlignTop);
         title_layout->addWidget(skin_button, 0, Qt::AlignTop);
         title_layout->addWidget(min_button, 0, Qt::AlignTop);
         title_layout->addWidget(close_button, 0, Qt::AlignTop);
@@ -50,7 +50,7 @@ TitleWidget::TitleWidget(QWidget *parent, QString arch, QString os)
         title_layout->addWidget(close_button, 0, Qt::AlignTop);
         title_layout->addWidget(min_button, 0, Qt::AlignTop);
         title_layout->addWidget(skin_button, 0, Qt::AlignTop);
-        title_layout->addWidget(main_menu_button, 0, Qt::AlignTop);
+//        title_layout->addWidget(main_menu_button, 0, Qt::AlignTop);
     }
 
     title_layout->addStretch();

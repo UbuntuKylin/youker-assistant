@@ -24,8 +24,8 @@
 #include "../component/toolbutton.h"
 #include "../component/utils.h"
 
-HomePage::HomePage(QWidget *parent/*, const QString &version*/) :
-    QWidget(parent)
+HomePage::HomePage(QWidget *parent, QString arch, QString os/*, const QString &version*/) :
+    QWidget(parent), osarch(arch), osname(os)
 {
     this->setFixedSize(900, 326);
 
@@ -321,7 +321,10 @@ void HomePage::switchPageIndex(QString index)
     if(index == "0")
         emit this->sendSubIndex(0);
     else if(index == "1")
-        emit this->sendSubIndex(1);
+        if(this->osarch == "aarch64" || this->osname == "Kylin" || this->osname == "YHKylin")
+            sessionProxy->runApp("cheese");
+        else
+            emit this->sendSubIndex(1);
     else if(index == "2") {
 //        p_mainwindow->showBoxWidget();
         emit this->moreSignal();
