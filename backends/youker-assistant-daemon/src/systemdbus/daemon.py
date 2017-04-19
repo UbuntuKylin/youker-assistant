@@ -361,6 +361,10 @@ class Daemon(PolicyKitService):
     def get_sensor_info(self):
         return self.infoconf.get_sensors()
 
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def judge_sensors_exists_hb(self):
+        return self.infoconf.judge_sensors_exists()
+
     # -------------------------sound-------------------------
     # get sound themes
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
