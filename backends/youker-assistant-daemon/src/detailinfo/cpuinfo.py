@@ -28,6 +28,7 @@ import binascii
 import platform
 import commands
 import random
+from pprint import pprint
 
 from gi.repository import GLib#20161228
 import locale
@@ -58,6 +59,8 @@ def get_interface_ip(interface):
     DEVICE_NAME_LEN = 15
     IP_START = 20
     IP_END = 24
+    if interface == "unknown":
+        return "unknown"
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         info = fcntl.ioctl(s.fileno(), 0x8915, struct.pack('256s', interface[:DEVICE_NAME_LEN]))
@@ -76,6 +79,8 @@ def get_interface_ip(interface):
     #    return "unknown"
 
 def get_interface_driver(interface):
+    if interface == "unknown":
+        return "unknown"
     cmd = "ethtool -i %s |grep 'driver:'" % interface
     fp = os.popen(cmd)
     msg = fp.read().strip('\n')
@@ -995,7 +1000,7 @@ class DetailInfo:
         ret['Vga_num'],ret['Vga_businfo'],ret['Vga_product'],ret['Vga_vendor'],ret['Vga_Drive'] = self.strip(str(Vga_num)),self.strip(Vga_businfo),self.strip(Vga_product),self.strip(Vga_vendor),self.strip(Vga_Drive)
         return ret
 
-    def get_disk(self):
+    def get_disk_obsolete(self):
         dis={}
         disknum = 0
         disk_manufacturers = [
@@ -1112,8 +1117,77 @@ class DetailInfo:
         dis['DiskNum'],dis['DiskProduct'],dis['DiskVendor'],dis['DiskCapacity'],dis['DiskName'],dis['DiskFw'],dis['DiskSerial'] = self.strip(str(disknum)),self.strip(DiskProduct),self.strip(DiskVendor),self.strip(DiskCapacity),self.strip(DiskName),self.strip(DiskFw),self.strip(DiskSerial)
         return dis
 
+    # writed by hb at 20170517
+    def get_disk(self):
+        dis = {}
+        disk_manufacturers = {
+                "ST": "Seagate",
+                "IBM": "IBM",
+                "HITACHI": "Hitachi",
+                "IC": "Hitachi",
+                "HTS": "Hitachi",
+                "FUJITSU": "Fujitsu",
+                "MP": "Fujitsu",
+                "TOSHIBA": "Toshiba",
+                "MK": "Toshiba",
+                "MAXTOR": "Maxtor",
+                "Pioneer": "Pioneer",
+                "PHILIPS": "Philips",
+                "QUANTUM": "Quantum",
+                "FIREBALL": "Quantum",
+                "WDC": "Western Digital",
+                }
+        DiskProduct,DiskVendor,DiskCapacity,DiskName,DiskFw,DiskSerial = '','','','','',''
+        diskdict = {}
+        disknum = 0
+        statusfirst, output = commands.getstatusoutput("lsblk -b")
+        
+        for line in output.split("\n"):
+            value = line.split()
+            if value[1].startswith("8:") and value[5] == "disk":
+                disknum += 1
+                DiskCapacity += ( ((str(int(value[3]) / 10**9) + "G") if not statusfirst else "$") + "<1_1>")
+                
+                infodict = {}
+                status, output = commands.getstatusoutput("hdparm -i %s" % ("/dev/" + value[0]))
+                
+                pprint(status)
+                if not status:
+                    singleinfolist = [ tmp.strip() for tmp in output.split("\n") if tmp]
+                    pprint(output)
+                    for mid in singleinfolist[1].split(","):
+                        needinfo = mid.split("=")
+                        infodict.setdefault(needinfo[0].strip(), needinfo[1])
+                    for key, va in disk_manufacturers.items():
+                        if infodict.get("Model", "$").startswith(key):
+                            infodict.setdefault("Vendor", va)
+                            break
+                            
+                    pprint(infodict)
+                    DiskProduct += (infodict.get("Model", "$") + "<1_1>")
+                    DiskVendor += (infodict.get("Vendor", "$") + "<1_1>")
+                    DiskFw += (infodict.get("FwRev", "$") + "<1_1>")
+                    DiskSerial += (infodict.get("SerialNo", "$") + "<1_1>")
+                else:
+                    pprint(output)
+                    DiskProduct += ( "$" + "<1_1>")
+                    DiskVendor += ("$" + "<1_1>")
+                    DiskFw += ("$" + "<1_1>")
+                    DiskSerial += ("$" + "<1_1>")
+                DiskName += (("/dev/" + value[0]) + "<1_1>")
+                pprint(DiskProduct)
+                pprint(DiskVendor)
+                pprint(DiskFw)
+                pprint(DiskSerial)
+                pprint(DiskName)
+                pprint(DiskCapacity)
+        dis['DiskNum'],dis['DiskProduct'],dis['DiskVendor'],dis['DiskCapacity'],dis['DiskName'],dis['DiskFw'],dis['DiskSerial'] = str(disknum),DiskProduct.rstrip("<1_1>"),DiskVendor.rstrip("<1_1>"),DiskCapacity.rstrip("<1_1>"),DiskName.rstrip("<1_1>"),DiskFw.rstrip("<1_1>"),DiskSerial.rstrip("<1_1>")
+        return dis
+
+
+
     # writed by kobe 20170318
-    def get_network(self):
+    def get_network_obsolete(self):
 #        net = {'NetNum': 2, 'NetSerial': '00:23:81:21:e4:0b', 'NetProduct': '82574L Gigabit Network Connection', 'NetLogicalname': 'enp1s0', 'NetDrive': 'e1000e', 'NetIp': 'unknown', 'NetType': 'Ethernet interface', 'NetVendor': 'Intel Corporation', 'NetBusinfo': 'pci@0000:01:00.0'}
 #        return net
         net = {}
@@ -1265,7 +1339,7 @@ class DetailInfo:
 #                                else:
 #                                    NetType = tmp[0]
             net['NetNum'] = NetNum
-            net['NetType'],net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetSerial'],net['NetIp'],net['NetDrive'] = self.strip(NetType), self.strip(NetProduct),self.strip(NetVendor),self.strip(NetBusinfo),self.strip(NetLogicalname),self.strip(NetSerial),self.strip(NetIp), self.strip(NetDrive)
+            net['NetType'],net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetSerial'],net['NetIp'],net['NetDrive'] = NetType.rstrip("<1_1>"), NetProduct.rstrip("<1_1>"),NetVendor.rstrip("<1_1>"),NetBusinfo.rstrip("<1_1>"),NetLogicalname.rstrip("<1_1>"),NetSeriali.rstrip("<1_1>"),NetIp.rstrip("<1_1>"), NetDrive.rstrip("<1_1>")
             return net
         except Exception as e:
             return net
@@ -1277,6 +1351,53 @@ class DetailInfo:
 #        print NetLogicalname
 #        print NetIp
 #        print NetDrive
+
+    #write by hb at 20170516 for 20x_server
+    def get_network(self):
+        net = {}
+        netflag = ""
+        NetType,NetProduct,NetVendor,NetDriver,NetBusinfo,NetLogicalname,NetSerial,NetIp = '','','','','','','',''
+        
+        try:
+            #fp = open("/home/ice/networkinfo")
+            #allinfo = fp.read()
+            #fp.close()
+
+            fp = os.popen("lshw -C network");
+            allinfo = fp.read()
+            infolist = allinfo.split("*-network")[1:]
+            
+            for singleinfo in infolist:
+                infodict = {}
+                singleinfolist = [ tmp.strip() for tmp in singleinfo.split("\n") ]
+                netflag = singleinfolist[0]
+                for info in singleinfolist[1:]:
+                    if info:
+                        tmp = info.split(": ")
+                        pprint(tmp)
+                        infodict.setdefault(tmp[0], tmp[1])
+                pprint(infodict)
+
+                NetType += ( infodict.get("description", "unknown") + "<1_1>" )
+
+                NetProduct += ( infodict.get("product", "unknown") + "<1_1>" )
+                
+                NetVendor += ( infodict.get("vendor", "unknown") + "<1_1>")
+
+                NetBusinfo += ( infodict.get("bus info", "unknown") + "<1_1>" )
+
+                NetSerial += ( infodict.get("serial", "unknown") + "<1_1>")
+
+                NetLogicalname += ( infodict.get("logical name", "unknown") + "<1_1>")
+                NetIp += ( get_interface_ip(infodict.get("logical name", "unknown")) + "<1_1>")
+                NetDriver += (get_interface_driver(infodict.get("logical name", "unknown")) + "<1_1>")
+
+            net['NetNum'] = len(infolist)
+            net['NetType'],net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetSerial'],net['NetIp'],net['NetDrive'] = NetType.rstrip("<1_1>"), NetProduct.rstrip("<1_1>"),NetVendor.rstrip("<1_1>"),NetBusinfo.rstrip("<1_1>"),NetLogicalname.rstrip("<1_1>"),NetSerial.rstrip("<1_1>"),NetIp.rstrip("<1_1>"), NetDriver.rstrip("<1_1>")
+        except Exception as e:
+            pass
+        return net
+
 
     #kobe:测试发现服务器上有个网卡名为：lxcbr0，其通过lspci -vvv找不到对应的信息
     def get_network_test(self):
@@ -1600,7 +1721,7 @@ class DetailInfo:
             r = os.popen("/usr/bin/sensors")
             text = r.read()
             r.close()
-            if "w83795g-i2c-1-2c" in text:
+            if "w83795g-i2c-1-2c" in text or "w83795adg-i2c-1-2c" in text:
                 return True
             else:
                 return False

@@ -1,10 +1,18 @@
+youker-assistant (2.2.10-0ubuntu1) zesty; urgency=low
+
+  [ hebing ]
+  * invisable the mainwindow's title for UKUI
+  * rewrite the function of get_disk and get_network
+
+ -- hebing <hebing@kylinos.cn>  Fri, 23 Jun 2017 14:04:48 +0800
+
 youker-assistant (2.2.9-0ubuntu1) zesty; urgency=low
 
   [ hebing ]
   * add systemdbus method judge_sensors_exists_hb
   * fix bug the text of vga_product is too long
 
- -- hebing <lixiang@kylinos.cn>  Wed, 19 Apr 2017 14:41:56 +0800
+ -- hebing <hebing@kylinos.cn>  Wed, 19 Apr 2017 14:41:56 +0800
 
 youker-assistant (2.2.8-0ubuntu1) zesty; urgency=low
 
