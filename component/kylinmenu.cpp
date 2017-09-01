@@ -180,9 +180,13 @@ void KylinMenu::createActions()
     about_widget_action->setDefaultWidget(about_widget);
 
 //    this->addAction(check_widget_action);
-//    this->addAction(help_widget_action);
-//    this->addAction(feedback_widget_action);
-//    this->addSeparator();
+    if (GlobalData::globalarch == "x86_64")
+    {
+        this->addAction(help_widget_action);
+        this->addAction(feedback_widget_action);
+        this->addSeparator();
+    }
+
     this->addAction(about_widget_action);
 
 //    this->addAction(help_action);

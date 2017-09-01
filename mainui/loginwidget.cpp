@@ -134,7 +134,9 @@ void LoginWidget::showLoginAndLogoutStatus(bool status)
 
 void LoginWidget::setLauguage()
 {
-    logo_label->setText(tr("Login Youker Account"));
+//    logo_label->setText(tr("Login Youker Account"));
+//    logout_btn->setText(tr("Logout"));
+    logo_label->setText(tr("Login Kylin Account"));
     logout_btn->setText(tr("Logout"));
 }
 

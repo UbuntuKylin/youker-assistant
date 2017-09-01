@@ -24,9 +24,14 @@
 #include "shadowwidget.h"
 #include "cameramanager.h"
 
+QString GlobalData::globalarch = ""; // add by hebing, just for transmit var
+
 MainWindow::MainWindow(QString cur_arch, QWidget *parent) :
     QDialog(parent), arch(cur_arch)/*skin_center(parent),*/
 {
+
+    GlobalData::globalarch = this->arch;
+
     this->osName = accessOSName();
 //    char *dsk;
 //    dsk = getenv("XDG_CURRENT_DESKTOP");
@@ -52,6 +57,12 @@ MainWindow::MainWindow(QString cur_arch, QWidget *parent) :
         this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowMinimizeButtonHint | Qt::WindowSystemMenuHint);
         this->setWindowTitle(tr("Youker Assistant"));
     }
+
+    this->isTopLevel();
+    this->resize(900, 600);
+    this->setAutoFillBackground(true);
+    this->setWindowFlags(Qt::FramelessWindowHint | Qt::Widget);
+    this->setWindowTitle(tr("Kylin Assistant"));
 
 //    this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowMinimizeButtonHint | Qt::WindowSystemMenuHint);
 ////    this->setAttribute(Qt::WA_TranslucentBackground, true);
