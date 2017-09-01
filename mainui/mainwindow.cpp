@@ -47,11 +47,6 @@ MainWindow::MainWindow(QString cur_arch, QWidget *parent) :
         this->setWindowFlags(Qt::FramelessWindowHint | Qt::Widget);
         this->setWindowTitle(tr("Kylin Assistant"));
     }
-    else if (this->desktop == "UKUI") {
-        this->setFixedSize(900, 600);
-        this->setWindowFlags(Qt::FramelessWindowHint);
-        this->setWindowTitle(tr("Youker Assistant"));
-    }
     else {
         this->setFixedSize(900, 600);
         this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowMinimizeButtonHint | Qt::WindowSystemMenuHint);
@@ -1258,8 +1253,8 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     if(event->button() == Qt::LeftButton)
     {
         mouse_press = true;
+        drag_pos = event->globalPos() - pos();
     }
-    drag_pos = event->globalPos() - pos();
 }
 
 void MainWindow::mouseReleaseEvent(QMouseEvent *)

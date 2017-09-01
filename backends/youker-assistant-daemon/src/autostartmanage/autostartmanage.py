@@ -318,9 +318,9 @@ class Desktop_Autostart_Manage():
                 elif os.path.exists(iconpath1 + tempicon):
                     info.append('Icon:' + iconpath1 + tempicon)
                 else:
-                    info.append('Icon:')
+                    info.append('Icon:/usr/share/pixmaps/autostart-default.png')
             else:
-                info.append('Icon:')
+                info.append('Icon:/usr/share/pixmaps/autostart-default.png')
 
         return info
 

@@ -365,6 +365,7 @@ class Daemon(PolicyKitService):
     def judge_sensors_exists_hb(self):
         return self.infoconf.judge_sensors_exists()
 
+
     # -------------------------sound-------------------------
     # get sound themes
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
@@ -683,7 +684,7 @@ class Daemon(PolicyKitService):
                 cleaner.interface_remove_file_system(self, tmpName)
         
         x11history = mode_dic.get('x11-history', [])
-        if bashhistory:
+        if x11history:
             for tmpName in x11history:
                 cleaner.interface_remove_file_system(self, tmpName)
 

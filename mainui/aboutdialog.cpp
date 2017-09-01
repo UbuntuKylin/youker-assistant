@@ -32,6 +32,7 @@ AboutDialog::AboutDialog(QWidget *parent, /*const QString &version, */QString sk
 //    this->setWindowFlags(Qt::WindowStaysOnTopHint);
     this->setFixedSize(442, 326);
     this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
+    this->setWindowTitle(tr("About us"));
 
     aboutGroup = NULL;
     contributorGroup = NULL;

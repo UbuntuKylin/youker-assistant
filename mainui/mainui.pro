@@ -61,12 +61,15 @@ inst3.files += res/default/
 inst3.path = /var/lib/youker-assistant-daemon/
 inst4.files += res/custom/
 inst4.path = /var/lib/youker-assistant-daemon/
+inst5.files += res/autostart-default.png
+inst5.path = /usr/share/pixmaps
 target.source += $$TARGET
 target.path = /usr/bin
 INSTALLS += inst1 \
     inst2 \
     inst3 \
     inst4 \
+    inst5 \
     target
 
 SOURCES += main.cpp\

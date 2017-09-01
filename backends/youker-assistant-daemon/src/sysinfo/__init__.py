@@ -21,6 +21,8 @@ import os
 from gi.repository import GLib
 import platform
 
+import apt
+
 NO_UPDATE_WARNING_DAYS = 7
 FILEPATH = "/etc/lsb-release"
 RELEASEPATH = "/etc/ubuntukylin-release"
@@ -131,6 +133,13 @@ class Sysinfo:
         return distro
 
     def get_desktop(self):
+        apt_cache = apt.Cache()
+        try:
+            package = apt_cache["kylin-menu"]
+        except:
+            package = None
+        if package is not None and package.is_installed:
+            return "UKUI"
         desktop_dict = {'ubuntu': 'Unity',
                         'ubuntu-2d': 'Unity 2D',
                         'gnome': 'GNOME Shell',
@@ -182,7 +191,8 @@ class Sysinfo:
                     if line.rstrip('\n').startswith('MemTotal'):
                         MemTotal = line.rstrip('\n').split(':')[1].strip()
                         MemTotal1 = MemTotal.split(' ')[0]
-                        MemTotal2 = GLib.format_size_for_display(int(MemTotal1) * 1024)
+                        #MemTotal2 = GLib.format_size_for_display(int(MemTotal1) * 1024)
+                        MemTotal2 = str(round(float(MemTotal1) / (1000 ** 2), 1)) + "G"
                         break
         return model_name,MemTotal2
 

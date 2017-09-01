@@ -74,7 +74,7 @@ void DesktopWidget::initData()
         }
         else {
             page = new ComputerPage(scroll_widget->zone, tr("Desktop Info"));
-            page->setMap(desktop_info_map, "UBUNTUKYLIN");
+            page->setMap(desktop_info_map, "");
             page->initUI(false);
             scroll_widget->addScrollWidget(page);
         }

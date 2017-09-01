@@ -36,6 +36,7 @@ AutoStartWidget::AutoStartWidget(QDialog *parent, SessionDispatcher *proxy, QStr
     setWindowFlags(Qt::FramelessWindowHint);
     this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
     this->setWindowIcon(QIcon(":/res/youker-assistant.png"));
+    this->setWindowTitle(tr("Boot Manager"));
     tip_label = new QLabel();
     num_label = new QLabel();
     on_label = new QLabel();

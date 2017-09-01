@@ -457,7 +457,8 @@ void ComputerPage::initUI(bool cpu)
         QPixmap label_pixmap(":/vendor/res/manufacturer/" + vendor + ".jpg");
         if (label_pixmap.isNull())
         {
-            label_pixmap = QPixmap(":/vendor/res/manufacturer/UBUNTUKYLIN.jpg");
+//            label_pixmap = QPixmap(":/vendor/res/manufacturer/UBUNTUKYLIN.jpg");
+            label_pixmap = QPixmap("");
         }
         logo_label->setPixmap(label_pixmap);
         logo_label->setFixedSize(label_pixmap.size());

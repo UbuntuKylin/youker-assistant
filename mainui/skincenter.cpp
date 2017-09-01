@@ -34,6 +34,7 @@ SkinCenter::SkinCenter(QWidget *parent, QString skin, QString arch, QString os)
 //    this->setStyleSheet("QDialog{border: none;background-color: #ffffff;}");
     setWindowFlags(Qt::FramelessWindowHint);
 //    title_bar = new KylinTitleBar(this);
+    this->setWindowTitle(tr("Skin Setting"));
 
     last_skin_path = skin;
     aboutGroup = NULL;
@@ -449,30 +450,75 @@ void SkinCenter::reloadBackgroundList()
 
 void SkinCenter::addCustomBackground()
 {
+    //QStringList fileNameList;
+    //QString fileName;
+    //QFileDialog* fd = new QFileDialog(this);
+    //fd->resize(500, 471);
+//  //  fd->setFilter("Allfile(*.*);;png(*.png);;jpg(*.jpg)");
+    //fd->setNameFilter(tr("Image Files(*.jpg *.png)"));
+    //fd->setViewMode(QFileDialog::List);
+    //if (fd->exec() == QDialog::Accepted)
+    //{
+    //    fileNameList = fd->selectedFiles();
+    //    fileName = fileNameList[0];
+//  //      qDebug() << "select pic name ->" << fileName;
+    //    bool result = mainwindow->CopyFile(fileName);
+    //    if(result == true) {
+    //        custom_list_widget->clear_card();
+    //        this->reloadBackgroundList();
+    //        int  start_pos = fileName.lastIndexOf("/") + 1;
+    //        int end_pos = fileName.length();
+    //        QString icon_name = "/var/lib/youker-assistant-daemon/custom/";
+    //        QString abs_name = icon_name.append(fileName.mid(start_pos, end_pos-start_pos));
+//  //          qDebug() << "abs_name->" << abs_name;
+    //        this->changeSkinCenterBackground(abs_name);
+
+    //        //change custom using logo
+    //        for(int i=0; i<custom_card_list.count() - 1; i++)
+    //        {
+    //            ItemCard *card = custom_card_list.at(i);
+    //            qDebug() << card->getCardName();
+    //            if(card->getCardName() == abs_name)
+    //            {
+    //                card->showUsingLogo(true);
+    //            }
+    //            else
+    //            {
+    //                card->showUsingLogo(false);
+    //            }
+    //        }
+
+    //        //change system using logo
+    //        for(int i=0; i<card_list.count(); i++)
+    //        {
+    //            ItemCard *card = card_list.at(i);
+    //            card->showUsingLogo(false);
+    //        }
+    //    }
+    //}
+    //else
+    //    fd->close();
+    
     QStringList fileNameList;
-    QString fileName;
-    QFileDialog* fd = new QFileDialog(this);
-    fd->resize(500, 471);
-//    fd->setFilter("Allfile(*.*);;png(*.png);;jpg(*.jpg)");
-    fd->setNameFilter(tr("Image Files(*.jpg *.png)"));
-    fd->setViewMode(QFileDialog::List);
-    if (fd->exec() == QDialog::Accepted)
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), ".",
+                                                    tr("Files(*.png *.jpg)"));
+    if (fileName.length() == 0)
     {
-        fileNameList = fd->selectedFiles();
-        fileName = fileNameList[0];
-//        qDebug() << "select pic name ->" << fileName;
+//        QMessageBox::information(NULL, tr("Path"), tr("You didn't select any files."));
+    }
+    else
+    {
         bool result = mainwindow->CopyFile(fileName);
-        if(result == true) {
+        if(result == true)
+        {
             custom_list_widget->clear_card();
             this->reloadBackgroundList();
             int  start_pos = fileName.lastIndexOf("/") + 1;
             int end_pos = fileName.length();
             QString icon_name = "/var/lib/youker-assistant-daemon/custom/";
             QString abs_name = icon_name.append(fileName.mid(start_pos, end_pos-start_pos));
-//            qDebug() << "abs_name->" << abs_name;
             this->changeSkinCenterBackground(abs_name);
 
-            //change custom using logo
             for(int i=0; i<custom_card_list.count() - 1; i++)
             {
                 ItemCard *card = custom_card_list.at(i);
@@ -494,9 +540,8 @@ void SkinCenter::addCustomBackground()
                 card->showUsingLogo(false);
             }
         }
+//        QMessageBox::information(NULL, tr("Path"), tr("You select ") + fileName);
     }
-    else
-        fd->close();
 }
 
 void SkinCenter::switchUsingLogo(QString index)

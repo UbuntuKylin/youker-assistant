@@ -111,7 +111,7 @@ void CleanSubGroup::setLabelText(const QString &title, int count)
 {
     QFont ft;
     QFontMetrics fm(ft);
-    QString elided_text = fm.elidedText(title, Qt::ElideRight, 100);
+    QString elided_text = fm.elidedText(title, Qt::ElideRight, 80);
     name_label->setText(elided_text);
     description_label->setText(QString::number(count));
     if(elided_text.endsWith("…"))
@@ -122,7 +122,7 @@ void CleanSubGroup::setLabelStringText(const QString &title, QString size)
 {
     QFont ft;
     QFontMetrics fm(ft);
-    QString elided_text = fm.elidedText(title, Qt::ElideRight, 100);
+    QString elided_text = fm.elidedText(title, Qt::ElideRight, 80);
     name_label->setText(elided_text);
     description_label->setText(size);
     if(elided_text.endsWith("…"))
