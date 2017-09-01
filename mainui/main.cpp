@@ -170,12 +170,12 @@ int main(int argc, char *argv[])
 //    mdlg.setGeometry(desktop->screenGeometry(1));//QDialog 有个成员函数叫setGeometry，只需要将dialog对象的Geometry设置为index为1的显示器即可，默认为0.如果要显示的dialog的对象为mdlg，则
 //    mdlg.show();
 
-    MainWindow w(arch);
+    MainWindow w(arch, sCount);
     w.setTranslator(&translator);
 //    if (sCount > 1) {
 //        w.setGeometry(desktop->screenGeometry(1));
 //    }
-    w.display(sCount);
+//    w.display(sCount);
 
     return app.exec();
 }

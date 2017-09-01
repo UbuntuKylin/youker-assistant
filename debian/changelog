@@ -3,6 +3,9 @@ youker-assistant (2.2.11ubuntu1) zesty; urgency=low
   [ hebing ]
   * merge kylin-assistant
 
+  [ lixiang ]
+  * Add threadpool.
+
  -- hebing <hebing@kylinos.cn>  Fri, 01 Sep 2017 09:04:11 +0800
 
 youker-assistant (2.2.10-0ubuntu1) zesty; urgency=low

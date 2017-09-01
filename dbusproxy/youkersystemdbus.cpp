@@ -22,31 +22,13 @@
 #include <QMap>
 
 SystemDispatcher::SystemDispatcher(QObject *parent)
-//    QObject(parent)
+    : QObject(parent)
 {
-    systemiface = new QDBusInterface("com.ubuntukylin.youker",
-                               "/",
-                               "com.ubuntukylin.youker",
-                               QDBusConnection::systemBus());
+    systemiface = NULL;
     thread = new KThread(this);
 
     //kobe
     clean_thread = new KThread(this);
-
-    QObject::connect(systemiface,SIGNAL(quit_clean(bool)),this,SLOT(handler_interrupt_clean(bool)));
-    QObject::connect(systemiface,SIGNAL(clean_complete_onekey(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
-    QObject::connect(systemiface,SIGNAL(clean_error_onekey(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
-    QObject::connect(systemiface,SIGNAL(status_for_quick_clean(QString,QString)),this,SLOT(handler_status_for_quick_clean(QString,QString)));
-
-    QObject::connect(systemiface,SIGNAL(subpage_data_signal(QStringList)),this,SLOT(handlerCleanerSubPageDataSignal(QStringList)));
-    QObject::connect(systemiface,SIGNAL(subpage_status_signal(QString, QString)),this,SLOT(handlerCleanerSubPageStatusSignal(QString, QString)));
-    QObject::connect(systemiface,SIGNAL(subpage_error_signal(QString)),this,SLOT(handlerCleanerSubPageErrorSignal(QString)));
-
-
-    QObject::connect(systemiface,SIGNAL(youker_fetch_signal(QString, QStringList)),this,SIGNAL(get_fetch_signal(QString, QStringList)));
-    QObject::connect(systemiface,SIGNAL(youker_apt_signal(QString, QStringList)),this,SIGNAL(get_apt_signal(QString, QStringList)));
-//    QObject::connect(systemiface,SIGNAL(youker_fetch_signal(QString, QStringList)),this,SLOT(handlerFetchSignal(QString, QStringList)));
-//    QObject::connect(systemiface,SIGNAL(youker_apt_signal(QString, QStringList)),this,SLOT(handlerAptSignal(QString, QStringList)));
 }
 
 SystemDispatcher::~SystemDispatcher() {
@@ -70,6 +52,30 @@ SystemDispatcher::~SystemDispatcher() {
         delete systemiface;
         systemiface = NULL;
     }
+}
+
+void SystemDispatcher::initData()
+{
+    systemiface = new QDBusInterface("com.ubuntukylin.youker",
+                               "/",
+                               "com.ubuntukylin.youker",
+                               QDBusConnection::systemBus());
+
+    QObject::connect(systemiface,SIGNAL(quit_clean(bool)),this,SLOT(handler_interrupt_clean(bool)));
+    QObject::connect(systemiface,SIGNAL(clean_complete_onekey(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
+    QObject::connect(systemiface,SIGNAL(clean_error_onekey(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
+    QObject::connect(systemiface,SIGNAL(status_for_quick_clean(QString,QString)),this,SLOT(handler_status_for_quick_clean(QString,QString)));
+
+    QObject::connect(systemiface,SIGNAL(subpage_data_signal(QStringList)),this,SLOT(handlerCleanerSubPageDataSignal(QStringList)));
+    QObject::connect(systemiface,SIGNAL(subpage_status_signal(QString, QString)),this,SLOT(handlerCleanerSubPageStatusSignal(QString, QString)));
+    QObject::connect(systemiface,SIGNAL(subpage_error_signal(QString)),this,SLOT(handlerCleanerSubPageErrorSignal(QString)));
+
+
+    QObject::connect(systemiface,SIGNAL(youker_fetch_signal(QString, QStringList)),this,SIGNAL(get_fetch_signal(QString, QStringList)));
+    QObject::connect(systemiface,SIGNAL(youker_apt_signal(QString, QStringList)),this,SIGNAL(get_apt_signal(QString, QStringList)));
+//    QObject::connect(systemiface,SIGNAL(youker_fetch_signal(QString, QStringList)),this,SLOT(handlerFetchSignal(QString, QStringList)));
+//    QObject::connect(systemiface,SIGNAL(youker_apt_signal(QString, QStringList)),this,SLOT(handlerAptSignal(QString, QStringList)));
+    emit this->dbusInitFinished();
 }
 
 //void SystemDispatcher::handlerFetchSignal(QString msg_type, QStringList msg)
