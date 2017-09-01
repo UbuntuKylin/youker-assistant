@@ -100,6 +100,8 @@ signals:
     void get_fetch_signal(QString msg_type, QStringList msg);
     void get_apt_signal(QString msg_type, QStringList msg);
 
+    void dbusInitFinished();
+
 public slots:
     void handler_interrupt_clean(bool status);
     void handler_clear_rubbish_main_onekey(QString msg);
@@ -112,6 +114,8 @@ public slots:
     //apt
 //    void handlerFetchSignal(QString msg_type, QStringList msg);
 //    void handlerAptSignal(QString msg_type, QStringList msg);
+
+    void initData();
 
 private:
     QDBusInterface *systemiface;

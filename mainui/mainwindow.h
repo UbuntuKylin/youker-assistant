@@ -59,10 +59,9 @@ class MainWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit MainWindow(QString cur_arch = "", QWidget *parent = 0);
+    explicit MainWindow(QString cur_arch = "", int d_count = 0, QWidget *parent = 0);
     ~MainWindow();
     void setTranslator(QTranslator* translator);
-    void display(int display);
     void initConnect();
     void initHomePage();
     void initOtherPages();
@@ -101,6 +100,8 @@ public slots:
     void displaySubPage(int index);
     void upAnimFinished();
     void closeAnimFinished();
+
+    void displayMainWindow(/*int display*/);
 
 signals:
     void chanegBoxToolStatus();
@@ -157,6 +158,7 @@ private:
     UpgradeDialog *upgrade_dialog;
 //    QStringList skinlist;
     ShadowWidget *shadow_widget;
+    int display_count;
 };
 
 class GlobalData // define by hebing,just for transmit var

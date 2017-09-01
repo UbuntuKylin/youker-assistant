@@ -21,7 +21,7 @@
 #include <QDebug>
 
 SessionDispatcher::SessionDispatcher(QObject *parent)
-//    QObject(parent)
+    : QObject(parent)
 {
     sessioniface = new QDBusInterface("com.ubuntukylin.session",
                                "/",

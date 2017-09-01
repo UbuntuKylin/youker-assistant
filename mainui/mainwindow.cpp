@@ -23,11 +23,12 @@
 #include <QParallelAnimationGroup>
 #include "shadowwidget.h"
 #include "cameramanager.h"
+#include "../component/threadpool.h"
 
 QString GlobalData::globalarch = ""; // add by hebing, just for transmit var
 
-MainWindow::MainWindow(QString cur_arch, QWidget *parent) :
-    QDialog(parent), arch(cur_arch)/*skin_center(parent),*/
+MainWindow::MainWindow(QString cur_arch, int d_count, QWidget *parent) :
+    QDialog(parent), arch(cur_arch), display_count(d_count)/*skin_center(parent),*/
 {
 
     GlobalData::globalarch = this->arch;
@@ -58,12 +59,6 @@ MainWindow::MainWindow(QString cur_arch, QWidget *parent) :
         this->setWindowTitle(tr("Youker Assistant"));
     }
 
-    this->isTopLevel();
-    this->resize(900, 600);
-    this->setAutoFillBackground(true);
-    this->setWindowFlags(Qt::FramelessWindowHint | Qt::Widget);
-    this->setWindowTitle(tr("Kylin Assistant"));
-
 //    this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowMinimizeButtonHint | Qt::WindowSystemMenuHint);
 ////    this->setAttribute(Qt::WA_TranslucentBackground, true);
 
@@ -77,7 +72,8 @@ MainWindow::MainWindow(QString cur_arch, QWidget *parent) :
     status = HOMEPAGE;
     statusFlag = false;
 
-
+    sessioninterface = NULL;
+    systeminterface = NULL;
 
     mSettings = new QSettings(YOUKER_COMPANY_SETTING, YOUKER_SETTING_FILE_NAME_SETTING);
     mSettings->setIniCodec("UTF-8");
@@ -198,6 +194,9 @@ MainWindow::MainWindow(QString cur_arch, QWidget *parent) :
 
     this->initHomePage();
     this->initAnimation();
+
+    this->hide();
+    this->startDbusDaemon();
 }
 
 MainWindow::~MainWindow()
@@ -232,16 +231,23 @@ MainWindow::~MainWindow()
         delete setting_action_widget;
         setting_action_widget = NULL;
     }
-    if (sessioninterface != NULL)
-    {
-        delete sessioninterface;
-        sessioninterface = NULL;
+//    if (sessioninterface != NULL)
+//    {
+//        delete sessioninterface;
+//        sessioninterface = NULL;
+//    }
+//    if (systeminterface != NULL)
+//    {
+//        delete systeminterface;
+//        systeminterface = NULL;
+//    }
+    if (sessioninterface) {
+        sessioninterface->deleteLater();
     }
-    if (systeminterface != NULL)
-    {
-        delete systeminterface;
-        systeminterface = NULL;
+    if (systeminterface) {
+        systeminterface->deleteLater();
     }
+    ThreadPool::Instance()->deleteLater();
     if (aboutDlg != NULL)
     {
         delete aboutDlg;
@@ -599,64 +605,8 @@ void MainWindow::changeLanguage(LANGUAGE language)
 //	system_tray->translateLanguage();
 }
 
-void MainWindow::display(int count)
+void MainWindow::displayMainWindow(/*int count*/)
 {
-    if (this->isHidden()) {
-        int windowWidth, windowHeight = 0;
-        if (count < 2) {
-            windowWidth = QApplication::desktop()->width();
-            windowHeight = QApplication::desktop()->height();
-            this->move((windowWidth - this->width()) / 2,(windowHeight - this->height()) / 2);
-        }
-        else {
-            /*this->setGeometry(QApplication::desktop()->screenGeometry(1));
-            int a_width = 0;
-            for (int i=0;i<count;i++) {
-                if (i != 1)
-                    a_width += QApplication::desktop()->screenGeometry(i).width();//QRect QApplication::desktop->screenGeometry(1);根据当前的屏幕序号获取屏幕宽高等属性
-            }
-            windowWidth = QApplication::desktop()->width() - a_width;//QApplication::desktop()->width();获取虚拟屏幕全宽，注意这个比较猛，是获取的总宽度，对于横向扩展屏来说，也就是 屏幕1+ 屏幕2 + ... 的宽度
-            windowHeight = QApplication::desktop()->screenGeometry(1).height();
-            qDebug() << windowWidth;//3286   1024   1920  1366
-            qDebug() << windowHeight;//1080   768    1080  768
-            qDebug() << this->width();//900
-            qDebug() << this->height();//600
-            this->move((windowWidth - this->width()) / 2,(windowHeight - this->height()) / 2);*/
-            windowWidth = QApplication::desktop()->screenGeometry(0).width();
-            windowHeight = QApplication::desktop()->screenGeometry(0).height();
-            this->move((windowWidth - this->width()) / 2,(windowHeight - this->height()) / 2);
-        }
-
-        this->show();
-        this->raise();
-        QTimer::singleShot(100, this, SLOT(startDbusDaemon()));
-    }
-    else {
-        this->hide();
-    }
-}
-
-inline bool isRunningInstalled() {
-    static bool installed = (QCoreApplication::applicationDirPath() ==
-                             QDir(("/usr/bin")).canonicalPath());
-    return installed;
-}
-
-inline QString getAppDirectory() {
-    if (isRunningInstalled()) {
-        return QString("/var/lib/youker-assistant-daemon/");
-    } else {
-        return QString(QCoreApplication::applicationDirPath());
-    }
-}
-
-void MainWindow::startDbusDaemon()
-{
-    sessioninterface = new SessionDispatcher(this);
-    systeminterface = new SystemDispatcher(this);
-//    this->desktop = sessioninterface->access_current_desktop_qt();
-//    this->osName = systeminterface->get_os_name_qt();
-//    this->machine = sessioninterface->access_current_machine_qt();//x86_64
     this->battery = sessioninterface->judge_power_is_exists_qt();
     this->sensor = systeminterface->judge_sensors_exists_qt();
     login_widget->setSessionDbusProxy(sessioninterface);
@@ -676,6 +626,94 @@ void MainWindow::startDbusDaemon()
     home_page->setSessionDbusProxy(sessioninterface);
     home_page->setSystemDbusProxy(systeminterface);
     this->initOtherPages();
+
+//    if (this->isHidden()) {
+    int windowWidth, windowHeight = 0;
+    if (this->display_count < 2) {
+        windowWidth = QApplication::desktop()->width();
+        windowHeight = QApplication::desktop()->height();
+        this->move((windowWidth - this->width()) / 2,(windowHeight - this->height()) / 2);
+    }
+    else {
+        /*this->setGeometry(QApplication::desktop()->screenGeometry(1));
+        int a_width = 0;
+        for (int i=0;i<count;i++) {
+            if (i != 1)
+                a_width += QApplication::desktop()->screenGeometry(i).width();//QRect QApplication::desktop->screenGeometry(1);根据当前的屏幕序号获取屏幕宽高等属性
+        }
+        windowWidth = QApplication::desktop()->width() - a_width;//QApplication::desktop()->width();获取虚拟屏幕全宽，注意这个比较猛，是获取的总宽度，对于横向扩展屏来说，也就是 屏幕1+ 屏幕2 + ... 的宽度
+        windowHeight = QApplication::desktop()->screenGeometry(1).height();
+        qDebug() << windowWidth;//3286   1024   1920  1366
+        qDebug() << windowHeight;//1080   768    1080  768
+        qDebug() << this->width();//900
+        qDebug() << this->height();//600
+        this->move((windowWidth - this->width()) / 2,(windowHeight - this->height()) / 2);*/
+        windowWidth = QApplication::desktop()->screenGeometry(0).width();
+        windowHeight = QApplication::desktop()->screenGeometry(0).height();
+        this->move((windowWidth - this->width()) / 2,(windowHeight - this->height()) / 2);
+    }
+
+    this->show();
+    this->raise();
+//    QTimer::singleShot(100, this, SLOT(startDbusDaemon()));
+//    }
+//    else {
+//        this->hide();
+//    }
+}
+
+inline bool isRunningInstalled() {
+    static bool installed = (QCoreApplication::applicationDirPath() ==
+                             QDir(("/usr/bin")).canonicalPath());
+    return installed;
+}
+
+inline QString getAppDirectory() {
+    if (isRunningInstalled()) {
+        return QString("/var/lib/youker-assistant-daemon/");
+    } else {
+        return QString(QCoreApplication::applicationDirPath());
+    }
+}
+
+void MainWindow::startDbusDaemon()
+{
+    sessioninterface = new SessionDispatcher;
+    systeminterface = new SystemDispatcher;
+    QThread *sessionThread = ThreadPool::Instance()->createNewThread();
+    sessioninterface->moveToThread(sessionThread);
+    sessionThread->start();
+    QThread *systemThread = ThreadPool::Instance()->createNewThread();
+    systeminterface->moveToThread(systemThread);
+    connect(systemThread, SIGNAL(started()), systeminterface, SLOT(initData()));
+    connect(systeminterface, SIGNAL(dbusInitFinished()), this, SLOT(displayMainWindow()));//数据获取完毕后，告诉界面去更新数据后显示界面
+    systemThread->start();
+
+
+    /*sessioninterface = new SessionDispatcher(this);
+    systeminterface = new SystemDispatcher(this);
+//    this->desktop = sessioninterface->access_current_desktop_qt();
+//    this->osName = systeminterface->get_os_name_qt();
+//    this->machine = sessioninterface->access_current_machine_qt();//x86_64
+    this->battery = sessioninterface->judge_power_is_exists_qt();
+    this->sensor = systeminterface->judge_sensors_exists_qt();
+    login_widget->setSessionDbusProxy(sessioninterface);
+    if (this->arch != "aarch64" && this->osName != "Kylin" && this->osName != "YHKylin")
+        sessioninterface->check_user_qt();
+    connect(sessioninterface, SIGNAL(ssoSuccessSignal(QString, QString)), login_widget, SLOT(showLoginInfo(QString,QString)));
+    connect(sessioninterface, SIGNAL(ssoLoginLogoutSignal(bool)), login_widget, SLOT(showLoginAndLogoutStatus(bool)));
+    home_action_widget->setSessionDbusProxy(sessioninterface);
+    home_action_widget->setSystemDbusProxy(systeminterface);
+    home_action_widget->enableSanButton();
+    connect(sessioninterface, SIGNAL(isScanning(QString)), home_action_widget, SLOT(getScanResult(QString)));
+    connect(sessioninterface, SIGNAL(finishScanWork(QString)), home_action_widget, SLOT(finishScanResult(QString)));
+    connect(sessioninterface, SIGNAL(tellScanResult(QString,QString)) ,home_action_widget, SLOT(getScanAllResult(QString,QString)));
+    connect(systeminterface, SIGNAL(finishCleanWorkMain(QString)), home_action_widget, SLOT(getCleanResult(QString)));
+    connect(systeminterface, SIGNAL(finishCleanWorkMainError(QString)), home_action_widget, SLOT(finishCleanError(QString)));
+    connect(systeminterface, SIGNAL(quickCleanProcess(QString,QString)), home_action_widget, SLOT(getCleaningMessage(QString,QString)));
+    home_page->setSessionDbusProxy(sessioninterface);
+    home_page->setSystemDbusProxy(systeminterface);
+    this->initOtherPages();*/
 }
 
 void MainWindow::initOtherPages()

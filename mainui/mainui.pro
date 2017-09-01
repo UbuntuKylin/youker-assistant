@@ -96,6 +96,7 @@ SOURCES += main.cpp\
     ../component/kylinswitcher.cpp \
     ../component/systembutton.cpp \
     ../component/kylintitlebar.cpp \
+    ../component/threadpool.cpp \
     homepage.cpp \
     ../info/systemwidget.cpp \
     ../info/desktopwidget.cpp \
@@ -188,6 +189,7 @@ HEADERS  += mainwindow.h \
     ../component/kylinswitcher.h \
     ../component/systembutton.h \
     ../component/kylintitlebar.h \
+    ../component/threadpool.h \
     homepage.h \
     ../info/systemwidget.h \
     ../info/desktopwidget.h \
