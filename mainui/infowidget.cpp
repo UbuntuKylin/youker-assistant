@@ -39,8 +39,6 @@ InfoWidget::InfoWidget(QString machine, QWidget *parent) :
     category_widget->setFixedSize(150, 403);
     category_widget->setFocusPolicy(Qt::NoFocus);
     category_widget->setObjectName("infoList");
-    type_list << tr("Computer") << tr("Desktop") << tr("CPU") << tr("Memory") << tr("Motherboard") << tr("HD") << tr("NIC") << tr("VGA") << tr("Audio") << tr("CD-ROM") << tr("Battery") << tr("Sensor") << tr("Device Driver");
-    icon_list << "computer"<< "unity" << "cpu"<<"memory"<<"board"<<"harddisk"<<"network"<<"monitor"<<"audio"<<"cdrom"<<"battery" <<"sensor"<<"drive";
 
     category_widget->setIconSize(QSize(16, 16));//设置QListWidget中的单元项的图片大小
     category_widget->setResizeMode(QListView::Adjust);
@@ -139,35 +137,97 @@ void InfoWidget::initUI(bool has_battery, bool has_sensor)
 //        }
 //    }
 
+
+    if (system_widget->displaySwitch())
+    {
+        type_list << tr("Computer");
+        icon_list << "computer";
+    }
+
+    if (desktop_widget->displaySwitch())
+    {
+        type_list << tr("Desktop");
+        icon_list << "unity";
+    }
+
+    if (cpu_widget->displaySwitch())
+    {
+        type_list << tr("CPU");
+        icon_list << "cpu";
+    }
+
+    if (memory_widget->displaySwitch())
+    {
+        type_list << tr("Memory");
+        icon_list << "memory";
+    }
+
+    if (board_widget->displaySwitch())
+    {
+        type_list << tr("Motherboard");
+        icon_list << "board";
+    }
+
+    if (hd_widget->displaySwitch())
+    {
+        type_list << tr("HD");
+        icon_list << "harddisk";
+    }
+
+    if (true) //网络模块获取速度慢，使用的多线程，避免初始化界面阶段获取数据
+    {
+        type_list << tr("NIC");
+        icon_list << "network";
+    }
+
+    if (monitor_widget->displaySwitch())
+    {
+        type_list << tr("VGA");
+        icon_list << "monitor";
+    }
+
+    if (audio_widget->displaySwitch())
+    {
+        type_list << tr("Audio");
+        icon_list << "audio";
+    }
+    if (dvdNum == 0)
+    {
+        type_list << tr("CD-ROM");
+        icon_list << "cdrom";
+    }
+    if (has_battery)
+    {
+        type_list << tr("Battery");
+        icon_list << "battery";
+    }
+    if (has_sensor)
+    {
+        type_list << tr("Sensor");
+        icon_list << "sensor";
+    }
+    if (true) //驱动必然有
+    {
+        type_list << tr("Device Driver");
+        icon_list << "drive";
+    }
+
+
     for(int i = 0;i < type_list.length();i ++) {
-        if(i == 9 && dvdNum == 0) {
-
-        }
-        else if(i == 10 && !has_battery) {
-
-        }
-        else if (i == 4 && arch == "aarch64")
-        {
-            // FT arm can not access board
-        }
-        else if (i == 11 && !has_sensor) {
-
-        }
-//        else if (i == 11 && arch != "aarch64") {
-//            //x86 no sensor
+//        if (i == 1 && arch == "aarch64")
+//        {
+//            // FT arm can not access board
 //        }
 //        else if (i == 11 && arch == "aarch64" && serverOrDesktop.contains("server")) {
 //            //arm server no sensor
 //        }
-        else {
-            QIcon icon;
-            icon.addFile(":/hd/res/hardware/" + icon_list.at(i), QSize(), QIcon::Normal, QIcon::Off);
-            QListWidgetItem *item = new QListWidgetItem(type_list.at(i), category_widget);
-//            item->setSizeHint(QSize(120,31)); //设置单元项的宽度和高度
-            item->setSizeHint(QSize(120,36)); //设置单元项的宽度和高度
-            item->setStatusTip(icon_list.at(i));
-            item->setIcon(icon);
-        }
+        QIcon icon;
+        icon.addFile(":/hd/res/hardware/" + icon_list.at(i), QSize(), QIcon::Normal, QIcon::Off);
+        QListWidgetItem *item = new QListWidgetItem(type_list.at(i), category_widget);
+        //            item->setSizeHint(QSize(120,31)); //设置单元项的宽度和高度
+        item->setSizeHint(QSize(120,36)); //设置单元项的宽度和高度
+        item->setStatusTip(icon_list.at(i));
+        item->setIcon(icon);
     }
     category_widget->setCurrentRow(0);
     current_tip = category_widget->currentItem()->statusTip();
@@ -181,6 +241,7 @@ void InfoWidget::initUI(bool has_battery, bool has_sensor)
     stacked_widget->addWidget(nic_widget);
     stacked_widget->addWidget(monitor_widget);
     stacked_widget->addWidget(audio_widget);
+
     if(dvdNum != 0)
     {
         stacked_widget->addWidget(cdrom_widget);

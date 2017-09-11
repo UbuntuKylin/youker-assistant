@@ -37,6 +37,7 @@ public:
     void initData();
     bool getStatus();
     void clear_page_list();
+    bool displaySwitch();
 
 signals:
 
