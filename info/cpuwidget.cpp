@@ -60,6 +60,24 @@ void CpuWidget::clear_page_list()
         scroll_widget->resetWidget();
 }
 
+bool CpuWidget::displaySwitch()
+{
+    QMap<QString, QVariant> tmpMap = systemproxy->get_cpu_info_qt();
+    if (tmpMap.isEmpty() || tmpMap.count() <= 0) {
+        return false;
+    }
+    else
+    {
+        QMap<QString,QVariant>::iterator it;
+        for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
+            if (it.value().toString().length() > 0) {
+                cpu_info_map.insert(it.key(), it.value());
+            }
+        }
+        return true;
+    }
+}
+
 bool CpuWidget::getStatus()
 {
     return this->dataOK;
@@ -68,28 +86,12 @@ bool CpuWidget::getStatus()
 void CpuWidget::initData()
 {
     this->clear_page_list();
-    QMap<QString, QVariant> tmpMap = systemproxy->get_cpu_info_qt();
-    if (tmpMap.isEmpty() || tmpMap.count() <= 0) {
-        page = NULL;
-    }
-    else {
-        QMap<QString,QVariant>::iterator it;
-        for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
-            if (it.value().toString().length() > 0) {
-                cpu_info_map.insert(it.key(), it.value());
-            }
-        }
-        if(cpu_info_map.isEmpty() || cpu_info_map.count() <= 0) {
-            page = NULL;
-        }
-        else {
-            page = new ComputerPage(scroll_widget->zone, tr("CPU Info"));
-            page->setSystemDbusProxy(systemproxy);
-            page->setMap(cpu_info_map, cpu_info_map.value("CpuVendor").toString().toUpper());
-            page->initUI(true);
-            scroll_widget->addScrollWidget(page);
-        }
-    }
+
+    page = new ComputerPage(scroll_widget->zone, tr("CPU Info"));
+    page->setSystemDbusProxy(systemproxy);
+    page->setMap(cpu_info_map, cpu_info_map.value("CpuVendor").toString().toUpper());
+    page->initUI(true);
+    scroll_widget->addScrollWidget(page);
     /*QMap<QString,QVariant>::iterator it;
     for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
         if (it.value().toString().length() > 0) {

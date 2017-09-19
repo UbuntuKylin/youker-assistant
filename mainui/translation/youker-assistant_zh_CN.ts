@@ -4,149 +4,50 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="../aboutdialog.cpp" line="74"/>
-        <source>Kylin Assisant</source>
-        <translation>麒麟助手</translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="78"/>
-        <source>Youker Assisant</source>
-        <translation>优客助手</translation>
+        <location filename="../aboutdialog.cpp" line="35"/>
+        <source>About us</source>
+        <translation>关于我们</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="84"/>
+        <source>Kylin Assistant</source>
+        <translation>麒麟助手</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="90"/>
         <source>About</source>
         <translatorcomment>关于本软件</translatorcomment>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="111"/>
+        <location filename="../aboutdialog.cpp" line="128"/>
         <source>Maintainer:
 Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>维护者：
 麒麟团队 &lt;ubuntukylin-members@list.launchpad.net&gt;</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="112"/>
+        <location filename="../aboutdialog.cpp" line="129"/>
         <source>      Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.</source>
         <translation>      麒麟助手是由麒麟团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器等功能。</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="113"/>
+        <location filename="../aboutdialog.cpp" line="130"/>
         <source> for more information. Welcome everyone to join with us. kylin-assistant Homepage: </source>
         <translation> 了解软件的最新进展并反馈问题，欢迎广大用户和爱好者一起参与。麒麟助手主页：</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="117"/>
-        <source>      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, system customization, task manager, and some other functions.</source>
-        <translation>      优客助手是由Ubuntu Kylin团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器等功能。</translation>
-    </message>
-    <message>
-        <source>      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions.</source>
-        <translation type="obsolete">      优客助手是由Ubuntu Kylin团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器以及监控球等功能。</translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="113"/>
-        <location filename="../aboutdialog.cpp" line="118"/>
+        <location filename="../aboutdialog.cpp" line="130"/>
         <source>      The software is still under development. Please visit </source>
         <translation>      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 </translation>
     </message>
     <message>
-        <source>      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions. 
-      The software is still under development. Please visit </source>
-        <translation type="obsolete">      优客助手是由Ubuntu Kylin团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器以及监控球等功能。
-      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 </translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="118"/>
-        <source> for more information. Welcome everyone to join with us. youker-assistant Homepage: </source>
-        <translation> 了解软件的最新进展并反馈问题，欢迎广大优客一起参与。优客助手主页：</translation>
-    </message>
-    <message>
-        <source>      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions. 
-      The software is still under development. Please visit www.ubuntukylin.com for more information. Welcome everyone to join with us. youker-assistant Homepage: </source>
-        <translation type="obsolete">      优客助手是由Ubuntu Kylin团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器以及监控球等功能。
-      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 www.ubuntukylin.com 了解软件的最新进展并反馈问题，欢迎广大优客一起参与。优客助手主页：</translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="116"/>
-        <source>Maintainer:
-Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
-        <translation>维护者：
-Ubuntu Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</translation>
-    </message>
-    <message>
-        <source>Youker Assistant</source>
-        <translatorcomment>优客助手</translatorcomment>
-        <translation type="obsolete">优客助手</translation>
-    </message>
-    <message>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:11pt;&quot;&gt;      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:11pt;&quot;&gt;      The software is still under development. Please visit www.ubuntukylin.com for more information. Welcome everyone to join with us. youker-assistant Homepage: https://launchpad.net/youker-assistant.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;      优客助手是由Ubuntu Kylin团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器以及监控球等功能。 &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 www.ubuntukylin.com 了解软件的最新进展并反馈问题，欢迎广大优客一起参与。优客助手主页：https://launchpad.net/youker-assistant 。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt;&quot;&gt;Maintainer&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Droid Sans Fallback&apos;; font-size:11pt;&quot;&gt;:&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:11px; margin-bottom:11px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt;&quot;&gt;Ubuntu Kylin Team &amp;lt;ubuntukylin-members@list.launchpad.net&amp;gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;维护者&lt;span style=&quot; font-family:&apos;Droid Sans Fallback&apos;;&quot;&gt;：&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:11px; margin-bottom:11px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Ubuntu Kylin Team &amp;lt;ubuntukylin-members@list.launchpad.net&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information , system customization, task manager, monitoring ball, and some other functions. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;      The software is still under development. Please visit www.ubuntukylin.com for more information. Welcome everyone to join with us. youker-assistant Homepage: https://launchpad.net/youker-assistant.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;      优客助手是由Ubuntu Kylin团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器以及监控球等功能。 &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;;&quot;&gt;      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 www.ubuntukylin.com 了解软件的最新进展并反馈问题，欢迎广大优客一起参与。优客助手主页：https://launchpad.net/youker-assistant 。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="87"/>
+        <location filename="../aboutdialog.cpp" line="93"/>
         <source>Contributor</source>
         <translation>贡献者</translation>
     </message>
     <message>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;Maintainer&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Droid Sans Fallback&apos;;&quot;&gt;:&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:11px; margin-bottom:11px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Cantarell&apos;;&quot;&gt;Ubuntu Kylin Team &amp;lt;ubuntukylin-members@list.launchpad.net&amp;gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Cantarell&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;维护者&lt;span style=&quot; font-family:&apos;Droid Sans Fallback&apos;;&quot;&gt;：&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:11px; margin-bottom:11px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Ubuntu Kylin Team &amp;lt;ubuntukylin-members@list.launchpad.net&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;a href=https://launchpad.net/youker-assistant&gt;home page&lt;/a&gt;</source>
-        <translation type="obsolete">&lt;a href=https://launchpad.net/youker-assistant&gt;主页&lt;/a&gt;</translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="138"/>
+        <location filename="../aboutdialog.cpp" line="150"/>
         <source>Close</source>
         <translatorcomment>关闭</translatorcomment>
         <translation>关闭</translation>
@@ -161,53 +62,14 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>AnimationWidget</name>
-    <message>
-        <source>Please select a picture as boot animation</source>
-        <translation type="obsolete">请选择一个图片作为开机动画</translation>
-    </message>
-    <message>
-        <source>Custom Picture</source>
-        <translation type="obsolete">自定义图片</translation>
-    </message>
-    <message>
-        <source>Optional BootAnimation</source>
-        <translation type="obsolete">可选启动动画</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="obsolete">确定</translation>
-    </message>
-    <message>
-        <source>Image Files (*.png *.jpg *.gif)</source>
-        <translation type="obsolete">图片文件(*.png *.jpg *.gif)</translation>
-    </message>
-    <message>
-        <source>Deleted successfully!</source>
-        <translation type="obsolete">删除成功！</translation>
-    </message>
-    <message>
-        <source>This is the using animation!</source>
-        <translation type="obsolete">该动画为当前使用动画！</translation>
-    </message>
-    <message>
-        <source>This is the default animation!</source>
-        <translation type="obsolete">该动画为系统默认动画！</translation>
-    </message>
-    <message>
-        <source>An unknown error occurred!</source>
-        <translation type="obsolete">发生未知错误！</translation>
-    </message>
-</context>
-<context>
     <name>AudioWidget</name>
     <message>
-        <location filename="../../info/audiowidget.cpp" line="61"/>
+        <location filename="../../info/audiowidget.cpp" line="84"/>
         <source>Audio Info</source>
         <translation>声卡信息</translation>
     </message>
     <message>
-        <location filename="../../info/audiowidget.cpp" line="78"/>
+        <location filename="../../info/audiowidget.cpp" line="102"/>
         <source>Audio Info %1</source>
         <translation>声卡信息%1</translation>
     </message>
@@ -215,42 +77,35 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>AutoStartWidget</name>
     <message>
-        <location filename="../autostartwidget.cpp" line="56"/>
+        <location filename="../autostartwidget.cpp" line="57"/>
         <source>AutoStart Items:</source>
         <translation>自启动选项：</translation>
     </message>
     <message>
-        <source>5</source>
-        <translation type="obsolete">５</translation>
-    </message>
-    <message>
-        <location filename="../autostartwidget.cpp" line="57"/>
+        <location filename="../autostartwidget.cpp" line="58"/>
         <source>App</source>
         <translation>应用程序</translation>
     </message>
     <message>
-        <location filename="../autostartwidget.cpp" line="58"/>
+        <location filename="../autostartwidget.cpp" line="59"/>
         <source>Status</source>
         <translation>状态</translation>
     </message>
     <message>
-        <location filename="../autostartwidget.cpp" line="60"/>
+        <location filename="../autostartwidget.cpp" line="61"/>
         <source>ON Items:</source>
         <translation>已开启数目：</translation>
     </message>
     <message>
-        <location filename="../autostartwidget.cpp" line="61"/>
+        <location filename="../autostartwidget.cpp" line="62"/>
         <source>OFF Items:</source>
         <translation>已关闭数目：</translation>
     </message>
     <message>
-        <location filename="../autostartwidget.cpp" line="255"/>
+        <location filename="../autostartwidget.cpp" line="39"/>
+        <location filename="../autostartwidget.cpp" line="256"/>
         <source>Boot Manager</source>
         <translation>启动项管理</translation>
-    </message>
-    <message>
-        <source>Auto Start</source>
-        <translation type="obsolete">自启动</translation>
     </message>
     <message>
         <location filename="../autostartwidget.ui" line="14"/>
@@ -261,7 +116,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>BatteryWidget</name>
     <message>
-        <location filename="../../info/batterywidget.cpp" line="71"/>
+        <location filename="../../info/batterywidget.cpp" line="92"/>
         <source>Battery Info</source>
         <translation>电池信息</translation>
     </message>
@@ -269,7 +124,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>BoardWidget</name>
     <message>
-        <location filename="../../info/boardwidget.cpp" line="55"/>
+        <location filename="../../info/boardwidget.cpp" line="76"/>
         <source>Board Info</source>
         <translation>主板信息</translation>
     </message>
@@ -290,68 +145,31 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>BoxWidget</name>
     <message>
-        <location filename="../boxwidget.cpp" line="104"/>
-        <location filename="../boxwidget.cpp" line="106"/>
+        <location filename="../boxwidget.cpp" line="116"/>
+        <location filename="../boxwidget.cpp" line="118"/>
         <source>Kylin Software Center</source>
         <translation>麒麟软件中心</translation>
     </message>
     <message>
-        <location filename="../boxwidget.cpp" line="110"/>
-        <location filename="../boxwidget.cpp" line="112"/>
-        <source>UbuntuKylin Software Center</source>
-        <translation>优客软件中心</translation>
-    </message>
-    <message>
-        <location filename="../boxwidget.cpp" line="120"/>
+        <location filename="../boxwidget.cpp" line="126"/>
         <source>Boot Manager</source>
         <translation>启动项管理</translation>
     </message>
     <message>
-        <location filename="../boxwidget.cpp" line="120"/>
+        <location filename="../boxwidget.cpp" line="126"/>
         <source>Camera</source>
         <translation>摄像头</translation>
     </message>
 </context>
 <context>
-    <name>BrowserTab</name>
-    <message>
-        <source>windowsç³»ç»åå¾æä»¶</source>
-        <translation type="obsolete">windows系统垃圾文件</translation>
-    </message>
-    <message>
-        <source>æµè§å¨ç¼å­ç®å½</source>
-        <translation type="obsolete">浏览器缓存目录</translation>
-    </message>
-    <message>
-        <source>è§é¢æ­æ¾ç¼å­ç®å½</source>
-        <translation type="obsolete">视频播放缓存目录</translation>
-    </message>
-    <message>
-        <source>Deep cleaning up the browser cache</source>
-        <translation type="obsolete">深度清理浏览器缓存</translation>
-    </message>
-    <message>
-        <source>Deep cleaning up the browser cache, to save disk space</source>
-        <translation type="obsolete">深度清理浏览器缓存，节省磁盘空间</translation>
-    </message>
-    <message>
-        <source>Start scanning</source>
-        <translation type="obsolete">开始扫描</translation>
-    </message>
-    <message>
-        <source>Begin cleanup</source>
-        <translation type="obsolete">开始清理</translation>
-    </message>
-</context>
-<context>
     <name>CDRowWidget</name>
     <message>
-        <location filename="../../info/cdrowwidget.cpp" line="56"/>
+        <location filename="../../info/cdrowwidget.cpp" line="79"/>
         <source>CDROM Info</source>
         <translation>光驱信息</translation>
     </message>
     <message>
-        <location filename="../../info/cdrowwidget.cpp" line="73"/>
+        <location filename="../../info/cdrowwidget.cpp" line="97"/>
         <source>CDROM Info %1</source>
         <translation>光驱信息 %1</translation>
     </message>
@@ -370,54 +188,7 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>CacheTab</name>
-    <message>
-        <source>windowsç³»ç»åå¾æä»¶</source>
-        <translation type="obsolete">windows系统垃圾文件</translation>
-    </message>
-    <message>
-        <source>æµè§å¨ç¼å­ç®å½</source>
-        <translation type="obsolete">浏览器缓存目录</translation>
-    </message>
-    <message>
-        <source>è§é¢æ­æ¾ç¼å­ç®å½</source>
-        <translation type="obsolete">视频播放缓存目录</translation>
-    </message>
-    <message>
-        <source>Cleaning up the system cache</source>
-        <translation type="obsolete">清理系统缓存</translation>
-    </message>
-    <message>
-        <source>Deep cleaning up the system cache, to save disk space</source>
-        <translation type="obsolete">深度清理系统缓存，节省磁盘空间</translation>
-    </message>
-    <message>
-        <source>Start scanning</source>
-        <translation type="obsolete">开始扫描</translation>
-    </message>
-    <message>
-        <source>Begin cleanup</source>
-        <translation type="obsolete">开始清理</translation>
-    </message>
-</context>
-<context>
     <name>CameraManager</name>
-    <message>
-        <source>NO found camara</source>
-        <translation type="obsolete">未发现摄像头</translation>
-    </message>
-    <message>
-        <source>An application to take pictures with the device camera.</source>
-        <translation type="obsolete">一个使用摄像头拍照的应用。</translation>
-    </message>
-    <message>
-        <source>Press the [ESC] button to take picture and turn the camera off , the photo saved in home directory by default.</source>
-        <translation type="obsolete">按[退出]键拍照并关闭摄像头，照片默认保存在家目录下。</translation>
-    </message>
-    <message>
-        <source>Open camera</source>
-        <translation type="obsolete">打开摄像头</translation>
-    </message>
     <message>
         <location filename="../cameramanager.cpp" line="81"/>
         <source>View Photos</source>
@@ -429,17 +200,9 @@ p, li { white-space: pre-wrap; }
         <translation>摄像头出问题了， &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; 刷新&lt;/a&gt; 去召唤它～</translation>
     </message>
     <message>
-        <source>The camera is out of question, &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; Refresh&lt;/a&gt; to call it out</source>
-        <translation type="obsolete">摄像头出问题了， &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; 刷新&lt;/a&gt; 去召唤它～</translation>
-    </message>
-    <message>
         <location filename="../cameramanager.cpp" line="301"/>
         <source>Camera</source>
         <translation>摄像头</translation>
-    </message>
-    <message>
-        <source>Camera Manager</source>
-        <translation type="obsolete">摄像头管理</translation>
     </message>
 </context>
 <context>
@@ -492,10 +255,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../cleaneractionwidget.cpp" line="359"/>
         <source>Scaning......</source>
         <translation>正在扫描.....</translation>
-    </message>
-    <message>
-        <source>Clean OK......</source>
-        <translation type="obsolete">清理完毕......</translation>
     </message>
     <message>
         <location filename="../cleaneractionwidget.cpp" line="172"/>
@@ -584,10 +343,6 @@ p, li { white-space: pre-wrap; }
         <translation>包扫描完成</translation>
     </message>
     <message>
-        <source>Packages Scan OK.</source>
-        <translation type="obsolete">包扫描完成</translation>
-    </message>
-    <message>
         <location filename="../cleaneractionwidget.cpp" line="297"/>
         <source>Firefox Browser does not be installed</source>
         <translation>没有安装Firefox浏览器</translation>
@@ -603,33 +358,9 @@ p, li { white-space: pre-wrap; }
         <translation>Chromium浏览器正在运行中</translation>
     </message>
     <message>
-        <source>Cache Scan OK......</source>
-        <translation type="obsolete">缓存扫描完成.....</translation>
-    </message>
-    <message>
-        <source>Cookies Scan OK......</source>
-        <translation type="obsolete">Cookies扫描完成.....</translation>
-    </message>
-    <message>
-        <source>History Scan OK......</source>
-        <translation type="obsolete">历史记录扫描完成.....</translation>
-    </message>
-    <message>
-        <source>Packages Scan OK......</source>
-        <translation type="obsolete">包扫描完成......</translation>
-    </message>
-    <message>
         <location filename="../cleaneractionwidget.cpp" line="294"/>
         <source>Error: </source>
         <translation>错误：</translation>
-    </message>
-    <message>
-        <source>Firefox Browser does not be installed......</source>
-        <translation type="obsolete">没有安装Firefox浏览器......</translation>
-    </message>
-    <message>
-        <source>Chromium Browser does not be installed......</source>
-        <translation type="obsolete">没有安装Chromium浏览器......</translation>
     </message>
     <message>
         <location filename="../cleaneractionwidget.cpp" line="347"/>
@@ -732,18 +463,6 @@ p, li { white-space: pre-wrap; }
         <translation>调试日志：</translation>
     </message>
     <message>
-        <source>Package Unneed Count:</source>
-        <translation type="obsolete">不需要的包总数：</translation>
-    </message>
-    <message>
-        <source>Package oldkernel Count:</source>
-        <translation type="obsolete">旧内核包总数：</translation>
-    </message>
-    <message>
-        <source>Package configfile Count:</source>
-        <translation type="obsolete">包配置文件总数：</translation>
-    </message>
-    <message>
         <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1109"/>
         <source>No garbage </source>
         <translation>没有扫描到垃圾</translation>
@@ -763,7 +482,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>CleanerItems</name>
     <message>
-        <location filename="../../cleaner/cleaneritems.cpp" line="168"/>
+        <location filename="../../cleaner/cleaneritems.cpp" line="175"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
@@ -809,30 +528,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../../cleaner/cleanermainwidget.cpp" line="49"/>
         <source>Cleanup  cache of system, software-center, thumbnails and browser</source>
         <translation>清除包、缩略图和浏览器缓存等</translation>
-    </message>
-    <message>
-        <source>Uninstall unnecessary procedures</source>
-        <translation type="obsolete">卸载不必要的程序</translation>
-    </message>
-    <message>
-        <source>Uninstall old kernel packages</source>
-        <translation type="obsolete">卸载旧版本内核</translation>
-    </message>
-    <message>
-        <source>Cleanup software configfile</source>
-        <translation type="obsolete">清理软件残余配置文件</translation>
-    </message>
-    <message>
-        <source>Package Items</source>
-        <translation type="obsolete">包选项</translation>
-    </message>
-    <message>
-        <source>Packages and configfile</source>
-        <translation type="obsolete">包垃圾和残余配置文件</translation>
-    </message>
-    <message>
-        <source>Cleaning up the software that installed by other software bundled, old kernel packages and configfile, to improve system performance</source>
-        <translation type="obsolete">清除不必要的程序、旧内核包和配置</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="74"/>
@@ -911,673 +606,651 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>CommonCheckBox</name>
-    <message>
-        <source>Custom</source>
-        <translation type="obsolete">自定义</translation>
-    </message>
-</context>
-<context>
     <name>ComputerPage</name>
     <message>
-        <location filename="../../info/computerpage.cpp" line="171"/>
-        <location filename="../../info/computerpage.cpp" line="219"/>
-        <location filename="../../info/computerpage.cpp" line="224"/>
-        <location filename="../../info/computerpage.cpp" line="229"/>
-        <location filename="../../info/computerpage.cpp" line="234"/>
-        <location filename="../../info/computerpage.cpp" line="239"/>
-        <location filename="../../info/computerpage.cpp" line="259"/>
-        <location filename="../../info/computerpage.cpp" line="264"/>
-        <location filename="../../info/computerpage.cpp" line="269"/>
-        <location filename="../../info/computerpage.cpp" line="274"/>
-        <location filename="../../info/computerpage.cpp" line="297"/>
-        <location filename="../../info/computerpage.cpp" line="315"/>
-        <location filename="../../info/computerpage.cpp" line="317"/>
-        <location filename="../../info/computerpage.cpp" line="319"/>
-        <location filename="../../info/computerpage.cpp" line="321"/>
+        <location filename="../../info/computerpage.cpp" line="178"/>
+        <location filename="../../info/computerpage.cpp" line="226"/>
+        <location filename="../../info/computerpage.cpp" line="231"/>
+        <location filename="../../info/computerpage.cpp" line="236"/>
+        <location filename="../../info/computerpage.cpp" line="241"/>
+        <location filename="../../info/computerpage.cpp" line="246"/>
+        <location filename="../../info/computerpage.cpp" line="266"/>
+        <location filename="../../info/computerpage.cpp" line="271"/>
+        <location filename="../../info/computerpage.cpp" line="276"/>
+        <location filename="../../info/computerpage.cpp" line="281"/>
+        <location filename="../../info/computerpage.cpp" line="304"/>
         <location filename="../../info/computerpage.cpp" line="323"/>
         <location filename="../../info/computerpage.cpp" line="325"/>
         <location filename="../../info/computerpage.cpp" line="327"/>
-        <location filename="../../info/computerpage.cpp" line="330"/>
+        <location filename="../../info/computerpage.cpp" line="329"/>
+        <location filename="../../info/computerpage.cpp" line="331"/>
         <location filename="../../info/computerpage.cpp" line="333"/>
-        <location filename="../../info/computerpage.cpp" line="336"/>
-        <location filename="../../info/computerpage.cpp" line="339"/>
+        <location filename="../../info/computerpage.cpp" line="335"/>
+        <location filename="../../info/computerpage.cpp" line="338"/>
+        <location filename="../../info/computerpage.cpp" line="341"/>
+        <location filename="../../info/computerpage.cpp" line="347"/>
+        <location filename="../../info/computerpage.cpp" line="350"/>
+        <location filename="../../info/computerpage.cpp" line="355"/>
         <source>%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="290"/>
-        <location filename="../../info/computerpage.cpp" line="294"/>
+        <location filename="../../info/computerpage.cpp" line="297"/>
+        <location filename="../../info/computerpage.cpp" line="301"/>
         <source> Minutes</source>
         <translation> 分钟</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="294"/>
+        <location filename="../../info/computerpage.cpp" line="301"/>
         <source> Hours </source>
         <translation> 小时</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="308"/>
+        <location filename="../../info/computerpage.cpp" line="316"/>
         <source>%1 cores</source>
         <translation>%1 核</translation>
     </message>
     <message>
-        <source>% 64bit</source>
-        <translation type="obsolete">% 64位</translation>
-    </message>
-    <message>
-        <location filename="../../info/computerpage.cpp" line="491"/>
-        <location filename="../../info/computerpage.cpp" line="647"/>
+        <location filename="../../info/computerpage.cpp" line="560"/>
+        <location filename="../../info/computerpage.cpp" line="716"/>
         <source>Audio Model</source>
         <translation>声卡型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="493"/>
-        <location filename="../../info/computerpage.cpp" line="573"/>
-        <location filename="../../info/computerpage.cpp" line="586"/>
-        <location filename="../../info/computerpage.cpp" line="690"/>
-        <location filename="../../info/computerpage.cpp" line="733"/>
-        <location filename="../../info/computerpage.cpp" line="751"/>
-        <location filename="../../info/computerpage.cpp" line="778"/>
+        <location filename="../../info/computerpage.cpp" line="562"/>
+        <location filename="../../info/computerpage.cpp" line="642"/>
+        <location filename="../../info/computerpage.cpp" line="655"/>
+        <location filename="../../info/computerpage.cpp" line="759"/>
+        <location filename="../../info/computerpage.cpp" line="802"/>
+        <location filename="../../info/computerpage.cpp" line="820"/>
+        <location filename="../../info/computerpage.cpp" line="847"/>
         <source>Vendor</source>
         <translation>制造商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="495"/>
-        <location filename="../../info/computerpage.cpp" line="709"/>
-        <location filename="../../info/computerpage.cpp" line="739"/>
-        <location filename="../../info/computerpage.cpp" line="757"/>
+        <location filename="../../info/computerpage.cpp" line="564"/>
+        <location filename="../../info/computerpage.cpp" line="778"/>
+        <location filename="../../info/computerpage.cpp" line="808"/>
+        <location filename="../../info/computerpage.cpp" line="826"/>
         <source>Bus Address</source>
         <translation>总线地址</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="497"/>
+        <location filename="../../info/computerpage.cpp" line="566"/>
         <source>Audio Driver</source>
         <translation>声卡驱动</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="500"/>
-        <location filename="../../info/computerpage.cpp" line="575"/>
-        <location filename="../../info/computerpage.cpp" line="679"/>
-        <location filename="../../info/computerpage.cpp" line="741"/>
+        <location filename="../../info/computerpage.cpp" line="569"/>
+        <location filename="../../info/computerpage.cpp" line="644"/>
+        <location filename="../../info/computerpage.cpp" line="748"/>
+        <location filename="../../info/computerpage.cpp" line="810"/>
         <source>Device Name</source>
         <translation>设备名</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="502"/>
+        <location filename="../../info/computerpage.cpp" line="571"/>
         <source>Manufacturer</source>
         <translation>发行商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="543"/>
-        <location filename="../../info/computerpage.cpp" line="780"/>
+        <location filename="../../info/computerpage.cpp" line="612"/>
+        <location filename="../../info/computerpage.cpp" line="849"/>
         <source>Model</source>
         <translation>型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="545"/>
+        <location filename="../../info/computerpage.cpp" line="614"/>
         <source>Technology</source>
         <translation>技术</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="547"/>
+        <location filename="../../info/computerpage.cpp" line="616"/>
         <source>Voltage</source>
         <translation>电压</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="549"/>
+        <location filename="../../info/computerpage.cpp" line="618"/>
         <source>Energy Designed</source>
         <translation>能量（设计）</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="551"/>
+        <location filename="../../info/computerpage.cpp" line="620"/>
         <source>Energy Full</source>
         <translation>满时能量</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="553"/>
+        <location filename="../../info/computerpage.cpp" line="622"/>
         <source>Energy Now</source>
         <translation>能量</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="555"/>
-        <location filename="../../info/computerpage.cpp" line="562"/>
-        <location filename="../../info/computerpage.cpp" line="579"/>
-        <location filename="../../info/computerpage.cpp" line="588"/>
-        <location filename="../../info/computerpage.cpp" line="683"/>
-        <location filename="../../info/computerpage.cpp" line="692"/>
+        <location filename="../../info/computerpage.cpp" line="624"/>
+        <location filename="../../info/computerpage.cpp" line="631"/>
+        <location filename="../../info/computerpage.cpp" line="648"/>
+        <location filename="../../info/computerpage.cpp" line="657"/>
+        <location filename="../../info/computerpage.cpp" line="752"/>
         <location filename="../../info/computerpage.cpp" line="761"/>
-        <location filename="../../info/computerpage.cpp" line="784"/>
+        <location filename="../../info/computerpage.cpp" line="830"/>
+        <location filename="../../info/computerpage.cpp" line="853"/>
         <source>Serial Number</source>
         <translation>序列号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="558"/>
+        <location filename="../../info/computerpage.cpp" line="627"/>
         <source>Motherboard Model</source>
         <translation>主板型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="560"/>
+        <location filename="../../info/computerpage.cpp" line="629"/>
         <source>Motherboard Vendor</source>
         <translation>主板产商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="564"/>
+        <location filename="../../info/computerpage.cpp" line="633"/>
         <source>BIOS Vendor</source>
         <translation>BIOS产商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="566"/>
+        <location filename="../../info/computerpage.cpp" line="635"/>
         <source>BIOS Version</source>
         <translation>BIOS版本</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="568"/>
+        <location filename="../../info/computerpage.cpp" line="637"/>
         <source>Release Date</source>
         <translation>发布日期</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="571"/>
+        <location filename="../../info/computerpage.cpp" line="640"/>
         <source>CD-ROM Model</source>
         <translation>光驱型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="577"/>
-        <location filename="../../info/computerpage.cpp" line="681"/>
+        <location filename="../../info/computerpage.cpp" line="646"/>
+        <location filename="../../info/computerpage.cpp" line="750"/>
         <source>Firmware Version</source>
         <translation>固件版本</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="584"/>
-        <location filename="../../info/computerpage.cpp" line="620"/>
+        <location filename="../../info/computerpage.cpp" line="653"/>
+        <location filename="../../info/computerpage.cpp" line="689"/>
         <source>CPU</source>
         <translation>处理器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="590"/>
+        <location filename="../../info/computerpage.cpp" line="659"/>
         <source>Socket/Slot</source>
         <translation>插座／插槽</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="592"/>
+        <location filename="../../info/computerpage.cpp" line="661"/>
         <source>Maximum Frequency</source>
         <translation>最大主频</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="594"/>
+        <location filename="../../info/computerpage.cpp" line="663"/>
         <source>Current Frequency</source>
         <translation>当前主频</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="596"/>
+        <location filename="../../info/computerpage.cpp" line="665"/>
         <source>FSB</source>
         <translation>前端总线</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="598"/>
+        <location filename="../../info/computerpage.cpp" line="667"/>
         <source>Core Number</source>
         <translation>核心数目</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="600"/>
+        <location filename="../../info/computerpage.cpp" line="669"/>
         <source>Thread</source>
         <translation>线程</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="602"/>
+        <location filename="../../info/computerpage.cpp" line="671"/>
         <source>L1 Cache</source>
         <translation>１级缓存</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="604"/>
+        <location filename="../../info/computerpage.cpp" line="673"/>
         <source>L2 Cache</source>
         <translation>２级缓存</translation>
     </message>
     <message>
-        <source>1500a v1.0 64 bits</source>
-        <translation type="obsolete">1500a v1.0 64位</translation>
-    </message>
-    <message>
-        <location filename="../../info/computerpage.cpp" line="610"/>
+        <location filename="../../info/computerpage.cpp" line="679"/>
         <source>phytium</source>
         <translation>飞腾</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="612"/>
+        <location filename="../../info/computerpage.cpp" line="681"/>
         <source>4 cores</source>
         <translation>4核</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="614"/>
+        <location filename="../../info/computerpage.cpp" line="683"/>
         <source>4 thread/core</source>
         <translation>4线程/核</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="618"/>
+        <location filename="../../info/computerpage.cpp" line="687"/>
         <source>Desktop Environment</source>
         <translation>桌面环境</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="622"/>
+        <location filename="../../info/computerpage.cpp" line="691"/>
         <source>Host Name</source>
         <translation>主机名</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="624"/>
+        <location filename="../../info/computerpage.cpp" line="693"/>
         <source>Memery Capacity</source>
         <translation>内存容量</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="626"/>
+        <location filename="../../info/computerpage.cpp" line="695"/>
         <source>Terminal</source>
         <translation>用户命令解释器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="800"/>
+        <location filename="../../info/computerpage.cpp" line="869"/>
         <source>32bit</source>
         <translation>32位</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="802"/>
+        <location filename="../../info/computerpage.cpp" line="871"/>
         <source>64bit</source>
         <translation>64位</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="804"/>
+        <location filename="../../info/computerpage.cpp" line="873"/>
         <source>YHKylin community</source>
         <translation>银河麒麟社区版</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="807"/>
+        <location filename="../../info/computerpage.cpp" line="876"/>
         <source>Memory reference voltage</source>
         <translation>内存参考电压</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="809"/>
+        <location filename="../../info/computerpage.cpp" line="878"/>
         <source>SATA controller voltage</source>
         <translation>SATA控制器电压</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="811"/>
+        <location filename="../../info/computerpage.cpp" line="880"/>
         <source>Memory voltage</source>
         <translation>内存电压</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="813"/>
+        <location filename="../../info/computerpage.cpp" line="882"/>
         <source>CPU pin voltage</source>
         <translation>CPU管脚电压</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="815"/>
+        <location filename="../../info/computerpage.cpp" line="884"/>
         <source>Bridge voltage</source>
         <translation>桥片电压</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="817"/>
+        <location filename="../../info/computerpage.cpp" line="886"/>
         <source>CPU core voltage</source>
         <translation>CPU核电压</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="819"/>
+        <location filename="../../info/computerpage.cpp" line="888"/>
         <source>CPU temperature</source>
         <translation>CPU温度</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="821"/>
+        <location filename="../../info/computerpage.cpp" line="890"/>
         <source>Motherboard temperature</source>
         <translation>主板温度</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="823"/>
+        <location filename="../../info/computerpage.cpp" line="892"/>
         <source>CPU fan speed</source>
         <translation>CPU风扇转速</translation>
     </message>
     <message>
-        <source>Shell</source>
-        <translation type="obsolete">Shell终端</translation>
-    </message>
-    <message>
-        <location filename="../../info/computerpage.cpp" line="311"/>
+        <location filename="../../info/computerpage.cpp" line="319"/>
         <source>%1 64bit</source>
         <translation>%1 64位</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="355"/>
+        <location filename="../../info/computerpage.cpp" line="371"/>
         <source>Ondemand</source>
         <translation>自动调频</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="362"/>
+        <location filename="../../info/computerpage.cpp" line="378"/>
         <source>Powersave</source>
         <translation>省电模式</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="369"/>
+        <location filename="../../info/computerpage.cpp" line="385"/>
         <source>Performance</source>
         <translation>性能模式</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="417"/>
+        <location filename="../../info/computerpage.cpp" line="433"/>
         <source>CPU FM mode</source>
         <translation>CPU调频模式</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="628"/>
+        <location filename="../../info/computerpage.cpp" line="697"/>
         <source>Distribution</source>
         <translation>发行版</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="630"/>
+        <location filename="../../info/computerpage.cpp" line="699"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="632"/>
+        <location filename="../../info/computerpage.cpp" line="701"/>
         <source>User</source>
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="634"/>
+        <location filename="../../info/computerpage.cpp" line="703"/>
         <source>Home Folder</source>
         <translation>用户主目录</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="637"/>
+        <location filename="../../info/computerpage.cpp" line="706"/>
         <source>Host bridge</source>
         <translation>主桥</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="639"/>
+        <location filename="../../info/computerpage.cpp" line="708"/>
         <source>VGA Model</source>
         <translation>VGA兼容控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="641"/>
+        <location filename="../../info/computerpage.cpp" line="710"/>
         <source>USB Model</source>
         <translation>USB控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="643"/>
+        <location filename="../../info/computerpage.cpp" line="712"/>
         <source>Communication Model</source>
         <translation>通信控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="645"/>
+        <location filename="../../info/computerpage.cpp" line="714"/>
         <source>Ethernet Model</source>
         <translation>以太网控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="649"/>
+        <location filename="../../info/computerpage.cpp" line="718"/>
         <source>PCI bridge</source>
         <translation>PCI桥</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="651"/>
+        <location filename="../../info/computerpage.cpp" line="720"/>
         <source>ISA bridge</source>
         <translation>ISA桥</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="653"/>
+        <location filename="../../info/computerpage.cpp" line="722"/>
         <source>SATA Model</source>
         <translation>SATA控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="655"/>
+        <location filename="../../info/computerpage.cpp" line="724"/>
         <source>SMBus</source>
         <translation>系统管理总线</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="657"/>
+        <location filename="../../info/computerpage.cpp" line="726"/>
         <source>System peripheral</source>
         <translation>系统外围</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="659"/>
+        <location filename="../../info/computerpage.cpp" line="728"/>
         <source>Driver in use</source>
         <translation>使用的驱动</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="661"/>
+        <location filename="../../info/computerpage.cpp" line="730"/>
         <source>existing drivers</source>
         <translation>可选的驱动</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="663"/>
+        <location filename="../../info/computerpage.cpp" line="732"/>
         <source>IDE interface</source>
         <translation>IDE接口</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="665"/>
+        <location filename="../../info/computerpage.cpp" line="734"/>
         <source>SP controller</source>
         <translation>信号处理控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="667"/>
+        <location filename="../../info/computerpage.cpp" line="736"/>
         <source>Network controller</source>
         <translation>网络控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="669"/>
+        <location filename="../../info/computerpage.cpp" line="738"/>
         <source>Multimedia audio controller</source>
         <translation>多媒体音频控制器</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="673"/>
+        <location filename="../../info/computerpage.cpp" line="742"/>
         <source>HDD Model</source>
         <translation>硬盘型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="675"/>
+        <location filename="../../info/computerpage.cpp" line="744"/>
         <source>HDD Vendor</source>
         <translation>硬盘厂商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="677"/>
+        <location filename="../../info/computerpage.cpp" line="746"/>
         <source>HDD Capacity</source>
         <translation>硬盘容量</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="686"/>
+        <location filename="../../info/computerpage.cpp" line="755"/>
         <source>Slot Number</source>
         <translation>插槽号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="688"/>
+        <location filename="../../info/computerpage.cpp" line="757"/>
         <source>Memory Model</source>
         <translation>内存型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="694"/>
+        <location filename="../../info/computerpage.cpp" line="763"/>
         <source>Memory Size</source>
         <translation>内存大小</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="696"/>
+        <location filename="../../info/computerpage.cpp" line="765"/>
         <source>Data Width</source>
         <translation>数据宽度</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="698"/>
+        <location filename="../../info/computerpage.cpp" line="767"/>
         <source>Memory Info</source>
         <translation>内存条信息</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="701"/>
+        <location filename="../../info/computerpage.cpp" line="770"/>
         <source>Graphics Card Model</source>
         <translation>显卡型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="703"/>
+        <location filename="../../info/computerpage.cpp" line="772"/>
         <source>Current Graphics Card</source>
         <translation>当前显卡</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="705"/>
+        <location filename="../../info/computerpage.cpp" line="774"/>
         <source>Graphics Card Vendor</source>
         <translation>显卡制造商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="707"/>
+        <location filename="../../info/computerpage.cpp" line="776"/>
         <source>Graphics Driver</source>
         <translation>显卡驱动</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="711"/>
+        <location filename="../../info/computerpage.cpp" line="780"/>
         <source>Gamma</source>
         <translation>伽马值</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="713"/>
+        <location filename="../../info/computerpage.cpp" line="782"/>
         <source>Screen Size(inch)</source>
         <translation>屏幕尺寸（英寸）</translation>
     </message>
     <message>
-        <source>Screen Size</source>
-        <translation type="obsolete">屏幕尺寸</translation>
-    </message>
-    <message>
-        <location filename="../../info/computerpage.cpp" line="715"/>
+        <location filename="../../info/computerpage.cpp" line="784"/>
         <source>Max Resolution</source>
         <translation>最大分辨率</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="717"/>
+        <location filename="../../info/computerpage.cpp" line="786"/>
         <source>Current Interface</source>
         <translation>当前接口</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="719"/>
+        <location filename="../../info/computerpage.cpp" line="788"/>
         <source>Monitor Model</source>
         <translation>显示器型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="721"/>
+        <location filename="../../info/computerpage.cpp" line="790"/>
         <source>Visual Area</source>
         <translation>可视面积</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="723"/>
+        <location filename="../../info/computerpage.cpp" line="792"/>
         <source>Support Interface</source>
         <translation>支持接口</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="725"/>
+        <location filename="../../info/computerpage.cpp" line="794"/>
         <source>Monitor Manufacturers</source>
         <translation>显示器制造商</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="727"/>
+        <location filename="../../info/computerpage.cpp" line="796"/>
         <source>Date of production/Week</source>
         <translation>生产日期/周</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="729"/>
+        <location filename="../../info/computerpage.cpp" line="798"/>
         <source>Date of production/Year</source>
         <translation>生产日期/年</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="735"/>
+        <location filename="../../info/computerpage.cpp" line="804"/>
         <source>NIC Model</source>
         <translation>网卡型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="737"/>
+        <location filename="../../info/computerpage.cpp" line="806"/>
         <source>NIC Driver</source>
         <translation>网卡驱动</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="743"/>
-        <location filename="../../info/computerpage.cpp" line="763"/>
+        <location filename="../../info/computerpage.cpp" line="812"/>
+        <location filename="../../info/computerpage.cpp" line="832"/>
         <source>IP Address</source>
         <translation>IP地址</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="745"/>
+        <location filename="../../info/computerpage.cpp" line="814"/>
         <source>Mac Address</source>
         <translation>MAC地址</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="747"/>
+        <location filename="../../info/computerpage.cpp" line="816"/>
         <source>Connection Status</source>
         <translation>连接状态</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="749"/>
+        <location filename="../../info/computerpage.cpp" line="818"/>
         <source>Max Bandwidth</source>
         <translation>最大带宽</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="753"/>
+        <location filename="../../info/computerpage.cpp" line="822"/>
         <source>WLan NIC Driver</source>
         <translation>无线网卡驱动</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="755"/>
+        <location filename="../../info/computerpage.cpp" line="824"/>
         <source>WLan NIC Model</source>
         <translation>网卡型号</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="759"/>
+        <location filename="../../info/computerpage.cpp" line="828"/>
         <source>Device Name:</source>
         <translation>设备名称：</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="765"/>
+        <location filename="../../info/computerpage.cpp" line="834"/>
         <source>VNIC</source>
         <translation>虚拟网卡</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="768"/>
+        <location filename="../../info/computerpage.cpp" line="837"/>
         <source>NetType</source>
         <translation>网卡类型</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="771"/>
+        <location filename="../../info/computerpage.cpp" line="840"/>
         <source>Ethernet interface</source>
         <translation>以太网接口</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="774"/>
+        <location filename="../../info/computerpage.cpp" line="843"/>
         <source>Wireless interface</source>
         <translation>无线网接口</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="782"/>
+        <location filename="../../info/computerpage.cpp" line="851"/>
         <source>Version</source>
         <translation>电脑版本</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="786"/>
+        <location filename="../../info/computerpage.cpp" line="855"/>
         <source>Hostname</source>
         <translation>主机名</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="788"/>
+        <location filename="../../info/computerpage.cpp" line="857"/>
         <source>Running Time</source>
         <translation>持续运行时间</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="790"/>
+        <location filename="../../info/computerpage.cpp" line="859"/>
         <source>OS Types</source>
         <translation>操作系统类型</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="792"/>
+        <location filename="../../info/computerpage.cpp" line="861"/>
         <source>OS Version</source>
         <translation>操作系统版本</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="794"/>
+        <location filename="../../info/computerpage.cpp" line="863"/>
         <source>Kernel Bit</source>
         <translation>系统位数</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="796"/>
+        <location filename="../../info/computerpage.cpp" line="865"/>
         <source>Kernel Version</source>
         <translation>内核版本</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="798"/>
+        <location filename="../../info/computerpage.cpp" line="867"/>
         <source>Kernel Arch</source>
         <translation>内核架构</translation>
     </message>
@@ -1755,34 +1428,19 @@ p, li { white-space: pre-wrap; }
         <source>2 hours</source>
         <translation>2 小时</translation>
     </message>
-    <message>
-        <source>No suspend</source>
-        <translation type="obsolete">不要挂起</translation>
-    </message>
 </context>
 <context>
     <name>CpuWidget</name>
     <message>
-        <location filename="../../info/cpuwidget.cpp" line="69"/>
+        <location filename="../../info/cpuwidget.cpp" line="86"/>
         <source>CPU Info</source>
         <translation>处理器信息</translation>
     </message>
 </context>
 <context>
-    <name>DeadpixelWidget</name>
-    <message>
-        <source>Left-click to change the color, right-click to exit from this detection.</source>
-        <translation type="obsolete">鼠标左键点击更改颜色，右键点击退出坏点检测。</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="obsolete">确定</translation>
-    </message>
-</context>
-<context>
     <name>DesktopWidget</name>
     <message>
-        <location filename="../../info/desktopwidget.cpp" line="55"/>
+        <location filename="../../info/desktopwidget.cpp" line="76"/>
         <source>Desktop Info</source>
         <translation>桌面环境信息</translation>
     </message>
@@ -1859,12 +1517,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>HDWidget</name>
     <message>
-        <location filename="../../info/hdwidget.cpp" line="69"/>
+        <location filename="../../info/hdwidget.cpp" line="92"/>
         <source>HardWare Info</source>
         <translation>硬盘信息</translation>
     </message>
     <message>
-        <location filename="../../info/hdwidget.cpp" line="85"/>
+        <location filename="../../info/hdwidget.cpp" line="109"/>
         <source>HardWare Info %1</source>
         <translation>硬盘信息 %1</translation>
     </message>
@@ -2100,10 +1758,6 @@ p, li { white-space: pre-wrap; }
         <translation>正在后台升级</translation>
     </message>
     <message>
-        <source>Check new version</source>
-        <translation type="obsolete">检查最新版本</translation>
-    </message>
-    <message>
         <location filename="../homepage.cpp" line="262"/>
         <source>Common toolbox</source>
         <translation>工具箱</translation>
@@ -2125,10 +1779,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../../setting/iconwidget.cpp" line="210"/>
         <source>Icon theme</source>
         <translation>图标主题</translation>
-    </message>
-    <message>
-        <source>Show Desktop Icons</source>
-        <translation type="obsolete">显示桌面图标</translation>
     </message>
     <message>
         <location filename="../../setting/iconwidget.cpp" line="212"/>
@@ -2316,10 +1966,6 @@ p, li { white-space: pre-wrap; }
         <source>About us</source>
         <translation>关于我们</translation>
     </message>
-    <message>
-        <source>Help</source>
-        <translation type="obsolete">帮助</translation>
-    </message>
 </context>
 <context>
     <name>KylinSwitcher</name>
@@ -2390,12 +2036,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>LoginWidget</name>
     <message>
-        <location filename="../loginwidget.cpp" line="137"/>
-        <source>Login Youker Account</source>
-        <translation>登录优客帐号</translation>
+        <location filename="../loginwidget.cpp" line="140"/>
+        <source>Login Kylin Account</source>
+        <translation>登录麒麟帐号</translation>
     </message>
     <message>
-        <location filename="../loginwidget.cpp" line="138"/>
+        <location filename="../loginwidget.cpp" line="141"/>
         <source>Logout</source>
         <translation>注销</translation>
     </message>
@@ -2404,6 +2050,7 @@ p, li { white-space: pre-wrap; }
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.cpp" line="48"/>
+        <location filename="../mainwindow.cpp" line="60"/>
         <source>Kylin Assistant</source>
         <translation>麒麟助手</translation>
     </message>
@@ -2416,12 +2063,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>MemoryWidget</name>
     <message>
-        <location filename="../../info/memorywidget.cpp" line="61"/>
+        <location filename="../../info/memorywidget.cpp" line="84"/>
         <source>Memory Info</source>
         <translation>内存条信息</translation>
     </message>
     <message>
-        <location filename="../../info/memorywidget.cpp" line="76"/>
+        <location filename="../../info/memorywidget.cpp" line="100"/>
         <source>Memory Info %1</source>
         <translation>内存信息 %1</translation>
     </message>
@@ -2429,12 +2076,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>MonitorWidget</name>
     <message>
-        <location filename="../../info/monitorwidget.cpp" line="67"/>
+        <location filename="../../info/monitorwidget.cpp" line="90"/>
         <source>Monitor Info</source>
         <translation>显示器和显卡信息</translation>
     </message>
     <message>
-        <location filename="../../info/monitorwidget.cpp" line="82"/>
+        <location filename="../../info/monitorwidget.cpp" line="106"/>
         <source>Monitor Info %1</source>
         <translation>显示器和显卡信息 %1</translation>
     </message>
@@ -2503,26 +2150,14 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>NicWidget</name>
     <message>
-        <source>Vir NIC Info</source>
-        <translation type="obsolete">虚拟网卡信息</translation>
-    </message>
-    <message>
-        <location filename="../../info/nicwidget.cpp" line="67"/>
+        <location filename="../../info/nicwidget.cpp" line="92"/>
         <source>NIC Info</source>
         <translation>网卡信息</translation>
     </message>
     <message>
-        <source>Vir NIC Info %1</source>
-        <translation type="obsolete">虚拟网卡信息 %1</translation>
-    </message>
-    <message>
-        <location filename="../../info/nicwidget.cpp" line="89"/>
+        <location filename="../../info/nicwidget.cpp" line="116"/>
         <source>NIC Info %1</source>
         <translation>网卡信息 %1</translation>
-    </message>
-    <message>
-        <source>WireLess NIC Info</source>
-        <translation type="obsolete">无线网卡信息</translation>
     </message>
 </context>
 <context>
@@ -2606,88 +2241,14 @@ p, li { white-space: pre-wrap; }
         <translation>显示系统</translation>
     </message>
     <message>
-        <source>Show desktop</source>
-        <translation type="obsolete">显示桌面</translation>
-    </message>
-    <message>
         <location filename="../../setting/panelwidget.cpp" line="369"/>
         <source>Show places</source>
         <translation>显示位置</translation>
     </message>
     <message>
-        <source>Show applications menu</source>
-        <translation type="obsolete">显示应用程序</translation>
-    </message>
-    <message>
         <location filename="../../setting/panelwidget.cpp" line="368"/>
         <source>Show icon</source>
         <translation>显示图标</translation>
-    </message>
-</context>
-<context>
-    <name>ProcessDialog</name>
-    <message>
-        <source>Process Manager</source>
-        <translation type="obsolete">进程管理器</translation>
-    </message>
-    <message>
-        <source>Help you learn more about the program running on the system.</source>
-        <translation type="obsolete">帮助您了解和管理系统上运行的进程。</translation>
-    </message>
-    <message>
-        <source>Kill Process</source>
-        <translation type="obsolete">杀进程</translation>
-    </message>
-    <message>
-        <source>Command Line</source>
-        <translation type="obsolete">命令行</translation>
-    </message>
-    <message>
-        <source>User</source>
-        <translation type="obsolete">用户</translation>
-    </message>
-    <message>
-        <source>ID</source>
-        <translation type="obsolete">ID</translation>
-    </message>
-    <message>
-        <source>Priority</source>
-        <translation type="obsolete">优先级</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation type="obsolete">状态</translation>
-    </message>
-    <message>
-        <source>% Memory</source>
-        <translation type="obsolete">% 内存</translation>
-    </message>
-    <message>
-        <source>% CPU</source>
-        <translation type="obsolete">% CPU</translation>
-    </message>
-    <message>
-        <source>CPU Time</source>
-        <translation type="obsolete">CPU时间</translation>
-    </message>
-    <message>
-        <source>Started</source>
-        <translation type="obsolete">开始于</translation>
-    </message>
-    <message>
-        <source>kill process success</source>
-        <translation type="obsolete">杀进程成功</translation>
-    </message>
-    <message>
-        <source>kill process failed</source>
-        <translation type="obsolete">杀进程失败</translation>
-    </message>
-</context>
-<context>
-    <name>ProcessManager</name>
-    <message>
-        <source>Process Manager</source>
-        <translation type="obsolete">进程管理器</translation>
     </message>
 </context>
 <context>
@@ -2701,20 +2262,9 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SensorWieget</name>
     <message>
-        <location filename="../../info/sensorwidget.cpp" line="85"/>
+        <location filename="../../info/sensorwidget.cpp" line="102"/>
         <source>Hardware sensor information</source>
         <translation>硬件传感检测信息</translation>
-    </message>
-</context>
-<context>
-    <name>SessionDispatcher</name>
-    <message>
-        <source>Select file</source>
-        <translation type="obsolete">选择文件</translation>
-    </message>
-    <message>
-        <source>All Files(*)</source>
-        <translation type="obsolete">所有文件(*)</translation>
     </message>
 </context>
 <context>
@@ -2735,29 +2285,9 @@ p, li { white-space: pre-wrap; }
         <translation>设置桌面图标主题和桌面图标的可见性</translation>
     </message>
     <message>
-        <source>Replace the theme and size of the mouse pointer,  then click the &apos;OK&apos; button to confirm. Also, theme change need to restart system.</source>
-        <translation type="obsolete">更换鼠标指针主题和大小，更改设置后点击＂确定＂按钮进行确认。主题更改需要重新系统才能生效。</translation>
-    </message>
-    <message>
-        <source>Replace the theme and size of the mouse pointer. Also, theme change need to restart system.</source>
-        <translation type="obsolete">更换鼠标指针主题和大小。主题更改需要重新系统才能生效。</translation>
-    </message>
-    <message>
-        <source>Replace the theme and size of the mouse pointer, and theme change need to restart system.</source>
-        <translation type="obsolete">更换鼠标指针主题和大小，主题更改需要重新系统才能生效。</translation>
-    </message>
-    <message>
         <location filename="../../component/settingaction.cpp" line="125"/>
         <source>Set the sound theme you want</source>
         <translation>设置您需要的声音主题</translation>
-    </message>
-    <message>
-        <source>Click the &quot;Custom Picture&quot; button to select the picture you want to add, click the picture you want to set and push the &quot;OK&quot; button to complete</source>
-        <translation type="obsolete">单击＂自定义图片＂按钮选择需要添加的图片，选中列表中要设置的图片名称，单击＂确定＂按钮完成设置</translation>
-    </message>
-    <message>
-        <source>Setting the Launcher display mode, Icon size.</source>
-        <translation type="obsolete">设置启动器的显示模式、图标尺寸。</translation>
     </message>
     <message>
         <location filename="../../component/settingaction.cpp" line="121"/>
@@ -2819,10 +2349,6 @@ p, li { white-space: pre-wrap; }
         <source>Manage the Nautilus file manager. Tips: if the thumbnail&apos;s cache time or size is set to -1, it will not be checked</source>
         <translation>管理Nautilus文件管理器。注意：如果缩略图缓存时间或尺寸被设置为-1，缩略图将不会被清理</translation>
     </message>
-    <message>
-        <source>Manage the Nautilus file manager. Tips: if the thumbnail&apos;s cache time or size is set to -1, it will not be checked.</source>
-        <translation type="obsolete">管理Nautilus文件管理器。注意：如果缩略图缓存时间或尺寸被设置为-1，缩略图将不会被清理。</translation>
-    </message>
 </context>
 <context>
     <name>SettingActionWidget</name>
@@ -2858,10 +2384,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../settingwidget.cpp" line="450"/>
         <source>SoundEffect</source>
         <translation>声音效果</translation>
-    </message>
-    <message>
-        <source>BootAnimation</source>
-        <translation type="obsolete">开机动画</translation>
     </message>
     <message>
         <location filename="../settingwidget.cpp" line="527"/>
@@ -2970,14 +2492,6 @@ p, li { white-space: pre-wrap; }
         <translation>选择文件！</translation>
     </message>
     <message>
-        <source>Select file</source>
-        <translation type="obsolete">选择文件</translation>
-    </message>
-    <message>
-        <source>All Files(*)</source>
-        <translation type="obsolete">所有文件(*)</translation>
-    </message>
-    <message>
         <location filename="../../shredmanager/shreddialog.cpp" line="237"/>
         <source>Shred successfully!</source>
         <translation>粉碎成功！</translation>
@@ -3004,79 +2518,47 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SkinCenter</name>
     <message>
-        <source>Skin Center</source>
-        <translation type="obsolete">皮肤中心</translation>
-    </message>
-    <message>
-        <location filename="../skincenter.cpp" line="65"/>
+        <location filename="../skincenter.cpp" line="37"/>
+        <location filename="../skincenter.cpp" line="66"/>
         <source>Skin Setting</source>
         <translation>皮肤设置</translation>
     </message>
     <message>
-        <location filename="../skincenter.cpp" line="76"/>
+        <location filename="../skincenter.cpp" line="77"/>
         <source>Default</source>
         <translation>默认皮肤</translation>
     </message>
     <message>
-        <location filename="../skincenter.cpp" line="79"/>
+        <location filename="../skincenter.cpp" line="80"/>
         <source>Custom</source>
         <translation>自定义</translation>
     </message>
     <message>
-        <location filename="../skincenter.cpp" line="456"/>
-        <source>Image Files(*.jpg *.png)</source>
-        <translation>图片文件(*.jpg *.png)</translation>
-    </message>
-</context>
-<context>
-    <name>SystemDispatcher</name>
-    <message>
-        <source>Select the boot animation</source>
-        <translation type="obsolete">选择开机动画</translation>
+        <location filename="../skincenter.cpp" line="503"/>
+        <source>Open File</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Image Files (*.png *.jpg *.gif)</source>
-        <translation type="obsolete">图片文件(*.png *.jpg *.gif)</translation>
-    </message>
-    <message>
-        <source>Select music</source>
-        <translation type="obsolete">选择音乐文件</translation>
-    </message>
-    <message>
-        <source>Audio Files (*.ogg *.wav *.mp3 *.wma)</source>
-        <translation type="obsolete">音频文件(*.ogg *.wav *.mp3 *.wma)</translation>
-    </message>
-</context>
-<context>
-    <name>SystemTray</name>
-    <message>
-        <source>Youker Assistant</source>
-        <translation type="obsolete">优客助手</translation>
-    </message>
-    <message>
-        <source>open</source>
-        <translation type="obsolete">打开</translation>
-    </message>
-    <message>
-        <source>logout</source>
-        <translation type="obsolete">退出</translation>
+        <location filename="../skincenter.cpp" line="504"/>
+        <source>Files(*.png *.jpg)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SystemWidget</name>
     <message>
-        <location filename="../../info/systemwidget.cpp" line="84"/>
+        <location filename="../../info/systemwidget.cpp" line="101"/>
         <source>Computer Base Info</source>
         <translation>电脑概述</translation>
     </message>
     <message>
-        <location filename="../../info/systemwidget.cpp" line="58"/>
-        <location filename="../../info/systemwidget.cpp" line="62"/>
+        <location filename="../../info/systemwidget.cpp" line="74"/>
+        <location filename="../../info/systemwidget.cpp" line="78"/>
         <source> Minutes</source>
         <translation> 分钟</translation>
     </message>
     <message>
-        <location filename="../../info/systemwidget.cpp" line="62"/>
+        <location filename="../../info/systemwidget.cpp" line="78"/>
         <source> Hours </source>
         <translation> 小时</translation>
     </message>
@@ -3107,7 +2589,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../toolwidget.cpp" line="46"/>
         <source>Home</source>
-        <translation>优客首页</translation>
+        <translation>麒麟首页</translation>
     </message>
     <message>
         <location filename="../toolwidget.cpp" line="42"/>
@@ -3156,10 +2638,6 @@ p, li { white-space: pre-wrap; }
         <translation>滚动条类型</translation>
     </message>
     <message>
-        <source>Panel layout</source>
-        <translation type="obsolete">触摸板滚动触发方式</translation>
-    </message>
-    <message>
         <location filename="../../setting/touchpadwidget.cpp" line="195"/>
         <source>Touchpad scrolling mode</source>
         <translation>触摸板滚动模式</translation>
@@ -3198,10 +2676,6 @@ p, li { white-space: pre-wrap; }
         <translation>检查更新</translation>
     </message>
     <message>
-        <source>Is working, please wait a moment.</source>
-        <translation type="obsolete">正在工作，请稍等。</translation>
-    </message>
-    <message>
         <location filename="../upgradedialog.cpp" line="103"/>
         <location filename="../upgradedialog.cpp" line="398"/>
         <source>Current verison:</source>
@@ -3223,26 +2697,10 @@ p, li { white-space: pre-wrap; }
         <translation>网络或源地址连接失败，升级未成功</translation>
     </message>
     <message>
-        <source>Testing network and local sources......</source>
-        <translation type="obsolete">正在检查网络和本地源......</translation>
-    </message>
-    <message>
-        <source>you can visit &lt;a style=&apos;color: green;&apos; href = https://launchpad.net/youker-assistant&gt; UK website&lt;/a&gt; to download the lastest deb package.</source>
-        <translation type="obsolete">您可以访问 &lt;a style=&apos;color: green;&apos; href = https://launchpad.net/youker-assistant&gt; UK website&lt;/a&gt; 去下载最新的deb包.</translation>
-    </message>
-    <message>
-        <source>you can visit the&lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com/applications/showimg.php?lang=cn&amp;id=14&gt; UK official website&lt;/a&gt; to download the lastest deb package.</source>
-        <translation type="obsolete">您可以访问 &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com/applications/showimg.php?lang=cn&amp;id=14&gt; UK 官网&lt;/a&gt; 下载最新的deb包.</translation>
-    </message>
-    <message>
         <location filename="../upgradedialog.cpp" line="164"/>
         <location filename="../upgradedialog.cpp" line="278"/>
         <source>Testing network and local sources...</source>
         <translation>正在检查网络和本地源...</translation>
-    </message>
-    <message>
-        <source>you can visit the&lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com/applications/showimg.php?lang=cn&amp;id=14&gt; UK official website&lt;/a&gt; to download the lastest deb package</source>
-        <translation type="obsolete">您可以访问 &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; UK 官网&lt;/a&gt; 下载最新的deb包</translation>
     </message>
     <message>
         <location filename="../upgradedialog.cpp" line="172"/>
@@ -3277,8 +2735,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../upgradedialog.cpp" line="397"/>
-        <source>Youker Assistant is the latest version</source>
-        <translation>优客助手已更新至最新版本</translation>
+        <source>Kylin Assistant is the latest version</source>
+        <translation>麒麟助手已经是最新的版本</translation>
     </message>
     <message>
         <location filename="../upgradedialog.cpp" line="410"/>
@@ -3291,17 +2749,9 @@ p, li { white-space: pre-wrap; }
         <translation>下载完成</translation>
     </message>
     <message>
-        <source>you can visit the&lt;a style=&apos;color: green;&apos; href = http://www.ubuntukylin.com/applications/showimg.php?lang=cn&amp;id=14&gt; UK official website &lt;/a&gt;to download the lastest deb package.</source>
-        <translation type="obsolete">您可以访问 &lt;a style=&apos;color: green;&apos; href = http://www.ubuntukylin.com/applications/showimg.php?lang=cn&amp;id=14&gt; UK 官网 &lt;/a&gt;下载最新的deb包.</translation>
-    </message>
-    <message>
         <location filename="../upgradedialog.cpp" line="355"/>
         <source>Local sources updated</source>
         <translation>源更新完毕</translation>
-    </message>
-    <message>
-        <source>No found</source>
-        <translation type="obsolete">没有发现新版本</translation>
     </message>
     <message>
         <location filename="../upgradedialog.cpp" line="365"/>
@@ -3323,10 +2773,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../upgradedialog.cpp" line="374"/>
         <source>Not found</source>
         <translation>没有发现新版本</translation>
-    </message>
-    <message>
-        <source>you can visit the&lt;a style=&apos;color: green;&apos; href = https://launchpad.net/youker-assistant&gt; UK official website &lt;/a&gt;to download the lastest deb package.</source>
-        <translation type="obsolete">您可以访问 &lt;a style=&apos;color: green;&apos; href = https://launchpad.net/youker-assistant&gt; UK 官网 &lt;/a&gt;去下载最新的deb包.</translation>
     </message>
     <message>
         <location filename="../upgradedialog.cpp" line="418"/>

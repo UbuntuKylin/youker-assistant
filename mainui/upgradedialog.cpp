@@ -394,7 +394,7 @@ void UpgradeDialog::receiveAptSignal(QString msg_type, QStringList msg)
             this->upgradeOver = true;
             ok_icon_label->show();
             okBtn->show();
-            doing_label->setText(tr("Youker Assistant is the latest version"));
+            doing_label->setText(tr("Kylin Assistant is the latest version"));
             version_label->setText(tr("Current verison:") + this->cur_version);
             upgrade_loading_label->stopLoading();
             upgrade_loading_label->hide();

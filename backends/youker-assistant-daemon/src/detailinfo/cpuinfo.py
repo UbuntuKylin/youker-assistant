@@ -44,6 +44,42 @@ CPU_CURRENT_FREQ = ""
 CPU_MAX_FREQ = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"
 MEMORY = "/sys/phytium1500a_info"
 
+KILOBYTE_FACTOR = 1000.0
+MEGABYTE_FACTOR = (1000.0 * 1000.0)
+GIGABYTE_FACTOR = (1000.0 * 1000.0 * 1000.0)
+TERABYTE_FACTOR = (1000.0 * 1000.0 * 1000.0 * 1000.0)
+
+def get_human_read_capacity_size(size):
+    size_str = ""
+    displayed_size = 0.0
+    unit = "KB"
+
+    if size < MEGABYTE_FACTOR:
+        displayed_size = float(size/KILOBYTE_FACTOR)
+        unit = "KB"
+    elif size < GIGABYTE_FACTOR:
+        displayed_size = float(size/MEGABYTE_FACTOR)
+        unit = "MB"
+    elif size < TERABYTE_FACTOR:
+        displayed_size = float(size/GIGABYTE_FACTOR)
+        unit = "GB"
+    else:
+        displayed_size = float(size/TERABYTE_FACTOR)
+        unit = "TB"
+    #print "displayed_size=", round(displayed_size)
+    #round 不是简单的四舍五入，而是ROUND_HALF_EVEN的策略
+    #ceil 取大于或者等于x的最小整数
+    #floor 取小于或者等于x的最大整数
+    #print round(2.5)#3.0
+    #print math.ceil(2.5)#3.0
+    #print math.floor(2.5)#2.0
+    #print round(2.3)#2.0
+    #print math.ceil(2.3)#3.0
+    #print math.floor(2.3)#2.0
+    str_list = [str(int(round(displayed_size))), unit]
+    size_str = " ".join(str_list)
+    return size_str
+
 def get_interface_mac(interface):
     DEVICE_NAME_LEN = 15
     MAC_START = 18
@@ -1215,13 +1251,15 @@ class DetailInfo:
         diskdict = {}
         disknum = 0
         statusfirst, output = commands.getstatusoutput("lsblk -b")
-        
+
         for line in output.split("\n"):
             value = line.split()
             if value[1].startswith("8:") and value[5] == "disk":
                 disknum += 1
-                DiskCapacity += ( ((str(int(value[3]) / 10**9) + "G") if not statusfirst else "$") + "<1_1>")
-                
+                HDSize = get_human_read_capacity_size(int(value[3]))
+                DiskCapacity += ((HDSize if not statusfirst else "$") + "<1_1>")
+#                DiskCapacity += ( ((str(int(value[3]) / 10**9) + "G") if not statusfirst else "$") + "<1_1>")
+
                 infodict = {}
                 status, output = commands.getstatusoutput("hdparm -i %s" % ("/dev/" + value[0]))
                 

@@ -25,9 +25,14 @@
 #include "cameramanager.h"
 #include "../component/threadpool.h"
 
+QString GlobalData::globalarch = ""; // add by hebing, just for transmit var
+
 MainWindow::MainWindow(QString cur_arch, int d_count, QWidget *parent) :
     QDialog(parent), arch(cur_arch), display_count(d_count)/*skin_center(parent),*/
 {
+
+    GlobalData::globalarch = this->arch;
+
     this->osName = accessOSName();
 //    char *dsk;
 //    dsk = getenv("XDG_CURRENT_DESKTOP");

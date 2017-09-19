@@ -99,18 +99,24 @@ void BoxWidget::initPluginWidget()
     pluginModel.insertRows(0,1,QModelIndex());
     QModelIndex qindex = pluginModel.index(0,0,QModelIndex());
 
-    if(this->osarch == "aarch64" || this->osname == "Kylin" || this->osname == "YHKylin") {
-        //set text
-        pluginModel.setData(qindex, tr("Kylin Software Center"));
-        //set tooltip
-        pluginModel.setData(qindex, tr("Kylin Software Center"),Qt::WhatsThisRole);
-    }
-    else {
-        //set text
-        pluginModel.setData(qindex, tr("UbuntuKylin Software Center"));
-        //set tooltip
-        pluginModel.setData(qindex, tr("UbuntuKylin Software Center"),Qt::WhatsThisRole);
-    }
+//    if(this->osarch == "aarch64" || this->osname == "Kylin" || this->osname == "YHKylin") {
+//        //set text
+//        pluginModel.setData(qindex, tr("Kylin Software Center"));
+//        //set tooltip
+//        pluginModel.setData(qindex, tr("Kylin Software Center"),Qt::WhatsThisRole);
+//    }
+//    else {
+//        //set text
+//        pluginModel.setData(qindex, tr("UbuntuKylin Software Center"));
+//        //set tooltip
+//        pluginModel.setData(qindex, tr("UbuntuKylin Software Center"),Qt::WhatsThisRole);
+//    }
+
+    //set text
+    pluginModel.setData(qindex, tr("Kylin Software Center"));
+    //set tooltip
+    pluginModel.setData(qindex, tr("Kylin Software Center"),Qt::WhatsThisRole);
+
     //set icon
     pluginModel.setData(qindex,QIcon(QPixmap("://res/ubuntukylin-software-center.png")),Qt::DecorationRole);
 

@@ -70,14 +70,18 @@ AboutDialog::AboutDialog(QWidget *parent, /*const QString &version, */QString sk
 
     nameLabel->setStyleSheet("QLabel{color:#ffffff;font-family: 方正黑体_GBK;font-size: 12px;text-align: center;font-weight:bold;}");
     nameLabel->setAlignment(Qt::AlignCenter);
-    if (arch == "aarch64" || os == "Kylin" || os == "YHKylin") {//20161228
-        close_btn->move(442-36, 0);
-        nameLabel->setText(tr("Kylin Assisant") + " " + VERSION);
-    }
-    else {
-        close_btn->move(0, 0);
-        nameLabel->setText(tr("Youker Assisant") + " " + VERSION);
-    }
+//    if (arch == "aarch64" || os == "Kylin" || os == "YHKylin") {//20161228
+//        close_btn->move(442-36, 0);
+//        nameLabel->setText(tr("Kylin Assisant") + " " + VERSION);
+//    }
+//    else {
+//        close_btn->move(0, 0);
+//        nameLabel->setText(tr("Youker Assisant") + " " + VERSION);
+//    }
+
+    close_btn->move(442-36, 0);
+    nameLabel->setText(tr("Kylin Assistant") + " " + VERSION);
+
 //    linkLabel->setAlignment(Qt::AlignRight);
 //    linkLabel->setText(QString::fromLocal8Bit("<a style='color: green;' href = https://launchpad.net/youker-assistant> home page</a>"));
 
@@ -108,16 +112,21 @@ AboutDialog::AboutDialog(QWidget *parent, /*const QString &version, */QString sk
     contributorEdit->setGeometry(QRect(17, 92, 408, 200));
     aboutEdit->setReadOnly(true);
     contributorEdit->setReadOnly(true);
-    if (arch == "aarch64" || os == "Kylin" || os == "YHKylin") {
-        contributorEdit->setText(tr("Maintainer:\nKylin Team <ubuntukylin-members@list.launchpad.net>"));
-        aboutEdit->append(tr("      Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions."));
-        aboutEdit->append(tr("      The software is still under development. Please visit ") + QString::fromLocal8Bit("<a style='color: #3f96e4;' href = http://www.ubuntukylin.com>www.ubuntukylin.com</a>") + tr(" for more information. Welcome everyone to join with us. kylin-assistant Homepage: "));
-    }
-    else {
-        contributorEdit->setText(tr("Maintainer:\nUbuntu Kylin Team <ubuntukylin-members@list.launchpad.net>"));
-        aboutEdit->append(tr("      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, system customization, task manager, and some other functions."));
-        aboutEdit->append(tr("      The software is still under development. Please visit ") + QString::fromLocal8Bit("<a style='color: #3f96e4;' href = http://www.ubuntukylin.com>www.ubuntukylin.com</a>") + tr(" for more information. Welcome everyone to join with us. youker-assistant Homepage: "));
-    }
+//    if (arch == "aarch64" || os == "Kylin" || os == "YHKylin") {
+//        contributorEdit->setText(tr("Maintainer:\nKylin Team <ubuntukylin-members@list.launchpad.net>"));
+//        aboutEdit->append(tr("      Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions."));
+//        aboutEdit->append(tr("      The software is still under development. Please visit ") + QString::fromLocal8Bit("<a style='color: #3f96e4;' href = http://www.ubuntukylin.com>www.ubuntukylin.com</a>") + tr(" for more information. Welcome everyone to join with us. kylin-assistant Homepage: "));
+//    }
+//    else {
+//        contributorEdit->setText(tr("Maintainer:\nUbuntu Kylin Team <ubuntukylin-members@list.launchpad.net>"));
+//        aboutEdit->append(tr("      Youker Assistant is a powerful system supporting software which is developed by Ubuntu Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, system customization, task manager, and some other functions."));
+//        aboutEdit->append(tr("      The software is still under development. Please visit ") + QString::fromLocal8Bit("<a style='color: #3f96e4;' href = http://www.ubuntukylin.com>www.ubuntukylin.com</a>") + tr(" for more information. Welcome everyone to join with us. youker-assistant Homepage: "));
+//    }
+
+    contributorEdit->setText(tr("Maintainer:\nKylin Team <ubuntukylin-members@list.launchpad.net>"));
+    aboutEdit->append(tr("      Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions."));
+    aboutEdit->append(tr("      The software is still under development. Please visit ") + QString::fromLocal8Bit("<a style='color: #3f96e4;' href = http://www.ubuntukylin.com>www.ubuntukylin.com</a>") + tr(" for more information. Welcome everyone to join with us. kylin-assistant Homepage: "));
+
     aboutEdit->append(QString::fromLocal8Bit("<a style='color: #3f96e4;' href=\"https://launchpad.net/youker-assistant\">https://launchpad.net/youker-assistant</a>"));
 
     contributorEdit->hide();

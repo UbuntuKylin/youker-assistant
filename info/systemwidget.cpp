@@ -53,6 +53,7 @@ SystemWidget::~SystemWidget()
     }
 }
 
+
 void SystemWidget::clear_page_list()
 {
     if (page != NULL) {
@@ -78,6 +79,12 @@ void SystemWidget::updateTimeValue()
         result = QString::number(hour_value) + tr(" Hours ") + QString::number(minutes_value) + tr(" Minutes");//小时 分钟
     }
     page->resetTimeValue(result);
+}
+
+
+bool SystemWidget::displaySwitch()
+{
+    return true; //系统信息的首页，一直为真
 }
 
 void SystemWidget::initData()

@@ -161,4 +161,11 @@ private:
     int display_count;
 };
 
+class GlobalData // define by hebing,just for transmit var
+{
+
+public:
+    static QString globalarch;
+};
+
 #endif // MAINWINDOW_H

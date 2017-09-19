@@ -37,6 +37,7 @@ public:
     ~SystemWidget();
     void initData();
     void clear_page_list();
+    bool displaySwitch();
 
 signals:
 

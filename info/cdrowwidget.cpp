@@ -42,13 +42,19 @@ CDRowWidget::~CDRowWidget()
 
 void CDRowWidget::clear_page_list()
 {
+    qDebug() << "111111111111=" << page_list.count();
     for(int i=0; i<page_list.count(); i++)
     {
+        qDebug() << "2222222222";
         ComputerPage *page = page_list.at(i);
+        qDebug() << "33333333333";
         delete page;
+        qDebug() << "4444444444";
         page = NULL;
     }
+    qDebug() << "5555555555555";
     page_list.clear();
+    qDebug() << "6666666666666";
     if (scroll_widget)
         scroll_widget->resetWidget();
 }

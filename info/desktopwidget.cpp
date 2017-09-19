@@ -50,35 +50,39 @@ void DesktopWidget::clear_page_list()
         scroll_widget->resetWidget();
 }
 
-bool DesktopWidget::getStatus()
+bool DesktopWidget::displaySwitch()
 {
-    return this->dataOK;
-}
-
-void DesktopWidget::initData()
-{
-    this->clear_page_list();
     QMap<QString, QVariant> tmpMap = sessionProxy->get_system_message_qt();
-    if (tmpMap.isEmpty() || tmpMap.count() <= 0) {
-        page = NULL;
+    if (tmpMap.isEmpty() || tmpMap.count() <= 0)
+    {
+        return false;
     }
-    else {
+    else
+    {
         QMap<QString,QVariant>::iterator it;
         for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
             if (it.value().toString().length() > 0) {
                 desktop_info_map.insert(it.key(), it.value());
             }
         }
-        if(desktop_info_map.isEmpty() || desktop_info_map.count() <= 0) {
-            page = NULL;
-        }
-        else {
-            page = new ComputerPage(scroll_widget->zone, tr("Desktop Info"));
-            page->setMap(desktop_info_map, "");
-            page->initUI(false);
-            scroll_widget->addScrollWidget(page);
-        }
+        return true;
     }
+}
+
+bool DesktopWidget::getStatus()
+{
+    return this->dataOK;
+}
+
+
+void DesktopWidget::initData()
+{
+    this->clear_page_list();
+
+    page = new ComputerPage(scroll_widget->zone, tr("Desktop Info"));
+    page->setMap(desktop_info_map, "");
+    page->initUI(false);
+    scroll_widget->addScrollWidget(page);
     /*QMap<QString,QVariant>::iterator it;
     for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
         if (it.value().toString().length() > 0) {
