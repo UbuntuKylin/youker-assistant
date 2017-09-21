@@ -212,15 +212,15 @@ class System():
     # set window button alignment left
     def set_window_button_align_left(self):
         if self.desktop == "mate" or self.desktop == "MATE":
-            value = gsettings.get('org.mate.Marco.general',
+            value = gsettings.get('org.gnome.desktop.wm.preferences',
                 None, 'button-layout', 'string')
             if "menu" in value:
-                gsettings.set('org.mate.Marco.general',
+                gsettings.set('org.gnome.desktop.wm.preferences',
                     None,
                     'button-layout',
                     'string', 'close,maximize,minimize:menu')
             else:
-                gsettings.set('org.mate.Marco.general',
+                gsettings.set('org.gnome.desktop.wm.preferences',
                     None,
                     'button-layout',
                     'string', 'close,maximize,minimize')
@@ -238,15 +238,15 @@ class System():
     # set window button alignment right
     def set_window_button_align_right(self):
         if self.desktop == "mate" or self.desktop == "MATE":
-            value = gsettings.get('org.mate.Marco.general',
+            value = gsettings.get('org.gnome.desktop.wm.preferences',
                 None, 'button-layout', 'string')
             if "menu" in value:
-                gsettings.set('org.mate.Marco.general',
+                gsettings.set('org.gnome.desktop.wm.preferences',
                     None,
                     'button-layout',
                     'string', 'menu:minimize,maximize,close')
             else:
-                gsettings.set('org.mate.Marco.general',
+                gsettings.set('org.gnome.desktop.wm.preferences',
                     None,
                     'button-layout',
                     'string', ':minimize,maximize,close')
@@ -264,7 +264,7 @@ class System():
     # get window button alignment
     def get_window_button_align(self):
         if self.desktop == "mate" or self.desktop == "MATE":
-            value = gsettings.get('org.mate.Marco.general',
+            value = gsettings.get('org.gnome.desktop.wm.preferences',
                 None, 'button-layout', 'string')
             if value == 'close,maximize,minimize:menu' or value == 'close,minimize,maximize:menu' or value == 'close,minimize,maximize:' or value == 'close,maximize,minimize:':
                 return 'left'
@@ -343,7 +343,7 @@ class System():
     # get current titlebar double
     def get_current_titlebar_double(self):
         if self.desktop == "mate" or self.desktop == "MATE":
-            return gsettings.get('org.mate.Marco.general',
+            return gsettings.get('org.gnome.desktop.wm.preferences',
                 None, 'action-double-click-titlebar', 'string')
         else:
             return gsettings.get('org.gnome.desktop.wm.preferences',
@@ -352,7 +352,7 @@ class System():
     # set titlebar double
     def set_titlebar_double(self, value):
         if self.desktop == "mate" or self.desktop == "MATE":
-            return gsettings.set('org.mate.Marco.general',
+            return gsettings.set('org.gnome.desktop.wm.preferences',
                 None,
                 'action-double-click-titlebar',
                 'string', value)
@@ -370,7 +370,7 @@ class System():
     # get current titlebar middle
     def get_current_titlebar_middle(self):
         if self.desktop == "mate" or self.desktop == "MATE":
-            return gsettings.get('org.mate.Marco.general',
+            return gsettings.get('org.gnome.desktop.wm.preferences',
                 None, 'action-middle-click-titlebar', 'string')
         else:
             return gsettings.get('org.gnome.desktop.wm.preferences',
@@ -379,7 +379,7 @@ class System():
     # set titlebar middle
     def set_titlebar_middle(self, value):
         if self.desktop == "mate" or self.desktop == "MATE":
-            return gsettings.set('org.mate.Marco.general',
+            return gsettings.set('org.gnome.desktop.wm.preferences',
                 None,
                 'action-middle-click-titlebar',
                 'string', value)
@@ -397,7 +397,7 @@ class System():
     # get current titlebar right
     def get_current_titlebar_right(self):
         if self.desktop == "mate" or self.desktop == "MATE":
-            return gsettings.get('org.mate.Marco.general',
+            return gsettings.get('org.gnome.desktop.wm.preferences',
                 None, 'action-right-click-titlebar', 'string')
         else:
             return gsettings.get('org.gnome.desktop.wm.preferences',
@@ -406,7 +406,7 @@ class System():
     # set titlebar right
     def set_titlebar_right(self, value):
         if self.desktop == "mate" or self.desktop == "MATE":
-            return gsettings.set('org.mate.Marco.general',
+            return gsettings.set('org.gnome.desktop.wm.preferences',
                 None,
                 'action-right-click-titlebar',
                 'string', value)

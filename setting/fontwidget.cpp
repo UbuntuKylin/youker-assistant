@@ -588,8 +588,8 @@ void FontWidget::restore_document_font()
 void FontWidget::restore_titlebar_font()
 {
     if (this->desktop == "mate" || this->desktop == "MATE") {
-        sessionproxy->set_default_font_string_qt("org.mate.Marco.general", "titlebar-font", "string");
-        titlebar_font_btn->setText(sessionproxy->get_default_font_string_qt("org.mate.Marco.general", "titlebar-font"));
+        sessionproxy->set_default_font_string_qt("org.gnome.desktop.wm.preferences", "titlebar-font", "string");
+        titlebar_font_btn->setText(sessionproxy->get_default_font_string_qt("org.gnome.desktop.wm.preferences", "titlebar-font"));
     }
     else {
         sessionproxy->set_default_font_string_qt("org.gnome.desktop.wm.preferences", "titlebar-font", "string");

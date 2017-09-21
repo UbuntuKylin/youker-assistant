@@ -3,7 +3,10 @@ youker-assistant (2.2.12-0ubuntu2) zesty; urgency=low
   [ hebing ]
   * change the system infomation UI Dynamic loading
 
- -- hebing <hebing@kylinos.cn>  Mon, 11 Sep 2017 13:59:33 +0800
+  [ lixiang ]
+  * Add a module to calculate capacity of memory and hd.
+
+ -- lixiang <lixiang@kylinos.cn>  Tue, 19 Sep 2017 14:26:17 +0800
 
 youker-assistant (2.2.11-0ubuntu2) zesty; urgency=low
 

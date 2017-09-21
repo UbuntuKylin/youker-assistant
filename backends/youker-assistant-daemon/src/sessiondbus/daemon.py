@@ -246,7 +246,7 @@ class SessionDaemon(dbus.service.Object):
             self.gwd_settings = gio.Settings.new("org.compiz.gwd")
             self.gwd_settings.connect("changed::mouse-wheel-action", self.gio_settings_monitor, STRING_TYPE)
         if self.desktop == "mate" or self.desktop == "MATE":
-            self.titlebar_settings = gio.Settings.new("org.mate.Marco.general")
+            self.titlebar_settings = gio.Settings.new("org.gnome.desktop.wm.preferences")
         else:
             self.titlebar_settings = gio.Settings.new("org.gnome.desktop.wm.preferences")
         self.titlebar_settings.connect("changed::button-layout", self.gio_settings_monitor, STRING_TYPE)

@@ -289,7 +289,7 @@ class Theme:
     # get window title font
     def get_window_title_font(self):
         if self.desktop == "mate" or self.desktop == "MATE":
-            return gsettings.get('org.mate.Marco.general',
+            return gsettings.get('org.gnome.desktop.wm.preferences',
                 None, 'titlebar-font', 'string')
         else:
             return gsettings.get('org.gnome.desktop.wm.preferences',
@@ -298,7 +298,7 @@ class Theme:
     # set window title font
     def set_window_title_font(self, font):
         if self.desktop == "mate" or self.desktop == "MATE":
-            return gsettings.set('org.mate.Marco.general',
+            return gsettings.set('org.gnome.desktop.wm.preferences',
                 None,
                 'titlebar-font',
                 'string', font)

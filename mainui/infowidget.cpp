@@ -191,7 +191,7 @@ void InfoWidget::initUI(bool has_battery, bool has_sensor)
         type_list << tr("Audio");
         icon_list << "audio";
     }
-    if (dvdNum == 0)
+    if (dvdNum > 0)
     {
         type_list << tr("CD-ROM");
         icon_list << "cdrom";

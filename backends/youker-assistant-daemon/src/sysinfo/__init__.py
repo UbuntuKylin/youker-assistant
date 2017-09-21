@@ -20,12 +20,49 @@ import sys
 import os
 from gi.repository import GLib
 import platform
-
+import math
 import apt
 
 NO_UPDATE_WARNING_DAYS = 7
 FILEPATH = "/etc/lsb-release"
 RELEASEPATH = "/etc/ubuntukylin-release"
+
+KILOBYTE_FACTOR = 1000.0
+MEGABYTE_FACTOR = (1000.0 * 1000.0)
+GIGABYTE_FACTOR = (1000.0 * 1000.0 * 1000.0)
+TERABYTE_FACTOR = (1000.0 * 1000.0 * 1000.0 * 1000.0)
+
+def get_human_read_capacity_size(size):
+    size_str = ""
+    displayed_size = 0.0
+    unit = "KB"
+
+    if size < MEGABYTE_FACTOR:
+        displayed_size = float(size/KILOBYTE_FACTOR)
+        unit = "KB"
+    elif size < GIGABYTE_FACTOR:
+        displayed_size = float(size/MEGABYTE_FACTOR)
+        unit = "MB"
+    elif size < TERABYTE_FACTOR:
+        displayed_size = float(size/GIGABYTE_FACTOR)
+        unit = "GB"
+    else:
+        displayed_size = float(size/TERABYTE_FACTOR)
+        unit = "TB"
+    #print "displayed_size=", round(displayed_size)
+    #round 不是简单的四舍五入，而是ROUND_HALF_EVEN的策略
+    #ceil 取大于或者等于x的最小整数
+    #floor 取小于或者等于x的最大整数
+    #print round(2.5)#3.0
+    #print math.ceil(2.5)#3.0
+    #print math.floor(2.5)#2.0
+    #print round(2.3)#2.0
+    #print math.ceil(2.3)#3.0
+    #print math.floor(2.3)#2.0
+    str_list = [str(int(round(displayed_size))), unit]
+    size_str = " ".join(str_list)
+    return size_str
+
 
 class Sysinfo:
     CACHE_FLAG = ''
@@ -172,8 +209,9 @@ class Sysinfo:
         return platform.node() , platform.processor()
 
     def get_hardwareinfo(self):
-        model_name = ''
-        MemTotal2 = ''
+        model_name = 'N/A'
+#        MemTotal2 = ''
+        MemSize = None
         # CPU
         with open('/proc/cpuinfo') as f:
             for line in f:
@@ -185,16 +223,30 @@ class Sysinfo:
                         model_name = line.rstrip('\n').split(':')[1].strip()
                         break
         # Memory
+#        with open('/proc/meminfo') as f:
+#            for line in f:
+#                if line.strip():
+#                    if line.rstrip('\n').startswith('MemTotal'):
+#                        MemTotal = line.rstrip('\n').split(':')[1].strip()
+#                        MemTotal1 = MemTotal.split(' ')[0]
+#                        #MemTotal2 = GLib.format_size_for_display(int(MemTotal1) * 1024)
+#                        MemTotal2 = str(round(float(MemTotal1) / (1000 ** 2), 1)) + "G"
+#                        break
+
         with open('/proc/meminfo') as f:
             for line in f:
                 if line.strip():
                     if line.rstrip('\n').startswith('MemTotal'):
                         MemTotal = line.rstrip('\n').split(':')[1].strip()
-                        MemTotal1 = MemTotal.split(' ')[0]
-                        #MemTotal2 = GLib.format_size_for_display(int(MemTotal1) * 1024)
-                        MemTotal2 = str(round(float(MemTotal1) / (1000 ** 2), 1)) + "G"
+                        MemTmp = MemTotal.split(' ')[0]
+                        #print "MemTmp=",MemTmp
+                        #MemTmp = 1000204886#8156252#7889972
+                        MemSize = get_human_read_capacity_size(int(MemTmp)*1000)
                         break
-        return model_name,MemTotal2
+        if MemSize is None:
+            MemSize = "N/A"
+        return model_name,str(MemSize)
+#        return model_name,MemTotal2
 
     def get_codename(self):
         codename = platform.dist()[2]
