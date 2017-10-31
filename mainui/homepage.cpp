@@ -52,7 +52,7 @@ HomePage::HomePage(QWidget *parent, QString arch, QString os/*, const QString &v
 //    version_label = new QLabel();
     box_logo = new QLabel();
     box_title = new QPushButton();
-    box_title->setFixedWidth(120);
+    box_title->setFixedWidth(240);
     box_title->setCursor(Qt::PointingHandCursor);
     box_title->setFocusPolicy(Qt::NoFocus);
     box_title->setStyleSheet("QPushButton{background:transparent;text-align:left;font-family: 方正黑体_GBK;font-size:24px;color:#000000;}QPushButton:hover{color:#3f96e4;}");
