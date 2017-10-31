@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "cameramanager.h"
+//#include "cameramanager.h"
 #include "mainwindow.h"
 #include <QDebug>
 #include <QVBoxLayout>

@@ -48,7 +48,7 @@ WindowWidget::WindowWidget(QWidget *parent, SessionDispatcher *proxy, QString cu
     right_radio->setFocusPolicy(Qt::NoFocus);
     right_radio->setObjectName("rightradio");
 
-    if (this->desktop == "mate" || this->desktop == "MATE") {
+    if (this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui") {
         icon_label->hide();
         icon_switcher->hide();
     }
@@ -198,7 +198,7 @@ bool WindowWidget::getStatus()
 
 void WindowWidget::initData()
 {
-    if (this->desktop == "mate" || this->desktop == "MATE") {
+    if (this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui") {
         QString current_value = sessionproxy->get_window_button_align_qt();
         if(current_value == "left") {
             left_radio->setChecked(true);

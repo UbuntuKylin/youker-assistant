@@ -15,7 +15,6 @@ CONFIG += qt \
     warn_on \
     release \
     link_pkgconfig
-PKGCONFIG += opencv
 INCLUDEPATH += .
 
 include(../qtsingleapplication/src/qtsingleapplication.pri)
@@ -146,7 +145,6 @@ SOURCES += main.cpp\
     autostartwidget.cpp \
     ../component/autogroup.cpp \
     kthread.cpp \
-    cameramanager.cpp \
     aboutdialog.cpp \
     ../cleaner/cleanlistwidget.cpp \
     ../component/tipdialog.cpp \
@@ -239,7 +237,6 @@ HEADERS  += mainwindow.h \
     autostartwidget.h \
     ../component/autogroup.h \
     kthread.h \
-    cameramanager.h \
     aboutdialog.h \
     ../cleaner/cleanlistwidget.h \
     ../component/tipdialog.h \

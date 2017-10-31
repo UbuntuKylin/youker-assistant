@@ -145,14 +145,14 @@ class SessionDaemon(dbus.service.Object):
              self.desktop = os.getenv('XDG_SESSION_DESKTOP')
 
         # gtk theme
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             self.interface_settings = gio.Settings.new("org.mate.interface")
         else:
             self.interface_settings = gio.Settings.new("org.gnome.desktop.interface")
         self.interface_settings.connect("changed::gtk-theme", self.gio_settings_monitor, STRING_TYPE)
 
         # icon
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
 #            self.interface_settings = gio.Settings.new("org.mate.interface")
             self.interface_settings.connect("changed::icon-theme", self.gio_settings_monitor, STRING_TYPE)
             self.background_settings = gio.Settings.new("org.mate.background")
@@ -170,7 +170,7 @@ class SessionDaemon(dbus.service.Object):
                 self.desktop_settings.connect("changed::%s" % key, self.gio_settings_monitor, BOOL_TYPE)
 
         # mouse
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             self.mouse_settings = gio.Settings.new("org.mate.peripherals-mouse")
             self.mouse_settings.connect("changed::cursor-theme", self.gio_settings_monitor, STRING_TYPE)
             self.mouse_settings.connect("changed::cursor-size", self.gio_settings_monitor, INT_TYPE)
@@ -179,7 +179,7 @@ class SessionDaemon(dbus.service.Object):
             self.interface_settings.connect("changed::cursor-size", self.gio_settings_monitor, INT_TYPE)
 
         # voice
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             self.sound_settings = gio.Settings.new("org.mate.sound")
         else:
             self.sound_settings = gio.Settings.new("org.gnome.desktop.sound")
@@ -208,7 +208,7 @@ class SessionDaemon(dbus.service.Object):
             self.power_settings.connect("changed::show-time", self.gio_settings_monitor, BOOL_TYPE)
             self.power_settings.connect("changed::show-percentage", self.gio_settings_monitor, BOOL_TYPE)
 
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             self.toplevels_settings = gio.Settings("org.mate.panel.toplevel", "/org/mate/panel/toplevels/top/")
             self.toplevels_settings.connect("changed::size", self.gio_settings_monitor_diff, INT_TYPE, "top")
             self.toplevels_settings.connect("changed::auto-hide", self.gio_settings_monitor_diff, BOOL_TYPE, "top")
@@ -233,7 +233,7 @@ class SessionDaemon(dbus.service.Object):
 #        print gc.get_int('/org/mate/panel/toplevels/top/size')
 
         # menubar
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             self.menubar_settings = gio.Settings.new("org.mate.panel.menubar")
             self.menubar_settings.connect("changed::show-applications", self.gio_settings_monitor, BOOL_TYPE)
             self.menubar_settings.connect("changed::show-desktop", self.gio_settings_monitor, BOOL_TYPE)
@@ -245,7 +245,7 @@ class SessionDaemon(dbus.service.Object):
         if self.desktop == "Unity":
             self.gwd_settings = gio.Settings.new("org.compiz.gwd")
             self.gwd_settings.connect("changed::mouse-wheel-action", self.gio_settings_monitor, STRING_TYPE)
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             self.titlebar_settings = gio.Settings.new("org.gnome.desktop.wm.preferences")
         else:
             self.titlebar_settings = gio.Settings.new("org.gnome.desktop.wm.preferences")
@@ -261,7 +261,7 @@ class SessionDaemon(dbus.service.Object):
         self.interface_settings.connect("changed::document-font-name", self.gio_settings_monitor, STRING_TYPE)
         self.titlebar_settings.connect("changed::titlebar-font", self.gio_settings_monitor, STRING_TYPE)
         self.interface_settings.connect("changed::text-scaling-factor", self.gio_settings_monitor, DOUBLE_TYPE)
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             self.font_settings = gio.Settings.new("org.mate.font-rendering")
         else:
             self.font_settings = gio.Settings.new("org.gnome.settings-daemon.plugins.xsettings")
@@ -269,7 +269,7 @@ class SessionDaemon(dbus.service.Object):
         self.font_settings.connect("changed::antialiasing", self.gio_settings_monitor, STRING_TYPE)
 
         # touchpad
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             self.touchpad_settings = gio.Settings.new("org.mate.peripherals-touchpad")
             self.touchpad_settings.connect("changed::scroll-method", self.gio_settings_monitor, INT_TYPE)
             self.touchpad_settings.connect("changed::touchpad-enabled", self.gio_settings_monitor, BOOL_TYPE)
@@ -292,25 +292,25 @@ class SessionDaemon(dbus.service.Object):
             self.canonical_interface_settings.connect("changed::scrollbar-mode", self.gio_settings_monitor, STRING_TYPE)
 
         #file manager
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             self.filemanager_settings = gio.Settings.new("org.mate.caja.preferences")
         else:
             self.filemanager_settings = gio.Settings.new("org.gnome.nautilus.preferences")
         self.filemanager_settings.connect("changed::always-use-location-entry", self.gio_settings_monitor, BOOL_TYPE)
 
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             self.mediahanding_settings = gio.Settings.new("org.mate.media-handling")
         else:
             self.mediahanding_settings = gio.Settings.new("org.gnome.desktop.media-handling")
         self.mediahanding_settings.connect("changed::automount", self.gio_settings_monitor, BOOL_TYPE)
         self.mediahanding_settings.connect("changed::automount-open", self.gio_settings_monitor, BOOL_TYPE)
         self.mediahanding_settings.connect("changed::autorun-never", self.gio_settings_monitor, BOOL_TYPE)
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             self.iconview_settings = gio.Settings.new("org.mate.caja.icon-view")
         else:
             self.iconview_settings = gio.Settings.new("org.gnome.nautilus.icon-view")
         self.iconview_settings.connect("changed::thumbnail-size", self.gio_settings_monitor, INT_TYPE)
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             self.thumbnail_settings = gio.Settings.new("org.mate.thumbnail-cache")
         else:
             self.thumbnail_settings = gio.Settings.new("org.gnome.desktop.thumbnail-cache")

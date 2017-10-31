@@ -227,6 +227,7 @@ void CameraManager::readFarme()
 
 // 实现将拍下来的图片缩放一倍
 IplImage* CameraManager::DoPyrDown(IplImage* image, int filter = IPL_GAUSSIAN_5x5)
+//IplImage* CameraManager::DoPyrDown(IplImage* image, int filter = CV_GAUSSIAN_5x5)
 {
     CvSize size = cvSize(image->width / 2,image->height / 2);
     IplImage* outImage = cvCreateImage(size,image->depth,image->nChannels);

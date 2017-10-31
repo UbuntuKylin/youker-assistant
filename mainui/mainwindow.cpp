@@ -22,7 +22,7 @@
 #include <QPropertyAnimation>
 #include <QParallelAnimationGroup>
 #include "shadowwidget.h"
-#include "cameramanager.h"
+//#include "cameramanager.h"
 #include "../component/threadpool.h"
 
 QString GlobalData::globalarch = ""; // add by hebing, just for transmit var
@@ -46,7 +46,7 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget *parent) :
 
 //    this->osName = "Kylin";
 //    if (this->arch == "aarch64" || this->osName == "Kylin" || this->osName == "YHKylin") {
-    if (this->desktop == "MATE" || this->desktop == "mate") {
+    if (this->desktop == "MATE" || this->desktop == "mate" || this->desktop == "UKUI" || this->desktop == "ukui") {
         this->isTopLevel();
         this->resize(900, 600);
         this->setAutoFillBackground(true);
@@ -1241,11 +1241,11 @@ void MainWindow::displaySubPage(int index)
 
     else if(index == 1)
     {
-        CameraManager *camera_manager = new CameraManager(0, sessioninterface, last_skin_path);
-        int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (622  / 2);
-        int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (480  / 2);
-        camera_manager->move(w_x, w_y);
-        camera_manager->exec();
+        //CameraManager *camera_manager = new CameraManager(0, sessioninterface, last_skin_path);
+        //int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (622  / 2);
+        //int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (480  / 2);
+        //camera_manager->move(w_x, w_y);
+        //camera_manager->exec();
 //        if(camera_manager == NULL) {
 //            camera_manager = new CameraManager(0, sessioninterface, last_skin_path);
 //            int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (622  / 2);

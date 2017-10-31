@@ -26,6 +26,7 @@
 #include <QTimer>// 设置采集数据的间隔时间
 #include <highgui.h>  //包含opencv库头文件
 #include <cv.h>
+//#include <opencv2/highgui.hpp> //1710opencv库
 //#include <cvaux.h>
 //#include <ml.h>
 #include <QDateTime>

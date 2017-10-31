@@ -245,7 +245,7 @@ void IconWidget::initData()
 //    disk_switcher->setSwitchStatus(sessionproxy->get_show_devices_qt());
 //    show_switcher->switchedOn = sessionproxy->get_show_desktop_icons_qt();
 
-    if (this->desktop == "mate" || this->desktop == "MATE")
+    if (this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui")
     {
         computer_switcher->switchedOn = sessionproxy->get_show_computer_qt();
     }

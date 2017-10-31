@@ -121,10 +121,12 @@ void BoxWidget::initPluginWidget()
     pluginModel.setData(qindex,QIcon(QPixmap("://res/ubuntukylin-software-center.png")),Qt::DecorationRole);
 
     QStringList icon_list;
-    icon_list<<"://res/boot"<<"://res/camera";
+    //icon_list<<"://res/boot"<<"://res/camera";
+    icon_list<<"://res/boot";
     QStringList text_list;
-    text_list << tr("Boot Manager") << tr("Camera");
-    for (int index = 0;index < 2;++index)
+    //text_list << tr("Boot Manager") << tr("Camera");
+    text_list << tr("Boot Manager");
+    for (int index = 0;index < 1;++index)
     {
         pluginModel.insertRows(index + 1,1,QModelIndex());
         qindex = pluginModel.index(index + 1,0,QModelIndex());
@@ -144,8 +146,8 @@ void BoxWidget::initPluginWidget()
         pluginModel.setGuid(ICommon->getGuid());
 //        pluginModel.insertRows(i + 1,1,QModelIndex());
 //        qindex = pluginModel.index(i + 1,0,QModelIndex());
-        pluginModel.insertRows(i + 3,1,QModelIndex());
-        qindex = pluginModel.index(i + 3,0,QModelIndex());
+        pluginModel.insertRows(i + 2,1,QModelIndex());
+        qindex = pluginModel.index(i + 2,0,QModelIndex());
         pluginModel.setData(qindex,ICommon->getName());
         pluginModel.setData(qindex,QIcon(QPixmap(pacture_path)),Qt::DecorationRole);
         pluginModel.setData(qindex,ICommon->getName(),Qt::WhatsThisRole);

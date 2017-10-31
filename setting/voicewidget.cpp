@@ -44,7 +44,7 @@ VoiceWidget::VoiceWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispa
     event_label->setFixedWidth(180);
     feedback_label->setFixedWidth(180);
 
-    if (this->desktop == "mate" || this->desktop == "MATE")
+    if (this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui")
     {
         tip_label->hide();
         tip_switcher->hide();

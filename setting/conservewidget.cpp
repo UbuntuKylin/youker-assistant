@@ -95,7 +95,7 @@ ConserveWidget::ConserveWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
     sleep_ac_display_combo = new QComboBox();
 
 
-    if (this->desktop == "mate" || this->desktop == "MATE") {
+    if (this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui") {
         brightness_label->hide();
         brightness_value_label->hide();
         brightness_slider->hide();
@@ -382,7 +382,7 @@ void ConserveWidget::initData()
 
     QStringList aclist  = sessionproxy->get_sleep_timeout_list_qt();
     bool inHere = false;
-    if (this->desktop == "mate" || this->desktop == "MATE") {
+    if (this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui") {
         sleep_timeout_display_battery = sessionproxy->get_current_sleep_timeout_display_battery_qt();
         QStringList huname_display_battery_list;
         huname_display_battery_list << tr("5 minutes") << tr("10 minutes") << tr("20 minutes") << tr("Half an hour") << tr("1 hour") << tr("2 hours") << tr("never");

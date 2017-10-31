@@ -48,7 +48,7 @@ class FileManager:
     # -----------------使用路径输入框取代路径栏-----------------
     # Get: Use the location entry instead of the pathbar
     def get_location_replace_pathbar(self):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.mate.caja.preferences',
                 None, 'always-use-location-entry', 'boolean')
         else:
@@ -59,7 +59,7 @@ class FileManager:
     def set_location_replace_pathbar(self, flag):
         #gstheme = gsettings.get_schema('org.gnome.desktop.sound')
         #gstheme.set_string('theme-name',theme)
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.set('org.mate.caja.preferences',
                 None,
                 'always-use-location-entry',
@@ -73,7 +73,7 @@ class FileManager:
     # -----------------自动挂载媒体-----------------
     # Get: Automatically mount media
     def get_auto_mount_media(self):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.mate.media-handling',
                 None, 'automount', 'boolean')
         else:
@@ -82,7 +82,7 @@ class FileManager:
 
     # Set: Automatically mount media
     def set_auto_mount_media(self, flag):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.set('org.mate.media-handling',
                 None,
                 'automount',
@@ -96,7 +96,7 @@ class FileManager:
     # -----------------自动打开文件夹-----------------
     # Get: Automatically open a folder
     def get_auto_open_folder(self):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.mate.media-handling',
                 None, 'automount-open', 'boolean')
         else:
@@ -105,7 +105,7 @@ class FileManager:
 
     # Set: Automatically open a folder
     def set_auto_open_folder(self, flag):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.set('org.mate.media-handling',
                 None,
                 'automount-open',
@@ -119,7 +119,7 @@ class FileManager:
     # -----------------提示自动运行的程序-----------------
     # Get: Prompt or autorun/autostart programs
     def get_prompt_autorun_programs(self):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.mate.media-handling',
                 None, 'autorun-never', 'boolean')
         else:
@@ -128,7 +128,7 @@ class FileManager:
 
     # Set: Prompt or autorun/autostart programs
     def set_prompt_autorun_programs(self, flag):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.set('org.mate.media-handling',
                 None,
                 'autorun-never',
@@ -142,7 +142,7 @@ class FileManager:
     # -----------------缩略图图标尺寸（像素） min=16, max=512, step=16, default=64-----------------
     # Get: Thumbnail icon size (pixels)
     def get_thumbnail_icon_size(self):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.mate.caja.icon-view',
                 None, 'thumbnail-size', 'int')
         else:
@@ -151,7 +151,7 @@ class FileManager:
 
     # Set: Thumbnail icon size (pixels)
     def set_thumbnail_icon_size(self, size):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.set('org.mate.caja.icon-view',
                 None,
                 'thumbnail-size',
@@ -165,7 +165,7 @@ class FileManager:
     # -----------------缩略图缓存时间（天数） min=-1, max=180, step=1, default=180-----------------
     # Get: Thumbnail cache time (days)
     def get_thumbnail_cache_time(self):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.mate.thumbnail-cache',
                 None, 'maximum-age', 'int')
         else:
@@ -174,7 +174,7 @@ class FileManager:
 
     # Set: Thumbnail cache time (days)
     def set_thumbnail_cache_time(self, value):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.set('org.mate.thumbnail-cache',
                 None,
                 'maximum-age',
@@ -188,7 +188,7 @@ class FileManager:
     # -----------------最大缩略图缓存尺寸（MB） min=-1, max=512, step=1, default=512-----------------
     # Get: Maximum thumbnail cache size (MB)
     def get_thumbnail_cache_size(self):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.mate.thumbnail-cache',
                 None, 'maximum-size', 'int')
         else:
@@ -197,7 +197,7 @@ class FileManager:
 
     # Set: Maximum thumbnail cache size (MB)
     def set_thumbnail_cache_size(self, size):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.set('org.mate.thumbnail-cache',
                 None,
                 'maximum-size',

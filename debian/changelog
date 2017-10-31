@@ -1,3 +1,13 @@
+youker-assistant (2.2.12-0ubuntu4) artful; urgency=low
+
+  [hebing]
+  * generate kylin-assistant for 1710
+
+  [Mattia Rizzolo]
+  * Fix build with OpenCV 3.1.
+
+ -- hebing <hebing@kylinos.cn>  Tue, 19 Sep 2017 14:26:17 +0800
+
 youker-assistant (2.2.12-0ubuntu2) zesty; urgency=low
 
   [ hebing ]

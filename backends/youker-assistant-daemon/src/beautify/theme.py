@@ -67,7 +67,7 @@ class Theme:
 
     # get current theme
     def get_theme(self):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.mate.interface',
                 None, 'gtk-theme', 'string')
         else:
@@ -76,7 +76,7 @@ class Theme:
 
     # set GTK theme and window theme
     def set_theme(self, theme):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             gstheme = gsettings.get_schema('org.mate.interface')
             gstheme.set_string('gtk-theme',theme)
         else:
@@ -121,7 +121,7 @@ class Theme:
 
     # get current icon theme
     def get_icon_theme(self):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.mate.interface',
                 None, 'icon-theme', 'string')
         else:
@@ -130,7 +130,7 @@ class Theme:
 
     # set icon theme
     def set_icon_theme(self, theme):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             gstheme = gsettings.get_schema('org.mate.interface')
             gstheme.set_string('icon-theme',theme)
         else:
@@ -150,7 +150,7 @@ class Theme:
 
     # get current cursor theme
     def get_cursor_theme(self):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.mate.peripherals-mouse',
                 None, 'cursor-theme', 'string')
         else:
@@ -159,7 +159,7 @@ class Theme:
 
     # set cursor theme
     def set_cursor_theme(self, theme):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             gstheme = gsettings.get_schema('org.mate.peripherals-mouse')
             gstheme.set_string('cursor-theme', theme)
         else:
@@ -178,7 +178,7 @@ class Theme:
 
     # get cursor size
     def get_cursor_size(self):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.mate.peripherals-mouse',
                 None, 'cursor-size', 'int')
         else:
@@ -187,7 +187,7 @@ class Theme:
 
     # set cursor size
     def set_cursor_size(self, size):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             gstheme = gsettings.get_schema('org.mate.peripherals-mouse')
             gstheme.set_int('cursor-size', size)
         else:
@@ -200,7 +200,7 @@ class Theme:
 
     # get font
     def get_font(self):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.mate.interface',
                 None, 'font-name', 'string')
         else:
@@ -209,7 +209,7 @@ class Theme:
 
     # set font
     def set_font(self, font):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.set('org.mate.interface',
                 None,
                 'font-name',
@@ -222,7 +222,7 @@ class Theme:
 
     # get desktop font
     def get_desktop_font(self):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.mate.caja.desktop',
                 None, 'font', 'string')
         else:
@@ -231,7 +231,7 @@ class Theme:
 
     # set desktop font
     def set_desktop_font(self, font):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.set('org.mate.caja.desktop',
                 None,
                 'font',
@@ -244,7 +244,7 @@ class Theme:
 
     # get document font
     def get_document_font(self):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.mate.interface',
                 None, 'document-font-name', 'string')
         else:
@@ -253,7 +253,7 @@ class Theme:
 
     # set document font
     def set_document_font(self, font):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.set('org.mate.interface',
                 None,
                 'document-font-name',
@@ -266,7 +266,7 @@ class Theme:
 
     # get monospace font
     def get_monospace_font(self):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.mate.interface',
                 None, 'monospace-font-name', 'string')
         else:
@@ -275,7 +275,7 @@ class Theme:
 
     # set monospace font (use this func to change document font in ubuntu)
     def set_monospace_font(self, font):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.set('org.mate.interface',
                 None,
                 'monospace-font-name',
@@ -288,7 +288,7 @@ class Theme:
 
     # get window title font
     def get_window_title_font(self):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.gnome.desktop.wm.preferences',
                 None, 'titlebar-font', 'string')
         else:
@@ -297,7 +297,7 @@ class Theme:
 
     # set window title font
     def set_window_title_font(self, font):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.set('org.gnome.desktop.wm.preferences',
                 None,
                 'titlebar-font',
@@ -327,7 +327,7 @@ class Theme:
     
     # get current hinting
     def get_hinting(self):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.mate.font-rendering',
                 None,
                 'hinting',
@@ -340,7 +340,7 @@ class Theme:
 
     # set hinting
     def set_hinting(self, value):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.set('org.mate.font-rendering',
                 None,
                 'hinting',
@@ -358,7 +358,7 @@ class Theme:
 
     # get current antialiasing
     def get_antialiasing(self):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.mate.font-rendering',
                 None,
                 'antialiasing',
@@ -371,7 +371,7 @@ class Theme:
 
     # set antialiasing
     def set_antialiasing(self,value):
-        if self.desktop == "mate" or self.desktop == "MATE":
+        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.set('org.mate.font-rendering',
                 None,
                 'antialiasing',

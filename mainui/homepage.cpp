@@ -178,10 +178,10 @@ void HomePage::initUI()
 
     QStringList icon_list;
 //    icon_list<<"://res/ubuntukylin-software-center"<<"://res/boot"<<"://res/camera";
-    icon_list<<"://res/boot"<<"://res/camera" << "://res/more.png";
+    icon_list<<"://res/boot" << "://res/more.png";
     QStringList text_list;
 //    text_list<< tr("Youker Softeware Center") << tr("Boot Manager") << tr("Camera");
-    text_list << tr("Boot Manager") << tr("Camera") << tr("More");
+    text_list << tr("Boot Manager") << tr("More");
     QHBoxLayout *button_layout = new QHBoxLayout();
     QSignalMapper *signal_mapper = new QSignalMapper(this);
     for(int i=0; i<icon_list.size(); i++)
