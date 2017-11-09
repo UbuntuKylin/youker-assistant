@@ -1,8 +1,17 @@
+youker-assistant (2.3.0-0ubuntu4) artful; urgency=low
+
+  [hebing]
+  * adjust onclick method in common tool beause camera deleted
+  * add comment for desktop file
+  * add i18n for "Open File"
+
+ -- hebing <hebing@kylinos.cn>  Thu, 09 Nov 2017 09:15:54 +0800
+
 youker-assistant (2.2.13-0ubuntu4) artful; urgency=low
 
   [hebing]
   * change youker-assistant to kylin-assistant in desktop file
-  * increase the size of commont tool from 120 to 240
+  * increase the size of common tool from 120 to 240
 
  -- hebing <hebing@kylinos.cn>  Tue, 31 Oct 2017 10:46:31 +0800
 
@@ -80,7 +89,7 @@ youker-assistant (2.2.7-0ubuntu2) zesty; urgency=low
 
   [ Mathieu Trudel-Lapierre ]
   * debian/control: limit dmidecode Depends to x86 and ARM. (LP: #1679788)
-  
+
  -- lixiang <lixiang@kylinos.cn>  Thu, 30 Mar 2017 10:37:12 +0800
 
 youker-assistant (2.2.7-0ubuntu1) zesty; urgency=low
@@ -296,7 +305,7 @@ youker-assistant (1.0.1-0ubuntu1) trusty; urgency=low
   * Open related folders when scanning items got double-clicked.
   * Notify users when operating the Kingsoft disk cloud configuration.
   * Modify Dbus starting method.
-  
+
  -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 20 Mar 2014 10:14:56 +0800
 
 youker-assistant (1.0.0-0ubuntu1) trusty; urgency=low

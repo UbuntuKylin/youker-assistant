@@ -2536,12 +2536,12 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     <message>
         <location filename="../skincenter.cpp" line="503"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>打开文件</translation>
     </message>
     <message>
         <location filename="../skincenter.cpp" line="504"/>
         <source>Files(*.png *.jpg)</source>
-        <translation type="unfinished"></translation>
+        <translation>文件(*.png *.jpg)</translation>
     </message>
 </context>
 <context>

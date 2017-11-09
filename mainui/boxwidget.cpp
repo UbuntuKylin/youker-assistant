@@ -166,7 +166,7 @@ void BoxWidget::OnClickListView(const QModelIndex & index)
     else if(index.row() == 1) {
         emit this->sendSubIndex(0);
     }
-    else if(index.row() == 2) {
+    else if(index.row() == -1) {
         if(this->osarch == "aarch64" || this->osname == "Kylin" || this->osname == "YHKylin")
             sessionProxy->runApp("cheese");
         else
@@ -175,7 +175,7 @@ void BoxWidget::OnClickListView(const QModelIndex & index)
     else
     {
 //        QString guid = pluginModel.getGuid(index.row() - 1);
-        QString guid = pluginModel.getGuid(index.row() - 3);
+        QString guid = pluginModel.getGuid(index.row() - 2);
         PluginInterface* interface = PluginManager::Instance()->getInterfaceByGuid<PluginInterface>(guid);
         interface->doAction();
     }

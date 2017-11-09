@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=kylin-assistant
 Name[zh_CN]=麒麟助手
-Comment=kylin-assistant
-Comment[zh_CN]=麒麟助手
+Comment=System Auxiliar Tools
+Comment[zh_CN]=系统辅助工具
 Keywords=Settings;Cleaning;Customization
 Exec=/usr/bin/youker-assistant %u
 Icon=youker-assistant.png
