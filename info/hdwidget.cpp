@@ -86,7 +86,7 @@ void HDWidget::initData()
 //    hd_info_map.insert("DiskSerial", "W6227R7B<1_1>144116411501");
 //    hd_info_map.insert("DiskVendor", "Seagate<1_1>Seagate");
 
-    hd_info_map = systemproxy->get_harddisk_info_qt(); //？硬盘，显卡，声卡界面需要重新调用?为何其他界面不需要重新调用
+    hd_info_map = systemproxy->get_harddisk_info_qt(); //？硬盘，显卡，声卡，内存界面需要重新调用?为何其他界面不需要重新调用
     QMap<QString, QVariant>::iterator iter = hd_info_map.find("DiskNum");
     int diskNum = 0;
     if (iter == hd_info_map.end()) {

@@ -686,6 +686,9 @@ void MainWindow::startDbusDaemon()
     QThread *systemThread = ThreadPool::Instance()->createNewThread();
     systeminterface->moveToThread(systemThread);
     connect(systemThread, SIGNAL(started()), systeminterface, SLOT(initData()));
+
+//    connect(systeminterface, &SystemDispatcher::dbusInitFinished, this, [=] {dlg.close();this->displayMainWindow();
+//    });
     connect(systeminterface, SIGNAL(dbusInitFinished()), this, SLOT(displayMainWindow()));//数据获取完毕后，告诉界面去更新数据后显示界面
     systemThread->start();
 

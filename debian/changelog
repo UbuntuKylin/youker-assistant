@@ -1,3 +1,13 @@
+youker-assistant (2.4.0-0ubuntu4) artful; urgency=low
+
+  [hebing]
+  * change cpu info from 4 cores cores to 4
+  * add call for changeinfopage when click memoryinfo page
+  * add a picture in skin
+  * coded bootanimation in main.cpp
+
+ -- hebing <hebing@kylinos.cn>  Fri, 10 Nov 2017 17:01:56 +0800
+
 youker-assistant (2.3.0-0ubuntu4) artful; urgency=low
 
   [hebing]

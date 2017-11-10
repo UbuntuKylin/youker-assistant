@@ -76,7 +76,7 @@ void AudioWidget::initData()
 {
     this->clear_page_list();
 //    audio_info_map.clear();
-    audio_info_map = systemproxy->get_audiocard_info_qt();//？硬盘，显卡，声卡界面需要重新调用?为何其他界面不需要重新调用
+    audio_info_map = systemproxy->get_audiocard_info_qt();//？硬盘，显卡，声卡，内存界面需要重新调用?为何其他界面不需要重新调用
 
     QMap<QString, QVariant>::iterator iter = audio_info_map.find("MulNum");
     qDebug() << iter.value().toInt();

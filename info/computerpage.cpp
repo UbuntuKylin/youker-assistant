@@ -313,7 +313,7 @@ void ComputerPage::initUI(bool cpu)
                     QLabel *label = new QLabel();
                     label_list.append(label);
                     if (it.key() == "cpu_cores") {
-                        label->setText(tr("%1 cores").arg(valueStr));
+                        label->setText(tr("%1 ").arg(valueStr));
                     }
                     else if (it.key() == "CpuVersion" && valueStr.contains("v1.0")) {
                         label->setText(tr("%1 64bit").arg(valueStr));

@@ -84,7 +84,7 @@ void MonitorWidget::initData()
 //    monitor_info_map.insert("Vga_num", "2");
 //    monitor_info_map.insert("Vga_product", "Intel Corporation Haswell-ULT Integrated Graphics Controller (rev 09) (prog-if 00 [VGA controller])<1_1>NVIDIA Corporation GF117M [GeForce 610M/710M/810M/820M / GT 620M/625M/630M/720M] (rev a1) (prog-if 00 [VGA controller]");
 //    monitor_info_map.insert("Vga_vendor", "Intel<1_1>Nvidia");
-    monitor_info_map = systemproxy->get_monitor_info_qt();//？硬盘，显卡，声卡界面需要重新调用?为何其他界面不需要重新调用
+    monitor_info_map = systemproxy->get_monitor_info_qt();//？硬盘，显卡，声卡，内存界面需要重新调用?为何其他界面不需要重新调用
     QMap<QString, QVariant>::iterator iter = monitor_info_map.find("Vga_num");
     int vgaNum = 0;
     if (iter == monitor_info_map.end()) {

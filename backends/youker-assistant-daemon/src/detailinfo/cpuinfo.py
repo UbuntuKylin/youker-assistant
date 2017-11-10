@@ -656,7 +656,7 @@ class DetailInfo:
                 #前端总线
                 #Cpu['CpuClock'] = "前端总线"
                 #内核数
-                Cpu['cpu_cores'] = "4 cores"#4 核
+                Cpu['cpu_cores'] = "4 "#4 核
                 #线程数
                 #Cpu['cpu_siblings'] = "4 thread/core"#4 线程/核
                 #一级缓存

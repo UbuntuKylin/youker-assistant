@@ -77,7 +77,7 @@ bool MemoryWidget::getStatus()
 void MemoryWidget::initData()
 {
     this->clear_page_list();
-
+    memory_info_map = systemproxy->get_memory_info_qt();//？硬盘，显卡，声卡，内存界面需要重新调用?为何其他界面不需要重新调用
     QMap<QString, QVariant>::iterator iter = memory_info_map.find("Memnum");
     int memoryNum = 0;
     if (iter == memory_info_map.end()) {
