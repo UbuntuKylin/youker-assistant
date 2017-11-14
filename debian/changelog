@@ -1,3 +1,11 @@
+youker-assistant (2.4.1-0ubuntu4) artful; urgency=low
+
+  [hebing]
+  * rm debug info in cdrowwidget.cpp
+  * add info output in terminal if started repeated
+
+ -- hebing <hebing@kylinos.cn>  Tue, 14 Nov 2017 11:03:25 +0800
+
 youker-assistant (2.4.0-0ubuntu4) artful; urgency=low
 
   [hebing]

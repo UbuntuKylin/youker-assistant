@@ -9,45 +9,45 @@
         <translation>关于我们</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="84"/>
+        <location filename="../aboutdialog.cpp" line="83"/>
         <source>Kylin Assistant</source>
         <translation>麒麟助手</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="90"/>
+        <location filename="../aboutdialog.cpp" line="89"/>
         <source>About</source>
         <translatorcomment>关于本软件</translatorcomment>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="128"/>
+        <location filename="../aboutdialog.cpp" line="126"/>
         <source>Maintainer:
 Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>维护者：
 麒麟团队 &lt;ubuntukylin-members@list.launchpad.net&gt;</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="129"/>
+        <location filename="../aboutdialog.cpp" line="127"/>
         <source>      Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.</source>
         <translation>      麒麟助手是由麒麟团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器等功能。</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="130"/>
+        <location filename="../aboutdialog.cpp" line="128"/>
         <source> for more information. Welcome everyone to join with us. kylin-assistant Homepage: </source>
         <translation> 了解软件的最新进展并反馈问题，欢迎广大用户和爱好者一起参与。麒麟助手主页：</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="130"/>
+        <location filename="../aboutdialog.cpp" line="128"/>
         <source>      The software is still under development. Please visit </source>
         <translation>      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 </translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="93"/>
+        <location filename="../aboutdialog.cpp" line="92"/>
         <source>Contributor</source>
         <translation>贡献者</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="150"/>
+        <location filename="../aboutdialog.cpp" line="148"/>
         <source>Close</source>
         <translatorcomment>关闭</translatorcomment>
         <translation>关闭</translation>
@@ -64,12 +64,12 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>AudioWidget</name>
     <message>
-        <location filename="../../info/audiowidget.cpp" line="84"/>
+        <location filename="../../info/audiowidget.cpp" line="100"/>
         <source>Audio Info</source>
         <translation>声卡信息</translation>
     </message>
     <message>
-        <location filename="../../info/audiowidget.cpp" line="102"/>
+        <location filename="../../info/audiowidget.cpp" line="118"/>
         <source>Audio Info %1</source>
         <translation>声卡信息%1</translation>
     </message>
@@ -124,7 +124,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>BoardWidget</name>
     <message>
-        <location filename="../../info/boardwidget.cpp" line="76"/>
+        <location filename="../../info/boardwidget.cpp" line="83"/>
         <source>Board Info</source>
         <translation>主板信息</translation>
     </message>
@@ -151,14 +151,13 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>麒麟软件中心</translation>
     </message>
     <message>
-        <location filename="../boxwidget.cpp" line="126"/>
+        <location filename="../boxwidget.cpp" line="128"/>
         <source>Boot Manager</source>
         <translation>启动项管理</translation>
     </message>
     <message>
-        <location filename="../boxwidget.cpp" line="126"/>
         <source>Camera</source>
-        <translation>摄像头</translation>
+        <translation type="obsolete">摄像头</translation>
     </message>
 </context>
 <context>
@@ -190,19 +189,16 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>CameraManager</name>
     <message>
-        <location filename="../cameramanager.cpp" line="81"/>
         <source>View Photos</source>
-        <translation>浏览照片</translation>
+        <translation type="obsolete">浏览照片</translation>
     </message>
     <message>
-        <location filename="../cameramanager.cpp" line="92"/>
         <source>The camera is out of question, &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; Refresh&lt;/a&gt; to call it out ~</source>
-        <translation>摄像头出问题了， &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; 刷新&lt;/a&gt; 去召唤它～</translation>
+        <translation type="obsolete">摄像头出问题了， &lt;a style=&apos;color: #3f96e4;&apos; href = http://www.ubuntukylin.com&gt; 刷新&lt;/a&gt; 去召唤它～</translation>
     </message>
     <message>
-        <location filename="../cameramanager.cpp" line="301"/>
         <source>Camera</source>
-        <translation>摄像头</translation>
+        <translation type="obsolete">摄像头</translation>
     </message>
 </context>
 <context>
@@ -646,9 +642,8 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation> 小时</translation>
     </message>
     <message>
-        <location filename="../../info/computerpage.cpp" line="316"/>
         <source>%1 cores</source>
-        <translation>%1 核</translation>
+        <translation type="obsolete">%1 核</translation>
     </message>
     <message>
         <location filename="../../info/computerpage.cpp" line="560"/>
@@ -917,6 +912,11 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <location filename="../../info/computerpage.cpp" line="319"/>
         <source>%1 64bit</source>
         <translation>%1 64位</translation>
+    </message>
+    <message>
+        <location filename="../../info/computerpage.cpp" line="316"/>
+        <source>%1 </source>
+        <translation>%1 </translation>
     </message>
     <message>
         <location filename="../../info/computerpage.cpp" line="371"/>
@@ -1432,7 +1432,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>CpuWidget</name>
     <message>
-        <location filename="../../info/cpuwidget.cpp" line="86"/>
+        <location filename="../../info/cpuwidget.cpp" line="90"/>
         <source>CPU Info</source>
         <translation>处理器信息</translation>
     </message>
@@ -1440,7 +1440,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>DesktopWidget</name>
     <message>
-        <location filename="../../info/desktopwidget.cpp" line="76"/>
+        <location filename="../../info/desktopwidget.cpp" line="82"/>
         <source>Desktop Info</source>
         <translation>桌面环境信息</translation>
     </message>
@@ -1517,12 +1517,12 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>HDWidget</name>
     <message>
-        <location filename="../../info/hdwidget.cpp" line="92"/>
+        <location filename="../../info/hdwidget.cpp" line="102"/>
         <source>HardWare Info</source>
         <translation>硬盘信息</translation>
     </message>
     <message>
-        <location filename="../../info/hdwidget.cpp" line="109"/>
+        <location filename="../../info/hdwidget.cpp" line="119"/>
         <source>HardWare Info %1</source>
         <translation>硬盘信息 %1</translation>
     </message>
@@ -1728,9 +1728,8 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>启动项管理</translation>
     </message>
     <message>
-        <location filename="../homepage.cpp" line="184"/>
         <source>Camera</source>
-        <translation>摄像头</translation>
+        <translation type="obsolete">摄像头</translation>
     </message>
     <message>
         <location filename="../homepage.cpp" line="259"/>
@@ -1817,67 +1816,67 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>InfoWidget</name>
     <message>
-        <location filename="../infowidget.cpp" line="42"/>
+        <location filename="../infowidget.cpp" line="143"/>
         <source>Computer</source>
         <translation>电脑概述</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="42"/>
+        <location filename="../infowidget.cpp" line="149"/>
         <source>Desktop</source>
         <translation>桌面环境</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="42"/>
+        <location filename="../infowidget.cpp" line="155"/>
         <source>CPU</source>
         <translation>处理器</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="42"/>
+        <location filename="../infowidget.cpp" line="161"/>
         <source>Memory</source>
         <translation>内存</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="42"/>
+        <location filename="../infowidget.cpp" line="167"/>
         <source>Motherboard</source>
         <translation>主板</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="42"/>
+        <location filename="../infowidget.cpp" line="173"/>
         <source>HD</source>
         <translation>硬盘</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="42"/>
+        <location filename="../infowidget.cpp" line="179"/>
         <source>NIC</source>
         <translation>网卡</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="42"/>
+        <location filename="../infowidget.cpp" line="185"/>
         <source>VGA</source>
         <translation>显卡</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="42"/>
+        <location filename="../infowidget.cpp" line="191"/>
         <source>Audio</source>
         <translation>声卡</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="42"/>
+        <location filename="../infowidget.cpp" line="196"/>
         <source>CD-ROM</source>
         <translation>光驱</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="42"/>
+        <location filename="../infowidget.cpp" line="201"/>
         <source>Battery</source>
         <translation>电池</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="42"/>
+        <location filename="../infowidget.cpp" line="211"/>
         <source>Device Driver</source>
         <translation>设备驱动</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="42"/>
+        <location filename="../infowidget.cpp" line="206"/>
         <source>Sensor</source>
         <translation>硬件传感</translation>
     </message>
@@ -1947,22 +1946,22 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>KylinMenu</name>
     <message>
-        <location filename="../../component/kylinmenu.cpp" line="206"/>
+        <location filename="../../component/kylinmenu.cpp" line="210"/>
         <source>Check and update</source>
         <translation>检查更新</translation>
     </message>
     <message>
-        <location filename="../../component/kylinmenu.cpp" line="207"/>
+        <location filename="../../component/kylinmenu.cpp" line="211"/>
         <source>Forum Help</source>
         <translation>论坛求助</translation>
     </message>
     <message>
-        <location filename="../../component/kylinmenu.cpp" line="208"/>
+        <location filename="../../component/kylinmenu.cpp" line="212"/>
         <source>Feedback</source>
         <translation>问题反馈</translation>
     </message>
     <message>
-        <location filename="../../component/kylinmenu.cpp" line="209"/>
+        <location filename="../../component/kylinmenu.cpp" line="213"/>
         <source>About us</source>
         <translation>关于我们</translation>
     </message>
@@ -2036,12 +2035,12 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>LoginWidget</name>
     <message>
-        <location filename="../loginwidget.cpp" line="140"/>
+        <location filename="../loginwidget.cpp" line="139"/>
         <source>Login Kylin Account</source>
         <translation>登录麒麟帐号</translation>
     </message>
     <message>
-        <location filename="../loginwidget.cpp" line="141"/>
+        <location filename="../loginwidget.cpp" line="140"/>
         <source>Logout</source>
         <translation>注销</translation>
     </message>
@@ -2049,13 +2048,12 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="48"/>
-        <location filename="../mainwindow.cpp" line="60"/>
+        <location filename="../mainwindow.cpp" line="54"/>
         <source>Kylin Assistant</source>
         <translation>麒麟助手</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="53"/>
+        <location filename="../mainwindow.cpp" line="59"/>
         <source>Youker Assistant</source>
         <translation>优客助手</translation>
     </message>
@@ -2063,12 +2061,12 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>MemoryWidget</name>
     <message>
-        <location filename="../../info/memorywidget.cpp" line="84"/>
+        <location filename="../../info/memorywidget.cpp" line="93"/>
         <source>Memory Info</source>
         <translation>内存条信息</translation>
     </message>
     <message>
-        <location filename="../../info/memorywidget.cpp" line="100"/>
+        <location filename="../../info/memorywidget.cpp" line="109"/>
         <source>Memory Info %1</source>
         <translation>内存信息 %1</translation>
     </message>
@@ -2076,12 +2074,12 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>MonitorWidget</name>
     <message>
-        <location filename="../../info/monitorwidget.cpp" line="90"/>
+        <location filename="../../info/monitorwidget.cpp" line="100"/>
         <source>Monitor Info</source>
         <translation>显示器和显卡信息</translation>
     </message>
     <message>
-        <location filename="../../info/monitorwidget.cpp" line="106"/>
+        <location filename="../../info/monitorwidget.cpp" line="116"/>
         <source>Monitor Info %1</source>
         <translation>显示器和显卡信息 %1</translation>
     </message>
@@ -2249,6 +2247,14 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <location filename="../../setting/panelwidget.cpp" line="368"/>
         <source>Show icon</source>
         <translation>显示图标</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="../main.cpp" line="127"/>
+        <source>kylin-assistant had already running!</source>
+        <translation>麒麟助手运行中</translation>
     </message>
 </context>
 <context>
@@ -2547,18 +2553,18 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>SystemWidget</name>
     <message>
-        <location filename="../../info/systemwidget.cpp" line="101"/>
+        <location filename="../../info/systemwidget.cpp" line="108"/>
         <source>Computer Base Info</source>
         <translation>电脑概述</translation>
     </message>
     <message>
-        <location filename="../../info/systemwidget.cpp" line="74"/>
-        <location filename="../../info/systemwidget.cpp" line="78"/>
+        <location filename="../../info/systemwidget.cpp" line="75"/>
+        <location filename="../../info/systemwidget.cpp" line="79"/>
         <source> Minutes</source>
         <translation> 分钟</translation>
     </message>
     <message>
-        <location filename="../../info/systemwidget.cpp" line="78"/>
+        <location filename="../../info/systemwidget.cpp" line="79"/>
         <source> Hours </source>
         <translation> 小时</translation>
     </message>

@@ -123,7 +123,10 @@ int main(int argc, char *argv[])
     //单程序运行处理
     QtSingleApplication app(argc, argv);
     if (app.isRunning())
+    {
+        qDebug() << QObject::tr("kylin-assistant had already running!");
         return 0;
+    }
 
     QTextCodec::setCodecForTr(QTextCodec::codecForLocale());
     QTextCodec::setCodecForCStrings(QTextCodec::codecForLocale());
