@@ -53,22 +53,37 @@ void BoardWidget::clear_page_list()
 bool BoardWidget::displaySwitch()
 {
     QMap<QString, QVariant> tmpMap = systemproxy->get_board_info_qt();
-    if (tmpMap.isEmpty() || tmpMap.count() <= 0)
+//    if (tmpMap.isEmpty() || tmpMap.count() <= 0)
+//    {
+//        return false;
+//    }
+//    else
+//    {
+//        QMap<QString,QVariant>::iterator it;
+//        for ( it = tmpMap.begin(); it != tmpMap.end(); ++it )
+//        {
+//            if (it.value().toString().length() > 0)
+//            {
+//                board_info_map.insert(it.key(), it.value());
+//            }
+//        }
+//        return true;
+//    }
+
+    QMap<QString,QVariant>::iterator it;
+    bool sflag = false;
+    for ( it = tmpMap.begin(); it != tmpMap.end(); ++it )
     {
-        return false;
-    }
-    else
-    {
-        QMap<QString,QVariant>::iterator it;
-        for ( it = tmpMap.begin(); it != tmpMap.end(); ++it )
+        if (it.value().toString().length() > 0)
         {
-            if (it.value().toString().length() > 0)
-            {
-                board_info_map.insert(it.key(), it.value());
-            }
+            board_info_map.insert(it.key(), it.value());
+            sflag = true;
         }
-        return true;
     }
+    if (sflag)
+        return true;
+    else
+        return false;
 }
 
 bool BoardWidget::getStatus()

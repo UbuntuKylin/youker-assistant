@@ -53,20 +53,34 @@ void DesktopWidget::clear_page_list()
 bool DesktopWidget::displaySwitch()
 {
     QMap<QString, QVariant> tmpMap = sessionProxy->get_system_message_qt();
-    if (tmpMap.isEmpty() || tmpMap.count() <= 0)
+//    if (tmpMap.isEmpty() || tmpMap.count() <= 0)
+//    {
+//        return false;
+//    }
+//    else
+//    {
+//        QMap<QString,QVariant>::iterator it;
+//        for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
+//            if (it.value().toString().length() > 0) {
+//                desktop_info_map.insert(it.key(), it.value());
+//            }
+//        }
+//        return true;
+//    }
+    QMap<QString,QVariant>::iterator it;
+    bool sflag = false;
+    for ( it = tmpMap.begin(); it != tmpMap.end(); ++it )
     {
-        return false;
-    }
-    else
-    {
-        QMap<QString,QVariant>::iterator it;
-        for ( it = tmpMap.begin(); it != tmpMap.end(); ++it ) {
-            if (it.value().toString().length() > 0) {
-                desktop_info_map.insert(it.key(), it.value());
-            }
+        if (it.value().toString().length() > 0)
+        {
+            desktop_info_map.insert(it.key(), it.value());
+            sflag = true;
         }
-        return true;
     }
+    if (sflag)
+        return true;
+    else
+        return false;
 }
 
 bool DesktopWidget::getStatus()
