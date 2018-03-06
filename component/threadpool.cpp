@@ -39,13 +39,20 @@ ThreadPool *ThreadPool::Instance()
 QThread *ThreadPool::createNewThread()
 {
     QThread *thread = new QThread;
-    thread_pool.push_back(thread);
+    m_threadPool.push_back(thread);
     return thread;
+}
+
+void ThreadPool::moveObjectToThread(QObject *obj)
+{
+    QThread *work = createNewThread();
+    obj->moveToThread(work);
+    work->start();
 }
 
 void ThreadPool::exitAllThreads()
 {
-    foreach (QThread *thread, thread_pool) {
+    foreach (QThread *thread, m_threadPool) {
         thread->quit();
         thread->wait(2000);
     }

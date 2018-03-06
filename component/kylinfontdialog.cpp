@@ -18,27 +18,35 @@
  */
 
 #include "kylinfontdialog.h"
+#include "utils.h"
+#include <QApplication>
+#include <QScreen>
 #include <QMouseEvent>
 #include <QListView>
 #include <QStringListModel>
 #include <QDebug>
 #include <QSettings>
+#include <QLabel>
+#include <QPushButton>
 #include <QMessageBox>
 #include <QHBoxLayout>
 #include <QLineEdit>
+#include <QGraphicsDropShadowEffect>
 
 KylinFontDialog::KylinFontDialog(/*QSettings *mSettings, QString flag, */QString cur_font, QString skin, QWidget *parent) :
     QDialog(parent)
 {
     this->setFixedSize(600, 500);
     this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
-    this->setWindowIcon(QIcon(":/res/youker-assistant.png"));
+    this->setWindowIcon(QIcon(":/res/kylin-assistant.png"));
     this->setAttribute(Qt::WA_DeleteOnClose);
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->setAutoFillBackground(true);
 
-    title_bar = new KylinTitleBar();
-    initTitleBar(skin);
+    /*title_bar = new KylinTitleBar();
+    initTitleBar(skin);*/
+    title_bar = new MyTitleBar(tr("Font Dialog"), false, this);
+    title_bar->setFixedSize(this->width(), TITLE_BAR_HEIGHT);
 
     cur_tip_label = new QLabel();
     cur_font_label = new QLabel();
@@ -148,8 +156,19 @@ KylinFontDialog::KylinFontDialog(/*QSettings *mSettings, QString flag, */QString
     sizemodel = new QStringListModel;
 
     this->initDialog();//初始化字体对话框
+
+
+    //边框阴影效果
+    QGraphicsDropShadowEffect *shadow_effect = new QGraphicsDropShadowEffect(this);
+    shadow_effect->setBlurRadius(5);
+    shadow_effect->setColor(QColor(0, 0, 0, 127));
+    shadow_effect->setOffset(2, 4);
+    this->setGraphicsEffect(shadow_effect);
+
+
     this->setLanguage();
     this->initConnect();
+    this->moveCenter();
 }
 
 KylinFontDialog::~KylinFontDialog()
@@ -232,6 +251,24 @@ KylinFontDialog::~KylinFontDialog()
     }
 }
 
+void KylinFontDialog::moveCenter()
+{
+    QPoint pos = QCursor::pos();
+    QRect primaryGeometry;
+    for (QScreen *screen : qApp->screens()) {
+        if (screen->geometry().contains(pos)) {
+            primaryGeometry = screen->geometry();
+        }
+    }
+
+    if (primaryGeometry.isEmpty()) {
+        primaryGeometry = qApp->primaryScreen()->geometry();
+    }
+
+    this->move(primaryGeometry.x() + (primaryGeometry.width() - this->width())/2,
+               primaryGeometry.y() + (primaryGeometry.height() - this->height())/2);
+}
+
 void KylinFontDialog::setLanguage()
 {
     cur_tip_label->setText(tr("Current Font") + ":");
@@ -246,7 +283,9 @@ void KylinFontDialog::setLanguage()
 void KylinFontDialog::initConnect()
 {
 //    connect(title_bar, SIGNAL(showMinDialog()), this, SLOT(onMinButtonClicked()));
-    connect(title_bar,SIGNAL(closeDialog()), this, SLOT(onCacelButtonClicked()));
+//    connect(title_bar,SIGNAL(closeDialog()), this, SLOT(onCacelButtonClicked()));
+
+    connect(title_bar, SIGNAL(closeSignal()), this, SLOT(onCacelButtonClicked()));
     connect(font_view, SIGNAL(clicked(QModelIndex)), this, SLOT(updateAll(QModelIndex)));
     connect(style_view, SIGNAL(clicked(QModelIndex)), this, SLOT(updateStyleandSize(QModelIndex)));
     connect(size_view, SIGNAL(clicked(QModelIndex)), this, SLOT(updateSize(QModelIndex)));
@@ -276,10 +315,10 @@ void KylinFontDialog::onOKButtonClicked() {
 
 void KylinFontDialog::initTitleBar(QString skin)
 {
-    title_bar->setTitleWidth(600);
-    title_bar->setTitleName(tr("Font Dialog"));
-//    title_bar->setTitleBackgound(":/background/res/skin/1.png");
-    title_bar->setTitleBackgound(skin);
+//    title_bar->setTitleWidth(600);
+//    title_bar->setTitleName(tr("Font Dialog"));
+////    title_bar->setTitleBackgound(":/background/res/skin/1.png");
+//    title_bar->setTitleBackgound(skin);
 }
 
 void KylinFontDialog::initDialog() {
@@ -434,18 +473,18 @@ void KylinFontDialog::updateSize(QModelIndex index) {
 
 void KylinFontDialog::resetTitleSkin(QString skin)
 {
-    title_bar->resetBackground(skin);
+//    title_bar->resetBackground(skin);
 }
 
-bool KylinFontDialog::eventFilter(QObject *obj, QEvent *event) {
+bool KylinFontDialog::eventFilter(QObject *obj, QEvent *event)
+{
     if(obj == ok_btn ||obj == cacel_btn)
     {
-        if(event->type() == QEvent::MouseButtonPress)
-        {
+        if(event->type() == QEvent::MouseButtonPress) {
             QMouseEvent *me = (QMouseEvent *)event;
             dragPos = me->globalPos() - frameGeometry().topLeft();
-        }else if(event->type() == QEvent::MouseButtonRelease)
-        {
+        }
+        else if(event->type() == QEvent::MouseButtonRelease) {
             setWindowOpacity(1);
         }
     }

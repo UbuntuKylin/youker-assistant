@@ -1,3 +1,32 @@
+youker-assistant (3.0.0-0ubuntu1) bionic; urgency=low
+
+  * Fork youker-assistant(commit:764)
+  * Upgrade from Qt4 to Qt5.
+  * Add qtsingleapplication.
+  * Let the child window display normal.
+  * Add PingBack.
+  * Rewrite systeminfo frame.
+  * Rewrite setting frame.
+  * Separate data and graphics.
+  * Add Cpu.
+  * Add Network.
+  * Add memory rate.
+  * Add cpu rate and idle rate.
+  * Add processes, resources and file system manager.
+  * Add auto startup manager.
+  * Add monitor for auto startup manager.
+  * Add monitor for file system.
+  * Add QDbus module(system dbus and session dbus).
+  * Make all dbus modules quit when the app quit.
+  * Rewrite mainwindow.
+  * Add shadow effect for window.
+  * Rewrite cleaner ui module.
+  * Rewrite theme ui module.
+  * Scaning system with Thread.
+  * Renice process priority.
+
+ -- lixiang <lixiang@kylinos.cn>  Mon, 05 Mar 2018 18:19:34 +0800
+
 youker-assistant (2.4.2-0ubuntu4) artful; urgency=low
 
   [hebing]

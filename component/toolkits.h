@@ -19,6 +19,7 @@
 #include <QObject>
 #include <QtGui>
 #include <QDebug>
+#include <QGraphicsOpacityEffect>
 #include "alertdialog.h"
 
 class Toolkits : public QObject

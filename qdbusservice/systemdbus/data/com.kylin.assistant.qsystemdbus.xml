@@ -1,0 +1,38 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="com.kylin.assistant.qsystemdbus">
+<!--
+	kobe test custom data(lixiang@kylinos.cn)
+-->
+    <method name="demoInfo">
+      <arg type="s" direction="out"/>
+    </method>
+    <method name="userIsActive">
+      <arg name="user" type="s" direction="in"/>
+      <arg name="active" type="b" direction="in"/>
+      <arg type="b" direction="out"/>
+    </method>
+    <method name="getCustomData">
+      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="CustomData"/>
+      <arg name="message" type="(sssib)" direction="out"/>
+    </method>
+    <method name="sendCustomData">
+      <annotation name="org.qtproject.QtDBus.QtTypeName.In0" value="CustomData"/>
+      <arg name="message" type="(sssib)" direction="in"/>
+    </method>
+    <method name="exitService">
+    </method>
+    <signal name="reportAlert">
+      <arg name="ret" type="i" direction="out"/>
+      <arg name="description" type="s" direction="out"/>
+    </signal>
+    <signal name="alertCustomData">
+      <annotation name="org.qtproject.QtDBus.QtTypeName.In0" value="CustomData"/>
+      <arg name="message" type="(sssib)" direction="out"/>
+    </signal>
+    <property name="Customs" type="a(sssib)" access="read">
+      <annotation name="org.qtproject.QtDBus.QtTypeName" value="CustomDataList"/>
+    </property>
+  </interface>
+</node>

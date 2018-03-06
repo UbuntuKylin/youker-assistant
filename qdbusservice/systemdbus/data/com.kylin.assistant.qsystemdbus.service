@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=com.kylin.assistant.qsystemdbus
+Exec=/usr/lib/kylin-assistant/daemon/kylin-assistant-qsystemdbus-service
+User=root

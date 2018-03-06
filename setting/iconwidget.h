@@ -23,22 +23,22 @@
 #include <QWidget>
 #include "../component/kylinswitcher.h"
 
-class SessionDispatcher;
 class QLabel;
 class QPushButton;
 class QHBoxLayout;
 class QComboBox;
+#include "settingmodulelpage.h"
 
-class IconWidget : public QWidget
+class IconWidget : public SettingModulePage
 {
     Q_OBJECT
 public:
-    explicit IconWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0, QString cur_desktop = "");
+    explicit IconWidget(QWidget *parent = 0, QString cur_desktop = "");
     ~IconWidget();
     void setLanguage();
     void initConnect();
-    void initData();
-    bool getStatus();
+    void initSettingData() Q_DECL_OVERRIDE;
+    QString settingModuleName() Q_DECL_OVERRIDE;
 
 public slots:
     void changeSwitcherStatus();
@@ -50,13 +50,21 @@ public slots:
     void setRecycleBinIcon();
     void setDiskIcon();
 
-public slots:
     void iconwidget_notify_string(QString key, QString value);
-    void iconwidget_notify_boolean(QString key, bool value);
+    void iconwidget_notify_bool(QString key, bool value);
+    void onReceiveIconThemeList(const QString &currentTheme, const QStringList &themeList);
+    void onReceiveDisplayIconValue(bool computer, bool folder, bool network, bool recycle, bool disk);
+
+signals:
+    void requestIconData();
+    void resetIconTheme(const QString &theme);
+    void displayComputerIcon(bool b);
+    void displayFolderIcon(bool b);
+    void displayNetworkIcon(bool b);
+    void displayRecycleBinIcon(bool b);
+    void displayDiskIcon(bool b);
 
 private:
-    SessionDispatcher *sessionproxy;
-    bool dataOK;
     QString desktop;
     QStringList iconlist;
     QLabel *theme_label;

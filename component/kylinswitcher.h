@@ -46,7 +46,7 @@ public slots:
 private:
     QPixmap pixmap_on;
     QPixmap pixmap_off;
-    bool mouse_press;
+    bool m_mousePressed;
 };
 
 #endif // KYLINSWITCHER_H

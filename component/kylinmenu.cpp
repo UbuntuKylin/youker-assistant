@@ -18,7 +18,7 @@
  */
 
 #include "kylinmenu.h"
-#include "../mainui/mainwindow.h"
+#include "../src/mainwindow.h"
 #include <QEvent>
 #include <QHelpEvent>
 
@@ -116,16 +116,15 @@ void KylinMenu::createActions()
     help_button = new QPushButton();
     feedback_button = new QPushButton();
     about_button = new QPushButton();
-    check_button->setStyleSheet("QPushButton{background:transparent;text-align:left;font-family: 方正黑体_GBK;font-size:14px;color:#666666;}QPushButton:hover{color:#0396DC;}");
-    help_button->setStyleSheet("QPushButton{background:transparent;text-align:left;font-family: 方正黑体_GBK;font-size:14px;color:#666666;}QPushButton:hover{color:#0396DC;}");
-    feedback_button->setStyleSheet("QPushButton{background:transparent;text-align:left;font-family: 方正黑体_GBK;font-size:14px;color:#666666;}QPushButton:hover{color:#0396DC;}");
-    about_button->setStyleSheet("QPushButton{background:transparent;text-align:left;font-family: 方正黑体_GBK;font-size:14px;color:#666666;}QPushButton:hover{color:#0396DC;}");
+    check_button->setStyleSheet("QPushButton{background-color:transparent;border:none;text-align:left;font-family: 方正黑体_GBK;font-size:14px;color:#666666;}QPushButton:hover{color:#0396DC;}");//background:transparent;
+    help_button->setStyleSheet("QPushButton{background-color:transparent;border:none;text-align:left;font-family: 方正黑体_GBK;font-size:14px;color:#666666;}QPushButton:hover{color:#0396DC;}");//background:transparent;
+    feedback_button->setStyleSheet("QPushButton{background-color:transparent;border:none;text-align:left;font-family: 方正黑体_GBK;font-size:14px;color:#666666;}QPushButton:hover{color:#0396DC;}");//background:transparent;
+    about_button->setStyleSheet("QPushButton{background-color:transparent;border:none;text-align:left;font-family: 方正黑体_GBK;font-size:14px;color:#666666;}QPushButton:hover{color:#0396DC;}");//background:transparent;
 
     QPixmap check_pixmap(":/tool/res/menu/upgrade.png");
     check_label->setPixmap(check_pixmap);
     check_label->setFixedSize(check_pixmap.size());
     check_button->setFocusPolicy(Qt::NoFocus);
-    check_button->setObjectName("transparentButton");
 
     QPixmap help_pixmap(":/tool/res/menu/help.png");
     help_label->setPixmap(help_pixmap);
@@ -133,19 +132,16 @@ void KylinMenu::createActions()
 //    help_button->setIcon(help_pixmap);
 //    help_button->setIconSize(help_pixmap.size());
     help_button->setFocusPolicy(Qt::NoFocus);
-    help_button->setObjectName("transparentButton");
 
     QPixmap feedback_pixmap(":/tool/res/menu/feedback.png");
     feedback_label->setPixmap(feedback_pixmap);
     feedback_label->setFixedSize(feedback_pixmap.size());
     feedback_button->setFocusPolicy(Qt::NoFocus);
-    feedback_button->setObjectName("transparentButton");
 
     QPixmap about_pixmap(":/tool/res/menu/about.png");
     about_label->setPixmap(about_pixmap);
     about_label->setFixedSize(about_pixmap.size());
     about_button->setFocusPolicy(Qt::NoFocus);
-    about_button->setObjectName("transparentButton");
 
     QHBoxLayout *check_layout = new QHBoxLayout();
     check_layout->addWidget(check_label);

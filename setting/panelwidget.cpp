@@ -23,13 +23,10 @@
 #include <QDoubleSpinBox>
 #include <QRadioButton>
 #include <QHBoxLayout>
-#include "../dbusproxy/youkersessiondbus.h"
 
-PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_desktop, bool has_battery) :
-    QWidget(parent),desktop(cur_desktop),
-    sessionproxy(proxy)
+PanelWidget::PanelWidget(QWidget *parent, QString cur_desktop, bool has_battery) :
+    SettingModulePage(parent),desktop(cur_desktop)
 {
-    dataOK = false;
     blur_label = new QLabel();
     transparency_label = new QLabel();
     date_format_label = new QLabel();
@@ -225,7 +222,7 @@ PanelWidget::PanelWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_
 //    main_layout->setSpacing(0);
 //    main_layout->setContentsMargins(0, 0, 0, 0);
 //    setLayout(main_layout);
-//    this->initData();
+//    this->initSettingData();
     this->setLanguage();
 }
 
@@ -345,6 +342,11 @@ PanelWidget::~PanelWidget()
     }
 }
 
+QString PanelWidget::settingModuleName()
+{
+    return "PanelPage";
+}
+
 void PanelWidget::setLanguage() {
 //    title_label->setText(tr("Dash & Panel"));
 //    description_label->setText(tr("Manage Dash and Panel menu settings."));
@@ -369,21 +371,20 @@ void PanelWidget::setLanguage() {
     show_places_label->setText(tr("Show places") + ":");
 }
 
-bool PanelWidget::getStatus()
-{
-    return this->dataOK;
-}
-
-void PanelWidget::initData()
+void PanelWidget::initSettingData()
 {
     if(this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui") {
-        app_switcher->switchedOn = sessionproxy->get_show_apps_qt();
-        desktop_switcher->switchedOn = sessionproxy->get_show_desktop_qt();
-        icon_switcher->switchedOn = sessionproxy->get_show_icon_qt();
-        places_switcher->switchedOn = sessionproxy->get_show_places_qt();
+        emit this->requestMateOrUnityPanelData(true);
+
+//        app_switcher->switchedOn = sessionproxy->get_show_apps_qt();
+//        desktop_switcher->switchedOn = sessionproxy->get_show_desktop_qt();
+//        icon_switcher->switchedOn = sessionproxy->get_show_icon_qt();
+//        places_switcher->switchedOn = sessionproxy->get_show_places_qt();
     }
     else {//unity
-        int default_value = sessionproxy->get_dash_blur_experimental_qt();
+        emit this->requestMateOrUnityPanelData(false);
+
+        /*int default_value = sessionproxy->get_dash_blur_experimental_qt();
         if(default_value == 2) {
             smart_radio->setChecked(true);
             static_radio->setChecked(false);
@@ -419,11 +420,11 @@ void PanelWidget::initData()
         date_switcher->switchedOn = sessionproxy->get_show_date_qt();
 
         QString cur_power = sessionproxy->get_power_icon_policy_qt();
-        /*QStringList */powerlist  = sessionproxy->get_all_power_icon_policy_qt();
+        m_powerlist  = sessionproxy->get_all_power_icon_policy_qt();
         battery_combo->clear();
         battery_combo->clearEditText();
-        battery_combo->addItems(powerlist);
-        QList<QString>::Iterator ite = powerlist.begin(), iteend = powerlist.end();
+        battery_combo->addItems(m_powerlist);
+        QList<QString>::Iterator ite = m_powerlist.begin(), iteend = m_powerlist.end();
         int index = 0;
         for(;ite != iteend; ite++,index++)
         {
@@ -433,18 +434,86 @@ void PanelWidget::initData()
         battery_combo->setCurrentIndex(index);
 
         battery_percentage_switcher->switchedOn = sessionproxy->get_show_power_percentage_qt();
-        battery_time_switcher->switchedOn = sessionproxy->get_show_power_time_qt();
+        battery_time_switcher->switchedOn = sessionproxy->get_show_power_time_qt();*/
     }
 
-    dataOK = true;
+
     this->initConnect();
+}
+
+void PanelWidget::onSendMatePanelValue(bool app, bool desktop, bool icon, bool places)
+{
+    app_switcher->switchedOn = app;
+    desktop_switcher->switchedOn = desktop;
+    icon_switcher->switchedOn = icon;
+    places_switcher->switchedOn = places;
+}
+
+void PanelWidget::onSendUnityBlurAndTransparencyValue(int blur, double transparent)
+{
+    if(blur == 2) {
+        smart_radio->setChecked(true);
+        static_radio->setChecked(false);
+        clear_radio->setChecked(false);
+    }
+    else if(blur == 1) {
+        static_radio->setChecked(true);
+        smart_radio->setChecked(false);
+        clear_radio->setChecked(false);
+    }
+    else if(blur == 0) {
+        clear_radio->setChecked(true);
+        static_radio->setChecked(false);
+        smart_radio->setChecked(false);
+    }
+    transparency_slider->setValue(transparent);
+}
+
+void PanelWidget::onSendUnityTimeValue(const QString &time_format, const QStringList &timelist, bool showSecond, bool showWeek, bool showDate)
+{
+    QStringList m_timelist = timelist;
+    date_combo->clear();
+    date_combo->clearEditText();
+    date_combo->addItems(m_timelist);
+    QList<QString>::Iterator it = m_timelist.begin(), itend = m_timelist.end();
+    int initIndex = 0;
+    for(;it != itend; it++,initIndex++)
+    {
+        if(*it == time_format)
+            break;
+    }
+    date_combo->setCurrentIndex(initIndex);
+
+    second_switcher->switchedOn = showSecond;
+    week_switcher->switchedOn = showWeek;
+    date_switcher->switchedOn = showDate;
+}
+
+void PanelWidget::onSendUnityPanelPowerValue(const QString &cur_power, const QStringList &powerlist, bool showPower, bool showBatteryTime)
+{
+    m_powerlist.clear();
+    m_powerlist = powerlist;
+    battery_combo->clear();
+    battery_combo->clearEditText();
+    battery_combo->addItems(m_powerlist);
+    QList<QString>::Iterator ite = m_powerlist.begin(), iteend = m_powerlist.end();
+    int index = 0;
+    for(;ite != iteend; ite++,index++)
+    {
+        if(*ite == cur_power)
+            break;
+    }
+    battery_combo->setCurrentIndex(index);
+
+    battery_percentage_switcher->switchedOn = showPower;
+    battery_time_switcher->switchedOn = showBatteryTime;
 }
 
 void PanelWidget::initConnect() {
 //    connect(back_btn, SIGNAL(clicked()), this, SIGNAL(showSettingMainWidget()));
-    connect(smart_radio, SIGNAL(clicked(/*bool*/)), this, SLOT(setRadioButtonRowStatus(/*bool*/)));
-    connect(static_radio, SIGNAL(clicked(/*bool*/)), this, SLOT(setRadioButtonRowStatus(/*bool*/)));
-    connect(clear_radio, SIGNAL(clicked(/*bool*/)), this, SLOT(setRadioButtonRowStatus(/*bool*/)));
+    connect(smart_radio, SIGNAL(clicked()), this, SLOT(setRadioButtonRowStatus()));
+    connect(static_radio, SIGNAL(clicked()), this, SLOT(setRadioButtonRowStatus()));
+    connect(clear_radio, SIGNAL(clicked()), this, SLOT(setRadioButtonRowStatus()));
     connect(transparency_slider, SIGNAL(valueChanged(double)), this, SLOT(setTransparencyValue(double)));
     connect(date_combo, SIGNAL(currentIndexChanged(QString)),  this, SLOT(setDateFormat(QString)));
     connect(second_switcher, SIGNAL(clicked()),  this, SLOT(setDisplaySeconds()));
@@ -458,14 +527,14 @@ void PanelWidget::initConnect() {
     connect(icon_switcher, SIGNAL(clicked()),  this, SLOT(showIcon()));
     connect(places_switcher, SIGNAL(clicked()),  this, SLOT(showPlaces()));
 
-    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(panelwidget_notify_string(QString, QString)));
-    connect(sessionproxy, SIGNAL(bool_value_notify(QString, bool)), this, SLOT(panelwidget_notify_bool(QString, bool)));
+//    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(panelwidget_notify_string(QString, QString)));
+//    connect(sessionproxy, SIGNAL(bool_value_notify(QString, bool)), this, SLOT(panelwidget_notify_bool(QString, bool)));
 }
 
 void PanelWidget::panelwidget_notify_string(QString key, QString value)
 {
     if (key == "icon-policy") {
-        QList<QString>::Iterator it = powerlist.begin(), itend = powerlist.end();
+        QList<QString>::Iterator it = m_powerlist.begin(), itend = m_powerlist.end();
         int index = -1;
         bool exist = false;
         for(;it != itend; it++)
@@ -518,17 +587,24 @@ void PanelWidget::panelwidget_notify_bool(QString key, bool value)
 
 void PanelWidget::setTransparencyValue(double value)
 {
-    sessionproxy->set_panel_transparency_qt(value);
+    emit resetPanelTransparencyValue(value);
+//    sessionproxy->set_panel_transparency_qt(value);
 }
 
+
+
 void PanelWidget::setDateFormat(QString selected) {
-    sessionproxy->set_time_format_qt(selected);
+    emit resetDateFormat(selected);
+//    sessionproxy->set_time_format_qt(selected);
 }
 
 void PanelWidget::setShowBatteryIcon(QString selected) {
-    sessionproxy->set_power_icon_policy_qt(selected);
+    emit resetShowBatteryIcon(selected);
+//    sessionproxy->set_power_icon_policy_qt(selected);
 }
 
+
+//TODO: 设计一个枚举变量作为标记，用一个函数去调用dbus设置各个值
 void PanelWidget::setRadioButtonRowStatus(/*bool status*/)
 {
     QObject *obj = sender(); //返回发出信号的对象，用QObject类型接收
@@ -536,59 +612,71 @@ void PanelWidget::setRadioButtonRowStatus(/*bool status*/)
     QString obj_name = pbtn->objectName();
     if(obj_name == "smart_radio")
     {
-        sessionproxy->set_dash_blur_experimental_qt(2);
+        emit resetDashBlurExperimental(2);
+//        sessionproxy->set_dash_blur_experimental_qt(2);
     }
     else if(obj_name == "static_radio")
     {
-        sessionproxy->set_dash_blur_experimental_qt(1);
+        emit resetDashBlurExperimental(1);
+//        sessionproxy->set_dash_blur_experimental_qt(1);
     }
     else if(obj_name == "clear_radio")
     {
-        sessionproxy->set_dash_blur_experimental_qt(0);
+        emit resetDashBlurExperimental(0);
+//        sessionproxy->set_dash_blur_experimental_qt(0);
     }
 }
 
 void PanelWidget::setDisplaySeconds()
 {
-    sessionproxy->set_show_seconds_qt(second_switcher->switchedOn);
+    emit resetDisplaySeconds(second_switcher->switchedOn);
+//    sessionproxy->set_show_seconds_qt(second_switcher->switchedOn);
 }
 
 void PanelWidget::setDisplayWeek()
 {
-    sessionproxy->set_show_week_qt(week_switcher->switchedOn);
+    emit resetDisplayWeek(week_switcher->switchedOn);
+//    sessionproxy->set_show_week_qt(week_switcher->switchedOn);
 }
 
 void PanelWidget::setDisplayDate()
 {
-    sessionproxy->set_show_date_qt(date_switcher->switchedOn);
+    emit resetDisplayDate(date_switcher->switchedOn);
+//    sessionproxy->set_show_date_qt(date_switcher->switchedOn);
 }
 
 void PanelWidget::setDisplayBatteryPercentage()
 {
-    sessionproxy->set_show_power_percentage_qt(battery_percentage_switcher->switchedOn);
+    emit resetDisplayBatteryPercentage(battery_percentage_switcher->switchedOn);
+//    sessionproxy->set_show_power_percentage_qt(battery_percentage_switcher->switchedOn);
 }
 
 void PanelWidget::setDisplayBatteryTime()
 {
-    sessionproxy->set_show_power_time_qt(battery_time_switcher->switchedOn);
+    emit resetDisplayBatteryTime(battery_time_switcher->switchedOn);
+//    sessionproxy->set_show_power_time_qt(battery_time_switcher->switchedOn);
 }
 
 void PanelWidget::showApplications()
 {
-    sessionproxy->set_show_apps_qt(app_switcher->switchedOn);
+    emit resetShowApplications(app_switcher->switchedOn);
+//    sessionproxy->set_show_apps_qt(app_switcher->switchedOn);
 }
 
 void PanelWidget::showDesktop()
 {
-    sessionproxy->set_show_desktop_qt(desktop_switcher->switchedOn);
+    emit resetShowDesktop(desktop_switcher->switchedOn);
+//    sessionproxy->set_show_desktop_qt(desktop_switcher->switchedOn);
 }
 
 void PanelWidget::showIcon()
 {
-    sessionproxy->set_show_icon_qt(icon_switcher->switchedOn);
+    emit resetShowIcon(icon_switcher->switchedOn);
+//    sessionproxy->set_show_icon_qt(icon_switcher->switchedOn);
 }
 
 void PanelWidget::showPlaces()
 {
-    sessionproxy->set_show_places_qt(places_switcher->switchedOn);
+    emit resetShowPlaces(places_switcher->switchedOn);
+//    sessionproxy->set_show_places_qt(places_switcher->switchedOn);
 }

@@ -4,10 +4,28 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
+export QT_SELECT=5
+
+QMAKE_OPTS = DEFINES+=NO_DEBUG_ON_CONSOLE
+MAKE_OPTS  = PREFIX=/usr QMAKE=qmake LRELEASE=lrelease QMAKE_OPTS="$(QMAKE_OPTS)"
+
 override_dh_auto_configure:
-	QT_SELECT=qt4 dh_auto_configure \
+	QT_SELECT=qt5 dh_auto_configure \
 		-- "QMAKE_CXXFLAGS=$(CFLAGS)" \
-		youker-assistant.pro
+		kylin-assistant.pro
 
 %:
-	dh $@ --with python2 --fail-missing --parallel
+	dh $@ --with python3 --fail-missing --parallel
+
+override_dh_install:
+	./autogen.sh
+	dh_install --fail-missing
+
+override_dh_auto_clean:
+	[ ! -d src/.moc ] || $(RM) -r src/.moc
+	[ ! -d src/.obj ] || $(RM) -r src/.obj
+	[ ! -d src/.ui ] || $(RM) -r src/.ui
+	[ ! -f src/Makefile ] || dh_auto_clean
+
+override_dh_auto_build:
+	dh_auto_build -- $(MAKE_OPTS)

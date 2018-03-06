@@ -1,4 +1,4 @@
-backends/youker-assistant-daemon/dbus/com.ubuntukylin.youker.service /usr/share/dbus-1/system-services/
-backends/youker-assistant-daemon/dbus/com.ubuntukylin.session.service /usr/share/dbus-1/services/
-backends/youker-assistant-daemon/dbus/com.ubuntukylin.youker.policy /usr/share/polkit-1/actions/
-backends/youker-assistant-daemon/dbus/com.ubuntukylin.youker.conf /etc/dbus-1/system.d/
+backends/kylin-assistant-daemon/dbus/com.kylin.assistant.sessiondaemon.service /usr/share/dbus-1/services/
+backends/kylin-assistant-daemon/dbus/com.kylin.assistant.systemdaemon.service /usr/share/dbus-1/system-services/
+backends/kylin-assistant-daemon/dbus/com.kylin.assistant.systemdaemon.policy /usr/share/polkit-1/actions/
+backends/kylin-assistant-daemon/dbus/com.kylin.assistant.systemdaemon.conf /etc/dbus-1/system.d/

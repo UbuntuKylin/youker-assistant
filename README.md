@@ -1,4 +1,4 @@
-youker-assistant
+kylin-assistant
 ================
 
 Attention
@@ -7,38 +7,32 @@ It supports unity and mate for Ubuntu/Ubuntu Kylin.
 
 Depends
 =======
-debhelper (>= 9),python-dev,python-lxml,python-piston-mini-client,python-xdg,libqt4-dev,pkg-config,python (>= 2.6.6-3~),libglib2.0-dev,libgtop2-dev
+debhelper (>= 9),python-dev,python-lxml,python-piston-mini-client,python-xdg,qtbase5-dev,qt5-qmake,qtscript5-dev,qttools5-dev-tools,pkg-config,python (>= 2.6.6-3~),libglib2.0-dev,libgtop2-dev
 
-Launchpad
+GitHub
 =======
-https://launchpad.net/youker-assistant
+https://github.com/KylinAppCenter/kylin-assistant
 
 Internationalization
 =======
-lupdate youker-assistant.pro
-linguist youker-assistant_zh_CN.ts
-lrelease youker-assistant.pro
+lupdate kylin-assistant.pro
+linguist kylin-assistant_zh_CN.ts
+lrelease kylin-assistant.pro
 
 Python Internationalization
 =======
-xgettext -k_ -o youker-assistant.pot cpuinfo.py
-youker-assistant.pot:修改charset为utf-8
-cp youker-assistant.pot youker-assistant.po
-msgfmt -o youker-assistant.mo youker-assistant.po
-(sudo cp youker-assistant.mo /usr/share/locale/zh_CN/LC_MESSAGES/)
+xgettext -k_ -o kylin-assistant.pot cpuinfo.py
+kylin-assistant.pot:修改charset为utf-8
+cp kylin-assistant.pot kylin-assistant.po
+msgfmt -o kylin-assistant.mo kylin-assistant.po
+(sudo cp kylin-assistant.mo /usr/share/locale/zh_CN/LC_MESSAGES/)
 
 
 
 
 FT Version:
-1)changelog like this:
-youker-assistant (2.0.7kord) juniper; urgency=low
-
-2)youker-assistant.dekstop
-
-3)debian/source/format
-replace quilt with native
-
+changelog like this:
+kylin-assistant (1.0.0kord) juniper; urgency=low
 
 DEBUG:
 gdb python

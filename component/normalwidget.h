@@ -35,6 +35,7 @@ public:
     void calculate_data();
     void add_card(QWidget *card);
     QWidget *cardPanel;
+    void resetData();
 
 private:
     int cardcount;

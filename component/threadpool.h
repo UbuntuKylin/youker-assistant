@@ -30,10 +30,11 @@ public:
 
     static ThreadPool *Instance();
     QThread *createNewThread();
+    void moveObjectToThread(QObject *obj);
     void exitAllThreads();
 
 private:
-    QList<QThread *> thread_pool;
+    QList<QThread *> m_threadPool;
 };
 
 #endif // THREADPOOL_H

@@ -21,36 +21,34 @@
 #define CLEANERDETAILWIDGET_H
 
 #include <QWidget>
-#include "cleaneritems.h"
-#include "cleanlistwidget.h"
+#include <QScrollArea>
+#include <QMap>
+#include <QVariant>
+#include "../component/utils.h"
 
 class QLabel;
 class QBoxLayout;
 class QHBoxLayout;
+class QVBoxLayout;
 class QGridLayout;
-class SessionDispatcher;
-class SystemDispatcher;
 class Toolkits;
 class MainWindow;
 class CleanSubGroup;
-
-
-namespace Ui {
-class CleanerDetailWidget;
-}
 
 class CleanerDetailWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit CleanerDetailWidget(QWidget *parent = 0, SessionDispatcher *seroxy = 0, SystemDispatcher *syproxy = 0, MainWindow *window = 0, Toolkits *kits = 0, QString skin = ":/background/res/skin/1.png");
+    explicit CleanerDetailWidget(QWidget *parent = 0, MainWindow *window = 0, Toolkits *kits = 0, QString skin = ":/background/res/skin/1.png");
     ~CleanerDetailWidget();
+
     void setUIData();
     void setLanguage();
     void initConnect();
     void getAllSelectedItems();
     void resetCurrentSkin(QString skin);
+    void addItem(CleanSubGroup *item);
 
 public slots:
     void showCustomPage();
@@ -59,51 +57,20 @@ public slots:
     void showReciveStatus(const QString &status);
     void CleanUIAndData();
 //    void receivePolicyKitSignal(bool status);
+    void onRefreshSelectedItems(CleanerModuleID id, const QStringList &infos);
+
+    void clearItems();
 
 signals:
-    void notifyMainCheckBox(int status);
+//    void notifyMainCheckBox(int status);
 //    void showActionAnimaiton();
     void sendScanOverStatus(bool status);
+    void startCleanSystem(QMap<QString, QVariant> itemsMap);
 
 private:
-    void initTitleBar();
-
-private:
-    Ui::CleanerDetailWidget *ui;
     MainWindow *parentWindow;
-    SessionDispatcher *sessionproxy;
-    SystemDispatcher *systemproxy;
     Toolkits *toolKits;
     QMap<QString, QVariant> argsData;
-    CleanListWidget *cache_apt_items ;
-    CleanSubGroup *cache_apt_btn;
-    CleanListWidget *cache_software_items ;
-    CleanSubGroup *cache_software_btn;
-    CleanListWidget *cache_thumbnails_items ;
-    CleanSubGroup *cache_thumbnails_btn;
-    CleanListWidget *cache_firefox_items ;
-    CleanSubGroup *cache_firefox_btn;
-    CleanListWidget *cache_chromium_items ;
-    CleanSubGroup *cache_chromium_btn;
-
-    /*CleanListWidget *package_unneed_items ;
-    CleanSubGroup *package_unneed_btn;
-    CleanListWidget *package_oldkernel_items ;
-    CleanSubGroup *package_oldkernel_btn;
-    CleanListWidget *package_configfile_items ;
-    CleanSubGroup *package_configfile_btn;*/
-
-    CleanListWidget *cookies_firefox_items ;
-    CleanSubGroup *cookies_firefox_btn;
-    CleanListWidget *cookies_chromium_items ;
-    CleanSubGroup *cookies_chromium_btn;
-
-    CleanSubGroup *trace_firefox_btn;
-    CleanSubGroup *trace_chromium_btn;
-    CleanSubGroup *trace_system_btn;
-    CleanSubGroup *trace_bash_btn;
-    CleanListWidget *trace_x11_items ;
-    CleanSubGroup *trace_x11_btn;
 
     QStringList cache_apt_list;
     QStringList cache_software_list;
@@ -122,19 +89,26 @@ private:
     QString trace_bash_path;
     QStringList trace_x11_list;
 
-    QGridLayout *grid_layout;
-//    int rowIndex;
-//    int columnIndex;
-    int subCount;
+    QStringList m_selectedAptList;
+    QStringList m_selectedSoftwareList;
+    QStringList m_selectedThumbnailsList;
+    QStringList m_selectedFirefoxCacheList;
+    QStringList m_selectedChromiumCacheList;
+    QStringList m_selectedFirefoxCookieList;
+    QStringList m_selectedChromiumCookieList;
+    QStringList m_selectedTraceX11List;
+
     bool scanResult;
     QString cur_skin;
 
-    int number_per_row;
-    int itemwidth;
-    int itemheight;
-    int cardspace;
-    QList <CleanSubGroup *> cardlist;
-//    QList<ComputerPage *> page_list;
+    QVBoxLayout *mainLayout = nullptr;
+    QLabel *m_emptyLabel = nullptr;
+    QScrollArea *m_scrollArea = nullptr;
+    QWidget *areaWidget = nullptr;
+    QGridLayout *areaWidgetLayout = nullptr;
+    QList <CleanSubGroup *> m_cardlist;
+    int m_row;
+    int m_column;
 };
 
 #endif // CLEANERDETAILWIDGET_H

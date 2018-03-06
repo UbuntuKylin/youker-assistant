@@ -23,26 +23,29 @@
 #include <QWidget>
 #include <QHBoxLayout>
 
-class SessionDispatcher;
-class SystemDispatcher;
 class QLabel;
 class QPushButton;
 class QComboBox;
 class QRadioButton;
+#include "settingmodulelpage.h"
 
-class MouseWidget : public QWidget
+class MouseWidget : public SettingModulePage
 {
     Q_OBJECT
 public:
-    explicit MouseWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0, SystemDispatcher *sproxy = 0, QString cur_desktop = "");
+    explicit MouseWidget(QWidget *parent = 0, QString cur_desktop = "");
     ~MouseWidget();
     void setLanguage();
     void initConnect();
-    void initData();
-    bool getStatus();
+    void initSettingData() Q_DECL_OVERRIDE;
+    QString settingModuleName() Q_DECL_OVERRIDE;
 
-//signals:
+signals:
 //    void showSettingMainWidget();
+    void requestMouseData();
+
+    void resetMouseCursorTheme(const QString &theme);
+    void resetMouseCursorSize(int cursorSize);
 
 public slots:
     void setMouseCursorTheme(QString selectTheme);
@@ -51,10 +54,9 @@ public slots:
     void mousewidget_notify_string(QString key, QString value);
     void mousewidget_notify_int(QString key, int value);
 
+    void onReceiveMouseThemeAndCusorSize(const QString &currentTheme, const QStringList &themeList, int cursorSize);
+
 private:
-    SessionDispatcher *sessionproxy;
-    SystemDispatcher *systemproxy;
-    bool dataOK;
     QStringList cursorlist;
     QLabel *theme_label;
     QLabel *size_label;

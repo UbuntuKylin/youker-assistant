@@ -22,14 +22,11 @@
 #include <QComboBox>
 #include <QHBoxLayout>
 #include <QRadioButton>
-#include "../dbusproxy/youkersessiondbus.h"
 #include <QDebug>
 
-WindowWidget::WindowWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_desktop) :
-    QWidget(parent),desktop(cur_desktop),
-    sessionproxy(proxy)
+WindowWidget::WindowWidget(QWidget *parent, QString cur_desktop) :
+    SettingModulePage(parent),desktop(cur_desktop)
 {
-    dataOK = false;
     icon_label = new QLabel();
     wheel_label = new QLabel();
     double_click_label = new QLabel();
@@ -117,7 +114,7 @@ WindowWidget::WindowWidget(QWidget *parent, SessionDispatcher *proxy, QString cu
 //    main_layout->setSpacing(0);
 //    main_layout->setContentsMargins(0, 0, 0, 0);
 //    setLayout(main_layout);
-//    this->initData();
+//    this->initSettingData();
     this->setLanguage();
 }
 
@@ -177,6 +174,11 @@ WindowWidget::~WindowWidget()
     }
 }
 
+QString WindowWidget::settingModuleName()
+{
+    return "WindowPage";
+}
+
 void WindowWidget::setLanguage() {
 //    title_label->setText(tr("Window"));
 //    description_label->setText(tr("Window Manager settings."));
@@ -191,29 +193,112 @@ void WindowWidget::setLanguage() {
     right_radio->setText(tr("Right"));
 }
 
-bool WindowWidget::getStatus()
-{
-    return this->dataOK;
-}
-
-void WindowWidget::initData()
+void WindowWidget::initSettingData()
 {
     if (this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui") {
-        QString current_value = sessionproxy->get_window_button_align_qt();
-        if(current_value == "left") {
-            left_radio->setChecked(true);
-            right_radio->setChecked(false);
-        }
-        else if(current_value == "right") {
-            right_radio->setChecked(true);
-            left_radio->setChecked(false);
-        }
+
+        emit this->requesetWindowButtonAlign();
+//        QString current_value = sessionproxy->get_window_button_align_qt();
+//        if(current_value == "left") {
+//            left_radio->setChecked(true);
+//            right_radio->setChecked(false);
+//        }
+//        else if(current_value == "right") {
+//            right_radio->setChecked(true);
+//            left_radio->setChecked(false);
+//        }
     }
     else {
-        icon_switcher->switchedOn = sessionproxy->get_menus_have_icons_qt();
+        emit this->requesetMenusHaveIcons();
+//        icon_switcher->switchedOn = sessionproxy->get_menus_have_icons_qt();
     }
+    emit this->requesetWindowTitileTags();
 
-    QString current_wheel_type = sessionproxy->get_current_titlebar_wheel_qt();
+//    QString current_wheel_type = sessionproxy->get_current_titlebar_wheel_qt();
+//    //FT arm has no org.compiz.gwd.mouse-wheel-action, so is empty
+//    if (current_wheel_type.isEmpty())
+//    {
+//        wheel_label->hide();
+//        wheel_combo->hide();
+//    }
+
+//    m_wheellist = sessionproxy->get_titlebar_wheel_qt();
+//    wheel_combo->clear();
+//    wheel_combo->clearEditText();
+//    wheel_combo->addItems(m_wheellist);
+//    QList<QString>::Iterator it1 = m_wheellist.begin(), itend1 = m_wheellist.end();
+//    int initIndex1 = 0;
+//    for(;it1 != itend1; it1++,initIndex1++)
+//    {
+//        if(*it1 == current_wheel_type)
+//            break;
+//    }
+//    wheel_combo->setCurrentIndex(initIndex1);
+
+//    QString current_double_type = sessionproxy->get_current_titlebar_double_qt();
+//    m_titlebarOptions  = sessionproxy->get_titlebar_options_qt();
+//    double_click_combo->clear();
+//    double_click_combo->clearEditText();
+//    double_click_combo->addItems(m_titlebarOptions);
+//    QList<QString>::Iterator it2 = m_titlebarOptions.begin(), itend2 = m_titlebarOptions.end();
+//    int initIndex2 = 0;
+//    for(;it2 != itend2; it2++,initIndex2++)
+//    {
+//        if(*it2 == current_double_type)
+//            break;
+//    }
+//    double_click_combo->setCurrentIndex(initIndex2);
+
+//    QString current_middle_type = sessionproxy->get_current_titlebar_middle_qt();
+////    QStringList middlelist  = sessionproxy->get_titlebar_middle_qt();
+//    middle_click_combo->clear();
+//    middle_click_combo->clearEditText();
+//    middle_click_combo->addItems(m_titlebarOptions);
+//    QList<QString>::Iterator it3 = m_titlebarOptions.begin(), itend3 = m_titlebarOptions.end();
+//    int initIndex3 = 0;
+//    for(;it3 != itend3; it3++,initIndex3++)
+//    {
+//        if(*it3 == current_middle_type)
+//            break;
+//    }
+//    middle_click_combo->setCurrentIndex(initIndex3);
+
+//    QString current_right_type = sessionproxy->get_current_titlebar_right_qt();
+////    QStringList rightlist  = sessionproxy->get_titlebar_right_qt();
+//    right_click_combo->clear();
+//    right_click_combo->clearEditText();
+//    right_click_combo->addItems(m_titlebarOptions);
+//    QList<QString>::Iterator it4 = m_titlebarOptions.begin(), itend4 = m_titlebarOptions.end();
+//    int initIndex4 = 0;
+//    for(;it4 != itend4; it4++,initIndex4++)
+//    {
+//        if(*it4 == current_right_type)
+//            break;
+//    }
+//    right_click_combo->setCurrentIndex(initIndex4);
+
+    this->initConnect();
+}
+
+void WindowWidget::onSendWindowButtonAlign(const QString &current_value)
+{
+    if(current_value == "left") {
+        left_radio->setChecked(true);
+        right_radio->setChecked(false);
+    }
+    else if(current_value == "right") {
+        right_radio->setChecked(true);
+        left_radio->setChecked(false);
+    }
+}
+
+void WindowWidget::onSendMenusHaveIcons(bool menuHaveIcons)
+{
+    icon_switcher->switchedOn = menuHaveIcons;
+}
+
+void WindowWidget::onSendWindowTitileTags(const QString &current_wheel_type, const QStringList &wheellist, const QStringList &titlebarOptions, const QString &current_double_type, const QString &current_middle_type, const QString &current_right_type)
+{
     //FT arm has no org.compiz.gwd.mouse-wheel-action, so is empty
     if (current_wheel_type.isEmpty())
     {
@@ -221,11 +306,12 @@ void WindowWidget::initData()
         wheel_combo->hide();
     }
 
-    /*QStringList */wheellist  = sessionproxy->get_titlebar_wheel_qt();
+    m_wheellist.clear();
+    m_wheellist = wheellist;
     wheel_combo->clear();
     wheel_combo->clearEditText();
-    wheel_combo->addItems(wheellist);
-    QList<QString>::Iterator it1 = wheellist.begin(), itend1 = wheellist.end();
+    wheel_combo->addItems(m_wheellist);
+    QList<QString>::Iterator it1 = m_wheellist.begin(), itend1 = m_wheellist.end();
     int initIndex1 = 0;
     for(;it1 != itend1; it1++,initIndex1++)
     {
@@ -234,12 +320,12 @@ void WindowWidget::initData()
     }
     wheel_combo->setCurrentIndex(initIndex1);
 
-    QString current_double_type = sessionproxy->get_current_titlebar_double_qt();
-    /*QStringList */titlebar_options  = sessionproxy->get_titlebar_options_qt();
+    m_titlebarOptions.clear();
+    m_titlebarOptions = titlebarOptions;
     double_click_combo->clear();
     double_click_combo->clearEditText();
-    double_click_combo->addItems(titlebar_options);
-    QList<QString>::Iterator it2 = titlebar_options.begin(), itend2 = titlebar_options.end();
+    double_click_combo->addItems(m_titlebarOptions);
+    QList<QString>::Iterator it2 = m_titlebarOptions.begin(), itend2 = m_titlebarOptions.end();
     int initIndex2 = 0;
     for(;it2 != itend2; it2++,initIndex2++)
     {
@@ -248,12 +334,10 @@ void WindowWidget::initData()
     }
     double_click_combo->setCurrentIndex(initIndex2);
 
-    QString current_middle_type = sessionproxy->get_current_titlebar_middle_qt();
-//    QStringList middlelist  = sessionproxy->get_titlebar_middle_qt();
     middle_click_combo->clear();
     middle_click_combo->clearEditText();
-    middle_click_combo->addItems(titlebar_options);
-    QList<QString>::Iterator it3 = titlebar_options.begin(), itend3 = titlebar_options.end();
+    middle_click_combo->addItems(m_titlebarOptions);
+    QList<QString>::Iterator it3 = m_titlebarOptions.begin(), itend3 = m_titlebarOptions.end();
     int initIndex3 = 0;
     for(;it3 != itend3; it3++,initIndex3++)
     {
@@ -262,12 +346,10 @@ void WindowWidget::initData()
     }
     middle_click_combo->setCurrentIndex(initIndex3);
 
-    QString current_right_type = sessionproxy->get_current_titlebar_right_qt();
-//    QStringList rightlist  = sessionproxy->get_titlebar_right_qt();
     right_click_combo->clear();
     right_click_combo->clearEditText();
-    right_click_combo->addItems(titlebar_options);
-    QList<QString>::Iterator it4 = titlebar_options.begin(), itend4 = titlebar_options.end();
+    right_click_combo->addItems(m_titlebarOptions);
+    QList<QString>::Iterator it4 = m_titlebarOptions.begin(), itend4 = m_titlebarOptions.end();
     int initIndex4 = 0;
     for(;it4 != itend4; it4++,initIndex4++)
     {
@@ -275,9 +357,8 @@ void WindowWidget::initData()
             break;
     }
     right_click_combo->setCurrentIndex(initIndex4);
-    dataOK = true;
-    this->initConnect();
 }
+
 
 void WindowWidget::initConnect() {
 //    connect(back_btn, SIGNAL(clicked()), this, SIGNAL(showSettingMainWidget()));
@@ -289,8 +370,8 @@ void WindowWidget::initConnect() {
     connect(middle_click_combo, SIGNAL(currentIndexChanged(QString)), this, SLOT(setMouseMiddleClick(QString)));
     connect(right_click_combo, SIGNAL(currentIndexChanged(QString)), this, SLOT(setMouseRightClick(QString)));
 
-    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(windowwidget_notify_string(QString, QString)));
-    connect(sessionproxy, SIGNAL(bool_value_notify(QString, bool)), this, SLOT(windowwidget_notify_bool(QString, bool)));
+//    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(windowwidget_notify_string(QString, QString)));
+//    connect(sessionproxy, SIGNAL(bool_value_notify(QString, bool)), this, SLOT(windowwidget_notify_bool(QString, bool)));
 }
 
 void WindowWidget::windowwidget_notify_string(QString key, QString value)
@@ -308,7 +389,7 @@ void WindowWidget::windowwidget_notify_string(QString key, QString value)
         }
     }
     else if (key == "mouse-wheel-action") {
-        QList<QString>::Iterator it = wheellist.begin(), itend = wheellist.end();
+        QList<QString>::Iterator it = m_wheellist.begin(), itend = m_wheellist.end();
         int index = -1;
         bool exist = false;
         for(;it != itend; it++)
@@ -327,7 +408,7 @@ void WindowWidget::windowwidget_notify_string(QString key, QString value)
             wheel_combo->setCurrentIndex(-1);
     }
     else if (key == "action-double-click-titlebar") {
-        QList<QString>::Iterator it = titlebar_options.begin(), itend = titlebar_options.end();
+        QList<QString>::Iterator it = m_titlebarOptions.begin(), itend = m_titlebarOptions.end();
         int index = -1;
         bool exist = false;
         for(;it != itend; it++)
@@ -346,7 +427,7 @@ void WindowWidget::windowwidget_notify_string(QString key, QString value)
             double_click_combo->setCurrentIndex(-1);
     }
     else if (key == "action-middle-click-titlebar") {
-        QList<QString>::Iterator it = titlebar_options.begin(), itend = titlebar_options.end();
+        QList<QString>::Iterator it = m_titlebarOptions.begin(), itend = m_titlebarOptions.end();
         int index = -1;
         bool exist = false;
         for(;it != itend; it++)
@@ -365,7 +446,7 @@ void WindowWidget::windowwidget_notify_string(QString key, QString value)
             middle_click_combo->setCurrentIndex(-1);
     }
     else if (key == "action-right-click-titlebar") {
-        QList<QString>::Iterator it = titlebar_options.begin(), itend = titlebar_options.end();
+        QList<QString>::Iterator it = m_titlebarOptions.begin(), itend = m_titlebarOptions.end();
         int index = -1;
         bool exist = false;
         for(;it != itend; it++)
@@ -394,28 +475,33 @@ void WindowWidget::windowwidget_notify_bool(QString key, bool value)
 
 void WindowWidget::setMenuIcon()
 {
-    sessionproxy->set_menus_have_icons_qt(icon_switcher->switchedOn);
+    emit this->resetMenusHaveIcon(icon_switcher->switchedOn);
+//    sessionproxy->set_menus_have_icons_qt(icon_switcher->switchedOn);
 
 }
 
 void WindowWidget::setMouseWheel(QString selected)
 {
-    sessionproxy->set_titlebar_wheel_qt(selected);
+    emit this->resetTitlebarWheel(selected);
+//    sessionproxy->set_titlebar_wheel_qt(selected);
 }
 
 void WindowWidget::setMouseDoubleClick(QString selected)
 {
-    sessionproxy->set_titlebar_double_qt(selected);
+    emit this->resetTitlebarDoubleClick(selected);
+//    sessionproxy->set_titlebar_double_qt(selected);
 }
 
 void WindowWidget::setMouseMiddleClick(QString selected)
 {
-    sessionproxy->set_titlebar_middle_qt(selected);
+    emit this->resetMouseMiddleClick(selected);
+//    sessionproxy->set_titlebar_middle_qt(selected);
 }
 
 void WindowWidget::setMouseRightClick(QString selected)
 {
-    sessionproxy->set_titlebar_right_qt(selected);
+    emit this->resetMouseRightClick(selected);
+//    sessionproxy->set_titlebar_right_qt(selected);
 }
 
 void WindowWidget::setRadioButtonRowStatus()
@@ -425,10 +511,12 @@ void WindowWidget::setRadioButtonRowStatus()
     QString obj_name = pbtn->objectName();
     if(obj_name == "leftradio")
     {
-        sessionproxy->set_window_button_align_left_qt();
+        emit this->resetWindowButtonLeftOrRightAlign(true);
+//        sessionproxy->set_window_button_align_left_qt();
     }
     else if(obj_name == "rightradio")
     {
-        sessionproxy->set_window_button_align_right_qt();
+        emit this->resetWindowButtonLeftOrRightAlign(false);
+//        sessionproxy->set_window_button_align_right_qt();
     }
 }

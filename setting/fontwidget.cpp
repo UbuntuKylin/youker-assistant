@@ -20,17 +20,14 @@
 #include "fontwidget.h"
 #include <QDebug>
 #include "../component/kylinfontdialog.h"
-#include "../dbusproxy/youkersessiondbus.h"
-#include "../mainui/mainwindow.h"
+#include "../src/mainwindow.h"
 
-FontWidget::FontWidget(QWidget *parent, SessionDispatcher *proxy, MainWindow *window, QString cur_desktop, QString skin) :
-    QWidget(parent),
-    sessionproxy(proxy),
+FontWidget::FontWidget(QWidget *parent, MainWindow *window, QString cur_desktop, QString skin) :
+    SettingModulePage(parent),
     parentWindow(window),
     desktop(cur_desktop),
     cur_skin(skin)
 {
-    dataOK = false;
     default_font_label = new QLabel();
     desktop_font_label = new QLabel();
     monospace_font_label = new QLabel();
@@ -178,7 +175,7 @@ FontWidget::FontWidget(QWidget *parent, SessionDispatcher *proxy, MainWindow *wi
 //    main_layout->setSpacing(0);
 //    main_layout->setContentsMargins(0, 0, 0, 0);
 //    setLayout(main_layout);
-//    this->initData();
+//    this->initSettingData();
     this->setLanguage();
 }
 
@@ -270,6 +267,11 @@ FontWidget::~FontWidget()
     }
 }
 
+QString FontWidget::settingModuleName()
+{
+    return "FontPage";
+}
+
 void FontWidget::setLanguage() {
 //    title_label->setText(tr("Default font settings"));
 //    description_label->setText(tr("According to personal preferences to set the system default font, click the  'Restore' button, can be restored to the state before the font settings."));
@@ -289,14 +291,12 @@ void FontWidget::setLanguage() {
     restore_titlebar_font_btn->setText(tr("Restore"));
 }
 
-bool FontWidget::getStatus()
+void FontWidget::initSettingData()
 {
-    return this->dataOK;
-}
+    emit requestFontData();
 
-void FontWidget::initData()
-{
-    current_font = sessionproxy->get_font_qt();
+
+    /*current_font = sessionproxy->get_font_qt();
     desktop_font = sessionproxy->get_desktop_font_qt();
     if(desktop_font.isEmpty())
     {
@@ -321,11 +321,11 @@ void FontWidget::initData()
     }
 
     QString current_smooth = sessionproxy->get_smooth_style_qt();
-    /*QStringList */smoothlist  = sessionproxy->get_smooth_style_list_qt();
+    m_smoothlist  = sessionproxy->get_smooth_style_list_qt();
     hinting_combo->clear();
     hinting_combo->clearEditText();
-    hinting_combo->addItems(smoothlist);
-    QList<QString>::Iterator it = smoothlist.begin(), itend = smoothlist.end();
+    hinting_combo->addItems(m_smoothlist);
+    QList<QString>::Iterator it = m_smoothlist.begin(), itend = m_smoothlist.end();
     int initIndex = 0;
     for(;it != itend; it++,initIndex++)
     {
@@ -335,11 +335,72 @@ void FontWidget::initData()
     hinting_combo->setCurrentIndex(initIndex);
 
     QString current_antialiasing = sessionproxy->get_antialiasing_style_qt();
-    /*QStringList */antialiasinglist  = sessionproxy->get_antialiasing_style_list_qt();
+    m_antialiasinglist  = sessionproxy->get_antialiasing_style_list_qt();
     antialiasing_combo->clear();
     antialiasing_combo->clearEditText();
-    antialiasing_combo->addItems(antialiasinglist);
-    QList<QString>::Iterator ite = antialiasinglist.begin(), iteend = antialiasinglist.end();
+    antialiasing_combo->addItems(m_antialiasinglist);
+    QList<QString>::Iterator ite = m_antialiasinglist.begin(), iteend = m_antialiasinglist.end();
+    int index = 0;
+    for(;ite != iteend; ite++,index++)
+    {
+        if(*ite == current_antialiasing)
+            break;
+    }
+    antialiasing_combo->setCurrentIndex(index);*/
+    this->initConnect();
+}
+
+void FontWidget::onSendFontValue(const QString &curFont)
+{
+    default_font_btn->setText(curFont);
+}
+
+void FontWidget::onSendDesktopFontValue(const QString &curFont)
+{
+    desktop_font_btn->setText(curFont);
+}
+
+void FontWidget::onSendMonospaceFontValue(const QString &curFont)
+{
+    monospace_font_btn->setText(curFont);
+}
+
+void FontWidget::onSendDocumentFontValue(const QString &curFont)
+{
+    document_font_btn->setText(curFont);
+}
+
+void FontWidget::onSendTitlebarFontValue(const QString &curFont)
+{
+    titlebar_font_btn->setText(curFont);
+}
+
+void FontWidget::onSendFontSmoothAndAntialiasingValue(double fontZoom, const QString &current_smooth, const QStringList &smoothlist, const QString &current_antialiasing, const QStringList &antialiasinglist)
+{
+    if (this->desktop != "mate" || this->desktop == "MATE") {
+        scaling_slider->setValue(fontZoom);
+    }
+
+    m_smoothlist.clear();
+    m_smoothlist = smoothlist;
+    hinting_combo->clear();
+    hinting_combo->clearEditText();
+    hinting_combo->addItems(m_smoothlist);
+    QList<QString>::Iterator it = m_smoothlist.begin(), itend = m_smoothlist.end();
+    int initIndex = 0;
+    for(;it != itend; it++,initIndex++)
+    {
+        if(*it == current_smooth)
+            break;
+    }
+    hinting_combo->setCurrentIndex(initIndex);
+
+    m_antialiasinglist.clear();
+    m_antialiasinglist = antialiasinglist;
+    antialiasing_combo->clear();
+    antialiasing_combo->clearEditText();
+    antialiasing_combo->addItems(m_antialiasinglist);
+    QList<QString>::Iterator ite = m_antialiasinglist.begin(), iteend = m_antialiasinglist.end();
     int index = 0;
     for(;ite != iteend; ite++,index++)
     {
@@ -347,8 +408,6 @@ void FontWidget::initData()
             break;
     }
     antialiasing_combo->setCurrentIndex(index);
-    dataOK = true;
-    this->initConnect();
 }
 
 void FontWidget::initConnect() {
@@ -367,8 +426,8 @@ void FontWidget::initConnect() {
     connect(restore_document_font_btn, SIGNAL(clicked()), this, SLOT(restore_document_font()));
     connect(restore_titlebar_font_btn, SIGNAL(clicked()), this, SLOT(restore_titlebar_font()));
 
-    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(fontwidget_notify_string(QString, QString)));
-    connect(sessionproxy, SIGNAL(double_value_notify(QString, double)), this, SLOT(fontwidget_notify_double(QString, double)));
+//    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(fontwidget_notify_string(QString, QString)));
+//    connect(sessionproxy, SIGNAL(double_value_notify(QString, double)), this, SLOT(fontwidget_notify_double(QString, double)));
 }
 
 void FontWidget::fontwidget_notify_string(QString key, QString value)
@@ -389,7 +448,7 @@ void FontWidget::fontwidget_notify_string(QString key, QString value)
         titlebar_font_btn->setText(value);
     }
     else if (key == "hinting") {
-        QList<QString>::Iterator it = smoothlist.begin(), itend = smoothlist.end();
+        QList<QString>::Iterator it = m_smoothlist.begin(), itend = m_smoothlist.end();
         int index = -1;
         bool exist = false;
         for(;it != itend; it++)
@@ -408,7 +467,7 @@ void FontWidget::fontwidget_notify_string(QString key, QString value)
             hinting_combo->setCurrentIndex(-1);
     }
     else if (key == "antialiasing") {
-        QList<QString>::Iterator it = antialiasinglist.begin(), itend = antialiasinglist.end();
+        QList<QString>::Iterator it = m_antialiasinglist.begin(), itend = m_antialiasinglist.end();
         int index = -1;
         bool exist = false;
         for(;it != itend; it++)
@@ -438,34 +497,30 @@ void FontWidget::fontwidget_notify_double(QString key, double value)
 
 void FontWidget::setDefaultFont() {
 //    KylinFontDialog *fontDialog = new KylinFontDialog(mSettings, flag, current_font, 0);
-    KylinFontDialog *fontDialog = new KylinFontDialog(current_font, this->cur_skin, 0);
+    KylinFontDialog *fontDialog = new KylinFontDialog(current_font/*, this->cur_skin, 0*/);
     connect(fontDialog, SIGNAL(rebackCurrentFont(QString)), this, SLOT(resetDefaultFont(QString)));
-    int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (600  / 2);
-    int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (500  / 2);
-    fontDialog->move(w_x, w_y);
     fontDialog->exec();
 }
 
 void FontWidget::resetDefaultFont(QString cur_font)
 {
     this->current_font = cur_font;
-    sessionproxy->set_font_qt(cur_font);
+    emit setDefaultFontByName(cur_font);
+//    sessionproxy->set_font_qt(cur_font);
     default_font_btn->setText(cur_font);
 }
 
 void FontWidget::setDesktopFont() {
-    KylinFontDialog *fontDialog = new KylinFontDialog(desktop_font, this->cur_skin, 0);
+    KylinFontDialog *fontDialog = new KylinFontDialog(desktop_font/*, this->cur_skin, 0*/);
     connect(fontDialog, SIGNAL(rebackCurrentFont(QString)), this, SLOT(resetDesktopFont(QString)));
-    int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (600  / 2);
-    int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (500  / 2);
-    fontDialog->move(w_x, w_y);
     fontDialog->exec();
 }
 
 void FontWidget::resetDesktopFont(QString cur_font)
 {
     this->desktop_font = cur_font;
-    sessionproxy->set_desktop_font_qt(cur_font);
+    emit setDesktopFontByName(cur_font);
+//    sessionproxy->set_desktop_font_qt(cur_font);
     desktop_font_btn->setText(cur_font);
 }
 
@@ -475,124 +530,131 @@ void FontWidget::resetCurrentSkin(QString skin)
 }
 
 void FontWidget::setMonospaceFont() {
-    KylinFontDialog *fontDialog = new KylinFontDialog(monospace_font, this->cur_skin, 0);
+    KylinFontDialog *fontDialog = new KylinFontDialog(monospace_font/*, this->cur_skin, 0*/);
     connect(fontDialog, SIGNAL(rebackCurrentFont(QString)), this, SLOT(resetMonospaceFont(QString)));
-    int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (600  / 2);
-    int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (500  / 2);
-    fontDialog->move(w_x, w_y);
     fontDialog->exec();
 }
 
 void FontWidget::resetMonospaceFont(QString cur_font)
 {
     this->monospace_font = cur_font;
-    sessionproxy->set_monospace_font_qt(cur_font);
+    emit setMonospaceFontByName(cur_font);
+//    sessionproxy->set_monospace_font_qt(cur_font);
     monospace_font_btn->setText(cur_font);
 }
 
 void FontWidget::setDocumentFont() {
-    KylinFontDialog *fontDialog = new KylinFontDialog(document_font, this->cur_skin, 0);
+    KylinFontDialog *fontDialog = new KylinFontDialog(document_font/*, this->cur_skin, 0*/);
     connect(fontDialog, SIGNAL(rebackCurrentFont(QString)), this, SLOT(resetDocumentFont(QString)));
-    int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (600  / 2);
-    int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (500  / 2);
-    fontDialog->move(w_x, w_y);
     fontDialog->exec();
 }
 
 void FontWidget::resetDocumentFont(QString cur_font)
 {
     this->document_font = cur_font;
-    sessionproxy->set_document_font_qt(cur_font);
+    emit setDocumentFontByName(cur_font);
+//    sessionproxy->set_document_font_qt(cur_font);
     document_font_btn->setText(cur_font);
 }
 
 void FontWidget::setTitlebarFont() {
-    KylinFontDialog *fontDialog = new KylinFontDialog(titlebar_font, this->cur_skin, 0);
+    KylinFontDialog *fontDialog = new KylinFontDialog(titlebar_font/*, this->cur_skin, 0*/);
     connect(fontDialog, SIGNAL(rebackCurrentFont(QString)), this, SLOT(resetTitlebarFont(QString)));
-    int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (600  / 2);
-    int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (500  / 2);
-    fontDialog->move(w_x, w_y);
     fontDialog->exec();
 }
 
 void FontWidget::resetTitlebarFont(QString cur_font)
 {
     this->titlebar_font = cur_font;
-    sessionproxy->set_window_title_font_qt(cur_font);
+    emit setTitlebarFontByName(cur_font);
+//    sessionproxy->set_window_title_font_qt(cur_font);
     titlebar_font_btn->setText(cur_font);
 }
 
 void FontWidget::setScalingValue(double value)
 {
-    sessionproxy->set_font_zoom_qt(value);
+    emit resetFontZoomScalingValue(value);
+//    sessionproxy->set_font_zoom_qt(value);
 }
 
 void FontWidget::setFontHinting(QString selected)
 {
-    sessionproxy->set_smooth_style_qt(selected);
+    emit resetFontHinting(selected);
+//    sessionproxy->set_smooth_style_qt(selected);
 }
 
 void FontWidget::setFontAntialiasing(QString selected)
 {
-    sessionproxy->set_antialiasing_style_qt(selected);
+    emit resetFontAntialiasing(selected);
+//    sessionproxy->set_antialiasing_style_qt(selected);
 }
 
 void FontWidget::restore_default_font()
 {
     if (this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui") {
-        sessionproxy->set_default_font_string_qt("org.mate.interface", "font-name", "string");
-        default_font_btn->setText(sessionproxy->get_default_font_string_qt("org.mate.interface", "font-name"));
+        emit restoreDefaultFont(true);
+//        sessionproxy->set_default_font_string_qt("org.mate.interface", "font-name", "string");
+//        default_font_btn->setText(sessionproxy->get_default_font_string_qt("org.mate.interface", "font-name"));
     }
     else {
-        sessionproxy->set_default_font_string_qt("org.gnome.desktop.interface", "font-name", "string");
-        default_font_btn->setText(sessionproxy->get_default_font_string_qt("org.gnome.desktop.interface", "font-name"));
+        emit restoreDefaultFont(false);
+//        sessionproxy->set_default_font_string_qt("org.gnome.desktop.interface", "font-name", "string");
+//        default_font_btn->setText(sessionproxy->get_default_font_string_qt("org.gnome.desktop.interface", "font-name"));
     }
 }
 
 void FontWidget::restore_desktop_font()
 {
     if (this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui") {
-        sessionproxy->set_default_font_string_qt("org.mate.caja.desktop", "font", "string");
-        desktop_font_btn->setText(sessionproxy->get_default_font_string_qt("org.mate.caja.desktop", "font"));
+        emit restoreDesktopDefaultFont(true);
+//        sessionproxy->set_default_font_string_qt("org.mate.caja.desktop", "font", "string");
+//        desktop_font_btn->setText(sessionproxy->get_default_font_string_qt("org.mate.caja.desktop", "font"));
     }
     else {
-        sessionproxy->set_default_font_string_qt("org.gnome.nautilus.desktop", "font", "string");
-        desktop_font_btn->setText(sessionproxy->get_default_font_string_qt("org.gnome.nautilus.desktop", "font"));
+        emit restoreDesktopDefaultFont(false);
+//        sessionproxy->set_default_font_string_qt("org.gnome.nautilus.desktop", "font", "string");
+//        desktop_font_btn->setText(sessionproxy->get_default_font_string_qt("org.gnome.nautilus.desktop", "font"));
     }
 }
 
 void FontWidget::restore_monospace_font()
 {
     if (this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui") {
-        sessionproxy->set_default_font_string_qt("org.mate.interface", "monospace-font-name", "string");
-        monospace_font_btn->setText(sessionproxy->get_default_font_string_qt("org.mate.interface", "monospace-font-name"));
+        emit restoreMonospaceDefaultFont(true);
+//        sessionproxy->set_default_font_string_qt("org.mate.interface", "monospace-font-name", "string");
+//        monospace_font_btn->setText(sessionproxy->get_default_font_string_qt("org.mate.interface", "monospace-font-name"));
     }
     else {
-        sessionproxy->set_default_font_string_qt("org.gnome.desktop.interface", "monospace-font-name", "string");
-        monospace_font_btn->setText(sessionproxy->get_default_font_string_qt("org.gnome.desktop.interface", "monospace-font-name"));
+        emit restoreMonospaceDefaultFont(false);
+//        sessionproxy->set_default_font_string_qt("org.gnome.desktop.interface", "monospace-font-name", "string");
+//        monospace_font_btn->setText(sessionproxy->get_default_font_string_qt("org.gnome.desktop.interface", "monospace-font-name"));
     }
 }
 
 void FontWidget::restore_document_font()
 {
     if (this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui") {
-        sessionproxy->set_default_font_string_qt("org.mate.interface", "document-font-name", "string");
-        document_font_btn->setText(sessionproxy->get_default_font_string_qt("org.mate.interface", "document-font-name"));
+        emit restoreDocumentDefaultFont(true);
+//        sessionproxy->set_default_font_string_qt("org.mate.interface", "document-font-name", "string");
+//        document_font_btn->setText(sessionproxy->get_default_font_string_qt("org.mate.interface", "document-font-name"));
     }
     else {
-        sessionproxy->set_default_font_string_qt("org.gnome.desktop.interface", "document-font-name", "string");
-        document_font_btn->setText(sessionproxy->get_default_font_string_qt("org.gnome.desktop.interface", "document-font-name"));
+        emit restoreDocumentDefaultFont(false);
+//        sessionproxy->set_default_font_string_qt("org.gnome.desktop.interface", "document-font-name", "string");
+//        document_font_btn->setText(sessionproxy->get_default_font_string_qt("org.gnome.desktop.interface", "document-font-name"));
     }
 }
 
 void FontWidget::restore_titlebar_font()
 {
     if (this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui") {
-        sessionproxy->set_default_font_string_qt("org.gnome.desktop.wm.preferences", "titlebar-font", "string");
-        titlebar_font_btn->setText(sessionproxy->get_default_font_string_qt("org.gnome.desktop.wm.preferences", "titlebar-font"));
+        emit restoreTitlebarDefaultFont(true);
+//        sessionproxy->set_default_font_string_qt("org.gnome.desktop.wm.preferences", "titlebar-font", "string");
+//        titlebar_font_btn->setText(sessionproxy->get_default_font_string_qt("org.gnome.desktop.wm.preferences", "titlebar-font"));
     }
     else {
-        sessionproxy->set_default_font_string_qt("org.gnome.desktop.wm.preferences", "titlebar-font", "string");
-        titlebar_font_btn->setText(sessionproxy->get_default_font_string_qt("org.gnome.desktop.wm.preferences", "titlebar-font"));
+        emit restoreTitlebarDefaultFont(false);
+//        sessionproxy->set_default_font_string_qt("org.gnome.desktop.wm.preferences", "titlebar-font", "string");
+//        titlebar_font_btn->setText(sessionproxy->get_default_font_string_qt("org.gnome.desktop.wm.preferences", "titlebar-font"));
     }
 }

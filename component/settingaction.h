@@ -34,10 +34,33 @@ class SettingAction : public QWidget
 {
     Q_OBJECT
 public:
+    /*enum SettingModuleID{
+        ThemePage = 0,
+        IconPage,
+        MousePage,
+        SoundPage,
+        PanelPage,
+        MenuPage,
+        WindowPage,
+        FontPage,
+        TouchPadPage,
+        EnergyPage,
+        FMPage
+    };*/
+
     explicit SettingAction(QString cur_dekstop = "", QWidget *parent = 0);
     ~SettingAction();
 //    void setParentWindow(MainWindow* window) { p_mainwindow = window;}
     void setLanguage(int index);
+
+//    QString getModuleName() const;
+//    void setModuleName(const QString &name);
+    QString getModuleName();
+    void setModuleName(QString name);
+
+
+//    SettingModuleID getModuleNameID() const;
+//    void setModuleNameID(const SettingModuleID &id);
 
 signals:
     void showSettingMainWidget();
@@ -49,6 +72,8 @@ private:
 //    QLabel *description_label;
 //    MainWindow *p_mainwindow;
     QString desktop;
+    QString m_moduleName;
+//    SettingModuleID m_id;
 };
 
 #endif // SETTINGACTION_H

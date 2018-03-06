@@ -22,22 +22,22 @@
 
 #include <QWidget>
 #include "../component/kylinswitcher.h"
+#include "settingmodulelpage.h"
 
-class SessionDispatcher;
 class QLabel;
 class QPushButton;
 class QRadioButton;
 
-class TouchpadWidget : public QWidget
+class TouchpadWidget : public SettingModulePage
 {
     Q_OBJECT
 public:
-    explicit TouchpadWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0, QString cur_desktop = "");
+    explicit TouchpadWidget(QWidget *parent = 0, QString cur_desktop = "");
     ~TouchpadWidget();
     void setLanguage();
     void initConnect();
-    void initData();
-    bool getStatus();
+    void initSettingData() Q_DECL_OVERRIDE;
+    QString settingModuleName() Q_DECL_OVERRIDE;
 
 public slots:
     void setRadioButtonRowStatus(/*bool status*/);
@@ -48,9 +48,17 @@ public slots:
     void touchpadwidget_notify_bool(QString key, bool value);
     void touchpadwidget_notify_int(QString key, int value);
 
+    void onSendTouchPadValue(bool touchpadEnable, bool touchscrollingHorizontal, const QString &mode_value, int scroll_int_value, const QString &scroll_string_value);
+
+signals:
+    void requestMateOrUnityTouchpadData(bool isMate);
+    void resetTouchpad(bool b);
+    void resetHorizontalScrolling(bool b);
+    void setScrollbarOverlayOrLegacyMode(bool b);
+    void setMateTouchscrollingMode(int flag);
+    void setUnityTouchscrollingMode(int flag);
+
 private:
-    SessionDispatcher *sessionproxy;
-    bool dataOK;
     QLabel *touchpad_label;
     QLabel *horizontal_scrolling_label;
     QLabel *scrollbar_type_label;

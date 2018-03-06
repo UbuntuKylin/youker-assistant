@@ -41,7 +41,7 @@ protected:
 
 public:
 	bool mouse_over; //鼠标是否移过
-	bool mouse_press; //鼠标是否按下
+	bool m_mousePressed; //鼠标是否按下
     QIcon normal_icon;
     QIcon hover_icon;
     QIcon press_icon;

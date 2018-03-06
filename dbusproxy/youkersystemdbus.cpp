@@ -19,20 +19,43 @@
 
 #include "youkersystemdbus.h"
 #include <QDebug>
+#include <QDBusReply>
 #include <QMap>
+#include <QDir>
 
 SystemDispatcher::SystemDispatcher(QObject *parent)
     : QObject(parent)
 {
-    systemiface = NULL;
-    thread = new KThread(this);
+    systemiface = new QDBusInterface("com.kylin.assistant.systemdaemon",
+                               "/com/kylin/assistant/systemdaemon",
+                               "com.kylin.assistant.systemdaemon",
+                               QDBusConnection::systemBus());
+    qDebug() << "Starting SystemDispatcher";
+    QObject::connect(systemiface,SIGNAL(quit_clean(bool)),this,SLOT(handler_interrupt_clean(bool))/*, Qt::QueuedConnection*/);
 
-    //kobe
-    clean_thread = new KThread(this);
+    QObject::connect(systemiface,SIGNAL(clean_complete_onekey(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString))/*, Qt::QueuedConnection*/);
+
+    QObject::connect(systemiface,SIGNAL(clean_error_onekey(QString)),this,SLOT(handler_clear_rubbish_main_error(QString))/*, Qt::QueuedConnection*/);
+
+    QObject::connect(systemiface,SIGNAL(status_for_quick_clean(QString,QString)),this,SLOT(handler_status_for_quick_clean(QString,QString))/*, Qt::QueuedConnection*/);
+
+    QObject::connect(systemiface,SIGNAL(subpage_data_signal(QStringList)),this,SLOT(handlerCleanerSubPageDataSignal(QStringList)));
+    QObject::connect(systemiface,SIGNAL(subpage_status_signal(QString, QString)),this,SLOT(handlerCleanerSubPageStatusSignal(QString, QString)));
+    QObject::connect(systemiface,SIGNAL(subpage_error_signal(QString)),this,SLOT(handlerCleanerSubPageErrorSignal(QString)));
+
+    QObject::connect(systemiface,SIGNAL(youker_fetch_signal(QString, QStringList)),this,SIGNAL(get_fetch_signal(QString, QStringList)));
+    QObject::connect(systemiface,SIGNAL(youker_apt_signal(QString, QStringList)),this,SIGNAL(get_apt_signal(QString, QStringList)));
+//    QObject::connect(systemiface,SIGNAL(youker_fetch_signal(QString, QStringList)),this,SLOT(handlerFetchSignal(QString, QStringList)));
+//    QObject::connect(systemiface,SIGNAL(youker_apt_signal(QString, QStringList)),this,SLOT(handlerAptSignal(QString, QStringList)));
+
+//    emit this->dbusInitFinished();
+
+    /*thread = new KThread(this);
+    clean_thread = new KThread(this);*/
 }
 
 SystemDispatcher::~SystemDispatcher() {
-    thread->terminate();
+    /*thread->terminate();
     thread->wait();
     if(thread != NULL) {
         delete thread;
@@ -44,38 +67,13 @@ SystemDispatcher::~SystemDispatcher() {
     if(clean_thread != NULL) {
         delete clean_thread;
         clean_thread = NULL;
-    }
-
+    }*/
 
     this->exit_qt();
     if (systemiface != NULL) {
         delete systemiface;
         systemiface = NULL;
     }
-}
-
-void SystemDispatcher::initData()
-{
-    systemiface = new QDBusInterface("com.ubuntukylin.youker",
-                               "/",
-                               "com.ubuntukylin.youker",
-                               QDBusConnection::systemBus());
-
-    QObject::connect(systemiface,SIGNAL(quit_clean(bool)),this,SLOT(handler_interrupt_clean(bool)));
-    QObject::connect(systemiface,SIGNAL(clean_complete_onekey(QString)),this,SLOT(handler_clear_rubbish_main_onekey(QString)));
-    QObject::connect(systemiface,SIGNAL(clean_error_onekey(QString)),this,SLOT(handler_clear_rubbish_main_error(QString)));
-    QObject::connect(systemiface,SIGNAL(status_for_quick_clean(QString,QString)),this,SLOT(handler_status_for_quick_clean(QString,QString)));
-
-    QObject::connect(systemiface,SIGNAL(subpage_data_signal(QStringList)),this,SLOT(handlerCleanerSubPageDataSignal(QStringList)));
-    QObject::connect(systemiface,SIGNAL(subpage_status_signal(QString, QString)),this,SLOT(handlerCleanerSubPageStatusSignal(QString, QString)));
-    QObject::connect(systemiface,SIGNAL(subpage_error_signal(QString)),this,SLOT(handlerCleanerSubPageErrorSignal(QString)));
-
-
-    QObject::connect(systemiface,SIGNAL(youker_fetch_signal(QString, QStringList)),this,SIGNAL(get_fetch_signal(QString, QStringList)));
-    QObject::connect(systemiface,SIGNAL(youker_apt_signal(QString, QStringList)),this,SIGNAL(get_apt_signal(QString, QStringList)));
-//    QObject::connect(systemiface,SIGNAL(youker_fetch_signal(QString, QStringList)),this,SLOT(handlerFetchSignal(QString, QStringList)));
-//    QObject::connect(systemiface,SIGNAL(youker_apt_signal(QString, QStringList)),this,SLOT(handlerAptSignal(QString, QStringList)));
-    emit this->dbusInitFinished();
 }
 
 //void SystemDispatcher::handlerFetchSignal(QString msg_type, QStringList msg)
@@ -115,7 +113,7 @@ QString SystemDispatcher::get_current_cpufreq_scaling_governer_qt()
 
 bool SystemDispatcher::update_myself()
 {
-    QStringList tmp;
+    /*QStringList tmp;
     QMap<QString, QVariant> data;
     QEventLoop q;
     KThread *apt_thread = new KThread(this);
@@ -125,15 +123,15 @@ bool SystemDispatcher::update_myself()
     q.exec();
     if(apt_thread->isFinished()){
        q.quit();
-    }
+    }*/
     return true;
-//    QDBusReply<bool> reply = systemiface->call("install", "youker-assistant");
+//    QDBusReply<bool> reply = systemiface->call("install", "kylin-assistant");
 //    return reply.value();
 }
 
 bool SystemDispatcher::update_source()
 {
-    QStringList tmp;
+    /*QStringList tmp;
     QMap<QString, QVariant> data;
     QEventLoop q;
     KThread *source_thread = new KThread(this);
@@ -143,7 +141,7 @@ bool SystemDispatcher::update_source()
     q.exec();
     if(source_thread->isFinished()){
        q.quit();
-    }
+    }*/
     return true;
 }
 
@@ -159,9 +157,13 @@ bool SystemDispatcher::delete_file_qt(QString filename)
     return reply.value();
 }
 
+//系统清理
 void SystemDispatcher::cleanAllSelectItems(QMap<QString, QVariant> selectMap)
 {
-    if (clean_thread->isRunning()) {
+    systemiface->call("remove_select_items", selectMap);
+
+
+    /*if (clean_thread->isRunning()) {
         qDebug() << "clean_thread is running......";
     }
     else {
@@ -182,7 +184,7 @@ void SystemDispatcher::cleanAllSelectItems(QMap<QString, QVariant> selectMap)
 //    QElapsedTimer et;
 //    et.start();
 //    while(et.elapsed()<300)
-//        QCoreApplication::processEvents();
+//        QCoreApplication::processEvents();*/
 }
 
 //void SystemDispatcher::kill_root_process_qt(QString pid) {
@@ -494,8 +496,14 @@ QString SystemDispatcher::delete_plymouth_qt(QString plymouthName) {
     return reply.value();
 }
 
-void SystemDispatcher::clean_by_main_one_key_qt() {
-    if (thread->isRunning()) {
+//一键清理
+void SystemDispatcher::clean_by_main_one_key_qt()
+{
+    QStringList argList;
+    argList << "1" << "1" << "1";
+    systemiface->call("onekey_clean_crufts_function", argList);
+
+    /*if (thread->isRunning()) {
         qDebug() << "onekey_clean_thread is running......";
     }
     else {
@@ -505,5 +513,5 @@ void SystemDispatcher::clean_by_main_one_key_qt() {
         QMap<QString, QVariant> data;
         thread->initValues(data, argList, systemiface, "onekey_clean_crufts_function");
         thread->start();
-    }
+    }*/
 }

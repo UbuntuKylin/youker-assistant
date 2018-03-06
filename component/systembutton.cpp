@@ -24,7 +24,7 @@ SystemButton::SystemButton(QWidget *parent) :
     QPushButton(parent)
 {
     status = NORMAL;
-    mouse_press = false;
+    m_mousePressed = false;
 }
 
 
@@ -46,7 +46,7 @@ void SystemButton::mousePressEvent(QMouseEvent *event)
 {
     if(event->button() == Qt::LeftButton)
     {
-        mouse_press = true;
+        m_mousePressed = true;
         status = PRESS;
         update();
     }
@@ -54,9 +54,9 @@ void SystemButton::mousePressEvent(QMouseEvent *event)
 
 void SystemButton::mouseReleaseEvent(QMouseEvent *event)
 {
-    if(mouse_press  && this->rect().contains(event->pos()))
+    if(m_mousePressed  && this->rect().contains(event->pos()))
     {
-        mouse_press = false;
+        m_mousePressed = false;
         status = ENTER;
         update();
         emit clicked();

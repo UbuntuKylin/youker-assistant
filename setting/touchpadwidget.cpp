@@ -25,14 +25,11 @@
 #include <QButtonGroup>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
-#include "../dbusproxy/youkersessiondbus.h"
 
-TouchpadWidget::TouchpadWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_desktop) :
-    QWidget(parent),
-    sessionproxy(proxy),
+TouchpadWidget::TouchpadWidget(QWidget *parent, QString cur_desktop) :
+    SettingModulePage(parent),
     desktop(cur_desktop)
 {
-    dataOK = false;
     touchpad_label = new QLabel();
     horizontal_scrolling_label = new QLabel();
     scrollbar_type_label = new QLabel();
@@ -78,8 +75,9 @@ TouchpadWidget::TouchpadWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
     scrollbar_type_label->setFixedWidth(180);
     scrolling_mode_label->setFixedWidth(180);
 
+    //20180101
     //kobe1510
-    this->release = sessionproxy->get_os_release_qt();
+    /*this->release = sessionproxy->get_os_release_qt();
     if(this->release.endsWith("15.10-wily")) {
         touchpad_label->hide();
         touchpad_switcher->hide();
@@ -88,7 +86,7 @@ TouchpadWidget::TouchpadWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
         scrollbar_type_label->hide();
         features_radio->hide();
         standard_radio->hide();
-    }
+    }*/
 
     QHBoxLayout *layout1 = new QHBoxLayout();
     layout1->setSpacing(10);
@@ -133,7 +131,7 @@ TouchpadWidget::TouchpadWidget(QWidget *parent, SessionDispatcher *proxy, QStrin
 //    main_layout->setSpacing(0);
 //    main_layout->setContentsMargins(0, 0, 0, 0);
 //    setLayout(main_layout);
-//    this->initData();
+//    this->initSettingData();
     this->setLanguage();
 }
 
@@ -185,6 +183,11 @@ TouchpadWidget::~TouchpadWidget()
     }
 }
 
+QString TouchpadWidget::settingModuleName()
+{
+    return "TouchPadPage";
+}
+
 void TouchpadWidget::setLanguage() {
 //    title_label->setText(tr("Touchpad settings"));
 //    description_label->setText(tr("Setting the relevant properties of your touchpad,make the operation more convenient."));
@@ -200,15 +203,19 @@ void TouchpadWidget::setLanguage() {
     two_finger_radio->setText(tr("Two-finger Scrolling"));//双指滚动
 }
 
-bool TouchpadWidget::getStatus()
+void TouchpadWidget::initSettingData()
 {
-    return this->dataOK;
-}
+    if (this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui")
+    {
+        emit requestMateOrUnityTouchpadData(true);
+    }
+    else {
+        emit requestMateOrUnityTouchpadData(false);
+    }
 
-void TouchpadWidget::initData()
-{
+
     //kobe1510
-    if(!this->release.endsWith("15.10-wily")) {
+    /*if(!this->release.endsWith("15.10-wily")) {
         touchpad_switcher->switchedOn = sessionproxy->get_touchpad_enable_qt();
         horizontal_scrolling_switcher->switchedOn = sessionproxy->get_touchscrolling_use_horizontal_qt();
         QString mode_value = sessionproxy->get_scrollbars_mode_qt();
@@ -258,9 +265,60 @@ void TouchpadWidget::initData()
             disable_radio->setChecked(false);
             edge_radio->setChecked(false);
         }
-    }
-    dataOK = true;
+    }*/
+
     this->initConnect();
+}
+
+void TouchpadWidget::onSendTouchPadValue(bool touchpadEnable, bool touchscrollingHorizontal, const QString &mode_value, int scroll_int_value, const QString &scroll_string_value)
+{
+    touchpad_switcher->switchedOn = touchpadEnable;
+    horizontal_scrolling_switcher->switchedOn = touchscrollingHorizontal;
+    if(mode_value == "overlay-auto") {
+        features_radio->setChecked(true);
+        standard_radio->setChecked(false);
+    }
+    else if(mode_value == "normal") {
+        standard_radio->setChecked(true);
+        features_radio->setChecked(false);
+    }
+
+    if (this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui")
+    {
+        if(scroll_int_value == 0) {
+            disable_radio->setChecked(true);
+            edge_radio->setChecked(false);
+            two_finger_radio->setChecked(false);
+        }
+        else if(scroll_int_value == 1) {
+            edge_radio->setChecked(true);
+            disable_radio->setChecked(false);
+            two_finger_radio->setChecked(false);
+        }
+        else if(scroll_int_value == 2) {
+            two_finger_radio->setChecked(true);
+            disable_radio->setChecked(false);
+            edge_radio->setChecked(false);
+        }
+    }
+    else
+    {
+        if(scroll_string_value == "disabled") {
+            disable_radio->setChecked(true);
+            edge_radio->setChecked(false);
+            two_finger_radio->setChecked(false);
+        }
+        else if(scroll_string_value == "edge-scrolling") {
+            edge_radio->setChecked(true);
+            disable_radio->setChecked(false);
+            two_finger_radio->setChecked(false);
+        }
+        else if(scroll_string_value == "two-finger-scrolling") {
+            two_finger_radio->setChecked(true);
+            disable_radio->setChecked(false);
+            edge_radio->setChecked(false);
+        }
+    }
 }
 
 void TouchpadWidget::initConnect() {
@@ -273,9 +331,9 @@ void TouchpadWidget::initConnect() {
     connect(edge_radio, SIGNAL(clicked(/*bool*/)), this, SLOT(setRadioButtonRowStatus(/*bool*/)));
     connect(two_finger_radio, SIGNAL(clicked(/*bool*/)), this, SLOT(setRadioButtonRowStatus(/*bool*/)));
 
-    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(touchpadwidget_notify_string(QString, QString)));
-    connect(sessionproxy, SIGNAL(bool_value_notify(QString, bool)), this, SLOT(touchpadwidget_notify_bool(QString, bool)));
-    connect(sessionproxy, SIGNAL(int_value_notify(QString, int)), this, SLOT(touchpadwidget_notify_int(QString, int)));
+//    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(touchpadwidget_notify_string(QString, QString)));
+//    connect(sessionproxy, SIGNAL(bool_value_notify(QString, bool)), this, SLOT(touchpadwidget_notify_bool(QString, bool)));
+//    connect(sessionproxy, SIGNAL(int_value_notify(QString, int)), this, SLOT(touchpadwidget_notify_int(QString, int)));
 }
 
 void TouchpadWidget::touchpadwidget_notify_string(QString key, QString value)
@@ -342,12 +400,14 @@ void TouchpadWidget::touchpadwidget_notify_int(QString key, int value)
 
 void TouchpadWidget::setTouchpad()
 {
-    sessionproxy->set_touchpad_enable_qt(touchpad_switcher->switchedOn);
+    emit resetTouchpad(touchpad_switcher->switchedOn);
+//    sessionproxy->set_touchpad_enable_qt(touchpad_switcher->switchedOn);
 }
 
 void TouchpadWidget::setHorizontalScrolling()
 {
-    sessionproxy->set_touchscrolling_use_horizontal_qt(horizontal_scrolling_switcher->switchedOn);
+    emit resetHorizontalScrolling(horizontal_scrolling_switcher->switchedOn);
+//    sessionproxy->set_touchscrolling_use_horizontal_qt(horizontal_scrolling_switcher->switchedOn);
 }
 
 void TouchpadWidget::setRadioButtonRowStatus(/*bool status*/)
@@ -357,34 +417,42 @@ void TouchpadWidget::setRadioButtonRowStatus(/*bool status*/)
     QString obj_name = pbtn->objectName();
     if(obj_name == "features_radio")
     {
-        sessionproxy->set_scrollbars_mode_overlay_qt();
+        emit setScrollbarOverlayOrLegacyMode(true);
+//        sessionproxy->set_scrollbars_mode_overlay_qt();
     }
     else if(obj_name == "standard_radio")
     {
-        sessionproxy->set_scrollbars_mode_legacy_qt();
+        emit setScrollbarOverlayOrLegacyMode(false);
+//        sessionproxy->set_scrollbars_mode_legacy_qt();
     }
     else if(obj_name == "disable_radio")
     {
         if (this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui")
-            sessionproxy->set_mate_touchscrolling_mode_qt(0);
+            emit setMateTouchscrollingMode(0);
+//            sessionproxy->set_mate_touchscrolling_mode_qt(0);
         else {
-            sessionproxy->set_touchscrolling_mode_disabled_qt();
+            emit setUnityTouchscrollingMode(0);
+//            sessionproxy->set_touchscrolling_mode_disabled_qt();
         }
     }
     else if(obj_name == "edge_radio")
     {
         if (this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui")
-            sessionproxy->set_mate_touchscrolling_mode_qt(1);
+            emit setMateTouchscrollingMode(1);
+//            sessionproxy->set_mate_touchscrolling_mode_qt(1);
         else {
-            sessionproxy->set_touchscrolling_mode_edge_qt();
+            emit setUnityTouchscrollingMode(1);
+//            sessionproxy->set_touchscrolling_mode_edge_qt();
         }
     }
     else if(obj_name == "two_finger_radio")
     {
         if (this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui")
-            sessionproxy->set_mate_touchscrolling_mode_qt(2);
+            emit setMateTouchscrollingMode(2);
+//            sessionproxy->set_mate_touchscrolling_mode_qt(2);
         else {
-            sessionproxy->set_touchscrolling_mode_twofinger_qt();
+            emit setUnityTouchscrollingMode(2);
+//            sessionproxy->set_touchscrolling_mode_twofinger_qt();
         }
     }
 }

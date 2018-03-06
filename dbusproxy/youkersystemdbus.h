@@ -23,7 +23,7 @@
 #include <QObject>
 #include <QDBusInterface>
 #include <QDBusConnection>
-#include "kthread.h"
+//#include "kthread.h"
 
 class SystemDispatcher : public QObject
 {
@@ -100,7 +100,7 @@ signals:
     void get_fetch_signal(QString msg_type, QStringList msg);
     void get_apt_signal(QString msg_type, QStringList msg);
 
-    void dbusInitFinished();
+//    void dbusInitFinished();
 
 public slots:
     void handler_interrupt_clean(bool status);
@@ -115,12 +115,10 @@ public slots:
 //    void handlerFetchSignal(QString msg_type, QStringList msg);
 //    void handlerAptSignal(QString msg_type, QStringList msg);
 
-    void initData();
-
 private:
     QDBusInterface *systemiface;
-    KThread *thread;
-    KThread *clean_thread;
+//    KThread *thread;
+//    KThread *clean_thread;
 };
 
 #endif // YOUKERSYSTEMDBUS_H

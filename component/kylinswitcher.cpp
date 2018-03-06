@@ -25,7 +25,7 @@ KylinSwitcher::KylinSwitcher(QWidget *parent) :
 {
     setWindowFlags(Qt::FramelessWindowHint);
     switchedOn = false;
-    mouse_press = false;
+    m_mousePressed = false;
     pixmap_on.load("://res/switch-on.png");
     pixmap_off.load("://res/switch-off.png");
     this->setFixedSize(pixmap_on.width(), pixmap_on.height());
@@ -36,14 +36,14 @@ void KylinSwitcher::mousePressEvent(QMouseEvent *event)
 {
     if(event->button() == Qt::LeftButton)
     {
-        mouse_press = true;
+        m_mousePressed = true;
     }
 }
 
 void KylinSwitcher::mouseReleaseEvent(QMouseEvent *event)
 {
-    if (mouse_press && this->rect().contains(event->pos())) {
-        mouse_press = false;
+    if (m_mousePressed && this->rect().contains(event->pos())) {
+        m_mousePressed = false;
         switchedOn = !switchedOn;
         emit clicked();
     }

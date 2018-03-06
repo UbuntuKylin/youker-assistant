@@ -48,7 +48,7 @@ private:
     QPixmap pixmap;
     enum ButtonStatus{NORMAL, ENTER, PRESS};
     ButtonStatus status;
-    bool mouse_press; //按钮左键是否按下
+    bool m_mousePressed; //按钮左键是否按下
     int btn_width;
     int btn_height;
 };

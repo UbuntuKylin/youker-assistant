@@ -22,6 +22,8 @@
 
 #include <QWidget>
 #include <QDialog>
+#include <QCheckBox>
+#include <QGroupBox>
 #include "../component/kylintitlebar.h"
 
 class MainWindow;

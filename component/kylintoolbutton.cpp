@@ -50,7 +50,7 @@ KylinToolButton::KylinToolButton(const QString &pic_name, const QString &text, Q
 	setAutoRaise(true);
     this->setObjectName("transparentToolButton");
 	mouse_over = false;
-	mouse_press = false;
+	m_mousePressed = false;
     pressed = false;
 }
 
@@ -103,9 +103,9 @@ void KylinToolButton::setMouseHover()
 
 void KylinToolButton::setMousePress(bool is_press)
 {
-    this->mouse_press = is_press;
+    this->m_mousePressed = is_press;
 
-    if(this->mouse_press)
+    if(this->m_mousePressed)
     {
         this->setIcon(QIcon(press_icon));
         pressed = true;
@@ -122,7 +122,7 @@ void KylinToolButton::setMousePress(bool is_press)
 //    }
 //    else
 //    {
-//        if(this->mouse_press)
+//        if(this->m_mousePressed)
 //        {
 //            this->setIcon(QIcon(press_icon));
 //        }

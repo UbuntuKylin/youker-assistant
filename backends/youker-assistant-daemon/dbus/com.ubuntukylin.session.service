@@ -1,3 +1,0 @@
-[D-BUS Service]
-Name=com.ubuntukylin.session
-Exec=/usr/bin/youker-assistant-session.py

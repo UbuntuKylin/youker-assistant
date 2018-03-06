@@ -32,10 +32,11 @@ public:
     virtual QString getDescribe() = 0;
     virtual QString getPicture() = 0;
     virtual void doAction() = 0;
+    virtual QWidget *centralWidget() = 0;
 };
 
 //Q_DECLARE_INTERFACE定义在在qobject.h中，用来告诉Qt meta-object system 这个接口名称
-Q_DECLARE_INTERFACE(PluginInterface, "com.ubuntukylin.Plugin.PluginInterface ")
+Q_DECLARE_INTERFACE(PluginInterface, "com.kylin.Plugin.PluginInterface")
 
 #endif // PLUGININTERFACE_H
 

@@ -22,24 +22,23 @@
 
 #include <QWidget>
 #include "../component/kylinswitcher.h"
+#include "settingmodulelpage.h"
 
 class QLabel;
 class QPushButton;
 class QComboBox;
 class QRadioButton;
 
-class SessionDispatcher;
-
-class WindowWidget : public QWidget
+class WindowWidget : public SettingModulePage
 {
     Q_OBJECT
 public:
-    explicit WindowWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0, QString cur_desktop = "");
+    explicit WindowWidget(QWidget *parent = 0, QString cur_desktop = "");
     ~WindowWidget();
     void setLanguage();
     void initConnect();
-    void initData();
-    bool getStatus();
+    void initSettingData() Q_DECL_OVERRIDE;
+    QString settingModuleName() Q_DECL_OVERRIDE;
 
 public slots:
     void setMenuIcon();
@@ -52,12 +51,27 @@ public slots:
     void windowwidget_notify_string(QString key, QString value);
     void windowwidget_notify_bool(QString key, bool value);
 
+    void onSendWindowButtonAlign(const QString &current_value);
+    void onSendMenusHaveIcons(bool menuHaveIcons);
+    void onSendWindowTitileTags(const QString &current_wheel_type, const QStringList &wheellist, const QStringList &titlebarOptions, const QString &current_double_type, const QString &current_middle_type, const QString &current_right_type);
+
+
+signals:
+    void requesetWindowButtonAlign();
+    void requesetMenusHaveIcons();
+    void requesetWindowTitileTags();
+    void resetMenusHaveIcon(bool b);
+    void resetTitlebarWheel(const QString &selected);
+    void resetTitlebarDoubleClick(const QString &selected);
+    void resetMouseMiddleClick(const QString &selected);
+    void resetMouseRightClick(const QString &selected);
+    void resetWindowButtonLeftOrRightAlign(bool isLeft);
+
+
 private:
-    SessionDispatcher *sessionproxy;
-    bool dataOK;
     QString desktop;
-    QStringList wheellist;
-    QStringList titlebar_options;
+    QStringList m_wheellist;
+    QStringList m_titlebarOptions;
     QLabel *icon_label;
     QLabel *wheel_label;
     QLabel *double_click_label;

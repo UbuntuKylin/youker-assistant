@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=com.kylin.assistant.systemdaemon
+Exec=/usr/bin/kylin-assistant-backend.py
+User=root

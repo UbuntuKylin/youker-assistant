@@ -62,6 +62,11 @@ NormalWidget::~NormalWidget() {
     }
 }
 
+void NormalWidget::resetData()
+{
+    cardcount = 0;
+}
+
 void NormalWidget::calculate_data()
 {
     this->scrollArea->setGeometry(-1, -1, this->width() + 2, this->height() + 2);

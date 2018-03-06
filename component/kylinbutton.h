@@ -48,7 +48,7 @@ private:
 
 	int btn_width; //按钮宽度
 	int btn_height; //按钮高度
-	bool mouse_press; //按钮左键是否按下
+	bool m_mousePressed; //按钮左键是否按下
 };
 
 #endif //KYLINBUTTON_H

@@ -25,7 +25,7 @@ AgentListItem::AgentListItem(QWidget *parent) :
     QWidget(parent)
 {
     this->setWindowFlags(Qt::FramelessWindowHint);
-    mouse_press = false;
+    m_mousePressed = false;
     label = new QLabel();
     delede_button = new QPushButton();
     delede_button->setFocusPolicy(Qt::NoFocus);
@@ -81,15 +81,15 @@ void AgentListItem::mousePressEvent(QMouseEvent *event)
 {
     if(event->button() == Qt::LeftButton)
     {
-        mouse_press = true;
+        m_mousePressed = true;
     }
 }
 
 void AgentListItem::mouseReleaseEvent(QMouseEvent *event)
 {
-    if(mouse_press)
+    if(m_mousePressed)
     {
         emit showItemName(label->text());
-        mouse_press = false;
+        m_mousePressed = false;
     }
 }

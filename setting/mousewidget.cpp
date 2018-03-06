@@ -22,16 +22,11 @@
 #include <QLabel>
 #include <QComboBox>
 #include <QRadioButton>
-#include "../dbusproxy/youkersessiondbus.h"
-#include "../dbusproxy/youkersystemdbus.h"
 
-MouseWidget::MouseWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispatcher *sproxy, QString cur_desktop) :
-    QWidget(parent),
-    sessionproxy(proxy),
-    systemproxy(sproxy),
+MouseWidget::MouseWidget(QWidget *parent, QString cur_desktop) :
+    SettingModulePage(parent),
     desktop(cur_desktop)
 {
-    dataOK = false;
     theme_label = new QLabel();
     size_label = new QLabel();
     theme_combo = new QComboBox();
@@ -76,7 +71,7 @@ MouseWidget::MouseWidget(QWidget *parent, SessionDispatcher *proxy , SystemDispa
 //    main_layout->setSpacing(0);
 //    main_layout->setContentsMargins(0, 0, 0, 0);
 //    setLayout(main_layout);
-//    this->initData();
+//    this->initSettingData();
     this->setLanguage();
 }
 
@@ -114,16 +109,23 @@ void MouseWidget::setLanguage() {
     big_size->setText(tr("Big Size"));
 }
 
-bool MouseWidget::getStatus()
+QString MouseWidget::settingModuleName()
 {
-    return this->dataOK;
+    return "MousePage";
 }
 
-void MouseWidget::initData()
+void MouseWidget::initSettingData()
 {
+    emit this->requestMouseData();
+
+
+
+
+
+    /*
     //在mate下，默认值为空
     QString current_cursor_theme = sessionproxy->get_cursor_theme_qt();
-    /*QStringList */cursorlist = sessionproxy->get_cursor_themes_qt();
+    cursorlist = sessionproxy->get_cursor_themes_qt();
     theme_combo->clear();
     theme_combo->clearEditText();
     theme_combo->addItems(cursorlist);
@@ -166,8 +168,34 @@ void MouseWidget::initData()
 //            small_size->setChecked(false);
 //        }
 //    }
-    dataOK = true;
+*/
     this->initConnect();
+}
+
+void MouseWidget::onReceiveMouseThemeAndCusorSize(const QString &currentTheme, const QStringList &themeList, int cursorSize)
+{
+    cursorlist.clear();
+    cursorlist = themeList;
+    theme_combo->clear();
+    theme_combo->clearEditText();
+    theme_combo->addItems(cursorlist);
+    QList<QString>::Iterator it = cursorlist.begin(), itend = cursorlist.end();
+    int initIndex = 0;
+    for(;it != itend; it++,initIndex++)
+    {
+        if(*it == currentTheme)
+            break;
+    }
+    theme_combo->setCurrentIndex(initIndex);
+
+    if(cursorSize < 48) {
+        small_size->setChecked(true);
+        big_size->setChecked(false);
+    }
+    else {
+        big_size->setChecked(true);
+        small_size->setChecked(false);
+    }
 }
 
 void MouseWidget::initConnect() {
@@ -176,8 +204,8 @@ void MouseWidget::initConnect() {
     connect(small_size, SIGNAL(clicked(/*bool*/)), this, SLOT(setRadioButtonRowStatus(/*bool*/)));
     connect(big_size, SIGNAL(clicked(/*bool*/)), this, SLOT(setRadioButtonRowStatus(/*bool*/)));
 
-    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(mousewidget_notify_string(QString, QString)));
-    connect(sessionproxy, SIGNAL(int_value_notify(QString, int)), this, SLOT(mousewidget_notify_int(QString, int)));
+//    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(mousewidget_notify_string(QString, QString)));
+//    connect(sessionproxy, SIGNAL(int_value_notify(QString, int)), this, SLOT(mousewidget_notify_int(QString, int)));
 }
 
 void MouseWidget::mousewidget_notify_string(QString key, QString value)
@@ -220,8 +248,7 @@ void MouseWidget::mousewidget_notify_int(QString key, int value)
 
 void MouseWidget::setMouseCursorTheme(QString selectTheme)
 {
-    sessionproxy->set_cursor_theme_qt(selectTheme);
-    systemproxy->set_cursor_theme_with_root_qt(selectTheme);
+    emit resetMouseCursorTheme(selectTheme);
 }
 
 void MouseWidget::setRadioButtonRowStatus(/*bool status*/)
@@ -232,12 +259,15 @@ void MouseWidget::setRadioButtonRowStatus(/*bool status*/)
     if(obj_name == "smallradio")
     {
         if (this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui")
-            sessionproxy->set_cursor_size_qt(18);
+            emit this->resetMouseCursorSize(18);
+//            sessionproxy->set_cursor_size_qt(18);
         else
-            sessionproxy->set_cursor_size_qt(24);
+            emit this->resetMouseCursorSize(24);
+//            sessionproxy->set_cursor_size_qt(24);
     }
     else if(obj_name == "bigradio")
     {
-        sessionproxy->set_cursor_size_qt(48);
+        emit this->resetMouseCursorSize(48);
+//        sessionproxy->set_cursor_size_qt(48);
     }
 }

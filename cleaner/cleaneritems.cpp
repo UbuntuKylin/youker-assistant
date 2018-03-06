@@ -29,7 +29,7 @@ CleanerItems::CleanerItems(QStringList &arglist, QStringList &statuslist, QStrin
 {
     setWindowFlags(Qt::FramelessWindowHint);
     this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
-    this->setWindowIcon(QIcon(":/res/youker-assistant.png"));
+    this->setWindowIcon(QIcon(":/res/kylin-assistant.png"));
 
     this->setFixedSize(410, height);
 //    this->setObjectName("transparentWidget");

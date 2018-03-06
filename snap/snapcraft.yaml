@@ -1,8 +1,8 @@
 name: youker-assistant
-version: '2.4.2'
+version: '3.0.0'
 summary: Integrated tool to aid in routine system maintenance tasks
 description: |
-  Youker Assistant is a tool designed to help Ubuntu and Ubuntu Kylin 
+  Kylin Assistant is a tool designed to help Ubuntu and Ubuntu Kylin 
   desktop users manage and maintain many aspects of their working 
   environment conveniently in a single application, providing a consistent
   user experience.
@@ -11,6 +11,8 @@ description: |
    * Detecting and displaying general system information
    * Unity and Mate user interface customization
    * System garbage cleaning
+   * Upgrade from Qt4 to Qt5
+   * Add system monitor.
 
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: devmode # use 'strict' once you have the right plugs and slots
@@ -18,13 +20,12 @@ confinement: devmode # use 'strict' once you have the right plugs and slots
 apps:
   youker-assistant:
     command: desktop-launch youker-assistant
-    desktop: usr/share/applications/youker-assistant.desktop
+    desktop: usr/share/applications/kylin-assistant.desktop
     plugs: [home, unity7, desktop, desktop-legacy]
 
 parts:
   youker-assistant:
     plugin: qmake
-    qt-version: qt4
+    qt-version: qt5
     source: .
-    build-packages: [g++, libqt4-dev, libglib2.0-dev]
-    after: [desktop-qt4]
+    build-packages: [g++, qtbase5-dev, qt5-qmake, qtscript5-dev, libglib2.0-dev, libsystemd-dev]

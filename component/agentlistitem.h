@@ -17,6 +17,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
+//#pragma once
+
 #ifndef AGENTLISTITEM_H
 #define AGENTLISTITEM_H
 
@@ -45,7 +48,7 @@ public slots:
     void onDeleteButtonClicked();
 
 private:
-    bool mouse_press;
+    bool m_mousePressed;
     QLabel *label;
     QPushButton *delede_button;
 

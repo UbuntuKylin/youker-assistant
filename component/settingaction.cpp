@@ -19,12 +19,55 @@
 
 #include "settingaction.h"
 
+namespace {
+//const QMap<SettingModuleID::SettingModuleID, QString> titleMap()
+//{
+//    QMap<SettingAction::SettingModuleID, QString> m;
+//    m.insert(SettingAction::ThemePage, "a");
+//    m.insert(SettingAction::IconPage, "b");
+//    m.insert(SettingAction::MousePage, "c");
+//    m.insert(SettingAction::SoundPage, "d");
+//    return m;
+//}
+
+//int filterTitleAccordModuleName(SettingAction::SettingModuleID id)
+//{
+//    return titleMap().value(id);
+//}
+
+const QMap<QString, QString> titleMap()
+{
+    QMap<QString, QString> tMap;
+    tMap.insert("ThemePage", QObject::tr("Choose the theme what you want"));
+    tMap.insert("IconPage", QObject::tr("Set the desktop icon theme and the visibility of desktop icons"));
+    tMap.insert("MousePage", QObject::tr("Replace the theme and size of the mouse pointer, and theme change need to restart system"));
+    tMap.insert("SoundPage", QObject::tr("Set the sound theme you want"));
+    tMap.insert("PanelPage", QObject::tr("Setting the panel mode of auto hide and icon size"));
+    tMap.insert("MenuPage", QObject::tr("Manage display of the start menu"));
+    tMap.insert("WindowPage", QObject::tr("Window Manager settings"));
+    tMap.insert("FontPage", QObject::tr("According to personal preferences to set the system default font, click the  'Restore' button, can be restored to the state before the font settings"));
+    tMap.insert("TouchPadPage", QObject::tr("Setting the relevant properties of your touchpad,make the operation more convenient"));
+    tMap.insert("EnergyPage", QObject::tr("Save energy to let the computer longer standby time"));
+    tMap.insert("FMPage", QObject::tr("Manage the file manager. Tips: if the thumbnail's cache time or size is set to -1, it will not be checked"));
+
+    return tMap;
+}
+
+QString filterTitleAccordModuleName(QString moduleName)
+{
+    return titleMap().value(moduleName);
+}
+
+}
+
 SettingAction::SettingAction(QString cur_desktop, QWidget *parent)
     : QWidget(parent), desktop(cur_desktop)
 {
     this->setFixedSize(900, 150);
     this->setAutoFillBackground(true);
     this->setObjectName("transparentWidget");
+
+    m_moduleName = "";
 
     back_btn = new QPushButton();
     back_btn->setCursor(Qt::PointingHandCursor);
@@ -34,6 +77,7 @@ SettingAction::SettingAction(QString cur_desktop, QWidget *parent)
     back_btn->setIcon(pixmap);
     back_btn->setIconSize(pixmap.size());
     back_btn->setObjectName("backgroundButton");
+    back_btn->setText(tr("Back"));
     connect(back_btn, SIGNAL(clicked()), this, SIGNAL(showSettingMainWidget()));
     img_label = new QLabel();
     title_label = new QLabel();
@@ -73,7 +117,7 @@ SettingAction::SettingAction(QString cur_desktop, QWidget *parent)
     layout2->addWidget(back_btn);
     layout2->addStretch();
     layout2->setMargin(0);
-    layout2->setContentsMargins(0, 0, 0, 0);
+    layout2->setContentsMargins(0, 20, 0, 0);
 
     QHBoxLayout *main_layout = new QHBoxLayout();
 //    main_layout->addWidget(img_label, 0, Qt::AlignVCenter);
@@ -105,9 +149,28 @@ SettingAction::~SettingAction()
     }
 }
 
+QString SettingAction::getModuleName() /*const*/
+{
+    return this->m_moduleName;
+}
+
+//void SettingAction::setModuleName(const QString &name)
+void SettingAction::setModuleName(QString name)
+{
+    this->m_moduleName = name;
+
+    const QString title = filterTitleAccordModuleName(name);
+    if (title.isEmpty() || title.isNull()) {
+        title_label->setText(tr("There may be a mistake."));
+    }
+    else {
+        title_label->setText(title);
+    }
+}
+
 void SettingAction::setLanguage(int index)
 {
-    back_btn->setText(tr("Back"));
+    /*back_btn->setText(tr("Back"));
     switch (index) {
     case 1:
         title_label->setText(tr("Choose the theme what you want"));
@@ -171,5 +234,5 @@ void SettingAction::setLanguage(int index)
         break;
     default:
         break;
-    }
+    }*/
 }

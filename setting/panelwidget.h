@@ -23,26 +23,42 @@
 #include <QWidget>
 #include "../component/kylinswitcher.h"
 
-class SessionDispatcher;
 class QLabel;
 class QPushButton;
 class QComboBox;
 class QSlider;
 class QDoubleSpinBox;
 class QRadioButton;
+#include "settingmodulelpage.h"
 
-class PanelWidget : public QWidget
+class PanelWidget : public SettingModulePage
 {
     Q_OBJECT
 public:
-    explicit PanelWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0, QString cur_desktop = "", bool has_battery = false);
+    explicit PanelWidget(QWidget *parent = 0, QString cur_desktop = "", bool has_battery = false);
     ~PanelWidget();
     void setLanguage();
     void initConnect();
-    void initData();
-    bool getStatus();
+    void initSettingData() Q_DECL_OVERRIDE;
+    QString settingModuleName() Q_DECL_OVERRIDE;
 
-//signals:
+signals:
+    void requestMateOrUnityPanelData(bool isMate);
+    void resetPanelTransparencyValue(double value);
+    void resetDateFormat(const QString &selected);
+    void resetShowBatteryIcon(const QString &selected);
+    void resetDashBlurExperimental(int value);
+    void resetDisplaySeconds(bool b);
+    void resetDisplayWeek(bool b);
+    void resetDisplayDate(bool b);
+    void resetDisplayBatteryPercentage(bool b);
+    void resetDisplayBatteryTime(bool b);
+    void resetShowApplications(bool b);
+    void resetShowDesktop(bool b);
+    void resetShowIcon(bool b);
+    void resetShowPlaces(bool b);
+
+
 //    void showSettingMainWidget();
 
 public slots:
@@ -63,11 +79,14 @@ public slots:
     void panelwidget_notify_string(QString key, QString value);
     void panelwidget_notify_bool(QString key, bool value);
 
+    void onSendMatePanelValue(bool app, bool desktop, bool icon, bool places);
+    void onSendUnityBlurAndTransparencyValue(int blur, double transparent);
+    void onSendUnityTimeValue(const QString &time_format, const QStringList &timelist, bool showSecond, bool showWeek, bool showDate);
+    void onSendUnityPanelPowerValue(const QString &cur_power, const QStringList &powerlist, bool showPower, bool showBatteryTime);
+
 private:
-    SessionDispatcher *sessionproxy;
-    bool dataOK;
     QString desktop;
-    QStringList powerlist;
+    QStringList m_powerlist;
     QLabel *blur_label;
     QLabel *transparency_label;
     QLabel *date_format_label;

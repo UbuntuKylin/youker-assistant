@@ -27,11 +27,37 @@
 #define ITEMVSPACE 5
 #define PAGESPACE 20
 #define ITEMWIDTH 650
+#define SHADOW_LEFT_TOP_PADDING 2
+#define SHADOW_RIGHT_BOTTOM_PADDING 4
+#define MAIN_WINDOW_WIDTH 900
+#define MAIN_WINDOW_HEIGHT 600
+#define TITLE_BAR_HEIGHT 39
+#define ITEM_LEFT_RIGHT_PADDING 5
+//const int windowShadowPadding = 10;
 
-#define VERSION "2.4.1"
+//#define VERSION "2.4.1"
 
-const QString YOUKER_COMPANY_SETTING = "ubuntukylin/youker-assistant";
-const QString YOUKER_SETTING_FILE_NAME_SETTING = "youker-assistant";
+const QString KYLIN_COMPANY_SETTING = "kylin/kylin-assistant";
+const QString KYLIN_SETTING_FILE_NAME_SETTING = "kylin-assistant";
+
+enum CleanerModuleID {
+    CacheApt = 0,
+    CacheSoftware,
+    CacheThumbnail,
+    CacheFirefox,
+    CacheChromium,
+    CookieFirefox,
+    CookieChromium,
+    TraceX11,
+    InvalidID,
+};
+
+enum CleanerCategoryID {
+    CacheCategory = 0,
+    CookieCategory,
+    TraceCategory,
+    InvalidCategory,
+};
 
 typedef enum{
     YOUKER_EN,

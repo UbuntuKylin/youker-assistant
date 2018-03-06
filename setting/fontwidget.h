@@ -21,24 +21,26 @@
 #define FONTWIDGET_H
 
 #include <QWidget>
+#include <QDoubleSpinBox>
+#include <QComboBox>
 
-class SessionDispatcher;
 class MainWindow;
 class QLabel;
 class QPushButton;
 class QComboBox;
 class QDoubleSpinBox;
+#include "settingmodulelpage.h"
 
-class FontWidget : public QWidget
+class FontWidget : public SettingModulePage
 {
     Q_OBJECT
 public:
-    explicit FontWidget(QWidget *parent = 0, SessionDispatcher *proxy = 0, MainWindow *window = 0, QString cur_desktop = "", QString skin = ":/background/res/skin/1.png");
+    explicit FontWidget(QWidget *parent = 0, MainWindow *window = 0, QString cur_desktop = "", QString skin = ":/background/res/skin/1.png");
     ~FontWidget();
     void setLanguage();
     void initConnect();
-    void initData();
-    bool getStatus();
+    void initSettingData() Q_DECL_OVERRIDE;
+    QString settingModuleName() Q_DECL_OVERRIDE;
     void resetCurrentSkin(QString skin);
 
 public slots:
@@ -64,11 +66,32 @@ public slots:
     void fontwidget_notify_string(QString key, QString value);
     void fontwidget_notify_double(QString key, double value);
 
+    void onSendFontValue(const QString &curFont);
+    void onSendDesktopFontValue(const QString &curFont);
+    void onSendMonospaceFontValue(const QString &curFont);
+    void onSendDocumentFontValue(const QString &curFont);
+    void onSendTitlebarFontValue(const QString &curFont);
+    void onSendFontSmoothAndAntialiasingValue(double fontZoom, const QString &current_smooth, const QStringList &smoothlist, const QString &current_antialiasing, const QStringList &antialiasinglist);
+
+signals:
+    void requestFontData();
+    void setDefaultFontByName(const QString &cur_font);
+    void setDesktopFontByName(const QString &cur_font);
+    void setMonospaceFontByName(const QString &cur_font);
+    void setDocumentFontByName(const QString &cur_font);
+    void setTitlebarFontByName(const QString &cur_font);
+    void resetFontZoomScalingValue(double value);
+    void resetFontHinting(const QString &selected);
+    void resetFontAntialiasing(const QString &selected);
+    void restoreDefaultFont(bool isMate);
+    void restoreDesktopDefaultFont(bool isMate);
+    void restoreMonospaceDefaultFont(bool isMate);
+    void restoreDocumentDefaultFont(bool isMate);
+    void restoreTitlebarDefaultFont(bool isMate);
+
 private:
-    SessionDispatcher *sessionproxy;
-    bool dataOK;
-    QStringList smoothlist;
-    QStringList antialiasinglist;
+    QStringList m_smoothlist;
+    QStringList m_antialiasinglist;
     MainWindow *parentWindow;
     QLabel *default_font_label;
     QLabel *desktop_font_label;

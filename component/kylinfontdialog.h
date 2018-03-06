@@ -24,13 +24,12 @@
 #include <qfontdatabase.h>
 #include <QModelIndex>
 #include <QStringListModel>
-#include "kylintitlebar.h"
+//#include "kylintitlebar.h"
+#include "../component/mytitlebar.h"
 #include <QListView>
 
 class QSettings;
-//namespace Ui {
-//class KylinFontDialog;
-//}
+class QLabel;
 
 class KylinFontDialog : public QDialog
 {
@@ -45,6 +44,7 @@ public:
     void initTitleBar(QString skin);
     void updateSampleFont();
     void resetTitleSkin(QString skin);
+    void moveCenter();
 
 public slots:
     void onCacelButtonClicked();
@@ -75,7 +75,8 @@ private:
     QStringListModel *sizemodel;
     QPoint dragPos;
     QString selectedFont;
-    KylinTitleBar *title_bar;
+//    KylinTitleBar *title_bar;
+    MyTitleBar *title_bar;
 
     QLabel *cur_tip_label;
     QLabel *cur_font_label;

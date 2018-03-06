@@ -18,17 +18,14 @@
  */
 
 #include "iconwidget.h"
-#include "../dbusproxy/youkersessiondbus.h"
 #include <QDebug>
 #include <QLabel>
 #include <QComboBox>
 #include <QHBoxLayout>
 
-IconWidget::IconWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_desktop) :
-    QWidget(parent),desktop(cur_desktop),
-    sessionproxy(proxy)
+IconWidget::IconWidget(QWidget *parent, QString cur_desktop) :
+    SettingModulePage(parent),desktop(cur_desktop)
 {
-    dataOK = false;
     theme_label = new QLabel();
 //    show_label = new QLabel();
     computer_label = new QLabel();
@@ -143,7 +140,7 @@ IconWidget::IconWidget(QWidget *parent, SessionDispatcher *proxy, QString cur_de
 //    main_layout->setSpacing(0);
 //    main_layout->setContentsMargins(0, 0, 0, 0);
 //    setLayout(main_layout);
-//    this->initData();
+//    this->initSettingData();
     this->setLanguage();
 }
 
@@ -199,6 +196,11 @@ IconWidget::~IconWidget()
     }
 }
 
+QString IconWidget::settingModuleName()
+{
+    return "IconPage";
+}
+
 void IconWidget::changeSwitcherStatus() {
 
 }
@@ -216,15 +218,44 @@ void IconWidget::setLanguage() {
     disk_label->setText(tr("Mounted Volumes") + ":");
 }
 
-bool IconWidget::getStatus()
+void IconWidget::onReceiveIconThemeList(const QString &currentTheme, const QStringList &themeList)
 {
-    return this->dataOK;
+    iconlist.clear();
+    iconlist = themeList;
+    theme_combo->clear();
+    theme_combo->clearEditText();
+    theme_combo->addItems(iconlist);
+
+    QList<QString>::Iterator it = iconlist.begin(), itend = iconlist.end();
+    int initIndex = 0;
+    for(;it != itend; it++,initIndex++)
+    {
+        if(*it == currentTheme)
+            break;
+    }
+    theme_combo->setCurrentIndex(initIndex);
 }
 
-void IconWidget::initData()
+void IconWidget::onReceiveDisplayIconValue(bool computer, bool folder, bool network, bool recycle, bool disk)
 {
-    QString current_icon_theme = sessionproxy->get_icon_theme_qt();
-    /*QStringList */iconlist  = sessionproxy->get_icon_themes_qt();
+    if (this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui")
+    {
+        computer_switcher->switchedOn = computer;
+    }
+
+    folder_switcher->switchedOn = folder;
+    network_switcher->switchedOn = network;
+    recycle_switcher->switchedOn = recycle;
+    disk_switcher->switchedOn = disk;
+}
+
+void IconWidget::initSettingData()
+{
+    emit this->requestIconData();
+    this->initConnect();
+
+    /*QString current_icon_theme = sessionproxy->get_icon_theme_qt();
+    iconlist  = sessionproxy->get_icon_themes_qt();
     theme_combo->clear();
     theme_combo->clearEditText();
     theme_combo->addItems(iconlist);
@@ -254,8 +285,8 @@ void IconWidget::initData()
     network_switcher->switchedOn = sessionproxy->get_show_network_qt();
     recycle_switcher->switchedOn = sessionproxy->get_show_trash_qt();
     disk_switcher->switchedOn = sessionproxy->get_show_devices_qt();
-    dataOK = true;
-    this->initConnect();
+
+    */
 }
 
 void IconWidget::initConnect() {
@@ -269,8 +300,9 @@ void IconWidget::initConnect() {
     connect(recycle_switcher, SIGNAL(clicked()),  this, SLOT(setRecycleBinIcon()));
     connect(disk_switcher, SIGNAL(clicked()),  this, SLOT(setDiskIcon()));
 
-    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(iconwidget_notify_string(QString, QString)));
-    connect(sessionproxy, SIGNAL(bool_value_notify(QString, bool)), this, SLOT(iconwidget_notify_boolean(QString, bool)));
+    //20180101
+//    connect(sessionproxy, SIGNAL(string_value_notify(QString, QString)), this, SLOT(iconwidget_notify_string(QString, QString)));
+//    connect(sessionproxy, SIGNAL(bool_value_notify(QString, bool)), this, SLOT(iconwidget_notify_bool(QString, bool)));
 }
 
 void IconWidget::iconwidget_notify_string(QString key, QString value)
@@ -296,7 +328,7 @@ void IconWidget::iconwidget_notify_string(QString key, QString value)
     }
 }
 
-void IconWidget::iconwidget_notify_boolean(QString key, bool value)
+void IconWidget::iconwidget_notify_bool(QString key, bool value)
 {
 //    if (key == "show-desktop-icons") {
 //        show_switcher->switchedOn = value;
@@ -320,7 +352,8 @@ void IconWidget::iconwidget_notify_boolean(QString key, bool value)
 }
 
 void IconWidget::setIconTheme(QString selectTheme) {
-    sessionproxy->set_icon_theme_qt(selectTheme);
+//    sessionproxy->set_icon_theme_qt(selectTheme);
+    emit resetIconTheme(selectTheme);
 }
 
 //void IconWidget::setShowDesktopIcons() {
@@ -328,21 +361,27 @@ void IconWidget::setIconTheme(QString selectTheme) {
 //}
 
 void IconWidget::setComputerIcon() {
-    sessionproxy->set_show_computer_qt(computer_switcher->switchedOn);
+//    emit changeSystemTheme(name);
+    emit displayComputerIcon(computer_switcher->switchedOn);
+//    sessionproxy->set_show_computer_qt(computer_switcher->switchedOn);
 }
 
 void IconWidget::setFolderIcon() {
-    sessionproxy->set_show_homefolder_qt(folder_switcher->switchedOn);
+    emit displayFolderIcon(folder_switcher->switchedOn);
+//    sessionproxy->set_show_homefolder_qt(folder_switcher->switchedOn);
 }
 
 void IconWidget::setNetworkIcon() {
-    sessionproxy->set_show_network_qt(network_switcher->switchedOn);
+    emit displayNetworkIcon(network_switcher->switchedOn);
+//    sessionproxy->set_show_network_qt(network_switcher->switchedOn);
 }
 
 void IconWidget::setRecycleBinIcon() {
-    sessionproxy->set_show_trash_qt(recycle_switcher->switchedOn);
+    emit displayRecycleBinIcon(recycle_switcher->switchedOn);
+//    sessionproxy->set_show_trash_qt(recycle_switcher->switchedOn);
 }
 
 void IconWidget::setDiskIcon() {
-    sessionproxy->set_show_devices_qt(disk_switcher->switchedOn);
+    emit displayDiskIcon(disk_switcher->switchedOn);
+//    sessionproxy->set_show_devices_qt(disk_switcher->switchedOn);
 }
