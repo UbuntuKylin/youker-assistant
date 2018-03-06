@@ -1473,15 +1473,17 @@ void CleanerDetailWidget::getAllSelectedItems()
 
     foreach (CleanSubGroup *item, m_cardlist) {
         if (item->getCheckBoxStatus() != 0) {
-            if (item->statusTip() == "x11-history") {
-                if (item->statusTip() == "history-firefox")
-                    argsData.insert("firefox-history", QStringList() << trace_firefox_count);
-                else if (item->statusTip() == "history-chromium")
-                    argsData.insert("chromium-history", QStringList() << trace_chromium_count);
-                else if (item->statusTip() == "history-system")
-                    argsData.insert("system-history", QStringList() << trace_system_count);
-                else if (item->statusTip() == "history-bash")
-                    argsData.insert("bash-history", QStringList() << trace_bash_path);
+            if (item->statusTip() == "history-firefox") {
+                argsData.insert("firefox-history", QStringList() << trace_firefox_count);
+            }
+            else if (item->statusTip() == "history-chromium") {
+                argsData.insert("chromium-history", QStringList() << trace_chromium_count);
+            }
+            else if (item->statusTip() == "history-system") {
+                argsData.insert("system-history", QStringList() << trace_system_count);
+            }
+            else if (item->statusTip() == "history-bash") {
+                argsData.insert("bash-history", QStringList() << trace_bash_path);
             }
         }
     }
