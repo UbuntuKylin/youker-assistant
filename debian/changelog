@@ -1,5 +1,6 @@
 youker-assistant (3.0.0-0ubuntu1) bionic; urgency=low
 
+  [lixiang]
   * Fork youker-assistant(commit:764)
   * Upgrade from Qt4 to Qt5.
   * Add qtsingleapplication.
@@ -25,7 +26,7 @@ youker-assistant (3.0.0-0ubuntu1) bionic; urgency=low
   * Scaning system with Thread.
   * Renice process priority.
 
- -- lixiang <lixiang@kylinos.cn>  Mon, 05 Mar 2018 18:19:34 +0800
+ -- handsome_feng <jianfengli@ubuntukylin.com>  Mon, 19 Mar 2018 15:34:14 +0800
 
 youker-assistant (2.4.2-0ubuntu4) artful; urgency=low
 

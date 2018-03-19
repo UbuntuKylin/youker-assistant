@@ -15,11 +15,14 @@ override_dh_auto_configure:
 		kylin-assistant.pro
 
 %:
-	dh $@ --with python3 --fail-missing --parallel
+	dh $@ --with python3 --fail-missing
 
 override_dh_install:
 	./autogen.sh
-	dh_install --fail-missing
+	dh_install
+
+override_dh_missing:
+	dh_missing --fail-missing
 
 override_dh_auto_clean:
 	[ ! -d src/.moc ] || $(RM) -r src/.moc
