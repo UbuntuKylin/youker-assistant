@@ -18,6 +18,7 @@
  */
 
 #include "filesystemworker.h"
+#include "util.h"
 
 #include <stddef.h>
 #include <glibtop/mountlist.h>
@@ -143,19 +144,38 @@ void FileSystemWorker::onFileSystemListChanged()
     for (i = 0; i < mountlist.number; i++) {
         DISK_INFO disk = add_disk(&entries[i], show_all_fs);
         if (disk.valid == 1) {
-            QString dev_name = QString(QLatin1String(disk.devname));
+            std::string formatted_dev = make_string(g_strdup(disk.devname));
+            QString dev_name = QString::fromStdString(formatted_dev);
+            //QString dev_name = QString(QLatin1String(disk.devname));
             newDiskList.append(dev_name);
 
             if (!this->isDeviceContains(dev_name)) {
                 FileSystemData *info = new FileSystemData(this);
                 info->setDevName(dev_name);
-                info->updateDiskInfo(QString(QLatin1String(disk.mountdir)), QString(QLatin1String(disk.type)), QString(QLatin1String(g_format_size_full(disk.btotal, G_FORMAT_SIZE_DEFAULT))), QString(QLatin1String(g_format_size_full(disk.bfree, G_FORMAT_SIZE_DEFAULT))), QString(QLatin1String(g_format_size_full(disk.bavail, G_FORMAT_SIZE_DEFAULT))), QString(QLatin1String(g_format_size_full(disk.bused, G_FORMAT_SIZE_DEFAULT))), disk.percentage/*QString::number(disk.percentage).append("%")*/);
+
+                std::string formatted_mountdir(make_string(g_strdup(disk.mountdir)));
+                std::string formatted_type(make_string(g_strdup(disk.type)));
+                std::string formatted_btotal(make_string(g_strdup(g_format_size_full(disk.btotal, G_FORMAT_SIZE_DEFAULT))));
+                std::string formatted_bfree(make_string(g_strdup(g_format_size_full(disk.bfree, G_FORMAT_SIZE_DEFAULT))));
+                std::string formatted_bavail(make_string(g_strdup(g_format_size_full(disk.bavail, G_FORMAT_SIZE_DEFAULT))));
+                std::string formatted_bused(make_string(g_strdup(g_format_size_full(disk.bused, G_FORMAT_SIZE_DEFAULT))));
+                info->updateDiskInfo(QString::fromStdString(formatted_mountdir), QString::fromStdString(formatted_type), QString::fromStdString(formatted_btotal), QString::fromStdString(formatted_bfree), QString::fromStdString(formatted_bavail), QString::fromStdString(formatted_bused), disk.percentage/*QString::number(disk.percentage).append("%")*/);
+
+//                info->updateDiskInfo(QString(QLatin1String(disk.mountdir)), QString(QLatin1String(disk.type)), QString(QLatin1String(g_format_size_full(disk.btotal, G_FORMAT_SIZE_DEFAULT))), QString(QLatin1String(g_format_size_full(disk.bfree, G_FORMAT_SIZE_DEFAULT))), QString(QLatin1String(g_format_size_full(disk.bavail, G_FORMAT_SIZE_DEFAULT))), QString(QLatin1String(g_format_size_full(disk.bused, G_FORMAT_SIZE_DEFAULT))), disk.percentage/*QString::number(disk.percentage).append("%")*/);
                 this->addDiskInfo(dev_name, info);
             }
             else {//update info which had exists
                 FileSystemData *info = this->getDiskInfo(dev_name);
                 if (info) {
-                    info->updateDiskInfo(QString(QLatin1String(disk.mountdir)), QString(QLatin1String(disk.type)), QString(QLatin1String(g_format_size_full(disk.btotal, G_FORMAT_SIZE_DEFAULT))), QString(QLatin1String(g_format_size_full(disk.bfree, G_FORMAT_SIZE_DEFAULT))), QString(QLatin1String(g_format_size_full(disk.bavail, G_FORMAT_SIZE_DEFAULT))), QString(QLatin1String(g_format_size_full(disk.bused, G_FORMAT_SIZE_DEFAULT))), disk.percentage/*QString::number(disk.percentage).append("%")*/);
+                    std::string formatted_mountdir(make_string(g_strdup(disk.mountdir)));
+                    std::string formatted_type(make_string(g_strdup(disk.type)));
+                    std::string formatted_btotal(make_string(g_strdup(g_format_size_full(disk.btotal, G_FORMAT_SIZE_DEFAULT))));
+                    std::string formatted_bfree(make_string(g_strdup(g_format_size_full(disk.bfree, G_FORMAT_SIZE_DEFAULT))));
+                    std::string formatted_bavail(make_string(g_strdup(g_format_size_full(disk.bavail, G_FORMAT_SIZE_DEFAULT))));
+                    std::string formatted_bused(make_string(g_strdup(g_format_size_full(disk.bused, G_FORMAT_SIZE_DEFAULT))));
+                    info->updateDiskInfo(QString::fromStdString(formatted_mountdir), QString::fromStdString(formatted_type), QString::fromStdString(formatted_btotal), QString::fromStdString(formatted_bfree), QString::fromStdString(formatted_bavail), QString::fromStdString(formatted_bused), disk.percentage/*QString::number(disk.percentage).append("%")*/);
+
+//                    info->updateDiskInfo(QString(QLatin1String(disk.mountdir)), QString(QLatin1String(disk.type)), QString(QLatin1String(g_format_size_full(disk.btotal, G_FORMAT_SIZE_DEFAULT))), QString(QLatin1String(g_format_size_full(disk.bfree, G_FORMAT_SIZE_DEFAULT))), QString(QLatin1String(g_format_size_full(disk.bavail, G_FORMAT_SIZE_DEFAULT))), QString(QLatin1String(g_format_size_full(disk.bused, G_FORMAT_SIZE_DEFAULT))), disk.percentage/*QString::number(disk.percentage).append("%")*/);
                 }
             }
         }

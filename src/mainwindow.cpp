@@ -71,8 +71,9 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
     //For Unity
 //    this->setWindowFlags(/*Qt::Window | */Qt::FramelessWindowHint | Qt::WindowMinimizeButtonHint);//Attention: Qt::WindowCloseButtonHint make showMinimized() valid
 
+    this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowCloseButtonHint | Qt::WindowMinimizeButtonHint);
     //For UKUI and Mate
-    this->setWindowFlags(Qt::FramelessWindowHint  | Qt::WindowCloseButtonHint);
+//    this->setWindowFlags(Qt::FramelessWindowHint  | Qt::WindowCloseButtonHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
     this->setAutoFillBackground(true);
     this->setMouseTracking(true);

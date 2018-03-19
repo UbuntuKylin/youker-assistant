@@ -25,6 +25,7 @@ youker-assistant (3.0.0-0ubuntu1) bionic; urgency=low
   * Rewrite theme ui module.
   * Scaning system with Thread.
   * Renice process priority.
+  * Solved the problem of Chinese messy code about file system info.
 
  -- handsome_feng <jianfengli@ubuntukylin.com>  Mon, 19 Mar 2018 15:34:14 +0800
 
