@@ -382,7 +382,7 @@ msgstr "返回"
 
 #: ../cleaneractionwidget.cpp:147 ../cleaneractionwidget.cpp:239
 msgctxt "CleanerActionWidget|"
-msgid "Scaning......"
+msgid "Scanning......"
 msgstr "正在扫描....."
 
 #: ../cleaneractionwidget.cpp:157

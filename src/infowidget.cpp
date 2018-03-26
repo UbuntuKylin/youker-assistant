@@ -274,7 +274,7 @@ void InfoWidget::onSendDesktopInfo(QMap<QString, QVariant> tmpMap)
                         continue;
                     if (page->infoGuiName() == "unity") {
                         page->clearWidget();
-                        page->loadOnePage(0, tr("Dekstop Info"), desktop_info_map);
+                        page->loadOnePage(0, tr("Desktop Info"), desktop_info_map);
                         break;
                     }
                 }
@@ -282,7 +282,7 @@ void InfoWidget::onSendDesktopInfo(QMap<QString, QVariant> tmpMap)
             desktop_info_map.clear();
 //            if (desktop_widget) {
 //                desktop_widget->clearWidget();
-//                desktop_widget->loadOnePage(0, "Dekstop Info", desktop_info_map);
+//                desktop_widget->loadOnePage(0, "Desktop Info", desktop_info_map);
 //            }
         }
     }

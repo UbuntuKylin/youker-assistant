@@ -158,7 +158,7 @@ void CleanerActionWidget::setLanguage()
     scan_button->setText(tr("Start Scan"));//开始扫描
     clean_button->setText(tr("Start Cleanup"));//开始清理
     back_button->setText(tr("Back"));
-    doing_label->setText(tr("Scaning......"));//正在扫描......
+    doing_label->setText(tr("Scanning......"));//正在扫描......
 }
 
 void CleanerActionWidget::showCleanOverStatus()
@@ -251,7 +251,7 @@ void CleanerActionWidget::showCleanReciveStatus(const QString &status)
     }
     else if(status == "Complete:All")
     {
-//        doing_label->setText(tr("Scaning......"));
+//        doing_label->setText(tr("Scanning......"));
 //        doing_label->hide();
 //        loading_label->stopLoading();
 //        scan_button->hide();
@@ -266,7 +266,7 @@ void CleanerActionWidget::showCleanReciveStatus(const QString &status)
 void CleanerActionWidget::accordScanOverStatusToChange(bool status)
 {
     if (status) {
-        doing_label->setText(tr("Scaning......"));
+        doing_label->setText(tr("Scanning......"));
         doing_label->hide();
         loading_label->stopLoading();
         scan_button->hide();
@@ -277,7 +277,7 @@ void CleanerActionWidget::accordScanOverStatusToChange(bool status)
         back_button->show();
     }
     else {
-        doing_label->setText(tr("Scaning......"));
+        doing_label->setText(tr("Scanning......"));
         doing_label->hide();
         loading_label->stopLoading();
         scan_button->hide();
@@ -356,7 +356,7 @@ void CleanerActionWidget::receivePolicyKitSignal(bool status)
 
 void CleanerActionWidget::onStartButtonClicked()
 {
-    doing_label->setText(tr("Scaning......"));
+    doing_label->setText(tr("Scanning......"));
     emit this->sendScanSignal();
 }
 

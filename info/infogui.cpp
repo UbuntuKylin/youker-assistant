@@ -108,7 +108,7 @@ void InfoGui::loadOnePage(int index, const QString &title, QMap<QString, QVarian
 
     for (it = infoMap.begin(); it != infoMap.end(); ++it) {
         QString valueStr = it.value().toString().trimmed();
-        if (QString::compare(valueStr, "UNKOWN", Qt::CaseInsensitive) == 0 || QString::compare(valueStr, "UNKNOWN", Qt::CaseInsensitive) == 0) {//for arm memory
+        if (QString::compare(valueStr, "UNKNOWN", Qt::CaseInsensitive) == 0 || QString::compare(valueStr, "UNKNOWN", Qt::CaseInsensitive) == 0) {//for arm memory
             //do nothing
         }
         else if (it.key().length() > 0 && valueStr.length() > 0) {
@@ -150,7 +150,7 @@ void InfoGui::updatePageData(const QString &title, QMap<QString, QVariant> infoM
         QMap<QString,QVariant>::iterator it; //遍历map
         for (it = infoMap.begin(); it != infoMap.end(); ++it) {
             QString valueStr = it.value().toString().trimmed();
-            if (QString::compare(valueStr, "UNKOWN", Qt::CaseInsensitive) == 0 || QString::compare(valueStr, "UNKNOWN", Qt::CaseInsensitive) == 0) {//for arm memory
+            if (QString::compare(valueStr, "UNKNOWN", Qt::CaseInsensitive) == 0 || QString::compare(valueStr, "UNKNOWN", Qt::CaseInsensitive) == 0) {//for arm memory
                 //do nothing
             }
             else if (it.key().length() > 0 && valueStr.length() > 0) {
@@ -166,7 +166,7 @@ void InfoGui::updatePageData(const QString &title, QMap<QString, QVariant> infoM
             QMap<QString,QVariant>::iterator it; //遍历map
             for (it = infoMap.begin(); it != infoMap.end(); ++it) {
                 QString valueStr = it.value().toString().trimmed();
-                if (QString::compare(valueStr, "UNKOWN", Qt::CaseInsensitive) == 0 || QString::compare(valueStr, "UNKNOWN", Qt::CaseInsensitive) == 0) {//for arm memory
+                if (QString::compare(valueStr, "UNKNOWN", Qt::CaseInsensitive) == 0 || QString::compare(valueStr, "UNKNOWN", Qt::CaseInsensitive) == 0) {//for arm memory
                     //do nothing
                 }
                 else if (it.key().length() > 0 && valueStr.length() > 0) {

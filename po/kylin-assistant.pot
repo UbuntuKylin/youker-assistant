@@ -286,7 +286,7 @@ msgstr ""
 
 #: ../cleaneractionwidget.cpp:147 ../cleaneractionwidget.cpp:239
 msgctxt "CleanerActionWidget|"
-msgid "Scaning......"
+msgid "Scanning......"
 msgstr ""
 
 #: ../cleaneractionwidget.cpp:157

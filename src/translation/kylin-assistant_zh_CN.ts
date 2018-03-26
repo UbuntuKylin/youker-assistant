@@ -217,7 +217,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="vanished">返回</translation>
     </message>
     <message>
-        <source>Scaning......</source>
+        <source>Scanning......</source>
         <translation type="vanished">正在扫描.....</translation>
     </message>
     <message>
@@ -1851,7 +1851,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <location filename="../infowidget.cpp" line="277"/>
-        <source>Dekstop Info</source>
+        <source>Desktop Info</source>
         <translation>桌面环境信息</translation>
     </message>
     <message>
@@ -2166,6 +2166,8 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <location filename="../maintopwidget.cpp" line="356"/>
+        <location filename="../maintopwidget.cpp" line="477"/>
+        <location filename="../maintopwidget.cpp" line="488"/>
         <location filename="../maintopwidget.cpp" line="751"/>
         <source>Scanning......</source>
         <translation>正在扫描.....</translation>
@@ -2270,12 +2272,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <location filename="../maintopwidget.cpp" line="458"/>
         <source>Packages Scan OK</source>
         <translation>包扫描完成</translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="477"/>
-        <location filename="../maintopwidget.cpp" line="488"/>
-        <source>Scaning......</source>
-        <translation>正在扫描.....</translation>
     </message>
     <message>
         <location filename="../maintopwidget.cpp" line="502"/>
@@ -2444,22 +2440,22 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="79"/>
+        <location filename="../mainwindow.cpp" line="80"/>
         <source>Kylin Assistant</source>
         <translation>麒麟助手</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="207"/>
+        <location filename="../mainwindow.cpp" line="208"/>
         <source>Understand hardware information, provide more convenient channel to obtain hardware information</source>
         <translation>了解电脑硬件详细信息，为用户提供更加方便的获取硬件信息渠道</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="216"/>
+        <location filename="../mainwindow.cpp" line="217"/>
         <source>You can perform a full range of customized systems based on personal preferences</source>
         <translation>您可以根据个人喜好对系统进行全方位的定制</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="225"/>
+        <location filename="../mainwindow.cpp" line="226"/>
         <source>Provide a practical and lightweight tool, create fast and convenient experience for you</source>
         <translation>提供轻巧使用工具，为您打造快捷方便的体验</translation>
     </message>
@@ -2604,32 +2600,32 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>MonitorTitleWidget</name>
     <message>
-        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="240"/>
+        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="242"/>
         <source>Kylin System Monitor</source>
         <translation>麒麟系统监视器</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="300"/>
+        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="340"/>
         <source>Processes</source>
         <translation>进程</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="304"/>
+        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="344"/>
         <source>Resources</source>
         <translation>资源</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="308"/>
+        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="348"/>
         <source>File Systems</source>
         <translation>文件系统</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="359"/>
+        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="399"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="373"/>
+        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="413"/>
         <source>Enter the relevant info of process</source>
         <translation>输入进程相关信息</translation>
     </message>
@@ -2868,7 +2864,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     <message>
         <location filename="../../plugins/systemmonitor/processdialog.cpp" line="157"/>
         <location filename="../../plugins/systemmonitor/processdialog.cpp" line="160"/>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="174"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="175"/>
         <source>End process</source>
         <translation>结束进程</translation>
     </message>
@@ -2888,7 +2884,7 @@ Are you sure to continue?</source>
     <message>
         <location filename="../../plugins/systemmonitor/processdialog.cpp" line="163"/>
         <location filename="../../plugins/systemmonitor/processdialog.cpp" line="166"/>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="176"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="177"/>
         <source>Kill process</source>
         <translation>杀死进程</translation>
     </message>
@@ -2900,57 +2896,57 @@ Are you sure to continue?</source>
 您确定要继续该操作？</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="170"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="171"/>
         <source>Stop process</source>
         <translation>停止进程</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="172"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="173"/>
         <source>Continue process</source>
         <translation>继续进程</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="190"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="191"/>
         <source>Very High</source>
         <translation>非常高</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="191"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="192"/>
         <source>High</source>
         <translation>高</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="192"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="193"/>
         <source>Normal</source>
         <translation>普通</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="193"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="194"/>
         <source>Low</source>
         <translation>低</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="194"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="195"/>
         <source>Very Low</source>
         <translation>非常低</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="195"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="196"/>
         <source>Custom</source>
         <translation>自定义</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="199"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="201"/>
         <source>Change Priority</source>
         <translation>改变优先级</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="201"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="203"/>
         <source>Properties</source>
         <translation>属性</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="334"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="336"/>
         <source>Change Priority of Process %1 (PID: %2)</source>
         <translation>更改进程“%1”(PID：%2)的优先级</translation>
     </message>
@@ -3071,7 +3067,7 @@ Are you sure to continue?</source>
         <translation type="obsolete">开始于</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="127"/>
+        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="128"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
@@ -3969,27 +3965,27 @@ Are you sure to continue?</source>
         <translation>%1天</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="153"/>
+        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="154"/>
         <source>User name:</source>
         <translation>用户名：</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="153"/>
+        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="154"/>
         <source>Process name:</source>
         <translation>进程名：</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="153"/>
+        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="154"/>
         <source>Command line:</source>
         <translation>命令行：</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="153"/>
+        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="154"/>
         <source>CPU Time:</source>
         <translation>CPU 时间：</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="153"/>
+        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="154"/>
         <source>Started Time:</source>
         <translation>开始于：</translation>
     </message>

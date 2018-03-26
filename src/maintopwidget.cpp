@@ -459,7 +459,7 @@ void MainTopWidget::showCleanReciveStatus(const QString &status)
     }
     else if(status == "Complete:All")
     {
-//        doing_label->setText(tr("Scaning......"));
+//        doing_label->setText(tr("Scanning......"));
 //        doing_label->hide();
 //        loading_label->stopLoading();
 //        scan_button->hide();
@@ -474,7 +474,7 @@ void MainTopWidget::showCleanReciveStatus(const QString &status)
 void MainTopWidget::accordScanOverStatusToChange(bool status)
 {
     if (status) {
-        doing_label->setText(tr("Scaning......"));
+        doing_label->setText(tr("Scanning......"));
         doing_label->setVisible(false);
         loading_label->stopLoading();
         scan_button->setVisible(false);
@@ -485,7 +485,7 @@ void MainTopWidget::accordScanOverStatusToChange(bool status)
         back_button->setVisible(true);
     }
     else {
-        doing_label->setText(tr("Scaning......"));
+        doing_label->setText(tr("Scanning......"));
         doing_label->setVisible(false);
         loading_label->stopLoading();
         scan_button->setVisible(false);

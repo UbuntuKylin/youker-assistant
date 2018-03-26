@@ -781,7 +781,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <location filename="../infowidget.cpp" line="277"/>
-        <source>Dekstop Info</source>
+        <source>Desktop Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1038,6 +1038,8 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <location filename="../maintopwidget.cpp" line="356"/>
+        <location filename="../maintopwidget.cpp" line="477"/>
+        <location filename="../maintopwidget.cpp" line="488"/>
         <location filename="../maintopwidget.cpp" line="751"/>
         <source>Scanning......</source>
         <translation type="unfinished"></translation>
@@ -1141,12 +1143,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     <message>
         <location filename="../maintopwidget.cpp" line="458"/>
         <source>Packages Scan OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="477"/>
-        <location filename="../maintopwidget.cpp" line="488"/>
-        <source>Scaning......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1316,22 +1312,22 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="79"/>
+        <location filename="../mainwindow.cpp" line="80"/>
         <source>Kylin Assistant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="207"/>
+        <location filename="../mainwindow.cpp" line="208"/>
         <source>Understand hardware information, provide more convenient channel to obtain hardware information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="216"/>
+        <location filename="../mainwindow.cpp" line="217"/>
         <source>You can perform a full range of customized systems based on personal preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="225"/>
+        <location filename="../mainwindow.cpp" line="226"/>
         <source>Provide a practical and lightweight tool, create fast and convenient experience for you</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1459,32 +1455,32 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>MonitorTitleWidget</name>
     <message>
-        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="240"/>
+        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="242"/>
         <source>Kylin System Monitor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="300"/>
+        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="340"/>
         <source>Processes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="304"/>
+        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="344"/>
         <source>Resources</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="308"/>
+        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="348"/>
         <source>File Systems</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="359"/>
+        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="399"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="373"/>
+        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="413"/>
         <source>Enter the relevant info of process</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1659,7 +1655,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     <message>
         <location filename="../../plugins/systemmonitor/processdialog.cpp" line="157"/>
         <location filename="../../plugins/systemmonitor/processdialog.cpp" line="160"/>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="174"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="175"/>
         <source>End process</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1678,7 +1674,7 @@ Are you sure to continue?</source>
     <message>
         <location filename="../../plugins/systemmonitor/processdialog.cpp" line="163"/>
         <location filename="../../plugins/systemmonitor/processdialog.cpp" line="166"/>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="176"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="177"/>
         <source>Kill process</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1689,57 +1685,57 @@ Are you sure to continue?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="170"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="171"/>
         <source>Stop process</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="172"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="173"/>
         <source>Continue process</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="190"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="191"/>
         <source>Very High</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="191"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="192"/>
         <source>High</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="192"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="193"/>
         <source>Normal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="193"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="194"/>
         <source>Low</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="194"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="195"/>
         <source>Very Low</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="195"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="196"/>
         <source>Custom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="199"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="201"/>
         <source>Change Priority</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="201"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="203"/>
         <source>Properties</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="334"/>
+        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="336"/>
         <source>Change Priority of Process %1 (PID: %2)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1840,7 +1836,7 @@ Are you sure to continue?</source>
 <context>
     <name>PropertiesDialog</name>
     <message>
-        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="127"/>
+        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="128"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2718,27 +2714,27 @@ Are you sure to continue?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="153"/>
+        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="154"/>
         <source>User name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="153"/>
+        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="154"/>
         <source>Process name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="153"/>
+        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="154"/>
         <source>Command line:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="153"/>
+        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="154"/>
         <source>CPU Time:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="153"/>
+        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="154"/>
         <source>Started Time:</source>
         <translation type="unfinished"></translation>
     </message>
