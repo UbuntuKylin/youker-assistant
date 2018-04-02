@@ -1,43 +1,23 @@
-youker-assistant (3.0.1) bionic; urgency=low
-
-  [hebing]
-  * desktop env changed so session dbus boot failed, fixed(LP:#1755653)
-  * desktop env changed so session dbus boot failed, fixed(LP:#1755656)
-  * daily build 0327 not found(LP:#1755654)
-  * fix bug borders show abnormal(LP:#1755659)
-
- -- hebing <hebing@kylinos.cn>  Thu, 29 Mar 2018 10:42:14 +0800
-
 youker-assistant (3.0.0) bionic; urgency=low
 
   [lixiang]
-  * Fork youker-assistant(commit:764)
-  * Upgrade from Qt4 to Qt5.(LP:#1757914)
-  * Add qtsingleapplication.
-  * Let the child window display normal.
-  * Add PingBack.
-  * Rewrite systeminfo frame.
-  * Rewrite setting frame.
-  * Separate data and graphics.
-  * Add Cpu.
-  * Add Network.
-  * Add memory rate.
-  * Add cpu rate and idle rate.
-  * Add processes, resources and file system manager.
-  * Add auto startup manager.
-  * Add monitor for auto startup manager.
-  * Add monitor for file system.
+  * Upgrade from Qt4 to Qt5. (LP: #1757914)
+  * Add PingBack, cpu, network, memory rate, cpu rate,
+    idle rate, processes, resources ,file system manager
+    adn auto startup manager.
+  * Rewrite the frame of systeminfo, settings.
   * Add QDbus module(system dbus and session dbus).
-  * Make all dbus modules quit when the app quit.
-  * Rewrite mainwindow.
   * Add shadow effect for window.
-  * Rewrite cleaner ui module.
-  * Rewrite theme ui module.
+  * Rewrite cleaner and theme ui module.
   * Scanning system with Thread.
-  * Renice process priority.
-  * Solved the problem of Chinese messy code about file system info.
+  * Fix the chinese messy code in file system info.
 
- -- hebing <hebing@kylinos.cn>  Tue, 27 Mar 2018 11:17:32 +0800
+  [hebing]
+  * Change the gsettigns value to fit UKUI. (LP: #1755653,
+    LP: #1755656)
+  * Adjust the borders of main window. (LP: #1755659)
+
+ -- handsome_feng <jianfengli@ubuntukylin.com>  Mon, 02 Apr 2018 11:12:28 +0800
 
 youker-assistant (2.4.2) artful; urgency=low
 
