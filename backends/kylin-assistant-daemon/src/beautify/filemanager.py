@@ -49,7 +49,7 @@ class FileManager:
     # Get: Use the location entry instead of the pathbar
     def get_location_replace_pathbar(self):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.mate.caja.preferences',
+            return gsettings.get('org.ukui.peony.preferences',
                 None, 'always-use-location-entry', 'boolean')
         else:
             return gsettings.get('org.gnome.nautilus.preferences',
@@ -60,7 +60,7 @@ class FileManager:
         #gstheme = gsettings.get_schema('org.gnome.desktop.sound')
         #gstheme.set_string('theme-name',theme)
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.mate.caja.preferences',
+            return gsettings.set('org.ukui.peony.preferences',
                 None,
                 'always-use-location-entry',
                 'boolean', flag)
@@ -74,7 +74,7 @@ class FileManager:
     # Get: Automatically mount media
     def get_auto_mount_media(self):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.mate.media-handling',
+            return gsettings.get('org.ukui.media-handling',
                 None, 'automount', 'boolean')
         else:
             return gsettings.get('org.gnome.desktop.media-handling',
@@ -83,7 +83,7 @@ class FileManager:
     # Set: Automatically mount media
     def set_auto_mount_media(self, flag):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.mate.media-handling',
+            return gsettings.set('org.ukui.media-handling',
                 None,
                 'automount',
                 'boolean', flag)
@@ -97,7 +97,7 @@ class FileManager:
     # Get: Automatically open a folder
     def get_auto_open_folder(self):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.mate.media-handling',
+            return gsettings.get('org.ukui.media-handling',
                 None, 'automount-open', 'boolean')
         else:
             return gsettings.get('org.gnome.desktop.media-handling',
@@ -106,7 +106,7 @@ class FileManager:
     # Set: Automatically open a folder
     def set_auto_open_folder(self, flag):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.mate.media-handling',
+            return gsettings.set('org.ukui.media-handling',
                 None,
                 'automount-open',
                 'boolean', flag)
@@ -120,7 +120,7 @@ class FileManager:
     # Get: Prompt or autorun/autostart programs
     def get_prompt_autorun_programs(self):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.mate.media-handling',
+            return gsettings.get('org.ukui.media-handling',
                 None, 'autorun-never', 'boolean')
         else:
             return gsettings.get('org.gnome.desktop.media-handling',
@@ -129,7 +129,7 @@ class FileManager:
     # Set: Prompt or autorun/autostart programs
     def set_prompt_autorun_programs(self, flag):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.mate.media-handling',
+            return gsettings.set('org.ukui.media-handling',
                 None,
                 'autorun-never',
                 'boolean', flag)
@@ -143,7 +143,7 @@ class FileManager:
     # Get: Thumbnail icon size (pixels)
     def get_thumbnail_icon_size(self):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.mate.caja.icon-view',
+            return gsettings.get('org.ukui.peony.icon-view',
                 None, 'thumbnail-size', 'int')
         else:
             return gsettings.get('org.gnome.nautilus.icon-view',
@@ -152,7 +152,7 @@ class FileManager:
     # Set: Thumbnail icon size (pixels)
     def set_thumbnail_icon_size(self, size):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.mate.caja.icon-view',
+            return gsettings.set('org.ukui.peony.icon-view',
                 None,
                 'thumbnail-size',
                 'int', size)

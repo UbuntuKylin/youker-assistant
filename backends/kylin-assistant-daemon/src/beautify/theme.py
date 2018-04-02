@@ -223,7 +223,7 @@ class Theme:
     # get desktop font
     def get_desktop_font(self):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.mate.caja.desktop',
+            return gsettings.get('org.ukui.peony.desktop',
                 None, 'font', 'string')
         else:
             return gsettings.get('org.gnome.nautilus.desktop',
@@ -232,7 +232,7 @@ class Theme:
     # set desktop font
     def set_desktop_font(self, font):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.mate.caja.desktop',
+            return gsettings.set('org.ukui.peony.desktop',
                 None,
                 'font',
                 'string', font)

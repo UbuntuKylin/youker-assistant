@@ -722,8 +722,8 @@ void DataWorker::onRestoreDefaultFont(bool isMate)
 void DataWorker::onRestoreDesktopDefaultFont(bool isMate)
 {
     if (isMate) {
-        m_sessionInterface->set_default_font_string_qt("org.mate.caja.desktop", "font", "string");
-        emit sendDesktopFontValue(m_sessionInterface->get_default_font_string_qt("org.mate.caja.desktop", "font"));
+        m_sessionInterface->set_default_font_string_qt("org.ukui.peony.desktop", "font", "string");
+        emit sendDesktopFontValue(m_sessionInterface->get_default_font_string_qt("org.ukui.peony.desktop", "font"));
     }
     else {
         m_sessionInterface->set_default_font_string_qt("org.gnome.nautilus.desktop", "font", "string");

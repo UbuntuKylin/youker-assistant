@@ -67,20 +67,20 @@ class Desktop:
 
     def set_show_computer(self, flag):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.mate.caja.desktop',
+            return gsettings.set('org.ukui.peony.desktop',
                 None,
                 'computer-icon-visible',
                 'boolean', flag)
 
     def get_show_computer(self):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.mate.caja.desktop',
+            return gsettings.get('org.ukui.peony.desktop',
                 None, 'computer-icon-visible', 'boolean')
 
     # show home folder
     def set_show_homefolder(self, flag):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.mate.caja.desktop',
+            return gsettings.set('org.ukui.peony.desktop',
                 None,
                 'home-icon-visible',
                 'boolean', flag)
@@ -93,7 +93,7 @@ class Desktop:
     # get show homefolder
     def get_show_homefolder(self):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.mate.caja.desktop',
+            return gsettings.get('org.ukui.peony.desktop',
                 None, 'home-icon-visible', 'boolean')
         else:
             return gsettings.get('org.gnome.nautilus.desktop',
@@ -102,7 +102,7 @@ class Desktop:
     # show network
     def set_show_network(self, flag):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.mate.caja.desktop',
+            return gsettings.set('org.ukui.peony.desktop',
                 None,
                 'network-icon-visible',
                 'boolean', flag)
@@ -115,7 +115,7 @@ class Desktop:
     # get show network
     def get_show_network(self):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.mate.caja.desktop',
+            return gsettings.get('org.ukui.peony.desktop',
                 None, 'network-icon-visible', 'boolean')
         else:
             return gsettings.get('org.gnome.nautilus.desktop',
@@ -124,7 +124,7 @@ class Desktop:
     # show trash
     def set_show_trash(self, flag):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.mate.caja.desktop',
+            return gsettings.set('org.ukui.peony.desktop',
                 None,
                 'trash-icon-visible',
                 'boolean', flag)
@@ -137,7 +137,7 @@ class Desktop:
     # get show trash
     def get_show_trash(self):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.mate.caja.desktop',
+            return gsettings.get('org.ukui.peony.desktop',
                 None, 'trash-icon-visible', 'boolean')
         else:
             return gsettings.get('org.gnome.nautilus.desktop',
@@ -146,7 +146,7 @@ class Desktop:
     # show devices
     def set_show_devices(self, flag):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.mate.caja.desktop',
+            return gsettings.set('org.ukui.peony.desktop',
                 None,
                 'volumes-visible',
                 'boolean', flag)
@@ -159,7 +159,7 @@ class Desktop:
     # get show devices
     def get_show_devices(self):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.mate.caja.desktop',
+            return gsettings.get('org.ukui.peony.desktop',
                 None, 'volumes-visible', 'boolean')
         else:
             return gsettings.get('org.gnome.nautilus.desktop',

@@ -99,8 +99,8 @@ from .common import (BOOL_TYPE, INT_TYPE, DOUBLE_TYPE, STRING_TYPE)
 #Depends:gir1.2-gconf-2.0
 #from gi.repository import GConf
 #import gconf
-#TOPKEY = "/org/mate/panel/toplevels/top/size"
-#BOTTOMKEY = "/org/mate/panel/toplevels/bottom/size"
+#TOPKEY = "/org/ukui/panel/toplevels/top/size"
+#BOTTOMKEY = "/org/ukui/panel/toplevels/bottom/size"
 
 class SessionDaemon(dbus.service.Object):
     def __init__ (self, mainloop):
@@ -154,7 +154,7 @@ class SessionDaemon(dbus.service.Object):
             self.interface_settings.connect("changed::icon-theme", self.gio_settings_monitor, STRING_TYPE)
             self.background_settings = gio.Settings.new("org.mate.background")
             self.background_settings.connect("changed::show-desktop-icons", self.gio_settings_monitor, BOOL_TYPE)
-            self.desktop_settings = gio.Settings.new("org.mate.caja.desktop")
+            self.desktop_settings = gio.Settings.new("org.ukui.peony.desktop")
             for key in ("computer-icon-visible", "home-icon-visible", "network-icon-visible", "trash-icon-visible", "volumes-visible"):
                 self.desktop_settings.connect("changed::%s" % key, self.gio_settings_monitor, BOOL_TYPE)
         else:
@@ -206,10 +206,10 @@ class SessionDaemon(dbus.service.Object):
             self.power_settings.connect("changed::show-percentage", self.gio_settings_monitor, BOOL_TYPE)
 
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            self.toplevels_settings = gio.Settings("org.mate.panel.toplevel", "/org/mate/panel/toplevels/top/")
+            self.toplevels_settings = gio.Settings("org.ukui.panel.toplevel", "/org/ukui/panel/toplevels/top/")
             self.toplevels_settings.connect("changed::size", self.gio_settings_monitor_diff, INT_TYPE, "top")
             self.toplevels_settings.connect("changed::auto-hide", self.gio_settings_monitor_diff, BOOL_TYPE, "top")
-            self.bottomlevels_settings = gio.Settings("org.mate.panel.toplevel", "/org/mate/panel/toplevels/bottom/")
+            self.bottomlevels_settings = gio.Settings("org.ukui.panel.toplevel", "/org/ukui/panel/toplevels/bottom/")
             self.bottomlevels_settings.connect("changed::size", self.gio_settings_monitor_diff, INT_TYPE, "bottom")
             self.bottomlevels_settings.connect("changed::auto-hide", self.gio_settings_monitor_diff, BOOL_TYPE, "bottom")
 
@@ -231,7 +231,7 @@ class SessionDaemon(dbus.service.Object):
 
         # menubar
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            self.menubar_settings = gio.Settings.new("org.mate.panel.menubar")
+            self.menubar_settings = gio.Settings.new("org.ukui.panel.menubar")
             self.menubar_settings.connect("changed::show-applications", self.gio_settings_monitor, BOOL_TYPE)
             self.menubar_settings.connect("changed::show-desktop", self.gio_settings_monitor, BOOL_TYPE)
             self.menubar_settings.connect("changed::show-icon", self.gio_settings_monitor, BOOL_TYPE)
@@ -290,20 +290,20 @@ class SessionDaemon(dbus.service.Object):
 
         #file manager
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            self.filemanager_settings = gio.Settings.new("org.mate.caja.preferences")
+            self.filemanager_settings = gio.Settings.new("org.ukui.peony.preferences")
         else:
             self.filemanager_settings = gio.Settings.new("org.gnome.nautilus.preferences")
         self.filemanager_settings.connect("changed::always-use-location-entry", self.gio_settings_monitor, BOOL_TYPE)
 
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            self.mediahanding_settings = gio.Settings.new("org.mate.media-handling")
+            self.mediahanding_settings = gio.Settings.new("org.ukui.media-handling")
         else:
             self.mediahanding_settings = gio.Settings.new("org.gnome.desktop.media-handling")
         self.mediahanding_settings.connect("changed::automount", self.gio_settings_monitor, BOOL_TYPE)
         self.mediahanding_settings.connect("changed::automount-open", self.gio_settings_monitor, BOOL_TYPE)
         self.mediahanding_settings.connect("changed::autorun-never", self.gio_settings_monitor, BOOL_TYPE)
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            self.iconview_settings = gio.Settings.new("org.mate.caja.icon-view")
+            self.iconview_settings = gio.Settings.new("org.ukui.peony.icon-view")
         else:
             self.iconview_settings = gio.Settings.new("org.gnome.nautilus.icon-view")
         self.iconview_settings.connect("changed::thumbnail-size", self.gio_settings_monitor, INT_TYPE)

@@ -1,8 +1,18 @@
+youker-assistant (3.0.1) bionic; urgency=low
+
+  [hebing]
+  * desktop env changed so session dbus boot failed, fixed(LP:#1755653)
+  * desktop env changed so session dbus boot failed, fixed(LP:#1755656)
+  * daily build 0327 not found(LP:#1755654)
+  * fix bug borders show abnormal(LP:#1755659)
+
+ -- hebing <hebing@kylinos.cn>  Thu, 29 Mar 2018 10:42:14 +0800
+
 youker-assistant (3.0.0) bionic; urgency=low
 
   [lixiang]
   * Fork youker-assistant(commit:764)
-  * Upgrade from Qt4 to Qt5.
+  * Upgrade from Qt4 to Qt5.(LP:#1757914)
   * Add qtsingleapplication.
   * Let the child window display normal.
   * Add PingBack.
@@ -27,7 +37,7 @@ youker-assistant (3.0.0) bionic; urgency=low
   * Renice process priority.
   * Solved the problem of Chinese messy code about file system info.
 
- -- handsome_feng <jianfengli@ubuntukylin.com>  Mon, 19 Mar 2018 15:34:14 +0800
+ -- hebing <hebing@kylinos.cn>  Tue, 27 Mar 2018 11:17:32 +0800
 
 youker-assistant (2.4.2) artful; urgency=low
 

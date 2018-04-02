@@ -607,8 +607,8 @@ void FontWidget::restore_desktop_font()
 {
     if (this->desktop == "mate" || this->desktop == "MATE" || this->desktop == "UKUI" || this->desktop == "ukui") {
         emit restoreDesktopDefaultFont(true);
-//        sessionproxy->set_default_font_string_qt("org.mate.caja.desktop", "font", "string");
-//        desktop_font_btn->setText(sessionproxy->get_default_font_string_qt("org.mate.caja.desktop", "font"));
+//        sessionproxy->set_default_font_string_qt("org.ukui.peony.desktop", "font", "string");
+//        desktop_font_btn->setText(sessionproxy->get_default_font_string_qt("org.ukui.peony.desktop", "font"));
     }
     else {
         emit restoreDesktopDefaultFont(false);
