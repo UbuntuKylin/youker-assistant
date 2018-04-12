@@ -222,7 +222,10 @@ class Theme:
 
     # get desktop font
     def get_desktop_font(self):
-        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
+        if self.desktop == "mate" or self.desktop == "MATE":
+            return gsettings.get('org.mate.peony.desktop',
+                None, 'font', 'string')
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.ukui.peony.desktop',
                 None, 'font', 'string')
         else:
@@ -231,7 +234,12 @@ class Theme:
 
     # set desktop font
     def set_desktop_font(self, font):
-        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
+        if self.desktop == "mate" or self.desktop == "MATE":
+            return gsettings.set('org.mate.peony.desktop',
+                None,
+                'font',
+                'string', font)
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.set('org.ukui.peony.desktop',
                 None,
                 'font',
@@ -327,8 +335,13 @@ class Theme:
     
     # get current hinting
     def get_hinting(self):
-        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
+        if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.get('org.mate.font-rendering',
+                None,
+                'hinting',
+                'string')
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
+            return gsettings.get('org.ukui.font-rendering',
                 None,
                 'hinting',
                 'string')
@@ -340,8 +353,13 @@ class Theme:
 
     # set hinting
     def set_hinting(self, value):
-        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
+        if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.set('org.mate.font-rendering',
+                None,
+                'hinting',
+                'string', value)
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
+            return gsettings.set('org.ukui.font-rendering',
                 None,
                 'hinting',
                 'string', value)
@@ -358,8 +376,13 @@ class Theme:
 
     # get current antialiasing
     def get_antialiasing(self):
-        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
+        if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.get('org.mate.font-rendering',
+                None,
+                'antialiasing',
+                'string')
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
+            return gsettings.get('org.ukui.font-rendering',
                 None,
                 'antialiasing',
                 'string')
@@ -371,8 +394,13 @@ class Theme:
 
     # set antialiasing
     def set_antialiasing(self,value):
-        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
+        if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.set('org.mate.font-rendering',
+                None,
+                'antialiasing',
+                'string', value)
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
+            return gsettings.set('org.ukui.font-rendering',
                 None,
                 'antialiasing',
                 'string', value)

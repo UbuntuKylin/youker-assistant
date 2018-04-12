@@ -86,8 +86,13 @@ class System():
 
     # enable/disable the touchpad
     def set_touchpad_enable(self, flag):
-        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
+        if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.set('org.mate.peripherals-touchpad',
+                None,
+                'touchpad-enabled',
+                'boolean', flag)
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
+            return gsettings.set('org.ukui.peripherals-touchpad',
                 None,
                 'touchpad-enabled',
                 'boolean', flag)
@@ -103,8 +108,11 @@ class System():
 
     # get is touchpad enable
     def get_touchpad_enable(self):
-        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
+        if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.get('org.mate.peripherals-touchpad',
+                None, 'touchpad-enabled', 'boolean')
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
+            return gsettings.get('org.ukui.peripherals-touchpad',
                 None, 'touchpad-enabled', 'boolean')
         else:
             # kobe1510
@@ -168,19 +176,34 @@ class System():
     #----------------------------mate--------------------------
     #选择触摸板滚动模式。支持的值有：0 - 禁止，1 - 边界滚动，2 - 双指滚动
     def set_mate_touchscrolling_mode(self, value):
-        return gsettings.set('org.mate.peripherals-touchpad',
-            None,
-            'scroll-method',
-            'int', value)
+        if self.desktop == "mate" or self.desktop == "MATE":
+            return gsettings.set('org.mate.peripherals-touchpad',
+                    None,
+                    'scroll-method',
+                    'int', value)
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
+            return gsettings.set('org.ukui.peripherals-touchpad',
+                    None,
+                    'scroll-method',
+                    'int', value)
 
     def get_mate_touchscrolling_mode(self):
-        return gsettings.get('org.mate.peripherals-touchpad',
-            None, 'scroll-method', 'int')
+        if self.desktop == "mate" or self.desktop == "MATE":
+            return gsettings.get('org.mate.peripherals-touchpad',
+                    None, 'scroll-method', 'int')
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
+            return gsettings.get('org.ukui.peripherals-touchpad',
+                    None, 'scroll-method', 'int')
 
     # set touch scrolling use horizontal True/False
     def set_touchscrolling_use_horizontal(self, flag):
-        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
+        if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.set('org.mate.peripherals-touchpad',
+                None,
+                'horiz-scroll-enabled',
+                'boolean', flag)
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
+            return gsettings.set('org.ukui.peripherals-touchpad',
                 None,
                 'horiz-scroll-enabled',
                 'boolean', flag)
@@ -198,6 +221,9 @@ class System():
     def get_touchscrolling_use_horizontal(self):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.mate.peripherals-touchpad',
+                None, 'horiz-scroll-enabled', 'boolean')
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
+            return gsettings.get('org.ukui.peripherals-touchpad',
                 None, 'horiz-scroll-enabled', 'boolean')
         else:
             # kobe1510

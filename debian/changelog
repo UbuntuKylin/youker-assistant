@@ -16,6 +16,9 @@ youker-assistant (3.0.0) bionic; urgency=low
   * Change the gsettigns value to fit UKUI. (LP: #1755653,
     LP: #1755656)
   * Adjust the borders of main window. (LP: #1755659)
+  * fix mainwindow still on top
+  * fix policy window  pop twice
+  * fix clean action pause when clean .xession-error
 
  -- handsome_feng <jianfengli@ubuntukylin.com>  Mon, 02 Apr 2018 11:12:28 +0800
 

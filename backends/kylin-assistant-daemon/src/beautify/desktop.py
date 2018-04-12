@@ -66,20 +66,33 @@ class Desktop:
                 None, 'show-desktop-icons', 'boolean')
 
     def set_show_computer(self, flag):
-        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
+        if self.desktop == "mate" or self.desktop == "MATE": 
+            return gsettings.set('org.mate.peony.desktop',
+                None,
+                'computer-icon-visible',
+                'boolean', flag)
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.set('org.ukui.peony.desktop',
                 None,
                 'computer-icon-visible',
                 'boolean', flag)
 
     def get_show_computer(self):
-        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
+        if self.desktop == "mate" or self.desktop == "MATE":
+            return gsettings.get('org.mate.peony.desktop',
+                None, 'computer-icon-visible', 'boolean')
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.ukui.peony.desktop',
                 None, 'computer-icon-visible', 'boolean')
 
     # show home folder
     def set_show_homefolder(self, flag):
-        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
+        if self.desktop == "mate" or self.desktop == "MATE":
+            return gsettings.set('org.mate.peony.desktop',
+                None,
+                'home-icon-visible',
+                'boolean', flag)
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.set('org.ukui.peony.desktop',
                 None,
                 'home-icon-visible',
@@ -92,7 +105,10 @@ class Desktop:
 
     # get show homefolder
     def get_show_homefolder(self):
-        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
+        if self.desktop == "mate" or self.desktop == "MATE":
+            return gsettings.get('org.mate.peony.desktop',
+                None, 'home-icon-visible', 'boolean')
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.ukui.peony.desktop',
                 None, 'home-icon-visible', 'boolean')
         else:
@@ -114,7 +130,10 @@ class Desktop:
 
     # get show network
     def get_show_network(self):
-        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
+        if self.desktop == "mate" or self.desktop == "MATE":
+            return gsettings.get('org.mate.peony.desktop',
+                None, 'network-icon-visible', 'boolean')
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.ukui.peony.desktop',
                 None, 'network-icon-visible', 'boolean')
         else:
@@ -123,7 +142,12 @@ class Desktop:
 
     # show trash
     def set_show_trash(self, flag):
-        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
+        if self.desktop == "mate" or self.desktop == "MATE":
+            return gsettings.set('org.mate.peony.desktop',
+                None,
+                'trash-icon-visible',
+                'boolean', flag)
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.set('org.ukui.peony.desktop',
                 None,
                 'trash-icon-visible',
@@ -136,7 +160,10 @@ class Desktop:
 
     # get show trash
     def get_show_trash(self):
-        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
+        if self.desktop == "mate" or self.desktop == "MATE":
+            return gsettings.get('org.mate.peony.desktop',
+                None, 'trash-icon-visible', 'boolean')
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.ukui.peony.desktop',
                 None, 'trash-icon-visible', 'boolean')
         else:
@@ -145,7 +172,12 @@ class Desktop:
 
     # show devices
     def set_show_devices(self, flag):
-        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
+        if self.desktop == "mate" or self.desktop == "MATE":
+            return gsettings.set('org.mate.peony.desktop',
+                None,
+                'volumes-visible',
+                'boolean', flag)
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.set('org.ukui.peony.desktop',
                 None,
                 'volumes-visible',
@@ -158,7 +190,10 @@ class Desktop:
 
     # get show devices
     def get_show_devices(self):
-        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
+        if self.desktop == "mate" or self.desktop == "MATE":
+            return gsettings.get('org.mate.peony.desktop',
+                None, 'volumes-visible', 'boolean')
+        elif self.desktop == "ukui" or self.desktop == "UKUI":
             return gsettings.get('org.ukui.peony.desktop',
                 None, 'volumes-visible', 'boolean')
         else:

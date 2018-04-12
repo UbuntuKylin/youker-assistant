@@ -904,7 +904,8 @@ def interface_get_subpage_session(session, mode_dic):
             
 
         if 'X11' in history:
-            x11_list = [os.path.join(homedir, x) for x in os.listdir(homedir) if x.startswith(".xsession-errors")]
+            # x11_list = [os.path.join(homedir, x) for x in os.listdir(homedir) if x.startswith(".xsession-errors")]
+            x11_list = [] # .xsession-errors not found, TODO
             for value in x11_list:
                 info = append_cacheinfo_to_list('History.X11', value)
                 session.subpage_data_signal(info)

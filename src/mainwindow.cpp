@@ -299,7 +299,7 @@ void MainWindow::onInitDataFinished()
 
     connect(cleaner_action_widget, SIGNAL(showDetailData()),cleaner_widget, SLOT(displayDetailPage()));
     connect(cleaner_action_widget, SIGNAL(showMainData()),cleaner_widget, SLOT(displayMainPage()));
-    connect(cleaner_action_widget, SIGNAL(sendCleanSignal()),cleaner_widget, SIGNAL(transCleanSignal()));
+    //connect(cleaner_action_widget, SIGNAL(sendCleanSignal()),cleaner_widget, SIGNAL(transCleanSignal()));
 
     connect(m_dataWorker, SIGNAL(tellCleanerDetailData(QStringList)), cleaner_widget, SIGNAL(tellCleanerDetailData(QStringList)), Qt::BlockingQueuedConnection);
     connect(m_dataWorker, SIGNAL(tellCleanerDetailStatus(QString)), cleaner_widget, SIGNAL(tellCleanerDetailStatus(QString)), Qt::BlockingQueuedConnection);
