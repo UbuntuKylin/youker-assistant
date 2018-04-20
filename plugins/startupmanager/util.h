@@ -32,7 +32,7 @@ using std::string;
 #define KEY_FILE_DESKTOP_KEY_NO_DISPLAY "NoDisplay"
 #define KEY_FILE_DESKTOP_KEY_ONLY_SHOW_IN "OnlyShowIn"
 #define KEY_FILE_DESKTOP_KEY_NOT_SHOW_IN "NotShowIn"
-#define KEY_FILE_DESKTOP_KEY_AUTOSTART_ENABLED "X-GNOME-Autostart-enabled"
+#define KEY_FILE_DESKTOP_KEY_AUTOSTART_ENABLED "X-UKUI-Autostart-enabled"
 #define KEY_FILE_DESKTOP_KEY_NAME "Name"
 #define KEY_FILE_DESKTOP_KEY_EXEC "Exec"
 #define KEY_FILE_DESKTOP_KEY_TRY_EXEC "TryExec"

@@ -213,9 +213,10 @@ void ShredDialog::onCloseButtonClicked()
 
 void ShredDialog::onSelectButtonClicked()
 {
-//    QString fileName=QFileDialog::getOpenFileName(0, tr("Select file"), QDir::homePath(), tr("All Files(*)"));
+    QString fileName=QFileDialog::getOpenFileName(0, tr("Select file"), QDir::homePath(), tr("All Files(*)"));
+    select_edit->setText(fileName);
 
-    QStringList fileNameList;
+    /*QStringList fileNameList;
     QString fileName;
     QFileDialog* fd = new QFileDialog(this);
 //    fd->setStyleSheet("QFileDialog{background-color:blue;}");
@@ -231,7 +232,7 @@ void ShredDialog::onSelectButtonClicked()
         select_edit->setText(fileName);
     }
     else
-        fd->close();
+        fd->close();*/
 }
 
 void ShredDialog::onShredButtonClicked()

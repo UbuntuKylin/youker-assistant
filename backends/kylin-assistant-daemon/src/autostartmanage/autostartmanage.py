@@ -29,7 +29,7 @@ OPTION_H = 'Hidden'
 OPTION_N = 'NoDisplay'
 OPTION_O = 'OnlyShowIn'
 OPTION_NOT = 'NotShowIn'
-OPTION_X = 'X-GNOME-Autostart-enabled'
+OPTION_X = 'X-UKUI-Autostart-enabled'
 
 class MyConfigParser(configparser.ConfigParser):
     
