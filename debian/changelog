@@ -1,3 +1,10 @@
+youker-assistant (3.0.1-0ubuntu1) bionic; urgency=medium
+
+  * Fix that the shred manager failed to show directory. (LP: #1764902)
+  * Fix the error when set autostart items. (LP: #1764906)
+
+ -- handsome_feng <jianfengli@ubuntukylin.com>  Tue, 24 Apr 2018 16:36:44 +0800
+
 youker-assistant (3.0.0-0ubuntu1) bionic; urgency=low
 
   [lixiang]
@@ -19,10 +26,8 @@ youker-assistant (3.0.0-0ubuntu1) bionic; urgency=low
   * Fix the bug that the mainwindow always at the top.
   * Fix the bug that the policy window pop twice.
   * Fix the crash when clean .xession-error.
-  * Fix the shredmanager Filedialog do not show directory. (LP: #1764902)
-  * Fix the automanager invalid. (LP: #1764906)
 
- -- handsome_feng <jianfengli@ubuntukylin.com>  Fri, 20 Apr 2018 16:01:14 +0800
+ -- handsome_feng <jianfengli@ubuntukylin.com>  Thu, 12 Apr 2018 15:45:00 +0800
 
 youker-assistant (2.2.7-0ubuntu5) bionic; urgency=medium
 
