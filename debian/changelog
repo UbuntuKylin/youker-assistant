@@ -2,8 +2,9 @@ youker-assistant (3.0.1-0ubuntu1) bionic; urgency=medium
 
   * Fix that the shred manager failed to show directory. (LP: #1764902)
   * Fix the error when set autostart items. (LP: #1764906)
+  * Fix the bug cleaning action seized up. (LP: #1768451)
 
- -- handsome_feng <jianfengli@ubuntukylin.com>  Tue, 24 Apr 2018 16:36:44 +0800
+ -- handsome_feng <jianfengli@ubuntukylin.com>  Thu, 03 May 2018 20:14:05 +0800
 
 youker-assistant (3.0.0-0ubuntu1) bionic; urgency=low
 

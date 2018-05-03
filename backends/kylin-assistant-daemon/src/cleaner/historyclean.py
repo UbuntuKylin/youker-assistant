@@ -88,13 +88,13 @@ class HistoryClean():
             clean_browser_cur.execute(sql_deleteplace)
             clean_browser_conn.commit()
 
-            sql_selectfavicons = 'SELECT favicon_id FROM moz_places'
-            clean_browser_cur.execute(sql_selectfavicons)
-            delete_favicon_id = clean_browser_cur.fetchall()
-            delete_favicon_id_str = ','.join([ str(one[0]) for one in delete_favicon_id if one[0]])
-            sql_deletefavicons = 'DELETE FROM moz_favicons WHERE id NOT in (%s)' %  delete_favicon_id_str
-            clean_browser_cur.execute(sql_deletefavicons)
-            clean_browser_conn.commit()
+            #sql_selectfavicons = 'SELECT favicon_id FROM moz_places'
+            #clean_browser_cur.execute(sql_selectfavicons)
+            #delete_favicon_id = clean_browser_cur.fetchall()
+            #delete_favicon_id_str = ','.join([ str(one[0]) for one in delete_favicon_id if one[0]])
+            #sql_deletefavicons = 'DELETE FROM moz_favicons WHERE id NOT in (%s)' %  delete_favicon_id_str
+            #clean_browser_cur.execute(sql_deletefavicons)
+            #clean_browser_conn.commit()
 
             clean_browser_cur.close()
             clean_browser_conn.close()
