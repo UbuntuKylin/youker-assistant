@@ -18,6 +18,7 @@
 
 #include <QWidget>
 #include <QtGui>
+#include <QStyleOption>
 
 namespace Ui {
 class AlertDialog;
