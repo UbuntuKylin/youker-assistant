@@ -268,7 +268,6 @@ youker-assistant (1.0.1-0ubuntu1) trusty; urgency=low
   * Open related folders when scanning items got double-clicked.
   * Notify users when operating the Kingsoft disk cloud configuration.
   * Modify Dbus starting method.
-  
  -- Kobe Lee (kylinkobe) <xiangli@ubuntukylin.com>  Thu, 20 Mar 2014 10:14:56 +0800
 
 youker-assistant (1.0.0-0ubuntu1) trusty; urgency=low

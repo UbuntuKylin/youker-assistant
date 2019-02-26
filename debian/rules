@@ -1,10 +1,10 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
-
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
 export QT_SELECT=5
+export DEB_BUILD_MAINT_OPTIONS = hardening=+bindnow
 
 QMAKE_OPTS = DEFINES+=NO_DEBUG_ON_CONSOLE
 MAKE_OPTS  = PREFIX=/usr QMAKE=qmake LRELEASE=lrelease QMAKE_OPTS="$(QMAKE_OPTS)"
