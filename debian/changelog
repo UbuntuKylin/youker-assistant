@@ -4,6 +4,8 @@ youker-assistant (3.0.1-0ubuntu1) disco; urgency=medium
   * Fix the error when set autostart items. (LP: #1764906)
   * Fix the bug cleaning action seized up. (LP: #1768451)
   * Fix the build error on disco.
+  * youker-assistant & ukui-control-center conformity, remove function of
+    beautify. (LP: #1755656)
 
  -- handsome_feng <jianfengli@ubuntukylin.com>  Mon, 25 Feb 2019 11:31:03 +0800
 

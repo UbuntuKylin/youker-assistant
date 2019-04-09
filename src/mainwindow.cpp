@@ -937,14 +937,14 @@ void MainWindow::setCurrentPageIndex(int index)
         m_bottomStack->setFixedSize(info_widget->size());
         status = INFOPAGE;
     }
-    else if (index == 3 && status != SETTINGPAGE) {
-        m_topStack->setCurrentWidget(setting_action_widget);
-        m_bottomStack->setCurrentWidget(setting_widget);
-        m_topStack->setFixedSize(setting_action_widget->size());
-        m_bottomStack->setFixedSize(setting_widget->size());
-        status = SETTINGPAGE;
-    }
-    else if (index == 4 && status != BOXPAGE) {
+//    else if (index == 3 && status != SETTINGPAGE) {
+//        m_topStack->setCurrentWidget(setting_action_widget);
+//        m_bottomStack->setCurrentWidget(setting_widget);
+//        m_topStack->setFixedSize(setting_action_widget->size());
+//        m_bottomStack->setFixedSize(setting_widget->size());
+//        status = SETTINGPAGE;
+//    }
+    else if (index == 3 && status != BOXPAGE) {
         m_topStack->setCurrentWidget(box_action_widget);
         m_bottomStack->setCurrentWidget(box_widget);
         m_topStack->setFixedSize(box_action_widget->size());
