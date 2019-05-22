@@ -215,7 +215,7 @@ void MainWindow::initWidgets()
     connect(setting_action_widget, SIGNAL(closeApp()), this, SLOT(closeYoukerAssistant()));
     setting_action_widget->setPalette(palette_back);
     setting_action_widget->setImage("://res/systemset.png");
-    setting_action_widget->setTipMessage(tr("You can perform a full range of customized systems based on personal preferences"));
+    setting_action_widget->setTipMessage(tr("perform a full range of customizations systems based on your own personal preferences"));
     m_topStack->addWidget(setting_action_widget);
 
     box_action_widget = new TopBaseWidget(this);
@@ -224,7 +224,7 @@ void MainWindow::initWidgets()
     connect(box_action_widget, SIGNAL(closeApp()), this, SLOT(closeYoukerAssistant()));
     box_action_widget->setPalette(palette_back);
     box_action_widget->setImage("://res/toolkits.png");
-    box_action_widget->setTipMessage(tr("Provide a practical and lightweight tool, create fast and convenient experience for you"));
+    box_action_widget->setTipMessage(tr("Provides lightweight tool and creates fast and convenient experience"));
     m_topStack->addWidget(box_action_widget);
 
     //middle

@@ -48,6 +48,8 @@ bool PluginManager::loadPlugin(QString plugin_path)
             PluginInterface* interface = qobject_cast<PluginInterface*>(plugin);
             if (interface) {
                 QString guid = interface->getGuid();
+                if (guid == "UBUNTU-KYLIN-STARTUP")
+                    continue;
                 plugin_map.insert(guid, pluginLoader);
                 qDebug() << "The plugin interface is: " << interface;
             }

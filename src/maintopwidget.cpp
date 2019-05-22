@@ -350,8 +350,8 @@ void MainTopWidget::initConnect()
 
 void MainTopWidget::setLanguage()
 {
-    scan_button->setText(tr("Start Scan"));//开始扫描
-    clean_button->setText(tr("Start Cleanup"));//开始清理
+    scan_button->setText(tr("Scans"));//开始扫描
+    clean_button->setText(tr("Cleans up"));//开始清理
     back_button->setText(tr("Back"));
     doing_label->setText(tr("Scanning......"));//正在扫描......
 
@@ -360,7 +360,7 @@ void MainTopWidget::setLanguage()
         scan_result_label->setText(tr("Scan Over"));
     }
     else {
-        suggest_label->setText(tr("Regular cleaning, let your computer remains the relaxed state"));//经常清理，让电脑保持最轻松的状态
+        suggest_label->setText(tr("Cleans up history and caches"));
     }
 }
 

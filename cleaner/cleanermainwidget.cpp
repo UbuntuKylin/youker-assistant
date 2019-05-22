@@ -47,7 +47,7 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
     cache_btn->setGeometry(QRect(10, 150, 260, 150));
 //    cache_btn->setFixedSize(260, 130);
     cache_btn->setStatusTip("cache");
-    cache_btn->setLabelText(tr("System Cache"), tr("Cleanup  cache of system, software-center, thumbnails and browser"));//系统缓存垃圾    清除包、软件中心、缩略图和浏览器缓存
+    cache_btn->setLabelText(tr("System Cache"), tr("Cleans up cache of system"));//系统缓存垃圾    清除包、软件中心、缩略图和浏览器缓存
     //子checkbox的状态被改变时，重新设置总按钮的状态
 //    connect(cache_items, SIGNAL(notifyMainCheckBox(int)), cache_btn, SLOT(resetMainStatus(int)));
     //点击按钮后，显示子页面
@@ -82,7 +82,7 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
     cookies_btn->setGeometry(QRect(320, 150, 260, 150));
 //    cookies_btn->setGeometry(QRect(630, 50, 260, 150));
 //    cookies_btn->setFixedSize(260, 130);
-    cookies_btn->setLabelText(tr("Cookies"), tr("Clean up user login information, support Firefox and Chromium browser"));//清除上网、游戏、购物等记录
+    cookies_btn->setLabelText(tr("Cookies"), tr("Cleans up cookies in browser"));
     cookies_btn->setStatusTip("cookies");
     //子checkbox的状态被改变时，重新设置总按钮的状态
 //    connect(cookies_items, SIGNAL(notifyMainCheckBox(int)), cookies_btn, SLOT(resetMainStatus(int)));
@@ -100,7 +100,7 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
 //    trace_btn->setGeometry(QRect(10, 240, 260, 150));
     trace_btn->setGeometry(QRect(630, 150, 260, 150));
 //    trace_btn->setFixedSize(260, 130);
-    trace_btn->setLabelText(tr("History trace"), tr("Cleaning the internet and opened documents recently records"));//使用痕迹    清除浏览器和系统使用痕迹
+    trace_btn->setLabelText(tr("History trace"), tr("Cleans up records of history"));
     trace_btn->setStatusTip("trace");
     //子checkbox的状态被改变时，重新设置总按钮的状态
 //    connect(trace_items, SIGNAL(notifyMainCheckBox(int)), trace_btn, SLOT(resetMainStatus(int)));

@@ -204,6 +204,21 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>CleanerMainWidget</name>
     <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="50"/>
+        <source>Cleans up cache of system</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="85"/>
+        <source>Cleans up cookies in browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="103"/>
+        <source>Cleans up records of history</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="111"/>
         <source>Cleanup Package Cache</source>
         <translation type="unfinished"></translation>
@@ -239,11 +254,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="50"/>
-        <source>Cleanup  cache of system, software-center, thumbnails and browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="113"/>
         <source>Cleanup the Cookies saving in Firefox</source>
         <translation type="unfinished"></translation>
@@ -261,11 +271,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="85"/>
         <source>Cookies</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="85"/>
-        <source>Clean up user login information, support Firefox and Chromium browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -301,11 +306,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="103"/>
         <source>History trace</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="103"/>
-        <source>Cleaning the internet and opened documents recently records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1022,16 +1022,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../maintopwidget.cpp" line="353"/>
-        <source>Start Scan</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="354"/>
-        <source>Start Cleanup</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../maintopwidget.cpp" line="355"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
@@ -1055,8 +1045,18 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../maintopwidget.cpp" line="354"/>
+        <source>Cleans up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../maintopwidget.cpp" line="353"/>
+        <source>Scans</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../maintopwidget.cpp" line="363"/>
-        <source>Regular cleaning, let your computer remains the relaxed state</source>
+        <source>Cleans up history and caches</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1323,12 +1323,12 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="218"/>
-        <source>You can perform a full range of customized systems based on personal preferences</source>
+        <source>perform a full range of customizations systems based on your own personal preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="227"/>
-        <source>Provide a practical and lightweight tool, create fast and convenient experience for you</source>
+        <source>Provides lightweight tool and creates fast and convenient experience</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1427,27 +1427,22 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>MiddleWidget</name>
     <message>
-        <location filename="../middlewidget.cpp" line="43"/>
+        <location filename="../middlewidget.cpp" line="47"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../middlewidget.cpp" line="43"/>
+        <location filename="../middlewidget.cpp" line="47"/>
         <source>Cleanup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../middlewidget.cpp" line="43"/>
+        <location filename="../middlewidget.cpp" line="47"/>
         <source>Sysinfo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../middlewidget.cpp" line="43"/>
-        <source>Feature</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../middlewidget.cpp" line="43"/>
+        <location filename="../middlewidget.cpp" line="47"/>
         <source>Toolkits</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2817,8 +2812,8 @@ Are you sure to continue?</source>
     </message>
     <message>
         <location filename="../../plugins/shredmanager/shreddialog.cpp" line="124"/>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="253"/>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="265"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="254"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="266"/>
         <source>No select any file which need to be shredded</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2833,17 +2828,27 @@ Are you sure to continue?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="241"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="216"/>
+        <source>Select file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="216"/>
+        <source>All Files(*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="242"/>
         <source>Select file!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="252"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="253"/>
         <source>Shred successfully!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="258"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="259"/>
         <source>Shred failed!</source>
         <translation type="unfinished"></translation>
     </message>

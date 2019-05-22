@@ -207,6 +207,21 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>CleanerMainWidget</name>
     <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="50"/>
+        <source>Cleans up cache of system</source>
+        <translation>清理系统缓存</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="85"/>
+        <source>Cleans up cookies in browser</source>
+        <translation>清理浏览器缓存</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="103"/>
+        <source>Cleans up records of history</source>
+        <translation>清理历史记录</translation>
+    </message>
+    <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="111"/>
         <source>Cleanup Package Cache</source>
         <translation>清理包缓存</translation>
@@ -242,9 +257,8 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>系统缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="50"/>
         <source>Cleanup  cache of system, software-center, thumbnails and browser</source>
-        <translation>清除包、缩略图和浏览器缓存等</translation>
+        <translation type="vanished">清除包、缩略图和浏览器缓存等</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="113"/>
@@ -267,9 +281,8 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>Cookies</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="85"/>
         <source>Clean up user login information, support Firefox and Chromium browser</source>
-        <translation>清除上网、游戏、购物等记录</translation>
+        <translation type="vanished">清除上网、游戏、购物等记录</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="115"/>
@@ -307,9 +320,8 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>历史痕迹</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="103"/>
         <source>Cleaning the internet and opened documents recently records</source>
-        <translation>清除浏览器和系统使用痕迹</translation>
+        <translation type="vanished">清除浏览器和系统使用痕迹</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="146"/>
@@ -1025,14 +1037,12 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>麒麟助手</translation>
     </message>
     <message>
-        <location filename="../maintopwidget.cpp" line="353"/>
         <source>Start Scan</source>
-        <translation>开始扫描</translation>
+        <translation type="vanished">开始扫描</translation>
     </message>
     <message>
-        <location filename="../maintopwidget.cpp" line="354"/>
         <source>Start Cleanup</source>
-        <translation>开始清理</translation>
+        <translation type="vanished">开始清理</translation>
     </message>
     <message>
         <location filename="../maintopwidget.cpp" line="355"/>
@@ -1058,9 +1068,23 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>扫描完成</translation>
     </message>
     <message>
-        <location filename="../maintopwidget.cpp" line="363"/>
         <source>Regular cleaning, let your computer remains the relaxed state</source>
-        <translation>经常清理，让电脑保持最轻松的状态</translation>
+        <translation type="vanished">经常清理，让电脑保持最轻松的状态</translation>
+    </message>
+    <message>
+        <location filename="../maintopwidget.cpp" line="353"/>
+        <source>Scans</source>
+        <translation>扫描</translation>
+    </message>
+    <message>
+        <location filename="../maintopwidget.cpp" line="354"/>
+        <source>Cleans up</source>
+        <translation>清理</translation>
+    </message>
+    <message>
+        <location filename="../maintopwidget.cpp" line="363"/>
+        <source>Cleans up history and caches</source>
+        <translation>清理历史记录及系统缓存</translation>
     </message>
     <message>
         <location filename="../maintopwidget.cpp" line="380"/>
@@ -1326,13 +1350,21 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="218"/>
-        <source>You can perform a full range of customized systems based on personal preferences</source>
-        <translation>您可以根据个人喜好对系统进行全方位的定制</translation>
+        <source>perform a full range of customizations systems based on your own personal preferences</source>
+        <translation>根据个人喜好对系统进行全方位的定制</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="227"/>
+        <source>Provides lightweight tool and creates fast and convenient experience</source>
+        <translation>提供轻量化工具，打造快捷方便的体验</translation>
+    </message>
+    <message>
+        <source>You can perform a full range of customized systems based on personal preferences</source>
+        <translation type="vanished">您可以根据个人喜好对系统进行全方位的定制</translation>
+    </message>
+    <message>
         <source>Provide a practical and lightweight tool, create fast and convenient experience for you</source>
-        <translation>提供轻巧使用工具，为您打造快捷方便的体验</translation>
+        <translation type="vanished">提供轻巧使用工具，为您打造快捷方便的体验</translation>
     </message>
 </context>
 <context>
@@ -1431,27 +1463,26 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>MiddleWidget</name>
     <message>
-        <location filename="../middlewidget.cpp" line="43"/>
+        <location filename="../middlewidget.cpp" line="47"/>
         <source>Home</source>
         <translation>麒麟首页</translation>
     </message>
     <message>
-        <location filename="../middlewidget.cpp" line="43"/>
+        <location filename="../middlewidget.cpp" line="47"/>
         <source>Cleanup</source>
         <translation>系统清理</translation>
     </message>
     <message>
-        <location filename="../middlewidget.cpp" line="43"/>
+        <location filename="../middlewidget.cpp" line="47"/>
         <source>Sysinfo</source>
         <translation>系统信息</translation>
     </message>
     <message>
-        <location filename="../middlewidget.cpp" line="43"/>
         <source>Feature</source>
-        <translation>系统美化</translation>
+        <translation type="vanished">系统美化</translation>
     </message>
     <message>
-        <location filename="../middlewidget.cpp" line="43"/>
+        <location filename="../middlewidget.cpp" line="47"/>
         <source>Toolkits</source>
         <translation>功能大全</translation>
     </message>
@@ -2823,8 +2854,8 @@ Are you sure to continue?</source>
     </message>
     <message>
         <location filename="../../plugins/shredmanager/shreddialog.cpp" line="124"/>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="253"/>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="265"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="254"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="266"/>
         <source>No select any file which need to be shredded</source>
         <translation>没有选择需要粉碎的文件</translation>
     </message>
@@ -2839,17 +2870,27 @@ Are you sure to continue?</source>
         <translation>取消粉碎</translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="241"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="216"/>
+        <source>Select file</source>
+        <translation>选择文件</translation>
+    </message>
+    <message>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="216"/>
+        <source>All Files(*)</source>
+        <translation>全部文件(*)</translation>
+    </message>
+    <message>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="242"/>
         <source>Select file!</source>
         <translation>选择文件！</translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="252"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="253"/>
         <source>Shred successfully!</source>
         <translation>粉碎成功！</translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="258"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="259"/>
         <source>Shred failed!</source>
         <translation>粉碎失败！</translation>
     </message>
