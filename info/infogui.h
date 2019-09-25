@@ -39,6 +39,7 @@ public:
     void setInfoGuiName(const QString &name);
 
     void clearWidget();
+    void loaderrorPage(int index);
     void loadOnePage(int index, const QString &title, QMap<QString, QVariant> infoMap);
     void updatePageData(const QString &title, QMap<QString, QVariant> infoMap);
     void updateRunningTime(const QString &runningTime);

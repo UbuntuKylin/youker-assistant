@@ -728,6 +728,14 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
 </context>
 <context>
+    <name>InfoGui</name>
+    <message>
+        <location filename="../../info/infogui.cpp" line="105"/>
+        <source>Failed to obtain information</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>InfoWidget</name>
     <message>
         <location filename="../infowidget.cpp" line="76"/>
@@ -775,82 +783,82 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="223"/>
+        <location filename="../infowidget.cpp" line="234"/>
         <source>Computer Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="277"/>
+        <location filename="../infowidget.cpp" line="299"/>
         <source>Desktop Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="312"/>
+        <location filename="../infowidget.cpp" line="345"/>
         <source>CPU Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="353"/>
+        <location filename="../infowidget.cpp" line="387"/>
         <source>Memory Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="393"/>
+        <location filename="../infowidget.cpp" line="427"/>
         <source>Memory Info %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="426"/>
+        <location filename="../infowidget.cpp" line="485"/>
         <source>Board Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="471"/>
+        <location filename="../infowidget.cpp" line="530"/>
         <source>HardWare Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="513"/>
+        <location filename="../infowidget.cpp" line="572"/>
         <source>HardWare Info %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="566"/>
+        <location filename="../infowidget.cpp" line="638"/>
         <source>NIC Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="612"/>
+        <location filename="../infowidget.cpp" line="684"/>
         <source>NIC Info %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="656"/>
+        <location filename="../infowidget.cpp" line="741"/>
         <source>Monitor Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="696"/>
+        <location filename="../infowidget.cpp" line="781"/>
         <source>Monitor Info %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="740"/>
+        <location filename="../infowidget.cpp" line="838"/>
         <source>Audio Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="780"/>
+        <location filename="../infowidget.cpp" line="878"/>
         <source>Audio Info %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="829"/>
+        <location filename="../infowidget.cpp" line="951"/>
         <source>Battery Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="956"/>
+        <location filename="../infowidget.cpp" line="1089"/>
         <source>Driver Info</source>
         <translation type="unfinished"></translation>
     </message>

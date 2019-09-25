@@ -738,7 +738,7 @@ bool StartupWorker::saveAppDesktopInfo(StartupData info)
     keyfile = g_key_file_new();
     error = NULL;
     GKeyFileFlags flags;
-    flags = G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS;
+    flags = G_KEY_FILE_KEEP_COMMENTS/* | G_KEY_FILE_KEEP_TRANSLATIONS*/;
     g_key_file_load_from_file(keyfile, desktop_path, flags, &error);
     g_free(desktop_path);
 

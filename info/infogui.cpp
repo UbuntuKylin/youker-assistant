@@ -101,6 +101,13 @@ void InfoGui::clearWidget()
     m_pageList.clear();
 }
 
+void InfoGui::loaderrorPage(int index){
+    InfoUnitWidget * w = new InfoUnitWidget(tr("Failed to obtain information"), this);
+
+    m_vLayout->addWidget(w, 0, Qt::AlignTop);//m_vLayout->insertWidget(index, w);
+    m_pageList.append(w);
+}
+
 void InfoGui::loadOnePage(int index, const QString &title, QMap<QString, QVariant> infoMap)
 {
     InfoUnitWidget *w = new InfoUnitWidget(title, this);
