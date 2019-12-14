@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ru_RU">
+<TS version="2.0" language="bo_CN">
 <context>
     <name>AboutDialog</name>
-    <message>
-        <location filename="../aboutdialog.cpp" line="90"/>
-        <source>About</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="129"/>
-        <source>      The software is still under development. Please visit </source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../aboutdialog.cpp" line="35"/>
         <source>About us</source>
@@ -21,6 +11,16 @@
     <message>
         <location filename="../aboutdialog.cpp" line="84"/>
         <source>Kylin Assistant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="90"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="93"/>
+        <source>Contributor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -36,12 +36,12 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="129"/>
-        <source> for more information. Welcome everyone to join with us. kylin-assistant Homepage: </source>
+        <source>      The software is still under development. Please visit </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="93"/>
-        <source>Contributor</source>
+        <location filename="../aboutdialog.cpp" line="129"/>
+        <source> for more information. Welcome everyone to join with us. kylin-assistant Homepage: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -83,9 +83,8 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>CleanerDetailWidget</name>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1187"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1188"/>
-        <source>Apt Cache Clean Items</source>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="39"/>
+        <source>No garbage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -94,20 +93,8 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1210"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1211"/>
-        <source>Software Cache Clean Items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../cleaner/cleanerdetailwidget.cpp" line="536"/>
         <source>Software Cache count:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1232"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1233"/>
-        <source>Thumbnails Cache Clean Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -126,30 +113,13 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1295"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1296"/>
-        <source>Firefox Cookies Clean Items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../cleaner/cleanerdetailwidget.cpp" line="740"/>
         <source>Firefox Cookies Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1317"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1318"/>
-        <source>Chromium Cookies Clean Items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../cleaner/cleanerdetailwidget.cpp" line="790"/>
         <source>Chromium Cookies Count:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="39"/>
-        <source>No garbage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -173,6 +143,29 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="991"/>
+        <source>Debug log:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1187"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1188"/>
+        <source>Apt Cache Clean Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1210"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1211"/>
+        <source>Software Cache Clean Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1232"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1233"/>
+        <source>Thumbnails Cache Clean Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1253"/>
         <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1254"/>
         <source>Firefox Cache Clean Items</source>
@@ -185,14 +178,21 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1360"/>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1361"/>
-        <source>Debug log Items</source>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1295"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1296"/>
+        <source>Firefox Cookies Clean Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="991"/>
-        <source>Debug log:</source>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1317"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1318"/>
+        <source>Chromium Cookies Clean Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1360"/>
+        <location filename="../../cleaner/cleanerdetailwidget.cpp" line="1361"/>
+        <source>Debug log Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -205,12 +205,27 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     <name>CleanerMainWidget</name>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="50"/>
+        <source>System Cache</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="50"/>
         <source>Cleans up cache of system</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="85"/>
+        <source>Cookies</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="85"/>
         <source>Cleans up cookies in browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="103"/>
+        <source>History trace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -244,16 +259,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="282"/>
-        <source>Cache Items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="50"/>
-        <source>System Cache</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="113"/>
         <source>Cleanup the Cookies saving in Firefox</source>
         <translation type="unfinished"></translation>
@@ -261,16 +266,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="113"/>
         <source>Cleanup the Cookies saving in Chromium</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="304"/>
-        <source>Cookies Items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="85"/>
-        <source>Cookies</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -299,16 +294,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="321"/>
-        <source>Trace Items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="103"/>
-        <source>History trace</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="146"/>
         <source>Please select the items you want to clean</source>
         <translation type="unfinished"></translation>
@@ -316,6 +301,21 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="165"/>
         <source>Scan args is empty!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="282"/>
+        <source>Cache Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="304"/>
+        <source>Cookies Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="321"/>
+        <source>Trace Items</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -783,6 +783,21 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../infowidget.cpp" line="137"/>
+        <source>Battery</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../infowidget.cpp" line="145"/>
+        <source>Sensor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../infowidget.cpp" line="152"/>
+        <source>Device Driver</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../infowidget.cpp" line="234"/>
         <source>Computer Info</source>
         <translation type="unfinished"></translation>
@@ -862,24 +877,14 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <source>Driver Info</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../infowidget.cpp" line="137"/>
-        <source>Battery</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="152"/>
-        <source>Device Driver</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="145"/>
-        <source>Sensor</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>KylinFontDialog</name>
+    <message>
+        <location filename="../../component/kylinfontdialog.cpp" line="48"/>
+        <source>Font Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
         <location filename="../../component/kylinfontdialog.cpp" line="274"/>
         <source>Current Font</source>
@@ -923,11 +928,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     <message>
         <location filename="../../component/kylinfontdialog.cpp" line="306"/>
         <source>You haven&apos;t change the font, please choose the font!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="48"/>
-        <source>Font Dialog</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1030,6 +1030,16 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../maintopwidget.cpp" line="353"/>
+        <source>Scans</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../maintopwidget.cpp" line="354"/>
+        <source>Cleans up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../maintopwidget.cpp" line="355"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
@@ -1050,16 +1060,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     <message>
         <location filename="../maintopwidget.cpp" line="360"/>
         <source>Scan Over</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="354"/>
-        <source>Cleans up</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="353"/>
-        <source>Scans</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1514,13 +1514,18 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>NetworkFlow</name>
     <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="274"/>
-        <source>Receiving</source>
+        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="111"/>
+        <source>Receive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="276"/>
-        <source>Total Received</source>
+        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="112"/>
+        <source>Send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="274"/>
+        <source>Receiving</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1529,13 +1534,8 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="111"/>
-        <source>Receive</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="112"/>
-        <source>Send</source>
+        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="276"/>
+        <source>Total Received</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1625,13 +1625,13 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="371"/>
-        <source>Show places</source>
+        <location filename="../../setting/panelwidget.cpp" line="370"/>
+        <source>Show icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="370"/>
-        <source>Show icon</source>
+        <location filename="../../setting/panelwidget.cpp" line="371"/>
+        <source>Show places</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1846,136 +1846,6 @@ Are you sure to continue?</source>
 </context>
 <context>
     <name>QObject</name>
-    <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="207"/>
-        <source>Running</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="211"/>
-        <source>Stopped</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="215"/>
-        <source>Zombie</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="219"/>
-        <source>Uninterruptible</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="223"/>
-        <source>Sleeping</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="233"/>
-        <source>Very High</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="235"/>
-        <source>High</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="237"/>
-        <source>Normal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="239"/>
-        <source>Low</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="241"/>
-        <source>Very Low</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="247"/>
-        <source>Very High Priority</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="249"/>
-        <source>High Priority</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="251"/>
-        <source>Normal Priority</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="253"/>
-        <source>Low Priority</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="255"/>
-        <source>Very Low Priority</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="65"/>
-        <source>Choose the theme what you want</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="66"/>
-        <source>Set the desktop icon theme and the visibility of desktop icons</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="67"/>
-        <source>Replace the theme and size of the mouse pointer, and theme change need to restart system</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="68"/>
-        <source>Set the sound theme you want</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="69"/>
-        <source>Setting the panel mode of auto hide and icon size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="70"/>
-        <source>Manage display of the start menu</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="71"/>
-        <source>Window Manager settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="72"/>
-        <source>According to personal preferences to set the system default font, click the  &apos;Restore&apos; button, can be restored to the state before the font settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="73"/>
-        <source>Setting the relevant properties of your touchpad,make the operation more convenient</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="74"/>
-        <source>Save energy to let the computer longer standby time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="75"/>
-        <source>Manage the file manager. Tips: if the thumbnail&apos;s cache time or size is set to -1, it will not be checked</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="29"/>
         <location filename="../../info/infoitemline.cpp" line="183"/>
@@ -2611,69 +2481,58 @@ Are you sure to continue?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="24"/>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="50"/>
-        <source>byte</source>
+        <location filename="../topbasewidget.cpp" line="65"/>
+        <source>Choose the theme what you want</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="52"/>
-        <source>byte/s</source>
+        <location filename="../topbasewidget.cpp" line="66"/>
+        <source>Set the desktop icon theme and the visibility of desktop icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="27"/>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="56"/>
-        <source>bytes</source>
+        <location filename="../topbasewidget.cpp" line="67"/>
+        <source>Replace the theme and size of the mouse pointer, and theme change need to restart system</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="58"/>
-        <source>bytes/s</source>
+        <location filename="../topbasewidget.cpp" line="68"/>
+        <source>Set the sound theme you want</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="34"/>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="66"/>
-        <source>KiB</source>
+        <location filename="../topbasewidget.cpp" line="69"/>
+        <source>Setting the panel mode of auto hide and icon size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="68"/>
-        <source>KiB/s</source>
+        <location filename="../topbasewidget.cpp" line="70"/>
+        <source>Manage display of the start menu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="37"/>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="72"/>
-        <source>MiB</source>
+        <location filename="../topbasewidget.cpp" line="71"/>
+        <source>Window Manager settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="74"/>
-        <source>MiB/s</source>
+        <location filename="../topbasewidget.cpp" line="72"/>
+        <source>According to personal preferences to set the system default font, click the  &apos;Restore&apos; button, can be restored to the state before the font settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="40"/>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="78"/>
-        <source>GiB</source>
+        <location filename="../topbasewidget.cpp" line="73"/>
+        <source>Setting the relevant properties of your touchpad,make the operation more convenient</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="80"/>
-        <source>GiB/s</source>
+        <location filename="../topbasewidget.cpp" line="74"/>
+        <source>Save energy to let the computer longer standby time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="43"/>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="84"/>
-        <source>TiB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="86"/>
-        <source>TiB/s</source>
+        <location filename="../topbasewidget.cpp" line="75"/>
+        <source>Manage the file manager. Tips: if the thumbnail&apos;s cache time or size is set to -1, it will not be checked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2717,6 +2576,72 @@ Are you sure to continue?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="24"/>
+        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="50"/>
+        <source>byte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="27"/>
+        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="56"/>
+        <source>bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="34"/>
+        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="66"/>
+        <source>KiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="37"/>
+        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="72"/>
+        <source>MiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="40"/>
+        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="78"/>
+        <source>GiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="43"/>
+        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="84"/>
+        <source>TiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="52"/>
+        <source>byte/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="58"/>
+        <source>bytes/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="68"/>
+        <source>KiB/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="74"/>
+        <source>MiB/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="80"/>
+        <source>GiB/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="86"/>
+        <source>TiB/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="154"/>
         <source>User name:</source>
         <translation type="unfinished"></translation>
@@ -2739,6 +2664,81 @@ Are you sure to continue?</source>
     <message>
         <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="154"/>
         <source>Started Time:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/util.cpp" line="207"/>
+        <source>Running</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/util.cpp" line="211"/>
+        <source>Stopped</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/util.cpp" line="215"/>
+        <source>Zombie</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/util.cpp" line="219"/>
+        <source>Uninterruptible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/util.cpp" line="223"/>
+        <source>Sleeping</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/util.cpp" line="233"/>
+        <source>Very High</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/util.cpp" line="235"/>
+        <source>High</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/util.cpp" line="237"/>
+        <source>Normal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/util.cpp" line="239"/>
+        <source>Low</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/util.cpp" line="241"/>
+        <source>Very Low</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/util.cpp" line="247"/>
+        <source>Very High Priority</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/util.cpp" line="249"/>
+        <source>High Priority</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/util.cpp" line="251"/>
+        <source>Normal Priority</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/util.cpp" line="253"/>
+        <source>Low Priority</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/systemmonitor/util.cpp" line="255"/>
+        <source>Very Low Priority</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2929,14 +2929,14 @@ Are you sure to continue?</source>
 <context>
     <name>StartupWorker</name>
     <message>
-        <location filename="../../plugins/startupmanager/startupworker.cpp" line="402"/>
-        <source>No name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../plugins/startupmanager/startupworker.cpp" line="375"/>
         <location filename="../../plugins/startupmanager/startupworker.cpp" line="407"/>
         <source>No description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/startupmanager/startupworker.cpp" line="402"/>
+        <source>No name</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

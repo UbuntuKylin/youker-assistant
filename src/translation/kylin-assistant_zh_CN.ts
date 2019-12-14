@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -258,7 +258,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <source>Cleanup  cache of system, software-center, thumbnails and browser</source>
-        <translation type="vanished">清除包、缩略图和浏览器缓存等</translation>
+        <translation type="obsolete">清除包、缩略图和浏览器缓存等</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="113"/>
@@ -282,7 +282,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <source>Clean up user login information, support Firefox and Chromium browser</source>
-        <translation type="vanished">清除上网、游戏、购物等记录</translation>
+        <translation type="obsolete">清除上网、游戏、购物等记录</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="115"/>
@@ -321,7 +321,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <source>Cleaning the internet and opened documents recently records</source>
-        <translation type="vanished">清除浏览器和系统使用痕迹</translation>
+        <translation type="obsolete">清除浏览器和系统使用痕迹</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="146"/>
@@ -1046,11 +1046,11 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <source>Start Scan</source>
-        <translation type="vanished">开始扫描</translation>
+        <translation type="obsolete">开始扫描</translation>
     </message>
     <message>
         <source>Start Cleanup</source>
-        <translation type="vanished">开始清理</translation>
+        <translation type="obsolete">开始清理</translation>
     </message>
     <message>
         <location filename="../maintopwidget.cpp" line="355"/>
@@ -1077,7 +1077,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <source>Regular cleaning, let your computer remains the relaxed state</source>
-        <translation type="vanished">经常清理，让电脑保持最轻松的状态</translation>
+        <translation type="obsolete">经常清理，让电脑保持最轻松的状态</translation>
     </message>
     <message>
         <location filename="../maintopwidget.cpp" line="353"/>
@@ -1368,11 +1368,11 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <source>You can perform a full range of customized systems based on personal preferences</source>
-        <translation type="vanished">您可以根据个人喜好对系统进行全方位的定制</translation>
+        <translation type="obsolete">您可以根据个人喜好对系统进行全方位的定制</translation>
     </message>
     <message>
         <source>Provide a practical and lightweight tool, create fast and convenient experience for you</source>
-        <translation type="vanished">提供轻巧使用工具，为您打造快捷方便的体验</translation>
+        <translation type="obsolete">提供轻巧使用工具，为您打造快捷方便的体验</translation>
     </message>
 </context>
 <context>
@@ -1487,7 +1487,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <source>Feature</source>
-        <translation type="vanished">系统美化</translation>
+        <translation type="obsolete">系统美化</translation>
     </message>
     <message>
         <location filename="../middlewidget.cpp" line="47"/>
