@@ -1,3 +1,2 @@
 /usr/lib/python3/dist-packages/kylin-assistant-daemon/src/start_systemdbus.py  /usr/bin/kylin-assistant-backend.py
 /usr/lib/python3/dist-packages/kylin-assistant-daemon/src/start_sessiondbus.py  /usr/bin/kylin-assistant-session.py
-/usr/bin/youker-assistant  /usr/bin/kylin-assistant

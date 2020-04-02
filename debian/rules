@@ -15,7 +15,7 @@ override_dh_auto_configure:
 		kylin-assistant.pro
 
 %:
-	dh $@ --with python3
+	dh $@ 
 
 override_dh_install:
 	./autogen.sh

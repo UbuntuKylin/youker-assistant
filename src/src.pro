@@ -3,7 +3,7 @@
 # Project created by QtCreator 2015-01-21T08:48:08
 #
 #-------------------------------------------------
-TARGET = youker-assistant
+TARGET = kylin-assistant
 DESTDIR = ../
 TEMPLATE = app
 CONFIG += c++11
