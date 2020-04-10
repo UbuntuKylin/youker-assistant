@@ -25,8 +25,8 @@ from single import SingleInstance
 #import gobject
 
 ## fixs bug embedded null byte on 1804 start_sessiondbus.py
-#import locale
-#locale.setlocale(locale.LC_ALL, 'C.UTF-8')
+import locale
+locale.setlocale(locale.LC_ALL, 'C.UTF-8')
 
 
 if __name__ == '__main__':
