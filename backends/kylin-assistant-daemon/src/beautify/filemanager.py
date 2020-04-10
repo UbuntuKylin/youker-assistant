@@ -51,12 +51,12 @@ class FileManager:
         if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.get('org.mate.peony.preferences',
                 None, 'always-use-location-entry', 'boolean')
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.ukui.peony.preferences',
-                None, 'always-use-location-entry', 'boolean')
-        else:
-            return gsettings.get('org.gnome.nautilus.preferences',
-                None, 'always-use-location-entry', 'boolean')
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.get('org.ukui.peony.preferences',
+#                None, 'always-use-location-entry', 'boolean')
+#        else:
+#            return gsettings.get('org.gnome.nautilus.preferences',
+#                None, 'always-use-location-entry', 'boolean')
 
     # Set: Use the location entry instead of the pathbar
     def set_location_replace_pathbar(self, flag):
@@ -67,16 +67,16 @@ class FileManager:
                 None,
                 'always-use-location-entry',
                 'boolean', flag)
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.ukui.peony.preferences',
-                None,
-                'always-use-location-entry',
-                'boolean', flag)
-        else:
-            return gsettings.set('org.gnome.nautilus.preferences',
-                None,
-                'always-use-location-entry',
-                'boolean', flag)
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.set('org.ukui.peony.preferences',
+#                None,
+#                'always-use-location-entry',
+#                'boolean', flag)
+#        else:
+#            return gsettings.set('org.gnome.nautilus.preferences',
+#                None,
+#                'always-use-location-entry',
+#                'boolean', flag)
 
     # -----------------自动挂载媒体-----------------
     # Get: Automatically mount media
@@ -84,9 +84,9 @@ class FileManager:
         if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.get('org.mate.media-handling',
                 None, 'automount', 'boolean')
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.ukui.media-handling',
-                None, 'automount', 'boolean')
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.get('org.ukui.media-handling',
+#                None, 'automount', 'boolean')
         else:
             return gsettings.get('org.gnome.desktop.media-handling',
                 None, 'automount', 'boolean')
@@ -98,11 +98,11 @@ class FileManager:
                 None,
                 'automount',
                 'boolean', flag)
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.ukui.media-handling',
-                None,
-                'automount',
-                'boolean', flag)
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.set('org.ukui.media-handling',
+#                None,
+#                'automount',
+#                'boolean', flag)
         else:
             return gsettings.set('org.gnome.desktop.media-handling',
                 None,
@@ -115,9 +115,9 @@ class FileManager:
         if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.get('org.mate.media-handling',
                 None, 'automount-open', 'boolean')
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.ukui.media-handling',
-                None, 'automount-open', 'boolean')
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.get('org.ukui.media-handling',
+#                None, 'automount-open', 'boolean')
         else:
             return gsettings.get('org.gnome.desktop.media-handling',
                 None, 'automount-open', 'boolean')
@@ -129,11 +129,11 @@ class FileManager:
                 None,
                 'automount-open',
                 'boolean', flag)
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.ukui.media-handling',
-                None,
-                'automount-open',
-                'boolean', flag)
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.set('org.ukui.media-handling',
+#                None,
+#                'automount-open',
+#                'boolean', flag)
         else:
             return gsettings.set('org.gnome.desktop.media-handling',
                 None,
@@ -146,9 +146,9 @@ class FileManager:
         if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.get('org.mate.media-handling',
                 None, 'autorun-never', 'boolean')
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.ukui.media-handling',
-                None, 'autorun-never', 'boolean')
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.get('org.ukui.media-handling',
+#                None, 'autorun-never', 'boolean')
         else:
             return gsettings.get('org.gnome.desktop.media-handling',
                 None, 'autorun-never', 'boolean')
@@ -160,11 +160,11 @@ class FileManager:
                 None,
                 'autorun-never',
                 'boolean', flag)
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.ukui.media-handling',
-                None,
-                'autorun-never',
-                'boolean', flag)
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.set('org.ukui.media-handling',
+#                None,
+#                'autorun-never',
+#                'boolean', flag)
         else:
             return gsettings.set('org.gnome.desktop.media-handling',
                 None,
@@ -177,12 +177,12 @@ class FileManager:
         if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.get('org.mate.peony.icon-view',
                 None, 'thumbnail-size', 'int')
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.ukui.peony.icon-view',
-                None, 'thumbnail-size', 'int')
-        else:
-            return gsettings.get('org.gnome.nautilus.icon-view',
-                None, 'thumbnail-size', 'int')
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.get('org.ukui.peony.icon-view',
+#                None, 'thumbnail-size', 'int')
+#        else:
+#            return gsettings.get('org.gnome.nautilus.icon-view',
+#                None, 'thumbnail-size', 'int')
 
     # Set: Thumbnail icon size (pixels)
     def set_thumbnail_icon_size(self, size):
@@ -191,16 +191,16 @@ class FileManager:
                 None,
                 'thumbnail-size',
                 'int', size)
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.ukui.peony.icon-view',
-                None,
-                'thumbnail-size',
-                'int', size)
-        else:
-            return gsettings.set('org.gnome.nautilus.icon-view',
-                None,
-                'thumbnail-size',
-                'int', size)
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.set('org.ukui.peony.icon-view',
+#                None,
+#                'thumbnail-size',
+#                'int', size)
+#        else:
+#            return gsettings.set('org.gnome.nautilus.icon-view',
+#                None,
+#                'thumbnail-size',
+#                'int', size)
 
     # -----------------缩略图缓存时间（天数） min=-1, max=180, step=1, default=180-----------------
     # Get: Thumbnail cache time (days)

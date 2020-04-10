@@ -151,7 +151,7 @@ class Theme:
     # get current cursor theme
     def get_cursor_theme(self):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.mate.peripherals-mouse',
+            return gsettings.get('org.ukui.peripherals-mouse',
                 None, 'cursor-theme', 'string')
         else:
             return gsettings.get('org.gnome.desktop.interface',
@@ -160,7 +160,7 @@ class Theme:
     # set cursor theme
     def set_cursor_theme(self, theme):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            gstheme = gsettings.get_schema('org.mate.peripherals-mouse')
+            gstheme = gsettings.get_schema('org.ukui.peripherals-mouse')
             gstheme.set_string('cursor-theme', theme)
         else:
             gstheme = gsettings.get_schema('org.gnome.desktop.interface')
@@ -179,7 +179,7 @@ class Theme:
     # get cursor size
     def get_cursor_size(self):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.mate.peripherals-mouse',
+            return gsettings.get('org.ukui.peripherals-mouse',
                 None, 'cursor-size', 'int')
         else:
             return gsettings.get('org.gnome.desktop.interface',
@@ -188,7 +188,7 @@ class Theme:
     # set cursor size
     def set_cursor_size(self, size):
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            gstheme = gsettings.get_schema('org.mate.peripherals-mouse')
+            gstheme = gsettings.get_schema('org.ukui.peripherals-mouse')
             gstheme.set_int('cursor-size', size)
         else:
             gstheme = gsettings.get_schema('org.gnome.desktop.interface')
@@ -225,9 +225,9 @@ class Theme:
         if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.get('org.mate.peony.desktop',
                 None, 'font', 'string')
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.ukui.peony.desktop',
-                None, 'font', 'string')
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.get('org.ukui.peony.desktop',
+#                None, 'font', 'string')
         else:
             return gsettings.get('org.gnome.nautilus.desktop',
                 None, 'font', 'string')
@@ -239,11 +239,11 @@ class Theme:
                 None,
                 'font',
                 'string', font)
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.ukui.peony.desktop',
-                None,
-                'font',
-                'string', font)
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.set('org.ukui.peony.desktop',
+#                None,
+#                'font',
+#                'string', font)
         else:
             return gsettings.set('org.gnome.nautilus.desktop',
                 None,

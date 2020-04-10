@@ -71,19 +71,19 @@ class Desktop:
                 None,
                 'computer-icon-visible',
                 'boolean', flag)
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.ukui.peony.desktop',
-                None,
-                'computer-icon-visible',
-                'boolean', flag)
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.set('org.ukui.peony.desktop',
+#                None,
+#                'computer-icon-visible',
+#                'boolean', flag)
 
     def get_show_computer(self):
         if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.get('org.mate.peony.desktop',
                 None, 'computer-icon-visible', 'boolean')
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.ukui.peony.desktop',
-                None, 'computer-icon-visible', 'boolean')
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.get('org.ukui.peony.desktop',
+#                None, 'computer-icon-visible', 'boolean')
 
     # show home folder
     def set_show_homefolder(self, flag):
@@ -92,11 +92,11 @@ class Desktop:
                 None,
                 'home-icon-visible',
                 'boolean', flag)
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.ukui.peony.desktop',
-                None,
-                'home-icon-visible',
-                'boolean', flag)
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.set('org.ukui.peony.desktop',
+#                None,
+#                'home-icon-visible',
+#                'boolean', flag)
         else:
             return gsettings.set('org.gnome.nautilus.desktop',
                 None,
@@ -108,21 +108,21 @@ class Desktop:
         if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.get('org.mate.peony.desktop',
                 None, 'home-icon-visible', 'boolean')
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.ukui.peony.desktop',
-                None, 'home-icon-visible', 'boolean')
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.get('org.ukui.peony.desktop',
+#                None, 'home-icon-visible', 'boolean')
         else:
             return gsettings.get('org.gnome.nautilus.desktop',
                 None, 'home-icon-visible', 'boolean')
 
     # show network
     def set_show_network(self, flag):
-        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.ukui.peony.desktop',
-                None,
-                'network-icon-visible',
-                'boolean', flag)
-        else:
+#        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.set('org.ukui.peony.desktop',
+#                None,
+#                'network-icon-visible',
+#                'boolean', flag)
+#        else:
             return gsettings.set('org.gnome.nautilus.desktop',
                 None,
                 'network-icon-visible',
@@ -133,9 +133,9 @@ class Desktop:
         if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.get('org.mate.peony.desktop',
                 None, 'network-icon-visible', 'boolean')
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.ukui.peony.desktop',
-                None, 'network-icon-visible', 'boolean')
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.get('org.ukui.peony.desktop',
+#                None, 'network-icon-visible', 'boolean')
         else:
             return gsettings.get('org.gnome.nautilus.desktop',
                 None, 'network-icon-visible', 'boolean')
@@ -147,11 +147,11 @@ class Desktop:
                 None,
                 'trash-icon-visible',
                 'boolean', flag)
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.ukui.peony.desktop',
-                None,
-                'trash-icon-visible',
-                'boolean', flag)
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.set('org.ukui.peony.desktop',
+#                None,
+#                'trash-icon-visible',
+#                'boolean', flag)
         else:
             return gsettings.set('org.gnome.nautilus.desktop',
                 None,
@@ -163,9 +163,9 @@ class Desktop:
         if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.get('org.mate.peony.desktop',
                 None, 'trash-icon-visible', 'boolean')
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.ukui.peony.desktop',
-                None, 'trash-icon-visible', 'boolean')
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.get('org.ukui.peony.desktop',
+#                None, 'trash-icon-visible', 'boolean')
         else:
             return gsettings.get('org.gnome.nautilus.desktop',
                 None, 'trash-icon-visible', 'boolean')
@@ -177,11 +177,11 @@ class Desktop:
                 None,
                 'volumes-visible',
                 'boolean', flag)
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.ukui.peony.desktop',
-                None,
-                'volumes-visible',
-                'boolean', flag)
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.set('org.ukui.peony.desktop',
+#                None,
+#                'volumes-visible',
+#                'boolean', flag)
         else:
             return gsettings.set('org.gnome.nautilus.desktop',
                 None,
@@ -193,9 +193,9 @@ class Desktop:
         if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.get('org.mate.peony.desktop',
                 None, 'volumes-visible', 'boolean')
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.ukui.peony.desktop',
-                None, 'volumes-visible', 'boolean')
+#        elif self.desktop == "ukui" or self.desktop == "UKUI":
+#            return gsettings.get('org.ukui.peony.desktop',
+#                None, 'volumes-visible', 'boolean')
         else:
             return gsettings.get('org.gnome.nautilus.desktop',
                 None, 'volumes-visible', 'boolean')
