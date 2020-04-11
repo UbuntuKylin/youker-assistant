@@ -336,13 +336,6 @@ class Unity:
                         '/org/ukui/panel/toplevels/top/',
                         'size',
                         'int', size)
-            elif position == "bottom":
-                return gsettings.set('org.ukui.panel.toplevel',
-                        '/org/ukui/panel/toplevels/bottom/',
-                        'size',
-                        'int', size)
-            else:
-                return False
 
     # get launcher icon size
     def get_mate_panel_icon_size(self, position):
@@ -357,17 +350,6 @@ class Unity:
                         'size', 'int')
             else:
                 return False 
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            if position == "top":
-                return gsettings.get('org.ukui.panel.toplevel',
-                        '/org/ukui/panel/toplevels/top/',
-                        'size', 'int')
-            elif position == "bottom":
-                return gsettings.get('org.ukui.panel.toplevel',
-                        '/org/ukui/panel/toplevels/bottom/',
-                        'size', 'int')
-            else:
-                return False
 
 
     def set_mate_panel_autohide(self, position, flag):
@@ -380,19 +362,6 @@ class Unity:
             elif position == "bottom":
                 return gsettings.set('org.mate.panel.toplevel',
                         '/org/mate/panel/toplevels/bottom/',
-                        'auto-hide',
-                        'boolean', flag)
-            else:
-                return False
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            if position == "top":
-                return gsettings.set('org.ukui.panel.toplevel',
-                        '/org/ukui/panel/toplevels/top/',
-                        'auto-hide',
-                        'boolean', flag)
-            elif position == "bottom":
-                return gsettings.set('org.ukui.panel.toplevel',
-                        '/org/ukui/panel/toplevels/bottom/',
                         'auto-hide',
                         'boolean', flag)
             else:
@@ -410,38 +379,18 @@ class Unity:
                         'auto-hide', 'boolean')
             else:
                 return False
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            if position == "top":
-                return gsettings.get('org.ukui.panel.toplevel',
-                        '/org/ukui/panel/toplevels/top/',
-                        'auto-hide', 'boolean')
-            elif position == "bottom":
-                return gsettings.get('org.ukui.panel.toplevel',
-                        '/org/ukui/panel/toplevels/bottom/',
-                        'auto-hide', 'boolean')
-            else:
-                return False
 
     def get_show_apps(self):
         if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.get('org.mate.panel.menubar', None, 'show-applications', 'boolean')
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.ukui.panel.menubar', None, 'show-applications', 'boolean')
 
     def set_show_apps(self, flag):
         if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.set('org.mate.panel.menubar', None, 'show-applications', 'boolean', flag)
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.ukui.panel.menubar', None, 'show-applications', 'boolean', flag)
 
     def get_show_desktop(self):
         if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.get('org.mate.panel.menubar', 
-                    None, 
-                    'show-desktop', 
-                    'boolean')
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.ukui.panel.menubar', 
                     None, 
                     'show-desktop', 
                     'boolean')
@@ -452,20 +401,10 @@ class Unity:
                     None,
                     'show-desktop',
                     'boolean', flag)
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.ukui.panel.menubar',
-                    None,
-                    'show-desktop',
-                    'boolean', flag)
 
     def get_show_icon(self):
         if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.get('org.mate.panel.menubar',
-                    None,
-                    'show-icon',
-                    'boolean')
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.ukui.panel.menubar',
                     None,
                     'show-icon',
                     'boolean')
@@ -476,11 +415,6 @@ class Unity:
                     None,
                     'show-icon',
                     'boolean', flag)
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.ukui.panel.menubar',
-                    None,
-                    'show-icon',
-                    'boolean', flag)
 
     def get_show_places(self):
         if self.desktop == "mate" or self.desktop == "MATE":
@@ -488,20 +422,10 @@ class Unity:
                     None,
                     'show-places',
                     'boolean')
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.get('org.ukui.panel.menubar',
-                    None,
-                    'show-places',
-                    'boolean')
 
     def set_show_places(self, flag):
         if self.desktop == "mate" or self.desktop == "MATE":
             return gsettings.set('org.mate.panel.menubar',
-                    None,
-                    'show-places', 
-                    'boolean', flag)
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            return gsettings.set('org.ukui.panel.menubar',
                     None,
                     'show-places', 
                     'boolean', flag)
