@@ -1,14 +1,29 @@
+youker-assistant (3.0.2-0ubuntu1) focal; urgency=medium
+
+  * New bugfix release:
+    - Remove the non-existent gsettings and fix wrong gsettings.
+
+ -- handsome_feng <jianfengli@ubuntukylin.com>  Sun, 12 Apr 2020 16:29:46 +0800
+
+youker-assistant (3.0.1-0ubuntu3) focal; urgency=medium
+
+  * Build-depend on dh-python to fix FTBFS.
+  * Fix maintainer information.
+
+ -- Logan Rosen <logan@ubuntu.com>  Mon, 09 Mar 2020 23:03:30 -0400
+
+youker-assistant (3.0.1-0ubuntu2) focal; urgency=medium
+
+  * No-change rebuild to build with python3.8.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 25 Jan 2020 04:41:30 +0000
+
 youker-assistant (3.0.1-0ubuntu1) disco; urgency=medium
 
   * Fix that the shred manager failed to show directory. (LP: #1764902)
   * Fix the error when set autostart items. (LP: #1764906)
   * Fix the bug cleaning action seized up. (LP: #1768451)
   * Fix the build error on disco.
-  * youker-assistant & ukui-control-center conformity, remove function of
-    beautify. (LP: #1755656)
-  * youker-assistant & ukui-control-center conformity, remove function of
-    startup
-  * correct syntax errors
 
  -- handsome_feng <jianfengli@ubuntukylin.com>  Mon, 25 Feb 2019 11:31:03 +0800
 
