@@ -4,6 +4,7 @@ youker-assistant (3.0.2-0ubuntu1) focal; urgency=medium
     - Remove the non-existent gsettings and fix wrong gsettings.
     - Fix the spelling errors.
     - Remove unused po files and manpage.
+    - Remove a useless setting page.
     - Update some string.
   * debian:
     - Bump standards-version to 4.5.0.
