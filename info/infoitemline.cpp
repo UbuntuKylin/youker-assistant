@@ -157,7 +157,7 @@ inline const QString covertKeyName(const QString &key)
     else if(key == "hostname")
         return QString(QObject::tr("Host Name"));
     else if(key == "ram")
-        return QString(QObject::tr("Memery Capacity"));
+        return QString(QObject::tr("Memory Capacity"));
     else if(key == "terminal")
         return QString(QObject::tr("Terminal"));
     else if(key == "distribution")//发行版

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -2204,9 +2204,13 @@ Are you sure to continue?</source>
         <translation>主机名</translation>
     </message>
     <message>
+        <source>Memory Capacity</source>
+        <translation type="vanished">内存容量</translation>
+    </message>
+    <message>
         <location filename="../../info/infoitemline.cpp" line="160"/>
-        <source>Memery Capacity</source>
-        <translation>内存容量</translation>
+        <source>Memory Capacity</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="162"/>
