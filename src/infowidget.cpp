@@ -211,18 +211,7 @@ void InfoWidget::onSendSystemInfo(QMap<QString, QVariant> tmpMap)
             }
         }
         if(sys_info_map.isEmpty() || sys_info_map.count() <= 0) {
-            for (int i = 0; i < stacked_widget->count(); i++) {
-                if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
-                    if (page->infoGuiName().isEmpty() || page->infoGuiName().isNull())
-                        continue;
-                    if (page->infoGuiName() == "computer") {
-                        page->clearWidget();
-                        page->loaderrorPage(0);
-                        break;
-                    }
-                }
-            }
-//            return;
+            return;
         }
         else {
             for (int i = 0; i < stacked_widget->count(); i++) {
@@ -276,18 +265,7 @@ void InfoWidget::onSendDesktopInfo(QMap<QString, QVariant> tmpMap)
             }
         }
         if(desktop_info_map.isEmpty() || desktop_info_map.count() <= 0) {
-            for (int i = 0; i < stacked_widget->count(); i++) {
-                if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
-                    if (page->infoGuiName().isEmpty() || page->infoGuiName().isNull())
-                        continue;
-                    if (page->infoGuiName() == "unity") {
-                        page->clearWidget();
-                        page->loaderrorPage(0);
-                        break;
-                    }
-                }
-            }
-//            return;
+            return;
         }
         else {
             for (int i = 0; i < stacked_widget->count(); i++) {
@@ -322,18 +300,7 @@ void InfoWidget::onSendCpuInfo(QMap<QString, QVariant> tmpMap)
             }
         }
         if(cpu_info_map.isEmpty() || cpu_info_map.count() <= 0) {
-            for (int i = 0; i < stacked_widget->count(); i++) {
-                if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
-                    if (page->infoGuiName().isEmpty() || page->infoGuiName().isNull())
-                        continue;
-                    if (page->infoGuiName() == "cpu") {
-                        page->clearWidget();
-                        page->loaderrorPage(0);
-                        break;
-                    }
-                }
-            }
-//            return;
+            return;
         }
         else {
             for (int i = 0; i < stacked_widget->count(); i++) {
@@ -363,7 +330,6 @@ void InfoWidget::onSendMemoryInfo(QMap<QString, QVariant> tmpMap)
         else{
             memoryNum = iter.value().toInt();
         }
-
         if(memoryNum > 0) {
             if(memoryNum == 1) {
                 tmpMap.remove("Memnum");
@@ -374,9 +340,9 @@ void InfoWidget::onSendMemoryInfo(QMap<QString, QVariant> tmpMap)
                         memory_info_map.insert(it.key(), it.value());
                     }
                 }
-//                if (memory_info_map.isEmpty()) {
-//                    return;
-//                }
+                if (memory_info_map.isEmpty()) {
+                    return;
+                }
 
                 for (int i = 0; i < stacked_widget->count(); i++) {
                     if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
@@ -433,20 +399,6 @@ void InfoWidget::onSendMemoryInfo(QMap<QString, QVariant> tmpMap)
                 }
             }
         }
-        else{
-            for (int i = 0; i < stacked_widget->count(); i++) {
-                if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
-                    if (page->infoGuiName().isEmpty() || page->infoGuiName().isNull())
-                        continue;
-                    if (page->infoGuiName() == "memory") {
-                        page->clearWidget();
-                        page->loaderrorPage(0);
-                        break;
-                    }
-                }
-            }
-
-        }
     }
 }
 
@@ -462,18 +414,7 @@ void InfoWidget::onSendBoardInfo(QMap<QString, QVariant> tmpMap)
             }
         }
         if(board_info_map.isEmpty() || board_info_map.count() <= 0) {
-            for (int i = 0; i < stacked_widget->count(); i++) {
-                if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
-                    if (page->infoGuiName().isEmpty() || page->infoGuiName().isNull())
-                        continue;
-                    if (page->infoGuiName() == "board") {
-                        page->clearWidget();
-                        page->loaderrorPage(0);
-                        break;
-                    }
-                }
-            }
-//            return;
+            return;
         }
         else {
             for (int i = 0; i < stacked_widget->count(); i++) {
@@ -578,19 +519,6 @@ void InfoWidget::onSendHDInfo(QMap<QString, QVariant> tmpMap)
                 }
             }
         }
-        else{
-            for (int i = 0; i < stacked_widget->count(); i++) {
-                if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
-                    if (page->infoGuiName().isEmpty() || page->infoGuiName().isNull())
-                        continue;
-                    if (page->infoGuiName() == "harddisk") {
-                        page->clearWidget();
-                        page->loaderrorPage(0);
-                        break;
-                    }
-                }
-            }
-        }
     }
 }
 
@@ -690,19 +618,6 @@ void InfoWidget::onSendNicInfo(QMap<QString, QVariant> tmpMap)
                 }
             }
         }
-        else{
-            for (int i = 0; i < stacked_widget->count(); i++) {
-                if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
-                    if (page->infoGuiName().isEmpty() || page->infoGuiName().isNull())
-                        continue;
-                    if (page->infoGuiName() == "network") {
-                        page->clearWidget();
-                        page->loaderrorPage(0);
-                        break;
-                    }
-                }
-            }
-        }
     }
 }
 
@@ -784,19 +699,6 @@ void InfoWidget::onSendMonitorInfo(QMap<QString, QVariant> tmpMap)
                         }
                     }
                     monitor_info_map.clear();
-                }
-            }
-        }
-        else{
-            for (int i = 0; i < stacked_widget->count(); i++) {
-                if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
-                    if (page->infoGuiName().isEmpty() || page->infoGuiName().isNull())
-                        continue;
-                    if (page->infoGuiName() == "monitor") {
-                        page->clearWidget();
-                        page->loaderrorPage(0);
-                        break;
-                    }
                 }
             }
         }
@@ -884,19 +786,6 @@ void InfoWidget::onSendAudioInfo(QMap<QString, QVariant> tmpMap)
                 }
             }
         }
-        else{
-            for (int i = 0; i < stacked_widget->count(); i++) {
-                if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
-                    if (page->infoGuiName().isEmpty() || page->infoGuiName().isNull())
-                        continue;
-                    if (page->infoGuiName() == "audio") {
-                        page->clearWidget();
-                        page->loaderrorPage(0);
-                        break;
-                    }
-                }
-            }
-        }
     }
 }
 
@@ -927,18 +816,7 @@ void InfoWidget::onSendBatteryInfo(QMap<QString, QVariant> tmpMap)
             }
         }
         if(battery_info_map.isEmpty() || battery_info_map.count() <= 0) {
-            for (int i = 0; i < stacked_widget->count(); i++) {
-                if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
-                    if (page->infoGuiName().isEmpty() || page->infoGuiName().isNull())
-                        continue;
-                    if (page->infoGuiName() == "battery") {
-                        page->clearWidget();
-                        page->loaderrorPage(0);
-                        break;
-                    }
-                }
-            }
-//            return;
+            return;
         }
 
         //vendor:battery_info_map.value("POWER_SUPPLY_MANUFACTURER").toString().toUpper()
@@ -968,18 +846,7 @@ void InfoWidget::onSendSensorInfo(QMap<QString, QVariant> tmpMap)
             }
         }
         if (sensor_info_map.isEmpty() || sensor_info_map.count() <= 0) {
-            for (int i = 0; i < stacked_widget->count(); i++) {
-                if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
-                    if (page->infoGuiName().isEmpty() || page->infoGuiName().isNull())
-                        continue;
-                    if (page->infoGuiName() == "sensor") {
-                        page->clearWidget();
-                        page->loaderrorPage(0);
-                        break;
-                    }
-                }
-            }
-//            return;
+            return;
         }
         for (int i = 0; i < stacked_widget->count(); i++) {
             if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
