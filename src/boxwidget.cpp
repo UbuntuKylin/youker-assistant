@@ -154,6 +154,17 @@ void BoxWidget::initPluginWidget()
     //set icon
     pluginModel.setData(qindex,QIcon(QPixmap("://res/ubuntukylin-software-center.png")),Qt::DecorationRole);
 
+    if (QFileInfo("/usr/bin/systemmonitor").exists()) {
+        pluginModel.insertRows(1,1,QModelIndex());
+        QModelIndex qindex1 = pluginModel.index(1,0,QModelIndex());
+        pluginModel.setData(qindex1, tr("systemmonitor"));
+        //set tooltip
+        pluginModel.setData(qindex1, tr("systemmonitor"),Qt::WhatsThisRole);
+
+        //set icon
+        pluginModel.setData(qindex1,QIcon(QPixmap("://res/processmanager.png")),Qt::DecorationRole);
+        rows=rows+1;
+     }
 //    QStringList icon_list;
 //    //icon_list<<"://res/boot"<<"://res/camera";
 //    icon_list<<"://res/boot";
@@ -180,8 +191,8 @@ void BoxWidget::initPluginWidget()
         pluginModel.setGuid(ICommon->getGuid());
 //        pluginModel.insertRows(i + 1,1,QModelIndex());
 //        qindex = pluginModel.index(i + 1,0,QModelIndex());
-        pluginModel.insertRows(i + 1,1,QModelIndex());
-        qindex = pluginModel.index(i + 1,0,QModelIndex());
+        pluginModel.insertRows(i + rows,1,QModelIndex());
+        qindex = pluginModel.index(i + rows,0,QModelIndex());
         pluginModel.setData(qindex,ICommon->getName());
         pluginModel.setData(qindex,QIcon(QPixmap(pacture_path)),Qt::DecorationRole);
         pluginModel.setData(qindex,ICommon->getName(),Qt::WhatsThisRole);
@@ -220,9 +231,30 @@ void BoxWidget::OnClickListView(const QModelIndex & index)
 //        else
 //            emit this->sendSubIndex(1);
 //    }
+    else if(index.row() == 1)
+    {
+        if(rows == 2)
+        {
+            if (QFileInfo("/usr/bin/systemmonitor").exists()) {
+                QProcess process;
+                process.start("/usr/bin/systemmonitor");
+                process.waitForStarted(1000);
+                process.waitForFinished(20*1000);
+            }
+            else {
+                emit this->pluginModuleError(tr("No systemmonitor was found!"));
+            }
+        }
+        else
+        {
+            QString guid = pluginModel.getGuid(index.row() - rows);
+            PluginInterface* interface = PluginManager::Instance()->getInterfaceByGuid<PluginInterface>(guid);
+            interface->doAction();
+        }
+    }
     else {
 //        QString guid = pluginModel.getGuid(index.row() - 1);
-        QString guid = pluginModel.getGuid(index.row() - 1);
+        QString guid = pluginModel.getGuid(index.row() - rows);
         PluginInterface* interface = PluginManager::Instance()->getInterfaceByGuid<PluginInterface>(guid);
         interface->doAction();
     }

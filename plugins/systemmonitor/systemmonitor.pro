@@ -18,7 +18,7 @@ PKGCONFIG += libgtop-2.0 libsystemd
 #gio-2.0
 #LIBS +=-lgio-2.0 -lglib-2.0
 
-target.path = $${PREFIX}/lib/kylin-assistant/plugins/
+#target.path = $${PREFIX}/lib/kylin-assistant/plugins/
 INSTALLS += target
 
 unix {

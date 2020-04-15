@@ -56,6 +56,7 @@ private:
     QString osname;
     QString osarch;
     QString plugin_path;
+    int rows=1;
 };
 
 #endif // BOXWIDGET_H
