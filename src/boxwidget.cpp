@@ -27,20 +27,24 @@
 #include <QProcess>
 #include <QFileInfo>
 
+#include <QStyleOption>
+#include <QPainter>
+
 BoxWidget::BoxWidget(QWidget *parent, QString arch, QString os, QString path) :
     QWidget(parent), osarch(arch), osname(os), plugin_path(path)
 //  ,m_pluginsLayout(new QStackedLayout)
 //  ,m_pluginsManager(new PluginManager(this))
 {
     this->setFixedSize(900, 403);
-    this->setStyleSheet("QWidget{border: none;}");
+    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:20px;border-bottom-left-radius:20px}");
     //set white background color
-    this->setAutoFillBackground(true);
-    QPalette palette;
-    palette.setBrush(QPalette::Window, QBrush(Qt::white));
-    this->setPalette(palette);
+//    this->setAutoFillBackground(true);
+//    QPalette palette;
+//    palette.setBrush(QPalette::Window, QBrush(Qt::white));
+//    this->setPalette(palette);
 
     list_view = new QListView(this);
+    list_view->setStyleSheet("background: transparent;");
 //    list_view = new KylinListView(this);
     list_view->setFocusPolicy(Qt::NoFocus);
     list_view->setAutoFillBackground(true);
@@ -154,7 +158,7 @@ void BoxWidget::initPluginWidget()
     //set icon
     pluginModel.setData(qindex,QIcon(QPixmap("://res/ubuntukylin-software-center.png")),Qt::DecorationRole);
 
-    if (QFileInfo("/usr/bin/systemmonitor").exists()) {
+    if (QFileInfo("/usr/bin/ukui-system-monitor").exists()) {
         pluginModel.insertRows(1,1,QModelIndex());
         QModelIndex qindex1 = pluginModel.index(1,0,QModelIndex());
         pluginModel.setData(qindex1, tr("systemmonitor"));
@@ -235,9 +239,9 @@ void BoxWidget::OnClickListView(const QModelIndex & index)
     {
         if(rows == 2)
         {
-            if (QFileInfo("/usr/bin/systemmonitor").exists()) {
+            if (QFileInfo("/usr/bin/ukui-system-monitor").exists()) {
                 QProcess process;
-                process.start("/usr/bin/systemmonitor");
+                process.start("/usr/bin/ukui-system-monitor");
                 process.waitForStarted(1000);
                 process.waitForFinished(20*1000);
             }
@@ -258,4 +262,12 @@ void BoxWidget::OnClickListView(const QModelIndex & index)
         PluginInterface* interface = PluginManager::Instance()->getInterfaceByGuid<PluginInterface>(guid);
         interface->doAction();
     }
+}
+
+
+void BoxWidget::paintEvent(QPaintEvent *e){
+    QStyleOption opt;
+    opt.init(this);
+    QPainter p(this);
+    style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }

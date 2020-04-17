@@ -38,10 +38,12 @@ public:
     ~BoxWidget();
     void loadPlugins();
     void initPluginWidget();
-
 signals:
     void sendSubIndex(int index);
     void pluginModuleError(const QString &info);
+
+protected:
+    void paintEvent(QPaintEvent * e);
 
 public slots:
   void OnClickListView(const QModelIndex & index);

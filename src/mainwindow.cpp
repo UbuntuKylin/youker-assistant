@@ -122,6 +122,34 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
     this->startDbusDaemon();
 }
 
+void MainWindow::paintEvent(QPaintEvent *event)
+{
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing);  // 反锯齿;
+    painter.setBrush(QColor(Qt::MaskInColor));
+    painter.setPen(Qt::transparent);
+    QPainterPath path;
+    path.setFillRule(Qt::OddEvenFill);
+    path.addRoundedRect(0,0,this->width(),this->height(),20,20);
+
+    path.addRect(0,0,this->width(),this->height());
+    painter.save();
+    painter.setCompositionMode(QPainter::CompositionMode_Clear);
+    painter.drawPath(path);
+    painter.restore();
+
+    QStyleOption opt;
+    opt.init(this);
+    style()->drawPrimitive(QStyle::PE_Widget, &opt, &painter, this);
+//    //也可用QPainterPath 绘制代替 painter.drawRoundedRect(rect, 15, 15);
+//    {
+//        QPainterPath painterPath;
+//        painterPath.addRoundedRect(rect, 15, 15);
+//        p.drawPath(painterPath);
+//    }
+    QWidget::paintEvent(event);
+}
+
 MainWindow::~MainWindow()
 {
 //    delete m_qSystemDbus;
@@ -180,6 +208,8 @@ void MainWindow::initWidgets()
 
     m_topStack = new QStackedWidget(this);
     m_bottomStack = new QStackedWidget(this);
+
+//    m_bottomStack->setStyleSheet("background: transparent; border-bottom-right-radius:20px;border-bottom-left-radius:20px");
 
     //top
     m_mainTopWidget = new MainTopWidget(true, mSettings, this);
@@ -260,6 +290,7 @@ void MainWindow::initWidgets()
     m_bottomStack->addWidget(box_widget);
 
     centralWidget = new QWidget;
+//    centralWidget->setStyleSheet("background: transparent");
     QVBoxLayout *contentLayout = new QVBoxLayout(centralWidget);
     this->setCentralWidget(centralWidget);
     this->setContentsMargins(SHADOW_LEFT_TOP_PADDING,SHADOW_LEFT_TOP_PADDING,SHADOW_RIGHT_BOTTOM_PADDING,SHADOW_RIGHT_BOTTOM_PADDING);

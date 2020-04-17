@@ -21,17 +21,20 @@
 #include <QVBoxLayout>
 #include <QDebug>
 #include "../component/utils.h"
+#include <QPainter>
+#include <QStyleOption>
 
 CleanerWidget::CleanerWidget(QWidget *parent) :
     QWidget(parent)
 {
     this->setFixedSize(900, 403);
     this->setWindowFlags(Qt::FramelessWindowHint | Qt::Widget);
+    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:20px;border-bottom-left-radius:20px}");
     //set white background color
     this->setAutoFillBackground(true);
-    QPalette palette;
-    palette.setBrush(QPalette::Window, QBrush(Qt::white));
-    this->setPalette(palette);
+//    QPalette palette;
+//    palette.setBrush(QPalette::Window, QBrush(Qt::white));
+//    this->setPalette(palette);
 
     statked_widget = new QStackedWidget(this);
     p_mainwindow = NULL;
@@ -70,6 +73,11 @@ void CleanerWidget::initUI(QString skin)
     connect(detail_widget, SIGNAL(startCleanSystem(QMap<QString,QVariant>)), this, SIGNAL(startCleanSystem(QMap<QString,QVariant>)));
     connect(this, SIGNAL(tellCleanerDetailData(QStringList)), detail_widget, SLOT(showReciveData(QStringList)));
     connect(this, SIGNAL(tellCleanerDetailStatus(QString)), detail_widget, SLOT(showReciveStatus(QString)));
+}
+
+void CleanerWidget::paintEvent(QPaintEvent *event)
+{
+
 }
 
 void CleanerWidget::resetSkin(QString skin)

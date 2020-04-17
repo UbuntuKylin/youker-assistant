@@ -24,6 +24,8 @@
 #include <QApplication>
 #include <QSignalMapper>
 #include <QDebug>
+#include <QPainter>
+#include <QStyleOption>
 
 MainBottomWidget::MainBottomWidget(QWidget *parent, QString arch, QString os/*, const QString &version*/) :
     QWidget(parent), osarch(arch), osname(os)
@@ -32,13 +34,14 @@ MainBottomWidget::MainBottomWidget(QWidget *parent, QString arch, QString os/*, 
 
     //set white background color
     this->setAutoFillBackground(true);
-    QPalette palette;
-    palette.setBrush(QPalette::Window, QBrush(Qt::white));
-    this->setPalette(palette);
+    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:20px;border-bottom-left-radius:20px}");
+//    QPalette palette;
+//    palette.setBrush(QPalette::Window, QBrush(Qt::white));
+//    this->setPalette(palette);
 
-////    QPixmap label_pixmap("");
-////    movie_label->setPixmap(label_pixmap);
-////    movie_label->setFixedSize(label_pixmap.size());
+//    QPixmap label_pixmap("");
+//    movie_label->setPixmap(label_pixmap);
+//    movie_label->setFixedSize(label_pixmap.size());
 
 //    scan_button->setFocusPolicy(Qt::NoFocus);
 //    QPixmap pixmap("://res/scan.png");
@@ -99,6 +102,14 @@ MainBottomWidget::MainBottomWidget(QWidget *parent, QString arch, QString os/*, 
     this->initConnect();
     this->setLanguage();
 
+}
+
+void MainBottomWidget::paintEvent(QPaintEvent *event)
+{
+    QStyleOption opt;
+    opt.init(this);
+    QPainter p(this);
+    style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }
 
 MainBottomWidget::~MainBottomWidget()
