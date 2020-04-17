@@ -57,7 +57,7 @@ public:
     void initContentLeftContent();
     void initActionRightContent();
     void initWidgets();
-
+    void paintEvent(QPaintEvent *);
 public slots:
     void onStartButtonClicked();
     void onCleanButtonClicked();

@@ -23,15 +23,18 @@
 
 #include <QDebug>
 #include <QPointer>
+#include <QPainter>
+#include <QStyleOption>
 
 InfoWidget::InfoWidget(QString machine, QWidget *parent) :
     QWidget(parent), arch(machine)
 {
     this->setFixedSize(900, 403);
     this->setAutoFillBackground(true);
-    QPalette palette;
-    palette.setBrush(QPalette::Window, QBrush(Qt::white));
-    this->setPalette(palette);
+    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:20px;border-bottom-left-radius:20px}");
+//    QPalette palette;
+//    palette.setBrush(QPalette::Window, QBrush(Qt::white));
+//    this->setPalette(palette);
 
     splitter = new QSplitter(this);
     splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -66,6 +69,11 @@ InfoWidget::~InfoWidget()
         }
         delete stacked_widget;
     }
+}
+
+void InfoWidget::paintEvent(QPaintEvent *event)
+{
+
 }
 
 void InfoWidget::initInfoUI(bool has_battery, bool has_sensor)

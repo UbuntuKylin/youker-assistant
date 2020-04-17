@@ -64,6 +64,7 @@ public slots:
     void onSendBatteryInfo(QMap<QString, QVariant> tmpMap);
     void onSendSensorInfo(QMap<QString, QVariant> tmpMap);
 //    void updateTimeValue();
+    void paintEvent(QPaintEvent *);
 
 signals:
     void emit_network_info(QMap<QString, QVariant> info);

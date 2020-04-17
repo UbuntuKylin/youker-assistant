@@ -40,6 +40,8 @@ public:
     void initUI(QString skin);
     void resetSkin(QString skin);
 
+    void paintEvent(QPaintEvent *);
+
 public slots:
     void displayDetailPage();
     void displayMainPage();

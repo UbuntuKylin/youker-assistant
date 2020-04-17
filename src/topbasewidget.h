@@ -46,6 +46,8 @@ public:
     void initActionRightContent();
     void initWidgets();
 
+    void paintEvent(QPaintEvent *);
+
 
 //    QString getModuleName() const;
 //    void setModuleName(const QString &name);

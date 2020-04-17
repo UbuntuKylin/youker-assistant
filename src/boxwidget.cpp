@@ -27,20 +27,24 @@
 #include <QProcess>
 #include <QFileInfo>
 
+#include <QStyleOption>
+#include <QPainter>
+
 BoxWidget::BoxWidget(QWidget *parent, QString arch, QString os, QString path) :
     QWidget(parent), osarch(arch), osname(os), plugin_path(path)
 //  ,m_pluginsLayout(new QStackedLayout)
 //  ,m_pluginsManager(new PluginManager(this))
 {
     this->setFixedSize(900, 403);
-    this->setStyleSheet("QWidget{border: none;}");
+    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:20px;border-bottom-left-radius:20px}");
     //set white background color
-    this->setAutoFillBackground(true);
-    QPalette palette;
-    palette.setBrush(QPalette::Window, QBrush(Qt::white));
-    this->setPalette(palette);
+//    this->setAutoFillBackground(true);
+//    QPalette palette;
+//    palette.setBrush(QPalette::Window, QBrush(Qt::white));
+//    this->setPalette(palette);
 
     list_view = new QListView(this);
+    list_view->setStyleSheet("background: transparent;");
 //    list_view = new KylinListView(this);
     list_view->setFocusPolicy(Qt::NoFocus);
     list_view->setAutoFillBackground(true);
@@ -154,6 +158,17 @@ void BoxWidget::initPluginWidget()
     //set icon
     pluginModel.setData(qindex,QIcon(QPixmap("://res/ubuntukylin-software-center.png")),Qt::DecorationRole);
 
+    if (QFileInfo("/usr/bin/ukui-system-monitor").exists()) {
+        pluginModel.insertRows(1,1,QModelIndex());
+        QModelIndex qindex1 = pluginModel.index(1,0,QModelIndex());
+        pluginModel.setData(qindex1, tr("systemmonitor"));
+        //set tooltip
+        pluginModel.setData(qindex1, tr("systemmonitor"),Qt::WhatsThisRole);
+
+        //set icon
+        pluginModel.setData(qindex1,QIcon(QPixmap("://res/processmanager.png")),Qt::DecorationRole);
+        rows=rows+1;
+     }
 //    QStringList icon_list;
 //    //icon_list<<"://res/boot"<<"://res/camera";
 //    icon_list<<"://res/boot";
@@ -180,8 +195,8 @@ void BoxWidget::initPluginWidget()
         pluginModel.setGuid(ICommon->getGuid());
 //        pluginModel.insertRows(i + 1,1,QModelIndex());
 //        qindex = pluginModel.index(i + 1,0,QModelIndex());
-        pluginModel.insertRows(i + 1,1,QModelIndex());
-        qindex = pluginModel.index(i + 1,0,QModelIndex());
+        pluginModel.insertRows(i + rows,1,QModelIndex());
+        qindex = pluginModel.index(i + rows,0,QModelIndex());
         pluginModel.setData(qindex,ICommon->getName());
         pluginModel.setData(qindex,QIcon(QPixmap(pacture_path)),Qt::DecorationRole);
         pluginModel.setData(qindex,ICommon->getName(),Qt::WhatsThisRole);
@@ -220,10 +235,39 @@ void BoxWidget::OnClickListView(const QModelIndex & index)
 //        else
 //            emit this->sendSubIndex(1);
 //    }
+    else if(index.row() == 1)
+    {
+        if(rows == 2)
+        {
+            if (QFileInfo("/usr/bin/ukui-system-monitor").exists()) {
+                QProcess process;
+                process.start("/usr/bin/ukui-system-monitor");
+                process.waitForStarted(1000);
+                process.waitForFinished(20*1000);
+            }
+            else {
+                emit this->pluginModuleError(tr("No systemmonitor was found!"));
+            }
+        }
+        else
+        {
+            QString guid = pluginModel.getGuid(index.row() - rows);
+            PluginInterface* interface = PluginManager::Instance()->getInterfaceByGuid<PluginInterface>(guid);
+            interface->doAction();
+        }
+    }
     else {
 //        QString guid = pluginModel.getGuid(index.row() - 1);
-        QString guid = pluginModel.getGuid(index.row() - 1);
+        QString guid = pluginModel.getGuid(index.row() - rows);
         PluginInterface* interface = PluginManager::Instance()->getInterfaceByGuid<PluginInterface>(guid);
         interface->doAction();
     }
+}
+
+
+void BoxWidget::paintEvent(QPaintEvent *e){
+    QStyleOption opt;
+    opt.init(this);
+    QPainter p(this);
+    style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }

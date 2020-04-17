@@ -70,9 +70,20 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>麒麟软件中心</translation>
     </message>
     <message>
-        <location filename="../boxwidget.cpp" line="207"/>
+        <location filename="../boxwidget.cpp" line="160"/>
+        <location filename="../boxwidget.cpp" line="162"/>
+        <source>systemmonitor</source>
+        <translation type="unfinished">麒麟系统监视器</translation>
+    </message>
+    <message>
+        <location filename="../boxwidget.cpp" line="219"/>
         <source>No software center was found!</source>
         <translation>没有找到软件中心 ！</translation>
+    </message>
+    <message>
+        <location filename="../boxwidget.cpp" line="246"/>
+        <source>No systemmonitor was found!</source>
+        <translation type="unfinished">没有找到系统监视器 ！</translation>
     </message>
 </context>
 <context>
@@ -2204,13 +2215,9 @@ Are you sure to continue?</source>
         <translation>主机名</translation>
     </message>
     <message>
-        <source>Memory Capacity</source>
-        <translation type="vanished">内存容量</translation>
-    </message>
-    <message>
         <location filename="../../info/infoitemline.cpp" line="160"/>
         <source>Memory Capacity</source>
-        <translation type="unfinished"></translation>
+        <translation>内存容量</translation>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="162"/>

@@ -96,6 +96,41 @@ TopBaseWidget::TopBaseWidget(QWidget *parent)
     this->initWidgets();
 }
 
+void TopBaseWidget::paintEvent(QPaintEvent *event)
+{
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing);  // 反锯齿;
+    painter.setBrush(QColor(Qt::MaskInColor));
+    painter.setPen(Qt::transparent);
+    QPainterPath path;
+    path.setFillRule(Qt::OddEvenFill);
+//    path.addRoundedRect(0,0,this->width(),this->height(),20,20);
+    path.moveTo(0,40);
+    path.cubicTo(0,0,0,0,40,0);
+    path.lineTo(860,0);
+    path.cubicTo(900,0,900,0,900,40);
+    path.lineTo(900,this->height());
+    path.lineTo(0,this->height());
+    path.lineTo(0,40);
+
+    path.addRect(0,0,this->width(),this->height());
+    painter.save();
+    painter.setCompositionMode(QPainter::CompositionMode_Clear);
+    painter.drawPath(path);
+    painter.restore();
+
+    QStyleOption opt;
+    opt.init(this);
+    style()->drawPrimitive(QStyle::PE_Widget, &opt, &painter, this);
+//    //也可用QPainterPath 绘制代替 painter.drawRoundedRect(rect, 15, 15);
+//    {
+//        QPainterPath painterPath;
+//        painterPath.addRoundedRect(rect, 15, 15);
+//        p.drawPath(painterPath);
+//    }
+    QWidget::paintEvent(event);
+}
+
 TopBaseWidget::~TopBaseWidget()
 {
     if(img_label != NULL) {

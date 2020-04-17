@@ -39,6 +39,8 @@ public:
     void initConnect();
     void initUI();
 
+    void paintEvent(QPaintEvent *);
+
 public slots:
     void switchPageIndex(QString index);
     void displayBackedBtn(bool flag);

@@ -107,6 +107,6 @@ void MiddleWidget::showBoxTool()
 //        this->switchSelectedPageIndex("3");
 //    }
 //    else {
-    this->switchSelectedPageIndex("4");
+    this->switchSelectedPageIndex("3");
 //    }
 }

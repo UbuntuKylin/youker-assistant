@@ -67,8 +67,19 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../boxwidget.cpp" line="207"/>
+        <location filename="../boxwidget.cpp" line="160"/>
+        <location filename="../boxwidget.cpp" line="162"/>
+        <source>systemmonitor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../boxwidget.cpp" line="219"/>
         <source>No software center was found!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../boxwidget.cpp" line="246"/>
+        <source>No systemmonitor was found!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
