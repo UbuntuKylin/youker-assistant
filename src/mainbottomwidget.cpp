@@ -34,7 +34,7 @@ MainBottomWidget::MainBottomWidget(QWidget *parent, QString arch, QString os/*, 
 
     //set white background color
     this->setAutoFillBackground(true);
-    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:20px;border-bottom-left-radius:20px}");
+    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:10px;border-bottom-left-radius:6px;}");
 //    QPalette palette;
 //    palette.setBrush(QPalette::Window, QBrush(Qt::white));
 //    this->setPalette(palette);
