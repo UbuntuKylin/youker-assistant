@@ -36,7 +36,7 @@ BoxWidget::BoxWidget(QWidget *parent, QString arch, QString os, QString path) :
 //  ,m_pluginsManager(new PluginManager(this))
 {
     this->setFixedSize(900, 403);
-    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:20px;border-bottom-left-radius:20px}");
+    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:10px;border-bottom-left-radius:6px}");
     //set white background color
 //    this->setAutoFillBackground(true);
 //    QPalette palette;
