@@ -79,7 +79,12 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
     this->setAutoFillBackground(true);
     this->setMouseTracking(true);
     this->setWindowTitle(tr("Kylin Assistant"));
-    this->setWindowIcon(QIcon(":/res/kylin-assistant.png"));
+
+    if(QIcon::hasThemeIcon("kylin-assistant"))
+        this->setWindowIcon(QIcon::fromTheme("kylin-assistant"));
+    else
+        this->setWindowIcon(QIcon(":/res/kylin-assistant.png"));
+
     this->setWindowOpacity(1);
     this->setFixedSize(MAIN_WINDOW_WIDTH+SHADOW_LEFT_TOP_PADDING+SHADOW_LEFT_TOP_PADDING, MAIN_WINDOW_HEIGHT+SHADOW_RIGHT_BOTTOM_PADDING+SHADOW_RIGHT_BOTTOM_PADDING);
 
