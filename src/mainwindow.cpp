@@ -78,6 +78,7 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
     this->setAttribute(Qt::WA_TranslucentBackground);
     this->setAutoFillBackground(true);
     this->setMouseTracking(true);
+    this->setWindowTitle(tr("Kylin Assistant"));
 
     if(QIcon::hasThemeIcon("kylin-assistant"))
         this->setWindowIcon(QIcon::fromTheme("kylin-assistant"));
