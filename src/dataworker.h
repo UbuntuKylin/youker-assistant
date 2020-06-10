@@ -214,6 +214,10 @@ public slots:
     void onResetThumbnailCacheTime(int value);
     void onResetThumbnailCacheSize(int value);
 
+    //monitor
+    void onRequestCpuTemperature();
+
+    void onRequesetCpuRange();
 
 signals:
     void dataLoadFinished();
@@ -335,6 +339,11 @@ signals:
 
     //file manager
     void sendFileManagerData(bool locationReplacePathbar, bool autoMountMedia, bool autoOpenFolder, bool promptAutorunPrograms, int thumbnailIconSize, int thumbnailCacheTime, int thumbnailCacheSize);
+
+    //monitor
+    void sendCpuTemperaturedata(QMap<QString, QVariant> tmpMap);
+
+    void sendCpuRangedata(QMap<QString,QVariant> tmpMap);
 
 private:
     QDBusInterface *m_powerIface = nullptr;

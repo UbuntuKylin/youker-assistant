@@ -229,6 +229,7 @@ class Daemon(PolicyKitService):
             m = pattern.match(line)
             if m:
                 filepath = "/sys/devices/system/cpu/%s/cpufreq/scaling_governor" % line
+                path = "/sys/devices/system/cpu/%s/cpufreq/scaling_setspeed" % line
                 if os.path.exists(filepath):
                     cmd = 'echo %s > %s' % (value, filepath)
                     os.system(cmd)
@@ -361,6 +362,14 @@ class Daemon(PolicyKitService):
     def get_sensor_info(self):
         return self.infoconf.get_sensors()
 
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_cpu_sensor(self):
+        return self.infoconf.get_cpu_sensors()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_cpu_range(self):
+        return self.infoconf.get_cpu_range()
+    
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
     def judge_sensors_exists_hb(self):
         return self.infoconf.judge_sensors_exists()

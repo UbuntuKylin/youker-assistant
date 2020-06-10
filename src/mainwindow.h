@@ -35,6 +35,10 @@
 #include "../component/utils.h"
 #include "../component/toolkits.h"
 #include "aboutdialog.h"
+#include "listwidget.h"
+#include "monitorwidget.h"
+#include "drivewidget.h"
+#include "optimizedwidget.h"
 
 class DataWorker;
 class SystemDbusProxy;
@@ -44,6 +48,10 @@ class MainTopWidget;
 class MiddleWidget;
 class MainBottomWidget;
 class TopBaseWidget;
+class MListwidget;
+class Monitorwidget;
+class Drivewidget;
+class OptimizedWidget;
 
 class MainWindow : public QMainWindow
 {
@@ -105,6 +113,10 @@ private:
     TopBaseWidget *setting_action_widget = nullptr;
     TopBaseWidget *box_action_widget = nullptr;
 
+    OptimizedWidget *optimized_widget = nullptr;
+    Drivewidget *drive_widget = nullptr;
+    Monitorwidget *monitorwidget = nullptr;
+    MListwidget *list_widget = nullptr;
     InfoWidget *info_widget = nullptr;
     CleanerWidget *cleaner_widget = nullptr;
     SettingWidget *setting_widget = nullptr;

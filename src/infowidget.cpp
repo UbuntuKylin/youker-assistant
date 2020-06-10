@@ -29,24 +29,28 @@
 InfoWidget::InfoWidget(QString machine, QWidget *parent) :
     QWidget(parent), arch(machine)
 {
-    this->setFixedSize(900, 403);
+    qDebug() << Q_FUNC_INFO;
+    this->setFixedSize(700, 460);
     this->setAutoFillBackground(true);
-    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:20px;border-bottom-left-radius:20px}");
+    this->setStyleSheet("QWidget{background:#ffffff; border: none;border-bottom-left-radius:10px;border-bottom-left-radius:0px}");
+//    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:20px;border-bottom-left-radius:20px}");
 //    QPalette palette;
 //    palette.setBrush(QPalette::Window, QBrush(Qt::white));
 //    this->setPalette(palette);
-
     splitter = new QSplitter(this);
     splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    splitter->setOrientation(Qt::Horizontal);
+    splitter->setOrientation(Qt::Vertical);
     splitter->setHandleWidth(1);
 
     category_widget = new QListWidget(this);
-    category_widget->setFixedSize(150, 403);
+    category_widget->setFixedSize(this->width(),30);
     category_widget->setFocusPolicy(Qt::NoFocus);
     category_widget->setObjectName("infoList");
+//    category_widget->setStyleSheet("QListWidget{background: green ;}");
+    category_widget->setStyleSheet("QListWidget::item:selected{border-radius:5px;background:rgba(61,107,229,1);}");
 
-    category_widget->setIconSize(QSize(16, 16));//设置QListWidget中的单元项的图片大小
+    category_widget->setFlow(QListView::LeftToRight);
+    //category_widget->setIconSize(QSize(16, 16));//设置QListWidget中的单元项的图片大小
     category_widget->setResizeMode(QListView::Adjust);
     category_widget->setViewMode(QListView::ListMode);   //设置QListWidget的显示模式
     category_widget->setMovement(QListView::Static);//设置QListWidget中的单元项不可被拖动
@@ -73,7 +77,10 @@ InfoWidget::~InfoWidget()
 
 void InfoWidget::paintEvent(QPaintEvent *event)
 {
-
+    QStyleOption opt;
+    opt.init(this);
+    QPainter p(this);
+    style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }
 
 void InfoWidget::initInfoUI(bool has_battery, bool has_sensor)
@@ -81,14 +88,14 @@ void InfoWidget::initInfoUI(bool has_battery, bool has_sensor)
     type_list.clear();
     icon_list.clear();
 
-    type_list << tr("Computer");
-    icon_list << "computer";
-    InfoGui *system_widget = new InfoGui(this);//该页面永远存在，且在列表的第一个位置，为默认显示项
-    system_widget->setInfoGuiName("computer");
-    stacked_widget->addWidget(system_widget);
-    stacked_widget->setCurrentWidget(system_widget);
-    emit this->requestRefreshSystemInfo();
-    emit this->requestupdateSystemRunnedTime();
+    //    type_list << tr("Computer");
+    //    icon_list << "computer";
+    //    InfoGui *system_widget = new InfoGui(this);//该页面永远存在，且在列表的第一个位置，为默认显示项
+    //    system_widget->setInfoGuiName("computer");
+    //    stacked_widget->addWidget(system_widget);
+    //    stacked_widget->setCurrentWidget(system_widget);
+    //    emit this->requestRefreshSystemInfo();
+    //    emit this->requestupdateSystemRunnedTime();
 
 
     type_list << tr("Desktop");
@@ -96,6 +103,8 @@ void InfoWidget::initInfoUI(bool has_battery, bool has_sensor)
     InfoGui *desktop_widget = new InfoGui(this);
     desktop_widget->setInfoGuiName("unity");
     stacked_widget->addWidget(desktop_widget);
+    stacked_widget->setCurrentWidget(desktop_widget);
+    emit this->requestDesktopInfo();
 
     type_list << tr("CPU");
     icon_list << "cpu";
@@ -157,11 +166,11 @@ void InfoWidget::initInfoUI(bool has_battery, bool has_sensor)
         stacked_widget->addWidget(sensor_widget);
     }
 
-    type_list << tr("Device Driver");
-    icon_list << "drive";
-    InfoGui *driver_widget = new InfoGui(this);
-    driver_widget->setInfoGuiName("drive");
-    stacked_widget->addWidget(driver_widget);
+//    type_list << tr("Device Driver");
+//    icon_list << "drive";
+//    InfoGui *driver_widget = new InfoGui(this);
+//    driver_widget->setInfoGuiName("drive");
+//    stacked_widget->addWidget(driver_widget);
 
 
     for(int i = 0;i < type_list.length();i++) {
@@ -172,23 +181,32 @@ void InfoWidget::initInfoUI(bool has_battery, bool has_sensor)
 //        else if (i == 11 && arch == "aarch64" && serverOrDesktop.contains("server")) {
 //            //arm server no sensor
 //        }
-        QIcon icon;
-        icon.addFile(":/hd/res/hardware/" + icon_list.at(i), QSize(), QIcon::Normal, QIcon::Off);
+//        QIcon icon;
+//        icon.addFile(":/hd/res/hardware/" + icon_list.at(i), QSize(), QIcon::Normal, QIcon::Off);
         QListWidgetItem *item = new QListWidgetItem(type_list.at(i), category_widget);
         //            item->setSizeHint(QSize(120,31)); //设置单元项的宽度和高度
-        item->setSizeHint(QSize(120,36)); //设置单元项的宽度和高度
+        item->setSizeHint(QSize(70,25)); //设置单元项的宽度和高度
         item->setStatusTip(icon_list.at(i));
-        item->setIcon(icon);
+        item->setTextAlignment(Qt::AlignVCenter|Qt::AlignHCenter);
+//        item->setIcon(icon);
     }
     category_widget->setCurrentRow(0);
     current_tip = category_widget->currentItem()->statusTip();
 
     QVBoxLayout *center_layout = new QVBoxLayout();
+    QVBoxLayout *name_layout = new QVBoxLayout();
+    QFrame *frame = new QFrame();
+    frame->setFixedSize(this->width(),50);
+    name_layout->addWidget(category_widget);
+    name_layout->setSpacing(0);
+    name_layout->setMargin(0);
+    name_layout->setContentsMargins(40, 0, 0, 0);
+    frame->setLayout(name_layout);
     center_layout->addWidget(stacked_widget);
     center_layout->setSpacing(0);
     center_layout->setMargin(0);
     center_layout->setContentsMargins(0, 0, 0, 0);
-    splitter->addWidget(category_widget);
+    splitter->addWidget(frame);
     splitter->addWidget(stacked_widget);
 
     for(int i = 0; i<splitter->count();i++) {
@@ -204,7 +222,7 @@ void InfoWidget::initInfoUI(bool has_battery, bool has_sensor)
     this->setLayout(main_layout);
 
 //    m_testWidget->loadOnePage(0, "AAA1", QMap<QString, QVariant>());
-//    m_testWidget->loadOnePage(1, "AAA2", QMap<QString, QVariant>());
+    //    m_testWidget->loadOnePage(1, "AAA2", QMap<QString, QVariant>());
 }
 
 void InfoWidget::onSendSystemInfo(QMap<QString, QVariant> tmpMap)
@@ -933,6 +951,7 @@ void InfoWidget::changeInfoPage(QListWidgetItem *item) {
                     QMap<QString, QVariant> driver_info_map;
                     DeviceManager manager;
                     QStringList list = manager.getDeviceMsg();
+                    qDebug() << list;
                     for (int i=0 ; i < list.length() ; i++) {
                         QStringList splitlist = list.at(i).split(";");
                         if(splitlist.length() == 1) {

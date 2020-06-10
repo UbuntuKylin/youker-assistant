@@ -86,6 +86,11 @@ public:
     QMap<QString, QVariant> get_audiocard_info_qt();
     QString get_time_value_qt();
 
+    //monitor
+    QMap<QString, QVariant> get_cpu_Temperature();
+
+    QMap<QString, QVariant> get_cpu_range();
+
 signals:
     void tellCleanerMainData(const QStringList &data);
     void tellCleanerMainStatus(const QString &status, const QString &domain);

@@ -143,6 +143,7 @@ bool DataWorker::copyAppointedFile(QString filename)
 //---------------scan on homepage
 void DataWorker::onStartOneKeyScan(const QStringList &categorys)
 {
+    qDebug() << Q_FUNC_INFO << __LINE__;
     m_sessionInterface->onekey_scan_function_qt(categorys);
 //    QCoreApplication::processEvents();
 }
@@ -150,6 +151,7 @@ void DataWorker::onStartOneKeyScan(const QStringList &categorys)
 //---------------clean on homepage
 void DataWorker::onStartOneKeyClean()
 {
+    qDebug() << Q_FUNC_INFO << __LINE__;
     m_systemInterface->set_user_homedir_qt();
     m_systemInterface->clean_by_main_one_key_qt();
 }
@@ -1121,15 +1123,17 @@ void DataWorker::onResetSleepTimeoutDisplayAC(int index, int value)
 void DataWorker::onSetCurrentCpuMode(const QString &mode)
 {
 //    qDebug() << "set cpu mode="<<mode;
-    if(mode == "ondemandradio") {
-        m_systemInterface->adjust_cpufreq_scaling_governer_qt("ondemand");
-    }
-    else if(mode == "powersaveradio") {
-        m_systemInterface->adjust_cpufreq_scaling_governer_qt("powersave");
-    }
-    else if(mode == "performanceradio") {
-        m_systemInterface->adjust_cpufreq_scaling_governer_qt("performance");
-    }
+//    if(mode == "ondemandradio") {
+//        m_systemInterface->adjust_cpufreq_scaling_governer_qt("ondemand");
+//    }
+//    else if(mode == "powersaveradio") {
+//        m_systemInterface->adjust_cpufreq_scaling_governer_qt("powersave");
+//    }
+//    else if(mode == "performanceradio") {
+//        m_systemInterface->adjust_cpufreq_scaling_governer_qt("performance");
+//    }
+    qDebug() << Q_FUNC_INFO << mode;
+    m_systemInterface->adjust_cpufreq_scaling_governer_qt(mode);
 }
 
 
@@ -1180,4 +1184,17 @@ void DataWorker::onResetThumbnailCacheTime(int value)
 void DataWorker::onResetThumbnailCacheSize(int value)
 {
     m_sessionInterface->set_thumbnail_cache_size_qt(value);
+}
+
+void DataWorker::onRequestCpuTemperature()
+{
+    QMap<QString, QVariant> tmpMap = m_systemInterface->get_cpu_Temperature();
+    emit sendCpuTemperaturedata(tmpMap);
+}
+
+void DataWorker::onRequesetCpuRange()
+{
+    qDebug() << Q_FUNC_INFO << __LINE__;
+    QMap<QString,QVariant> tmpMap  = m_systemInterface->get_cpu_range();
+    emit sendCpuRangedata(tmpMap);
 }

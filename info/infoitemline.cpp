@@ -376,10 +376,11 @@ InfoItemLine::InfoItemLine(QFrame *parent)
     mainLayout->setSpacing(0);
     mainLayout->setMargin(0);
     mainLayout->setContentsMargins(20, 0, 10, 0);
+    mainLayout->addStretch();
     mainLayout->addWidget(m_keyLabel);
     mainLayout->addSpacing(10);
     mainLayout->addWidget(m_valueLabel);
-    mainLayout->addStretch();
+
 
     this->setLayout(mainLayout);
 }
@@ -393,7 +394,7 @@ InfoItemLine::~InfoItemLine()
 void InfoItemLine::setInfoKey(const QString &key)
 {
     const QString name = covertKeyName(key);
-    m_keyLabel->setText(name);
+    m_keyLabel->setText(name+":");
     m_key = key;
 
     QFont ft;
@@ -409,6 +410,13 @@ void InfoItemLine::setInfoValue(const QString &value)
     QFontMetrics fm(ft);
     QString elided_text = fm.elidedText(value, Qt::ElideRight, maxWidth);
     m_valueLabel->setText(elided_text);
+    m_valueLabel->setStyleSheet("background-color:rgb(237,238,239)");
+    m_valueLabel->setFixedSize(461,31);
+//    m_valueLabel->setMinimumSize(461,32);
+//    m_valueLabel->setMaximumSize(461,70);
+    m_valueLabel->setIndent(5);
+//    m_valueLabel->setWordWrap(true);
+//    m_valueLabel->setAlignment(Qt::AlignTop);
     if(elided_text.endsWith("…"))
         m_valueLabel->setToolTip(value);
 }

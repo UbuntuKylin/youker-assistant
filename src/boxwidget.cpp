@@ -35,8 +35,8 @@ BoxWidget::BoxWidget(QWidget *parent, QString arch, QString os, QString path) :
 //  ,m_pluginsLayout(new QStackedLayout)
 //  ,m_pluginsManager(new PluginManager(this))
 {
-    this->setFixedSize(900, 403);
-    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:20px;border-bottom-left-radius:20px}");
+    this->setFixedSize(860, 460);
+    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:10px;border-bottom-left-radius:10px}");
     //set white background color
 //    this->setAutoFillBackground(true);
 //    QPalette palette;
@@ -205,6 +205,7 @@ void BoxWidget::initPluginWidget()
 
 void BoxWidget::OnClickListView(const QModelIndex & index)
 {
+    qDebug() << Q_FUNC_INFO << __LINE__;
     if(index.row() == 0) {
         if (QFileInfo("/usr/bin/kylin-software-center").exists()) {
             QProcess process;
@@ -214,9 +215,9 @@ void BoxWidget::OnClickListView(const QModelIndex & index)
         }
         else if (QFileInfo("/usr/bin/ubuntu-kylin-software-center").exists()) {
             QProcess process;
-            process.start("/usr/bin/ubuntu-kylin-software-center");
-            process.waitForStarted(1000);
-            process.waitForFinished(20*1000);
+            process.startDetached("/usr/bin/ubuntu-kylin-software-center");
+//            process.waitForStarted(1000);
+//            process.waitForFinished(20*1000);
         }
         else {
             emit this->pluginModuleError(tr("No software center was found!"));
@@ -241,9 +242,9 @@ void BoxWidget::OnClickListView(const QModelIndex & index)
         {
             if (QFileInfo("/usr/bin/ukui-system-monitor").exists()) {
                 QProcess process;
-                process.start("/usr/bin/ukui-system-monitor");
-                process.waitForStarted(1000);
-                process.waitForFinished(20*1000);
+                process.startDetached("/usr/bin/ukui-system-monitor");
+//                process.waitForStarted(1000);
+//                process.waitForFinished(-1);
             }
             else {
                 emit this->pluginModuleError(tr("No systemmonitor was found!"));

@@ -226,6 +226,27 @@
         <file>res/wave_back.png</file>
         <file>res/wave_back_small.png</file>
         <file>res/autostart-default.png</file>
+        <file>res/fan.png</file>
+        <file>res/fan_big.png</file>
+        <file>res/CPU.png</file>
+        <file>res/temperature_normal.png</file>
+        <file>res/temperature_anomaly.png</file>
+        <file>res/drive/bluetooth.png</file>
+        <file>res/drive/graphics-card.png</file>
+        <file>res/drive/motherboard.png</file>
+        <file>res/drive/other.png</file>
+        <file>res/drive/sound-card.png</file>
+        <file>res/drive/wired-network-card.png</file>
+        <file>res/drive/wireless-network-card.png</file>
+        <file>res/drive/finish1.png</file>
+        <file>res/drive/clean_anime.gif</file>
+        <file>res/drive/finish2.png</file>
+        <file>res/app_speed.png</file>
+        <file>res/boot_up.png</file>
+        <file>res/system_speed.png</file>
+        <file>res/menu/monitor.png</file>
+        <file>res/remind.png</file>
+        <file>res/warning.png</file>
     </qresource>
     <qresource prefix="/sys">
         <file>res/sysBtn/close_button.png</file>
@@ -447,9 +468,7 @@
         <file>res/menu/home.png</file>
         <file>res/menu/home-hover.png</file>
         <file>res/menu/sysinfo.png</file>
-        <file>res/menu/sysinfo-hover.png</file>
         <file>res/menu/toolkits.png</file>
-        <file>res/menu/toolkits-hover.png</file>
         <file>res/menu/about.png</file>
         <file>res/menu/features.png</file>
         <file>res/menu/feedback.png</file>
@@ -458,9 +477,12 @@
         <file>res/menu/cleanup-press.png</file>
         <file>res/menu/feature-press.png</file>
         <file>res/menu/home-press.png</file>
-        <file>res/menu/sysinfo-press.png</file>
-        <file>res/menu/toolkits-press.png</file>
         <file>res/menu/upgrade.png</file>
+        <file>res/menu/system-clean.png</file>
+        <file>res/menu/system-monitor.png</file>
+        <file>res/menu/drive-manager.png</file>
+        <file>res/menu/optimize.png</file>
+        <file>res/menu/monitor.png</file>
     </qresource>
     <qresource prefix="/movie">
         <file>res/loading/1.png</file>

@@ -23,6 +23,8 @@
 #include <QToolButton>
 #include <QMouseEvent>
 #include <QPainter>
+#include <QLinearGradient>
+#include <QStyleOption>
 
 class KylinToolButton : public QToolButton
 {
@@ -38,6 +40,7 @@ protected:
     void enterEvent(QEvent *event);
     void leaveEvent(QEvent *event);
 	void mousePressEvent(QMouseEvent *event);
+    void paintEvent(QPaintEvent *event);
 
 public:
 	bool mouse_over; //鼠标是否移过
@@ -45,6 +48,9 @@ public:
     QIcon normal_icon;
     QIcon hover_icon;
     QIcon press_icon;
+
+    QPixmap pixmap;
+    QString txt;
 };
 
 #endif //KYLINTOOlBUTTON_H

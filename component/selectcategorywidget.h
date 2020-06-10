@@ -23,6 +23,8 @@
 #include <QDialog>
 #include <QVBoxLayout>
 #include <QMouseEvent>
+#include <QPainter>
+#include <QtMath>
 
 #include "mytitlebar.h"
 #include "selectlistwidget.h"

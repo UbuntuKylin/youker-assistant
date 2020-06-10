@@ -11,7 +11,7 @@ CONFIG += qt warn_on
 CONFIG += release
 CONFIG += link_pkgconfig
 
-QT += core dbus network
+QT += core dbus network charts
 
 inst1.files += res/kylin-assistant.png
 inst1.path = /usr/share/pixmaps
@@ -48,10 +48,22 @@ unix {
 }
 
 SOURCES += main.cpp \
+    ../cleaner/cleandetailveiw.cpp \
+    ../component/chartwidget.cpp \
+    ../component/cpufmwidget.cpp \
+    ../component/drivepagewidget.cpp \
+    ../component/fanwidget.cpp \
+    ../component/generaldialog.cpp \
+    ../component/myslider.cpp \
+    ../component/temperature.cpp \
+    drivewidget.cpp \
+    listwidget.cpp \
     mainwindow.cpp \
     maintopwidget.cpp \
     middlewidget.cpp \
     mainbottomwidget.cpp \
+    monitorwidget.cpp \
+    optimizedwidget.cpp \
     topbasewidget.cpp \
     bottomcontentwidget.cpp \
     infowidget.cpp \
@@ -118,10 +130,22 @@ SOURCES += main.cpp \
     ../qdbusservice/systemdbus/customdatalist.cpp
 
 HEADERS  += mainwindow.h \
+    ../cleaner/cleandetailveiw.h \
+    ../component/chartwidget.h \
+    ../component/cpufmwidget.h \
+    ../component/drivepagewidget.h \
+    ../component/fanwidget.h \
+    ../component/generaldialog.h \
+    ../component/myslider.h \
+    ../component/temperature.h \
+    drivewidget.h \
     kpplication.h \
+    listwidget.h \
     maintopwidget.h \
     middlewidget.h \
     mainbottomwidget.h \
+    monitorwidget.h \
+    optimizedwidget.h \
     topbasewidget.h \
     bottomcontentwidget.h \
     infowidget.h \
@@ -203,3 +227,5 @@ DEPENDPATH += qtsingleapplication
 
 SOURCES += qtsingleapplication/qtsingleapplication.cpp qtsingleapplication/qtlocalpeer.cpp
 HEADERS += qtsingleapplication/qtsingleapplication.h qtsingleapplication/qtlocalpeer.h
+
+DISTFILES +=

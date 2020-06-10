@@ -31,6 +31,7 @@ InfoUnitWidget::InfoUnitWidget(QString title, QWidget *parent)
 {
     this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     this->setStyleSheet("QWidget {background-color: rgba(255, 255, 255, 0.1);border-radius: 2px;}");
+    this->setFixedWidth(parent->width());
 
     //kobe: QHBoxLayout *mainLayout = static_cast<QHBoxLayout *>(layout());
     m_titleLabel = new QLabel;
@@ -45,24 +46,39 @@ InfoUnitWidget::InfoUnitWidget(QString title, QWidget *parent)
     this->setInfoTitle(title);
 
     QHBoxLayout *headerLayout = new QHBoxLayout;
-    headerLayout->setContentsMargins(10, 0, 30, 0);
+    headerLayout->setContentsMargins(0, 0, 0, 0);
     headerLayout->addWidget(m_titleLabel);
     headerLayout->addStretch();
     headerLayout->addWidget(m_vendorLabel);
     headerLayout->setAlignment(m_vendorLabel, Qt::AlignCenter);
 
     QFrame *headerWidget = new QFrame;
+    headerWidget->setFixedWidth(parent->width()-100);
     headerWidget->setStyleSheet("QFrame {padding:5px 0;} QFrame:hover {background-color:rgba(141,238,238,0.2);border-radius:4px;}");
     headerWidget->setLayout(headerLayout);
 
     m_infoLayout = new QVBoxLayout;
     m_infoLayout->addWidget(headerWidget);
-    m_infoLayout->setSpacing(5);
+    m_infoLayout->setSpacing(0);
     m_infoLayout->setMargin(0);
-    m_infoLayout->setContentsMargins(0,0,0,0);
+    m_infoLayout->setContentsMargins(40,0,0,0);
+
+    QFrame *spilterLine = new QFrame(this);
+    spilterLine->setFixedSize(parent->width()-100, 2);
+    spilterLine->setStyleSheet("QFrame{background:rgba(238,238,238,1);}");
+    spilterLine->setFrameShape(QFrame::HLine);
+    spilterLine->setFrameShadow(QFrame::Plain);
+    m_infoLayout->addWidget(spilterLine);
 
     m_infoItemsGroup = new InfoItemsGroup;
-    m_infoLayout->addWidget(m_infoItemsGroup);
+    QHBoxLayout *item_layout = new QHBoxLayout();
+    QFrame *item_frame = new QFrame(this);
+    item_layout->setSpacing(0);
+    item_layout->setMargin(0);
+    item_layout->setContentsMargins(0,16,50,0);
+    item_layout->addWidget(m_infoItemsGroup);
+    item_frame->setLayout(item_layout);
+    m_infoLayout->addWidget(item_frame);
 
     setLayout(m_infoLayout);
 //    m_infoItemsGroup->getInfoItem()

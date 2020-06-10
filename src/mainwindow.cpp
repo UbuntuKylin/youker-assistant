@@ -27,11 +27,15 @@
 #include "../component/threadpool.h"
 #include "dataworker.h"
 #include "../component/utils.h"
+#include "monitorwidget.h"
+#include "optimizedwidget.h"
 
 #include "maintopwidget.h"
 #include "middlewidget.h"
 #include "mainbottomwidget.h"
 #include "topbasewidget.h"
+#include "listwidget.h"
+#include "drivewidget.h"
 #include <QtMath>
 
 QString GlobalData::globalarch = ""; // add by hebing, just for transmit var
@@ -83,7 +87,7 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
     this->setWindowOpacity(1);
     this->setFixedSize(MAIN_WINDOW_WIDTH+SHADOW_LEFT_TOP_PADDING+SHADOW_LEFT_TOP_PADDING, MAIN_WINDOW_HEIGHT+SHADOW_RIGHT_BOTTOM_PADDING+SHADOW_RIGHT_BOTTOM_PADDING);
 
-    status = HOMEPAGE;
+    status = CLEANPAGE;
 
     mSettings = new QSettings(KYLIN_COMPANY_SETTING, KYLIN_SETTING_FILE_NAME_SETTING);
     mSettings->setIniCodec("UTF-8");
@@ -212,60 +216,66 @@ void MainWindow::initWidgets()
 //    m_bottomStack->setStyleSheet("background: transparent; border-bottom-right-radius:20px;border-bottom-left-radius:20px");
 
     //top
-    m_mainTopWidget = new MainTopWidget(true, mSettings, this);
-//    m_mainTopWidget->setParentWindow(this);
-    connect(m_mainTopWidget, SIGNAL(showMenu()), this, SLOT(showMainMenu()));
-//    connect(m_mainTopWidget, SIGNAL(showMin()), this, SLOT(showMinimized()));
-    connect(m_mainTopWidget, &MainTopWidget::showMin, this, [=] {
-        this->showMinimized();
-    });
-    connect(m_mainTopWidget, SIGNAL(closeApp()), this, SLOT(closeYoukerAssistant()));
-    m_mainTopWidget->setPalette(palette_back);
-    m_topStack->addWidget(m_mainTopWidget);
+//    m_mainTopWidget = new MainTopWidget(true, mSettings, this);
+////    m_mainTopWidget->setParentWindow(this);
+//    connect(m_mainTopWidget, SIGNAL(showMenu()), this, SLOT(showMainMenu()));
+////    connect(m_mainTopWidget, SIGNAL(showMin()), this, SLOT(showMinimized()));
+//    connect(m_mainTopWidget, &MainTopWidget::showMin, this, [=] {
+//        this->showMinimized();
+//    });
+//    connect(m_mainTopWidget, SIGNAL(closeApp()), this, SLOT(closeYoukerAssistant()));
+//    m_mainTopWidget->setPalette(palette_back);
+//    m_topStack->addWidget(m_mainTopWidget);
 
-    cleaner_action_widget = new MainTopWidget(false, mSettings, this);
-    connect(cleaner_action_widget, SIGNAL(showMenu()), this, SLOT(showMainMenu()));
-    connect(cleaner_action_widget, SIGNAL(showMin()), this, SLOT(showMinimized()));
-    connect(cleaner_action_widget, SIGNAL(closeApp()), this, SLOT(closeYoukerAssistant()));
-    cleaner_action_widget->setPalette(palette_back);
-    m_topStack->addWidget(cleaner_action_widget);
+//    cleaner_action_widget = new MainTopWidget(false, mSettings, this);
+//    connect(cleaner_action_widget, SIGNAL(showMenu()), this, SLOT(showMainMenu()));
+//    connect(cleaner_action_widget, SIGNAL(showMin()), this, SLOT(showMinimized()));
+//    connect(cleaner_action_widget, SIGNAL(closeApp()), this, SLOT(closeYoukerAssistant()));
+//    cleaner_action_widget->setPalette(palette_back);
+//    m_topStack->addWidget(cleaner_action_widget);
 
-    info_action_widget = new TopBaseWidget(this);
-    connect(info_action_widget, SIGNAL(showMenu()), this, SLOT(showMainMenu()));
-    connect(info_action_widget, SIGNAL(showMin()), this, SLOT(showMinimized()));
-    connect(info_action_widget, SIGNAL(closeApp()), this, SLOT(closeYoukerAssistant()));
-    info_action_widget->setPalette(palette_back);
-    info_action_widget->setImage("://res/systeminfo.png");
-    info_action_widget->setTipMessage(tr("Understand hardware information, provide more convenient channel to obtain hardware information"));
-    m_topStack->addWidget(info_action_widget);
+//    info_action_widget = new TopBaseWidget(this);
+//    connect(info_action_widget, SIGNAL(showMenu()), this, SLOT(showMainMenu()));
+//    connect(info_action_widget, SIGNAL(showMin()), this, SLOT(showMinimized()));
+//    connect(info_action_widget, SIGNAL(closeApp()), this, SLOT(closeYoukerAssistant()));
+//    info_action_widget->setPalette(palette_back);
+//    info_action_widget->setImage("://res/systeminfo.png");
+//    info_action_widget->setTipMessage(tr("Understand hardware information, provide more convenient channel to obtain hardware information"));
+//    m_topStack->addWidget(info_action_widget);
 
-    setting_action_widget = new TopBaseWidget(this);
-    connect(setting_action_widget, SIGNAL(showMenu()), this, SLOT(showMainMenu()));
-    connect(setting_action_widget, SIGNAL(showMin()), this, SLOT(showMinimized()));
-    connect(setting_action_widget, SIGNAL(closeApp()), this, SLOT(closeYoukerAssistant()));
-    setting_action_widget->setPalette(palette_back);
-    setting_action_widget->setImage("://res/systemset.png");
-    setting_action_widget->setTipMessage(tr("perform a full range of customizations systems based on your own personal preferences"));
-    m_topStack->addWidget(setting_action_widget);
+//    setting_action_widget = new TopBaseWidget(this);
+//    connect(setting_action_widget, SIGNAL(showMenu()), this, SLOT(showMainMenu()));
+//    connect(setting_action_widget, SIGNAL(showMin()), this, SLOT(showMinimized()));
+//    connect(setting_action_widget, SIGNAL(closeApp()), this, SLOT(closeYoukerAssistant()));
+//    setting_action_widget->setPalette(palette_back);
+//    setting_action_widget->setImage("://res/systemset.png");
+//    setting_action_widget->setTipMessage(tr("perform a full range of customizations systems based on your own personal preferences"));
+//    m_topStack->addWidget(setting_action_widget);
 
-    box_action_widget = new TopBaseWidget(this);
-    connect(box_action_widget, SIGNAL(showMenu()), this, SLOT(showMainMenu()));
-    connect(box_action_widget, SIGNAL(showMin()), this, SLOT(showMinimized()));
-    connect(box_action_widget, SIGNAL(closeApp()), this, SLOT(closeYoukerAssistant()));
-    box_action_widget->setPalette(palette_back);
-    box_action_widget->setImage("://res/toolkits.png");
-    box_action_widget->setTipMessage(tr("Provides lightweight tool and creates fast and convenient experience"));
-    m_topStack->addWidget(box_action_widget);
+//    box_action_widget = new TopBaseWidget(this);
+//    connect(box_action_widget, SIGNAL(showMenu()), this, SLOT(showMainMenu()));
+//    connect(box_action_widget, SIGNAL(showMin()), this, SLOT(showMinimized()));
+//    connect(box_action_widget, SIGNAL(closeApp()), this, SLOT(closeYoukerAssistant()));
+//    box_action_widget->setPalette(palette_back);
+//    box_action_widget->setImage("://res/toolkits.png");
+//    box_action_widget->setTipMessage(tr("Provides lightweight tool and creates fast and convenient experience"));
+//    m_topStack->addWidget(box_action_widget);
 
     //middle
     m_middleWidget = new MiddleWidget(this, this->arch, this->osName);
-    m_middleWidget->setFixedSize(MAIN_WINDOW_WIDTH, 47);
+    m_middleWidget->setFixedSize(MAIN_WINDOW_WIDTH, 140);
     connect(m_middleWidget, SIGNAL(turnCurrentPage(int)), this, SLOT(setCurrentPageIndex(int)));
+    connect(m_middleWidget, SIGNAL(middle_showMenu()), this, SLOT(showMainMenu()));
+    connect(m_middleWidget, SIGNAL(middle_showMin()), this, SLOT(showMinimized()));
+    connect(m_middleWidget, SIGNAL(middle_closeApp()), this, SLOT(closeYoukerAssistant()));
 
     //bottom
-    m_mainBottomWidget = new MainBottomWidget(this, this->arch, this->osName);
-    connect(m_mainBottomWidget, SIGNAL(sendSignal()), m_middleWidget, SLOT(showBoxTool()));
-    m_bottomStack->addWidget(m_mainBottomWidget);
+//    m_mainBottomWidget = new MainBottomWidget(this, this->arch, this->osName);
+//    connect(m_mainBottomWidget, SIGNAL(sendSignal()), m_middleWidget, SLOT(showBoxTool()));
+//    m_bottomStack->addWidget(m_mainBottomWidget);
+
+    optimized_widget = new OptimizedWidget();
+    m_bottomStack->addWidget(optimized_widget);
 
     cleaner_widget = new CleanerWidget();
     m_bottomStack->addWidget(cleaner_widget);
@@ -276,8 +286,13 @@ void MainWindow::initWidgets()
     connect(cleaner_action_widget, SIGNAL(showMainData()),cleaner_widget, SLOT(displayMainPage()));
     connect(cleaner_action_widget, SIGNAL(sendCleanSignal()),cleaner_widget, SIGNAL(transCleanSignal()));
 
-    info_widget = new InfoWidget(this->arch);
-    m_bottomStack->addWidget(info_widget);
+//    info_widget = new InfoWidget(this->arch);
+//    m_bottomStack->addWidget(info_widget);
+    list_widget = new MListwidget();
+    m_bottomStack->addWidget(list_widget);
+
+    drive_widget = new Drivewidget();
+    m_bottomStack->addWidget(drive_widget);
 
     setting_widget = new SettingWidget(this->desktop);
     setting_widget->setParentWindow(this);
@@ -289,6 +304,9 @@ void MainWindow::initWidgets()
     connect(box_widget, SIGNAL(pluginModuleError(QString)), this, SLOT(onPluginModuleError(QString)));
     m_bottomStack->addWidget(box_widget);
 
+    monitorwidget = new Monitorwidget();
+    m_bottomStack->addWidget(monitorwidget);
+
     centralWidget = new QWidget;
 //    centralWidget->setStyleSheet("background: transparent");
     QVBoxLayout *contentLayout = new QVBoxLayout(centralWidget);
@@ -298,11 +316,11 @@ void MainWindow::initWidgets()
     contentLayout->setMargin(0);
     contentLayout->setSpacing(0);
 
-    contentLayout->addWidget(m_topStack);
+//    contentLayout->addWidget(m_topStack);
     contentLayout->addWidget(m_middleWidget);
     contentLayout->addWidget(m_bottomStack);
-    m_topStack->setCurrentWidget(m_mainTopWidget);
-    m_bottomStack->setCurrentWidget(m_mainBottomWidget);
+//    m_topStack->setCurrentWidget(m_mainTopWidget);
+    m_bottomStack->setCurrentWidget(cleaner_widget);
 }
 
 void MainWindow::onInitDataFinished()
@@ -311,6 +329,7 @@ void MainWindow::onInitDataFinished()
     this->sensor = m_dataWorker->isSensorExist();
     this->m_cpulist = m_dataWorker->cpuModeList();
     this->m_currentCpuMode = m_dataWorker->cpuCurrentMode();
+    qDebug() << Q_FUNC_INFO <<this->m_cpulist << this->m_currentCpuMode;
 
     /*
     Qt::AutoConnection 自动连接：（默认值）如果信号在接收者所依附的线程内发射，则等同于直接连接。如果发射信号的线程和接受者所依附的线程不同，则等同于队列连接。
@@ -319,11 +338,11 @@ void MainWindow::onInitDataFinished()
     Qt::BlockingQueuedConnection 与Qt::QueuedConnection类似，但是会阻塞等到关联的slot都被执行。这里出现了阻塞这个词，说明它是专门用来多线程间传递消息的。
     */
     //kobe: why does ui died ??????????????????????
-    connect(m_mainTopWidget, SIGNAL(startOneKeyScan(QStringList)), m_dataWorker, SLOT(onStartOneKeyScan(QStringList))/*, Qt::QueuedConnection*/);//Qt::QueuedConnection
-    connect(m_mainTopWidget, SIGNAL(startOneKeyClean()), m_dataWorker, SLOT(onStartOneKeyClean())/*, Qt::BlockingQueuedConnection*/);
-    connect(m_dataWorker, SIGNAL(isScanning(QString)), m_mainTopWidget, SLOT(getScanResult(QString)), Qt::BlockingQueuedConnection);//Qt::BlockingQueuedConnection
-    connect(m_dataWorker, SIGNAL(finishScanWork(QString)), m_mainTopWidget, SLOT(finishScanResult(QString)), Qt::BlockingQueuedConnection);
-    connect(m_dataWorker, SIGNAL(tellScanResult(QString,QString)) ,m_mainTopWidget, SLOT(getScanAllResult(QString,QString)), Qt::BlockingQueuedConnection);
+//    connect(m_mainTopWidget, SIGNAL(startOneKeyScan(QStringList)), m_dataWorker, SLOT(onStartOneKeyScan(QStringList))/*, Qt::QueuedConnection*/);//Qt::QueuedConnection
+//    connect(m_mainTopWidget, SIGNAL(startOneKeyClean()), m_dataWorker, SLOT(onStartOneKeyClean())/*, Qt::BlockingQueuedConnection*/);
+//    connect(m_dataWorker, SIGNAL(isScanning(QString)), m_mainTopWidget, SLOT(getScanResult(QString)), Qt::BlockingQueuedConnection);//Qt::BlockingQueuedConnection
+//    connect(m_dataWorker, SIGNAL(finishScanWork(QString)), m_mainTopWidget, SLOT(finishScanResult(QString)), Qt::BlockingQueuedConnection);
+//    connect(m_dataWorker, SIGNAL(tellScanResult(QString,QString)) ,m_mainTopWidget, SLOT(getScanAllResult(QString,QString)), Qt::BlockingQueuedConnection);
     connect(m_dataWorker, SIGNAL(finishCleanWorkMain(QString)), m_mainTopWidget, SLOT(getCleanResult(QString)), Qt::BlockingQueuedConnection);
     connect(m_dataWorker, SIGNAL(finishCleanWorkMainError(QString)), m_mainTopWidget, SLOT(finishCleanError(QString)), Qt::BlockingQueuedConnection);
     connect(m_dataWorker, SIGNAL(quickCleanProcess(QString,QString)), m_mainTopWidget, SLOT(getCleaningMessage(QString,QString)), Qt::BlockingQueuedConnection);
@@ -349,53 +368,92 @@ void MainWindow::onInitDataFinished()
     connect(cleaner_widget, SIGNAL(startScanSystem(QMap<QString,QVariant>)), m_dataWorker, SLOT(onStartScanSystem(QMap<QString,QVariant>)));
     connect(cleaner_widget, SIGNAL(startCleanSystem(QMap<QString,QVariant>)), m_dataWorker, SLOT(onStartCleanSystem(QMap<QString,QVariant>)));
 
+    //add by tangguang -------------------------------------------------------------
+    connect(cleaner_widget, SIGNAL(startOneKeyScan(QStringList)),m_dataWorker,SLOT(onStartOneKeyScan(QStringList)));
+    connect(m_dataWorker, SIGNAL(isScanning(QString)), cleaner_widget, SIGNAL(isScanning(QString)), Qt::BlockingQueuedConnection);//Qt::BlockingQueuedConnection
+    connect(m_dataWorker, SIGNAL(finishScanWork(QString)), cleaner_widget, SIGNAL(finishScanWork(QString)), Qt::BlockingQueuedConnection);
+    connect(m_dataWorker, SIGNAL(tellScanResult(QString,QString)) ,cleaner_widget, SIGNAL(tellScanResult(QString,QString)), Qt::BlockingQueuedConnection);
+
+    connect(cleaner_widget, SIGNAL(startOneKeyClean()), m_dataWorker, SLOT(onStartOneKeyClean())/*, Qt::BlockingQueuedConnection*/);
+    connect(m_dataWorker, SIGNAL(finishCleanWorkMain(QString)), cleaner_widget, SIGNAL(finishCleanWorkMain(QString)), Qt::BlockingQueuedConnection);
+    //------------------------------------------------------------------------------
+
     connect(cleaner_action_widget, SIGNAL(sendScanSignal()),cleaner_widget, SIGNAL(transScanSignal()));
     connect(cleaner_widget, SIGNAL(tranActionAnimaitonSignal()),cleaner_action_widget, SLOT(displayAnimation()));
     connect(cleaner_widget, SIGNAL(tranScanOverSignal(bool)),cleaner_action_widget, SLOT(accordScanOverStatusToChange(bool)));
 
-    connect(info_widget, SIGNAL(requestupdateSystemRunnedTime()), m_dataWorker, SLOT(onUpdateSystemRunnedTime()));
-    connect(info_widget, SIGNAL(requestRefreshSystemInfo()), m_dataWorker, SLOT(onRequestRefreshSystemInfo()));
-    connect(m_dataWorker, SIGNAL(sendSystemInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendSystemInfo(QMap<QString,QVariant>)));
+//    connect(info_widget, SIGNAL(requestupdateSystemRunnedTime()), m_dataWorker, SLOT(onUpdateSystemRunnedTime()));
+//    connect(info_widget, SIGNAL(requestRefreshSystemInfo()), m_dataWorker, SLOT(onRequestRefreshSystemInfo()));
+//    connect(m_dataWorker, SIGNAL(sendSystemInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendSystemInfo(QMap<QString,QVariant>)));
+    connect(list_widget, SIGNAL(m_requestRefreshSystemInfo()), m_dataWorker, SLOT(onRequestRefreshSystemInfo()));
+    connect(m_dataWorker, SIGNAL(sendSystemInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendSystemInfo(QMap<QString,QVariant>)));
 
     //desktop info
-    connect(info_widget, SIGNAL(requestDesktopInfo()), m_dataWorker, SLOT(onRequestDesktopInfo()));
-    connect(m_dataWorker, SIGNAL(sendDesktopInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendDesktopInfo(QMap<QString,QVariant>)));
+//    connect(info_widget, SIGNAL(requestDesktopInfo()), m_dataWorker, SLOT(onRequestDesktopInfo()));
+//    connect(m_dataWorker, SIGNAL(sendDesktopInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendDesktopInfo(QMap<QString,QVariant>)));
+    connect(list_widget, SIGNAL(List_requestDesktopInfo()), m_dataWorker, SLOT(onRequestDesktopInfo()));
+    connect(m_dataWorker, SIGNAL(sendDesktopInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendDesktopInfo_next(QMap<QString,QVariant>)));
 
     //cpu info
-    connect(info_widget, SIGNAL(requestCpuInfo()), m_dataWorker, SLOT(onRequestCpuInfo()));
-    connect(m_dataWorker, SIGNAL(sendCpuInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendCpuInfo(QMap<QString,QVariant>)));
+//    connect(info_widget, SIGNAL(requestCpuInfo()), m_dataWorker, SLOT(onRequestCpuInfo()));
+//    connect(m_dataWorker, SIGNAL(sendCpuInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendCpuInfo(QMap<QString,QVariant>)));
+    connect(list_widget, SIGNAL(List_requestCpuInfo()), m_dataWorker, SLOT(onRequestCpuInfo()));
+    connect(m_dataWorker, SIGNAL(sendCpuInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendCpuInfo_next(QMap<QString,QVariant>)));
 
     //memory info
-    connect(info_widget, SIGNAL(requestMemoryInfo()), m_dataWorker, SLOT(onRequestMemoryInfo()));
-    connect(m_dataWorker, SIGNAL(sendMemoryInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendMemoryInfo(QMap<QString,QVariant>)));
+//    connect(info_widget, SIGNAL(requestMemoryInfo()), m_dataWorker, SLOT(onRequestMemoryInfo()));
+//    connect(m_dataWorker, SIGNAL(sendMemoryInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendMemoryInfo(QMap<QString,QVariant>)));
+    connect(list_widget, SIGNAL(List_requestMemoryInfo()), m_dataWorker, SLOT(onRequestMemoryInfo()));
+    connect(m_dataWorker, SIGNAL(sendMemoryInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendMemoryInfo_next(QMap<QString,QVariant>)));
 
     //board info
-    connect(info_widget, SIGNAL(requestBoardInfo()), m_dataWorker, SLOT(onRequestBoardInfo()));
-    connect(m_dataWorker, SIGNAL(sendBoardInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendBoardInfo(QMap<QString,QVariant>)));
+//    connect(info_widget, SIGNAL(requestBoardInfo()), m_dataWorker, SLOT(onRequestBoardInfo()));
+//    connect(m_dataWorker, SIGNAL(sendBoardInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendBoardInfo(QMap<QString,QVariant>)));
+    connect(list_widget, SIGNAL(List_requestBoardInfo()), m_dataWorker, SLOT(onRequestBoardInfo()));
+    connect(m_dataWorker, SIGNAL(sendBoardInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendBoardInfo_next(QMap<QString,QVariant>)));
 
     //hd info
-    connect(info_widget, SIGNAL(requestHDInfo()), m_dataWorker, SLOT(onRequestHDInfo()));
-    connect(m_dataWorker, SIGNAL(sendHDInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendHDInfo(QMap<QString,QVariant>)));
+//    connect(info_widget, SIGNAL(requestHDInfo()), m_dataWorker, SLOT(onRequestHDInfo()));
+//    connect(m_dataWorker, SIGNAL(sendHDInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendHDInfo(QMap<QString,QVariant>)));
+    connect(list_widget, SIGNAL(List_requestHDInfo()), m_dataWorker, SLOT(onRequestHDInfo()));
+    connect(m_dataWorker, SIGNAL(sendHDInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendHDInfo_next(QMap<QString,QVariant>)));
 
     //nic info
-    connect(info_widget, SIGNAL(requestNicInfo()), m_dataWorker, SLOT(onRequestNicInfo()));
-    connect(m_dataWorker, SIGNAL(sendNicInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendNicInfo(QMap<QString,QVariant>)));
+//    connect(info_widget, SIGNAL(requestNicInfo()), m_dataWorker, SLOT(onRequestNicInfo()));
+//    connect(m_dataWorker, SIGNAL(sendNicInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendNicInfo(QMap<QString,QVariant>)));
+    connect(list_widget, SIGNAL(List_requestNicInfo()), m_dataWorker, SLOT(onRequestNicInfo()));
+    connect(m_dataWorker, SIGNAL(sendNicInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendNicInfo_next(QMap<QString,QVariant>)));
 
     //monitor info
-    connect(info_widget, SIGNAL(requestMonitorInfo()), m_dataWorker, SLOT(onRequestMonitorInfo()));
-    connect(m_dataWorker, SIGNAL(sendMonitorInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendMonitorInfo(QMap<QString,QVariant>)));
+//    connect(info_widget, SIGNAL(requestMonitorInfo()), m_dataWorker, SLOT(onRequestMonitorInfo()));
+//    connect(m_dataWorker, SIGNAL(sendMonitorInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendMonitorInfo(QMap<QString,QVariant>)));
+    connect(list_widget, SIGNAL(List_requestMonitorInfo()), m_dataWorker, SLOT(onRequestMonitorInfo()));
+    connect(m_dataWorker, SIGNAL(sendMonitorInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendMonitorInfo_next(QMap<QString,QVariant>)));
 
     //audio info
-    connect(info_widget, SIGNAL(requestAudioInfo()), m_dataWorker, SLOT(onRequestAudioInfo()));
-    connect(m_dataWorker, SIGNAL(sendAudioInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendAudioInfo(QMap<QString,QVariant>)));
+//    connect(info_widget, SIGNAL(requestAudioInfo()), m_dataWorker, SLOT(onRequestAudioInfo()));
+//    connect(m_dataWorker, SIGNAL(sendAudioInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendAudioInfo(QMap<QString,QVariant>)));
+    connect(list_widget, SIGNAL(List_requestAudioInfo()), m_dataWorker, SLOT(onRequestAudioInfo()));
+    connect(m_dataWorker, SIGNAL(sendAudioInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendAudioInfo_next(QMap<QString,QVariant>)));
 
     //battery info
-    connect(info_widget, SIGNAL(requestBatteryInfo()), m_dataWorker, SLOT(onRequestBatteryInfo()));
-    connect(m_dataWorker, SIGNAL(sendBatteryInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendBatteryInfo(QMap<QString,QVariant>)));
+//    connect(info_widget, SIGNAL(requestBatteryInfo()), m_dataWorker, SLOT(onRequestBatteryInfo()));
+//    connect(m_dataWorker, SIGNAL(sendBatteryInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendBatteryInfo(QMap<QString,QVariant>)));
+    connect(list_widget, SIGNAL(List_requestBatteryInfo()), m_dataWorker, SLOT(onRequestBatteryInfo()));
+    connect(m_dataWorker, SIGNAL(sendBatteryInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendBatteryInfo_next(QMap<QString,QVariant>)));
 
     //sensor info
-    connect(info_widget, SIGNAL(requestSensorInfo()), m_dataWorker, SLOT(onRequestSensorInfo()));
-    connect(m_dataWorker, SIGNAL(sendSensorInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendSensorInfo(QMap<QString,QVariant>)));
+//    connect(info_widget, SIGNAL(requestSensorInfo()), m_dataWorker, SLOT(onRequestSensorInfo()));
+//    connect(m_dataWorker, SIGNAL(sendSensorInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendSensorInfo(QMap<QString,QVariant>)));
+    connect(list_widget, SIGNAL(List_requestSensorInfo()), m_dataWorker, SLOT(onRequestSensorInfo()));
+    connect(m_dataWorker, SIGNAL(sendSensorInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendSensorInfo_next(QMap<QString,QVariant>)));
+
+    connect(monitorwidget,SIGNAL(requestcpuTemperature()),m_dataWorker, SLOT(onRequestCpuTemperature()));
+    connect(m_dataWorker, SIGNAL(sendCpuTemperaturedata(QMap<QString, QVariant>)),monitorwidget,SLOT(onsendTemperaturedata(QMap<QString, QVariant>)));
+
+    connect(monitorwidget,SIGNAL(requestcpurange()),m_dataWorker,SLOT(onRequesetCpuRange()));
+    connect(m_dataWorker,SIGNAL(sendCpuRangedata(QMap<QString,QVariant>)),monitorwidget,SLOT(sendcpurangedata(QMap<QString,QVariant>)));
+    connect(monitorwidget,SIGNAL(setCpuGoverner(QString)),m_dataWorker,SLOT(onSetCurrentCpuMode(QString)));
 
     //bind setting notify signal
 //    connect(m_dataWorker, SIGNAL(string_value_notify(QString,QString)), setting_widget, SIGNAL(string_value_notify(QString,QString)));
@@ -557,7 +615,13 @@ void MainWindow::onInitDataFinished()
     connect(setting_widget, SIGNAL(resetThumbnailCacheTime(int)), m_dataWorker, SLOT(onResetThumbnailCacheTime(int)));
     connect(setting_widget, SIGNAL(resetThumbnailCacheSize(int)), m_dataWorker, SLOT(onResetThumbnailCacheSize(int)));
 
-    info_widget->initInfoUI(this->battery, this->sensor);
+//    info_widget->initInfoUI(this->battery, this->sensor);
+    list_widget->InitInfowidgetUI();
+//    monitorwidget->InitUI();
+    list_widget->setBatteryAndSensor(this->battery,this->sensor);
+    monitorwidget->set_governer_list(m_cpulist);
+    monitorwidget->set_cur_governer(m_currentCpuMode);
+    monitorwidget->InitUI();
     setting_widget->initSettingsUI(this->m_cpulist, this->m_currentCpuMode, this->battery/*, last_skin_path*/);
     this->moveCenter();
 }
@@ -947,26 +1011,25 @@ void MainWindow::closeEvent(QCloseEvent *)
 
 void MainWindow::setCurrentPageIndex(int index)
 {
-    if (index == 0 && status != HOMEPAGE) {
-        m_topStack->setCurrentWidget(m_mainTopWidget);
-        m_bottomStack->setCurrentWidget(m_mainBottomWidget);
-        m_topStack->setFixedSize(m_mainTopWidget->size());
-        m_bottomStack->setFixedSize(m_mainBottomWidget->size());
-        status = HOMEPAGE;
-    }
-    else if (index == 1 && status != CLEANPAGE) {
-        m_topStack->setCurrentWidget(cleaner_action_widget);
+    qDebug() << "==========index " << index;
+    if (index == 0 && status != CLEANPAGE) {
+//        m_topStack->setCurrentWidget(cleaner_action_widget);
         m_bottomStack->setCurrentWidget(cleaner_widget);
-        m_topStack->setFixedSize(cleaner_action_widget->size());
+//        m_topStack->setFixedSize(cleaner_action_widget->size());
         m_bottomStack->setFixedSize(cleaner_widget->size());
         status = CLEANPAGE;
     }
-    else if (index == 2 && status != INFOPAGE) {
-        m_topStack->setCurrentWidget(info_action_widget);
-        m_bottomStack->setCurrentWidget(info_widget);
-        m_topStack->setFixedSize(info_action_widget->size());
-        m_bottomStack->setFixedSize(info_widget->size());
-        status = INFOPAGE;
+//    else if (index == 1 && status != HOMEPAGE) {
+//        //        m_topStack->setCurrentWidget(m_mainTopWidget);
+//        m_bottomStack->setCurrentWidget(optimized_widget);
+//        //        m_topStack->setFixedSize(m_mainTopWidget->size());
+//        m_bottomStack->setFixedSize(optimized_widget->size());
+//        status = HOMEPAGE;
+//    }
+    else if (index == 1 && status != MONITOR) {
+        m_bottomStack->setCurrentWidget(monitorwidget);
+        m_bottomStack->setFixedSize(monitorwidget->size());
+        status = MONITOR;
     }
 //    else if (index == 3 && status != SETTINGPAGE) {
 //        m_topStack->setCurrentWidget(setting_action_widget);
@@ -975,10 +1038,21 @@ void MainWindow::setCurrentPageIndex(int index)
 //        m_bottomStack->setFixedSize(setting_widget->size());
 //        status = SETTINGPAGE;
 //    }
-    else if (index == 3 && status != BOXPAGE) {
-        m_topStack->setCurrentWidget(box_action_widget);
+    else if (index == 2 && status != DRIVE) {
+        m_bottomStack->setCurrentWidget(drive_widget);
+        m_bottomStack->setFixedSize(drive_widget->size());
+        status = DRIVE;
+    }
+    else if (index == 3 && status != INFOPAGE) {
+        m_bottomStack->setCurrentWidget(list_widget);
+//        m_topStack->setFixedSize(info_action_widget->size());
+//        m_bottomStack->setFixedSize(info_widget->size());
+        m_bottomStack->setFixedSize(list_widget->size());
+        status = INFOPAGE;
+    }
+    else if (index == 4 && status != BOXPAGE) {
         m_bottomStack->setCurrentWidget(box_widget);
-        m_topStack->setFixedSize(box_action_widget->size());
+//        m_topStack->setFixedSize(box_action_widget->size());
         m_bottomStack->setFixedSize(box_widget->size());
         status = BOXPAGE;
     }

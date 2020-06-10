@@ -45,9 +45,9 @@ MainTopWidget::MainTopWidget(bool isMain, QSettings *mSettings, QWidget *parent)
 //    p_mainwindow = static_cast<MainWindow *>(parent);
 
     if (m_isMain)
-        this->setFixedSize(900, 227);
+        this->setFixedSize(860, 150);
     else
-        this->setFixedSize(900, 150);
+        this->setFixedSize(860, 150);
 
     this->setAutoFillBackground(true);
 //    this->setObjectName("transparentWidget");
@@ -94,9 +94,9 @@ void MainTopWidget::paintEvent(QPaintEvent *event)
 //    path.addRoundedRect(0,0,this->width(),this->height(),20,20);
     path.moveTo(0,40);
     path.cubicTo(0,0,0,0,40,0);
-    path.lineTo(860,0);
-    path.cubicTo(900,0,900,0,900,40);
-    path.lineTo(900,this->height());
+    path.lineTo(820,0);
+    path.cubicTo(860,0,860,0,860,40);
+    path.lineTo(860,this->height());
     path.lineTo(0,this->height());
     path.lineTo(0,40);
 

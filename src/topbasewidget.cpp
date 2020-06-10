@@ -89,7 +89,7 @@ TopBaseWidget::TopBaseWidget(QWidget *parent)
 {
     m_titileMessage = "";
 
-    this->setFixedSize(900, 150);
+    this->setFixedSize(860, 150);
     this->setAutoFillBackground(true);
 //    this->setObjectName("transparentWidget");
 

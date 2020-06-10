@@ -24,6 +24,9 @@
 #include <QStackedWidget>
 #include <QMap>
 #include <QVariant>
+#include <QPushButton>
+#include <QFont>
+#include <QFileInfo>
 
 #include "../component/utils.h"
 
@@ -41,17 +44,21 @@ public:
     void setLanguage();
     void getAllScanSelectedItems();
     void resetCurrentSkin(QString skin);
-
+    void Browser_to_judge_existence();
 public slots:
     void onButtonClicked();
     void receiveScanSignal();
     void onRefreshSelectedItems(CleanerCategoryID id, const QStringList &infos);
     void resetDefaultStatus();
 
+    void onClickedCleanbtn();
+
 signals:
     void showActionAnimaiton();
     void startScanSystem(QMap<QString, QVariant> itemsMap);
 
+    void hideThisWidget();
+    void onKeyClean(const QStringList &categorys);
 private:
     MainWindow *parentWindow;
     QLabel *tip_label;
@@ -78,6 +85,12 @@ private:
     QStringList m_selectedCache;
     QStringList m_selectedCookie;
     QStringList m_selectedTrace;
+
+    QPushButton *start_clean;
+
+    bool google=false;
+    bool firefox=false;
+    bool browser360=false;
 };
 
 #endif // CLEANERMAINWIDGET_H

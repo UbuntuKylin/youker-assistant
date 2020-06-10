@@ -23,10 +23,12 @@
 #include <QWidget>
 #include "../cleaner/cleanermainwidget.h"
 #include "../cleaner/cleanerdetailwidget.h"
+#include "../cleaner/cleanlistwidget.h"
 #include <QStackedWidget>
 
 class Toolkits;
 class MainWindow;
+class CleandetailVeiw;
 
 class CleanerWidget : public QWidget
 {
@@ -59,11 +61,20 @@ signals:
     void startScanSystem(QMap<QString, QVariant> itemsMap);
     void startCleanSystem(QMap<QString, QVariant> itemsMap);
 
+    //add by tangguang 2020.05.14========
+    void startOneKeyScan(const QStringList &categorys);
+    void isScanning(QString msg);
+    void finishScanWork(QString msg);
+    void tellScanResult(QString flag, QString msg);
+    void startOneKeyClean();
 
+    void finishCleanWorkMain(QString msg);
+    //===================================
 private:
     QStackedWidget *statked_widget;
     CleanerMainWidget *main_widget;
-    CleanerDetailWidget *detail_widget;
+//    CleanerDetailWidget *detail_widget;
+    CleandetailVeiw *detailview;
     MainWindow *p_mainwindow;
     Toolkits *toolKits;
 };

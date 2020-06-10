@@ -37,7 +37,7 @@ InfoGui::InfoGui(QWidget *parent)
 //    setFixedSize(750, 403);
 //    this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     this->setStyleSheet("QWidget {background-color: rgba(255, 255, 255, 0.1);border:none;}");
-    this->resize(750, parent->size().height());
+    this->resize(700, parent->size().height());
     m_infoGuiName = "";
 
     m_vLayout = new QVBoxLayout,
@@ -51,7 +51,7 @@ InfoGui::InfoGui(QWidget *parent)
     m_vLayout->setMargin(0);
     m_widget->setLayout(m_vLayout);
 
-    m_widget->setFixedWidth(750);//m_scrollArea->width()
+    m_widget->setFixedWidth(700);//m_scrollArea->width()
     m_scrollArea->setWidget(m_widget);
 
     QVBoxLayout *layout = new QVBoxLayout;//QHBoxLayout *mainLayout = static_cast<QHBoxLayout *>(layout());

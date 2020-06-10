@@ -390,6 +390,36 @@ QString SystemDispatcher::get_time_value_qt() {
     return reply.value();
 }
 
+QMap<QString, QVariant> SystemDispatcher::get_cpu_Temperature()
+{
+    QMap<QString, QVariant> value;
+    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_cpu_sensor");
+    if (reply.isValid()) {
+        value = reply.value();
+        return value;
+    }
+    else {
+        qDebug() << "get cpu Temperature failed!";
+//        QMap<QString, QVariant> value;
+        return value;
+    }
+}
+
+QMap<QString, QVariant> SystemDispatcher::get_cpu_range()
+{
+    QMap<QString, QVariant> value;
+    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_cpu_range");
+    if (reply.isValid()) {
+        value = reply.value();
+        return value;
+    }
+    else {
+        qDebug() << "get cpu Range failed!";
+//        QMap<QString, QVariant> value;
+        return value;
+    }
+}
+
 void SystemDispatcher::exit_qt() {
     systemiface->call("exit");
 }
@@ -414,6 +444,7 @@ void SystemDispatcher::handler_interrupt_clean(bool status) {
 }
 
 void SystemDispatcher::handler_clear_rubbish_main_onekey(QString msg) {
+    qDebug() << Q_FUNC_INFO << msg;
      emit finishCleanWorkMain(msg);
 }
 

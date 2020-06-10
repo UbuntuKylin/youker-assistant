@@ -30,7 +30,8 @@ AboutDialog::AboutDialog(QWidget *parent, /*const QString &version, */QString sk
 {
     this->setWindowFlags(Qt::FramelessWindowHint);
 //    this->setWindowFlags(Qt::WindowStaysOnTopHint);
-    this->setFixedSize(442, 326);
+    this->setAttribute(Qt::WA_TranslucentBackground);
+    this->setFixedSize(462, 346);
     this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
     this->setWindowTitle(tr("About us"));
     this->setWindowIcon(QIcon(":/res/kylin-assistant.png"));
@@ -39,8 +40,8 @@ AboutDialog::AboutDialog(QWidget *parent, /*const QString &version, */QString sk
     contributorGroup = NULL;
 
     baseWidget = new QWidget(this);
-    baseWidget->setGeometry(QRect(0, 0, 442, 82));
-//    baseWidget->setStyleSheet("QWidget{background:transparent url(://res/menu-big-hover.png);}");
+    baseWidget->setGeometry(QRect(10, 10, 442, 82));
+    baseWidget->setStyleSheet("QWidget{background:rgb(34,103,242);border-top-left-radius:5px;border-top-right-radius:5px;}");
     baseWidget->setAutoFillBackground(true);
 //    QPixmap label_pixmap(skin);
 //    logo_label->setPixmap(label_pixmap);
@@ -49,9 +50,10 @@ AboutDialog::AboutDialog(QWidget *parent, /*const QString &version, */QString sk
 //    QPixmap label_pixmap(skin);
 //    qDebug() << label_pixmap.size();
 
-    QPalette palette;
-    palette.setBrush(QPalette::Background, QBrush(QPixmap(skin)));
-    baseWidget->setPalette(palette);
+//    QPalette palette;
+//    palette.setBrush(QPalette::Background, QBrush(QPixmap(skin)));
+//    palette.setBrush(QPalette::Background, QBrush(QColor(34,103,242)));
+//    baseWidget->setPalette(palette);
 
     close_btn = new SystemButton(baseWidget);
     close_btn->setFocusPolicy(Qt::NoFocus);
@@ -186,6 +188,27 @@ void AboutDialog::initAnimation()
 
     contributorGroup = new QParallelAnimationGroup(this);
     contributorGroup->addAnimation(contributorAnimation);
+}
+
+void AboutDialog::paintEvent(QPaintEvent *event)
+{
+    Q_UNUSED(event)
+    QPainterPath path;
+    path.setFillRule(Qt::WindingFill);
+    path.addRoundRect(10,10,this->width()-20,this->height()-20,5,5);
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing,true);
+    painter.fillPath(path,QBrush(Qt::white));
+    QColor color(0,0,0,50);
+    for(int i = 0 ; i < 10 ; ++i)
+    {
+        QPainterPath path;
+        path.setFillRule(Qt::WindingFill);
+        path.addRoundRect(10-i,10-i,this->width()-(10-i)*2,this->height()-(10-i)*2,5,5);
+        color.setAlpha(150 - qSqrt(i)*50);
+        painter.setPen(color);
+        painter.drawPath(path);
+    }
 }
 
 void AboutDialog::initConnect()

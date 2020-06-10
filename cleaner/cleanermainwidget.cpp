@@ -34,8 +34,9 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
 //    this->setPalette(palette);
 
     tip_label = new QLabel(this);
-    tip_label->setGeometry(QRect(30, 10, 800, 30));
+    tip_label->setGeometry(QRect(120, 60, 800, 30));
     tip_label->setObjectName("tipLabel");
+    tip_label->setFixedHeight(45);
 //    QStringList cache_list, status_list;
 //    cache_list << tr("Cleanup Package Cache") << tr("Cleanup Software Center Cache") << tr("Cleanup Thumbnails Cache") << tr("Cleanup FireFox Cache") << tr("Cleanup Chromium Cache");
 //    status_list << "apt" << "software-center" << "thumbnails" << "firefox" << "chromium";
@@ -44,7 +45,7 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
     cache_btn = new CleanGroup(this, "://res/cache");
     cache_btn->setFocusPolicy(Qt::NoFocus);
 //    cache_btn->setGeometry(QRect(10, 50, 260, 150));
-    cache_btn->setGeometry(QRect(10, 150, 260, 150));
+    cache_btn->setGeometry(QRect(30, 150, 260, 150));
 //    cache_btn->setFixedSize(260, 130);
     cache_btn->setStatusTip("cache");
     cache_btn->setLabelText(tr("System Cache"), tr("Cleans up cache of system"));//系统缓存垃圾    清除包、软件中心、缩略图和浏览器缓存
@@ -79,7 +80,7 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
 //    cookies_btn = new KylinCheckBox(0, "://res/cookie.png");
     cookies_btn = new CleanGroup(this, "://res/cookie");
     cookies_btn->setFocusPolicy(Qt::NoFocus);
-    cookies_btn->setGeometry(QRect(320, 150, 260, 150));
+    cookies_btn->setGeometry(QRect(290, 150, 260, 150));
 //    cookies_btn->setGeometry(QRect(630, 50, 260, 150));
 //    cookies_btn->setFixedSize(260, 130);
     cookies_btn->setLabelText(tr("Cookies"), tr("Cleans up cookies in browser"));
@@ -98,7 +99,7 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
     trace_btn = new CleanGroup(this, "://res/trace");
     trace_btn->setFocusPolicy(Qt::NoFocus);
 //    trace_btn->setGeometry(QRect(10, 240, 260, 150));
-    trace_btn->setGeometry(QRect(630, 150, 260, 150));
+    trace_btn->setGeometry(QRect(550, 150, 260, 150));
 //    trace_btn->setFixedSize(260, 130);
     trace_btn->setLabelText(tr("History trace"), tr("Cleans up records of history"));
     trace_btn->setStatusTip("trace");
@@ -108,12 +109,23 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
     connect(trace_btn, SIGNAL(clicked()), this, SLOT(onButtonClicked()));
     this->setLanguage();
 
-    cache_list << tr("Cleanup Package Cache") << tr("Cleanup Software Center Cache") << tr("Cleanup Thumbnails Cache") << tr("Cleanup FireFox Cache") << tr("Cleanup Chromium Cache");
-    cache_status_list << "apt" << "software-center" << "thumbnails" << "firefox" << "chromium";
-    cookies_list << tr("Cleanup the Cookies saving in Firefox") << tr("Cleanup the Cookies saving in Chromium");
-    cookies_status_list << "firefox" << "chromium";
-    trace_list << tr("Clean up the Firefox Internet records") << tr("Clean up the Chromium Internet records") << tr("Clean up the recently opened documents records") << tr("Delete the command history") << tr("Delete the debug logs");
-    trace_status_list << "firefox" << "chromium" << "system" << "bash" << "X11";
+
+    start_clean = new QPushButton(this);
+    start_clean->setFocusPolicy(Qt::NoFocus);
+    start_clean->setFlat(true);
+    start_clean->setText(tr("Start Clean"));
+    start_clean->setGeometry(QRect(120,320,220,60));
+    start_clean->setStyleSheet("QPushButton{background:rgba(34,103,242,1);color:white;border-radius:30px;font-size:24px}\
+                                QPushButton:hover{background:rgba(67,127,240,1);color:white}");
+
+    connect(start_clean,SIGNAL(clicked()),this,SLOT(onClickedCleanbtn()));
+
+    cache_list << tr("Cleanup Package Cache") << tr("Cleanup Software Center Cache") << tr("Cleanup Thumbnails Cache") /*<< tr("Cleanup FireFox Cache") << tr("Cleanup Chromium Cache")*/;
+    cache_status_list << "apt" << "software-center" << "thumbnails" /*<< "firefox" << "chromium"*/;
+//    cookies_list << tr("Cleanup the Cookies saving in Firefox") << tr("Cleanup the Cookies saving in Chromium");
+//    cookies_status_list << "firefox" << "chromium";
+    trace_list /*<< tr("Clean up the Firefox Internet records") << tr("Clean up the Chromium Internet records") */<< tr("Clean up the recently opened documents records") << tr("Delete the command history") << tr("Delete the debug logs");
+    trace_status_list /*<< "firefox" << "chromium" */<< "system" << "bash" << "X11";
 
     m_selectedCache = cache_status_list;
     m_selectedCookie = cookies_status_list;
@@ -143,7 +155,12 @@ CleanerMainWidget::~CleanerMainWidget()
 
 void CleanerMainWidget::setLanguage()
 {
-    tip_label->setText(tr("Please select the items you want to clean"));
+//    tip_label->setText(tr("Please select the items you want to clean"));
+    QFont font;
+    font.setPixelSize(36);
+    font.setBold(QFont::Bold);
+    tip_label->setFont(font);
+    tip_label->setText(tr("Cleanup makes computers safer."));
 }
 
 void CleanerMainWidget::resetCurrentSkin(QString skin)
@@ -155,7 +172,35 @@ void CleanerMainWidget::resetCurrentSkin(QString skin)
 //    if(package_items != NULL)
 //        package_items->resetTitleSkin(skin);
 //    if(cookies_items != NULL)
-//        cookies_items->resetTitleSkin(skin);
+    //        cookies_items->resetTitleSkin(skin);
+}
+
+/**
+  *判断当前的系统存在哪些浏览器
+  *
+  * @param null
+  * @return null
+**/
+void CleanerMainWidget::Browser_to_judge_existence()
+{
+    QFileInfo fileinfo;
+    fileinfo.setFile("/usr/bin/google-chrome-stable");
+    if(fileinfo.isFile())
+        google = true;
+    else
+        google = false;
+
+    fileinfo.setFile("/usr/bin/firefox");
+    if(fileinfo.isFile())
+        firefox = true;
+    else
+        firefox = false;
+
+    fileinfo.setFile("/usr/bin/browser360-cn-stable");
+    if(fileinfo.isFile())
+        browser360 = true;
+    else
+        browser360 = false;
 }
 
 void CleanerMainWidget::receiveScanSignal()
@@ -265,8 +310,114 @@ void CleanerMainWidget::resetDefaultStatus()
     m_selectedTrace = trace_status_list;
 }
 
+void CleanerMainWidget::onClickedCleanbtn()
+{
+    emit this->hideThisWidget();
+    QStringList args;
+    args << "cache" << "history" << "cookies";
+    emit this->onKeyClean(args);
+}
+
 void CleanerMainWidget::onButtonClicked()
 {
+    Browser_to_judge_existence();//每次点击都更新浏览器的存在数据
+
+    //对google浏览器存在添加选择字段，如不存在则去除选择字段
+    if(google)
+    {
+        //对字符串做存在判断，避免重读添加字段
+        if(!cache_status_list.contains("chromium"))
+        {
+            cache_list << tr("Cleanup Chromium Cache");
+            cache_status_list << "chromium";
+        }
+
+        //同上
+        if(!cookies_status_list.contains("chromium"))
+        {
+            cookies_list << tr("Cleanup the Cookies saving in Chromium");
+            cookies_status_list << "chromium";
+        }
+
+        //同上
+        if(!trace_status_list.contains("chromium"))
+        {
+            trace_list << tr("Clean up the Chromium Internet records");
+            trace_status_list << "chromium";
+        }
+    }
+    else
+    {
+        //对字符串做存在判断,存在则去除字段
+        if(cache_status_list.contains("chromium"))
+        {
+            cache_list.removeOne(tr("Cleanup Chromium Cache"));
+            cache_status_list.removeOne("chromium");
+        }
+
+        //同上
+        if(cookies_status_list.contains("chromium"))
+        {
+            cookies_list.removeOne(tr("Cleanup the Cookies saving in Chromium"));
+            cookies_status_list.removeOne("chromium");
+        }
+
+        //同上
+        if(trace_status_list.contains("chromium"))
+        {
+            trace_list.removeOne(tr("Clean up the Chromium Internet records"));
+            trace_status_list.removeOne("chromium");
+        }
+    }
+
+    //对firefox浏览器存在添加选择字段，如不存在则去除选择字段
+    if(firefox)
+    {
+        //对字符串做存在判断，避免重读添加字段
+        if(!cache_status_list.contains("firefox"))
+        {
+            cache_list << tr("Cleanup FireFox Cache");
+            cache_status_list << "firefox";
+        }
+
+        //同上
+        if(!cookies_status_list.contains("firefox"))
+        {
+            cookies_list << tr("Cleanup the Cookies saving in Firefox");
+            cookies_status_list << "firefox";
+        }
+
+        //同上
+        if(!trace_status_list.contains("firefox"))
+        {
+            trace_list << tr("Clean up the Firefox Internet records");
+            trace_status_list << "firefox";
+        }
+    }
+    else
+    {
+        //对字符串做存在判断,存在则去除字段
+        if(cache_status_list.contains("firefox"))
+        {
+            cache_list.removeOne(tr("Cleanup FireFox Cache"));
+            cache_status_list.removeOne("firefox");
+        }
+
+        //同上
+        if(cookies_status_list.contains("firefox"))
+        {
+            cookies_list.removeOne(tr("Cleanup the Cookies saving in Firefox"));
+            cookies_status_list.removeOne("firefox");
+        }
+
+        //同上
+        if(trace_status_list.contains("firefox"))
+        {
+            trace_list.removeOne(tr("Clean up the Firefox Internet records"));
+            trace_status_list.removeOne("firefox");
+        }
+    }
+
     QObject *object = QObject::sender();
 //    KylinCheckBox *checkbox = qobject_cast<KylinCheckBox *>(object);
     CleanGroup *checkbox = qobject_cast<CleanGroup *>(object);

@@ -1771,10 +1771,74 @@ class DetailInfo:
                     origin[key[0]] = (line.split(":")[1]).split("(")[0].strip()
                     break
         return origin
+    
+    def get_cpu_sensors(self):
+        
+        origin = {}
+
+        status, output = subprocess.getstatusoutput("sensors")
+        if(status != -1):
+            for line in output.split("\n"):
+                if "Core" in line.split(":")[0]:
+                    origin[line.split(":")[0]]=line.split(":")[1].lstrip().split(" ")[0][1:5]
+        
+        return origin
+                
+    def get_cpu_range(self):
+
+        origin = {
+            "maximum":"",
+            "minimum":"",
+            "support":"",
+            "cur_freq":"0",
+        }
+
+        if(os.path.exists("/sys/devices/system/cpu/cpu0/cpufreq/")):
+            origin["support"]="true"
+
+            f = open("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq",'r')
+            origin["maximum"] = self.num_convert(f.readline().strip())
+            
+            f = open("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_min_freq",'r')
+            origin["minimum"] = self.num_convert(f.readline().strip())
+
+            f = open("/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed",'r')
+            if(f.readline().strip().isdigit()):
+                origin["cur_freq"] = self.num_convert(f.readline().strip())
+
+            f.close()
+        else:
+            origin["support"]="false"
+            return origin
+        
+        
+        # if(os.path.exists("/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed")):
+        #     f = open("/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed",'r')
+        #     origin["cur_freq"] = self.num_convert(f.readline().strip())
+
+        return origin
+    
+    def num_convert(self,s):
+        num = int(s)
+        unit=""
+        for i in range(0,10):
+            if( i == 1 ):
+                unit = "Mhz"
+            elif ( i == 2):
+                unit = "Ghz"
+
+            if(num >= 10):
+                num=num/1000
+            else:
+                break
+            print (i)
+            
+        print (str(num)+unit)
+        return str(num)+unit
 
 if __name__ == "__main__":
     pass
-    #cc = DetailInfo()
+    cc = DetailInfo()
     #cc.ctoascii('a')
     #cc.strip('a')
     #cc.get_url('a','a')
@@ -1788,4 +1852,4 @@ if __name__ == "__main__":
     #cc.get_multimedia()
     #cc.get_dvd()
     #cc.get_usb()
-    #pprint(cc.get_sensors())
+    pprint(cc.get_cpu_range())

@@ -20,6 +20,7 @@
 #include "mytitlebar.h"
 #include "utils.h"
 #include "../../plugins/widgets/mytristatebutton.h"
+#include "./systembutton.h"
 
 #include <QDebug>
 #include <QHBoxLayout>
@@ -41,7 +42,7 @@ MyTitleBar::MyTitleBar(const QString &title, bool needMin, QWidget *parent)
 //    this->setAttribute(Qt::WA_TranslucentBackground);
 
     QPalette palette;
-    palette.setColor(QPalette::Background, QColor("#0d87ca"));
+    palette.setColor(QPalette::Background, QColor("#2267F2"));
     this->setPalette(palette);
 
     initWidgets();
@@ -127,7 +128,7 @@ void MyTitleBar::initRightContent()
     m_rLayout->setSpacing(0);
 
     m_layout->addWidget(w, 1, Qt::AlignRight);
-
+    qDebug() << Q_FUNC_INFO << __LINE__ << m_needMin;
     if (m_needMin) {
         MyTristateButton *minBtn = new MyTristateButton;
         minBtn->setObjectName("MinButton");
@@ -135,8 +136,12 @@ void MyTitleBar::initRightContent()
         m_rLayout->addWidget(minBtn);
     }
 
-    MyTristateButton *closeBtn = new MyTristateButton;
-    closeBtn->setObjectName("CloseButton");
+//    MyTristateButton *closeBtn = new MyTristateButton;
+//    closeBtn->setObjectName("CloseButton");
+//    closeBtn->setNormalPic(":/res/closeBtn.png");
+//    closeBtn->setHoverPic(":/res/closeBtn_hover.png");
+    SystemButton *closeBtn = new SystemButton();
+    closeBtn->loadPixmap(":/sys/res/sysBtn/close_button.png");
     connect(closeBtn, SIGNAL(clicked()), this, SIGNAL(closeSignal()));
     m_rLayout->addWidget(closeBtn);
 }

@@ -26,7 +26,9 @@ KylinToolButton::KylinToolButton(const QString &pic_name, const QString &text, Q
     setDown(false);
     setFocusPolicy(Qt::NoFocus);
 
+    txt=text;
     this->setText(text);
+    this->setStyleSheet("color:white");
 
 //	QPalette text_palette = palette();
 //	text_palette.setColor(QPalette::ButtonText, QColor(230, 230, 230));
@@ -35,14 +37,16 @@ KylinToolButton::KylinToolButton(const QString &pic_name, const QString &text, Q
 //	QFont &text_font = const_cast<QFont &>(font());
 //	text_font.setWeight(QFont::Bold);
 
-    setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 //    setToolButtonStyle( Qt::ToolButtonTextUnderIcon);
     setPopupMode(QToolButton::InstantPopup);
 
-    QPixmap pixmap(pic_name);
+    pixmap.load(pic_name);
     normal_icon = QIcon(pic_name);
-    hover_icon = QIcon(pic_name + "-hover");
-    press_icon = QIcon(pic_name + "-press");
+//    hover_icon = QIcon(pic_name + "-hover");
+//    press_icon = QIcon(pic_name + "-press");
+    hover_icon = QIcon(pic_name);
+    press_icon = QIcon(pic_name);
     setIcon(pixmap);
     setIconSize(pixmap.size());
 
@@ -83,8 +87,72 @@ void KylinToolButton::mousePressEvent(QMouseEvent *event)
     {
         //kobe: don't emit, it will emit by click it self.
 //        emit clicked();
+//        pressed = true;
     }
     QToolButton::mousePressEvent(event);
+}
+
+/**
+  * 在此函数里面绘制按钮的三态样式
+  *
+  * @param   {QPaintEvent *}event
+  * @return  null
+**/
+void KylinToolButton::paintEvent(QPaintEvent *event)
+{
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing); //反锯齿
+
+    //设置渐变色的样式和范围
+    QLinearGradient linear(this->height()/2,0,this->height()/2,this->width());
+    linear.setColorAt(0, Qt::transparent);
+    linear.setColorAt(1, QColor(255,255,255,80));
+
+
+    //绘制按钮的 hover 状态的样式
+    if(mouse_over)
+    {
+        painter.setPen(Qt::transparent);
+        painter.setBrush(linear);//设置渐变色给 brush
+        painter.drawRect(0,0,this->height(),this->width());//用渐变色填充这个 Rect 区域
+        painter.drawPixmap(QRect(22,8,48,48),QPixmap(pixmap)); //绘制 pixmap 图片
+//        qDebug() << Q_FUNC_INFO << txt;
+        painter.setPen(Qt::white);
+        painter.drawText(QRect(16,65,60,14),Qt::AlignCenter,txt); //绘制文字
+    }
+    else //绘制按钮从 hover 转换到非 hover 状态的样式
+    {
+        painter.setPen(Qt::transparent);
+        painter.setBrush(Qt::transparent);
+        painter.drawRect(0,0,this->height(),this->width());
+        painter.drawPixmap(QRect(22,8,48,48),QPixmap(pixmap));
+//        qDebug() << Q_FUNC_INFO << txt;
+        painter.setPen(Qt::white);
+        painter.drawText(QRect(16,65,60,14),Qt::AlignCenter,txt);
+    }
+
+    //绘制按钮的 pressed 状态的样式
+    if(pressed)
+    {
+        painter.setPen(Qt::transparent);
+        painter.setBrush(linear);   //设置渐变色给 brush
+        painter.drawRect(0,0,this->height(),this->width()); //将渐变色填充带这个 Rect 区域
+        painter.drawPixmap(QRect(22,8,48,48),QPixmap(pixmap));  //绘制 pixmap 图片
+//        qDebug() << Q_FUNC_INFO << txt;
+        painter.setPen(Qt::white);
+        painter.drawText(QRect(16,65,60,14),Qt::AlignCenter,txt); //绘制文字
+    }
+    else //绘制按钮从 pressed 转换到非 pressed 状态的样式
+    {
+        painter.setPen(Qt::transparent);
+        painter.setBrush(Qt::transparent);
+        painter.drawRect(0,0,this->height(),this->width());
+        painter.drawPixmap(QRect(22,8,48,48),QPixmap(pixmap));
+//        qDebug() << Q_FUNC_INFO << txt;
+        painter.setPen(Qt::white);
+        painter.drawText(QRect(16,65,60,14),Qt::AlignCenter,txt);
+    }
+
 }
 
 void KylinToolButton::setMouseHover()
@@ -94,11 +162,14 @@ void KylinToolButton::setMouseHover()
         this->setIcon(QIcon(hover_icon));
     }
     else {
-        if(pressed)
+        if(pressed){
             this->setIcon(QIcon(press_icon));
-        else
+        }
+        else{
             this->setIcon(QIcon(normal_icon));
+        }
     }
+//    this->setStyleSheet("ToolButton{background-color:qlineargradient(x1:0, y1:0, x2:92, y2:85,stop:0 green,stop:1 red);color:white;}");
 }
 
 void KylinToolButton::setMousePress(bool is_press)

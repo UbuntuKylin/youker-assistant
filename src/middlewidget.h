@@ -25,10 +25,12 @@
 #include <QPushButton>
 #include <QMouseEvent>
 #include <QHBoxLayout>
+#include <QVBoxLayout>
 #include <QSignalMapper>
 #include <QVBoxLayout>
 #include "../component/kylinbutton.h"
 #include "../component/kylintoolbutton.h"
+#include "../component/systembutton.h"
 
 class MiddleWidget : public QWidget
 {
@@ -36,9 +38,17 @@ class MiddleWidget : public QWidget
 public:
     explicit MiddleWidget(QWidget *parent = 0, QString arch = "", QString os = "");
     ~MiddleWidget();
+    void InitMiddlewidget();
+    void initTitlebarLeftContent();
+    void initTitlebarRightContent();
+    void initBottomContent();
 
+    void paintEvent(QPaintEvent *);
 signals:
     void turnCurrentPage(int index);
+    void middle_showMenu();
+    void middle_showMin();
+    void middle_closeApp();
 
 public slots:
     void switchSelectedPageIndex(QString index);
@@ -50,6 +60,12 @@ private:
     QList<KylinToolButton *> button_list;
     QString cur_arch;
     QString osname;
+
+    QVBoxLayout *main_layout;
+    QHBoxLayout *botton_layout;
+    QHBoxLayout *top_layout;
+    QHBoxLayout *m_titleLeftLayout;
+    QHBoxLayout *m_titleRightLayout;
 };
 
 #endif // MIDDLEWIDGET_H

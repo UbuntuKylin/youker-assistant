@@ -38,7 +38,8 @@ public:
     void initConnect();
     void resetTitleSkin(QString skin);
     void initAnimation();
-    
+
+    void paintEvent(QPaintEvent *event);
 public slots:
     void onCloseBtnClicked();
     void openUrl(QString url);
