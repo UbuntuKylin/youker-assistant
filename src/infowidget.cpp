@@ -32,8 +32,8 @@ InfoWidget::InfoWidget(QString machine, QWidget *parent) :
     qDebug() << Q_FUNC_INFO;
     this->setFixedSize(700, 460);
     this->setAutoFillBackground(true);
-    this->setStyleSheet("QWidget{background:#ffffff; border: none;border-bottom-left-radius:10px;border-bottom-left-radius:0px}");
-//    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:20px;border-bottom-left-radius:20px}");
+
+    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:10px;border-bottom-left-radius:6px}");
 //    QPalette palette;
 //    palette.setBrush(QPalette::Window, QBrush(Qt::white));
 //    this->setPalette(palette);

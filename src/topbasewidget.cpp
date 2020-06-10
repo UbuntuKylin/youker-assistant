@@ -104,16 +104,23 @@ void TopBaseWidget::paintEvent(QPaintEvent *event)
     painter.setPen(Qt::transparent);
     QPainterPath path;
     path.setFillRule(Qt::OddEvenFill);
-//    path.addRoundedRect(0,0,this->width(),this->height(),20,20);
-    path.moveTo(0,40);
-    path.cubicTo(0,0,0,0,40,0);
-    path.lineTo(860,0);
-    path.cubicTo(900,0,900,0,900,40);
-    path.lineTo(900,this->height());
-    path.lineTo(0,this->height());
-    path.lineTo(0,40);
-
     path.addRect(0,0,this->width(),this->height());
+
+    const qreal radius = 10;
+    QRectF rect = QRect(0, 0, this->width(), this->height());
+
+    qDebug() << rect.bottomRight() << rect.bottomRight() + QPointF(0, radius);
+    path.moveTo(rect.bottomRight());
+    path.lineTo(rect.topRight() + QPointF(0, radius));
+    path.arcTo(QRectF(QPointF(rect.topRight() - QPointF(radius * 2, 0)), QSize(radius * 2, radius *2)), 0, 90);
+    path.lineTo(rect.topLeft() + QPointF(radius, 0));
+    path.arcTo(QRectF(QPointF(rect.topLeft()), QSize(radius * 2, radius * 2)), 90, 90);
+    path.lineTo(rect.bottomLeft());
+//    path.arcTo(QRectF(QPointF(rect.bottomLeft() - QPointF(0, radius * 2)), QSize(radius * 2, radius * 2)), 180, 90);
+//    path.lineTo(rect.bottomLeft() + QPointF(radius, 0));
+//    path.arcTo(QRectF(QPointF(rect.bottomRight() - QPointF(radius * 2, radius * 2)), QSize(radius * 2, radius * 2)), 270, 90);
+    path.moveTo(rect.bottomRight());
+
     painter.save();
     painter.setCompositionMode(QPainter::CompositionMode_Clear);
     painter.drawPath(path);

@@ -30,7 +30,8 @@ CleanerWidget::CleanerWidget(QWidget *parent) :
 {
     this->setFixedSize(860, 460);
     this->setWindowFlags(Qt::FramelessWindowHint | Qt::Widget);
-    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:10px;border-bottom-left-radius:10px}");
+
+    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:10px;border-bottom-left-radius:6px}");
     //set white background color
     this->setAutoFillBackground(true);
 //    QPalette palette;
