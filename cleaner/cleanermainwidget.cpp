@@ -160,6 +160,7 @@ void CleanerMainWidget::setLanguage()
     font.setPixelSize(36);
     font.setBold(QFont::Bold);
     tip_label->setFont(font);
+    tip_label->setStyleSheet("color:rgb(0,0,0,185)");
     tip_label->setText(tr("Cleanup makes computers safer."));
 }
 

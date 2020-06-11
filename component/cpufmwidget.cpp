@@ -1,6 +1,7 @@
 #include "cpufmwidget.h"
 #include <QLabel>
 #include <QDebug>
+#include <QMovie>
 
 #include "../component/generaldialog.h"
 
@@ -40,14 +41,14 @@ CpuFmwidget::CpuFmwidget(QWidget *parent) : QWidget(parent)
 
                 QPropertyAnimation *animation = new QPropertyAnimation(w,"geometry");
                 animation->setDuration(200);
-                animation->setStartValue(QRect(62,190,580,155));
-                animation->setEndValue(QRect(62,190,580,10));
+                animation->setStartValue(QRect(62,200,580,155));
+                animation->setEndValue(QRect(62,200,580,10));
                 animation->setEasingCurve(QEasingCurve::InQuad);
 
                 QPropertyAnimation *animation1 = new QPropertyAnimation(apply_button,"geometry");
                 animation1->setDuration(200);
-                animation1->setStartValue(QRect(60,350,120,36));
-                animation1->setEndValue(QRect(60,190,120,36));
+                animation1->setStartValue(QRect(60,360,120,36));
+                animation1->setEndValue(QRect(60,200,120,36));
                 animation1->setEasingCurve(QEasingCurve::InQuad);
 
                 group1 = new QParallelAnimationGroup(this);
@@ -62,6 +63,9 @@ CpuFmwidget::CpuFmwidget(QWidget *parent) : QWidget(parent)
             }
         }
     });
+
+    QObject::connect(&qtimer, &QTimer::timeout, this, &CpuFmwidget::RequestCPUFrequencyData);
+    qtimer.start(2000);
 }
 
 CpuFmwidget::~CpuFmwidget()
@@ -75,10 +79,12 @@ void CpuFmwidget::InitUI()
     cpu_lable = new QLabel(this);
     QLabel *cpu_tip = new QLabel(this);
 
-    QPixmap pixmap(":/res/CPU.png");
-    icon_lable->setPixmap(pixmap);
-    icon_lable->setFixedSize(pixmap.size());
-    icon_lable->setGeometry(QRect(60,39,60,60));
+    QMovie *movie = new QMovie(":/res/cpuFM.gif");
+    movie->setSpeed(100);
+    icon_lable->setMovie(movie);
+    icon_lable->setFixedSize(68,68);
+    icon_lable->setGeometry(QRect(60,39,68,68));
+    movie->start();
 
     QFont font;
     font.setBold(QFont::Bold);
@@ -95,7 +101,7 @@ void CpuFmwidget::InitUI()
 
     QFrame *h = new QFrame(this);
     h->setStyleSheet("background:rgb(231,231,231);border-radius:4px;");
-    h->setGeometry(QRect(62,110,580,75));
+    h->setGeometry(QRect(62,120,580,75));
     QVBoxLayout *h_layout = new QVBoxLayout(h);
     h_layout->setSpacing(10);
     h_layout->setMargin(0);
@@ -103,7 +109,7 @@ void CpuFmwidget::InitUI()
 
     QLabel *tip = new QLabel(h);
     tip->setFont(font);
-    tip->setText("CPU Management Strategy :");
+    tip->setText(tr("CPU Management Strategy :"));
     h_layout->addWidget(tip);
 
     radioGroup = new QButtonGroup(h);
@@ -140,15 +146,15 @@ void CpuFmwidget::InitUI()
                 item->setChecked(true);
             }
         }
-        else if(governer_list.at(i) == "conservative")
-        {
-            item->setText(tr("conservative"));
-            item->setObjectName("conservative");
-            if(cur_governer == "conservative")
-            {
-                item->setChecked(true);
-            }
-        }
+//        else if(governer_list.at(i) == "conservative")
+//        {
+//            item->setText(tr("conservative"));
+//            item->setObjectName("conservative");
+//            if(cur_governer == "conservative")
+//            {
+//                item->setChecked(true);
+//            }
+//        }
         else
         {
             continue;
@@ -166,7 +172,7 @@ void CpuFmwidget::InitUI()
 
     w = new QFrame(this);
     w->setStyleSheet("background:rgb(231,231,231);border-radius:4px;");
-    w->setGeometry(QRect(62,190,580,155));
+    w->setGeometry(QRect(62,200,580,155));
 
     QVBoxLayout *v_layout = new QVBoxLayout(w);
     v_layout->setSpacing(0);
@@ -203,7 +209,7 @@ void CpuFmwidget::InitUI()
                                  QPushButton:hover{width:120px;height:36px;\
                                  background:rgba(67,127,240,1);\
                                  border-radius:4px;font-size:14px;color:white;}");
-    apply_button->setGeometry(QRect(60,350,120,36));
+    apply_button->setGeometry(QRect(60,360,120,36));
 
     connect(apply_button,SIGNAL(clicked()),this,SLOT(onClickedApply()));
 
@@ -214,7 +220,7 @@ void CpuFmwidget::InitUI()
     else
     {
         w->setVisible(false);
-        apply_button->move(60,190);
+        apply_button->move(60,200);
     }
 }
 
@@ -247,14 +253,14 @@ void CpuFmwidget::onButtonClicked(QAbstractButton *button)
         w->setVisible(true);
         QPropertyAnimation *animation = new QPropertyAnimation(w,"geometry");
         animation->setDuration(500);
-        animation->setStartValue(QRect(62,190,580,10));
-        animation->setEndValue(QRect(62,190,580,155));
+        animation->setStartValue(QRect(62,200,580,10));
+        animation->setEndValue(QRect(62,200,580,155));
         animation->setEasingCurve(QEasingCurve::InQuad);
 
         QPropertyAnimation *animation1 = new QPropertyAnimation(apply_button,"geometry");
         animation1->setDuration(500);
-        animation1->setStartValue(QRect(60,190,120,36));
-        animation1->setEndValue(QRect(60,350,120,36));
+        animation1->setStartValue(QRect(60,200,120,36));
+        animation1->setEndValue(QRect(60,360,120,36));
         animation1->setEasingCurve(QEasingCurve::InQuad);
 
         group = new QParallelAnimationGroup(this);
@@ -271,14 +277,14 @@ void CpuFmwidget::onButtonClicked(QAbstractButton *button)
         w->setVisible(false);
         QPropertyAnimation *animation = new QPropertyAnimation(w,"geometry");
         animation->setDuration(200);
-        animation->setStartValue(QRect(62,190,580,155));
-        animation->setEndValue(QRect(62,190,580,10));
+        animation->setStartValue(QRect(62,200,580,155));
+        animation->setEndValue(QRect(62,200,580,10));
         animation->setEasingCurve(QEasingCurve::InQuad);
 
         QPropertyAnimation *animation1 = new QPropertyAnimation(apply_button,"geometry");
         animation1->setDuration(200);
-        animation1->setStartValue(QRect(60,350,120,36));
-        animation1->setEndValue(QRect(60,190,120,36));
+        animation1->setStartValue(QRect(60,360,120,36));
+        animation1->setEndValue(QRect(60,200,120,36));
         animation1->setEasingCurve(QEasingCurve::InQuad);
 
         group1 = new QParallelAnimationGroup(this);
@@ -311,4 +317,17 @@ void CpuFmwidget::RefreshCheckStatus()
 //            qDebug() << Q_FUNC_INFO <<  __LINE__ <<pButton->objectName();
          }
      }
+}
+
+void CpuFmwidget::ProcessingCPUFrequencyData(QMap<QString, QVariant> TmpMap)
+{
+//    qDebug() << Q_FUNC_INFO <<TmpMap;
+    QMap<QString, QVariant> cpu_info_map = TmpMap;
+    if (!cpu_info_map.isEmpty()) {
+        QMap<QString,QVariant>::iterator it;
+        it = cpu_info_map.begin();
+//        qDebug() << Q_FUNC_INFO <<TmpMap<<it.value().toString();
+        cpu_lable->setText(it.value().toString());
+        cpu_lable->update();
+    }
 }

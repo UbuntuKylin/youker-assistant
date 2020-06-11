@@ -4,50 +4,50 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="../aboutdialog.cpp" line="35"/>
+        <location filename="../aboutdialog.cpp" line="36"/>
         <source>About us</source>
         <translation>关于我们</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="84"/>
+        <location filename="../aboutdialog.cpp" line="86"/>
         <source>Kylin Assistant</source>
         <translation>麒麟助手</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="90"/>
+        <location filename="../aboutdialog.cpp" line="92"/>
         <source>About</source>
         <translatorcomment>关于本软件</translatorcomment>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="127"/>
+        <location filename="../aboutdialog.cpp" line="129"/>
         <source>Maintainer:
 Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>维护者：
 麒麟团队 &lt;ubuntukylin-members@list.launchpad.net&gt;</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="128"/>
+        <location filename="../aboutdialog.cpp" line="130"/>
         <source>      Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.</source>
         <translation>      麒麟助手是由麒麟团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器等功能。</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="129"/>
+        <location filename="../aboutdialog.cpp" line="131"/>
         <source> for more information. Welcome everyone to join with us. kylin-assistant Homepage: </source>
         <translation> 了解软件的最新进展并反馈问题，欢迎广大用户和爱好者一起参与。麒麟助手主页：</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="129"/>
+        <location filename="../aboutdialog.cpp" line="131"/>
         <source>      The software is still under development. Please visit </source>
         <translation>      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 </translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="93"/>
+        <location filename="../aboutdialog.cpp" line="95"/>
         <source>Contributor</source>
         <translation>贡献者</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="150"/>
+        <location filename="../aboutdialog.cpp" line="152"/>
         <source>Close</source>
         <translatorcomment>关闭</translatorcomment>
         <translation>关闭</translation>
@@ -76,12 +76,12 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>麒麟系统监视器</translation>
     </message>
     <message>
-        <location filename="../boxwidget.cpp" line="222"/>
+        <location filename="../boxwidget.cpp" line="223"/>
         <source>No software center was found!</source>
         <translation>没有找到软件中心 ！</translation>
     </message>
     <message>
-        <location filename="../boxwidget.cpp" line="249"/>
+        <location filename="../boxwidget.cpp" line="250"/>
         <source>No systemmonitor was found!</source>
         <translation>没有找到系统监视器 ！</translation>
     </message>
@@ -110,95 +110,95 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>CleandetailVeiw</name>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="69"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="193"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="70"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="200"/>
         <source>Computer scan in progress...</source>
         <translation>电脑清理中...</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="73"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="74"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="88"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="89"/>
         <source>Cleanup</source>
         <translation>一键清理</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="101"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="102"/>
         <source>Return</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="137"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="190"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="139"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="197"/>
         <source>System cache</source>
         <translation>系统缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="141"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="144"/>
         <source>Clear package、thumbnails and browser cache</source>
         <translation>清理包、缩略图和浏览器缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="155"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="192"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="159"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="199"/>
         <source>Cookies</source>
         <translation>Cookies</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="159"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="164"/>
         <source>Clear internet、games、shopping history, etc.</source>
         <translation>清理上网、游戏、购物记录等</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="173"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="191"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="179"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="198"/>
         <source>Historical trace</source>
         <translation>历史痕迹</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="177"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="184"/>
         <source>Clear browser and system usage traces</source>
         <translation>清理浏览器和系统使用痕迹</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="215"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="222"/>
         <source>There&apos;s nothing to clean up.</source>
         <translation>无需进行清理</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="222"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="229"/>
         <source>Scan complete!</source>
         <translation>扫描完成！</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="237"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="241"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="244"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="248"/>
         <source> historical use traces</source>
         <translation>条历史使用痕迹</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="248"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="251"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="255"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="258"/>
         <source>Cleanable cookie </source>
         <translation>可清理cookie </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="258"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="262"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="265"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="269"/>
         <source>Cleanable cache </source>
         <translation>可清理缓存 </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="270"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="279"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="277"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="286"/>
         <source>Computer cleanup in progress...</source>
         <translation>电脑清理中...</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="296"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="303"/>
         <source>Clearance completed!</source>
         <translation>清理完成！</translation>
     </message>
@@ -362,17 +362,19 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>清理缩略图缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="123"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="380"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="403"/>
         <source>Cleanup FireFox Cache</source>
         <translation>清理火狐浏览器缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="123"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="332"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="355"/>
         <source>Cleanup Chromium Cache</source>
         <translation>清理chromium缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="307"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="434"/>
         <source>Cache Items</source>
         <translation>缓存选项</translation>
     </message>
@@ -386,17 +388,19 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="obsolete">清除包、缩略图和浏览器缓存等</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="125"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="387"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="410"/>
         <source>Cleanup the Cookies saving in Firefox</source>
         <translation>清理火狐浏览器的Cookies</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="125"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="339"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="362"/>
         <source>Cleanup the Cookies saving in Chromium</source>
         <translation>清理Chromium浏览器的Cookies</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="329"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="456"/>
         <source>Cookies Items</source>
         <translation>Cookies选项</translation>
     </message>
@@ -410,12 +414,14 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="obsolete">清除上网、游戏、购物等记录</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="127"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="394"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="417"/>
         <source>Clean up the Firefox Internet records</source>
         <translation>清理火狐访问记录</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="127"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="346"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="369"/>
         <source>Clean up the Chromium Internet records</source>
         <translation>清理Chromium访问记录</translation>
     </message>
@@ -435,12 +441,12 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>删除调试日志</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="163"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="164"/>
         <source>Cleanup makes computers safer.</source>
         <translation>常清理，电脑轻快又安全.</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="346"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="473"/>
         <source>Trace Items</source>
         <translation>访问痕迹选项</translation>
     </message>
@@ -458,7 +464,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="vanished">请选择您想清理的选项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="182"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="211"/>
         <source>Scan args is empty!</source>
         <translation>扫描参数为空！</translation>
     </message>
@@ -466,22 +472,52 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>CpuFmwidget</name>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="48"/>
+        <location filename="../../component/cpufmwidget.cpp" line="199"/>
         <source>apply</source>
         <translation>应用</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="91"/>
+        <location filename="../../component/cpufmwidget.cpp" line="93"/>
         <source>Current CPU Main Frequency</source>
         <translation>当前CPU主频</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="115"/>
+        <location filename="../../component/cpufmwidget.cpp" line="16"/>
+        <source>Whether to apply?</source>
+        <translation>是否应用？</translation>
+    </message>
+    <message>
+        <location filename="../../component/cpufmwidget.cpp" line="106"/>
+        <source>CPU Management Strategy :</source>
+        <translation>CPU管理策略 ：</translation>
+    </message>
+    <message>
+        <location filename="../../component/cpufmwidget.cpp" line="118"/>
+        <source>performance</source>
+        <translation>性能模式</translation>
+    </message>
+    <message>
+        <location filename="../../component/cpufmwidget.cpp" line="127"/>
+        <source>powersave</source>
+        <translation>省电模式</translation>
+    </message>
+    <message>
+        <location filename="../../component/cpufmwidget.cpp" line="136"/>
+        <source>userspace</source>
+        <translation>用户自定义</translation>
+    </message>
+    <message>
+        <location filename="../../component/cpufmwidget.cpp" line="145"/>
+        <source>conservative</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../component/cpufmwidget.cpp" line="180"/>
         <source>Current Frequency Adjustable Range:</source>
         <translation>当前频率可调节范围:</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="125"/>
+        <location filename="../../component/cpufmwidget.cpp" line="188"/>
         <source>CPU FM Note: There are some risks associated with the CPU FM function,please use caution! The computer needs to be restarted when the FM is complete.</source>
         <translation>CPU调频说明：CPU调频功能存在一定的风险，请谨慎操作！调频完成需重启计算机。</translation>
     </message>
@@ -526,11 +562,44 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <source> drivers</source>
         <translation> 款驱动</translation>
     </message>
+    <message>
+        <location filename="../../component/drivepagewidget.cpp" line="98"/>
+        <location filename="../../component/drivepagewidget.cpp" line="104"/>
+        <location filename="../../component/drivepagewidget.cpp" line="107"/>
+        <location filename="../../component/drivepagewidget.cpp" line="119"/>
+        <location filename="../../component/drivepagewidget.cpp" line="122"/>
+        <source>MotherBoard</source>
+        <translation>主板驱动</translation>
+    </message>
+    <message>
+        <location filename="../../component/drivepagewidget.cpp" line="101"/>
+        <source>Graphics-Card</source>
+        <translation>显卡驱动</translation>
+    </message>
+    <message>
+        <location filename="../../component/drivepagewidget.cpp" line="110"/>
+        <location filename="../../component/drivepagewidget.cpp" line="116"/>
+        <location filename="../../component/drivepagewidget.cpp" line="128"/>
+        <location filename="../../component/drivepagewidget.cpp" line="135"/>
+        <source>Other</source>
+        <translation>其他驱动</translation>
+    </message>
+    <message>
+        <location filename="../../component/drivepagewidget.cpp" line="113"/>
+        <location filename="../../component/drivepagewidget.cpp" line="131"/>
+        <source>Wired-Network-Card</source>
+        <translation>有线网卡驱动</translation>
+    </message>
+    <message>
+        <location filename="../../component/drivepagewidget.cpp" line="125"/>
+        <source>Sound-Card</source>
+        <translation>声卡驱动</translation>
+    </message>
 </context>
 <context>
     <name>Drivewidget</name>
     <message>
-        <location filename="../drivewidget.cpp" line="61"/>
+        <location filename="../drivewidget.cpp" line="62"/>
         <source>All Drivers</source>
         <translation>所有驱动</translation>
     </message>
@@ -907,6 +976,29 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
 </context>
 <context>
+    <name>GeneralDialog</name>
+    <message>
+        <location filename="../../component/generaldialog.cpp" line="43"/>
+        <source>Remind</source>
+        <translation>注意</translation>
+    </message>
+    <message>
+        <location filename="../../component/generaldialog.cpp" line="50"/>
+        <source>Warning</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../../component/generaldialog.cpp" line="62"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="../../component/generaldialog.cpp" line="77"/>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+</context>
+<context>
     <name>IconWidget</name>
     <message>
         <location filename="../../setting/iconwidget.cpp" line="212"/>
@@ -946,127 +1038,127 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="vanished">电脑概述</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="100"/>
+        <location filename="../infowidget.cpp" line="101"/>
         <source>Desktop</source>
         <translation>桌面环境</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="108"/>
+        <location filename="../infowidget.cpp" line="109"/>
         <source>CPU</source>
         <translation>处理器</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="114"/>
+        <location filename="../infowidget.cpp" line="115"/>
         <source>Memory</source>
         <translation>内存</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="120"/>
+        <location filename="../infowidget.cpp" line="121"/>
         <source>Motherboard</source>
         <translation>主板</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="126"/>
+        <location filename="../infowidget.cpp" line="127"/>
         <source>HD</source>
         <translation>硬盘</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="133"/>
+        <location filename="../infowidget.cpp" line="134"/>
         <source>NIC</source>
         <translation>网卡</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="139"/>
+        <location filename="../infowidget.cpp" line="140"/>
         <source>VGA</source>
         <translation>显卡</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="146"/>
+        <location filename="../infowidget.cpp" line="147"/>
         <source>Audio</source>
         <translation>声卡</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="245"/>
+        <location filename="../infowidget.cpp" line="249"/>
         <source>Computer Info</source>
         <translation>电脑概述</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="299"/>
+        <location filename="../infowidget.cpp" line="303"/>
         <source>Desktop Info</source>
         <translation>桌面环境信息</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="334"/>
+        <location filename="../infowidget.cpp" line="338"/>
         <source>CPU Info</source>
         <translation>处理器信息</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="375"/>
+        <location filename="../infowidget.cpp" line="379"/>
         <source>Memory Info</source>
         <translation>内存条信息</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="415"/>
+        <location filename="../infowidget.cpp" line="419"/>
         <source>Memory Info %1</source>
         <translation>内存信息 %1</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="448"/>
+        <location filename="../infowidget.cpp" line="452"/>
         <source>Board Info</source>
         <translation>主板信息</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="493"/>
+        <location filename="../infowidget.cpp" line="497"/>
         <source>HardWare Info</source>
         <translation>硬盘信息</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="535"/>
+        <location filename="../infowidget.cpp" line="539"/>
         <source>HardWare Info %1</source>
         <translation>硬盘信息 %1</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="588"/>
+        <location filename="../infowidget.cpp" line="592"/>
         <source>NIC Info</source>
         <translation>网卡信息</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="634"/>
+        <location filename="../infowidget.cpp" line="638"/>
         <source>NIC Info %1</source>
         <translation>网卡信息 %1</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="678"/>
+        <location filename="../infowidget.cpp" line="682"/>
         <source>Monitor Info</source>
         <translation>显示器和显卡信息</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="718"/>
+        <location filename="../infowidget.cpp" line="722"/>
         <source>Monitor Info %1</source>
         <translation>显示器和显卡信息 %1</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="762"/>
+        <location filename="../infowidget.cpp" line="766"/>
         <source>Audio Info</source>
         <translation>声卡信息</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="802"/>
+        <location filename="../infowidget.cpp" line="806"/>
         <source>Audio Info %1</source>
         <translation>声卡信息%1</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="851"/>
+        <location filename="../infowidget.cpp" line="855"/>
         <source>Battery Info</source>
         <translation>电池信息</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="979"/>
+        <location filename="../infowidget.cpp" line="983"/>
         <source>Driver Info</source>
         <translation>驱动信息</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="153"/>
+        <location filename="../infowidget.cpp" line="154"/>
         <source>Battery</source>
         <translation>电池</translation>
     </message>
@@ -1075,7 +1167,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="vanished">设备驱动</translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="161"/>
+        <location filename="../infowidget.cpp" line="162"/>
         <source>Sensor</source>
         <translation>硬件传感</translation>
     </message>
@@ -1172,17 +1264,17 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>MListwidget</name>
     <message>
-        <location filename="../listwidget.cpp" line="43"/>
+        <location filename="../listwidget.cpp" line="45"/>
         <source>Local System</source>
         <translation>本机系统</translation>
     </message>
     <message>
-        <location filename="../listwidget.cpp" line="50"/>
+        <location filename="../listwidget.cpp" line="52"/>
         <source>Hardware Information</source>
         <translation>硬件信息</translation>
     </message>
     <message>
-        <location filename="../listwidget.cpp" line="152"/>
+        <location filename="../listwidget.cpp" line="154"/>
         <source>Computer Info</source>
         <translation>电脑概述</translation>
     </message>
@@ -1673,7 +1765,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>MiddleWidget</name>
     <message>
-        <location filename="../middlewidget.cpp" line="93"/>
+        <location filename="../middlewidget.cpp" line="101"/>
         <source>Kylin Assistant</source>
         <translation>麒麟助手</translation>
     </message>
@@ -1682,22 +1774,21 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="vanished">麒麟首页</translation>
     </message>
     <message>
-        <location filename="../middlewidget.cpp" line="170"/>
+        <location filename="../middlewidget.cpp" line="179"/>
         <source>Cleanup</source>
         <translation>电脑清理</translation>
     </message>
     <message>
-        <location filename="../middlewidget.cpp" line="170"/>
+        <location filename="../middlewidget.cpp" line="179"/>
         <source>Sysinfo</source>
         <translation>本机信息</translation>
     </message>
     <message>
-        <location filename="../middlewidget.cpp" line="170"/>
         <source>Optimize</source>
-        <translation>优化加速</translation>
+        <translation type="vanished">优化加速</translation>
     </message>
     <message>
-        <location filename="../middlewidget.cpp" line="170"/>
+        <location filename="../middlewidget.cpp" line="179"/>
         <source>Monitoring</source>
         <translation>性能监测</translation>
     </message>
@@ -1706,7 +1797,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="vanished">性能监测</translation>
     </message>
     <message>
-        <location filename="../middlewidget.cpp" line="170"/>
+        <location filename="../middlewidget.cpp" line="179"/>
         <source>Drive</source>
         <translation>驱动管理</translation>
     </message>
@@ -1715,7 +1806,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="obsolete">系统美化</translation>
     </message>
     <message>
-        <location filename="../middlewidget.cpp" line="170"/>
+        <location filename="../middlewidget.cpp" line="179"/>
         <source>Toolkits</source>
         <translation>工具大全</translation>
     </message>
@@ -3305,17 +3396,17 @@ Are you sure to continue?</source>
 <context>
     <name>TopBaseWidget</name>
     <message>
-        <location filename="../topbasewidget.cpp" line="223"/>
+        <location filename="../topbasewidget.cpp" line="230"/>
         <source>There may be a mistake.</source>
         <translation>可能发生了错误。</translation>
     </message>
     <message>
-        <location filename="../topbasewidget.cpp" line="239"/>
+        <location filename="../topbasewidget.cpp" line="246"/>
         <source>Kylin Assistant</source>
         <translation>麒麟助手</translation>
     </message>
     <message>
-        <location filename="../topbasewidget.cpp" line="327"/>
+        <location filename="../topbasewidget.cpp" line="334"/>
         <source>Back</source>
         <translation>返回</translation>
     </message>

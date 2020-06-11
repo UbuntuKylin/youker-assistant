@@ -44,6 +44,7 @@ private:
     QPushButton *cancel_btn;
     QPushButton *onkeyclean;
     QPushButton *return_btn;
+    QPushButton *btn_return;
 
     QLabel *top_tip;
 

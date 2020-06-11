@@ -231,8 +231,14 @@ class Daemon(PolicyKitService):
                 filepath = "/sys/devices/system/cpu/%s/cpufreq/scaling_governor" % line
                 path = "/sys/devices/system/cpu/%s/cpufreq/scaling_setspeed" % line
                 if os.path.exists(filepath):
-                    cmd = 'echo %s > %s' % (value, filepath)
-                    os.system(cmd)
+                    if(value.find('<1_1>') > 0):
+                        cmd = 'echo %s > %s' % (value.split('<1_1>')[0], filepath)
+                        os.system(cmd)
+                        cmd = 'echo %s > %s' % (value.split('<1_1>')[1], path)
+                        os.system(cmd)
+                    else:
+                        cmd = 'echo %s > %s' % (value, filepath)
+                        os.system(cmd)
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
     def get_cpufreq_scaling_governer_list(self):
@@ -369,6 +375,10 @@ class Daemon(PolicyKitService):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_cpu_range(self):
         return self.infoconf.get_cpu_range()
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_cpu_average_frequency(self):
+        return self.infoconf.get_cpu_average_frequency()
     
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
     def judge_sensors_exists_hb(self):

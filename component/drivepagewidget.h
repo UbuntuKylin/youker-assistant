@@ -8,6 +8,7 @@
 #include <QScrollArea>
 #include <QFrame>
 #include <QPixmap>
+#include <QStringList>
 
 class DrivePageWidget : public QWidget
 {
@@ -18,7 +19,7 @@ public:
 
     void InitPageUI(QMap<QString, QVariant>);
 
-    QString getWhichDrive(QString);
+    QStringList getWhichDrive(QString);
 signals:
 
 private:

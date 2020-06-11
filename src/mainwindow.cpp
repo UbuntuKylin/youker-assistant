@@ -460,6 +460,9 @@ void MainWindow::onInitDataFinished()
     connect(m_dataWorker,SIGNAL(sendCpuRangedata(QMap<QString,QVariant>)),monitorwidget,SLOT(sendcpurangedata(QMap<QString,QVariant>)));
     connect(monitorwidget,SIGNAL(setCpuGoverner(QString)),m_dataWorker,SLOT(onSetCurrentCpuMode(QString)));
 
+    connect(monitorwidget,SIGNAL(RequestCPUFrequencyData()),m_dataWorker,SLOT(onRequestCpuAverageFrequency()));
+    connect(m_dataWorker,SIGNAL(sendCpuAverageFrequency(QMap<QString,QVariant>)),monitorwidget,SIGNAL(SendCPUFrequencyData(QMap<QString,QVariant>)));
+
     //bind setting notify signal
 //    connect(m_dataWorker, SIGNAL(string_value_notify(QString,QString)), setting_widget, SIGNAL(string_value_notify(QString,QString)));
 //    connect(m_dataWorker, SIGNAL(bool_value_notify(QString,bool)), setting_widget, SIGNAL(bool_value_notify(QString,bool)));

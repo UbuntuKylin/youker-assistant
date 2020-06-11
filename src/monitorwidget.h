@@ -37,7 +37,8 @@ signals:
     void onsendcpurangedata(QMap<QString, QVariant> tmpMap);
 
     void setCpuGoverner(QString);
-
+    void RequestCPUFrequencyData();
+    void SendCPUFrequencyData(QMap<QString, QVariant> tmpMap);
 private slots:
     void sendTemperaturesigle();
     void onsendTemperaturedata(QMap<QString, QVariant> tmpMap);

@@ -91,6 +91,8 @@ public:
 
     QMap<QString, QVariant> get_cpu_range();
 
+    QMap<QString, QVariant> get_cpu_average_frequency();
+
 signals:
     void tellCleanerMainData(const QStringList &data);
     void tellCleanerMainStatus(const QString &status, const QString &domain);

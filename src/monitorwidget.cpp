@@ -54,9 +54,9 @@ void Monitorwidget::InitUI()
     connect(temperature,SIGNAL(requestTemperature()),this,SLOT(sendTemperaturesigle()));
     connect(this,SIGNAL(sendTemperaturedata(QMap<QString, QVariant>)),temperature,SLOT(onsendTemperature(QMap<QString, QVariant>)));
 
-    string_list << tr("Fan Speed");
-    fan_widget = new Fanwidget();
-    stackedwidget->addWidget(fan_widget);
+//    string_list << tr("Fan Speed");
+//    fan_widget = new Fanwidget();
+//    stackedwidget->addWidget(fan_widget);
 
     string_list << tr("CPU FM");
     cpu_fm = new CpuFmwidget();
@@ -65,6 +65,8 @@ void Monitorwidget::InitUI()
     stackedwidget->addWidget(cpu_fm);
     connect(this,SIGNAL(onsendcpurangedata(QMap<QString,QVariant>)),cpu_fm,SLOT(getCpuRange(QMap<QString,QVariant>)));
     connect(cpu_fm,SIGNAL(setCpuGoverner(QString)),this,SIGNAL(setCpuGoverner(QString)));
+    connect(this,SIGNAL(SendCPUFrequencyData(QMap<QString,QVariant>)),cpu_fm,SLOT(ProcessingCPUFrequencyData(QMap<QString,QVariant>)));
+    connect(cpu_fm,SIGNAL(RequestCPUFrequencyData()),this,SIGNAL(RequestCPUFrequencyData()));
     qDebug() << Q_FUNC_INFO <<this->governer_list << this->cur_governer;
 
 
@@ -124,11 +126,11 @@ void Monitorwidget::changewidgetpage(QListWidgetItem *item)
     {
         stackedwidget->setCurrentWidget(temperature);
     }
-    else if(page_Name =="1")
-    {
-        stackedwidget->setCurrentWidget(fan_widget);
-    }
-    else if(page_Name == "2")
+//    else if(page_Name =="1")
+//    {
+//        stackedwidget->setCurrentWidget(fan_widget);
+//    }
+    else if(page_Name == "1")
     {
         emit this->requestcpurange();
         stackedwidget->setCurrentWidget(cpu_fm);

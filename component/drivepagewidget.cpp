@@ -57,9 +57,9 @@ void DrivePageWidget::InitPageUI(QMap<QString, QVariant> tmpMap)
         QLabel *whichDrive = new QLabel(item);
         QLabel *name = new QLabel(item);
 
-        QString k = this->getWhichDrive(it.key());
+        QStringList k = this->getWhichDrive(it.key());
 
-        QPixmap pixmap(":/res/drive/"+k+".png");
+        QPixmap pixmap(":/res/drive/"+k.at(0)+".png");
         icon->setPixmap(pixmap);
         icon->setFixedSize(pixmap.size());
         icon->setGeometry(QRect(3,16,44,44));
@@ -67,8 +67,9 @@ void DrivePageWidget::InitPageUI(QMap<QString, QVariant> tmpMap)
         QFont font;
         font.setPixelSize(16);
         font.setWeight(QFont::Bold);
+        whichDrive->setStyleSheet("color:rgb(0,0,0,195)");
         whichDrive->setFont(font);
-        whichDrive->setText(k);
+        whichDrive->setText(k.at(1));
         whichDrive->setGeometry(QRect(65,16,200,18));
 
         name->setText(it.value().toString());
@@ -92,46 +93,61 @@ void DrivePageWidget::InitPageUI(QMap<QString, QVariant> tmpMap)
     main_layout->addWidget(drive_num);
 }
 
-QString DrivePageWidget::getWhichDrive(QString p)
+QStringList DrivePageWidget::getWhichDrive(QString p)
 {
+    QStringList v;
+    v.clear();
     if(p == "Host bridge"){
-        return "motherboard";
+        v << "MotherBoard" << tr("MotherBoard");
+        return v;
     }
     else if(p == "VGA compatible controller"){
-        return "graphics-card";
+        v << "Graphics-Card" << tr("Graphics-Card");
+        return v;
     }
     else if(p == "Signal processing controller"){
-        return "motherboard";
+        v << "MotherBoard" << tr("MotherBoard");
+        return v;
     }
     else if(p == "USB controller"){
-        return "motherboard";
+        v << "MotherBoard" << tr("MotherBoard");
+        return v;
     }
     else if(p == "RAM memory"){
-        return "other";
+        v << "Other" << tr("Other");
+        return v;
     }
     else if(p == "Communication controller"){
-        return "wired-network-card";
+        v << "Wired-Network-Card" << tr("Wired-Network-Card");
+        return v;
     }
     else if(p == "SATA controller"){
-        return "other";
+        v << "Other" << tr("Other");
+        return v;
     }
     else if(p == "PCI bridge"){
-        return "motherboard";
+        v << "MotherBoard" << tr("MotherBoard");
+        return v;
     }
     else if(p == "ISA bridge"){
-        return "motherboard";
+        v << "MotherBoard" << tr("MotherBoard");
+        return v;
     }
     else if(p == "Audio device"){
-        return "sound-card";
+        v << "Sound-Card" << tr("Sound-Card");
+        return v;
     }
     else if(p == "SMBus"){
-        return "other";
+        v << "Other" << tr("Other");
+        return v;
     }
     else if(p == "Ethernet controller"){
-        return "wired-network-card";
+        v << "Wired-Network-Card" << tr("Wired-Network-Card");
+        return v;
     }
     else
     {
-        return "other";
+        v << "Other" << tr("Other");
+        return v;
     }
 }

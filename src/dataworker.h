@@ -218,6 +218,7 @@ public slots:
     void onRequestCpuTemperature();
 
     void onRequesetCpuRange();
+    void onRequestCpuAverageFrequency();
 
 signals:
     void dataLoadFinished();
@@ -344,6 +345,7 @@ signals:
     void sendCpuTemperaturedata(QMap<QString, QVariant> tmpMap);
 
     void sendCpuRangedata(QMap<QString,QVariant> tmpMap);
+    void sendCpuAverageFrequency(QMap<QString,QVariant> tmpMap);
 
 private:
     QDBusInterface *m_powerIface = nullptr;

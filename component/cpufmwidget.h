@@ -19,6 +19,7 @@
 #include <QPropertyAnimation>
 #include <QParallelAnimationGroup>
 #include <QDialog>
+#include <QTimer>
 
 #include "../component/myslider.h"
 #include "../component/generaldialog.h"
@@ -41,7 +42,9 @@ public:
     void RefreshCheckStatus();
 signals:
     void setCpuGoverner(QString);
+    void RequestCPUFrequencyData();
 private slots:
+    void ProcessingCPUFrequencyData(QMap<QString,QVariant>);
     void getCpuRange(QMap<QString,QVariant>);
 
     void onButtonClicked(QAbstractButton *button);
@@ -68,6 +71,8 @@ private:
 
     QParallelAnimationGroup *group;
     QParallelAnimationGroup *group1;
+
+    QTimer qtimer;
 };
 
 #endif // CPUFMWIDGET_H

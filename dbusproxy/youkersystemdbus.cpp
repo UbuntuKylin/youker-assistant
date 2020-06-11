@@ -420,6 +420,21 @@ QMap<QString, QVariant> SystemDispatcher::get_cpu_range()
     }
 }
 
+QMap<QString, QVariant> SystemDispatcher::get_cpu_average_frequency()
+{
+    QMap<QString, QVariant> value;
+    QDBusReply<QMap<QString, QVariant> > reply = systemiface->call("get_cpu_average_frequency");
+    if (reply.isValid()) {
+        value = reply.value();
+        return value;
+    }
+    else {
+        qDebug() << "get cpu average frequency failed!";
+//        QMap<QString, QVariant> value;
+        return value;
+    }
+}
+
 void SystemDispatcher::exit_qt() {
     systemiface->call("exit");
 }

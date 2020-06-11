@@ -1198,3 +1198,9 @@ void DataWorker::onRequesetCpuRange()
     QMap<QString,QVariant> tmpMap  = m_systemInterface->get_cpu_range();
     emit sendCpuRangedata(tmpMap);
 }
+
+void DataWorker::onRequestCpuAverageFrequency()
+{
+    QMap<QString,QVariant> tmpMap  = m_systemInterface->get_cpu_average_frequency();
+    emit sendCpuAverageFrequency(tmpMap);
+}

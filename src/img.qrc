@@ -231,13 +231,6 @@
         <file>res/CPU.png</file>
         <file>res/temperature_normal.png</file>
         <file>res/temperature_anomaly.png</file>
-        <file>res/drive/bluetooth.png</file>
-        <file>res/drive/graphics-card.png</file>
-        <file>res/drive/motherboard.png</file>
-        <file>res/drive/other.png</file>
-        <file>res/drive/sound-card.png</file>
-        <file>res/drive/wired-network-card.png</file>
-        <file>res/drive/wireless-network-card.png</file>
         <file>res/drive/finish1.png</file>
         <file>res/drive/clean_anime.gif</file>
         <file>res/drive/finish2.png</file>
@@ -247,6 +240,14 @@
         <file>res/menu/monitor.png</file>
         <file>res/remind.png</file>
         <file>res/warning.png</file>
+        <file>res/drive/Wireless-Network-Card.png</file>
+        <file>res/drive/Wired-Network-Card.png</file>
+        <file>res/drive/Sound-Card.png</file>
+        <file>res/drive/Other.png</file>
+        <file>res/drive/MotherBoard.png</file>
+        <file>res/drive/Graphics-Card.png</file>
+        <file>res/drive/BlueTooth.png</file>
+        <file>res/cpuFM.gif</file>
     </qresource>
     <qresource prefix="/sys">
         <file>res/sysBtn/close_button.png</file>

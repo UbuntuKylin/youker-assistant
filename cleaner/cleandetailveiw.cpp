@@ -66,6 +66,7 @@ void CleandetailVeiw::InitTopWidget()
     font.setPixelSize(30);
     font.setBold(QFont::Bold);
     top_tip->setFont(font);
+    top_tip->setStyleSheet("color:rgb(0,0,0,185)");
     top_tip->setText(tr("Computer scan in progress..."));
     top_tip->setGeometry(QRect(100,25,470,40));
 
@@ -94,7 +95,11 @@ void CleandetailVeiw::InitTopWidget()
                               border-radius:24px;font-size:20px;color:white;}");
     onkeyclean->setGeometry(QRect(600,25,160,48));
     onkeyclean->setVisible(false);
-    connect(onkeyclean,SIGNAL(clicked()),this,SIGNAL(startOneKeyClean()));
+    connect(onkeyclean,&QPushButton::clicked,this,[=]{
+        emit this->startOneKeyClean();
+        btn_return->setVisible(false);
+    });
+
 //    connect(onkeyclean,SIGNAL(clicked()),this,SLOT(OnClikedCleanBtn()));
 
     return_btn = new QPushButton(frame);
@@ -109,6 +114,14 @@ void CleandetailVeiw::InitTopWidget()
     return_btn->setVisible(false);
     connect(return_btn,SIGNAL(clicked()),this,SIGNAL(hideThisWidget()));
 
+    btn_return = new QPushButton(frame);
+    btn_return->setText(tr("Return"));
+    btn_return->setGeometry(QRect(780,30,50,40));
+    btn_return->setStyleSheet("QPushButton{width:50px;height:40px;font-size:16px;color:rgb(0,0,0,165)}\
+                                  QPushButton:hover{width:50px;height:40px;\
+                                  text-decoration:underline;color:blue;}");
+    btn_return->setVisible(false);
+    connect(btn_return,SIGNAL(clicked()),this,SIGNAL(hideThisWidget()));
 
     top_layout->addWidget(frame/*,1,Qt::AlignCenter*/);
 }
@@ -130,6 +143,7 @@ void CleandetailVeiw::InitBottomWidget()
     cache_layout->addWidget(cache_icon);
 
     cache_tip = new QLabel(cache_frame);
+    cache_tip->setStyleSheet("color:rgb(0,0,0,185)");
     QFont font;
     font.setPixelSize(18);
     font.setBold(QFont::Bold);
@@ -138,6 +152,7 @@ void CleandetailVeiw::InitBottomWidget()
     cache_layout->addWidget(cache_tip);
 
     QLabel *lable1 = new QLabel(cache_frame);
+    lable1->setStyleSheet("color:rgb(0,0,0,165)");
     lable1->setText(tr("Clear package、thumbnails and browser cache"));
     lable1->setWordWrap(true);
     cache_layout->addWidget(lable1);
@@ -151,11 +166,13 @@ void CleandetailVeiw::InitBottomWidget()
     cookie_layout->addWidget(cookie_icon);
 
     cookie_tip = new QLabel(cookie_frame);
+    cookie_tip->setStyleSheet("color:rgb(0,0,0,185)");
     cookie_tip->setFont(font);
     cookie_tip->setText(tr("Cookies"));
     cookie_layout->addWidget(cookie_tip);
 
     QLabel *lable2 = new QLabel(cookie_frame);
+    lable2->setStyleSheet("color:rgb(0,0,0,165)");
     lable2->setText(tr("Clear internet、games、shopping history, etc."));
     lable2->setWordWrap(true);
     cookie_layout->addWidget(lable2);
@@ -169,11 +186,13 @@ void CleandetailVeiw::InitBottomWidget()
     history_layout->addWidget(history_icon);
 
     history_tip = new QLabel(history_frame);
+    history_tip->setStyleSheet("color:rgb(0,0,0,185)");
     history_tip->setFont(font);
     history_tip->setText(tr("Historical trace"));
     history_layout->addWidget(history_tip);
 
     QLabel *lable3 = new QLabel(history_frame);
+    lable3->setStyleSheet("color:rgb(0,0,0,165)");
     lable3->setText(tr("Clear browser and system usage traces"));
     lable3->setWordWrap(true);
     history_layout->addWidget(lable3);
@@ -194,6 +213,7 @@ void CleandetailVeiw::ResetUI()
     cancel_btn->setVisible(true);
     onkeyclean->setVisible(false);
     return_btn->setVisible(false);
+    btn_return->setVisible(false);
 }
 
 void CleandetailVeiw::getScanResult(QString msg)
@@ -223,6 +243,7 @@ void CleandetailVeiw::finishScanResult(QString msg)
             cancel_btn->setVisible(false);
             onkeyclean->setVisible(true);
             return_btn->setVisible(false);
+            btn_return->setVisible(true);
         }
     }
 }

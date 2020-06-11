@@ -1783,7 +1783,8 @@ class DetailInfo:
                     origin[line.split(":")[0]]=line.split(":")[1].lstrip().split(" ")[0][1:5]
         
         return origin
-                
+
+    # 获取cpu的当前频率范围    
     def get_cpu_range(self):
 
         origin = {
@@ -1797,10 +1798,10 @@ class DetailInfo:
             origin["support"]="true"
 
             f = open("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq",'r')
-            origin["maximum"] = self.num_convert(f.readline().strip())
+            origin["maximum"] = self.num_convert(f.readline().strip())# 获取cpu主频范围的最大值
             
             f = open("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_min_freq",'r')
-            origin["minimum"] = self.num_convert(f.readline().strip())
+            origin["minimum"] = self.num_convert(f.readline().strip())# 获取cpu主频范围的最小值
 
             f = open("/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed",'r')
             if(f.readline().strip().isdigit()):
@@ -1817,7 +1818,36 @@ class DetailInfo:
         #     origin["cur_freq"] = self.num_convert(f.readline().strip())
 
         return origin
-    
+
+    # 获取cpu所有核心主频之和的平均值
+    def get_cpu_average_frequency(self):
+        origin = {"cur_freq":"",}
+
+        if(not os.path.exists("/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq")):
+            return origin
+
+        v = 0 
+        i = 0
+        fpath = os.path.expanduser("/sys/devices/system/cpu/")
+        for line in os.listdir(fpath): #遍历/sys/devices/system/cpu/下的所有文件
+            line = line.strip('\n')
+            #pattern = re.compile(r'cpu.*[0-9]$')
+            pattern = re.compile(r'cpu.*\d\Z') #筛选cpu的每个核心的配置文件
+            m = pattern.match(line)
+            if m:
+                filepath = "/sys/devices/system/cpu/%s/cpufreq/scaling_cur_freq" % line
+                if os.path.exists(filepath):
+                    f = open(filepath,'r')
+                    v += int(f.readline().strip())
+                i = i + 1
+
+        v = self.num_convert(str(v//i))
+        origin["cur_freq"]=v
+
+        return origin
+                    
+
+    # cpu频率的单位换算
     def num_convert(self,s):
         num = int(s)
         unit=""
@@ -1828,12 +1858,10 @@ class DetailInfo:
                 unit = "Ghz"
 
             if(num >= 10):
-                num=num/1000
+                num=round(num/1000,1)
             else:
                 break
-            print (i)
             
-        print (str(num)+unit)
         return str(num)+unit
 
 if __name__ == "__main__":
@@ -1852,4 +1880,4 @@ if __name__ == "__main__":
     #cc.get_multimedia()
     #cc.get_dvd()
     #cc.get_usb()
-    pprint(cc.get_cpu_range())
+    pprint(cc.get_cpu_average_frequency())

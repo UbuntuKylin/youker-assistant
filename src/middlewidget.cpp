@@ -69,7 +69,7 @@ void MiddleWidget::InitMiddlewidget()
 
     QWidget *bottomWidget = new QWidget;
     botton_layout = new QHBoxLayout(bottomWidget);
-    botton_layout->setContentsMargins(125, 0, 0, 0);
+    botton_layout->setContentsMargins(105, 0, 0, 0);
     botton_layout->setSpacing(0);
     main_layout->addStretch();
     main_layout->addWidget(bottomWidget, 0, Qt::AlignBottom);
@@ -192,9 +192,9 @@ void MiddleWidget::initBottomContent()
     connect(signal_mapper, SIGNAL(mapped(QString)), this, SLOT(switchSelectedPageIndex(QString)));
 
     content_layout->addStretch();
-    content_layout->setSpacing(30);
+    content_layout->setSpacing(50);
     content_layout->setMargin(0);
-    content_layout->setContentsMargins(15, 0, 0, 0);
+    content_layout->setContentsMargins(0, 0, 0, 0);
 
 //    setLayout(button_layout);
     is_move = false;

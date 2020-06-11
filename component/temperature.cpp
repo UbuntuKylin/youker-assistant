@@ -145,8 +145,8 @@ void Temperature::sendrequest()
 
 void Temperature::refreshlable(qreal q)
 {
-    temperature_lable->setText("CPU: "+ QString::number(q)+"℃");
-    if(q >= 45)
+    temperature_lable->setText("CPU: "+ QString::number(q,'f',1)+"℃");
+    if(q >= 60)
     {
         QPixmap pixmap(":/res/temperature_anomaly.png");
         temperature_icon->setPixmap(pixmap);
