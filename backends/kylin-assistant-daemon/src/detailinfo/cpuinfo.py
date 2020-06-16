@@ -356,6 +356,7 @@ class DetailInfo:
            "VIA":["VIA"],
            "XFX":["XFX"],
            "SUPERGRAPHIC":["Supergraphic"],
+           "JINGJIA":["JJM"],
 #显示器产商
            "AUO":["AUO"],
            "AOC":["AOC"],
@@ -476,6 +477,13 @@ class DetailInfo:
             url = vendors.get(tmp.upper())
             if url:
                 return url[0]
+
+        tmp = re.findall("JingJia", p)
+        if tmp :
+            url = vendors.get(tmp[0].upper())
+            if url:
+                return url[0]
+
         tmp = re.findall("ATI", v)
         if tmp :
             url = vendors.get(tmp[0].upper())
@@ -1070,11 +1078,11 @@ class DetailInfo:
                         #ret.setdefault("Mon_vendor", result[0][0])
                         #ret.setdefault("Mon_product", " ".join(result[0]))
                         if result: ### 笔记本没有Monitor name
-                            ret_vendor += (result[0][0] + "<1_1>")
-                            ret_product += (" ".join(result[0]) + "<1_1>")
+                            ret_product += (result[0][0] + "<1_1>")
+                            ret_vendor += (result_bak[0][0] + "<1_1>")
                         else:
                             ret_vendor += (result_bak[0][0] + "<1_1>")
-                            ret_product += (" ".join(result_bak[0]) + "<1_1>")
+                            ret_product += (result_bak[0][0] + "<1_1>")
 
                         result = re.findall("Year:\s*(\w*)\s*Week:\s*(\w*)", localinfo)
                         #ret.setdefault("Mon_year", result[0][0])
