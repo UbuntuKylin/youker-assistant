@@ -611,7 +611,40 @@ class DetailInfo:
         Com['node'], Com['uptime'], Com['system'], Com['architecture'], Com['release'], Com['machine'] = platform.node(),uptime,platform.system(),platform.architecture()[0],platform.release(),platform.machine()
         return Com
 
+    # 20200616 trans by hebing
     def get_cpu(self):
+        cpuType = ''
+        Cpu = {}
+        tmpCpu = {}
+        pipe = subprocess.Popen('lscpu', env={'LANGUAGE':'en:'}, stdout=subprocess.PIPE)
+        output = pipe.stdout.readlines()
+        pprint(output)
+
+        for line in output:
+            value = bytes.decode(line).split(":")
+            tmpCpu.setdefault(value[0], value[1].strip())
+        Cpu['cpu_cores'] = tmpCpu.get("CPU(s)", "")
+        Cpu['CpuCapacity'] = tmpCpu.get("CPU max MHz", "").split(".")[0] + "MHz" if tmpCpu.get("CPU max MHz", "") else ""
+        Cpu['CpuVersion'] = tmpCpu.get("Model name", "")
+        Cpu['CpuVendor'] = tmpCpu.get("Model name", "phytium")#kobe 2020
+        cpuType = Cpu['CpuVendor'].lower()
+        if cpuType.find('phytium') >= 0:#Phytium
+            Cpu['CpuVendor'] = 'phytium'
+        elif cpuType.find('huawei') >= 0:#KunPeng
+            Cpu['CpuVendor'] = 'huawei'
+        elif cpuType.find('hygon') >= 0:#Hygon
+            Cpu['CpuVendor'] = 'hygon'
+        elif cpuType.find('zhaoxin') >= 0:#ZHAOXIN
+            Cpu['CpuVendor'] = 'zhaoxin'
+        elif cpuType.find('loongson') >= 0:#Loongson
+            Cpu['CpuVendor'] = 'loongson'
+        #Cpu['CpuSlot'] = tmpCpu.get("Socket(s)", "")
+        Cpu['cpu_siblings'] = tmpCpu.get("Thread(s) per core", "")
+        Cpu['cpu_cores_online'] = os.sysconf("SC_NPROCESSORS_ONLN")
+
+        return Cpu
+
+    def get_cpu_obsolete(self):
         # CPU
         Cpu = {}
         if self.machine == "aarch64":

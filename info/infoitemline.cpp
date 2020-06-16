@@ -132,6 +132,8 @@ inline const QString covertKeyName(const QString &key)
         return QString(QObject::tr("FSB"));
     else if(key == "cpu_cores")//核心数目：
         return QString(QObject::tr("Core Number"));
+    else if (key == "cpu_cores_online") //在线核心数
+        return QString(QObject::tr("Core Online Number"));
     else if(key == "cpu_siblings")//线程
         return QString(QObject::tr("Thread"));
     else if(key == "clflush_size")//一级缓存：
