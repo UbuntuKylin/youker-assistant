@@ -745,7 +745,7 @@ class DetailInfo:
         Boa['BoaProduct'],Boa['BoaVendor'],Boa['BoaSerial'],Boa['BioVendor'],Boa['BioVersion'],Boa['BioRelease'] = self.strip(BoaProduct),self.strip(BoaVendor),self.strip(BoaSerial),self.strip(BioVendor),self.strip(BioVersion),self.strip(BioRelease)
         return Boa
 
-    def get_memory(self):
+    def get_memory_obsolete(self):
         #Memory Device
         Mem = {}
         if self.machine == "aarch64":
@@ -910,6 +910,141 @@ class DetailInfo:
                                 MemInfo = tmp0[i-1] + ' ' + tmp1[i-1] + ' ' + tmp2[i-1] + ' ' + tmp3[i-1]
             Mem["MemInfo"],Mem["MemWidth"],Mem["MemSlot"],Mem["MemProduct"],Mem["MemVendor"],Mem["MemSerial"],Mem["MemSize"],Mem["Memnum"] = MemInfo,self.strip(MemWidth),self.strip(MemSlot),self.strip(MemProduct),self.strip(MemVendor),self.strip(MemSerial),self.strip(MemSize),self.strip(Memnum)
         return Mem
+
+    ## 20200616 trans by hebing from qt4 version youker-assistant
+    #获取内存的信息
+    def get_memory(self):
+
+        Mem = {}
+
+        hw = os.popen("dmidecode -t memory")
+        meminfo = hw.read()
+        hw.close()
+
+        modlist = [ mod for mod in meminfo.split("\n\n") if mod]
+        #modelist[0] pass
+        #modelist[1] pass
+        memNum = 0
+        for index in range(len(modlist)):
+            if (index == 0):
+                continue
+            if (index == 1):
+                continue
+            tmpMem = {}
+            for line in modlist[index].split("\n"):
+                if ":" not in line:
+                    continue
+                value = line.split(":")
+                tmpMem.setdefault(value[0].strip(), value[1].strip())
+            if (tmpMem["Size"] == "No Module Installed"):
+                if (index == len(modlist) - 1):
+                    Mem["MemSize"] = Mem["MemSize"][0:-5]
+                    Mem["MemWidth"] = Mem["MemWidth"][0:-5]
+                    Mem["MemInfo"] = Mem["MemInfo"][0:-5]
+                    Mem["MemSlot"] = Mem["MemSlot"][0:-5]
+                    Mem["MemVendor"] = Mem["MemVendor"][0:-5]
+                continue
+
+            memNum += 1
+            Mem["Memnum"] = memNum
+            ###
+            Mem["MemWidth"] = Mem.setdefault("MemWidth", "") + tmpMem["Data Width"] + "<1_1>"
+            Mem["MemInfo"] = Mem.setdefault("MemInfo", "") + tmpMem["Type"] + "<1_1>"
+            Mem["MemSlot"] = Mem.setdefault("MemSlot", "") + tmpMem["Bank Locator"] + "<1_1>"
+            Mem["MemVendor"] = Mem.setdefault("MemVendor", "") + tmpMem["Manufacturer"] + "<1_1>"
+            ##MB to GiB
+            #bitnum = (int(tmpMem["Size"].split(" ")[0]) - 1).bit_length()
+            #tmpMem["Size"] = str(( 2 ** (bitnum - 10))) + ' GiB'
+            def transHumanReadableSize(memSize):
+                diffMap = {}
+                destList = map(lambda x : 2 ** x, range(1, 12))
+                for size in destList:
+                    diffMap[abs(memSize - size)] = destList.index(size)
+                return destList[diffMap.get(min(diffMap.keys()))]
+            tmpMem["Size"] = str(transHumanReadableSize(int(tmpMem["Size"].split(" ")[0])/1024)) + " GiB"
+
+            Mem["MemSize"] = Mem.setdefault("MemSize", "") + tmpMem["Size"] + "<1_1>"
+            if (index == len(modlist) - 1):
+                Mem["MemSize"] = Mem["MemSize"][0:-5]
+                Mem["MemWidth"] = Mem["MemWidth"][0:-5]
+                Mem["MemInfo"] = Mem["MemInfo"][0:-5]
+                Mem["MemSlot"] = Mem["MemSlot"][0:-5]
+                Mem["MemVendor"] = Mem["MemVendor"][0:-5]
+        if (not Mem):
+            if os.path.exists(MEMORY):
+                memnum = 0
+                tmpMem = {}
+                all_exists = []
+                total = [ f for f in os.listdir(MEMORY) if f.startswith("memory")]
+                for p in total:
+                    exists = os.path.join(MEMORY, p)
+                    if os.stat(exists).st_size:
+                        all_exists.append(exists)
+                for i in all_exists:
+                    fp = open(i, "r")
+                    info = fp.read()
+                    fp.close
+                    dic = dict([tuple(x.split(":")) for x in info.split("\n") if x and ":" in x])
+                    if dic in(None, {}):
+                        continue
+                    else:
+                        memnum += 1
+                    if tmpMem.get("MemInfo") == None:
+                        tmpMem["MemInfo"] = "DDR4 "
+                    else:
+                        tmpMem["MemInfo"] +=  "<1_1>" + "DDR4 "
+                    if dic["Bank Locator"]:
+                        median = str(dic["Bank Locator"])
+                    else:
+                        median = '$'
+                    if tmpMem.get("MemSlot") == None :
+                        tmpMem["MemSlot"] = median
+                    else:
+                        tmpMem["MemSlot"] +=  "<1_1>" + median
+
+                    if dic["Size"]:
+                        median = str(dic["Size"])
+                    else:
+                        median = '$'
+                    if tmpMem.get("MemSize") == None:
+                        tmpMem["MemSize"] = median
+                    else:
+                        tmpMem["MemSize"] += "<1_1>" + median
+
+                    if dic["Manufacturer ID"]:
+                        median = str(dic["Manufacturer ID"].upper())
+                    else:
+                        median = '$'
+                    if tmpMem.get("MemVendor") == None:
+                        tmpMem["MemVendor"] = median
+                    else:
+                        tmpMem["MemVendor"] += "<1_1>" + median
+
+                    if tmpMem.get("MemWidth") == None:
+                        tmpMem["MemWidth"] = "64bit"
+                    else:
+                        tmpMem["MemWidth"] += "<1_1>" + "64bit"
+
+                Mem["Memnum"] = str(memnum)
+                Mem["MemSlot"] = tmpMem.get("MemSlot")
+                Mem["MemInfo"] = tmpMem.get("MemInfo")
+                Mem["MemSize"] = tmpMem.get("MemSize")
+                Mem["MemVendor"] = tmpMem.get("MemVendor")
+                Mem["MemWidth"] = tmpMem.get("MemWidth")
+
+            if Mem in (None, '', '[]', {}) or  Mem["Memnum"] == '0':#20161228
+                Mem["Memnum"] = "1"
+                #Mem["MemWidth"] = "64bit"
+                #Mem["MemInfo"] = "DDR3"
+                fp = open("/proc/meminfo", "r")
+                info = fp.read()
+                fp.close()
+                dic = dict([tuple(x.split(":")) for x in info.split("\n") if x])
+                MemTotal = dic["MemTotal"].strip().split(' ')[0]
+                #Mem["MemSize"] = GLib.format_size_for_display(int(MemTotal) * 1024)
+                Mem["MemSize"] = ("%0.f") % (math.ceil(float(int(MemTotal)*1024) / 1024**3)) + " GB"
+        return Mem
+
     ## 2017.07.27 add by hebing
     def get_monitor(self):
         ret_output, ret_vendor, ret_product, ret_year, ret_week, \
@@ -1134,6 +1269,34 @@ class DetailInfo:
 
         for line in output.split("\n"):
             value = line.split()
+            if value[1].startswith("259:") and value[5] == "disk":
+                disknum += 1
+                HDSize = get_human_read_capacity_size(int(value[3]))
+                DiskCapacity += ((HDSize if not statusfirst else "$") + "<1_1>")
+                DiskName += (("/dev/" + value[0]) + "<1_1>")
+
+                path = "/sys/block/nvme0n1"
+                if os.path.islink(path):
+                    truepath = os.readlink(path).replace('..', '/sys')
+                    parentpath = '/'.join(truepath.split('/')[:-1])
+
+                    with open(os.path.join(parentpath, 'model')) as fp:
+                        product = fp.readline().strip()
+                    DiskProduct += ((product.strip() if product else "$") + "<1_1>")
+
+                    with open(os.path.join(parentpath, 'serial')) as fp:
+                        serial = fp.readline().strip()
+                    DiskSerial += ((serial if serial else "$") + "<1_1>")
+
+                    DiskFw += ("$" + "<1_1>")
+                    DiskVendor += ("$" + "<1_1>")
+
+                else:
+                    DiskProduct += ( "$" + "<1_1>")
+                    DiskVendor += ("$" + "<1_1>")
+                    DiskFw += ("$" + "<1_1>")
+                    DiskSerial += ("$" + "<1_1>")
+
             if value[1].startswith("8:") and value[5] == "disk":
                 disknum += 1
                 HDSize = get_human_read_capacity_size(int(value[3]))
@@ -1376,7 +1539,7 @@ class DetailInfo:
                 NetDriver += (get_interface_driver(infodict.get("logical name", "unknown")) + "<1_1>")
 
             net['NetNum'] = len(infolist)
-            net['NetType'],net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetSerial'],net['NetIp'],net['NetDrive'] = NetType.rstrip("<1_1>"), NetProduct.rstrip("<1_1>"),NetVendor.rstrip("<1_1>"),NetBusinfo.rstrip("<1_1>"),NetLogicalname.rstrip("<1_1>"),NetSerial.rstrip("<1_1>"),NetIp.rstrip("<1_1>"), NetDriver.rstrip("<1_1>")
+            net['NetType'],net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetSerial'],net['NetIp'],net['NetDrive'] = NetType.rstrip("<1_1>"), NetProduct.rstrip("<1_1>"),NetVendor.rstrip("<1_1>"),NetBusinfo.rstrip("<1_1>"),NetLogicalname.rstrip("<1_1>"),NetSerial[:-5],NetIp.rstrip("<1_1>"), NetDriver.rstrip("<1_1>")
         except Exception as e:
             pass
         return net
