@@ -31,7 +31,7 @@ Vcs-git: https://github.com/ubuntukylin/youker-assistant.git
 Vcs-browser: https://github.com/ubuntukylin/youker-assistant
 
 Package: youker-assistant
-Architecture: amd64 arm64 armhf i386
+Architecture: any
 Depends: python3-dbus,
          python3-psutil,
          python3-lxml,
