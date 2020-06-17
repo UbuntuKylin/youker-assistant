@@ -1044,7 +1044,10 @@ class DetailInfo:
                         tmpMem["MemSlot"] +=  "<1_1>" + median
 
                     if dic["Size"]:
-                        median = str(dic["Size"])
+                        if len(dic["Size"]) > 9: #FT1500a部分机型因固件问题，内核返回一串随机数
+                            median = "-1"
+                        else:
+                            median = str(dic["Size"])
                     else:
                         median = '$'
                     if tmpMem.get("MemSize") == None:

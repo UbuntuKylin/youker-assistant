@@ -1076,67 +1076,67 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="379"/>
+        <location filename="../infowidget.cpp" line="380"/>
         <source>Memory Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="419"/>
+        <location filename="../infowidget.cpp" line="423"/>
         <source>Memory Info %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="452"/>
+        <location filename="../infowidget.cpp" line="456"/>
         <source>Board Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="497"/>
+        <location filename="../infowidget.cpp" line="501"/>
         <source>HardWare Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="539"/>
+        <location filename="../infowidget.cpp" line="543"/>
         <source>HardWare Info %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="592"/>
+        <location filename="../infowidget.cpp" line="596"/>
         <source>NIC Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="638"/>
+        <location filename="../infowidget.cpp" line="642"/>
         <source>NIC Info %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="682"/>
+        <location filename="../infowidget.cpp" line="686"/>
         <source>Monitor Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="722"/>
+        <location filename="../infowidget.cpp" line="726"/>
         <source>Monitor Info %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="766"/>
+        <location filename="../infowidget.cpp" line="770"/>
         <source>Audio Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="806"/>
+        <location filename="../infowidget.cpp" line="810"/>
         <source>Audio Info %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="855"/>
+        <location filename="../infowidget.cpp" line="859"/>
         <source>Battery Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="983"/>
+        <location filename="../infowidget.cpp" line="987"/>
         <source>Driver Info</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3091,6 +3091,11 @@ Are you sure to continue?</source>
     <message>
         <location filename="../../info/infogui.cpp" line="134"/>
         <source> (single-core single thread)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../infowidget.cpp" line="402"/>
+        <source>Wrong info from firmware</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
