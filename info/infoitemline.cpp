@@ -146,10 +146,20 @@ inline const QString covertKeyName(const QString &key)
 //        return QString(QObject::tr("1500a v1.0 64 bits");
     else if(key == "phytium")//飞腾
         return QString(QObject::tr("phytium"));
+    else if(key == "huawei")//华为
+        return QString(QObject::tr("huawei"));
+    else if(key == "hygon")//海光
+        return QString(QObject::tr("hygon"));
+    else if(key == "zhaoxin")//兆芯
+        return QString(QObject::tr("zhaoxin"));
+    else if(key == "loongson")//龙芯
+        return QString(QObject::tr("loongson"));
     else if(key == "4 cores")//4核
         return QString(QObject::tr("4 cores"));
     else if(key == "4 thread/core")//4线程/核
         return QString(QObject::tr("4 thread/core"));
+    else if(key == "Wrong info from firmware")//固件未提供正确信息
+        return QString(QObject::tr("Wrong info from firmware"));
 
 
     else if(key == "desktopenvironment")//桌面环境

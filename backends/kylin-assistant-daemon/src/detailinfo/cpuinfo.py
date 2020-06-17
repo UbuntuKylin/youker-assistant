@@ -545,6 +545,16 @@ class DetailInfo:
                 ComSerial = tmp[0]
         ComVendor = self.get_url(ComVendor,ComProduct)
         Com['ComProduct'],Com['ComVendor'],Com['ComVersion'],Com['ComSerial'] = self.strip(ComProduct),self.strip(ComVendor),self.strip(ComVersion),self.strip(ComSerial)
+
+        if Com['ComProduct'] == "XXXX":
+            Com['ComProduct'] = "Wrong info from firmware"
+        if Com['ComVendor'] == "XXXX":
+            Com['ComVendor'] = "Wrong info from firmware"
+        if Com['ComVersion'] == "XXXX":
+            Com['ComVersion'] = "Wrong info from firmware"
+        if Com['ComSerial'] == "XXXX":
+            Com['ComSerial'] = "Wrong info from firmware"
+
         with open('/proc/uptime') as f:
             for line in f:
                 string = line.split('.')[0]
