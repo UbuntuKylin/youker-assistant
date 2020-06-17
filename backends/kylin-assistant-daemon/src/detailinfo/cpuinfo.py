@@ -357,6 +357,7 @@ class DetailInfo:
            "XFX":["XFX"],
            "SUPERGRAPHIC":["Supergraphic"],
            "JINGJIA":["JJM"],
+           "Wuhan Digital Engineering":["WDE"],
 #显示器产商
            "AUO":["AUO"],
            "AOC":["AOC"],
@@ -479,6 +480,12 @@ class DetailInfo:
                 return url[0]
 
         tmp = re.findall("JingJia", p)
+        if tmp :
+            url = vendors.get(tmp[0].upper())
+            if url:
+                return url[0]
+
+        tmp = re.findall("Wuhan Digital Engineering", p)
         if tmp :
             url = vendors.get(tmp[0].upper())
             if url:

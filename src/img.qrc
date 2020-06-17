@@ -455,6 +455,7 @@
         <file>res/manufacturer/UBUNTUKYLIN.jpg</file>
         <file>res/manufacturer/JJM.jpg</file>
         <file>res/manufacturer/WESTERN DIGITAL.jpg</file>
+        <file>res/manufacturer/WDE.jpg</file>
     </qresource>
     <qresource prefix="/background">
         <file>res/skin/1.png</file>
