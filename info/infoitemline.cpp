@@ -92,9 +92,9 @@ inline const QString covertKeyName(const QString &key)
     else if(key == "POWER_SUPPLY_SERIAL_NUMBER")//序列号
         return QString(QObject::tr("Serial Number"));
 
-    else if(key == "BoaVendor")//主板型号
+    else if(key == "BoaProduct")//主板型号
         return QString(QObject::tr("Motherboard Model"));
-    else if(key == "BoaProduct")//主板产商
+    else if(key == "BoaVendor")//主板产商
         return QString(QObject::tr("Motherboard Vendor"));
     else if(key == "BoaSerial")//序列号
         return QString(QObject::tr("Serial Number"));
