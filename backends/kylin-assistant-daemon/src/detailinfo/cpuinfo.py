@@ -1150,13 +1150,23 @@ class DetailInfo:
                             ret_year += ("" + "<1_1>")
                             ret_week += ("" + "<1_1>")
 
-                        result = re.findall("Image Size: \s*(\w*) x (\w*)", localinfo)
-                        if result:
-                            x = float(result[0][0])/10; y = float(result[0][1])/10; d = math.sqrt(x**2 + y**2)/2.54
-                            #ret.setdefault("Mon_size", (str(x) + " X " + str(y) + " cm"))
-                            #ret.setdefault("Mon_in", str("%.1f" %d))
-                            ret_size += ((str(x) + " X " + str(y) + " cm") + "<1_1>")
-                            ret_in += (str("%.1f" %d) + "<1_1>")
+#                        result = re.findall("Image Size: \s*(\w*) x (\w*)", localinfo)
+#                        if result:
+#                            x = float(result[0][0])/10; y = float(result[0][1])/10; d = math.sqrt(x**2 + y**2)/2.54
+#                            #ret.setdefault("Mon_size", (str(x) + " X " + str(y) + " cm"))
+#                            #ret.setdefault("Mon_in", str("%.1f" %d))
+#                            ret_size += ((str(x) + " X " + str(y) + " cm") + "<1_1>")
+#                            ret_in += (str("%.1f" %d) + "<1_1>")
+#                        else:
+#                            ret_size += ("" + "<1_1>")
+#                            ret_in += ("" + "<1_1>")
+                        resultx = re.findall("horiz.: \s*(\w*)", localinfo)
+                        resulty = re.findall("vert.: \s*(\w*)", localinfo)
+                        if resultx and resulty:
+                            mx = float(resultx[0]); my = float(resulty[0])
+                            md = math.sqrt(mx**2 + my**2)/2.54
+                            ret_size += ((str(mx) + " X " + str(my) + " cm") + "<1_1>")
+                            ret_in += (str("%.1f" %md) + "<1_1>")
                         else:
                             ret_size += ("" + "<1_1>")
                             ret_in += ("" + "<1_1>")
