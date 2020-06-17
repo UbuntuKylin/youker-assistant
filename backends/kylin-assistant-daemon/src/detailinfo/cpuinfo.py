@@ -1133,30 +1133,47 @@ class DetailInfo:
                         if result: ### 笔记本没有Monitor name
                             ret_product += (result[0][0] + "<1_1>")
                             ret_vendor += (result_bak[0][0] + "<1_1>")
-                        else:
+                        elif result_bak:
                             ret_vendor += (result_bak[0][0] + "<1_1>")
                             ret_product += (result_bak[0][0] + "<1_1>")
+                        else:
+                            ret_vendor += ("" + "<1_1>")
+                            ret_product += ("" + "<1_1>")
 
                         result = re.findall("Year:\s*(\w*)\s*Week:\s*(\w*)", localinfo)
                         #ret.setdefault("Mon_year", result[0][0])
                         #ret.setdefault("Mon_week", result[0][1])
-                        ret_year += (result[0][0] + "<1_1>")
-                        ret_week += (result[0][1] + "<1_1>")
+                        if result:
+                            ret_year += (result[0][0] + "<1_1>")
+                            ret_week += (result[0][1] + "<1_1>")
+                        else:
+                            ret_year += ("" + "<1_1>")
+                            ret_week += ("" + "<1_1>")
 
                         result = re.findall("Image Size: \s*(\w*) x (\w*)", localinfo)
-                        x = float(result[0][0])/10; y = float(result[0][1])/10; d = math.sqrt(x**2 + y**2)/2.54
-                        #ret.setdefault("Mon_size", (str(x) + " X " + str(y) + " cm"))
-                        #ret.setdefault("Mon_in", str("%.1f" %d))
-                        ret_size += ((str(x) + " X " + str(y) + " cm") + "<1_1>")
-                        ret_in += (str("%.1f" %d) + "<1_1>")
+                        if result:
+                            x = float(result[0][0])/10; y = float(result[0][1])/10; d = math.sqrt(x**2 + y**2)/2.54
+                            #ret.setdefault("Mon_size", (str(x) + " X " + str(y) + " cm"))
+                            #ret.setdefault("Mon_in", str("%.1f" %d))
+                            ret_size += ((str(x) + " X " + str(y) + " cm") + "<1_1>")
+                            ret_in += (str("%.1f" %d) + "<1_1>")
+                        else:
+                            ret_size += ("" + "<1_1>")
+                            ret_in += ("" + "<1_1>")
 
                         result = re.findall("Gamma: (\S*)", localinfo)
                         #ret.setdefault("Mon_gamma", result[0])
-                        ret_gamma += (result[0] + "<1_1>")
+                        if result:
+                            ret_gamma += (result[0] + "<1_1>")
+                        else:
+                            ret_gamma += ("" + "<1_1>")
 
                         h = re.findall("h_active: (\d*)", localinfo); v = re.findall("v_active: (\d*)", localinfo)
-                        #ret.setdefault("Mon_maxmode", h[0] + "X" + v[0])
-                        ret_maxmode += ((h[0] + "X" + v[0]) + "<1_1>")
+                        if h:
+                            #ret.setdefault("Mon_maxmode", h[0] + "X" + v[0])
+                            ret_maxmode += ((h[0] + "X" + v[0]) + "<1_1>")
+                        else:
+                            ret_maxmode += ("" + "<1_1>")
 
                         Vga_businfo += "<1_1>"; Vga_product += "<1_1>"; Vga_vendor += "<1_1>"; Vga_Drive += "<1_1>"
 
