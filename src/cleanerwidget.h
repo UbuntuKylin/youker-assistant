@@ -69,6 +69,13 @@ signals:
     void startOneKeyClean();
 
     void finishCleanWorkMain(QString msg);
+
+    void tellCleanerMainData(const QStringList &data);
+    void tellCleanerMainStatus(const QString &status, const QString &domain);
+    void sendCleanErrorSignal(const QString &status);
+
+    void policykitCleanSignal(bool status);
+    void sendCleanOverSignal();
     //===================================
 private:
     QStackedWidget *statked_widget;

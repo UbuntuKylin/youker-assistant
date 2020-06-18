@@ -10,6 +10,7 @@
 #include <QFont>
 #include <QDebug>
 #include <QPainter>
+#include <QMovie>
 
 class Fanwidget : public QWidget
 {

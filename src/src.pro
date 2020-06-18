@@ -51,6 +51,7 @@ SOURCES += main.cpp \
     ../cleaner/cleandetailveiw.cpp \
     ../component/chartwidget.cpp \
     ../component/cpufmwidget.cpp \
+    ../component/detailsbutton.cpp \
     ../component/drivepagewidget.cpp \
     ../component/fanwidget.cpp \
     ../component/generaldialog.cpp \
@@ -133,6 +134,7 @@ HEADERS  += mainwindow.h \
     ../cleaner/cleandetailveiw.h \
     ../component/chartwidget.h \
     ../component/cpufmwidget.h \
+    ../component/detailsbutton.h \
     ../component/drivepagewidget.h \
     ../component/fanwidget.h \
     ../component/generaldialog.h \

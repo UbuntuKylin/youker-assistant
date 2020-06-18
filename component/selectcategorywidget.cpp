@@ -19,32 +19,61 @@
 
 #include "selectcategorywidget.h"
 #include "utils.h"
+#include "systembutton.h"
 
 #include <QApplication>
 #include <QGraphicsDropShadowEffect>
+#include <QStyle>
+#include <QStyleOption>
 
 SelectCategoryWidget::SelectCategoryWidget(CleanerCategoryID id, const QString &title, bool needMin, QWidget *parent)
     : QDialog(parent)
     , m_mousePressed(false)
     , m_id(id)
 {
-    this->setWindowFlags(Qt::FramelessWindowHint);
-    this->setFixedSize(464, 500);
+    this->setWindowFlags(Qt::FramelessWindowHint/* | Qt::Dialog|Qt::WindowMinimizeButtonHint*/);
+    this->setAutoFillBackground(true);
+    this->setAttribute(Qt::WA_TranslucentBackground);
+
+//    if(needMin)
+//        this->setFixedSize(600,520);
+//    else
+    this->setFixedSize(340,380);
+
+    this->setStyleSheet("QDialog{background: #ffffff; border:1px solid rgba(207,207,207,1);;border-radius:10px;}");
 
     QWidget *containerWidget = new QWidget(this);
     m_mainLayout = new QVBoxLayout(containerWidget);
+
+    QFrame *top_tip = new QFrame(this);
+    top_tip->setFixedSize(this->width()-20,100);
+    QLabel *tip_label = new QLabel(top_tip);
+    tip_label->setFont(QFont("",24,QFont::Normal));
+    tip_label->setText(title);
+    tip_label->setStyleSheet("color:0,0,0,185");
+    tip_label->setGeometry(35,45,300,35);
+
+    SystemButton *close_btn = new SystemButton(top_tip);
+    close_btn->loadPixmap(":/sys/res/sysBtn/close_button.png");
+    close_btn->setGeometry(this->width()-60,0,36,36);
+
     m_mainLayout->setSpacing(0);
     m_mainLayout->setMargin(0);
-    m_mainLayout->setContentsMargins(0,0,0,0);
-    m_titleBar = new MyTitleBar(title, needMin, this);
-    m_titleBar->setFixedSize(this->width(), TITLE_BAR_HEIGHT);
+    m_mainLayout->setContentsMargins(10,12,0,0);
+//    m_titleBar = new MyTitleBar(title, needMin, this);
+//    m_titleBar->setFixedSize(this->width(), TITLE_BAR_HEIGHT);
+
+//    if(needMin)
+//        m_listWidget = new SelectListWidget(false, this);
+//    else
     m_listWidget = new SelectListWidget(true, this);
-    m_listWidget->setFixedSize(this->width(), this->height() - TITLE_BAR_HEIGHT);
-    m_mainLayout->addWidget(m_titleBar);
+
+    m_listWidget->setFixedSize(this->width()-40, this->height() - 110 - TITLE_BAR_HEIGHT);
+    m_mainLayout->addWidget(top_tip);
     m_mainLayout->addWidget(m_listWidget);
 
-    connect(m_titleBar, SIGNAL(minSignal()), this, SLOT(hide()));
-    connect(m_titleBar, SIGNAL(closeSignal()), this, SLOT(onClose()));
+//    connect(m_titleBar, SIGNAL(minSignal()), this, SLOT(hide()));
+    connect(close_btn, SIGNAL(clicked()), this, SLOT(onClose()));
     connect(m_listWidget, SIGNAL(notifyMainCheckBox(int)), this, SIGNAL(notifyMainCheckBox(int)));
 
     //边框阴影效果
@@ -94,6 +123,29 @@ void SelectCategoryWidget::moveCenter()
                primaryGeometry.y() + (primaryGeometry.height() - this->height())/2);
     this->show();
     this->raise();*/
+}
+
+void SelectCategoryWidget::paintEvent(QPaintEvent *event)
+{
+    Q_UNUSED(event)
+    QPainterPath path;
+    path.setFillRule(Qt::WindingFill);
+    path.addRoundRect(10,10,this->width()-20,this->height()-20,5,5);
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing,true);
+    painter.fillPath(path,QBrush(Qt::white));
+    QColor color(0,0,0,50);
+    for(int i = 0 ; i < 10 ; ++i)
+    {
+        QPainterPath path;
+        path.setFillRule(Qt::WindingFill);
+        path.addRoundRect(10-i,10-i,this->width()-(10-i)*2,this->height()-(10-i)*2,5,5);
+        color.setAlpha(150 - qSqrt(i)*50);
+        painter.setPen(color);
+        painter.drawPath(path);
+    }
+
+    QWidget::paintEvent(event);
 }
 
 

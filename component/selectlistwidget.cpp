@@ -45,10 +45,11 @@ SelectListWidget::SelectListWidget(bool hasTip, QWidget *parent) :
     else {
         m_titleLabel = new QLabel;
         m_titleLabel->setFixedHeight(30);
-        m_titleLabel->setStyleSheet("QLabel{background-color:rgb(233 ,238, 241);color:#000000;font-family: 方正黑体_GBK;font-size:12px;text-align:left;}");
+        m_titleLabel->setIndent(30);
+        m_titleLabel->setStyleSheet("QLabel{background-color:white;color:#000000;font-family: 方正黑体_GBK;font-size:12px;text-align:left;}");
         m_titleLabel->setText(tr("Clean Items:"));
-        m_gridLayout->addWidget(m_titleLabel,0,0,1,5/*, Qt::AlignLeft | Qt::AlignVCenter*/);
-        m_gridLayout->addWidget(m_scrollArea,1,0,5,5);
+        m_gridLayout->addWidget(m_titleLabel,1,0,5,5/*, Qt::AlignLeft | Qt::AlignVCenter*/);
+        m_gridLayout->addWidget(m_scrollArea,0,0,1,5);
     }
 
     resetToDefault();
@@ -62,7 +63,6 @@ SelectListWidget::~SelectListWidget()
 void SelectListWidget::loadListItems(const QString &title, const QStringList &cachelist, int itemWidth)
 {
     m_itemsMap.clear();
-
     int count = cachelist.count();
     m_titleLabel->setText(QString("%1 %2").arg(tr("Clean Items:")).arg(QString::number(count)));
 

@@ -44,7 +44,7 @@ Monitorwidget::~Monitorwidget()
 
 void Monitorwidget::InitUI()
 {
-    qDebug() << Q_FUNC_INFO << __LINE__;
+//    qDebug() << Q_FUNC_INFO << __LINE__;
     string_list.clear();
 
     string_list << tr("Temperature");
@@ -67,7 +67,7 @@ void Monitorwidget::InitUI()
     connect(cpu_fm,SIGNAL(setCpuGoverner(QString)),this,SIGNAL(setCpuGoverner(QString)));
     connect(this,SIGNAL(SendCPUFrequencyData(QMap<QString,QVariant>)),cpu_fm,SLOT(ProcessingCPUFrequencyData(QMap<QString,QVariant>)));
     connect(cpu_fm,SIGNAL(RequestCPUFrequencyData()),this,SIGNAL(RequestCPUFrequencyData()));
-    qDebug() << Q_FUNC_INFO <<this->governer_list << this->cur_governer;
+//    qDebug() << Q_FUNC_INFO <<this->governer_list << this->cur_governer;
 
 
     for(int i = 0; i < string_list.length(); i++) {
@@ -140,6 +140,6 @@ void Monitorwidget::changewidgetpage(QListWidgetItem *item)
 
 void Monitorwidget::sendcpurangedata(QMap<QString, QVariant> tmpMap)
 {
-    qDebug() << Q_FUNC_INFO << tmpMap;
+//    qDebug() << Q_FUNC_INFO << tmpMap;
     emit this->onsendcpurangedata(tmpMap);
 }

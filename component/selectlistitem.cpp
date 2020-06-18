@@ -31,10 +31,10 @@ SelectListItem::SelectListItem(QWidget *parent, QString description, QString tip
     m_mainLayout = new QHBoxLayout(this);
     m_mainLayout->setSpacing(0);
     m_mainLayout->setMargin(0);
-    m_mainLayout->setContentsMargins(0,0,0,0);
+    m_mainLayout->setContentsMargins(35,0,0,0);
 
     m_checkBox = new QCheckBox(this);
-    m_checkBox->setFixedSize(20, 13);
+    m_checkBox->setFixedSize(20, 20);
     m_checkBox->setFocusPolicy(Qt::NoFocus);
     m_checkBox->setChecked(true);
 

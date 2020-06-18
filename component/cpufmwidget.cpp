@@ -115,7 +115,7 @@ void CpuFmwidget::InitUI()
     radioGroup = new QButtonGroup(h);
     QHBoxLayout *radio_layout = new QHBoxLayout(h);
     radioGroup->setExclusive(true);
-    qDebug() << Q_FUNC_INFO << governer_list;
+//    qDebug() << Q_FUNC_INFO << governer_list;
     for(int i=0 ; i < governer_list.length() ; i++)
     {;
         QRadioButton *item = new QRadioButton(h);

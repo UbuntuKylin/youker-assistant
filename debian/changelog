@@ -1,3 +1,9 @@
+youker-assistant (3.0.2-0kylin2k0~rc1) v101; urgency=medium
+
+  * UKUI3.0 version
+
+ -- tangguang <tangguang@kylinos.cn>  Mon, 15 Jun 2020 10:16:31 +0800
+
 youker-assistant (3.0.2-0ubuntu1) focal; urgency=medium
 
   * New bugfix release:

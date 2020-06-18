@@ -27,6 +27,8 @@
 #include <QPushButton>
 #include <QFont>
 #include <QFileInfo>
+#include <QPixmap>
+#include <QFont>
 
 #include "../component/utils.h"
 
@@ -63,13 +65,13 @@ private:
     MainWindow *parentWindow;
     QLabel *tip_label;
 
-    CleanGroup *cache_btn;
+//    CleanGroup *cache_btn;
 //    CleanerItems *cache_items;
 //    CleanGroup *package_btn;
 //    CleanerItems *package_items;
-    CleanGroup *cookies_btn;
+//    CleanGroup *cookies_btn;
 //    CleanerItems *cookies_items;
-    CleanGroup *trace_btn;
+//    CleanGroup *trace_btn;
 //    CleanerItems *trace_items;
 
     QMap<QString, QVariant> argsMap;

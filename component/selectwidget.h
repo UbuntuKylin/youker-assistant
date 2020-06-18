@@ -23,6 +23,8 @@
 #include <QDialog>
 #include <QVBoxLayout>
 #include <QMouseEvent>
+#include <QPainter>
+#include <QtMath>
 
 #include "mytitlebar.h"
 #include "selectlistwidget.h"
@@ -38,6 +40,7 @@ public:
     void loadData(const QString &title, const QStringList &cachelist);
     void moveCenter();
 
+    void paintEvent(QPaintEvent *event);
 public slots:
     void onClose();
 

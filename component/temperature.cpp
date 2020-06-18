@@ -145,6 +145,7 @@ void Temperature::sendrequest()
 
 void Temperature::refreshlable(qreal q)
 {
+    //保留小数点的后一位
     temperature_lable->setText("CPU: "+ QString::number(q,'f',1)+"℃");
     if(q >= 60)
     {
