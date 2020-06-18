@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -138,9 +138,8 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>系统缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="162"/>
         <source>Clear package、thumbnails and browser cache</source>
-        <translation>清理包、缩略图和浏览器缓存</translation>
+        <translation type="obsolete">清理包、缩略图和浏览器缓存</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleandetailveiw.cpp" line="168"/>
@@ -155,9 +154,8 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>Cookies</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="198"/>
         <source>Clear internet、games、shopping history, etc.</source>
-        <translation>清理上网、游戏、购物记录等</translation>
+        <translation type="obsolete">清理上网、游戏、购物记录等</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleandetailveiw.cpp" line="229"/>
@@ -227,6 +225,16 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <location filename="../../cleaner/cleandetailveiw.cpp" line="730"/>
         <source>Computer cleanup in progress...</source>
         <translation>电脑清理中...</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="162"/>
+        <source>Clear packageãthumbnails and browser cache</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="198"/>
+        <source>Clear internetãgamesãshopping history, etc.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../cleaner/cleandetailveiw.cpp" line="612"/>
@@ -396,15 +404,15 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     <name>CleanerMainWidget</name>
     <message>
         <source>Cleans up cache of system</source>
-        <translation type="vanished">清理系统缓存</translation>
+        <translation type="obsolete">清理系统缓存</translation>
     </message>
     <message>
         <source>Cleans up cookies in browser</source>
-        <translation type="vanished">清理浏览器缓存</translation>
+        <translation type="obsolete">清理浏览器缓存</translation>
     </message>
     <message>
         <source>Cleans up records of history</source>
-        <translation type="vanished">清理历史记录</translation>
+        <translation type="obsolete">清理历史记录</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="49"/>
@@ -412,14 +420,22 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>系统缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="55"/>
         <source>Clear package、thumbnails and browser cache</source>
-        <translation>清理包、缩略图和浏览器缓存</translation>
+        <translation type="obsolete">清理包、缩略图和浏览器缓存</translation>
+    </message>
+    <message>
+        <source>Clear internet、games、shopping history, etc.</source>
+        <translation type="obsolete">清理上网、游戏、购物记录等</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="55"/>
+        <source>Clear packageãthumbnails and browser cache</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="82"/>
-        <source>Clear internet、games、shopping history, etc.</source>
-        <translation>清理上网、游戏、购物记录等</translation>
+        <source>Clear internetãgamesãshopping history, etc.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="102"/>
@@ -472,7 +488,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <source>System Cache</source>
-        <translation type="vanished">系统缓存</translation>
+        <translation type="obsolete">系统缓存</translation>
     </message>
     <message>
         <source>Cleanup  cache of system, software-center, thumbnails and browser</source>
@@ -547,7 +563,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <source>History trace</source>
-        <translation type="vanished">历史痕迹</translation>
+        <translation type="obsolete">历史痕迹</translation>
     </message>
     <message>
         <source>Cleaning the internet and opened documents recently records</source>
@@ -555,7 +571,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <source>Please select the items you want to clean</source>
-        <translation type="vanished">请选择您想清理的选项</translation>
+        <translation type="obsolete">请选择您想清理的选项</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="326"/>
@@ -1124,7 +1140,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     <name>InfoWidget</name>
     <message>
         <source>Computer</source>
-        <translation type="vanished">电脑概述</translation>
+        <translation type="obsolete">电脑概述</translation>
     </message>
     <message>
         <location filename="../infowidget.cpp" line="101"/>
@@ -1253,7 +1269,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <source>Device Driver</source>
-        <translation type="vanished">设备驱动</translation>
+        <translation type="obsolete">设备驱动</translation>
     </message>
     <message>
         <location filename="../infowidget.cpp" line="162"/>
@@ -1739,15 +1755,15 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <source>Understand hardware information, provide more convenient channel to obtain hardware information</source>
-        <translation type="vanished">了解电脑硬件详细信息，为用户提供更加方便的获取硬件信息渠道</translation>
+        <translation type="obsolete">了解电脑硬件详细信息，为用户提供更加方便的获取硬件信息渠道</translation>
     </message>
     <message>
         <source>perform a full range of customizations systems based on your own personal preferences</source>
-        <translation type="vanished">根据个人喜好对系统进行全方位的定制</translation>
+        <translation type="obsolete">根据个人喜好对系统进行全方位的定制</translation>
     </message>
     <message>
         <source>Provides lightweight tool and creates fast and convenient experience</source>
-        <translation type="vanished">提供轻量化工具，打造快捷方便的体验</translation>
+        <translation type="obsolete">提供轻量化工具，打造快捷方便的体验</translation>
     </message>
     <message>
         <source>You can perform a full range of customized systems based on personal preferences</source>
@@ -1860,7 +1876,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <source>Home</source>
-        <translation type="vanished">麒麟首页</translation>
+        <translation type="obsolete">麒麟首页</translation>
     </message>
     <message>
         <location filename="../middlewidget.cpp" line="179"/>
@@ -1874,7 +1890,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <source>Optimize</source>
-        <translation type="vanished">优化加速</translation>
+        <translation type="obsolete">优化加速</translation>
     </message>
     <message>
         <location filename="../middlewidget.cpp" line="179"/>
@@ -1883,7 +1899,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <source>Monitor</source>
-        <translation type="vanished">性能监测</translation>
+        <translation type="obsolete">性能监测</translation>
     </message>
     <message>
         <location filename="../middlewidget.cpp" line="179"/>
@@ -1942,7 +1958,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <source>Fan Speed</source>
-        <translation type="vanished">风扇转速</translation>
+        <translation type="obsolete">风扇转速</translation>
     </message>
     <message>
         <location filename="../monitorwidget.cpp" line="61"/>
@@ -2654,7 +2670,7 @@ Are you sure to continue?</source>
     <message>
         <location filename="../../info/infoitemline.cpp" line="138"/>
         <source>Thread</source>
-        <translation>线程</translation>
+        <translation>每个核的线程数</translation>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="140"/>
@@ -3290,9 +3306,8 @@ Are you sure to continue?</source>
         <translation>开始于：</translation>
     </message>
     <message>
-        <location filename="../../info/infogui.cpp" line="134"/>
         <source> (single-core single thread)</source>
-        <translation>（单核单线程）</translation>
+        <translation type="obsolete">（单核单线程）</translation>
     </message>
 </context>
 <context>
