@@ -447,13 +447,15 @@
         <file>res/manufacturer/VIA.jpg</file>
         <file>res/manufacturer/VIMICRO.jpg</file>
         <file>res/manufacturer/VIRTUALBOX.jpg</file>
-        <file>res/manufacturer/WDC.jpg</file>
         <file>res/manufacturer/WINBOND.jpg</file>
         <file>res/manufacturer/XFX.jpg</file>
         <file>res/manufacturer/YESTON.jpg</file>
         <file>res/manufacturer/ZOTAC.jpg</file>
         <file>res/manufacturer/ZTE.jpg</file>
         <file>res/manufacturer/UBUNTUKYLIN.jpg</file>
+        <file>res/manufacturer/JJM.jpg</file>
+        <file>res/manufacturer/WESTERN DIGITAL.jpg</file>
+        <file>res/manufacturer/WDE.jpg</file>
     </qresource>
     <qresource prefix="/background">
         <file>res/skin/1.png</file>
