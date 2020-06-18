@@ -1207,6 +1207,10 @@ class DetailInfo:
                         elif "Kernel driver in use: " not in local:
                             Vga_Drive += ""
 
+                    ret_output += "<1_1>"; ret_vendor += "<1_1>"; ret_product += "<1_1>"; ret_year += "<1_1>"; ret_week += "<1_1>"
+                    ret_size += "<1_1>"; ret_in += "<1_1>"; ret_gamma += "<1_1>"; ret_maxmode += "<1_1>"
+                    Vga_product += "<1_1>"; Vga_businfo += "<1_1>"; Vga_vendor += "<1_1>"; Vga_Drive += "<1_1>"
+
         ret["Mon_output"], ret["Mon_vendor"], ret["Mon_product"], ret["Mon_year"], ret["Mon_week"], ret["Mon_size"], ret["Mon_in"] = \
                 ret_output, ret_vendor, ret_product, ret_year, ret_week, ret_size, ret_in
         ret["Mon_gamma"], ret["Mon_maxmode"] = ret_gamma, ret_maxmode
