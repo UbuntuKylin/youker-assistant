@@ -22,91 +22,96 @@
 #include "../src/mainwindow.h"
 #include "../component/selectcategorywidget.h"
 #include "../component/cleangroup.h"
+#include "../component/detailsbutton.h"
 
 CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolkits *kits, QString skin)
     : QWidget(parent), parentWindow(window), toolKits(kits)
 {
     this->setFixedSize(900, 403);
     this->setObjectName("transparentWidget");
-//    this->setAutoFillBackground(true);
-//    QPalette palette;
-//    palette.setBrush(QPalette::Window, QBrush(Qt::white));
-//    this->setPalette(palette);
 
     tip_label = new QLabel(this);
     tip_label->setGeometry(QRect(120, 60, 800, 30));
     tip_label->setObjectName("tipLabel");
     tip_label->setFixedHeight(45);
-//    QStringList cache_list, status_list;
-//    cache_list << tr("Cleanup Package Cache") << tr("Cleanup Software Center Cache") << tr("Cleanup Thumbnails Cache") << tr("Cleanup FireFox Cache") << tr("Cleanup Chromium Cache");
-//    status_list << "apt" << "software-center" << "thumbnails" << "firefox" << "chromium";
-//    cache_items = new CleanerItems(cache_list, status_list, skin, 280, tr("Cache Items"));
-//    cache_btn = new KylinCheckBox(0, "://res/cache.png");
-    cache_btn = new CleanGroup(this, "://res/cache");
+
+//    cache_btn = new CleanGroup(this, "://res/cache");
+//    cache_btn->setFocusPolicy(Qt::NoFocus);
+//    cache_btn->setGeometry(QRect(30, 150, 260, 150));
+//    cache_btn->setStatusTip("cache");
+//    cache_btn->setLabelText(tr("System Cache"), tr("Cleans up cache of system"));//系统缓存垃圾    清除包、软件中心、缩略图和浏览器缓存
+
+    QLabel *cache_icon = new QLabel(this);
+    QPixmap icon(":/res/cache.png");
+    cache_icon->setPixmap(icon);
+    cache_icon->setGeometry(QRect(125,150,icon.width(),icon.height()));
+
+    DetailsButton *cache_btn = new DetailsButton(tr("Cache"),this);
     cache_btn->setFocusPolicy(Qt::NoFocus);
-//    cache_btn->setGeometry(QRect(10, 50, 260, 150));
-    cache_btn->setGeometry(QRect(30, 150, 260, 150));
-//    cache_btn->setFixedSize(260, 130);
+    cache_btn->setGeometry(QRect(110,194,108,36));
     cache_btn->setStatusTip("cache");
-    cache_btn->setLabelText(tr("System Cache"), tr("Cleans up cache of system"));//系统缓存垃圾    清除包、软件中心、缩略图和浏览器缓存
-    //子checkbox的状态被改变时，重新设置总按钮的状态
-//    connect(cache_items, SIGNAL(notifyMainCheckBox(int)), cache_btn, SLOT(resetMainStatus(int)));
+
+    QLabel *cache_label = new QLabel(this);
+    cache_label->setText(tr("Clear package、thumbnails and browser cache"));
+    cache_label->setGeometry(QRect(120,240,200,16*2));
+    cache_label->setWordWrap(true);
+    cache_label->setStyleSheet("color:rgb(0,0,0,165)");
+
     //点击按钮后，显示子页面
     connect(cache_btn, SIGNAL(clicked()), this, SLOT(onButtonClicked()));
 
-    //20160711
-    /*QStringList package_list;
-    package_list << tr("Uninstall unnecessary procedures") << tr("Uninstall old kernel packages") << tr("Cleanup software configfile");
-    status_list.clear();
-    status_list << "unneed" << "oldkernel" << "configfile";
-    package_items = new CleanerItems(package_list, status_list, skin, 200, tr("Package Items"));
-//    package_btn = new KylinCheckBox(0, "://res/package.png");
-    package_btn = new CleanGroup(this, "://res/package");
-    package_btn->setFocusPolicy(Qt::NoFocus);
-    package_btn->setGeometry(QRect(320, 50, 260, 150));
-//    package_btn->setFixedSize(260, 130);
-    package_btn->setLabelText(tr("Packages and configfile"), tr("Cleaning up the software that installed by other software bundled, old kernel packages and configfile, to improve system performance"));//包垃圾   清除不必要的程序、旧内核包、配置文件
-    package_btn->setStatusTip("package");
-    //子checkbox的状态被改变时，重新设置总按钮的状态
-    connect(package_items, SIGNAL(notifyMainCheckBox(int)), package_btn, SLOT(resetMainStatus(int)));
-    //点击按钮后，显示子页面
-    connect(package_btn, SIGNAL(clicked()), this, SLOT(onButtonClicked()));*/
 
-//    QStringList cookies_list;
-//    cookies_list << tr("Cleanup the Cookies saving in Firefox") << tr("Cleanup the Cookies saving in Chromium");
-//    status_list.clear();
-//    status_list << "firefox" << "chromium";
-//    cookies_items = new CleanerItems(cookies_list, status_list, skin, 170, tr("Cookies Items"));
-//    cookies_btn = new KylinCheckBox(0, "://res/cookie.png");
-    cookies_btn = new CleanGroup(this, "://res/cookie");
-    cookies_btn->setFocusPolicy(Qt::NoFocus);
-    cookies_btn->setGeometry(QRect(290, 150, 260, 150));
-//    cookies_btn->setGeometry(QRect(630, 50, 260, 150));
-//    cookies_btn->setFixedSize(260, 130);
-    cookies_btn->setLabelText(tr("Cookies"), tr("Cleans up cookies in browser"));
-    cookies_btn->setStatusTip("cookies");
-    //子checkbox的状态被改变时，重新设置总按钮的状态
-//    connect(cookies_items, SIGNAL(notifyMainCheckBox(int)), cookies_btn, SLOT(resetMainStatus(int)));
-    //点击按钮后，显示子页面
-    connect(cookies_btn, SIGNAL(clicked()), this, SLOT(onButtonClicked()));
+//    cookies_btn = new CleanGroup(this, "://res/cookie");
+//    cookies_btn->setFocusPolicy(Qt::NoFocus);
+//    cookies_btn->setGeometry(QRect(290, 150, 260, 150));
+//    cookies_btn->setLabelText(tr("Cookies"), tr("Cleans up cookies in browser"));
+//    cookies_btn->setStatusTip("cookies");
 
-//    QStringList trace_list;
-//    trace_list << tr("Clean up the Firefox Internet records") << tr("Clean up the Chromium Internet records") << tr("Clean up the recently opened documents records") << tr("Delete the command history") << tr("Delete the debug logs");
-//    status_list.clear();
-//    status_list << "firefox" << "chromium" << "system" << "bash" << "X11";
-//    trace_items = new CleanerItems(trace_list, status_list, skin, 280, tr("Trace Items"));
-//    trace_btn = new KylinCheckBox(0, "://res/trace.png");
-    trace_btn = new CleanGroup(this, "://res/trace");
-    trace_btn->setFocusPolicy(Qt::NoFocus);
-//    trace_btn->setGeometry(QRect(10, 240, 260, 150));
-    trace_btn->setGeometry(QRect(550, 150, 260, 150));
-//    trace_btn->setFixedSize(260, 130);
-    trace_btn->setLabelText(tr("History trace"), tr("Cleans up records of history"));
-    trace_btn->setStatusTip("trace");
-    //子checkbox的状态被改变时，重新设置总按钮的状态
-//    connect(trace_items, SIGNAL(notifyMainCheckBox(int)), trace_btn, SLOT(resetMainStatus(int)));
+
+    QLabel *cookie_icon = new QLabel(this);
+    QPixmap icon1(":/res/cookies.png");
+    cookie_icon->setPixmap(icon1);
+    cookie_icon->setGeometry(QRect(342,150,icon.width(),icon.height()));
+
+    DetailsButton *cookie_btn = new DetailsButton(tr("Cookies"),this);
+    cookie_btn->setFocusPolicy(Qt::NoFocus);
+    cookie_btn->setGeometry(QRect(327,194,108,36));
+    cookie_btn->setStatusTip("cookies");
+
+    QLabel *cookie_label = new QLabel(this);
+    cookie_label->setText(tr("Clear internet、games、shopping history, etc."));
+    cookie_label->setGeometry(QRect(337,240,200,16*2));
+    cookie_label->setWordWrap(true);
+    cookie_label->setStyleSheet("color:rgb(0,0,0,165)");
+
+
     //点击按钮后，显示子页面
-    connect(trace_btn, SIGNAL(clicked()), this, SLOT(onButtonClicked()));
+    connect(cookie_btn, SIGNAL(clicked()), this, SLOT(onButtonClicked()));
+
+//    trace_btn = new CleanGroup(this, "://res/trace");
+//    trace_btn->setFocusPolicy(Qt::NoFocus);
+//    trace_btn->setGeometry(QRect(550, 150, 260, 150));
+//    trace_btn->setLabelText(tr("History trace"), tr("Cleans up records of history"));
+//    trace_btn->setStatusTip("trace");
+
+    QLabel *history_icon = new QLabel(this);
+    QPixmap icon2(":/res/history.png");
+    history_icon->setPixmap(icon2);
+    history_icon->setGeometry(QRect(564,150,icon.width(),icon.height()));
+
+    DetailsButton *history_btn = new DetailsButton(tr("Trace"),this);
+    history_btn->setFocusPolicy(Qt::NoFocus);
+    history_btn->setGeometry(QRect(549,194,108,36));
+    history_btn->setStatusTip("trace");
+
+    QLabel *history_label = new QLabel(this);
+    history_label->setText(tr("Clear browser and system usage traces"));
+    history_label->setGeometry(QRect(559,240,200,16*2));
+    history_label->setWordWrap(true);
+    history_label->setStyleSheet("color:rgb(0,0,0,165)");
+
+    //点击按钮后，显示子页面
+    connect(history_btn, SIGNAL(clicked()), this, SLOT(onButtonClicked()));
     this->setLanguage();
 
 
@@ -119,13 +124,14 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
                                 QPushButton:hover{background:rgba(67,127,240,1);color:white}");
 
     connect(start_clean,SIGNAL(clicked()),this,SLOT(onClickedCleanbtn()));
+    connect(start_clean,SIGNAL(clicked()),this,SLOT(receiveScanSignal()));
 
-    cache_list << tr("Cleanup Package Cache") << tr("Cleanup Software Center Cache") << tr("Cleanup Thumbnails Cache") /*<< tr("Cleanup FireFox Cache") << tr("Cleanup Chromium Cache")*/;
-    cache_status_list << "apt" << "software-center" << "thumbnails" /*<< "firefox" << "chromium"*/;
-//    cookies_list << tr("Cleanup the Cookies saving in Firefox") << tr("Cleanup the Cookies saving in Chromium");
-//    cookies_status_list << "firefox" << "chromium";
-    trace_list /*<< tr("Clean up the Firefox Internet records") << tr("Clean up the Chromium Internet records") */<< tr("Clean up the recently opened documents records") << tr("Delete the command history") << tr("Delete the debug logs");
-    trace_status_list /*<< "firefox" << "chromium" */<< "system" << "bash" << "X11";
+    cache_list << tr("Cleanup Package Cache") << tr("Cleanup Software Center Cache") << tr("Cleanup Thumbnails Cache") << tr("Cleanup FireFox Cache") << tr("Cleanup Chromium Cache");
+    cache_status_list << "apt" << "software-center" << "thumbnails" << "firefox" << "chromium";
+    cookies_list << tr("Cleanup the Cookies saving in Firefox") << tr("Cleanup the Cookies saving in Chromium");
+    cookies_status_list << "firefox" << "chromium";
+    trace_list << tr("Clean up the Firefox Internet records") << tr("Clean up the Chromium Internet records") << tr("Clean up the recently opened documents records") << tr("Delete the command history") << tr("Delete the debug logs");
+    trace_status_list << "firefox" << "chromium" << "system" << "bash" << "X11";
 
     m_selectedCache = cache_status_list;
     m_selectedCookie = cookies_status_list;
@@ -206,14 +212,14 @@ void CleanerMainWidget::Browser_to_judge_existence()
 
 void CleanerMainWidget::receiveScanSignal()
 {
-    this->getAllScanSelectedItems();
-    if (argsMap.empty()) {
-        toolKits->alertMSG(parentWindow->geometry().topLeft().x(), parentWindow->geometry().topLeft().y(), tr("Scan args is empty!"));
-    }
-    else {
-        emit this->showActionAnimaiton();
-        emit this->startScanSystem(argsMap);
-    }
+//    this->getAllScanSelectedItems();
+//    if (argsMap.empty()) {
+//        toolKits->alertMSG(parentWindow->geometry().topLeft().x(), parentWindow->geometry().topLeft().y(), tr("Scan args is empty!"));
+//    }
+//    else {
+//        emit this->showActionAnimaiton();
+//        emit this->startScanSystem(argsMap);
+//    }
 }
 
 void CleanerMainWidget::getAllScanSelectedItems()
@@ -280,8 +286,8 @@ void CleanerMainWidget::getAllScanSelectedItems()
 
 void CleanerMainWidget::onRefreshSelectedItems(CleanerCategoryID id, const QStringList &infos)
 {
-    qDebug() << "AAAA" << id;
-    qDebug() << infos;
+//    qDebug() << "AAAA" << id;
+//    qDebug() << infos;
     switch (id) {
     case CleanerCategoryID::CacheCategory:
         m_selectedCache.clear();
@@ -302,9 +308,9 @@ void CleanerMainWidget::onRefreshSelectedItems(CleanerCategoryID id, const QStri
 
 void CleanerMainWidget::resetDefaultStatus()
 {
-    cache_btn->resetMainStatus(2);
-    cookies_btn->resetMainStatus(2);
-    trace_btn->resetMainStatus(2);
+//    cache_btn->resetMainStatus(2);
+//    cookies_btn->resetMainStatus(2);
+//    trace_btn->resetMainStatus(2);
 
     m_selectedCache = cache_status_list;
     m_selectedCookie = cookies_status_list;
@@ -314,13 +320,24 @@ void CleanerMainWidget::resetDefaultStatus()
 void CleanerMainWidget::onClickedCleanbtn()
 {
     emit this->hideThisWidget();
-    QStringList args;
-    args << "cache" << "history" << "cookies";
-    emit this->onKeyClean(args);
+
+    this->getAllScanSelectedItems();
+    if (argsMap.empty()) {
+        toolKits->alertMSG(parentWindow->geometry().topLeft().x(), parentWindow->geometry().topLeft().y(), tr("Scan args is empty!"));
+    }
+    else {
+//        qDebug() << Q_FUNC_INFO << "+" << argsMap;
+        emit this->startScanSystem(argsMap);
+    }
+
+//    QStringList args;
+//    args << "cache" << "history" << "cookies";
+//    emit this->onKeyClean(args);
 }
 
 void CleanerMainWidget::onButtonClicked()
 {
+//    qDebug() << Q_FUNC_INFO ;
     Browser_to_judge_existence();//每次点击都更新浏览器的存在数据
 
     //对google浏览器存在添加选择字段，如不存在则去除选择字段
@@ -421,7 +438,8 @@ void CleanerMainWidget::onButtonClicked()
 
     QObject *object = QObject::sender();
 //    KylinCheckBox *checkbox = qobject_cast<KylinCheckBox *>(object);
-    CleanGroup *checkbox = qobject_cast<CleanGroup *>(object);
+//    CleanGroup *checkbox = qobject_cast<CleanGroup *>(object);
+    DetailsButton *checkbox = qobject_cast<DetailsButton *>(object);
     QString object_name = checkbox->statusTip();
     if (object_name == "cache") {
 //        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
@@ -433,7 +451,7 @@ void CleanerMainWidget::onButtonClicked()
         m_selectedCache = cache_status_list;
         SelectCategoryWidget *w = new SelectCategoryWidget(CleanerCategoryID::CacheCategory, tr("Cache Items"));
         w->loadData(cache_list, cache_status_list);
-        connect(w, SIGNAL(notifyMainCheckBox(int)), cache_btn, SLOT(resetMainStatus(int)));
+//        connect(w, SIGNAL(notifyMainCheckBox(int)), cache_btn, SLOT(resetMainStatus(int)));
         connect(w, SIGNAL(refreshSelectedItems(CleanerCategoryID,QStringList)), this, SLOT(onRefreshSelectedItems(CleanerCategoryID,QStringList)));
         w->exec();
         delete w;
@@ -455,7 +473,7 @@ void CleanerMainWidget::onButtonClicked()
         m_selectedCookie = cookies_status_list;
         SelectCategoryWidget *w = new SelectCategoryWidget(CleanerCategoryID::CookieCategory, tr("Cookies Items"));
         w->loadData(cookies_list, cookies_status_list);
-        connect(w, SIGNAL(notifyMainCheckBox(int)), cookies_btn, SLOT(resetMainStatus(int)));
+//        connect(w, SIGNAL(notifyMainCheckBox(int)), cookies_btn, SLOT(resetMainStatus(int)));
         connect(w, SIGNAL(refreshSelectedItems(CleanerCategoryID,QStringList)), this, SLOT(onRefreshSelectedItems(CleanerCategoryID,QStringList)));
         w->exec();
         delete w;
@@ -472,7 +490,7 @@ void CleanerMainWidget::onButtonClicked()
         m_selectedCookie = trace_status_list;
         SelectCategoryWidget *w = new SelectCategoryWidget(CleanerCategoryID::TraceCategory, tr("Trace Items"));
         w->loadData(trace_list, trace_status_list);
-        connect(w, SIGNAL(notifyMainCheckBox(int)), trace_btn, SLOT(resetMainStatus(int)));
+//        connect(w, SIGNAL(notifyMainCheckBox(int)), trace_btn, SLOT(resetMainStatus(int)));
         connect(w, SIGNAL(refreshSelectedItems(CleanerCategoryID,QStringList)), this, SLOT(onRefreshSelectedItems(CleanerCategoryID,QStringList)));
         w->exec();
         delete w;

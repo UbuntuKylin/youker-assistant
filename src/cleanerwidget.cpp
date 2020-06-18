@@ -58,9 +58,9 @@ void CleanerWidget::initUI(QString skin)
 
 //    connect(this, SIGNAL(transCleanSignal()), detail_widget, SLOT(receiveCleanSignal()));
     connect(detailview,SIGNAL(hideThisWidget()),this,SLOT(displayMainPage()));
-    connect(this,SIGNAL(isScanning(QString)),detailview,SLOT(getScanResult(QString))/*,Qt::BlockingQueuedConnection*/);
-    connect(this,SIGNAL(finishScanWork(QString)),detailview,SLOT(finishScanResult(QString))/*,Qt::BlockingQueuedConnection*/);
-    connect(this,SIGNAL(tellScanResult(QString,QString)),detailview,SLOT(getScanAllResult(QString,QString))/*,Qt::BlockingQueuedConnection*/);
+//    connect(this,SIGNAL(isScanning(QString)),detailview,SLOT(getScanResult(QString))/*,Qt::BlockingQueuedConnection*/);
+//    connect(this,SIGNAL(finishScanWork(QString)),detailview,SLOT(finishScanResult(QString))/*,Qt::BlockingQueuedConnection*/);
+//    connect(this,SIGNAL(tellScanResult(QString,QString)),detailview,SLOT(getScanAllResult(QString,QString))/*,Qt::BlockingQueuedConnection*/);
     connect(detailview,SIGNAL(startOneKeyClean()),this,SIGNAL(startOneKeyClean()));
     connect(this,SIGNAL(finishCleanWorkMain(QString)),detailview,SLOT(getCleanResult(QString)));
 
@@ -83,9 +83,15 @@ void CleanerWidget::initUI(QString skin)
     setLayout(layout1);
 
     connect(main_widget, SIGNAL(startScanSystem(QMap<QString,QVariant>)), this, SIGNAL(startScanSystem(QMap<QString,QVariant>)));
-//    connect(detail_widget, SIGNAL(startCleanSystem(QMap<QString,QVariant>)), this, SIGNAL(startCleanSystem(QMap<QString,QVariant>)));
-//    connect(this, SIGNAL(tellCleanerDetailData(QStringList)), detail_widget, SLOT(showReciveData(QStringList)));
-//    connect(this, SIGNAL(tellCleanerDetailStatus(QString)), detail_widget, SLOT(showReciveStatus(QString)));
+    connect(detailview, SIGNAL(startCleanSystem(QMap<QString,QVariant>)), this, SIGNAL(startCleanSystem(QMap<QString,QVariant>)));
+    connect(this, SIGNAL(tellCleanerDetailData(QStringList)), detailview, SLOT(showReciveData(QStringList)));
+    connect(this, SIGNAL(tellCleanerDetailStatus(QString)), detailview, SLOT(showReciveStatus(QString)));
+
+    connect(this, SIGNAL(tellCleanerMainData(QStringList)), detailview, SLOT(showCleanerData(QStringList))/*, Qt::BlockingQueuedConnection*/);
+    connect(this, SIGNAL(tellCleanerMainStatus(QString, QString)), detailview, SLOT(showCleanerStatus(QString, QString))/*, Qt::BlockingQueuedConnection*/);
+    connect(this, SIGNAL(sendCleanErrorSignal(QString)), detailview, SLOT(showCleanerError(QString))/*, Qt::BlockingQueuedConnection*/);
+    connect(this, SIGNAL(policykitCleanSignal(bool)), detailview, SLOT(receivePolicyKitSignal(bool)));
+    connect(this, SIGNAL(sendCleanOverSignal()), detailview, SLOT(showCleanOverStatus()));
 }
 
 void CleanerWidget::paintEvent(QPaintEvent *event)

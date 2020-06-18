@@ -479,11 +479,13 @@ QStringList SystemDispatcher::get_sound_themes_qt() {
 
 void SystemDispatcher::handlerCleanerSubPageDataSignal(QStringList data)
 {
+//    qDebug() << Q_FUNC_INFO << data;
     emit this->tellCleanerMainData(data);
 }
 
 void SystemDispatcher::handlerCleanerSubPageStatusSignal(QString status, QString domain)
 {
+    qDebug() << Q_FUNC_INFO << status << domain;
     if(status == "Complete:All" && domain == "finish")
     {
         emit sendCleanOverSignal();

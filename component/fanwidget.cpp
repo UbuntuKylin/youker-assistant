@@ -115,10 +115,11 @@ void Fanwidget::Initwidgetbottom()
     QLabel *speed_lable = new QLabel();
     QLabel *tip_text = new QLabel();
 
-
-    QPixmap pixmap(":/res/fan_big.png");
-    icon_lable->setPixmap(pixmap);
-    icon_lable->setFixedSize(pixmap.size());
+    QMovie *movie = new QMovie(":/res/fan-1.gif");
+    movie->setSpeed(300);
+    icon_lable->setMovie(movie);
+    icon_lable->setFixedSize(158,158);
+    movie->start();
     v_layout->addWidget(icon_lable);
 
     speed_lable->setFont(QFont("",24,QFont::Bold));

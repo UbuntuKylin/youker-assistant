@@ -248,6 +248,7 @@
         <file>res/drive/Graphics-Card.png</file>
         <file>res/drive/BlueTooth.png</file>
         <file>res/cpuFM.gif</file>
+        <file>res/fan-1.gif</file>
     </qresource>
     <qresource prefix="/sys">
         <file>res/sysBtn/close_button.png</file>

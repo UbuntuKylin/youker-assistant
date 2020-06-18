@@ -25,6 +25,7 @@
 #include <QMouseEvent>
 #include <QPainter>
 #include <QtMath>
+#include <QPainter>
 
 #include "mytitlebar.h"
 #include "selectlistwidget.h"
@@ -41,6 +42,7 @@ public:
     void loadData(const QStringList &arglist, const QStringList &statuslist);
     void moveCenter();
 
+    void paintEvent(QPaintEvent *event);
 public slots:
     void onClose();
 

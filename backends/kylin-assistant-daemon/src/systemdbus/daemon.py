@@ -23,6 +23,7 @@ import glob
 import fcntl
 import shutil
 import logging
+import time
 import tempfile
 import subprocess
 import re
@@ -691,6 +692,8 @@ class Daemon(PolicyKitService):
         if filecache:
             for tmpName in filecache:
                 cleaner.interface_remove_file_system(self, tmpName)
+        time.sleep(1)
+        self.subpage_status_signal('Complete:file','cache')
 
         packagecache = mode_dic.get('package', [])
         if packagecache:
@@ -718,6 +721,9 @@ class Daemon(PolicyKitService):
         systemhistory = mode_dic.get('system-history', [])
         if systemhistory:
             cleaner.interface_remove_system_history_system(self)
+        
+        time.sleep(1)
+        self.subpage_status_signal('Complete:history','history')
 
         firefoxcookies = mode_dic.get('firefox-cookie', [])
         if firefoxcookies:
@@ -728,6 +734,9 @@ class Daemon(PolicyKitService):
         if chromiumcookies:
             for domain in chromiumcookies:
                 cleaner.interface_remove_chromium_cookies_system(self, domain)
+        
+        time.sleep(1)
+        self.subpage_status_signal('Complete:cookie','cookie')
 
         self.subpage_status_signal('Complete:All', "finish")
 
