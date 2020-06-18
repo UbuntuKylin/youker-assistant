@@ -166,13 +166,13 @@ class SessionDaemon(dbus.service.Object):
             self.background_settings.connect("changed::show-desktop-icons", self.gio_settings_monitor, BOOL_TYPE)
 
         # mouse
-        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
-            self.mouse_settings = gio.Settings.new("org.ukui.peripherals-mouse")
-            self.mouse_settings.connect("changed::cursor-theme", self.gio_settings_monitor, STRING_TYPE)
-            self.mouse_settings.connect("changed::cursor-size", self.gio_settings_monitor, INT_TYPE)
-        else:
-            self.interface_settings.connect("changed::cursor-theme", self.gio_settings_monitor, STRING_TYPE)
-            self.interface_settings.connect("changed::cursor-size", self.gio_settings_monitor, INT_TYPE)
+#        if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":
+#            self.mouse_settings = gio.Settings.new("org.ukui.peripherals-mouse")
+#            self.mouse_settings.connect("changed::cursor-theme", self.gio_settings_monitor, STRING_TYPE)
+#            self.mouse_settings.connect("changed::cursor-size", self.gio_settings_monitor, INT_TYPE)
+#        else:
+#            self.interface_settings.connect("changed::cursor-theme", self.gio_settings_monitor, STRING_TYPE)
+#            self.interface_settings.connect("changed::cursor-size", self.gio_settings_monitor, INT_TYPE)
 
         # voice
         if self.desktop == "mate" or self.desktop == "MATE" or self.desktop == "ukui" or self.desktop == "UKUI":

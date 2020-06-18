@@ -2,7 +2,7 @@
 #include <QtCharts/QAbstractAxis>
 #include <QtCharts/QSplineSeries>
 #include <QtCharts/QValueAxis>
-#include <QtCore/QRandomGenerator>
+//#include <QtCore/QRandomGenerator>
 #include <QtCore/QDebug>
 #include <QCategoryAxis>
 #include <QAreaSeries>

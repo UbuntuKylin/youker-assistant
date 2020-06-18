@@ -92,9 +92,9 @@ inline const QString covertKeyName(const QString &key)
     else if(key == "POWER_SUPPLY_SERIAL_NUMBER")//序列号
         return QString(QObject::tr("Serial Number"));
 
-    else if(key == "BoaVendor")//主板型号
+    else if(key == "BoaProduct")//主板型号
         return QString(QObject::tr("Motherboard Model"));
-    else if(key == "BoaProduct")//主板产商
+    else if(key == "BoaVendor")//主板产商
         return QString(QObject::tr("Motherboard Vendor"));
     else if(key == "BoaSerial")//序列号
         return QString(QObject::tr("Serial Number"));
@@ -132,6 +132,8 @@ inline const QString covertKeyName(const QString &key)
         return QString(QObject::tr("FSB"));
     else if(key == "cpu_cores")//核心数目：
         return QString(QObject::tr("Core Number"));
+    else if (key == "cpu_cores_online") //在线核心数
+        return QString(QObject::tr("Core Online Number"));
     else if(key == "cpu_siblings")//线程
         return QString(QObject::tr("Thread"));
     else if(key == "clflush_size")//一级缓存：
@@ -144,10 +146,20 @@ inline const QString covertKeyName(const QString &key)
 //        return QString(QObject::tr("1500a v1.0 64 bits");
     else if(key == "phytium")//飞腾
         return QString(QObject::tr("phytium"));
+    else if(key == "huawei")//华为
+        return QString(QObject::tr("huawei"));
+    else if(key == "hygon")//海光
+        return QString(QObject::tr("hygon"));
+    else if(key == "zhaoxin")//兆芯
+        return QString(QObject::tr("zhaoxin"));
+    else if(key == "loongson")//龙芯
+        return QString(QObject::tr("loongson"));
     else if(key == "4 cores")//4核
         return QString(QObject::tr("4 cores"));
     else if(key == "4 thread/core")//4线程/核
         return QString(QObject::tr("4 thread/core"));
+    else if(key == "Wrong info from firmware")//固件未提供正确信息
+        return QString(QObject::tr("Wrong info from firmware"));
 
 
     else if(key == "desktopenvironment")//桌面环境

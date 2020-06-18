@@ -396,6 +396,8 @@ void InfoWidget::onSendMemoryInfo(QMap<QString, QVariant> tmpMap)
                             if (tmplist.length() >= i) {
                                 QString result = tmplist.at(i);
                                 if (result.length() > 0) {
+                                    if ((itbegin.key() == "MemSize") && (result == "-1"))
+                                        result = QObject::tr("Wrong info from firmware");
                                     memory_info_map.insert(itbegin.key(), result);
                                 }
                             }

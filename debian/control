@@ -5,7 +5,7 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@list.ubuntu.net>
 XSBC-Original-Maintainer: Ubuntu Kylin Team <ubuntukylin-members@list.launchpad.net>
 Uploaders: handsome_feng <jianfengli@ubuntukylin.com>,
            lixiang <lixiang@kylinos.cn>
-Build-Depends: debhelper-compat (= 12),
+Build-Depends: debhelper (>= 9),
                dh-python,
                python3-all (>= 3.1),
                python3-apt (>= 0.7.100.3~),
@@ -32,7 +32,7 @@ Vcs-git: https://github.com/ubuntukylin/youker-assistant.git
 Vcs-browser: https://github.com/ubuntukylin/youker-assistant
 
 Package: youker-assistant
-Architecture: amd64 arm64 armhf i386
+Architecture: any
 Depends: python3-dbus,
          python3-psutil,
          python3-lxml,
