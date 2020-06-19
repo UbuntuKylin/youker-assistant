@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="de_DE">
+<TS version="2.0" language="de_DE">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -135,11 +135,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="162"/>
-        <source>Clear package、thumbnails and browser cache</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../cleaner/cleandetailveiw.cpp" line="168"/>
         <location filename="../../cleaner/cleandetailveiw.cpp" line="204"/>
         <source>Details</source>
@@ -149,11 +144,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <location filename="../../cleaner/cleandetailveiw.cpp" line="193"/>
         <location filename="../../cleaner/cleandetailveiw.cpp" line="264"/>
         <source>Cookies</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="198"/>
-        <source>Clear internet、games、shopping history, etc.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -223,6 +213,16 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <location filename="../../cleaner/cleandetailveiw.cpp" line="370"/>
         <location filename="../../cleaner/cleandetailveiw.cpp" line="730"/>
         <source>Computer cleanup in progress...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="162"/>
+        <source>Clear packageãthumbnails and browser cache</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="198"/>
+        <source>Clear internetãgamesãshopping history, etc.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -438,6 +438,16 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="55"/>
+        <source>Clear packageãthumbnails and browser cache</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="82"/>
+        <source>Clear internetãgamesãshopping history, etc.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="131"/>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="356"/>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="379"/>
@@ -457,16 +467,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="49"/>
         <source>Cache</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="55"/>
-        <source>Clear package、thumbnails and browser cache</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="82"/>
-        <source>Clear internet、games、shopping history, etc.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3185,11 +3185,6 @@ Are you sure to continue?</source>
     <message>
         <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="154"/>
         <source>Started Time:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infogui.cpp" line="134"/>
-        <source> (single-core single thread)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
