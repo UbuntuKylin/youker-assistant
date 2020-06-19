@@ -255,6 +255,7 @@
         <file>res/sysBtn/main_menu.png</file>
         <file>res/sysBtn/min_button.png</file>
         <file>res/sysBtn/skin_button.png</file>
+        <file>res/sysBtn/close_button1.png</file>
     </qresource>
     <qresource prefix="/qssfile">
         <file>res/qss/kylin-assistant.qss</file>

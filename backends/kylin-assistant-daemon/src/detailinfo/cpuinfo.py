@@ -2135,4 +2135,4 @@ if __name__ == "__main__":
     #cc.get_multimedia()
     #cc.get_dvd()
     #cc.get_usb()
-    pprint(cc.get_cpu_average_frequency())
+    pprint(cc.get_memory())

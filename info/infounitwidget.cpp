@@ -54,7 +54,7 @@ InfoUnitWidget::InfoUnitWidget(QString title, QWidget *parent)
 
     QFrame *headerWidget = new QFrame;
     headerWidget->setFixedWidth(parent->width()-100);
-    headerWidget->setStyleSheet("QFrame {padding:5px 0;} QFrame:hover {background-color:rgba(141,238,238,0.2);border-radius:4px;}");
+    headerWidget->setStyleSheet("QFrame {padding:5px 0;} /*QFrame:hover {background-color:rgba(141,238,238,0.2);border-radius:4px;}*/");
     headerWidget->setLayout(headerLayout);
 
     m_infoLayout = new QVBoxLayout;
