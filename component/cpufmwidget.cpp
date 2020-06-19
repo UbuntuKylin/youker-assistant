@@ -117,50 +117,52 @@ void CpuFmwidget::InitUI()
     radioGroup->setExclusive(true);
 //    qDebug() << Q_FUNC_INFO << governer_list;
     for(int i=0 ; i < governer_list.length() ; i++)
-    {;
-        QRadioButton *item = new QRadioButton(h);
-        if(governer_list.at(i) == "performance")
-        {
-            item->setText(tr("performance"));
-            item->setObjectName("performance");
-            if(cur_governer == "performance")
+    {
+        if(governer_list.at(i) == "performance" || governer_list.at(i) == "powersave" || governer_list.at(i) == "userspace"){
+            QRadioButton *item = new QRadioButton(h);
+            if(governer_list.at(i) == "performance")
             {
-                item->setChecked(true);
+                item->setText(tr("performance"));
+                item->setObjectName("performance");
+                if(cur_governer == "performance")
+                {
+                    item->setChecked(true);
+                }
             }
-        }
-        else if(governer_list.at(i) == "powersave")
-        {
-            item->setText(tr("powersave"));
-            item->setObjectName("powersave");
-            if(cur_governer == "powersave")
+            else if(governer_list.at(i) == "powersave")
             {
-                item->setChecked(true);
+                item->setText(tr("powersave"));
+                item->setObjectName("powersave");
+                if(cur_governer == "powersave")
+                {
+                    item->setChecked(true);
+                }
             }
-        }
-        else if(governer_list.at(i) == "userspace")
-        {
-            item->setText(tr("userspace"));
-            item->setObjectName("userspace");
-            if(cur_governer == "userspace")
+            else if(governer_list.at(i) == "userspace")
             {
-                item->setChecked(true);
+                item->setText(tr("userspace"));
+                item->setObjectName("userspace");
+                if(cur_governer == "userspace")
+                {
+                    item->setChecked(true);
+                }
             }
-        }
-//        else if(governer_list.at(i) == "conservative")
-//        {
-//            item->setText(tr("conservative"));
-//            item->setObjectName("conservative");
-//            if(cur_governer == "conservative")
+//            else if(governer_list.at(i) == "conservative")
 //            {
-//                item->setChecked(true);
+//                item->setText(tr("conservative"));
+//                item->setObjectName("conservative");
+//                if(cur_governer == "conservative")
+//                {
+//                    item->setChecked(true);
+//                }
 //            }
-//        }
-        else
-        {
-            continue;
+//            else
+//            {
+//                continue;
+//            }
+            radio_layout->addWidget(item);
+            radioGroup->addButton(item);
         }
-        radio_layout->addWidget(item);
-        radioGroup->addButton(item);
     }
     radio_layout->setSpacing(10);
     radio_layout->addStretch(1);
