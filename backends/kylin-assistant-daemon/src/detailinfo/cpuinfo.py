@@ -1015,7 +1015,7 @@ class DetailInfo:
             #tmpMem["Size"] = str(( 2 ** (bitnum - 10))) + ' GiB'
             def transHumanReadableSize(memSize):
                 diffMap = {}
-                destList = map(lambda x : 2 ** x, range(1, 12))
+                destList = [2 ** x for x in range(1, 12)]
                 for size in destList:
                     diffMap[abs(memSize - size)] = destList.index(size)
                 return destList[diffMap.get(min(diffMap.keys()))]

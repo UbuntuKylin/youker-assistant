@@ -130,9 +130,6 @@ void InfoGui::loadOnePage(int index, const QString &title, QMap<QString, QVarian
             else if (it.key() == "POWER_SUPPLY_MANUFACTURER") {
                 w->setInfoVendor(":/vendor/res/manufacturer/" + valueStr.toUpper() + ".jpg");
             }
-            else if (QString::compare(it.key(), "cpu_siblings") == 0){
-                valueStr += QObject::tr(" (single-core single thread)");
-            }
             else {
                 if (it.key().contains("INTEL"))
                     w->setInfoVendor(":/vendor/res/manufacturer/INTEL.jpg");
