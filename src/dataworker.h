@@ -43,6 +43,9 @@ public:
     bool copyAppointedFile(QString filename);
     bool isBatteryExist() { return m_existBattery; }
     bool isSensorExist() { return m_existSensor; }
+    bool hide_temperature_page() { return m_temperaturePage; }
+    bool hide_fan_page() { return m_fanPage; }
+    bool hide_cpufm_page() { return m_cpuFMPage; }
 
     const QStringList cpuModeList() const;
     const QString cpuCurrentMode() const;
@@ -356,6 +359,11 @@ private:
 
     bool m_existBattery;
     bool m_existSensor;
+
+    bool m_temperaturePage;
+    bool m_fanPage;
+    bool m_cpuFMPage;
+
     QStringList m_cpulist;
     QString m_currentCpuMode;
 

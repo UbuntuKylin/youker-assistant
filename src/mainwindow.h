@@ -138,6 +138,9 @@ private:
     bool battery;
     bool sensor;
     int display_count;
+    bool temperature;
+    bool fan;
+    bool cpufm;
     QStringList m_cpulist;
     QString m_currentCpuMode;
     PAGESTATUS status;

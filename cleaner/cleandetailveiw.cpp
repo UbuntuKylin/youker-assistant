@@ -195,6 +195,7 @@ void CleandetailVeiw::InitBottomWidget()
 
     QLabel *lable2 = new QLabel(cookie_frame);
     lable2->setStyleSheet("color:rgb(0,0,0,165)");
+//    lable2->setText(tr("Clear internet、games、shopping history, etc."));
     lable2->setText(tr("Clear internet、games、shopping history, etc."));
     lable2->setWordWrap(true);
     cookie_layout->addWidget(lable2);
@@ -373,13 +374,13 @@ void CleandetailVeiw::OnClikedCleanBtn()
 void CleandetailVeiw::showReciveData(const QStringList &data)
 {
     //----------------------------------------------------------------Cache---------------------------
-//    qDebug() << Q_FUNC_INFO << "+" << data;
+    qDebug() << Q_FUNC_INFO << "+" << data;
     if(data.at(0).split(".").at(0) == "Belong:Cache" && !data.at(1).isEmpty())
     {
         top_tip->setText(data.at(1).split(":").at(1));
 
         QStringList r = data.at(3).split(":").at(1).split(" ");
-//        qDebug() << Q_FUNC_INFO << "+" << r << cache_sum << r.at(0).toFloat()*1024;
+        qDebug() << Q_FUNC_INFO << "+" << r << cache_sum << r.at(0).toFloat()*1024;
         if(QString::compare(r.at(1),"MB") == 0 )
             cache_sum += r.at(0).toFloat()*1024;
         else
@@ -519,7 +520,11 @@ void CleandetailVeiw::showReciveStatus(const QString &status)
             cookie_btn->setVisible(false);
     }
     else if(status == "Complete:Cache") {
-        cache_tip->setText(tr("Cleanable cache ")+QString::number(cache_sum/1024,'f',0)+" M");
+        if(cache_sum < 1024)
+            cache_tip->setText(tr("Cleanable cache ")+QString::number(cache_sum)+" KB");
+        else
+            cache_tip->setText(tr("Cleanable cache ")+QString::number(cache_sum/1024,'f',1)+" M");
+
         if(cache_sum != 0)
             cache_btn->setVisible(true);
         else
@@ -540,7 +545,7 @@ void CleandetailVeiw::showReciveStatus(const QString &status)
             btn_return->setVisible(true);
         }
 
-        m_selectedAptList = cache_apt_list+cache_software_list;
+        m_selectedAptList = cache_apt_list+cache_software_list+cache_thumbnails_list;
     }
 }
 

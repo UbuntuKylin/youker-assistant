@@ -385,6 +385,32 @@ class Daemon(PolicyKitService):
     def judge_sensors_exists_hb(self):
         return self.infoconf.judge_sensors_exists()
 
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def hide_temperature_page(self):
+        status, output = subprocess.getstatusoutput("sensors")
+        if( status != -1 ):
+            for line in output.split("\n"):
+                if "coretemp-isa" in line:
+                    return True
+            return False
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def hide_fan_page(self):
+        status, output = subprocess.getstatusoutput("sensors")
+        if( status != -1 ):
+            for line in output.split("\n"):
+                if "fan" in line:
+                    return True
+            return False
+
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def hide_cpufm_page(self):
+        path = '/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq'
+        if os.path.exists(path):
+            return True
+        else:
+            return False
+
 
     # -------------------------sound-------------------------
     # get sound themes

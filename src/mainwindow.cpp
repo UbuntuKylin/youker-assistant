@@ -218,54 +218,6 @@ void MainWindow::initWidgets()
     m_topStack = new QStackedWidget(this);
     m_bottomStack = new QStackedWidget(this);
 
-//    m_bottomStack->setStyleSheet("background: transparent; border-bottom-right-radius:20px;border-bottom-left-radius:20px");
-
-    //top
-//    m_mainTopWidget = new MainTopWidget(true, mSettings, this);
-////    m_mainTopWidget->setParentWindow(this);
-//    connect(m_mainTopWidget, SIGNAL(showMenu()), this, SLOT(showMainMenu()));
-////    connect(m_mainTopWidget, SIGNAL(showMin()), this, SLOT(showMinimized()));
-//    connect(m_mainTopWidget, &MainTopWidget::showMin, this, [=] {
-//        this->showMinimized();
-//    });
-//    connect(m_mainTopWidget, SIGNAL(closeApp()), this, SLOT(closeYoukerAssistant()));
-//    m_mainTopWidget->setPalette(palette_back);
-//    m_topStack->addWidget(m_mainTopWidget);
-
-//    cleaner_action_widget = new MainTopWidget(false, mSettings, this);
-//    connect(cleaner_action_widget, SIGNAL(showMenu()), this, SLOT(showMainMenu()));
-//    connect(cleaner_action_widget, SIGNAL(showMin()), this, SLOT(showMinimized()));
-//    connect(cleaner_action_widget, SIGNAL(closeApp()), this, SLOT(closeYoukerAssistant()));
-//    cleaner_action_widget->setPalette(palette_back);
-//    m_topStack->addWidget(cleaner_action_widget);
-
-//    info_action_widget = new TopBaseWidget(this);
-//    connect(info_action_widget, SIGNAL(showMenu()), this, SLOT(showMainMenu()));
-//    connect(info_action_widget, SIGNAL(showMin()), this, SLOT(showMinimized()));
-//    connect(info_action_widget, SIGNAL(closeApp()), this, SLOT(closeYoukerAssistant()));
-//    info_action_widget->setPalette(palette_back);
-//    info_action_widget->setImage("://res/systeminfo.png");
-//    info_action_widget->setTipMessage(tr("Understand hardware information, provide more convenient channel to obtain hardware information"));
-//    m_topStack->addWidget(info_action_widget);
-
-//    setting_action_widget = new TopBaseWidget(this);
-//    connect(setting_action_widget, SIGNAL(showMenu()), this, SLOT(showMainMenu()));
-//    connect(setting_action_widget, SIGNAL(showMin()), this, SLOT(showMinimized()));
-//    connect(setting_action_widget, SIGNAL(closeApp()), this, SLOT(closeYoukerAssistant()));
-//    setting_action_widget->setPalette(palette_back);
-//    setting_action_widget->setImage("://res/systemset.png");
-//    setting_action_widget->setTipMessage(tr("perform a full range of customizations systems based on your own personal preferences"));
-//    m_topStack->addWidget(setting_action_widget);
-
-//    box_action_widget = new TopBaseWidget(this);
-//    connect(box_action_widget, SIGNAL(showMenu()), this, SLOT(showMainMenu()));
-//    connect(box_action_widget, SIGNAL(showMin()), this, SLOT(showMinimized()));
-//    connect(box_action_widget, SIGNAL(closeApp()), this, SLOT(closeYoukerAssistant()));
-//    box_action_widget->setPalette(palette_back);
-//    box_action_widget->setImage("://res/toolkits.png");
-//    box_action_widget->setTipMessage(tr("Provides lightweight tool and creates fast and convenient experience"));
-//    m_topStack->addWidget(box_action_widget);
-
     //middle
     m_middleWidget = new MiddleWidget(this, this->arch, this->osName);
     m_middleWidget->setFixedSize(MAIN_WINDOW_WIDTH, 140);
@@ -330,8 +282,13 @@ void MainWindow::initWidgets()
 
 void MainWindow::onInitDataFinished()
 {
+    qDebug() << Q_FUNC_INFO;
     this->battery = m_dataWorker->isBatteryExist();
     this->sensor = m_dataWorker->isSensorExist();
+    this->temperature = m_dataWorker->hide_temperature_page();
+    this->fan = m_dataWorker->hide_fan_page();
+    this->cpufm = m_dataWorker->hide_cpufm_page();
+
     this->m_cpulist = m_dataWorker->cpuModeList();
     this->m_currentCpuMode = m_dataWorker->cpuCurrentMode();
     qDebug() << Q_FUNC_INFO <<this->m_cpulist << this->m_currentCpuMode;
@@ -632,9 +589,13 @@ void MainWindow::onInitDataFinished()
 //    info_widget->initInfoUI(this->battery, this->sensor);
     list_widget->InitInfowidgetUI();
 //    monitorwidget->InitUI();
+    qDebug() << Q_FUNC_INFO << __LINE__;
     list_widget->setBatteryAndSensor(this->battery,this->sensor);
     monitorwidget->set_governer_list(m_cpulist);
     monitorwidget->set_cur_governer(m_currentCpuMode);
+    monitorwidget->set_temperature(this->temperature);
+    monitorwidget->set_fan(this->fan);
+    monitorwidget->set_cpuFm(this->cpufm);
     monitorwidget->InitUI();
     setting_widget->initSettingsUI(this->m_cpulist, this->m_currentCpuMode, this->battery/*, last_skin_path*/);
     this->moveCenter();
