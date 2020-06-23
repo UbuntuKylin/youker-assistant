@@ -118,50 +118,54 @@ void CpuFmwidget::InitUI()
 //    qDebug() << Q_FUNC_INFO << governer_list;
     for(int i=0 ; i < governer_list.length() ; i++)
     {
-        if(governer_list.at(i) == "performance" || governer_list.at(i) == "powersave" || governer_list.at(i) == "userspace"){
+        if(governer_list.at(i) == "performance")
+        {
             QRadioButton *item = new QRadioButton(h);
-            if(governer_list.at(i) == "performance")
+            item->setText(tr("performance"));
+            item->setObjectName("performance");
+            if(cur_governer == "performance")
             {
-                item->setText(tr("performance"));
-                item->setObjectName("performance");
-                if(cur_governer == "performance")
-                {
-                    item->setChecked(true);
-                }
+                item->setChecked(true);
             }
-            else if(governer_list.at(i) == "powersave")
-            {
-                item->setText(tr("powersave"));
-                item->setObjectName("powersave");
-                if(cur_governer == "powersave")
-                {
-                    item->setChecked(true);
-                }
-            }
-            else if(governer_list.at(i) == "userspace")
-            {
-                item->setText(tr("userspace"));
-                item->setObjectName("userspace");
-                if(cur_governer == "userspace")
-                {
-                    item->setChecked(true);
-                }
-            }
-//            else if(governer_list.at(i) == "conservative")
-//            {
-//                item->setText(tr("conservative"));
-//                item->setObjectName("conservative");
-//                if(cur_governer == "conservative")
-//                {
-//                    item->setChecked(true);
-//                }
-//            }
-//            else
-//            {
-//                continue;
-//            }
             radio_layout->addWidget(item);
             radioGroup->addButton(item);
+        }
+        else if(governer_list.at(i) == "powersave")
+        {
+            QRadioButton *item = new QRadioButton(h);
+            item->setText(tr("powersave"));
+            item->setObjectName("powersave");
+            if(cur_governer == "powersave")
+            {
+                item->setChecked(true);
+            }
+            radio_layout->addWidget(item);
+            radioGroup->addButton(item);
+        }
+        else if(governer_list.at(i) == "userspace")
+        {
+            QRadioButton *item = new QRadioButton(h);
+            item->setText(tr("userspace"));
+            item->setObjectName("userspace");
+            if(cur_governer == "userspace")
+            {
+                item->setChecked(true);
+            }
+            radio_layout->addWidget(item);
+            radioGroup->addButton(item);
+        }
+//        else if(governer_list.at(i) == "conservative")
+//        {
+//            item->setText(tr("conservative"));
+//            item->setObjectName("conservative");
+//            if(cur_governer == "conservative")
+//            {
+//                item->setChecked(true);
+//            }
+//        }
+        else
+        {
+            continue;
         }
     }
     radio_layout->setSpacing(10);

@@ -383,6 +383,7 @@ InfoItemLine::InfoItemLine(QFrame *parent)
     m_key = "";
     m_keyLabel = new QLabel;
     m_valueLabel = new QLabel;
+    m_keyLabel->setStyleSheet("color:black;");
 
     QHBoxLayout *mainLayout = new QHBoxLayout;
     mainLayout->setSpacing(0);
@@ -422,7 +423,7 @@ void InfoItemLine::setInfoValue(const QString &value)
     QFontMetrics fm(ft);
     QString elided_text = fm.elidedText(value, Qt::ElideRight, maxWidth);
     m_valueLabel->setText(elided_text);
-    m_valueLabel->setStyleSheet("background-color:rgb(237,238,239)");
+    m_valueLabel->setStyleSheet("background-color:rgb(237,238,239);color:black;");
     m_valueLabel->setFixedSize(461,31);
 //    m_valueLabel->setMinimumSize(461,32);
 //    m_valueLabel->setMaximumSize(461,70);

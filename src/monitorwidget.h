@@ -29,6 +29,10 @@ public:
 
     void set_governer_list(QStringList list);
     void set_cur_governer(QString string);
+
+    void set_temperature(bool f);
+    void set_fan(bool f);
+    void set_cpuFm(bool f);
 signals:
     void requestcpuTemperature();
     void sendTemperaturedata(QMap<QString, QVariant> tmpMap);
@@ -51,6 +55,7 @@ private:
     QHBoxLayout *main_layout;
     QListWidget *list_widget;
     QStringList string_list;
+    QStringList status_list;
     QStackedWidget *stackedwidget;
     Temperature *temperature;
     Fanwidget *fan_widget;
@@ -58,6 +63,10 @@ private:
 
     QStringList governer_list;
     QString cur_governer;
+
+    bool m_temperature = true;
+    bool m_fan = true;
+    bool m_cpufm = true;
 };
 
 #endif // MONITORWIDGET_H

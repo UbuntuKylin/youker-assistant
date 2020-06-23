@@ -46,34 +46,44 @@ void Monitorwidget::InitUI()
 {
 //    qDebug() << Q_FUNC_INFO << __LINE__;
     string_list.clear();
+    status_list.clear();
 
-    string_list << tr("Temperature");
-    temperature = new Temperature();
-    stackedwidget->addWidget(temperature);
-    stackedwidget->setCurrentWidget(temperature);
-    connect(temperature,SIGNAL(requestTemperature()),this,SLOT(sendTemperaturesigle()));
-    connect(this,SIGNAL(sendTemperaturedata(QMap<QString, QVariant>)),temperature,SLOT(onsendTemperature(QMap<QString, QVariant>)));
+    if(m_temperature){
+        string_list << tr("Temperature");
+        status_list << "Temperature";
+        temperature = new Temperature();
+        stackedwidget->addWidget(temperature);
+        stackedwidget->setCurrentWidget(temperature);
+        connect(temperature,SIGNAL(requestTemperature()),this,SLOT(sendTemperaturesigle()));
+        connect(this,SIGNAL(sendTemperaturedata(QMap<QString, QVariant>)),temperature,SLOT(onsendTemperature(QMap<QString, QVariant>)));
+    }
 
-//    string_list << tr("Fan Speed");
-//    fan_widget = new Fanwidget();
-//    stackedwidget->addWidget(fan_widget);
+    if(m_fan){
+        string_list << tr("Fan Speed");
+        status_list << "Fan Speed";
+        fan_widget = new Fanwidget();
+        stackedwidget->addWidget(fan_widget);
+    }
 
-    string_list << tr("CPU FM");
-    cpu_fm = new CpuFmwidget();
-    cpu_fm->set_cpu_listAndCur(governer_list,cur_governer);
-    cpu_fm->InitUI();
-    stackedwidget->addWidget(cpu_fm);
-    connect(this,SIGNAL(onsendcpurangedata(QMap<QString,QVariant>)),cpu_fm,SLOT(getCpuRange(QMap<QString,QVariant>)));
-    connect(cpu_fm,SIGNAL(setCpuGoverner(QString)),this,SIGNAL(setCpuGoverner(QString)));
-    connect(this,SIGNAL(SendCPUFrequencyData(QMap<QString,QVariant>)),cpu_fm,SLOT(ProcessingCPUFrequencyData(QMap<QString,QVariant>)));
-    connect(cpu_fm,SIGNAL(RequestCPUFrequencyData()),this,SIGNAL(RequestCPUFrequencyData()));
-//    qDebug() << Q_FUNC_INFO <<this->governer_list << this->cur_governer;
+    if(m_cpufm){
+        string_list << tr("CPU FM");
+        status_list << "CPU FM";
+        cpu_fm = new CpuFmwidget();
+        cpu_fm->set_cpu_listAndCur(governer_list,cur_governer);
+        cpu_fm->InitUI();
+        stackedwidget->addWidget(cpu_fm);
+        connect(this,SIGNAL(onsendcpurangedata(QMap<QString,QVariant>)),cpu_fm,SLOT(getCpuRange(QMap<QString,QVariant>)));
+        connect(cpu_fm,SIGNAL(setCpuGoverner(QString)),this,SIGNAL(setCpuGoverner(QString)));
+        connect(this,SIGNAL(SendCPUFrequencyData(QMap<QString,QVariant>)),cpu_fm,SLOT(ProcessingCPUFrequencyData(QMap<QString,QVariant>)));
+        connect(cpu_fm,SIGNAL(RequestCPUFrequencyData()),this,SIGNAL(RequestCPUFrequencyData()));
+    }
+        //    qDebug() << Q_FUNC_INFO <<this->governer_list << this->cur_governer;
 
 
     for(int i = 0; i < string_list.length(); i++) {
         QListWidgetItem *item = new QListWidgetItem(string_list.at(i),list_widget);
         item->setSizeHint(QSize(160,60));
-        item->setStatusTip(QString::number(i,10));
+        item->setStatusTip(status_list.at(i));
         item->setTextAlignment(Qt::AlignVCenter|Qt::AlignHCenter);
     }
 
@@ -101,6 +111,21 @@ void Monitorwidget::set_cur_governer(QString string)
     this->cur_governer = string;
 }
 
+void Monitorwidget::set_temperature(bool f)
+{
+    this->m_temperature = f;
+}
+
+void Monitorwidget::set_fan(bool f)
+{
+    this->m_fan = f;
+}
+
+void Monitorwidget::set_cpuFm(bool f)
+{
+    this->m_cpufm = f;
+}
+
 
 void Monitorwidget::sendTemperaturesigle()
 {
@@ -121,16 +146,16 @@ void Monitorwidget::changewidgetpage(QListWidgetItem *item)
     QString page_Name = item->statusTip();
     if (page_Name.isEmpty() || page_Name.isNull())
         return;
-//     qDebug() << "InfoWidget changeInfoPage" << page_Name;
-    if(page_Name =="0")
+     qDebug() << "InfoWidget changeInfoPage" << page_Name;
+    if(page_Name =="Temperature")
     {
         stackedwidget->setCurrentWidget(temperature);
     }
-//    else if(page_Name =="1")
-//    {
-//        stackedwidget->setCurrentWidget(fan_widget);
-//    }
-    else if(page_Name == "1")
+    else if(page_Name =="Fan Speed")
+    {
+        stackedwidget->setCurrentWidget(fan_widget);
+    }
+    else if(page_Name == "CPU FM")
     {
         emit this->requestcpurange();
         stackedwidget->setCurrentWidget(cpu_fm);

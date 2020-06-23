@@ -30,7 +30,7 @@ MiddleWidget::MiddleWidget(QWidget *parent, QString arch, QString os)
 //    QPalette palette;
 //    palette.setColor(QPalette::Background, QColor(34,103,242));//#e9eef1
 //    this->setPalette(palette);
-    this->setStyleSheet("MiddleWidget{background-color:#2267F2; border: none;border-top-left-radius:10px;border-top-right-radius:10px}");
+    this->setStyleSheet("MiddleWidget{background-color:#2267F2; border: none;border-top-left-radius:6px;border-top-right-radius:10px}");
 
     InitMiddlewidget();
 }
@@ -119,6 +119,7 @@ void MiddleWidget::initTitlebarRightContent()
 //    SystemButton *skin_button = new SystemButton();
     SystemButton *main_menu_button = new SystemButton();
     min_button->loadPixmap(":/sys/res/sysBtn/min_button.png");
+    min_button->setStyleSheet("border: none;border-radius:6px;");
     close_button->loadPixmap(":/sys/res/sysBtn/close_button.png");
 //    skin_button->loadPixmap(":/sys/res/sysBtn/skin_button.png");
     main_menu_button->loadPixmap(":/sys/res/sysBtn/main_menu.png");

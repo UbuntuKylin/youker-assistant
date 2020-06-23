@@ -435,6 +435,25 @@ QMap<QString, QVariant> SystemDispatcher::get_cpu_average_frequency()
     }
 }
 
+bool SystemDispatcher::hide_temperature_page()
+{
+    QDBusReply<bool> reply = systemiface->call("hide_temperature_page");
+    qDebug() << Q_FUNC_INFO << reply.value();
+    return reply.value();
+}
+
+bool SystemDispatcher::hide_fan_page()
+{
+    QDBusReply<bool> reply = systemiface->call("hide_fan_page");
+    return reply.value();
+}
+
+bool SystemDispatcher::hide_cpufm_page()
+{
+    QDBusReply<bool> reply = systemiface->call("hide_cpufm_page");
+    return reply.value();
+}
+
 void SystemDispatcher::exit_qt() {
     systemiface->call("exit");
 }

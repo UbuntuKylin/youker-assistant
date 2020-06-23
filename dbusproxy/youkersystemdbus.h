@@ -93,6 +93,11 @@ public:
 
     QMap<QString, QVariant> get_cpu_average_frequency();
 
+    //add by tangguang======2020.06.22
+    bool hide_temperature_page();
+    bool hide_fan_page();
+    bool hide_cpufm_page();
+    //================================
 signals:
     void tellCleanerMainData(const QStringList &data);
     void tellCleanerMainStatus(const QString &status, const QString &domain);

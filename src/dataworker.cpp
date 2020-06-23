@@ -102,6 +102,10 @@ void DataWorker::initDataWorker()
     connect(m_systemInterface, SIGNAL(tellCleanerMainStatus(QString,QString)), this, SIGNAL(tellCleanerMainStatus(QString,QString)));
     connect(m_systemInterface, SIGNAL(sendCleanErrorSignal(QString)), this, SIGNAL(sendCleanErrorSignal(QString)));
 
+    this->m_temperaturePage = m_systemInterface->hide_temperature_page();
+    this->m_fanPage = m_systemInterface->hide_fan_page();
+    this->m_cpuFMPage = m_systemInterface->hide_cpufm_page();
+
     m_qSystemDbus = new SystemDbusProxy;
     ThreadPool::Instance()->moveObjectToThread(m_qSystemDbus);
     connect(m_qSystemDbus, &SystemDbusProxy::reportAlert, this, [ = ](int ret, const QString &description) {

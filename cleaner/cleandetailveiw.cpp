@@ -195,6 +195,7 @@ void CleandetailVeiw::InitBottomWidget()
 
     QLabel *lable2 = new QLabel(cookie_frame);
     lable2->setStyleSheet("color:rgb(0,0,0,165)");
+//    lable2->setText(tr("Clear internet、games、shopping history, etc."));
     lable2->setText(tr("Clear internet、games、shopping history, etc."));
     lable2->setWordWrap(true);
     cookie_layout->addWidget(lable2);
@@ -519,7 +520,11 @@ void CleandetailVeiw::showReciveStatus(const QString &status)
             cookie_btn->setVisible(false);
     }
     else if(status == "Complete:Cache") {
-        cache_tip->setText(tr("Cleanable cache ")+QString::number(cache_sum/1024,'f',0)+" M");
+        if(cache_sum < 1024)
+            cache_tip->setText(tr("Cleanable cache ")+QString::number(cache_sum)+" KB");
+        else
+            cache_tip->setText(tr("Cleanable cache ")+QString::number(cache_sum/1024,'f',1)+" M");
+
         if(cache_sum != 0)
             cache_btn->setVisible(true);
         else
@@ -540,7 +545,7 @@ void CleandetailVeiw::showReciveStatus(const QString &status)
             btn_return->setVisible(true);
         }
 
-        m_selectedAptList = cache_apt_list+cache_software_list;
+        m_selectedAptList = cache_apt_list+cache_software_list+cache_thumbnails_list;
     }
 }
 
