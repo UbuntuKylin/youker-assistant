@@ -374,13 +374,13 @@ void CleandetailVeiw::OnClikedCleanBtn()
 void CleandetailVeiw::showReciveData(const QStringList &data)
 {
     //----------------------------------------------------------------Cache---------------------------
-    qDebug() << Q_FUNC_INFO << "+" << data;
+//    qDebug() << Q_FUNC_INFO << "+" << data;
     if(data.at(0).split(".").at(0) == "Belong:Cache" && !data.at(1).isEmpty())
     {
         top_tip->setText(data.at(1).split(":").at(1));
 
         QStringList r = data.at(3).split(":").at(1).split(" ");
-        qDebug() << Q_FUNC_INFO << "+" << r << cache_sum << r.at(0).toFloat()*1024;
+//        qDebug() << Q_FUNC_INFO << "+" << r << cache_sum << r.at(0).toFloat()*1024;
         if(QString::compare(r.at(1),"MB") == 0 )
             cache_sum += r.at(0).toFloat()*1024;
         else

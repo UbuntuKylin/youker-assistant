@@ -33,7 +33,7 @@ InfoWidget::InfoWidget(QString machine, QWidget *parent) :
     this->setFixedSize(700, 460);
     this->setAutoFillBackground(true);
 
-    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:10px;border-bottom-left-radius:6px}");
+    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:18px;border-bottom-left-radius:0px;}");
 //    QPalette palette;
 //    palette.setBrush(QPalette::Window, QBrush(Qt::white));
 //    this->setPalette(palette);
@@ -47,7 +47,9 @@ InfoWidget::InfoWidget(QString machine, QWidget *parent) :
     category_widget->setFocusPolicy(Qt::NoFocus);
     category_widget->setObjectName("infoList");
 //    category_widget->setStyleSheet("QListWidget{background: green ;}");
-    category_widget->setStyleSheet("QListWidget::item:selected{border-radius:5px;background:rgba(61,107,229,1);}");
+    category_widget->setStyleSheet("QListWidget{font-size:15px}\
+                                   QListWidget::item:hover{border-radius:5px;background:rgba(61,107,229,80);}\
+                                   QListWidget::item:selected{border-radius:5px;background:rgba(61,107,229,1);color:white;}");
 
     category_widget->setFlow(QListView::LeftToRight);
     //category_widget->setIconSize(QSize(16, 16));//设置QListWidget中的单元项的图片大小

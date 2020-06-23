@@ -35,12 +35,12 @@ InfoUnitWidget::InfoUnitWidget(QString title, QWidget *parent)
 
     //kobe: QHBoxLayout *mainLayout = static_cast<QHBoxLayout *>(layout());
     m_titleLabel = new QLabel;
-    m_titleLabel->setStyleSheet("QLabel{background-color:transparent;color:#000000;font-size:15px;font-weight:bold;}");
+    m_titleLabel->setStyleSheet("QLabel{background-color:transparent;color:block;font-size:15px;font-weight:bold;}");
     m_titleLabel->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
     m_titleLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
 
     m_vendorLabel = new QLabel;
-    m_titleLabel->setStyleSheet("QLabel{background-color:transparent;}");
+    m_vendorLabel->setStyleSheet("QLabel{background-color:transparent;}");
     m_vendorLabel->setFixedSize(48, 48);
 
     this->setInfoTitle(title);

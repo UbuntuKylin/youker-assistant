@@ -116,7 +116,7 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
     main_menu = new KylinMenu(this);
     main_menu->setParentWindow(this);
     main_menu->initConnect();
-
+    this->startDbusDaemon();
     this->initWidgets();
 
     //边框阴影效果
@@ -128,7 +128,7 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
 
     this->hide();
 
-    this->startDbusDaemon();
+
 }
 
 void MainWindow::paintEvent(QPaintEvent *event)

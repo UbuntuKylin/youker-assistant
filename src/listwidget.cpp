@@ -8,7 +8,7 @@ MListwidget::MListwidget(QWidget *parent) : QWidget(parent)
     this->setAutoFillBackground(true);
     this->setStyleSheet("QWidget{background:#ffffff;border: none;\
                          border-bottom-right-radius:10px;\
-                         border-bottom-left-radius:10px}");
+                         border-bottom-left-radius:6px;}");
 
     splitter = new QSplitter(this);
     splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -20,7 +20,7 @@ MListwidget::MListwidget(QWidget *parent) : QWidget(parent)
     listview->setFocusPolicy(Qt::NoFocus);
     listview->setObjectName("listview");
     listview->setMovement(QListView::Static);
-    listview->setStyleSheet("QListWidget{background: rgb(237,237,237);\
+    listview->setStyleSheet("QListWidget{background: rgb(237,237,237);font-size:14px;\
                             border-bottom-right-radius:0px}\
                             QListWidget::item:selected{background:white;color:black;}");
 
@@ -87,6 +87,7 @@ void MListwidget::InitInfowidgetUI()
     listview->setCurrentRow(0);
 
     stackedwidget->setFixedSize(750,this->height());
+    stackedwidget->setAttribute(Qt::WA_TranslucentBackground);
     QHBoxLayout *main_layout = new QHBoxLayout(this);
     QVBoxLayout *right_layout = new QVBoxLayout();
     right_layout->addWidget(stackedwidget);
@@ -121,11 +122,11 @@ void MListwidget::changeListwidgetpage(QListWidgetItem *item)
     if (page_Name.isEmpty() || page_Name.isNull())
         return;
 //     qDebug() << "InfoWidget changeInfoPage" << page_Name;
-    if(page_Name =="硬件信息")
+    if(page_Name == tr("Hardware Information") )
     {
         stackedwidget->setCurrentWidget(info_widget);
     }
-    if(page_Name =="本机系统")
+    if(page_Name == tr("Local System") )
     {
         stackedwidget->setCurrentWidget(system_widget);
     }
