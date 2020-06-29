@@ -16,7 +16,7 @@ DetailsButton::~DetailsButton()
 void DetailsButton::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing); //反锯齿
+    painter.setRenderHints(QPainter::Antialiasing|QPainter::TextAntialiasing); //反锯齿
     painter.setPen(Qt::transparent);
 
     if(hover)
@@ -26,7 +26,7 @@ void DetailsButton::paintEvent(QPaintEvent *event)
 
     painter.drawRoundedRect(0,0,this->width(),this->height(),18,18);
     painter.setPen(QColor(0,0,0,185));
-    painter.drawText(QPoint(25,23),buttonText);
+    painter.drawText(QPoint(20,23),buttonText);
 
     painter.setBrush(QBrush(QColor(64,64,64)));
     static const QPointF points[3] = {

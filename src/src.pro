@@ -11,7 +11,7 @@ CONFIG += qt warn_on
 CONFIG += release
 CONFIG += link_pkgconfig
 
-QT += core dbus network charts
+QT += core dbus network charts svg
 
 inst1.files += res/kylin-assistant.png
 inst1.path = /usr/share/pixmaps

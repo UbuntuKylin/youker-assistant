@@ -2,6 +2,7 @@
 #include "../component/selectcategorywidget.h"
 #include "../component/selectwidget.h"
 #include <QDebug>
+#include <QtSvg/QSvgRenderer>
 #include "../component/utils.h"
 
 CleandetailVeiw::CleandetailVeiw(QWidget *parent) : QWidget(parent)
@@ -143,9 +144,18 @@ void CleandetailVeiw::InitBottomWidget()
     QFrame *cache_frame = new QFrame(frame);
     QVBoxLayout *cache_layout = new QVBoxLayout(cache_frame);
     cache_icon = new QLabel(cache_frame);
-    QPixmap icon(":/res/cache.png");
-    cache_icon->setPixmap(icon);
-    cache_icon->setFixedSize(icon.size());
+//    cache_icon->setStyleSheet("background-image: url(:/svg/res/svg/virus.svg)");
+
+    QSvgRenderer* svgRender = new QSvgRenderer(QString(":/svg/res/svg/virus.svg"));
+
+    QPixmap *icon = new QPixmap(32,32);
+    icon->fill(Qt::transparent);//设置背景透明
+    QPainter p(icon);
+    svgRender->render(&p);
+
+//    QPixmap icon(":/res/cache.png");
+    cache_icon->setPixmap(*icon);
+    cache_icon->setFixedSize(icon->size());
     cache_layout->addWidget(cache_icon);
 
     cache_tip = new QLabel(cache_frame);
@@ -182,9 +192,17 @@ void CleandetailVeiw::InitBottomWidget()
     QFrame *cookie_frame = new QFrame(frame);
     QVBoxLayout *cookie_layout = new QVBoxLayout(cookie_frame);
     cookie_icon = new QLabel(cookie_frame);
-    QPixmap icon1(":/res/cookies.png");
-    cookie_icon->setPixmap(icon1);
-    cookie_icon->setFixedSize(icon1.size());
+
+    QSvgRenderer* svgRender1 = new QSvgRenderer(QString(":/svg/res/svg/cookies.svg"));
+
+    QPixmap *icon1 = new QPixmap(32,32);
+    icon1->fill(Qt::transparent);//设置背景透明
+    QPainter p1(icon1);
+    svgRender1->render(&p1);
+
+//    QPixmap icon1(":/res/cookies.png");
+    cookie_icon->setPixmap(*icon1);
+    cookie_icon->setFixedSize(icon1->size());
     cookie_layout->addWidget(cookie_icon);
 
     cookie_tip = new QLabel(cookie_frame);
@@ -219,9 +237,17 @@ void CleandetailVeiw::InitBottomWidget()
     QFrame *history_frame = new QFrame(frame);
     QVBoxLayout *history_layout = new QVBoxLayout(history_frame);
     history_icon = new QLabel(history_frame);
-    QPixmap icon2(":/res/history.png");
-    history_icon->setPixmap(icon2);
-    history_icon->setFixedSize(icon2.size());
+
+    QSvgRenderer* svgRender2 = new QSvgRenderer(QString(":/svg/res/svg/history.svg"));
+
+    QPixmap *icon2 = new QPixmap(32,32);
+    icon2->fill(Qt::transparent);//设置背景透明
+    QPainter p2(icon2);
+    svgRender2->render(&p2);
+
+//    QPixmap icon2(":/res/history.png");
+    history_icon->setPixmap(*icon2);
+    history_icon->setFixedSize(icon2->size());
     history_layout->addWidget(history_icon);
 
     history_tip = new QLabel(history_frame);
@@ -272,17 +298,35 @@ void CleandetailVeiw::ResetUI()
 //    history_btn->setVisible(false);
     cookie_btn->setVisible(false);
 
-    QPixmap icon(":/res/cache.png");
-    cache_icon->setPixmap(icon);
-    cache_icon->setFixedSize(icon.size());
+    QSvgRenderer* svgRender = new QSvgRenderer(QString(":/svg/res/svg/virus.svg"));
+    QPixmap *icon = new QPixmap(32,32);
+    icon->fill(Qt::transparent);//设置背景透明
+    QPainter p(icon);
+    svgRender->render(&p);
 
-    QPixmap icon1(":/res/cookies.png");
-    cookie_icon->setPixmap(icon1);
-    cookie_icon->setFixedSize(icon1.size());
+//    QPixmap icon(":/res/cache.png");
+    cache_icon->setPixmap(*icon);
+    cache_icon->setFixedSize(icon->size());
 
-    QPixmap icon2(":/res/history.png");
-    history_icon->setPixmap(icon2);
-    history_icon->setFixedSize(icon2.size());
+    QSvgRenderer* svgRender1 = new QSvgRenderer(QString(":/svg/res/svg/cookies.svg"));
+    QPixmap *icon1 = new QPixmap(32,32);
+    icon1->fill(Qt::transparent);//设置背景透明
+    QPainter p1(icon1);
+    svgRender1->render(&p1);
+
+//    QPixmap icon1(":/res/cookies.png");
+    cookie_icon->setPixmap(*icon1);
+    cookie_icon->setFixedSize(icon1->size());
+
+    QSvgRenderer* svgRender2 = new QSvgRenderer(QString(":/svg/res/svg/history.svg"));
+    QPixmap *icon2 = new QPixmap(32,32);
+    icon2->fill(Qt::transparent);//设置背景透明
+    QPainter p2(icon2);
+    svgRender2->render(&p2);
+
+//    QPixmap icon2(":/res/history.png");
+    history_icon->setPixmap(*icon2);
+    history_icon->setFixedSize(icon2->size());
 
     cache_apt_list.clear();
     cache_sum = 0;
@@ -647,25 +691,43 @@ void CleandetailVeiw::showCleanerStatus(const QString &status, const QString &do
     if(status == "Complete:file" && domain == "cache") {
         history_tip->setText(tr("Clear ") + QString::number(history_sum)+" historical traces");
 
-        QPixmap pixmap(":/res/drive/finish1.png");
-        cache_icon->setPixmap(pixmap);
-        cache_icon->setFixedSize(pixmap.size());
+        QSvgRenderer* svgRender = new QSvgRenderer(QString(":/svg/res/svg/finish2 .svg"));
+        QPixmap *pixmap = new QPixmap(32,32);
+        pixmap->fill(Qt::transparent);//设置背景透明
+        QPainter p(pixmap);
+        svgRender->render(&p);
+
+//        QPixmap pixmap(":/res/drive/finish1.png");
+        cache_icon->setPixmap(*pixmap);
+        cache_icon->setFixedSize(pixmap->size());
         cache_icon->update();
     }
     else if(status == "Complete:cookie" && domain == "cookie") {
         cookie_tip->setText(tr("Clear cookie ")+QString::number(cookie_sum)+tr(" items"));
 
-        QPixmap pixmap(":/res/drive/finish1.png");
-        cookie_icon->setPixmap(pixmap);
-        cookie_icon->setFixedSize(pixmap.size());
+        QSvgRenderer* svgRender = new QSvgRenderer(QString(":/svg/res/svg/finish2 .svg"));
+        QPixmap *pixmap = new QPixmap(32,32);
+        pixmap->fill(Qt::transparent);//设置背景透明
+        QPainter p(pixmap);
+        svgRender->render(&p);
+
+//        QPixmap pixmap(":/res/drive/finish1.png");
+        cookie_icon->setPixmap(*pixmap);
+        cookie_icon->setFixedSize(pixmap->size());
         cookie_icon->update();
     }
     else if(status == "Complete:history" && domain == "history") {
         cache_tip->setText(tr("Clear cache ")+QString::number(cache_sum/1024,'f',0)+" M");
 
-        QPixmap pixmap(":/res/drive/finish2.png");
-        history_icon->setPixmap(pixmap);
-        history_icon->setFixedSize(pixmap.size());
+        QSvgRenderer* svgRender = new QSvgRenderer(QString(":/svg/res/svg/finish2 .svg"));
+        QPixmap *pixmap = new QPixmap(32,32);
+        pixmap->fill(Qt::transparent);//设置背景透明
+        QPainter p(pixmap);
+        svgRender->render(&p);
+
+//        QPixmap pixmap(":/res/drive/finish2.png");
+        history_icon->setPixmap(*pixmap);
+        history_icon->setFixedSize(pixmap->size());
         history_icon->update();
     }
 }

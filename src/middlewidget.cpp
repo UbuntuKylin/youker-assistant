@@ -109,7 +109,7 @@ void MiddleWidget::initTitlebarRightContent()
      qDebug()<< Q_FUNC_INFO;
     QWidget *w = new QWidget;
     m_titleRightLayout = new QHBoxLayout(w);
-    m_titleRightLayout->setContentsMargins(0, 0, 1, 0);
+    m_titleRightLayout->setContentsMargins(0, 0, 5, 0);
     m_titleRightLayout->setSpacing(0);
 
     top_layout->addWidget(w, 1, Qt::AlignRight);
@@ -118,11 +118,11 @@ void MiddleWidget::initTitlebarRightContent()
     SystemButton *close_button = new SystemButton();
 //    SystemButton *skin_button = new SystemButton();
     SystemButton *main_menu_button = new SystemButton();
-    min_button->loadPixmap(":/sys/res/sysBtn/min_button.png");
+    min_button->loadPixmap(":/sys/res/sysBtn/min_button.svg");
     min_button->setStyleSheet("border: none;border-radius:6px;");
-    close_button->loadPixmap(":/sys/res/sysBtn/close_button.png");
+    close_button->loadPixmap(":/sys/res/sysBtn/close_button.svg");
 //    skin_button->loadPixmap(":/sys/res/sysBtn/skin_button.png");
-    main_menu_button->loadPixmap(":/sys/res/sysBtn/main_menu.png");
+    main_menu_button->loadPixmap(":/sys/res/sysBtn/main_menu.svg");
     min_button->setFocusPolicy(Qt::NoFocus);
     close_button->setFocusPolicy(Qt::NoFocus);
 //    skin_button->setFocusPolicy(Qt::NoFocus);
@@ -176,7 +176,8 @@ void MiddleWidget::initBottomContent()
 //        text_list<< tr("Home") << tr("Cleanup") << tr("Sysinfo") << tr("Feature") << tr("Toolkits");
 //    }
 
-    icon_list<<":/tool/res/menu/system-clean.png"/*<<":/tool/res/menu/optimize"*/<< ":/tool/res/menu/monitor.png" << ":/tool/res/menu/drive-manager.png" <<":/tool/res/menu/sysinfo"<<":/tool/res/menu/toolkits" ;
+//    icon_list<<":/tool/res/menu/system-clean.png"/*<<":/tool/res/menu/optimize"*/<< ":/tool/res/menu/monitor.png" << ":/tool/res/menu/drive-manager.png" <<":/tool/res/menu/sysinfo"<<":/tool/res/menu/toolkits" ;
+    icon_list<<":/svg/res/svg/top.svg"<<":/svg/res/svg/top3.svg"<<":/svg/res/svg/top4.svg"<<":/svg/res/svg/top5.svg"<<":/svg/res/svg/top7.svg";
     text_list<< tr("Cleanup") /*<< tr("Optimize")*/ << tr("Monitoring") << tr("Drive")<< tr("Sysinfo") << tr("Toolkits") ;
 
     QSignalMapper *signal_mapper = new QSignalMapper(this);

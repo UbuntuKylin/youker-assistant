@@ -19,6 +19,7 @@
 
 #include "kylintoolbutton.h"
 #include <QDebug>
+#include <QtSvg/QSvgRenderer>
 
 KylinToolButton::KylinToolButton(const QString &pic_name, const QString &text, QWidget *parent)
     :QToolButton(parent)
@@ -42,13 +43,20 @@ KylinToolButton::KylinToolButton(const QString &pic_name, const QString &text, Q
     setPopupMode(QToolButton::InstantPopup);
 
     pixmap.load(pic_name);
-    normal_icon = QIcon(pic_name);
+
+//    QSvgRenderer* svgRender = new QSvgRenderer(QString(pic_name));
+//    QPixmap *pixmap = new QPixmap(32,32);
+//    pixmap->fill(Qt::transparent);//设置背景透明
+//    QPainter p(pixmap);
+//    svgRender->render(&p);
+
+//    normal_icon = QIcon(pic_name);
 //    hover_icon = QIcon(pic_name + "-hover");
 //    press_icon = QIcon(pic_name + "-press");
-    hover_icon = QIcon(pic_name);
-    press_icon = QIcon(pic_name);
-    setIcon(pixmap);
-    setIconSize(pixmap.size());
+//    hover_icon = QIcon(pic_name);
+//    press_icon = QIcon(pic_name);
+//    setIcon(pixmap);
+//    setIconSize(pixmap.size());
 
 //    setFixedSize(pixmap.width(), pixmap.height() + 10);
 	setAutoRaise(true);
@@ -68,7 +76,7 @@ void KylinToolButton::enterEvent(QEvent *event)
     if(isEnabled())
     {
         mouse_over = true;
-        this->setMouseHover();
+//        this->setMouseHover();
     }
 }
 
@@ -77,7 +85,7 @@ void KylinToolButton::leaveEvent(QEvent *event)
     if(isEnabled())
     {
         mouse_over = false;
-        this->setMouseHover();
+//        this->setMouseHover();
     }
 }
 
@@ -101,7 +109,7 @@ void KylinToolButton::mousePressEvent(QMouseEvent *event)
 void KylinToolButton::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing); //反锯齿
+    painter.setRenderHints(QPainter::Antialiasing|QPainter::TextAntialiasing); //反锯齿
 
     //设置渐变色的样式和范围
     QLinearGradient linear(this->height()/2,0,this->height()/2,this->width());
@@ -118,7 +126,7 @@ void KylinToolButton::paintEvent(QPaintEvent *event)
         painter.drawPixmap(QRect(22,8,48,48),QPixmap(pixmap)); //绘制 pixmap 图片
 //        qDebug() << Q_FUNC_INFO << txt;
         painter.setPen(Qt::white);
-        painter.drawText(QRect(16,65,60,14),Qt::AlignCenter,txt); //绘制文字
+        painter.drawText(QRect(16,60,60,18),Qt::AlignCenter,txt); //绘制文字
     }
     else //绘制按钮从 hover 转换到非 hover 状态的样式
     {
@@ -128,7 +136,7 @@ void KylinToolButton::paintEvent(QPaintEvent *event)
         painter.drawPixmap(QRect(22,8,48,48),QPixmap(pixmap));
 //        qDebug() << Q_FUNC_INFO << txt;
         painter.setPen(Qt::white);
-        painter.drawText(QRect(16,65,60,14),Qt::AlignCenter,txt);
+        painter.drawText(QRect(16,60,60,18),Qt::AlignCenter,txt);
     }
 
     //绘制按钮的 pressed 状态的样式
@@ -140,7 +148,7 @@ void KylinToolButton::paintEvent(QPaintEvent *event)
         painter.drawPixmap(QRect(22,8,48,48),QPixmap(pixmap));  //绘制 pixmap 图片
 //        qDebug() << Q_FUNC_INFO << txt;
         painter.setPen(Qt::white);
-        painter.drawText(QRect(16,65,60,14),Qt::AlignCenter,txt); //绘制文字
+        painter.drawText(QRect(16,60,60,18),Qt::AlignCenter,txt); //绘制文字
     }
     else //绘制按钮从 pressed 转换到非 pressed 状态的样式
     {
@@ -150,25 +158,25 @@ void KylinToolButton::paintEvent(QPaintEvent *event)
         painter.drawPixmap(QRect(22,8,48,48),QPixmap(pixmap));
 //        qDebug() << Q_FUNC_INFO << txt;
         painter.setPen(Qt::white);
-        painter.drawText(QRect(16,65,60,14),Qt::AlignCenter,txt);
+        painter.drawText(QRect(16,60,60,18),Qt::AlignCenter,txt);
     }
 
 }
 
 void KylinToolButton::setMouseHover()
 {
-    if(this->mouse_over)
-    {
-        this->setIcon(QIcon(hover_icon));
-    }
-    else {
-        if(pressed){
-            this->setIcon(QIcon(press_icon));
-        }
-        else{
-            this->setIcon(QIcon(normal_icon));
-        }
-    }
+//    if(this->mouse_over)
+//    {
+//        this->setIcon(QIcon(hover_icon));
+//    }
+//    else {
+//        if(pressed){
+//            this->setIcon(QIcon(press_icon));
+//        }
+//        else{
+//            this->setIcon(QIcon(normal_icon));
+//        }
+//    }
 //    this->setStyleSheet("ToolButton{background-color:qlineargradient(x1:0, y1:0, x2:92, y2:85,stop:0 green,stop:1 red);color:white;}");
 }
 
@@ -178,12 +186,14 @@ void KylinToolButton::setMousePress(bool is_press)
 
     if(this->m_mousePressed)
     {
-        this->setIcon(QIcon(press_icon));
+//        this->setIcon(QIcon(press_icon));
+        this->update();
         pressed = true;
     }
     else
     {
-        this->setIcon(QIcon(normal_icon));
+//        this->setIcon(QIcon(normal_icon));
+        this->update();
         pressed = false;
     }
 
