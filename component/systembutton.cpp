@@ -25,6 +25,7 @@ SystemButton::SystemButton(QWidget *parent) :
 {
     status = NORMAL;
     m_mousePressed = false;
+    this->setAttribute(Qt::WA_TranslucentBackground);
 }
 
 
@@ -72,10 +73,10 @@ void SystemButton::leaveEvent(QEvent *)
 void SystemButton::paintEvent(QPaintEvent *)
 {
     QPainter painter;
-    painter.setBrush(QBrush(pixmap.copy(btn_width * status, 0, btn_width, btn_height)));
-    QPainterPath path;
-    path.setFillRule(Qt::WindingFill);
-    path.addRoundedRect(0,0,this->width(),this->height(),5,5);
+//    painter.setBrush(QBrush(pixmap.copy(btn_width * status, 0, btn_width, btn_height)));
+//    QPainterPath path;
+//    path.setFillRule(Qt::WindingFill);
+//    path.addRoundedRect(0,0,this->width(),this->height(),5,5);
 
     painter.begin(this);
     painter.drawPixmap(this->rect(), pixmap.copy(btn_width * status, 0, btn_width, btn_height));

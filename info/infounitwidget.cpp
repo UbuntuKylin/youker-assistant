@@ -35,7 +35,7 @@ InfoUnitWidget::InfoUnitWidget(QString title, QWidget *parent)
 
     //kobe: QHBoxLayout *mainLayout = static_cast<QHBoxLayout *>(layout());
     m_titleLabel = new QLabel;
-    m_titleLabel->setStyleSheet("QLabel{background-color:transparent;color:block;font-size:15px;font-weight:bold;}");
+    m_titleLabel->setStyleSheet("QLabel{background-color:transparent;color:rgb(0,0,0,185);font-size:15px;font-weight:bold;}");
     m_titleLabel->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
     m_titleLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
 

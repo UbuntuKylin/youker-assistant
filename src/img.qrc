@@ -256,6 +256,9 @@
         <file>res/sysBtn/min_button.png</file>
         <file>res/sysBtn/skin_button.png</file>
         <file>res/sysBtn/close_button1.png</file>
+        <file>res/sysBtn/close_button.svg</file>
+        <file>res/sysBtn/main_menu.svg</file>
+        <file>res/sysBtn/min_button.svg</file>
     </qresource>
     <qresource prefix="/qssfile">
         <file>res/qss/kylin-assistant.qss</file>
@@ -606,5 +609,32 @@
         <file>res/plugin/processmanager.png</file>
         <file>res/plugin/shredder.png</file>
         <file>res/plugin/startupmanager.png</file>
+    </qresource>
+    <qresource prefix="/svg">
+        <file>res/svg/!.svg</file>
+        <file>res/svg/!2.svg</file>
+        <file>res/svg/!3.svg</file>
+        <file>res/svg/1.svg</file>
+        <file>res/svg/2.svg</file>
+        <file>res/svg/3.svg</file>
+        <file>res/svg/4.svg</file>
+        <file>res/svg/5.svg</file>
+        <file>res/svg/6.svg</file>
+        <file>res/svg/7.svg</file>
+        <file>res/svg/8_1.svg</file>
+        <file>res/svg/8.svg</file>
+        <file>res/svg/9.svg</file>
+        <file>res/svg/10.svg</file>
+        <file>res/svg/cookies.svg</file>
+        <file>res/svg/finish2 .svg</file>
+        <file>res/svg/top.svg</file>
+        <file>res/svg/top2.svg</file>
+        <file>res/svg/top3.svg</file>
+        <file>res/svg/top4.svg</file>
+        <file>res/svg/top5.svg</file>
+        <file>res/svg/top6.svg</file>
+        <file>res/svg/top7.svg</file>
+        <file>res/svg/virus.svg</file>
+        <file>res/svg/history.svg</file>
     </qresource>
 </RCC>

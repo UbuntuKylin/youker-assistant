@@ -19,6 +19,7 @@
 
 #include "cleanermainwidget.h"
 #include <QDebug>
+#include <QtSvg/QSvgRenderer>
 #include "../src/mainwindow.h"
 #include "../component/selectcategorywidget.h"
 #include "../component/cleangroup.h"
@@ -42,9 +43,17 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
 //    cache_btn->setLabelText(tr("System Cache"), tr("Cleans up cache of system"));//系统缓存垃圾    清除包、软件中心、缩略图和浏览器缓存
 
     QLabel *cache_icon = new QLabel(this);
-    QPixmap icon(":/res/cache.png");
-    cache_icon->setPixmap(icon);
-    cache_icon->setGeometry(QRect(125,150,icon.width(),icon.height()));
+
+    QSvgRenderer* svgRender = new QSvgRenderer(QString(":/svg/res/svg/virus.svg"));
+
+    QPixmap *icon = new QPixmap(32,32);
+    icon->fill(Qt::transparent);//设置背景透明
+    QPainter p(icon);
+    svgRender->render(&p);
+
+//    QPixmap icon(":/res/cache.png");
+    cache_icon->setPixmap(*icon);
+    cache_icon->setGeometry(QRect(125,150,32,32));
 
     DetailsButton *cache_btn = new DetailsButton(tr("Cache"),this);
     cache_btn->setFocusPolicy(Qt::NoFocus);
@@ -67,20 +76,26 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
 //    cookies_btn->setLabelText(tr("Cookies"), tr("Cleans up cookies in browser"));
 //    cookies_btn->setStatusTip("cookies");
 
+    QSvgRenderer* svgRender1 = new QSvgRenderer(QString(":/svg/res/svg/cookies.svg"));
+
+    QPixmap *icon1 = new QPixmap(32,32);
+    icon1->fill(Qt::transparent);//设置背景透明
+    QPainter p1(icon1);
+    svgRender1->render(&p1);
 
     QLabel *cookie_icon = new QLabel(this);
-    QPixmap icon1(":/res/cookies.png");
-    cookie_icon->setPixmap(icon1);
-    cookie_icon->setGeometry(QRect(342,150,icon.width(),icon.height()));
+//    QPixmap icon1(":/res/cookies.png");
+    cookie_icon->setPixmap(*icon1);
+    cookie_icon->setGeometry(QRect(352,150,32,32));
 
     DetailsButton *cookie_btn = new DetailsButton(tr("Cookies"),this);
     cookie_btn->setFocusPolicy(Qt::NoFocus);
-    cookie_btn->setGeometry(QRect(327,194,108,36));
+    cookie_btn->setGeometry(QRect(337,194,108,36));
     cookie_btn->setStatusTip("cookies");
 
     QLabel *cookie_label = new QLabel(this);
     cookie_label->setText(tr("Clear internet、games、shopping history, etc."));
-    cookie_label->setGeometry(QRect(337,240,200,16*2));
+    cookie_label->setGeometry(QRect(347,240,200,16*2));
     cookie_label->setWordWrap(true);
     cookie_label->setStyleSheet("color:rgb(0,0,0,165)");
 
@@ -94,19 +109,26 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
 //    trace_btn->setLabelText(tr("History trace"), tr("Cleans up records of history"));
 //    trace_btn->setStatusTip("trace");
 
+    QSvgRenderer* svgRender2 = new QSvgRenderer(QString(":/svg/res/svg/history.svg"));
+
+    QPixmap *icon2 = new QPixmap(32,32);
+    icon2->fill(Qt::transparent);//设置背景透明
+    QPainter p2(icon2);
+    svgRender2->render(&p2);
+
     QLabel *history_icon = new QLabel(this);
-    QPixmap icon2(":/res/history.png");
-    history_icon->setPixmap(icon2);
-    history_icon->setGeometry(QRect(564,150,icon.width(),icon.height()));
+//    QPixmap icon2(":/res/history.png");
+    history_icon->setPixmap(*icon2);
+    history_icon->setGeometry(QRect(584,150,32,32));
 
     DetailsButton *history_btn = new DetailsButton(tr("Trace"),this);
     history_btn->setFocusPolicy(Qt::NoFocus);
-    history_btn->setGeometry(QRect(549,194,108,36));
+    history_btn->setGeometry(QRect(569,194,108,36));
     history_btn->setStatusTip("trace");
 
     QLabel *history_label = new QLabel(this);
     history_label->setText(tr("Clear browser and system usage traces"));
-    history_label->setGeometry(QRect(559,240,200,16*2));
+    history_label->setGeometry(QRect(579,240,200,16*2));
     history_label->setWordWrap(true);
     history_label->setStyleSheet("color:rgb(0,0,0,165)");
 
