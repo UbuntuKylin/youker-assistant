@@ -1361,7 +1361,7 @@ class DetailInfo:
 
         for line in output.split("\n"):
             value = line.split()
-            if value[1].startswith("259:") and value[5] == "disk":
+            if value[1].startswith("259:") and value[5] == "disk" and value[2] == "0":
                 disknum += 1
                 HDSize = get_human_read_capacity_size(int(value[3]))
                 DiskCapacity += ((HDSize if not statusfirst else "$") + "<1_1>")
@@ -1389,7 +1389,7 @@ class DetailInfo:
                     DiskFw += ("$" + "<1_1>")
                     DiskSerial += ("$" + "<1_1>")
 
-            if value[1].startswith("8:") and value[5] == "disk":
+            if value[1].startswith("8:") and value[5] == "disk" and value[2] == "0":
                 disknum += 1
                 HDSize = get_human_read_capacity_size(int(value[3]))
                 DiskCapacity += ((HDSize if not statusfirst else "$") + "<1_1>")
@@ -2135,4 +2135,4 @@ if __name__ == "__main__":
     #cc.get_multimedia()
     #cc.get_dvd()
     #cc.get_usb()
-    pprint(cc.get_memory())
+    pprint(cc.get_disk())

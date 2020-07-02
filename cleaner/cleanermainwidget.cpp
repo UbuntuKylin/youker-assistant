@@ -55,14 +55,17 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
     cache_icon->setPixmap(*icon);
     cache_icon->setGeometry(QRect(125,150,32,32));
 
-    DetailsButton *cache_btn = new DetailsButton(tr("Cache"),this);
+    QPushButton *cache_btn = new QPushButton(this);
     cache_btn->setFocusPolicy(Qt::NoFocus);
     cache_btn->setGeometry(QRect(110,194,108,36));
+    cache_btn->setText(tr("Cache"));
     cache_btn->setStatusTip("cache");
+    cache_btn->setStyleSheet("QPushButton{width:108px;height:36px;background:rgba(64,64,64,30);border-radius:18px;}\
+                              QPushButton:hover{background:rgba(64,64,64,80);}");
 
     QLabel *cache_label = new QLabel(this);
     cache_label->setText(tr("Clear package、thumbnails and browser cache"));
-    cache_label->setGeometry(QRect(120,240,200,16*2));
+    cache_label->setGeometry(QRect(120,240,200,18*2));
     cache_label->setWordWrap(true);
     cache_label->setStyleSheet("color:rgb(0,0,0,165)");
 
@@ -88,14 +91,17 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
     cookie_icon->setPixmap(*icon1);
     cookie_icon->setGeometry(QRect(352,150,32,32));
 
-    DetailsButton *cookie_btn = new DetailsButton(tr("Cookies"),this);
+    QPushButton *cookie_btn = new QPushButton(this);
     cookie_btn->setFocusPolicy(Qt::NoFocus);
     cookie_btn->setGeometry(QRect(337,194,108,36));
     cookie_btn->setStatusTip("cookies");
+    cookie_btn->setText(tr("Cookies"));
+    cookie_btn->setStyleSheet("QPushButton{width:108px;height:36px;background:rgba(64,64,64,30);border-radius:18px;}\
+                               QPushButton:hover{background:rgba(64,64,64,80);}");
 
     QLabel *cookie_label = new QLabel(this);
     cookie_label->setText(tr("Clear internet、games、shopping history, etc."));
-    cookie_label->setGeometry(QRect(347,240,200,16*2));
+    cookie_label->setGeometry(QRect(347,240,200,18*2));
     cookie_label->setWordWrap(true);
     cookie_label->setStyleSheet("color:rgb(0,0,0,165)");
 
@@ -121,14 +127,17 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
     history_icon->setPixmap(*icon2);
     history_icon->setGeometry(QRect(584,150,32,32));
 
-    DetailsButton *history_btn = new DetailsButton(tr("Trace"),this);
+    QPushButton *history_btn = new QPushButton(this);
     history_btn->setFocusPolicy(Qt::NoFocus);
     history_btn->setGeometry(QRect(569,194,108,36));
     history_btn->setStatusTip("trace");
+    history_btn->setText(tr("Trace"));
+    history_btn->setStyleSheet("QPushButton{width:108px;height:36px;background:rgba(64,64,64,30);border-radius:18px;}\
+                                QPushButton:hover{background:rgba(64,64,64,80);}");
 
     QLabel *history_label = new QLabel(this);
     history_label->setText(tr("Clear browser and system usage traces"));
-    history_label->setGeometry(QRect(579,240,200,16*2));
+    history_label->setGeometry(QRect(579,240,200,18*2));
     history_label->setWordWrap(true);
     history_label->setStyleSheet("color:rgb(0,0,0,165)");
 
@@ -186,7 +195,7 @@ void CleanerMainWidget::setLanguage()
 //    tip_label->setText(tr("Please select the items you want to clean"));
     QFont font;
     font.setPixelSize(36);
-    font.setBold(QFont::Bold);
+//    font.setBold(QFont::Bold);
     tip_label->setFont(font);
     tip_label->setStyleSheet("color:rgb(0,0,0,185)");
     tip_label->setText(tr("Cleanup makes computers safer."));
@@ -461,7 +470,7 @@ void CleanerMainWidget::onButtonClicked()
     QObject *object = QObject::sender();
 //    KylinCheckBox *checkbox = qobject_cast<KylinCheckBox *>(object);
 //    CleanGroup *checkbox = qobject_cast<CleanGroup *>(object);
-    DetailsButton *checkbox = qobject_cast<DetailsButton *>(object);
+    QPushButton *checkbox = qobject_cast<QPushButton *>(object);
     QString object_name = checkbox->statusTip();
     if (object_name == "cache") {
 //        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);

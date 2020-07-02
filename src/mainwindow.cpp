@@ -239,9 +239,9 @@ void MainWindow::initWidgets()
     cleaner_widget->setToolKits(toolKits);
     cleaner_widget->setParentWindow(this);
     cleaner_widget->initUI(last_skin_path);
-    connect(cleaner_action_widget, SIGNAL(showDetailData()),cleaner_widget, SLOT(displayDetailPage()));
-    connect(cleaner_action_widget, SIGNAL(showMainData()),cleaner_widget, SLOT(displayMainPage()));
-    connect(cleaner_action_widget, SIGNAL(sendCleanSignal()),cleaner_widget, SIGNAL(transCleanSignal()));
+//    connect(cleaner_action_widget, SIGNAL(showDetailData()),cleaner_widget, SLOT(displayDetailPage()));
+//    connect(cleaner_action_widget, SIGNAL(showMainData()),cleaner_widget, SLOT(displayMainPage()));
+//    connect(cleaner_action_widget, SIGNAL(sendCleanSignal()),cleaner_widget, SIGNAL(transCleanSignal()));
 
 //    info_widget = new InfoWidget(this->arch);
 //    m_bottomStack->addWidget(info_widget);
@@ -305,12 +305,12 @@ void MainWindow::onInitDataFinished()
 //    connect(m_dataWorker, SIGNAL(isScanning(QString)), m_mainTopWidget, SLOT(getScanResult(QString)), Qt::BlockingQueuedConnection);//Qt::BlockingQueuedConnection
 //    connect(m_dataWorker, SIGNAL(finishScanWork(QString)), m_mainTopWidget, SLOT(finishScanResult(QString)), Qt::BlockingQueuedConnection);
 //    connect(m_dataWorker, SIGNAL(tellScanResult(QString,QString)) ,m_mainTopWidget, SLOT(getScanAllResult(QString,QString)), Qt::BlockingQueuedConnection);
-    connect(m_dataWorker, SIGNAL(finishCleanWorkMain(QString)), m_mainTopWidget, SLOT(getCleanResult(QString)), Qt::BlockingQueuedConnection);
-    connect(m_dataWorker, SIGNAL(finishCleanWorkMainError(QString)), m_mainTopWidget, SLOT(finishCleanError(QString)), Qt::BlockingQueuedConnection);
-    connect(m_dataWorker, SIGNAL(quickCleanProcess(QString,QString)), m_mainTopWidget, SLOT(getCleaningMessage(QString,QString)), Qt::BlockingQueuedConnection);
+//    connect(m_dataWorker, SIGNAL(finishCleanWorkMain(QString)), m_mainTopWidget, SLOT(getCleanResult(QString)), Qt::BlockingQueuedConnection);
+//    connect(m_dataWorker, SIGNAL(finishCleanWorkMainError(QString)), m_mainTopWidget, SLOT(finishCleanError(QString)), Qt::BlockingQueuedConnection);
+//    connect(m_dataWorker, SIGNAL(quickCleanProcess(QString,QString)), m_mainTopWidget, SLOT(getCleaningMessage(QString,QString)), Qt::BlockingQueuedConnection);
 
-    connect(cleaner_action_widget, SIGNAL(showDetailData()),cleaner_widget, SLOT(displayDetailPage()));
-    connect(cleaner_action_widget, SIGNAL(showMainData()),cleaner_widget, SLOT(displayMainPage()));
+//    connect(cleaner_action_widget, SIGNAL(showDetailData()),cleaner_widget, SLOT(displayDetailPage()));
+//    connect(cleaner_action_widget, SIGNAL(showMainData()),cleaner_widget, SLOT(displayMainPage()));
     //connect(cleaner_action_widget, SIGNAL(sendCleanSignal()),cleaner_widget, SIGNAL(transCleanSignal()));
 
     connect(m_dataWorker, SIGNAL(tellCleanerDetailData(QStringList)), cleaner_widget, SIGNAL(tellCleanerDetailData(QStringList)), Qt::BlockingQueuedConnection);
@@ -320,12 +320,12 @@ void MainWindow::onInitDataFinished()
 //    connect(m_dataWorker, SIGNAL(tellCleanerDetailError(QString)), cleaner_action_widget, SLOT(showCleanReciveError(QString)), Qt::BlockingQueuedConnection);
 
 //    connect(m_dataWorker, SIGNAL(sendCleanOverSignal()), cleaner_widget, SLOT(displayMainPage()));
-    connect(m_dataWorker, SIGNAL(sendCleanOverSignal()), cleaner_action_widget, SLOT(displayOrgPage()));
-    connect(m_dataWorker, SIGNAL(sendCleanOverSignal()), cleaner_action_widget, SLOT(showCleanOverStatus()));
-    connect(m_dataWorker, SIGNAL(policykitCleanSignal(bool)), cleaner_action_widget, SLOT(receivePolicyKitSignal(bool)));
-    connect(m_dataWorker, SIGNAL(tellCleanerMainData(QStringList)), cleaner_action_widget, SLOT(showCleanerData(QStringList)), Qt::BlockingQueuedConnection);
-    connect(m_dataWorker, SIGNAL(tellCleanerMainStatus(QString, QString)), cleaner_action_widget, SLOT(showCleanerStatus(QString, QString)), Qt::BlockingQueuedConnection);
-    connect(m_dataWorker, SIGNAL(sendCleanErrorSignal(QString)), cleaner_action_widget, SLOT(showCleanerError(QString)), Qt::BlockingQueuedConnection);
+//    connect(m_dataWorker, SIGNAL(sendCleanOverSignal()), cleaner_action_widget, SLOT(displayOrgPage()));
+//    connect(m_dataWorker, SIGNAL(sendCleanOverSignal()), cleaner_action_widget, SLOT(showCleanOverStatus()));
+//    connect(m_dataWorker, SIGNAL(policykitCleanSignal(bool)), cleaner_action_widget, SLOT(receivePolicyKitSignal(bool)));
+//    connect(m_dataWorker, SIGNAL(tellCleanerMainData(QStringList)), cleaner_action_widget, SLOT(showCleanerData(QStringList)), Qt::BlockingQueuedConnection);
+//    connect(m_dataWorker, SIGNAL(tellCleanerMainStatus(QString, QString)), cleaner_action_widget, SLOT(showCleanerStatus(QString, QString)), Qt::BlockingQueuedConnection);
+//    connect(m_dataWorker, SIGNAL(sendCleanErrorSignal(QString)), cleaner_action_widget, SLOT(showCleanerError(QString)), Qt::BlockingQueuedConnection);
 
     connect(cleaner_widget, SIGNAL(startScanSystem(QMap<QString,QVariant>)), m_dataWorker, SLOT(onStartScanSystem(QMap<QString,QVariant>)));
     connect(cleaner_widget, SIGNAL(startCleanSystem(QMap<QString,QVariant>)), m_dataWorker, SLOT(onStartCleanSystem(QMap<QString,QVariant>)));
@@ -346,9 +346,9 @@ void MainWindow::onInitDataFinished()
     connect(m_dataWorker, SIGNAL(sendCleanOverSignal()), cleaner_widget, SIGNAL(sendCleanOverSignal()));
     //------------------------------------------------------------------------------
 
-    connect(cleaner_action_widget, SIGNAL(sendScanSignal()),cleaner_widget, SIGNAL(transScanSignal()));
-    connect(cleaner_widget, SIGNAL(tranActionAnimaitonSignal()),cleaner_action_widget, SLOT(displayAnimation()));
-    connect(cleaner_widget, SIGNAL(tranScanOverSignal(bool)),cleaner_action_widget, SLOT(accordScanOverStatusToChange(bool)));
+//    connect(cleaner_action_widget, SIGNAL(sendScanSignal()),cleaner_widget, SIGNAL(transScanSignal()));
+//    connect(cleaner_widget, SIGNAL(tranActionAnimaitonSignal()),cleaner_action_widget, SLOT(displayAnimation()));
+//    connect(cleaner_widget, SIGNAL(tranScanOverSignal(bool)),cleaner_action_widget, SLOT(accordScanOverStatusToChange(bool)));
 
 //    connect(info_widget, SIGNAL(requestupdateSystemRunnedTime()), m_dataWorker, SLOT(onUpdateSystemRunnedTime()));
 //    connect(info_widget, SIGNAL(requestRefreshSystemInfo()), m_dataWorker, SLOT(onRequestRefreshSystemInfo()));
