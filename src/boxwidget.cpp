@@ -16,6 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include <gio/gdesktopappinfo.h>
 
 #include "boxwidget.h"
 #include "../component/plugininterface.h"
@@ -209,13 +210,14 @@ void BoxWidget::OnClickListView(const QModelIndex & index)
     if(index.row() == 0) {
         if (QFileInfo("/usr/bin/kylin-software-center").exists()) {
             QProcess process;
-            process.start("/usr/bin/kylin-software-center");
-            process.waitForStarted(1000);
-            process.waitForFinished(20*1000);
+            process.startDetached("/usr/bin/kylin-software-center");
         }
         else if (QFileInfo("/usr/bin/ubuntu-kylin-software-center").exists()) {
-            QProcess process;
-            process.startDetached("/usr/bin/ubuntu-kylin-software-center");
+            GDesktopAppInfo * appinfo=g_desktop_app_info_new_from_filename("/usr/share/applications/ubuntu-kylin-software-center.desktop");
+            g_app_info_launch(G_APP_INFO(appinfo),nullptr, nullptr, nullptr);
+            g_object_unref(appinfo);
+//            QProcess process;
+//            process.startDetached("/usr/bin/ubuntu-kylin-software-center");
 //            process.waitForStarted(1000);
 //            process.waitForFinished(20*1000);
         }

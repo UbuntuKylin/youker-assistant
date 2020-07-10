@@ -1,5 +1,6 @@
 #include "drivepagewidget.h"
 #include <QDebug>
+#include <QScrollBar>
 
 
 DrivePageWidget::DrivePageWidget(QWidget *parent) : QWidget(parent)
@@ -21,8 +22,11 @@ DrivePageWidget::DrivePageWidget(QWidget *parent) : QWidget(parent)
     scrollarea = new QScrollArea(this);
     scrollarea->setWidgetResizable(true);
     scrollarea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    scrollarea->setStyleSheet("QScrollArea{border: none;background-color: #ffffff;}");
-    scrollarea->setFixedSize(this->width(),this->height()-70);
+    scrollarea->setStyleSheet("QScrollArea{border: none;background-color:#ffffff;}");
+    scrollarea->verticalScrollBar()->setStyleSheet("QScrollBar:vertical{width:8px;background:rgba(0,0,0,0%);margin:0px,0px,0px,0px;}\
+                                                    QScrollBar::handle:vertical{width:8px;background:rgba(0,0,0,25%);border-radius:4px;min-height:20;}");
+
+    scrollarea->setFixedSize(620,this->height()-70);
     main_layout->addWidget(scrollarea);
 
     main_frame = new QFrame();
@@ -54,9 +58,14 @@ void DrivePageWidget::InitPageUI(QMap<QString, QVariant> tmpMap)
     spilterLine->setFrameShadow(QFrame::Plain);
     v_layout->addWidget(spilterLine);
 
-    for(it = map.begin(); it!= map.end() ; ++it){
+    int i;
+    for(it = map.begin(),i = 1; it!= map.end() ;i++,++it){
 //        qDebug() << it.key() << it.value().toString();
         QFrame *item = new QFrame();
+        if( (i%2) != 0 )
+        {
+            item->setStyleSheet("border-radius:0px;background-color:rgba(238,238,238,1);");
+        }
         item->setFixedSize(600,80);
 //        QVBoxLayout *m_Hlayout = new QHBoxLayout(item);
 //        QHBoxLayout *m_Vlayout = new QVBoxLayout(item);

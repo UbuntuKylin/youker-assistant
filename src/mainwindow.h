@@ -92,7 +92,7 @@ public slots:
 //    void openUpgradePageAgain();
     void showMainMenu();
     void closeYoukerAssistant();
-    void setCurrentPageIndex(int index);
+    void setCurrentPageIndex(QString index);
     void changeLanguage(LANGUAGE language);
     void newFeatures();
     void setupConfigure();
@@ -143,7 +143,8 @@ private:
     bool cpufm = true;
     QStringList m_cpulist;
     QString m_currentCpuMode;
-    PAGESTATUS status;
+//    PAGESTATUS status;
+    QString status;
     DataWorker *m_dataWorker = nullptr;
     QWidget *centralWidget = nullptr;
 };

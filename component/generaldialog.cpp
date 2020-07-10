@@ -6,7 +6,7 @@
 GeneralDialog::GeneralDialog(QWidget *parent, QString text, bool warn, bool showCancel):
     QDialog(parent)
 {
-    this->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog|Qt::WindowMinimizeButtonHint);
+    this->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
     this->setAutoFillBackground(true);
     this->setAttribute(Qt::WA_TranslucentBackground);
     this->setFixedSize(340,260);
@@ -26,8 +26,8 @@ GeneralDialog::GeneralDialog(QWidget *parent, QString text, bool warn, bool show
 
 
     SystemButton *closeBtn = new SystemButton(this);
-    closeBtn->loadPixmap(":/sys/res/sysBtn/close_button.png");
-    closeBtn->setGeometry(QRect(304,0,36,36));
+    closeBtn->loadPixmap(":/sys/res/sysBtn/close_button1.svg");
+    closeBtn->setGeometry(QRect(298,12,36,36));
     connect(closeBtn,SIGNAL(clicked()),this,SLOT(onclickCloseBtn()));
 
     QLabel *iconLabel = new QLabel(this);
@@ -92,25 +92,6 @@ GeneralDialog::~GeneralDialog()
 
 void GeneralDialog::paintEvent(QPaintEvent *event)
 {
-//    QPainter painter(this);
-//    painter.setRenderHint(QPainter::Antialiasing);  // 反锯齿;
-//    painter.setBrush(QColor(Qt::MaskInColor));
-//    painter.setPen(Qt::transparent);
-//    QPainterPath path;
-//    path.setFillRule(Qt::OddEvenFill);
-////    path.addRoundedRect(0,0,this->width(),this->height(),20,20);
-//    path.addRoundRect(0,0,340,260,10,10);
-
-//    path.addRect(0,0,340,260);
-//    painter.save();
-//    painter.setCompositionMode(QPainter::CompositionMode_Clear);
-//    painter.drawPath(path);
-//    painter.restore();
-
-//    QStyleOption opt;
-//    opt.init(this);
-//    style()->drawPrimitive(QStyle::PE_Widget, &opt, &painter, this);
-
     Q_UNUSED(event)
     QPainterPath path;
     path.setFillRule(Qt::WindingFill);
