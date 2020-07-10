@@ -1,5 +1,6 @@
 #include "drivepagewidget.h"
 #include <QDebug>
+#include <QScrollBar>
 
 
 DrivePageWidget::DrivePageWidget(QWidget *parent) : QWidget(parent)
@@ -16,13 +17,16 @@ DrivePageWidget::DrivePageWidget(QWidget *parent) : QWidget(parent)
     main_layout = new QVBoxLayout(this);
     main_layout->setSpacing(0);
     main_layout->setMargin(0);
-    main_layout->setContentsMargins(60,0,40,15);
+    main_layout->setContentsMargins(60,24,40,15);
 
     scrollarea = new QScrollArea(this);
     scrollarea->setWidgetResizable(true);
     scrollarea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    scrollarea->setStyleSheet("QScrollArea{border: none;background-color: #ffffff;}");
-    scrollarea->setFixedSize(this->width(),this->height()-50);
+    scrollarea->setStyleSheet("QScrollArea{border: none;background-color:#ffffff;}");
+    scrollarea->verticalScrollBar()->setStyleSheet("QScrollBar:vertical{width:8px;background:rgba(0,0,0,0%);margin:0px,0px,0px,0px;}\
+                                                    QScrollBar::handle:vertical{width:8px;background:rgba(0,0,0,25%);border-radius:4px;min-height:20;}");
+
+    scrollarea->setFixedSize(620,this->height()-70);
     main_layout->addWidget(scrollarea);
 
     main_frame = new QFrame();
@@ -47,9 +51,21 @@ void DrivePageWidget::InitPageUI(QMap<QString, QVariant> tmpMap)
     QMap<QString, QVariant> map = tmpMap;
     QMap<QString, QVariant>::iterator it;
 
-    for(it = map.begin(); it!= map.end() ; ++it){
+    QFrame *spilterLine = new QFrame(this);
+    spilterLine->setFixedSize(600, 1);
+    spilterLine->setStyleSheet("QFrame{background:rgba(238,238,238,1);}");
+    spilterLine->setFrameShape(QFrame::HLine);
+    spilterLine->setFrameShadow(QFrame::Plain);
+    v_layout->addWidget(spilterLine);
+
+    int i;
+    for(it = map.begin(),i = 1; it!= map.end() ;i++,++it){
 //        qDebug() << it.key() << it.value().toString();
         QFrame *item = new QFrame();
+        if( (i%2) != 0 )
+        {
+            item->setStyleSheet("border-radius:0px;background-color:rgba(238,238,238,1);");
+        }
         item->setFixedSize(600,80);
 //        QVBoxLayout *m_Hlayout = new QHBoxLayout(item);
 //        QHBoxLayout *m_Vlayout = new QVBoxLayout(item);
@@ -67,7 +83,7 @@ void DrivePageWidget::InitPageUI(QMap<QString, QVariant> tmpMap)
         QFont font;
         font.setPixelSize(16);
         font.setWeight(QFont::Bold);
-        whichDrive->setStyleSheet("color:rgb(0,0,0,195)");
+        whichDrive->setStyleSheet("color:rgba(0,0,0,195)");
         whichDrive->setFont(font);
         whichDrive->setText(k.at(1));
         whichDrive->setGeometry(QRect(65,16,200,18));
@@ -86,7 +102,6 @@ void DrivePageWidget::InitPageUI(QMap<QString, QVariant> tmpMap)
         spilterLine->setFrameShadow(QFrame::Plain);
         v_layout->addWidget(spilterLine);
     }
-
     QLabel *drive_num = new QLabel(this);
     drive_num->setText(tr("Total, section ")+QString::number(map.size())+tr(" drivers"));
     drive_num->setStyleSheet("color:rgb(173,173,173);}");

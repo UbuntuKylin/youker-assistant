@@ -11,6 +11,8 @@ CONFIG += qt warn_on
 CONFIG += release
 CONFIG += link_pkgconfig
 
+PKGCONFIG += glib-2.0 gio-unix-2.0
+
 QT += core dbus network charts svg
 
 inst1.files += res/kylin-assistant.png

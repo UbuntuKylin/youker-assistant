@@ -27,12 +27,12 @@ NO_UPDATE_WARNING_DAYS = 7
 FILEPATH = "/etc/lsb-release"
 RELEASEPATH = "/etc/ubuntukylin-release"
 
-KILOBYTE_FACTOR = 1000.0
-MEGABYTE_FACTOR = (1000.0 * 1000.0)
-GIGABYTE_FACTOR = (1000.0 * 1000.0 * 1000.0)
-TERABYTE_FACTOR = (1000.0 * 1000.0 * 1000.0 * 1000.0)
+KILOBYTE_FACTOR = 1024.0
+MEGABYTE_FACTOR = (1024.0 * 1024.0)
+GIGABYTE_FACTOR = (1024.0 * 1024.0 * 1024.0)
+TERABYTE_FACTOR = (1024.0 * 1024.0 * 1024.0 * 1024.0)
 
-def get_human_read_capacity_size(size):
+def get_human_read_capacity_size(size,i):
     size_str = ""
     displayed_size = 0.0
     unit = "KB"
@@ -59,8 +59,12 @@ def get_human_read_capacity_size(size):
     #print round(2.3)#2.0
     #print math.ceil(2.3)#3.0
     #print math.floor(2.3)#2.0
-    str_list = [str(int(round(displayed_size))), unit]
-    size_str = " ".join(str_list)
+    if i:        
+        str_list = [str(int(math.ceil(displayed_size))), unit]
+        size_str = " ".join(str_list)
+    else:
+        str_list = [str(format(displayed_size,'.1f')), unit]
+        size_str = " ".join(str_list)
     return size_str
 
 
@@ -241,12 +245,30 @@ class Sysinfo:
                         MemTmp = MemTotal.split(' ')[0]
                         #print "MemTmp=",MemTmp
                         #MemTmp = 1000204886#8156252#7889972
-                        MemSize = get_human_read_capacity_size(int(MemTmp)*1000)
+                        MemSize = get_human_read_capacity_size(int(MemTmp)*1024,True)
                         break
         if MemSize is None:
             MemSize = "N/A"
         return model_name,str(MemSize)
 #        return model_name,MemTotal2
+    def get_available_memory(self):
+        
+        MemSize = None
+
+        with open('/proc/meminfo') as f:
+            for line in f:
+                if line.strip():
+                    if line.rstrip('\n').startswith('MemTotal'):
+                        MemTotal = line.rstrip('\n').split(':')[1].strip()
+                        MemTmp = MemTotal.split(' ')[0]
+                        #print "MemTmp=",MemTmp
+                        #MemTmp = 1000204886#8156252#7889972
+                        MemSize = get_human_read_capacity_size(int(MemTmp)*1024,False)
+                        break
+        if MemSize is None:
+            MemSize = "N/A"
+        return str(MemSize)
+
 
     def get_codename(self):
         codename = platform.dist()[2]
@@ -254,6 +276,6 @@ class Sysinfo:
 
 if __name__ == '__main__':
     c = Sysinfo()
-    print((c.get_sys_msg()))
+    print((c.get_available_memory()))
     import getpass
     print((getpass.getuser()))

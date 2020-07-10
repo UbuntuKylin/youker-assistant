@@ -73,6 +73,7 @@ private:
     QPushButton *history_btn;
 
     QLabel *top_tip;
+    QLabel *status_tip;
 
     QLabel *cache_tip;
     QLabel *cache_icon;

@@ -67,12 +67,19 @@ void CleandetailVeiw::InitTopWidget()
 
     top_tip = new QLabel(frame);
     QFont font;
-    font.setPixelSize(30);
+    font.setPixelSize(24);
     font.setBold(QFont::Bold);
     top_tip->setFont(font);
     top_tip->setStyleSheet("color:rgb(0,0,0,185)");
     top_tip->setText(tr("Computer scan in progress..."));
-    top_tip->setGeometry(QRect(100,25,470,40));
+    top_tip->setGeometry(QRect(100,24,470,40));
+
+    status_tip = new QLabel(frame);
+    font.setPixelSize(14);
+    font.setBold(QFont::Normal);
+    status_tip->setFont(font);
+    status_tip->setStyleSheet("color:rgb(0,0,0,165)");
+    status_tip->setGeometry(QRect(100,62,470,20));
 
     cancel_btn = new QPushButton(frame);
     cancel_btn->setText(tr("Cancel"));
@@ -120,7 +127,7 @@ void CleandetailVeiw::InitTopWidget()
 
     btn_return = new QPushButton(frame);
     btn_return->setText(tr("Return"));
-    btn_return->setGeometry(QRect(240,30,88,36));
+    btn_return->setGeometry(QRect(250,30,88,36));
     btn_return->setStyleSheet("QPushButton{width:88px;height:36px;\
                               background:rgba(231,231,231,1);\
                               border-radius:18px;font-size:14px;color:black;}\
@@ -421,7 +428,7 @@ void CleandetailVeiw::showReciveData(const QStringList &data)
 //    qDebug() << Q_FUNC_INFO << "+" << data;
     if(data.at(0).split(".").at(0) == "Belong:Cache" && !data.at(1).isEmpty())
     {
-        top_tip->setText(data.at(1).split(":").at(1));
+        status_tip->setText(data.at(1).split(":").at(1));
 
         QStringList r = data.at(3).split(":").at(1).split(" ");
 //        qDebug() << Q_FUNC_INFO << "+" << r << cache_sum << r.at(0).toFloat()*1024;
@@ -547,7 +554,7 @@ void CleandetailVeiw::showReciveData(const QStringList &data)
 
 void CleandetailVeiw::showReciveStatus(const QString &status)
 {
-    qDebug() << Q_FUNC_INFO << status;
+//    qDebug() << Q_FUNC_INFO << status;
 
     if(status == "Complete:History") {
         history_tip->setText(QString::number(history_sum)+tr(" historical use traces"));
@@ -582,7 +589,8 @@ void CleandetailVeiw::showReciveStatus(const QString &status)
             return_btn->setVisible(true);
         }
         else{
-            top_tip->setText(tr("Scan complete!"));
+            top_tip->setText(tr("Complete!"));
+            status_tip->clear();
             cancel_btn->setVisible(false);
             onkeyclean->setVisible(true);
             return_btn->setVisible(false);

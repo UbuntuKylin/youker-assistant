@@ -1,14 +1,13 @@
-youker-assistant (3.0.2-0kord5~rc2) v100; urgency=medium
+youker-assistant (3.0.2-0ubuntu2) focal; urgency=medium
 
-  * UKUI3.0 version
+  * New bugfix release:
+    - Solve performance monitoring without loading any screen
+    - Solve the pop-up window closing button is not obvious
+    - Solve abnormal memory information acquisition
+    - Solve the problem that the software store cannot be opened
+  * Adjust some styles
 
- -- tangguang <tangguang@kylinos.cn>  Fri, 19 Jun 2020 09:43:18 +0800
-
-youker-assistant (3.0.2-0kylin2k0~rc1) v101; urgency=medium
-
-  * UKUI3.0 version
-
- -- tangguang <tangguang@kylinos.cn>  Mon, 15 Jun 2020 10:16:31 +0800
+ -- tangguang <tangguang@kylinos.cn>  Fri, 10 Jul 2020 10:42:15 +0800
 
 youker-assistant (3.0.2-0ubuntu1) focal; urgency=medium
 

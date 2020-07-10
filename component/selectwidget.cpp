@@ -45,8 +45,8 @@ SelectWidget::SelectWidget(CleanerModuleID id, const QString &title, bool needMi
     tip_label->setGeometry(35,45,300,35);
 
     SystemButton *close_btn = new SystemButton(top_tip);
-    close_btn->loadPixmap(":/sys/res/sysBtn/close_button1.png");
-    close_btn->setGeometry(this->width()-60,0,36,36);
+    close_btn->loadPixmap(":/sys/res/sysBtn/close_button1.svg");
+    close_btn->setGeometry(this->width()-55,5,36,36);
 
     m_mainLayout->setSpacing(0);
     m_mainLayout->setMargin(0);

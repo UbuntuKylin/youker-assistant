@@ -43,9 +43,11 @@ public:
     void initTitlebarRightContent();
     void initBottomContent();
 
+    void setHideMonitorWidget(bool f){this->hide = f;};
+
     void paintEvent(QPaintEvent *);
 signals:
-    void turnCurrentPage(int index);
+    void turnCurrentPage(QString index);
     void middle_showMenu();
     void middle_showMin();
     void middle_closeApp();
@@ -66,6 +68,8 @@ private:
     QHBoxLayout *top_layout;
     QHBoxLayout *m_titleLeftLayout;
     QHBoxLayout *m_titleRightLayout;
+
+    bool hide = false;
 };
 
 #endif // MIDDLEWIDGET_H

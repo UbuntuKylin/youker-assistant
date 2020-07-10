@@ -1092,6 +1092,10 @@ class SessionDaemon(dbus.service.Object):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_system_message(self):
         return self.sysconf.get_sys_msg()
+    
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_available_memory(self):
+        return self.sysconf.get_available_memory()
 
     # -------------------------beautify start here-------------------------
 

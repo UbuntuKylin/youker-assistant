@@ -32,7 +32,7 @@ MiddleWidget::MiddleWidget(QWidget *parent, QString arch, QString os)
 //    this->setPalette(palette);
     this->setStyleSheet("MiddleWidget{background-color:#2267F2; border: none;border-top-left-radius:6px;border-top-right-radius:10px}");
 
-    InitMiddlewidget();
+//    InitMiddlewidget();
 }
 
 void MiddleWidget::paintEvent(QPaintEvent *event)
@@ -69,7 +69,7 @@ void MiddleWidget::InitMiddlewidget()
 
     QWidget *bottomWidget = new QWidget;
     botton_layout = new QHBoxLayout(bottomWidget);
-    botton_layout->setContentsMargins(105, 0, 0, 0);
+    botton_layout->setContentsMargins(0, 0, 0, 0);
     botton_layout->setSpacing(0);
     main_layout->addStretch();
     main_layout->addWidget(bottomWidget, 0, Qt::AlignBottom);
@@ -162,10 +162,15 @@ void MiddleWidget::initBottomContent()
 {
     QStringList icon_list;
     QStringList text_list;
+    QStringList text;
 
     QWidget *w = new QWidget;
 //    w->setStyleSheet("background-color:gay;");
     QHBoxLayout *content_layout = new QHBoxLayout(w);
+    content_layout->addStretch();
+    content_layout->setSpacing(50);
+    content_layout->setMargin(0);
+    content_layout->setContentsMargins(0, 0, 0, 0);
 //    if(this->cur_arch == "aarch64" || this->osname == "Kylin" || this->osname == "YHKylin")
 //    {
 //        icon_list<<":/tool/res/menu/home"<<":/tool/res/menu/cleanup"<<":/tool/res/menu/sysinfo"<<":/tool/res/menu/toolkits";
@@ -177,26 +182,36 @@ void MiddleWidget::initBottomContent()
 //    }
 
 //    icon_list<<":/tool/res/menu/system-clean.png"/*<<":/tool/res/menu/optimize"*/<< ":/tool/res/menu/monitor.png" << ":/tool/res/menu/drive-manager.png" <<":/tool/res/menu/sysinfo"<<":/tool/res/menu/toolkits" ;
-    icon_list<<":/svg/res/svg/top.svg"<<":/svg/res/svg/top3.svg"<<":/svg/res/svg/top4.svg"<<":/svg/res/svg/top5.svg"<<":/svg/res/svg/top7.svg";
-    text_list<< tr("Cleanup") /*<< tr("Optimize")*/ << tr("Monitoring") << tr("Drive")<< tr("Sysinfo") << tr("Toolkits") ;
+    icon_list<<":/svg/res/svg/top.svg";
+    text_list<< tr("Cleanup") /*<< tr("Optimize")*/ ;
+    text << "Cleanup" /*<< "Optimize"*/ ;
 
+    if(!hide)
+    {
+        icon_list <<":/svg/res/svg/top3.svg";
+        text_list << tr("Monitoring") ;
+        text << "Monitoring";
+    }
+
+    icon_list <<":/svg/res/svg/top4.svg"<<":/svg/res/svg/top5.svg"<<":/svg/res/svg/top7.svg";
+    text_list << tr("Drive")<< tr("Sysinfo") << tr("Toolkits") ;
+    text << "Drive" << "Sysinfo" << "Toolkits";
+
+    content_layout->addStretch(1);
     QSignalMapper *signal_mapper = new QSignalMapper(this);
     for(int i=0; i<icon_list.size(); i++)
     {
         KylinToolButton *tool_button = new KylinToolButton(icon_list.at(i), text_list.at(i));
         tool_button->setFixedSize(92, 93);
+        tool_button->setStatusTip(text.at(i));
         button_list.append(tool_button);
         connect(tool_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
         signal_mapper->setMapping(tool_button, QString::number(i, 10));
-        content_layout->addWidget(tool_button, 0, Qt::AlignBottom);
+        content_layout->addWidget(tool_button, 0, Qt::AlignHCenter);
     }
     this->switchSelectedPageIndex("0");
     connect(signal_mapper, SIGNAL(mapped(QString)), this, SLOT(switchSelectedPageIndex(QString)));
-
-    content_layout->addStretch();
-    content_layout->setSpacing(50);
-    content_layout->setMargin(0);
-    content_layout->setContentsMargins(0, 0, 0, 0);
+    content_layout->addStretch(1);
 
 //    setLayout(button_layout);
     is_move = false;
@@ -209,11 +224,13 @@ void MiddleWidget::switchSelectedPageIndex(QString index)
     bool ok;
     int current_index = index.toInt(&ok, 10);
 //    qDebug() << index;
+    KylinToolButton *index_button;
     for(int i=0; i<button_list.count(); i++)
     {
         KylinToolButton *tool_button = button_list.at(i);
         if(current_index == i)
         {
+            index_button = button_list.at(i);
             tool_button->setMousePress(true);
         }
         else
@@ -221,7 +238,8 @@ void MiddleWidget::switchSelectedPageIndex(QString index)
             tool_button->setMousePress(false);
         }
     }
-    emit turnCurrentPage(current_index);
+//    qDebug() << index_button->statusTip();
+    emit turnCurrentPage(index_button->statusTip());
 }
 
 void MiddleWidget::showBoxTool()
