@@ -103,14 +103,15 @@ void MListwidget::InitInfowidgetUI()
     main_layout->setContentsMargins(0,0,0,0);
 
     this->setLayout(main_layout);
-    info_widget->initInfoUI(this->has_Battery,this->has_Sensor);
+    info_widget->initInfoUI(this->has_Battery,this->has_Sensor,this->all_info);
 }
 
 
-void MListwidget::setBatteryAndSensor(bool battery, bool sensor){
+void MListwidget::setBatteryAndSensor(bool battery, bool sensor, QMap<QString,bool> info){
 //    qDebug() << Q_FUNC_INFO << battery << sensor;
     this->has_Battery=battery;
     this->has_Sensor =sensor;
+    this->all_info = info;
 }
 
 void MListwidget::changeListwidgetpage(QListWidgetItem *item)

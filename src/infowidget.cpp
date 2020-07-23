@@ -85,7 +85,7 @@ void InfoWidget::paintEvent(QPaintEvent *event)
     style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }
 
-void InfoWidget::initInfoUI(bool has_battery, bool has_sensor)
+void InfoWidget::initInfoUI(bool has_battery, bool has_sensor, QMap<QString,bool> info)
 {
     type_list.clear();
     icon_list.clear();
@@ -99,58 +99,71 @@ void InfoWidget::initInfoUI(bool has_battery, bool has_sensor)
     //    emit this->requestRefreshSystemInfo();
     //    emit this->requestupdateSystemRunnedTime();
 
+    if(info["system_message"]){
+        type_list << tr("Desktop");
+        icon_list << "unity";
+        InfoGui *desktop_widget = new InfoGui(this);
+        desktop_widget->setInfoGuiName("unity");
+        stacked_widget->addWidget(desktop_widget);
+        stacked_widget->setCurrentWidget(desktop_widget);
+        emit this->requestDesktopInfo();
+    }
 
-    type_list << tr("Desktop");
-    icon_list << "unity";
-    InfoGui *desktop_widget = new InfoGui(this);
-    desktop_widget->setInfoGuiName("unity");
-    stacked_widget->addWidget(desktop_widget);
-    stacked_widget->setCurrentWidget(desktop_widget);
-    emit this->requestDesktopInfo();
+    if(info["cpu_info"]){
+        type_list << tr("CPU");
+        icon_list << "cpu";
+        InfoGui *cpu_widget = new InfoGui(this);
+        cpu_widget->setInfoGuiName("cpu");
+        stacked_widget->addWidget(cpu_widget);
+    }
 
-    type_list << tr("CPU");
-    icon_list << "cpu";
-    InfoGui *cpu_widget = new InfoGui(this);
-    cpu_widget->setInfoGuiName("cpu");
-    stacked_widget->addWidget(cpu_widget);
+    if(info["memory_info"]){
+        type_list << tr("Memory");
+        icon_list << "memory";
+        InfoGui *memory_widget = new InfoGui(this);
+        memory_widget->setInfoGuiName("memory");
+        stacked_widget->addWidget(memory_widget);
+    }
 
-    type_list << tr("Memory");
-    icon_list << "memory";
-    InfoGui *memory_widget = new InfoGui(this);
-    memory_widget->setInfoGuiName("memory");
-    stacked_widget->addWidget(memory_widget);
+    if(info["board_info"]){
+        type_list << tr("Motherboard");
+        icon_list << "board";
+        InfoGui *board_widget = new InfoGui(this);
+        board_widget->setInfoGuiName("board");
+        stacked_widget->addWidget(board_widget);
+    }
 
-    type_list << tr("Motherboard");
-    icon_list << "board";
-    InfoGui *board_widget = new InfoGui(this);
-    board_widget->setInfoGuiName("board");
-    stacked_widget->addWidget(board_widget);
+    if(info["harddisk_info"]){
+        type_list << tr("HD");
+        icon_list << "harddisk";
+        InfoGui *hd_widget = new InfoGui(this);
+        hd_widget->setInfoGuiName("harddisk");
+        stacked_widget->addWidget(hd_widget);
+    }
 
-    type_list << tr("HD");
-    icon_list << "harddisk";
-    InfoGui *hd_widget = new InfoGui(this);
-    hd_widget->setInfoGuiName("harddisk");
-    stacked_widget->addWidget(hd_widget);
+    if(info["networkcard_info"]){
+        type_list << tr("NIC");
+        icon_list << "network";
+        InfoGui *nic_widget = new InfoGui(this);
+        nic_widget->setInfoGuiName("network");
+        stacked_widget->addWidget(nic_widget);
+    }
 
+    if(info["monitor_info"]){
+        type_list << tr("VGA");
+        icon_list << "monitor";
+        InfoGui *monitor_widget = new InfoGui(this);
+        monitor_widget->setInfoGuiName("monitor");
+        stacked_widget->addWidget(monitor_widget);
+    }
 
-    type_list << tr("NIC");
-    icon_list << "network";
-    InfoGui *nic_widget = new InfoGui(this);
-    nic_widget->setInfoGuiName("network");
-    stacked_widget->addWidget(nic_widget);
-
-    type_list << tr("VGA");
-    icon_list << "monitor";
-    InfoGui *monitor_widget = new InfoGui(this);
-    monitor_widget->setInfoGuiName("monitor");
-    stacked_widget->addWidget(monitor_widget);
-
-
-    type_list << tr("Audio");
-    icon_list << "audio";
-    InfoGui *audio_widget = new InfoGui(this);
-    audio_widget->setInfoGuiName("audio");
-    stacked_widget->addWidget(audio_widget);
+    if(info["audiocard_info"]){
+        type_list << tr("Audio");
+        icon_list << "audio";
+        InfoGui *audio_widget = new InfoGui(this);
+        audio_widget->setInfoGuiName("audio");
+        stacked_widget->addWidget(audio_widget);
+    }
 
     if (has_battery) {
         type_list << tr("Battery");

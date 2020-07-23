@@ -22,7 +22,7 @@ public:
     explicit MListwidget(QWidget *parent = nullptr);
     void InitListUI();
     void InitInfowidgetUI();
-    void setBatteryAndSensor(bool battery,bool sensor);
+    void setBatteryAndSensor(bool battery,bool sensor,QMap<QString,bool> info);
 signals:
     void m_requestRefreshSystemInfo();
 
@@ -110,6 +110,7 @@ private:
     QStringList stringlist;
     bool has_Battery = false;
     bool has_Sensor = false;
+    QMap<QString,bool> all_info;
 };
 
 #endif // INFOLISTWIDGET_H

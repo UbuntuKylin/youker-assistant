@@ -147,6 +147,8 @@ private:
     QString status;
     DataWorker *m_dataWorker = nullptr;
     QWidget *centralWidget = nullptr;
+
+    QMap<QString,bool> info;
 };
 
 class GlobalData // define by hebing,just for transmit var

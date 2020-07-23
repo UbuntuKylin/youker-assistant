@@ -46,7 +46,7 @@ public:
     explicit InfoWidget(QString machine = "", QWidget *parent = 0);
     ~InfoWidget();
 
-    void initInfoUI(bool has_battery, bool has_sensor);
+    void initInfoUI(bool has_battery, bool has_sensor , QMap<QString,bool> info);
 
 public slots:
     void changeInfoPage(QListWidgetItem* item);
