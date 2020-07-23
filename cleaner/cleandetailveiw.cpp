@@ -1,3 +1,22 @@
+/*
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  tang guang   tangguang@kylinos.cn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "cleandetailveiw.h"
 #include "../component/selectcategorywidget.h"
 #include "../component/selectwidget.h"
@@ -144,7 +163,7 @@ void CleandetailVeiw::InitBottomWidget()
 {
     QFrame *frame = new QFrame(this);
     QHBoxLayout *m_layout = new QHBoxLayout(frame);
-    m_layout->setSpacing(0);
+    m_layout->setSpacing(40);
     m_layout->setMargin(0);
     m_layout->setContentsMargins(120,65,110,125);
 

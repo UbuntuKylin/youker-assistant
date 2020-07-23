@@ -50,6 +50,8 @@ public:
     const QStringList cpuModeList() const;
     const QString cpuCurrentMode() const;
 
+    QMap<QString,bool> onRequesetAllInfoIsHaveValue();
+
 public slots:
     void doWork();
     void updateSensorValue();
@@ -286,8 +288,8 @@ signals:
     //sensor info
     void sendSensorInfo(QMap<QString, QVariant> tmpMap);
 
-    //driver info
-
+    //all info
+    void sendInfoIsHaveValue(QMap<QString, bool> tmpMap);
 
 
 
@@ -368,5 +370,7 @@ private:
     QString m_currentCpuMode;
 
     QTimer *m_sensorTimer = nullptr;
+
+    QMap<QString,bool> info;
 };
 

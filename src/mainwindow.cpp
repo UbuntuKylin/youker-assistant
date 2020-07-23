@@ -65,6 +65,8 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
     registerCustomDataMetaType();
     registerCustomDataListMetaType();
 
+//    this->setStyleSheet("background : red");
+
     this->osName = accessOSName();
 //    char *dsk;
 //    dsk = getenv("XDG_CURRENT_DESKTOP");
@@ -90,7 +92,7 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
         this->setWindowIcon(QIcon(":/res/kylin-assistant.png"));
 
     this->setWindowOpacity(1);
-    this->setFixedSize(MAIN_WINDOW_WIDTH+SHADOW_LEFT_TOP_PADDING+SHADOW_LEFT_TOP_PADDING, MAIN_WINDOW_HEIGHT+SHADOW_RIGHT_BOTTOM_PADDING+SHADOW_RIGHT_BOTTOM_PADDING);
+    this->setFixedSize(MAIN_WINDOW_WIDTH+SHADOW_LEFT_TOP_PADDING+SHADOW_LEFT_TOP_PADDING+16, MAIN_WINDOW_HEIGHT+SHADOW_RIGHT_BOTTOM_PADDING+SHADOW_RIGHT_BOTTOM_PADDING+16);
 
     status = "Cleanup";
 
@@ -133,29 +135,24 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
 
 void MainWindow::paintEvent(QPaintEvent *event)
 {
-    QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing);  // 反锯齿;
-    painter.setBrush(QColor(Qt::MaskInColor));
-    painter.setPen(Qt::transparent);
+    Q_UNUSED(event)
     QPainterPath path;
-    path.setFillRule(Qt::OddEvenFill);
-    path.addRoundedRect(0,0,this->width(),this->height(),20,20);
+    path.setFillRule(Qt::WindingFill);
+    path.addRoundRect(10,10,this->width()-20,this->height()-20,2,2);
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing,true);
+    painter.fillPath(path,QBrush(Qt::white));
+    QColor color(0,0,0,50);
+    for(int i = 0 ; i < 10 ; ++i)
+    {
+        QPainterPath path;
+        path.setFillRule(Qt::WindingFill);
+        path.addRoundRect(10-i,10-i,this->width()-(10-i)*2,this->height()-(10-i)*2,2,2);
+        color.setAlpha(150 - qSqrt(i)*50);
+        painter.setPen(color);
+        painter.drawPath(path);
+    }
 
-    path.addRect(0,0,this->width(),this->height());
-    painter.save();
-    painter.setCompositionMode(QPainter::CompositionMode_Clear);
-    painter.drawPath(path);
-    painter.restore();
-
-    QStyleOption opt;
-    opt.init(this);
-    style()->drawPrimitive(QStyle::PE_Widget, &opt, &painter, this);
-//    //也可用QPainterPath 绘制代替 painter.drawRoundedRect(rect, 15, 15);
-//    {
-//        QPainterPath painterPath;
-//        painterPath.addRoundedRect(rect, 15, 15);
-//        p.drawPath(painterPath);
-//    }
     QWidget::paintEvent(event);
 }
 
@@ -268,7 +265,7 @@ void MainWindow::initWidgets()
 //    centralWidget->setStyleSheet("background: transparent");
     QVBoxLayout *contentLayout = new QVBoxLayout(centralWidget);
     this->setCentralWidget(centralWidget);
-    this->setContentsMargins(SHADOW_LEFT_TOP_PADDING,SHADOW_LEFT_TOP_PADDING,SHADOW_RIGHT_BOTTOM_PADDING,SHADOW_RIGHT_BOTTOM_PADDING);
+    this->setContentsMargins(SHADOW_LEFT_TOP_PADDING+8,SHADOW_LEFT_TOP_PADDING+7,SHADOW_RIGHT_BOTTOM_PADDING+6,SHADOW_RIGHT_BOTTOM_PADDING+6);
     contentLayout->setContentsMargins(0, 0, 0, 0);
     contentLayout->setMargin(0);
     contentLayout->setSpacing(0);
@@ -288,6 +285,8 @@ void MainWindow::onInitDataFinished()
     this->temperature = m_dataWorker->hide_temperature_page();
     this->fan = m_dataWorker->hide_fan_page();
     this->cpufm = m_dataWorker->hide_cpufm_page();
+    this->info = m_dataWorker->onRequesetAllInfoIsHaveValue();
+    qDebug() << Q_FUNC_INFO << info;
 
     this->m_cpulist = m_dataWorker->cpuModeList();
     this->m_currentCpuMode = m_dataWorker->cpuCurrentMode();
@@ -560,10 +559,11 @@ void MainWindow::onInitDataFinished()
     connect(setting_widget, SIGNAL(resetThumbnailCacheSize(int)), m_dataWorker, SLOT(onResetThumbnailCacheSize(int)));
 
 //    info_widget->initInfoUI(this->battery, this->sensor);
+    list_widget->setBatteryAndSensor(this->battery,this->sensor,this->info);
     list_widget->InitInfowidgetUI();
 //    monitorwidget->InitUI();
     qDebug() << Q_FUNC_INFO << __LINE__;
-    list_widget->setBatteryAndSensor(this->battery,this->sensor);
+
     monitorwidget->set_governer_list(m_cpulist);
     monitorwidget->set_cur_governer(m_currentCpuMode);
     monitorwidget->set_temperature(this->temperature);
@@ -1107,10 +1107,10 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
         m_mousePressed = true;
         m_dragPosition = event->globalPos() - pos();
     }*/
-    if (event->button() == Qt::LeftButton) {
-        this->m_dragPosition = event->globalPos() - frameGeometry().topLeft();
-        this->m_mousePressed = true;
-    }
+//    if (event->button() == Qt::LeftButton) {
+//        this->m_dragPosition = event->globalPos() - frameGeometry().topLeft();
+//        this->m_mousePressed = true;
+//    }
 
     QMainWindow::mousePressEvent(event);
 }
@@ -1119,7 +1119,7 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
     /*m_mousePressed = false;
     setWindowOpacity(1);*/
-    this->m_mousePressed = false;
+//    this->m_mousePressed = false;
     setWindowOpacity(1);
 
     QMainWindow::mouseReleaseEvent(event);
@@ -1134,10 +1134,10 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         setWindowOpacity(0.9);
 //        event->accept();
     }*/
-    if (this->m_mousePressed) {
-        move(event->globalPos() - this->m_dragPosition);
-        setWindowOpacity(0.9);
-    }
+//    if (this->m_mousePressed) {
+//        move(event->globalPos() - this->m_dragPosition);
+//        setWindowOpacity(0.9);
+//    }
 
     QMainWindow::mouseMoveEvent(event);
 }

@@ -1,3 +1,22 @@
+/*
+ * Copyright (C) 2013 ~ 2015 National University of Defense Technology(NUDT) & Kylin Ltd.
+ *
+ * Authors:
+ *  tang guang   tangguang@kylinos.cn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "drivepagewidget.h"
 #include <QDebug>
 #include <QScrollBar>
@@ -26,7 +45,7 @@ DrivePageWidget::DrivePageWidget(QWidget *parent) : QWidget(parent)
     scrollarea->verticalScrollBar()->setStyleSheet("QScrollBar:vertical{width:8px;background:rgba(0,0,0,0%);margin:0px,0px,0px,0px;}\
                                                     QScrollBar::handle:vertical{width:8px;background:rgba(0,0,0,25%);border-radius:4px;min-height:20;}");
 
-    scrollarea->setFixedSize(620,this->height()-70);
+    scrollarea->setFixedSize(635,this->height()-70);
     main_layout->addWidget(scrollarea);
 
     main_frame = new QFrame();
@@ -62,10 +81,10 @@ void DrivePageWidget::InitPageUI(QMap<QString, QVariant> tmpMap)
     for(it = map.begin(),i = 1; it!= map.end() ;i++,++it){
 //        qDebug() << it.key() << it.value().toString();
         QFrame *item = new QFrame();
-        if( (i%2) != 0 )
-        {
-            item->setStyleSheet("border-radius:0px;background-color:rgba(238,238,238,1);");
-        }
+//        if( (i%2) != 0 )
+//        {
+//            item->setStyleSheet("border-radius:0px;background-color:rgba(238,238,238,1);");
+//        }
         item->setFixedSize(600,80);
 //        QVBoxLayout *m_Hlayout = new QHBoxLayout(item);
 //        QHBoxLayout *m_Vlayout = new QVBoxLayout(item);

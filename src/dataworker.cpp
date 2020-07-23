@@ -283,6 +283,76 @@ void DataWorker::updateSensorValue()
     emit sendSensorInfo(tmpMap);
 }
 
+QMap<QString,bool> DataWorker::onRequesetAllInfoIsHaveValue()
+{
+    QMap<QString, QVariant> tmpMap;
+
+    tmpMap = m_sessionInterface->get_system_message_qt();
+    if(tmpMap.isEmpty()){
+       info.insert("system_message",false);
+    }else{
+       info.insert("system_message",true);
+       tmpMap.clear();
+    }
+
+    tmpMap = m_systemInterface->get_cpu_info_qt();
+    if(tmpMap.isEmpty()){
+       info.insert("cpu_info",false);
+    }else{
+       info.insert("cpu_info",true);
+       tmpMap.clear();
+    }
+
+    tmpMap = m_systemInterface->get_memory_info_qt();
+    if(tmpMap.isEmpty()){
+       info.insert("memory_info",false);
+    }else{
+       info.insert("memory_info",true);
+       tmpMap.clear();
+    }
+
+    tmpMap = m_systemInterface->get_board_info_qt();
+    if(tmpMap.isEmpty()){
+       info.insert("board_info",false);
+    }else{
+       info.insert("board_info",true);
+       tmpMap.clear();
+    }
+
+    tmpMap = m_systemInterface->get_harddisk_info_qt();
+    if(tmpMap.isEmpty()){
+       info.insert("harddisk_info",false);
+    }else{
+       info.insert("harddisk_info",true);
+       tmpMap.clear();
+    }
+
+    tmpMap = m_systemInterface->get_networkcard_info_qt();
+    if(tmpMap.isEmpty()){
+       info.insert("networkcard_info",false);
+    }else{
+       info.insert("networkcard_info",true);
+       tmpMap.clear();
+    }
+
+    tmpMap = m_systemInterface->get_monitor_info_qt();
+    if(tmpMap.isEmpty()){
+       info.insert("monitor_info",false);
+    }else{
+       info.insert("monitor_info",true);
+       tmpMap.clear();
+    }
+
+    tmpMap = m_systemInterface->get_audiocard_info_qt();
+    if(tmpMap.isEmpty()){
+       info.insert("audiocard_info",false);
+    }else{
+       info.insert("audiocard_info",true);
+       tmpMap.clear();
+    }
+
+    return info;
+}
 
 //--------------------theme
 void DataWorker::onRequestThemeData()

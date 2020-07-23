@@ -1,4 +1,15 @@
-youker-assistant (3.0.2-0ubuntu2) focal; urgency=medium
+youker-assistant (3.0.2-0kylin1k9~rc4) v101; urgency=medium
+
+  * New bugfix release:
+    - Solve the problem of two icon styles when dragging Kylin Assistant
+    - Solve the problem of no shadow on the left side of the window
+  * Adjust some styles
+  * New upstearm release:
+    - Add the function of hiding system hardware information when it is empty
+
+ -- tangguang <tangguang@kylinos.cn>  Mon, 20 Jul 2020 11:52:56 +0800
+
+youker-assistant (3.0.2-0kylin1k8~rc2) v101; urgency=medium
 
   * New bugfix release:
     - Solve performance monitoring without loading any screen
@@ -8,6 +19,18 @@ youker-assistant (3.0.2-0ubuntu2) focal; urgency=medium
   * Adjust some styles
 
  -- tangguang <tangguang@kylinos.cn>  Fri, 10 Jul 2020 10:42:15 +0800
+
+youker-assistant (3.0.2-0kylin1k7~rc1) v101; urgency=medium
+
+  * Adjust some styles
+
+ -- tangguang <tangguang@kylinos.cn>  Thu, 02 Jul 2020 10:00:56 +0800
+
+youker-assistant (3.0.2-0kylin1k6~rc1) v101; urgency=medium
+
+  * UKUI3.0 version
+
+ -- tangguang <tangguang@kylinos.cn>  Mon, 15 Jun 2020 10:16:31 +0800
 
 youker-assistant (3.0.2-0ubuntu1) focal; urgency=medium
 

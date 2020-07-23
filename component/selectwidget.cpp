@@ -46,7 +46,7 @@ SelectWidget::SelectWidget(CleanerModuleID id, const QString &title, bool needMi
 
     SystemButton *close_btn = new SystemButton(top_tip);
     close_btn->loadPixmap(":/sys/res/sysBtn/close_button1.svg");
-    close_btn->setGeometry(this->width()-55,5,36,36);
+    close_btn->setGeometry(this->width()-53,2,36,36);
 
     m_mainLayout->setSpacing(0);
     m_mainLayout->setMargin(0);
@@ -117,7 +117,7 @@ void SelectWidget::paintEvent(QPaintEvent *event)
     Q_UNUSED(event)
     QPainterPath path;
     path.setFillRule(Qt::WindingFill);
-    path.addRoundRect(10,10,this->width()-20,this->height()-20,5,5);
+    path.addRoundRect(10,10,this->width()-20,this->height()-20,3,3);
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing,true);
     painter.fillPath(path,QBrush(Qt::white));
@@ -126,7 +126,7 @@ void SelectWidget::paintEvent(QPaintEvent *event)
     {
         QPainterPath path;
         path.setFillRule(Qt::WindingFill);
-        path.addRoundRect(10-i,10-i,this->width()-(10-i)*2,this->height()-(10-i)*2,5,5);
+        path.addRoundRect(10-i,10-i,this->width()-(10-i)*2,this->height()-(10-i)*2,3,3);
         color.setAlpha(150 - qSqrt(i)*50);
         painter.setPen(color);
         painter.drawPath(path);
