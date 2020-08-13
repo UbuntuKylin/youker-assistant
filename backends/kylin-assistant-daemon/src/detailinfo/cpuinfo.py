@@ -1361,7 +1361,7 @@ class DetailInfo:
 
         for line in output.split("\n"):
             value = line.split()
-            if value[1].startswith("259:") and value[5] == "disk" and value[2] == "0":
+            if value[1].startswith("259:") and value[5] == "disk":
                 disknum += 1
                 HDSize = get_human_read_capacity_size(int(value[3]))
                 DiskCapacity += ((HDSize if not statusfirst else "$") + "<1_1>")

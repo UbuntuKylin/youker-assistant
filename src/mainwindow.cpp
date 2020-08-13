@@ -124,7 +124,7 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
     //边框阴影效果
     QGraphicsDropShadowEffect *shadow_effect = new QGraphicsDropShadowEffect(this);
     shadow_effect->setBlurRadius(5);
-    shadow_effect->setColor(QColor(0, 0, 0, 127));
+    shadow_effect->setColor(QColor(0, 0, 0, 0));
     shadow_effect->setOffset(2, 4);
     this->setGraphicsEffect(shadow_effect);
 
@@ -1107,10 +1107,11 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
         m_mousePressed = true;
         m_dragPosition = event->globalPos() - pos();
     }*/
-//    if (event->button() == Qt::LeftButton) {
-//        this->m_dragPosition = event->globalPos() - frameGeometry().topLeft();
-//        this->m_mousePressed = true;
-//    }
+    if (event->button() == Qt::LeftButton) {
+        this->m_dragPosition = event->globalPos() - frameGeometry().topLeft();
+        this->m_mousePressed = true;
+        this->setCursor(Qt::OpenHandCursor);
+    }
 
     QMainWindow::mousePressEvent(event);
 }
@@ -1119,7 +1120,8 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
     /*m_mousePressed = false;
     setWindowOpacity(1);*/
-//    this->m_mousePressed = false;
+    this->m_mousePressed = false;
+    this->setCursor(Qt::ArrowCursor);
     setWindowOpacity(1);
 
     QMainWindow::mouseReleaseEvent(event);
@@ -1134,10 +1136,10 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         setWindowOpacity(0.9);
 //        event->accept();
     }*/
-//    if (this->m_mousePressed) {
-//        move(event->globalPos() - this->m_dragPosition);
-//        setWindowOpacity(0.9);
-//    }
+    if (this->m_mousePressed) {
+        move(event->globalPos() - this->m_dragPosition);
+        setWindowOpacity(0.9);
+    }
 
     QMainWindow::mouseMoveEvent(event);
 }

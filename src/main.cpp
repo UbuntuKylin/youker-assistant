@@ -28,6 +28,7 @@
 #include <QSplashScreen>
 #include <QElapsedTimer>
 #include <QDesktopWidget>
+#include <QStyleFactory>
 
 #include <unistd.h>
 #include <fcntl.h>
@@ -146,6 +147,7 @@ int main(int argc, char *argv[])
     //linguist: sudo apt-get install qt4-dev-tools
 
 //    QApplication app(argc, argv);
+    Kpplication::setStyle(QStyleFactory::create("ukui-default"));
     Kpplication app("kylin-assistant", argc, argv);
     app.setQuitOnLastWindowClosed(false);
 
