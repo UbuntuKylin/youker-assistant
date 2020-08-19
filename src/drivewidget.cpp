@@ -39,10 +39,10 @@ Drivewidget::Drivewidget(QWidget *parent) : QWidget(parent)
 //    QLabel *lable = new QLabel();
 //    lable->setText("---Drive widget---");
 //    main_layout->addWidget(lable);
-    main_layout = new QHBoxLayout(this);
-    main_layout->setSpacing(0);
-    main_layout->setMargin(0);
-    main_layout->setContentsMargins(0,0,0,0);
+//    main_layout = new QHBoxLayout(this);
+//    main_layout->setSpacing(0);
+//    main_layout->setMargin(0);
+//    main_layout->setContentsMargins(0,0,0,0);
 
     InitWidgetUI();
     this->setLayout(main_layout);

@@ -291,6 +291,7 @@ QMap<QString,bool> DataWorker::onRequesetAllInfoIsHaveValue()
     if(tmpMap.isEmpty()){
        info.insert("system_message",false);
     }else{
+       qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
        info.insert("system_message",true);
        tmpMap.clear();
     }
@@ -299,6 +300,7 @@ QMap<QString,bool> DataWorker::onRequesetAllInfoIsHaveValue()
     if(tmpMap.isEmpty()){
        info.insert("cpu_info",false);
     }else{
+        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
        info.insert("cpu_info",true);
        tmpMap.clear();
     }
@@ -307,6 +309,7 @@ QMap<QString,bool> DataWorker::onRequesetAllInfoIsHaveValue()
     if(tmpMap.isEmpty()){
        info.insert("memory_info",false);
     }else{
+        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
        info.insert("memory_info",true);
        tmpMap.clear();
     }
@@ -315,6 +318,7 @@ QMap<QString,bool> DataWorker::onRequesetAllInfoIsHaveValue()
     if(tmpMap.isEmpty()){
        info.insert("board_info",false);
     }else{
+        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
        info.insert("board_info",true);
        tmpMap.clear();
     }
@@ -323,6 +327,7 @@ QMap<QString,bool> DataWorker::onRequesetAllInfoIsHaveValue()
     if(tmpMap.isEmpty()){
        info.insert("harddisk_info",false);
     }else{
+        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
        info.insert("harddisk_info",true);
        tmpMap.clear();
     }
@@ -331,6 +336,7 @@ QMap<QString,bool> DataWorker::onRequesetAllInfoIsHaveValue()
     if(tmpMap.isEmpty()){
        info.insert("networkcard_info",false);
     }else{
+        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
        info.insert("networkcard_info",true);
        tmpMap.clear();
     }
@@ -339,6 +345,7 @@ QMap<QString,bool> DataWorker::onRequesetAllInfoIsHaveValue()
     if(tmpMap.isEmpty()){
        info.insert("monitor_info",false);
     }else{
+        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
        info.insert("monitor_info",true);
        tmpMap.clear();
     }
@@ -347,6 +354,7 @@ QMap<QString,bool> DataWorker::onRequesetAllInfoIsHaveValue()
     if(tmpMap.isEmpty()){
        info.insert("audiocard_info",false);
     }else{
+        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
        info.insert("audiocard_info",true);
        tmpMap.clear();
     }
@@ -1277,4 +1285,10 @@ void DataWorker::onRequestCpuAverageFrequency()
 {
     QMap<QString,QVariant> tmpMap  = m_systemInterface->get_cpu_average_frequency();
     emit sendCpuAverageFrequency(tmpMap);
+}
+
+void DataWorker::onRequestFanInfo()
+{
+    QMap<QString,QVariant> tmpMap  = m_systemInterface->get_fan_speed();
+    emit sendFanInfoValue(tmpMap);
 }

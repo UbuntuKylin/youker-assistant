@@ -224,6 +224,7 @@ public slots:
 
     void onRequesetCpuRange();
     void onRequestCpuAverageFrequency();
+    void onRequestFanInfo();
 
 signals:
     void dataLoadFinished();
@@ -291,6 +292,8 @@ signals:
     //all info
     void sendInfoIsHaveValue(QMap<QString, bool> tmpMap);
 
+    //fan info
+    void sendFanInfoValue(QMap<QString, QVariant> tmpMap);
 
 
 

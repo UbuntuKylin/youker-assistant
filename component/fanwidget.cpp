@@ -34,8 +34,11 @@ Fanwidget::Fanwidget(QWidget *parent) : QWidget(parent)
     main_layout->setMargin(0);
     main_layout->setContentsMargins(64,32,64,65);
 
+    connect(&m_timer,&QTimer::timeout,this,&Fanwidget::Requestsignal);
     InitUI();
 
+    m_timer.setInterval(2000);
+    m_timer.start();
 }
 
 Fanwidget::~Fanwidget()
@@ -89,8 +92,8 @@ void Fanwidget::Initwidgettop()
     this_layout->setContentsMargins(0,0,0,0);
 
     QLabel *fan_icon = new QLabel();
-    QLabel *top_fan_speed = new QLabel();
-    QLabel *tip_speed = new QLabel();
+    top_fan_speed = new QLabel();
+    tip_speed = new QLabel();
 
     QPixmap check_pixmap(":/res/fan.png");
     fan_icon->setPixmap(check_pixmap);
@@ -108,7 +111,7 @@ void Fanwidget::Initwidgettop()
     font1.setPixelSize(14);
     tip_speed->setFixedHeight(15);
     tip_speed->setFont(font1);
-    tip_speed->setText(tr("Maximum 7600 rpm/s, minimum 2546 rpm/s."));
+    tip_speed->setText(tr("Maximum ")+QString::number(maxSpeed)+tr(" rpm/s, minimum ")+QString::number(minSpeed)+tr(" rpm/s"));
     this_layout->addWidget(tip_speed);
 
     this_top_layout->addWidget(fan_icon);
@@ -130,12 +133,12 @@ void Fanwidget::Initwidgetbottom()
     v_layout->setMargin(0);
     v_layout->setContentsMargins(0,54,0,0);
 
-    QLabel *icon_lable = new QLabel();
-    QLabel *speed_lable = new QLabel();
+    icon_lable = new QLabel();
+    speed_lable = new QLabel();
     QLabel *tip_text = new QLabel();
 
-    QMovie *movie = new QMovie(":/res/fan-1.gif");
-    movie->setSpeed(300);
+    movie = new QMovie(":/res/fan-1.gif");
+    movie->setSpeed(100);
     icon_lable->setMovie(movie);
     icon_lable->setFixedSize(158,158);
     movie->start();
@@ -154,4 +157,52 @@ void Fanwidget::Initwidgetbottom()
     v_layout->addWidget(this_frame);
 
     bottom_layout->addWidget(frame,0,Qt::AlignHCenter);
+}
+
+void Fanwidget::RefreshInterface(QMap<QString,QVariant> tmpMap)
+{
+//    qDebug() << Q_FUNC_INFO;
+    int speed = 0;
+    int var;
+
+    QMap<QString, QVariant> fan_info_map = tmpMap;
+    if (!fan_info_map.isEmpty()) {
+        QMap<QString,QVariant>::iterator it;
+        for(it=fan_info_map.begin(); it != fan_info_map.end(); ++it){
+            bool ok;
+            var = it.value().toString().toInt(&ok,10);
+
+            if(maxSpeed == minSpeed  && minSpeed == 0){
+                maxSpeed = minSpeed = var;
+            }
+
+            if(var >= maxSpeed){
+                maxSpeed = var;
+            }
+            if(var <= minSpeed){
+                minSpeed = var;
+            }
+
+            speed += var;
+            sumSpeed += var;
+        }
+//        qDebug() << Q_FUNC_INFO << "==" << QString::number(speed/fan_info_map.size()) << maxSpeed << minSpeed << timeNum;
+        if(timeNum == 0 || timeNum % 5 == 0){
+           if(timeNum == 0)
+               Speed = QString::number(sumSpeed/fan_info_map.size());
+           else
+               Speed = QString::number(sumSpeed/(fan_info_map.size()*5));
+
+           top_fan_speed->setText(tr("The fan is working fine, averaging ")+Speed+tr(" rpm/s"));
+           tip_speed->setText(tr("Maximum ")+QString::number(maxSpeed)+tr(" rpm/s, minimum ")+QString::number(minSpeed)+tr(" rpm/s"));
+           top_fan_speed->update();
+           tip_speed->update();
+           sumSpeed = 0;
+        }
+
+        speed_lable->setText(QString::number(speed/fan_info_map.size())+tr(" rpm/s"));
+        speed_lable->update();
+
+        timeNum++;
+    }
 }

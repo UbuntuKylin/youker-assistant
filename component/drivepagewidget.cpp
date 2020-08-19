@@ -24,7 +24,6 @@
 
 DrivePageWidget::DrivePageWidget(QWidget *parent) : QWidget(parent)
 {
-    qDebug() << Q_FUNC_INFO <<__LINE__;
     this->setFixedSize(700,460);
     this->setAutoFillBackground(true);
 
@@ -109,7 +108,7 @@ void DrivePageWidget::InitPageUI(QMap<QString, QVariant> tmpMap)
 
         name->setText(it.value().toString());
         name->setWordWrap(true);
-        name->setStyleSheet("color:rgb(173,173,173);}");
+        name->setStyleSheet("color:rgb(173,173,173)");
         name->setGeometry(QRect(65,40,500,18));
 
         v_layout->addWidget(item);
@@ -123,7 +122,7 @@ void DrivePageWidget::InitPageUI(QMap<QString, QVariant> tmpMap)
     }
     QLabel *drive_num = new QLabel(this);
     drive_num->setText(tr("Total, section ")+QString::number(map.size())+tr(" drivers"));
-    drive_num->setStyleSheet("color:rgb(173,173,173);}");
+    drive_num->setStyleSheet("color:rgb(173,173,173)");
     main_layout->addWidget(drive_num);
 }
 

@@ -138,10 +138,10 @@ int main(int argc, char *argv[])
 {
 //if(QApplication::desktop()->width() >= 2560)
 //{
-//    #if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
-//        QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-//        QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-//    #endif
+    #if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
+        QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+        QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+    #endif
 //}
     //find . | xargs -x touch
     //linguist: sudo apt-get install qt4-dev-tools
@@ -189,13 +189,13 @@ int main(int argc, char *argv[])
         QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
 #endif
 
-if(QApplication::desktop()->width() >= 2560)
-{
-    #if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
-        QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-        QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-    #endif
-}
+//if(QApplication::desktop()->width() >= 2560)
+//{
+//    #if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
+//        QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+//        QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+//    #endif
+//}
 //        signal(SIGINT, sig_int);
 
     //    if (make_pid_file()) {

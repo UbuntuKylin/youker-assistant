@@ -63,6 +63,8 @@ void Monitorwidget::InitUI()
         status_list << "Fan Speed";
         fan_widget = new Fanwidget();
         stackedwidget->addWidget(fan_widget);
+        connect(fan_widget,SIGNAL(Requestsignal()),this,SIGNAL(RequestFanInfoData()));
+        connect(this,SIGNAL(SendFanInfoData(QMap<QString,QVariant>)),fan_widget,SLOT(RefreshInterface(QMap<QString,QVariant>)));
     }
 
     if(m_cpufm){
