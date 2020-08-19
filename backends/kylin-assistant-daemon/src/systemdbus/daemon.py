@@ -368,6 +368,10 @@ class Daemon(PolicyKitService):
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_sensor_info(self):
         return self.infoconf.get_sensors()
+    
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
+    def get_fan_info(self):
+        return self.infoconf.get_fan_info()
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_cpu_sensor(self):

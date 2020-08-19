@@ -119,7 +119,7 @@ private:
     MListwidget *list_widget = nullptr;
     InfoWidget *info_widget = nullptr;
     CleanerWidget *cleaner_widget = nullptr;
-    SettingWidget *setting_widget = nullptr;
+//    SettingWidget *setting_widget = nullptr;
     BoxWidget *box_widget = nullptr;
     KylinMenu *main_menu = nullptr;
     QPoint m_dragPosition; //移动的距离

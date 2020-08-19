@@ -93,6 +93,8 @@ public:
 
     QMap<QString, QVariant> get_cpu_average_frequency();
 
+    QMap<QString, QVariant> get_fan_speed();
+
     //add by tangguang======2020.06.22
     bool hide_temperature_page();
     bool hide_fan_page();

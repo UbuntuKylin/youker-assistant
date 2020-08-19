@@ -63,7 +63,7 @@ SessionDispatcher::SessionDispatcher(QObject *parent)
     QObject::connect(sessioniface, SIGNAL(check_source_list_signal(bool)), this, SIGNAL(receive_source_list_signal(bool)));
 
     //pingback
-    this->submit_uk_pingback();
+//    this->submit_uk_pingback();
 }
 
 SessionDispatcher::~SessionDispatcher() {

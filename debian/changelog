@@ -1,3 +1,26 @@
+youker-assistant (3.0.2-0kylin2k3~rc1) v101; urgency=medium
+
+  * Improve fan speed display function
+
+ -- tangguang <tangguang@kylinos.cn>  Tue, 18 Aug 2020 15:04:14 +0800
+
+youker-assistant (3.0.2-0kylin2k2~rc1) v101; urgency=medium
+
+  * New bugfix release:
+      - Solve the slow startup problem
+      - Solve the error display of cpu information
+  * Remove redundant dbuginfo
+
+ -- tangguang <tangguang@kylinos.cn>  Mon, 17 Aug 2020 17:10:29 +0800
+
+youker-assistant (3.0.2-0kylin2k1~rc1) v101; urgency=medium
+
+  * New bugfix release:
+      - Solve the dark mode exception (bug#15893,bug#14193)
+      - Solve two mouse styles when dragging (bug#14496)
+
+ -- tangguang <tangguang@kylinos.cn>  Thu, 13 Aug 2020 18:47:17 +0800
+
 youker-assistant (3.0.2-0kylin1k9~rc4) v101; urgency=medium
 
   * New bugfix release:

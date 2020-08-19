@@ -435,10 +435,23 @@ QMap<QString, QVariant> SystemDispatcher::get_cpu_average_frequency()
     }
 }
 
+QMap<QString, QVariant> SystemDispatcher::get_fan_speed()
+{
+    QMap<QString, QVariant> value;
+    QDBusReply<QMap<QString, QVariant>> reply = systemiface->call("get_fan_info");
+    if(reply.isValid()){
+        value = reply.value();
+        return value;
+    }else{
+        qDebug() << "get fan info failed!";
+        return value;
+    }
+}
+
 bool SystemDispatcher::hide_temperature_page()
 {
     QDBusReply<bool> reply = systemiface->call("hide_temperature_page");
-    qDebug() << Q_FUNC_INFO << reply.value();
+//    qDebug() << Q_FUNC_INFO << reply.value();
     return reply.value();
 }
 

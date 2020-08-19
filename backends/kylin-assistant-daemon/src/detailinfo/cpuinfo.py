@@ -640,24 +640,30 @@ class DetailInfo:
         for line in output:
             value = bytes.decode(line).split(":")
             tmpCpu.setdefault(value[0], value[1].strip())
-        Cpu['cpu_cores'] = tmpCpu.get("CPU(s)", "")
+        
+        socket = tmpCpu.get("Socket(s)", "")
+        i = tmpCpu.get("Core(s) per socket", "")
+        Cpu['cpu_cores_online'] = Cpu['cpu_cores'] = str(int(socket)*int(i))
+    
         Cpu['CpuCapacity'] = tmpCpu.get("CPU max MHz", "").split(".")[0] + "MHz" if tmpCpu.get("CPU max MHz", "") else ""
         Cpu['CpuVersion'] = tmpCpu.get("Model name", "")
         Cpu['CpuVendor'] = tmpCpu.get("Model name", "phytium")#kobe 2020
         cpuType = Cpu['CpuVendor'].lower()
         if cpuType.find('phytium') >= 0:#Phytium
-            Cpu['CpuVendor'] = 'phytium'
+            Cpu['CpuVendor'] = 'Phytium'
         elif cpuType.find('huawei') >= 0:#KunPeng
-            Cpu['CpuVendor'] = 'huawei'
+            Cpu['CpuVendor'] = 'Huawei'
         elif cpuType.find('hygon') >= 0:#Hygon
-            Cpu['CpuVendor'] = 'hygon'
+            Cpu['CpuVendor'] = 'Hygon'
         elif cpuType.find('zhaoxin') >= 0:#ZHAOXIN
-            Cpu['CpuVendor'] = 'zhaoxin'
+            Cpu['CpuVendor'] = 'Zhaoxin'
         elif cpuType.find('loongson') >= 0:#Loongson
-            Cpu['CpuVendor'] = 'loongson'
+            Cpu['CpuVendor'] = 'Loongson'
+        elif cpuType.find('intel') >= 0:#Loongson
+            Cpu['CpuVendor'] = 'Intel'
         #Cpu['CpuSlot'] = tmpCpu.get("Socket(s)", "")
         Cpu['cpu_siblings'] = tmpCpu.get("Thread(s) per core", "")
-        Cpu['cpu_cores_online'] = os.sysconf("SC_NPROCESSORS_ONLN")
+        #Cpu['cpu_cores_online'] = os.sysconf("SC_NPROCESSORS_ONLN")
 
         return Cpu
 
@@ -1649,7 +1655,7 @@ class DetailInfo:
         ip_dic={}
         for name in interface:
             name = name.strip()
-            if name is not "lo":#20161228
+            if name != "lo":#20161228
                 mac = get_interface_mac(name)
                 if NetSerial:
                     NetSerial += "<1_1>" + mac
@@ -2100,6 +2106,19 @@ class DetailInfo:
         origin["cur_freq"]=v
 
         return origin
+
+    def get_fan_info(self):
+        origin = {}
+
+        status, output = subprocess.getstatusoutput("sensors")
+
+        if(status != -1):
+            for line in output.split("\n"):
+                if "fan" in line.split(":")[0]:
+                    origin[line.split(":")[0]]=line.split(":")[1].lstrip().split(" ")[0]
+        
+        return origin
+
                     
 
     # cpu频率的单位换算
