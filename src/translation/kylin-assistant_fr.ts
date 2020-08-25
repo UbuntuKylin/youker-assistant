@@ -533,13 +533,13 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="118"/>
-        <source>Current CPU Main Frequency</source>
+        <location filename="../../component/cpufmwidget.cpp" line="36"/>
+        <source>Whether to apply?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="36"/>
-        <source>Whether to apply?</source>
+        <location filename="../../component/cpufmwidget.cpp" line="118"/>
+        <source>Current average CPU core frequency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

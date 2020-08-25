@@ -106,10 +106,14 @@ void DrivePageWidget::InitPageUI(QMap<QString, QVariant> tmpMap)
         whichDrive->setText(k.at(1));
         whichDrive->setGeometry(QRect(65,16,200,18));
 
+//        qDebug() << it.value().toString() << it.value().toString().length();
         name->setText(it.value().toString());
+        if(it.value().toString().length() >= 77)
+            name->setToolTip(it.value().toString());
+
         name->setWordWrap(true);
         name->setStyleSheet("color:rgb(173,173,173)");
-        name->setGeometry(QRect(65,40,500,18));
+        name->setGeometry(QRect(65,40,550,18));
 
         v_layout->addWidget(item);
 

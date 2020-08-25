@@ -43,8 +43,8 @@ ShredDialog::ShredDialog(QWidget *parent) :
     , mousePressed(false)
 {
     setWindowFlags(Qt::FramelessWindowHint);
+    this->setAttribute(Qt::WA_TranslucentBackground);
 //    this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowMinimizeButtonHint);//Attention: Qt::WindowCloseButtonHint make showMinimized() valid
-    this->setStyleSheet("QDialog{border: 1px solid white;border-radius:1px;background-color: #ffffff;}");
 
     this->setWindowTitle(tr("Kylin Shred Manager"));
     this->setWindowIcon(QIcon(":/model/res/plugin/shredder.png"));
@@ -58,7 +58,7 @@ ShredDialog::ShredDialog(QWidget *parent) :
 //    title_bar = new KylinTitleBar();
 //    initTitleBar();
     title_bar = new MyTitleBar(tr("Shred Manager"), false, this);
-    title_bar->setFixedSize(this->width(), TITLE_BAR_HEIGHT);
+    title_bar->setFixedSize(this->width()-20, TITLE_BAR_HEIGHT);
 
     toolkits = new Toolkits(0, this->width(), this->height());
 
@@ -100,7 +100,7 @@ ShredDialog::ShredDialog(QWidget *parent) :
     main_layout->addLayout(layout);
     main_layout->setSpacing(20);
     main_layout->setMargin(0);
-    main_layout->setContentsMargins(0, 0, 0, 0);
+    main_layout->setContentsMargins(10, 10, 0, 0);
     setLayout(main_layout);
 
     this->setLanguage();
@@ -306,6 +306,29 @@ void ShredDialog::mouseReleaseEvent(QMouseEvent *event)
     }
 
     QWidget::mouseReleaseEvent(event);
+}
+
+void ShredDialog::paintEvent(QPaintEvent *event)
+{
+    Q_UNUSED(event)
+    QPainterPath path;
+    path.setFillRule(Qt::WindingFill);
+    path.addRoundRect(10,10,this->width()-20,this->height()-20,5,5);
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing,true);
+    painter.fillPath(path,QBrush(Qt::white));
+    QColor color(0,0,0,50);
+    for(int i = 0 ; i < 10 ; ++i)
+    {
+        QPainterPath path;
+        path.setFillRule(Qt::WindingFill);
+        path.addRoundRect(10-i,10-i,this->width()-(10-i)*2,this->height()-(10-i)*2,5,5);
+        color.setAlpha(150 - qSqrt(i)*50);
+        painter.setPen(color);
+        painter.drawPath(path);
+    }
+
+    QWidget::paintEvent(event);
 }
 
 void ShredDialog::mouseMoveEvent(QMouseEvent *event)

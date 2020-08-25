@@ -428,9 +428,10 @@ void InfoItemLine::setInfoValue(const QString &value)
 //    m_valueLabel->setMinimumSize(461,32);
 //    m_valueLabel->setMaximumSize(461,70);
     m_valueLabel->setIndent(5);
-//    m_valueLabel->setWordWrap(true);
-//    m_valueLabel->setAlignment(Qt::AlignTop);
-    if(elided_text.endsWith("…"))
+    m_valueLabel->setWordWrap(true);
+    m_valueLabel->setAlignment(Qt::AlignTop);
+//    if(elided_text.endsWith("…"))
+    if(value.length() >= 64)
         m_valueLabel->setToolTip(value);
 }
 
