@@ -115,8 +115,8 @@ void CpuFmwidget::InitUI()
     font.setBold(QFont::Normal);
     font.setPixelSize(16);
     cpu_tip->setFont(font);
-    cpu_tip->setText(tr("Current CPU Main Frequency"));
-    cpu_tip->setGeometry(QRect(140,78,100,20));
+    cpu_tip->setText(tr("Current average CPU core frequency"));
+    cpu_tip->setGeometry(QRect(140,78,400,20));
 
     QFrame *h = new QFrame(this);
     h->setStyleSheet("background:rgb(231,231,231);border-radius:4px;");

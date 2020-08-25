@@ -303,10 +303,17 @@ class DetailInfo:
                 for line in fsys:
                     if line.startswith("NAME"):
                         tmp = line
+                    if line.startswith("PRETTY_NAME"):
+                        tmp1 = line
                         break
             # kobe: remove '"' and '\n'
             front = tmp.split('=')[1].replace('"', '').replace('\n', '')
-            platValue = front
+            front1 = tmp1.split('=')[1].replace('"', '').replace('\n', '')
+            
+            if front == "Kylin":
+                platValue = front
+            else:
+                platValue = front1
 
             if front == "Kylin" or front == "YHKylin":
                 with open("/etc/lsb-release", "r") as fp:
@@ -317,6 +324,8 @@ class DetailInfo:
                             id = tmp.split('=')[1].replace('"', '').replace('\n', '')
                             if id == "community":
                                 platValue = "YHKylin community"
+                            else:
+                                platValue = front1
                             break
         else:
             community = ""
@@ -331,11 +340,22 @@ class DetailInfo:
                         tmp = line
                         # kobe: remove '"' and '\n'
                         community = tmp.split('=')[1].replace('"', '').replace('\n', '')
+                    elif line.startswith("DISTRIB_DESCRIPTION"):
+                        tmp = line
+                        # kobe: remove '"' and '\n'
+                        community1 = tmp.split('=')[1].replace('"', '').replace('\n', '')
 #                        break
-            platValue = id
+            if id == "Kylin":
+                platValue = id
+            else:
+                platValue = community1
+
             if id == "Kylin" or id == "YHKylin":
                 if community == "community":
                     platValue = "YHKylin community"
+                else:
+                    platValue = community1
+
         return platValue
 
     def get_os_name(self):
@@ -1395,7 +1415,7 @@ class DetailInfo:
                     DiskFw += ("$" + "<1_1>")
                     DiskSerial += ("$" + "<1_1>")
 
-            if value[1].startswith("8:") and value[5] == "disk" and value[2] == "0":
+            if value[1].startswith("8:") and value[5] == "disk":
                 disknum += 1
                 HDSize = get_human_read_capacity_size(int(value[3]))
                 DiskCapacity += ((HDSize if not statusfirst else "$") + "<1_1>")

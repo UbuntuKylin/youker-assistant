@@ -592,14 +592,18 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>应用</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="118"/>
         <source>Current CPU Main Frequency</source>
-        <translation>当前CPU主频</translation>
+        <translation type="vanished">当前CPU主频</translation>
     </message>
     <message>
         <location filename="../../component/cpufmwidget.cpp" line="36"/>
         <source>Whether to apply?</source>
         <translation>是否应用？</translation>
+    </message>
+    <message>
+        <location filename="../../component/cpufmwidget.cpp" line="118"/>
+        <source>Current average CPU core frequency</source>
+        <translation>当前CPU核心平均主频</translation>
     </message>
     <message>
         <location filename="../../component/cpufmwidget.cpp" line="131"/>

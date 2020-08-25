@@ -34,6 +34,7 @@ MyTitleBar::MyTitleBar(const QString &title, bool needMin, QWidget *parent)
 {
     this->setWindowFlags(Qt::FramelessWindowHint);//this->setWindowFlags(this->windowFlags() | Qt::FramelessWindowHint  | Qt::WindowCloseButtonHint);
 //    this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowMinimizeButtonHint);//Attention: Qt::WindowCloseButtonHint make showMinimized() valid
+    this->setStyleSheet("QWidget{border-top-left-radius:10px;border-top-right-radius:10px;background-color: #2267F2;}");
 
     this->setMouseTracking(true);
     this->setFixedHeight(TITLE_BAR_HEIGHT);
@@ -41,9 +42,9 @@ MyTitleBar::MyTitleBar(const QString &title, bool needMin, QWidget *parent)
     this->setAutoFillBackground(true);
 //    this->setAttribute(Qt::WA_TranslucentBackground);
 
-    QPalette palette;
-    palette.setColor(QPalette::Background, QColor("#2267F2"));
-    this->setPalette(palette);
+//    QPalette palette;
+//    palette.setColor(QPalette::Background, QColor("#2267F2"));
+//    this->setPalette(palette);
 
     initWidgets();
 }
@@ -124,7 +125,7 @@ void MyTitleBar::initRightContent()
 {
     QWidget *w = new QWidget;
     m_rLayout = new QHBoxLayout(w);
-    m_rLayout->setContentsMargins(0, 0, 0, 0);
+    m_rLayout->setContentsMargins(0, 0, 3, 0);
     m_rLayout->setSpacing(0);
 
     m_layout->addWidget(w, 1, Qt::AlignRight);
