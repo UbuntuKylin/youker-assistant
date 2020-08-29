@@ -17,12 +17,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QDialog>
-#include <QSettings>
 #include "../../component/kylineditbutton.h"
 #include "../../component/mytitlebar.h"
 #include "../../component/toolkits.h"
 #include "../../component/utils.h"
+#include "./shredqthread.h"
+#include "filewipe.h"
+//#include "shredmanager.h"
+#include <QObject>
+#include <QStringList>
+#include <QCloseEvent>
+#include <QBitmap>
+#include <QFileDialog>
+#include <QDir>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QComboBox>
+#include <QDebug>
+#include <QApplication>
+#include <QScreen>
+#include <QDialog>
+#include <QSettings>
+#include <QProgressBar>
+#include <QTimer>
 
 class QLabel;
 class QPushButton;
@@ -60,6 +80,7 @@ public slots:
 //    void onSelecteComboActivated(int index);
     void onCloseButtonClicked();
 //    void onMinButtonClicked();
+    void progressbarFlash();
 
 private:
 //    ShredManager *process_plugin;
@@ -70,6 +91,16 @@ private:
     QPushButton *cacel_btn;
     Toolkits *toolkits;
     QPoint dragPosition;
+    QProgressBar *progressbar;
+    QLabel *tipLabel;
+    QLabel *barLabel;
+
+    QTimer myTimer;
+
+    ShredQThread *myThread;
+    QThread *thread;
+
     bool mousePressed;
+    int i=0;
 //    QSettings *shredSettings;
 };

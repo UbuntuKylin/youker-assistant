@@ -47,11 +47,12 @@ inline bool isRunningInstalled() {
 }
 
 inline QString getPluginsDirectory() {
-    if (isRunningInstalled()) {
-        return QString("/usr/lib/kylin-assistant/plugins/");
-    } else {
-        return QString(QCoreApplication::applicationDirPath() + "/plugins/");
-    }
+//    if (isRunningInstalled()) {
+//        return QString("/usr/lib/kylin-assistant/plugins/");
+        return QString("/home/tang/github/youker/3.0.2/youker-assistant/plugins/");
+//    } else {
+//        return QString(QCoreApplication::applicationDirPath() + "/plugins/");
+//    }
 }
 
 MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::WindowFlags flags*/)

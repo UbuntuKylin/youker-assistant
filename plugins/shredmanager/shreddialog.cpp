@@ -18,23 +18,7 @@
  */
 
 #include "shreddialog.h"
-#include "filewipe.h"
-//#include "shredmanager.h"
-#include <QObject>
-#include <QStringList>
-#include <QCloseEvent>
-#include <QBitmap>
-#include <QFileDialog>
-#include <QDir>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QLabel>
-#include <QLineEdit>
-#include <QPushButton>
-#include <QComboBox>
-#include <QDebug>
-#include <QApplication>
-#include <QScreen>
+
 
 //ShredDialog::ShredDialog(ShredManager *plugin, QDialog *parent)
 //    :QDialog(parent)
@@ -76,6 +60,30 @@ ShredDialog::ShredDialog(QWidget *parent) :
     cacel_btn->setObjectName("blackButton");
     cacel_btn->setFocusPolicy(Qt::NoFocus);
 
+    tipLabel = new QLabel();
+    tipLabel->setFixedSize(400,34);
+    tipLabel->setStyleSheet("color:#BFBFBF;font-size:12px");
+    tipLabel->setWordWrap(true);
+    tipLabel->setIndent(5);
+    tipLabel->setAlignment(Qt::AlignCenter);
+
+    barLabel = new QLabel();
+    barLabel->setFixedSize(90,20);
+    barLabel->setStyleSheet("color:#595959;font-size:14px");
+    barLabel->setAlignment(Qt::AlignCenter);
+
+    progressbar = new QProgressBar();
+    progressbar->setOrientation(Qt::Horizontal);
+    progressbar->setFixedSize(250,40);
+    progressbar->setValue(100);
+    progressbar->setMinimum(0);
+    progressbar->setMaximum(100);
+    progressbar->setFormat(QString::fromLocal8Bit("Shattering..."));
+    progressbar->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+
+    connect(&myTimer,&QTimer::timeout,this,&ShredDialog::progressbarFlash);
+    myTimer.setInterval(5);
+
     QHBoxLayout *layout1 = new QHBoxLayout();
     layout1->addStretch();
     layout1->addWidget(select_edit);
@@ -88,9 +96,22 @@ ShredDialog::ShredDialog(QWidget *parent) :
     layout2->addStretch();
     layout2->setMargin(0);
 
+    QHBoxLayout *layout3 = new QHBoxLayout();
+    layout3->addStretch();
+    layout3->addWidget(tipLabel);
+    layout3->addStretch();
+
+    QHBoxLayout *layout4 = new QHBoxLayout();
+    layout4->addStretch();
+    layout4->addWidget(barLabel);
+    layout4->addWidget(progressbar);
+    layout4->addStretch();
+
     QVBoxLayout *layout = new QVBoxLayout();
     layout->addStretch();
+    layout->addLayout(layout4);
     layout->addLayout(layout1);
+    layout->addLayout(layout3);
     layout->addLayout(layout2);
     layout->addStretch();
     layout->setSpacing(10);
@@ -102,6 +123,9 @@ ShredDialog::ShredDialog(QWidget *parent) :
     main_layout->setMargin(0);
     main_layout->setContentsMargins(10, 10, 0, 0);
     setLayout(main_layout);
+
+    progressbar->setVisible(false);
+    barLabel->setVisible(false);
 
     this->setLanguage();
     this->initConnect();
@@ -124,6 +148,8 @@ void ShredDialog::setLanguage()
     select_edit->setText(tr("No select any file which need to be shredded"));
     shred_btn->setText(tr("Shred File"));
     cacel_btn->setText(tr("Deselect"));
+    tipLabel->setText(tr("Note: The file shredding process cannot be cancelled, please operate with caution!"));
+    barLabel->setText(tr("Shattering..."));
 }
 
 void ShredDialog::initConnect()
@@ -138,6 +164,18 @@ void ShredDialog::initConnect()
 void ShredDialog::onCloseButtonClicked()
 {
     this->close();
+}
+
+void ShredDialog::progressbarFlash()
+{
+    if(i == 100){
+        progressbar->setInvertedAppearance(!(progressbar->invertedAppearance()));
+        i = 0;
+        progressbar->setValue(i);
+    }else{
+        progressbar->setValue(i);
+        i++;
+    }
 }
 
 //void ShredDialog::onMinButtonClicked()
@@ -243,21 +281,61 @@ void ShredDialog::onShredButtonClicked()
     }
     else
     {
+        myTimer.start();
+        cacel_btn->setVisible(false);
+        shred_btn->setDisabled(true);
+        progressbar->setValue(0);
+        progressbar->setVisible(true);
+        barLabel->setVisible(true);
+
         char* ch;
         QByteArray ba = select_edit->text().toUtf8();
         ch=ba.data();
-        int result = do_file(ch);
-        if (result == 0)
-        {
-            //success
+
+        myThread = new ShredQThread(ch);
+        thread = new QThread();
+        myThread->moveToThread(thread);
+        connect(myThread,&ShredQThread::success,this, [=] {
+            cacel_btn->setVisible(true);
+            shred_btn->setDisabled(false);
+            progressbar->setVisible(false);
+            barLabel->setVisible(false);
             toolkits->alertMSG(this->frameGeometry().topLeft().x(), this->frameGeometry().topLeft().y(), tr("Shred successfully!"));
-            select_edit->setText(tr("No select any file which need to be shredded"));
-        }
-        else
-        {
-            //failed
+            select_edit->setText(tr("No select any file which need to be shredded"));           
+            thread->exit();
+            myTimer.stop();
+        });
+
+        connect(myThread,&ShredQThread::failed,this, [=] {
+            cacel_btn->setVisible(true);
+            shred_btn->setDisabled(false);
+            progressbar->setVisible(false);
+            barLabel->setVisible(false);
             toolkits->alertMSG(this->frameGeometry().topLeft().x(), this->frameGeometry().topLeft().y(), tr("Shred failed!"));
-        }
+            thread->exit();
+            myTimer.stop();
+        });
+
+        connect(thread,&QThread::started,myThread,&ShredQThread::run);
+
+        connect(thread, &QThread::finished, this, [=] {
+            thread->deleteLater();
+            qDebug() << "ShredQThread thread finished......";
+        });
+
+        thread->start();
+//        int result = do_file(ch);
+//        if (result == 0)
+//        {
+//            //success
+//            toolkits->alertMSG(this->frameGeometry().topLeft().x(), this->frameGeometry().topLeft().y(), tr("Shred successfully!"));
+//            select_edit->setText(tr("No select any file which need to be shredded"));
+//        }
+//        else
+//        {
+//            //failed
+//            toolkits->alertMSG(this->frameGeometry().topLeft().x(), this->frameGeometry().topLeft().y(), tr("Shred failed!"));
+//        }
     }
 }
 

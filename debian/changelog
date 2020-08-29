@@ -1,10 +1,19 @@
-youker-assistant (3.0.2-0kylin2k3~rc1) v101; urgency=medium
+youker-assistant (3.0.2-0kord14~rc1) v100; urgency=medium
+
+  * New bugfix release:
+    - Solve the inaccurate content of the operating system version
+    - Solve the incomplete display of hardware information
+  * Modify the main window style of File Shredder
+
+ -- tangguang <tangguang@kylinos.cn>  Tue, 25 Aug 2020 08:50:55 +0800
+
+youker-assistant (3.0.2-0kord13~rc1) v100; urgency=medium
 
   * Improve fan speed display function
 
  -- tangguang <tangguang@kylinos.cn>  Tue, 18 Aug 2020 15:04:14 +0800
 
-youker-assistant (3.0.2-0kylin2k2~rc1) v101; urgency=medium
+youker-assistant (3.0.2-0kord11~rc1) v100; urgency=medium
 
   * New bugfix release:
       - Solve the slow startup problem
@@ -13,7 +22,7 @@ youker-assistant (3.0.2-0kylin2k2~rc1) v101; urgency=medium
 
  -- tangguang <tangguang@kylinos.cn>  Mon, 17 Aug 2020 17:10:29 +0800
 
-youker-assistant (3.0.2-0kylin2k1~rc1) v101; urgency=medium
+youker-assistant (3.0.2-0kord10~rc1) v100; urgency=medium
 
   * New bugfix release:
       - Solve the dark mode exception (bug#15893,bug#14193)
@@ -21,7 +30,7 @@ youker-assistant (3.0.2-0kylin2k1~rc1) v101; urgency=medium
 
  -- tangguang <tangguang@kylinos.cn>  Thu, 13 Aug 2020 18:47:17 +0800
 
-youker-assistant (3.0.2-0kylin1k9~rc4) v101; urgency=medium
+youker-assistant (3.0.2-0kord9~rc4) v100; urgency=medium
 
   * New bugfix release:
     - Solve the problem of two icon styles when dragging Kylin Assistant
@@ -32,7 +41,7 @@ youker-assistant (3.0.2-0kylin1k9~rc4) v101; urgency=medium
 
  -- tangguang <tangguang@kylinos.cn>  Mon, 20 Jul 2020 11:52:56 +0800
 
-youker-assistant (3.0.2-0kylin1k8~rc2) v101; urgency=medium
+youker-assistant (3.0.2-0kord8~rc2) v100; urgency=medium
 
   * New bugfix release:
     - Solve performance monitoring without loading any screen
@@ -43,13 +52,13 @@ youker-assistant (3.0.2-0kylin1k8~rc2) v101; urgency=medium
 
  -- tangguang <tangguang@kylinos.cn>  Fri, 10 Jul 2020 10:42:15 +0800
 
-youker-assistant (3.0.2-0kylin1k7~rc1) v101; urgency=medium
+youker-assistant (3.0.2-0kord7~rc1) v100; urgency=medium
 
   * Adjust some styles
 
  -- tangguang <tangguang@kylinos.cn>  Thu, 02 Jul 2020 10:00:56 +0800
 
-youker-assistant (3.0.2-0kylin1k6~rc1) v101; urgency=medium
+youker-assistant (3.0.2-0kord6~rc1) v100; urgency=medium
 
   * UKUI3.0 version
 
