@@ -36,7 +36,8 @@ HEADERS += \
     ../../component/mytitlebar.h \
     ../../component/systembutton.h \
     ../../component/kylineditbutton.h \
-    ../widgets/mytristatebutton.h
+    ../widgets/mytristatebutton.h \
+    shredqthread.h
 
 SOURCES += \
     filewipe.cpp \
@@ -47,7 +48,8 @@ SOURCES += \
     ../../component/mytitlebar.cpp \
     ../../component/systembutton.cpp \
     ../../component/kylineditbutton.cpp \
-    ../widgets/mytristatebutton.cpp
+    ../widgets/mytristatebutton.cpp \
+    shredqthread.cpp
 
 OTHER_FILES += \
     shred.json

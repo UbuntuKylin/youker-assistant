@@ -20,10 +20,9 @@
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="129"/>
         <source>Maintainer:
 Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
-        <translation>维护者：
+        <translation type="vanished">维护者：
 麒麟团队 &lt;ubuntukylin-members@list.launchpad.net&gt;</translation>
     </message>
     <message>
@@ -32,19 +31,34 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>      麒麟助手是由麒麟团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器等功能。</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="131"/>
         <source> for more information. Welcome everyone to join with us. kylin-assistant Homepage: </source>
-        <translation> 了解软件的最新进展并反馈问题，欢迎广大用户和爱好者一起参与。麒麟助手主页：</translation>
+        <translation type="vanished"> 了解软件的最新进展并反馈问题，欢迎广大用户和爱好者一起参与。麒麟助手主页：</translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="131"/>
         <source>      The software is still under development. Please visit </source>
-        <translation>      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 </translation>
+        <translation type="vanished">      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 </translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="95"/>
         <source>Contributor</source>
         <translation>贡献者</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="129"/>
+        <source>Maintainer:
+Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;
+tang guang &lt;tanggguang@kylinos.cn&gt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="131"/>
+        <source>      The software is still under development. Please visit  kylin-assistant</source>
+        <translation>      各项功能还在不断完善，更多功能也将陆续开发，敬请关注麒麟助手的</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="131"/>
+        <source> for more information. Welcome everyone to join with us.</source>
+        <translation> 地址，了解软件的最新进展并反馈问题，欢迎广大用户和爱好者一起参与。</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="152"/>
@@ -587,7 +601,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>CpuFmwidget</name>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="230"/>
+        <location filename="../../component/cpufmwidget.cpp" line="233"/>
         <source>apply</source>
         <translation>应用</translation>
     </message>
@@ -626,12 +640,12 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>用户自定义</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="211"/>
+        <location filename="../../component/cpufmwidget.cpp" line="212"/>
         <source>Current Frequency Adjustable Range:</source>
         <translation>当前频率可调节范围:</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="219"/>
+        <location filename="../../component/cpufmwidget.cpp" line="222"/>
         <source>CPU FM Note: There are some risks associated with the CPU FM function,please use caution! The computer needs to be restarted when the FM is complete.</source>
         <translation>CPU调频说明：CPU调频功能存在一定的风险，请谨慎操作！调频完成需重启计算机。</translation>
     </message>
@@ -667,45 +681,45 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>DrivePageWidget</name>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="124"/>
+        <location filename="../../component/drivepagewidget.cpp" line="128"/>
         <source>Total, section </source>
         <translation>总计 </translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="124"/>
+        <location filename="../../component/drivepagewidget.cpp" line="128"/>
         <source> drivers</source>
         <translation> 款驱动</translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="134"/>
-        <location filename="../../component/drivepagewidget.cpp" line="142"/>
+        <location filename="../../component/drivepagewidget.cpp" line="138"/>
         <location filename="../../component/drivepagewidget.cpp" line="146"/>
-        <location filename="../../component/drivepagewidget.cpp" line="162"/>
+        <location filename="../../component/drivepagewidget.cpp" line="150"/>
         <location filename="../../component/drivepagewidget.cpp" line="166"/>
+        <location filename="../../component/drivepagewidget.cpp" line="170"/>
         <source>MotherBoard</source>
         <translation>主板驱动</translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="138"/>
+        <location filename="../../component/drivepagewidget.cpp" line="142"/>
         <source>Graphics-Card</source>
         <translation>显卡驱动</translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="150"/>
-        <location filename="../../component/drivepagewidget.cpp" line="158"/>
-        <location filename="../../component/drivepagewidget.cpp" line="174"/>
-        <location filename="../../component/drivepagewidget.cpp" line="183"/>
+        <location filename="../../component/drivepagewidget.cpp" line="154"/>
+        <location filename="../../component/drivepagewidget.cpp" line="162"/>
+        <location filename="../../component/drivepagewidget.cpp" line="178"/>
+        <location filename="../../component/drivepagewidget.cpp" line="187"/>
         <source>Other</source>
         <translation>其他驱动</translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="154"/>
-        <location filename="../../component/drivepagewidget.cpp" line="178"/>
+        <location filename="../../component/drivepagewidget.cpp" line="158"/>
+        <location filename="../../component/drivepagewidget.cpp" line="182"/>
         <source>Wired-Network-Card</source>
         <translation>有线网卡驱动</translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="170"/>
+        <location filename="../../component/drivepagewidget.cpp" line="174"/>
         <source>Sound-Card</source>
         <translation>声卡驱动</translation>
     </message>
@@ -713,7 +727,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>Drivewidget</name>
     <message>
-        <location filename="../drivewidget.cpp" line="62"/>
+        <location filename="../drivewidget.cpp" line="63"/>
         <source>All Drivers</source>
         <translation>所有驱动</translation>
     </message>
@@ -1390,19 +1404,19 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>MListwidget</name>
     <message>
-        <location filename="../listwidget.cpp" line="45"/>
-        <location filename="../listwidget.cpp" line="130"/>
+        <location filename="../listwidget.cpp" line="46"/>
+        <location filename="../listwidget.cpp" line="131"/>
         <source>Local System</source>
         <translation>本机系统</translation>
     </message>
     <message>
-        <location filename="../listwidget.cpp" line="52"/>
-        <location filename="../listwidget.cpp" line="126"/>
+        <location filename="../listwidget.cpp" line="53"/>
+        <location filename="../listwidget.cpp" line="127"/>
         <source>Hardware Information</source>
         <translation>硬件信息</translation>
     </message>
     <message>
-        <location filename="../listwidget.cpp" line="156"/>
+        <location filename="../listwidget.cpp" line="157"/>
         <source>Computer Info</source>
         <translation>电脑概述</translation>
     </message>
@@ -1772,7 +1786,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="88"/>
+        <location filename="../mainwindow.cpp" line="89"/>
         <source>Kylin Assistant</source>
         <translation>麒麟助手</translation>
     </message>
@@ -1975,17 +1989,17 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>Monitorwidget</name>
     <message>
-        <location filename="../monitorwidget.cpp" line="52"/>
+        <location filename="../monitorwidget.cpp" line="53"/>
         <source>Temperature</source>
         <translation>设备温度</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="62"/>
+        <location filename="../monitorwidget.cpp" line="63"/>
         <source>Fan Speed</source>
         <translation>风扇转速</translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="71"/>
+        <location filename="../monitorwidget.cpp" line="72"/>
         <source>CPU FM</source>
         <translation>CPU调频</translation>
     </message>
@@ -3401,54 +3415,64 @@ Are you sure to continue?</source>
 <context>
     <name>ShredDialog</name>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="49"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="33"/>
         <source>Kylin Shred Manager</source>
         <translation>麒麟文件粉碎机</translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="60"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="44"/>
         <source>Shred Manager</source>
         <translation>文件粉碎机</translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="124"/>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="254"/>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="266"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="148"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="302"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="339"/>
         <source>No select any file which need to be shredded</source>
         <translation>没有选择需要粉碎的文件</translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="125"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="149"/>
         <source>Shred File</source>
         <translation>粉碎文件</translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="126"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="150"/>
         <source>Deselect</source>
-        <translation>取消粉碎</translation>
+        <translation>取消选择</translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="216"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="151"/>
+        <source>Note: The file shredding process cannot be cancelled, please operate with caution!</source>
+        <translation>注意事项：文件粉碎过程不可取消，请谨慎操作！</translation>
+    </message>
+    <message>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="152"/>
+        <source>Shattering...</source>
+        <translation>粉碎中.....</translation>
+    </message>
+    <message>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="254"/>
         <source>Select file</source>
         <translation>选择文件</translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="216"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="254"/>
         <source>All Files(*)</source>
         <translation>全部文件(*)</translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="242"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="280"/>
         <source>Select file!</source>
         <translation>选择文件！</translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="253"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="301"/>
         <source>Shred successfully!</source>
         <translation>粉碎成功！</translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="259"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="310"/>
         <source>Shred failed!</source>
         <translation>粉碎失败！</translation>
     </message>

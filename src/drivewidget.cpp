@@ -16,6 +16,7 @@ Drivewidget::Drivewidget(QWidget *parent) : QWidget(parent)
     splitter = new QSplitter(this);
     splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     splitter->setOrientation(Qt::Horizontal);
+    splitter->setChildrenCollapsible(false);
     splitter->setHandleWidth(1);
 
     list_widget = new QListWidget(this);

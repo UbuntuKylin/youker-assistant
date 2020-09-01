@@ -196,6 +196,7 @@ void CpuFmwidget::InitUI()
     connect(radioGroup, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(onButtonClicked(QAbstractButton*)));
 
     w = new QFrame(this);
+    w->setAutoFillBackground(false);
     w->setStyleSheet("background:rgb(231,231,231);border-radius:4px;");
     w->setGeometry(QRect(62,200,580,155));
 
@@ -213,7 +214,9 @@ void CpuFmwidget::InitUI()
 
     slider->setFixedSize(560,80);
     slider->setOrientation(Qt::Horizontal);
-    slider->setStyleSheet("QSlider::add-page:Horizontal{background-color:green}");
+    slider->setStyleSheet("QSlider{background:white;"
+                          "margin: 40px;"
+                          "border-radius: 3px;}");
     v_layout->addWidget(slider);
 
     lable2->setText(tr("CPU FM Note: There are some risks associated with the CPU FM function,please use caution! The computer needs to be restarted when the FM is complete."));
