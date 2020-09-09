@@ -21,7 +21,7 @@ MListwidget::MListwidget(QWidget *parent) : QWidget(parent)
     listview->setFocusPolicy(Qt::NoFocus);
     listview->setObjectName("listview");
     listview->setMovement(QListView::Static);
-    listview->setStyleSheet("QListWidget{background: rgb(237,237,237);font-size:14px;\
+    listview->setStyleSheet("QListWidget{background: rgb(237,237,237);font-size:14px;color:rgb(0,0,0,185);\
                             border-bottom-right-radius:0px}\
                             QListWidget::item:selected{background:white;color:black;}");
 

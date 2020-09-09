@@ -50,6 +50,7 @@ SelectListItem::SelectListItem(QWidget *parent, QString description, QString tip
     QFontMetrics fm(ft);
     QString elided_text = fm.elidedText(description, Qt::ElideMiddle, maxWidth);
     m_descLabel->setText(elided_text);
+    m_descLabel->setStyleSheet("color:black;");
 
     /*QFont font;
     font.setPixelSize(12);

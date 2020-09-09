@@ -88,8 +88,8 @@ void CleandetailVeiw::InitTopWidget()
     QFont font;
     font.setPixelSize(24);
     font.setBold(QFont::Bold);
-    top_tip->setFont(font);
-    top_tip->setStyleSheet("color:rgb(0,0,0,185)");
+//    top_tip->setFont(font);
+    top_tip->setStyleSheet("QLabel{color:rgb(0,0,0,185);font-size:24px;font-weight:bold;}");
     top_tip->setText(tr("Computer scan in progress..."));
     top_tip->setGeometry(QRect(100,24,470,40));
 
@@ -104,7 +104,7 @@ void CleandetailVeiw::InitTopWidget()
     cancel_btn->setText(tr("Cancel"));
     cancel_btn->setStyleSheet("QPushButton{width:120px;height:36px;\
                               border:2px solid rgba(153,153,153,1);\
-                              border-radius:18px;font-size:18px;}\
+                              border-radius:18px;font-size:18px;color:black;}\
                               QPushButton:hover{width:120px;height:36px;\
                               border:2px solid rgba(34,103,242,1);\
                               border-radius:18px;font-size:18px;}\
@@ -185,16 +185,17 @@ void CleandetailVeiw::InitBottomWidget()
     cache_layout->addWidget(cache_icon);
 
     cache_tip = new QLabel(cache_frame);
-    cache_tip->setStyleSheet("color:rgb(0,0,0,185)");
+    cache_tip->setStyleSheet("QLabel{font-size:18px;color:rgb(0,0,0,185)}");
     QFont font;
     font.setPixelSize(18);
 //    font.setBold(QFont::Bold);
     cache_tip->setFont(font);
     cache_tip->setText(tr("System cache"));
+    cache_tip->adjustSize();
     cache_layout->addWidget(cache_tip);
 
     QLabel *lable1 = new QLabel(cache_frame);
-    lable1->setStyleSheet("color:rgb(0,0,0,165)");
+    lable1->setStyleSheet("QLabel{font-size:15px;color:rgb(0,0,0,165)}");
     lable1->setText(tr("Clear package、thumbnails and browser cache"));
     lable1->setWordWrap(true);
     cache_layout->addWidget(lable1);
@@ -232,13 +233,14 @@ void CleandetailVeiw::InitBottomWidget()
     cookie_layout->addWidget(cookie_icon);
 
     cookie_tip = new QLabel(cookie_frame);
-    cookie_tip->setStyleSheet("color:rgb(0,0,0,185)");
+    cookie_tip->setStyleSheet("QLabel{font-size:18px;color:rgb(0,0,0,185)}");
     cookie_tip->setFont(font);
     cookie_tip->setText(tr("Cookies"));
+    cookie_tip->adjustSize();
     cookie_layout->addWidget(cookie_tip);
 
     QLabel *lable2 = new QLabel(cookie_frame);
-    lable2->setStyleSheet("color:rgb(0,0,0,165)");
+    lable2->setStyleSheet("QLabel{font-size:15px;color:rgb(0,0,0,165)}");
 //    lable2->setText(tr("Clear internet、games、shopping history, etc."));
     lable2->setText(tr("Clear internet、games、shopping history, etc."));
     lable2->setWordWrap(true);
@@ -277,13 +279,14 @@ void CleandetailVeiw::InitBottomWidget()
     history_layout->addWidget(history_icon);
 
     history_tip = new QLabel(history_frame);
-    history_tip->setStyleSheet("color:rgb(0,0,0,185)");
+    history_tip->setStyleSheet("QLabel{font-size:18px;color:rgb(0,0,0,185)}");
     history_tip->setFont(font);
     history_tip->setText(tr("Historical trace"));
+    history_tip->adjustSize();
     history_layout->addWidget(history_tip);
 
     QLabel *lable3 = new QLabel(history_frame);
-    lable3->setStyleSheet("color:rgb(0,0,0,165)");
+    lable3->setStyleSheet("QLabel{font-size:15px;color:rgb(0,0,0,165)}");
     lable3->setText(tr("Clear browser and system usage traces"));
     lable3->setWordWrap(true);
     history_layout->addWidget(lable3);
@@ -716,7 +719,7 @@ void CleandetailVeiw::showCleanerStatus(const QString &status, const QString &do
 {
     qDebug() << Q_FUNC_INFO << status << domain;
     if(status == "Complete:file" && domain == "cache") {
-        history_tip->setText(tr("Clear ") + QString::number(history_sum)+" historical traces");
+        history_tip->setText(tr("Clear ") + QString::number(history_sum)+tr(" historical traces"));
 
         QSvgRenderer* svgRender = new QSvgRenderer(QString(":/svg/res/svg/finish2 .svg"));
         QPixmap *pixmap = new QPixmap(32,32);

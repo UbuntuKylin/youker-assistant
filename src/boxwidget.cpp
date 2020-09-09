@@ -45,7 +45,7 @@ BoxWidget::BoxWidget(QWidget *parent, QString arch, QString os, QString path) :
 //    this->setPalette(palette);
 
     list_view = new QListView(this);
-    list_view->setStyleSheet("background: transparent;");
+    list_view->setStyleSheet("background: transparent;color:black;");
 //    list_view = new KylinListView(this);
     list_view->setFocusPolicy(Qt::NoFocus);
     list_view->setAutoFillBackground(true);

@@ -41,7 +41,7 @@ SelectWidget::SelectWidget(CleanerModuleID id, const QString &title, bool needMi
     QLabel *tip_label = new QLabel(top_tip);
     tip_label->setFont(QFont("",24,QFont::Normal));
     tip_label->setText(title);
-    tip_label->setStyleSheet("color:0,0,0,185");
+    tip_label->setStyleSheet("color:rbga(0,0,0,185)");
     tip_label->setGeometry(35,45,300,35);
 
     SystemButton *close_btn = new SystemButton(top_tip);

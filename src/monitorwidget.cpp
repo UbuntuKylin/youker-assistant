@@ -20,7 +20,7 @@ Monitorwidget::Monitorwidget(QWidget *parent) : QWidget(parent)
     list_widget->setFixedSize(160,this->height());
     list_widget->setFocusPolicy(Qt::NoFocus);
     list_widget->setObjectName("listview");
-    list_widget->setStyleSheet("QListWidget{background: rgb(237,237,237);border-bottom-right-radius:0px}\
+    list_widget->setStyleSheet("QListWidget{background: rgb(237,237,237);border-bottom-right-radius:0px;color:black;}\
                                 QListWidget::item:selected{background:white;color:black;}");
 
     stackedwidget = new QStackedWidget(this);

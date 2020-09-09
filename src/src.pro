@@ -14,6 +14,7 @@ CONFIG += link_pkgconfig
 PKGCONFIG += glib-2.0 gio-unix-2.0
 
 QT += core dbus network charts svg
+LIBS += -lgsettings-qt
 
 inst1.files += res/kylin-assistant.png
 inst1.path = /usr/share/pixmaps

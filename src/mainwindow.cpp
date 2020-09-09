@@ -21,6 +21,7 @@
 #include <QDebug>
 #include <QApplication>
 #include <QDesktopWidget>
+#include <QGSettings/qgsettings.h>
 #include <QGraphicsDropShadowEffect>
 #include <QStackedLayout>
 #include "../component/utils.h"
@@ -38,6 +39,16 @@
 #include "drivewidget.h"
 #include <QtMath>
 
+#include <QDBusInterface>
+
+#define KYLIN_USER_GUIDE_PATH "/"
+
+#define KYLIN_USER_GUIDE_SERVICE "com.kylinUserGuide.hotel"
+
+#define KYLIN_USER_GUIDE_INTERFACE "com.guide.hotel"
+
+#include <unistd.h>
+
 QString GlobalData::globalarch = ""; // add by hebing, just for transmit var
 
 inline bool isRunningInstalled() {
@@ -47,12 +58,11 @@ inline bool isRunningInstalled() {
 }
 
 inline QString getPluginsDirectory() {
-//    if (isRunningInstalled()) {
-//        return QString("/usr/lib/kylin-assistant/plugins/");
-        return QString("/home/tang/github/youker/3.0.2/youker-assistant/plugins/");
-//    } else {
-//        return QString(QCoreApplication::applicationDirPath() + "/plugins/");
-//    }
+    if (isRunningInstalled()) {
+        return QString("/usr/lib/kylin-assistant/plugins/");
+    } else {
+        return QString(QCoreApplication::applicationDirPath() + "/plugins/");
+    }
 }
 
 MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::WindowFlags flags*/)
@@ -130,6 +140,18 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
     shadow_effect->setOffset(2, 4);
     this->setGraphicsEffect(shadow_effect);
 
+    const QByteArray id("org.ukui.style");
+    QGSettings *fontSetting = new QGSettings(id);
+    connect(fontSetting,&QGSettings::changed,[=](QString key){
+       if("systemFont" == key || "systemFontSize" == key ){
+           QFont font = this->font();
+//           int width = font.pointSize();
+           for (auto widget: qApp->allWidgets()) {
+               widget->setFont(font);
+           }
+       }
+    });
+
     this->hide();
 
 
@@ -156,6 +178,24 @@ void MainWindow::paintEvent(QPaintEvent *event)
     }
 
     QWidget::paintEvent(event);
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+
+    qDebug() << Q_FUNC_INFO;
+    if (event->key() == Qt::Key_F1){
+        QString serviceName = KYLIN_USER_GUIDE_SERVICE + QString("%1%2").arg("_").arg(QString::number(getuid()));
+
+        QDBusInterface *  iface = new QDBusInterface(serviceName,
+                                                         KYLIN_USER_GUIDE_PATH,
+                                                         KYLIN_USER_GUIDE_INTERFACE,
+                                                         QDBusConnection::sessionBus(),
+                                                         this);
+        QDBusMessage msg = iface->call(QString("showGuide"), "kylin-assistant");
+
+        delete iface;
+    }
 }
 
 MainWindow::~MainWindow()
@@ -978,6 +1018,11 @@ void MainWindow::setCurrentPageIndex(QString index)
         m_bottomStack->setFixedSize(cleaner_widget->size());
         status = "Cleanup";
     }
+    else if (index == "Optimize" && status != "Optimize") {
+        m_bottomStack->setCurrentWidget(optimized_widget);
+        m_bottomStack->setFixedSize(optimized_widget->size());
+        status = "Monitoring";
+    }
     else if (index == "Monitoring" && status != "Monitoring") {
         m_bottomStack->setCurrentWidget(monitorwidget);
         m_bottomStack->setFixedSize(monitorwidget->size());
@@ -1111,11 +1156,11 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
         m_mousePressed = true;
         m_dragPosition = event->globalPos() - pos();
     }*/
-    if (event->button() == Qt::LeftButton) {
-        this->m_dragPosition = event->globalPos() - frameGeometry().topLeft();
-        this->m_mousePressed = true;
-        this->setCursor(Qt::OpenHandCursor);
-    }
+//    if (event->button() == Qt::LeftButton) {
+//        this->m_dragPosition = event->globalPos() - frameGeometry().topLeft();
+//        this->m_mousePressed = true;
+//        this->setCursor(Qt::OpenHandCursor);
+//    }
 
     QMainWindow::mousePressEvent(event);
 }
@@ -1124,9 +1169,9 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 {
     /*m_mousePressed = false;
     setWindowOpacity(1);*/
-    this->m_mousePressed = false;
-    this->setCursor(Qt::ArrowCursor);
-    setWindowOpacity(1);
+//    this->m_mousePressed = false;
+//    this->setCursor(Qt::ArrowCursor);
+//    setWindowOpacity(1);
 
     QMainWindow::mouseReleaseEvent(event);
 }
@@ -1140,10 +1185,10 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
         setWindowOpacity(0.9);
 //        event->accept();
     }*/
-    if (this->m_mousePressed) {
-        move(event->globalPos() - this->m_dragPosition);
-        setWindowOpacity(0.9);
-    }
+//    if (this->m_mousePressed) {
+//        move(event->globalPos() - this->m_dragPosition);
+//        setWindowOpacity(0.9);
+//    }
 
     QMainWindow::mouseMoveEvent(event);
 }
