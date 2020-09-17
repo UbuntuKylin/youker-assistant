@@ -37,12 +37,14 @@ mySlider::mySlider(QWidget *parent):QSlider(parent)
     minlable->setFixedSize(QSize(60,20));
     minlable->setAlignment(Qt::AlignCenter);
     minlable->setText("mintip");
+    minlable->setStyleSheet("color:rgb(0,0,0,185);");
     minlable->setAlignment(Qt::AlignLeft);
     minlable->move(0,50);
 
     maxlable->setFixedSize(QSize(60,20));
     maxlable->setAlignment(Qt::AlignCenter);
     maxlable->setText("maxtip");
+    maxlable->setStyleSheet("color:rgb(0,0,0,185);");
     maxlable->setAlignment(Qt::AlignRight);
     maxlable->move(500,50);
 
@@ -52,7 +54,7 @@ mySlider::mySlider(QWidget *parent):QSlider(parent)
 //    QPalette palette;
 //    palette.setColor(QPalette::Background, Qt::green);
 //    tiplable->setPalette(palette);
-    tiplable->setStyleSheet("background:rgba(231,231,231,1);\
+    tiplable->setStyleSheet("background:rgba(231,231,231,1);color:rgb(0,0,0,185);\
                              border-radius:4px;font-size:14px");
 
     tiplable->setAlignment(Qt::AlignCenter);

@@ -126,7 +126,7 @@ void KylinToolButton::paintEvent(QPaintEvent *event)
         painter.drawPixmap(QRect(22,8,48,48),QPixmap(pixmap)); //绘制 pixmap 图片
 //        qDebug() << Q_FUNC_INFO << txt;
         painter.setPen(Qt::white);
-        painter.drawText(QRect(16,60,60,18),Qt::AlignCenter,txt); //绘制文字
+        painter.drawText(QRect(0,60,this->width(),25),Qt::AlignCenter,txt); //绘制文字
     }
     else //绘制按钮从 hover 转换到非 hover 状态的样式
     {
@@ -136,7 +136,7 @@ void KylinToolButton::paintEvent(QPaintEvent *event)
         painter.drawPixmap(QRect(22,8,48,48),QPixmap(pixmap));
 //        qDebug() << Q_FUNC_INFO << txt;
         painter.setPen(Qt::white);
-        painter.drawText(QRect(16,60,60,18),Qt::AlignCenter,txt);
+        painter.drawText(QRect(0,60,this->width(),25),Qt::AlignCenter,txt);
     }
 
     //绘制按钮的 pressed 状态的样式
@@ -148,7 +148,7 @@ void KylinToolButton::paintEvent(QPaintEvent *event)
         painter.drawPixmap(QRect(22,8,48,48),QPixmap(pixmap));  //绘制 pixmap 图片
 //        qDebug() << Q_FUNC_INFO << txt;
         painter.setPen(Qt::white);
-        painter.drawText(QRect(16,60,60,18),Qt::AlignCenter,txt); //绘制文字
+        painter.drawText(QRect(0,60,this->width(),25),Qt::AlignCenter,txt); //绘制文字
     }
     else //绘制按钮从 pressed 转换到非 pressed 状态的样式
     {
@@ -158,7 +158,7 @@ void KylinToolButton::paintEvent(QPaintEvent *event)
         painter.drawPixmap(QRect(22,8,48,48),QPixmap(pixmap));
 //        qDebug() << Q_FUNC_INFO << txt;
         painter.setPen(Qt::white);
-        painter.drawText(QRect(16,60,60,18),Qt::AlignCenter,txt);
+        painter.drawText(QRect(0,60,this->width(),25),Qt::AlignCenter,txt);
     }
 
 }

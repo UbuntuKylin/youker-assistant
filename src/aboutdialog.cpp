@@ -143,13 +143,14 @@ AboutDialog::AboutDialog(QWidget *parent, /*const QString &version, */QString sk
     contributorBtn->setStyleSheet("QPushButton{border:none;text-align:center;font-family: 方正黑体_GBK;font-size:14px;color:#ffffff;}");//QPushButton:hover{color:#666666;}//background:transparent;
 //    aboutEdit->setStyleSheet("QLineEdit{border:1px solid #bebebe;}");
 //    contributorEdit->setStyleSheet("QLineEdit{border:1px solid #bebebe;}");
-    aboutEdit->setStyleSheet("QTextBrowser{border:none;font-family: 方正黑体_GBK;font-size:14px;}");
-    contributorEdit->setStyleSheet("QTextEdit{border:none;font-family: 方正黑体_GBK;font-size:14px;}");
+    aboutEdit->setStyleSheet("QTextBrowser{border:none;font-family: 方正黑体_GBK;font-size:14px;background-color:white;color:black;}");
+    contributorEdit->setStyleSheet("QTextEdit{border:none;font-family: 方正黑体_GBK;font-size:14px;background-color:white;color:black;}");
     okBtn = new QPushButton(this);
     okBtn->setGeometry(QRect(334, 295, 90, 25));
     okBtn->setObjectName("blackButton");
     okBtn->setFocusPolicy(Qt::NoFocus);
     okBtn->setText(tr("Close"));
+    okBtn->setStyleSheet("background:rgba(64,64,64,30);color:black;");
     this->initAnimation();
     this->initConnect();
 }

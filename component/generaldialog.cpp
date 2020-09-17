@@ -52,6 +52,7 @@ GeneralDialog::GeneralDialog(QWidget *parent, QString text, bool warn, bool show
 
     QLabel *iconLabel = new QLabel(this);
     QLabel *textlabel = new QLabel(this);
+    textlabel->setStyleSheet("color:rgb(0,0,0,185)");
     QFont font;
     font.setPixelSize(24);
     font.setBold(QFont::Bold);
@@ -74,6 +75,8 @@ GeneralDialog::GeneralDialog(QWidget *parent, QString text, bool warn, bool show
 
     contentLabel = new QLabel(this);
     contentLabel->setText(text);
+    contentLabel->setStyleSheet("color:rgb(0,0,0,185);font-size:20px");
+    contentLabel->setAlignment(Qt::AlignCenter);
     contentLabel->adjustSize();
     contentLabel->setWordWrap(true);
     contentLabel->setGeometry(QRect(32,103,270,40));

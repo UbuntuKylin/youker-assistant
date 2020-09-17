@@ -108,14 +108,16 @@ void CpuFmwidget::InitUI()
     QFont font;
     font.setBold(QFont::Bold);
     font.setPixelSize(24);
-    cpu_lable->setFont(font);
+//    cpu_lable->setFont(font);
     cpu_lable->setText(this->cpu_num+"Mhz");
+    cpu_lable->setStyleSheet("QLabel{color:rgb(0,0,0,185);font-size:24px;font-weight:bold;}");
     cpu_lable->setGeometry(QRect(140,35,150,30));
 
     font.setBold(QFont::Normal);
     font.setPixelSize(16);
     cpu_tip->setFont(font);
     cpu_tip->setText(tr("Current average CPU core frequency"));
+    cpu_tip->setStyleSheet("QLabel{color:rgb(0,0,0,185);font-size:16px;font-weight:bold;}");
     cpu_tip->setGeometry(QRect(140,78,400,20));
 
     QFrame *h = new QFrame(this);
@@ -129,6 +131,7 @@ void CpuFmwidget::InitUI()
     QLabel *tip = new QLabel(h);
     tip->setFont(font);
     tip->setText(tr("CPU Management Strategy :"));
+    tip->setStyleSheet("color:rgb(0,0,0,185)");
     h_layout->addWidget(tip);
 
     radioGroup = new QButtonGroup(h);
@@ -141,6 +144,7 @@ void CpuFmwidget::InitUI()
         {
             QRadioButton *item = new QRadioButton(h);
             item->setText(tr("performance"));
+            item->setStyleSheet("color:rgb(0,0,0,185)");
             item->setObjectName("performance");
             if(cur_governer == "performance")
             {
@@ -153,6 +157,7 @@ void CpuFmwidget::InitUI()
         {
             QRadioButton *item = new QRadioButton(h);
             item->setText(tr("powersave"));
+            item->setStyleSheet("color:rgb(0,0,0,185)");
             item->setObjectName("powersave");
             if(cur_governer == "powersave")
             {
@@ -165,6 +170,7 @@ void CpuFmwidget::InitUI()
         {
             QRadioButton *item = new QRadioButton(h);
             item->setText(tr("userspace"));
+            item->setStyleSheet("color:rgb(0,0,0,185)");
             item->setObjectName("userspace");
             if(cur_governer == "userspace")
             {
@@ -176,6 +182,7 @@ void CpuFmwidget::InitUI()
 //        else if(governer_list.at(i) == "conservative")
 //        {
 //            item->setText(tr("conservative"));
+//            item->setStyleSheet("color:rgb(0,0,0,185)");
 //            item->setObjectName("conservative");
 //            if(cur_governer == "conservative")
 //            {
@@ -210,6 +217,7 @@ void CpuFmwidget::InitUI()
     slider = new mySlider(w);
 
     lable1->setText(tr("Current Frequency Adjustable Range:"));
+    lable1->setStyleSheet("color:rgb(0,0,0,185)");
     v_layout->addWidget(lable1);
 
     slider->setFixedSize(560,80);
@@ -221,6 +229,7 @@ void CpuFmwidget::InitUI()
 
     lable2->setText(tr("CPU FM Note: There are some risks associated with the CPU FM function,please use caution! The computer needs to be restarted when the FM is complete."));
     lable2->adjustSize();
+    lable2->setStyleSheet("color:rgb(0,0,0,185)");
     lable2->setFixedSize(580, 27*2);
     lable2->setWordWrap(true);
     v_layout->addWidget(lable2);
@@ -255,6 +264,7 @@ void CpuFmwidget::InitUI()
 void CpuFmwidget::set_cpu_listAndCur(QStringList list, QString string)
 {
     this->governer_list = list;
+//    this->governer_list.append("userspace");
     this->cur_governer = string;
     value = string;
     qDebug() << Q_FUNC_INFO <<this->governer_list << this->cur_governer;

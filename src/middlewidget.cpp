@@ -182,8 +182,8 @@ void MiddleWidget::initBottomContent()
 //    }
 
 //    icon_list<<":/tool/res/menu/system-clean.png"/*<<":/tool/res/menu/optimize"*/<< ":/tool/res/menu/monitor.png" << ":/tool/res/menu/drive-manager.png" <<":/tool/res/menu/sysinfo"<<":/tool/res/menu/toolkits" ;
-    icon_list<<":/svg/res/svg/top.svg";
-    text_list<< tr("Cleanup") /*<< tr("Optimize")*/ ;
+    icon_list<<":/svg/res/svg/top.svg" /*<< ":/svg/res/svg/top2.svg"*/;
+    text_list<< tr("Cleanup") /*<< tr("Optimize") */;
     text << "Cleanup" /*<< "Optimize"*/ ;
 
     if(!hide)

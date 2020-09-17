@@ -46,9 +46,9 @@ InfoWidget::InfoWidget(QString machine, QWidget *parent) :
     category_widget->setFixedSize(this->width(),30);
     category_widget->setFocusPolicy(Qt::NoFocus);
     category_widget->setObjectName("infoList");
-//    category_widget->setStyleSheet("QListWidget{background: green ;}");
-    category_widget->setStyleSheet("QListWidget{font-size:15px}\
-                                   QListWidget::item:hover{border-radius:5px;background:rgba(61,107,229,80);}\
+//    category_widget->setStyleSheet("QListWidget{background: green;color:rgb(0,0,0,185);}");
+    category_widget->setStyleSheet("QListWidget{font-size:15px;color:rgb(0,0,0,185);}\
+                                   QListWidget::item:hover{border-radius:5px;background:rgba(61,107,229,80);color:rgb(0,0,0,185);}\
                                    QListWidget::item:selected{border-radius:5px;background:rgba(61,107,229,1);color:white;}");
 
     category_widget->setFlow(QListView::LeftToRight);

@@ -102,18 +102,15 @@ void Temperature::InitTopUI()
     temperature_icon->setFixedSize(pixmap.size());
     h_layout->addWidget(temperature_icon);
 
-    QFont font;
-    font.setBold(QFont::Bold);
-    font.setPixelSize(18);
-//    top_tip->setFont(QFont("",18,QFont::Bold));
-    top_tip->setFont(font);
     top_tip->setText(tr("Normal temperature, good heat dissipation."));
+    top_tip->setStyleSheet("QLabel{color:rgb(0,0,0,185);font-size:18px;font-weight:bold;}");
     v_layout->addWidget(top_tip);
 
     QFont font1;
-    font.setPixelSize(14);
+    font1.setPixelSize(14);
     temperature_lable->setFont(font1);
     temperature_lable->setText("CPU: 56℃");
+    temperature_lable->setStyleSheet("color:rgb(0,0,0,185)");
     v_layout->addWidget(temperature_lable);
 
     h_layout->addLayout(v_layout);

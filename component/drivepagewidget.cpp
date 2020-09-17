@@ -98,11 +98,7 @@ void DrivePageWidget::InitPageUI(QMap<QString, QVariant> tmpMap)
         icon->setFixedSize(pixmap.size());
         icon->setGeometry(QRect(3,16,44,44));
 
-        QFont font;
-        font.setPixelSize(16);
-        font.setWeight(QFont::Bold);
-        whichDrive->setStyleSheet("color:rgba(0,0,0,195)");
-        whichDrive->setFont(font);
+        whichDrive->setStyleSheet("QLabel{color:rgb(0,0,0,195);font-size:16px;font-weight:bold;}");
         whichDrive->setText(k.at(1));
         whichDrive->setGeometry(QRect(65,16,200,18));
 
@@ -111,9 +107,9 @@ void DrivePageWidget::InitPageUI(QMap<QString, QVariant> tmpMap)
         if(it.value().toString().length() >= 77)
             name->setToolTip(it.value().toString());
 
-        name->setWordWrap(true);
+//        name->setWordWrap(true);
         name->setStyleSheet("color:rgb(173,173,173)");
-        name->setGeometry(QRect(65,40,550,18));
+        name->setGeometry(QRect(65,40,550,25));
 
         v_layout->addWidget(item);
 

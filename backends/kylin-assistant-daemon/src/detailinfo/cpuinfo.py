@@ -1186,10 +1186,22 @@ class DetailInfo:
 #                        else:
 #                            ret_size += ("" + "<1_1>")
 #                            ret_in += ("" + "<1_1>")
-                        resultx = re.findall("horiz.: \s*(\w*)", localinfo)
-                        resulty = re.findall("vert.: \s*(\w*)", localinfo)
+                        # resultx = re.findall("horiz.: \s*(\w*)", localinfo)
+                        # resulty = re.findall("vert.: \s*(\w*)", localinfo)
+                        resultx,resulty = "",""
+                        status, output = subprocess.getstatusoutput('xrandr')
+                        print(monitor)
+                        if not status:
+                            for line in output.split("\n"):
+                                if monitor in line:
+                                    if "disconnected" not in line:
+                                        print(line)
+                                        print(line.split(" ")[-3][:-2])
+                                        resultx = line.split(" ")[-3][:-3]
+                                        resulty = line.split(" ")[-1][:-3]
                         if resultx and resulty:
-                            mx = float(resultx[0]); my = float(resulty[0])
+                            print(resultx,resulty)
+                            mx = float(resultx); my = float(resulty)
                             md = math.sqrt(mx**2 + my**2)/2.54
                             ret_size += ((str(mx) + " X " + str(my) + " cm") + "<1_1>")
                             ret_in += (str("%.1f" %md) + "<1_1>")
@@ -2174,4 +2186,4 @@ if __name__ == "__main__":
     #cc.get_multimedia()
     #cc.get_dvd()
     #cc.get_usb()
-    pprint(cc.get_disk())
+    pprint(cc.get_monitor())

@@ -84,6 +84,7 @@ protected:
     void mouseMoveEvent(QMouseEvent *event);
     void closeEvent(QCloseEvent *);
     void paintEvent(QPaintEvent *);
+    void keyPressEvent(QKeyEvent *event);
 //    virtual void paintEvent(QPaintEvent *event);
 
 public slots:

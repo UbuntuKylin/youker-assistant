@@ -180,6 +180,11 @@ tang guang &lt;tanggguang@kylinos.cn&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="719"/>
+        <source> historical traces</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../cleaner/cleandetailveiw.cpp" line="932"/>
         <location filename="../../cleaner/cleandetailveiw.cpp" line="933"/>
         <location filename="../../cleaner/cleandetailveiw.cpp" line="934"/>
@@ -529,7 +534,7 @@ tang guang &lt;tanggguang@kylinos.cn&gt;</source>
 <context>
     <name>CpuFmwidget</name>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="233"/>
+        <location filename="../../component/cpufmwidget.cpp" line="242"/>
         <source>apply</source>
         <translation type="unfinished"></translation>
     </message>
@@ -539,37 +544,37 @@ tang guang &lt;tanggguang@kylinos.cn&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="118"/>
+        <location filename="../../component/cpufmwidget.cpp" line="119"/>
         <source>Current average CPU core frequency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="131"/>
+        <location filename="../../component/cpufmwidget.cpp" line="133"/>
         <source>CPU Management Strategy :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="143"/>
+        <location filename="../../component/cpufmwidget.cpp" line="146"/>
         <source>performance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="155"/>
+        <location filename="../../component/cpufmwidget.cpp" line="159"/>
         <source>powersave</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="167"/>
+        <location filename="../../component/cpufmwidget.cpp" line="172"/>
         <source>userspace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="212"/>
+        <location filename="../../component/cpufmwidget.cpp" line="219"/>
         <source>Current Frequency Adjustable Range:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="222"/>
+        <location filename="../../component/cpufmwidget.cpp" line="230"/>
         <source>CPU FM Note: There are some risks associated with the CPU FM function,please use caution! The computer needs to be restarted when the FM is complete.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1042,22 +1047,22 @@ tang guang &lt;tanggguang@kylinos.cn&gt;</source>
 <context>
     <name>GeneralDialog</name>
     <message>
-        <location filename="../../component/generaldialog.cpp" line="63"/>
+        <location filename="../../component/generaldialog.cpp" line="64"/>
         <source>Remind</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/generaldialog.cpp" line="70"/>
+        <location filename="../../component/generaldialog.cpp" line="71"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/generaldialog.cpp" line="82"/>
+        <location filename="../../component/generaldialog.cpp" line="85"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/generaldialog.cpp" line="97"/>
+        <location filename="../../component/generaldialog.cpp" line="100"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1690,7 +1695,7 @@ tang guang &lt;tanggguang@kylinos.cn&gt;</source>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="89"/>
+        <location filename="../mainwindow.cpp" line="88"/>
         <source>Kylin Assistant</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3287,8 +3292,8 @@ Are you sure to continue?</source>
     </message>
     <message>
         <location filename="../../plugins/shredmanager/shreddialog.cpp" line="148"/>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="302"/>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="339"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="304"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="344"/>
         <source>No select any file which need to be shredded</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3328,12 +3333,12 @@ Are you sure to continue?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="301"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="303"/>
         <source>Shred successfully!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="310"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="314"/>
         <source>Shred failed!</source>
         <translation type="unfinished"></translation>
     </message>
