@@ -400,12 +400,14 @@ class Daemon(PolicyKitService):
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
     def hide_fan_page(self):
+        hide=False
         status, output = subprocess.getstatusoutput("sensors")
         if( status != -1 ):
             for line in output.split("\n"):
                 if "fan" in line:
-                    return True
-            return False
+                    if(line.split(":")[1].strip().split(" ")[0] != "0"):
+                        hide=True
+            return hide
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
     def hide_cpufm_page(self):
