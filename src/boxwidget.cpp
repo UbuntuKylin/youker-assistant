@@ -157,7 +157,13 @@ void BoxWidget::initPluginWidget()
     pluginModel.setData(qindex, tr("Kylin Software Center"),Qt::WhatsThisRole);
 
     //set icon
-    pluginModel.setData(qindex,QIcon(QPixmap("://res/ubuntukylin-software-center.png")),Qt::DecorationRole);
+    if(QIcon::hasThemeIcon("ubuntu-kylin-software-center")){
+        QIcon icons = QIcon::fromTheme("ubuntu-kylin-software-center");
+        pluginModel.setData(qindex,icons,Qt::DecorationRole);
+    }else{
+        pluginModel.setData(qindex,QIcon(QPixmap("://res/ubuntukylin-software-center.png")),Qt::DecorationRole);
+
+    }
 
     if (QFileInfo("/usr/bin/ukui-system-monitor").exists()) {
         pluginModel.insertRows(1,1,QModelIndex());
@@ -167,7 +173,13 @@ void BoxWidget::initPluginWidget()
         pluginModel.setData(qindex1, tr("systemmonitor"),Qt::WhatsThisRole);
 
         //set icon
-        pluginModel.setData(qindex1,QIcon(QPixmap("://res/processmanager.png")),Qt::DecorationRole);
+        if(QIcon::hasThemeIcon("ukui-system-monitor")){
+            QIcon icons = QIcon::fromTheme("ukui-system-monitor");
+            pluginModel.setData(qindex1,icons,Qt::DecorationRole);
+        }else{
+            pluginModel.setData(qindex1,QIcon(QPixmap("://res/processmanager.png")),Qt::DecorationRole);
+
+        }
         rows=rows+1;
      }
 //    QStringList icon_list;

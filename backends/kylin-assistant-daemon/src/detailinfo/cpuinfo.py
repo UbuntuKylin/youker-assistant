@@ -1045,7 +1045,8 @@ class DetailInfo:
                 for size in destList:
                     diffMap[abs(memSize - size)] = destList.index(size)
                 return destList[diffMap.get(min(diffMap.keys()))]
-            tmpMem["Size"] = str(transHumanReadableSize(int(tmpMem["Size"].split(" ")[0])/1024)) + " GiB"
+            if(tmpMem["Size"].split(" ")[1] != "GB"):
+                tmpMem["Size"] = str(transHumanReadableSize(int(tmpMem["Size"].split(" ")[0])/1024)) + " GB"
 
             Mem["MemSize"] = Mem.setdefault("MemSize", "") + tmpMem["Size"] + "<1_1>"
             if (index == len(modlist) - 1):
@@ -2186,4 +2187,4 @@ if __name__ == "__main__":
     #cc.get_multimedia()
     #cc.get_dvd()
     #cc.get_usb()
-    pprint(cc.get_monitor())
+    pprint(cc.get_memory())

@@ -252,7 +252,8 @@ void ShredDialog::progressbarFlash()
 void ShredDialog::onSelectButtonClicked()
 {
     QString fileName=QFileDialog::getOpenFileName(0, tr("Select file"), QDir::homePath(), tr("All Files(*)"));
-    select_edit->setText(fileName);
+    if(fileName != "")
+        select_edit->setText(fileName);
 
     /*QStringList fileNameList;
     QString fileName;
