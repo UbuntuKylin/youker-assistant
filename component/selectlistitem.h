@@ -30,7 +30,7 @@ class SelectListItem : public QWidget
 {
     Q_OBJECT
 public:
-    explicit SelectListItem(QWidget *parent = 0, QString description = "", QString tipMsg = "", bool hasTip = false, int itemWidth = 0);
+    explicit SelectListItem(QWidget *parent = 0, QString description = "", QString tipMsg = "", bool hasTip = false, int itemWidth = 0, bool check = true);
     ~SelectListItem();
 
     bool itemIsChecked();

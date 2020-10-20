@@ -40,7 +40,7 @@ public:
 
 public slots:
     void loadListItems(const QString &title, const QStringList &cachelist, int itemWidth);
-    void loadListItemsWithTips(const QStringList &arglist, const QStringList &statuslist, int itemWidth);
+    void loadListItemsWithTips(const QStringList &arglist, const QStringList &statuslist, const QStringList &baklist, int itemWidth);
     void removeOneItem(const QString &description);
     void resetToDefault();
     QStringList getSelectedItems();
@@ -59,6 +59,7 @@ private:
     QVBoxLayout *m_listAreaWidgetLayout = nullptr;
     QLabel *m_titleLabel = nullptr;
 //    QLabel *m_countLabel = nullptr;
+    QStringList itemlist;
     QMap<QString, SelectListItem *> m_itemsMap;
 };
 

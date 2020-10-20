@@ -20,6 +20,7 @@
 #include "selectlistwidget.h"
 #include "utils.h"
 #include <QDebug>
+#include <QStringList>
 
 SelectListWidget::SelectListWidget(bool hasTip, QWidget *parent) :
     QWidget(parent)
@@ -75,21 +76,23 @@ void SelectListWidget::loadListItems(const QString &title, const QStringList &ca
     m_listAreaWidgetLayout->addStretch();
 }
 
-void SelectListWidget::loadListItemsWithTips(const QStringList &arglist, const QStringList &statuslist, int itemWidth)
+void SelectListWidget::loadListItemsWithTips(const QStringList &arglist, const QStringList &statuslist, const QStringList &baklist, int itemWidth)
 {
     if (arglist.length() != statuslist.length())
         return;
 
+    itemlist.clear();
+    itemlist = baklist;
+
     m_itemsMap.clear();
 
     for (int i = 0; i < arglist.length(); ++i) {
-        SelectListItem *item = new SelectListItem(0, arglist.at(i), statuslist.at(i), true, itemWidth-2*ITEM_LEFT_RIGHT_PADDING);
+        SelectListItem *item = new SelectListItem(0, arglist.at(i), baklist.at(i), true, itemWidth-2*ITEM_LEFT_RIGHT_PADDING, statuslist.at(i) != "");
         connect(item, SIGNAL(selectedSignal(bool,QString)), this, SLOT(onSelectedSignal(bool,QString)));
         item->setMaximumSize(itemWidth, 30);
         m_listAreaWidgetLayout->addWidget(item);
         m_itemsMap.insert(arglist.at(i), item);
     }
-
     m_listAreaWidgetLayout->addStretch();
 }
 
@@ -102,7 +105,7 @@ void SelectListWidget::removeOneItem(const QString &description)
 
 QStringList SelectListWidget::getSelectedItems()
 {
-    QStringList text_list;
+//    QStringList text_list;
 
     /*foreach (QString text, m_itemsMap.keys()) {
 
@@ -110,11 +113,13 @@ QStringList SelectListWidget::getSelectedItems()
     QMap<QString, SelectListItem*>::iterator it;
     for (it = m_itemsMap.begin(); it != m_itemsMap.end(); ++it) {
         SelectListItem *item = static_cast<SelectListItem *>(it.value());
-        if (item->itemIsChecked())
-            text_list.append(item->itemDescription());
+        if (!item->itemIsChecked()){
+//            text_list.append(item->itemDescription());
+            itemlist.replaceInStrings(item->itemDescription(),"",Qt::CaseInsensitive);
+        }
     }
 
-    return text_list;
+    return itemlist;
 }
 
 void SelectListWidget::scanAllSubCheckbox()

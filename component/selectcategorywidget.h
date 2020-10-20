@@ -39,7 +39,7 @@ public:
     SelectCategoryWidget(CleanerCategoryID id = InvalidCategory, const QString &title = "", bool needMin = false, QWidget *parent = 0);
     ~SelectCategoryWidget();
 
-    void loadData(const QStringList &arglist, const QStringList &statuslist);
+    void loadData(const QStringList &arglist, const QStringList &statuslist, const QStringList &baklist);
     void moveCenter();
 
     void paintEvent(QPaintEvent *event);
