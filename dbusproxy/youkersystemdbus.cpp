@@ -385,6 +385,11 @@ QMap<QString, QVariant> SystemDispatcher::get_audiocard_info_qt()
     }
 }
 
+bool SystemDispatcher::get_inputdev_info_qt(){
+    QDBusReply<bool> reply = systemiface->call("get_inputdev_info");
+    return reply.value();
+}
+
 QString SystemDispatcher::get_time_value_qt() {
     QDBusReply<QString> reply = systemiface->call("get_time_value");
     return reply.value();

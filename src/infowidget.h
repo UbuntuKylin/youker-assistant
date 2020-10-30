@@ -36,6 +36,8 @@
 #include <QStackedWidget>
 #include <QScrollArea>
 
+#include <QDBusMessage>
+
 class TestWidget;
 class InfoGui;
 
@@ -63,6 +65,7 @@ public slots:
     void onSendAudioInfo(QMap<QString, QVariant> tmpMap);
     void onSendBatteryInfo(QMap<QString, QVariant> tmpMap);
     void onSendSensorInfo(QMap<QString, QVariant> tmpMap);
+    void onSendInputInfo(QDBusMessage msg);
 //    void updateTimeValue();
     void paintEvent(QPaintEvent *);
 
@@ -142,6 +145,8 @@ private:
 
     QString current_tip;
     QString arch;
+
+    bool firstLoadInputDev;
 };
 
 #endif // INFOWIDGET_H

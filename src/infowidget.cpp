@@ -63,6 +63,9 @@ InfoWidget::InfoWidget(QString machine, QWidget *parent) :
     stacked_widget->setFocusPolicy(Qt::NoFocus);
     stacked_widget->setAutoFillBackground(true);
 
+
+    firstLoadInputDev = true;
+
     connect(category_widget,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(changeInfoPage(QListWidgetItem*)));
 }
 
@@ -163,6 +166,14 @@ void InfoWidget::initInfoUI(bool has_battery, bool has_sensor, QMap<QString,bool
         InfoGui *audio_widget = new InfoGui(this);
         audio_widget->setInfoGuiName("audio");
         stacked_widget->addWidget(audio_widget);
+    }
+
+    if(info["input_info"]){
+        type_list << tr("Input");
+        icon_list << "input";
+        InfoGui * input_widget = new InfoGui(this);
+        input_widget->setInfoGuiName("input");
+        stacked_widget->addWidget(input_widget);
     }
 
     if (has_battery) {
@@ -827,6 +838,37 @@ void InfoWidget::onSendAudioInfo(QMap<QString, QVariant> tmpMap)
                     }
                     audio_info_map.clear();
                 }
+            }
+        }
+    }
+}
+
+void InfoWidget::onSendInputInfo(QDBusMessage msg){
+    QVariant temp = msg.arguments().takeFirst();
+    QStringList inputInfo = temp.value< QStringList>();
+
+    if (inputInfo.isEmpty())
+        return;
+
+    QMap<QString, QVariant> m1;
+    for (QStringList::iterator it = inputInfo.begin(); it != inputInfo.end(); it++){
+        QString s1 = *it;
+        QStringList st1 = s1.split(":");
+        m1.insert(st1.at(0), st1.at(1));
+    }
+
+    for (int i = 0; i < stacked_widget->count(); i++) {
+        if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
+            if (page->infoGuiName().isEmpty() || page->infoGuiName().isNull())
+                continue;
+            if (page->infoGuiName() == "input") {
+                if (firstLoadInputDev){
+                    page->clearWidget();
+                    firstLoadInputDev = false;
+                }
+
+                page->loadOnePage(0, tr("Input Info"), m1);
+                break;
             }
         }
     }

@@ -359,6 +359,14 @@ QMap<QString,bool> DataWorker::onRequesetAllInfoIsHaveValue()
        tmpMap.clear();
     }
 
+
+    if(m_systemInterface->get_inputdev_info_qt()){
+        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
+        info.insert("input_info", true);
+    }else{
+        info.insert("input_info", false);
+    }
+
     return info;
 }
 

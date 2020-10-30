@@ -852,6 +852,21 @@ class Daemon(PolicyKitService):
     @dbus.service.signal(INTERFACE, signature='s')
     def subpage_error_signal(self, msg):
         pass
+
+
+    # check and save current plymouth when init
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_inputdev_info(self):
+        return self.infoconf.get_input(self)
+
+    @dbus.service.signal(INTERFACE, signature='as')
+    def inputdev_info_signal(self, msg):
+        print(msg)
+        pass
+
+    def emit_inputdev_info_signal(self, data):
+        self.inputdev_info_signal(data)
+
 #-----END------------NEW-YOUKER---------------------------
 
 if __name__ == '__main__':

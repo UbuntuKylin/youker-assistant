@@ -85,6 +85,7 @@ public:
     QMap<QString, QVariant> get_cdrom_info_qt();
     QMap<QString, QVariant> get_audiocard_info_qt();
     QString get_time_value_qt();
+    bool get_inputdev_info_qt();
 
     //monitor
     QMap<QString, QVariant> get_cpu_Temperature();
