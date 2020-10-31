@@ -1461,6 +1461,33 @@ class DetailInfo:
         dis['DiskNum'],dis['DiskProduct'],dis['DiskVendor'],dis['DiskCapacity'],dis['DiskName'],dis['DiskFw'],dis['DiskSerial'] = str(disknum),DiskProduct.rstrip("<1_1>"),DiskVendor.rstrip("<1_1>"),DiskCapacity.rstrip("<1_1>"),DiskName.rstrip("<1_1>"),DiskFw.rstrip("<1_1>"),DiskSerial.rstrip("<1_1>")
         return dis
 
+    def get_input(self, sysdaemon):
+        cmd = ["lshw", "-C", "input"]
+        pipe = subprocess.Popen(cmd, env={'LANGUAGE':'en:'}, stdout=subprocess.PIPE)
+        output = pipe.stdout.readlines()
+
+        index = -1
+        modlist = []
+        for line in output:
+            line2 = line.decode()
+            if line2.strip().startswith("*-"):
+                index += 1
+                pList = list()
+                modlist.append(pList)
+            else:
+                if index == -1:
+                    continue
+                if ":" not in line2:
+                    continue
+                modlist[index].append(line2.strip());
+                #results = line2.split(":")
+                #modlist[index].update({results[0].strip() : results[1].strip()})
+
+        for var in modlist:
+            pprint(var)
+            sysdaemon.emit_inputdev_info_signal(var)
+
+        return False if index == -1 else True
 
 
     # writed by kobe 20170318

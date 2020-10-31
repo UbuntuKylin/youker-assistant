@@ -369,6 +369,18 @@ inline const QString covertKeyName(const QString &key)
         return QString(QObject::tr("Motherboard temperature"));
     else if(key == "FANIN1")//CPU风扇转速
         return QString(QObject::tr("CPU fan speed"));
+
+    else if (key == "vendor") //制造商
+        return QString(QObject::tr("Vendor"));
+    else if (key == "description") //设备类型
+        return QString(QObject::tr("Dev Type"));
+    else if (key == "bus info") //
+        return QString(QObject::tr("Bus Address"));
+    else if (key == "version") //
+        return QString(QObject::tr("Version"));
+    else if (key == "capabilities") //
+        return QString(QObject::tr("Capabilities"));
+
     else
         return key;
 }

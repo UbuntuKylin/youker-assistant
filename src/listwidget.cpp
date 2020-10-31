@@ -2,6 +2,8 @@
 #include "infowidget.h"
 #include "../info/infogui.h"
 
+#include <QDBusConnection>
+
 MListwidget::MListwidget(QWidget *parent) : QWidget(parent)
 {
     this->setFixedSize(860,460);
@@ -29,8 +31,18 @@ MListwidget::MListwidget(QWidget *parent) : QWidget(parent)
     stackedwidget->setFocusPolicy(Qt::NoFocus);
     stackedwidget->setAutoFillBackground(true);
 
+    info_widget = new InfoWidget();
+
 //    InitListUI();
     connect(listview,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(changeListwidgetpage(QListWidgetItem*)));
+
+    //input info
+    QDBusConnection::systemBus().connect("", \
+                      "", \
+                      "com.kylin.assistant.systemdaemon", \
+                      "inputdev_info_signal", \
+                      info_widget, SLOT(onSendInputInfo(QDBusMessage)));
+
     qDebug()<<Q_FUNC_INFO;
 }
 
@@ -42,6 +54,7 @@ void MListwidget::InitListUI()
 void MListwidget::InitInfowidgetUI()
 {
     stringlist.clear();
+
 
     stringlist << tr("Local \nSystem");
     system_widget = new InfoGui(this);

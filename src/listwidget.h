@@ -12,6 +12,8 @@
 #include <QVBoxLayout>
 #include <QDebug>
 
+#include <QDBusMessage>
+
 class InfoWidget;
 class InfoGui;
 
