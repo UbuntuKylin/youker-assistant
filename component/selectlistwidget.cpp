@@ -122,6 +122,24 @@ QStringList SelectListWidget::getSelectedItems()
     return itemlist;
 }
 
+QStringList SelectListWidget::getSelectedItemsAll()
+{
+        QStringList text_list;
+
+        /*foreach (QString text, m_itemsMap.keys()) {
+
+        }*/
+        QMap<QString, SelectListItem*>::iterator it;
+        for (it = m_itemsMap.begin(); it != m_itemsMap.end(); ++it) {
+            SelectListItem *item = static_cast<SelectListItem *>(it.value());
+            if (!item->itemIsChecked()){
+                text_list.append(item->itemDescription());
+            }
+        }
+        qDebug() << Q_FUNC_INFO << text_list;
+        return text_list;
+}
+
 void SelectListWidget::scanAllSubCheckbox()
 {
     int selectedCount = 0;

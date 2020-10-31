@@ -44,6 +44,7 @@ public slots:
     void removeOneItem(const QString &description);
     void resetToDefault();
     QStringList getSelectedItems();
+    QStringList getSelectedItemsAll();
     void resetSubCheckbox(int status);
     void scanAllSubCheckbox();
     void onSelectedSignal(bool checked, QString description);

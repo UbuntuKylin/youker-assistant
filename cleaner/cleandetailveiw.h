@@ -121,6 +121,9 @@ private:
     QStringList m_selectedFirefoxCookieList;
     QStringList m_selectedChromiumCookieList;
     QStringList m_selectedTraceX11List;
+
+//    bool AptList = true;
+//    bool cookies = true;
 };
 
 #endif // CLEANDETAILVEIW_H

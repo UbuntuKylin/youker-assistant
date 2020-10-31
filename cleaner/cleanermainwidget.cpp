@@ -66,7 +66,7 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
     QLabel *cache_label = new QLabel(this);
     cache_label->setText(tr("Clear package、thumbnails and browser cache"));
     cache_label->setAlignment(Qt::AlignTop|Qt::AlignLeft);
-    cache_label->setGeometry(QRect(120,240,200,35*2));
+    cache_label->setGeometry(QRect(120,240,200,35*3));
     cache_label->setWordWrap(true);
     cache_label->setStyleSheet("color:rgb(0,0,0,165)");
 
@@ -103,7 +103,7 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
     QLabel *cookie_label = new QLabel(this);
     cookie_label->setText(tr("Clear internet、games、shopping history, etc."));
     cookie_label->setAlignment(Qt::AlignTop|Qt::AlignLeft);
-    cookie_label->setGeometry(QRect(347,240,200,35*2));
+    cookie_label->setGeometry(QRect(347,240,200,35*3));
     cookie_label->setWordWrap(true);
     cookie_label->setStyleSheet("color:rgb(0,0,0,165)");
 
@@ -140,7 +140,7 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
     QLabel *history_label = new QLabel(this);
     history_label->setText(tr("Clear browser and system usage traces"));
     history_label->setAlignment(Qt::AlignTop|Qt::AlignLeft);
-    history_label->setGeometry(QRect(579,240,200,35*2));
+    history_label->setGeometry(QRect(579,240,200,35*3));
     history_label->setWordWrap(true);
     history_label->setStyleSheet("color:rgb(0,0,0,165)");
 
@@ -153,7 +153,7 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
     start_clean->setFocusPolicy(Qt::NoFocus);
     start_clean->setFlat(true);
     start_clean->setText(tr("Start Clean"));
-    start_clean->setGeometry(QRect(120,320,220,60));
+    start_clean->setGeometry(QRect(120,340,220,60));
     start_clean->setStyleSheet("QPushButton{background:rgba(34,103,242,1);color:white;border-radius:30px;font-size:24px}\
                                 QPushButton:hover{background:rgba(67,127,240,1);color:white}");
 

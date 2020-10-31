@@ -189,8 +189,8 @@ void MiddleWidget::initBottomContent()
     if(!hide)
     {
         icon_list <<":/svg/res/svg/top3.svg";
-        text_list << tr("Monitoring") ;
-        text << "Monitoring";
+        text_list << tr("Monitor") ;
+        text << "Monitor";
     }
 
     icon_list <<":/svg/res/svg/top4.svg"<<":/svg/res/svg/top5.svg"<<":/svg/res/svg/top7.svg";

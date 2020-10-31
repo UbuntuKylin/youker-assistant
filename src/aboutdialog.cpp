@@ -93,7 +93,7 @@ AboutDialog::AboutDialog(QWidget *parent, /*const QString &version, */QString sk
     aboutBtn->setGeometry(QRect(10, 50, 60, 24));
     contributorBtn = new QPushButton(baseWidget);
     contributorBtn->setText(tr("Contributor"));
-    contributorBtn->setGeometry(QRect(75, 50, 60, 24));
+    contributorBtn->setGeometry(QRect(75, 50, 75, 24));
 
     indicator = new QLabel(baseWidget);
     indicator->setStyleSheet("QLabel{background-image:url('://res/underline.png');background-position:center;}");
@@ -172,7 +172,7 @@ AboutDialog::~AboutDialog()
 void AboutDialog::initAnimation()
 {
     QRect mainAcitonRect(10, 75, 60, 2);
-    QRect origAcitonRect(75, 75, 60, 2);
+    QRect origAcitonRect(82, 75, 60, 2);
 
     QPropertyAnimation *aboutAnimation = new QPropertyAnimation(indicator, "geometry");
     aboutAnimation->setDuration(300);

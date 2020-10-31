@@ -30,6 +30,8 @@
 #include <QDesktopWidget>
 #include <QStyleFactory>
 
+#include <QtSingleApplication>
+
 #include <unistd.h>
 #include <fcntl.h>
 #include <errno.h>
@@ -45,7 +47,7 @@ char filePath[BUFF_SIZE] = {0};
 int make_pid_file() {
     char buf[16];
     struct flock fl;
-    snprintf(filePath, BUFF_SIZE, LOCKFILE, getuid());
+    snprintf(filePath, BUFF_SIZE, "%s/.config/kylin-assistant:%s.pid", getenv("HOME") ,getenv("DISPLAY"));
 
     int fd = open(filePath, O_RDWR|O_CREAT, LOCKMODE);
     if (fd < 0) {
@@ -148,18 +150,24 @@ int main(int argc, char *argv[])
 
 //    QApplication app(argc, argv);
 //    Kpplication::setStyle(QStyleFactory::create("ukui-default"));
-    Kpplication app("kylin-assistant", argc, argv);
-    app.setQuitOnLastWindowClosed(false);
+//    Kpplication app("kylin-assistant", argc, argv);
+    QString id = QString("kylin-assistant" + QLatin1String(getenv("DISPLAY")));
+    qDebug()<< Q_FUNC_INFO << id;
+    QtSingleApplication app(id, argc, argv);
+//    app.setQuitOnLastWindowClosed(false);
 
-    app.setOrganizationName("kylin");
-    app.setApplicationName("kylin-assistant");
-    app.setApplicationVersion("3.0.2");
+    QCoreApplication::setOrganizationName("kylin");
+    QCoreApplication::setApplicationName("kylin-assistant");
+    QCoreApplication::setApplicationVersion("3.0.2");
 
-    Kpplication *app_ins = Kpplication::instance();
-    if (app_ins->isRunning()) {
-        app_ins->sendMessage("Hello");
-        return 1;
-    }
+//    Kpplication *app_ins = Kpplication::instance();
+    if (app.isRunning()) {
+//        app.sendMessage("Hello");
+//        return 1;
+        app.sendMessage(QApplication::arguments().length() > 1 ? QApplication::arguments().at(1) : app.applicationFilePath());
+        qDebug() << QObject::tr("app is already running!");
+        return EXIT_SUCCESS;
+    }else{
 
 //#ifdef QT_NO_DEBUG
 //    qDebug() << "release mode";
@@ -198,9 +206,9 @@ int main(int argc, char *argv[])
 //}
 //        signal(SIGINT, sig_int);
 
-    //    if (make_pid_file()) {
-    //        exit(1);
-    //    }
+//        if (make_pid_file()) {
+//            exit(1);
+//        }
 
         QString arch = "";
 
@@ -213,6 +221,7 @@ int main(int argc, char *argv[])
 #endif
 
         QString locale = QLocale::system().name();
+//        QString locale = "es";
         QTranslator translator;
         if(locale == "zh_CN" || locale == "es" || locale == "fr" || locale == "de" || locale == "ru") {//中文 西班牙语 法语 德语 俄语
             if(!translator.load("kylin-assistant_" + locale + ".qm",
@@ -269,6 +278,7 @@ int main(int argc, char *argv[])
     //    w.display(sCount);
 
         return app.exec();
+    }
     //}
 
     //return 0;
