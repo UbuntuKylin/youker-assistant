@@ -141,16 +141,18 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
     this->setGraphicsEffect(shadow_effect);
 
     const QByteArray id("org.ukui.style");
-    QGSettings *fontSetting = new QGSettings(id);
-    connect(fontSetting,&QGSettings::changed,[=](QString key){
-       if("systemFont" == key || "systemFontSize" == key ){
-           QFont font = this->font();
-//           int width = font.pointSize();
-           for (auto widget: qApp->allWidgets()) {
-               widget->setFont(font);
-           }
-       }
-    });
+    if (QGSettings::isSchemaInstalled(id)){
+        QGSettings *fontSetting = new QGSettings(id);
+        connect(fontSetting,&QGSettings::changed,[=](QString key){
+            if("systemFont" == key || "systemFontSize" == key ){
+                QFont font = this->font();
+//                int width = font.pointSize();
+                for (auto widget: qApp->allWidgets()) {
+                    widget->setFont(font);
+                }
+            }
+        });
+    }
 
     this->hide();
 

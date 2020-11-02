@@ -64,7 +64,7 @@ void MListwidget::InitInfowidgetUI()
     emit this->m_requestRefreshSystemInfo();
 
     stringlist << tr("Hardware \nInformation");
-    info_widget = new InfoWidget();
+//    info_widget = new InfoWidget();
 //    info_widget->setInfoGuiName("info_widget");
     stackedwidget->addWidget(info_widget);
 //    stackedwidget->setCurrentWidget(info_widget);

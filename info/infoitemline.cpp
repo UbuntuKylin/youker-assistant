@@ -377,10 +377,15 @@ inline const QString covertKeyName(const QString &key)
     else if (key == "bus info") //
         return QString(QObject::tr("Bus Address"));
     else if (key == "version") //
-        return QString(QObject::tr("Version"));
+        return QString(QObject::tr("InputVersion"));
     else if (key == "capabilities") //
         return QString(QObject::tr("Capabilities"));
-
+    else if (key == "product") //
+        return QString(QObject::tr("InputProduct"));
+    else if (key == "configuration") //
+        return QString(QObject::tr("Configuration"));
+    else if (key == "physical id") //
+        return QString(QObject::tr("Physical ID"));
     else
         return key;
 }

@@ -846,7 +846,6 @@ void InfoWidget::onSendAudioInfo(QMap<QString, QVariant> tmpMap)
 void InfoWidget::onSendInputInfo(QDBusMessage msg){
     QVariant temp = msg.arguments().takeFirst();
     QStringList inputInfo = temp.value< QStringList>();
-
     if (inputInfo.isEmpty())
         return;
 
@@ -861,6 +860,7 @@ void InfoWidget::onSendInputInfo(QDBusMessage msg){
         if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
             if (page->infoGuiName().isEmpty() || page->infoGuiName().isNull())
                 continue;
+
             if (page->infoGuiName() == "input") {
                 if (firstLoadInputDev){
                     page->clearWidget();
@@ -1005,6 +1005,9 @@ void InfoWidget::changeInfoPage(QListWidgetItem *item) {
                 }
                 else if (m_currentGuiName == "sensor") {
                     emit this->requestSensorInfo();
+                }
+                else if (m_currentGuiName == "input"){
+
                 }
                 else if (m_currentGuiName == "drive") {
                     QMap<QString, QVariant> driver_info_map;
