@@ -99,17 +99,14 @@ void Fanwidget::Initwidgettop()
     fan_icon->setPixmap(check_pixmap);
     fan_icon->setFixedSize(check_pixmap.size());
 
-    QFont font;
-    font.setBold(QFont::Bold);
-    font.setPixelSize(18);
-    top_fan_speed->setFont(font);
     top_fan_speed->setText(tr("The fan is working fine, averaging ")+this->Speed+tr(" rpm/s"));
+    top_fan_speed->setStyleSheet("QLabel{color:rgb(0,0,0,185);font-size:16px;font-weight:bold;}");
     this_layout->addWidget(top_fan_speed);
 
     QFont font1;
 //    font1.setBold(QFont::Bold);
     font1.setPixelSize(14);
-    tip_speed->setFixedHeight(15);
+    tip_speed->setFixedHeight(25);
     tip_speed->setFont(font1);
     tip_speed->setText(tr("Maximum ")+QString::number(maxSpeed)+tr(" rpm/s, minimum ")+QString::number(minSpeed)+tr(" rpm/s"));
     this_layout->addWidget(tip_speed);
@@ -144,8 +141,9 @@ void Fanwidget::Initwidgetbottom()
     movie->start();
     v_layout->addWidget(icon_lable);
 
-    speed_lable->setFont(QFont("",24,QFont::Bold));
+//    speed_lable->setFont(QFont("",24,QFont::Bold));
     speed_lable->setText(this->Speed+tr(" rpm/s"));
+    speed_lable->setStyleSheet("QLabel{color:rgb(0,0,0,185);font-size:24px;font-weight:bold;}");
     h_layout->addStretch(1);
     h_layout->addWidget(speed_lable,1,Qt::AlignHCenter);
 

@@ -19,7 +19,7 @@
 
 #include "selectlistitem.h"
 
-SelectListItem::SelectListItem(QWidget *parent, QString description, QString tipMsg, bool hasTip, int itemWidth) :
+SelectListItem::SelectListItem(QWidget *parent, QString description, QString tipMsg, bool hasTip, int itemWidth, bool check) :
     QWidget(parent)
     , m_description(description)
     , m_tip(tipMsg)
@@ -36,7 +36,10 @@ SelectListItem::SelectListItem(QWidget *parent, QString description, QString tip
     m_checkBox = new QCheckBox(this);
     m_checkBox->setFixedSize(20, 20);
     m_checkBox->setFocusPolicy(Qt::NoFocus);
-    m_checkBox->setChecked(true);
+    if(check)
+        m_checkBox->setChecked(true);
+    else
+        m_checkBox->setChecked(false);
 
     connect(m_checkBox, &QCheckBox::clicked, [=] (bool checked) {
         emit this->selectedSignal(checked, this->itemDescription());

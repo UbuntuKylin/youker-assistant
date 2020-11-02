@@ -23,7 +23,7 @@ MListwidget::MListwidget(QWidget *parent) : QWidget(parent)
     listview->setFocusPolicy(Qt::NoFocus);
     listview->setObjectName("listview");
     listview->setMovement(QListView::Static);
-    listview->setStyleSheet("QListWidget{background: rgb(237,237,237);font-size:14px;color:rgb(0,0,0,185);\
+    listview->setStyleSheet("QListWidget{background: rgb(237,237,237);line-height:10px;color:rgb(0,0,0,185);\
                             border-bottom-right-radius:0px}\
                             QListWidget::item:selected{background:white;color:black;}");
 
@@ -55,16 +55,16 @@ void MListwidget::InitInfowidgetUI()
 {
     stringlist.clear();
 
-    qDebug() << Q_FUNC_INFO;
 
-    stringlist << tr("Local System");
+    stringlist << tr("Local \nSystem");
     system_widget = new InfoGui(this);
     system_widget->setInfoGuiName("computer");
     stackedwidget->addWidget(system_widget);
     stackedwidget->setCurrentWidget(system_widget);
     emit this->m_requestRefreshSystemInfo();
 
-    stringlist << tr("Hardware Information");
+    stringlist << tr("Hardware \nInformation");
+    info_widget = new InfoWidget();
 //    info_widget->setInfoGuiName("info_widget");
     stackedwidget->addWidget(info_widget);
 //    stackedwidget->setCurrentWidget(info_widget);
@@ -95,6 +95,7 @@ void MListwidget::InitInfowidgetUI()
         QListWidgetItem *item = new QListWidgetItem(stringlist.at(i),listview);
         item->setSizeHint(QSize(160,60));
         item->setStatusTip(stringlist.at(i));
+        item->setToolTip(stringlist.at(i));
         item->setTextAlignment(Qt::AlignVCenter|Qt::AlignHCenter);
     }
 
@@ -137,11 +138,11 @@ void MListwidget::changeListwidgetpage(QListWidgetItem *item)
     if (page_Name.isEmpty() || page_Name.isNull())
         return;
 //     qDebug() << "InfoWidget changeInfoPage" << page_Name;
-    if(page_Name == tr("Hardware Information") )
+    if(page_Name == tr("Hardware \nInformation") )
     {
         stackedwidget->setCurrentWidget(info_widget);
     }
-    if(page_Name == tr("Local System") )
+    if(page_Name == tr("Local \nSystem") )
     {
         stackedwidget->setCurrentWidget(system_widget);
     }

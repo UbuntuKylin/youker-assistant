@@ -163,9 +163,9 @@ void CleandetailVeiw::InitBottomWidget()
 {
     QFrame *frame = new QFrame(this);
     QHBoxLayout *m_layout = new QHBoxLayout(frame);
-    m_layout->setSpacing(40);
+//    m_layout->setSpacing(10);
     m_layout->setMargin(0);
-    m_layout->setContentsMargins(120,65,110,125);
+    m_layout->setContentsMargins(100,65,100,115);
 
     QFrame *cache_frame = new QFrame(frame);
     QVBoxLayout *cache_layout = new QVBoxLayout(cache_frame);
@@ -192,6 +192,7 @@ void CleandetailVeiw::InitBottomWidget()
     cache_tip->setFont(font);
     cache_tip->setText(tr("System cache"));
     cache_tip->adjustSize();
+    cache_tip->setMinimumWidth(230);
     cache_layout->addWidget(cache_tip);
 
     QLabel *lable1 = new QLabel(cache_frame);
@@ -236,6 +237,7 @@ void CleandetailVeiw::InitBottomWidget()
     cookie_tip->setStyleSheet("QLabel{font-size:18px;color:rgb(0,0,0,185)}");
     cookie_tip->setFont(font);
     cookie_tip->setText(tr("Cookies"));
+    cookie_tip->setMinimumWidth(210);
     cookie_tip->adjustSize();
     cookie_layout->addWidget(cookie_tip);
 
@@ -283,6 +285,7 @@ void CleandetailVeiw::InitBottomWidget()
     history_tip->setFont(font);
     history_tip->setText(tr("Historical trace"));
     history_tip->adjustSize();
+    history_tip->setMinimumWidth(210);
     history_layout->addWidget(history_tip);
 
     QLabel *lable3 = new QLabel(history_frame);
@@ -681,7 +684,7 @@ void CleandetailVeiw::getCleanResult(QString msg)
 
 void CleandetailVeiw::ShowDetailsPage()
 {
-//    qDebug() << Q_FUNC_INFO << __LINE__ << "------------" <<cache_apt_list;
+//    qDebug() << Q_FUNC_INFO << __LINE__ << "------------" <<cache_apt_list << m_selectedAptList;
     QObject *object = QObject::sender();
     QPushButton *button = qobject_cast<QPushButton *>(object);
     QString btn_name = button->objectName();
@@ -689,7 +692,7 @@ void CleandetailVeiw::ShowDetailsPage()
     if(QString::compare(btn_name,"Cache") == 0)
     {
         SelectWidget *w = new SelectWidget(CleanerModuleID::CacheApt, tr("Cleanable Cache"));
-        w->loadData(tr("Cleanable Cache"), m_selectedAptList);
+        w->loadData(tr("Cleanable Cache"), cache_apt_list);
         connect(w, SIGNAL(refreshSelectedItems(CleanerModuleID,QStringList)), this, SLOT(onRefreshSelectedItems(CleanerModuleID,QStringList)));
         w->exec();
         delete w;

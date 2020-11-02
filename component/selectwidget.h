@@ -34,7 +34,7 @@ class SelectWidget : public QDialog
 {
     Q_OBJECT
 public:
-    SelectWidget(CleanerModuleID id = InvalidID, const QString &title = "", bool needMin = false, QWidget *parent = 0);
+    SelectWidget(CleanerModuleID id = InvalidID, const QString &title = "", bool needMin = false, QWidget *parent = 0, bool t = false);
     ~SelectWidget();
 
     void loadData(const QString &title, const QStringList &cachelist);
@@ -60,6 +60,7 @@ private:
     SelectListWidget *m_listWidget = nullptr;
     QPoint m_dragPosition; //移动的距离
     bool m_mousePressed; //按下鼠标左键
+    bool flag;
 };
 
 #endif // SELECTWIDGET_H

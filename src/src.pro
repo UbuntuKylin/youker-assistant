@@ -16,6 +16,8 @@ PKGCONFIG += glib-2.0 gio-unix-2.0
 QT += core dbus network charts svg
 LIBS += -lgsettings-qt
 
+include(./qtsingleapplication.pri)
+
 inst1.files += res/kylin-assistant.png
 inst1.path = /usr/share/pixmaps
 inst2.files += ../kylin-assistant.desktop
@@ -68,6 +70,10 @@ SOURCES += main.cpp \
     mainbottomwidget.cpp \
     monitorwidget.cpp \
     optimizedwidget.cpp \
+    qtsingleapplication/qtlockedfile.cpp \
+    qtsingleapplication/qtlockedfile_unix.cpp \
+    qtsingleapplication/qtlockedfile_win.cpp \
+    qtsingleapplication/qtsinglecoreapplication.cpp \
     topbasewidget.cpp \
     bottomcontentwidget.cpp \
     infowidget.cpp \
@@ -151,6 +157,10 @@ HEADERS  += mainwindow.h \
     mainbottomwidget.h \
     monitorwidget.h \
     optimizedwidget.h \
+    qtsingleapplication/QtLockedFile \
+    qtsingleapplication/QtSingleApplication \
+    qtsingleapplication/qtlockedfile.h \
+    qtsingleapplication/qtsinglecoreapplication.h \
     topbasewidget.h \
     bottomcontentwidget.h \
     infowidget.h \
@@ -233,4 +243,6 @@ DEPENDPATH += qtsingleapplication
 SOURCES += qtsingleapplication/qtsingleapplication.cpp qtsingleapplication/qtlocalpeer.cpp
 HEADERS += qtsingleapplication/qtsingleapplication.h qtsingleapplication/qtlocalpeer.h
 
-DISTFILES +=
+DISTFILES += \
+    qtsingleapplication/qtsingleapplication.pri \
+    qtsingleapplication/qtsinglecoreapplication.pri

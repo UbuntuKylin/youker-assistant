@@ -24,10 +24,11 @@
 #include <QApplication>
 #include <QGraphicsDropShadowEffect>
 
-SelectWidget::SelectWidget(CleanerModuleID id, const QString &title, bool needMin, QWidget *parent)
+SelectWidget::SelectWidget(CleanerModuleID id, const QString &title, bool needMin, QWidget *parent, bool t)
     : QDialog(parent)
     , m_mousePressed(false)
     , m_id(id)
+    , flag(t)
 {
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->setFixedSize(600, 520);
@@ -83,7 +84,10 @@ SelectWidget::~SelectWidget()
 
 void SelectWidget::onClose()
 {
-    emit refreshSelectedItems(m_id, m_listWidget->getSelectedItems());
+    if(flag)
+        emit refreshSelectedItems(m_id, m_listWidget->getSelectedItemsAll());
+    else
+        emit refreshSelectedItems(m_id, m_listWidget->getSelectedItems());
     this->close();
 }
 

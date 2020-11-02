@@ -89,6 +89,9 @@ private:
     QStringList m_selectedTrace;
 
     QPushButton *start_clean;
+    bool flag_cache = true;
+    bool flag_cookie = true;
+    bool flag_trace = true;
 
     bool google=false;
     bool firefox=false;

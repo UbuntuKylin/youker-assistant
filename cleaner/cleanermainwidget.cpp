@@ -66,7 +66,7 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
     QLabel *cache_label = new QLabel(this);
     cache_label->setText(tr("Clear package、thumbnails and browser cache"));
     cache_label->setAlignment(Qt::AlignTop|Qt::AlignLeft);
-    cache_label->setGeometry(QRect(120,240,200,35*2));
+    cache_label->setGeometry(QRect(120,240,200,35*3));
     cache_label->setWordWrap(true);
     cache_label->setStyleSheet("color:rgb(0,0,0,165)");
 
@@ -103,7 +103,7 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
     QLabel *cookie_label = new QLabel(this);
     cookie_label->setText(tr("Clear internet、games、shopping history, etc."));
     cookie_label->setAlignment(Qt::AlignTop|Qt::AlignLeft);
-    cookie_label->setGeometry(QRect(347,240,200,35*2));
+    cookie_label->setGeometry(QRect(347,240,200,35*3));
     cookie_label->setWordWrap(true);
     cookie_label->setStyleSheet("color:rgb(0,0,0,165)");
 
@@ -140,7 +140,7 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
     QLabel *history_label = new QLabel(this);
     history_label->setText(tr("Clear browser and system usage traces"));
     history_label->setAlignment(Qt::AlignTop|Qt::AlignLeft);
-    history_label->setGeometry(QRect(579,240,200,35*2));
+    history_label->setGeometry(QRect(579,240,200,35*3));
     history_label->setWordWrap(true);
     history_label->setStyleSheet("color:rgb(0,0,0,165)");
 
@@ -153,7 +153,7 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
     start_clean->setFocusPolicy(Qt::NoFocus);
     start_clean->setFlat(true);
     start_clean->setText(tr("Start Clean"));
-    start_clean->setGeometry(QRect(120,320,220,60));
+    start_clean->setGeometry(QRect(120,340,220,60));
     start_clean->setStyleSheet("QPushButton{background:rgba(34,103,242,1);color:white;border-radius:30px;font-size:24px}\
                                 QPushButton:hover{background:rgba(67,127,240,1);color:white}");
 
@@ -256,12 +256,15 @@ void CleanerMainWidget::getAllScanSelectedItems()
 {
     argsMap.clear();
 
-    if (!m_selectedCache.isEmpty())
+    if (m_selectedCache.length() != m_selectedCache.removeAll("")){
         argsMap.insert("Cache", m_selectedCache);
-    if (!m_selectedCookie.isEmpty())
+    }
+    if (m_selectedCookie.length() != m_selectedCookie.removeAll("")){
         argsMap.insert("Cookies", m_selectedCookie);
-    if (!m_selectedTrace.isEmpty())
+    }
+    if (m_selectedTrace.length() != m_selectedTrace.removeAll("")){
         argsMap.insert("History", m_selectedTrace);
+    }
 
 
 //    QStringList cacheTmp;
@@ -356,7 +359,7 @@ void CleanerMainWidget::onClickedCleanbtn()
         toolKits->alertMSG(parentWindow->geometry().topLeft().x(), parentWindow->geometry().topLeft().y(), tr("Scan args is empty!"));
     }
     else {
-//        qDebug() << Q_FUNC_INFO << "+" << argsMap;
+        qDebug() << Q_FUNC_INFO << "+" << argsMap;
         emit this->startScanSystem(argsMap);
     }
 
@@ -477,10 +480,13 @@ void CleanerMainWidget::onButtonClicked()
 //        cache_items->move(w_x, w_y);
 //        cache_items->exec();
 
-        m_selectedCache.clear();
-        m_selectedCache = cache_status_list;
+        if(flag_cache){
+            m_selectedCache.clear();
+            m_selectedCache = cache_status_list;
+            flag_cache=false;
+        }
         SelectCategoryWidget *w = new SelectCategoryWidget(CleanerCategoryID::CacheCategory, tr("Cache Items"));
-        w->loadData(cache_list, cache_status_list);
+        w->loadData(cache_list, m_selectedCache,cache_status_list);
 //        connect(w, SIGNAL(notifyMainCheckBox(int)), cache_btn, SLOT(resetMainStatus(int)));
         connect(w, SIGNAL(refreshSelectedItems(CleanerCategoryID,QStringList)), this, SLOT(onRefreshSelectedItems(CleanerCategoryID,QStringList)));
         w->exec();
@@ -499,10 +505,13 @@ void CleanerMainWidget::onButtonClicked()
 //        cookies_items->move(w_x, w_y);
 //        cookies_items->exec();
 
-        m_selectedCookie.clear();
-        m_selectedCookie = cookies_status_list;
+        if(flag_cookie){
+            m_selectedCookie.clear();
+            m_selectedCookie = cookies_status_list;
+            flag_cookie=false;
+        }
         SelectCategoryWidget *w = new SelectCategoryWidget(CleanerCategoryID::CookieCategory, tr("Cookies Items"));
-        w->loadData(cookies_list, cookies_status_list);
+        w->loadData(cookies_list, m_selectedCookie, cookies_status_list);
 //        connect(w, SIGNAL(notifyMainCheckBox(int)), cookies_btn, SLOT(resetMainStatus(int)));
         connect(w, SIGNAL(refreshSelectedItems(CleanerCategoryID,QStringList)), this, SLOT(onRefreshSelectedItems(CleanerCategoryID,QStringList)));
         w->exec();
@@ -516,10 +525,13 @@ void CleanerMainWidget::onButtonClicked()
 //        trace_items->move(w_x, w_y);
 //        trace_items->exec();
 
-        m_selectedCookie.clear();
-        m_selectedCookie = trace_status_list;
+        if(flag_trace){
+            m_selectedTrace.clear();
+            m_selectedTrace = trace_status_list;
+            flag_trace=false;
+        }
         SelectCategoryWidget *w = new SelectCategoryWidget(CleanerCategoryID::TraceCategory, tr("Trace Items"));
-        w->loadData(trace_list, trace_status_list);
+        w->loadData(trace_list, m_selectedTrace, trace_status_list);
 //        connect(w, SIGNAL(notifyMainCheckBox(int)), trace_btn, SLOT(resetMainStatus(int)));
         connect(w, SIGNAL(refreshSelectedItems(CleanerCategoryID,QStringList)), this, SLOT(onRefreshSelectedItems(CleanerCategoryID,QStringList)));
         w->exec();

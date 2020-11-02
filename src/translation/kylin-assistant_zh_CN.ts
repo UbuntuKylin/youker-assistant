@@ -511,20 +511,20 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="163"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="427"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="450"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="430"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="453"/>
         <source>Cleanup FireFox Cache</source>
         <translation>清理火狐浏览器缓存</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="163"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="379"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="402"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="382"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="405"/>
         <source>Cleanup Chromium Cache</source>
         <translation>清理chromium缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="482"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="488"/>
         <source>Cache Items</source>
         <translation>缓存选项</translation>
     </message>
@@ -538,20 +538,20 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="165"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="434"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="457"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="437"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="460"/>
         <source>Cleanup the Cookies saving in Firefox</source>
         <translation>清理火狐浏览器的Cookies</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="165"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="386"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="409"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="389"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="412"/>
         <source>Cleanup the Cookies saving in Chromium</source>
         <translation>清理Chromium浏览器的Cookies</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="504"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="513"/>
         <source>Cookies Items</source>
         <translation>Cookies选项</translation>
     </message>
@@ -566,15 +566,15 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="167"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="441"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="464"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="444"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="467"/>
         <source>Clean up the Firefox Internet records</source>
         <translation>清理火狐访问记录</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="167"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="393"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="416"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="396"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="419"/>
         <source>Clean up the Chromium Internet records</source>
         <translation>清理Chromium访问记录</translation>
     </message>
@@ -599,7 +599,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>常清理，电脑轻快又安全.</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="521"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="533"/>
         <source>Trace Items</source>
         <translation>访问痕迹选项</translation>
     </message>
@@ -616,7 +616,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation type="obsolete">请选择您想清理的选项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="356"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="359"/>
         <source>Scan args is empty!</source>
         <translation>扫描参数为空！</translation>
     </message>
@@ -952,35 +952,35 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>Fanwidget</name>
     <message>
-        <location filename="../../component/fanwidget.cpp" line="106"/>
-        <location filename="../../component/fanwidget.cpp" line="196"/>
+        <location filename="../../component/fanwidget.cpp" line="102"/>
+        <location filename="../../component/fanwidget.cpp" line="194"/>
         <source>The fan is working fine, averaging </source>
         <translation>风扇运转正常，平均 </translation>
     </message>
     <message>
-        <location filename="../../component/fanwidget.cpp" line="106"/>
-        <location filename="../../component/fanwidget.cpp" line="114"/>
-        <location filename="../../component/fanwidget.cpp" line="148"/>
-        <location filename="../../component/fanwidget.cpp" line="196"/>
-        <location filename="../../component/fanwidget.cpp" line="197"/>
-        <location filename="../../component/fanwidget.cpp" line="203"/>
+        <location filename="../../component/fanwidget.cpp" line="102"/>
+        <location filename="../../component/fanwidget.cpp" line="111"/>
+        <location filename="../../component/fanwidget.cpp" line="145"/>
+        <location filename="../../component/fanwidget.cpp" line="194"/>
+        <location filename="../../component/fanwidget.cpp" line="195"/>
+        <location filename="../../component/fanwidget.cpp" line="201"/>
         <source> rpm/s</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../component/fanwidget.cpp" line="114"/>
-        <location filename="../../component/fanwidget.cpp" line="197"/>
+        <location filename="../../component/fanwidget.cpp" line="111"/>
+        <location filename="../../component/fanwidget.cpp" line="195"/>
         <source>Maximum </source>
         <translation>最高 </translation>
     </message>
     <message>
-        <location filename="../../component/fanwidget.cpp" line="114"/>
-        <location filename="../../component/fanwidget.cpp" line="197"/>
+        <location filename="../../component/fanwidget.cpp" line="111"/>
+        <location filename="../../component/fanwidget.cpp" line="195"/>
         <source> rpm/s, minimum </source>
         <translation> rpm/s, 最低 </translation>
     </message>
     <message>
-        <location filename="../../component/fanwidget.cpp" line="153"/>
+        <location filename="../../component/fanwidget.cpp" line="151"/>
         <source>current speed</source>
         <translation>当前转速</translation>
     </message>
@@ -1218,7 +1218,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     <message>
         <location filename="../infowidget.cpp" line="129"/>
         <source>Motherboard</source>
-        <translation>主板</translation>
+        <translation type="vanished">主板</translation>
     </message>
     <message>
         <location filename="../infowidget.cpp" line="137"/>
@@ -1233,7 +1233,17 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     <message>
         <location filename="../infowidget.cpp" line="153"/>
         <source>VGA</source>
-        <translation>显卡</translation>
+        <translation type="vanished">显卡</translation>
+    </message>
+    <message>
+        <location filename="../infowidget.cpp" line="129"/>
+        <source>Board</source>
+        <translation>主板</translation>
+    </message>
+    <message>
+        <location filename="../infowidget.cpp" line="153"/>
+        <source>Monitor</source>
+        <translation>显示</translation>
     </message>
     <message>
         <location filename="../infowidget.cpp" line="161"/>
@@ -1430,16 +1440,28 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <location filename="../listwidget.cpp" line="46"/>
         <location filename="../listwidget.cpp" line="131"/>
         <source>Local System</source>
+        <translation type="vanished">本机系统</translation>
+    </message>
+    <message>
+        <source>Hardware Information</source>
+        <translation type="vanished">硬件信息</translation>
+    </message>
+    <message>
+        <location filename="../listwidget.cpp" line="46"/>
+        <location filename="../listwidget.cpp" line="132"/>
+        <source>Local 
+System</source>
         <translation>本机系统</translation>
     </message>
     <message>
         <location filename="../listwidget.cpp" line="53"/>
-        <location filename="../listwidget.cpp" line="127"/>
-        <source>Hardware Information</source>
+        <location filename="../listwidget.cpp" line="128"/>
+        <source>Hardware 
+Information</source>
         <translation>硬件信息</translation>
     </message>
     <message>
-        <location filename="../listwidget.cpp" line="157"/>
+        <location filename="../listwidget.cpp" line="158"/>
         <source>Computer Info</source>
         <translation>电脑概述</translation>
     </message>
@@ -1955,11 +1977,12 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     <message>
         <location filename="../middlewidget.cpp" line="192"/>
         <source>Monitoring</source>
-        <translation>性能监测</translation>
+        <translation type="vanished">性能监测</translation>
     </message>
     <message>
+        <location filename="../middlewidget.cpp" line="192"/>
         <source>Monitor</source>
-        <translation type="obsolete">性能监测</translation>
+        <translation>性能监测</translation>
     </message>
     <message>
         <location filename="../middlewidget.cpp" line="197"/>
@@ -3428,9 +3451,9 @@ Are you sure to continue?</source>
 <context>
     <name>SelectListWidget</name>
     <message>
-        <location filename="../../component/selectlistwidget.cpp" line="50"/>
-        <location filename="../../component/selectlistwidget.cpp" line="67"/>
-        <location filename="../../component/selectlistwidget.cpp" line="130"/>
+        <location filename="../../component/selectlistwidget.cpp" line="51"/>
+        <location filename="../../component/selectlistwidget.cpp" line="68"/>
+        <location filename="../../component/selectlistwidget.cpp" line="135"/>
         <source>Clean Items:</source>
         <translation>清理项：</translation>
     </message>
@@ -3449,8 +3472,8 @@ Are you sure to continue?</source>
     </message>
     <message>
         <location filename="../../plugins/shredmanager/shreddialog.cpp" line="148"/>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="304"/>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="344"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="305"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="345"/>
         <source>No select any file which need to be shredded</source>
         <translation>没有选择需要粉碎的文件</translation>
     </message>
@@ -3485,17 +3508,17 @@ Are you sure to continue?</source>
         <translation>全部文件(*)</translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="280"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="281"/>
         <source>Select file!</source>
         <translation>选择文件！</translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="303"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="304"/>
         <source>Shred successfully!</source>
         <translation>粉碎成功！</translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="314"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="315"/>
         <source>Shred failed!</source>
         <translation>粉碎失败！</translation>
     </message>

@@ -419,39 +419,39 @@ tang guang &lt;tangguang@kylinos.cn&gt;</source>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="163"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="427"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="450"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="430"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="453"/>
         <source>Cleanup FireFox Cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="163"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="379"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="402"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="382"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="405"/>
         <source>Cleanup Chromium Cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="482"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="488"/>
         <source>Cache Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="165"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="434"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="457"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="437"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="460"/>
         <source>Cleanup the Cookies saving in Firefox</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="165"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="386"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="409"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="389"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="412"/>
         <source>Cleanup the Cookies saving in Chromium</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="504"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="513"/>
         <source>Cookies Items</source>
         <translation type="unfinished"></translation>
     </message>
@@ -487,15 +487,15 @@ tang guang &lt;tangguang@kylinos.cn&gt;</source>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="167"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="441"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="464"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="444"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="467"/>
         <source>Clean up the Firefox Internet records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="167"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="393"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="416"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="396"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="419"/>
         <source>Clean up the Chromium Internet records</source>
         <translation type="unfinished"></translation>
     </message>
@@ -520,12 +520,12 @@ tang guang &lt;tangguang@kylinos.cn&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="521"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="533"/>
         <source>Trace Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="356"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="359"/>
         <source>Scan args is empty!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -857,35 +857,35 @@ tang guang &lt;tangguang@kylinos.cn&gt;</source>
 <context>
     <name>Fanwidget</name>
     <message>
-        <location filename="../../component/fanwidget.cpp" line="106"/>
-        <location filename="../../component/fanwidget.cpp" line="196"/>
+        <location filename="../../component/fanwidget.cpp" line="102"/>
+        <location filename="../../component/fanwidget.cpp" line="194"/>
         <source>The fan is working fine, averaging </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/fanwidget.cpp" line="106"/>
-        <location filename="../../component/fanwidget.cpp" line="114"/>
-        <location filename="../../component/fanwidget.cpp" line="148"/>
-        <location filename="../../component/fanwidget.cpp" line="196"/>
-        <location filename="../../component/fanwidget.cpp" line="197"/>
-        <location filename="../../component/fanwidget.cpp" line="203"/>
+        <location filename="../../component/fanwidget.cpp" line="102"/>
+        <location filename="../../component/fanwidget.cpp" line="111"/>
+        <location filename="../../component/fanwidget.cpp" line="145"/>
+        <location filename="../../component/fanwidget.cpp" line="194"/>
+        <location filename="../../component/fanwidget.cpp" line="195"/>
+        <location filename="../../component/fanwidget.cpp" line="201"/>
         <source> rpm/s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/fanwidget.cpp" line="114"/>
-        <location filename="../../component/fanwidget.cpp" line="197"/>
+        <location filename="../../component/fanwidget.cpp" line="111"/>
+        <location filename="../../component/fanwidget.cpp" line="195"/>
         <source>Maximum </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/fanwidget.cpp" line="114"/>
-        <location filename="../../component/fanwidget.cpp" line="197"/>
+        <location filename="../../component/fanwidget.cpp" line="111"/>
+        <location filename="../../component/fanwidget.cpp" line="195"/>
         <source> rpm/s, minimum </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/fanwidget.cpp" line="153"/>
+        <location filename="../../component/fanwidget.cpp" line="151"/>
         <source>current speed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1227,6 +1227,16 @@ tang guang &lt;tangguang@kylinos.cn&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../infowidget.cpp" line="129"/>
+        <source>Board</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../infowidget.cpp" line="153"/>
+        <source>Monitor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../infowidget.cpp" line="177"/>
         <source>Sensor</source>
         <translation type="unfinished"></translation>
@@ -1325,18 +1335,20 @@ tang guang &lt;tangguang@kylinos.cn&gt;</source>
     <name>MListwidget</name>
     <message>
         <location filename="../listwidget.cpp" line="46"/>
-        <location filename="../listwidget.cpp" line="131"/>
-        <source>Local System</source>
+        <location filename="../listwidget.cpp" line="132"/>
+        <source>Local 
+System</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../listwidget.cpp" line="53"/>
-        <location filename="../listwidget.cpp" line="127"/>
-        <source>Hardware Information</source>
+        <location filename="../listwidget.cpp" line="128"/>
+        <source>Hardware 
+Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../listwidget.cpp" line="157"/>
+        <location filename="../listwidget.cpp" line="158"/>
         <source>Computer Info</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1801,6 +1813,11 @@ tang guang &lt;tangguang@kylinos.cn&gt;</source>
     <message>
         <location filename="../middlewidget.cpp" line="186"/>
         <source>Cleanup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../middlewidget.cpp" line="192"/>
+        <source>Monitor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3270,9 +3287,9 @@ Are you sure to continue?</source>
 <context>
     <name>SelectListWidget</name>
     <message>
-        <location filename="../../component/selectlistwidget.cpp" line="50"/>
-        <location filename="../../component/selectlistwidget.cpp" line="67"/>
-        <location filename="../../component/selectlistwidget.cpp" line="130"/>
+        <location filename="../../component/selectlistwidget.cpp" line="51"/>
+        <location filename="../../component/selectlistwidget.cpp" line="68"/>
+        <location filename="../../component/selectlistwidget.cpp" line="135"/>
         <source>Clean Items:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3291,8 +3308,8 @@ Are you sure to continue?</source>
     </message>
     <message>
         <location filename="../../plugins/shredmanager/shreddialog.cpp" line="148"/>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="304"/>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="344"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="305"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="345"/>
         <source>No select any file which need to be shredded</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3327,17 +3344,17 @@ Are you sure to continue?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="280"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="281"/>
         <source>Select file!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="303"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="304"/>
         <source>Shred successfully!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="314"/>
+        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="315"/>
         <source>Shred failed!</source>
         <translation type="unfinished"></translation>
     </message>

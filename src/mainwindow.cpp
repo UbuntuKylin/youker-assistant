@@ -1023,10 +1023,10 @@ void MainWindow::setCurrentPageIndex(QString index)
         m_bottomStack->setFixedSize(optimized_widget->size());
         status = "Monitoring";
     }
-    else if (index == "Monitoring" && status != "Monitoring") {
+    else if (index == "Monitor" && status != "Monitor") {
         m_bottomStack->setCurrentWidget(monitorwidget);
         m_bottomStack->setFixedSize(monitorwidget->size());
-        status = "Monitoring";
+        status = "Monitor";
     }
     else if (index == "Drive" && status != "Drive") {
         m_bottomStack->setCurrentWidget(drive_widget);

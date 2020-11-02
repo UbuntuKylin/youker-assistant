@@ -97,12 +97,13 @@ SelectCategoryWidget::~SelectCategoryWidget()
 void SelectCategoryWidget::onClose()
 {
     emit refreshSelectedItems(m_id, m_listWidget->getSelectedItems());
+//    qDebug() <<  m_listWidget->getSelectedItems();
     this->close();
 }
 
-void SelectCategoryWidget::loadData(const QStringList &arglist, const QStringList &statuslist)
+void SelectCategoryWidget::loadData(const QStringList &arglist, const QStringList &statuslist, const QStringList &baklist)
 {
-    m_listWidget->loadListItemsWithTips(arglist, statuslist, this->width()-2*ITEM_LEFT_RIGHT_PADDING);
+    m_listWidget->loadListItemsWithTips(arglist, statuslist, baklist, this->width()-2*ITEM_LEFT_RIGHT_PADDING);
 }
 
 void SelectCategoryWidget::moveCenter()

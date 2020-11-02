@@ -129,7 +129,7 @@ void InfoWidget::initInfoUI(bool has_battery, bool has_sensor, QMap<QString,bool
     }
 
     if(info["board_info"]){
-        type_list << tr("Motherboard");
+        type_list << tr("Board");
         icon_list << "board";
         InfoGui *board_widget = new InfoGui(this);
         board_widget->setInfoGuiName("board");
@@ -153,7 +153,7 @@ void InfoWidget::initInfoUI(bool has_battery, bool has_sensor, QMap<QString,bool
     }
 
     if(info["monitor_info"]){
-        type_list << tr("VGA");
+        type_list << tr("Monitor");
         icon_list << "monitor";
         InfoGui *monitor_widget = new InfoGui(this);
         monitor_widget->setInfoGuiName("monitor");
