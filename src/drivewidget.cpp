@@ -110,21 +110,23 @@ QMap<QString, QVariant> Drivewidget::getDriveInfo()
         QStringList splitlist = list.at(i).split(";");
         if(splitlist.length() == 1) {
             QStringList name = splitlist.at(0).split(":");
-            driver_info_map.insert(name.at(0).trimmed(), name.at(1));
+//            driver_info_map.insert(name.at(0).trimmed(), name.at(1));
         }
         else if(splitlist.length() == 2) {
             QStringList name1 = splitlist.at(0).split(":");
             QStringList name2 = splitlist.at(1).split(":");
-            driver_info_map.insert(name1.at(0).trimmed(), name1.at(1));
-            driver_info_map.insert(name2.at(0).trimmed(), name2.at(1));
+//            driver_info_map.insert(name1.at(0).trimmed(), name1.at(1));
+//            driver_info_map.insert(name2.at(0).trimmed(), name2.at(1));
+            driver_info_map.insert(name1.at(0).trimmed(), name2.at(1));
         }
         else if(splitlist.length() == 3) {
             QStringList name3 = splitlist[0].split(":");
             QStringList name4 = splitlist[1].split(":");
             QStringList name5 = splitlist[2].split(":");
-            driver_info_map.insert(name3.at(0).trimmed(), name3.at(1));
-            driver_info_map.insert(name4.at(0).trimmed(), name4.at(1));
-            driver_info_map.insert(name5.at(0).trimmed(), name5.at(1));
+//            driver_info_map.insert(name3.at(0).trimmed(), name3.at(1));
+//            driver_info_map.insert(name4.at(0).trimmed(), name4.at(1));
+//            driver_info_map.insert(name5.at(0).trimmed(), name5.at(1));
+            driver_info_map.insert(name3.at(0).trimmed(), name4.at(1));
         }
     }
     return driver_info_map;

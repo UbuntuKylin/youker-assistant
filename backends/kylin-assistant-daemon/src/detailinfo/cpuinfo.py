@@ -1235,7 +1235,7 @@ class DetailInfo:
                     ret_size += ""; ret_in += ""; ret_gamma += ""; ret_maxmode += ""
 
                     Vga_businfo += "pci@0000:" + local.split(" ")[0]
-
+                    product = ""
                     for line in local.split("\n"):
                         if "VGA compatible controller: " in line:
                             print(line)
