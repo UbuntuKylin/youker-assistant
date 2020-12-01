@@ -43,6 +43,20 @@ MListwidget::MListwidget(QWidget *parent) : QWidget(parent)
                       "inputdev_info_signal", \
                       info_widget, SLOT(onSendInputInfo(QDBusMessage)));
 
+    //multimedia info
+    QDBusConnection::systemBus().connect("", \
+                      "", \
+                      "com.kylin.assistant.systemdaemon", \
+                      "multimediadev_info_signal", \
+                      info_widget, SLOT(onSendMultimediaInfo(QDBusMessage)));
+
+    //communication info
+    QDBusConnection::systemBus().connect("", \
+                      "", \
+                      "com.kylin.assistant.systemdaemon", \
+                      "communicationdev_info_signal", \
+                      info_widget, SLOT(onSendCommunicationInfo(QDBusMessage)));
+
     qDebug()<<Q_FUNC_INFO;
 }
 

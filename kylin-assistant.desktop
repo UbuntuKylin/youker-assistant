@@ -1,8 +1,10 @@
 [Desktop Entry]
 Name=Kylin Assistant
 Name[zh_CN]=麒麟助手
+Name[bo_CN]=ཆི་ལིན་ལག་རོགས།
 Comment=System Auxiliar Tools
 Comment[zh_CN]=系统辅助工具
+Comment[bo_CN]=རྒྱུད་ཁོངས་ལས་རོགས་ལག་ཆ།
 Keywords=Settings;Cleaning;Customization
 Exec=/usr/bin/kylin-assistant %u
 Icon=kylin-assistant

@@ -69,6 +69,31 @@ void DrivePageWidget::InitPageUI(QMap<QString, QVariant> tmpMap)
     QMap<QString, QVariant> map = tmpMap;
     QMap<QString, QVariant>::iterator it;
 
+    if(map.isEmpty()){
+        QFrame *item = new QFrame();
+        item->setFixedSize(600,80);
+
+        QVBoxLayout *layout = new QVBoxLayout(item);
+        layout->setContentsMargins(0,0,0,0);
+
+        QIcon pixmap(":/res/emblem-important-symbolic.svg");
+        QLabel *icon = new QLabel(item);
+        icon->setFixedSize(600,40);
+        icon->setAlignment(Qt::AlignCenter);
+        icon->setPixmap(pixmap.pixmap(40,40));
+        layout->addWidget(icon,Qt::AlignHCenter);
+
+        QLabel *text = new QLabel(tr("Immediately available driver information"),item);
+        text->setStyleSheet("QLabel{color:rgb(0,0,0,195);font-size:18px;font-weight:bold;}");
+        text->setFixedSize(600,30);
+        text->setAlignment(Qt::AlignCenter);
+        layout->addWidget(text);
+        item->setLayout(layout);
+        v_layout->addWidget(item);
+
+        return;
+    }
+
     QFrame *spilterLine = new QFrame(this);
     spilterLine->setFixedSize(600, 1);
     spilterLine->setStyleSheet("QFrame{background:rgba(238,238,238,1);}");

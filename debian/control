@@ -25,6 +25,12 @@ Build-Depends: debhelper (>= 9),
                pkg-config,
                libglib2.0-dev (>= 2.46.0),
                libgtop2-dev,
+               libkf5windowsystem-dev,
+               libqt5x11extras5-dev,
+               libxrandr-dev,
+               libxinerama-dev,
+               libxi-dev,
+               libxcursor-dev,
                libsystemd-dev (>= 209) [linux-any]
 Standards-Version: 4.5.0
 Rules-Requires-Root: no

@@ -867,6 +867,31 @@ class Daemon(PolicyKitService):
     def emit_inputdev_info_signal(self, data):
         self.inputdev_info_signal(data)
 
+    # multimedia
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_multimediadev_info(self):
+        return self.infoconf.get_multimedia2(self)
+
+    @dbus.service.signal(INTERFACE, signature='as')
+    def multimediadev_info_signal(self, msg):
+        print(msg)
+        pass
+
+    def emit_multimediadev_info_signal(self, data):
+        self.multimediadev_info_signal(data)
+
+    # communication dev
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_communicationdev_info(self):
+        return self.infoconf.get_communication(self)
+
+    @dbus.service.signal(INTERFACE, signature='as')
+    def communicationdev_info_signal(self, msg):
+        print(msg)
+        pass
+
+    def emit_communicationdev_info_signal(self, data):
+        self.communicationdev_info_signal(data)
 #-----END------------NEW-YOUKER---------------------------
 
 if __name__ == '__main__':

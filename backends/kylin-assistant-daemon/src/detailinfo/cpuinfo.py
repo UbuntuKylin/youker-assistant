@@ -44,10 +44,26 @@ CPU_CURRENT_FREQ = ""
 CPU_MAX_FREQ = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"
 MEMORY = "/sys/phytium1500a_info"
 
+subsystem_id = "LANG=en lspci -d 0731:7200 -v | sed -n '/Subsystem:/p' | awk -F: '{ print $NF }'"
+subsystem_id_old = "lspci -d 0731:7200 | awk -F: '{ print $NF }'"        #兼容旧驱动
+subsystem_id_re = re.compile(r'Subsystem:(.*?\d{3,5})')
+subsystem_id_re_old = re.compile(r'.*')
+
 KILOBYTE_FACTOR = 1000.0
 MEGABYTE_FACTOR = (1000.0 * 1000.0)
 GIGABYTE_FACTOR = (1000.0 * 1000.0 * 1000.0)
 TERABYTE_FACTOR = (1000.0 * 1000.0 * 1000.0 * 1000.0)
+
+
+def get_interface(com, pci_str):
+    "输入想要的命令，并获取想要内容的函数,第一个参数是命令，第二个参数是正则表达式"
+    res = subprocess.Popen(com, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, bufsize=10)
+    inter1 = res.stdout.read()       
+    inter = inter1.decode('utf-8')
+    result = inter
+    print(result)
+    return result
+
 
 def get_human_read_capacity_size(size):
     size_str = ""
@@ -663,7 +679,13 @@ class DetailInfo:
         
         socket = tmpCpu.get("Socket(s)", "")
         i = tmpCpu.get("Core(s) per socket", "")
-        Cpu['cpu_cores_online'] = Cpu['cpu_cores'] = str(int(socket)*int(i))
+        thread = tmpCpu.get("Thread(s) per core", "")
+        core = tmpCpu.get("CPU(s)", "")
+        if(int(core) == int(socket)*int(i)*int(thread)):
+            Cpu['cpu_cores_online'] = Cpu['cpu_cores'] = str(int(socket)*int(i))
+        else:
+            Cpu['cpu_cores_online'] = Cpu['cpu_cores'] = str(int(core))
+             
     
         Cpu['CpuCapacity'] = tmpCpu.get("CPU max MHz", "").split(".")[0] + "MHz" if tmpCpu.get("CPU max MHz", "") else ""
         Cpu['CpuVersion'] = tmpCpu.get("Model name", "")
@@ -1239,7 +1261,14 @@ class DetailInfo:
                     for line in local.split("\n"):
                         if "VGA compatible controller: " in line:
                             print(line)
-                            Vga_product += line.split(":")[2][:-30]
+                            product += line.split(":")[2][:-30]
+                            if product.find("JJM") is not -1:
+                                product = get_interface(subsystem_id, subsystem_id_re)
+                                if not product:
+                                    product = get_interface(subsystem_id_old, subsystem_id_re_old)
+                                
+                            Vga_product += product
+
                             Vga_vendor += self.get_url("", line.split(":")[2])
                         if "Kernel driver in use: " in line:
                             Vga_Drive += line.split(":")[1]
@@ -1458,7 +1487,7 @@ class DetailInfo:
                     DiskFw += ("$" + "<1_1>")
                     DiskSerial += ("$" + "<1_1>")
                 DiskName += (("/dev/" + value[0]) + "<1_1>")
-        dis['DiskNum'],dis['DiskProduct'],dis['DiskVendor'],dis['DiskCapacity'],dis['DiskName'],dis['DiskFw'],dis['DiskSerial'] = str(disknum),DiskProduct.rstrip("<1_1>"),DiskVendor.rstrip("<1_1>"),DiskCapacity.rstrip("<1_1>"),DiskName.rstrip("<1_1>"),DiskFw.rstrip("<1_1>"),DiskSerial.rstrip("<1_1>")
+        dis['DiskNum'],dis['DiskProduct'],dis['DiskVendor'],dis['DiskCapacity'],dis['DiskName'],dis['DiskFw'],dis['DiskSerial'] = str(disknum),DiskProduct[:-5],DiskVendor[:-5],DiskCapacity[:-5],DiskName[:-5],DiskFw[:-5],DiskSerial[:-5]
         return dis
 
     def get_input(self, sysdaemon):
@@ -1486,6 +1515,62 @@ class DetailInfo:
         for var in modlist:
             pprint(var)
             sysdaemon.emit_inputdev_info_signal(var)
+
+        return False if index == -1 else True
+
+    def get_multimedia2(self, sysdaemon):
+        cmd = ["lshw", "-C", "multimedia"]
+        pipe = subprocess.Popen(cmd, env={'LANGUAGE':'en:'}, stdout=subprocess.PIPE)
+        output = pipe.stdout.readlines()
+
+        index = -1
+        modlist = []
+        for line in output:
+            line2 = line.decode()
+            if line2.strip().startswith("*-"):
+                index += 1
+                pList = list()
+                modlist.append(pList)
+            else:
+                if index == -1:
+                    continue
+                if ":" not in line2:
+                    continue
+                modlist[index].append(line2.strip());
+                #results = line2.split(":")
+                #modlist[index].update({results[0].strip() : results[1].strip()})
+
+        for var in modlist:
+            pprint(var)
+            sysdaemon.emit_multimediadev_info_signal(var)
+
+        return False if index == -1 else True
+
+    def get_communication(self, sysdaemon):
+        cmd = ["lshw", "-C", "communication"]
+        pipe = subprocess.Popen(cmd, env={'LANGUAGE':'en:'}, stdout=subprocess.PIPE)
+        output = pipe.stdout.readlines()
+
+        index = -1
+        modlist = []
+        for line in output:
+            line2 = line.decode()
+            if line2.strip().startswith("*-"):
+                index += 1
+                pList = list()
+                modlist.append(pList)
+            else:
+                if index == -1:
+                    continue
+                if ":" not in line2:
+                    continue
+                modlist[index].append(line2.strip());
+                #results = line2.split(":")
+                #modlist[index].update({results[0].strip() : results[1].strip()})
+
+        for var in modlist:
+            pprint(var)
+            sysdaemon.emit_communicationdev_info_signal(var)
 
         return False if index == -1 else True
 
@@ -1643,7 +1728,7 @@ class DetailInfo:
 #                                else:
 #                                    NetType = tmp[0]
             net['NetNum'] = NetNum
-            net['NetType'],net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetSerial'],net['NetIp'],net['NetDrive'] = NetType.rstrip("<1_1>"), NetProduct.rstrip("<1_1>"),NetVendor.rstrip("<1_1>"),NetBusinfo.rstrip("<1_1>"),NetLogicalname.rstrip("<1_1>"),NetSeriali.rstrip("<1_1>"),NetIp.rstrip("<1_1>"), NetDrive.rstrip("<1_1>")
+            net['NetType'],net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetSerial'],net['NetIp'],net['NetDrive'] = NetType[:-5], NetProduct[:-5],NetVendor[:-5],NetBusinfo[:-5],NetLogicalname[:-5],NetSeriali[:-5],NetIp[:-5], NetDrive[:-5]
             return net
         except Exception as e:
             return net
@@ -1697,7 +1782,7 @@ class DetailInfo:
                 NetDriver += (get_interface_driver(infodict.get("logical name", "unknown")) + "<1_1>")
 
             net['NetNum'] = len(infolist)
-            net['NetType'],net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetSerial'],net['NetIp'],net['NetDrive'] = NetType.rstrip("<1_1>"), NetProduct.rstrip("<1_1>"),NetVendor.rstrip("<1_1>"),NetBusinfo.rstrip("<1_1>"),NetLogicalname.rstrip("<1_1>"),NetSerial[:-5],NetIp.rstrip("<1_1>"), NetDriver.rstrip("<1_1>")
+            net['NetType'],net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetSerial'],net['NetIp'],net['NetDrive'] = NetType[:-5], NetProduct[:-5],NetVendor[:-5],NetBusinfo[:-5],NetLogicalname[:-5],NetSerial[:-5],NetIp[:-5], NetDriver[:-5]
         except Exception as e:
             pass
         return net

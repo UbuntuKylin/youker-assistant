@@ -30,7 +30,7 @@ MiddleWidget::MiddleWidget(QWidget *parent, QString arch, QString os)
 //    QPalette palette;
 //    palette.setColor(QPalette::Background, QColor(34,103,242));//#e9eef1
 //    this->setPalette(palette);
-    this->setStyleSheet("MiddleWidget{background-color:#2267F2; border: none;border-top-left-radius:6px;border-top-right-radius:10px}");
+    this->setStyleSheet("MiddleWidget{background-color:#2267F2; border: none;border-top-left-radius:6px;border-top-right-radius:6px}");
 
 //    InitMiddlewidget();
 }
@@ -90,10 +90,8 @@ void MiddleWidget::initTitlebarLeftContent()
     m_titleLeftLayout->setSpacing(5);
 
     QLabel *iconlable = new QLabel(w);
-    QPixmap icon(":/res/kylin-assistant.png");
-    QPixmap iconNew = icon.scaled(QSize(20,20),Qt::KeepAspectRatio);
-    iconlable->setPixmap(iconNew);
-    iconlable->setFixedSize(20,20);
+    iconlable->setPixmap(QIcon::fromTheme("kylin-assistant").pixmap(24,24));
+    iconlable->setFixedSize(24,24);
     m_titleLeftLayout->addWidget(iconlable);
 
     QLabel *appLabel = new QLabel(w);
