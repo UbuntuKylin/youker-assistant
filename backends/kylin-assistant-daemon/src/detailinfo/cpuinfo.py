@@ -44,10 +44,26 @@ CPU_CURRENT_FREQ = ""
 CPU_MAX_FREQ = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"
 MEMORY = "/sys/phytium1500a_info"
 
+subsystem_id = "LANG=en lspci -d 0731:7200 -v | sed -n '/Subsystem:/p' | awk -F: '{ print $NF }'"
+subsystem_id_old = "lspci -d 0731:7200 | awk -F: '{ print $NF }'"        #兼容旧驱动
+subsystem_id_re = re.compile(r'Subsystem:(.*?\d{3,5})')
+subsystem_id_re_old = re.compile(r'.*')
+
 KILOBYTE_FACTOR = 1000.0
 MEGABYTE_FACTOR = (1000.0 * 1000.0)
 GIGABYTE_FACTOR = (1000.0 * 1000.0 * 1000.0)
 TERABYTE_FACTOR = (1000.0 * 1000.0 * 1000.0 * 1000.0)
+
+
+def get_interface(com, pci_str):
+    "输入想要的命令，并获取想要内容的函数,第一个参数是命令，第二个参数是正则表达式"
+    res = subprocess.Popen(com, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, bufsize=10)
+    inter1 = res.stdout.read()       
+    inter = inter1.decode('utf-8')
+    result = inter
+    print(result)
+    return result
+
 
 def get_human_read_capacity_size(size):
     size_str = ""
@@ -1239,7 +1255,14 @@ class DetailInfo:
                     for line in local.split("\n"):
                         if "VGA compatible controller: " in line:
                             print(line)
-                            Vga_product += line.split(":")[2][:-30]
+                            product += line.split(":")[2][:-30]
+                            if product.find("JJM") is not -1:
+                                product = get_interface(subsystem_id, subsystem_id_re)
+                                if not product:
+                                    product = get_interface(subsystem_id_old, subsystem_id_re_old)
+                                
+                            Vga_product += product
+
                             Vga_vendor += self.get_url("", line.split(":")[2])
                         if "Kernel driver in use: " in line:
                             Vga_Drive += line.split(":")[1]

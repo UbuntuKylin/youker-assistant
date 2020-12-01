@@ -352,14 +352,16 @@ void CleanerMainWidget::resetDefaultStatus()
 
 void CleanerMainWidget::onClickedCleanbtn()
 {
-    emit this->hideThisWidget();
+
 
     this->getAllScanSelectedItems();
     if (argsMap.empty()) {
         toolKits->alertMSG(parentWindow->geometry().topLeft().x(), parentWindow->geometry().topLeft().y(), tr("Scan args is empty!"));
+        resetDefaultStatus();
     }
     else {
         qDebug() << Q_FUNC_INFO << "+" << argsMap;
+        emit this->hideThisWidget();
         emit this->startScanSystem(argsMap);
     }
 
