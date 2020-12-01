@@ -41,6 +41,8 @@
 
 #include <QDBusInterface>
 
+#include "xatom-helper.h"
+
 #define KYLIN_USER_GUIDE_PATH "/"
 
 #define KYLIN_USER_GUIDE_SERVICE "com.kylinUserGuide.hotel"
@@ -86,14 +88,16 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
     if(this->desktop.isEmpty())
         this->desktop = qgetenv("XDG_SESSION_DESKTOP");
 
-    //For Unity
-//    this->setWindowFlags(/*Qt::Window | */Qt::FramelessWindowHint | Qt::WindowMinimizeButtonHint);//Attention: Qt::WindowCloseButtonHint make showMinimized() valid
+    // 添加窗管协议
+    MotifWmHints hints;
+    hints.flags = MWM_HINTS_FUNCTIONS|MWM_HINTS_DECORATIONS;
+    hints.functions = MWM_FUNC_ALL;
+    hints.decorations = MWM_DECOR_BORDER;
+    XAtomHelper::getInstance()->setWindowMotifHint(this->winId(), hints);
 
-    //this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowCloseButtonHint | Qt::WindowMinimizeButtonHint);
-    this->setWindowFlags(Qt::FramelessWindowHint);
+//    this->setWindowFlags(Qt::FramelessWindowHint);
     //For UKUI and Mate
-//    this->setWindowFlags(Qt::FramelessWindowHint  | Qt::WindowCloseButtonHint);
-    this->setAttribute(Qt::WA_TranslucentBackground);
+//    this->setAttribute(Qt::WA_TranslucentBackground);
     this->setAutoFillBackground(true);
     this->setMouseTracking(true);
     this->setWindowTitle(tr("Kylin Assistant"));
@@ -104,7 +108,7 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
         this->setWindowIcon(QIcon(":/res/kylin-assistant.png"));
 
     this->setWindowOpacity(1);
-    this->setFixedSize(MAIN_WINDOW_WIDTH+SHADOW_LEFT_TOP_PADDING+SHADOW_LEFT_TOP_PADDING+16, MAIN_WINDOW_HEIGHT+SHADOW_RIGHT_BOTTOM_PADDING+SHADOW_RIGHT_BOTTOM_PADDING+16);
+    this->setFixedSize(MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT);
 
     status = "Cleanup";
 
@@ -161,23 +165,23 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
 
 void MainWindow::paintEvent(QPaintEvent *event)
 {
-    Q_UNUSED(event)
-    QPainterPath path;
-    path.setFillRule(Qt::WindingFill);
-    path.addRoundRect(10,10,this->width()-20,this->height()-20,2,2);
-    QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing,true);
-    painter.fillPath(path,QBrush(Qt::white));
-    QColor color(0,0,0,50);
-    for(int i = 0 ; i < 10 ; ++i)
-    {
-        QPainterPath path;
-        path.setFillRule(Qt::WindingFill);
-        path.addRoundRect(10-i,10-i,this->width()-(10-i)*2,this->height()-(10-i)*2,2,2);
-        color.setAlpha(150 - qSqrt(i)*50);
-        painter.setPen(color);
-        painter.drawPath(path);
-    }
+//    Q_UNUSED(event)
+//    QPainterPath path;
+//    path.setFillRule(Qt::WindingFill);
+//    path.addRoundRect(10,10,this->width()-20,this->height()-20,2,2);
+//    QPainter painter(this);
+//    painter.setRenderHint(QPainter::Antialiasing,true);
+//    painter.fillPath(path,QBrush(Qt::white));
+//    QColor color(0,0,0,50);
+//    for(int i = 0 ; i < 10 ; ++i)
+//    {
+//        QPainterPath path;
+//        path.setFillRule(Qt::WindingFill);
+//        path.addRoundRect(10-i,10-i,this->width()-(10-i)*2,this->height()-(10-i)*2,2,2);
+//        color.setAlpha(150 - qSqrt(i)*50);
+//        painter.setPen(color);
+//        painter.drawPath(path);
+//    }
 
     QWidget::paintEvent(event);
 }
@@ -309,7 +313,8 @@ void MainWindow::initWidgets()
 //    centralWidget->setStyleSheet("background: transparent");
     QVBoxLayout *contentLayout = new QVBoxLayout(centralWidget);
     this->setCentralWidget(centralWidget);
-    this->setContentsMargins(SHADOW_LEFT_TOP_PADDING+8,SHADOW_LEFT_TOP_PADDING+7,SHADOW_RIGHT_BOTTOM_PADDING+6,SHADOW_RIGHT_BOTTOM_PADDING+6);
+//    this->setContentsMargins(SHADOW_LEFT_TOP_PADDING+8,SHADOW_LEFT_TOP_PADDING+7,SHADOW_RIGHT_BOTTOM_PADDING+6,SHADOW_RIGHT_BOTTOM_PADDING+6);
+    this->setContentsMargins(0,0,0,0);
     contentLayout->setContentsMargins(0, 0, 0, 0);
     contentLayout->setMargin(0);
     contentLayout->setSpacing(0);

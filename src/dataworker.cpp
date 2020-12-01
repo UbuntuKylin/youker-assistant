@@ -355,7 +355,7 @@ QMap<QString,bool> DataWorker::onRequesetAllInfoIsHaveValue()
        info.insert("audiocard_info",false);
     }else{
         qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
-       info.insert("audiocard_info",true);
+       info.insert("audiocard_info",false);
        tmpMap.clear();
     }
 
@@ -365,6 +365,20 @@ QMap<QString,bool> DataWorker::onRequesetAllInfoIsHaveValue()
         info.insert("input_info", true);
     }else{
         info.insert("input_info", false);
+    }
+
+    if(m_systemInterface->get_multimediadev_info_qt()){
+        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
+        info.insert("multimedia_info", true);
+    }else{
+        info.insert("multimedia_info", false);
+    }
+
+    if(m_systemInterface->get_communicationdev_info_qt()){
+        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
+        info.insert("communication_info", true);
+    }else{
+        info.insert("communication_info", false);
     }
 
     return info;

@@ -9,6 +9,7 @@
 #include <QFrame>
 #include <QPixmap>
 #include <QStringList>
+#include <QIcon>
 
 class DrivePageWidget : public QWidget
 {

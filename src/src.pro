@@ -10,11 +10,13 @@ CONFIG += c++11
 CONFIG += qt warn_on
 CONFIG += release
 CONFIG += link_pkgconfig
+PKGCONFIG += glib-2.0 gio-unix-2.0 gsettings-qt
 
-PKGCONFIG += glib-2.0 gio-unix-2.0
-
-QT += core dbus network charts svg
+QT += core dbus network charts svg KWindowSystem x11extras
 LIBS += -lgsettings-qt
+# 适配窗口管理器圆角阴影
+LIBS +=-lpthread
+LIBS +=-lX11
 
 include(./qtsingleapplication.pri)
 
@@ -137,7 +139,8 @@ SOURCES += main.cpp \
     ../qdbusservice/systemdbus/data/systemdbusproxy.cpp \
     ../qdbusservice/systemdbus/data/systeminterface.cpp \
     ../qdbusservice/systemdbus/customdata.cpp \
-    ../qdbusservice/systemdbus/customdatalist.cpp
+    ../qdbusservice/systemdbus/customdatalist.cpp \
+    xatom-helper.cpp
 
 HEADERS  += mainwindow.h \
     ../cleaner/cleandetailveiw.h \
@@ -228,7 +231,8 @@ HEADERS  += mainwindow.h \
     ../qdbusservice/systemdbus/data/systeminterface.h \
     ../qdbusservice/systemdbus/data/systemdbushandler.h \
     ../qdbusservice/systemdbus/customdata.h \
-    ../qdbusservice/systemdbus/customdatalist.h
+    ../qdbusservice/systemdbus/customdatalist.h \
+    xatom-helper.h
 
 FORMS    += \
     ../component/quibo.ui \

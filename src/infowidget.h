@@ -66,6 +66,8 @@ public slots:
     void onSendBatteryInfo(QMap<QString, QVariant> tmpMap);
     void onSendSensorInfo(QMap<QString, QVariant> tmpMap);
     void onSendInputInfo(QDBusMessage msg);
+    void onSendMultimediaInfo(QDBusMessage msg);
+    void onSendCommunicationInfo(QDBusMessage msg);
 //    void updateTimeValue();
     void paintEvent(QPaintEvent *);
 
@@ -123,6 +125,10 @@ signals:
 private:
     QSplitter *splitter = nullptr;
     QListWidget *category_widget = nullptr;
+    QListWidget *category_widget1 = nullptr;
+    QListWidgetItem *default_listitem = nullptr;
+    QListWidget *default_widget = nullptr;
+
     QStringList type_list;
     QStringList icon_list;
     QStackedWidget *stacked_widget = nullptr;
@@ -147,6 +153,8 @@ private:
     QString arch;
 
     bool firstLoadInputDev;
+    bool firstLoadMultiMediaDev;
+    bool firstLoadCommunicationDev;
 };
 
 #endif // INFOWIDGET_H

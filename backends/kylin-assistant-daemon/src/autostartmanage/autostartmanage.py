@@ -33,7 +33,7 @@ OPTION_X = 'X-UKUI-Autostart-enabled'
 
 class MyConfigParser(configparser.ConfigParser):
     
-    def __inin__(self, defaults=None):
+    def __init__(self, defaults=None):
         configparser.ConfigParser.__init__(self, defaults=None)
     
     def optionxform(self, optionstr):

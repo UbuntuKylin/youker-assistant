@@ -679,7 +679,13 @@ class DetailInfo:
         
         socket = tmpCpu.get("Socket(s)", "")
         i = tmpCpu.get("Core(s) per socket", "")
-        Cpu['cpu_cores_online'] = Cpu['cpu_cores'] = str(int(socket)*int(i))
+        thread = tmpCpu.get("Thread(s) per core", "")
+        core = tmpCpu.get("CPU(s)", "")
+        if(int(core) == int(socket)*int(i)*int(thread)):
+            Cpu['cpu_cores_online'] = Cpu['cpu_cores'] = str(int(socket)*int(i))
+        else:
+            Cpu['cpu_cores_online'] = Cpu['cpu_cores'] = str(int(core))
+             
     
         Cpu['CpuCapacity'] = tmpCpu.get("CPU max MHz", "").split(".")[0] + "MHz" if tmpCpu.get("CPU max MHz", "") else ""
         Cpu['CpuVersion'] = tmpCpu.get("Model name", "")
@@ -1481,7 +1487,7 @@ class DetailInfo:
                     DiskFw += ("$" + "<1_1>")
                     DiskSerial += ("$" + "<1_1>")
                 DiskName += (("/dev/" + value[0]) + "<1_1>")
-        dis['DiskNum'],dis['DiskProduct'],dis['DiskVendor'],dis['DiskCapacity'],dis['DiskName'],dis['DiskFw'],dis['DiskSerial'] = str(disknum),DiskProduct.rstrip("<1_1>"),DiskVendor.rstrip("<1_1>"),DiskCapacity.rstrip("<1_1>"),DiskName.rstrip("<1_1>"),DiskFw.rstrip("<1_1>"),DiskSerial.rstrip("<1_1>")
+        dis['DiskNum'],dis['DiskProduct'],dis['DiskVendor'],dis['DiskCapacity'],dis['DiskName'],dis['DiskFw'],dis['DiskSerial'] = str(disknum),DiskProduct[:-5],DiskVendor[:-5],DiskCapacity[:-5],DiskName[:-5],DiskFw[:-5],DiskSerial[:-5]
         return dis
 
     def get_input(self, sysdaemon):
@@ -1509,6 +1515,62 @@ class DetailInfo:
         for var in modlist:
             pprint(var)
             sysdaemon.emit_inputdev_info_signal(var)
+
+        return False if index == -1 else True
+
+    def get_multimedia2(self, sysdaemon):
+        cmd = ["lshw", "-C", "multimedia"]
+        pipe = subprocess.Popen(cmd, env={'LANGUAGE':'en:'}, stdout=subprocess.PIPE)
+        output = pipe.stdout.readlines()
+
+        index = -1
+        modlist = []
+        for line in output:
+            line2 = line.decode()
+            if line2.strip().startswith("*-"):
+                index += 1
+                pList = list()
+                modlist.append(pList)
+            else:
+                if index == -1:
+                    continue
+                if ":" not in line2:
+                    continue
+                modlist[index].append(line2.strip());
+                #results = line2.split(":")
+                #modlist[index].update({results[0].strip() : results[1].strip()})
+
+        for var in modlist:
+            pprint(var)
+            sysdaemon.emit_multimediadev_info_signal(var)
+
+        return False if index == -1 else True
+
+    def get_communication(self, sysdaemon):
+        cmd = ["lshw", "-C", "communication"]
+        pipe = subprocess.Popen(cmd, env={'LANGUAGE':'en:'}, stdout=subprocess.PIPE)
+        output = pipe.stdout.readlines()
+
+        index = -1
+        modlist = []
+        for line in output:
+            line2 = line.decode()
+            if line2.strip().startswith("*-"):
+                index += 1
+                pList = list()
+                modlist.append(pList)
+            else:
+                if index == -1:
+                    continue
+                if ":" not in line2:
+                    continue
+                modlist[index].append(line2.strip());
+                #results = line2.split(":")
+                #modlist[index].update({results[0].strip() : results[1].strip()})
+
+        for var in modlist:
+            pprint(var)
+            sysdaemon.emit_communicationdev_info_signal(var)
 
         return False if index == -1 else True
 
@@ -1666,7 +1728,7 @@ class DetailInfo:
 #                                else:
 #                                    NetType = tmp[0]
             net['NetNum'] = NetNum
-            net['NetType'],net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetSerial'],net['NetIp'],net['NetDrive'] = NetType.rstrip("<1_1>"), NetProduct.rstrip("<1_1>"),NetVendor.rstrip("<1_1>"),NetBusinfo.rstrip("<1_1>"),NetLogicalname.rstrip("<1_1>"),NetSeriali.rstrip("<1_1>"),NetIp.rstrip("<1_1>"), NetDrive.rstrip("<1_1>")
+            net['NetType'],net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetSerial'],net['NetIp'],net['NetDrive'] = NetType[:-5], NetProduct[:-5],NetVendor[:-5],NetBusinfo[:-5],NetLogicalname[:-5],NetSeriali[:-5],NetIp[:-5], NetDrive[:-5]
             return net
         except Exception as e:
             return net
@@ -1720,7 +1782,7 @@ class DetailInfo:
                 NetDriver += (get_interface_driver(infodict.get("logical name", "unknown")) + "<1_1>")
 
             net['NetNum'] = len(infolist)
-            net['NetType'],net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetSerial'],net['NetIp'],net['NetDrive'] = NetType.rstrip("<1_1>"), NetProduct.rstrip("<1_1>"),NetVendor.rstrip("<1_1>"),NetBusinfo.rstrip("<1_1>"),NetLogicalname.rstrip("<1_1>"),NetSerial[:-5],NetIp.rstrip("<1_1>"), NetDriver.rstrip("<1_1>")
+            net['NetType'],net['NetProduct'],net['NetVendor'],net['NetBusinfo'],net['NetLogicalname'],net['NetSerial'],net['NetIp'],net['NetDrive'] = NetType[:-5], NetProduct[:-5],NetVendor[:-5],NetBusinfo[:-5],NetLogicalname[:-5],NetSerial[:-5],NetIp[:-5], NetDriver[:-5]
         except Exception as e:
             pass
         return net

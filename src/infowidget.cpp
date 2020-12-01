@@ -65,6 +65,8 @@ InfoWidget::InfoWidget(QString machine, QWidget *parent) :
 
 
     firstLoadInputDev = true;
+    firstLoadMultiMediaDev = true;
+    firstLoadCommunicationDev = true;
 
     connect(category_widget,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(changeInfoPage(QListWidgetItem*)));
 }
@@ -176,6 +178,22 @@ void InfoWidget::initInfoUI(bool has_battery, bool has_sensor, QMap<QString,bool
         stacked_widget->addWidget(input_widget);
     }
 
+    if(info["communication_info"]){
+        type_list << tr("Communication");
+        icon_list << "communication";
+        InfoGui * communication_widget = new InfoGui(this);
+        communication_widget->setInfoGuiName("communication");
+        stacked_widget->addWidget(communication_widget);
+    }
+
+    if(info["multimedia_info"]){
+        type_list << tr("Multimedia");
+        icon_list << "multimedia";
+        InfoGui * multimedia_widget = new InfoGui(this);
+        multimedia_widget->setInfoGuiName("multimedia");
+        stacked_widget->addWidget(multimedia_widget);
+    }
+
     if (has_battery) {
         type_list << tr("Battery");
         icon_list << "battery";
@@ -198,6 +216,25 @@ void InfoWidget::initInfoUI(bool has_battery, bool has_sensor, QMap<QString,bool
 //    driver_widget->setInfoGuiName("drive");
 //    stacked_widget->addWidget(driver_widget);
 
+    if(type_list.size() > 9){
+        category_widget1 = new QListWidget(this);
+        category_widget1->setFixedSize(this->width(),30);
+        category_widget1->setFocusPolicy(Qt::NoFocus);
+        category_widget1->setObjectName("infoList1");
+    //    category_widget->setStyleSheet("QListWidget{background: green;color:rgb(0,0,0,185);}");
+        category_widget1->setStyleSheet("QListWidget{font-size:15px;color:rgb(0,0,0,185);}\
+                                       QListWidget::item:hover{border-radius:5px;background:rgba(61,107,229,80);color:rgb(0,0,0,185);}\
+                                       QListWidget::item:selected{border-radius:5px;background:rgba(61,107,229,1);color:white;}");
+
+        category_widget1->setFlow(QListView::LeftToRight);
+        //category_widget->setIconSize(QSize(16, 16));//设置QListWidget中的单元项的图片大小
+        category_widget1->setResizeMode(QListView::Adjust);
+        category_widget1->setViewMode(QListView::ListMode);   //设置QListWidget的显示模式
+        category_widget1->setMovement(QListView::Static);//设置QListWidget中的单元项不可被拖动
+    //    category_widget->setSpacing(1);//设置QListWidget中的单元项的间距
+        connect(category_widget1,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(changeInfoPage(QListWidgetItem*)));
+    }
+
 
     for(int i = 0;i < type_list.length();i++) {
 //        if (i == 1 && arch == "aarch64")
@@ -209,24 +246,44 @@ void InfoWidget::initInfoUI(bool has_battery, bool has_sensor, QMap<QString,bool
 //        }
 //        QIcon icon;
 //        icon.addFile(":/hd/res/hardware/" + icon_list.at(i), QSize(), QIcon::Normal, QIcon::Off);
-        QListWidgetItem *item = new QListWidgetItem(type_list.at(i), category_widget);
+        QListWidgetItem *item = nullptr;
+        if(i <= 8)
+            item = new QListWidgetItem(type_list.at(i), category_widget);
+        else
+            item = new QListWidgetItem(type_list.at(i), category_widget1);
+
         //            item->setSizeHint(QSize(120,31)); //设置单元项的宽度和高度
         item->setSizeHint(QSize(70,25)); //设置单元项的宽度和高度
         item->setStatusTip(icon_list.at(i));
+        item->setToolTip(type_list.at(i));
         item->setTextAlignment(Qt::AlignVCenter|Qt::AlignHCenter);
 //        item->setIcon(icon);
+
+        if(i == 0)
+            default_listitem = item;
     }
     category_widget->setCurrentRow(0);
     current_tip = category_widget->currentItem()->statusTip();
 
+    default_widget = category_widget;
+
     QVBoxLayout *center_layout = new QVBoxLayout();
     QVBoxLayout *name_layout = new QVBoxLayout();
     QFrame *frame = new QFrame();
-    frame->setFixedSize(this->width(),50);
-    name_layout->addWidget(category_widget);
-    name_layout->setSpacing(0);
-    name_layout->setMargin(0);
-    name_layout->setContentsMargins(40, 0, 0, 0);
+    if(type_list.size() > 9){
+        frame->setFixedSize(this->width(),70);
+        name_layout->addWidget(category_widget);
+        name_layout->addWidget(category_widget1);
+        name_layout->setSpacing(5);
+        name_layout->setMargin(0);
+        name_layout->setContentsMargins(40, 5, 0, 0);
+    }else{
+        frame->setFixedSize(this->width(),50);
+        name_layout->addWidget(category_widget);
+        name_layout->setSpacing(0);
+        name_layout->setMargin(0);
+        name_layout->setContentsMargins(40, 0, 0, 0);
+    }
     frame->setLayout(name_layout);
     center_layout->addWidget(stacked_widget);
     center_layout->setSpacing(0);
@@ -874,6 +931,68 @@ void InfoWidget::onSendInputInfo(QDBusMessage msg){
     }
 }
 
+void InfoWidget::onSendCommunicationInfo(QDBusMessage msg){
+    QVariant temp = msg.arguments().takeFirst();
+    QStringList communicationInfo = temp.value< QStringList>();
+    if (communicationInfo.isEmpty())
+        return;
+
+    QMap<QString, QVariant> m1;
+    for (QStringList::iterator it = communicationInfo.begin(); it != communicationInfo.end(); it++){
+        QString s1 = *it;
+        QStringList st1 = s1.split(":");
+        m1.insert(st1.at(0), st1.at(1));
+    }
+
+    for (int i = 0; i < stacked_widget->count(); i++) {
+        if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
+            if (page->infoGuiName().isEmpty() || page->infoGuiName().isNull())
+                continue;
+
+            if (page->infoGuiName() == "communication") {
+                if (firstLoadCommunicationDev){
+                    page->clearWidget();
+                    firstLoadCommunicationDev = false;
+                }
+
+                page->loadOnePage(0, tr("Communication Info"), m1);
+                break;
+            }
+        }
+    }
+}
+
+void InfoWidget::onSendMultimediaInfo(QDBusMessage msg){
+    QVariant temp = msg.arguments().takeFirst();
+    QStringList multimediaInfo = temp.value< QStringList>();
+    if (multimediaInfo.isEmpty())
+        return;
+
+    QMap<QString, QVariant> m1;
+    for (QStringList::iterator it = multimediaInfo.begin(); it != multimediaInfo.end(); it++){
+        QString s1 = *it;
+        QStringList st1 = s1.split(":");
+        m1.insert(st1.at(0), st1.at(1));
+    }
+
+    for (int i = 0; i < stacked_widget->count(); i++) {
+        if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
+            if (page->infoGuiName().isEmpty() || page->infoGuiName().isNull())
+                continue;
+
+            if (page->infoGuiName() == "multimedia") {
+                if (firstLoadMultiMediaDev){
+                    page->clearWidget();
+                    firstLoadMultiMediaDev = false;
+                }
+
+                page->loadOnePage(0, tr("Multimedia Info"), m1);
+                break;
+            }
+        }
+    }
+}
+
 void InfoWidget::onSendBatteryInfo(QMap<QString, QVariant> tmpMap)
 {
     if (!tmpMap.isEmpty()) {
@@ -953,6 +1072,16 @@ void InfoWidget::onSendSensorInfo(QMap<QString, QVariant> tmpMap)
 //}
 
 void InfoWidget::changeInfoPage(QListWidgetItem *item) {
+
+    QListWidget *send = qobject_cast<QListWidget *>(sender());
+    if(item != default_listitem){
+        default_listitem = item;
+    }
+    if(send != default_widget){
+        default_widget->clearSelection();
+        default_widget = send;
+    }
+
     //20180101
     if (!item)
         return;
