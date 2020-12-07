@@ -223,15 +223,13 @@ void BoxWidget::OnClickListView(const QModelIndex & index)
         if (QFileInfo("/usr/bin/kylin-software-center").exists()) {
             QProcess process;
             process.startDetached("/usr/bin/kylin-software-center");
+            list_view->clearSelection();
         }
         else if (QFileInfo("/usr/bin/ubuntu-kylin-software-center").exists()) {
             GDesktopAppInfo * appinfo=g_desktop_app_info_new_from_filename("/usr/share/applications/ubuntu-kylin-software-center.desktop");
             g_app_info_launch(G_APP_INFO(appinfo),nullptr, nullptr, nullptr);
             g_object_unref(appinfo);
-//            QProcess process;
-//            process.startDetached("/usr/bin/ubuntu-kylin-software-center");
-//            process.waitForStarted(1000);
-//            process.waitForFinished(20*1000);
+            list_view->clearSelection();
         }
         else {
             emit this->pluginModuleError(tr("No software center was found!"));
@@ -241,15 +239,7 @@ void BoxWidget::OnClickListView(const QModelIndex & index)
         else
             sessionProxy->runApp("ubuntu-kylin-software-center");*/
     }
-//    else if(index.row() == 1) {
-//        emit this->sendSubIndex(0);
-//    }
-//    else if(index.row() == -1) {
-//        if(this->osarch == "aarch64" || this->osname == "Kylin" || this->osname == "YHKylin")
-//            sessionProxy->runApp("cheese");
-//        else
-//            emit this->sendSubIndex(1);
-//    }
+
     else if(index.row() == 1)
     {
         if(rows == 2)
@@ -257,8 +247,7 @@ void BoxWidget::OnClickListView(const QModelIndex & index)
             if (QFileInfo("/usr/bin/ukui-system-monitor").exists()) {
                 QProcess process;
                 process.startDetached("/usr/bin/ukui-system-monitor");
-//                process.waitForStarted(1000);
-//                process.waitForFinished(-1);
+                list_view->clearSelection();
             }
             else {
                 emit this->pluginModuleError(tr("No systemmonitor was found!"));
@@ -276,6 +265,7 @@ void BoxWidget::OnClickListView(const QModelIndex & index)
         QString guid = pluginModel.getGuid(index.row() - rows);
         PluginInterface* interface = PluginManager::Instance()->getInterfaceByGuid<PluginInterface>(guid);
         interface->doAction();
+        list_view->clearSelection();
     }
 }
 

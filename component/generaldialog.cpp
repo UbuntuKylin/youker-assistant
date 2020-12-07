@@ -28,6 +28,7 @@ GeneralDialog::GeneralDialog(QWidget *parent, QString text, bool warn, bool show
 {
     this->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
     this->setAutoFillBackground(true);
+    this->setWindowTitle(tr("Kylin Assistant"));
     this->setAttribute(Qt::WA_TranslucentBackground);
     this->setFixedSize(340,260);
 //    this->setStyleSheet("GeneralDialog{border:1px solid rgba(207, 207, 207, 1);\

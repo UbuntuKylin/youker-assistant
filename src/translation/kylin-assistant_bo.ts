@@ -73,12 +73,12 @@ tang guang &lt;tangguang@kylinos.cn&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../boxwidget.cpp" line="237"/>
+        <location filename="../boxwidget.cpp" line="235"/>
         <source>No software center was found!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../boxwidget.cpp" line="264"/>
+        <location filename="../boxwidget.cpp" line="253"/>
         <source>No systemmonitor was found!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -533,7 +533,7 @@ tang guang &lt;tangguang@kylinos.cn&gt;</source>
 <context>
     <name>CpuFmwidget</name>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="242"/>
+        <location filename="../../component/cpufmwidget.cpp" line="245"/>
         <source>apply</source>
         <translation type="unfinished"></translation>
     </message>
@@ -568,12 +568,12 @@ tang guang &lt;tangguang@kylinos.cn&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="219"/>
+        <location filename="../../component/cpufmwidget.cpp" line="222"/>
         <source>Current Frequency Adjustable Range:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="230"/>
+        <location filename="../../component/cpufmwidget.cpp" line="233"/>
         <source>CPU FM Note: There are some risks associated with the CPU FM function,please use caution! The computer needs to be restarted when the FM is complete.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1051,22 +1051,27 @@ tang guang &lt;tangguang@kylinos.cn&gt;</source>
 <context>
     <name>GeneralDialog</name>
     <message>
-        <location filename="../../component/generaldialog.cpp" line="64"/>
+        <location filename="../../component/generaldialog.cpp" line="31"/>
+        <source>Kylin Assistant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../component/generaldialog.cpp" line="65"/>
         <source>Remind</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/generaldialog.cpp" line="71"/>
+        <location filename="../../component/generaldialog.cpp" line="72"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/generaldialog.cpp" line="85"/>
+        <location filename="../../component/generaldialog.cpp" line="86"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/generaldialog.cpp" line="100"/>
+        <location filename="../../component/generaldialog.cpp" line="101"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2966,6 +2971,21 @@ Are you sure to continue?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../info/infoitemline.cpp" line="390"/>
+        <source>Clock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../info/infoitemline.cpp" line="392"/>
+        <source>Resources</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../info/infoitemline.cpp" line="394"/>
+        <source>Width</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../setting/settingdelegate.cpp" line="30"/>
         <source>ThemeSetting</source>
         <translation type="unfinished"></translation>
@@ -3346,8 +3366,13 @@ Are you sure to continue?</source>
     <message>
         <location filename="../../component/selectlistwidget.cpp" line="51"/>
         <location filename="../../component/selectlistwidget.cpp" line="68"/>
-        <location filename="../../component/selectlistwidget.cpp" line="153"/>
+        <location filename="../../component/selectlistwidget.cpp" line="165"/>
         <source>Clean Items:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../component/selectlistwidget.cpp" line="89"/>
+        <source>No items to clean</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

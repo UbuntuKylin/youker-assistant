@@ -108,12 +108,12 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>麒麟系统监视器</translation>
     </message>
     <message>
-        <location filename="../boxwidget.cpp" line="237"/>
+        <location filename="../boxwidget.cpp" line="235"/>
         <source>No software center was found!</source>
         <translation>没有找到软件中心 ！</translation>
     </message>
     <message>
-        <location filename="../boxwidget.cpp" line="264"/>
+        <location filename="../boxwidget.cpp" line="253"/>
         <source>No systemmonitor was found!</source>
         <translation>没有找到系统监视器 ！</translation>
     </message>
@@ -624,7 +624,7 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>CpuFmwidget</name>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="242"/>
+        <location filename="../../component/cpufmwidget.cpp" line="245"/>
         <source>apply</source>
         <translation>应用</translation>
     </message>
@@ -663,12 +663,12 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>用户自定义</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="219"/>
+        <location filename="../../component/cpufmwidget.cpp" line="222"/>
         <source>Current Frequency Adjustable Range:</source>
         <translation>当前频率可调节范围:</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="230"/>
+        <location filename="../../component/cpufmwidget.cpp" line="233"/>
         <source>CPU FM Note: There are some risks associated with the CPU FM function,please use caution! The computer needs to be restarted when the FM is complete.</source>
         <translation>CPU调频说明：CPU调频功能存在一定的风险，请谨慎操作！调频完成需重启计算机。</translation>
     </message>
@@ -1146,22 +1146,27 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>GeneralDialog</name>
     <message>
-        <location filename="../../component/generaldialog.cpp" line="64"/>
+        <location filename="../../component/generaldialog.cpp" line="31"/>
+        <source>Kylin Assistant</source>
+        <translation>麒麟助手</translation>
+    </message>
+    <message>
+        <location filename="../../component/generaldialog.cpp" line="65"/>
         <source>Remind</source>
         <translation>注意</translation>
     </message>
     <message>
-        <location filename="../../component/generaldialog.cpp" line="71"/>
+        <location filename="../../component/generaldialog.cpp" line="72"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../../component/generaldialog.cpp" line="85"/>
+        <location filename="../../component/generaldialog.cpp" line="86"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../../component/generaldialog.cpp" line="100"/>
+        <location filename="../../component/generaldialog.cpp" line="101"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
@@ -3266,6 +3271,21 @@ Are you sure to continue?</source>
         <translation>ID号</translation>
     </message>
     <message>
+        <location filename="../../info/infoitemline.cpp" line="390"/>
+        <source>Clock</source>
+        <translation>频率</translation>
+    </message>
+    <message>
+        <location filename="../../info/infoitemline.cpp" line="392"/>
+        <source>Resources</source>
+        <translation>资源</translation>
+    </message>
+    <message>
+        <location filename="../../info/infoitemline.cpp" line="394"/>
+        <source>Width</source>
+        <translation>数据宽度</translation>
+    </message>
+    <message>
         <location filename="../../setting/settingdelegate.cpp" line="30"/>
         <source>ThemeSetting</source>
         <translation>主题设置</translation>
@@ -3520,9 +3540,14 @@ Are you sure to continue?</source>
     <message>
         <location filename="../../component/selectlistwidget.cpp" line="51"/>
         <location filename="../../component/selectlistwidget.cpp" line="68"/>
-        <location filename="../../component/selectlistwidget.cpp" line="153"/>
+        <location filename="../../component/selectlistwidget.cpp" line="165"/>
         <source>Clean Items:</source>
         <translation>清理项：</translation>
+    </message>
+    <message>
+        <location filename="../../component/selectlistwidget.cpp" line="89"/>
+        <source>No items to clean</source>
+        <translation>没有可清理项</translation>
     </message>
 </context>
 <context>
