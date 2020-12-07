@@ -179,16 +179,19 @@ void CpuFmwidget::InitUI()
             radio_layout->addWidget(item);
             radioGroup->addButton(item);
         }
-//        else if(governer_list.at(i) == "conservative")
-//        {
-//            item->setText(tr("conservative"));
-//            item->setStyleSheet("color:rgb(0,0,0,185)");
-//            item->setObjectName("conservative");
-//            if(cur_governer == "conservative")
-//            {
-//                item->setChecked(true);
-//            }
-//        }
+        else if(governer_list.at(i) == "schedutil")
+        {
+            QRadioButton *item = new QRadioButton(h);
+            item->setText("Schedutil");
+            item->setStyleSheet("color:rgb(0,0,0,185)");
+            item->setObjectName("schedutil");
+            if(cur_governer == "schedutil")
+            {
+                item->setChecked(true);
+            }
+            radio_layout->addWidget(item);
+            radioGroup->addButton(item);
+        }
         else
         {
             continue;

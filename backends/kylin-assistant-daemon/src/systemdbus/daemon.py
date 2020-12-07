@@ -403,6 +403,8 @@ class Daemon(PolicyKitService):
         hide=False
         status, output = subprocess.getstatusoutput("sensors")
         if( status != -1 ):
+            if(status == 1):
+                return False
             for line in output.split("\n"):
                 if "fan" in line:
                     if(line.split(":")[1].strip().split(" ")[0] != "0"):

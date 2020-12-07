@@ -221,9 +221,9 @@ int main(int argc, char *argv[])
 #endif
 
         QString locale = QLocale::system().name();
-//        QString locale = "es";
+//        QString locale = "bo_CN";
         QTranslator translator;
-        if(locale == "zh_CN" || locale == "es" || locale == "fr" || locale == "de" || locale == "ru") {//中文 西班牙语 法语 德语 俄语
+        if(locale == "zh_CN" || locale == "es" || locale == "fr" || locale == "de" || locale == "ru" || locale == "bo_CN") {//中文 西班牙语 法语 德语 俄语
             if(!translator.load("kylin-assistant_" + locale + ".qm",
                                 ":/qmfile/translation/"))
 //            if(!translator.load("kylin-assistant_" + locale + ".qm",

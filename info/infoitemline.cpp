@@ -386,6 +386,12 @@ inline const QString covertKeyName(const QString &key)
         return QString(QObject::tr("Configuration"));
     else if (key == "physical id") //
         return QString(QObject::tr("Physical ID"));
+    else if (key == "clock")
+        return QString(QObject::tr("Clock"));
+    else if (key == "resources")
+        return QString(QObject::tr("Resources"));
+    else if (key == "width")
+        return QString(QObject::tr("Width"));
     else
         return key;
 }

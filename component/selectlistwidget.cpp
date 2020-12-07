@@ -84,6 +84,18 @@ void SelectListWidget::loadListItemsWithTips(const QStringList &arglist, const Q
     itemlist.clear();
     itemlist = baklist;
 
+    if(baklist.isEmpty()){
+        m_listAreaWidgetLayout->addStretch();
+        QLabel *tip_labrl = new QLabel(tr("No items to clean"));
+        tip_labrl->setAlignment(Qt::AlignCenter);
+        tip_labrl->setFixedSize(itemWidth,60);
+        tip_labrl->setStyleSheet("QLabel{font-size:18px;color:gray;}");
+        m_listAreaWidgetLayout->addWidget(tip_labrl);
+        m_listAreaWidgetLayout->addStretch();
+
+        return;
+    }
+
     m_itemsMap.clear();
 
     for (int i = 0; i < arglist.length(); ++i) {
