@@ -21,6 +21,7 @@
 #define INFOITEMLINE_H
 
 #include <QLabel>
+#include <QString>
 
 class QRadioButton;
 

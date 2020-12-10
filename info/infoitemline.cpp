@@ -401,12 +401,12 @@ InfoItemLine::InfoItemLine(QFrame *parent)
     : QFrame(parent)
 {
     this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-    this->setFixedHeight(36);
+//    this->setFixedHeight(36);
 
     m_key = "";
     m_keyLabel = new QLabel;
     m_valueLabel = new QLabel;
-    m_keyLabel->setStyleSheet("color:black;");
+//    this->setStyleSheet("Background:gray;");
 
     QHBoxLayout *mainLayout = new QHBoxLayout;
     mainLayout->setSpacing(0);
@@ -440,21 +440,24 @@ void InfoItemLine::setInfoKey(const QString &key)
 
 void InfoItemLine::setInfoValue(const QString &value)
 {
-    int maxWidth = this->width() - keyWidth - 40;
+//    int maxWidth = this->width() - keyWidth - 40;
+//    QFont ft;
+//    QFontMetrics fm(ft);
+//    QString elided_text = fm.elidedText(value, Qt::ElideRight, maxWidth);
+    QString elided_text = value;
 
-    QFont ft;
-    QFontMetrics fm(ft);
-    QString elided_text = fm.elidedText(value, Qt::ElideRight, maxWidth);
-    m_valueLabel->setText(elided_text);
     m_valueLabel->setStyleSheet("background-color:rgb(237,238,239);color:black;");
-    m_valueLabel->setFixedSize(461,31);
-//    m_valueLabel->setMinimumSize(461,32);
-//    m_valueLabel->setMaximumSize(461,70);
     m_valueLabel->setIndent(5);
-    m_valueLabel->setWordWrap(true);
-//    if(elided_text.endsWith("…"))
-    if(value.length() >= 64)
-        m_valueLabel->setToolTip(value);
+    if(value.length() >= 51){
+        elided_text.insert(48,"  ");
+        m_valueLabel->setFixedSize(461,60);
+        m_valueLabel->setWordWrap(true);
+        m_valueLabel->adjustSize();
+    }else{
+        m_valueLabel->setFixedSize(461,31);
+    }
+
+    m_valueLabel->setText(elided_text);
 }
 
 QString InfoItemLine::getLineKey()
