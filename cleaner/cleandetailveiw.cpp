@@ -689,17 +689,27 @@ void CleandetailVeiw::ShowDetailsPage()
     QPushButton *button = qobject_cast<QPushButton *>(object);
     QString btn_name = button->objectName();
 
-    if(QString::compare(btn_name,"Cache") == 0)
-    {
+    if(QString::compare(btn_name,"Cache") == 0){
+        if(cache_flag){
+            select_cache_apt_list.clear();
+            select_cache_apt_list = cache_apt_list;
+            cache_flag = false;
+        }
+
         SelectWidget *w = new SelectWidget(CleanerModuleID::CacheApt, tr("Cleanable Cache"));
-        w->loadData(tr("Cleanable Cache"), cache_apt_list);
+        w->loadData(tr("Cleanable Cache"), select_cache_apt_list, cache_apt_list);
         connect(w, SIGNAL(refreshSelectedItems(CleanerModuleID,QStringList)), this, SLOT(onRefreshSelectedItems(CleanerModuleID,QStringList)));
         w->exec();
         delete w;
     }
     else if(QString::compare(btn_name,"Cookie") == 0){
+        if(cache_chromium_flag){
+            select_cache_chromium_list.clear();
+            select_cache_chromium_list = cache_apt_list;
+            cache_chromium_flag = false;
+        }
         SelectWidget *w = new SelectWidget(CleanerModuleID::CacheApt, tr("Cleanable Cookie"));
-        w->loadData(tr("Cleanable Cookie"), cookies_chromium_list);
+        w->loadData(tr("Cleanable Cookie"), select_cache_chromium_list, cookies_chromium_list);
         connect(w, SIGNAL(refreshSelectedItems(CleanerModuleID,QStringList)), this, SLOT(onRefreshSelectedItems(CleanerModuleID,QStringList)));
         w->exec();
         delete w;
@@ -776,6 +786,7 @@ void CleandetailVeiw::onRefreshSelectedItems(CleanerModuleID id, const QStringLi
 
     switch (id) {
     case CleanerModuleID::CacheApt:
+        select_cache_apt_list = infos;
         m_selectedAptList.clear();
         m_selectedAptList = infos;
         break;
@@ -820,6 +831,7 @@ void CleandetailVeiw::receiveCleanSignal()
     }
     else {
         emit this->startCleanSystem(argsData);
+        cache_flag = true;
     }
 }
 
@@ -875,7 +887,8 @@ void CleandetailVeiw::getAllSelectedItems()
     qDebug() << Q_FUNC_INFO << m_selectedAptList;
 
     foreach (QString info, m_selectedAptList) {
-        fileTmp.append(info);
+        if(info != "")
+            fileTmp.append(info);
     }
     foreach (QString info, m_selectedSoftwareList) {
         fileTmp.append(info);

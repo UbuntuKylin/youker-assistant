@@ -476,12 +476,9 @@ void CleanerMainWidget::onButtonClicked()
 //    CleanGroup *checkbox = qobject_cast<CleanGroup *>(object);
     QPushButton *checkbox = qobject_cast<QPushButton *>(object);
     QString object_name = checkbox->statusTip();
+    int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
+    int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
     if (object_name == "cache") {
-//        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
-//        int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280 / 2);
-//        cache_items->move(w_x, w_y);
-//        cache_items->exec();
-
         if(flag_cache){
             m_selectedCache.clear();
             m_selectedCache = cache_status_list;
@@ -491,6 +488,7 @@ void CleanerMainWidget::onButtonClicked()
         w->loadData(cache_list, m_selectedCache,cache_status_list);
 //        connect(w, SIGNAL(notifyMainCheckBox(int)), cache_btn, SLOT(resetMainStatus(int)));
         connect(w, SIGNAL(refreshSelectedItems(CleanerCategoryID,QStringList)), this, SLOT(onRefreshSelectedItems(CleanerCategoryID,QStringList)));
+        w->move(w_x, w_y);
         w->exec();
         delete w;
     }
@@ -502,11 +500,6 @@ void CleanerMainWidget::onButtonClicked()
 //        package_items->exec();
 //    }
     if (object_name == "cookies") {
-//        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
-//        int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (170  / 2);
-//        cookies_items->move(w_x, w_y);
-//        cookies_items->exec();
-
         if(flag_cookie){
             m_selectedCookie.clear();
             m_selectedCookie = cookies_status_list;
@@ -516,17 +509,11 @@ void CleanerMainWidget::onButtonClicked()
         w->loadData(cookies_list, m_selectedCookie, cookies_status_list);
 //        connect(w, SIGNAL(notifyMainCheckBox(int)), cookies_btn, SLOT(resetMainStatus(int)));
         connect(w, SIGNAL(refreshSelectedItems(CleanerCategoryID,QStringList)), this, SLOT(onRefreshSelectedItems(CleanerCategoryID,QStringList)));
+        w->move(w_x, w_y);
         w->exec();
         delete w;
     }
     if (object_name == "trace") {
-//        m_selectedTrace.clear();
-//        m_selectedTrace = status_list;
-//        int w_x = parentWindow->frameGeometry().topLeft().x() + (900 / 2) - (410  / 2);
-//        int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (280  / 2);
-//        trace_items->move(w_x, w_y);
-//        trace_items->exec();
-
         if(flag_trace){
             m_selectedTrace.clear();
             m_selectedTrace = trace_status_list;
@@ -536,6 +523,7 @@ void CleanerMainWidget::onButtonClicked()
         w->loadData(trace_list, m_selectedTrace, trace_status_list);
 //        connect(w, SIGNAL(notifyMainCheckBox(int)), trace_btn, SLOT(resetMainStatus(int)));
         connect(w, SIGNAL(refreshSelectedItems(CleanerCategoryID,QStringList)), this, SLOT(onRefreshSelectedItems(CleanerCategoryID,QStringList)));
+        w->move(w_x, w_y);
         w->exec();
         delete w;
     } 

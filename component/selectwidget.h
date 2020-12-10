@@ -37,7 +37,7 @@ public:
     SelectWidget(CleanerModuleID id = InvalidID, const QString &title = "", bool needMin = false, QWidget *parent = 0, bool t = false);
     ~SelectWidget();
 
-    void loadData(const QString &title, const QStringList &cachelist);
+    void loadData(const QString &title, const QStringList &cachelist, const QStringList &baklist);
     void moveCenter();
 
     void paintEvent(QPaintEvent *event);

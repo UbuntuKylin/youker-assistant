@@ -84,16 +84,16 @@ SelectWidget::~SelectWidget()
 
 void SelectWidget::onClose()
 {
-    if(flag)
+    if(!flag)
         emit refreshSelectedItems(m_id, m_listWidget->getSelectedItemsAll());
     else
         emit refreshSelectedItems(m_id, m_listWidget->getSelectedItems());
     this->close();
 }
 
-void SelectWidget::loadData(const QString &title, const QStringList &cachelist)
+void SelectWidget::loadData(const QString &title, const QStringList &cachelist, const QStringList &baklist)
 {
-    m_listWidget->loadListItems(title, cachelist, this->width() - 2*ITEM_LEFT_RIGHT_PADDING);
+    m_listWidget->loadListItems(title, cachelist, baklist, this->width() - 2*ITEM_LEFT_RIGHT_PADDING);
 }
 
 void SelectWidget::moveCenter()

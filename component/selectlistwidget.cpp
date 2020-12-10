@@ -61,18 +61,22 @@ SelectListWidget::~SelectListWidget()
     this->resetToDefault();
 }
 
-void SelectListWidget::loadListItems(const QString &title, const QStringList &cachelist, int itemWidth)
+void SelectListWidget::loadListItems(const QString &title, const QStringList &cachelist, const QStringList &baklist, int itemWidth)
 {
-    m_itemsMap.clear();
-    int count = cachelist.count();
-    m_titleLabel->setText(QString("%1 %2").arg(tr("Clean Items:")).arg(QString::number(count)));
+    cacheitem.clear();
+    cacheitem = baklist;
 
-    foreach (QString cache, cachelist) {
-        SelectListItem *item = new SelectListItem(0, cache, "", false, itemWidth-2*ITEM_LEFT_RIGHT_PADDING);
+    m_itemsMap.clear();
+    int count = 0;
+    for (int i = 0; i < baklist.length(); ++i) {
+        SelectListItem *item = new SelectListItem(0, baklist.at(i), "", false, itemWidth-2*ITEM_LEFT_RIGHT_PADDING, cachelist.at(i) != "");
         connect(item, SIGNAL(selectedSignal(bool,QString)), this, SLOT(onSelectedSignal(bool,QString)));
         m_listAreaWidgetLayout->addWidget(item);
-        m_itemsMap.insert(cache, item);
+        m_itemsMap.insert(baklist.at(i), item);
+        if(cachelist.at(i) != "")
+            count ++;
     }
+    m_titleLabel->setText(QString("%1 %2").arg(tr("Clean Items:")).arg(QString::number(count)));
     m_listAreaWidgetLayout->addStretch();
 }
 
@@ -105,6 +109,7 @@ void SelectListWidget::loadListItemsWithTips(const QStringList &arglist, const Q
         m_listAreaWidgetLayout->addWidget(item);
         m_itemsMap.insert(arglist.at(i), item);
     }
+
     m_listAreaWidgetLayout->addStretch();
 }
 
@@ -136,20 +141,19 @@ QStringList SelectListWidget::getSelectedItems()
 
 QStringList SelectListWidget::getSelectedItemsAll()
 {
-        QStringList text_list;
+    /*foreach (QString text, m_itemsMap.keys()) {
 
-        /*foreach (QString text, m_itemsMap.keys()) {
-
-        }*/
-        QMap<QString, SelectListItem*>::iterator it;
-        for (it = m_itemsMap.begin(); it != m_itemsMap.end(); ++it) {
-            SelectListItem *item = static_cast<SelectListItem *>(it.value());
-            if (!item->itemIsChecked()){
-                text_list.append(item->itemDescription());
-            }
+    }*/
+    QMap<QString, SelectListItem*>::iterator it;
+    for (it = m_itemsMap.begin(); it != m_itemsMap.end(); ++it) {
+        SelectListItem *item = static_cast<SelectListItem *>(it.value());
+        qDebug() << Q_FUNC_INFO << item->itemDescription();
+        if (!item->itemIsChecked()){
+            cacheitem.replaceInStrings(item->itemDescription(),"",Qt::CaseInsensitive);
         }
-        qDebug() << Q_FUNC_INFO << text_list;
-        return text_list;
+    }
+    qDebug() << Q_FUNC_INFO << cacheitem;
+    return cacheitem;
 }
 
 void SelectListWidget::scanAllSubCheckbox()

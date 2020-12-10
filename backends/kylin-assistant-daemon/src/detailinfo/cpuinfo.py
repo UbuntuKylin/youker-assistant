@@ -55,6 +55,15 @@ GIGABYTE_FACTOR = (1000.0 * 1000.0 * 1000.0)
 TERABYTE_FACTOR = (1000.0 * 1000.0 * 1000.0 * 1000.0)
 
 
+def Judgment_HW990():
+    with open("/proc/cpuinfo",'r') as fd:
+        info = fd.read()
+        if len(re.findall("HAUWEID Kirin 990",info)) > 0:
+            return True
+        else:
+            return False
+        
+
 def get_interface(com, pci_str):
     "输入想要的命令，并获取想要内容的函数,第一个参数是命令，第二个参数是正则表达式"
     res = subprocess.Popen(com, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, bufsize=10)
@@ -1427,8 +1436,15 @@ class DetailInfo:
         disknum = 0
         statusfirst, output = subprocess.getstatusoutput("lsblk -b")
 
+        flag = Judgment_HW990()
+
         for line in output.split("\n"):
             value = line.split()
+
+            if flag:
+                if value[0] == "sda" or value[0] == "sdb" or value[0] == "sdc":
+                    continue
+
             if value[1].startswith("259:") and value[5] == "disk":
                 disknum += 1
                 HDSize = get_human_read_capacity_size(int(value[3]))
@@ -2299,4 +2315,4 @@ if __name__ == "__main__":
     #cc.get_multimedia()
     #cc.get_dvd()
     #cc.get_usb()
-    pprint(cc.get_memory())
+    pprint(cc.get_network())

@@ -39,7 +39,7 @@ public:
     ~SelectListWidget();
 
 public slots:
-    void loadListItems(const QString &title, const QStringList &cachelist, int itemWidth);
+    void loadListItems(const QString &title, const QStringList &cachelist, const QStringList &baklist, int itemWidth);
     void loadListItemsWithTips(const QStringList &arglist, const QStringList &statuslist, const QStringList &baklist, int itemWidth);
     void removeOneItem(const QString &description);
     void resetToDefault();
@@ -61,6 +61,7 @@ private:
     QLabel *m_titleLabel = nullptr;
 //    QLabel *m_countLabel = nullptr;
     QStringList itemlist;
+    QStringList cacheitem;
     QMap<QString, SelectListItem *> m_itemsMap;
 };
 

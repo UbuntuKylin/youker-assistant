@@ -133,11 +133,18 @@ void InfoUnitWidget::setInfoVendor(const QString &vendor)
 void InfoUnitWidget::addInfoItem(const QString &key, const QString &value)
 {
     InfoItemLine *w = new InfoItemLine;
+    if(value.length() >= 51){
+        w->setFixedHeight(65);
+        qDebug() << Q_FUNC_INFO << "ComProduct" << value.length();
+    }else{
+        w->setFixedHeight(36);
+    }
     const int index = m_infoItemsGroup->appendItem(w);
     if (key == "uptime") {
         m_currentRunningTimeUIIndex = index;
     }
     w->setInfoKey(key);
+
     w->setInfoValue(value);
 
     connect(w, &InfoItemLine::clicked, [=] (const QString &context) { qDebug() << context; });

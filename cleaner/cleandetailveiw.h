@@ -97,10 +97,17 @@ private:
     QMap<QString, QVariant> argsData;
 
     QStringList cache_apt_list;
+    QStringList select_cache_apt_list;
+    bool cache_flag = true;
+
     QStringList cache_software_list;
     QStringList cache_thumbnails_list;
     QStringList cache_firefox_list;
+
     QStringList cache_chromium_list;
+    QStringList select_cache_chromium_list;
+    bool cache_chromium_flag = true;
+
     /*QStringList package_unneed_list;
     QStringList package_oldkernel_list;
     QStringList package_configfile_list;*/
