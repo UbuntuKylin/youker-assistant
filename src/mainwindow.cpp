@@ -24,6 +24,9 @@
 #include <QGSettings/qgsettings.h>
 #include <QGraphicsDropShadowEffect>
 #include <QStackedLayout>
+#include <X11/extensions/Xrandr.h>
+#include <qx11info_x11.h>
+#include <libudev.h>
 #include "../component/utils.h"
 #include "../component/threadpool.h"
 #include "dataworker.h"
@@ -79,6 +82,11 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
     registerCustomDataMetaType();
     registerCustomDataListMetaType();
 
+    //注册监听xrr事件
+    XRRQueryExtension(QX11Info::display(), &rr_event_base, &rr_error_base);
+    XRRSelectInput(QX11Info::display(), QX11Info::appRootWindow(), RRScreenChangeNotifyMask);
+    qApp->installNativeEventFilter(this); //监听全局x事件，调用了这个才能收到nativeEventFilter 
+
 //    this->setStyleSheet("background : red");
 
     this->osName = accessOSName();
@@ -131,9 +139,35 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
 
     toolKits = new Toolkits(0, this->width(), this->height());
 
-    main_menu = new KylinMenu(this);
-    main_menu->setParentWindow(this);
-    main_menu->initConnect();
+//    main_menu = new KylinMenu(this);
+//    main_menu->setParentWindow(this);
+//    main_menu->initConnect();
+    main_menu = new QMenu(this);
+    main_menu->setMinimumWidth(160);
+    main_menu->addAction(tr("Help"));
+    main_menu->addAction(tr("About"));
+    main_menu->addAction(tr("Exit"));
+
+    connect(main_menu,&QMenu::triggered,this,[=](QAction *action){
+        qDebug() << Q_FUNC_INFO << action->text();
+        if(action->text() == tr("About")){
+            if(!aboutDlg){
+               createAboutDialog();
+            }
+            aboutDlg->move(this->geometry().left()+220,this->geometry().top()+25);
+            aboutDlg->exec();
+        }else if(action->text() == tr("Help")){
+            QProcess *process = new QProcess(this);
+            QString cmd = "kylin-user-guide";
+            QStringList arg;
+            qDebug() << Q_FUNC_INFO;
+            arg << "-A" << "kylin-assistant";
+            process->start(cmd,arg);
+        }else if(action->text() == tr("Exit")){
+            this->close();
+        }
+    });
+
     this->startDbusDaemon();
     this->initWidgets();
 
@@ -146,8 +180,8 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
 
     const QByteArray id("org.ukui.style");
     if (QGSettings::isSchemaInstalled(id)){
-        QGSettings *fontSetting = new QGSettings(id);
-        connect(fontSetting,&QGSettings::changed,[=](QString key){
+        QGSettings *Setting = new QGSettings(id);
+        connect(Setting,&QGSettings::changed,[=](QString key){
             if("systemFont" == key || "systemFontSize" == key ){
                 QFont font = this->font();
 //                int width = font.pointSize();
@@ -155,11 +189,14 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
                     widget->setFont(font);
                 }
             }
+            if("iconThemeName" == key){
+                if(QIcon::hasThemeIcon("kylin-assistant"))
+                    this->setWindowIcon(QIcon::fromTheme("kylin-assistant"));
+                else
+                    this->setWindowIcon(QIcon(":/res/kylin-assistant.png"));
+            }
         });
     }
-
-    this->hide();
-
 
 }
 
@@ -207,6 +244,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 MainWindow::~MainWindow()
 {
 //    delete m_qSystemDbus;
+    this->stopUDevHotPlugin();
 
     if (m_dataWorker) {
         m_dataWorker->deleteLater();
@@ -288,10 +326,13 @@ void MainWindow::initWidgets()
 //    connect(cleaner_action_widget, SIGNAL(showMainData()),cleaner_widget, SLOT(displayMainPage()));
 //    connect(cleaner_action_widget, SIGNAL(sendCleanSignal()),cleaner_widget, SIGNAL(transCleanSignal()));
 
-//    info_widget = new InfoWidget(this->arch);
-//    m_bottomStack->addWidget(info_widget);
-    list_widget = new MListwidget();
-    m_bottomStack->addWidget(list_widget);
+    info_widget = new InfoWidget(this->arch);
+
+    connect(m_dataWorker, &DataWorker::sendDevicePageNotExists, info_widget, &InfoWidget::resetInfoLeftListUI);
+
+    m_bottomStack->addWidget(info_widget);
+//    list_widget = new MListwidget();
+//    m_bottomStack->addWidget(list_widget);
 
     drive_widget = new Drivewidget();
     m_bottomStack->addWidget(drive_widget);
@@ -324,6 +365,12 @@ void MainWindow::initWidgets()
     contentLayout->addWidget(m_bottomStack);
 //    m_topStack->setCurrentWidget(m_mainTopWidget);
     m_bottomStack->setCurrentWidget(cleaner_widget);
+
+    /* 初始化标题栏 */
+    m_middleWidget->InitMiddlewidget();
+
+    this->moveCenter();
+
 }
 
 void MainWindow::onInitDataFinished()
@@ -334,12 +381,12 @@ void MainWindow::onInitDataFinished()
     this->temperature = m_dataWorker->hide_temperature_page();
     this->fan = m_dataWorker->hide_fan_page();
     this->cpufm = m_dataWorker->hide_cpufm_page();
-    this->info = m_dataWorker->onRequesetAllInfoIsHaveValue();
-    qDebug() << Q_FUNC_INFO << info;
+//    this->info = m_dataWorker->onRequesetAllInfoIsHaveValue();
+//    qDebug() << Q_FUNC_INFO << info;
 
     this->m_cpulist = m_dataWorker->cpuModeList();
     this->m_currentCpuMode = m_dataWorker->cpuCurrentMode();
-    qDebug() << Q_FUNC_INFO <<this->m_cpulist << this->m_currentCpuMode;
+//    qDebug() << Q_FUNC_INFO <<this->m_cpulist << this->m_currentCpuMode;
 
     /*
     Qt::AutoConnection 自动连接：（默认值）如果信号在接收者所依附的线程内发射，则等同于直接连接。如果发射信号的线程和接受者所依附的线程不同，则等同于队列连接。
@@ -394,48 +441,54 @@ void MainWindow::onInitDataFinished()
     connect(m_dataWorker, SIGNAL(sendCleanOverSignal()), cleaner_widget, SIGNAL(sendCleanOverSignal()));
     //------------------------------------------------------------------------------
 
-    connect(list_widget, SIGNAL(m_requestRefreshSystemInfo()), m_dataWorker, SLOT(onRequestRefreshSystemInfo()));
-    connect(m_dataWorker, SIGNAL(sendSystemInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendSystemInfo(QMap<QString,QVariant>)));
+    connect(info_widget, SIGNAL(requestRefreshSystemInfo()), m_dataWorker, SLOT(onRequestRefreshSystemInfo()));
+    connect(m_dataWorker, SIGNAL(sendSystemInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendSystemInfo(QMap<QString,QVariant>)));
 
     //desktop info
-    connect(list_widget, SIGNAL(List_requestDesktopInfo()), m_dataWorker, SLOT(onRequestDesktopInfo()));
-    connect(m_dataWorker, SIGNAL(sendDesktopInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendDesktopInfo_next(QMap<QString,QVariant>)));
+    connect(info_widget, SIGNAL(requestDesktopInfo()), m_dataWorker, SLOT(onRequestDesktopInfo()));
+    connect(m_dataWorker, SIGNAL(sendDesktopInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendDesktopInfo(QMap<QString,QVariant>)));
 
     //cpu info
-    connect(list_widget, SIGNAL(List_requestCpuInfo()), m_dataWorker, SLOT(onRequestCpuInfo()));
-    connect(m_dataWorker, SIGNAL(sendCpuInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendCpuInfo_next(QMap<QString,QVariant>)));
+    connect(info_widget, SIGNAL(requestCpuInfo()), m_dataWorker, SLOT(onRequestCpuInfo()));
+    connect(m_dataWorker, SIGNAL(sendCpuInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendCpuInfo(QMap<QString,QVariant>)));
 
     //memory info
-    connect(list_widget, SIGNAL(List_requestMemoryInfo()), m_dataWorker, SLOT(onRequestMemoryInfo()));
-    connect(m_dataWorker, SIGNAL(sendMemoryInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendMemoryInfo_next(QMap<QString,QVariant>)));
+    connect(info_widget, SIGNAL(requestMemoryInfo()), m_dataWorker, SLOT(onRequestMemoryInfo()));
+    connect(m_dataWorker, SIGNAL(sendMemoryInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendMemoryInfo(QMap<QString,QVariant>)));
 
     //board info
-    connect(list_widget, SIGNAL(List_requestBoardInfo()), m_dataWorker, SLOT(onRequestBoardInfo()));
-    connect(m_dataWorker, SIGNAL(sendBoardInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendBoardInfo_next(QMap<QString,QVariant>)));
+    connect(info_widget, SIGNAL(requestBoardInfo()), m_dataWorker, SLOT(onRequestBoardInfo()));
+    connect(m_dataWorker, SIGNAL(sendBoardInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendBoardInfo(QMap<QString,QVariant>)));
 
     //hd info
-    connect(list_widget, SIGNAL(List_requestHDInfo()), m_dataWorker, SLOT(onRequestHDInfo()));
-    connect(m_dataWorker, SIGNAL(sendHDInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendHDInfo_next(QMap<QString,QVariant>)));
+    connect(info_widget, SIGNAL(requestHDInfo()), m_dataWorker, SLOT(onRequestHDInfo()));
+    connect(m_dataWorker, SIGNAL(sendHDInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendHDInfo(QMap<QString,QVariant>)));
 
     //nic info
-    connect(list_widget, SIGNAL(List_requestNicInfo()), m_dataWorker, SLOT(onRequestNicInfo()));
-    connect(m_dataWorker, SIGNAL(sendNicInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendNicInfo_next(QMap<QString,QVariant>)));
+    connect(info_widget, SIGNAL(requestNicInfo()), m_dataWorker, SLOT(onRequestNicInfo()));
+    connect(m_dataWorker, SIGNAL(sendNicInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendNicInfo(QMap<QString,QVariant>)));
 
     //monitor info
-    connect(list_widget, SIGNAL(List_requestMonitorInfo()), m_dataWorker, SLOT(onRequestMonitorInfo()));
-    connect(m_dataWorker, SIGNAL(sendMonitorInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendMonitorInfo_next(QMap<QString,QVariant>)));
+    connect(info_widget, SIGNAL(requestMonitorInfo()), m_dataWorker, SLOT(onRequestMonitorInfo()));
+    connect(m_dataWorker, SIGNAL(sendMonitorInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendMonitorInfo(QMap<QString,QVariant>)));
 
     //audio info
-    connect(list_widget, SIGNAL(List_requestAudioInfo()), m_dataWorker, SLOT(onRequestAudioInfo()));
-    connect(m_dataWorker, SIGNAL(sendAudioInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendAudioInfo_next(QMap<QString,QVariant>)));
+    connect(info_widget, SIGNAL(requestAudioInfo()), m_dataWorker, SLOT(onRequestAudioInfo()));
+    connect(m_dataWorker, SIGNAL(sendAudioInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendAudioInfo(QMap<QString,QVariant>)));
 
     //battery info
-    connect(list_widget, SIGNAL(List_requestBatteryInfo()), m_dataWorker, SLOT(onRequestBatteryInfo()));
-    connect(m_dataWorker, SIGNAL(sendBatteryInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendBatteryInfo_next(QMap<QString,QVariant>)));
+    connect(info_widget, SIGNAL(requestBatteryInfo()), m_dataWorker, SLOT(onRequestBatteryInfo()));
+    connect(m_dataWorker, SIGNAL(sendBatteryInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendBatteryInfo(QMap<QString,QVariant>)));
 
     //sensor info
-    connect(list_widget, SIGNAL(List_requestSensorInfo()), m_dataWorker, SLOT(onRequestSensorInfo()));
-    connect(m_dataWorker, SIGNAL(sendSensorInfo(QMap<QString,QVariant>)), list_widget, SLOT(onSendSensorInfo_next(QMap<QString,QVariant>)));
+    connect(info_widget, SIGNAL(requestSensorInfo()), m_dataWorker, SLOT(onRequestSensorInfo()));
+    connect(m_dataWorker, SIGNAL(sendSensorInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendSensorInfo(QMap<QString,QVariant>)));
+
+    //input info
+    connect(info_widget, SIGNAL(requestInputInfo()), m_dataWorker, SLOT(onRequestInputInfo()));
+
+    //communication info
+    connect(info_widget, SIGNAL(requestCommunicationInfo()), m_dataWorker, SLOT(onRequestCommunicationInfo()));
 
     connect(monitorwidget,SIGNAL(requestcpuTemperature()),m_dataWorker, SLOT(onRequestCpuTemperature()));
     connect(m_dataWorker, SIGNAL(sendCpuTemperaturedata(QMap<QString, QVariant>)),monitorwidget,SLOT(onsendTemperaturedata(QMap<QString, QVariant>)));
@@ -610,9 +663,11 @@ void MainWindow::onInitDataFinished()
 //    connect(setting_widget, SIGNAL(resetThumbnailCacheTime(int)), m_dataWorker, SLOT(onResetThumbnailCacheTime(int)));
 //    connect(setting_widget, SIGNAL(resetThumbnailCacheSize(int)), m_dataWorker, SLOT(onResetThumbnailCacheSize(int)));
 
-//    info_widget->initInfoUI(this->battery, this->sensor);
-    list_widget->setBatteryAndSensor(this->battery,this->sensor,this->info);
-    list_widget->InitInfowidgetUI();
+    info_widget->initInfoUI(this->battery, this->sensor);
+//    list_widget->setBatteryAndSensor(this->battery,this->sensor,this->info);
+//    list_widget->InitInfowidgetUI();
+
+//    m_dataWorker->onRequestPartInfoAgain();
 //    monitorwidget->InitUI();
 
     monitorwidget->set_governer_list(m_cpulist);
@@ -622,15 +677,7 @@ void MainWindow::onInitDataFinished()
     monitorwidget->set_cpuFm(this->cpufm);
     monitorwidget->InitUI();
 
-    if(!fan && !cpufm && !temperature)
-        m_middleWidget->setHideMonitorWidget(true);
-    else
-        m_middleWidget->setHideMonitorWidget(false);
-
-    m_middleWidget->InitMiddlewidget();
-
-//    setting_widget->initSettingsUI(this->m_cpulist, this->m_currentCpuMode, this->battery/*, last_skin_path*/);
-    this->moveCenter();
+    this->startUDevHotPlugin();
 }
 
 void MainWindow::moveCenter()
@@ -870,6 +917,25 @@ void MainWindow::startDbusDaemon()
     w_thread->start();
 }
 
+void MainWindow::startUDevHotPlugin()
+{
+    m_udevHotPlugin = new UDevHotPlugin(this);
+    connect(m_udevHotPlugin, &UDevHotPlugin::sendUdevAddNotify, info_widget, &InfoWidget::onUDevHotPluginAdd);
+    connect(m_udevHotPlugin, &UDevHotPlugin::sendUdevRemoveNotify, info_widget, &InfoWidget::onUDevHotPluginRemove);
+    m_udevHotPlugin->start();
+    qDebug()<<"UdevHotPlugin started!!";
+}
+
+void MainWindow::stopUDevHotPlugin()
+{
+    if (m_udevHotPlugin) {
+        m_udevHotPlugin->stopDevHotPlugin();
+        m_udevHotPlugin->quit();
+        m_udevHotPlugin->wait();
+        qDebug()<<"UdevHotPlugin stoped!!";
+    }
+}
+
 int MainWindow::getCurrentBackgroundIndex()
 {
     int index = 1;
@@ -981,8 +1047,8 @@ void MainWindow::showMainMenu() {
 //    if (this->arch == "aarch64" || this->osName == "Kylin" || this->osName == "YHKylin")
 //    {
         QPoint p = rect().topRight();
-        p.setX(p.x() - 180);
-        p.setY(p.y() + 22);
+        p.setX(p.x() - 100);
+        p.setY(p.y() + 28);
         main_menu->exec(this->mapToGlobal(p));
 //    }
 //    else
@@ -1033,6 +1099,7 @@ void MainWindow::setCurrentPageIndex(QString index)
     else if (index == "Monitor" && status != "Monitor") {
         m_bottomStack->setCurrentWidget(monitorwidget);
         m_bottomStack->setFixedSize(monitorwidget->size());
+        monitorwidget->RefreshCPUFMCheckStatus();
         status = "Monitor";
     }
     else if (index == "Drive" && status != "Drive") {
@@ -1041,8 +1108,8 @@ void MainWindow::setCurrentPageIndex(QString index)
         status = "Drive";
     }
     else if (index == "Sysinfo" && status != "Sysinfo") {
-        m_bottomStack->setCurrentWidget(list_widget);
-        m_bottomStack->setFixedSize(list_widget->size());
+        m_bottomStack->setCurrentWidget(info_widget);
+        m_bottomStack->setFixedSize(info_widget->size());
         status = "Sysinfo";
     }
     else if (index == "Toolkits" && status != "Toolkits") {
@@ -1126,8 +1193,17 @@ void MainWindow::setupConfigure()
 void MainWindow::createAboutDialog()
 {
     QApplication::setOverrideCursor(Qt::WaitCursor);
-    aboutDlg = new AboutDialog(0, last_skin_path, this->arch, this->osName);
-    aboutDlg->setModal(false);
+//    aboutDlg = new AboutDialog(0, last_skin_path, this->arch, this->osName);
+//    aboutDlg->setModal(false);
+
+    aboutDlg = new AboutWidget();
+    aboutDlg->setAppIcon("kylin-assistant");
+    aboutDlg->setAppName(tr("Kylin Assistant"));
+    aboutDlg->setAppVersion(qApp->applicationVersion());
+    aboutDlg->setAppDescription(tr("<p>Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.</p>"));
+//    aboutDlg->setAppDescription(tr("<p>The software is still under development. Please visit  kylin-assistant") + QString::fromLocal8Bit("<a style='color: #3f96e4;' href = https://github.com/UbuntuKylin/youker-assistant>Github</a>") + tr(" for more information. Welcome everyone to join with us.</p>"));
+    aboutDlg->setAppDescription(tr("<p>Service & Support : <br/>&nbsp;&nbsp;&nbsp;<a style='color: black;' href='mailto://support@kylinos.cn'>support@kylinos.cn</a></p>"));
+
     QApplication::restoreOverrideCursor();
 }
 
@@ -1150,10 +1226,10 @@ void MainWindow::aboutUs()
     if (!aboutDlg) {
         createAboutDialog();
     }
-    int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (442  / 2);
-    int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (326  / 2);
-    aboutDlg->move(w_x, w_y);
-    aboutDlg->show();
+//    int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (442  / 2);
+//    int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (326  / 2);
+//    aboutDlg->move(w_x, w_y);
+    aboutDlg->exec();
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
@@ -1216,3 +1292,47 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
 //    painter.setOpacity(0.2);
 //    painter.drawPath(framePath);
 //}
+
+bool MainWindow::nativeEventFilter(const QByteArray &eventType, void *message, long *result) //监听全局x事件
+{
+    if (qstrcmp(eventType, "xcb_generic_event_t") != 0) {
+        return false;
+    }
+
+    xcb_generic_event_t *event = reinterpret_cast<xcb_generic_event_t*>(message);
+    const uint8_t responseType = event->response_type & ~0x80;
+    if(responseType == rr_event_base + RRScreenChangeNotify){
+        RRScreenChangeEvent();  //屏幕改变事件
+    }
+    return false;
+}
+
+void MainWindow::RRScreenChangeEvent()
+{
+    XRRScreenResources *screen;
+    screen = XRRGetScreenResources(QX11Info::display(), QX11Info::appRootWindow());
+    XRROutputInfo *info;
+    int nCurCount = 0;
+    static int nLastCount = -1;
+
+    //这里只是屏幕改变事件，通过屏幕改变事件遍历所有
+    for (int i = 0; i < screen->noutput; i++) {
+        info = XRRGetOutputInfo(QX11Info::display(), screen, screen->outputs[i]);
+        if (info->connection == RR_Connected) {
+            nCurCount++;
+        }
+        XRRFreeOutputInfo(info);
+    }
+    /*
+        count为当前连接的显示器个数，每次记录并比较就可以得到显示器的热插拔事件
+    */
+    XRRFreeScreenResources(screen);
+
+    // 屏幕数发生变化，获取最新屏幕信息
+    if (nCurCount != nLastCount) {
+        nLastCount = nCurCount;
+        if(m_dataWorker) {
+            m_dataWorker->onRequestMonitorInfo();
+        }
+    }
+}

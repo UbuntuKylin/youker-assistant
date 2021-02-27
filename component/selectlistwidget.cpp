@@ -147,7 +147,6 @@ QStringList SelectListWidget::getSelectedItemsAll()
     QMap<QString, SelectListItem*>::iterator it;
     for (it = m_itemsMap.begin(); it != m_itemsMap.end(); ++it) {
         SelectListItem *item = static_cast<SelectListItem *>(it.value());
-        qDebug() << Q_FUNC_INFO << item->itemDescription();
         if (!item->itemIsChecked()){
             cacheitem.replaceInStrings(item->itemDescription(),"",Qt::CaseInsensitive);
         }

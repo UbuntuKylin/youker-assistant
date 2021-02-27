@@ -134,7 +134,7 @@ void DrivePageWidget::InitPageUI(QMap<QString, QVariant> tmpMap)
 
 //        name->setWordWrap(true);
         name->setStyleSheet("color:rgb(173,173,173)");
-        name->setGeometry(QRect(65,40,550,25));
+        name->setGeometry(QRect(65,40,550,30));
 
         v_layout->addWidget(item);
 

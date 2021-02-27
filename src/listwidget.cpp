@@ -8,9 +8,7 @@ MListwidget::MListwidget(QWidget *parent) : QWidget(parent)
 {
     this->setFixedSize(860,460);
     this->setAutoFillBackground(true);
-    this->setStyleSheet("QWidget{background:#ffffff;border: none;\
-                         border-bottom-right-radius:10px;\
-                         border-bottom-left-radius:6px;}");
+    this->setStyleSheet("QWidget{background:#ffffff;border: none;}");
 
     splitter = new QSplitter(this);
     splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -31,31 +29,12 @@ MListwidget::MListwidget(QWidget *parent) : QWidget(parent)
     stackedwidget->setFocusPolicy(Qt::NoFocus);
     stackedwidget->setAutoFillBackground(true);
 
-    info_widget = new InfoWidget();
+//    info_widget = new InfoWidget();
 
 //    InitListUI();
     connect(listview,SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(changeListwidgetpage(QListWidgetItem*)));
 
-    //input info
-    QDBusConnection::systemBus().connect("", \
-                      "", \
-                      "com.kylin.assistant.systemdaemon", \
-                      "inputdev_info_signal", \
-                      info_widget, SLOT(onSendInputInfo(QDBusMessage)));
 
-    //multimedia info
-    QDBusConnection::systemBus().connect("", \
-                      "", \
-                      "com.kylin.assistant.systemdaemon", \
-                      "multimediadev_info_signal", \
-                      info_widget, SLOT(onSendMultimediaInfo(QDBusMessage)));
-
-    //communication info
-    QDBusConnection::systemBus().connect("", \
-                      "", \
-                      "com.kylin.assistant.systemdaemon", \
-                      "communicationdev_info_signal", \
-                      info_widget, SLOT(onSendCommunicationInfo(QDBusMessage)));
 
     qDebug()<<Q_FUNC_INFO;
 }
@@ -78,11 +57,39 @@ void MListwidget::InitInfowidgetUI()
     emit this->m_requestRefreshSystemInfo();
 
     stringlist << tr("Hardware \nInformation");
-//    info_widget = new InfoWidget();
+    info_widget = new InfoWidget();
 //    info_widget->setInfoGuiName("info_widget");
     stackedwidget->addWidget(info_widget);
 //    stackedwidget->setCurrentWidget(info_widget);
 //    emit this->List_requestDesktopInfo();
+
+    //input info
+    QDBusConnection::systemBus().connect("", \
+                                         "", \
+                                         "com.kylin.assistant.systemdaemon", \
+                                         "inputdev_info_signal", \
+                                         info_widget, SLOT(onSendInputInfo(QDBusMessage)));
+
+    //multimedia info
+    QDBusConnection::systemBus().connect("", \
+                                         "", \
+                                         "com.kylin.assistant.systemdaemon", \
+                                         "multimediadev_info_signal", \
+                                         info_widget, SLOT(onSendMultimediaInfo(QDBusMessage)));
+
+    //communication info
+    QDBusConnection::systemBus().connect("", \
+                                         "", \
+                                         "com.kylin.assistant.systemdaemon", \
+                                         "communicationdev_info_signal", \
+                                         info_widget, SLOT(onSendCommunicationInfo(QDBusMessage)));
+
+    //display info
+    QDBusConnection::systemBus().connect("", \
+                                         "", \
+                                         "com.kylin.assistant.systemdaemon", \
+                                         "displaydev_info_signal", \
+                                         info_widget, SLOT(onSendDisplayInfo(QDBusMessage)));
 
     connect(info_widget,SIGNAL(requestDesktopInfo()),this,SLOT(onSendDesktopInfo_signal()));
     connect(this,SIGNAL(requestDesktopInfo_send(QMap<QString,QVariant>)),info_widget,SLOT(onSendDesktopInfo(QMap<QString, QVariant>)));
@@ -107,7 +114,7 @@ void MListwidget::InitInfowidgetUI()
 
     for(int i = 0; i < stringlist.length(); i++) {
         QListWidgetItem *item = new QListWidgetItem(stringlist.at(i),listview);
-        item->setSizeHint(QSize(160,60));
+        item->setSizeHint(QSize(136,60));
         item->setStatusTip(stringlist.at(i));
         item->setToolTip(stringlist.at(i));
         item->setTextAlignment(Qt::AlignVCenter|Qt::AlignHCenter);
@@ -132,7 +139,7 @@ void MListwidget::InitInfowidgetUI()
     main_layout->setContentsMargins(0,0,0,0);
 
     this->setLayout(main_layout);
-    info_widget->initInfoUI(this->has_Battery,this->has_Sensor,this->all_info);
+    info_widget->initInfoUI(this->has_Battery,this->has_Sensor);
 }
 
 

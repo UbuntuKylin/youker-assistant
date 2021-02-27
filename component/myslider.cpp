@@ -36,14 +36,14 @@ mySlider::mySlider(QWidget *parent):QSlider(parent)
 
     minlable->setFixedSize(QSize(60,20));
     minlable->setAlignment(Qt::AlignCenter);
-    minlable->setText("mintip");
+    minlable->setText(tr("Mintip"));
     minlable->setStyleSheet("color:rgb(0,0,0,185);");
     minlable->setAlignment(Qt::AlignLeft);
     minlable->move(0,50);
 
     maxlable->setFixedSize(QSize(60,20));
     maxlable->setAlignment(Qt::AlignCenter);
-    maxlable->setText("maxtip");
+    maxlable->setText(tr("Maxtip"));
     maxlable->setStyleSheet("color:rgb(0,0,0,185);");
     maxlable->setAlignment(Qt::AlignRight);
     maxlable->move(500,50);
@@ -109,7 +109,7 @@ void mySlider::setRangeLable(QMap<QString, QVariant> tmpMap)
     this->setRange(min*1000,max*1000+1);
     this->setValue(cur_value);
     tiplable->setText(QString::number(cur_value)+"MHz");
-    tiplable->move((this->width()-tiplable->width())*(this->value()-800)/(this->maximum()-this->minimum()),5);
+    tiplable->move((this->width()-tiplable->width())*(this->value()-min*1000)/(this->maximum()-this->minimum()),5);
     this->setSingleStep(10);
 //    qDebug() << Q_FUNC_INFO << min  << max << (max-min)*10 << this->value() << cur_value;
 }
@@ -133,13 +133,14 @@ void mySlider::mouseReleaseEvent(QMouseEvent *event)
 //        tiplable->setVisible(false);
 //    }
     tiplable->setText(QString::number(this->value())+"MHz");
-    tiplable->move((this->width()-tiplable->width())*(this->value()-800)/(this->maximum()-this->minimum()),5);
+    tiplable->move((this->width()-tiplable->width())*(this->value()-min*1000)/(this->maximum()-this->minimum()),5);
     QSlider::mouseReleaseEvent(event);
 }
 
 void mySlider::mouseMoveEvent(QMouseEvent *event)
 {
+    qDebug() << Q_FUNC_INFO << event->pos().rx();
     tiplable->setText(QString::number(this->value())+"MHz");
-    tiplable->move((this->width()-tiplable->width())*(this->value()-800)/(this->maximum()-this->minimum()),5);
+    tiplable->move((this->width()-tiplable->width())*(this->value()-min*1000)/(this->maximum()-this->minimum()),5);
     QSlider::mouseMoveEvent(event);
 }

@@ -24,7 +24,10 @@
 #include <QWidget>
 #include <QPixmap>
 #include <QSettings>
+#include <QMenu>
+#include <QAction>
 #include <QDesktopWidget>
+#include <QProcess>
 
 #include "bottomcontentwidget.h"
 #include "infowidget.h"
@@ -39,10 +42,13 @@
 #include "monitorwidget.h"
 #include "drivewidget.h"
 #include "optimizedwidget.h"
+#include "aboutwidget.h"
+#include "udevhotplugin.h"
 
 class DataWorker;
 class SystemDbusProxy;
 class SessionDbusProxy;
+class UDevHotPlugin;
 
 class MainTopWidget;
 class MiddleWidget;
@@ -53,7 +59,7 @@ class Monitorwidget;
 class Drivewidget;
 class OptimizedWidget;
 
-class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow, public QAbstractNativeEventFilter
 {
     Q_OBJECT
 
@@ -77,6 +83,7 @@ public:
 
     void initWidgets();
     void moveCenter();
+    void RRScreenChangeEvent();
 
 protected:
     void mousePressEvent(QMouseEvent *event);
@@ -86,6 +93,7 @@ protected:
     void paintEvent(QPaintEvent *);
     void keyPressEvent(QKeyEvent *event);
 //    virtual void paintEvent(QPaintEvent *event);
+    virtual bool nativeEventFilter(const QByteArray &eventType, void *message, long *result) override;
 
 public slots:
     void openSkinCenter();
@@ -101,6 +109,8 @@ public slots:
     void startDbusDaemon();
     void onInitDataFinished();
     void onPluginModuleError(const QString &info);
+    void startUDevHotPlugin();
+    void stopUDevHotPlugin();
 
 private:
     QStackedWidget *m_topStack = nullptr;
@@ -122,7 +132,8 @@ private:
     CleanerWidget *cleaner_widget = nullptr;
 //    SettingWidget *setting_widget = nullptr;
     BoxWidget *box_widget = nullptr;
-    KylinMenu *main_menu = nullptr;
+//    KylinMenu *main_menu = nullptr;
+    QMenu *main_menu = nullptr;
     QPoint m_dragPosition; //移动的距离
     bool m_mousePressed; //按下鼠标左键
     QTranslator* translator = nullptr; //翻译器
@@ -131,7 +142,8 @@ private:
     QString last_skin_path;
     QPixmap review_skin_pixmap;
     Toolkits *toolKits = nullptr;
-    AboutDialog *aboutDlg;
+//    AboutDialog *aboutDlg;
+    AboutWidget *aboutDlg;
     QSettings *mSettings;
     QString desktop;
     QString osName;
@@ -148,8 +160,11 @@ private:
     QString status;
     DataWorker *m_dataWorker = nullptr;
     QWidget *centralWidget = nullptr;
+    UDevHotPlugin *m_udevHotPlugin = nullptr;
 
     QMap<QString,bool> info;
+    int rr_event_base = 0;
+    int rr_error_base = 0;
 };
 
 class GlobalData // define by hebing,just for transmit var

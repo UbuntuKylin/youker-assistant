@@ -117,7 +117,7 @@ void InfoUnitWidget::setInfoVendor(const QString &vendor)
     QPixmap pixmap = QPixmap(vendor);
     if (pixmap.isNull())
         return;
-    pixmap = pixmap.scaled(48, 48, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    pixmap = pixmap.scaled(48, 48, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
 
     QPixmap pic(48, 48);
     pic.fill(Qt::transparent);

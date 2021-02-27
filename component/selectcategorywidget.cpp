@@ -31,9 +31,10 @@ SelectCategoryWidget::SelectCategoryWidget(CleanerCategoryID id, const QString &
     , m_mousePressed(false)
     , m_id(id)
 {
-    this->setWindowFlags(Qt::FramelessWindowHint/* | Qt::Dialog|Qt::WindowMinimizeButtonHint*/);
+    this->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog/*|Qt::WindowMinimizeButtonHint*/);
     this->setAutoFillBackground(true);
     this->setAttribute(Qt::WA_TranslucentBackground);
+    this->setWindowTitle(title);
 
 //    if(needMin)
 //        this->setFixedSize(600,520);

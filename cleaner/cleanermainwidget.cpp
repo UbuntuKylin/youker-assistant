@@ -167,6 +167,8 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
     trace_list << tr("Clean up the Firefox Internet records") << tr("Clean up the Chromium Internet records") << tr("Clean up the recently opened documents records") << tr("Delete the command history") << tr("Delete the debug logs");
     trace_status_list << "firefox" << "chromium" << "system" << "bash" << "X11";
 
+    onRefreshSelectedList();
+
     m_selectedCache = cache_status_list;
     m_selectedCookie = cookies_status_list;
     m_selectedTrace = trace_status_list;
@@ -197,7 +199,7 @@ void CleanerMainWidget::setLanguage()
 {
 //    tip_label->setText(tr("Please select the items you want to clean"));
     tip_label->setStyleSheet("QLabel{color:rgb(0,0,0,185);font-size:36px;}");
-    tip_label->setText(tr("Cleanup makes computers safer."));
+    tip_label->setText(tr("Cleanup makes computers safer"));
 }
 
 void CleanerMainWidget::resetCurrentSkin(QString skin)
@@ -238,6 +240,107 @@ void CleanerMainWidget::Browser_to_judge_existence()
         browser360 = true;
     else
         browser360 = false;
+}
+
+void CleanerMainWidget::onRefreshSelectedList()
+{
+    Browser_to_judge_existence();//每次点击都更新浏览器的存在数据
+
+    //对google浏览器存在添加选择字段，如不存在则去除选择字段
+    if(google)
+    {
+        //对字符串做存在判断，避免重读添加字段
+        if(!cache_status_list.contains("chromium"))
+        {
+            cache_list << tr("Cleanup Chromium Cache");
+            cache_status_list << "chromium";
+        }
+
+        //同上
+        if(!cookies_status_list.contains("chromium"))
+        {
+            cookies_list << tr("Cleanup the Cookies saving in Chromium");
+            cookies_status_list << "chromium";
+        }
+
+        //同上
+        if(!trace_status_list.contains("chromium"))
+        {
+            trace_list << tr("Clean up the Chromium Internet records");
+            trace_status_list << "chromium";
+        }
+    }
+    else
+    {
+        //对字符串做存在判断,存在则去除字段
+        if(cache_status_list.contains("chromium"))
+        {
+            cache_list.removeOne(tr("Cleanup Chromium Cache"));
+            cache_status_list.removeOne("chromium");
+        }
+
+        //同上
+        if(cookies_status_list.contains("chromium"))
+        {
+            cookies_list.removeOne(tr("Cleanup the Cookies saving in Chromium"));
+            cookies_status_list.removeOne("chromium");
+        }
+
+        //同上
+        if(trace_status_list.contains("chromium"))
+        {
+            trace_list.removeOne(tr("Clean up the Chromium Internet records"));
+            trace_status_list.removeOne("chromium");
+        }
+    }
+
+    //对firefox浏览器存在添加选择字段，如不存在则去除选择字段
+    if(firefox)
+    {
+        //对字符串做存在判断，避免重读添加字段
+        if(!cache_status_list.contains("firefox"))
+        {
+            cache_list << tr("Cleanup FireFox Cache");
+            cache_status_list << "firefox";
+        }
+
+        //同上
+        if(!cookies_status_list.contains("firefox"))
+        {
+            cookies_list << tr("Cleanup the Cookies saving in Firefox");
+            cookies_status_list << "firefox";
+        }
+
+        //同上
+        if(!trace_status_list.contains("firefox"))
+        {
+            trace_list << tr("Clean up the Firefox Internet records");
+            trace_status_list << "firefox";
+        }
+    }
+    else
+    {
+        //对字符串做存在判断,存在则去除字段
+        if(cache_status_list.contains("firefox"))
+        {
+            cache_list.removeOne(tr("Cleanup FireFox Cache"));
+            cache_status_list.removeOne("firefox");
+        }
+
+        //同上
+        if(cookies_status_list.contains("firefox"))
+        {
+            cookies_list.removeOne(tr("Cleanup the Cookies saving in Firefox"));
+            cookies_status_list.removeOne("firefox");
+        }
+
+        //同上
+        if(trace_status_list.contains("firefox"))
+        {
+            trace_list.removeOne(tr("Clean up the Firefox Internet records"));
+            trace_status_list.removeOne("firefox");
+        }
+    }
 }
 
 void CleanerMainWidget::receiveScanSignal()
@@ -373,103 +476,7 @@ void CleanerMainWidget::onClickedCleanbtn()
 void CleanerMainWidget::onButtonClicked()
 {
 //    qDebug() << Q_FUNC_INFO ;
-    Browser_to_judge_existence();//每次点击都更新浏览器的存在数据
-
-    //对google浏览器存在添加选择字段，如不存在则去除选择字段
-    if(google)
-    {
-        //对字符串做存在判断，避免重读添加字段
-        if(!cache_status_list.contains("chromium"))
-        {
-            cache_list << tr("Cleanup Chromium Cache");
-            cache_status_list << "chromium";
-        }
-
-        //同上
-        if(!cookies_status_list.contains("chromium"))
-        {
-            cookies_list << tr("Cleanup the Cookies saving in Chromium");
-            cookies_status_list << "chromium";
-        }
-
-        //同上
-        if(!trace_status_list.contains("chromium"))
-        {
-            trace_list << tr("Clean up the Chromium Internet records");
-            trace_status_list << "chromium";
-        }
-    }
-    else
-    {
-        //对字符串做存在判断,存在则去除字段
-        if(cache_status_list.contains("chromium"))
-        {
-            cache_list.removeOne(tr("Cleanup Chromium Cache"));
-            cache_status_list.removeOne("chromium");
-        }
-
-        //同上
-        if(cookies_status_list.contains("chromium"))
-        {
-            cookies_list.removeOne(tr("Cleanup the Cookies saving in Chromium"));
-            cookies_status_list.removeOne("chromium");
-        }
-
-        //同上
-        if(trace_status_list.contains("chromium"))
-        {
-            trace_list.removeOne(tr("Clean up the Chromium Internet records"));
-            trace_status_list.removeOne("chromium");
-        }
-    }
-
-    //对firefox浏览器存在添加选择字段，如不存在则去除选择字段
-    if(firefox)
-    {
-        //对字符串做存在判断，避免重读添加字段
-        if(!cache_status_list.contains("firefox"))
-        {
-            cache_list << tr("Cleanup FireFox Cache");
-            cache_status_list << "firefox";
-        }
-
-        //同上
-        if(!cookies_status_list.contains("firefox"))
-        {
-            cookies_list << tr("Cleanup the Cookies saving in Firefox");
-            cookies_status_list << "firefox";
-        }
-
-        //同上
-        if(!trace_status_list.contains("firefox"))
-        {
-            trace_list << tr("Clean up the Firefox Internet records");
-            trace_status_list << "firefox";
-        }
-    }
-    else
-    {
-        //对字符串做存在判断,存在则去除字段
-        if(cache_status_list.contains("firefox"))
-        {
-            cache_list.removeOne(tr("Cleanup FireFox Cache"));
-            cache_status_list.removeOne("firefox");
-        }
-
-        //同上
-        if(cookies_status_list.contains("firefox"))
-        {
-            cookies_list.removeOne(tr("Cleanup the Cookies saving in Firefox"));
-            cookies_status_list.removeOne("firefox");
-        }
-
-        //同上
-        if(trace_status_list.contains("firefox"))
-        {
-            trace_list.removeOne(tr("Clean up the Firefox Internet records"));
-            trace_status_list.removeOne("firefox");
-        }
-    }
+    onRefreshSelectedList();
 
     QObject *object = QObject::sender();
 //    KylinCheckBox *checkbox = qobject_cast<KylinCheckBox *>(object);

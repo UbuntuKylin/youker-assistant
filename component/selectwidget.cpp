@@ -30,9 +30,10 @@ SelectWidget::SelectWidget(CleanerModuleID id, const QString &title, bool needMi
     , m_id(id)
     , flag(t)
 {
-    this->setWindowFlags(Qt::FramelessWindowHint);
+    this->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
     this->setFixedSize(600, 520);
     this->setAttribute(Qt::WA_TranslucentBackground);
+    this->setWindowTitle(title);
 
     QWidget *containerWidget = new QWidget(this);
     m_mainLayout = new QVBoxLayout(containerWidget);
@@ -93,6 +94,7 @@ void SelectWidget::onClose()
 
 void SelectWidget::loadData(const QString &title, const QStringList &cachelist, const QStringList &baklist)
 {
+    qDebug() << Q_FUNC_INFO << baklist;
     m_listWidget->loadListItems(title, cachelist, baklist, this->width() - 2*ITEM_LEFT_RIGHT_PADDING);
 }
 

@@ -93,9 +93,9 @@ inline const QString covertKeyName(const QString &key)
         return QString(QObject::tr("Serial Number"));
 
     else if(key == "BoaProduct")//主板型号
-        return QString(QObject::tr("Motherboard Model"));
+        return QString(QObject::tr("Board Model"));
     else if(key == "BoaVendor")//主板产商
-        return QString(QObject::tr("Motherboard Vendor"));
+        return QString(QObject::tr("Board Vendor"));
     else if(key == "BoaSerial")//序列号
         return QString(QObject::tr("Serial Number"));
     else if(key == "BioVendor")//BIOS产商
@@ -125,15 +125,15 @@ inline const QString covertKeyName(const QString &key)
     else if(key == "CpuSlot")//插座/插槽：
         return QString(QObject::tr("Socket/Slot"));
     else if(key == "CpuCapacity")//最大主频：
-        return QString(QObject::tr("Maximum Frequency"));
+        return QString(QObject::tr("Max Frequency"));
     else if(key == "CpuSize")//当前主频：
         return QString(QObject::tr("Current Frequency"));
     else if(key == "CpuClock")//前端总线：
         return QString(QObject::tr("FSB"));
     else if(key == "cpu_cores")//核心数目：
-        return QString(QObject::tr("Core Number"));
+        return QString(QObject::tr("Core Num"));
     else if (key == "cpu_cores_online") //在线核心数
-        return QString(QObject::tr("Core Online Number"));
+        return QString(QObject::tr("Core Online Num"));
     else if(key == "cpu_siblings")//线程
         return QString(QObject::tr("Thread"));
     else if(key == "clflush_size")//一级缓存：
@@ -163,7 +163,7 @@ inline const QString covertKeyName(const QString &key)
 
 
     else if(key == "desktopenvironment")//桌面环境
-        return QString(QObject::tr("Desktop Environment"));
+        return QString(QObject::tr("Environment"));
     else if(key == "cpu")
         return QString(QObject::tr("CPU"));
     else if(key == "hostname")
@@ -270,11 +270,11 @@ inline const QString covertKeyName(const QString &key)
     else if(key == "Mon_support")//支持接口
         return QString(QObject::tr("Support Interface"));
     else if(key == "Mon_vendor")//显示器制造商
-        return QString(QObject::tr("Monitor Manufacturers"));
+        return QString(QObject::tr("Monitor Vendor"));
     else if(key == "Mon_week")//生产日期_周
-        return QString(QObject::tr("Date of production/Week"));
+        return QString(QObject::tr("Date/Week"));
     else if(key == "Mon_year")//生产日期_年
-        return QString(QObject::tr("Date of production/Year"));
+        return QString(QObject::tr("Date/Year"));
 
 
     else if(key == "NetVendor")//制造商：

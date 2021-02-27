@@ -62,21 +62,22 @@ GeneralDialog::GeneralDialog(QWidget *parent, QString text, bool warn, bool show
         QPixmap icon(":/res/remind.png");
         iconLabel->setPixmap(icon);
         textlabel->setFont(font);
-        textlabel->setText(tr("Remind"));
+//        textlabel->setText(tr("Remind"));
     }
     else
     {
         QPixmap icon(":/res/warning.png");
         iconLabel->setPixmap(icon);
         textlabel->setFont(font);
-        textlabel->setText(tr("Warning"));
+//        textlabel->setText(tr("Warning"));
     }
-    iconLabel->setGeometry(QRect(32,48,32,32));
+//    iconLabel->setGeometry(QRect(32,48,32,32));
+    iconLabel->setGeometry(QRect(15,15,32,32));
     textlabel->setGeometry(QRect(71,48,100,30));
 
     contentLabel = new QLabel(this);
     contentLabel->setText(text);
-    contentLabel->setStyleSheet("color:rgb(0,0,0,185);font-size:20px");
+    contentLabel->setStyleSheet("color:rgb(0,0,0,185);font-size:20px;");
     contentLabel->setAlignment(Qt::AlignCenter);
     contentLabel->adjustSize();
     contentLabel->setWordWrap(true);

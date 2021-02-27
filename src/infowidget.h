@@ -37,6 +37,7 @@
 #include <QScrollArea>
 
 #include <QDBusMessage>
+#include <QDBusConnection>
 
 class TestWidget;
 class InfoGui;
@@ -48,10 +49,11 @@ public:
     explicit InfoWidget(QString machine = "", QWidget *parent = 0);
     ~InfoWidget();
 
-    void initInfoUI(bool has_battery, bool has_sensor , QMap<QString,bool> info);
+    void initInfoUI(bool has_battery, bool has_sensor);
+    void resetInfoLeftListUI(QStringList keys);
 
 public slots:
-    void changeInfoPage(QListWidgetItem* item);
+    void changeInfoPage(QListWidgetItem* item,QListWidgetItem* item1);
 
     void onSendSystemInfo(QMap<QString, QVariant> tmpMap);
 //    void onSendSystemRunnedTime(int time_value);
@@ -68,8 +70,11 @@ public slots:
     void onSendInputInfo(QDBusMessage msg);
     void onSendMultimediaInfo(QDBusMessage msg);
     void onSendCommunicationInfo(QDBusMessage msg);
+    void onSendDisplayInfo(QDBusMessage msg);
 //    void updateTimeValue();
     void paintEvent(QPaintEvent *);
+    void onUDevHotPluginAdd(QString strUdevSubName, QString strUdevType);
+    void onUDevHotPluginRemove(QString strUdevSubName, QString strUdevType);
 
 signals:
     void emit_network_info(QMap<QString, QVariant> info);
@@ -122,6 +127,12 @@ signals:
 
     //driver info
 
+    //input info
+    void requestInputInfo();
+
+    //communication info
+    void requestCommunicationInfo();
+    
 private:
     QSplitter *splitter = nullptr;
     QListWidget *category_widget = nullptr;
@@ -155,6 +166,7 @@ private:
     bool firstLoadInputDev;
     bool firstLoadMultiMediaDev;
     bool firstLoadCommunicationDev;
+    bool firstLoadDisplayDev;
 };
 
 #endif // INFOWIDGET_H

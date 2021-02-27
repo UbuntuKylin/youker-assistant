@@ -88,6 +88,7 @@ public:
     bool get_inputdev_info_qt();
     bool get_multimediadev_info_qt();
     bool get_communicationdev_info_qt();
+    bool get_displaydev_info_qt();
 
     //monitor
     QMap<QString, QVariant> get_cpu_Temperature();

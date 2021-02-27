@@ -119,6 +119,8 @@ void DataWorker::doWork()
 {
     this->initDataWorker();
     emit dataLoadFinished();
+
+    onRequestPartInfoAgain();
 }
 
 const QStringList DataWorker::cpuModeList() const
@@ -250,8 +252,29 @@ void DataWorker::onRequestNicInfo()
 //monitor info
 void DataWorker::onRequestMonitorInfo()
 {
+    onRequestGenMonitorInfoFile();
     QMap<QString, QVariant> tmpMap = m_systemInterface->get_monitor_info_qt();
     emit sendMonitorInfo(tmpMap);
+}
+
+void DataWorker::onRequestGenMonitorInfoFile()
+{
+    QString cmd = "xrandr --prop";
+    QProcess *p = new QProcess();
+    p->start(cmd);
+    p->waitForFinished();
+    // 将monitor信息写入临时文件
+    QFile tmpFile("/tmp/youker-assistant-monitorinfo.dat");
+    if (!tmpFile.open(QIODevice::WriteOnly | QIODevice::Text))
+        return;
+    QTextStream tsFile(&tmpFile);
+    while(p->canReadLine()){
+        QString str = p->readLine();
+        str = str.left(str.length() - 1);
+        tsFile<<str<<endl;  //写入文件
+    }
+    tmpFile.close();
+    delete p;
 }
 
 //audio info
@@ -283,102 +306,158 @@ void DataWorker::updateSensorValue()
     emit sendSensorInfo(tmpMap);
 }
 
+//input info
+void DataWorker::onRequestInputInfo()
+{
+    if(m_systemInterface->get_inputdev_info_qt()){
+        //qDebug() << Q_FUNC_INFO << __LINE__;
+    }else{
+    }
+}
+
+//communication info
+void DataWorker::onRequestCommunicationInfo()
+{
+    if(m_systemInterface->get_communicationdev_info_qt()){
+        //qDebug() << Q_FUNC_INFO << __LINE__;
+    }else{
+    }
+}
+
+void DataWorker::onRequestPartInfoAgain(){
+    QStringList rmpages;
+    if(m_systemInterface->get_inputdev_info_qt()){
+        qDebug() << Q_FUNC_INFO << __LINE__;
+    }else{
+        rmpages.append("input");
+    }
+
+    if(m_systemInterface->get_multimediadev_info_qt()){
+        qDebug() << Q_FUNC_INFO << __LINE__;
+    }else{
+        rmpages.append("multimedia");
+    }
+
+    if(m_systemInterface->get_communicationdev_info_qt()){
+        qDebug() << Q_FUNC_INFO << __LINE__;
+    }else{
+        rmpages.append("communication");
+    }
+
+    if(m_systemInterface->get_displaydev_info_qt()){
+        qDebug() << Q_FUNC_INFO << __LINE__;
+    }else{
+        rmpages.append("display");
+    }
+
+    sendDevicePageNotExists(rmpages);
+}
+
 QMap<QString,bool> DataWorker::onRequesetAllInfoIsHaveValue()
 {
     QMap<QString, QVariant> tmpMap;
 
+    info.clear();
     tmpMap = m_sessionInterface->get_system_message_qt();
+//    qDebug() << Q_FUNC_INFO << tmpMap.isEmpty() << tmpMap << __LINE__;
     if(tmpMap.isEmpty()){
        info.insert("system_message",false);
     }else{
-       qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
        info.insert("system_message",true);
-       tmpMap.clear();
     }
+    tmpMap.clear();
 
     tmpMap = m_systemInterface->get_cpu_info_qt();
+//    qDebug() << Q_FUNC_INFO << tmpMap.isEmpty() << tmpMap << __LINE__;
     if(tmpMap.isEmpty()){
        info.insert("cpu_info",false);
     }else{
-        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
        info.insert("cpu_info",true);
-       tmpMap.clear();
     }
+    tmpMap.clear();
 
     tmpMap = m_systemInterface->get_memory_info_qt();
-    if(tmpMap.isEmpty()){
+    qDebug() << Q_FUNC_INFO << tmpMap.isEmpty() << tmpMap << __LINE__;
+    if(tmpMap["Memnum"].toString() == "0"){
        info.insert("memory_info",false);
     }else{
-        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
        info.insert("memory_info",true);
-       tmpMap.clear();
     }
+    tmpMap.clear();
 
     tmpMap = m_systemInterface->get_board_info_qt();
+    qDebug() << Q_FUNC_INFO << tmpMap.isEmpty() << tmpMap << __LINE__;
     if(tmpMap.isEmpty()){
        info.insert("board_info",false);
     }else{
-        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
        info.insert("board_info",true);
-       tmpMap.clear();
     }
+    tmpMap.clear();
 
     tmpMap = m_systemInterface->get_harddisk_info_qt();
-    if(tmpMap.isEmpty()){
+//    qDebug() << Q_FUNC_INFO << tmpMap["DiskNum"].toString()  << tmpMap << __LINE__;
+    if(tmpMap["DiskNum"].toString() == "0"){
        info.insert("harddisk_info",false);
     }else{
-        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
        info.insert("harddisk_info",true);
-       tmpMap.clear();
     }
+    tmpMap.clear();
 
     tmpMap = m_systemInterface->get_networkcard_info_qt();
+    qDebug() << Q_FUNC_INFO << tmpMap.isEmpty() << tmpMap << __LINE__;
     if(tmpMap.isEmpty()){
        info.insert("networkcard_info",false);
     }else{
-        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
        info.insert("networkcard_info",true);
-       tmpMap.clear();
     }
+    tmpMap.clear();
 
+    onRequestGenMonitorInfoFile();
     tmpMap = m_systemInterface->get_monitor_info_qt();
-    if(tmpMap.isEmpty()){
-       info.insert("monitor_info",false);
+//    qDebug() << Q_FUNC_INFO << tmpMap["Vga_num"] << tmpMap << __LINE__;
+    if(tmpMap["Vga_num"].toString() == "0"){
+        info.insert("monitor_info",false);
     }else{
-        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
        info.insert("monitor_info",true);
-       tmpMap.clear();
     }
+    tmpMap.clear();
 
     tmpMap = m_systemInterface->get_audiocard_info_qt();
-    if(tmpMap.isEmpty()){
+    qDebug() << Q_FUNC_INFO << tmpMap.isEmpty() << tmpMap << __LINE__;
+    if(tmpMap["MulNum"].toString() == "0"){
        info.insert("audiocard_info",false);
     }else{
-        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
-       info.insert("audiocard_info",false);
-       tmpMap.clear();
+       info.insert("audiocard_info",true);
     }
+    tmpMap.clear();
 
 
     if(m_systemInterface->get_inputdev_info_qt()){
-        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
+//        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
         info.insert("input_info", true);
     }else{
         info.insert("input_info", false);
     }
 
     if(m_systemInterface->get_multimediadev_info_qt()){
-        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
+//        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
         info.insert("multimedia_info", true);
     }else{
         info.insert("multimedia_info", false);
     }
 
     if(m_systemInterface->get_communicationdev_info_qt()){
-        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
+//        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
         info.insert("communication_info", true);
     }else{
         info.insert("communication_info", false);
+    }
+
+    if(m_systemInterface->get_displaydev_info_qt()){
+//        qDebug() << Q_FUNC_INFO << tmpMap << __LINE__;
+        info.insert("display_info", true);
+    }else{
+        info.insert("display_info", false);
     }
 
     return info;

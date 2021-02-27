@@ -47,6 +47,7 @@ public:
     void getAllScanSelectedItems();
     void resetCurrentSkin(QString skin);
     void Browser_to_judge_existence();
+    void onRefreshSelectedList();
 public slots:
     void onButtonClicked();
     void receiveScanSignal();
