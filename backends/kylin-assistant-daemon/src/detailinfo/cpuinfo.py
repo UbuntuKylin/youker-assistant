@@ -33,6 +33,7 @@ from pprint import pprint
 from gi.repository import GLib#20161228
 import locale
 import gettext
+import glob
 ##from gettext import gettext as _
 ##from gettext import ngettext as __
 #locale.setlocale(locale.LC_ALL, "")
@@ -56,9 +57,9 @@ TERABYTE_FACTOR = (1000.0 * 1000.0 * 1000.0 * 1000.0)
 
 
 def Judgment_HW990():
-    with open("/proc/cpuinfo",'r') as fd:
-        info = fd.read()
-        if len(re.findall("HAUWEID Kirin 990",info)) > 0:
+    with open("/proc/hardware",'r') as fd:
+        info = fd.readline()
+        if info.find("HUAWEI Kirin 990",info) >= 0 or info.find("kirin990") >= 0 or info.find("HUAWEI Kirin 9006C") >= 0:
             return True
         else:
             return False
@@ -459,6 +460,7 @@ class DetailInfo:
 #声卡产商
            "REALTEK":["Realtek"],
            "CREATIVE":["Creative"],
+           "HISILICON":["HiSilicon"],
 #摄像头
            "SONIX":["Sonix"],
            "ETRON":["Etron"],
@@ -858,6 +860,8 @@ class DetailInfo:
         BoaVendor = self.get_url(BoaVendor,BoaProduct)
         BioVendor = self.get_url(BioVendor,BioVersion)
         Boa['BoaProduct'],Boa['BoaVendor'],Boa['BoaSerial'],Boa['BioVendor'],Boa['BioVersion'],Boa['BioRelease'] = self.strip(BoaProduct),self.strip(BoaVendor),self.strip(BoaSerial),self.strip(BioVendor),self.strip(BioVersion),self.strip(BioRelease)
+        if Boa['BoaProduct'] == "" and Boa['BoaVendor'] == "" and Boa['BoaSerial'] == "" and Boa['BioVendor'] == "" and Boa['BioVersion'] == "" and Boa['BioRelease'] == "":
+            Boa.clear()
         return Boa
 
     def get_memory_obsolete(self):
@@ -1166,6 +1170,7 @@ class DetailInfo:
 
     ## 2017.07.27 add by hebing
     def get_monitor(self):
+        ret = {}
         ret_output, ret_vendor, ret_product, ret_year, ret_week, \
                 ret_size, ret_in, ret_gamma, ret_maxmode = "", "", "", "", "", "", "", "", ""
         Vga_product,Vga_vendor,Vga_businfo,Vga_Drive = "", "", "", ""
@@ -1175,7 +1180,6 @@ class DetailInfo:
                 info = fp.read()
                 value = re.findall("EDID for output (.*)", info)
                 for monitor in value:
-                    ret = {}
                     p = re.compile(r'Output %s connected' % monitor)
                     for m in p.finditer(info):  # p.finditer(info) 返回一个迭代对象，通常只会循环一次
                         Vga_num += 1
@@ -1218,22 +1222,23 @@ class DetailInfo:
 #                        else:
 #                            ret_size += ("" + "<1_1>")
 #                            ret_in += ("" + "<1_1>")
-                        # resultx = re.findall("horiz.: \s*(\w*)", localinfo)
-                        # resulty = re.findall("vert.: \s*(\w*)", localinfo)
+
                         resultx,resulty = "",""
-                        status, output = subprocess.getstatusoutput('xrandr')
-                        print(monitor)
-                        if not status:
-                            for line in output.split("\n"):
-                                if monitor in line:
-                                    if "disconnected" not in line:
-                                        print(line)
-                                        print(line.split(" ")[-3][:-2])
-                                        resultx = line.split(" ")[-3][:-3]
-                                        resulty = line.split(" ")[-1][:-3]
+                        resultx = re.findall("horiz.: \s*(\w*)", localinfo)
+                        resulty = re.findall("vert.: \s*(\w*)", localinfo)
+#                        status, output = subprocess.getstatusoutput('xrandr')
+#                        print(monitor)
+#                        if not status:
+#                            for line in output.split("\n"):
+#                                if monitor in line:
+#                                    if "disconnected" not in line:
+#                                        print(line)
+#                                        print(line.split(" ")[-3][:-2])
+#                                        resultx = line.split(" ")[-3][:-3]
+#                                        resulty = line.split(" ")[-1][:-3]
                         if resultx and resulty:
                             print(resultx,resulty)
-                            mx = float(resultx); my = float(resulty)
+                            mx = float(resultx[0]); my = float(resulty[0])
                             md = math.sqrt(mx**2 + my**2)/2.54
                             ret_size += ((str(mx) + " X " + str(my) + " cm") + "<1_1>")
                             ret_in += (str("%.1f" %md) + "<1_1>")
@@ -1255,10 +1260,10 @@ class DetailInfo:
                         else:
                             ret_maxmode += ("" + "<1_1>")
 
-                        Vga_businfo += "<1_1>"; Vga_product += "<1_1>"; Vga_vendor += "<1_1>"; Vga_Drive += "<1_1>"
+#                        Vga_businfo += "<1_1>"; Vga_product += "<1_1>"; Vga_vendor += "<1_1>"; Vga_Drive += "<1_1>"
 
-        status, output = subprocess.getstatusoutput('lspci -vvv')
-        if not status:
+#        status, output = subprocess.getstatusoutput('lspci -vvv')
+        if False:
             for local in output.split("\n\n"):
                 if "VGA compatible controller: " in local:
                     Vga_num += 1
@@ -1271,7 +1276,7 @@ class DetailInfo:
                         if "VGA compatible controller: " in line:
                             print(line)
                             product += line.split(":")[2][:-30]
-                            if product.find("JJM") is not -1:
+                            if product.find("JJM") != -1:
                                 product = get_interface(subsystem_id, subsystem_id_re)
                                 if not product:
                                     product = get_interface(subsystem_id_old, subsystem_id_re_old)
@@ -1289,9 +1294,124 @@ class DetailInfo:
                     Vga_product += "<1_1>"; Vga_businfo += "<1_1>"; Vga_vendor += "<1_1>"; Vga_Drive += "<1_1>"
 
         ret["Mon_output"], ret["Mon_vendor"], ret["Mon_product"], ret["Mon_year"], ret["Mon_week"], ret["Mon_size"], ret["Mon_in"] = \
-                ret_output, ret_vendor, ret_product, ret_year, ret_week, ret_size, ret_in
-        ret["Mon_gamma"], ret["Mon_maxmode"] = ret_gamma, ret_maxmode
-        ret["Vga_num"], ret['Vga_businfo'],ret['Vga_product'],ret['Vga_vendor'],ret['Vga_Drive'] = self.strip(str(Vga_num)), self.strip(Vga_businfo),self.strip(Vga_product),self.strip(Vga_vendor),self.strip(Vga_Drive)
+                ret_output[:-5], ret_vendor[:-5], ret_product[:-5], ret_year[:-5], ret_week[:-5], ret_size[:-5], ret_in[:-5]
+        ret["Mon_gamma"], ret["Mon_maxmode"] = ret_gamma[:-5], ret_maxmode[:-5]
+        ret["Vga_num"] = str(Vga_num)
+#        ret["Vga_num"], ret['Vga_businfo'],ret['Vga_product'],ret['Vga_vendor'],ret['Vga_Drive'] = self.strip(str(Vga_num)), self.strip(Vga_businfo),self.strip(Vga_product),self.strip(Vga_vendor),self.strip(Vga_Drive)
+        return ret
+
+    ## 2021.02.06 add by yangmin
+    def get_monitors(self):
+        ret = {}
+        ret_output, ret_vendor, ret_product, ret_year, ret_week, \
+            ret_size, ret_in, ret_gamma, ret_maxmode = "", "", "", "", "", "", "", "", ""
+        Vga_product,Vga_vendor,Vga_businfo,Vga_Drive = "", "", "", ""
+        Vga_num = 0
+        ## try parse /sys/class/drm/cardX/cardX-TYPE-NUM/edid
+        if os.path.exists("/sys/class/drm"):
+            edid_files = glob.glob("/sys/class/drm/*/edid")
+            for edid_file in edid_files:
+                status, output = subprocess.getstatusoutput('edid-decode -s %s' % edid_file)
+                if status == 0:
+                    Vga_num += 1
+                    ## /sys/class/drm/cardX/cardX-TYPE-NUM/edid -> TYPE-NUM
+                    monitor_connector = edid_file.split('/')[-2].split('-', 1)[-1]
+                    ret_output += (monitor_connector + "<1_1>")
+
+#                result = re.findall('EDID: \s*(\w*)\s*(\w*)\s*(\w*)\s*\s*(\w*)\s*\s*(\w*)\s*\s*(\w*)\s*\s*(\w*)\s*\s*(\w*)\s*', localinfo)
+#                if result :
+#                    with open("/tmp/edid.dat", "w") as fp:
+#                        for edidinfoline in result[0] :
+#                            fp.write(edidinfoline)
+#                #   1920x1080     59.93*+
+#                result = re.findall('\s*(\d*)x(\d*)\s\s\s', localinfo)
+#                if result:
+#                    ret_maxmode += ((result[0][0] + "X" + result[0][1]) + "<1_1>")
+#                else:
+#                    ret_maxmode += ("" + "<1_1>")
+
+        # xrandrret = ""
+        # if os.path.exists("/tmp/youker-assistant-monitorinfo.dat"):
+        #     status, xrandrret = subprocess.getstatusoutput('cat /tmp/youker-assistant-monitorinfo.dat')
+        # value = re.findall("(.*) connected", xrandrret)
+        # for monitor in value :
+        #     p = re.compile(r'%s connected' % monitor)
+        #     for m in p.finditer(xrandrret):
+        #         Vga_num += 1
+        #         ret_output += (monitor + "<1_1>")
+        #         localinfo = xrandrret.split("%s connected" % monitor)[1].split("connected")[0]
+
+        #         result = re.findall('EDID: \s*(\w*)\s*(\w*)\s*(\w*)\s*\s*(\w*)\s*\s*(\w*)\s*\s*(\w*)\s*\s*(\w*)\s*\s*(\w*)\s*', localinfo)
+        #         if result :
+        #             with open("/tmp/edid.dat", "w") as fp:
+        #                 for edidinfoline in result[0] :
+        #                     fp.write(edidinfoline)
+        #         #   1920x1080     59.93*+
+        #         result = re.findall('\s*(\d*)x(\d*)\s\s\s', localinfo)
+        #         if result:
+        #             ret_maxmode += ((result[0][0] + "X" + result[0][1]) + "<1_1>")
+        #         else:
+        #             ret_maxmode += ("" + "<1_1>")
+
+        #         if os.path.exists("/tmp/edid.dat"):
+                    # status, ediddecret = subprocess.getstatusoutput('edid-decode /tmp/edid.dat')
+                    ediddecret = output
+                    #Detailed mode: Clock 138.700 MHz, 294 mm x 165 mm
+                    #   1920 1968 2000 2080 ( 48  32  80)
+                    #   1080 1083 1088 1111 (  3   5  23)
+                    #-hsync -vsync
+                    #VertFreq: 60.020 Hz, HorFreq: 66.683 kHz
+                    #1920X1080
+                    result = re.findall("\n\s+(\d+)\s+\d+\s+\d+\s+\d+\s+.*", ediddecret)
+                    if result:
+                        if int(result[0]) < int(result[1]):
+                            result[0], result[1] = result[1], result[0]
+                        ret_maxmode += (result[0] + "X" + result[1] + "<1_1>")
+                    else:
+                        ret_maxmode += ("" + "<1_1>")
+                    #Display Product Name: LEN T2224rbA
+                    #Manufacturer: LEN Model 24810 Serial Number 16843009
+                    result_bak = re.findall("Manufacturer:\s*(\w*)\s*Model\s*(\w*)", ediddecret)
+                    result = re.findall('Display Product Name: \s*(\w*)\s*(\w*)', ediddecret)
+                    if result: ### 笔记本没有Monitor name
+                        ret_product += (' '.join(result[0]) + "<1_1>")
+                        ret_vendor += (result_bak[0][0] + "<1_1>")
+                    elif result_bak:
+                        ret_vendor += (result_bak[0][0] + "<1_1>")
+                        ret_product += (result_bak[0][0] + "<1_1>")
+                    else:
+                        ret_vendor += ("" + "<1_1>")
+                        ret_product += ("" + "<1_1>")
+                    #Made in week 26 of 2020
+                    result = re.findall("Made in week\s*(\d*)\s*of\s*(\d*)", ediddecret)
+                    #Made in year 2015
+                    result_fallback = re.findall("Made in year\s*(\d*)", ediddecret)
+                    if result:
+                        ret_year += (result[0][1] + "<1_1>")
+                        ret_week += (result[0][0] + "<1_1>")
+                    elif result_fallback:
+                        ret_year += (result_fallback[0][0] + "<1_1>")
+                        ret_week += ("0" + "<1_1>")
+                    #Maximum image size: 48 cm x 27 cm
+                    result = re.findall("Maximum image size:\s*(\d*)\s*cm\s*x\s*(\d*)\s*cm", ediddecret)
+                    if result:
+                        mx = float(result[0][0]); my = float(result[0][1])
+                        md = math.sqrt(mx**2 + my**2)/2.54
+                        ret_size += ((str(mx) + " X " + str(my) + " cm") + "<1_1>")
+                        ret_in += (str("%.1f" %md) + "<1_1>")
+                    else:
+                        ret_size += ("" + "<1_1>")
+                        ret_in += ("" + "<1_1>")
+                    #Gamma: 2.20
+                    result = re.findall("Gamma:\s*(\S*)", ediddecret)
+                    if result:
+                        ret_gamma += (result[0] + "<1_1>")
+                    else:
+                        ret_gamma += ("" + "<1_1>")
+        ret["Mon_output"], ret["Mon_vendor"], ret["Mon_product"], ret["Mon_year"], ret["Mon_week"], ret["Mon_size"], ret["Mon_in"] = \
+                ret_output[:-5], ret_vendor[:-5], ret_product[:-5], ret_year[:-5], ret_week[:-5], ret_size[:-5], ret_in[:-5]
+        ret["Mon_gamma"], ret["Mon_maxmode"] = ret_gamma[:-5], ret_maxmode[:-5]
+        ret["Vga_num"] = str(Vga_num)
         return ret
 
     def get_disk_obsolete(self):
@@ -1451,7 +1571,7 @@ class DetailInfo:
                 DiskCapacity += ((HDSize if not statusfirst else "$") + "<1_1>")
                 DiskName += (("/dev/" + value[0]) + "<1_1>")
 
-                path = "/sys/block/nvme0n1"
+                path = "/sys/block/" + value[0]
                 if os.path.islink(path):
                     truepath = os.readlink(path).replace('..', '/sys')
                     parentpath = '/'.join(truepath.split('/')[:-1])
@@ -1587,6 +1707,34 @@ class DetailInfo:
         for var in modlist:
             pprint(var)
             sysdaemon.emit_communicationdev_info_signal(var)
+
+        return False if index == -1 else True
+
+    def get_display(self, sysdaemon):
+        cmd = ["lshw", "-C", "display"]
+        pipe = subprocess.Popen(cmd, env={'LANGUAGE':'en:'}, stdout=subprocess.PIPE)
+        output = pipe.stdout.readlines()
+
+        index = -1
+        modlist = []
+        for line in output:
+            line2 = line.decode()
+            if line2.strip().startswith("*-"):
+                index += 1
+                pList = list()
+                modlist.append(pList)
+            else:
+                if index == -1:
+                    continue
+                if ":" not in line2:
+                    continue
+                modlist[index].append(line2.strip());
+                #results = line2.split(":")
+                #modlist[index].update({results[0].strip() : results[1].strip()})
+
+        for var in modlist:
+            pprint(var)
+            sysdaemon.emit_displaydev_info_signal(var)
 
         return False if index == -1 else True
 
@@ -2033,6 +2181,58 @@ class DetailInfo:
                     MulDrive += "<1_1>" + tmp[0]
                 else :
                     MulDrive = tmp[0]
+        # non-pci bus
+        sound_card_paths = glob.glob('/sys/class/sound/card*')
+        for sound_card_path in sound_card_paths:
+            card_num = sound_card_path.split('/')[-1][4:]
+            driver_path = sound_card_path + '/device/driver'
+            driver_realpath_split = os.path.realpath(driver_path).split('/')
+            # /sys/bus/platform/drivers/hisi-dp-audio
+            bus_type = driver_realpath_split[3]
+            if bus_type == 'platform':# soc devices
+                if MulBusinfo:
+                    MulBusinfo += "<1_1>"+ bus_type
+                else :
+                    MulBusinfo = bus_type
+                vendor = ''
+                product = 'Soc Integrated'
+                compatible_path = sound_card_path + "/device/of_node/compatible"
+                codec_path = "/proc/asound/card%s/codec#0" % card_num
+                if os.path.exists(codec_path):
+                    #Name:da_combine_v5
+                    #Vendor:HISILICON
+                    #Model:da_combine_v5
+                    with open(codec_path, 'r') as f:
+                        line = f.readline()
+                        while line:
+                            if line.startswith('Name:'):
+                                product = line.strip().split(':', 1)[-1]
+                            elif line.startswith('Vendor:'):
+                                vendor = line.strip().split(':', 1)[-1]
+                            line = f.readline()
+                elif os.path.exists(compatible_path):
+                    # hisilicon,hisi-dp-audio-machine\x00
+                    with open(compatible_path, 'r') as f:
+                        compatible_content_split = f.read().split(',')
+                        vendor = compatible_content_split[0]
+                        product = compatible_content_split[1]
+                if MulProduct:
+                    MulProduct += "<1_1>" + product
+                    MulVendor += "<1_1>" + self.get_url('',self.strip(vendor))
+                else :
+                    MulProduct = product
+                    MulVendor = self.get_url('',self.strip(vendor))
+                MulNum += 1
+                driver_name = driver_realpath_split[-1]
+                if MulDrive:
+                    MulDrive += "<1_1>" + driver_name
+                else :
+                    MulDrive = driver_name
+            else:
+                # pci bus devices have been parsed
+                # other bus device is unsupported
+                pass
+
         Mul['MulNum'],Mul['MulProduct'],Mul['MulVendor'],Mul['MulBusinfo'],Mul['MulDrive'] = self.strip(str(MulNum)),self.strip(MulProduct),self.strip(MulVendor),self.strip(MulBusinfo),self.strip(MulDrive)
         return Mul
 
@@ -2226,8 +2426,9 @@ class DetailInfo:
             origin["minimum"] = self.num_convert(f.readline().strip())# 获取cpu主频范围的最小值
 
             f = open("/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed",'r')
-            if(f.readline().strip().isdigit()):
-                origin["cur_freq"] = self.num_convert(f.readline().strip())
+            line = f.readline().strip()
+            if(line.isdigit()):
+                origin["cur_freq"] = self.num_convert(line)
 
             f.close()
         else:
@@ -2309,10 +2510,10 @@ if __name__ == "__main__":
     #cc.get_cpu()
     #cc.get_board()
     #cc.get_memory()
-    #cc.get_monitor()
+    pprint(cc.get_cpu_range())
     #cc.get_disk()
     #cc.get_network()
     #cc.get_multimedia()
     #cc.get_dvd()
     #cc.get_usb()
-    pprint(cc.get_network())
+    #pprint(cc.get_network())

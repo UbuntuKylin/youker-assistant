@@ -33,6 +33,7 @@ public:
     void set_temperature(bool f);
     void set_fan(bool f);
     void set_cpuFm(bool f);
+    void RefreshCPUFMCheckStatus();
 signals:
     void requestcpuTemperature();
     void sendTemperaturedata(QMap<QString, QVariant> tmpMap);

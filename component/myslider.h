@@ -6,6 +6,7 @@
 #include <QStringList>
 #include <QMap>
 #include <QString>
+#include <QMouseEvent>
 #include <QVariant>
 
 class mySlider : public QSlider

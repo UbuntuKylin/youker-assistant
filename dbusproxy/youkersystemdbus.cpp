@@ -400,6 +400,11 @@ bool SystemDispatcher::get_communicationdev_info_qt(){
     return reply.value();
 }
 
+bool SystemDispatcher::get_displaydev_info_qt(){
+    QDBusReply<bool> reply = systemiface->call("get_displaydev_info");
+    return reply.value();
+}
+
 QString SystemDispatcher::get_time_value_qt() {
     QDBusReply<QString> reply = systemiface->call("get_time_value");
     return reply.value();

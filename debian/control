@@ -31,7 +31,8 @@ Build-Depends: debhelper (>= 9),
                libxinerama-dev,
                libxi-dev,
                libxcursor-dev,
-               libsystemd-dev (>= 209) [linux-any]
+               libsystemd-dev (>= 209) [linux-any],
+               libudev-dev
 Standards-Version: 4.5.0
 Rules-Requires-Root: no
 Homepage: https://github.com/ubuntukylin/youker-assistant
@@ -53,6 +54,7 @@ Depends: python3-dbus,
          lm-sensors,
          ethtool,
          lshw,
+         edid-decode,
          dmidecode [amd64 arm64 armhf i386],
          cpufrequtils,
          pciutils,

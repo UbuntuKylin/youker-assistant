@@ -37,7 +37,7 @@ BoxWidget::BoxWidget(QWidget *parent, QString arch, QString os, QString path) :
 //  ,m_pluginsManager(new PluginManager(this))
 {
     this->setFixedSize(860, 460);
-    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:10px;border-bottom-left-radius:6px}");
+    this->setStyleSheet("QWidget{background: #ffffff; border: none;}");
     //set white background color
 //    this->setAutoFillBackground(true);
 //    QPalette palette;
@@ -132,24 +132,8 @@ void BoxWidget::initPluginWidget()
     QStringList title;
     title << tr("");
     pluginModel.setTitle(title);
-//    pluginModel.insertRows(0,1,QModelIndex());
-//    QModelIndex qindex = pluginModel.index(0,0,QModelIndex());
-//    pluginModel.setData(qindex,tr("      "));
     pluginModel.insertRows(0,1,QModelIndex());
     QModelIndex qindex = pluginModel.index(0,0,QModelIndex());
-
-//    if(this->osarch == "aarch64" || this->osname == "Kylin" || this->osname == "YHKylin") {
-//        //set text
-//        pluginModel.setData(qindex, tr("Kylin Software Center"));
-//        //set tooltip
-//        pluginModel.setData(qindex, tr("Kylin Software Center"),Qt::WhatsThisRole);
-//    }
-//    else {
-//        //set text
-//        pluginModel.setData(qindex, tr("UbuntuKylin Software Center"));
-//        //set tooltip
-//        pluginModel.setData(qindex, tr("UbuntuKylin Software Center"),Qt::WhatsThisRole);
-//    }
 
     //set text
     pluginModel.setData(qindex, tr("Kylin Software Center"));
@@ -157,7 +141,10 @@ void BoxWidget::initPluginWidget()
     pluginModel.setData(qindex, tr("Kylin Software Center"),Qt::WhatsThisRole);
 
     //set icon
-    if(QIcon::hasThemeIcon("ubuntu-kylin-software-center")){
+    if(QIcon::hasThemeIcon("kylin-software-center")){
+        QIcon icons = QIcon::fromTheme("kylin-software-center");
+        pluginModel.setData(qindex,icons,Qt::DecorationRole);
+    }else if(QIcon::hasThemeIcon("ubuntu-kylin-software-center")){
         QIcon icons = QIcon::fromTheme("ubuntu-kylin-software-center");
         pluginModel.setData(qindex,icons,Qt::DecorationRole);
     }else{
@@ -234,10 +221,6 @@ void BoxWidget::OnClickListView(const QModelIndex & index)
         else {
             emit this->pluginModuleError(tr("No software center was found!"));
         }
-        /*if(this->osarch == "aarch64" || this->osname == "Kylin" || this->osname == "YHKylin")
-            sessionProxy->runApp("kylin-software-center");
-        else
-            sessionProxy->runApp("ubuntu-kylin-software-center");*/
     }
 
     else if(index.row() == 1)

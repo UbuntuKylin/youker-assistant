@@ -43,6 +43,8 @@ public:
     void updatePageData(const QString &title, QMap<QString, QVariant> infoMap);
     void updateRunningTime(const QString &runningTime);
 
+    void errorPage(const QString &title);
+
 private:
     QVBoxLayout *m_vLayout = nullptr;
     QFrame *m_widget = nullptr;

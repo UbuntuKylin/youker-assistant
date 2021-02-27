@@ -351,7 +351,7 @@ class Daemon(PolicyKitService):
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_monitor_info(self):
-        return self.infoconf.get_monitor()
+        return self.infoconf.get_monitors()
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='a{sv}')
     def get_cdrom_info(self):
@@ -407,7 +407,7 @@ class Daemon(PolicyKitService):
                 return False
             for line in output.split("\n"):
                 if "fan" in line:
-                    if(line.split(":")[1].strip().split(" ")[0] != "0"):
+                    if(line.split(":")[1].strip().split(" ")[0].isdigit()):
                         hide=True
             return hide
 
@@ -894,6 +894,19 @@ class Daemon(PolicyKitService):
 
     def emit_communicationdev_info_signal(self, data):
         self.communicationdev_info_signal(data)
+
+    # display
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
+    def get_displaydev_info(self):
+        return self.infoconf.get_display(self)
+
+    @dbus.service.signal(INTERFACE, signature='as')
+    def displaydev_info_signal(self, msg):
+        print(msg)
+        pass
+
+    def emit_displaydev_info_signal(self, data):
+        self.displaydev_info_signal(data)
 #-----END------------NEW-YOUKER---------------------------
 
 if __name__ == '__main__':

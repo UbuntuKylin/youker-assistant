@@ -216,7 +216,7 @@ void CpuFmwidget::InitUI()
     v_layout->setContentsMargins(10,10,0,0);
 
     QLabel *lable1 = new QLabel();
-    QLabel *lable2 = new QLabel();
+//    QLabel *lable2 = new QLabel();
     slider = new mySlider(w);
 
     lable1->setText(tr("Current Frequency Adjustable Range:"));
@@ -230,13 +230,13 @@ void CpuFmwidget::InitUI()
                           "border-radius: 3px;}");
     v_layout->addWidget(slider);
 
-    lable2->setText(tr("CPU FM Note: There are some risks associated with the CPU FM function,please use caution! The computer needs to be restarted when the FM is complete."));
-    lable2->adjustSize();
-    lable2->setStyleSheet("color:rgb(0,0,0,185)");
-    lable2->setFixedSize(580, 27*2);
-    lable2->setWordWrap(true);
-    v_layout->addWidget(lable2);
-    v_layout->addStretch(1);
+//    lable2->setText(tr("CPU FM Note: There are some risks associated with the CPU FM function,please use caution! The computer needs to be restarted when the FM is complete."));
+//    lable2->adjustSize();
+//    lable2->setStyleSheet("color:rgb(0,0,0,185)");
+//    lable2->setFixedSize(580, 27*2);
+//    lable2->setWordWrap(true);
+//    v_layout->addWidget(lable2);
+//    v_layout->addStretch(1);
 
     w->setVisible(false);
 
@@ -267,7 +267,7 @@ void CpuFmwidget::InitUI()
 void CpuFmwidget::set_cpu_listAndCur(QStringList list, QString string)
 {
     this->governer_list = list;
-//    this->governer_list.append("userspace");
+    this->governer_list.append("userspace");
     this->cur_governer = string;
     value = string;
     qDebug() << Q_FUNC_INFO <<this->governer_list << this->cur_governer;
@@ -349,6 +349,12 @@ void CpuFmwidget::onClickedApply()
 
 void CpuFmwidget::RefreshCheckStatus()
 {
+    if((cur_governer != "userspace")&&w->isVisible()){
+        w->setVisible(false);
+        apply_button->setGeometry(60,200,120,36);
+        value = cur_governer;
+    }
+
      QList<QAbstractButton*> list = radioGroup->buttons();
      foreach (QAbstractButton *pButton, list)
      {

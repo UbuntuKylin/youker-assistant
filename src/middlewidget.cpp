@@ -27,10 +27,10 @@ MiddleWidget::MiddleWidget(QWidget *parent, QString arch, QString os)
 {
     this->setFixedSize(860, 140);
     this->setAutoFillBackground(true);
-//    QPalette palette;
-//    palette.setColor(QPalette::Background, QColor(34,103,242));//#e9eef1
-//    this->setPalette(palette);
-    this->setStyleSheet("MiddleWidget{background-color:#2267F2; border: none;border-top-left-radius:6px;border-top-right-radius:6px}");
+    QPalette palette;
+    palette.setColor(QPalette::Background, QColor(34,103,242));//#e9eef1
+    this->setPalette(palette);
+//    this->setStyleSheet("MiddleWidget{background-color:#2267F2; border: none;/*border-top-left-radius:6px;border-top-right-radius:6px*/}");
 
 //    InitMiddlewidget();
 }
@@ -61,13 +61,13 @@ void MiddleWidget::InitMiddlewidget()
     main_layout->setContentsMargins(0, 0, 0, 0);
     main_layout->setSpacing(0);
 
-    QWidget *topWidget = new QWidget;
+    QWidget *topWidget = new QWidget(this);
     top_layout = new QHBoxLayout(topWidget);
     top_layout->setContentsMargins(0, 0, 0, 0);
     top_layout->setSpacing(0);
     main_layout->addWidget(topWidget, 0, Qt::AlignTop);
 
-    QWidget *bottomWidget = new QWidget;
+    QWidget *bottomWidget = new QWidget(this);
     botton_layout = new QHBoxLayout(bottomWidget);
     botton_layout->setContentsMargins(0, 0, 0, 0);
     botton_layout->setSpacing(0);
@@ -83,44 +83,70 @@ void MiddleWidget::InitMiddlewidget()
 
 void MiddleWidget::initTitlebarLeftContent()
 {
-    qDebug()<< Q_FUNC_INFO;
-    QWidget *w = new QWidget;
+    QWidget *w = new QWidget(this);
+//    w->setFixedHeight(38);
+//    w->setStyleSheet("QWidget{background-color:red;}");
     m_titleLeftLayout = new QHBoxLayout(w);
-    m_titleLeftLayout->setContentsMargins(6, 0, 0, 0);
-    m_titleLeftLayout->setSpacing(5);
+    m_titleLeftLayout->setContentsMargins(8, 8, 0, 0);
+    m_titleLeftLayout->setSpacing(8);
 
-    QLabel *iconlable = new QLabel(w);
+    iconlable = new QLabel(w);
+    qDebug() << Q_FUNC_INFO << QIcon::hasThemeIcon("kylin-assistant");
     iconlable->setPixmap(QIcon::fromTheme("kylin-assistant").pixmap(24,24));
-    iconlable->setFixedSize(24,24);
+    const QByteArray id("org.ukui.style");
+    if (QGSettings::isSchemaInstalled(id)){
+        QGSettings *Setting = new QGSettings(id);
+        connect(Setting,&QGSettings::changed,[=](QString key){
+            if("iconThemeName" == key){
+                iconlable->setPixmap(QIcon::fromTheme("kylin-assistant").pixmap(24,24));
+            }
+        });
+    }
+//    iconlable->setFixedSize(24,24);
     m_titleLeftLayout->addWidget(iconlable);
 
     QLabel *appLabel = new QLabel(w);
-    appLabel->setStyleSheet("QLabel{background-color:transparent;color:#ffffff; font-size:12px;}");
+    appLabel->setStyleSheet("QLabel{background-color:transparent;color:#ffffff; font-size:14px;}");
     appLabel->setText(tr("Kylin Assistant"));
     m_titleLeftLayout->addWidget(appLabel);
 
-    top_layout->addWidget(w, 1, Qt::AlignLeft);
+    top_layout->addWidget(w, 1, Qt::AlignLeft|Qt::AlignTop);
 }
 
 void MiddleWidget::initTitlebarRightContent()
 {
      qDebug()<< Q_FUNC_INFO;
-    QWidget *w = new QWidget;
+    QWidget *w = new QWidget(this);
     m_titleRightLayout = new QHBoxLayout(w);
-    m_titleRightLayout->setContentsMargins(0, 0, 5, 0);
-    m_titleRightLayout->setSpacing(0);
+    m_titleRightLayout->setContentsMargins(0, 4, 4, 0);
+    m_titleRightLayout->setSpacing(4);
 
-    top_layout->addWidget(w, 1, Qt::AlignRight);
+    top_layout->addWidget(w, 1, Qt::AlignRight|Qt::AlignTop);
 
-    SystemButton *min_button = new SystemButton();
-    SystemButton *close_button = new SystemButton();
+    QPushButton *min_button = new QPushButton(w);
+    min_button->setFixedSize(30,30);
+    min_button->setProperty("isWindowButton", 0x1);
+    min_button->setProperty("useIconHighlightEffect", 0x2);
+    min_button->setProperty("setIconHighlightEffectDefaultColor", QColor(Qt::white));
+    min_button->setFlat(true);
+    QPushButton *close_button = new QPushButton(w);
+    close_button->setFixedSize(30,30);
+    close_button->setProperty("isWindowButton", 0x2);
+    close_button->setProperty("useIconHighlightEffect", 0x8);
+    close_button->setProperty("setIconHighlightEffectDefaultColor", QColor(Qt::white));
+    close_button->setFlat(true);
 //    SystemButton *skin_button = new SystemButton();
-    SystemButton *main_menu_button = new SystemButton();
-    min_button->loadPixmap(":/sys/res/sysBtn/min_button.svg");
-    min_button->setStyleSheet("border: none;border-radius:6px;");
-    close_button->loadPixmap(":/sys/res/sysBtn/close_button.svg");
+    QPushButton *main_menu_button = new QPushButton(w);
+    main_menu_button->setFixedSize(30,30);
+    main_menu_button->setProperty("isWindowButton", 0x1);
+    main_menu_button->setProperty("useIconHighlightEffect", 0x2);
+    main_menu_button->setProperty("setIconHighlightEffectDefaultColor", QColor(Qt::white));
+    main_menu_button->setFlat(true);
+
+    min_button->setIcon(QIcon::fromTheme("window-minimize-symbolic"));
+    close_button->setIcon(QIcon::fromTheme("window-close-symbolic"));
 //    skin_button->loadPixmap(":/sys/res/sysBtn/skin_button.png");
-    main_menu_button->loadPixmap(":/sys/res/sysBtn/main_menu.svg");
+    main_menu_button->setIcon(QIcon::fromTheme("open-menu-symbolic"));
     min_button->setFocusPolicy(Qt::NoFocus);
     close_button->setFocusPolicy(Qt::NoFocus);
 //    skin_button->setFocusPolicy(Qt::NoFocus);

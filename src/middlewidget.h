@@ -28,6 +28,7 @@
 #include <QVBoxLayout>
 #include <QSignalMapper>
 #include <QVBoxLayout>
+#include <QGSettings>
 #include "../component/kylinbutton.h"
 #include "../component/kylintoolbutton.h"
 #include "../component/systembutton.h"
@@ -62,6 +63,8 @@ private:
     QList<KylinToolButton *> button_list;
     QString cur_arch;
     QString osname;
+
+    QLabel *iconlable;
 
     QVBoxLayout *main_layout;
     QHBoxLayout *botton_layout;

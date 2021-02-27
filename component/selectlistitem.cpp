@@ -27,7 +27,7 @@ SelectListItem::SelectListItem(QWidget *parent, QString description, QString tip
 {
     this->setStyleSheet("QWidget{padding: 2px 0;} QWidget:hover{background-color:rgba(43,182,234,0.1);border-radius:2px;}");//#2bb6ea
     this->setFixedHeight(30);
-
+    qDebug() << Q_FUNC_INFO << m_description << m_description.length() << itemWidth;
     m_mainLayout = new QHBoxLayout(this);
     m_mainLayout->setSpacing(0);
     m_mainLayout->setMargin(0);
@@ -51,7 +51,8 @@ SelectListItem::SelectListItem(QWidget *parent, QString description, QString tip
 
     QFont ft;
     QFontMetrics fm(ft);
-    QString elided_text = fm.elidedText(description, Qt::ElideMiddle, maxWidth);
+    QString elided_text = fm.elidedText(description, Qt::ElideRight, 470);
+    m_descLabel->setToolTip(description);
     m_descLabel->setText(elided_text);
     m_descLabel->setStyleSheet("color:black;");
 

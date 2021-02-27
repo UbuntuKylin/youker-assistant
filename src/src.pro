@@ -17,6 +17,8 @@ LIBS += -lgsettings-qt
 # 适配窗口管理器圆角阴影
 LIBS +=-lpthread
 LIBS +=-lX11
+LIBS +=-lXrandr
+LIBS +=-ludev
 
 include(./qtsingleapplication.pri)
 
@@ -86,6 +88,8 @@ SOURCES += main.cpp \
     aboutdialog.cpp \
     shadowwidget.cpp \
     dataworker.cpp \
+    udevhotplugin.cpp \
+    aboutwidget.cpp \
     ../component/kylinlistmodel.cpp \
     ../component/kylinbutton.cpp \
     ../component/kylinmenu.cpp \
@@ -126,7 +130,7 @@ SOURCES += main.cpp \
     ../component/loadinglabel.cpp \
     ../component/alertdialog.cpp \
     ../component/toolkits.cpp \
-    ../cleaner/cleanerdetailwidget.cpp \
+#    ../cleaner/cleanerdetailwidget.cpp \
     ../cleaner/cleanermainwidget.cpp \
     ../dbusproxy/youkersystemdbus.cpp \
     ../dbusproxy/youkersessiondbus.cpp \
@@ -174,6 +178,8 @@ HEADERS  += mainwindow.h \
     aboutdialog.h \
     shadowwidget.h \
     dataworker.h \
+    udevhotplugin.h \
+    aboutwidget.h \
     ../component/plugininterface.h \
     ../component/kylinlistmodel.h \
     ../component/utils.h \
@@ -217,7 +223,7 @@ HEADERS  += mainwindow.h \
     ../component/loadinglabel.h \
     ../component/alertdialog.h \
     ../component/toolkits.h \
-    ../cleaner/cleanerdetailwidget.h \
+#    ../cleaner/cleanerdetailwidget.h \
     ../cleaner/cleanermainwidget.h \
     ../dbusproxy/youkersystemdbus.h \
     ../dbusproxy/youkersessiondbus.h \

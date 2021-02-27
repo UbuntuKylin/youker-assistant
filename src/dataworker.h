@@ -90,6 +90,7 @@ public slots:
 
     //monitor info
     void onRequestMonitorInfo();
+    void onRequestGenMonitorInfoFile();
 
     //audio info
     void onRequestAudioInfo();
@@ -102,6 +103,13 @@ public slots:
 
     //driver info
 
+    void onRequestPartInfoAgain();
+
+    //input info
+    void onRequestInputInfo();
+
+    //communication info
+    void onRequestCommunicationInfo();
 
     //theme
     void onRequestThemeData();
@@ -253,7 +261,7 @@ signals:
     void quickCleanProcess(QString type, QString status);
 
 
-
+    void sendDevicePageNotExists(QStringList keys);
 
     //system info
     void sendSystemRunnedTime(int time_value);

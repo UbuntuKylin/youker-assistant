@@ -114,6 +114,7 @@ void CleandetailVeiw::InitTopWidget()
     cancel_btn->setGeometry(QRect(620,30,120,36));
 //    cancel_btn->setVisible(false);
     connect(cancel_btn,SIGNAL(clicked()),this,SIGNAL(hideThisWidget()));
+    cancel_btn->setFocus(Qt::MouseFocusReason);
 
     onkeyclean = new QPushButton(frame);
     onkeyclean->setText(tr("Cleanup"));
@@ -125,6 +126,7 @@ void CleandetailVeiw::InitTopWidget()
                               border-radius:24px;font-size:20px;color:white;}");
     onkeyclean->setGeometry(QRect(600,25,160,48));
     onkeyclean->setVisible(false);
+    onkeyclean->setFocus(Qt::MouseFocusReason);
     connect(onkeyclean,&QPushButton::clicked,this,[=]{
 //        emit this->startOneKeyClean();
         receiveCleanSignal();
@@ -142,6 +144,7 @@ void CleandetailVeiw::InitTopWidget()
                               border-radius:24px;font-size:20px;color:white;}");
     return_btn->setGeometry(QRect(600,25,160,48));
     return_btn->setVisible(false);
+    return_btn->setFocus(Qt::MouseFocusReason);
     connect(return_btn,SIGNAL(clicked()),this,SIGNAL(hideThisWidget()));
 
     btn_return = new QPushButton(frame);
@@ -154,6 +157,7 @@ void CleandetailVeiw::InitTopWidget()
                               background:rgba(67,127,240,1);\
                               border-radius:18px;font-size:14px;color:white;}");
     btn_return->setVisible(false);
+    btn_return->setFocus(Qt::MouseFocusReason);
     connect(btn_return,SIGNAL(clicked()),this,SIGNAL(hideThisWidget()));
 
     top_layout->addWidget(frame/*,1,Qt::AlignCenter*/);
@@ -579,7 +583,7 @@ void CleandetailVeiw::showReciveData(const QStringList &data)
 
 void CleandetailVeiw::showReciveStatus(const QString &status)
 {
-//    qDebug() << Q_FUNC_INFO << status;
+    qDebug() << Q_FUNC_INFO << status;
 
     if(status == "Complete:History") {
         history_tip->setText(QString::number(history_sum)+tr(" historical use traces"));
@@ -692,12 +696,12 @@ void CleandetailVeiw::ShowDetailsPage()
     if(QString::compare(btn_name,"Cache") == 0){
         if(cache_flag){
             select_cache_apt_list.clear();
-            select_cache_apt_list = cache_apt_list;
+            select_cache_apt_list = cache_apt_list+cache_chromium_list+cache_firefox_list+cache_software_list+cache_thumbnails_list;
             cache_flag = false;
         }
 
         SelectWidget *w = new SelectWidget(CleanerModuleID::CacheApt, tr("Cleanable Cache"));
-        w->loadData(tr("Cleanable Cache"), select_cache_apt_list, cache_apt_list);
+        w->loadData(tr("Cleanable Cache"), select_cache_apt_list, cache_apt_list+cache_chromium_list+cache_firefox_list+cache_software_list+cache_thumbnails_list);
         connect(w, SIGNAL(refreshSelectedItems(CleanerModuleID,QStringList)), this, SLOT(onRefreshSelectedItems(CleanerModuleID,QStringList)));
         w->exec();
         delete w;
@@ -725,14 +729,14 @@ void CleandetailVeiw::ShowDetailsPage()
 
 void CleandetailVeiw::showCleanerData(const QStringList &data)
 {
-    qDebug() << Q_FUNC_INFO << data;
+//    qDebug() << Q_FUNC_INFO << data;
 }
 
 void CleandetailVeiw::showCleanerStatus(const QString &status, const QString &domain)
 {
-    qDebug() << Q_FUNC_INFO << status << domain;
+//    qDebug() << Q_FUNC_INFO << status << domain;
     if(status == "Complete:file" && domain == "cache") {
-        history_tip->setText(tr("Clear ") + QString::number(history_sum)+tr(" historical traces"));
+        cache_tip->setText(tr("Clear cache ")+QString::number(cache_sum/1024,'f',0)+" M");
 
         QSvgRenderer* svgRender = new QSvgRenderer(QString(":/svg/res/svg/finish2 .svg"));
         QPixmap *pixmap = new QPixmap(32,32);
@@ -760,7 +764,7 @@ void CleandetailVeiw::showCleanerStatus(const QString &status, const QString &do
         cookie_icon->update();
     }
     else if(status == "Complete:history" && domain == "history") {
-        cache_tip->setText(tr("Clear cache ")+QString::number(cache_sum/1024,'f',0)+" M");
+        history_tip->setText(tr("Clear ") + QString::number(history_sum)+tr(" historical traces"));
 
         QSvgRenderer* svgRender = new QSvgRenderer(QString(":/svg/res/svg/finish2 .svg"));
         QPixmap *pixmap = new QPixmap(32,32);

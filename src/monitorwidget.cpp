@@ -6,9 +6,7 @@ Monitorwidget::Monitorwidget(QWidget *parent) : QWidget(parent)
     this->setFixedSize(860,460);
     this->setAutoFillBackground(true);
 
-    this->setStyleSheet("QWidget{background:#ffffff;border: none;\
-                        border-bottom-right-radius:10px;\
-                        border-bottom-left-radius:10px}");
+    this->setStyleSheet("QWidget{background:#ffffff;border: none;}");
 
     splitter = new QSplitter(this);
     splitter->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -79,6 +77,7 @@ void Monitorwidget::InitUI()
         connect(cpu_fm,SIGNAL(setCpuGoverner(QString)),this,SIGNAL(setCpuGoverner(QString)));
         connect(this,SIGNAL(SendCPUFrequencyData(QMap<QString,QVariant>)),cpu_fm,SLOT(ProcessingCPUFrequencyData(QMap<QString,QVariant>)));
         connect(cpu_fm,SIGNAL(RequestCPUFrequencyData()),this,SIGNAL(RequestCPUFrequencyData()));
+        emit this->requestcpurange();
     }
         //    qDebug() << Q_FUNC_INFO <<this->governer_list << this->cur_governer;
 
@@ -129,6 +128,10 @@ void Monitorwidget::set_cpuFm(bool f)
     this->m_cpufm = f;
 }
 
+void Monitorwidget::RefreshCPUFMCheckStatus()
+{
+    cpu_fm->RefreshCheckStatus();
+}
 
 void Monitorwidget::sendTemperaturesigle()
 {
@@ -149,7 +152,7 @@ void Monitorwidget::changewidgetpage(QListWidgetItem *item)
     QString page_Name = item->statusTip();
     if (page_Name.isEmpty() || page_Name.isNull())
         return;
-     qDebug() << "InfoWidget changeInfoPage" << page_Name;
+     qDebug() << "Monitorwidget changeInfoPage" << page_Name;
     if(page_Name =="Temperature")
     {
         stackedwidget->setCurrentWidget(temperature);
@@ -160,7 +163,6 @@ void Monitorwidget::changewidgetpage(QListWidgetItem *item)
     }
     else if(page_Name == "CPU FM")
     {
-        emit this->requestcpurange();
         stackedwidget->setCurrentWidget(cpu_fm);
         cpu_fm->RefreshCheckStatus();
     }

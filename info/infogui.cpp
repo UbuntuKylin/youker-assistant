@@ -103,6 +103,13 @@ void InfoGui::clearWidget()
     m_pageList.clear();
 }
 
+void InfoGui::errorPage(const QString &title){
+    InfoUnitWidget *w = new InfoUnitWidget(title, this);
+    w->addInfoItem(tr("Get Info Failed"), tr("Device not exitst or Get Device is Empty"));
+    m_vLayout->addWidget(w, 0, Qt::AlignTop);//m_vLayout->insertWidget(index, w);
+    m_pageList.append(w);
+}
+
 void InfoGui::loadOnePage(int index, const QString &title, QMap<QString, QVariant> infoMap)
 {
     InfoUnitWidget *w = new InfoUnitWidget(title, this);
@@ -131,6 +138,10 @@ void InfoGui::loadOnePage(int index, const QString &title, QMap<QString, QVarian
             }
             else if (it.key() == "POWER_SUPPLY_MANUFACTURER") {
                 w->setInfoVendor(":/vendor/res/manufacturer/" + valueStr.toUpper() + ".jpg");
+            }
+            else if (it.key() == "product" && valueStr.contains("Topaz XT", Qt::CaseInsensitive)){
+                valueStr = "Topaz XT [Radeon R7 M460 Mobile]";
+                w->addInfoItem(tr("DisplayMemSize"), "2G");
             }
             else {
                 if (it.key().contains("INTEL"))
