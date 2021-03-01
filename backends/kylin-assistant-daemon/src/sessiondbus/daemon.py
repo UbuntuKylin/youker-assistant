@@ -235,19 +235,19 @@ class SessionDaemon(dbus.service.Object):
         self.titlebar_settings.connect("changed::action-right-click-titlebar", self.gio_settings_monitor, STRING_TYPE)
 
         #font
-        self.interface_settings.connect("changed::font-name", self.gio_settings_monitor, STRING_TYPE)
-        self.interface_settings.connect("changed::monospace-font-name", self.gio_settings_monitor, STRING_TYPE)
-        self.interface_settings.connect("changed::document-font-name", self.gio_settings_monitor, STRING_TYPE)
-        self.titlebar_settings.connect("changed::titlebar-font", self.gio_settings_monitor, STRING_TYPE)
-        self.interface_settings.connect("changed::text-scaling-factor", self.gio_settings_monitor, DOUBLE_TYPE)
-        if self.desktop == "mate" or self.desktop == "MATE":
-            self.font_settings = gio.Settings.new("org.mate.font-rendering")
-        elif self.desktop == "ukui" or self.desktop == "UKUI":
-            self.font_settings = gio.Settings.new("org.ukui.font-rendering")
-        else:
-            self.font_settings = gio.Settings.new("org.gnome.settings-daemon.plugins.xsettings")
-        self.font_settings.connect("changed::hinting", self.gio_settings_monitor, STRING_TYPE)
-        self.font_settings.connect("changed::antialiasing", self.gio_settings_monitor, STRING_TYPE)
+        # self.interface_settings.connect("changed::font-name", self.gio_settings_monitor, STRING_TYPE)
+        # self.interface_settings.connect("changed::monospace-font-name", self.gio_settings_monitor, STRING_TYPE)
+        # self.interface_settings.connect("changed::document-font-name", self.gio_settings_monitor, STRING_TYPE)
+        # self.titlebar_settings.connect("changed::titlebar-font", self.gio_settings_monitor, STRING_TYPE)
+        # self.interface_settings.connect("changed::text-scaling-factor", self.gio_settings_monitor, DOUBLE_TYPE)
+        # if self.desktop == "mate" or self.desktop == "MATE":
+        #     self.font_settings = gio.Settings.new("org.mate.font-rendering")
+        # elif self.desktop == "ukui" or self.desktop == "UKUI":
+        #     self.font_settings = gio.Settings.new("org.ukui.font-rendering")
+        # else:
+        #     self.font_settings = gio.Settings.new("org.gnome.settings-daemon.plugins.xsettings")
+        # self.font_settings.connect("changed::hinting", self.gio_settings_monitor, STRING_TYPE)
+        # self.font_settings.connect("changed::antialiasing", self.gio_settings_monitor, STRING_TYPE)
 
         # touchpad
         if self.desktop == "mate" or self.desktop == "MATE":
