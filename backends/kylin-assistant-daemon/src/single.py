@@ -25,7 +25,7 @@ class SingleInstance(object):
             # Create a temp file, copy it to pidPath and remove temporary file
             (fp, temp_path) = tempfile.mkstemp()
             try:
-                os.fdopen(fp, "w+b").write(bytes(os.getpid()))
+                os.fdopen(fp, "w+").write(str(os.getpid()))
                 shutil.copy(temp_path, pidPath)
                 os.unlink(temp_path)
             except Exception as e:
