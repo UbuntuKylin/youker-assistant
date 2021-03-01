@@ -59,7 +59,7 @@ TERABYTE_FACTOR = (1000.0 * 1000.0 * 1000.0 * 1000.0)
 def Judgment_HW990():
     with open("/proc/hardware",'r') as fd:
         info = fd.readline()
-        if info.find("HUAWEI Kirin 990",info) >= 0 or info.find("kirin990") >= 0 or info.find("HUAWEI Kirin 9006C") >= 0:
+        if info.find("HUAWEI Kirin 990") >= 0 or info.find("kirin990") >= 0 or info.find("HUAWEI Kirin 9006C") >= 0:
             return True
         else:
             return False
@@ -1408,6 +1408,19 @@ class DetailInfo:
                         ret_gamma += (result[0] + "<1_1>")
                     else:
                         ret_gamma += ("" + "<1_1>")
+                ## hack workaround for kirin 990 laptop integrated lcd screen has blank edid
+                elif (edid_file.find("card0-eDP-1") != -1) and Judgment_HW990():# edid-decode of card0-eDP-1 failed on kirin 990
+                    Vga_num += 1
+                    ret_in += ("14" + "<1_1>") # 14 inch
+                    ret_maxmode += ("2160X1440" + "<1_1>") # 2160X1440
+                    ret_product += ("LCD" + "<1_1>") # LCD
+                    ret_output += ("eDP-1" + "<1_1>") # eDP-1
+                    ## unknown infos
+                    ret_gamma += ("" + "<1_1>")
+                    ret_size += ("" + "<1_1>")
+                    ret_year += ("" + "<1_1>")
+                    ret_week += ("" + "<1_1>")
+                    ret_vendor += ("" + "<1_1>")
         ret["Mon_output"], ret["Mon_vendor"], ret["Mon_product"], ret["Mon_year"], ret["Mon_week"], ret["Mon_size"], ret["Mon_in"] = \
                 ret_output[:-5], ret_vendor[:-5], ret_product[:-5], ret_year[:-5], ret_week[:-5], ret_size[:-5], ret_in[:-5]
         ret["Mon_gamma"], ret["Mon_maxmode"] = ret_gamma[:-5], ret_maxmode[:-5]
