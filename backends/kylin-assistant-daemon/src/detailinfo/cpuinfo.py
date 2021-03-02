@@ -1741,9 +1741,15 @@ class DetailInfo:
                     continue
                 if ":" not in line2:
                     continue
-                modlist[index].append(line2.strip());
+                modlist[index].append(line2.strip())
                 #results = line2.split(":")
                 #modlist[index].update({results[0].strip() : results[1].strip()})
+        
+        if Judgment_HW990():
+            hw990_res = self.get_display_hw990()
+            if len(hw990_res) > 0:
+                index += 1
+                modlist.append(hw990_res)
 
         for var in modlist:
             pprint(var)
@@ -1751,6 +1757,27 @@ class DetailInfo:
 
         return False if index == -1 else True
 
+    def get_display_hw990(self):
+        wayland_sock = glob.glob('/run/user/*/wayland-0')[0]
+        xdg_runtime_dir = wayland_sock[:-10] # /run/user/1000
+        gpuinfo_env = {'XDG_RUNTIME_DIR' : xdg_runtime_dir}
+        process = subprocess.run('gpuinfo', env=gpuinfo_env, capture_output=True)
+        output = process.stdout.decode()
+        ret = process.returncode
+        reslist = []
+        if ret == 1: ## ???
+            lines = output.strip().split('\n')
+            for line in lines:
+                if line.find(':') > 0:
+                    if line.find('GPU vendor') >= 0: # GPU vendor: ARM
+                        reslist.append('vendor: ' + line.split(':')[1])
+                    elif line.find('GPU type') >= 0: # GPU type: Mali-G76
+                        reslist.append('product: ' + line.split(':')[1])
+                    else:
+                        reslist.append(line)
+                else: # integrated graphics controller
+                    reslist.append('description: ' + line)
+        return reslist
 
     # writed by kobe 20170318
     def get_network_obsolete(self):

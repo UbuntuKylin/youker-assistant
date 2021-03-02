@@ -392,6 +392,19 @@ inline const QString covertKeyName(const QString &key)
         return QString(QObject::tr("Resources"));
     else if (key == "width")
         return QString(QObject::tr("Width"));
+
+    // for hw990 mali gpuinfo
+    else if (key == "GDDR capacity")
+        return QString(QObject::tr("GDDR Capacity"));
+    else if (key == "EGL version")
+        return QString(QObject::tr("EGL Version"));
+    else if (key == "EGL client APIs")
+        return QString(QObject::tr("EGL Client API"));
+    else if (key == "GL version")
+        return QString(QObject::tr("GL Version"));
+    else if (key == "GLSL version")
+        return QString(QObject::tr("GLSL Version"));
+
     else
         return key;
 }
