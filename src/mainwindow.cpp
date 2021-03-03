@@ -169,34 +169,34 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
     });
 
     this->startDbusDaemon();
-    this->initWidgets();
-
-    //边框阴影效果
-    QGraphicsDropShadowEffect *shadow_effect = new QGraphicsDropShadowEffect(this);
-    shadow_effect->setBlurRadius(5);
-    shadow_effect->setColor(QColor(0, 0, 0, 0));
-    shadow_effect->setOffset(2, 4);
-    this->setGraphicsEffect(shadow_effect);
-
-    const QByteArray id("org.ukui.style");
-    if (QGSettings::isSchemaInstalled(id)){
-        QGSettings *Setting = new QGSettings(id);
-        connect(Setting,&QGSettings::changed,[=](QString key){
-            if("systemFont" == key || "systemFontSize" == key ){
-                QFont font = this->font();
-//                int width = font.pointSize();
-                for (auto widget: qApp->allWidgets()) {
-                    widget->setFont(font);
-                }
-            }
-            if("iconThemeName" == key){
-                if(QIcon::hasThemeIcon("kylin-assistant"))
-                    this->setWindowIcon(QIcon::fromTheme("kylin-assistant"));
-                else
-                    this->setWindowIcon(QIcon(":/res/kylin-assistant.png"));
-            }
-        });
-    }
+//    this->initWidgets();
+//
+//    //边框阴影效果
+//    QGraphicsDropShadowEffect *shadow_effect = new QGraphicsDropShadowEffect(this);
+//    shadow_effect->setBlurRadius(5);
+//    shadow_effect->setColor(QColor(0, 0, 0, 0));
+//    shadow_effect->setOffset(2, 4);
+//    this->setGraphicsEffect(shadow_effect);
+//
+//    const QByteArray id("org.ukui.style");
+//    if (QGSettings::isSchemaInstalled(id)){
+//        QGSettings *Setting = new QGSettings(id);
+//        connect(Setting,&QGSettings::changed,[=](QString key){
+//            if("systemFont" == key || "systemFontSize" == key ){
+//                QFont font = this->font();
+////                int width = font.pointSize();
+//                for (auto widget: qApp->allWidgets()) {
+//                    widget->setFont(font);
+//                }
+//            }
+//            if("iconThemeName" == key){
+//                if(QIcon::hasThemeIcon("kylin-assistant"))
+//                    this->setWindowIcon(QIcon::fromTheme("kylin-assistant"));
+//                else
+//                    this->setWindowIcon(QIcon(":/res/kylin-assistant.png"));
+//            }
+//        });
+//    }
 
 }
 
@@ -376,6 +376,34 @@ void MainWindow::initWidgets()
 void MainWindow::onInitDataFinished()
 {
     qDebug() << Q_FUNC_INFO;
+    this->initWidgets();
+
+    //边框阴影效果
+    QGraphicsDropShadowEffect *shadow_effect = new QGraphicsDropShadowEffect(this);
+    shadow_effect->setBlurRadius(5);
+    shadow_effect->setColor(QColor(0, 0, 0, 0));
+    shadow_effect->setOffset(2, 4);
+    this->setGraphicsEffect(shadow_effect);
+
+    const QByteArray id("org.ukui.style");
+    if (QGSettings::isSchemaInstalled(id)){
+        QGSettings *Setting = new QGSettings(id);
+        connect(Setting,&QGSettings::changed,[=](QString key){
+            if("systemFont" == key || "systemFontSize" == key ){
+                QFont font = this->font();
+//                int width = font.pointSize();
+                for (auto widget: qApp->allWidgets()) {
+                    widget->setFont(font);
+                }
+            }
+            if("iconThemeName" == key){
+                if(QIcon::hasThemeIcon("kylin-assistant"))
+                    this->setWindowIcon(QIcon::fromTheme("kylin-assistant"));
+                else
+                    this->setWindowIcon(QIcon(":/res/kylin-assistant.png"));
+            }
+        });
+    }
     this->battery = m_dataWorker->isBatteryExist();
     this->sensor = m_dataWorker->isSensorExist();
     this->temperature = m_dataWorker->hide_temperature_page();
