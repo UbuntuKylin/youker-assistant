@@ -3369,6 +3369,31 @@ Are you sure to continue?</source>
         <translation>数据宽度</translation>
     </message>
     <message>
+        <location filename="../../info/infoitemline.cpp" line="398"/>
+        <source>GDDR Capacity</source>
+        <translation>GDDR容量</translation>
+    </message>
+    <message>
+        <location filename="../../info/infoitemline.cpp" line="400"/>
+        <source>EGL Version</source>
+        <translation>EGL版本</translation>
+    </message>
+    <message>
+        <location filename="../../info/infoitemline.cpp" line="402"/>
+        <source>EGL Client API</source>
+        <translation>EGL接口</translation>
+    </message>
+    <message>
+        <location filename="../../info/infoitemline.cpp" line="404"/>
+        <source>GL Version</source>
+        <translation>GL版本</translation>
+    </message>
+    <message>
+        <location filename="../../info/infoitemline.cpp" line="406"/>
+        <source>GLSL Version</source>
+        <translation>GLSL版本</translation>
+    </message>
+    <message>
         <location filename="../../setting/settingdelegate.cpp" line="30"/>
         <source>ThemeSetting</source>
         <translation>主题设置</translation>
