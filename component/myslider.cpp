@@ -78,31 +78,27 @@ void mySlider::setRangeLable(QMap<QString, QVariant> tmpMap)
     }
 
     QMap<QString ,QVariant> map = tmpMap;
-    QMap<QString ,QVariant>::iterator it;
-    for( it=map.begin() ; it!=map.end() ; ++it )
+    if(tmpMap.contains("minimum") && !tmpMap["minimum"].isNull())
     {
-        if(it.key() == "maximum" && !it.value().isNull())
+        minlable->setText(tmpMap["minimum"].toString());
+        minlable->update();
+        min = tmpMap["minimum"].toString().mid(0,3).toFloat();
+    }
+    if(tmpMap.contains("maximum") && !tmpMap["maximum"].isNull())
+    {
+        maxlable->setText(tmpMap["maximum"].toString());
+        maxlable->update();
+        max = tmpMap["maximum"].toString().mid(0,3).toFloat();
+    }
+    if(tmpMap.contains("cur_freq") && !tmpMap["cur_freq"].isNull())
+    {
+        if(tmpMap["cur_freq"].toString() == "0")
         {
-            maxlable->setText(it.value().toString());
-            maxlable->update();
-            max = it.value().toString().mid(0,3).toFloat();
+            cur_value = min*1000;
         }
-        else if(it.key() == "minimum" && !it.value().isNull())
+        else
         {
-            minlable->setText(it.value().toString());
-            minlable->update();
-            min = it.value().toString().mid(0,3).toFloat();
-        }
-        else if(it.key() == "cur_freq" && !it.value().isNull())
-        {
-            if(it.value().toString() == "0")
-            {
-                cur_value = min*1000;
-            }
-            else
-            {
-                cur_value = it.value().toString().mid(0,3).toFloat()*1000;
-            }
+            cur_value = tmpMap["cur_freq"].toString().mid(0,3).toFloat()*1000;
         }
     }
 
