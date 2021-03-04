@@ -77,6 +77,7 @@ void Monitorwidget::InitUI()
         connect(cpu_fm,SIGNAL(setCpuGoverner(QString)),this,SIGNAL(setCpuGoverner(QString)));
         connect(this,SIGNAL(SendCPUFrequencyData(QMap<QString,QVariant>)),cpu_fm,SLOT(ProcessingCPUFrequencyData(QMap<QString,QVariant>)));
         connect(cpu_fm,SIGNAL(RequestCPUFrequencyData()),this,SIGNAL(RequestCPUFrequencyData()));
+        cpu_fm->hide();
         emit this->requestcpurange();
     }
         //    qDebug() << Q_FUNC_INFO <<this->governer_list << this->cur_governer;

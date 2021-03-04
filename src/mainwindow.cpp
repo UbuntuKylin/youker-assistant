@@ -169,6 +169,9 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
     });
 
     this->startDbusDaemon();
+/*
+    codes below moved to onInitDataFinished()
+*/
 //    this->initWidgets();
 //
 //    //边框阴影效果
