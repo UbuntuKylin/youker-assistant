@@ -47,7 +47,9 @@ InfoGui::InfoGui(QWidget *parent)
     m_scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     m_scrollArea->setStyleSheet("QScrollArea{border: none;background-color: #ffffff;}");
     m_scrollArea->verticalScrollBar()->setStyleSheet("QScrollBar:vertical{width:6px;background:rgba(0,0,0,0%);margin:0px,0px,0px,0px;}\
-                                                     QScrollBar::handle:vertical{width:6px;background:rgba(0,0,0,25%);border-radius:3px;min-height:20;}");
+                                                     QScrollBar::handle:vertical{width:6px;background:rgba(0,0,0,25%);border-radius:3px;min-height:20;}\
+                                                     QScrollBar::add-line:vertical{width:0px;height:0px;}\
+                                                     QScrollBar::sub-line:vertical{width:0px;height:0px;}");
 
     m_vLayout->setSpacing(10);
     m_vLayout->setMargin(0);
