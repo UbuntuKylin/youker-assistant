@@ -57,12 +57,15 @@ TERABYTE_FACTOR = (1000.0 * 1000.0 * 1000.0 * 1000.0)
 
 
 def Judgment_HW990():
-    with open("/proc/hardware",'r') as fd:
-        info = fd.readline()
-        if info.find("HUAWEI Kirin 990") >= 0 or info.find("kirin990") >= 0 or info.find("HUAWEI Kirin 9006C") >= 0:
-            return True
-        else:
-            return False
+    if os.path.exists("/proc/hardware"):
+        with open("/proc/hardware",'r') as fd:
+            info = fd.readline()
+            if info.find("HUAWEI Kirin 990") >= 0 or info.find("kirin990") >= 0 or info.find("HUAWEI Kirin 9006C") >= 0:
+                return True
+            else:
+                return False
+    else:
+        return False
         
 
 def get_interface(com, pci_str):

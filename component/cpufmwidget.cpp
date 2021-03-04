@@ -267,7 +267,10 @@ void CpuFmwidget::InitUI()
 void CpuFmwidget::set_cpu_listAndCur(QStringList list, QString string)
 {
     this->governer_list = list;
-    this->governer_list.append("userspace");
+    if(!this->governer_list.contains("userspace"))
+    {
+        this->governer_list.append("userspace");
+    }
     this->cur_governer = string;
     value = string;
     qDebug() << Q_FUNC_INFO <<this->governer_list << this->cur_governer;
@@ -276,6 +279,7 @@ void CpuFmwidget::set_cpu_listAndCur(QStringList list, QString string)
 void CpuFmwidget::getCpuRange(QMap<QString,QVariant> tmpMap)
 {
     slider->setRangeLable(tmpMap);
+    this->show();
 }
 
 void CpuFmwidget::onButtonClicked(QAbstractButton *button)

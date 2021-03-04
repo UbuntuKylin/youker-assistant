@@ -110,6 +110,15 @@ void mySlider::setRangeLable(QMap<QString, QVariant> tmpMap)
 //    qDebug() << Q_FUNC_INFO << min  << max << (max-min)*10 << this->value() << cur_value;
 }
 
+void mySlider::keyPressEvent(QKeyEvent *event)
+{
+    // qDebug() << Q_FUNC_INFO << event->key();
+    QAbstractSlider::keyPressEvent(event);
+    if(event->key() == Qt::Key_Left || event->key() == Qt::Key_Right){
+        updateTipLabel();
+    }
+}
+
 void mySlider::mousePressEvent(QMouseEvent *event)
 {
 //    if(!tiplable->isVisible())
@@ -128,15 +137,25 @@ void mySlider::mouseReleaseEvent(QMouseEvent *event)
 //    {
 //        tiplable->setVisible(false);
 //    }
-    tiplable->setText(QString::number(this->value())+"MHz");
-    tiplable->move((this->width()-tiplable->width())*(this->value()-min*1000)/(this->maximum()-this->minimum()),5);
+    updateTipLabel();
     QSlider::mouseReleaseEvent(event);
 }
 
 void mySlider::mouseMoveEvent(QMouseEvent *event)
 {
     qDebug() << Q_FUNC_INFO << event->pos().rx();
+    updateTipLabel();
+    QSlider::mouseMoveEvent(event);
+}
+
+void mySlider::wheelEvent(QWheelEvent *event)
+{
+    QAbstractSlider::wheelEvent(event);
+    updateTipLabel();
+}
+
+void mySlider::updateTipLabel()
+{
     tiplable->setText(QString::number(this->value())+"MHz");
     tiplable->move((this->width()-tiplable->width())*(this->value()-min*1000)/(this->maximum()-this->minimum()),5);
-    QSlider::mouseMoveEvent(event);
 }
