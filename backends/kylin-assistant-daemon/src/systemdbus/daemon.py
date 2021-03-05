@@ -861,7 +861,7 @@ class Daemon(PolicyKitService):
     def get_inputdev_info(self):
         return self.infoconf.get_input(self)
 
-    @dbus.service.signal(INTERFACE, signature='as')
+    @dbus.service.signal(INTERFACE, signature='aas')
     def inputdev_info_signal(self, msg):
         print(msg)
         pass
@@ -874,7 +874,7 @@ class Daemon(PolicyKitService):
     def get_multimediadev_info(self):
         return self.infoconf.get_multimedia2(self)
 
-    @dbus.service.signal(INTERFACE, signature='as')
+    @dbus.service.signal(INTERFACE, signature='aas')
     def multimediadev_info_signal(self, msg):
         print(msg)
         pass
@@ -887,7 +887,7 @@ class Daemon(PolicyKitService):
     def get_communicationdev_info(self):
         return self.infoconf.get_communication(self)
 
-    @dbus.service.signal(INTERFACE, signature='as')
+    @dbus.service.signal(INTERFACE, signature='aas')
     def communicationdev_info_signal(self, msg):
         print(msg)
         pass
@@ -900,7 +900,7 @@ class Daemon(PolicyKitService):
     def get_displaydev_info(self):
         return self.infoconf.get_display(self)
 
-    @dbus.service.signal(INTERFACE, signature='as')
+    @dbus.service.signal(INTERFACE, signature='aas')
     def displaydev_info_signal(self, msg):
         print(msg)
         pass

@@ -25,6 +25,7 @@
 #include <QPointer>
 #include <QPainter>
 #include <QStyleOption>
+#include <QDBusArgument>
 
 InfoWidget::InfoWidget(QString machine, QWidget *parent) :
     QWidget(parent), arch(machine)
@@ -91,20 +92,20 @@ void InfoWidget::paintEvent(QPaintEvent *event)
 }
 
 void InfoWidget::resetInfoLeftListUI(QStringList keys){
-    QList<QListWidgetItem *> items;
-    for (int i = 0; i < category_widget->count(); i++){
-        QListWidgetItem * item = category_widget->item(i);
-        if (keys.contains(item->statusTip())){
-            items.append(item);
-        }
-    }
+    // QList<QListWidgetItem *> items;
+    // for (int i = 0; i < category_widget->count(); i++){
+    //     QListWidgetItem * item = category_widget->item(i);
+    //     if (keys.contains(item->statusTip())){
+    //         items.append(item);
+    //     }
+    // }
 
-    /* 去掉不存在的页面 */
-    foreach (QListWidgetItem * pItem, items) {
-        category_widget->blockSignals(true);
-        category_widget->takeItem(category_widget->row(pItem));
-        category_widget->blockSignals(false);
-    }
+    // /* 去掉不存在的页面 */
+    // foreach (QListWidgetItem * pItem, items) {
+    //     category_widget->blockSignals(true);
+    //     category_widget->takeItem(category_widget->row(pItem));
+    //     category_widget->blockSignals(false);
+    // }
 
 }
 
@@ -979,7 +980,6 @@ void InfoWidget::onSendAudioInfo(QMap<QString, QVariant> tmpMap)
                                 } else {
                                     page->loadOnePage(0, tr("Audio Info %1").arg(i+1), audio_info_map);
                                 }
-
                                 break;
                             }
                         }
@@ -992,17 +992,20 @@ void InfoWidget::onSendAudioInfo(QMap<QString, QVariant> tmpMap)
 }
 
 void InfoWidget::onSendInputInfo(QDBusMessage msg){
-    QVariant temp = msg.arguments().takeFirst();
-    QStringList inputInfo = temp.value< QStringList>();
-    if (inputInfo.isEmpty())
-        return;
+    // qDebug() << msg;
+    const QDBusArgument &dbusArg = msg.arguments().at(0).value<QDBusArgument>();
+    QList<QStringList> inputInfos;
+    dbusArg >> inputInfos;
+    // qDebug() << inputInfos;
+//    if (inputInfo.isEmpty())
+//        return;
 
-    QMap<QString, QVariant> m1;
-    for (QStringList::iterator it = inputInfo.begin(); it != inputInfo.end(); it++){
-        QString s1 = *it;
-        QStringList st1 = s1.split(":");
-        m1.insert(st1.at(0), st1.at(1));
-    }
+//    QMap<QString, QVariant> m1;
+//    for (QStringList::iterator it = inputInfo.begin(); it != inputInfo.end(); it++){
+//        QString s1 = *it;
+//        QStringList st1 = s1.split(":");
+//        m1.insert(st1.at(0), st1.at(1));
+//    }
 
     for (int i = 0; i < stacked_widget->count(); i++) {
         if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
@@ -1014,8 +1017,19 @@ void InfoWidget::onSendInputInfo(QDBusMessage msg){
                     page->clearWidget();
                     firstLoadInputDev = false;
                 }
-
-                page->loadOnePage(0, tr("Input Info"), m1);
+                if (inputInfos.isEmpty()){
+                    page->errorPage(tr("Input Info"));
+                } else {
+                    for (QList<QStringList>::iterator it1 = inputInfos.begin(); it1 != inputInfos.end(); it1++){
+                        QMap<QString, QVariant> m1;
+                        QStringList inputInfo = *it1;
+                        for (QStringList::iterator it2 = inputInfo.begin(); it2 != inputInfo.end(); it2++){
+                            QString s1 = *it2;
+                            m1.insert(s1.section(':', 0, 0), s1.section(':', 1));
+                        }
+                        page->loadOnePage(0, tr("Input Info"), m1);
+                    }
+                }
                 break;
             }
         }
@@ -1023,17 +1037,18 @@ void InfoWidget::onSendInputInfo(QDBusMessage msg){
 }
 
 void InfoWidget::onSendCommunicationInfo(QDBusMessage msg){
-    QVariant temp = msg.arguments().takeFirst();
-    QStringList communicationInfo = temp.value< QStringList>();
-    if (communicationInfo.isEmpty())
-        return;
+    const QDBusArgument &dbusArg = msg.arguments().at(0).value<QDBusArgument>();
+    QList<QStringList> communicationInfos;
+    dbusArg >> communicationInfos;
+//    if (communicationInfo.isEmpty())
+//        return;
 
-    QMap<QString, QVariant> m1;
-    for (QStringList::iterator it = communicationInfo.begin(); it != communicationInfo.end(); it++){
-        QString s1 = *it;
-        QStringList st1 = s1.split(":");
-        m1.insert(st1.at(0), st1.at(1));
-    }
+//    QMap<QString, QVariant> m1;
+//    for (QStringList::iterator it = communicationInfo.begin(); it != communicationInfo.end(); it++){
+//        QString s1 = *it;
+//        QStringList st1 = s1.split(":");
+//        m1.insert(st1.at(0), st1.at(1));
+//    }
 
     for (int i = 0; i < stacked_widget->count(); i++) {
         if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
@@ -1045,10 +1060,22 @@ void InfoWidget::onSendCommunicationInfo(QDBusMessage msg){
                     page->clearWidget();
                     firstLoadCommunicationDev = false;
                 }
-                if(m1["capabilities"].toString().indexOf("bluetooth",Qt::CaseInsensitive) != -1)
-                    page->loadOnePage(0, tr("Bluetooth Info"), m1);
-                else
-                    page->loadOnePage(0, tr("Communication Info"), m1);
+                if (communicationInfos.isEmpty()){
+                    page->errorPage(tr("Communication Info"));
+                } else {
+                    for (QList<QStringList>::iterator it1 = communicationInfos.begin(); it1 != communicationInfos.end(); it1++){
+                        QMap<QString, QVariant> m1;
+                        QStringList communicationInfo = *it1;
+                        for (QStringList::iterator it2 = communicationInfo.begin(); it2 != communicationInfo.end(); it2++){
+                            QString s1 = *it2;
+                            m1.insert(s1.section(':', 0, 0), s1.section(':', 1));
+                        }
+                        if(m1["capabilities"].toString().indexOf("bluetooth",Qt::CaseInsensitive) != -1)
+                            page->loadOnePage(0, tr("Bluetooth Info"), m1);
+                        else
+                            page->loadOnePage(0, tr("Communication Info"), m1);
+                    }
+                }
                 break;
             }
         }
@@ -1056,17 +1083,18 @@ void InfoWidget::onSendCommunicationInfo(QDBusMessage msg){
 }
 
 void InfoWidget::onSendDisplayInfo(QDBusMessage msg){
-    QVariant temp = msg.arguments().takeFirst();
-    QStringList displayInfo = temp.value< QStringList>();
-    if (displayInfo.isEmpty())
-        return;
+    const QDBusArgument &dbusArg = msg.arguments().at(0).value<QDBusArgument>();
+    QList<QStringList> displayInfos;
+    dbusArg >> displayInfos;
+//    if (displayInfo.isEmpty())
+//        return;
 
-    QMap<QString, QVariant> m1;
-    for (QStringList::iterator it = displayInfo.begin(); it != displayInfo.end(); it++){
-        QString s1 = *it;
-        QStringList st1 = s1.split(":");
-        m1.insert(st1.at(0), st1.at(1));
-    }
+//    QMap<QString, QVariant> m1;
+//    for (QStringList::iterator it = displayInfo.begin(); it != displayInfo.end(); it++){
+//        QString s1 = *it;
+//        QStringList st1 = s1.split(":");
+//        m1.insert(st1.at(0), st1.at(1));
+//    }
 
     for (int i = 0; i < stacked_widget->count(); i++) {
         if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
@@ -1078,8 +1106,19 @@ void InfoWidget::onSendDisplayInfo(QDBusMessage msg){
                     page->clearWidget();
                     firstLoadDisplayDev = false;
                 }
-
-                page->loadOnePage(0, tr("Display Info"), m1);
+                if (displayInfos.isEmpty()){
+                    page->errorPage(tr("Display Info"));
+                } else {
+                    for (QList<QStringList>::iterator it1 = displayInfos.begin(); it1 != displayInfos.end(); it1++){
+                        QMap<QString, QVariant> m1;
+                        QStringList displayInfo = *it1;
+                        for (QStringList::iterator it2 = displayInfo.begin(); it2 != displayInfo.end(); it2++){
+                            QString s1 = *it2;
+                            m1.insert(s1.section(':', 0, 0), s1.section(':', 1));
+                        }
+                        page->loadOnePage(0, tr("Display Info"), m1);
+                    }
+                }
                 break;
             }
         }
@@ -1087,17 +1126,18 @@ void InfoWidget::onSendDisplayInfo(QDBusMessage msg){
 }
 
 void InfoWidget::onSendMultimediaInfo(QDBusMessage msg){
-    QVariant temp = msg.arguments().takeFirst();
-    QStringList multimediaInfo = temp.value< QStringList>();
-    if (multimediaInfo.isEmpty())
-        return;
+    const QDBusArgument &dbusArg = msg.arguments().at(0).value<QDBusArgument>();
+    QList<QStringList> multimediaInfos;
+    dbusArg >> multimediaInfos;
+//    if (multimediaInfo.isEmpty())
+//        return;
 
-    QMap<QString, QVariant> m1;
-    for (QStringList::iterator it = multimediaInfo.begin(); it != multimediaInfo.end(); it++){
-        QString s1 = *it;
-        QStringList st1 = s1.split(":");
-        m1.insert(st1.at(0), st1.at(1));
-    }
+//    QMap<QString, QVariant> m1;
+//    for (QStringList::iterator it = multimediaInfo.begin(); it != multimediaInfo.end(); it++){
+//        QString s1 = *it;
+//        QStringList st1 = s1.split(":");
+//        m1.insert(st1.at(0), st1.at(1));
+//    }
 
     for (int i = 0; i < stacked_widget->count(); i++) {
         if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
@@ -1109,8 +1149,19 @@ void InfoWidget::onSendMultimediaInfo(QDBusMessage msg){
                     page->clearWidget();
                     firstLoadMultiMediaDev = false;
                 }
-
-                page->loadOnePage(0, tr("Multimedia Info"), m1);
+                if (multimediaInfos.isEmpty()){
+                    page->errorPage(tr("Multimedia Info"));
+                } else {
+                    for (QList<QStringList>::iterator it1 = multimediaInfos.begin(); it1 != multimediaInfos.end(); it1++){
+                        QMap<QString, QVariant> m1;
+                        QStringList multimediaInfo = *it1;
+                        for (QStringList::iterator it2 = multimediaInfo.begin(); it2 != multimediaInfo.end(); it2++){
+                            QString s1 = *it2;
+                            m1.insert(s1.section(':', 0, 0), s1.section(':', 1));
+                        }
+                        page->loadOnePage(0, tr("Multimedia Info"), m1);
+                    }
+                }
                 break;
             }
         }

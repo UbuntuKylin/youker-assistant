@@ -1660,15 +1660,16 @@ class DetailInfo:
                     continue
                 if ":" not in line2:
                     continue
-                modlist[index].append(line2.strip());
+                modlist[index].append(line2.strip())
                 #results = line2.split(":")
                 #modlist[index].update({results[0].strip() : results[1].strip()})
 
-        for var in modlist:
-            pprint(var)
-            sysdaemon.emit_inputdev_info_signal(var)
+        # for var in modlist:
+        #     pprint(var)
+        sysdaemon.emit_inputdev_info_signal(modlist)
 
-        return False if index == -1 else True
+        # return False if index == -1 else True
+        return True
 
     def get_multimedia2(self, sysdaemon):
         cmd = ["lshw", "-C", "multimedia"]
@@ -1688,15 +1689,16 @@ class DetailInfo:
                     continue
                 if ":" not in line2:
                     continue
-                modlist[index].append(line2.strip());
+                modlist[index].append(line2.strip())
                 #results = line2.split(":")
                 #modlist[index].update({results[0].strip() : results[1].strip()})
 
-        for var in modlist:
-            pprint(var)
-            sysdaemon.emit_multimediadev_info_signal(var)
+        # for var in modlist:
+        #     pprint(var)
+        sysdaemon.emit_multimediadev_info_signal(modlist)
 
-        return False if index == -1 else True
+        # return False if index == -1 else True
+        return True
 
     def get_communication(self, sysdaemon):
         cmd = ["lshw", "-C", "communication"]
@@ -1716,15 +1718,16 @@ class DetailInfo:
                     continue
                 if ":" not in line2:
                     continue
-                modlist[index].append(line2.strip());
+                modlist[index].append(line2.strip())
                 #results = line2.split(":")
                 #modlist[index].update({results[0].strip() : results[1].strip()})
 
-        for var in modlist:
-            pprint(var)
-            sysdaemon.emit_communicationdev_info_signal(var)
+        # for var in modlist:
+        #     pprint(var)
+        sysdaemon.emit_communicationdev_info_signal(modlist)
 
-        return False if index == -1 else True
+        # return False if index == -1 else True
+        return True
 
     def get_display(self, sysdaemon):
         cmd = ["lshw", "-C", "display"]
@@ -1754,11 +1757,12 @@ class DetailInfo:
                 index += 1
                 modlist.append(hw990_res)
 
-        for var in modlist:
-            pprint(var)
-            sysdaemon.emit_displaydev_info_signal(var)
+        # for var in modlist:
+        #     pprint(var)
+        sysdaemon.emit_displaydev_info_signal(modlist)
 
-        return False if index == -1 else True
+        # return False if index == -1 else True
+        return True
 
     def get_display_hw990(self):
         wayland_sock = glob.glob('/run/user/*/wayland-0')[0]
