@@ -161,6 +161,7 @@ private:
     DataWorker *m_dataWorker = nullptr;
     QWidget *centralWidget = nullptr;
     UDevHotPlugin *m_udevHotPlugin = nullptr;
+    // QMap<QString,QVariant> m_cpuFreqRange;
 
     QMap<QString,bool> info;
     int rr_event_base = 0;

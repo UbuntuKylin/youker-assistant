@@ -34,6 +34,7 @@ public:
     void set_fan(bool f);
     void set_cpuFm(bool f);
     void RefreshCPUFMCheckStatus();
+    void set_cpuFreqRange(QMap<QString, QVariant> cpuFreqRange);
 signals:
     void requestcpuTemperature();
     void sendTemperaturedata(QMap<QString, QVariant> tmpMap);
@@ -52,7 +53,8 @@ private slots:
     void onsendTemperaturedata(QMap<QString, QVariant> tmpMap);
 
     void changewidgetpage(QListWidgetItem*);
-    void sendcpurangedata(QMap<QString, QVariant> tmpMap);
+    // void sendcpurangedata(QMap<QString, QVariant> tmpMap);
+    // void gotCpuRange(QMap<QString,QVariant> tmpMap);
 
 private:
     QSplitter *splitter;
@@ -67,6 +69,7 @@ private:
 
     QStringList governer_list;
     QString cur_governer;
+    QMap<QString, QVariant> m_cpuFreqRange;
 
     bool m_temperature = true;
     bool m_fan = true;
