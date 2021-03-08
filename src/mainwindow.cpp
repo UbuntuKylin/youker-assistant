@@ -76,6 +76,7 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
     , arch(cur_arch)
     , display_count(d_count)
 {
+    this->hide();
     qDebug() << Q_FUNC_INFO ;
     GlobalData::globalarch = this->arch;
 
@@ -699,7 +700,7 @@ void MainWindow::onInitDataFinished()
 //    list_widget->setBatteryAndSensor(this->battery,this->sensor,this->info);
 //    list_widget->InitInfowidgetUI();
 
-//    m_dataWorker->onRequestPartInfoAgain();
+    m_dataWorker->onRequestPartInfoAgain();
 //    monitorwidget->InitUI();
 
     monitorwidget->set_governer_list(m_cpulist);
@@ -711,6 +712,7 @@ void MainWindow::onInitDataFinished()
     monitorwidget->InitUI();
 
     this->startUDevHotPlugin();
+    this->show();
 }
 
 void MainWindow::moveCenter()

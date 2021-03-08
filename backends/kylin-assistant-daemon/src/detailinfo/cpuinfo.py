@@ -1671,6 +1671,63 @@ class DetailInfo:
         # return False if index == -1 else True
         return True
 
+    ## parse info from /proc/bus/input/devices
+    ## only send keyboard\mouse\touchpad info
+    def get_input2(self, sysdaemon):
+        result_list = []
+        if os.path.exists('/proc/bus/input/devices'):
+            with open('/proc/bus/input/devices', 'r') as f:
+                lines = f.readlines()
+                dev_info_lines = []
+                should_insert = False
+                #I: Bus=0011 Vendor=0001 Product=0001 Version=ab41
+                #N: Name="AT Translated Set 2 keyboard" *
+                #P: Phys=isa0060/serio0/input0 *
+                #S: Sysfs=/devices/platform/i8042/serio0/input/input3
+                #U: Uniq=
+                #H: Handlers=sysrq kbd event3 leds 
+                #B: PROP=0
+                #B: EV=120013 ***
+                #B: KEY=402000000 3803078f800d001 feffffdfffefffff fffffffffffffffe
+                #B: MSC=10
+                #B: LED=7
+                for line in lines:
+                    if line[0] != '\n':
+                        print(line)
+                        data = line.split(':', 1)[1].strip()
+                        key, value = data.split('=', 1)
+                        # trans to 'key: value'
+                        if key == 'Name':
+                            dev_info_lines.append(': '.join(['product', value.strip('\"')]))
+                        if key == 'Phys':
+                            dev_info_lines.append(': '.join(['address', value.strip('\"')]))
+                        # judge type from EV
+                        if key == 'EV':
+                            event_bitmask = int(value, 16)
+                            ## REL|ABS => misc dev
+                            if event_bitmask & 0xc == 0xc:
+                                continue
+                            ## keyboard
+                            elif event_bitmask & 0x120003 == 0x120003:
+                                should_insert = True
+                                dev_info_lines.append('description: keyboard')
+                            ## mouse
+                            elif event_bitmask & 0x7 == 0x7:
+                                should_insert = True
+                                dev_info_lines.append('description: mouse')
+                            ## touchpad
+                            elif event_bitmask & 0xb == 0xb:
+                                should_insert = True
+                                dev_info_lines.append('description: touchpad')
+                    else: # blank line => end of a device
+                        if should_insert:
+                            result_list.append(dev_info_lines)
+                        dev_info_lines = []
+                        should_insert = False
+        sysdaemon.emit_inputdev_info_signal(result_list)
+        # print(result_list)
+        return True
+
     def get_multimedia2(self, sysdaemon):
         cmd = ["lshw", "-C", "multimedia"]
         pipe = subprocess.Popen(cmd, env={'LANGUAGE':'en:'}, stdout=subprocess.PIPE)
@@ -2557,10 +2614,11 @@ if __name__ == "__main__":
     #cc.get_cpu()
     #cc.get_board()
     #cc.get_memory()
-    pprint(cc.get_cpu_range())
+    # pprint(cc.get_cpu_range())
     #cc.get_disk()
     #cc.get_network()
     #cc.get_multimedia()
     #cc.get_dvd()
     #cc.get_usb()
     #pprint(cc.get_network())
+    cc.get_input2(None)

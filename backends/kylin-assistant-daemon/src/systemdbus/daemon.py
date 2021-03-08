@@ -859,7 +859,7 @@ class Daemon(PolicyKitService):
     # check and save current plymouth when init
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
     def get_inputdev_info(self):
-        return self.infoconf.get_input(self)
+        return self.infoconf.get_input2(self)
 
     @dbus.service.signal(INTERFACE, signature='aas')
     def inputdev_info_signal(self, msg):

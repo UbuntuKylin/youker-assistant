@@ -121,7 +121,7 @@ void DataWorker::doWork()
     this->initDataWorker();
     emit dataLoadFinished();
 
-    onRequestPartInfoAgain();
+    // onRequestPartInfoAgain();
 }
 
 const QStringList DataWorker::cpuModeList() const
