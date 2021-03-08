@@ -713,6 +713,7 @@ void MainWindow::onInitDataFinished()
 
     this->startUDevHotPlugin();
     this->show();
+    this->raise();
 }
 
 void MainWindow::moveCenter()
@@ -731,8 +732,9 @@ void MainWindow::moveCenter()
 
     this->move(primaryGeometry.x() + (primaryGeometry.width() - this->width())/2,
                primaryGeometry.y() + (primaryGeometry.height() - this->height())/2);
-    this->show();
-    this->raise();
+    // show after initialization
+    // this->show();
+    // this->raise();
 }
 
 void MainWindow::onPluginModuleError(const QString &info)
