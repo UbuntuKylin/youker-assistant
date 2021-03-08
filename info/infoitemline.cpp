@@ -377,11 +377,11 @@ inline const QString covertKeyName(const QString &key)
     else if (key == "bus info") //
         return QString(QObject::tr("Bus Address"));
     else if (key == "version") //
-        return QString(QObject::tr("InputVersion"));
+        return QString(QObject::tr("Hardware Version"));
     else if (key == "capabilities") //
         return QString(QObject::tr("Capabilities"));
     else if (key == "product") //
-        return QString(QObject::tr("InputProduct"));
+        return QString(QObject::tr("Product"));
     else if (key == "configuration") //
         return QString(QObject::tr("Configuration"));
     else if (key == "physical id") //
@@ -404,6 +404,10 @@ inline const QString covertKeyName(const QString &key)
         return QString(QObject::tr("GL Version"));
     else if (key == "GLSL version")
         return QString(QObject::tr("GLSL Version"));
+
+    // for input device info
+    else if (key == "address")
+        return QString(QObject::tr("Hardware Address"));
 
     else
         return key;
@@ -462,7 +466,17 @@ void InfoItemLine::setInfoValue(const QString &value)
     m_valueLabel->setStyleSheet("background-color:rgb(237,238,239);color:black;");
     m_valueLabel->setIndent(5);
     if(value.length() >= 51){
-        elided_text.insert(48,"  ");
+        bool replaced = false;
+        for(int i = 50; i >= value.length() / 2; i--){
+            if(value[i] == ' '){
+                elided_text.replace(i, 1, "\n");
+                replaced = true;
+                break;
+            }
+        }
+        if(!replaced){
+            elided_text.insert(48,"\n");
+        }
         m_valueLabel->setFixedSize(461,60);
         m_valueLabel->setWordWrap(true);
         m_valueLabel->adjustSize();

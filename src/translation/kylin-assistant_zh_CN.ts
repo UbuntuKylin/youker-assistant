@@ -3330,8 +3330,8 @@ Are you sure to continue?</source>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="380"/>
-        <source>InputVersion</source>
-        <translation>输入设备版本</translation>
+        <source>Hardware Version</source>
+        <translation>设备版本</translation>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="382"/>
@@ -3340,8 +3340,8 @@ Are you sure to continue?</source>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="384"/>
-        <source>InputProduct</source>
-        <translation>输入设备型号</translation>
+        <source>Product</source>
+        <translation>设备型号</translation>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="386"/>
@@ -3392,6 +3392,11 @@ Are you sure to continue?</source>
         <location filename="../../info/infoitemline.cpp" line="406"/>
         <source>GLSL Version</source>
         <translation>GLSL版本</translation>
+    </message>
+    <message>
+        <location filename="../../info/infoitemline.cpp" line="410"/>
+        <source>Hardware Address</source>
+        <translation>硬件地址</translation>
     </message>
     <message>
         <location filename="../../setting/settingdelegate.cpp" line="30"/>
