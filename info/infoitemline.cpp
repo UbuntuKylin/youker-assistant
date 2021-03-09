@@ -409,6 +409,18 @@ inline const QString covertKeyName(const QString &key)
     else if (key == "address")
         return QString(QObject::tr("Hardware Address"));
 
+    // for hw990 bluetooth info
+    else if (key == "bluetooth version")
+        return QString(QObject::tr("Bluetooth Version"));
+    else if (key == "bus")
+        return QString(QObject::tr("Bus Type"));
+    else if (key == "device class")
+        return QString(QObject::tr("Device Class"));
+    else if (key == "manufacturer")
+        return QString(QObject::tr("Manufacturer"));
+    else if (key == "service classes")
+        return QString(QObject::tr("Service Classes"));
+
     else
         return key;
 }

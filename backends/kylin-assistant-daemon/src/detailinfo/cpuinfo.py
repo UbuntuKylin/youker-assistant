@@ -1778,6 +1778,41 @@ class DetailInfo:
                 modlist[index].append(line2.strip())
                 #results = line2.split(":")
                 #modlist[index].update({results[0].strip() : results[1].strip()})
+        if Judgment_HW990():
+            # hci0:	Type: Primary  Bus: USB *
+            #         BD Address: E4:B3:18:E8:3A:13 *  ACL MTU: 1021:4  SCO MTU: 96:6
+            #         UP RUNNING 
+            #         RX bytes:211760108 acl:3036462 sco:0 events:3616734 errors:0
+            #         TX bytes:631327 acl:1614 sco:0 commands:3108 errors:0
+            #         Features: 0xbf 0xfe 0x0f 0xfe 0xdb 0xff 0x7b 0x87
+            #         Packet type: DM1 DM3 DM5 DH1 DH3 DH5 HV1 HV2 HV3 
+            #         Link policy: RSWITCH SNIFF 
+            #         Link mode: SLAVE ACCEPT 
+            #         Name: 'wd-Lenovo-ideapad-710S-13ISK'
+            #         Class: 0x1c010c
+            #         Service Classes: Rendering, Capturing, Object Transfer *
+            #         Device Class: Computer, Laptop *
+            #         HCI Version: 4.2 (0x8) *  Revision: 0x100
+            #         LMP Version: 4.2 (0x8)  Subversion: 0x100
+            #         Manufacturer: Intel Corp. (2) *
+            ret, hci_output = subprocess.getstatusoutput('hciconfig -a')
+            if ret == 0:
+                hci_output = hci_output.split('\n')
+                kirin_bt_info = []
+                bus = re.split(r'\s+', hci_output[0])[4].strip()
+                kirin_bt_info.append('bus: ' + bus)
+                address = re.split(r'\s+', hci_output[1])[3].strip()
+                kirin_bt_info.append('address: ' + address.lower())
+                print(re.split(r'\s+', hci_output[1]))
+                service_classes = hci_output[11].split(':')[1].strip()
+                kirin_bt_info.append('service classes: ' + service_classes)
+                device_class = hci_output[12].split(':')[1].strip()
+                kirin_bt_info.append('device class: ' + device_class)
+                version = re.split(r'\s+', hci_output[13])[3].strip()
+                kirin_bt_info.append('bluetooth version: ' + version)
+                manufacturer = hci_output[15].split('(')[0].split(':')[1].strip()
+                kirin_bt_info.append('manufacturer: ' + manufacturer)
+                modlist.append(kirin_bt_info)
 
         # for var in modlist:
         #     pprint(var)
@@ -2621,4 +2656,4 @@ if __name__ == "__main__":
     #cc.get_dvd()
     #cc.get_usb()
     #pprint(cc.get_network())
-    cc.get_input2(None)
+    cc.get_communication(None)

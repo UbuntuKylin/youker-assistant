@@ -1070,7 +1070,7 @@ void InfoWidget::onSendCommunicationInfo(QDBusMessage msg){
                             QString s1 = *it2;
                             m1.insert(s1.section(':', 0, 0), s1.section(':', 1));
                         }
-                        if(m1["capabilities"].toString().indexOf("bluetooth",Qt::CaseInsensitive) != -1)
+                        if(m1["capabilities"].toString().indexOf("bluetooth",Qt::CaseInsensitive) != -1 || m1.contains("bluetooth version"))
                             page->loadOnePage(0, tr("Bluetooth Info"), m1);
                         else
                             page->loadOnePage(0, tr("Communication Info"), m1);

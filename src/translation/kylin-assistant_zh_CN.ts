@@ -2718,7 +2718,7 @@ Are you sure to continue?</source>
     <message>
         <location filename="../../info/infoitemline.cpp" line="40"/>
         <source>Manufacturer</source>
-        <translation>发行商</translation>
+        <translation>制造商</translation>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="81"/>
@@ -3397,6 +3397,26 @@ Are you sure to continue?</source>
         <location filename="../../info/infoitemline.cpp" line="410"/>
         <source>Hardware Address</source>
         <translation>硬件地址</translation>
+    </message>
+    <message>
+        <location filename="../../info/infoitemline.cpp" line="414"/>
+        <source>Bluetooth Version</source>
+        <translation>蓝牙版本</translation>
+    </message>
+    <message>
+        <location filename="../../info/infoitemline.cpp" line="418"/>
+        <source>Bus Type</source>
+        <translation>总线类型</translation>
+    </message>
+    <message>
+        <location filename="../../info/infoitemline.cpp" line="422"/>
+        <source>Device Class</source>
+        <translation>设备类型</translation>
+    </message>
+    <message>
+        <location filename="../../info/infoitemline.cpp" line="430"/>
+        <source>Service Classes</source>
+        <translation>服务类型</translation>
     </message>
     <message>
         <location filename="../../setting/settingdelegate.cpp" line="30"/>
