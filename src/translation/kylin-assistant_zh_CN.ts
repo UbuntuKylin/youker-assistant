@@ -724,6 +724,11 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <source>Sound-Card</source>
         <translation>声卡驱动</translation>
     </message>
+    <message>
+        <location filename="../../component/drivepagewidget.cpp" line="204"/>
+        <source>Wireless-Network-Card</source>
+        <translation>无线网卡驱动</translation>
+    </message>
 </context>
 <context>
     <name>Drivewidget</name>

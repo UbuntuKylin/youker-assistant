@@ -39,11 +39,13 @@ QStringList DeviceManager::getDeviceMsg(){
     QStringList deviceMsgList;
     for (int i = 0;i < tmpList.size();i ++) {
         QString str = tmpList.at(i);
+//        qDebug() << str;
         if(str.startsWith("\t") == false){
             if(tmps != ""){
                 deviceMsgList.append(tmps);
             }
             tmps = str.mid(str.indexOf(" "));
+//            qDebug() << tmps;
         }else{
             QStringList tmparr = str.split(":");
             if(tmparr.at(0).indexOf("Kernel driver in use") != -1){
@@ -58,5 +60,27 @@ QStringList DeviceManager::getDeviceMsg(){
             }
         }
     }
+    if(tmps != ""){
+        deviceMsgList.append(tmps);
+    }
+    if(isHW990()){
+        //add graphics & sound
+        deviceMsgList.append("VGA compatible controller: Mali-G76;driver in use:mali");
+        deviceMsgList.append("Audio device:da_combine_v5;driver in use:hi3xxx_DA_combine_v5");
+    }
+    qDebug() << deviceMsgList;
     return deviceMsgList;
+}
+
+bool DeviceManager::isHW990(){
+    QFile file("/proc/cpuinfo");
+    bool isHW990 = false;
+    bool ret = file.open(QIODevice::ReadOnly|QIODevice::Text);
+    if (ret){
+        QString all = file.readAll();
+        if(all.contains("HUAWEI Kirin 990")){
+            isHW990 = true;
+        }
+    }
+    return isHW990;
 }

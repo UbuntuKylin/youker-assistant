@@ -103,7 +103,7 @@ void DrivePageWidget::InitPageUI(QMap<QString, QVariant> tmpMap)
 
     int i;
     for(it = map.begin(),i = 1; it!= map.end() ;i++,++it){
-//        qDebug() << it.key() << it.value().toString();
+        qDebug() << it.key() << it.value().toString();
         QFrame *item = new QFrame();
 //        if( (i%2) != 0 )
 //        {
@@ -129,6 +129,7 @@ void DrivePageWidget::InitPageUI(QMap<QString, QVariant> tmpMap)
 
 //        qDebug() << it.value().toString() << it.value().toString().length();
         name->setText(it.value().toString());
+        qDebug() << it.value();
         if(it.value().toString().length() >= 77)
             name->setToolTip(it.value().toString());
 
@@ -175,7 +176,7 @@ QStringList DrivePageWidget::getWhichDrive(QString p)
         v << "Other" << tr("Other");
         return v;
     }
-    else if(p == "Communication controller"){
+    else if(p == "Ethernet controller"){
         v << "Wired-Network-Card" << tr("Wired-Network-Card");
         return v;
     }
@@ -199,8 +200,9 @@ QStringList DrivePageWidget::getWhichDrive(QString p)
         v << "Other" << tr("Other");
         return v;
     }
-    else if(p == "Ethernet controller"){
-        v << "Wired-Network-Card" << tr("Wired-Network-Card");
+    // almost every "network controller" is wireless network controller
+    else if(p == "Network controller"){
+        v << "Wireless-Network-Card" << tr("Wireless-Network-Card");
         return v;
     }
     else
