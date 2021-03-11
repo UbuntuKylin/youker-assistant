@@ -41,6 +41,7 @@ public:
     void set_cpu_listAndCur(QStringList list,QString string);
     void RefreshCheckStatus();
     void getCpuRange(QMap<QString,QVariant>);
+    bool isHW990();
 signals:
     void setCpuGoverner(QString);
     void RequestCPUFrequencyData();
