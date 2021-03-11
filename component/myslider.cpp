@@ -102,7 +102,7 @@ void mySlider::setRangeLable(QMap<QString, QVariant> tmpMap)
         }
     }
 
-    this->setRange(min*1000,max*1000+1);
+    this->setRange(min*1000,max*1000);
     this->setValue(cur_value);
     tiplable->setText(QString::number(cur_value)+"MHz");
     tiplable->move((this->width()-tiplable->width())*(this->value()-min*1000)/(this->maximum()-this->minimum()),5);

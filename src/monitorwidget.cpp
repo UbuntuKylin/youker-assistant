@@ -73,12 +73,12 @@ void Monitorwidget::InitUI()
         cpu_fm->set_cpu_listAndCur(governer_list,cur_governer);
         cpu_fm->InitUI();
         stackedwidget->addWidget(cpu_fm);
-        connect(this,SIGNAL(onsendcpurangedata(QMap<QString,QVariant>)),cpu_fm,SLOT(getCpuRange(QMap<QString,QVariant>)));
+        // connect(this,SIGNAL(onsendcpurangedata(QMap<QString,QVariant>)),this,SLOT(gotCpuRange(QMap<QString,QVariant>)));
         connect(cpu_fm,SIGNAL(setCpuGoverner(QString)),this,SIGNAL(setCpuGoverner(QString)));
         connect(this,SIGNAL(SendCPUFrequencyData(QMap<QString,QVariant>)),cpu_fm,SLOT(ProcessingCPUFrequencyData(QMap<QString,QVariant>)));
         connect(cpu_fm,SIGNAL(RequestCPUFrequencyData()),this,SIGNAL(RequestCPUFrequencyData()));
-        cpu_fm->hide();
-        emit this->requestcpurange();
+        // emit this->requestcpurange();
+        cpu_fm->getCpuRange(this->m_cpuFreqRange);
     }
         //    qDebug() << Q_FUNC_INFO <<this->governer_list << this->cur_governer;
 
@@ -129,6 +129,11 @@ void Monitorwidget::set_cpuFm(bool f)
     this->m_cpufm = f;
 }
 
+void Monitorwidget::set_cpuFreqRange(QMap<QString, QVariant> cpuFreqRange)
+{
+    this->m_cpuFreqRange = cpuFreqRange;
+}
+
 void Monitorwidget::RefreshCPUFMCheckStatus()
 {
     cpu_fm->RefreshCheckStatus();
@@ -169,8 +174,14 @@ void Monitorwidget::changewidgetpage(QListWidgetItem *item)
     }
 }
 
-void Monitorwidget::sendcpurangedata(QMap<QString, QVariant> tmpMap)
-{
-//    qDebug() << Q_FUNC_INFO << tmpMap;
-    emit this->onsendcpurangedata(tmpMap);
-}
+// void Monitorwidget::sendcpurangedata(QMap<QString, QVariant> tmpMap)
+// {
+// //    qDebug() << Q_FUNC_INFO << tmpMap;
+//     emit this->onsendcpurangedata(tmpMap);
+// }
+
+// void Monitorwidget::gotCpuRange(QMap<QString,QVariant> tmpMap)
+// {
+//     cpu_fm->getCpuRange(tmpMap);
+//     this->show();
+// }

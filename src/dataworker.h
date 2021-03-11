@@ -49,6 +49,7 @@ public:
 
     const QStringList cpuModeList() const;
     const QString cpuCurrentMode() const;
+    const QMap<QString,QVariant> cpuFreqRange() const;
 
     QMap<QString,bool> onRequesetAllInfoIsHaveValue();
 
@@ -230,7 +231,7 @@ public slots:
     //monitor
     void onRequestCpuTemperature();
 
-    void onRequesetCpuRange();
+    // void onRequesetCpuRange();
     void onRequestCpuAverageFrequency();
     void onRequestFanInfo();
 
@@ -360,7 +361,7 @@ signals:
     //monitor
     void sendCpuTemperaturedata(QMap<QString, QVariant> tmpMap);
 
-    void sendCpuRangedata(QMap<QString,QVariant> tmpMap);
+//    void sendCpuRangedata(QMap<QString,QVariant> tmpMap);
     void sendCpuAverageFrequency(QMap<QString,QVariant> tmpMap);
 
 private:
@@ -383,5 +384,6 @@ private:
     QTimer *m_sensorTimer = nullptr;
 
     QMap<QString,bool> info;
+    QMap<QString,QVariant> m_cpuFreqRange;
 };
 

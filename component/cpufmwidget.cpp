@@ -279,7 +279,6 @@ void CpuFmwidget::set_cpu_listAndCur(QStringList list, QString string)
 void CpuFmwidget::getCpuRange(QMap<QString,QVariant> tmpMap)
 {
     slider->setRangeLable(tmpMap);
-    this->show();
 }
 
 void CpuFmwidget::onButtonClicked(QAbstractButton *button)

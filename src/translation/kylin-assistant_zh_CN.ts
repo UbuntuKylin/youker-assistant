@@ -724,6 +724,11 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <source>Sound-Card</source>
         <translation>声卡驱动</translation>
     </message>
+    <message>
+        <location filename="../../component/drivepagewidget.cpp" line="204"/>
+        <source>Wireless-Network-Card</source>
+        <translation>无线网卡驱动</translation>
+    </message>
 </context>
 <context>
     <name>Drivewidget</name>
@@ -2718,7 +2723,7 @@ Are you sure to continue?</source>
     <message>
         <location filename="../../info/infoitemline.cpp" line="40"/>
         <source>Manufacturer</source>
-        <translation>发行商</translation>
+        <translation>制造商</translation>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="81"/>
@@ -3330,8 +3335,8 @@ Are you sure to continue?</source>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="380"/>
-        <source>InputVersion</source>
-        <translation>输入设备版本</translation>
+        <source>Hardware Version</source>
+        <translation>设备版本</translation>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="382"/>
@@ -3340,8 +3345,8 @@ Are you sure to continue?</source>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="384"/>
-        <source>InputProduct</source>
-        <translation>输入设备型号</translation>
+        <source>Product</source>
+        <translation>设备型号</translation>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="386"/>
@@ -3392,6 +3397,31 @@ Are you sure to continue?</source>
         <location filename="../../info/infoitemline.cpp" line="406"/>
         <source>GLSL Version</source>
         <translation>GLSL版本</translation>
+    </message>
+    <message>
+        <location filename="../../info/infoitemline.cpp" line="410"/>
+        <source>Hardware Address</source>
+        <translation>硬件地址</translation>
+    </message>
+    <message>
+        <location filename="../../info/infoitemline.cpp" line="414"/>
+        <source>Bluetooth Version</source>
+        <translation>蓝牙版本</translation>
+    </message>
+    <message>
+        <location filename="../../info/infoitemline.cpp" line="418"/>
+        <source>Bus Type</source>
+        <translation>总线类型</translation>
+    </message>
+    <message>
+        <location filename="../../info/infoitemline.cpp" line="422"/>
+        <source>Device Class</source>
+        <translation>设备类型</translation>
+    </message>
+    <message>
+        <location filename="../../info/infoitemline.cpp" line="430"/>
+        <source>Service Classes</source>
+        <translation>服务类型</translation>
     </message>
     <message>
         <location filename="../../setting/settingdelegate.cpp" line="30"/>

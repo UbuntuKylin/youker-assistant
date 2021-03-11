@@ -76,6 +76,7 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
     , arch(cur_arch)
     , display_count(d_count)
 {
+    this->hide();
     qDebug() << Q_FUNC_INFO ;
     GlobalData::globalarch = this->arch;
 
@@ -331,7 +332,7 @@ void MainWindow::initWidgets()
 
     info_widget = new InfoWidget(this->arch);
 
-    connect(m_dataWorker, &DataWorker::sendDevicePageNotExists, info_widget, &InfoWidget::resetInfoLeftListUI);
+    // connect(m_dataWorker, &DataWorker::sendDevicePageNotExists, info_widget, &InfoWidget::resetInfoLeftListUI);
 
     m_bottomStack->addWidget(info_widget);
 //    list_widget = new MListwidget();
@@ -417,6 +418,7 @@ void MainWindow::onInitDataFinished()
 
     this->m_cpulist = m_dataWorker->cpuModeList();
     this->m_currentCpuMode = m_dataWorker->cpuCurrentMode();
+    // this->m_cpuFreqRange = m_dataWorker->cpuFreqRange();
 //    qDebug() << Q_FUNC_INFO <<this->m_cpulist << this->m_currentCpuMode;
 
     /*
@@ -524,8 +526,8 @@ void MainWindow::onInitDataFinished()
     connect(monitorwidget,SIGNAL(requestcpuTemperature()),m_dataWorker, SLOT(onRequestCpuTemperature()));
     connect(m_dataWorker, SIGNAL(sendCpuTemperaturedata(QMap<QString, QVariant>)),monitorwidget,SLOT(onsendTemperaturedata(QMap<QString, QVariant>)));
 
-    connect(monitorwidget,SIGNAL(requestcpurange()),m_dataWorker,SLOT(onRequesetCpuRange()));
-    connect(m_dataWorker,SIGNAL(sendCpuRangedata(QMap<QString,QVariant>)),monitorwidget,SLOT(sendcpurangedata(QMap<QString,QVariant>)));
+    // connect(monitorwidget,SIGNAL(requestcpurange()),m_dataWorker,SLOT(onRequesetCpuRange()));
+    // connect(m_dataWorker,SIGNAL(sendCpuRangedata(QMap<QString,QVariant>)),monitorwidget,SLOT(sendcpurangedata(QMap<QString,QVariant>)));
     connect(monitorwidget,SIGNAL(setCpuGoverner(QString)),m_dataWorker,SLOT(onSetCurrentCpuMode(QString)));
 
     connect(monitorwidget,SIGNAL(RequestCPUFrequencyData()),m_dataWorker,SLOT(onRequestCpuAverageFrequency()));
@@ -698,7 +700,7 @@ void MainWindow::onInitDataFinished()
 //    list_widget->setBatteryAndSensor(this->battery,this->sensor,this->info);
 //    list_widget->InitInfowidgetUI();
 
-//    m_dataWorker->onRequestPartInfoAgain();
+    m_dataWorker->onRequestPartInfoAgain();
 //    monitorwidget->InitUI();
 
     monitorwidget->set_governer_list(m_cpulist);
@@ -706,9 +708,12 @@ void MainWindow::onInitDataFinished()
     monitorwidget->set_temperature(this->temperature);
     monitorwidget->set_fan(this->fan);
     monitorwidget->set_cpuFm(this->cpufm);
+    monitorwidget->set_cpuFreqRange(m_dataWorker->cpuFreqRange());
     monitorwidget->InitUI();
 
     this->startUDevHotPlugin();
+    this->show();
+    this->raise();
 }
 
 void MainWindow::moveCenter()
@@ -727,8 +732,9 @@ void MainWindow::moveCenter()
 
     this->move(primaryGeometry.x() + (primaryGeometry.width() - this->width())/2,
                primaryGeometry.y() + (primaryGeometry.height() - this->height())/2);
-    this->show();
-    this->raise();
+    // show after initialization
+    // this->show();
+    // this->raise();
 }
 
 void MainWindow::onPluginModuleError(const QString &info)

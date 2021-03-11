@@ -30,6 +30,7 @@ class DeviceManager : public QObject
 {
     Q_OBJECT
 public:
+    bool isHW990();
     explicit DeviceManager(QObject *parent = 0);
 
     //得到硬件设备及其驱动信息

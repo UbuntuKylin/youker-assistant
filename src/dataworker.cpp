@@ -105,6 +105,7 @@ void DataWorker::initDataWorker()
     this->m_temperaturePage = m_systemInterface->hide_temperature_page();
     this->m_fanPage = m_systemInterface->hide_fan_page();
     this->m_cpuFMPage = m_systemInterface->hide_cpufm_page();
+    this->m_cpuFreqRange = m_systemInterface->get_cpu_range();
 
     m_qSystemDbus = new SystemDbusProxy;
     ThreadPool::Instance()->moveObjectToThread(m_qSystemDbus);
@@ -120,7 +121,7 @@ void DataWorker::doWork()
     this->initDataWorker();
     emit dataLoadFinished();
 
-    onRequestPartInfoAgain();
+    // onRequestPartInfoAgain();
 }
 
 const QStringList DataWorker::cpuModeList() const
@@ -131,6 +132,11 @@ const QStringList DataWorker::cpuModeList() const
 const QString DataWorker::cpuCurrentMode() const
 {
     return this->m_currentCpuMode;
+}
+
+const QMap<QString,QVariant> DataWorker::cpuFreqRange() const
+{
+    return this->m_cpuFreqRange;
 }
 
 bool DataWorker::deleteAppointedFile(QString filename)
@@ -350,7 +356,7 @@ void DataWorker::onRequestPartInfoAgain(){
         rmpages.append("display");
     }
 
-    sendDevicePageNotExists(rmpages);
+    // sendDevicePageNotExists(rmpages);
 }
 
 QMap<QString,bool> DataWorker::onRequesetAllInfoIsHaveValue()
@@ -1375,12 +1381,12 @@ void DataWorker::onRequestCpuTemperature()
     emit sendCpuTemperaturedata(tmpMap);
 }
 
-void DataWorker::onRequesetCpuRange()
-{
-    qDebug() << Q_FUNC_INFO << __LINE__;
-    QMap<QString,QVariant> tmpMap  = m_systemInterface->get_cpu_range();
-    emit sendCpuRangedata(tmpMap);
-}
+//void DataWorker::onRequesetCpuRange()
+//{
+//    qDebug() << Q_FUNC_INFO << __LINE__;
+//    QMap<QString,QVariant> tmpMap  = m_systemInterface->get_cpu_range();
+//    emit sendCpuRangedata(tmpMap);
+//}
 
 void DataWorker::onRequestCpuAverageFrequency()
 {

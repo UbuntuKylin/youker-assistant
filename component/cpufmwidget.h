@@ -40,12 +40,12 @@ public:
 
     void set_cpu_listAndCur(QStringList list,QString string);
     void RefreshCheckStatus();
+    void getCpuRange(QMap<QString,QVariant>);
 signals:
     void setCpuGoverner(QString);
     void RequestCPUFrequencyData();
 private slots:
     void ProcessingCPUFrequencyData(QMap<QString,QVariant>);
-    void getCpuRange(QMap<QString,QVariant>);
 
     void onButtonClicked(QAbstractButton *button);
     void onClickedApply();
