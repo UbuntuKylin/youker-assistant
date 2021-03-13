@@ -73,6 +73,8 @@ void CleandetailVeiw::InitWidget()
     bottom_layout->setContentsMargins(0,0,0,0);
     main_layout->addWidget(bottom_widget);
 
+    cache_files_sizes.clear();
+
     InitTopWidget();
     InitBottomWidget();
 
@@ -365,6 +367,7 @@ void CleandetailVeiw::ResetUI()
     history_icon->setFixedSize(icon2->size());
 
     cache_apt_list.clear();
+    cache_files_sizes.clear();
     cache_sum = 0;
     history_sum = 0;
     cookie_sum = 0;
@@ -457,14 +460,21 @@ void CleandetailVeiw::showReciveData(const QStringList &data)
 //    qDebug() << Q_FUNC_INFO << "+" << data;
     if(data.at(0).split(".").at(0) == "Belong:Cache" && !data.at(1).isEmpty())
     {
-        status_tip->setText(data.at(1).split(":").at(1));
+        QString cache_name = data.at(1).split(":").at(1);
+        status_tip->setText(cache_name);
 
         QStringList r = data.at(3).split(":").at(1).split(" ");
 //        qDebug() << Q_FUNC_INFO << "+" << r << cache_sum << r.at(0).toFloat()*1024;
-        if(QString::compare(r.at(1),"MB") == 0 )
-            cache_sum += r.at(0).toFloat()*1024;
-        else
-            cache_sum += r.at(0).toFloat();
+        qreal size_kb;
+        if(QString::compare(r.at(1),"MB") == 0 ){
+            size_kb = r.at(0).toFloat()*1024;
+            cache_sum += size_kb;
+        }
+        else{
+            size_kb = r.at(0).toFloat();
+            cache_sum += size_kb;
+        }
+        cache_files_sizes.insert(cache_name, size_kb);
 
         if(data.at(0) == "Belong:Cache.apt" && !data.at(1).isEmpty())
         {
@@ -581,6 +591,17 @@ void CleandetailVeiw::showReciveData(const QStringList &data)
     }
 }
 
+void CleandetailVeiw::setCacheTip(int cache_sum){
+    if(cache_sum < 1024)
+            cache_tip->setText(tr("Cleanable cache ")+QString::number(cache_sum)+" KB");
+        else
+            cache_tip->setText(tr("Cleanable cache ")+QString::number(cache_sum/1024,'f',1)+" M");
+}
+
+void CleandetailVeiw::setCookieTip(int cookie_sum){
+    cookie_tip->setText(tr("Cleanable cookie ")+QString::number(cookie_sum)+tr(" items"));
+}
+
 void CleandetailVeiw::showReciveStatus(const QString &status)
 {
     qDebug() << Q_FUNC_INFO << status;
@@ -593,17 +614,15 @@ void CleandetailVeiw::showReciveStatus(const QString &status)
 //            history_btn->setVisible(false);
     }
     else if(status == "Complete:Cookies") {
-        cookie_tip->setText(tr("Cleanable cookie ")+QString::number(cookie_sum)+tr(" items"));
+        setCookieTip(cookie_sum);
+
         if(cookie_sum != 0)
             cookie_btn->setVisible(true);
         else
             cookie_btn->setVisible(false);
     }
     else if(status == "Complete:Cache") {
-        if(cache_sum < 1024)
-            cache_tip->setText(tr("Cleanable cache ")+QString::number(cache_sum)+" KB");
-        else
-            cache_tip->setText(tr("Cleanable cache ")+QString::number(cache_sum/1024,'f',1)+" M");
+        setCacheTip(cache_sum);
 
         if(cache_sum != 0)
             cache_btn->setVisible(true);
@@ -793,6 +812,15 @@ void CleandetailVeiw::onRefreshSelectedItems(CleanerModuleID id, const QStringLi
         select_cache_apt_list = infos;
         m_selectedAptList.clear();
         m_selectedAptList = infos;
+        cache_sum = 0;
+//        qDebug() << cache_files_sizes;
+        foreach (QString cache_file, infos) {
+            if(cache_files_sizes.contains(cache_file)){
+//                qDebug() << cache_file << "hit size cache";
+                cache_sum += cache_files_sizes[cache_file];
+            }
+        }
+        setCacheTip(cache_sum);
         break;
     case CleanerModuleID::CacheSoftware:
         m_selectedSoftwareList.clear();
