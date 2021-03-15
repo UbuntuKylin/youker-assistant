@@ -25,6 +25,7 @@
 #include <QMouseEvent>
 #include <QPainter>
 #include <QtMath>
+#include <QPainterPath>
 #include <QPainter>
 
 #include "mytitlebar.h"

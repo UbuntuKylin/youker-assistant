@@ -7,6 +7,7 @@
 #include <QLabel>
 #include <QFont>
 #include <QStyleOption>
+#include <QPainterPath>
 
 #include "systembutton.h"
 

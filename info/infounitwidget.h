@@ -25,6 +25,7 @@
 
 #include <QWidget>
 #include <QVBoxLayout>
+#include <QPainterPath>
 #include <QLabel>
 
 class InfoUnitWidget : public QWidget

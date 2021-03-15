@@ -22,6 +22,7 @@
 
 #include <QWidget>
 #include <QMouseEvent>
+#include <QPainterPath>
 
 class ShadowWidget : public QWidget
 {

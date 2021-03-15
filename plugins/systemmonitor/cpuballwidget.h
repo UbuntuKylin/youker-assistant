@@ -22,6 +22,7 @@
 
 #include <QWidget>
 #include <QTimer>
+#include <QPainterPath>
 
 class QGraphicsDropShadowEffect;
 

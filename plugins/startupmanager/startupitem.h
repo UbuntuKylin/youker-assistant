@@ -24,6 +24,7 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QListWidgetItem>
+#include <QPainterPath>
 
 class MySwitcher;
 class StartupData;

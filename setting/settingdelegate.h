@@ -21,6 +21,7 @@
 #define SETTINGDELEGATE_H
 
 #include <QItemDelegate>
+#include <QPainterPath>
 #include <QApplication>
 
 class SettingDelegate : public QItemDelegate

@@ -39,6 +39,7 @@
 #include <QDebug>
 #include <QApplication>
 #include <QScreen>
+#include <QPainterPath>
 #include <QDialog>
 #include <QSettings>
 #include <QProgressBar>
