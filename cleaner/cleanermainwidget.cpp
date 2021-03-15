@@ -235,6 +235,12 @@ void CleanerMainWidget::Browser_to_judge_existence()
     else
         firefox = false;
 
+    fileinfo.setFile("/usr/bin/firefox-esr");
+    if(fileinfo.isFile())
+        firefox = true;
+    else
+        firefox = false;
+
     fileinfo.setFile("/usr/bin/browser360-cn-stable");
     if(fileinfo.isFile())
         browser360 = true;
