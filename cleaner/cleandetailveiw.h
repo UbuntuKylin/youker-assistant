@@ -95,6 +95,7 @@ private:
     QString root_key;
 
     QMap<QString, QVariant> argsData;
+    QMap<QString, qreal> cache_files_sizes;
 
     QStringList cache_apt_list;
     QStringList select_cache_apt_list;
@@ -128,6 +129,9 @@ private:
     QStringList m_selectedFirefoxCookieList;
     QStringList m_selectedChromiumCookieList;
     QStringList m_selectedTraceX11List;
+
+    void setCacheTip(int);
+    void setCookieTip(int);
 
 //    bool AptList = true;
 //    bool cookies = true;

@@ -1349,7 +1349,7 @@ void InfoWidget::changeInfoPage(QListWidgetItem *item, QListWidgetItem *item1) {
                     QMap<QString, QVariant> driver_info_map;
                     DeviceManager manager;
                     QStringList list = manager.getDeviceMsg();
-                    qDebug() << list;
+//                    qDebug() << list;
                     for (int i=0 ; i < list.length() ; i++) {
                         QStringList splitlist = list.at(i).split(";");
                         if(splitlist.length() == 1) {

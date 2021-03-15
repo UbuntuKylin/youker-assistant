@@ -40,7 +40,7 @@ from .server import PolicyKitService
 from policykit import KYLIN_ASSISTANT_ACTION
 import time
 import cleaner
-from detailinfo.cpuinfo import DetailInfo
+from detailinfo.cpuinfo import DetailInfo, Judgment_HW990
 from beautify.sound import Sound
 from beautify.others import Others
 #from appcollections.monitorball.monitor_ball import MonitorBall
@@ -250,6 +250,8 @@ class Daemon(PolicyKitService):
         cpulist = []
         if msg not in ['', None]:
             cpulist = msg.split(' ')
+        if Judgment_HW990() and ('userspace' in cpulist):
+            cpulist.remove('userspace')
         return cpulist
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')

@@ -267,7 +267,7 @@ void CpuFmwidget::InitUI()
 void CpuFmwidget::set_cpu_listAndCur(QStringList list, QString string)
 {
     this->governer_list = list;
-    if(!this->governer_list.contains("userspace"))
+    if(!this->governer_list.contains("userspace") && !isHW990())
     {
         this->governer_list.append("userspace");
     }
@@ -381,3 +381,17 @@ void CpuFmwidget::ProcessingCPUFrequencyData(QMap<QString, QVariant> TmpMap)
         cpu_lable->update();
     }
 }
+
+bool CpuFmwidget::isHW990(){
+    QFile file("/proc/cpuinfo");
+    bool isHW990 = false;
+    bool ret = file.open(QIODevice::ReadOnly|QIODevice::Text);
+    if (ret){
+        QString all = file.readAll();
+        if(all.contains("HUAWEI Kirin 990")){
+            isHW990 = true;
+        }
+    }
+    return isHW990;
+}
+
