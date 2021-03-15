@@ -17,12 +17,13 @@
 #include <QTimer>
 
 #include "../component/utils.h"
+#include "../src/mainwindow.h"
 
 class CleandetailVeiw : public QWidget
 {
     Q_OBJECT
 public:
-    explicit CleandetailVeiw(QWidget *parent = nullptr);
+    explicit CleandetailVeiw(QWidget *parent = nullptr, MainWindow *window = nullptr);
     ~CleandetailVeiw();
 
     void InitWidget();
@@ -129,6 +130,8 @@ private:
     QStringList m_selectedFirefoxCookieList;
     QStringList m_selectedChromiumCookieList;
     QStringList m_selectedTraceX11List;
+
+    MainWindow *parentWindow;
 
     void setCacheTip(int);
     void setCookieTip(int);

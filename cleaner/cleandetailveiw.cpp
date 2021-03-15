@@ -23,8 +23,12 @@
 #include <QDebug>
 #include <QtSvg/QSvgRenderer>
 #include "../component/utils.h"
+#include "../src/mainwindow.h"
 
-CleandetailVeiw::CleandetailVeiw(QWidget *parent) : QWidget(parent)
+CleandetailVeiw::CleandetailVeiw(QWidget *parent, MainWindow *window)
+    : QWidget(parent)
+    , parentWindow(window)
+
 {
     this->setFixedSize(860,460);
     this->setAutoFillBackground(true);
@@ -712,6 +716,9 @@ void CleandetailVeiw::ShowDetailsPage()
     QPushButton *button = qobject_cast<QPushButton *>(object);
     QString btn_name = button->objectName();
 
+    int w_x = parentWindow->frameGeometry().topLeft().x() + (860 / 2) - (600  / 2);
+    int w_y = parentWindow->frameGeometry().topLeft().y() + (600 /2) - (520 / 2);
+
     if(QString::compare(btn_name,"Cache") == 0){
         if(cache_flag){
             select_cache_apt_list.clear();
@@ -722,6 +729,7 @@ void CleandetailVeiw::ShowDetailsPage()
         SelectWidget *w = new SelectWidget(CleanerModuleID::CacheApt, tr("Cleanable Cache"));
         w->loadData(tr("Cleanable Cache"), select_cache_apt_list, cache_apt_list+cache_chromium_list+cache_firefox_list+cache_software_list+cache_thumbnails_list);
         connect(w, SIGNAL(refreshSelectedItems(CleanerModuleID,QStringList)), this, SLOT(onRefreshSelectedItems(CleanerModuleID,QStringList)));
+        w->move(w_x, w_y);
         w->exec();
         delete w;
     }
@@ -734,6 +742,7 @@ void CleandetailVeiw::ShowDetailsPage()
         SelectWidget *w = new SelectWidget(CleanerModuleID::CacheApt, tr("Cleanable Cookie"));
         w->loadData(tr("Cleanable Cookie"), select_cache_chromium_list, cookies_chromium_list);
         connect(w, SIGNAL(refreshSelectedItems(CleanerModuleID,QStringList)), this, SLOT(onRefreshSelectedItems(CleanerModuleID,QStringList)));
+        w->move(w_x, w_y);
         w->exec();
         delete w;
     }
