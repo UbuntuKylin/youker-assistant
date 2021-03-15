@@ -34,19 +34,17 @@ mySlider::mySlider(QWidget *parent):QSlider(parent)
     minlable=new QLabel(this);
     maxlable=new QLabel(this);
 
-    minlable->setFixedSize(QSize(60,20));
-    minlable->setAlignment(Qt::AlignCenter);
+    minlable->setFixedSize(QSize(70,30));
     minlable->setText(tr("Mintip"));
     minlable->setStyleSheet("color:rgb(0,0,0,185);");
     minlable->setAlignment(Qt::AlignLeft);
     minlable->move(0,50);
 
-    maxlable->setFixedSize(QSize(60,20));
-    maxlable->setAlignment(Qt::AlignCenter);
+    maxlable->setFixedSize(QSize(70,30));
     maxlable->setText(tr("Maxtip"));
     maxlable->setStyleSheet("color:rgb(0,0,0,185);");
     maxlable->setAlignment(Qt::AlignRight);
-    maxlable->move(500,50);
+    maxlable->move(490,50);
 
     tiplable->setFixedSize(QSize(60,24));
     //设置游标背景为白色

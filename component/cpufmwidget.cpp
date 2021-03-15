@@ -60,13 +60,13 @@ CpuFmwidget::CpuFmwidget(QWidget *parent) : QWidget(parent)
 
                 QPropertyAnimation *animation = new QPropertyAnimation(w,"geometry");
                 animation->setDuration(200);
-                animation->setStartValue(QRect(62,200,580,155));
+                animation->setStartValue(QRect(62,200,580,175));
                 animation->setEndValue(QRect(62,200,580,10));
                 animation->setEasingCurve(QEasingCurve::InQuad);
 
                 QPropertyAnimation *animation1 = new QPropertyAnimation(apply_button,"geometry");
                 animation1->setDuration(200);
-                animation1->setStartValue(QRect(60,360,120,36));
+                animation1->setStartValue(QRect(60,380,120,36));
                 animation1->setEndValue(QRect(60,200,120,36));
                 animation1->setEasingCurve(QEasingCurve::InQuad);
 
@@ -208,15 +208,15 @@ void CpuFmwidget::InitUI()
     w = new QFrame(this);
     w->setAutoFillBackground(false);
     w->setStyleSheet("background:rgb(231,231,231);border-radius:4px;");
-    w->setGeometry(QRect(62,200,580,155));
+    w->setGeometry(QRect(62,200,580,175));
 
     QVBoxLayout *v_layout = new QVBoxLayout(w);
     v_layout->setSpacing(0);
     v_layout->setMargin(0);
-    v_layout->setContentsMargins(10,10,0,0);
+    v_layout->setContentsMargins(10,10,10,0);
 
     QLabel *lable1 = new QLabel();
-//    QLabel *lable2 = new QLabel();
+    QLabel *lable2 = new QLabel();
     slider = new mySlider(w);
 
     lable1->setText(tr("Current Frequency Adjustable Range:"));
@@ -229,14 +229,15 @@ void CpuFmwidget::InitUI()
                           "margin: 40px;"
                           "border-radius: 3px;}");
     v_layout->addWidget(slider);
+//    v_layout->addStretch(10);
 
-//    lable2->setText(tr("CPU FM Note: There are some risks associated with the CPU FM function,please use caution! The computer needs to be restarted when the FM is complete."));
-//    lable2->adjustSize();
-//    lable2->setStyleSheet("color:rgb(0,0,0,185)");
-//    lable2->setFixedSize(580, 27*2);
-//    lable2->setWordWrap(true);
-//    v_layout->addWidget(lable2);
-//    v_layout->addStretch(1);
+    lable2->setText(tr("CPU FM Note: The CPU FM function has some risks, please use it carefully! After FM is completed, restarting will restore the default configuration!"));
+    lable2->adjustSize();
+    lable2->setStyleSheet("color:rgb(0,0,0,185);font-size:14px;");
+    lable2->setFixedSize(570, 27*2);
+    lable2->setWordWrap(true);
+    v_layout->addWidget(lable2);
+    v_layout->addStretch(1);
 
     w->setVisible(false);
 
@@ -249,7 +250,7 @@ void CpuFmwidget::InitUI()
                                  QPushButton:hover{width:120px;height:36px;\
                                  background:rgba(67,127,240,1);\
                                  border-radius:4px;font-size:14px;color:white;}");
-    apply_button->setGeometry(QRect(60,360,120,36));
+    apply_button->setGeometry(QRect(60,370,120,36));
 
     connect(apply_button,SIGNAL(clicked()),this,SLOT(onClickedApply()));
 
@@ -298,13 +299,13 @@ void CpuFmwidget::onButtonClicked(QAbstractButton *button)
         QPropertyAnimation *animation = new QPropertyAnimation(w,"geometry");
         animation->setDuration(500);
         animation->setStartValue(QRect(62,200,580,10));
-        animation->setEndValue(QRect(62,200,580,155));
+        animation->setEndValue(QRect(62,200,580,175));
         animation->setEasingCurve(QEasingCurve::InQuad);
 
         QPropertyAnimation *animation1 = new QPropertyAnimation(apply_button,"geometry");
         animation1->setDuration(500);
         animation1->setStartValue(QRect(60,200,120,36));
-        animation1->setEndValue(QRect(60,360,120,36));
+        animation1->setEndValue(QRect(60,380,120,36));
         animation1->setEasingCurve(QEasingCurve::InQuad);
 
         group = new QParallelAnimationGroup(this);
@@ -321,13 +322,13 @@ void CpuFmwidget::onButtonClicked(QAbstractButton *button)
         w->setVisible(false);
         QPropertyAnimation *animation = new QPropertyAnimation(w,"geometry");
         animation->setDuration(200);
-        animation->setStartValue(QRect(62,200,580,155));
+        animation->setStartValue(QRect(62,200,580,175));
         animation->setEndValue(QRect(62,200,580,10));
         animation->setEasingCurve(QEasingCurve::InQuad);
 
         QPropertyAnimation *animation1 = new QPropertyAnimation(apply_button,"geometry");
         animation1->setDuration(200);
-        animation1->setStartValue(QRect(60,360,120,36));
+        animation1->setStartValue(QRect(60,380,120,36));
         animation1->setEndValue(QRect(60,200,120,36));
         animation1->setEasingCurve(QEasingCurve::InQuad);
 
@@ -388,7 +389,7 @@ bool CpuFmwidget::isHW990(){
     bool ret = file.open(QIODevice::ReadOnly|QIODevice::Text);
     if (ret){
         QString all = file.readAll();
-        if(all.contains("HUAWEI Kirin 990")){
+        if(all.contains("HUAWEI Kirin 990") || all.contains("kirin990") || all.contains("HUAWEI Kirin 9006C")){
             isHW990 = true;
         }
     }
