@@ -21,6 +21,7 @@
 #define THEMEDELEGATE_H
 
 #include <QStyledItemDelegate>
+#include <QPainterPath>
 
 class ThemeDelegate : public QStyledItemDelegate
 {

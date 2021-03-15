@@ -26,6 +26,7 @@
 #include <QMouseEvent>
 #include <QHBoxLayout>
 #include <QSignalMapper>
+#include <QPainterPath>
 #include <QVBoxLayout>
 #include "../component/kylinbutton.h"
 #include "../component/systembutton.h"

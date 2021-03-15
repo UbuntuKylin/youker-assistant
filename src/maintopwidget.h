@@ -25,6 +25,7 @@
 #include <QPushButton>
 #include <QMouseEvent>
 #include <QHBoxLayout>
+#include <QPainterPath>
 #include <QSignalMapper>
 #include <QVBoxLayout>
 #include <QSettings>

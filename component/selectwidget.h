@@ -24,6 +24,7 @@
 #include <QVBoxLayout>
 #include <QMouseEvent>
 #include <QPainter>
+#include <QPainterPath>
 #include <QtMath>
 
 #include "mytitlebar.h"
