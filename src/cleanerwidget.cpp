@@ -54,7 +54,7 @@ void CleanerWidget::initUI(QString skin)
     //20180101
     main_widget = new CleanerMainWidget(this, p_mainwindow, toolKits, skin);
 //    detail_widget = new CleanerDetailWidget(this, p_mainwindow, toolKits ,skin);
-    detailview = new CleandetailVeiw(this);
+    detailview = new CleandetailVeiw(this, p_mainwindow);
 
 //    connect(this, SIGNAL(transCleanSignal()), detail_widget, SLOT(receiveCleanSignal()));
     connect(detailview,SIGNAL(hideThisWidget()),this,SLOT(displayMainPage()));
