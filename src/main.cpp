@@ -29,6 +29,8 @@
 #include <QElapsedTimer>
 #include <QDesktopWidget>
 #include <QStyleFactory>
+#include <QProcess>
+#include <QByteArray>
 
 #include <QtSingleApplication>
 
@@ -43,6 +45,7 @@ char filePath[BUFF_SIZE] = {0};
 
 #define LOCKFILE "/tmp/kylin-assistant-%d.pid"
 #define LOCKMODE (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)
+#define CHANGELOG_PATH "/usr/share/doc/youker-assistant/changelog.Debian.gz"
 
 int make_pid_file() {
     char buf[16];
@@ -131,6 +134,15 @@ bool registerSingleInstance(const QString &path)
     return true;
 }
 
+QString getAppVersion(){
+    QProcess process;
+    process.start(QString("dpkg-parsechangelog -l %1 --show-field Version").arg(CHANGELOG_PATH));
+    process.waitForFinished();
+    QByteArray result = process.readAllStandardOutput();
+    result = result.left(result.length()-1);
+    return result;
+}
+
 //void sig_int(int signal)
 //{
 //    QApplication::quit();
@@ -157,7 +169,7 @@ int main(int argc, char *argv[])
 
     QCoreApplication::setOrganizationName("kylin");
     QCoreApplication::setApplicationName("kylin-assistant");
-    QCoreApplication::setApplicationVersion("3.0.2-0kylin6k35");
+    QCoreApplication::setApplicationVersion(getAppVersion());
 
 //    Kpplication *app_ins = Kpplication::instance();
     if (app.isRunning()) {
