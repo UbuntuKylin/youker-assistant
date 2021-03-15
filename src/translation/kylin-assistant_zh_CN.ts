@@ -667,29 +667,24 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>CpuRateWidget</name>
     <message>
-        <location filename="../../plugins/systemmonitor/cpuratewidget.cpp" line="258"/>
         <source>CPU</source>
-        <translation>处理器</translation>
+        <translation type="vanished">处理器</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/cpuratewidget.cpp" line="264"/>
         <source>Occupancy rate</source>
-        <translation>占用率</translation>
+        <translation type="vanished">占用率</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/cpuratewidget.cpp" line="270"/>
         <source>Idle rate</source>
-        <translation>空闲率</translation>
+        <translation type="vanished">空闲率</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/cpuratewidget.cpp" line="276"/>
         <source>The running time of system</source>
-        <translation>系统运行时间</translation>
+        <translation type="vanished">系统运行时间</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/cpuratewidget.cpp" line="282"/>
         <source>The idle time of system</source>
-        <translation>系统空闲时间</translation>
+        <translation type="vanished">系统空闲时间</translation>
     </message>
 </context>
 <context>
@@ -1026,55 +1021,43 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>FileSystemDialog</name>
     <message>
-        <location filename="../../plugins/systemmonitor/filesystemdialog.cpp" line="60"/>
         <source>Refresh</source>
-        <translation>刷新</translation>
+        <translation type="vanished">刷新</translation>
     </message>
 </context>
 <context>
     <name>FileSystemListWidget</name>
     <message>
-        <location filename="../../plugins/systemmonitor/filesystemlistwidget.cpp" line="49"/>
-        <location filename="../../plugins/systemmonitor/filesystemlistwidget.cpp" line="355"/>
         <source>Device</source>
-        <translation>设备</translation>
+        <translation type="vanished">设备</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/filesystemlistwidget.cpp" line="49"/>
-        <location filename="../../plugins/systemmonitor/filesystemlistwidget.cpp" line="355"/>
         <source>Directory</source>
-        <translation>目录</translation>
+        <translation type="vanished">目录</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/filesystemlistwidget.cpp" line="49"/>
         <source>Type</source>
-        <translation>类型</translation>
+        <translation type="vanished">类型</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/filesystemlistwidget.cpp" line="49"/>
         <source>Total</source>
-        <translation>总数</translation>
+        <translation type="vanished">总数</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/filesystemlistwidget.cpp" line="49"/>
         <source>Free</source>
-        <translation>空闲</translation>
+        <translation type="vanished">空闲</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/filesystemlistwidget.cpp" line="49"/>
         <source>Available</source>
-        <translation>可用</translation>
+        <translation type="vanished">可用</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/filesystemlistwidget.cpp" line="49"/>
-        <location filename="../../plugins/systemmonitor/filesystemlistwidget.cpp" line="355"/>
         <source>Used</source>
-        <translation>已用</translation>
+        <translation type="vanished">已用</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/filesystemlistwidget.cpp" line="433"/>
         <source>No File System Info</source>
-        <translation>没有发现文件系统信息</translation>
+        <translation type="vanished">没有发现文件系统信息</translation>
     </message>
 </context>
 <context>
@@ -1941,8 +1924,16 @@ Information</source>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="1242"/>
+        <source>&lt;p&gt;Service &amp; Support : &lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</source>
+        <translation type="unfinished">&lt;p&gt;服务和支持: &lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;p&gt;Service &amp; Support : &amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</source>
+        <translation type="obsolete">&lt;p&gt;服务和支持: &lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</translation>
+    </message>
+    <message>
         <source>&lt;p&gt;Service &amp; Support : &lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;服务和支持: &lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</translation>
+        <translation type="vanished">&lt;p&gt;服务和支持: &lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
     <message>
         <source>Understand hardware information, provide more convenient channel to obtain hardware information</source>
@@ -1968,41 +1959,27 @@ Information</source>
 <context>
     <name>MemoryCircle</name>
     <message>
-        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="140"/>
         <source>Memory</source>
-        <translation>内存</translation>
+        <translation type="vanished">内存</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="141"/>
         <source>Swap</source>
-        <translation>交换</translation>
+        <translation type="vanished">交换</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="146"/>
-        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="147"/>
         <source>Used(Percent)</source>
-        <translation>已使用(百分比)</translation>
+        <translation type="vanished">已使用(百分比)</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="148"/>
-        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="149"/>
         <source>Total</source>
-        <translation>总量</translation>
-    </message>
-    <message>
-        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="155"/>
-        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="156"/>
-        <source>%1(%2%)</source>
-        <translatorcomment>%1(%2%)</translatorcomment>
-        <translation></translation>
+        <translation type="vanished">总量</translation>
     </message>
 </context>
 <context>
     <name>MemoryWidget</name>
     <message>
-        <location filename="../../plugins/systemmonitor/memorywidget.cpp" line="18"/>
         <source>Memory</source>
-        <translation>内存</translation>
+        <translation type="vanished">内存</translation>
     </message>
 </context>
 <context>
@@ -2110,34 +2087,28 @@ Information</source>
 <context>
     <name>MonitorTitleWidget</name>
     <message>
-        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="242"/>
         <source>Kylin System Monitor</source>
-        <translation>麒麟系统监视器</translation>
+        <translation type="vanished">麒麟系统监视器</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="340"/>
         <source>Processes</source>
-        <translation>进程</translation>
+        <translation type="vanished">进程</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="344"/>
         <source>Resources</source>
-        <translation>资源</translation>
+        <translation type="vanished">资源</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="348"/>
         <source>File Systems</source>
-        <translation>文件系统</translation>
+        <translation type="vanished">文件系统</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="399"/>
         <source>Cancel</source>
-        <translation>取消</translation>
+        <translation type="vanished">取消</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/monitortitlewidget.cpp" line="413"/>
         <source>Enter the relevant info of process</source>
-        <translation>输入进程相关信息</translation>
+        <translation type="vanished">输入进程相关信息</translation>
     </message>
 </context>
 <context>
@@ -2184,42 +2155,35 @@ Information</source>
 <context>
     <name>NetworkFlow</name>
     <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="274"/>
         <source>Receiving</source>
-        <translation>正在接收</translation>
+        <translation type="vanished">正在接收</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="276"/>
         <source>Total Received</source>
-        <translation>总计已接收</translation>
+        <translation type="vanished">总计已接收</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="275"/>
         <source>Sending</source>
-        <translation>正在发送</translation>
+        <translation type="vanished">正在发送</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="111"/>
         <source>Receive</source>
-        <translation>接收</translation>
+        <translation type="vanished">接收</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="112"/>
         <source>Send</source>
-        <translation>发送</translation>
+        <translation type="vanished">发送</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="277"/>
         <source>Total Sent</source>
-        <translation>总计已发送</translation>
+        <translation type="vanished">总计已发送</translation>
     </message>
 </context>
 <context>
     <name>NetworkWidget</name>
     <message>
-        <location filename="../../plugins/systemmonitor/networkwidget.cpp" line="38"/>
         <source>Network</source>
-        <translation>网络</translation>
+        <translation type="vanished">网络</translation>
     </message>
 </context>
 <context>
@@ -2361,290 +2325,230 @@ Information</source>
 <context>
     <name>ProcessCategory</name>
     <message>
-        <location filename="../../plugins/systemmonitor/processcategory.cpp" line="37"/>
         <source>Active Processes</source>
-        <translation>活动的进程</translation>
+        <translation type="vanished">活动的进程</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processcategory.cpp" line="40"/>
         <source>My Processes</source>
-        <translation>我的进程</translation>
+        <translation type="vanished">我的进程</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processcategory.cpp" line="43"/>
         <source>All Processes</source>
-        <translation>全部进程</translation>
+        <translation type="vanished">全部进程</translation>
     </message>
 </context>
 <context>
     <name>ProcessDialog</name>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="157"/>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="160"/>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="175"/>
         <source>End process</source>
-        <translation>结束进程</translation>
+        <translation type="vanished">结束进程</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="157"/>
         <source>Ending a process may destroy data, break the session or introduce a security risk. Only unresponsive processes should be ended.
 Are you sure to continue?</source>
-        <translation>结束进程可能导致数据损坏，中断会话或带来安全风险。您应该只结束无响应的进程。
+        <translation type="vanished">结束进程可能导致数据损坏，中断会话或带来安全风险。您应该只结束无响应的进程。
 您确定要继续该操作？</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="159"/>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="165"/>
         <source>Cancel</source>
-        <translation>取消</translation>
+        <translation type="vanished">取消</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="163"/>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="166"/>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="177"/>
         <source>Kill process</source>
-        <translation>杀死进程</translation>
+        <translation type="vanished">杀死进程</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="163"/>
         <source>Killing a process may destroy data, break the session or introduce a security risk. Only unresponsive processes should be killed.
 Are you sure to continue?</source>
-        <translation>杀死进程可能导致数据损坏，中断会话或带来安全风险。您应该只杀死无响应的进程。
+        <translation type="vanished">杀死进程可能导致数据损坏，中断会话或带来安全风险。您应该只杀死无响应的进程。
 您确定要继续该操作？</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="171"/>
         <source>Stop process</source>
-        <translation>停止进程</translation>
+        <translation type="vanished">停止进程</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="173"/>
         <source>Continue process</source>
-        <translation>继续进程</translation>
+        <translation type="vanished">继续进程</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="191"/>
         <source>Very High</source>
-        <translation>非常高</translation>
+        <translation type="vanished">非常高</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="192"/>
         <source>High</source>
-        <translation>高</translation>
+        <translation type="vanished">高</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="193"/>
         <source>Normal</source>
-        <translation>普通</translation>
+        <translation type="vanished">普通</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="194"/>
         <source>Low</source>
-        <translation>低</translation>
+        <translation type="vanished">低</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="195"/>
         <source>Very Low</source>
-        <translation>非常低</translation>
+        <translation type="vanished">非常低</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="196"/>
         <source>Custom</source>
-        <translation>自定义</translation>
+        <translation type="vanished">自定义</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="201"/>
         <source>Change Priority</source>
-        <translation>改变优先级</translation>
+        <translation type="vanished">改变优先级</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="203"/>
         <source>Properties</source>
-        <translation>属性</translation>
+        <translation type="vanished">属性</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processdialog.cpp" line="336"/>
         <source>Change Priority of Process %1 (PID: %2)</source>
-        <translation>更改进程“%1”(PID：%2)的优先级</translation>
+        <translation type="vanished">更改进程“%1”(PID：%2)的优先级</translation>
     </message>
 </context>
 <context>
     <name>ProcessListItem</name>
     <message>
-        <location filename="../../plugins/systemmonitor/processlistitem.cpp" line="83"/>
         <source>Stopped</source>
-        <translation>已停止</translation>
+        <translation type="vanished">已停止</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processlistitem.cpp" line="85"/>
         <source>Suspend</source>
-        <translation>停止</translation>
+        <translation type="vanished">停止</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processlistitem.cpp" line="87"/>
         <source>Zombie</source>
-        <translation>僵死</translation>
+        <translation type="vanished">僵死</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processlistitem.cpp" line="89"/>
         <source>No response</source>
-        <translation>无反应</translation>
+        <translation type="vanished">无反应</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processlistitem.cpp" line="91"/>
-        <location filename="../../plugins/systemmonitor/processlistitem.cpp" line="93"/>
         <source>Uninterruptible</source>
-        <translation>不可中断</translation>
+        <translation type="vanished">不可中断</translation>
     </message>
 </context>
 <context>
     <name>ProcessListWidget</name>
     <message>
-        <location filename="../../plugins/systemmonitor/processlistwidget.cpp" line="57"/>
-        <location filename="../../plugins/systemmonitor/processlistwidget.cpp" line="745"/>
         <source>Process Name</source>
-        <translation>进程名</translation>
+        <translation type="vanished">进程名</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processlistwidget.cpp" line="57"/>
         <source>User</source>
-        <translation>用户</translation>
+        <translation type="vanished">用户</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processlistwidget.cpp" line="57"/>
         <source>Status</source>
-        <translation>状态</translation>
+        <translation type="vanished">状态</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processlistwidget.cpp" line="57"/>
         <source>CPU</source>
-        <translation>处理器</translation>
+        <translation type="vanished">处理器</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processlistwidget.cpp" line="57"/>
         <source>ID</source>
-        <translation>ID</translation>
+        <translation type="vanished">ID</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processlistwidget.cpp" line="57"/>
-        <location filename="../../plugins/systemmonitor/processlistwidget.cpp" line="745"/>
         <source>Command Line</source>
-        <translation>命令行</translation>
+        <translation type="vanished">命令行</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processlistwidget.cpp" line="57"/>
         <source>Memory</source>
-        <translation>内存</translation>
+        <translation type="vanished">内存</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processlistwidget.cpp" line="57"/>
-        <location filename="../../plugins/systemmonitor/processlistwidget.cpp" line="745"/>
         <source>Priority</source>
-        <translation>优先级</translation>
+        <translation type="vanished">优先级</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processlistwidget.cpp" line="823"/>
         <source>No search result</source>
-        <translation>无搜索结果</translation>
+        <translation type="vanished">无搜索结果</translation>
     </message>
 </context>
 <context>
     <name>ProcessManager</name>
     <message>
-        <location filename="../../plugins/systemmonitor/processmanager.cpp" line="48"/>
         <source>System Monitor</source>
-        <translation>系统监视器</translation>
+        <translation type="vanished">系统监视器</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/processmanager.cpp" line="53"/>
         <source>Help user to kill process</source>
-        <translation>帮助用户管理进程</translation>
+        <translation type="vanished">帮助用户管理进程</translation>
     </message>
 </context>
 <context>
     <name>PropertiesDialog</name>
     <message>
-        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="128"/>
         <source>OK</source>
-        <translation>确定</translation>
+        <translation type="vanished">确定</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="207"/>
         <source>Running</source>
-        <translation>运行中</translation>
+        <translation type="vanished">运行中</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="211"/>
         <source>Stopped</source>
-        <translation>已停止</translation>
+        <translation type="vanished">已停止</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="215"/>
         <source>Zombie</source>
-        <translation>僵死</translation>
+        <translation type="vanished">僵死</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="219"/>
         <source>Uninterruptible</source>
-        <translation>不可中断</translation>
+        <translation type="vanished">不可中断</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="223"/>
         <source>Sleeping</source>
-        <translation>睡眠中</translation>
+        <translation type="vanished">睡眠中</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="233"/>
         <source>Very High</source>
-        <translation>非常高</translation>
+        <translation type="vanished">非常高</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="235"/>
         <source>High</source>
-        <translation>高</translation>
+        <translation type="vanished">高</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="237"/>
         <source>Normal</source>
-        <translation>普通</translation>
+        <translation type="vanished">普通</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="239"/>
         <source>Low</source>
-        <translation>低</translation>
+        <translation type="vanished">低</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="241"/>
         <source>Very Low</source>
-        <translation>非常低</translation>
+        <translation type="vanished">非常低</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="247"/>
         <source>Very High Priority</source>
-        <translation>非常高优先级</translation>
+        <translation type="vanished">非常高优先级</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="249"/>
         <source>High Priority</source>
-        <translation>高优先级</translation>
+        <translation type="vanished">高优先级</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="251"/>
         <source>Normal Priority</source>
-        <translation>普通优先级</translation>
+        <translation type="vanished">普通优先级</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="253"/>
         <source>Low Priority</source>
-        <translation>低优先级</translation>
+        <translation type="vanished">低优先级</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/util.cpp" line="255"/>
         <source>Very Low Priority</source>
-        <translation>非常低优先级</translation>
+        <translation type="vanished">非常低优先级</translation>
     </message>
     <message>
         <location filename="../topbasewidget.cpp" line="65"/>
@@ -3501,142 +3405,111 @@ Are you sure to continue?</source>
         <translation>文件管理器</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="24"/>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="50"/>
         <source>byte</source>
-        <translation>字节</translation>
+        <translation type="vanished">字节</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="52"/>
         <source>byte/s</source>
-        <translation>字节/秒</translation>
+        <translation type="vanished">字节/秒</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="27"/>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="56"/>
         <source>bytes</source>
-        <translation>字节</translation>
+        <translation type="vanished">字节</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="58"/>
         <source>bytes/s</source>
-        <translation>字节/秒</translation>
+        <translation type="vanished">字节/秒</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="34"/>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="66"/>
         <source>KiB</source>
-        <translation>KB</translation>
+        <translation type="vanished">KB</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="68"/>
         <source>KiB/s</source>
-        <translation>KB/秒</translation>
+        <translation type="vanished">KB/秒</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="37"/>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="72"/>
         <source>MiB</source>
-        <translation>MiB</translation>
+        <translation type="vanished">MiB</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="74"/>
         <source>MiB/s</source>
-        <translation>MiB/秒</translation>
+        <translation type="vanished">MiB/秒</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="40"/>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="78"/>
         <source>GiB</source>
-        <translation>GiB</translation>
+        <translation type="vanished">GiB</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="80"/>
         <source>GiB/s</source>
-        <translation>GiB/秒</translation>
+        <translation type="vanished">GiB/秒</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/memorycircle.cpp" line="43"/>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="84"/>
         <source>TiB</source>
-        <translation>TiB</translation>
+        <translation type="vanished">TiB</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/networkflow.cpp" line="86"/>
         <source>TiB/s</source>
-        <translation>TiB/秒</translation>
+        <translation type="vanished">TiB/秒</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/cpuratewidget.cpp" line="41"/>
         <source>%1hours</source>
-        <translation>%1小时</translation>
+        <translation type="vanished">%1小时</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/cpuratewidget.cpp" line="43"/>
         <source>%1hour</source>
-        <translation>%1小时</translation>
+        <translation type="vanished">%1小时</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/cpuratewidget.cpp" line="45"/>
         <source>%1minutes</source>
-        <translation>%1分</translation>
+        <translation type="vanished">%1分</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/cpuratewidget.cpp" line="47"/>
         <source>%1minute</source>
-        <translation>%1分</translation>
+        <translation type="vanished">%1分</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/cpuratewidget.cpp" line="49"/>
         <source>%1seconds</source>
-        <translation>%1秒</translation>
+        <translation type="vanished">%1秒</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/cpuratewidget.cpp" line="51"/>
         <source>%1second</source>
-        <translation>%1秒</translation>
+        <translation type="vanished">%1秒</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/cpuratewidget.cpp" line="56"/>
         <source>%1day</source>
-        <translation>%1天</translation>
+        <translation type="vanished">%1天</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/cpuratewidget.cpp" line="58"/>
         <source>%1days</source>
-        <translation>%1天</translation>
+        <translation type="vanished">%1天</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="154"/>
         <source>User name:</source>
-        <translation>用户名：</translation>
+        <translation type="vanished">用户名：</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="154"/>
         <source>Process name:</source>
-        <translation>进程名：</translation>
+        <translation type="vanished">进程名：</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="154"/>
         <source>Command line:</source>
-        <translation>命令行：</translation>
+        <translation type="vanished">命令行：</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="154"/>
         <source>CPU Time:</source>
-        <translation>CPU 时间：</translation>
+        <translation type="vanished">CPU 时间：</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/propertiesdialog.cpp" line="154"/>
         <source>Started Time:</source>
-        <translation>开始于：</translation>
+        <translation type="vanished">开始于：</translation>
     </message>
     <message>
         <source> (single-core single thread)</source>
         <translation type="obsolete">（单核单线程）</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="167"/>
+        <location filename="../main.cpp" line="179"/>
         <source>app is already running!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3652,47 +3525,39 @@ Are you sure to continue?</source>
 <context>
     <name>ReniceDialog</name>
     <message>
-        <location filename="../../plugins/systemmonitor/renicedialog.cpp" line="55"/>
         <source>Nice value:</source>
-        <translation>Nice 值：</translation>
+        <translation type="vanished">Nice 值：</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/renicedialog.cpp" line="77"/>
         <source>Note:</source>
-        <translation>备忘：</translation>
+        <translation type="vanished">备忘：</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/renicedialog.cpp" line="81"/>
         <source>The priority of a process is given by its nice value. A lower nice value corresponds to a higher priority.</source>
-        <translation>进程的优先级由它的 nice 值指定。较低的 nice 值对应较高的优先级。</translation>
+        <translation type="vanished">进程的优先级由它的 nice 值指定。较低的 nice 值对应较高的优先级。</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/renicedialog.cpp" line="93"/>
         <source>Cancel</source>
-        <translation>取消</translation>
+        <translation type="vanished">取消</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/renicedialog.cpp" line="98"/>
         <source>Change Priority</source>
-        <translation>改变优先级</translation>
+        <translation type="vanished">改变优先级</translation>
     </message>
 </context>
 <context>
     <name>ResourcesCategory</name>
     <message>
-        <location filename="../../plugins/systemmonitor/resourcescategory.cpp" line="37"/>
         <source>CPU</source>
-        <translation>处理器</translation>
+        <translation type="vanished">处理器</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/resourcescategory.cpp" line="39"/>
         <source>Memory</source>
-        <translation>内存</translation>
+        <translation type="vanished">内存</translation>
     </message>
     <message>
-        <location filename="../../plugins/systemmonitor/resourcescategory.cpp" line="41"/>
         <source>Network</source>
-        <translation>网络</translation>
+        <translation type="vanished">网络</translation>
     </message>
 </context>
 <context>
@@ -3857,9 +3722,8 @@ Are you sure to continue?</source>
 <context>
     <name>SystemMonitor</name>
     <message>
-        <location filename="../../plugins/systemmonitor/systemmonitor.cpp" line="50"/>
         <source>Kylin System Monitor</source>
-        <translation>麒麟系统监视器</translation>
+        <translation type="vanished">麒麟系统监视器</translation>
     </message>
 </context>
 <context>

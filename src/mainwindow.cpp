@@ -1239,7 +1239,7 @@ void MainWindow::createAboutDialog()
     aboutDlg->setAppVersion(qApp->applicationVersion());
     aboutDlg->setAppDescription(tr("<p>Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.</p>"));
 //    aboutDlg->setAppDescription(tr("<p>The software is still under development. Please visit  kylin-assistant") + QString::fromLocal8Bit("<a style='color: #3f96e4;' href = https://github.com/UbuntuKylin/youker-assistant>Github</a>") + tr(" for more information. Welcome everyone to join with us.</p>"));
-    aboutDlg->setAppDescription(tr("<p>Service & Support : <br/>&nbsp;&nbsp;&nbsp;<a style='color: black;' href='mailto://support@kylinos.cn'>support@kylinos.cn</a></p>"));
+    aboutDlg->setAppDescription(tr("<p>Service & Support : <a style='color: black;' href='mailto://support@kylinos.cn'>support@kylinos.cn</a></p>"));
 
     QApplication::restoreOverrideCursor();
 }
