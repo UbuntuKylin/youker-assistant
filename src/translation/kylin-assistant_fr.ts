@@ -120,169 +120,169 @@ tang guang &lt;tangguang@kylinos.cn&gt;</source>
 <context>
     <name>CleandetailVeiw</name>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="95"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="330"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="99"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="334"/>
         <source>Computer scan in progress...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="106"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="110"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="122"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="126"/>
         <source>Cleanup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="140"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="153"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="144"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="157"/>
         <source>Return</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="199"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="327"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="203"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="331"/>
         <source>System cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="206"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="210"/>
         <source>Clear package、thumbnails and browser cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="212"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="259"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="216"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="263"/>
         <source>Details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="245"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="329"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="249"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="333"/>
         <source>Cookies</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="253"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="257"/>
         <source>Clear internet、games、shopping history, etc.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="292"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="328"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="296"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="332"/>
         <source>Historical trace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="299"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="303"/>
         <source>Clear browser and system usage traces</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="602"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="772"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="606"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="781"/>
         <source> items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="634"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="638"/>
         <source>There&apos;s nothing to clean up.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="786"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="795"/>
         <source> historical traces</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="983"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="984"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="985"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="992"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="993"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="994"/>
         <source>Cleaning up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="988"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="989"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="990"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="997"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="998"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="999"/>
         <source>Cleaning up..</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="993"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="994"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="995"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="1002"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="1003"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="1004"/>
         <source>Cleaning up....</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="610"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="614"/>
         <source> historical use traces</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="602"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="606"/>
         <source>Cleanable cookie </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="596"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="598"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="600"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="602"/>
         <source>Cleanable cache </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="454"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="874"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="458"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="883"/>
         <source>Computer cleanup in progress...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="640"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="644"/>
         <source>Complete!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="722"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="723"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="729"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="730"/>
         <source>Cleanable Cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="734"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="735"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="742"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="743"/>
         <source>Cleanable Cookie</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="786"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="795"/>
         <source>Clear </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="772"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="781"/>
         <source>Clear cookie </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="758"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="767"/>
         <source>Clear cache </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="888"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="889"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="890"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="998"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="999"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="1000"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="897"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="898"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="899"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="1007"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="1008"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="1009"/>
         <source>Cleaning up......</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="904"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="913"/>
         <source>Clearance completed!</source>
         <translation type="unfinished"></translation>
     </message>

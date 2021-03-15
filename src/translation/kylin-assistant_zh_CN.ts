@@ -27,12 +27,6 @@ tang guang &lt;tangguang@kylinos.cn&gt;</source>
 tang guang &lt;tangguang@kylinos.cn&gt;</translation>
     </message>
     <message>
-        <source>Maintainer:
-tang guang &lt;tanggguang@kylinos.cn&gt;</source>
-        <translation type="vanished">维护者：
-tang guang &lt;tanggguang@kylinos.cn&gt;</translation>
-    </message>
-    <message>
         <location filename="../aboutdialog.cpp" line="138"/>
         <source>&lt;p style=&apos;text-indent:15px&apos;&gt;Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.&lt;/p&gt;</source>
         <translation> &lt;p style=&apos;text-indent:15px&apos;&gt;麒麟助手是由麒麟团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器等功能。&lt;/p&gt;</translation>
@@ -48,35 +42,9 @@ tang guang &lt;tanggguang@kylinos.cn&gt;</translation>
         <translation> 地址，了解软件的最新进展并反馈问题，欢迎广大用户和爱好者一起参与。&lt;/p&gt;</translation>
     </message>
     <message>
-        <source>Maintainer:
-Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
-        <translation type="vanished">维护者：
-麒麟团队 &lt;ubuntukylin-members@list.launchpad.net&gt;</translation>
-    </message>
-    <message>
-        <source>      Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.</source>
-        <translation type="vanished">      麒麟助手是由麒麟团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器等功能。</translation>
-    </message>
-    <message>
-        <source> for more information. Welcome everyone to join with us. kylin-assistant Homepage: </source>
-        <translation type="vanished"> 了解软件的最新进展并反馈问题，欢迎广大用户和爱好者一起参与。麒麟助手主页：</translation>
-    </message>
-    <message>
-        <source>      The software is still under development. Please visit </source>
-        <translation type="vanished">      各项功能还在不断完善，更多功能也将陆续开发，敬请关注 Ubuntu Kylin 官网 </translation>
-    </message>
-    <message>
         <location filename="../aboutdialog.cpp" line="103"/>
         <source>Contributor</source>
         <translation>贡献者</translation>
-    </message>
-    <message>
-        <source>      The software is still under development. Please visit  kylin-assistant</source>
-        <translation type="vanished">      各项功能还在不断完善，更多功能也将陆续开发，敬请关注麒麟助手的</translation>
-    </message>
-    <message>
-        <source> for more information. Welcome everyone to join with us.</source>
-        <translation type="vanished"> 地址，了解软件的最新进展并反馈问题，欢迎广大用户和爱好者一起参与。</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="160"/>
@@ -155,290 +123,175 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>CleandetailVeiw</name>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="95"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="330"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="99"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="334"/>
         <source>Computer scan in progress...</source>
         <translation>正在扫描电脑......</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="106"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="110"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="122"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="126"/>
         <source>Cleanup</source>
         <translation>一键清理</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="140"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="153"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="144"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="157"/>
         <source>Return</source>
         <translation>返回</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="199"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="327"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="203"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="331"/>
         <source>System cache</source>
         <translation>系统缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="206"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="210"/>
         <source>Clear package、thumbnails and browser cache</source>
         <translation>清理包、缩略图和浏览器缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="212"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="259"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="216"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="263"/>
         <source>Details</source>
         <translation>详情</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="245"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="329"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="249"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="333"/>
         <source>Cookies</source>
         <translation>Cookies</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="253"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="257"/>
         <source>Clear internet、games、shopping history, etc.</source>
         <translation>清理上网、游戏、购物记录等</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="292"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="328"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="296"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="332"/>
         <source>Historical trace</source>
         <translation>历史痕迹</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="299"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="303"/>
         <source>Clear browser and system usage traces</source>
         <translation>清理浏览器和系统使用痕迹</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="602"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="772"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="606"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="781"/>
         <source> items</source>
         <translation> 项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="634"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="638"/>
         <source>There&apos;s nothing to clean up.</source>
         <translation>无需进行清理</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="640"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="644"/>
         <source>Complete!</source>
         <translation>扫描完成!</translation>
     </message>
     <message>
-        <source>Scan complete!</source>
-        <translation type="vanished">扫描完成！</translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="983"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="984"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="985"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="992"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="993"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="994"/>
         <source>Cleaning up</source>
         <translation>清理中</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="988"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="989"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="990"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="997"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="998"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="999"/>
         <source>Cleaning up..</source>
         <translation>清理中..</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="993"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="994"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="995"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="1002"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="1003"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="1004"/>
         <source>Cleaning up....</source>
         <translation>清理中......</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="610"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="614"/>
         <source> historical use traces</source>
         <translation>条历史使用痕迹</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="602"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="606"/>
         <source>Cleanable cookie </source>
         <translation>可清理cookie </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="596"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="598"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="600"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="602"/>
         <source>Cleanable cache </source>
         <translation>可清理缓存 </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="454"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="874"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="458"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="883"/>
         <source>Computer cleanup in progress...</source>
         <translation>电脑清理中...</translation>
     </message>
     <message>
-        <source>Clear packageãthumbnails and browser cache</source>
-        <translation type="vanished">清理包、缩略图和浏览器缓存</translation>
-    </message>
-    <message>
-        <source>Clear internetãgamesãshopping history, etc.</source>
-        <translation type="vanished">清理上网、游戏、购物记录等</translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="722"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="723"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="729"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="730"/>
         <source>Cleanable Cache</source>
         <translation>可清理缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="734"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="735"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="742"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="743"/>
         <source>Cleanable Cookie</source>
         <translation>可清理cookie</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="786"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="795"/>
         <source>Clear </source>
         <translation>清理 </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="786"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="795"/>
         <source> historical traces</source>
         <translation> 历史记录</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="772"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="781"/>
         <source>Clear cookie </source>
         <translation>清理 cookie </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="758"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="767"/>
         <source>Clear cache </source>
         <translation>清理缓存 </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="888"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="889"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="890"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="998"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="999"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="1000"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="897"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="898"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="899"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="1007"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="1008"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="1009"/>
         <source>Cleaning up......</source>
         <translation>清理中......</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="904"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="913"/>
         <source>Clearance completed!</source>
         <translation>清理完成！</translation>
     </message>
 </context>
 <context>
-    <name>CleanerDetailWidget</name>
-    <message>
-        <source>Apt Cache Clean Items</source>
-        <translation type="vanished">Apt缓存清理项</translation>
-    </message>
-    <message>
-        <source>Apt Cache count:</source>
-        <translation type="vanished">Apt缓存总数：</translation>
-    </message>
-    <message>
-        <source>Software Cache Clean Items</source>
-        <translation type="vanished">软件中心缓存清理项</translation>
-    </message>
-    <message>
-        <source>Software Cache count:</source>
-        <translation type="vanished">软件中心缓存总数：</translation>
-    </message>
-    <message>
-        <source>Thumbnails Cache Clean Items</source>
-        <translation type="vanished">缩略图缓存清理项</translation>
-    </message>
-    <message>
-        <source>Thumbnails Cache Count:</source>
-        <translation type="vanished">缩略图缓存总数：</translation>
-    </message>
-    <message>
-        <source>Firefox Cache Count:</source>
-        <translation type="vanished">Firefox浏览器缓存总数：</translation>
-    </message>
-    <message>
-        <source>Chromium Cache Count:</source>
-        <translation type="vanished">Chromium浏览器缓存总数：</translation>
-    </message>
-    <message>
-        <source>Firefox Cookies Clean Items</source>
-        <translation type="vanished">Firefox Cookies 清理项</translation>
-    </message>
-    <message>
-        <source>Firefox Cookies Count:</source>
-        <translation type="vanished">Firefox Cookies总数：</translation>
-    </message>
-    <message>
-        <source>Chromium Cookies Clean Items</source>
-        <translation type="vanished">Chromium Cookies 清理项</translation>
-    </message>
-    <message>
-        <source>Chromium Cookies Count:</source>
-        <translation type="vanished">Chromium Cookies总数：</translation>
-    </message>
-    <message>
-        <source>No garbage</source>
-        <translation type="vanished">没有扫描到垃圾</translation>
-    </message>
-    <message>
-        <source>Firefox History Count:</source>
-        <translation type="vanished">Firefox 历史记录总数：</translation>
-    </message>
-    <message>
-        <source>Chromium History Count:</source>
-        <translation type="vanished">Chromium历史记录总数：</translation>
-    </message>
-    <message>
-        <source>System History Count:</source>
-        <translation type="vanished">系统历史痕迹总数：</translation>
-    </message>
-    <message>
-        <source>Command history size:</source>
-        <translation type="vanished">命令历史记录大小：</translation>
-    </message>
-    <message>
-        <source>Firefox Cache Clean Items</source>
-        <translation type="vanished">Firefox 缓存清理项</translation>
-    </message>
-    <message>
-        <source>Chromium Cache Clean Items</source>
-        <translation type="vanished">Chromium 缓存清理项</translation>
-    </message>
-    <message>
-        <source>Debug log Items</source>
-        <translation type="vanished">调试日志项</translation>
-    </message>
-    <message>
-        <source>Debug log:</source>
-        <translation type="vanished">调试日志：</translation>
-    </message>
-    <message>
-        <source>Clean args is empty!</source>
-        <translation type="vanished">清理参数为空！</translation>
-    </message>
-</context>
-<context>
     <name>CleanerMainWidget</name>
-    <message>
-        <source>Cleans up cache of system</source>
-        <translation type="obsolete">清理系统缓存</translation>
-    </message>
-    <message>
-        <source>Cleans up cookies in browser</source>
-        <translation type="obsolete">清理浏览器缓存</translation>
-    </message>
-    <message>
-        <source>Cleans up records of history</source>
-        <translation type="obsolete">清理历史记录</translation>
-    </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="61"/>
         <source>Cache</source>
@@ -453,14 +306,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="104"/>
         <source>Clear internet、games、shopping history, etc.</source>
         <translation>清理上网、游戏、购物记录等</translation>
-    </message>
-    <message>
-        <source>Clear packageãthumbnails and browser cache</source>
-        <translation type="vanished">清理包、缩略图和浏览器缓存</translation>
-    </message>
-    <message>
-        <source>Clear internetãgamesãshopping history, etc.</source>
-        <translation type="vanished">清理上网、游戏、购物记录等</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="136"/>
@@ -517,14 +362,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>缓存选项</translation>
     </message>
     <message>
-        <source>System Cache</source>
-        <translation type="obsolete">系统缓存</translation>
-    </message>
-    <message>
-        <source>Cleanup  cache of system, software-center, thumbnails and browser</source>
-        <translation type="obsolete">清除包、缩略图和浏览器缓存等</translation>
-    </message>
-    <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="165"/>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="310"/>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="333"/>
@@ -547,10 +384,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="99"/>
         <source>Cookies</source>
         <translation>Cookies</translation>
-    </message>
-    <message>
-        <source>Clean up user login information, support Firefox and Chromium browser</source>
-        <translation type="obsolete">清除上网、游戏、购物等记录</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="167"/>
@@ -582,25 +415,9 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>删除调试日志</translation>
     </message>
     <message>
-        <source>Cleanup makes computers safer.</source>
-        <translation type="vanished">常清理，电脑轻快又安全.</translation>
-    </message>
-    <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="529"/>
         <source>Trace Items</source>
         <translation>访问痕迹选项</translation>
-    </message>
-    <message>
-        <source>History trace</source>
-        <translation type="obsolete">历史痕迹</translation>
-    </message>
-    <message>
-        <source>Cleaning the internet and opened documents recently records</source>
-        <translation type="obsolete">清除浏览器和系统使用痕迹</translation>
-    </message>
-    <message>
-        <source>Please select the items you want to clean</source>
-        <translation type="obsolete">请选择您想清理的选项</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="462"/>
@@ -614,10 +431,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <location filename="../../component/cpufmwidget.cpp" line="246"/>
         <source>apply</source>
         <translation>应用</translation>
-    </message>
-    <message>
-        <source>Current CPU Main Frequency</source>
-        <translation type="vanished">当前CPU主频</translation>
     </message>
     <message>
         <location filename="../../component/cpufmwidget.cpp" line="36"/>
@@ -658,33 +471,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <location filename="../../component/cpufmwidget.cpp" line="234"/>
         <source>CPU FM Note: The CPU FM function has some risks, please use it carefully! After FM is completed, restarting will restore the default configuration!</source>
         <translation>CPU调频说明：CPU调频功能存在一定的风险，请谨慎操作！调频完成重启计算机将还原默认配置！</translation>
-    </message>
-    <message>
-        <source>CPU FM Note: There are some risks associated with the CPU FM function,please use caution! The computer needs to be restarted when the FM is complete.</source>
-        <translation type="vanished">CPU调频说明：CPU调频功能存在一定的风险，请谨慎操作！调频完成需重启计算机。</translation>
-    </message>
-</context>
-<context>
-    <name>CpuRateWidget</name>
-    <message>
-        <source>CPU</source>
-        <translation type="vanished">处理器</translation>
-    </message>
-    <message>
-        <source>Occupancy rate</source>
-        <translation type="vanished">占用率</translation>
-    </message>
-    <message>
-        <source>Idle rate</source>
-        <translation type="vanished">空闲率</translation>
-    </message>
-    <message>
-        <source>The running time of system</source>
-        <translation type="vanished">系统运行时间</translation>
-    </message>
-    <message>
-        <source>The idle time of system</source>
-        <translation type="vanished">系统空闲时间</translation>
     </message>
 </context>
 <context>
@@ -1019,48 +805,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
     </message>
 </context>
 <context>
-    <name>FileSystemDialog</name>
-    <message>
-        <source>Refresh</source>
-        <translation type="vanished">刷新</translation>
-    </message>
-</context>
-<context>
-    <name>FileSystemListWidget</name>
-    <message>
-        <source>Device</source>
-        <translation type="vanished">设备</translation>
-    </message>
-    <message>
-        <source>Directory</source>
-        <translation type="vanished">目录</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation type="vanished">类型</translation>
-    </message>
-    <message>
-        <source>Total</source>
-        <translation type="vanished">总数</translation>
-    </message>
-    <message>
-        <source>Free</source>
-        <translation type="vanished">空闲</translation>
-    </message>
-    <message>
-        <source>Available</source>
-        <translation type="vanished">可用</translation>
-    </message>
-    <message>
-        <source>Used</source>
-        <translation type="vanished">已用</translation>
-    </message>
-    <message>
-        <source>No File System Info</source>
-        <translation type="vanished">没有发现文件系统信息</translation>
-    </message>
-</context>
-<context>
     <name>FontWidget</name>
     <message>
         <location filename="../../setting/fontwidget.cpp" line="84"/>
@@ -1127,14 +871,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <location filename="../../component/generaldialog.cpp" line="31"/>
         <source>Kylin Assistant</source>
         <translation>麒麟助手</translation>
-    </message>
-    <message>
-        <source>Remind</source>
-        <translation type="vanished">注意</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation type="vanished">警告</translation>
     </message>
     <message>
         <location filename="../../component/generaldialog.cpp" line="87"/>
@@ -1221,10 +957,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>内存</translation>
     </message>
     <message>
-        <source>Motherboard</source>
-        <translation type="vanished">主板</translation>
-    </message>
-    <message>
         <location filename="../infowidget.cpp" line="159"/>
         <source>HD</source>
         <translation>硬盘</translation>
@@ -1233,10 +965,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <location filename="../infowidget.cpp" line="167"/>
         <source>NIC</source>
         <translation>网卡</translation>
-    </message>
-    <message>
-        <source>VGA</source>
-        <translation type="vanished">显卡</translation>
     </message>
     <message>
         <location filename="../infowidget.cpp" line="151"/>
@@ -1401,10 +1129,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
         <translation>电池</translation>
     </message>
     <message>
-        <source>Device Driver</source>
-        <translation type="obsolete">设备驱动</translation>
-    </message>
-    <message>
         <location filename="../infowidget.cpp" line="231"/>
         <source>Sensor</source>
         <translation>硬件传感</translation>
@@ -1502,14 +1226,6 @@ Kylin Team &lt;ubuntukylin-members@list.launchpad.net&gt;</source>
 <context>
     <name>MListwidget</name>
     <message>
-        <source>Local System</source>
-        <translation type="vanished">本机系统</translation>
-    </message>
-    <message>
-        <source>Hardware Information</source>
-        <translation type="vanished">硬件信息</translation>
-    </message>
-    <message>
         <location filename="../listwidget.cpp" line="52"/>
         <location filename="../listwidget.cpp" line="166"/>
         <source>Local 
@@ -1592,14 +1308,6 @@ Information</source>
         <translation>麒麟助手</translation>
     </message>
     <message>
-        <source>Start Scan</source>
-        <translation type="obsolete">开始扫描</translation>
-    </message>
-    <message>
-        <source>Start Cleanup</source>
-        <translation type="obsolete">开始清理</translation>
-    </message>
-    <message>
         <location filename="../maintopwidget.cpp" line="390"/>
         <source>Back</source>
         <translation>返回</translation>
@@ -1621,10 +1329,6 @@ Information</source>
         <location filename="../maintopwidget.cpp" line="395"/>
         <source>Scan Over</source>
         <translation>扫描完成</translation>
-    </message>
-    <message>
-        <source>Regular cleaning, let your computer remains the relaxed state</source>
-        <translation type="obsolete">经常清理，让电脑保持最轻松的状态</translation>
     </message>
     <message>
         <location filename="../maintopwidget.cpp" line="388"/>
@@ -1927,60 +1631,6 @@ Information</source>
         <source>&lt;p&gt;Service &amp; Support : &lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</source>
         <translation type="unfinished">&lt;p&gt;服务和支持: &lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
-    <message>
-        <source>&lt;p&gt;Service &amp; Support : &amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</source>
-        <translation type="obsolete">&lt;p&gt;服务和支持: &lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;p&gt;Service &amp; Support : &lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</source>
-        <translation type="vanished">&lt;p&gt;服务和支持: &lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</translation>
-    </message>
-    <message>
-        <source>Understand hardware information, provide more convenient channel to obtain hardware information</source>
-        <translation type="obsolete">了解电脑硬件详细信息，为用户提供更加方便的获取硬件信息渠道</translation>
-    </message>
-    <message>
-        <source>perform a full range of customizations systems based on your own personal preferences</source>
-        <translation type="obsolete">根据个人喜好对系统进行全方位的定制</translation>
-    </message>
-    <message>
-        <source>Provides lightweight tool and creates fast and convenient experience</source>
-        <translation type="obsolete">提供轻量化工具，打造快捷方便的体验</translation>
-    </message>
-    <message>
-        <source>You can perform a full range of customized systems based on personal preferences</source>
-        <translation type="obsolete">您可以根据个人喜好对系统进行全方位的定制</translation>
-    </message>
-    <message>
-        <source>Provide a practical and lightweight tool, create fast and convenient experience for you</source>
-        <translation type="obsolete">提供轻巧使用工具，为您打造快捷方便的体验</translation>
-    </message>
-</context>
-<context>
-    <name>MemoryCircle</name>
-    <message>
-        <source>Memory</source>
-        <translation type="vanished">内存</translation>
-    </message>
-    <message>
-        <source>Swap</source>
-        <translation type="vanished">交换</translation>
-    </message>
-    <message>
-        <source>Used(Percent)</source>
-        <translation type="vanished">已使用(百分比)</translation>
-    </message>
-    <message>
-        <source>Total</source>
-        <translation type="vanished">总量</translation>
-    </message>
-</context>
-<context>
-    <name>MemoryWidget</name>
-    <message>
-        <source>Memory</source>
-        <translation type="vanished">内存</translation>
-    </message>
 </context>
 <context>
     <name>MenuWidget</name>
@@ -2043,10 +1693,6 @@ Information</source>
         <translation>麒麟助手</translation>
     </message>
     <message>
-        <source>Home</source>
-        <translation type="obsolete">麒麟首页</translation>
-    </message>
-    <message>
         <location filename="../middlewidget.cpp" line="210"/>
         <source>Cleanup</source>
         <translation>电脑清理</translation>
@@ -2055,14 +1701,6 @@ Information</source>
         <location filename="../middlewidget.cpp" line="221"/>
         <source>Sysinfo</source>
         <translation>本机信息</translation>
-    </message>
-    <message>
-        <source>Optimize</source>
-        <translation type="obsolete">优化加速</translation>
-    </message>
-    <message>
-        <source>Monitoring</source>
-        <translation type="vanished">性能监测</translation>
     </message>
     <message>
         <location filename="../middlewidget.cpp" line="216"/>
@@ -2075,40 +1713,9 @@ Information</source>
         <translation>驱动管理</translation>
     </message>
     <message>
-        <source>Feature</source>
-        <translation type="obsolete">系统美化</translation>
-    </message>
-    <message>
         <location filename="../middlewidget.cpp" line="221"/>
         <source>Toolkits</source>
         <translation>工具大全</translation>
-    </message>
-</context>
-<context>
-    <name>MonitorTitleWidget</name>
-    <message>
-        <source>Kylin System Monitor</source>
-        <translation type="vanished">麒麟系统监视器</translation>
-    </message>
-    <message>
-        <source>Processes</source>
-        <translation type="vanished">进程</translation>
-    </message>
-    <message>
-        <source>Resources</source>
-        <translation type="vanished">资源</translation>
-    </message>
-    <message>
-        <source>File Systems</source>
-        <translation type="vanished">文件系统</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="vanished">取消</translation>
-    </message>
-    <message>
-        <source>Enter the relevant info of process</source>
-        <translation type="vanished">输入进程相关信息</translation>
     </message>
 </context>
 <context>
@@ -2150,40 +1757,6 @@ Information</source>
         <location filename="../../setting/mousewidget.cpp" line="109"/>
         <source>Big Size</source>
         <translation>大号</translation>
-    </message>
-</context>
-<context>
-    <name>NetworkFlow</name>
-    <message>
-        <source>Receiving</source>
-        <translation type="vanished">正在接收</translation>
-    </message>
-    <message>
-        <source>Total Received</source>
-        <translation type="vanished">总计已接收</translation>
-    </message>
-    <message>
-        <source>Sending</source>
-        <translation type="vanished">正在发送</translation>
-    </message>
-    <message>
-        <source>Receive</source>
-        <translation type="vanished">接收</translation>
-    </message>
-    <message>
-        <source>Send</source>
-        <translation type="vanished">发送</translation>
-    </message>
-    <message>
-        <source>Total Sent</source>
-        <translation type="vanished">总计已发送</translation>
-    </message>
-</context>
-<context>
-    <name>NetworkWidget</name>
-    <message>
-        <source>Network</source>
-        <translation type="vanished">网络</translation>
     </message>
 </context>
 <context>
@@ -2323,233 +1896,7 @@ Information</source>
     </message>
 </context>
 <context>
-    <name>ProcessCategory</name>
-    <message>
-        <source>Active Processes</source>
-        <translation type="vanished">活动的进程</translation>
-    </message>
-    <message>
-        <source>My Processes</source>
-        <translation type="vanished">我的进程</translation>
-    </message>
-    <message>
-        <source>All Processes</source>
-        <translation type="vanished">全部进程</translation>
-    </message>
-</context>
-<context>
-    <name>ProcessDialog</name>
-    <message>
-        <source>End process</source>
-        <translation type="vanished">结束进程</translation>
-    </message>
-    <message>
-        <source>Ending a process may destroy data, break the session or introduce a security risk. Only unresponsive processes should be ended.
-Are you sure to continue?</source>
-        <translation type="vanished">结束进程可能导致数据损坏，中断会话或带来安全风险。您应该只结束无响应的进程。
-您确定要继续该操作？</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="vanished">取消</translation>
-    </message>
-    <message>
-        <source>Kill process</source>
-        <translation type="vanished">杀死进程</translation>
-    </message>
-    <message>
-        <source>Killing a process may destroy data, break the session or introduce a security risk. Only unresponsive processes should be killed.
-Are you sure to continue?</source>
-        <translation type="vanished">杀死进程可能导致数据损坏，中断会话或带来安全风险。您应该只杀死无响应的进程。
-您确定要继续该操作？</translation>
-    </message>
-    <message>
-        <source>Stop process</source>
-        <translation type="vanished">停止进程</translation>
-    </message>
-    <message>
-        <source>Continue process</source>
-        <translation type="vanished">继续进程</translation>
-    </message>
-    <message>
-        <source>Very High</source>
-        <translation type="vanished">非常高</translation>
-    </message>
-    <message>
-        <source>High</source>
-        <translation type="vanished">高</translation>
-    </message>
-    <message>
-        <source>Normal</source>
-        <translation type="vanished">普通</translation>
-    </message>
-    <message>
-        <source>Low</source>
-        <translation type="vanished">低</translation>
-    </message>
-    <message>
-        <source>Very Low</source>
-        <translation type="vanished">非常低</translation>
-    </message>
-    <message>
-        <source>Custom</source>
-        <translation type="vanished">自定义</translation>
-    </message>
-    <message>
-        <source>Change Priority</source>
-        <translation type="vanished">改变优先级</translation>
-    </message>
-    <message>
-        <source>Properties</source>
-        <translation type="vanished">属性</translation>
-    </message>
-    <message>
-        <source>Change Priority of Process %1 (PID: %2)</source>
-        <translation type="vanished">更改进程“%1”(PID：%2)的优先级</translation>
-    </message>
-</context>
-<context>
-    <name>ProcessListItem</name>
-    <message>
-        <source>Stopped</source>
-        <translation type="vanished">已停止</translation>
-    </message>
-    <message>
-        <source>Suspend</source>
-        <translation type="vanished">停止</translation>
-    </message>
-    <message>
-        <source>Zombie</source>
-        <translation type="vanished">僵死</translation>
-    </message>
-    <message>
-        <source>No response</source>
-        <translation type="vanished">无反应</translation>
-    </message>
-    <message>
-        <source>Uninterruptible</source>
-        <translation type="vanished">不可中断</translation>
-    </message>
-</context>
-<context>
-    <name>ProcessListWidget</name>
-    <message>
-        <source>Process Name</source>
-        <translation type="vanished">进程名</translation>
-    </message>
-    <message>
-        <source>User</source>
-        <translation type="vanished">用户</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation type="vanished">状态</translation>
-    </message>
-    <message>
-        <source>CPU</source>
-        <translation type="vanished">处理器</translation>
-    </message>
-    <message>
-        <source>ID</source>
-        <translation type="vanished">ID</translation>
-    </message>
-    <message>
-        <source>Command Line</source>
-        <translation type="vanished">命令行</translation>
-    </message>
-    <message>
-        <source>Memory</source>
-        <translation type="vanished">内存</translation>
-    </message>
-    <message>
-        <source>Priority</source>
-        <translation type="vanished">优先级</translation>
-    </message>
-    <message>
-        <source>No search result</source>
-        <translation type="vanished">无搜索结果</translation>
-    </message>
-</context>
-<context>
-    <name>ProcessManager</name>
-    <message>
-        <source>System Monitor</source>
-        <translation type="vanished">系统监视器</translation>
-    </message>
-    <message>
-        <source>Help user to kill process</source>
-        <translation type="vanished">帮助用户管理进程</translation>
-    </message>
-</context>
-<context>
-    <name>PropertiesDialog</name>
-    <message>
-        <source>OK</source>
-        <translation type="vanished">确定</translation>
-    </message>
-</context>
-<context>
     <name>QObject</name>
-    <message>
-        <source>Running</source>
-        <translation type="vanished">运行中</translation>
-    </message>
-    <message>
-        <source>Stopped</source>
-        <translation type="vanished">已停止</translation>
-    </message>
-    <message>
-        <source>Zombie</source>
-        <translation type="vanished">僵死</translation>
-    </message>
-    <message>
-        <source>Uninterruptible</source>
-        <translation type="vanished">不可中断</translation>
-    </message>
-    <message>
-        <source>Sleeping</source>
-        <translation type="vanished">睡眠中</translation>
-    </message>
-    <message>
-        <source>Very High</source>
-        <translation type="vanished">非常高</translation>
-    </message>
-    <message>
-        <source>High</source>
-        <translation type="vanished">高</translation>
-    </message>
-    <message>
-        <source>Normal</source>
-        <translation type="vanished">普通</translation>
-    </message>
-    <message>
-        <source>Low</source>
-        <translation type="vanished">低</translation>
-    </message>
-    <message>
-        <source>Very Low</source>
-        <translation type="vanished">非常低</translation>
-    </message>
-    <message>
-        <source>Very High Priority</source>
-        <translation type="vanished">非常高优先级</translation>
-    </message>
-    <message>
-        <source>High Priority</source>
-        <translation type="vanished">高优先级</translation>
-    </message>
-    <message>
-        <source>Normal Priority</source>
-        <translation type="vanished">普通优先级</translation>
-    </message>
-    <message>
-        <source>Low Priority</source>
-        <translation type="vanished">低优先级</translation>
-    </message>
-    <message>
-        <source>Very Low Priority</source>
-        <translation type="vanished">非常低优先级</translation>
-    </message>
     <message>
         <location filename="../topbasewidget.cpp" line="65"/>
         <source>Choose the theme what you want</source>
@@ -2695,14 +2042,6 @@ Are you sure to continue?</source>
         <translation>序列号</translation>
     </message>
     <message>
-        <source>Motherboard Model</source>
-        <translation type="vanished">主板型号</translation>
-    </message>
-    <message>
-        <source>Motherboard Vendor</source>
-        <translation type="vanished">主板产商</translation>
-    </message>
-    <message>
         <location filename="../../info/infoitemline.cpp" line="102"/>
         <source>BIOS Vendor</source>
         <translation>BIOS产商</translation>
@@ -2740,10 +2079,6 @@ Are you sure to continue?</source>
         <translation>插座／插槽</translation>
     </message>
     <message>
-        <source>Maximum Frequency</source>
-        <translation type="vanished">最大主频</translation>
-    </message>
-    <message>
         <location filename="../../info/infoitemline.cpp" line="130"/>
         <source>Current Frequency</source>
         <translation>当前主频</translation>
@@ -2752,14 +2087,6 @@ Are you sure to continue?</source>
         <location filename="../../info/infoitemline.cpp" line="132"/>
         <source>FSB</source>
         <translation>前端总线</translation>
-    </message>
-    <message>
-        <source>Core Number</source>
-        <translation type="vanished">核心数目</translation>
-    </message>
-    <message>
-        <source>Core Online Number</source>
-        <translation type="vanished">在线核心数</translation>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="138"/>
@@ -2816,10 +2143,6 @@ Are you sure to continue?</source>
         <location filename="../infowidget.cpp" line="526"/>
         <source>Wrong info from firmware</source>
         <translation>固件未提供正确信息</translation>
-    </message>
-    <message>
-        <source>Desktop Environment</source>
-        <translation type="vanished">桌面环境</translation>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="96"/>
@@ -3075,18 +2398,6 @@ Are you sure to continue?</source>
         <location filename="../../info/infoitemline.cpp" line="277"/>
         <source>Date/Year</source>
         <translation>生产日期/年</translation>
-    </message>
-    <message>
-        <source>Monitor Manufacturers</source>
-        <translation type="vanished">显示器制造商</translation>
-    </message>
-    <message>
-        <source>Date of production/Week</source>
-        <translation type="vanished">生产日期/周</translation>
-    </message>
-    <message>
-        <source>Date of production/Year</source>
-        <translation type="vanished">生产日期/年</translation>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="283"/>
@@ -3405,110 +2716,6 @@ Are you sure to continue?</source>
         <translation>文件管理器</translation>
     </message>
     <message>
-        <source>byte</source>
-        <translation type="vanished">字节</translation>
-    </message>
-    <message>
-        <source>byte/s</source>
-        <translation type="vanished">字节/秒</translation>
-    </message>
-    <message>
-        <source>bytes</source>
-        <translation type="vanished">字节</translation>
-    </message>
-    <message>
-        <source>bytes/s</source>
-        <translation type="vanished">字节/秒</translation>
-    </message>
-    <message>
-        <source>KiB</source>
-        <translation type="vanished">KB</translation>
-    </message>
-    <message>
-        <source>KiB/s</source>
-        <translation type="vanished">KB/秒</translation>
-    </message>
-    <message>
-        <source>MiB</source>
-        <translation type="vanished">MiB</translation>
-    </message>
-    <message>
-        <source>MiB/s</source>
-        <translation type="vanished">MiB/秒</translation>
-    </message>
-    <message>
-        <source>GiB</source>
-        <translation type="vanished">GiB</translation>
-    </message>
-    <message>
-        <source>GiB/s</source>
-        <translation type="vanished">GiB/秒</translation>
-    </message>
-    <message>
-        <source>TiB</source>
-        <translation type="vanished">TiB</translation>
-    </message>
-    <message>
-        <source>TiB/s</source>
-        <translation type="vanished">TiB/秒</translation>
-    </message>
-    <message>
-        <source>%1hours</source>
-        <translation type="vanished">%1小时</translation>
-    </message>
-    <message>
-        <source>%1hour</source>
-        <translation type="vanished">%1小时</translation>
-    </message>
-    <message>
-        <source>%1minutes</source>
-        <translation type="vanished">%1分</translation>
-    </message>
-    <message>
-        <source>%1minute</source>
-        <translation type="vanished">%1分</translation>
-    </message>
-    <message>
-        <source>%1seconds</source>
-        <translation type="vanished">%1秒</translation>
-    </message>
-    <message>
-        <source>%1second</source>
-        <translation type="vanished">%1秒</translation>
-    </message>
-    <message>
-        <source>%1day</source>
-        <translation type="vanished">%1天</translation>
-    </message>
-    <message>
-        <source>%1days</source>
-        <translation type="vanished">%1天</translation>
-    </message>
-    <message>
-        <source>User name:</source>
-        <translation type="vanished">用户名：</translation>
-    </message>
-    <message>
-        <source>Process name:</source>
-        <translation type="vanished">进程名：</translation>
-    </message>
-    <message>
-        <source>Command line:</source>
-        <translation type="vanished">命令行：</translation>
-    </message>
-    <message>
-        <source>CPU Time:</source>
-        <translation type="vanished">CPU 时间：</translation>
-    </message>
-    <message>
-        <source>Started Time:</source>
-        <translation type="vanished">开始于：</translation>
-    </message>
-    <message>
-        <source> (single-core single thread)</source>
-        <translation type="obsolete">（单核单线程）</translation>
-    </message>
-    <message>
         <location filename="../main.cpp" line="179"/>
         <source>app is already running!</source>
         <translation type="unfinished"></translation>
@@ -3520,44 +2727,6 @@ Are you sure to continue?</source>
         <location filename="../../component/quibo.ui" line="14"/>
         <source>Form</source>
         <translation></translation>
-    </message>
-</context>
-<context>
-    <name>ReniceDialog</name>
-    <message>
-        <source>Nice value:</source>
-        <translation type="vanished">Nice 值：</translation>
-    </message>
-    <message>
-        <source>Note:</source>
-        <translation type="vanished">备忘：</translation>
-    </message>
-    <message>
-        <source>The priority of a process is given by its nice value. A lower nice value corresponds to a higher priority.</source>
-        <translation type="vanished">进程的优先级由它的 nice 值指定。较低的 nice 值对应较高的优先级。</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="vanished">取消</translation>
-    </message>
-    <message>
-        <source>Change Priority</source>
-        <translation type="vanished">改变优先级</translation>
-    </message>
-</context>
-<context>
-    <name>ResourcesCategory</name>
-    <message>
-        <source>CPU</source>
-        <translation type="vanished">处理器</translation>
-    </message>
-    <message>
-        <source>Memory</source>
-        <translation type="vanished">内存</translation>
-    </message>
-    <message>
-        <source>Network</source>
-        <translation type="vanished">网络</translation>
     </message>
 </context>
 <context>
@@ -3717,13 +2886,6 @@ Are you sure to continue?</source>
         <location filename="../../plugins/startupmanager/startupworker.cpp" line="407"/>
         <source>No description</source>
         <translation>无描述</translation>
-    </message>
-</context>
-<context>
-    <name>SystemMonitor</name>
-    <message>
-        <source>Kylin System Monitor</source>
-        <translation type="vanished">麒麟系统监视器</translation>
     </message>
 </context>
 <context>
