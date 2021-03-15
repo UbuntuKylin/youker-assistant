@@ -1058,6 +1058,8 @@ class DetailInfo:
                     continue
                 value = line.split(":")
                 tmpMem.setdefault(value[0].strip(), value[1].strip())
+            if "Size" not in tmpMem.keys():
+                continue
             if (tmpMem["Size"] == "No Module Installed"):
                 if (index == len(modlist) - 1):
                     Mem["MemSize"] = Mem["MemSize"][0:-5]
