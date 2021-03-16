@@ -1067,6 +1067,7 @@ class DetailInfo:
                     Mem["MemInfo"] = Mem["MemInfo"][0:-5]
                     Mem["MemSlot"] = Mem["MemSlot"][0:-5]
                     Mem["MemVendor"] = Mem["MemVendor"][0:-5]
+                    Mem["MemSpeed"] = Mem["MemSpeed"][0:-5]
                 continue
 
             memNum += 1
@@ -1076,6 +1077,7 @@ class DetailInfo:
             Mem["MemInfo"] = Mem.setdefault("MemInfo", "") + tmpMem["Type"] + "<1_1>"
             Mem["MemSlot"] = Mem.setdefault("MemSlot", "") + tmpMem["Bank Locator"] + "<1_1>"
             Mem["MemVendor"] = Mem.setdefault("MemVendor", "") + tmpMem["Manufacturer"] + "<1_1>"
+            Mem["MemSpeed"] = Mem.setdefault("MemSpeed", "") + tmpMem["Speed"] + "<1_1>"
             ##MB to GiB
             #bitnum = (int(tmpMem["Size"].split(" ")[0]) - 1).bit_length()
             #tmpMem["Size"] = str(( 2 ** (bitnum - 10))) + ' GiB'
@@ -1095,6 +1097,7 @@ class DetailInfo:
                 Mem["MemInfo"] = Mem["MemInfo"][0:-5]
                 Mem["MemSlot"] = Mem["MemSlot"][0:-5]
                 Mem["MemVendor"] = Mem["MemVendor"][0:-5]
+                Mem["MemSpeed"] = Mem["MemSpeed"][0:-5]
         if (not Mem):
             if os.path.exists(MEMORY):
                 memnum = 0

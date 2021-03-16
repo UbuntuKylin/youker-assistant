@@ -341,43 +341,43 @@ tang guang &lt;tangguang@kylinos.cn&gt;</source>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="163"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="303"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="326"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="309"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="332"/>
         <source>Cleanup FireFox Cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="163"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="255"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="278"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="261"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="284"/>
         <source>Cleanup Chromium Cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="165"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="310"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="333"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="316"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="339"/>
         <source>Cleanup the Cookies saving in Firefox</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="165"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="262"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="285"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="268"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="291"/>
         <source>Cleanup the Cookies saving in Chromium</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="167"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="317"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="340"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="323"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="346"/>
         <source>Clean up the Firefox Internet records</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="167"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="269"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="292"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="275"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="298"/>
         <source>Clean up the Chromium Internet records</source>
         <translation type="unfinished"></translation>
     </message>
@@ -402,22 +402,22 @@ tang guang &lt;tangguang@kylinos.cn&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="462"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="468"/>
         <source>Scan args is empty!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="494"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="500"/>
         <source>Cache Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="515"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="521"/>
         <source>Cookies Items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="529"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="535"/>
         <source>Trace Items</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1905,19 +1905,19 @@ Information</source>
         <location filename="../../info/infoitemline.cpp" line="111"/>
         <location filename="../../info/infoitemline.cpp" line="122"/>
         <location filename="../../info/infoitemline.cpp" line="238"/>
-        <location filename="../../info/infoitemline.cpp" line="281"/>
-        <location filename="../../info/infoitemline.cpp" line="299"/>
-        <location filename="../../info/infoitemline.cpp" line="326"/>
-        <location filename="../../info/infoitemline.cpp" line="374"/>
+        <location filename="../../info/infoitemline.cpp" line="283"/>
+        <location filename="../../info/infoitemline.cpp" line="301"/>
+        <location filename="../../info/infoitemline.cpp" line="328"/>
+        <location filename="../../info/infoitemline.cpp" line="376"/>
         <source>Vendor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="33"/>
-        <location filename="../../info/infoitemline.cpp" line="257"/>
-        <location filename="../../info/infoitemline.cpp" line="287"/>
-        <location filename="../../info/infoitemline.cpp" line="305"/>
-        <location filename="../../info/infoitemline.cpp" line="378"/>
+        <location filename="../../info/infoitemline.cpp" line="259"/>
+        <location filename="../../info/infoitemline.cpp" line="289"/>
+        <location filename="../../info/infoitemline.cpp" line="307"/>
+        <location filename="../../info/infoitemline.cpp" line="380"/>
         <source>Bus Address</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1930,19 +1930,19 @@ Information</source>
         <location filename="../../info/infoitemline.cpp" line="38"/>
         <location filename="../../info/infoitemline.cpp" line="113"/>
         <location filename="../../info/infoitemline.cpp" line="227"/>
-        <location filename="../../info/infoitemline.cpp" line="289"/>
+        <location filename="../../info/infoitemline.cpp" line="291"/>
         <source>Device Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="40"/>
-        <location filename="../../info/infoitemline.cpp" line="420"/>
+        <location filename="../../info/infoitemline.cpp" line="422"/>
         <source>Manufacturer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="81"/>
-        <location filename="../../info/infoitemline.cpp" line="328"/>
+        <location filename="../../info/infoitemline.cpp" line="330"/>
         <source>Model</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1978,8 +1978,8 @@ Information</source>
         <location filename="../../info/infoitemline.cpp" line="124"/>
         <location filename="../../info/infoitemline.cpp" line="231"/>
         <location filename="../../info/infoitemline.cpp" line="240"/>
-        <location filename="../../info/infoitemline.cpp" line="309"/>
-        <location filename="../../info/infoitemline.cpp" line="332"/>
+        <location filename="../../info/infoitemline.cpp" line="311"/>
+        <location filename="../../info/infoitemline.cpp" line="334"/>
         <source>Serial Number</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2272,333 +2272,338 @@ Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="249"/>
-        <source>Graphics Card Model</source>
+        <location filename="../../info/infoitemline.cpp" line="248"/>
+        <source>Memory Speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="251"/>
-        <source>Current Graphics Card</source>
+        <source>Graphics Card Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="253"/>
-        <source>Graphics Card Vendor</source>
+        <source>Current Graphics Card</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="255"/>
+        <source>Graphics Card Vendor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../info/infoitemline.cpp" line="257"/>
         <source>Graphics Driver</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="259"/>
+        <location filename="../../info/infoitemline.cpp" line="261"/>
         <source>Gamma</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="261"/>
+        <location filename="../../info/infoitemline.cpp" line="263"/>
         <source>Screen Size(inch)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="263"/>
+        <location filename="../../info/infoitemline.cpp" line="265"/>
         <source>Max Resolution</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="265"/>
+        <location filename="../../info/infoitemline.cpp" line="267"/>
         <source>Current Interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="267"/>
+        <location filename="../../info/infoitemline.cpp" line="269"/>
         <source>Monitor Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="269"/>
+        <location filename="../../info/infoitemline.cpp" line="271"/>
         <source>Visual Area</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="271"/>
+        <location filename="../../info/infoitemline.cpp" line="273"/>
         <source>Support Interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="273"/>
+        <location filename="../../info/infoitemline.cpp" line="275"/>
         <source>Monitor Vendor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="275"/>
+        <location filename="../../info/infoitemline.cpp" line="277"/>
         <source>Date/Week</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="277"/>
+        <location filename="../../info/infoitemline.cpp" line="279"/>
         <source>Date/Year</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="283"/>
+        <location filename="../../info/infoitemline.cpp" line="285"/>
         <source>NIC Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="285"/>
+        <location filename="../../info/infoitemline.cpp" line="287"/>
         <source>NIC Driver</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="291"/>
-        <location filename="../../info/infoitemline.cpp" line="311"/>
+        <location filename="../../info/infoitemline.cpp" line="293"/>
+        <location filename="../../info/infoitemline.cpp" line="313"/>
         <source>IP Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="293"/>
+        <location filename="../../info/infoitemline.cpp" line="295"/>
         <source>Mac Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="295"/>
+        <location filename="../../info/infoitemline.cpp" line="297"/>
         <source>Connection Status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="297"/>
+        <location filename="../../info/infoitemline.cpp" line="299"/>
         <source>Max Bandwidth</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="301"/>
+        <location filename="../../info/infoitemline.cpp" line="303"/>
         <source>WLan NIC Driver</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="303"/>
+        <location filename="../../info/infoitemline.cpp" line="305"/>
         <source>WLan NIC Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="307"/>
+        <location filename="../../info/infoitemline.cpp" line="309"/>
         <source>Device Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="313"/>
+        <location filename="../../info/infoitemline.cpp" line="315"/>
         <source>VNIC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="316"/>
+        <location filename="../../info/infoitemline.cpp" line="318"/>
         <source>NetType</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="319"/>
+        <location filename="../../info/infoitemline.cpp" line="321"/>
         <source>Ethernet interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="322"/>
+        <location filename="../../info/infoitemline.cpp" line="324"/>
         <source>Wireless interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="330"/>
+        <location filename="../../info/infoitemline.cpp" line="332"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="334"/>
+        <location filename="../../info/infoitemline.cpp" line="336"/>
         <source>Hostname</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="336"/>
+        <location filename="../../info/infoitemline.cpp" line="338"/>
         <source>Running Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="338"/>
+        <location filename="../../info/infoitemline.cpp" line="340"/>
         <source>OS Types</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="340"/>
+        <location filename="../../info/infoitemline.cpp" line="342"/>
         <source>OS Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="342"/>
+        <location filename="../../info/infoitemline.cpp" line="344"/>
         <source>Kernel Bit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="344"/>
+        <location filename="../../info/infoitemline.cpp" line="346"/>
         <source>Kernel Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="346"/>
+        <location filename="../../info/infoitemline.cpp" line="348"/>
         <source>Kernel Arch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="348"/>
+        <location filename="../../info/infoitemline.cpp" line="350"/>
         <source>32bit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="350"/>
+        <location filename="../../info/infoitemline.cpp" line="352"/>
         <source>64bit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="352"/>
+        <location filename="../../info/infoitemline.cpp" line="354"/>
         <source>YHKylin community</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="355"/>
+        <location filename="../../info/infoitemline.cpp" line="357"/>
         <source>Memory reference voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="357"/>
+        <location filename="../../info/infoitemline.cpp" line="359"/>
         <source>SATA controller voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="359"/>
+        <location filename="../../info/infoitemline.cpp" line="361"/>
         <source>Memory voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="361"/>
+        <location filename="../../info/infoitemline.cpp" line="363"/>
         <source>CPU pin voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="363"/>
+        <location filename="../../info/infoitemline.cpp" line="365"/>
         <source>Bridge voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="365"/>
+        <location filename="../../info/infoitemline.cpp" line="367"/>
         <source>CPU core voltage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="367"/>
+        <location filename="../../info/infoitemline.cpp" line="369"/>
         <source>CPU temperature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="369"/>
+        <location filename="../../info/infoitemline.cpp" line="371"/>
         <source>Motherboard temperature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="371"/>
+        <location filename="../../info/infoitemline.cpp" line="373"/>
         <source>CPU fan speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="376"/>
+        <location filename="../../info/infoitemline.cpp" line="378"/>
         <source>Dev Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="380"/>
+        <location filename="../../info/infoitemline.cpp" line="382"/>
         <source>Hardware Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="384"/>
+        <location filename="../../info/infoitemline.cpp" line="386"/>
         <source>Product</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="398"/>
+        <location filename="../../info/infoitemline.cpp" line="400"/>
         <source>GDDR Capacity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="400"/>
+        <location filename="../../info/infoitemline.cpp" line="402"/>
         <source>EGL Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="402"/>
+        <location filename="../../info/infoitemline.cpp" line="404"/>
         <source>EGL Client API</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="404"/>
+        <location filename="../../info/infoitemline.cpp" line="406"/>
         <source>GL Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="406"/>
+        <location filename="../../info/infoitemline.cpp" line="408"/>
         <source>GLSL Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="410"/>
+        <location filename="../../info/infoitemline.cpp" line="412"/>
         <source>Hardware Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="414"/>
+        <location filename="../../info/infoitemline.cpp" line="416"/>
         <source>Bluetooth Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="416"/>
+        <location filename="../../info/infoitemline.cpp" line="418"/>
         <source>Bus Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="418"/>
+        <location filename="../../info/infoitemline.cpp" line="420"/>
         <source>Device Class</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="422"/>
+        <location filename="../../info/infoitemline.cpp" line="424"/>
         <source>Service Classes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="382"/>
+        <location filename="../../info/infoitemline.cpp" line="384"/>
         <source>Capabilities</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="386"/>
+        <location filename="../../info/infoitemline.cpp" line="388"/>
         <source>Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="388"/>
+        <location filename="../../info/infoitemline.cpp" line="390"/>
         <source>Physical ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="390"/>
+        <location filename="../../info/infoitemline.cpp" line="392"/>
         <source>Clock</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="392"/>
+        <location filename="../../info/infoitemline.cpp" line="394"/>
         <source>Resources</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../info/infoitemline.cpp" line="394"/>
+        <location filename="../../info/infoitemline.cpp" line="396"/>
         <source>Width</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2839,49 +2844,6 @@ Information</source>
     <message>
         <location filename="../../setting/soundwidget.cpp" line="139"/>
         <source>Input feedback sounds</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>StartupManager</name>
-    <message>
-        <location filename="../../plugins/startupmanager/startupmanager.cpp" line="59"/>
-        <source>Startup Manager</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/startupmanager/startupmanager.cpp" line="64"/>
-        <source>Help user to manager application startup items</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>StartupTitleWidget</name>
-    <message>
-        <location filename="../../plugins/startupmanager/startuptitlewidget.cpp" line="95"/>
-        <source>Kylin Startup Manager</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>StartupWidget</name>
-    <message>
-        <location filename="../../plugins/startupmanager/startupwidget.cpp" line="73"/>
-        <source>Kylin Startup Manager</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>StartupWorker</name>
-    <message>
-        <location filename="../../plugins/startupmanager/startupworker.cpp" line="375"/>
-        <location filename="../../plugins/startupmanager/startupworker.cpp" line="407"/>
-        <source>No description</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/startupmanager/startupworker.cpp" line="402"/>
-        <source>No name</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

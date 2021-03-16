@@ -244,6 +244,8 @@ inline const QString covertKeyName(const QString &key)
         return QString(QObject::tr("Data Width"));
     else if(key == "MemInfo")//内存条信息：
         return QString(QObject::tr("Memory Info"));
+    else if(key == "MemSpeed")//内存条速率：
+        return QString(QObject::tr("Memory Speed"));
 
     else if(key == "Vga_product")//显卡型号：
         return QString(QObject::tr("Graphics Card Model"));
