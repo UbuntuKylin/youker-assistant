@@ -34,7 +34,7 @@ InfoWidget::InfoWidget(QString machine, QWidget *parent) :
     this->setFixedSize(860, 460);
 //    this->setAutoFillBackground(true);
 
-    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:18px;border-bottom-left-radius:0px;}");
+    this->setStyleSheet("QWidget{background: #ffffff; border: none;border-bottom-right-radius:10px;border-bottom-left-radius:0px;}");
     QPalette palette;
     palette.setBrush(QPalette::Background, QBrush(Qt::red));
     this->setPalette(palette);

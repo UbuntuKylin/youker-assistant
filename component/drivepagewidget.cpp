@@ -42,7 +42,10 @@ DrivePageWidget::DrivePageWidget(QWidget *parent) : QWidget(parent)
     scrollarea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scrollarea->setStyleSheet("QScrollArea{border: none;background-color:#ffffff;}");
     scrollarea->verticalScrollBar()->setStyleSheet("QScrollBar:vertical{width:8px;background:rgba(0,0,0,0%);margin:0px,0px,0px,0px;}\
-                                                    QScrollBar::handle:vertical{width:8px;background:rgba(0,0,0,25%);border-radius:4px;min-height:20;}");
+                                                    QScrollBar::handle:vertical:hover{width:8px;background:rgba(0,0,0,25%);border-radius:4px;min-height:20;}\
+                                                    QScrollBar::handle:vertical{width:6px;background:rgba(0,0,0,25%);border-radius:4px;min-height:20;}\
+                                                    QScrollBar::add-line:vertical{width:0px;height:0px;}\
+                                                    QScrollBar::sub-line:vertical{width:0px;height:0px;}");
 
     scrollarea->setFixedSize(635,this->height()-70);
     main_layout->addWidget(scrollarea);
@@ -68,6 +71,8 @@ void DrivePageWidget::InitPageUI(QMap<QString, QVariant> tmpMap)
 //    qDebug() << Q_FUNC_INFO <<"______________________________"<< tmpMap;
     QMap<QString, QVariant> map = tmpMap;
     QMap<QString, QVariant>::iterator it;
+
+    drive_list.clear();
 
     if(map.isEmpty()){
         QFrame *item = new QFrame();
@@ -104,6 +109,10 @@ void DrivePageWidget::InitPageUI(QMap<QString, QVariant> tmpMap)
     int i;
     for(it = map.begin(),i = 1; it!= map.end() ;i++,++it){
         qDebug() << it.key() << it.value().toString();
+
+        if(drive_list.indexOf(it.value().toString()) > 0)
+            continue;
+
         QFrame *item = new QFrame();
 //        if( (i%2) != 0 )
 //        {
@@ -145,6 +154,8 @@ void DrivePageWidget::InitPageUI(QMap<QString, QVariant> tmpMap)
         spilterLine->setFrameShape(QFrame::HLine);
         spilterLine->setFrameShadow(QFrame::Plain);
         v_layout->addWidget(spilterLine);
+
+        drive_list.append(it.value().toString());
     }
     QLabel *drive_num = new QLabel(this);
     drive_num->setText(tr("Total, section ")+QString::number(map.size())+tr(" drivers"));

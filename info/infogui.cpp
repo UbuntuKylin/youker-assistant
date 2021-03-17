@@ -30,19 +30,12 @@
 InfoGui::InfoGui(QWidget *parent)
     : QWidget(parent)
 {
-//    this->setAutoFillBackground(true);
-//    QPalette palette;
-//    palette.setColor(QPalette::Background, QColor("#0d87ca"));
-//    this->setPalette(palette);
-//    setFixedSize(750, 403);
-//    this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    this->setStyleSheet("QWidget {background-color: rgba(255, 255, 255, 0.1);border:none;}");
     this->resize(700, parent->size().height());
     m_infoGuiName = "";
 
     m_vLayout = new QVBoxLayout,
     m_widget = new QFrame;
-    m_scrollArea = new QScrollArea;
+    m_scrollArea = new QScrollArea(this);
     m_scrollArea->setWidgetResizable(true);
     m_scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     m_scrollArea->setStyleSheet("QScrollArea{border: none;background-color: #ffffff;}");
