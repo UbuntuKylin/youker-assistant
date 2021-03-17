@@ -29,6 +29,7 @@ private:
     QVBoxLayout *v_layout;
     QVBoxLayout *main_layout;
     QScrollArea *scrollarea;
+    QStringList drive_list;
 };
 
 #endif // DRIVEPAGEWIDGET_H
