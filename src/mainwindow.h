@@ -111,7 +111,7 @@ public slots:
     void onPluginModuleError(const QString &info);
     void startUDevHotPlugin();
     void stopUDevHotPlugin();
-
+    void handleMessage(const QString &);
 private:
     QStackedWidget *m_topStack = nullptr;
     QStackedWidget *m_bottomStack = nullptr;
