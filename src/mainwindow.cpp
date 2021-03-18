@@ -973,6 +973,12 @@ void MainWindow::stopUDevHotPlugin()
     }
 }
 
+void MainWindow::handleMessage(const QString &msg)
+{
+    qDebug() << Q_FUNC_INFO;
+    this->showNormal();
+}
+
 int MainWindow::getCurrentBackgroundIndex()
 {
     int index = 1;

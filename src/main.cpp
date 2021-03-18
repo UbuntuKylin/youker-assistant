@@ -283,6 +283,8 @@ int main(int argc, char *argv[])
     #endif*/
 
         w.setTranslator(&translator);
+        app.setActivationWindow(&w);
+        QObject::connect(&app,SIGNAL(messageReceived(const QString&)), &w, SLOT(handleMessage(const QString&)));
 //        w.show();
 
     //    if (sCount > 1) {
