@@ -389,7 +389,7 @@ bool CpuFmwidget::isHW990(){
     bool ret = file.open(QIODevice::ReadOnly|QIODevice::Text);
     if (ret){
         QString all = file.readAll();
-        if(all.contains("HUAWEI Kirin 990") || all.contains("kirin990") || all.contains("HUAWEI Kirin 9006C")){
+        if(all.contains("HUAWEI Kirin 990") || all.contains("kirin990") || all.contains("HUAWEI Kirin 9006C") || all.contains("Kirin990")){
             isHW990 = true;
         }
     }
