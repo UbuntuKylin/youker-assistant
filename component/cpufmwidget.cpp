@@ -246,10 +246,10 @@ void CpuFmwidget::InitUI()
     apply_button->setText(tr("apply"));
     apply_button->setStyleSheet("QPushButton{width:120px;height:36px;\
                                  background:rgba(231,231,231,1);\
-                                 border-radius:4px;font-size:14px;color:black;}\
+                                 border-radius:4px;color:black;}\
                                  QPushButton:hover{width:120px;height:36px;\
                                  background:rgba(67,127,240,1);\
-                                 border-radius:4px;font-size:14px;color:white;}");
+                                 border-radius:4px;color:white;}");
     apply_button->setGeometry(QRect(60,370,120,36));
 
     connect(apply_button,SIGNAL(clicked()),this,SLOT(onClickedApply()));
