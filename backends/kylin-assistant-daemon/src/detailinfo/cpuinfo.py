@@ -285,7 +285,10 @@ class DetailInfo:
 #        print platform.node()
 #        print platform.processor()
 #        print platform.uname()
-        self.i2cbus = SMBus(2)
+        try:
+            self.i2cbus = SMBus(2)
+        except IOError:
+            self.i2cbus = None
 
     def ctoascii(self,buf):
         ch = bytes(buf.encode('utf-8'))
