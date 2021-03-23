@@ -48,6 +48,8 @@ from beautify.others import Others
 from beautify.theme import Theme
 log = logging.getLogger('Daemon')
 
+from smbus import SMBus
+
 
 INTERFACE = 'com.kylin.assistant.systemdaemon'
 UKPATH = '/com/kylin/assistant/systemdaemon'
@@ -402,16 +404,26 @@ class Daemon(PolicyKitService):
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
     def hide_fan_page(self):
-        hide=False
+        show = False
         status, output = subprocess.getstatusoutput("sensors")
-        if( status != -1 ):
-            if(status == 1):
-                return False
+        if ( status == 0 ):
             for line in output.split("\n"):
                 if "fan" in line:
-                    if(line.split(":")[1].strip().split(" ")[0].isdigit()):
-                        hide=True
-            return hide
+                    if (line.split(":")[1].strip().split(" ")[0].isdigit()):
+                        show = True
+        else:
+            show = False
+
+        if ( not show ):
+            try:
+                b = SMBus(2)
+                data1 = b.read_byte_data(0x3c, 0x30)
+            except IOError:
+                pass
+            else:
+                show = True
+
+        return show
 
     @dbus.service.method(INTERFACE, in_signature='', out_signature='b')
     def hide_cpufm_page(self):
