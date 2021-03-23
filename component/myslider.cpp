@@ -110,11 +110,9 @@ void mySlider::setRangeLable(QMap<QString, QVariant> tmpMap)
 
 void mySlider::keyPressEvent(QKeyEvent *event)
 {
-    // qDebug() << Q_FUNC_INFO << event->key();
+//    qDebug() << Q_FUNC_INFO << event->key();
     QAbstractSlider::keyPressEvent(event);
-    if(event->key() == Qt::Key_Left || event->key() == Qt::Key_Right){
-        updateTipLabel();
-    }
+    updateTipLabel();
 }
 
 void mySlider::mousePressEvent(QMouseEvent *event)

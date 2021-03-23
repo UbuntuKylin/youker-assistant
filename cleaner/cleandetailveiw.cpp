@@ -70,7 +70,7 @@ void CleandetailVeiw::InitWidget()
     main_layout->addWidget(spilterLine);
 
     QFrame *bottom_widget =new QFrame(this);
-    bottom_widget->setFixedSize(860,360);
+    bottom_widget->setFixedSize(860,400);
     bottom_layout = new QVBoxLayout(bottom_widget);
     bottom_layout->setSpacing(0);
     bottom_layout->setMargin(0);
@@ -158,10 +158,10 @@ void CleandetailVeiw::InitTopWidget()
     btn_return->setGeometry(QRect(250,30,88,36));
     btn_return->setStyleSheet("QPushButton{width:88px;height:36px;\
                               background:rgba(231,231,231,1);\
-                              border-radius:18px;font-size:14px;color:black;}\
+                              border-radius:18px;color:black;}\
                               QPushButton:hover{width:88px;height:36px;\
                               background:rgba(67,127,240,1);\
-                              border-radius:18px;font-size:14px;color:white;}");
+                              border-radius:18px;color:white;}");
     btn_return->setVisible(false);
     btn_return->setFocus(Qt::MouseFocusReason);
     connect(btn_return,SIGNAL(clicked()),this,SIGNAL(hideThisWidget()));
@@ -195,18 +195,18 @@ void CleandetailVeiw::InitBottomWidget()
     cache_layout->addWidget(cache_icon);
 
     cache_tip = new QLabel(cache_frame);
-    cache_tip->setStyleSheet("QLabel{font-size:18px;color:rgb(0,0,0,185)}");
+    cache_tip->setStyleSheet("QLabel{font:bold;color:rgb(0,0,0,185)}");
     QFont font;
     font.setPixelSize(18);
 //    font.setBold(QFont::Bold);
-    cache_tip->setFont(font);
+//    cache_tip->setFont(font);
     cache_tip->setText(tr("System cache"));
     cache_tip->adjustSize();
     cache_tip->setMinimumWidth(230);
     cache_layout->addWidget(cache_tip);
 
     QLabel *lable1 = new QLabel(cache_frame);
-    lable1->setStyleSheet("QLabel{font-size:15px;color:rgb(0,0,0,165)}");
+    lable1->setStyleSheet("QLabel{color:rgb(0,0,0,165)}");
     lable1->setText(tr("Clear package、thumbnails and browser cache"));
     lable1->setWordWrap(true);
     cache_layout->addWidget(lable1);
@@ -217,10 +217,10 @@ void CleandetailVeiw::InitBottomWidget()
     cache_btn->setFixedSize(80,36);
     cache_btn->setStyleSheet("QPushButton{width:80px;height:36px;\
                              background:rgba(231,231,231,1);\
-                             border-radius:18px;font-size:14px;color:rgba(50,97,247,1);}\
+                             border-radius:18px;color:rgba(50,97,247,1);}\
                              QPushButton:hover{width:80px;height:36px;\
                              background:rgba(67,127,240,1);\
-                             border-radius:18px;font-size:14px;color:white;}");
+                             border-radius:18px;color:white;}");
     cache_layout->addStretch(1);
     cache_layout->addWidget(cache_btn);
     cache_btn->setVisible(false);
@@ -244,15 +244,15 @@ void CleandetailVeiw::InitBottomWidget()
     cookie_layout->addWidget(cookie_icon);
 
     cookie_tip = new QLabel(cookie_frame);
-    cookie_tip->setStyleSheet("QLabel{font-size:18px;color:rgb(0,0,0,185)}");
-    cookie_tip->setFont(font);
+    cookie_tip->setStyleSheet("QLabel{font:bold;color:rgb(0,0,0,185)}");
+//    cookie_tip->setFont(font);
     cookie_tip->setText(tr("Cookies"));
     cookie_tip->setMinimumWidth(210);
     cookie_tip->adjustSize();
     cookie_layout->addWidget(cookie_tip);
 
     QLabel *lable2 = new QLabel(cookie_frame);
-    lable2->setStyleSheet("QLabel{font-size:15px;color:rgb(0,0,0,165)}");
+    lable2->setStyleSheet("QLabel{color:rgb(0,0,0,165)}");
 //    lable2->setText(tr("Clear internet、games、shopping history, etc."));
     lable2->setText(tr("Clear internet、games、shopping history, etc."));
     lable2->setWordWrap(true);
@@ -264,10 +264,10 @@ void CleandetailVeiw::InitBottomWidget()
     cookie_btn->setFixedSize(80,36);
     cookie_btn->setStyleSheet("QPushButton{width:80px;height:36px;\
                              background:rgba(231,231,231,1);\
-                             border-radius:18px;font-size:14px;color:rgba(50,97,247,1);}\
+                             border-radius:18px;color:rgba(50,97,247,1);}\
                              QPushButton:hover{width:80px;height:36px;\
                              background:rgba(67,127,240,1);\
-                             border-radius:18px;font-size:14px;color:white;}");
+                             border-radius:18px;color:white;}");
     cookie_layout->addStretch(1);
     cookie_layout->addWidget(cookie_btn);
     cookie_btn->setVisible(false);
@@ -291,15 +291,15 @@ void CleandetailVeiw::InitBottomWidget()
     history_layout->addWidget(history_icon);
 
     history_tip = new QLabel(history_frame);
-    history_tip->setStyleSheet("QLabel{font-size:18px;color:rgb(0,0,0,185)}");
-    history_tip->setFont(font);
+    history_tip->setStyleSheet("QLabel{font:bold;color:rgb(0,0,0,185)}");
+//    history_tip->setFont(font);
     history_tip->setText(tr("Historical trace"));
     history_tip->adjustSize();
     history_tip->setMinimumWidth(210);
     history_layout->addWidget(history_tip);
 
     QLabel *lable3 = new QLabel(history_frame);
-    lable3->setStyleSheet("QLabel{font-size:15px;color:rgb(0,0,0,165)}");
+    lable3->setStyleSheet("QLabel{color:rgb(0,0,0,165)}");
     lable3->setText(tr("Clear browser and system usage traces"));
     lable3->setWordWrap(true);
     history_layout->addWidget(lable3);
