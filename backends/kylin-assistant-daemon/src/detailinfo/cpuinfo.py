@@ -30,6 +30,8 @@ import subprocess
 import random
 from pprint import pprint
 
+from smbus import SMBus
+
 from gi.repository import GLib#20161228
 import locale
 import gettext
@@ -283,6 +285,7 @@ class DetailInfo:
 #        print platform.node()
 #        print platform.processor()
 #        print platform.uname()
+        self.i2cbus = SMBus(2)
 
     def ctoascii(self,buf):
         ch = bytes(buf.encode('utf-8'))
@@ -2615,6 +2618,7 @@ class DetailInfo:
 
     def get_fan_info(self):
         origin = {}
+        mid = {}
 
         status, output = subprocess.getstatusoutput("sensors")
 
@@ -2622,6 +2626,17 @@ class DetailInfo:
             for line in output.split("\n"):
                 if "fan" in line.split(":")[0]:
                     origin[line.split(":")[0]]=line.split(":")[1].lstrip().split(" ")[0]
+
+        if (not bool(origin) or not int(origin.get("fan1", 0))):
+            try:
+                data1 = self.i2cbus.read_byte_data(0x3c, 0x30)
+                data2 = self.i2cbus.read_byte_data(0x3c, 0x31)
+                result = (int(hex(data1), 16) << 8) | int(hex(data2), 16)
+            except:
+                pass
+            else:
+                mid['fan1'] = result
+                origin.update(mid)
         
         return origin
 
