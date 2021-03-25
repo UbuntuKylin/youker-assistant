@@ -285,7 +285,10 @@ class DetailInfo:
 #        print platform.node()
 #        print platform.processor()
 #        print platform.uname()
-        self.i2cbus = SMBus(2)
+        try:
+            self.i2cbus = SMBus(2)
+        except IOError:
+            self.i2cbus = None
 
     def ctoascii(self,buf):
         ch = bytes(buf.encode('utf-8'))
@@ -1373,11 +1376,18 @@ class DetailInfo:
                     #-hsync -vsync
                     #VertFreq: 60.020 Hz, HorFreq: 66.683 kHz
                     #1920X1080
-                    result = re.findall("\n\s+(\d+)\s+\d+\s+\d+\s+\d+\s+.*", ediddecret)
-                    if result:
-                        if int(result[0]) < int(result[1]):
-                            result[0], result[1] = result[1], result[0]
-                        ret_maxmode += (result[0] + "X" + result[1] + "<1_1>")
+                    supported_modes = re.findall("\n\s+(\d+)\s+\d+\s+\d+\s+\d+\s+.*\n\s+(\d+)\s+.*", ediddecret)
+                    if supported_modes:
+                        max_mode = ('1', '1')# hhhhhhh, a pixel
+                        max_mode_product = 1
+                        for mode in supported_modes:
+                            mode_product = int(mode[0]) * int(mode[1])
+                            if mode_product > max_mode_product:
+                                max_mode_product = mode_product
+                                max_mode = mode
+                        if int(max_mode[0]) < int(max_mode[1]):
+                            max_mode[0], max_mode[1] = max_mode[1], max_mode[0]
+                        ret_maxmode += (max_mode[0] + "X" + max_mode[1] + "<1_1>")
                     else:
                         ret_maxmode += ("" + "<1_1>")
                     #Display Product Name: LEN T2224rbA

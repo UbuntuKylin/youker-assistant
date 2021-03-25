@@ -27,6 +27,8 @@
 #include <QScrollArea>
 #include <QDebug>
 
+QMap<QString,QStringList> InfoGui::addedBTAdapter = QMap<QString,QStringList>();
+
 InfoGui::InfoGui(QWidget *parent)
     : QWidget(parent)
 {
@@ -109,6 +111,19 @@ void InfoGui::loadOnePage(int index, const QString &title, QMap<QString, QVarian
 {
     InfoUnitWidget *w = new InfoUnitWidget(title, this);
     QMap<QString,QVariant>::iterator it; //遍历map
+
+    // 根据蓝牙地址判断是否已添加
+    if(infoMap.contains("bluetooth version")){
+        if(addedBTAdapter.contains("added_bt_address")){
+            if(addedBTAdapter["added_bt_address"].contains(infoMap["address"].toString())){
+                return;//已经添加过
+            }
+        }else{
+            QStringList addressList;
+            addedBTAdapter.insert(QString("added_bt_address"), addressList);
+        }
+        addedBTAdapter["added_bt_address"].append(infoMap["address"].toString());
+    }
 
     for (it = infoMap.begin(); it != infoMap.end(); ++it) {
         QString valueStr = it.value().toString().trimmed();

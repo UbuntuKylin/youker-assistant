@@ -44,6 +44,7 @@ public:
     void updateRunningTime(const QString &runningTime);
 
     void errorPage(const QString &title);
+    static QMap<QString,QStringList> addedBTAdapter;
 
 private:
     QVBoxLayout *m_vLayout = nullptr;
