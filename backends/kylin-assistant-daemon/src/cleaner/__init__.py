@@ -784,7 +784,7 @@ def interface_get_subpage_session(session, mode_dic):
         
 
         if 'firefox' in cookies:
-            if cache['firefox'].is_installed:
+            if cache['firefox'].is_installed or cache['firefox-esr'].is_installed:
                 ffcpath = "%s/.mozilla/firefox/%s/cookies.sqlite" % (homedir, common.analytical_profiles_file(homedir))
                 if os.path.exists(ffcpath):
                     ffcpam = [ffcpath, 'moz_cookies', 'baseDomain']
@@ -839,7 +839,7 @@ def interface_get_subpage_session(session, mode_dic):
         brohistory_obj = historyclean.HistoryClean(homedir)
 
         if 'firefox' in history:
-            if cache['firefox'].is_installed:
+            if cache['firefox'].is_installed or cache['firefox-esr'].is_installed:
                 ffhpath = "%s/.mozilla/firefox/%s/places.sqlite" % (homedir, common.analytical_profiles_file(homedir))
                 if os.path.exists(ffhpath):
                     firefox_history_list = brohistory_obj.scan_firefox_history_records(ffhpath)

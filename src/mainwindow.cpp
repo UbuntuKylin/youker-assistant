@@ -307,6 +307,8 @@ void MainWindow::initWidgets()
 
     //middle
     m_middleWidget = new MiddleWidget(this, this->arch, this->osName);
+    if(!fan && !temperature && !cpufm)
+        m_middleWidget->setHideMonitorWidget(true);
     m_middleWidget->setFixedSize(MAIN_WINDOW_WIDTH, 140);
     connect(m_middleWidget, SIGNAL(turnCurrentPage(QString)), this, SLOT(setCurrentPageIndex(QString)));
     connect(m_middleWidget, SIGNAL(middle_showMenu()), this, SLOT(showMainMenu()));
@@ -380,8 +382,6 @@ void MainWindow::initWidgets()
 void MainWindow::onInitDataFinished()
 {
     qDebug() << Q_FUNC_INFO;
-    this->initWidgets();
-
     //边框阴影效果
     QGraphicsDropShadowEffect *shadow_effect = new QGraphicsDropShadowEffect(this);
     shadow_effect->setBlurRadius(5);
@@ -415,6 +415,8 @@ void MainWindow::onInitDataFinished()
     this->cpufm = m_dataWorker->hide_cpufm_page();
 //    this->info = m_dataWorker->onRequesetAllInfoIsHaveValue();
 //    qDebug() << Q_FUNC_INFO << info;
+
+    this->initWidgets();
 
     this->m_cpulist = m_dataWorker->cpuModeList();
     this->m_currentCpuMode = m_dataWorker->cpuCurrentMode();
@@ -1142,7 +1144,8 @@ void MainWindow::setCurrentPageIndex(QString index)
     else if (index == "Monitor" && status != "Monitor") {
         m_bottomStack->setCurrentWidget(monitorwidget);
         m_bottomStack->setFixedSize(monitorwidget->size());
-        monitorwidget->RefreshCPUFMCheckStatus();
+        if(cpufm)
+            monitorwidget->RefreshCPUFMCheckStatus();
         status = "Monitor";
     }
     else if (index == "Drive" && status != "Drive") {

@@ -22,6 +22,7 @@ void ShredQThread::run()
     else
     {
         //failed
+        qDebug() << Q_FUNC_INFO << result;
         emit failed();
     }
 }

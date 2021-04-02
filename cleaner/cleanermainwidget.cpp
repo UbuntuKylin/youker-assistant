@@ -224,25 +224,25 @@ void CleanerMainWidget::Browser_to_judge_existence()
 {
     QFileInfo fileinfo;
     fileinfo.setFile("/usr/bin/google-chrome-stable");
-    if(fileinfo.isFile())
+    if(fileinfo.exists())
         google = true;
     else
         google = false;
 
     fileinfo.setFile("/usr/bin/firefox");
-    if(fileinfo.isFile())
+    if(fileinfo.exists())
         firefox = true;
     else
         firefox = false;
 
     fileinfo.setFile("/usr/bin/firefox-esr");
-    if(fileinfo.isFile())
+    if(fileinfo.exists())
         firefox = true;
     else
         firefox = false;
 
     fileinfo.setFile("/usr/bin/browser360-cn-stable");
-    if(fileinfo.isFile())
+    if(fileinfo.exists())
         browser360 = true;
     else
         browser360 = false;
