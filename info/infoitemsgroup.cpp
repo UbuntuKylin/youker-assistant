@@ -28,7 +28,7 @@ InfoItemsGroup::InfoItemsGroup(QFrame *parent) :
     m_layout(new QVBoxLayout)
 {
     m_layout->setMargin(0);
-    m_layout->setSpacing(1);
+    m_layout->setSpacing(4);
     this->setLayout(m_layout);
 }
 

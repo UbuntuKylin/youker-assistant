@@ -476,54 +476,54 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
 <context>
     <name>DrivePageWidget</name>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="86"/>
+        <location filename="../../component/drivepagewidget.cpp" line="91"/>
         <source>Immediately available driver information</source>
         <translation>当前没有可显示的驱动信息</translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="150"/>
+        <location filename="../../component/drivepagewidget.cpp" line="161"/>
         <source>Total, section </source>
         <translation>总计 </translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="150"/>
+        <location filename="../../component/drivepagewidget.cpp" line="161"/>
         <source> drivers</source>
         <translation> 款驱动</translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="160"/>
-        <location filename="../../component/drivepagewidget.cpp" line="168"/>
-        <location filename="../../component/drivepagewidget.cpp" line="172"/>
-        <location filename="../../component/drivepagewidget.cpp" line="188"/>
-        <location filename="../../component/drivepagewidget.cpp" line="192"/>
+        <location filename="../../component/drivepagewidget.cpp" line="171"/>
+        <location filename="../../component/drivepagewidget.cpp" line="179"/>
+        <location filename="../../component/drivepagewidget.cpp" line="183"/>
+        <location filename="../../component/drivepagewidget.cpp" line="199"/>
+        <location filename="../../component/drivepagewidget.cpp" line="203"/>
         <source>MotherBoard</source>
         <translation>主板驱动</translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="164"/>
+        <location filename="../../component/drivepagewidget.cpp" line="175"/>
         <source>Graphics-Card</source>
         <translation>显卡驱动</translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="176"/>
-        <location filename="../../component/drivepagewidget.cpp" line="184"/>
-        <location filename="../../component/drivepagewidget.cpp" line="200"/>
-        <location filename="../../component/drivepagewidget.cpp" line="210"/>
+        <location filename="../../component/drivepagewidget.cpp" line="187"/>
+        <location filename="../../component/drivepagewidget.cpp" line="195"/>
+        <location filename="../../component/drivepagewidget.cpp" line="211"/>
+        <location filename="../../component/drivepagewidget.cpp" line="221"/>
         <source>Other</source>
         <translation>其他驱动</translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="180"/>
+        <location filename="../../component/drivepagewidget.cpp" line="191"/>
         <source>Wired-Network-Card</source>
         <translation>有线网卡驱动</translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="196"/>
+        <location filename="../../component/drivepagewidget.cpp" line="207"/>
         <source>Sound-Card</source>
         <translation>声卡驱动</translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="205"/>
+        <location filename="../../component/drivepagewidget.cpp" line="216"/>
         <source>Wireless-Network-Card</source>
         <translation>无线网卡驱动</translation>
     </message>
@@ -919,17 +919,17 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
 <context>
     <name>InfoGui</name>
     <message>
-        <location filename="../../info/infogui.cpp" line="110"/>
+        <location filename="../../info/infogui.cpp" line="105"/>
         <source>Get Info Failed</source>
         <translation>获取信息失败</translation>
     </message>
     <message>
-        <location filename="../../info/infogui.cpp" line="110"/>
+        <location filename="../../info/infogui.cpp" line="105"/>
         <source>Device not exitst or Get Device is Empty</source>
         <translation>设备不存在或者获取到的设备信息为空</translation>
     </message>
     <message>
-        <location filename="../../info/infogui.cpp" line="146"/>
+        <location filename="../../info/infogui.cpp" line="154"/>
         <source>DisplayMemSize</source>
         <translation>显存大小</translation>
     </message>
@@ -1599,7 +1599,7 @@ Information</source>
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.cpp" line="112"/>
-        <location filename="../mainwindow.cpp" line="1238"/>
+        <location filename="../mainwindow.cpp" line="1247"/>
         <source>Kylin Assistant</source>
         <translation>麒麟助手</translation>
     </message>
@@ -1622,12 +1622,12 @@ Information</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1240"/>
+        <location filename="../mainwindow.cpp" line="1249"/>
         <source>&lt;p&gt;Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.&lt;/p&gt;</source>
         <translation> &lt;p&gt;麒麟助手是由麒麟团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器等功能。&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1242"/>
+        <location filename="../mainwindow.cpp" line="1251"/>
         <source>&lt;p&gt;Service &amp; Support : &lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</source>
         <translation>&lt;p&gt;服务和支持: &lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
