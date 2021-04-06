@@ -94,9 +94,10 @@ private:
     bool flag_cookie = true;
     bool flag_trace = true;
 
-    bool google=false;
-    bool firefox=false;
-    bool browser360=false;
+    bool google = false;
+    bool firefox = false;
+    bool browser360 = false;
+    bool qaxbrowser = false;
 };
 
 #endif // CLEANERMAINWIDGET_H

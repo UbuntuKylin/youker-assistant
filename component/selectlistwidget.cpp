@@ -35,7 +35,10 @@ SelectListWidget::SelectListWidget(bool hasTip, QWidget *parent) :
     m_listAreaWidgetLayout = new QVBoxLayout(m_widget);
     m_listAreaWidgetLayout->setContentsMargins(0,0,0,0);
     m_scrollArea = new QScrollArea(this);
-    m_scrollArea->setStyleSheet("QScrollArea{border:none;background-color:#ffffff;}");
+    m_scrollArea->setStyleSheet("QScrollBar:vertical{width:6px;background:rgba(0,0,0,0%);margin:0px,0px,0px,0px;}\
+                                QScrollBar::handle:vertical{width:6px;background:rgba(0,0,0,25%);border-radius:3px;min-height:20;}\
+                                QScrollBar::add-line:vertical{width:0px;height:0px;}\
+                                QScrollBar::sub-line:vertical{width:0px;height:0px;}");
     m_scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     m_scrollArea->setWidgetResizable(true);
     m_scrollArea->setWidget(m_widget);
@@ -132,7 +135,11 @@ QStringList SelectListWidget::getSelectedItems()
         SelectListItem *item = static_cast<SelectListItem *>(it.value());
         if (!item->itemIsChecked()){
 //            text_list.append(item->itemDescription());
-            itemlist.replaceInStrings(item->itemDescription(),"",Qt::CaseInsensitive);
+            int i = itemlist.indexOf(item->itemDescription());
+            qDebug() << Q_FUNC_INFO << i;
+            itemlist.removeAt(i);
+            itemlist.insert(i,"");
+//            itemlist.replaceInStrings(item->itemDescription(),"",Qt::CaseInsensitive);
         }
     }
 
@@ -141,14 +148,14 @@ QStringList SelectListWidget::getSelectedItems()
 
 QStringList SelectListWidget::getSelectedItemsAll()
 {
-    /*foreach (QString text, m_itemsMap.keys()) {
-
-    }*/
     QMap<QString, SelectListItem*>::iterator it;
     for (it = m_itemsMap.begin(); it != m_itemsMap.end(); ++it) {
         SelectListItem *item = static_cast<SelectListItem *>(it.value());
         if (!item->itemIsChecked()){
-            cacheitem.replaceInStrings(item->itemDescription(),"",Qt::CaseInsensitive);
+            int i = cacheitem.indexOf(item->itemDescription());
+            cacheitem.removeAt(i);
+            cacheitem.insert(i,"");
+//            cacheitem.replaceInStrings(item->itemDescription(),"",Qt::CaseInsensitive);
         }
     }
     qDebug() << Q_FUNC_INFO << cacheitem;

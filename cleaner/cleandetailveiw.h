@@ -98,37 +98,31 @@ private:
     QMap<QString, QVariant> argsData;
     QMap<QString, qreal> cache_files_sizes;
 
-    QStringList cache_apt_list;
+    QStringList cache_list;
     QStringList select_cache_apt_list;
     bool cache_flag = true;
 
-    QStringList cache_software_list;
-    QStringList cache_thumbnails_list;
-    QStringList cache_firefox_list;
-
-    QStringList cache_chromium_list;
-    QStringList select_cache_chromium_list;
+    QStringList select_cookies_list;
     bool cache_chromium_flag = true;
 
     /*QStringList package_unneed_list;
     QStringList package_oldkernel_list;
     QStringList package_configfile_list;*/
-    QStringList cookies_firefox_list;
+    QStringList cookies_list;
     QStringList cookies_chromium_list;
+    QStringList cookies_qaxbrowser_list;
     QString trace_firefox_count;
     QString trace_chromium_count;
+    QString trace_qaxbrowser_count;
     QString trace_system_count;
     QString trace_bash_size;
     QString trace_bash_path;
     QStringList trace_x11_list;
 
     QStringList m_selectedAptList;
-    QStringList m_selectedSoftwareList;
-    QStringList m_selectedThumbnailsList;
-    QStringList m_selectedFirefoxCacheList;
-    QStringList m_selectedChromiumCacheList;
-    QStringList m_selectedFirefoxCookieList;
-    QStringList m_selectedChromiumCookieList;
+    QStringList m_selectedCookieList;
+    QMap<QString, int> Cookie_map;
+
     QStringList m_selectedTraceX11List;
 
     MainWindow *parentWindow;

@@ -61,7 +61,7 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
         <translation>关闭</translation>
     </message>
     <message>
-        <location filename="../aboutwidget.cpp" line="119"/>
+        <location filename="../aboutwidget.cpp" line="120"/>
         <source>VERSION</source>
         <translation>版本号</translation>
     </message>
@@ -184,108 +184,108 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
         <translation>清理浏览器和系统使用痕迹</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="606"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="781"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="582"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="759"/>
         <source> items</source>
         <translation> 项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="638"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="614"/>
         <source>There&apos;s nothing to clean up.</source>
         <translation>无需进行清理</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="644"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="620"/>
         <source>Complete!</source>
         <translation>扫描完成!</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="992"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="993"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="994"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="947"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="948"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="949"/>
         <source>Cleaning up</source>
         <translation>清理中</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="997"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="998"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="999"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="952"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="953"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="954"/>
         <source>Cleaning up..</source>
         <translation>清理中..</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="1002"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="1003"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="1004"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="957"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="958"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="959"/>
         <source>Cleaning up....</source>
         <translation>清理中......</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="614"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="590"/>
         <source> historical use traces</source>
         <translation>条历史使用痕迹</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="606"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="582"/>
         <source>Cleanable cookie </source>
         <translation>可清理cookie </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="600"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="602"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="576"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="578"/>
         <source>Cleanable cache </source>
         <translation>可清理缓存 </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="458"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="883"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="460"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="851"/>
         <source>Computer cleanup in progress...</source>
         <translation>电脑清理中...</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="729"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="730"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="706"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="707"/>
         <source>Cleanable Cache</source>
         <translation>可清理缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="742"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="743"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="719"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="721"/>
         <source>Cleanable Cookie</source>
         <translation>可清理cookie</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="795"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="773"/>
         <source>Clear </source>
         <translation>清理 </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="795"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="773"/>
         <source> historical traces</source>
         <translation> 历史记录</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="781"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="759"/>
         <source>Clear cookie </source>
         <translation>清理 cookie </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="767"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="745"/>
         <source>Clear cache </source>
         <translation>清理缓存 </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="897"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="898"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="899"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="1007"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="1008"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="1009"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="864"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="865"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="866"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="962"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="963"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="964"/>
         <source>Cleaning up......</source>
         <translation>清理中......</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="913"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="880"/>
         <source>Clearance completed!</source>
         <translation>清理完成！</translation>
     </message>
@@ -339,17 +339,38 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="163"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="309"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="332"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="315"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="338"/>
         <source>Cleanup FireFox Cache</source>
         <translation>清理火狐浏览器缓存</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="163"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="261"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="284"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="267"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="290"/>
         <source>Cleanup Chromium Cache</source>
         <translation>清理chromium缓存</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="163"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="363"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="386"/>
+        <source>Cleanup Qaxbrowser Cache</source>
+        <translation>清理奇安信安全浏览器缓存</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="165"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="370"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="393"/>
+        <source>Cleanup the Cookies saving in Qaxbrowser</source>
+        <translation>清理奇安信安全浏览器的Cookies</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="167"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="377"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="400"/>
+        <source>Clean up the Qaxbrowser Internet records</source>
+        <translation>清理奇安信安全浏览器访问记录</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="202"/>
@@ -357,26 +378,26 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
         <translation>常清理，电脑轻快又安全</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="500"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="554"/>
         <source>Cache Items</source>
         <translation>缓存选项</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="165"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="316"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="339"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="322"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="345"/>
         <source>Cleanup the Cookies saving in Firefox</source>
         <translation>清理火狐浏览器的Cookies</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="165"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="268"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="291"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="274"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="297"/>
         <source>Cleanup the Cookies saving in Chromium</source>
         <translation>清理Chromium浏览器的Cookies</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="521"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="575"/>
         <source>Cookies Items</source>
         <translation>Cookies选项</translation>
     </message>
@@ -387,15 +408,15 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="167"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="323"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="346"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="329"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="352"/>
         <source>Clean up the Firefox Internet records</source>
         <translation>清理火狐访问记录</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="167"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="275"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="298"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="281"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="304"/>
         <source>Clean up the Chromium Internet records</source>
         <translation>清理Chromium访问记录</translation>
     </message>
@@ -415,12 +436,12 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
         <translation>删除调试日志</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="535"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="589"/>
         <source>Trace Items</source>
         <translation>访问痕迹选项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="468"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="522"/>
         <source>Scan args is empty!</source>
         <translation>扫描参数为空！</translation>
     </message>
@@ -2737,14 +2758,14 @@ Information</source>
 <context>
     <name>SelectListWidget</name>
     <message>
-        <location filename="../../component/selectlistwidget.cpp" line="51"/>
-        <location filename="../../component/selectlistwidget.cpp" line="79"/>
-        <location filename="../../component/selectlistwidget.cpp" line="168"/>
+        <location filename="../../component/selectlistwidget.cpp" line="54"/>
+        <location filename="../../component/selectlistwidget.cpp" line="82"/>
+        <location filename="../../component/selectlistwidget.cpp" line="175"/>
         <source>Clean Items:</source>
         <translation>清理项：</translation>
     </message>
     <message>
-        <location filename="../../component/selectlistwidget.cpp" line="93"/>
+        <location filename="../../component/selectlistwidget.cpp" line="96"/>
         <source>No items to clean</source>
         <translation>没有可清理项</translation>
     </message>
