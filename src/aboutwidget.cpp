@@ -41,6 +41,7 @@ void AboutWidget::initUI()
     close_btn->setProperty("useIconHighlightEffect", 0x8);
     close_btn->setFlat(true);
     close_btn->setToolTip(tr("Close"));
+    close_btn->setCheckable(false);
     close_btn->setCursor(QCursor(Qt::ArrowCursor));
     close_btn->setGeometry(386,4,30,30);
     connect(close_btn,&QPushButton::released,this,[=]{

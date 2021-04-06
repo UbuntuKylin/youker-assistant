@@ -370,8 +370,10 @@ void CleandetailVeiw::ResetUI()
     history_icon->setPixmap(*icon2);
     history_icon->setFixedSize(icon2->size());
 
-    cache_apt_list.clear();
+    cache_list.clear();
     cache_files_sizes.clear();
+    cookies_list.clear();
+    Cookie_map.clear();
     cache_sum = 0;
     history_sum = 0;
     cookie_sum = 0;
@@ -461,7 +463,7 @@ void CleandetailVeiw::OnClikedCleanBtn()
 void CleandetailVeiw::showReciveData(const QStringList &data)
 {
     //----------------------------------------------------------------Cache---------------------------
-//    qDebug() << Q_FUNC_INFO << "+" << data;
+    qDebug() << Q_FUNC_INFO << "+" << data;
     if(data.at(0).split(".").at(0) == "Belong:Cache" && !data.at(1).isEmpty())
     {
         QString cache_name = data.at(1).split(":").at(1);
@@ -480,59 +482,33 @@ void CleandetailVeiw::showReciveData(const QStringList &data)
         }
         cache_files_sizes.insert(cache_name, size_kb);
 
-        if(data.at(0) == "Belong:Cache.apt" && !data.at(1).isEmpty())
+        if(data.at(1).contains(":"))
         {
-            if(data.at(1).contains(":"))
-            {
-                cache_apt_list.append(data.at(1).split(":").at(1));
-            }
-        }
-        else if(data.at(0) == "Belong:Cache.software-center" && !data.at(1).isEmpty())
-        {
-            if(data.at(1).contains(":"))
-            {
-                cache_software_list.append(data.at(1).split(":").at(1));
-            }
-        }
-        else if(data.at(0) == "Belong:Cache.thumbnails" && !data.at(1).isEmpty())
-        {
-            if(data.at(1).contains(":"))
-            {
-                cache_thumbnails_list.append(data.at(1).split(":").at(1));
-            }
-        }
-        else if(data.at(0) == "Belong:Cache.firefox" && !data.at(1).isEmpty())
-        {
-            if(data.at(1).contains(":"))
-            {
-                cache_firefox_list.append(data.at(1).split(":").at(1));
-            }
-        }
-        else if(data.at(0) == "Belong:Cache.chromium" && !data.at(1).isEmpty())
-        {
-            if(data.at(1).contains(":"))
-            {
-                cache_chromium_list.append(data.at(1).split(":").at(1));
-            }
+            cache_list.append(data.at(1).split(":").at(1));
         }
     }
     else
     {
         if(data.at(0).split(".").at(0) == "Belong:Cookies" && !data.at(1).isEmpty())
         {
-            if(data.at(0) == "Belong:Cookies.firefox" && !data.at(1).isEmpty())
-            {
-                if(data.at(1).contains(":") && !data.at(1).split(":").at(1).isEmpty())
-                {
-                    cookies_firefox_list.append(data.at(1).split(":").at(1));
+            if(!data.at(2).isEmpty()){
+                cookie_sum += data.at(2).split(":").at(1).toInt();
+            }
+
+            if(!Cookie_map.contains(data.at(1).split(":").at(1))){
+                if(!data.at(2).split(":").at(1).isEmpty())
+                    Cookie_map.insert(data.at(1).split(":").at(1),data.at(2).split(":").at(1).toInt());
+            }else{
+                if(!data.at(2).split(":").at(1).isEmpty()){
+                    int num = Cookie_map[data.at(1).split(":").at(1)];
+                    Cookie_map.insert(data.at(1).split(":").at(1),data.at(2).split(":").at(1).toInt() + num);
                 }
             }
-            else if(data.at(0) == "Belong:Cookies.chromium" && !data.at(1).isEmpty())
+
+            if(data.at(1).contains(":") && !data.at(1).split(":").at(1).isEmpty())
             {
-                if(data.at(1).contains(":") && !data.at(1).split(":").at(1).isEmpty())
-                {
-                    cookies_chromium_list.append(data.at(1).split(":").at(1));
-                }
+                if(!cookies_list.contains(data.at(1).split(":").at(1)))
+                    cookies_list.append(data.at(1).split(":").at(1));
             }
         }
         //----------------------------------------------------------------History Trace---------------------------
@@ -649,7 +625,8 @@ void CleandetailVeiw::showReciveStatus(const QString &status)
             btn_return->setVisible(true);
         }
 
-        m_selectedAptList = cache_apt_list+cache_software_list+cache_thumbnails_list;
+        m_selectedAptList = cache_list;
+        m_selectedCookieList = cookies_list;
     }
 }
 
@@ -722,12 +699,12 @@ void CleandetailVeiw::ShowDetailsPage()
     if(QString::compare(btn_name,"Cache") == 0){
         if(cache_flag){
             select_cache_apt_list.clear();
-            select_cache_apt_list = cache_apt_list+cache_chromium_list+cache_firefox_list+cache_software_list+cache_thumbnails_list;
+            select_cache_apt_list = cache_list;
             cache_flag = false;
         }
 
         SelectWidget *w = new SelectWidget(CleanerModuleID::CacheApt, tr("Cleanable Cache"));
-        w->loadData(tr("Cleanable Cache"), select_cache_apt_list, cache_apt_list+cache_chromium_list+cache_firefox_list+cache_software_list+cache_thumbnails_list);
+        w->loadData(tr("Cleanable Cache"), select_cache_apt_list, cache_list);
         connect(w, SIGNAL(refreshSelectedItems(CleanerModuleID,QStringList)), this, SLOT(onRefreshSelectedItems(CleanerModuleID,QStringList)));
         w->move(w_x, w_y);
         w->exec();
@@ -735,12 +712,13 @@ void CleandetailVeiw::ShowDetailsPage()
     }
     else if(QString::compare(btn_name,"Cookie") == 0){
         if(cache_chromium_flag){
-            select_cache_chromium_list.clear();
-            select_cache_chromium_list = cache_apt_list;
+            select_cookies_list.clear();
+            select_cookies_list = cookies_list;
             cache_chromium_flag = false;
         }
-        SelectWidget *w = new SelectWidget(CleanerModuleID::CacheApt, tr("Cleanable Cookie"));
-        w->loadData(tr("Cleanable Cookie"), select_cache_chromium_list, cookies_chromium_list);
+        SelectWidget *w = new SelectWidget(CleanerModuleID::Cookie, tr("Cleanable Cookie"));
+        qDebug() << Q_FUNC_INFO << select_cookies_list << cookies_list;
+        w->loadData(tr("Cleanable Cookie"), select_cookies_list, cookies_list);
         connect(w, SIGNAL(refreshSelectedItems(CleanerModuleID,QStringList)), this, SLOT(onRefreshSelectedItems(CleanerModuleID,QStringList)));
         w->move(w_x, w_y);
         w->exec();
@@ -815,7 +793,7 @@ void CleandetailVeiw::showCleanerError(const QString &status)
 void CleandetailVeiw::onRefreshSelectedItems(CleanerModuleID id, const QStringList &infos)
 {
 //    qDebug() <<"======================"<< Q_FUNC_INFO << infos;
-
+    int new_sum = 0;
     switch (id) {
     case CleanerModuleID::CacheApt:
         select_cache_apt_list = infos;
@@ -831,29 +809,19 @@ void CleandetailVeiw::onRefreshSelectedItems(CleanerModuleID id, const QStringLi
         }
         setCacheTip(cache_sum);
         break;
-    case CleanerModuleID::CacheSoftware:
-        m_selectedSoftwareList.clear();
-        m_selectedSoftwareList = infos;
-        break;
-    case CleanerModuleID::CacheThumbnail:
-        m_selectedThumbnailsList.clear();
-        m_selectedThumbnailsList = infos;
-        break;
-    case CleanerModuleID::CacheFirefox:
-        m_selectedFirefoxCacheList.clear();
-        m_selectedFirefoxCacheList = infos;
-        break;
-    case CleanerModuleID::CacheChromium:
-        m_selectedChromiumCacheList.clear();
-        m_selectedChromiumCacheList = infos;
-        break;
-    case CleanerModuleID::CookieFirefox:
-        m_selectedFirefoxCookieList.clear();
-        m_selectedFirefoxCookieList = infos;
-        break;
-    case CleanerModuleID::CookieChromium:
-        m_selectedChromiumCookieList.clear();
-        m_selectedChromiumCookieList = infos;
+    case CleanerModuleID::Cookie:
+        qDebug() << Q_FUNC_INFO << Cookie_map[".163.com"];
+        select_cookies_list = infos;
+        m_selectedCookieList.clear();
+        m_selectedCookieList = infos;
+        for(int i = 0; i < select_cookies_list.length(); i++){
+            if(QString::compare(select_cookies_list.at(i),"") == 0)
+                continue;
+
+            new_sum += Cookie_map[select_cookies_list.at(i)];
+        }
+        setCookieTip(new_sum);
+        cookie_sum = new_sum;
         break;
     case CleanerModuleID::TraceX11:
         m_selectedTraceX11List.clear();
@@ -883,7 +851,6 @@ void CleandetailVeiw::receivePolicyKitSignal(bool status)
         top_tip->setText(tr("Computer cleanup in progress..."));
         QMovie *movie = new QMovie(":/res/drive/clean_anime.gif");
         movie->setSpeed(200);
-
         cache_icon->setMovie(movie);
         cache_icon->setFixedSize(48,48);
 
@@ -931,18 +898,6 @@ void CleandetailVeiw::getAllSelectedItems()
         if(info != "")
             fileTmp.append(info);
     }
-    foreach (QString info, m_selectedSoftwareList) {
-        fileTmp.append(info);
-    }
-    foreach (QString info, m_selectedThumbnailsList) {
-        fileTmp.append(info);
-    }
-    foreach (QString info, m_selectedFirefoxCacheList) {
-        fileTmp.append(info);
-    }
-    foreach (QString info, m_selectedChromiumCacheList) {
-        fileTmp.append(info);
-    }
 
     if (trace_firefox_count > 0) {
         argsData.insert("firefox-history", QStringList() << trace_firefox_count);
@@ -959,10 +914,10 @@ void CleandetailVeiw::getAllSelectedItems()
 
     if(fileTmp.length() > 0)
         argsData.insert("file", fileTmp);
-    if(m_selectedFirefoxCookieList.length() > 0)
-        argsData.insert("firefox-cookie", m_selectedFirefoxCookieList);
-    if(m_selectedChromiumCookieList.length() > 0)
-        argsData.insert("chromium-cookie", m_selectedChromiumCookieList);
+    if(m_selectedCookieList.length() > 0){
+        m_selectedCookieList.removeAll("");
+        argsData.insert("cookie", m_selectedCookieList);
+    }
     if(m_selectedTraceX11List.length() > 0)
         argsData.insert("x11-history", m_selectedTraceX11List);
 }

@@ -1242,7 +1242,7 @@ void MainWindow::createAboutDialog()
 //    aboutDlg = new AboutDialog(0, last_skin_path, this->arch, this->osName);
 //    aboutDlg->setModal(false);
 
-    aboutDlg = new AboutWidget();
+    aboutDlg = new AboutWidget(this);
     aboutDlg->setAppIcon("kylin-assistant");
     aboutDlg->setAppName(tr("Kylin Assistant"));
     aboutDlg->setAppVersion(qApp->applicationVersion());
@@ -1275,7 +1275,8 @@ void MainWindow::aboutUs()
 //    int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (442  / 2);
 //    int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (326  / 2);
 //    aboutDlg->move(w_x, w_y);
-    aboutDlg->exec();
+    aboutDlg->setModal(true);
+    aboutDlg->show();
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)

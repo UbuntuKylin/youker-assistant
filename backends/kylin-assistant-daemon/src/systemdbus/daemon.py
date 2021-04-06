@@ -773,16 +773,26 @@ class Daemon(PolicyKitService):
         time.sleep(1)
         self.subpage_status_signal('Complete:history','history')
 
-        firefoxcookies = mode_dic.get('firefox-cookie', [])
-        if firefoxcookies:
-            for domain in firefoxcookies:
+
+        cookies = mode_dic.get('cookie',[])
+        if cookies:
+            # firefoxcookies = mode_dic.get('firefox-cookie', [])
+            # if firefoxcookies:
+            for domain in cookies:
                 cleaner.interface_remove_firefox_cookies_system(self, domain)
 
-        chromiumcookies = mode_dic.get('chromium-cookie', [])
-        if chromiumcookies:
-            for domain in chromiumcookies:
+            # chromiumcookies = mode_dic.get('chromium-cookie', [])
+            # if chromiumcookies:
+            for domain in cookies:
                 cleaner.interface_remove_chromium_cookies_system(self, domain)
+
+                        # chromiumcookies = mode_dic.get('chromium-cookie', [])
+            # if chromiumcookies:
+            for domain in cookies:
+                cleaner.interface_remove_qaxbrowser_cookies_system(self, domain)
         
+
+
         time.sleep(1)
         self.subpage_status_signal('Complete:cookie','cookie')
 
