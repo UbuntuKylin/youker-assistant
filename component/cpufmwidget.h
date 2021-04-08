@@ -42,6 +42,8 @@ public:
     void RefreshCheckStatus();
     void getCpuRange(QMap<QString,QVariant>);
     bool isHW990();
+    void initUserspaceFrameAnimation();
+    void showUserspaceFrame(bool);
 signals:
     void setCpuGoverner(QString);
     void RequestCPUFrequencyData();
