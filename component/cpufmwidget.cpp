@@ -32,59 +32,6 @@ CpuFmwidget::CpuFmwidget(QWidget *parent) : QWidget(parent)
     this->setStyleSheet("QWidget{background:#ffffff;border: none;\
                         border-bottom-right-radius:0px;\
                         border-bottom-left-radius:10px}");
-
-    dialog = new GeneralDialog(this,tr("Whether to apply?"),true,false);
-
-    connect(dialog,&GeneralDialog::accepted,[this]{
-        if(value == "userspace")
-            emit this->setCpuGoverner(value+"<1_1>"+QString::number(slider->value()*1000));
-        else
-            emit this->setCpuGoverner(value);
-
-        cur_governer = value;
-    });
-
-    connect(dialog,&GeneralDialog::rejected,[this]{
-        QList<QAbstractButton*> list = radioGroup->buttons();
-        foreach (QAbstractButton *pButton, list)
-        {
-            if(QString::compare(cur_governer,pButton->objectName()) == 0)
-            {
-               pButton->setChecked(true);
-//               qDebug() << Q_FUNC_INFO <<  __LINE__ <<pButton->objectName();
-            }
-
-            if(QString::compare("userspace",pButton->objectName()) == 0 && QString::compare("userspace",value) == 0 )
-            {
-                w->setVisible(false);
-
-                QPropertyAnimation *animation = new QPropertyAnimation(w,"geometry");
-                animation->setDuration(200);
-                animation->setStartValue(QRect(62,200,580,175));
-                animation->setEndValue(QRect(62,200,580,10));
-                animation->setEasingCurve(QEasingCurve::InQuad);
-
-                QPropertyAnimation *animation1 = new QPropertyAnimation(apply_button,"geometry");
-                animation1->setDuration(200);
-                animation1->setStartValue(QRect(60,380,120,36));
-                animation1->setEndValue(QRect(60,200,120,36));
-                animation1->setEasingCurve(QEasingCurve::InQuad);
-
-                group1 = new QParallelAnimationGroup(this);
-                group1->setDirection(QAbstractAnimation::Forward);
-                group1->setLoopCount(1);
-                group1->addAnimation(animation);
-                group1->addAnimation(animation1);
-
-                group1->start();
-
-                value = cur_governer;
-            }
-        }
-    });
-
-    QObject::connect(&qtimer, &QTimer::timeout, this, &CpuFmwidget::RequestCPUFrequencyData);
-    qtimer.start(2000);
 }
 
 CpuFmwidget::~CpuFmwidget()
@@ -263,14 +210,56 @@ void CpuFmwidget::InitUI()
         w->setVisible(false);
         apply_button->move(60,200);
     }
+
+    initUserspaceFrameAnimation();
+
+    dialog = new GeneralDialog(this,tr("Whether to apply?"),true,false);
+
+    connect(dialog,&GeneralDialog::accepted,[this]{
+        if(value == "userspace")
+            emit this->setCpuGoverner(value+"<1_1>"+QString::number(slider->value()*1000));
+        else
+            emit this->setCpuGoverner(value);
+
+        cur_governer = value;
+    });
+
+    connect(dialog,&GeneralDialog::rejected,[this]{
+        QList<QAbstractButton*> list = radioGroup->buttons();
+        foreach (QAbstractButton *pButton, list)
+        {
+            if(QString::compare(cur_governer,pButton->objectName()) == 0)
+            {
+               pButton->setChecked(true);
+//               qDebug() << Q_FUNC_INFO <<  __LINE__ <<pButton->objectName();
+            }
+
+            if(QString::compare("userspace",cur_governer) != 0)
+            {
+                if(w->isVisible())
+                    showUserspaceFrame(false);
+
+                value = cur_governer;
+            }else if(QString::compare("userspace",cur_governer) == 0 && !w->isVisible()){
+
+                if(!w->isVisible())
+                    showUserspaceFrame(true);
+
+                value = cur_governer;
+            }
+        }
+    });
+
+    QObject::connect(&qtimer, &QTimer::timeout, this, &CpuFmwidget::RequestCPUFrequencyData);
+    qtimer.start(2000);
 }
 
 void CpuFmwidget::set_cpu_listAndCur(QStringList list, QString string)
 {
     this->governer_list = list;
-    if(!this->governer_list.contains("userspace") && !isHW990())
+    if(this->governer_list.contains("userspace") && isHW990())
     {
-        this->governer_list.append("userspace");
+        this->governer_list.removeAll("userspace");
     }
     this->cur_governer = string;
     value = string;
@@ -295,50 +284,13 @@ void CpuFmwidget::onButtonClicked(QAbstractButton *button)
 
     if(button->objectName() == "userspace" && value != "userspace")
     {
-        w->setVisible(true);
-        QPropertyAnimation *animation = new QPropertyAnimation(w,"geometry");
-        animation->setDuration(500);
-        animation->setStartValue(QRect(62,200,580,10));
-        animation->setEndValue(QRect(62,200,580,175));
-        animation->setEasingCurve(QEasingCurve::InQuad);
-
-        QPropertyAnimation *animation1 = new QPropertyAnimation(apply_button,"geometry");
-        animation1->setDuration(500);
-        animation1->setStartValue(QRect(60,200,120,36));
-        animation1->setEndValue(QRect(60,380,120,36));
-        animation1->setEasingCurve(QEasingCurve::InQuad);
-
-        group = new QParallelAnimationGroup(this);
-        group->setDirection(QAbstractAnimation::Forward);
-        group->setLoopCount(1);
-        group->addAnimation(animation);
-        group->addAnimation(animation1);
-
-        group->start();
-
+        if(!w->isVisible())
+            showUserspaceFrame(true);
     }
     else if(button->objectName() != "userspace" && value == "userspace")
     {
-        w->setVisible(false);
-        QPropertyAnimation *animation = new QPropertyAnimation(w,"geometry");
-        animation->setDuration(200);
-        animation->setStartValue(QRect(62,200,580,175));
-        animation->setEndValue(QRect(62,200,580,10));
-        animation->setEasingCurve(QEasingCurve::InQuad);
-
-        QPropertyAnimation *animation1 = new QPropertyAnimation(apply_button,"geometry");
-        animation1->setDuration(200);
-        animation1->setStartValue(QRect(60,380,120,36));
-        animation1->setEndValue(QRect(60,200,120,36));
-        animation1->setEasingCurve(QEasingCurve::InQuad);
-
-        group1 = new QParallelAnimationGroup(this);
-        group1->setDirection(QAbstractAnimation::Forward);
-        group1->setLoopCount(1);
-        group1->addAnimation(animation);
-        group1->addAnimation(animation1);
-
-        group1->start();
+        if(w->isVisible())
+            showUserspaceFrame(false);
     }
     value = button->objectName();
 
@@ -394,5 +346,56 @@ bool CpuFmwidget::isHW990(){
         }
     }
     return isHW990;
+}
+
+void CpuFmwidget::initUserspaceFrameAnimation()
+{
+    QPropertyAnimation *animation0 = new QPropertyAnimation(w,"geometry");
+    animation0->setDuration(500);
+    animation0->setStartValue(QRect(62,200,580,10));
+    animation0->setEndValue(QRect(62,200,580,175));
+    animation0->setEasingCurve(QEasingCurve::InQuad);
+
+    QPropertyAnimation *animation1 = new QPropertyAnimation(apply_button,"geometry");
+    animation1->setDuration(500);
+    animation1->setStartValue(QRect(60,200,120,36));
+    animation1->setEndValue(QRect(60,380,120,36));
+    animation1->setEasingCurve(QEasingCurve::InQuad);
+
+    group = new QParallelAnimationGroup(this);
+    group->setDirection(QAbstractAnimation::Forward);
+    group->setLoopCount(1);
+    group->addAnimation(animation0);
+    group->addAnimation(animation1);
+
+
+    QPropertyAnimation *animation2 = new QPropertyAnimation(w,"geometry");
+    animation2->setDuration(200);
+    animation2->setStartValue(QRect(62,200,580,175));
+    animation2->setEndValue(QRect(62,200,580,10));
+    animation2->setEasingCurve(QEasingCurve::InQuad);
+
+    QPropertyAnimation *animation3 = new QPropertyAnimation(apply_button,"geometry");
+    animation3->setDuration(200);
+    animation3->setStartValue(QRect(60,380,120,36));
+    animation3->setEndValue(QRect(60,200,120,36));
+    animation3->setEasingCurve(QEasingCurve::InQuad);
+
+    group1 = new QParallelAnimationGroup(this);
+    group1->setDirection(QAbstractAnimation::Forward);
+    group1->setLoopCount(1);
+    group1->addAnimation(animation2);
+    group1->addAnimation(animation3);
+}
+
+void CpuFmwidget::showUserspaceFrame(bool i)
+{
+    if(i){
+        w->setVisible(true);
+        group->start();
+    }else{
+        group1->start();
+        w->setVisible(false);
+    }
 }
 
