@@ -176,7 +176,7 @@ class Sysinfo:
     def get_desktop(self):
         apt_cache = apt.Cache()
         try:
-            package = apt_cache["kylin-menu"]
+            package = apt_cache["ukui-session-manager"]
         except:
             package = None
         if package is not None and package.is_installed:
