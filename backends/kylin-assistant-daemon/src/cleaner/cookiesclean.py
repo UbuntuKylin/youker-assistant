@@ -59,14 +59,14 @@ class CookiesClean():
         if os.path.exists(filepath):
             clean_browser_conn = sqlite3.connect(filepath)
             clean_browser_cur = clean_browser_conn.cursor()
-            #sql_exist = "SELECT * FROM %s WHERE %s='%s'" % (tablename, keyname, domain)
-            #clean_browser_cur.execute(sql_exist)
-            #if clean_browser_cur.fetchone():
-            sql_delete = "DELETE FROM %s WHERE %s='%s'" % (tablename, keyname, domain)
-            clean_browser_cur.execute(sql_delete)
-            clean_browser_conn.commit()
-            clean_browser_cur.close()
-            clean_browser_conn.close()
+            sql_exist = "SELECT * FROM %s WHERE %s='%s'" % (tablename, keyname, domain)
+            clean_browser_cur.execute(sql_exist)
+            if clean_browser_cur.fetchone():
+                sql_delete = "DELETE FROM %s WHERE %s='%s'" % (tablename, keyname, domain)
+                clean_browser_cur.execute(sql_delete)
+                clean_browser_conn.commit()
+                clean_browser_cur.close()
+                clean_browser_conn.close()
 
     def clean_all_records(self, filename, tablename, keyname):
         if os.path.exists(filename):

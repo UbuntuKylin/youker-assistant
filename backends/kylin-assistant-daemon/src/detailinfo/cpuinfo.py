@@ -1068,12 +1068,13 @@ class DetailInfo:
                 continue
             if (tmpMem["Size"] == "No Module Installed"):
                 if (index == len(modlist) - 1):
-                    Mem["MemSize"] = Mem["MemSize"][0:-5]
-                    Mem["MemWidth"] = Mem["MemWidth"][0:-5]
-                    Mem["MemInfo"] = Mem["MemInfo"][0:-5]
-                    Mem["MemSlot"] = Mem["MemSlot"][0:-5]
-                    Mem["MemVendor"] = Mem["MemVendor"][0:-5]
-                    Mem["MemSpeed"] = Mem["MemSpeed"][0:-5]
+                    Mem["MemSize"]      = Mem["MemSize"][0:-5]
+                    Mem["MemWidth"]     = Mem["MemWidth"][0:-5]
+                    Mem["MemInfo"]      = Mem["MemInfo"][0:-5]
+                    Mem["MemSlot"]      = Mem["MemSlot"][0:-5]
+                    Mem["MemVendor"]    = Mem["MemVendor"][0:-5]
+                    Mem["MemSpeed"]     = Mem["MemSpeed"][0:-5]
+                    Mem["MemSerial"]    = Mem["MemSerial"][0:-5]
                 continue
 
             memNum += 1
@@ -1084,6 +1085,7 @@ class DetailInfo:
             Mem["MemSlot"] = Mem.setdefault("MemSlot", "") + tmpMem["Bank Locator"] + "<1_1>"
             Mem["MemVendor"] = Mem.setdefault("MemVendor", "") + tmpMem["Manufacturer"] + "<1_1>"
             Mem["MemSpeed"] = Mem.setdefault("MemSpeed", "") + tmpMem["Speed"] + "<1_1>"
+            Mem["MemSerial"] = Mem.setdefault("MemSerial", "") + tmpMem["Serial Number"] + "<1_1>"
             ##MB to GiB
             #bitnum = (int(tmpMem["Size"].split(" ")[0]) - 1).bit_length()
             #tmpMem["Size"] = str(( 2 ** (bitnum - 10))) + ' GiB'
@@ -1098,12 +1100,13 @@ class DetailInfo:
 
             Mem["MemSize"] = Mem.setdefault("MemSize", "") + tmpMem["Size"] + "<1_1>"
             if (index == len(modlist) - 1):
-                Mem["MemSize"] = Mem["MemSize"][0:-5]
-                Mem["MemWidth"] = Mem["MemWidth"][0:-5]
-                Mem["MemInfo"] = Mem["MemInfo"][0:-5]
-                Mem["MemSlot"] = Mem["MemSlot"][0:-5]
-                Mem["MemVendor"] = Mem["MemVendor"][0:-5]
-                Mem["MemSpeed"] = Mem["MemSpeed"][0:-5]
+                Mem["MemSize"]      = Mem["MemSize"][0:-5]
+                Mem["MemWidth"]     = Mem["MemWidth"][0:-5]
+                Mem["MemInfo"]      = Mem["MemInfo"][0:-5]
+                Mem["MemSlot"]      = Mem["MemSlot"][0:-5]
+                Mem["MemVendor"]    = Mem["MemVendor"][0:-5]
+                Mem["MemSpeed"]     = Mem["MemSpeed"][0:-5]
+                Mem["MemSerial"]    = Mem["MemSerial"][0:-5]
         if (not Mem):
             if os.path.exists(MEMORY):
                 memnum = 0
@@ -2679,11 +2682,11 @@ if __name__ == "__main__":
     #cc.get_cpu()
     #cc.get_board()
     #cc.get_memory()
-    # pprint(cc.get_cpu_range())
+    pprint(cc.get_memory())
     #cc.get_disk()
     #cc.get_network()
     #cc.get_multimedia()
     #cc.get_dvd()
     #cc.get_usb()
     #pprint(cc.get_network())
-    cc.get_communication(None)
+    # cc.get_communication(None)

@@ -717,8 +717,8 @@ def interface_get_subpage_session(session, mode_dic):
             aptpath = "/var/cache/apt/archives"
             apt_list = cache_obj.scan_apt_cache(aptpath)
             for value in apt_list:
-                info = append_cacheinfo_to_list('Cache.apt', value)
-
+                # info = append_cacheinfo_to_list('Cache.apt', value)
+                info = append_cacheinfo_to_list('Cache', value)
                 session.subpage_data_signal(info)
         #else:
             #info = []
@@ -726,12 +726,12 @@ def interface_get_subpage_session(session, mode_dic):
             #info.append('')
             #session.subpage_data_signal(info)
 
-        if 'software-center' in cache:
-            swcenterpath = "%s/.cache/software-center" % homedir
-            swcenter_list = cache_obj.public_scan_cache(swcenterpath)
-            for value in swcenter_list:
-                info = append_cacheinfo_to_list('Cache.software-center', value)
-                session.subpage_data_signal(info)
+        # if 'software-center' in cache:
+        #     swcenterpath = "%s/.cache/software-center" % homedir
+        #     swcenter_list = cache_obj.public_scan_cache(swcenterpath)
+        #     for value in swcenter_list:
+        #         info = append_cacheinfo_to_list('Cache.software-center', value)
+        #         session.subpage_data_signal(info)
         #else:
             #info = []
             #info.append('Belong:Cache-apt')
@@ -742,7 +742,8 @@ def interface_get_subpage_session(session, mode_dic):
             thumbnailspath = "%s/.cache/thumbnails" % homedir
             thumbnails_list = cache_obj.public_scan_cache(thumbnailspath)
             for value in thumbnails_list:
-                info = append_cacheinfo_to_list('Cache.thumbnails', value)
+                # info = append_cacheinfo_to_list('Cache.thumbnails', value)
+                info = append_cacheinfo_to_list('Cache', value)
                 session.subpage_data_signal(info)
         #else:
             #info = []
@@ -755,7 +756,8 @@ def interface_get_subpage_session(session, mode_dic):
             firefoxpath = "%s/.cache/mozilla/firefox/%s" % (homedir, common.analytical_profiles_file(homedir))
             firefox_cache_list = cache_obj.firefox_scan_cache(firefoxpath)
             for value in firefox_cache_list:
-                info = append_cacheinfo_to_list('Cache.firefox', value)
+                # info = append_cacheinfo_to_list('Cache.firefox', value)
+                info = append_cacheinfo_to_list('Cache', value)
                 session.subpage_data_signal(info)
         #else:
             #info = []
@@ -767,13 +769,22 @@ def interface_get_subpage_session(session, mode_dic):
             chromiumpath = "%s/.cache/chromium/Default" % homedir
             chromium_cache_list = cache_obj.public_scan_cache(chromiumpath)
             for value in chromium_cache_list:
-                info = append_cacheinfo_to_list('Cache.chromium', value)
+                # info = append_cacheinfo_to_list('Cache.chromium', value)
+                info = append_cacheinfo_to_list('Cache', value)
                 session.subpage_data_signal(info)
         #else:
             #info = []
             #info.append('Belong:Cache.chromium')
             #info.append('')
             #session.subpage_data_signal(info)
+
+        if 'qaxbrowser' in cache:
+            qaxbrowserpath = "%s/.cache/qaxbrowser/Default" % homedir
+            qaxbrowser_cache_list = cache_obj.public_scan_cache(qaxbrowserpath)
+            for value in qaxbrowser_cache_list:
+                # info = append_cacheinfo_to_list('Cache.qaxbrowser', value)
+                info = append_cacheinfo_to_list('Cache', value)
+                session.subpage_data_signal(info)
 
         session.subpage_status_signal('Complete:Cache')
 
@@ -784,7 +795,14 @@ def interface_get_subpage_session(session, mode_dic):
         
 
         if 'firefox' in cookies:
-            if cache['firefox'].is_installed:
+
+            pkgName = ''
+            if 'firefox' in cache:
+                pkgName = 'firefox'
+            elif 'firefox-esr' in cache:
+                pkgName = 'firefox-esr'
+
+            if pkgName is not '' and cache[pkgName].is_installed:
                 ffcpath = "%s/.mozilla/firefox/%s/cookies.sqlite" % (homedir, common.analytical_profiles_file(homedir))
                 if os.path.exists(ffcpath):
                     ffcpam = [ffcpath, 'moz_cookies', 'baseDomain']
@@ -830,6 +848,33 @@ def interface_get_subpage_session(session, mode_dic):
                         session.subpage_data_signal(info)
                 else:
                     session.subpage_error_signal('Uninstalled:Chromium')
+        
+        if 'qaxbrowser' in cookies:
+            try:
+                pkg = cache['qaxbrowser-safe-stable']
+            except KeyError:
+                pass
+            else:
+                if pkg.is_installed:
+                    chcpath = "%s/.config/qaxbrowser/Default/Cookies" % homedir
+                    if os.path.exists(chcpath):
+                        chcpam = [chcpath, 'cookies', 'host_key']
+                        chromium_cookies_list = cookies_obj.scan_cookies_records(chcpam[0], chcpam[1], chcpam[2])
+                        for value in chromium_cookies_list:
+                            info = []
+                            info.append('Belong:Cookies.qaxbrowser')
+                            info.append('Content:%s' % value[0])
+                            info.append('Count:%s' % str(value[-1]))
+                            session.subpage_data_signal(info)
+                    else:
+                        info = []
+                        info.append('Belong:Cookies.qaxbrowser')
+                        info.append('')
+                        session.subpage_data_signal(info)
+                else:
+                    session.subpage_error_signal('Uninstalled:qaxbrowser')
+
+
         session.subpage_status_signal('Complete:Cookies')
 
 
@@ -839,7 +884,14 @@ def interface_get_subpage_session(session, mode_dic):
         brohistory_obj = historyclean.HistoryClean(homedir)
 
         if 'firefox' in history:
-            if cache['firefox'].is_installed:
+
+            pkgName = ''
+            if 'firefox' in cache:
+                pkgName = 'firefox'
+            elif 'firefox-esr' in cache:
+                pkgName = 'firefox-esr'
+
+            if pkgName is not '' and cache[pkgName].is_installed:
                 ffhpath = "%s/.mozilla/firefox/%s/places.sqlite" % (homedir, common.analytical_profiles_file(homedir))
                 if os.path.exists(ffhpath):
                     firefox_history_list = brohistory_obj.scan_firefox_history_records(ffhpath)
@@ -1019,6 +1071,15 @@ def interface_remove_chromium_cookies_system(system, domain):
     chcpam = [chcpath, 'cookies', 'host_key', domain]
     chromium_cookies_obj.clean_cookies_record(chcpam[0], chcpam[1], chcpam[2], chcpam[3])
     system.subpage_status_signal('Complete:Cookies.chromium', domain)
+    
+def interface_remove_qaxbrowser_cookies_system(system, domain):
+    homedir = return_homedir_sysdaemon()
+    chromium_cookies_obj = cookiesclean.CookiesClean(homedir)
+    
+    chcpath = "%s/.config/qaxbrowser/Default/Cookies" % homedir
+    chcpam = [chcpath, 'cookies', 'host_key', domain]
+    chromium_cookies_obj.clean_cookies_record(chcpam[0], chcpam[1], chcpam[2], chcpam[3])
+    system.subpage_status_signal('Complete:Cookies.qaxbrowser', domain)
     
 
 def interface_remove_package_system(system, packagename):

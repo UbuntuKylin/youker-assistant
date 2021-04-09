@@ -61,7 +61,7 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
         <translation>关闭</translation>
     </message>
     <message>
-        <location filename="../aboutwidget.cpp" line="119"/>
+        <location filename="../aboutwidget.cpp" line="120"/>
         <source>VERSION</source>
         <translation>版本号</translation>
     </message>
@@ -184,108 +184,108 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
         <translation>清理浏览器和系统使用痕迹</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="606"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="781"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="582"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="759"/>
         <source> items</source>
         <translation> 项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="638"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="614"/>
         <source>There&apos;s nothing to clean up.</source>
         <translation>无需进行清理</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="644"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="620"/>
         <source>Complete!</source>
         <translation>扫描完成!</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="992"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="993"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="994"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="947"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="948"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="949"/>
         <source>Cleaning up</source>
         <translation>清理中</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="997"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="998"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="999"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="952"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="953"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="954"/>
         <source>Cleaning up..</source>
         <translation>清理中..</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="1002"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="1003"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="1004"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="957"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="958"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="959"/>
         <source>Cleaning up....</source>
         <translation>清理中......</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="614"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="590"/>
         <source> historical use traces</source>
         <translation>条历史使用痕迹</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="606"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="582"/>
         <source>Cleanable cookie </source>
         <translation>可清理cookie </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="600"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="602"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="576"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="578"/>
         <source>Cleanable cache </source>
         <translation>可清理缓存 </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="458"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="883"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="460"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="851"/>
         <source>Computer cleanup in progress...</source>
         <translation>电脑清理中...</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="729"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="730"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="706"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="707"/>
         <source>Cleanable Cache</source>
         <translation>可清理缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="742"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="743"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="719"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="721"/>
         <source>Cleanable Cookie</source>
         <translation>可清理cookie</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="795"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="773"/>
         <source>Clear </source>
         <translation>清理 </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="795"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="773"/>
         <source> historical traces</source>
         <translation> 历史记录</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="781"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="759"/>
         <source>Clear cookie </source>
         <translation>清理 cookie </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="767"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="745"/>
         <source>Clear cache </source>
         <translation>清理缓存 </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="897"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="898"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="899"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="1007"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="1008"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="1009"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="864"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="865"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="866"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="962"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="963"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="964"/>
         <source>Cleaning up......</source>
         <translation>清理中......</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="913"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="880"/>
         <source>Clearance completed!</source>
         <translation>清理完成！</translation>
     </message>
@@ -339,17 +339,38 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="163"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="309"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="332"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="315"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="338"/>
         <source>Cleanup FireFox Cache</source>
         <translation>清理火狐浏览器缓存</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="163"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="261"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="284"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="267"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="290"/>
         <source>Cleanup Chromium Cache</source>
         <translation>清理chromium缓存</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="163"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="363"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="386"/>
+        <source>Cleanup Qaxbrowser Cache</source>
+        <translation>清理奇安信安全浏览器缓存</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="165"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="370"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="393"/>
+        <source>Cleanup the Cookies saving in Qaxbrowser</source>
+        <translation>清理奇安信安全浏览器的Cookies</translation>
+    </message>
+    <message>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="167"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="377"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="400"/>
+        <source>Clean up the Qaxbrowser Internet records</source>
+        <translation>清理奇安信安全浏览器访问记录</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="202"/>
@@ -357,26 +378,26 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
         <translation>常清理，电脑轻快又安全</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="500"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="554"/>
         <source>Cache Items</source>
         <translation>缓存选项</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="165"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="316"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="339"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="322"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="345"/>
         <source>Cleanup the Cookies saving in Firefox</source>
         <translation>清理火狐浏览器的Cookies</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="165"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="268"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="291"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="274"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="297"/>
         <source>Cleanup the Cookies saving in Chromium</source>
         <translation>清理Chromium浏览器的Cookies</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="521"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="575"/>
         <source>Cookies Items</source>
         <translation>Cookies选项</translation>
     </message>
@@ -387,15 +408,15 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="167"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="323"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="346"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="329"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="352"/>
         <source>Clean up the Firefox Internet records</source>
         <translation>清理火狐访问记录</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleanermainwidget.cpp" line="167"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="275"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="298"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="281"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="304"/>
         <source>Clean up the Chromium Internet records</source>
         <translation>清理Chromium访问记录</translation>
     </message>
@@ -415,12 +436,12 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
         <translation>删除调试日志</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="535"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="589"/>
         <source>Trace Items</source>
         <translation>访问痕迹选项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="468"/>
+        <location filename="../../cleaner/cleanermainwidget.cpp" line="522"/>
         <source>Scan args is empty!</source>
         <translation>扫描参数为空！</translation>
     </message>
@@ -428,47 +449,47 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
 <context>
     <name>CpuFmwidget</name>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="246"/>
+        <location filename="../../component/cpufmwidget.cpp" line="193"/>
         <source>apply</source>
         <translation>应用</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="36"/>
+        <location filename="../../component/cpufmwidget.cpp" line="216"/>
         <source>Whether to apply?</source>
         <translation>是否应用？</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="119"/>
+        <location filename="../../component/cpufmwidget.cpp" line="66"/>
         <source>Current average CPU core frequency</source>
         <translation>当前CPU核心平均主频</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="133"/>
+        <location filename="../../component/cpufmwidget.cpp" line="80"/>
         <source>CPU Management Strategy :</source>
         <translation>CPU管理策略 ：</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="146"/>
+        <location filename="../../component/cpufmwidget.cpp" line="93"/>
         <source>performance</source>
         <translation>性能模式</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="159"/>
+        <location filename="../../component/cpufmwidget.cpp" line="106"/>
         <source>powersave</source>
         <translation>省电模式</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="172"/>
+        <location filename="../../component/cpufmwidget.cpp" line="119"/>
         <source>userspace</source>
         <translation>用户自定义</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="222"/>
+        <location filename="../../component/cpufmwidget.cpp" line="169"/>
         <source>Current Frequency Adjustable Range:</source>
         <translation>当前频率可调节范围:</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="234"/>
+        <location filename="../../component/cpufmwidget.cpp" line="181"/>
         <source>CPU FM Note: The CPU FM function has some risks, please use it carefully! After FM is completed, restarting will restore the default configuration!</source>
         <translation>CPU调频说明：CPU调频功能存在一定的风险，请谨慎操作！调频完成重启计算机将还原默认配置！</translation>
     </message>
@@ -476,54 +497,54 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
 <context>
     <name>DrivePageWidget</name>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="86"/>
+        <location filename="../../component/drivepagewidget.cpp" line="91"/>
         <source>Immediately available driver information</source>
         <translation>当前没有可显示的驱动信息</translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="150"/>
+        <location filename="../../component/drivepagewidget.cpp" line="161"/>
         <source>Total, section </source>
         <translation>总计 </translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="150"/>
+        <location filename="../../component/drivepagewidget.cpp" line="161"/>
         <source> drivers</source>
         <translation> 款驱动</translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="160"/>
-        <location filename="../../component/drivepagewidget.cpp" line="168"/>
-        <location filename="../../component/drivepagewidget.cpp" line="172"/>
-        <location filename="../../component/drivepagewidget.cpp" line="188"/>
-        <location filename="../../component/drivepagewidget.cpp" line="192"/>
+        <location filename="../../component/drivepagewidget.cpp" line="171"/>
+        <location filename="../../component/drivepagewidget.cpp" line="179"/>
+        <location filename="../../component/drivepagewidget.cpp" line="183"/>
+        <location filename="../../component/drivepagewidget.cpp" line="199"/>
+        <location filename="../../component/drivepagewidget.cpp" line="203"/>
         <source>MotherBoard</source>
         <translation>主板驱动</translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="164"/>
+        <location filename="../../component/drivepagewidget.cpp" line="175"/>
         <source>Graphics-Card</source>
         <translation>显卡驱动</translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="176"/>
-        <location filename="../../component/drivepagewidget.cpp" line="184"/>
-        <location filename="../../component/drivepagewidget.cpp" line="200"/>
-        <location filename="../../component/drivepagewidget.cpp" line="210"/>
+        <location filename="../../component/drivepagewidget.cpp" line="187"/>
+        <location filename="../../component/drivepagewidget.cpp" line="195"/>
+        <location filename="../../component/drivepagewidget.cpp" line="211"/>
+        <location filename="../../component/drivepagewidget.cpp" line="221"/>
         <source>Other</source>
         <translation>其他驱动</translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="180"/>
+        <location filename="../../component/drivepagewidget.cpp" line="191"/>
         <source>Wired-Network-Card</source>
         <translation>有线网卡驱动</translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="196"/>
+        <location filename="../../component/drivepagewidget.cpp" line="207"/>
         <source>Sound-Card</source>
         <translation>声卡驱动</translation>
     </message>
     <message>
-        <location filename="../../component/drivepagewidget.cpp" line="205"/>
+        <location filename="../../component/drivepagewidget.cpp" line="216"/>
         <source>Wireless-Network-Card</source>
         <translation>无线网卡驱动</translation>
     </message>
@@ -919,17 +940,17 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
 <context>
     <name>InfoGui</name>
     <message>
-        <location filename="../../info/infogui.cpp" line="110"/>
+        <location filename="../../info/infogui.cpp" line="105"/>
         <source>Get Info Failed</source>
         <translation>获取信息失败</translation>
     </message>
     <message>
-        <location filename="../../info/infogui.cpp" line="110"/>
+        <location filename="../../info/infogui.cpp" line="105"/>
         <source>Device not exitst or Get Device is Empty</source>
         <translation>设备不存在或者获取到的设备信息为空</translation>
     </message>
     <message>
-        <location filename="../../info/infogui.cpp" line="146"/>
+        <location filename="../../info/infogui.cpp" line="154"/>
         <source>DisplayMemSize</source>
         <translation>显存大小</translation>
     </message>
@@ -1599,7 +1620,7 @@ Information</source>
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.cpp" line="112"/>
-        <location filename="../mainwindow.cpp" line="1238"/>
+        <location filename="../mainwindow.cpp" line="1247"/>
         <source>Kylin Assistant</source>
         <translation>麒麟助手</translation>
     </message>
@@ -1622,12 +1643,12 @@ Information</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1240"/>
+        <location filename="../mainwindow.cpp" line="1249"/>
         <source>&lt;p&gt;Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.&lt;/p&gt;</source>
         <translation> &lt;p&gt;麒麟助手是由麒麟团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器等功能。&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1242"/>
+        <location filename="../mainwindow.cpp" line="1251"/>
         <source>&lt;p&gt;Service &amp; Support : &lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</source>
         <translation>&lt;p&gt;服务和支持: &lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
@@ -2737,14 +2758,14 @@ Information</source>
 <context>
     <name>SelectListWidget</name>
     <message>
-        <location filename="../../component/selectlistwidget.cpp" line="51"/>
-        <location filename="../../component/selectlistwidget.cpp" line="79"/>
-        <location filename="../../component/selectlistwidget.cpp" line="168"/>
+        <location filename="../../component/selectlistwidget.cpp" line="54"/>
+        <location filename="../../component/selectlistwidget.cpp" line="82"/>
+        <location filename="../../component/selectlistwidget.cpp" line="175"/>
         <source>Clean Items:</source>
         <translation>清理项：</translation>
     </message>
     <message>
-        <location filename="../../component/selectlistwidget.cpp" line="93"/>
+        <location filename="../../component/selectlistwidget.cpp" line="96"/>
         <source>No items to clean</source>
         <translation>没有可清理项</translation>
     </message>
@@ -2762,11 +2783,15 @@ Information</source>
         <translation>文件粉碎机</translation>
     </message>
     <message>
+        <source>No select any file which need to be shredded</source>
+        <translation type="vanished">没有选择需要粉碎的文件</translation>
+    </message>
+    <message>
         <location filename="../../plugins/shredmanager/shreddialog.cpp" line="148"/>
         <location filename="../../plugins/shredmanager/shreddialog.cpp" line="305"/>
         <location filename="../../plugins/shredmanager/shreddialog.cpp" line="345"/>
-        <source>No select any file which need to be shredded</source>
-        <translation>没有选择需要粉碎的文件</translation>
+        <source>No file selected to be shredded</source>
+        <translation>未选择需要粉碎的文件</translation>
     </message>
     <message>
         <location filename="../../plugins/shredmanager/shreddialog.cpp" line="149"/>

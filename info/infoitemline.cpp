@@ -432,7 +432,7 @@ InfoItemLine::InfoItemLine(QFrame *parent)
     : QFrame(parent)
 {
     this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-//    this->setFixedHeight(36);
+    this->setMinimumHeight(35);
 
     m_key = "";
     m_keyLabel = new QLabel;
@@ -479,26 +479,12 @@ void InfoItemLine::setInfoValue(const QString &value)
 
     m_valueLabel->setStyleSheet("background-color:rgb(237,238,239);color:black;");
     m_valueLabel->setIndent(5);
-    if(value.length() >= 51){
-        bool replaced = false;
-        for(int i = 50; i >= value.length() / 2; i--){
-            if(value[i] == ' '){
-                elided_text.replace(i, 1, "\n");
-                replaced = true;
-                break;
-            }
-        }
-        if(!replaced){
-            elided_text.insert(48,"\n");
-        }
-        m_valueLabel->setFixedSize(461,60);
-        m_valueLabel->setWordWrap(true);
-        m_valueLabel->adjustSize();
-    }else{
-        m_valueLabel->setFixedSize(461,31);
-    }
+    m_valueLabel->setWordWrap(true);
+    m_valueLabel->setFixedWidth(461);
+    m_valueLabel->setMinimumHeight(30);
 
     m_valueLabel->setText(elided_text);
+    m_valueLabel->adjustSize();
 }
 
 QString InfoItemLine::getLineKey()

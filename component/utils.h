@@ -46,6 +46,7 @@ enum CleanerModuleID {
     CacheThumbnail,
     CacheFirefox,
     CacheChromium,
+    Cookie,
     CookieFirefox,
     CookieChromium,
     TraceX11,

@@ -160,12 +160,12 @@ CleanerMainWidget::CleanerMainWidget(QWidget *parent, MainWindow *window, Toolki
     connect(start_clean,SIGNAL(clicked()),this,SLOT(onClickedCleanbtn()));
     connect(start_clean,SIGNAL(clicked()),this,SLOT(receiveScanSignal()));
 
-    cache_list << tr("Cleanup Package Cache") << tr("Cleanup Software Center Cache") << tr("Cleanup Thumbnails Cache") << tr("Cleanup FireFox Cache") << tr("Cleanup Chromium Cache");
-    cache_status_list << "apt" << "software-center" << "thumbnails" << "firefox" << "chromium";
-    cookies_list << tr("Cleanup the Cookies saving in Firefox") << tr("Cleanup the Cookies saving in Chromium");
-    cookies_status_list << "firefox" << "chromium";
-    trace_list << tr("Clean up the Firefox Internet records") << tr("Clean up the Chromium Internet records") << tr("Clean up the recently opened documents records") << tr("Delete the command history") << tr("Delete the debug logs");
-    trace_status_list << "firefox" << "chromium" << "system" << "bash" << "X11";
+    cache_list << tr("Cleanup Package Cache") << tr("Cleanup Software Center Cache") << tr("Cleanup Thumbnails Cache") << tr("Cleanup FireFox Cache") << tr("Cleanup Chromium Cache") << tr("Cleanup Qaxbrowser Cache");
+    cache_status_list << "apt" << "software-center" << "thumbnails" << "firefox" << "chromium" << "qaxbrowser";
+    cookies_list << tr("Cleanup the Cookies saving in Firefox") << tr("Cleanup the Cookies saving in Chromium") << tr("Cleanup the Cookies saving in Qaxbrowser");
+    cookies_status_list << "firefox" << "chromium" << "qaxbrowser";
+    trace_list << tr("Clean up the Firefox Internet records") << tr("Clean up the Chromium Internet records") << tr("Clean up the Qaxbrowser Internet records") << tr("Clean up the recently opened documents records") << tr("Delete the command history") << tr("Delete the debug logs");
+    trace_status_list << "firefox" << "chromium" << "qaxbrowser" << "system" << "bash" << "X11";
 
     onRefreshSelectedList();
 
@@ -224,28 +224,34 @@ void CleanerMainWidget::Browser_to_judge_existence()
 {
     QFileInfo fileinfo;
     fileinfo.setFile("/usr/bin/google-chrome-stable");
-    if(fileinfo.isFile())
+    if(fileinfo.exists())
         google = true;
     else
         google = false;
 
     fileinfo.setFile("/usr/bin/firefox");
-    if(fileinfo.isFile())
+    if(fileinfo.exists())
         firefox = true;
     else
         firefox = false;
 
     fileinfo.setFile("/usr/bin/firefox-esr");
-    if(fileinfo.isFile())
+    if(fileinfo.exists())
         firefox = true;
     else
         firefox = false;
 
     fileinfo.setFile("/usr/bin/browser360-cn-stable");
-    if(fileinfo.isFile())
+    if(fileinfo.exists())
         browser360 = true;
     else
         browser360 = false;
+
+    fileinfo.setFile("/usr/bin/qaxbrowser-safe-stable");
+    if(fileinfo.exists())
+        qaxbrowser = true;
+    else
+        qaxbrowser = false;
 }
 
 void CleanerMainWidget::onRefreshSelectedList()
@@ -345,6 +351,54 @@ void CleanerMainWidget::onRefreshSelectedList()
         {
             trace_list.removeOne(tr("Clean up the Firefox Internet records"));
             trace_status_list.removeOne("firefox");
+        }
+    }
+
+    //对google浏览器存在添加选择字段，如不存在则去除选择字段
+    if(qaxbrowser)
+    {
+        //对字符串做存在判断，避免重读添加字段
+        if(!cache_status_list.contains("qaxbrowser"))
+        {
+            cache_list << tr("Cleanup Qaxbrowser Cache");
+            cache_status_list << "qaxbrowser";
+        }
+
+        //同上
+        if(!cookies_status_list.contains("qaxbrowser"))
+        {
+            cookies_list << tr("Cleanup the Cookies saving in Qaxbrowser");
+            cookies_status_list << "qaxbrowser";
+        }
+
+        //同上
+        if(!trace_status_list.contains("qaxbrowser"))
+        {
+            trace_list << tr("Clean up the Qaxbrowser Internet records");
+            trace_status_list << "qaxbrowser";
+        }
+    }
+    else
+    {
+        //对字符串做存在判断,存在则去除字段
+        if(cache_status_list.contains("qaxbrowser"))
+        {
+            cache_list.removeOne(tr("Cleanup Qaxbrowser Cache"));
+            cache_status_list.removeOne("qaxbrowser");
+        }
+
+        //同上
+        if(cookies_status_list.contains("qaxbrowser"))
+        {
+            cookies_list.removeOne(tr("Cleanup the Cookies saving in Qaxbrowser"));
+            cookies_status_list.removeOne("qaxbrowser");
+        }
+
+        //同上
+        if(trace_status_list.contains("qaxbrowser"))
+        {
+            trace_list.removeOne(tr("Clean up the Qaxbrowser Internet records"));
+            trace_status_list.removeOne("qaxbrowser");
         }
     }
 }

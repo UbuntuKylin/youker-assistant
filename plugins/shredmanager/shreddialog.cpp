@@ -48,15 +48,15 @@ ShredDialog::ShredDialog(QWidget *parent) :
 
     select_edit = new QLineEdit();
     select_edit->setStyleSheet("QLineEdit{border:1px solid #bebebe;}");
-    select_edit->setFixedWidth(400);
+    select_edit->setMinimumWidth(400);
     select_edit->setReadOnly(true);
     select_btn = new KylinEditButton(select_edit);
     shred_btn = new QPushButton();
     cacel_btn = new QPushButton();
-    shred_btn->setFixedSize(91, 25);
+    shred_btn->resize(91, 25);
     shred_btn->setObjectName("blackButton");
     shred_btn->setFocusPolicy(Qt::NoFocus);
-    cacel_btn->setFixedSize(91, 25);
+    cacel_btn->resize(91, 25);
     cacel_btn->setObjectName("blackButton");
     cacel_btn->setFocusPolicy(Qt::NoFocus);
 
@@ -145,7 +145,7 @@ ShredDialog::~ShredDialog()
 
 void ShredDialog::setLanguage()
 {
-    select_edit->setText(tr("No select any file which need to be shredded"));
+    select_edit->setText(tr("No file selected to be shredded"));
     shred_btn->setText(tr("Shred File"));
     cacel_btn->setText(tr("Deselect"));
     tipLabel->setText(tr("Note: The file shredding process cannot be cancelled, please operate with caution!"));
@@ -302,7 +302,7 @@ void ShredDialog::onShredButtonClicked()
             progressbar->setVisible(false);
             barLabel->setVisible(false);
             toolkits->alertMSG(this->frameGeometry().topLeft().x(), this->frameGeometry().topLeft().y(), tr("Shred successfully!"));
-            select_edit->setText(tr("No select any file which need to be shredded"));           
+            select_edit->setText(tr("No file selected to be shredded"));
             thread->exit();
             myTimer.stop();
         });
@@ -330,7 +330,7 @@ void ShredDialog::onShredButtonClicked()
 //        {
 //            //success
 //            toolkits->alertMSG(this->frameGeometry().topLeft().x(), this->frameGeometry().topLeft().y(), tr("Shred successfully!"));
-//            select_edit->setText(tr("No select any file which need to be shredded"));
+//            select_edit->setText(tr("No file selected to be shredded"));
 //        }
 //        else
 //        {
@@ -342,7 +342,7 @@ void ShredDialog::onShredButtonClicked()
 
 void ShredDialog::onCacelButtonClicked()
 {
-    select_edit->setText(tr("No select any file which need to be shredded"));
+    select_edit->setText(tr("No file selected to be shredded"));
 }
 
 void ShredDialog::closeEvent(QCloseEvent *event)
