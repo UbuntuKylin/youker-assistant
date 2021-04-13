@@ -47,7 +47,7 @@ InfoWidget::InfoWidget(QString machine, QWidget *parent) :
     category_widget->setFixedSize(160,this->height());
     category_widget->setFocusPolicy(Qt::NoFocus);
     category_widget->setObjectName("infoList");
-    category_widget->setStyleSheet("QListWidget{font-size:15px;background: rgb(237,237,237);line-height:10px;color:rgb(0,0,0,185);border-bottom-right-radius:0px;}\
+    category_widget->setStyleSheet("QListWidget{/*font-size:15px;*/background: rgb(237,237,237);line-height:10px;color:rgb(0,0,0,185);border-bottom-right-radius:0px;}\
                                    QListWidget::item:hover{border-radius:5px;background:rgba(61,107,229,80);color:rgb(0,0,0,185);}\
                                    QListWidget::item:selected{border-radius:5px;background:rgba(61,107,229,1);color:white;}");
 
@@ -252,13 +252,13 @@ void InfoWidget::initInfoUI(bool has_battery, bool has_sensor)
 //        QIcon icon;
 //        icon.addFile(":/hd/res/hardware/" + icon_list.at(i), QSize(), QIcon::Normal, QIcon::Off);
         QListWidgetItem *item = nullptr;
-        item = new QListWidgetItem("          "+type_list.at(i), category_widget);
+        item = new QListWidgetItem(type_list.at(i), category_widget);
 
         //            item->setSizeHint(QSize(120,31)); //设置单元项的宽度和高度
         item->setSizeHint(QSize(160,30)); //设置单元项的宽度和高度
         item->setStatusTip(icon_list.at(i));
         item->setToolTip(type_list.at(i));
-        item->setTextAlignment(Qt::AlignVCenter|Qt::AlignLeft);
+        item->setTextAlignment(Qt::AlignCenter);
 //        item->setIcon(icon);
 
         if(i == 0)

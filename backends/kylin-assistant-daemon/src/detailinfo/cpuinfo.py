@@ -1587,6 +1587,7 @@ class DetailInfo:
                 "QUANTUM": "Quantum",
                 "FIREBALL": "Quantum",
                 "WDC": "Western Digital",
+                "HGST HUS": "Western Digital",
                 }
         DiskProduct,DiskVendor,DiskCapacity,DiskName,DiskFw,DiskSerial = '','','','','',''
         diskdict = {}
@@ -1655,10 +1656,40 @@ class DetailInfo:
                     DiskSerial += (infodict.get("SerialNo", "$") + "<1_1>")
                 else:
                     pprint(output)
-                    DiskProduct += ( "$" + "<1_1>")
-                    DiskVendor += ("$" + "<1_1>")
-                    DiskFw += ("$" + "<1_1>")
-                    DiskSerial += ("$" + "<1_1>")
+
+                    path = "/sys/block/" + value[0] + '/device/'
+                    model = ''
+                    vendor = ''
+
+                    if (os.path.exists(path + 'vendor') or os.path.exists(path + 'model')):
+                        with open(path+'vendor','rb') as fd:
+                            vendor = str(fd.readline().strip(),encoding="utf-8")
+                        with open(path+'model','rb') as fd:
+                            model = str(fd.readline().strip(),encoding="utf-8")
+              
+                        print (vendor,model)
+                        for key, va in list(disk_manufacturers.items()):
+                            if vendor.startswith(key):
+                                vendor = va
+                                break
+
+                        if(vendor is not ''):
+                            DiskVendor += (vendor + "<1_1>")
+                        else:
+                            DiskVendor += ("$" + "<1_1>")
+
+                        if(model is not ''):
+                            DiskProduct += (model + "<1_1>")
+                        else:
+                            DiskProduct += ("$" + "<1_1>")
+                        
+                        DiskFw += ("$" + "<1_1>")
+                        DiskSerial += ("$" + "<1_1>")
+                    else:
+                        DiskProduct += ( "$" + "<1_1>")
+                        DiskVendor += ("$" + "<1_1>")
+                        DiskFw += ("$" + "<1_1>")
+                        DiskSerial += ("$" + "<1_1>")
                 DiskName += (("/dev/" + value[0]) + "<1_1>")
         dis['DiskNum'],dis['DiskProduct'],dis['DiskVendor'],dis['DiskCapacity'],dis['DiskName'],dis['DiskFw'],dis['DiskSerial'] = str(disknum),DiskProduct[:-5],DiskVendor[:-5],DiskCapacity[:-5],DiskName[:-5],DiskFw[:-5],DiskSerial[:-5]
         return dis
@@ -2682,7 +2713,7 @@ if __name__ == "__main__":
     #cc.get_cpu()
     #cc.get_board()
     #cc.get_memory()
-    pprint(cc.get_memory())
+    pprint(cc.get_disk())
     #cc.get_disk()
     #cc.get_network()
     #cc.get_multimedia()

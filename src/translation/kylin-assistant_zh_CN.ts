@@ -262,7 +262,7 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
     <message>
         <location filename="../../cleaner/cleandetailveiw.cpp" line="773"/>
         <source> historical traces</source>
-        <translation> 历史记录</translation>
+        <translation> 条历史记录</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleandetailveiw.cpp" line="759"/>

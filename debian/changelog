@@ -1,8 +1,29 @@
+youker-assistant (3.0.2-0kylin6k53~rc1) v101; urgency=medium
+
+  [tang guang]
+   * 添加外置硬盘和U盘 ，显示硬盘和U盘的产商和型号
+   * 修复多个风扇，在个别风扇转速为零时，显示风扇转速错误
+   * 解决麒麟助手，电脑清理，清理后历史记录缺少单位 (bug#48204)
+   * 解决调整字体大小，麒麟助手字体不匹配 (bug#48115)
+
+ -- tang guang <tangguang@kylinos.cn>  Tue, 13 Apr 2021 17:05:48 +0800
+
+youker-assistant (3.0.2-0kylin6k52~rc1) v101; urgency=medium
+
+  [tangguang]
+   * Fix: Add qaxbrowser cleanup process code
+    - BUG#45853
+   * Optimize: Adjust the front-end and back-end code of the cleaning system
+
+ -- hebing <hebing@kylinos.cn>  Tue, 06 Apr 2021 21:09:14 +0800
+
 youker-assistant (3.0.2-0kylin6k51~rc1) v101; urgency=medium
 
-  * 信息界面都有显示不全问题，由于不支持悬浮显示，所以显示不全无法看到(bug#46351)
+  [tangguang]
+   * 信息界面都有显示不全问题，由于不支持悬浮显示，所以显示不全无法看到(bug#46351)
+    - BUG#46351
 
- -- tang guang <tangguang@kylinos.cn>  Mon, 29 Mar 2021 19:59:47 +0800
+ -- hebing <hebing@kylinos.cn>  Mon, 29 Mar 2021 19:59:47 +0800
 
 youker-assistant (3.0.2-0kylin6k50) v101; urgency=medium
 

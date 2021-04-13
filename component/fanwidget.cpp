@@ -159,9 +159,10 @@ void Fanwidget::Initwidgetbottom()
 
 void Fanwidget::RefreshInterface(QMap<QString,QVariant> tmpMap)
 {
-//    qDebug() << Q_FUNC_INFO;
+//    qDebug() << Q_FUNC_INFO << tmpMap;
     int speed = 0;
     int var;
+    int available_value = 0;
 
     QMap<QString, QVariant> fan_info_map = tmpMap;
     if (!fan_info_map.isEmpty()) {
@@ -169,6 +170,11 @@ void Fanwidget::RefreshInterface(QMap<QString,QVariant> tmpMap)
         for(it=fan_info_map.begin(); it != fan_info_map.end(); ++it){
             bool ok;
             var = it.value().toString().toInt(&ok,10);
+
+            if(var)
+                available_value++;
+            else
+                continue;
 
             if(maxSpeed == minSpeed  && minSpeed == 0){
                 maxSpeed = minSpeed = var;
@@ -187,9 +193,9 @@ void Fanwidget::RefreshInterface(QMap<QString,QVariant> tmpMap)
 //        qDebug() << Q_FUNC_INFO << "==" << QString::number(speed/fan_info_map.size()) << maxSpeed << minSpeed << timeNum;
         if(timeNum == 0 || timeNum % 5 == 0){
            if(timeNum == 0)
-               Speed = QString::number(sumSpeed/fan_info_map.size());
+               Speed = QString::number(sumSpeed/available_value);
            else
-               Speed = QString::number(sumSpeed/(fan_info_map.size()*5));
+               Speed = QString::number(sumSpeed/(available_value*5));
 
            top_fan_speed->setText(tr("The fan is working fine, averaging ")+Speed+tr(" rpm/s"));
            tip_speed->setText(tr("Maximum ")+QString::number(maxSpeed)+tr(" rpm/s, minimum ")+QString::number(minSpeed)+tr(" rpm/s"));
@@ -198,7 +204,7 @@ void Fanwidget::RefreshInterface(QMap<QString,QVariant> tmpMap)
            sumSpeed = 0;
         }
 
-        speed_lable->setText(QString::number(speed/fan_info_map.size())+tr(" rpm/s"));
+        speed_lable->setText(QString::number(speed/available_value)+tr(" rpm/s"));
         speed_lable->update();
 
         timeNum++;
