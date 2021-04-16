@@ -1,3 +1,10 @@
+youker-assistant (3.0.2-0kylin6k54~rc1) v101; urgency=medium
+
+  [tang guang]
+   * 添加光驱信息显示/翻译
+
+ -- hebing <hebing@kylinos.cn>  Fri, 16 Apr 2021 20:34:08 +0800
+
 youker-assistant (3.0.2-0kylin6k53~rc1) v101; urgency=medium
 
   [tang guang]
