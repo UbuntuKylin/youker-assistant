@@ -102,6 +102,9 @@ public slots:
     //sensor info
     void onRequestSensorInfo();
 
+    //sensor info
+    void onRequestCDROMInfo();
+
     //driver info
 
     void onRequestPartInfoAgain();
@@ -304,8 +307,8 @@ signals:
     //fan info
     void sendFanInfoValue(QMap<QString, QVariant> tmpMap);
 
-
-
+    //CDROM info
+    void sendCDROMInfoValue(QMap<QString, QVariant> tmpMap);
 
 
     //theme

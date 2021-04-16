@@ -2430,30 +2430,45 @@ class DetailInfo:
     def get_dvd(self):
         dvd = {}
         Dvdnum = 0
-        DvdProduct,DvdVendor,DvdName,DvdFw,DvdSerial = '','','','',''
-        n = os.popen("hdparm -i /dev/cdrom")
-        cdrom = n.read()
-        n.close()
-        if cdrom:
-            tmp = re.findall("Model=(.*), F",cdrom)
-            if tmp:
-                DvdProduct = tmp[0]
-                DvdVendor = self.get_url('',self.strip(DvdProduct))
-                if not DvdVendor :
-                    pro = DvdProduct[:DvdProduct.index('DVD')]
-                    DvdVendor = self.get_url('',self.strip(pro))
-                if not DvdVendor :
-                    pro = DvdProduct[:DvdProduct.index('CD')]
-                    DvdVendor = self.get_url('',self.strip(pro))
-                tmp = re.findall("FwRev=(.*), ",cdrom)
-                if tmp :
-                    DvdFw = tmp[0]
-                tmp = re.findall("SerialNo=(.*)",cdrom)
-                if tmp :
-                    DvdSerial = tmp[0]
-                DvdName = '/dev/cdrom'
-                Dvdnum += 1
-        dvd['Dvdnum'],dvd['DvdProduct'],dvd['DvdVendor'],dvd['DvdName'],dvd['DvdFw'],dvd['DvdSerial'] = self.strip(str(Dvdnum)),self.strip(DvdProduct),self.strip(DvdVendor),self.strip(DvdName),self.strip(DvdFw),self.strip(DvdSerial)
+        DvdProduct,DvdVendor,DvdName,DvdFw,DvdSerial,Dvdid = '','','','','',''
+
+        statusfirst, output = subprocess.getstatusoutput("lsscsi")
+        if not statusfirst:
+            for line in output.split("\n"):
+                print (line.split())
+                info_list = line.split()
+                if info_list[1] == "cd/dvd" :
+                    Dvdnum += 1
+                    
+                    DvdProduct += " ".join(info_list[3:5]) + "<1_1>"
+                    DvdVendor += info_list[2] + "<1_1>"
+                    Dvdid += info_list[0].strip("[]") + "<1_1>"
+                    DvdName += info_list[6] + "<1_1>"
+                    DvdFw += info_list[5] + "<1_1>"
+
+        # n = os.popen("hdparm -i /dev/cdrom")
+        # cdrom = n.read()
+        # n.close()
+        # if cdrom:
+        #     tmp = re.findall("Model=(.*), F",cdrom)
+        #     if tmp:
+        #         DvdProduct = tmp[0]
+        #         DvdVendor = self.get_url('',self.strip(DvdProduct))
+        #         if not DvdVendor :
+        #             pro = DvdProduct[:DvdProduct.index('DVD')]
+        #             DvdVendor = self.get_url('',self.strip(pro))
+        #         if not DvdVendor :
+        #             pro = DvdProduct[:DvdProduct.index('CD')]
+        #             DvdVendor = self.get_url('',self.strip(pro))
+        #         tmp = re.findall("FwRev=(.*), ",cdrom)
+        #         if tmp :
+        #             DvdFw = tmp[0]
+        #         tmp = re.findall("SerialNo=(.*)",cdrom)
+        #         if tmp :
+        #             DvdSerial = tmp[0]
+        #         DvdName = '/dev/cdrom'
+        #         Dvdnum += 1
+        dvd['Dvdnum'],dvd['DvdProduct'],dvd['DvdVendor'],dvd['DvdName'],dvd['DvdFw'],dvd['DvdSerial'],dvd["Dvdid"] = self.strip(str(Dvdnum)),self.strip(DvdProduct),self.strip(DvdVendor),self.strip(DvdName),self.strip(DvdFw),self.strip(DvdSerial),self.strip(Dvdid)
         return dvd
 
     def get_usb(self):
@@ -2713,7 +2728,7 @@ if __name__ == "__main__":
     #cc.get_cpu()
     #cc.get_board()
     #cc.get_memory()
-    pprint(cc.get_disk())
+    pprint(cc.get_dvd())
     #cc.get_disk()
     #cc.get_network()
     #cc.get_multimedia()

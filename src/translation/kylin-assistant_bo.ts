@@ -752,7 +752,7 @@ tang guang &lt;tangguang@kylinos.cn&gt;</source>
     <name>Fanwidget</name>
     <message>
         <location filename="../../component/fanwidget.cpp" line="102"/>
-        <location filename="../../component/fanwidget.cpp" line="194"/>
+        <location filename="../../component/fanwidget.cpp" line="204"/>
         <source>The fan is working fine, averaging </source>
         <translation type="unfinished"></translation>
     </message>
@@ -760,21 +760,21 @@ tang guang &lt;tangguang@kylinos.cn&gt;</source>
         <location filename="../../component/fanwidget.cpp" line="102"/>
         <location filename="../../component/fanwidget.cpp" line="111"/>
         <location filename="../../component/fanwidget.cpp" line="145"/>
-        <location filename="../../component/fanwidget.cpp" line="194"/>
-        <location filename="../../component/fanwidget.cpp" line="195"/>
-        <location filename="../../component/fanwidget.cpp" line="201"/>
+        <location filename="../../component/fanwidget.cpp" line="204"/>
+        <location filename="../../component/fanwidget.cpp" line="205"/>
+        <location filename="../../component/fanwidget.cpp" line="211"/>
         <source> rpm/s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../component/fanwidget.cpp" line="111"/>
-        <location filename="../../component/fanwidget.cpp" line="195"/>
+        <location filename="../../component/fanwidget.cpp" line="205"/>
         <source>Maximum </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../component/fanwidget.cpp" line="111"/>
-        <location filename="../../component/fanwidget.cpp" line="195"/>
+        <location filename="../../component/fanwidget.cpp" line="205"/>
         <source> rpm/s, minimum </source>
         <translation type="unfinished"></translation>
     </message>
@@ -1030,124 +1030,141 @@ tang guang &lt;tangguang@kylinos.cn&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="360"/>
+        <location filename="../infowidget.cpp" line="238"/>
+        <source>CD-ROM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../infowidget.cpp" line="366"/>
         <source>Computer Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="415"/>
-        <location filename="../infowidget.cpp" line="417"/>
+        <location filename="../infowidget.cpp" line="421"/>
+        <location filename="../infowidget.cpp" line="423"/>
         <source>Desktop Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="455"/>
-        <location filename="../infowidget.cpp" line="457"/>
+        <location filename="../infowidget.cpp" line="461"/>
+        <location filename="../infowidget.cpp" line="463"/>
         <source>CPU Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="501"/>
-        <location filename="../infowidget.cpp" line="503"/>
+        <location filename="../infowidget.cpp" line="507"/>
+        <location filename="../infowidget.cpp" line="509"/>
         <source>Memory Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="548"/>
-        <location filename="../infowidget.cpp" line="550"/>
+        <location filename="../infowidget.cpp" line="554"/>
+        <location filename="../infowidget.cpp" line="556"/>
         <source>Memory Info %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="585"/>
-        <location filename="../infowidget.cpp" line="587"/>
+        <location filename="../infowidget.cpp" line="591"/>
+        <location filename="../infowidget.cpp" line="593"/>
         <source>Board Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="635"/>
-        <location filename="../infowidget.cpp" line="637"/>
+        <location filename="../infowidget.cpp" line="641"/>
+        <location filename="../infowidget.cpp" line="643"/>
         <source>HardWare Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="682"/>
-        <location filename="../infowidget.cpp" line="684"/>
+        <location filename="../infowidget.cpp" line="688"/>
+        <location filename="../infowidget.cpp" line="690"/>
         <source>HardWare Info %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="740"/>
-        <location filename="../infowidget.cpp" line="742"/>
+        <location filename="../infowidget.cpp" line="746"/>
+        <location filename="../infowidget.cpp" line="748"/>
         <source>NIC Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="791"/>
-        <location filename="../infowidget.cpp" line="793"/>
+        <location filename="../infowidget.cpp" line="797"/>
+        <location filename="../infowidget.cpp" line="799"/>
         <source>NIC Info %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="840"/>
-        <location filename="../infowidget.cpp" line="842"/>
+        <location filename="../infowidget.cpp" line="846"/>
+        <location filename="../infowidget.cpp" line="848"/>
         <source>Monitor Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="885"/>
-        <location filename="../infowidget.cpp" line="887"/>
+        <location filename="../infowidget.cpp" line="891"/>
+        <location filename="../infowidget.cpp" line="893"/>
         <source>Monitor Info %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="934"/>
-        <location filename="../infowidget.cpp" line="936"/>
+        <location filename="../infowidget.cpp" line="940"/>
+        <location filename="../infowidget.cpp" line="942"/>
         <source>Audio Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="979"/>
-        <location filename="../infowidget.cpp" line="981"/>
+        <location filename="../infowidget.cpp" line="985"/>
+        <location filename="../infowidget.cpp" line="987"/>
         <source>Audio Info %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="1021"/>
-        <location filename="../infowidget.cpp" line="1030"/>
+        <location filename="../infowidget.cpp" line="1027"/>
+        <location filename="../infowidget.cpp" line="1036"/>
         <source>Input Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="1074"/>
+        <location filename="../infowidget.cpp" line="1080"/>
         <source>Bluetooth Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="1064"/>
-        <location filename="../infowidget.cpp" line="1076"/>
+        <location filename="../infowidget.cpp" line="1070"/>
+        <location filename="../infowidget.cpp" line="1082"/>
         <source>Communication Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="1110"/>
-        <location filename="../infowidget.cpp" line="1119"/>
+        <location filename="../infowidget.cpp" line="1116"/>
+        <location filename="../infowidget.cpp" line="1125"/>
         <source>Display Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="1153"/>
-        <location filename="../infowidget.cpp" line="1162"/>
+        <location filename="../infowidget.cpp" line="1159"/>
+        <location filename="../infowidget.cpp" line="1168"/>
         <source>Multimedia Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="1208"/>
+        <location filename="../infowidget.cpp" line="1214"/>
         <source>Battery Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="1381"/>
+        <location filename="../infowidget.cpp" line="1279"/>
+        <location filename="../infowidget.cpp" line="1281"/>
+        <source>CD-ROM Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../infowidget.cpp" line="1317"/>
+        <location filename="../infowidget.cpp" line="1319"/>
+        <source>CD-ROM Info %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../infowidget.cpp" line="1468"/>
         <source>Driver Info</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1617,7 +1634,7 @@ Information</source>
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.cpp" line="112"/>
-        <location filename="../mainwindow.cpp" line="1247"/>
+        <location filename="../mainwindow.cpp" line="1251"/>
         <source>Kylin Assistant</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1640,12 +1657,12 @@ Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1249"/>
+        <location filename="../mainwindow.cpp" line="1253"/>
         <source>&lt;p&gt;Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1251"/>
+        <location filename="../mainwindow.cpp" line="1255"/>
         <source>&lt;p&gt;Service &amp; Support : &lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2103,7 +2120,7 @@ Information</source>
     </message>
     <message>
         <location filename="../../info/infoitemline.cpp" line="162"/>
-        <location filename="../infowidget.cpp" line="526"/>
+        <location filename="../infowidget.cpp" line="532"/>
         <source>Wrong info from firmware</source>
         <translation type="unfinished"></translation>
     </message>

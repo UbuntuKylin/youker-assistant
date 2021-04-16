@@ -306,6 +306,12 @@ void DataWorker::onRequestSensorInfo()
         m_sensorTimer->start(1000*4);
 }
 
+void DataWorker::onRequestCDROMInfo()
+{
+    QMap<QString, QVariant> tmpMap = m_systemInterface->get_cdrom_info_qt();
+    emit sendCDROMInfoValue(tmpMap);
+}
+
 void DataWorker::updateSensorValue()
 {
     QMap<QString, QVariant> tmpMap = m_systemInterface->get_sensor_info_qt();

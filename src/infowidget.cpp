@@ -235,6 +235,12 @@ void InfoWidget::initInfoUI(bool has_battery, bool has_sensor)
         stacked_widget->addWidget(sensor_widget);
     }
 
+    type_list << tr("CD-ROM");
+    icon_list << "CD-ROM";
+    InfoGui *sensor_widget = new InfoGui(this);
+    sensor_widget->setInfoGuiName("CD-ROM");
+    stacked_widget->addWidget(sensor_widget);
+
 //    type_list << tr("Device Driver");
 //    icon_list << "drive";
 //    InfoGui *driver_widget = new InfoGui(this);
@@ -1241,6 +1247,86 @@ void InfoWidget::onSendSensorInfo(QMap<QString, QVariant> tmpMap)
     }
 }
 
+void InfoWidget::onSendCDROMInfo(QMap<QString, QVariant> tmpMap)
+{
+    qDebug() << Q_FUNC_INFO << tmpMap;
+    QMap<QString, QVariant>::iterator iter = tmpMap.find("Dvdnum");
+    int Dvdnum = 0;
+    if (iter == tmpMap.end()) {
+        Dvdnum = 0;
+    }
+    else{
+        Dvdnum = iter.value().toInt();
+    }
+
+    if(Dvdnum <= 1) {
+        tmpMap.remove("Dvdnum");
+        QMap<QString, QVariant> cd_rom_info_map;
+        QMap<QString,QVariant>::iterator it;
+        for (it = tmpMap.begin(); it != tmpMap.end(); ++it) {
+            if (it.value().toString().length() > 0) {
+                cd_rom_info_map.insert(it.key(), it.value());
+            }
+        }
+
+        for (int i = 0; i < stacked_widget->count(); i++) {
+            if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(i))) {
+                if (page->infoGuiName().isEmpty() || page->infoGuiName().isNull())
+                    continue;
+                if (page->infoGuiName() == "CD-ROM") {
+                    page->clearWidget();
+                    if (cd_rom_info_map.isEmpty()) {
+                        page->errorPage(tr("CD-ROM Info"));
+                    } else {
+                        page->loadOnePage(0, tr("CD-ROM Info"), cd_rom_info_map);
+                    }
+
+                    break;
+                }
+            }
+        }
+        cd_rom_info_map.clear();
+    }
+    else if(Dvdnum > 1) {
+        bool hadRetUI = false;
+        for (int i=0;i<Dvdnum;i++) {
+            QMap<QString, QVariant> audio_info_map;
+            QMap<QString, QVariant>::iterator itbegin = tmpMap.begin();
+            QMap<QString, QVariant>::iterator itend = tmpMap.end();
+            for (;itbegin != itend; ++itbegin) {
+                if(itbegin.key() != "Dvdnum" && itbegin.value().toString().contains("<1_1>")) {
+                    QStringList tmplist = itbegin.value().toString().split("<1_1>");
+                    if (tmplist.length() >= i) {
+                        QString result = tmplist.at(i);
+                        if (result.length() > 0) {
+                            audio_info_map.insert(itbegin.key(), result);
+                        }
+                    }
+                }
+            }
+            for (int j = 0; j < stacked_widget->count(); j++) {
+                if (InfoGui *page = static_cast<InfoGui *>(stacked_widget->widget(j))) {
+                    if (page->infoGuiName().isEmpty() || page->infoGuiName().isNull())
+                        continue;
+                    if (page->infoGuiName() == "CD-ROM") {
+                        if (!hadRetUI) {//只加载第一个时清空原来的界面
+                            page->clearWidget();
+                            hadRetUI = true;
+                        }
+                        if (audio_info_map.isEmpty()){
+                            page->errorPage(tr("CD-ROM Info %1").arg(i+1));
+                        } else {
+                            page->loadOnePage(0, tr("CD-ROM Info %1").arg(i+1), audio_info_map);
+                        }
+                        break;
+                    }
+                }
+            }
+            audio_info_map.clear();
+        }
+    }
+}
+
 void InfoWidget::onUDevHotPluginAdd(QString strUdevSubName, QString strUdevType)
 {
     //qDebug()<<"UDev Added:"<<strUdevSubName<<"|"<<strUdevType;
@@ -1336,8 +1422,9 @@ void InfoWidget::changeInfoPage(QListWidgetItem *item, QListWidgetItem *item1) {
                 }
                 else if (m_currentGuiName == "sensor") {
                     emit this->requestSensorInfo();
-                }
-                else if (m_currentGuiName == "input"){
+                }else if(m_currentGuiName == "CD-ROM"){
+                    emit this->requestCDROMInfo();
+                }else if (m_currentGuiName == "input"){
 //                    firstLoadInputDev = true;
 //                    emit this->requestInputInfo();
                 }

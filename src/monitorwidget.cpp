@@ -43,7 +43,7 @@ Monitorwidget::~Monitorwidget()
 
 void Monitorwidget::InitUI()
 {
-//    qDebug() << Q_FUNC_INFO << __LINE__;
+//    qDebug() << Q_FUNC_INFO << m_temperature << m_fan << m_cpufm <<__LINE__;
     string_list.clear();
     status_list.clear();
 

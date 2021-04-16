@@ -191,6 +191,10 @@ void Fanwidget::RefreshInterface(QMap<QString,QVariant> tmpMap)
             sumSpeed += var;
         }
 //        qDebug() << Q_FUNC_INFO << "==" << QString::number(speed/fan_info_map.size()) << maxSpeed << minSpeed << timeNum;
+        if(available_value == 0){
+            return;
+        }
+
         if(timeNum == 0 || timeNum % 5 == 0){
            if(timeNum == 0)
                Speed = QString::number(sumSpeed/available_value);

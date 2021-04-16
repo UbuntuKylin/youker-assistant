@@ -519,6 +519,10 @@ void MainWindow::onInitDataFinished()
     connect(info_widget, SIGNAL(requestSensorInfo()), m_dataWorker, SLOT(onRequestSensorInfo()));
     connect(m_dataWorker, SIGNAL(sendSensorInfo(QMap<QString,QVariant>)), info_widget, SLOT(onSendSensorInfo(QMap<QString,QVariant>)));
 
+    //CDROM info
+    connect(info_widget, SIGNAL(requestCDROMInfo()), m_dataWorker, SLOT(onRequestCDROMInfo()));
+    connect(m_dataWorker, SIGNAL(sendCDROMInfoValue(QMap<QString,QVariant>)), info_widget, SLOT(onSendCDROMInfo(QMap<QString,QVariant>)));
+
     //input info
     connect(info_widget, SIGNAL(requestInputInfo()), m_dataWorker, SLOT(onRequestInputInfo()));
 

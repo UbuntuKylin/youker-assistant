@@ -67,6 +67,7 @@ public slots:
     void onSendAudioInfo(QMap<QString, QVariant> tmpMap);
     void onSendBatteryInfo(QMap<QString, QVariant> tmpMap);
     void onSendSensorInfo(QMap<QString, QVariant> tmpMap);
+    void onSendCDROMInfo(QMap<QString, QVariant> tmpMap);
     void onSendInputInfo(QDBusMessage msg);
     void onSendMultimediaInfo(QDBusMessage msg);
     void onSendCommunicationInfo(QDBusMessage msg);
@@ -124,6 +125,9 @@ signals:
     //sensor info
     void requestSensorInfo();
 //    void sendSensorInfo(QMap<QString, QVariant> tmpMap);
+
+    //sensor info
+    void requestCDROMInfo();
 
     //driver info
 
