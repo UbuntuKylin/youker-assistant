@@ -115,6 +115,8 @@ inline const QString covertKeyName(const QString &key)
         return QString(QObject::tr("Firmware Version"));
     else if(key == "DvdSerial")//序列号
         return QString(QObject::tr("Serial Number"));
+    else if(key == "Dvdid")//光驱scsi id
+        return QString(QObject::tr("SCSI ID"));
 
     else if(key == "CpuVersion")//处理器：
         return QString(QObject::tr("CPU"));
