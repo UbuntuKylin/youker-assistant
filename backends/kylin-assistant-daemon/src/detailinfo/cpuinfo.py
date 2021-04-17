@@ -1673,12 +1673,12 @@ class DetailInfo:
                                 vendor = va
                                 break
 
-                        if(vendor is not ''):
+                        if(vendor != ''):
                             DiskVendor += (vendor + "<1_1>")
                         else:
                             DiskVendor += ("$" + "<1_1>")
 
-                        if(model is not ''):
+                        if(model != ''):
                             DiskProduct += (model + "<1_1>")
                         else:
                             DiskProduct += ("$" + "<1_1>")
@@ -2468,7 +2468,7 @@ class DetailInfo:
         #             DvdSerial = tmp[0]
         #         DvdName = '/dev/cdrom'
         #         Dvdnum += 1
-        dvd['Dvdnum'],dvd['DvdProduct'],dvd['DvdVendor'],dvd['DvdName'],dvd['DvdFw'],dvd['DvdSerial'],dvd["Dvdid"] = self.strip(str(Dvdnum)),self.strip(DvdProduct),self.strip(DvdVendor),self.strip(DvdName),self.strip(DvdFw),self.strip(DvdSerial),self.strip(Dvdid)
+        dvd['Dvdnum'],dvd['DvdProduct'],dvd['DvdVendor'],dvd['DvdName'],dvd['DvdFw'],dvd['DvdSerial'],dvd["Dvdid"] = self.strip(str(Dvdnum)),self.strip(DvdProduct)[:-5],self.strip(DvdVendor)[:-5],self.strip(DvdName)[:-5],self.strip(DvdFw)[:-5],self.strip(DvdSerial)[:-5],self.strip(Dvdid)[:-5]
         return dvd
 
     def get_usb(self):

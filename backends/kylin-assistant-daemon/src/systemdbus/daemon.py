@@ -421,7 +421,7 @@ class Daemon(PolicyKitService):
             except IOError:
                 pass
             else:
-                if data1 is not 0:
+                if data1 != 0:
                     show = True
 
         return show
