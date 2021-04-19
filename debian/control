@@ -32,7 +32,8 @@ Build-Depends: debhelper (>= 9),
                libxi-dev,
                libxcursor-dev,
                libsystemd-dev (>= 209) [linux-any],
-               libudev-dev
+               libudev-dev,
+               libukui-log4qt-dev
 Standards-Version: 4.5.0
 Rules-Requires-Root: no
 Homepage: https://github.com/ubuntukylin/youker-assistant
@@ -62,6 +63,7 @@ Depends: python3-dbus,
          pciutils,
          ukui-kwin (>= 1.0.1kylin17),
          ukui-settings-daemon (>= 1.2.1-6.23),
+         libukui-log4qt-dev
          ${misc:Depends},
          ${python3:Depends},
          ${shlibs:Depends},

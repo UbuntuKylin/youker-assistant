@@ -32,6 +32,7 @@
 #include <QProcess>
 #include <QByteArray>
 
+#include <ukui-log4qt.h>
 #include <QtSingleApplication>
 
 #include <unistd.h>
@@ -150,6 +151,8 @@ QString getAppVersion(){
 
 int main(int argc, char *argv[])
 {
+    initUkuiLog4qt("youker-assistant");
+
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 
@@ -235,10 +238,10 @@ int main(int argc, char *argv[])
 //        QString locale = "es";
         QTranslator translator;
         if(locale == "zh_CN" || locale == "es" || locale == "fr" || locale == "de" || locale == "ru" || locale == "bo_CN") {//中文 西班牙语 法语 德语 俄语
-//            if(!translator.load("kylin-assistant_" + locale + ".qm",
-//                                ":/qmfile/translation/"))
             if(!translator.load("kylin-assistant_" + locale + ".qm",
-                                "/usr/share/youker-assistant/translations/"))
+                                ":/qmfile/translation/"))
+//            if(!translator.load("kylin-assistant_" + locale + ".qm",
+//                                "/usr/share/youker-assistant/translations/"))
                 qDebug() << "Load translation file："<< "kylin-assistant_" + locale + ".qm" << " failed!";
             else
                 app.installTranslator(&translator);

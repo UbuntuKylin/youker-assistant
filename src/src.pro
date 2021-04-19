@@ -13,7 +13,7 @@ CONFIG += link_pkgconfig
 PKGCONFIG += glib-2.0 gio-unix-2.0 gsettings-qt
 
 QT += core dbus network charts svg KWindowSystem x11extras
-LIBS += -lgsettings-qt
+LIBS += -lgsettings-qt -lukui-log4qt
 # 适配窗口管理器圆角阴影
 LIBS +=-lpthread
 LIBS +=-lX11

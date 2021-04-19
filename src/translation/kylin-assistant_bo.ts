@@ -76,13 +76,13 @@ tang guang &lt;tangguang@kylinos.cn&gt;</source>
     <message>
         <location filename="../boxwidget.cpp" line="139"/>
         <location filename="../boxwidget.cpp" line="141"/>
-        <source>Kylin Software Center</source>
+        <source>Software Center</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../boxwidget.cpp" line="158"/>
         <location filename="../boxwidget.cpp" line="160"/>
-        <source>systemmonitor</source>
+        <source>System Monitor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1634,13 +1634,12 @@ Information</source>
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.cpp" line="112"/>
-        <location filename="../mainwindow.cpp" line="1251"/>
         <source>Kylin Assistant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="148"/>
-        <location filename="../mainwindow.cpp" line="160"/>
+        <location filename="../mainwindow.cpp" line="161"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1652,17 +1651,22 @@ Information</source>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="150"/>
-        <location filename="../mainwindow.cpp" line="167"/>
+        <location filename="../mainwindow.cpp" line="168"/>
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1253"/>
-        <source>&lt;p&gt;Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.&lt;/p&gt;</source>
+        <location filename="../mainwindow.cpp" line="1252"/>
+        <source>ToolKit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1255"/>
+        <location filename="../mainwindow.cpp" line="1254"/>
+        <source>&lt;p&gt;ToolKit is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.&lt;/p&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1256"/>
         <source>&lt;p&gt;Service &amp; Support : &lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1724,7 +1728,7 @@ Information</source>
     <name>MiddleWidget</name>
     <message>
         <location filename="../middlewidget.cpp" line="110"/>
-        <source>Kylin Assistant</source>
+        <source>ToolKit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2761,7 +2765,7 @@ Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="179"/>
+        <location filename="../main.cpp" line="182"/>
         <source>app is already running!</source>
         <translation type="unfinished"></translation>
     </message>

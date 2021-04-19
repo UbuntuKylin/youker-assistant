@@ -1,3 +1,12 @@
+youker-assistant (3.0.2-0kylin6k55~rc1) v101; urgency=medium
+
+  [tang guang]
+   * 修改Kylin Assistant 为 ToolKit
+   * 修复自测问题：打开关于界面再关闭界面无法点击
+   * 引入日志框架
+
+ -- hebing <hebing@kylinos.cn>  Mon, 19 Apr 2021 16:04:25 +0800
+
 youker-assistant (3.0.2-0kylin6k54~rc1) v101; urgency=medium
 
   [tang guang]

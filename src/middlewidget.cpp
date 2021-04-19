@@ -107,7 +107,7 @@ void MiddleWidget::initTitlebarLeftContent()
 
     QLabel *appLabel = new QLabel(w);
     appLabel->setStyleSheet("QLabel{background-color:transparent;color:#ffffff; font-size:14px;}");
-    appLabel->setText(tr("Kylin Assistant"));
+    appLabel->setText(tr("ToolKit"));
     m_titleLeftLayout->addWidget(appLabel);
 
     top_layout->addWidget(w, 1, Qt::AlignLeft|Qt::AlignTop);

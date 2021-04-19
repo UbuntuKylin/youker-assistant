@@ -156,7 +156,8 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
                createAboutDialog();
             }
             aboutDlg->move(this->geometry().left()+220,this->geometry().top()+25);
-            aboutDlg->exec();
+            aboutDlg->setModal(true);
+            aboutDlg->show();
         }else if(action->text() == tr("Help")){
             QProcess *process = new QProcess(this);
             QString cmd = "kylin-user-guide";
@@ -1246,11 +1247,11 @@ void MainWindow::createAboutDialog()
 //    aboutDlg = new AboutDialog(0, last_skin_path, this->arch, this->osName);
 //    aboutDlg->setModal(false);
 
-    aboutDlg = new AboutWidget(this);
+    aboutDlg = new AboutWidget();
     aboutDlg->setAppIcon("kylin-assistant");
-    aboutDlg->setAppName(tr("Kylin Assistant"));
+    aboutDlg->setAppName(tr("ToolKit"));
     aboutDlg->setAppVersion(qApp->applicationVersion());
-    aboutDlg->setAppDescription(tr("<p>Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.</p>"));
+    aboutDlg->setAppDescription(tr("<p>ToolKit is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.</p>"));
 //    aboutDlg->setAppDescription(tr("<p>The software is still under development. Please visit  kylin-assistant") + QString::fromLocal8Bit("<a style='color: #3f96e4;' href = https://github.com/UbuntuKylin/youker-assistant>Github</a>") + tr(" for more information. Welcome everyone to join with us.</p>"));
     aboutDlg->setAppDescription(tr("<p>Service & Support : <a style='color: black;' href='mailto://support@kylinos.cn'>support@kylinos.cn</a></p>"));
 
@@ -1273,14 +1274,14 @@ void MainWindow::aboutUs()
         aboutDlg->show();
         aboutDlg->raise();
     }*/
-    if (!aboutDlg) {
-        createAboutDialog();
-    }
+//    if (!aboutDlg) {
+//        createAboutDialog();
+//    }
 //    int w_x = this->frameGeometry().topLeft().x() + (900 / 2) - (442  / 2);
 //    int w_y = this->frameGeometry().topLeft().y() + (600 /2) - (326  / 2);
 //    aboutDlg->move(w_x, w_y);
-    aboutDlg->setModal(true);
-    aboutDlg->show();
+//    aboutDlg->setModal(true);
+//    aboutDlg->show();
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)

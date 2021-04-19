@@ -77,16 +77,24 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
 <context>
     <name>BoxWidget</name>
     <message>
+        <source>Kylin Software Center</source>
+        <translation type="vanished">麒麟软件商店</translation>
+    </message>
+    <message>
+        <source>systemmonitor</source>
+        <translation type="vanished">麒麟系统监视器</translation>
+    </message>
+    <message>
         <location filename="../boxwidget.cpp" line="139"/>
         <location filename="../boxwidget.cpp" line="141"/>
-        <source>Kylin Software Center</source>
-        <translation>麒麟软件商店</translation>
+        <source>Software Center</source>
+        <translation>软件商店</translation>
     </message>
     <message>
         <location filename="../boxwidget.cpp" line="158"/>
         <location filename="../boxwidget.cpp" line="160"/>
-        <source>systemmonitor</source>
-        <translation>麒麟系统监视器</translation>
+        <source>System Monitor</source>
+        <translation>系统监视器</translation>
     </message>
     <message>
         <location filename="../boxwidget.cpp" line="222"/>
@@ -1637,13 +1645,12 @@ Information</source>
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.cpp" line="112"/>
-        <location filename="../mainwindow.cpp" line="1251"/>
         <source>Kylin Assistant</source>
         <translation>麒麟助手</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="148"/>
-        <location filename="../mainwindow.cpp" line="160"/>
+        <location filename="../mainwindow.cpp" line="161"/>
         <source>Help</source>
         <translation>帮助</translation>
     </message>
@@ -1655,17 +1662,26 @@ Information</source>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="150"/>
-        <location filename="../mainwindow.cpp" line="167"/>
+        <location filename="../mainwindow.cpp" line="168"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1253"/>
-        <source>&lt;p&gt;Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.&lt;/p&gt;</source>
-        <translation> &lt;p&gt;麒麟助手是由麒麟团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器等功能。&lt;/p&gt;</translation>
+        <location filename="../mainwindow.cpp" line="1252"/>
+        <source>ToolKit</source>
+        <translation>工具箱</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1255"/>
+        <location filename="../mainwindow.cpp" line="1254"/>
+        <source>&lt;p&gt;ToolKit is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.&lt;/p&gt;</source>
+        <translation> &lt;p&gt;工具箱是由麒麟团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器等功能。&lt;/p&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;p&gt;Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.&lt;/p&gt;</source>
+        <translation type="vanished"> &lt;p&gt;麒麟助手是由麒麟团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器等功能。&lt;/p&gt;</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1256"/>
         <source>&lt;p&gt;Service &amp; Support : &lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</source>
         <translation>&lt;p&gt;服务和支持: &lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
@@ -1726,9 +1742,13 @@ Information</source>
 <context>
     <name>MiddleWidget</name>
     <message>
-        <location filename="../middlewidget.cpp" line="110"/>
         <source>Kylin Assistant</source>
-        <translation>麒麟助手</translation>
+        <translation type="vanished">麒麟助手</translation>
+    </message>
+    <message>
+        <location filename="../middlewidget.cpp" line="110"/>
+        <source>ToolKit</source>
+        <translation>工具箱</translation>
     </message>
     <message>
         <location filename="../middlewidget.cpp" line="210"/>
@@ -2764,7 +2784,7 @@ Information</source>
         <translation>文件管理器</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="179"/>
+        <location filename="../main.cpp" line="182"/>
         <source>app is already running!</source>
         <translation type="unfinished"></translation>
     </message>

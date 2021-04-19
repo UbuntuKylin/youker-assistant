@@ -136,9 +136,9 @@ void BoxWidget::initPluginWidget()
     QModelIndex qindex = pluginModel.index(0,0,QModelIndex());
 
     //set text
-    pluginModel.setData(qindex, tr("Kylin Software Center"));
+    pluginModel.setData(qindex, tr("Software Center"));
     //set tooltip
-    pluginModel.setData(qindex, tr("Kylin Software Center"),Qt::WhatsThisRole);
+    pluginModel.setData(qindex, tr("Software Center"),Qt::WhatsThisRole);
 
     //set icon
     if(QIcon::hasThemeIcon("kylin-software-center")){
@@ -155,9 +155,9 @@ void BoxWidget::initPluginWidget()
     if (QFileInfo("/usr/bin/ukui-system-monitor").exists()) {
         pluginModel.insertRows(1,1,QModelIndex());
         QModelIndex qindex1 = pluginModel.index(1,0,QModelIndex());
-        pluginModel.setData(qindex1, tr("systemmonitor"));
+        pluginModel.setData(qindex1, tr("System Monitor"));
         //set tooltip
-        pluginModel.setData(qindex1, tr("systemmonitor"),Qt::WhatsThisRole);
+        pluginModel.setData(qindex1, tr("System Monitor"),Qt::WhatsThisRole);
 
         //set icon
         if(QIcon::hasThemeIcon("ukui-system-monitor")){
