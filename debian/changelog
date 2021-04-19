@@ -1,3 +1,10 @@
+youker-assistant (3.0.2-0kylin6k55~rc2) v101; urgency=medium
+
+  [tang guang]
+   * 补充修改desktop文件中Kylin Assistant 为 ToolKit
+
+ -- hebing <hebing@kylinos.cn>  Mon, 19 Apr 2021 16:04:25 +0800
+
 youker-assistant (3.0.2-0kylin6k55~rc1) v101; urgency=medium
 
   [tang guang]
