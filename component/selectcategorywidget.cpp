@@ -25,15 +25,19 @@
 #include <QGraphicsDropShadowEffect>
 #include <QStyle>
 #include <QStyleOption>
+#include "xatom-helper.h"
 
 SelectCategoryWidget::SelectCategoryWidget(CleanerCategoryID id, const QString &title, bool needMin, QWidget *parent)
     : QDialog(parent)
     , m_mousePressed(false)
     , m_id(id)
 {
-    this->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog/*|Qt::WindowMinimizeButtonHint*/);
-    this->setAutoFillBackground(true);
-    this->setAttribute(Qt::WA_TranslucentBackground);
+    MotifWmHints hints;
+    hints.flags = MWM_HINTS_FUNCTIONS|MWM_HINTS_DECORATIONS;
+    hints.functions = MWM_FUNC_ALL;
+    hints.decorations = MWM_DECOR_BORDER;
+    XAtomHelper::getInstance()->setWindowMotifHint(this->winId(), hints);
+
     this->setWindowTitle(title);
 
 //    if(needMin)
@@ -41,7 +45,7 @@ SelectCategoryWidget::SelectCategoryWidget(CleanerCategoryID id, const QString &
 //    else
     this->setFixedSize(340,380);
 
-    this->setStyleSheet("QDialog{background: #ffffff; border:1px solid rgba(207,207,207,1);;border-radius:10px;}");
+    this->setStyleSheet("QDialog{background: #ffffff;}");
 
     QWidget *containerWidget = new QWidget(this);
     m_mainLayout = new QVBoxLayout(containerWidget);
@@ -129,23 +133,23 @@ void SelectCategoryWidget::moveCenter()
 
 void SelectCategoryWidget::paintEvent(QPaintEvent *event)
 {
-    Q_UNUSED(event)
-    QPainterPath path;
-    path.setFillRule(Qt::WindingFill);
-    path.addRoundRect(10,10,this->width()-20,this->height()-20,5,5);
-    QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing,true);
-    painter.fillPath(path,QBrush(Qt::white));
-    QColor color(0,0,0,50);
-    for(int i = 0 ; i < 10 ; ++i)
-    {
-        QPainterPath path;
-        path.setFillRule(Qt::WindingFill);
-        path.addRoundRect(10-i,10-i,this->width()-(10-i)*2,this->height()-(10-i)*2,5,5);
-        color.setAlpha(150 - qSqrt(i)*50);
-        painter.setPen(color);
-        painter.drawPath(path);
-    }
+//    Q_UNUSED(event)
+//    QPainterPath path;
+//    path.setFillRule(Qt::WindingFill);
+//    path.addRoundRect(10,10,this->width()-20,this->height()-20,5,5);
+//    QPainter painter(this);
+//    painter.setRenderHint(QPainter::Antialiasing,true);
+//    painter.fillPath(path,QBrush(Qt::white));
+//    QColor color(0,0,0,50);
+//    for(int i = 0 ; i < 10 ; ++i)
+//    {
+//        QPainterPath path;
+//        path.setFillRule(Qt::WindingFill);
+//        path.addRoundRect(10-i,10-i,this->width()-(10-i)*2,this->height()-(10-i)*2,5,5);
+//        color.setAlpha(150 - qSqrt(i)*50);
+//        painter.setPen(color);
+//        painter.drawPath(path);
+//    }
 
     QWidget::paintEvent(event);
 }

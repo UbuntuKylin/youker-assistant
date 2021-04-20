@@ -1,9 +1,17 @@
+youker-assistant (3.0.2-0kylin6k55~rc3) v101; urgency=medium
+
+  [tang guang]
+   * 修改帮助文档的截图
+   * 清理界面子窗口使用窗管圆角
+ 
+ -- hebing <hebing@kylinos.cn>  Tue, 20 Apr 2021 10:16:39 +0800
+
 youker-assistant (3.0.2-0kylin6k55~rc2) v101; urgency=medium
 
   [tang guang]
    * 补充修改desktop文件中Kylin Assistant 为 ToolKit
 
- -- hebing <hebing@kylinos.cn>  Mon, 19 Apr 2021 16:04:25 +0800
+ -- hebing <hebing@kylinos.cn>  Tue, 20 Apr 2021 10:12:39 +0800
 
 youker-assistant (3.0.2-0kylin6k55~rc1) v101; urgency=medium
 
