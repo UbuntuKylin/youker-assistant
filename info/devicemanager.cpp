@@ -67,6 +67,10 @@ QStringList DeviceManager::getDeviceMsg(){
         //add graphics & sound
         deviceMsgList.append("VGA compatible controller: Mali-G76;driver in use:mali");
         deviceMsgList.append("Audio device:da_combine_v5;driver in use:hi3xxx_DA_combine_v5");
+        if(isPanguV()){
+            deviceMsgList.append("Ethernet controller:RTL8153;driver in use:r8152");
+            deviceMsgList.append("Network controller:hisi_soc;driver in use:hi110x_board");
+        }
     }
     qDebug() << deviceMsgList;
     return deviceMsgList;
@@ -83,4 +87,35 @@ bool DeviceManager::isHW990(){
         }
     }
     return isHW990;
+}
+
+bool DeviceManager::isPanguV(){
+    QString cmd = "dmidecode -t system";
+
+    QProcess *p = new QProcess();
+    p->start(cmd);
+    p->waitForFinished();
+
+    QStringList tmpList;
+    while(p->canReadLine()){
+        QString str = p->readLine();
+        str = str.left(str.length() - 1);
+        tmpList.append(str);
+    }
+
+    QString tmps;
+    QStringList deviceMsgList;
+    bool foundW515 = false;
+    for (int i = 0;i < tmpList.size();i ++) {
+        QString str = tmpList.at(i);
+
+        if (str.contains("Version: W515")){
+            foundW515 = true;
+            break;
+        } else {
+            continue;
+        }
+    }
+
+    return foundW515;
 }
