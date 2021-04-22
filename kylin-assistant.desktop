@@ -8,6 +8,7 @@ Comment[bo_CN]=རྒྱུད་ཁོངས་ལས་རོགས་ལག�
 Keywords=Settings;Cleaning;Customization
 Exec=/usr/bin/kylin-assistant %u
 Icon=kylin-assistant
+StartupNotify=true
 Terminal=false
 Type=Application
 Categories=GNOME;GTK;System;Viewer;
