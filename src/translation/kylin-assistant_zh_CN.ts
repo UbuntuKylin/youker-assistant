@@ -457,12 +457,12 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
 <context>
     <name>CpuFmwidget</name>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="193"/>
+        <location filename="../../component/cpufmwidget.cpp" line="203"/>
         <source>apply</source>
         <translation>应用</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="216"/>
+        <location filename="../../component/cpufmwidget.cpp" line="226"/>
         <source>Whether to apply?</source>
         <translation>是否应用？</translation>
     </message>
@@ -492,14 +492,24 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
         <translation>用户自定义</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="169"/>
+        <location filename="../../component/cpufmwidget.cpp" line="166"/>
         <source>Current Frequency Adjustable Range:</source>
         <translation>当前频率可调节范围:</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="181"/>
+        <location filename="../../component/cpufmwidget.cpp" line="190"/>
         <source>CPU FM Note: The CPU FM function has some risks, please use it carefully! After FM is completed, restarting will restore the default configuration!</source>
         <translation>CPU调频说明：CPU调频功能存在一定的风险，请谨慎操作！调频完成重启计算机将还原默认配置！</translation>
+    </message>
+    <message>
+        <location filename="../../component/cpufmwidget.cpp" line="339"/>
+        <source>Tip</source>
+        <translation>提示</translation>
+    </message>
+    <message>
+        <location filename="../../component/cpufmwidget.cpp" line="340"/>
+        <source>Please select a custom frequency value</source>
+        <translation>请选择一个频率值</translation>
     </message>
 </context>
 <context>
@@ -1667,12 +1677,12 @@ Information</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1252"/>
+        <location filename="../mainwindow.cpp" line="1253"/>
         <source>ToolKit</source>
         <translation>工具箱</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1254"/>
+        <location filename="../mainwindow.cpp" line="1255"/>
         <source>&lt;p&gt;ToolKit is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.&lt;/p&gt;</source>
         <translation> &lt;p&gt;工具箱是由麒麟团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器等功能。&lt;/p&gt;</translation>
     </message>
@@ -1681,7 +1691,7 @@ Information</source>
         <translation type="vanished"> &lt;p&gt;麒麟助手是由麒麟团队开发的一款功能强大的系统辅助软件。主要面向初级用户，能够帮助用户对系统进行管理。目前已具备了系统垃圾扫描与清理、系统软硬件信息查看、系统全方位定制、任务管理器等功能。&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1256"/>
+        <location filename="../mainwindow.cpp" line="1257"/>
         <source>&lt;p&gt;Service &amp; Support : &lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</source>
         <translation>&lt;p&gt;服务和支持: &lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</translation>
     </message>
@@ -3081,14 +3091,12 @@ Information</source>
 <context>
     <name>mySlider</name>
     <message>
-        <location filename="../../component/myslider.cpp" line="38"/>
         <source>Mintip</source>
-        <translation>最小值</translation>
+        <translation type="vanished">最小值</translation>
     </message>
     <message>
-        <location filename="../../component/myslider.cpp" line="44"/>
         <source>Maxtip</source>
-        <translation>最大值</translation>
+        <translation type="vanished">最大值</translation>
     </message>
 </context>
 </TS>

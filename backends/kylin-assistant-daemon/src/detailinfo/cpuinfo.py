@@ -2623,7 +2623,17 @@ class DetailInfo:
         }
 
         if(os.path.exists("/sys/devices/system/cpu/cpu0/cpufreq/")):
-            origin["support"]="true"
+
+            if os.path.exists("/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed") :
+                f = open("/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed",'r')
+                if f.readline().strip() == "<unsupported>" :
+                    origin["support"] = "false"
+                    return origin
+                else:
+                    origin["support"] = "true"
+            else:
+                origin["support"] = "false"
+                return origin
 
             f = open("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq",'r')
             origin["maximum"] = self.num_convert(f.readline().strip())# 获取cpu主频范围的最大值
@@ -2634,7 +2644,7 @@ class DetailInfo:
             f = open("/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed",'r')
             line = f.readline().strip()
             if(line.isdigit()):
-                origin["cur_freq"] = self.num_convert(line)
+                origin["cur_freq"] = line
 
             f.close()
         else:
@@ -2728,7 +2738,7 @@ if __name__ == "__main__":
     #cc.get_cpu()
     #cc.get_board()
     #cc.get_memory()
-    pprint(cc.get_dvd())
+    pprint(cc.get_cpu_range())
     #cc.get_disk()
     #cc.get_network()
     #cc.get_multimedia()

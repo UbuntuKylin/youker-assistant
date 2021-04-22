@@ -20,11 +20,12 @@
 #include <QParallelAnimationGroup>
 #include <QDialog>
 #include <QTimer>
+#include <QMessageBox>
 
-#include "../component/myslider.h"
+//#include "../component/myslider.h"
 #include "../component/generaldialog.h"
 
-class mySlider;
+//class mySlider;
 class GeneralDialog;
 
 class CpuFmwidget : public QWidget
@@ -38,12 +39,14 @@ public:
     void InitTopUI();
     void InitBottomUI();
 
-    void set_cpu_listAndCur(QStringList list,QString string);
+    void set_cpu_listAndCur(QStringList,QStringList,QString,QString);
     void RefreshCheckStatus();
-    void getCpuRange(QMap<QString,QVariant>);
+    void getCpuRange(QMap<QString,QVariant>,QStringList);
     bool isHW990();
     void initUserspaceFrameAnimation();
     void showUserspaceFrame(bool);
+    QString conversion(QString);
+    QAbstractButton * getCheckedButton();
 signals:
     void setCpuGoverner(QString);
     void RequestCPUFrequencyData();
@@ -51,6 +54,7 @@ private slots:
     void ProcessingCPUFrequencyData(QMap<QString,QVariant>);
 
     void onButtonClicked(QAbstractButton *button);
+    void onFreqButtonClicked(QAbstractButton *button);
     void onClickedApply();
 private:
     QFrame *w;
@@ -59,9 +63,10 @@ private:
 //    QSlider *slider;
     QString cpu_num = "3.52";
 
-    mySlider *slider;
-
     QStringList governer_list;
+    QStringList freq_list;
+    QString cur_freq;
+    QString freq_value;
     QString cur_governer;
 
     QString governer;
@@ -70,6 +75,7 @@ private:
     QString value = "";
 
     QButtonGroup *radioGroup;
+    QButtonGroup *FreqRadioGroup;
     GeneralDialog *dialog;
 
     QParallelAnimationGroup *group;

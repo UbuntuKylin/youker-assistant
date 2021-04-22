@@ -36,6 +36,7 @@ public:
 
     void adjust_cpufreq_scaling_governer_qt(QString value);
     QStringList get_cpufreq_scaling_governer_list_qt();
+    QStringList get_cpufreq_scaling_available_frequencies_list_qt();
     QString get_current_cpufreq_scaling_governer_qt();
 
     void cleanAllSelectItems(QMap<QString, QVariant> selectMap);

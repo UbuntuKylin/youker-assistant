@@ -154,6 +154,7 @@ private:
     bool temperature = true;
     bool fan = true;
     bool cpufm = true;
+    QStringList m_cpufreqlist;
     QStringList m_cpulist;
     QString m_currentCpuMode;
 //    PAGESTATUS status;

@@ -1,3 +1,11 @@
+youker-assistant (3.0.2-0kylin6k56~rc1) v101; urgency=medium
+
+  [tang guang]
+   * BUG : bug#44096/bug#39597
+   * Other : 重构CPU自定义调频
+
+ -- tangguang <tangguang@kylinos.cn>  Wed, 21 Apr 2021 19:58:25 +0800
+
 youker-assistant (3.0.2-0kylin6k55~rc3) v101; urgency=medium
 
   [tang guang]

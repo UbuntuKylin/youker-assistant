@@ -421,6 +421,7 @@ void MainWindow::onInitDataFinished()
 
     this->m_cpulist = m_dataWorker->cpuModeList();
     this->m_currentCpuMode = m_dataWorker->cpuCurrentMode();
+    this->m_cpufreqlist = m_dataWorker->cpuFreqList();
     // this->m_cpuFreqRange = m_dataWorker->cpuFreqRange();
 //    qDebug() << Q_FUNC_INFO <<this->m_cpulist << this->m_currentCpuMode;
 
@@ -710,7 +711,7 @@ void MainWindow::onInitDataFinished()
     m_dataWorker->onRequestPartInfoAgain();
 //    monitorwidget->InitUI();
 
-    monitorwidget->set_governer_list(m_cpulist);
+    monitorwidget->set_governer_list(m_cpulist,m_cpufreqlist);
     monitorwidget->set_cur_governer(m_currentCpuMode);
     monitorwidget->set_temperature(this->temperature);
     monitorwidget->set_fan(this->fan);

@@ -48,6 +48,7 @@ public:
     bool hide_cpufm_page() { return m_cpuFMPage; }
 
     const QStringList cpuModeList() const;
+    const QStringList cpuFreqList() const;
     const QString cpuCurrentMode() const;
     const QMap<QString,QVariant> cpuFreqRange() const;
 
@@ -382,6 +383,7 @@ private:
     bool m_cpuFMPage;
 
     QStringList m_cpulist;
+    QStringList m_cpufreqlist;
     QString m_currentCpuMode;
 
     QTimer *m_sensorTimer = nullptr;

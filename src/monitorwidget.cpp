@@ -70,7 +70,7 @@ void Monitorwidget::InitUI()
         string_list << tr("CPU FM");
         status_list << "CPU FM";
         cpu_fm = new CpuFmwidget();
-        cpu_fm->set_cpu_listAndCur(governer_list,cur_governer);
+        cpu_fm->set_cpu_listAndCur(governer_list,cpuFreq_list,cur_governer,cur_freq);
         cpu_fm->InitUI();
         stackedwidget->addWidget(cpu_fm);
         // connect(this,SIGNAL(onsendcpurangedata(QMap<QString,QVariant>)),this,SLOT(gotCpuRange(QMap<QString,QVariant>)));
@@ -78,7 +78,6 @@ void Monitorwidget::InitUI()
         connect(this,SIGNAL(SendCPUFrequencyData(QMap<QString,QVariant>)),cpu_fm,SLOT(ProcessingCPUFrequencyData(QMap<QString,QVariant>)));
         connect(cpu_fm,SIGNAL(RequestCPUFrequencyData()),this,SIGNAL(RequestCPUFrequencyData()));
         // emit this->requestcpurange();
-        cpu_fm->getCpuRange(this->m_cpuFreqRange);
     }
         //    qDebug() << Q_FUNC_INFO <<this->governer_list << this->cur_governer;
 
@@ -104,9 +103,10 @@ void Monitorwidget::InitUI()
     splitter->addWidget(frame);
 }
 
-void Monitorwidget::set_governer_list(QStringList list)
+void Monitorwidget::set_governer_list(QStringList gor_list, QStringList freq_list)
 {
-    this->governer_list = list;
+    this->governer_list = gor_list;
+    this->cpuFreq_list = freq_list;
 }
 
 void Monitorwidget::set_cur_governer(QString string)
@@ -131,7 +131,11 @@ void Monitorwidget::set_cpuFm(bool f)
 
 void Monitorwidget::set_cpuFreqRange(QMap<QString, QVariant> cpuFreqRange)
 {
-    this->m_cpuFreqRange = cpuFreqRange;
+    QMap<QString,QVariant>::iterator it = cpuFreqRange.find("cur_freq");
+    if(!it.value().isNull()){
+        cur_freq = it.value().toString();
+        qDebug() << Q_FUNC_INFO << cur_freq;
+    }
 }
 
 void Monitorwidget::RefreshCPUFMCheckStatus()

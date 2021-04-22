@@ -256,6 +256,18 @@ class Daemon(PolicyKitService):
             cpulist.remove('userspace')
         return cpulist
 
+    @dbus.service.method(INTERFACE, in_signature='', out_signature='as')
+    def get_cpufreq_scaling_available_frequencies(self):
+        cmd = "cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies"
+        fp = os.popen(cmd)
+        msg = fp.read().strip()
+        fp.close()
+        cpulist = []
+        if msg not in ['', None]:
+            cpulist = msg.split(' ')
+        
+        return cpulist
+
     @dbus.service.method(INTERFACE, in_signature='', out_signature='s')
     def get_current_cpufreq_scaling_governer(self):
         cmd = "cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"

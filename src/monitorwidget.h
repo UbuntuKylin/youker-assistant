@@ -27,7 +27,7 @@ public:
     ~Monitorwidget();
     void InitUI();
 
-    void set_governer_list(QStringList list);
+    void set_governer_list(QStringList,QStringList);
     void set_cur_governer(QString string);
 
     void set_temperature(bool f);
@@ -68,8 +68,9 @@ private:
     CpuFmwidget *cpu_fm;
 
     QStringList governer_list;
+    QStringList cpuFreq_list;
     QString cur_governer;
-    QMap<QString, QVariant> m_cpuFreqRange;
+    QString cur_freq;
 
     bool m_temperature = true;
     bool m_fan = true;

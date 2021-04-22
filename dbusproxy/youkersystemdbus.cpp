@@ -99,6 +99,12 @@ QStringList SystemDispatcher::get_cpufreq_scaling_governer_list_qt()
     return reply.value();
 }
 
+QStringList SystemDispatcher::get_cpufreq_scaling_available_frequencies_list_qt()
+{
+    QDBusReply<QStringList> reply = systemiface->call("get_cpufreq_scaling_available_frequencies");
+    return reply.value();
+}
+
 QString SystemDispatcher::get_current_cpufreq_scaling_governer_qt()
 {
     QDBusReply<QString> reply = systemiface->call("get_current_cpufreq_scaling_governer");

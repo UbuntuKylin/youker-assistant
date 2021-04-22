@@ -14,7 +14,10 @@ class mySlider : public QSlider
 public:
     mySlider(QWidget *parent=0);
     ~mySlider();
-    void setRangeLable(QMap<QString,QVariant> tmpMap);
+    void setRangeLable(QMap<QString,QVariant>,QStringList);
+    void setCurValue(int);
+    int getCurValue();
+    void updateTipLabel();
 protected:
     virtual void keyPressEvent(QKeyEvent *event);
     virtual void mousePressEvent(QMouseEvent *event);
@@ -30,8 +33,6 @@ private:
     qreal min;
 
     int cur_value;
-
-    void updateTipLabel();
 };
 
 #endif // MYSLIDER_H

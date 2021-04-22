@@ -64,7 +64,7 @@ SOURCES += main.cpp \
     ../component/drivepagewidget.cpp \
     ../component/fanwidget.cpp \
     ../component/generaldialog.cpp \
-    ../component/myslider.cpp \
+#    ../component/myslider.cpp \
     ../component/temperature.cpp \
     drivewidget.cpp \
     listwidget.cpp \
@@ -154,7 +154,7 @@ HEADERS  += mainwindow.h \
     ../component/drivepagewidget.h \
     ../component/fanwidget.h \
     ../component/generaldialog.h \
-    ../component/myslider.h \
+#    ../component/myslider.h \
     ../component/temperature.h \
     drivewidget.h \
     kpplication.h \

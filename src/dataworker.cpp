@@ -91,6 +91,7 @@ void DataWorker::initDataWorker()
     this->m_existSensor = m_systemInterface->judge_sensors_exists_qt();
     this->m_cpulist = m_systemInterface->get_cpufreq_scaling_governer_list_qt();
     this->m_currentCpuMode = m_systemInterface->get_current_cpufreq_scaling_governer_qt();
+    this->m_cpufreqlist = m_systemInterface->get_cpufreq_scaling_available_frequencies_list_qt();
 
     connect(m_systemInterface, SIGNAL(finishCleanWorkMain(QString)), this, SIGNAL(finishCleanWorkMain(QString)));
     connect(m_systemInterface, SIGNAL(finishCleanWorkMainError(QString)), this, SIGNAL(finishCleanWorkMainError(QString)));
@@ -127,6 +128,11 @@ void DataWorker::doWork()
 const QStringList DataWorker::cpuModeList() const
 {
     return this->m_cpulist;
+}
+
+const QStringList DataWorker::cpuFreqList() const
+{
+    return this->m_cpufreqlist;
 }
 
 const QString DataWorker::cpuCurrentMode() const

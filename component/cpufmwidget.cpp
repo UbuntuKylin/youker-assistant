@@ -158,26 +158,35 @@ void CpuFmwidget::InitUI()
     w->setGeometry(QRect(62,200,580,175));
 
     QVBoxLayout *v_layout = new QVBoxLayout(w);
-    v_layout->setSpacing(0);
+    v_layout->setSpacing(5);
     v_layout->setMargin(0);
     v_layout->setContentsMargins(10,10,10,0);
 
     QLabel *lable1 = new QLabel();
-    QLabel *lable2 = new QLabel();
-    slider = new mySlider(w);
-
     lable1->setText(tr("Current Frequency Adjustable Range:"));
     lable1->setStyleSheet("color:rgb(0,0,0,185)");
     v_layout->addWidget(lable1);
 
-    slider->setFixedSize(560,80);
-    slider->setOrientation(Qt::Horizontal);
-    slider->setStyleSheet("QSlider{background:white;"
-                          "margin: 40px;"
-                          "border-radius: 3px;}");
-    v_layout->addWidget(slider);
+    FreqRadioGroup = new QButtonGroup(w);
+    QHBoxLayout *FreqadioGroup_layout = new QHBoxLayout(w);
+    FreqRadioGroup->setExclusive(true);
+    for(int t = 0; t < freq_list.size(); t++){
+        QRadioButton *item = new QRadioButton(h);
+        item->setText(this->conversion(freq_list.at(t)));
+        item->setStyleSheet("color:rgb(0,0,0,185)");
+        item->setObjectName(freq_list.at(t));
+        if(freq_list.at(t) == cur_freq){
+            item->setChecked(true);
+        }
+        FreqadioGroup_layout->addWidget(item);
+        FreqRadioGroup->addButton(item);
+    }
+    connect(FreqRadioGroup, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(onFreqButtonClicked(QAbstractButton*)));
+
+    v_layout->addLayout(FreqadioGroup_layout);
 //    v_layout->addStretch(10);
 
+    QLabel *lable2 = new QLabel();
     lable2->setText(tr("CPU FM Note: The CPU FM function has some risks, please use it carefully! After FM is completed, restarting will restore the default configuration!"));
     lable2->adjustSize();
     lable2->setStyleSheet("color:rgb(0,0,0,185);font-size:14px;");
@@ -186,7 +195,8 @@ void CpuFmwidget::InitUI()
     v_layout->addWidget(lable2);
     v_layout->addStretch(1);
 
-    w->setVisible(false);
+    if(QString::compare(cur_governer,"userspace") != 0)
+        w->setVisible(false);
 
     apply_button = new QPushButton(this);
     apply_button->setFixedSize(120,36);
@@ -197,7 +207,7 @@ void CpuFmwidget::InitUI()
                                  QPushButton:hover{width:120px;height:36px;\
                                  background:rgba(67,127,240,1);\
                                  border-radius:4px;color:white;}");
-    apply_button->setGeometry(QRect(60,370,120,36));
+    apply_button->setGeometry(QRect(60,380,120,36));
 
     connect(apply_button,SIGNAL(clicked()),this,SLOT(onClickedApply()));
 
@@ -216,17 +226,32 @@ void CpuFmwidget::InitUI()
     dialog = new GeneralDialog(this,tr("Whether to apply?"),true,false);
 
     connect(dialog,&GeneralDialog::accepted,[this]{
-        if(value == "userspace")
-            emit this->setCpuGoverner(value+"<1_1>"+QString::number(slider->value()*1000));
-        else
+        if(value == "userspace"){
+            QAbstractButton *pButton = getCheckedButton();
+            if(pButton){
+                qDebug() << Q_FUNC_INFO << pButton->objectName();
+                emit this->setCpuGoverner(value+"<1_1>"+pButton->objectName());
+                cur_freq = pButton->objectName();
+            }
+        }else
             emit this->setCpuGoverner(value);
 
         cur_governer = value;
     });
 
     connect(dialog,&GeneralDialog::rejected,[this]{
-        QList<QAbstractButton*> list = radioGroup->buttons();
+        QList<QAbstractButton*> list = FreqRadioGroup->buttons();
+
         foreach (QAbstractButton *pButton, list)
+        {
+            if(QString::compare(cur_freq,pButton->objectName()) == 0)
+            {
+               pButton->setChecked(true);
+            }
+        }
+
+        QList<QAbstractButton*> list1 = radioGroup->buttons();
+        foreach (QAbstractButton *pButton, list1)
         {
             if(QString::compare(cur_governer,pButton->objectName()) == 0)
             {
@@ -254,21 +279,24 @@ void CpuFmwidget::InitUI()
     qtimer.start(2000);
 }
 
-void CpuFmwidget::set_cpu_listAndCur(QStringList list, QString string)
+void CpuFmwidget::set_cpu_listAndCur(QStringList list, QStringList list1, QString string, QString cur)
 {
     this->governer_list = list;
+    this->freq_list = list1;
     if(this->governer_list.contains("userspace") && isHW990())
     {
         this->governer_list.removeAll("userspace");
     }
     this->cur_governer = string;
+    this->cur_freq = cur;
     value = string;
     qDebug() << Q_FUNC_INFO <<this->governer_list << this->cur_governer;
 }
 
-void CpuFmwidget::getCpuRange(QMap<QString,QVariant> tmpMap)
+void CpuFmwidget::getCpuRange(QMap<QString,QVariant> tmpMap, QStringList list)
 {
-    slider->setRangeLable(tmpMap);
+    qDebug() << Q_FUNC_INFO << list;
+//    slider->setRangeLable(tmpMap,list);
 }
 
 void CpuFmwidget::onButtonClicked(QAbstractButton *button)
@@ -296,10 +324,23 @@ void CpuFmwidget::onButtonClicked(QAbstractButton *button)
 
 }
 
+void CpuFmwidget::onFreqButtonClicked(QAbstractButton *button)
+{
+    this->freq_value = button->objectName();
+}
+
 void CpuFmwidget::onClickedApply()
 {
-//    qDebug() << Q_FUNC_INFO << value << slider->value() << value+"<1_1>"+QString::number(slider->value()*1000);
-    dialog->exec();
+    if(!getCheckedButton() && w->isVisible()){
+        QMessageBox msgBox;
+        msgBox.setParent(this);
+        msgBox.setIcon(QMessageBox::Warning);
+        msgBox.setWindowTitle(tr("Tip"));
+        msgBox.setText(QString(tr("Please select a custom frequency value")));
+        msgBox.exec();
+    }else{
+        dialog->exec();
+    }
 
 }
 
@@ -318,6 +359,16 @@ void CpuFmwidget::RefreshCheckStatus()
          {
             pButton->setChecked(true);
 //            qDebug() << Q_FUNC_INFO <<  __LINE__ <<pButton->objectName();
+         }
+     }
+
+     QList<QAbstractButton*> list1 = FreqRadioGroup->buttons();
+
+     foreach (QAbstractButton *pButton, list1)
+     {
+         if(QString::compare(cur_freq,pButton->objectName()) == 0)
+         {
+            pButton->setChecked(true);
          }
      }
 }
@@ -397,5 +448,36 @@ void CpuFmwidget::showUserspaceFrame(bool i)
         group1->start();
         w->setVisible(false);
     }
+}
+
+QString CpuFmwidget::conversion(QString str)
+{
+    float target = str.toFloat();
+    qDebug() << Q_FUNC_INFO << str.toInt();
+    int i = 0;
+    QString unit;
+    while (target >= 1000) {
+        if (0 == i)
+            unit = "Mhz";
+        else if (1 == i)
+            unit = "Ghz";
+        i++;
+
+        target = target/1000;
+    }
+
+    return QString::number(target,'f',1)+unit;
+}
+
+QAbstractButton *CpuFmwidget::getCheckedButton()
+{
+    QList<QAbstractButton*> list = FreqRadioGroup->buttons();
+    foreach (QAbstractButton *pButton, list)
+    {
+        if(pButton->isChecked())
+            return pButton;
+    }
+
+    return nullptr;
 }
 

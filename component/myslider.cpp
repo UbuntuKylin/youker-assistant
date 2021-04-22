@@ -67,7 +67,7 @@ mySlider::~mySlider()
 
 }
 
-void mySlider::setRangeLable(QMap<QString, QVariant> tmpMap)
+void mySlider::setRangeLable(QMap<QString, QVariant> tmpMap, QStringList list)
 {
 //    qDebug() << Q_FUNC_INFO <<tmpMap;
     if(tmpMap.isEmpty()){
@@ -75,7 +75,6 @@ void mySlider::setRangeLable(QMap<QString, QVariant> tmpMap)
         return;
     }
 
-    QMap<QString ,QVariant> map = tmpMap;
     if(tmpMap.contains("minimum") && !tmpMap["minimum"].isNull())
     {
         minlable->setText(tmpMap["minimum"].toString());
@@ -101,11 +100,23 @@ void mySlider::setRangeLable(QMap<QString, QVariant> tmpMap)
     }
 
     this->setRange(min*1000,max*1000);
+    this->setTickPosition(QSlider::TicksBelow);
     this->setValue(cur_value);
     tiplable->setText(QString::number(cur_value)+"MHz");
     tiplable->move((this->width()-tiplable->width())*(this->value()-min*1000)/(this->maximum()-this->minimum()),5);
     this->setSingleStep(10);
 //    qDebug() << Q_FUNC_INFO << min  << max << (max-min)*10 << this->value() << cur_value;
+}
+
+void mySlider::setCurValue(int value)
+{
+    this->cur_value = value;
+    this->updateTipLabel();
+}
+
+int mySlider::getCurValue()
+{
+    return this->cur_value;
 }
 
 void mySlider::keyPressEvent(QKeyEvent *event)
