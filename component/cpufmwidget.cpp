@@ -155,45 +155,36 @@ void CpuFmwidget::InitUI()
     w = new QFrame(this);
     w->setAutoFillBackground(false);
     w->setStyleSheet("background:rgb(231,231,231);border-radius:4px;");
-    w->setGeometry(QRect(62,200,580,175));
+    w->setGeometry(QRect(62,200,580,50));
 
-    QVBoxLayout *v_layout = new QVBoxLayout(w);
-    v_layout->setSpacing(5);
-    v_layout->setMargin(0);
-    v_layout->setContentsMargins(10,10,10,0);
+    QHBoxLayout *w_layout = new QHBoxLayout(w);
+    w_layout->setSpacing(15);
+    w_layout->setMargin(0);
+    w_layout->setContentsMargins(10,0,10,0);
 
     QLabel *lable1 = new QLabel();
-    lable1->setText(tr("Current Frequency Adjustable Range:"));
+    lable1->setText(tr("Adjust the CPU frequency to:"));
     lable1->setStyleSheet("color:rgb(0,0,0,185)");
-    v_layout->addWidget(lable1);
+    w_layout->addWidget(lable1);
 
-    FreqRadioGroup = new QButtonGroup(w);
-    QHBoxLayout *FreqadioGroup_layout = new QHBoxLayout(w);
-    FreqRadioGroup->setExclusive(true);
-    for(int t = 0; t < freq_list.size(); t++){
-        QRadioButton *item = new QRadioButton(h);
-        item->setText(this->conversion(freq_list.at(t)));
-        item->setStyleSheet("color:rgb(0,0,0,185)");
-        item->setObjectName(freq_list.at(t));
-        if(freq_list.at(t) == cur_freq){
-            item->setChecked(true);
-        }
-        FreqadioGroup_layout->addWidget(item);
-        FreqRadioGroup->addButton(item);
-    }
-    connect(FreqRadioGroup, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(onFreqButtonClicked(QAbstractButton*)));
+    FreqGroup = new QComboBox(w);
+    FreqGroup->setFixedSize(300,40);
+    FreqGroup->addItems(getComboxText(freq_list));
+    FreqGroup->setCurrentIndex(0);
+    FreqGroup->setStyleSheet("QComboBox{background:rgb(211,211,211);border-radius:4px;}");
+    w_layout->addWidget(FreqGroup,1,Qt::AlignLeft);
 
-    v_layout->addLayout(FreqadioGroup_layout);
-//    v_layout->addStretch(10);
+    connect(FreqGroup,&QComboBox::currentTextChanged,this,[=]{
+        freq_value = FreqGroup->currentText();
+    });
 
-    QLabel *lable2 = new QLabel();
-    lable2->setText(tr("CPU FM Note: The CPU FM function has some risks, please use it carefully! After FM is completed, restarting will restore the default configuration!"));
-    lable2->adjustSize();
-    lable2->setStyleSheet("color:rgb(0,0,0,185);font-size:14px;");
-    lable2->setFixedSize(570, 27*2);
-    lable2->setWordWrap(true);
-    v_layout->addWidget(lable2);
-    v_layout->addStretch(1);
+    tip_lable = new QLabel(this);
+    tip_lable->setText(tr("CPU FM Note: The CPU FM function has some risks, please use it carefully! After FM is completed, restarting will restore the default configuration!"));
+    tip_lable->adjustSize();
+    tip_lable->setStyleSheet("color:rgb(0,0,0,185);font-size:14px;");
+    tip_lable->resize(570, 27);
+    tip_lable->setWordWrap(true);
+    tip_lable->setGeometry(QRect(62,205,580,50));
 
     if(QString::compare(cur_governer,"userspace") != 0)
         w->setVisible(false);
@@ -207,7 +198,7 @@ void CpuFmwidget::InitUI()
                                  QPushButton:hover{width:120px;height:36px;\
                                  background:rgba(67,127,240,1);\
                                  border-radius:4px;color:white;}");
-    apply_button->setGeometry(QRect(60,380,120,36));
+    apply_button->setGeometry(QRect(60,310,120,36));
 
     connect(apply_button,SIGNAL(clicked()),this,SLOT(onClickedApply()));
 
@@ -218,7 +209,7 @@ void CpuFmwidget::InitUI()
     else
     {
         w->setVisible(false);
-        apply_button->move(60,200);
+        apply_button->move(60,255);
     }
 
     initUserspaceFrameAnimation();
@@ -227,12 +218,9 @@ void CpuFmwidget::InitUI()
 
     connect(dialog,&GeneralDialog::accepted,[this]{
         if(value == "userspace"){
-            QAbstractButton *pButton = getCheckedButton();
-            if(pButton){
-                qDebug() << Q_FUNC_INFO << pButton->objectName();
-                emit this->setCpuGoverner(value+"<1_1>"+pButton->objectName());
-                cur_freq = pButton->objectName();
-            }
+//            qDebug() << Q_FUNC_INFO << freq_list.at(FreqGroup->currentIndex());
+            emit this->setCpuGoverner(value+"<1_1>"+freq_list.at(FreqGroup->currentIndex()));
+            cur_freq = freq_list.at(FreqGroup->currentIndex());
         }else
             emit this->setCpuGoverner(value);
 
@@ -240,15 +228,7 @@ void CpuFmwidget::InitUI()
     });
 
     connect(dialog,&GeneralDialog::rejected,[this]{
-        QList<QAbstractButton*> list = FreqRadioGroup->buttons();
-
-        foreach (QAbstractButton *pButton, list)
-        {
-            if(QString::compare(cur_freq,pButton->objectName()) == 0)
-            {
-               pButton->setChecked(true);
-            }
-        }
+        FreqGroup->setCurrentIndex(freq_list.indexOf(cur_freq));
 
         QList<QAbstractButton*> list1 = radioGroup->buttons();
         foreach (QAbstractButton *pButton, list1)
@@ -283,6 +263,7 @@ void CpuFmwidget::set_cpu_listAndCur(QStringList list, QStringList list1, QStrin
 {
     this->governer_list = list;
     this->freq_list = list1;
+
     if(this->governer_list.contains("userspace") && isHW990())
     {
         this->governer_list.removeAll("userspace");
@@ -303,13 +284,6 @@ void CpuFmwidget::onButtonClicked(QAbstractButton *button)
 {
     qDebug() << QString("Clicked Button : %1").arg(button->objectName());
 
-//     QList<QAbstractButton*> list = radioGroup->buttons();
-//     foreach (QAbstractButton *pButton, list)
-//     {
-//         QString strStatus = pButton->isChecked() ? "Checked" : "Unchecked";
-//         qDebug() << QString("Button : %1 is %2").arg(button->text()).arg(strStatus);
-//     }
-
     if(button->objectName() == "userspace" && value != "userspace")
     {
         if(!w->isVisible())
@@ -324,33 +298,24 @@ void CpuFmwidget::onButtonClicked(QAbstractButton *button)
 
 }
 
-void CpuFmwidget::onFreqButtonClicked(QAbstractButton *button)
-{
-    this->freq_value = button->objectName();
-}
-
 void CpuFmwidget::onClickedApply()
 {
-    if(!getCheckedButton() && w->isVisible()){
-        QMessageBox msgBox;
-        msgBox.setParent(this);
-        msgBox.setIcon(QMessageBox::Warning);
-        msgBox.setWindowTitle(tr("Tip"));
-        msgBox.setText(QString(tr("Please select a custom frequency value")));
-        msgBox.exec();
-    }else{
-        dialog->exec();
-    }
-
+    dialog->exec();
 }
 
 void CpuFmwidget::RefreshCheckStatus()
 {
     if((cur_governer != "userspace")&&w->isVisible()){
         w->setVisible(false);
-        apply_button->setGeometry(60,200,120,36);
+        apply_button->setGeometry(60,255,120,36);
+        tip_lable->setGeometry(QRect(62,205,580,50));
         value = cur_governer;
     }
+    if((cur_governer == "userspace")&&!w->isVisible())
+        showUserspaceFrame(true);
+
+    if(cur_freq != "0")
+        FreqGroup->setCurrentIndex(freq_list.indexOf(cur_freq));
 
      QList<QAbstractButton*> list = radioGroup->buttons();
      foreach (QAbstractButton *pButton, list)
@@ -359,16 +324,6 @@ void CpuFmwidget::RefreshCheckStatus()
          {
             pButton->setChecked(true);
 //            qDebug() << Q_FUNC_INFO <<  __LINE__ <<pButton->objectName();
-         }
-     }
-
-     QList<QAbstractButton*> list1 = FreqRadioGroup->buttons();
-
-     foreach (QAbstractButton *pButton, list1)
-     {
-         if(QString::compare(cur_freq,pButton->objectName()) == 0)
-         {
-            pButton->setChecked(true);
          }
      }
 }
@@ -404,39 +359,53 @@ void CpuFmwidget::initUserspaceFrameAnimation()
     QPropertyAnimation *animation0 = new QPropertyAnimation(w,"geometry");
     animation0->setDuration(500);
     animation0->setStartValue(QRect(62,200,580,10));
-    animation0->setEndValue(QRect(62,200,580,175));
+    animation0->setEndValue(QRect(62,200,580,50));
     animation0->setEasingCurve(QEasingCurve::InQuad);
 
     QPropertyAnimation *animation1 = new QPropertyAnimation(apply_button,"geometry");
     animation1->setDuration(500);
-    animation1->setStartValue(QRect(60,200,120,36));
-    animation1->setEndValue(QRect(60,380,120,36));
+    animation1->setStartValue(QRect(60,255,120,36));
+    animation1->setEndValue(QRect(60,310,120,36));
     animation1->setEasingCurve(QEasingCurve::InQuad);
+
+    QPropertyAnimation *animation2 = new QPropertyAnimation(tip_lable,"geometry");
+    animation2->setDuration(500);
+    animation2->setStartValue(QRect(62,205,580,50));
+    animation2->setEndValue(QRect(60,260,580,50));
+    animation2->setEasingCurve(QEasingCurve::InQuad);
 
     group = new QParallelAnimationGroup(this);
     group->setDirection(QAbstractAnimation::Forward);
     group->setLoopCount(1);
     group->addAnimation(animation0);
     group->addAnimation(animation1);
+    group->addAnimation(animation2);
 
 
-    QPropertyAnimation *animation2 = new QPropertyAnimation(w,"geometry");
-    animation2->setDuration(200);
-    animation2->setStartValue(QRect(62,200,580,175));
-    animation2->setEndValue(QRect(62,200,580,10));
-    animation2->setEasingCurve(QEasingCurve::InQuad);
-
-    QPropertyAnimation *animation3 = new QPropertyAnimation(apply_button,"geometry");
+    QPropertyAnimation *animation3 = new QPropertyAnimation(w,"geometry");
     animation3->setDuration(200);
-    animation3->setStartValue(QRect(60,380,120,36));
-    animation3->setEndValue(QRect(60,200,120,36));
+    animation3->setStartValue(QRect(62,200,580,50));
+    animation3->setEndValue(QRect(62,200,580,10));
     animation3->setEasingCurve(QEasingCurve::InQuad);
+
+    QPropertyAnimation *animation4 = new QPropertyAnimation(apply_button,"geometry");
+    animation4->setDuration(200);
+    animation4->setStartValue(QRect(60,310,120,36));
+    animation4->setEndValue(QRect(60,255,120,36));
+    animation4->setEasingCurve(QEasingCurve::InQuad);
+
+    QPropertyAnimation *animation5 = new QPropertyAnimation(tip_lable,"geometry");
+    animation5->setDuration(200);
+    animation5->setEndValue(QRect(62,205,580,50));
+    animation5->setStartValue(QRect(60,260,580,50));
+    animation5->setEasingCurve(QEasingCurve::InQuad);
 
     group1 = new QParallelAnimationGroup(this);
     group1->setDirection(QAbstractAnimation::Forward);
     group1->setLoopCount(1);
-    group1->addAnimation(animation2);
     group1->addAnimation(animation3);
+    group1->addAnimation(animation4);
+    group1->addAnimation(animation5);
 }
 
 void CpuFmwidget::showUserspaceFrame(bool i)
@@ -469,15 +438,15 @@ QString CpuFmwidget::conversion(QString str)
     return QString::number(target,'f',1)+unit;
 }
 
-QAbstractButton *CpuFmwidget::getCheckedButton()
+QStringList CpuFmwidget::getComboxText(QStringList list)
 {
-    QList<QAbstractButton*> list = FreqRadioGroup->buttons();
-    foreach (QAbstractButton *pButton, list)
-    {
-        if(pButton->isChecked())
-            return pButton;
+    QStringList comboxText;
+    comboxText.clear();
+
+    foreach (QString var, list) {
+        comboxText.append(conversion(var));
     }
 
-    return nullptr;
+    return comboxText;
 }
 

@@ -20,6 +20,7 @@
 #include <QParallelAnimationGroup>
 #include <QDialog>
 #include <QTimer>
+#include <QComboBox>
 #include <QMessageBox>
 
 //#include "../component/myslider.h"
@@ -46,7 +47,7 @@ public:
     void initUserspaceFrameAnimation();
     void showUserspaceFrame(bool);
     QString conversion(QString);
-    QAbstractButton * getCheckedButton();
+    QStringList getComboxText(QStringList);
 signals:
     void setCpuGoverner(QString);
     void RequestCPUFrequencyData();
@@ -54,12 +55,12 @@ private slots:
     void ProcessingCPUFrequencyData(QMap<QString,QVariant>);
 
     void onButtonClicked(QAbstractButton *button);
-    void onFreqButtonClicked(QAbstractButton *button);
     void onClickedApply();
 private:
     QFrame *w;
     QPushButton *apply_button;
     QLabel *cpu_lable;
+    QLabel *tip_lable;
 //    QSlider *slider;
     QString cpu_num = "3.52";
 
@@ -76,6 +77,7 @@ private:
 
     QButtonGroup *radioGroup;
     QButtonGroup *FreqRadioGroup;
+    QComboBox *FreqGroup;
     GeneralDialog *dialog;
 
     QParallelAnimationGroup *group;
