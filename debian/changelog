@@ -3,7 +3,9 @@ youker-assistant (3.0.2-0kylin6k57~rc1) v101; urgency=medium
   [tang guang]
    * BUG  :
    * Task :
-   * Other: 根据设计稿再次重新调整cpu自定义调频界面
+   * Other: 
+     - 根据设计稿再次重新调整cpu自定义调频界面
+     - 修改帮助文档的应用名为工具箱       
 
  -- tangguang <tangguang@kylinos.cn>  Sun, 25 Apr 2021 14:50:22 +0800
 

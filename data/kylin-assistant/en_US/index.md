@@ -1,8 +1,8 @@
-# Kylin Assistant
+# ToolKit
 ## Overview
-Kylin Assistant provides some extended functions and users can query the hardware details of the current computer. The main interface as shown in Fig 1.
+ToolKit provides some extended functions and users can query the hardware details of the current computer. The main interface as shown in Fig 1.
 
-![Fig 1 Kylin Assistant-big](image/1.png)
+![Fig 1 ToolKit-big](image/1.png)
 <br>
 
 ## Cleanup
