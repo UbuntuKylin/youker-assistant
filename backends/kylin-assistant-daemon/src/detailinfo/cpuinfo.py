@@ -1056,25 +1056,15 @@ class DetailInfo:
         for index in range(len(modlist)):
             if (index == 0):
                 continue
-            if (index == 1):
-                continue
+#            if (index == 1):
+#                continue
             tmpMem = {}
             for line in modlist[index].split("\n"):
                 if ":" not in line:
                     continue
                 value = line.split(":")
                 tmpMem.setdefault(value[0].strip(), value[1].strip())
-            if "Size" not in tmpMem.keys():
-                continue
-            if (tmpMem["Size"] == "No Module Installed"):
-                if (index == len(modlist) - 1):
-                    Mem["MemSize"]      = Mem["MemSize"][0:-5]
-                    Mem["MemWidth"]     = Mem["MemWidth"][0:-5]
-                    Mem["MemInfo"]      = Mem["MemInfo"][0:-5]
-                    Mem["MemSlot"]      = Mem["MemSlot"][0:-5]
-                    Mem["MemVendor"]    = Mem["MemVendor"][0:-5]
-                    Mem["MemSpeed"]     = Mem["MemSpeed"][0:-5]
-                    Mem["MemSerial"]    = Mem["MemSerial"][0:-5]
+            if ("Size" not in tmpMem.keys()):
                 continue
 
             memNum += 1
@@ -1099,14 +1089,7 @@ class DetailInfo:
                 tmpMem["Size"] = str(transHumanReadableSize(int(tmpMem["Size"].split(" ")[0])/1024)) + " GB"
 
             Mem["MemSize"] = Mem.setdefault("MemSize", "") + tmpMem["Size"] + "<1_1>"
-            if (index == len(modlist) - 1):
-                Mem["MemSize"]      = Mem["MemSize"][0:-5]
-                Mem["MemWidth"]     = Mem["MemWidth"][0:-5]
-                Mem["MemInfo"]      = Mem["MemInfo"][0:-5]
-                Mem["MemSlot"]      = Mem["MemSlot"][0:-5]
-                Mem["MemVendor"]    = Mem["MemVendor"][0:-5]
-                Mem["MemSpeed"]     = Mem["MemSpeed"][0:-5]
-                Mem["MemSerial"]    = Mem["MemSerial"][0:-5]
+
         if (not Mem):
             if os.path.exists(MEMORY):
                 memnum = 0
@@ -1183,6 +1166,14 @@ class DetailInfo:
                 MemTotal = dic["MemTotal"].strip().split(' ')[0]
                 #Mem["MemSize"] = GLib.format_size_for_display(int(MemTotal) * 1024)
                 Mem["MemSize"] = ("%0.f") % (math.ceil(float(int(MemTotal)*1024) / 1024**3)) + " GB"
+
+        Mem["MemSize"]    = Mem["MemSize"][0:-5]   if "MemSize"   in Mem and Mem["MemSize"]   != "" else ""
+        Mem["MemWidth"]   = Mem["MemWidth"][0:-5]  if "MemWidth"  in Mem and Mem["MemWidth"]  != "" else ""
+        Mem["MemInfo"]    = Mem["MemInfo"][0:-5]   if "MemInfo"   in Mem and Mem["MemInfo"]   != "" else ""
+        Mem["MemSlot"]    = Mem["MemSlot"][0:-5]   if "MemSlot"   in Mem and Mem["MemSlot"]   != "" else ""
+        Mem["MemVendor"]  = Mem["MemVendor"][0:-5] if "MemVendor" in Mem and Mem["MemVendor"] != "" else ""
+        Mem["MemSpeed"]   = Mem["MemSpeed"][0:-5]  if "MemSpeed"  in Mem and Mem["MemSpeed"]  != "" else ""
+        Mem["MemSerial"]  = Mem["MemSerial"][0:-5] if "MemSerial" in Mem and Mem["MemSerial"] != "" else ""   
         return Mem
 
     ## 2017.07.27 add by hebing
@@ -2440,11 +2431,17 @@ class DetailInfo:
                 if info_list[1] == "cd/dvd" :
                     Dvdnum += 1
                     
-                    DvdProduct += " ".join(info_list[3:5]) + "<1_1>"
+                    if len(info_list) == 6:
+                        DvdName += info_list[5] + "<1_1>"
+                        DvdFw += info_list[4] + "<1_1>"
+                        DvdProduct += info_list[3] + "<1_1>"
+                    else:
+                        DvdName += info_list[6] + "<1_1>"
+                        DvdFw += info_list[5] + "<1_1>"
+                        DvdProduct += " ".join(info_list[3:5]) + "<1_1>"
+
                     DvdVendor += info_list[2] + "<1_1>"
                     Dvdid += info_list[0].strip("[]") + "<1_1>"
-                    DvdName += info_list[6] + "<1_1>"
-                    DvdFw += info_list[5] + "<1_1>"
 
         # n = os.popen("hdparm -i /dev/cdrom")
         # cdrom = n.read()

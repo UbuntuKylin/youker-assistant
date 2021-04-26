@@ -1,7 +1,20 @@
+youker-assistant (3.0.2-0kylin6k58~rc1) v101; urgency=medium
+
+  [tang guang]
+   * Bug  :
+      - 英文模式下，文字未显示全(bug#44026)
+      - 麒麟助手，电脑清理，清理后缓存显示不正确(bug#44183)
+   * Task :
+   * Other:
+      - 解决麒麟助手部分机器内存信息存在内容分隔符
+      - 解决部分光驱信息不显示
+
+ -- tangguang <tangguang@kylinos.cn>  Mon, 26 Apr 2021 20:47:45 +0800
+
 youker-assistant (3.0.2-0kylin6k57~rc1) v101; urgency=medium
 
   [tang guang]
-   * BUG  :
+   * Bug  :
    * Task :
    * Other: 
      - 根据设计稿再次重新调整cpu自定义调频界面

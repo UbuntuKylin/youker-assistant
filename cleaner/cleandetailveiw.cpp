@@ -175,7 +175,7 @@ void CleandetailVeiw::InitBottomWidget()
     QHBoxLayout *m_layout = new QHBoxLayout(frame);
 //    m_layout->setSpacing(10);
     m_layout->setMargin(0);
-    m_layout->setContentsMargins(100,65,100,115);
+    m_layout->setContentsMargins(100,65,50,50);
 
     QFrame *cache_frame = new QFrame(frame);
     QVBoxLayout *cache_layout = new QVBoxLayout(cache_frame);
@@ -202,6 +202,7 @@ void CleandetailVeiw::InitBottomWidget()
 //    cache_tip->setFont(font);
     cache_tip->setText(tr("System cache"));
     cache_tip->adjustSize();
+    cache_tip->setWordWrap(true);
     cache_tip->setMinimumWidth(230);
     cache_layout->addWidget(cache_tip);
 
@@ -221,8 +222,8 @@ void CleandetailVeiw::InitBottomWidget()
                              QPushButton:hover{width:80px;height:36px;\
                              background:rgba(67,127,240,1);\
                              border-radius:18px;color:white;}");
-    cache_layout->addStretch(1);
     cache_layout->addWidget(cache_btn);
+    cache_layout->addStretch(1);
     cache_btn->setVisible(false);
 
     connect(cache_btn,SIGNAL(clicked()),this,SLOT(ShowDetailsPage()));
@@ -249,6 +250,7 @@ void CleandetailVeiw::InitBottomWidget()
     cookie_tip->setText(tr("Cookies"));
     cookie_tip->setMinimumWidth(210);
     cookie_tip->adjustSize();
+    cookie_tip->setWordWrap(true);
     cookie_layout->addWidget(cookie_tip);
 
     QLabel *lable2 = new QLabel(cookie_frame);
@@ -268,8 +270,8 @@ void CleandetailVeiw::InitBottomWidget()
                              QPushButton:hover{width:80px;height:36px;\
                              background:rgba(67,127,240,1);\
                              border-radius:18px;color:white;}");
-    cookie_layout->addStretch(1);
     cookie_layout->addWidget(cookie_btn);
+    cookie_layout->addStretch(1);
     cookie_btn->setVisible(false);
 
     connect(cookie_btn,SIGNAL(clicked()),this,SLOT(ShowDetailsPage()));
@@ -295,6 +297,7 @@ void CleandetailVeiw::InitBottomWidget()
 //    history_tip->setFont(font);
     history_tip->setText(tr("Historical trace"));
     history_tip->adjustSize();
+    history_tip->setWordWrap(true);
     history_tip->setMinimumWidth(210);
     history_layout->addWidget(history_tip);
 
@@ -742,7 +745,10 @@ void CleandetailVeiw::showCleanerStatus(const QString &status, const QString &do
 {
 //    qDebug() << Q_FUNC_INFO << status << domain;
     if(status == "Complete:file" && domain == "cache") {
-        cache_tip->setText(tr("Clear cache ")+QString::number(cache_sum/1024,'f',0)+" M");
+        if(cache_sum < 1024)
+            cache_tip->setText(tr("Clear cache ")+QString::number(cache_sum)+" KB");
+        else
+            cache_tip->setText(tr("Clear cache ")+QString::number(cache_sum/1024,'f',0)+" M");
 
         QSvgRenderer* svgRender = new QSvgRenderer(QString(":/svg/res/svg/finish2 .svg"));
         QPixmap *pixmap = new QPixmap(32,32);
