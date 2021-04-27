@@ -1,3 +1,13 @@
+youker-assistant (3.0.2-0kylin6k58~rc2) v101; urgency=medium
+
+  [hebing]
+   * Bug  :
+   * Task :
+   * Other:
+      - 纠正麒麟助手内存信息获取的异常判断代码
+
+ -- hebing <hebing@kylinos.cn>  Tue, 27 Apr 2021 15:50:11 +0800
+
 youker-assistant (3.0.2-0kylin6k58~rc1) v101; urgency=medium
 
   [tang guang]
