@@ -1654,11 +1654,6 @@ Information</source>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="112"/>
-        <source>Kylin Assistant</source>
-        <translation>麒麟助手</translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="148"/>
         <location filename="../mainwindow.cpp" line="161"/>
         <source>Help</source>
@@ -1677,6 +1672,7 @@ Information</source>
         <translation>退出</translation>
     </message>
     <message>
+        <location filename="../mainwindow.cpp" line="112"/>
         <location filename="../mainwindow.cpp" line="1253"/>
         <source>ToolKit</source>
         <translation>工具箱</translation>
