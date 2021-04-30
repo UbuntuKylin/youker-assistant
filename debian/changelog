@@ -1,12 +1,15 @@
 youker-assistant (3.0.2-0kylin6k59~rc1) v101; urgency=medium
-  
-  [wang di]
-   * Bug  :bug#51474
+
+  [tang guang]
+   * Bug  :
+     - bug#51474 : 任务栏中应用预览窗口仍显示名称为麒麟助手(by wangdi)
    * Task :
    * Other:
-      - 修改任务栏窗口名称为工具箱
+     - 添加内存序列号为0时的判断
+     - 添加显示Nvme盘的固件和厂商信息
+     - 添加用户自定义在支持异常时的判断
 
- -- wangdi <wangdi@kylinos.cn>  Thu, 29 Apr 2021 14:18:12 +0800
+ -- tangguang <tangguang@kylinos.cn>  Thu, 29 Apr 2021 19:41:13 +0800
 
 youker-assistant (3.0.2-0kylin6k58~rc2) v101; urgency=medium
 

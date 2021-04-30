@@ -107,7 +107,11 @@ def get_human_read_capacity_size(size):
     #print round(2.3)#2.0
     #print math.ceil(2.3)#3.0
     #print math.floor(2.3)#2.0
-    str_list = [str(int(round(displayed_size))), unit]
+    if (unit == "TB"):
+        str_list = [str(int(round(displayed_size, 1))), unit]
+    else:
+        str_list = [str(int(round(displayed_size))), unit]
+
     size_str = " ".join(str_list)
     return size_str
 
@@ -723,6 +727,8 @@ class DetailInfo:
             Cpu['CpuVendor'] = 'Loongson'
         elif cpuType.find('intel') >= 0:#Loongson
             Cpu['CpuVendor'] = 'Intel'
+        elif cpuType.find('D2000') >= 0:
+            Cpu['CpuVendor'] = 'Phytium'
         #Cpu['CpuSlot'] = tmpCpu.get("Socket(s)", "")
         Cpu['cpu_siblings'] = tmpCpu.get("Thread(s) per core", "")
         #Cpu['cpu_cores_online'] = os.sysconf("SC_NPROCESSORS_ONLN")
@@ -1078,7 +1084,10 @@ class DetailInfo:
             Mem["MemSlot"] = Mem.setdefault("MemSlot", "") + tmpMem["Bank Locator"] + "<1_1>"
             Mem["MemVendor"] = Mem.setdefault("MemVendor", "") + tmpMem["Manufacturer"] + "<1_1>"
             Mem["MemSpeed"] = Mem.setdefault("MemSpeed", "") + tmpMem["Speed"] + "<1_1>"
-            Mem["MemSerial"] = Mem.setdefault("MemSerial", "") + tmpMem["Serial Number"] + "<1_1>"
+            if tmpMem["Serial Number"] != "0":  
+                Mem["MemSerial"] = Mem.setdefault("MemSerial", "") + tmpMem["Serial Number"] + "<1_1>"
+            else:
+                Mem["MemSerial"] = Mem.setdefault("MemSerial", "") + "<1_1>"
             ##MB to GiB
             #bitnum = (int(tmpMem["Size"].split(" ")[0]) - 1).bit_length()
             #tmpMem["Size"] = str(( 2 ** (bitnum - 10))) + ' GiB'
@@ -1582,6 +1591,7 @@ class DetailInfo:
                 "FIREBALL": "Quantum",
                 "WDC": "Western Digital",
                 "HGST HUS": "Western Digital",
+                "FORESEE": "Foresee",
                 }
         DiskProduct,DiskVendor,DiskCapacity,DiskName,DiskFw,DiskSerial = '','','','','',''
         diskdict = {}
@@ -1616,8 +1626,18 @@ class DetailInfo:
                         serial = fp.readline().strip()
                     DiskSerial += ((serial if serial else "$") + "<1_1>")
 
-                    DiskFw += ("$" + "<1_1>")
-                    DiskVendor += ("$" + "<1_1>")
+                    with open(os.path.join(parentpath, 'firmware_rev')) as fp:
+                        firmware = fp.readline().strip()
+                    DiskFw += ((firmware.strip() if firmware else "$") + "<1_1>")
+
+                    set_flag = True
+                    for key, va in list(disk_manufacturers.items()):
+                        if product.startswith(key):
+                            DiskVendor += (va + "<1_1>")
+                            set_flag = False
+                            break
+                    if(set_flag):
+                        DiskVendor += ("$" + "<1_1>")
 
                 else:
                     DiskProduct += ( "$" + "<1_1>")

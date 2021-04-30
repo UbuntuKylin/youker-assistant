@@ -252,6 +252,19 @@ class Daemon(PolicyKitService):
         cpulist = []
         if msg not in ['', None]:
             cpulist = msg.split(' ')
+        
+        if not os.path.exists("/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed"):
+            if 'userspace' in cpulist:
+                cpulist.remove('userspace')
+        else:
+            cmd = "cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed"
+            fp = os.popen(cmd)
+            msg = fp.read().strip('\n')
+            fp.close()
+            if msg not in ['',None]:
+                if msg == '<unsupported>' and 'userspace' in cpulist:
+                    cpulist.remove('userspace')
+        
         if Judgment_HW990() and ('userspace' in cpulist):
             cpulist.remove('userspace')
         return cpulist
