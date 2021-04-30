@@ -1,3 +1,13 @@
+youker-assistant (3.0.2-0kylin6k59~rc1) v101; urgency=medium
+  
+  [wang di]
+   * Bug  :bug#51474
+   * Task :
+   * Other:
+      - 修改任务栏窗口名称为工具箱
+
+ -- wangdi <wangdi@kylinos.cn>  Thu, 29 Apr 2021 14:18:12 +0800
+
 youker-assistant (3.0.2-0kylin6k58~rc2) v101; urgency=medium
 
   [hebing]
