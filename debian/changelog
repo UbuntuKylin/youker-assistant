@@ -3,6 +3,9 @@ youker-assistant (3.0.2-0kylin6k59~rc1) v101; urgency=medium
   [tang guang]
    * Bug  :
      - bug#51474 : 任务栏中应用预览窗口仍显示名称为麒麟助手(by wangdi)
+     - BUG#52112 中等 【工具箱】宝德pt612k机器不显示自定义的调频范围
+     - BUG#52111 中等 【工具箱】性能监测的调频模式有未汉化
+     - BUG#50876 中等 【互认证】【量子芯云】麒麟助手，硬盘信息界面不显示NVMe盘的版本信息
    * Task :
    * Other:
      - 添加内存序列号为0时的判断
