@@ -132,7 +132,7 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
     <name>CleandetailVeiw</name>
     <message>
         <location filename="../../cleaner/cleandetailveiw.cpp" line="99"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="334"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="337"/>
         <source>Computer scan in progress...</source>
         <translation>正在扫描电脑......</translation>
     </message>
@@ -154,146 +154,147 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
     </message>
     <message>
         <location filename="../../cleaner/cleandetailveiw.cpp" line="203"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="331"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="334"/>
         <source>System cache</source>
         <translation>系统缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="210"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="211"/>
         <source>Clear package、thumbnails and browser cache</source>
         <translation>清理包、缩略图和浏览器缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="216"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="263"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="217"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="265"/>
         <source>Details</source>
         <translation>详情</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="249"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="333"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="250"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="336"/>
         <source>Cookies</source>
         <translation>Cookies</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="257"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="259"/>
         <source>Clear internet、games、shopping history, etc.</source>
         <translation>清理上网、游戏、购物记录等</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="296"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="332"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="298"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="335"/>
         <source>Historical trace</source>
         <translation>历史痕迹</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="303"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="306"/>
         <source>Clear browser and system usage traces</source>
         <translation>清理浏览器和系统使用痕迹</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="582"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="759"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="585"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="765"/>
         <source> items</source>
         <translation> 项</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="614"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="617"/>
         <source>There&apos;s nothing to clean up.</source>
         <translation>无需进行清理</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="620"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="623"/>
         <source>Complete!</source>
         <translation>扫描完成!</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="947"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="948"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="949"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="953"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="954"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="955"/>
         <source>Cleaning up</source>
         <translation>清理中</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="952"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="953"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="954"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="958"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="959"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="960"/>
         <source>Cleaning up..</source>
         <translation>清理中..</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="957"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="958"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="959"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="963"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="964"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="965"/>
         <source>Cleaning up....</source>
         <translation>清理中......</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="590"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="593"/>
         <source> historical use traces</source>
         <translation>条历史使用痕迹</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="582"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="585"/>
         <source>Cleanable cookie </source>
         <translation>可清理cookie </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="576"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="578"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="579"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="581"/>
         <source>Cleanable cache </source>
         <translation>可清理缓存 </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="460"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="851"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="463"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="857"/>
         <source>Computer cleanup in progress...</source>
         <translation>电脑清理中...</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="706"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="707"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="709"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="710"/>
         <source>Cleanable Cache</source>
         <translation>可清理缓存</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="719"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="721"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="722"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="724"/>
         <source>Cleanable Cookie</source>
         <translation>可清理cookie</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="773"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="779"/>
         <source>Clear </source>
         <translation>清理 </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="773"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="779"/>
         <source> historical traces</source>
         <translation> 条历史记录</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="759"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="765"/>
         <source>Clear cookie </source>
         <translation>清理 cookie </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="745"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="749"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="751"/>
         <source>Clear cache </source>
         <translation>清理缓存 </translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="864"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="865"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="866"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="962"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="963"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="964"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="870"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="871"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="872"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="968"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="969"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="970"/>
         <source>Cleaning up......</source>
         <translation>清理中......</translation>
     </message>
     <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="880"/>
+        <location filename="../../cleaner/cleandetailveiw.cpp" line="886"/>
         <source>Clearance completed!</source>
         <translation>清理完成！</translation>
     </message>
@@ -457,12 +458,12 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
 <context>
     <name>CpuFmwidget</name>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="203"/>
+        <location filename="../../component/cpufmwidget.cpp" line="194"/>
         <source>apply</source>
         <translation>应用</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="226"/>
+        <location filename="../../component/cpufmwidget.cpp" line="217"/>
         <source>Whether to apply?</source>
         <translation>是否应用？</translation>
     </message>
@@ -492,24 +493,31 @@ tang guang &lt;tangguang@kylinos.cn&gt;</translation>
         <translation>用户自定义</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="166"/>
-        <source>Current Frequency Adjustable Range:</source>
-        <translation>当前频率可调节范围:</translation>
+        <location filename="../../component/cpufmwidget.cpp" line="132"/>
+        <source>schedutil</source>
+        <translation>均衡模式</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="190"/>
+        <location filename="../../component/cpufmwidget.cpp" line="166"/>
+        <source>Adjust the CPU frequency to:</source>
+        <translation>将CPU频率调整为：</translation>
+    </message>
+    <message>
+        <source>Current Frequency Adjustable Range:</source>
+        <translation type="vanished">当前频率可调节范围:</translation>
+    </message>
+    <message>
+        <location filename="../../component/cpufmwidget.cpp" line="182"/>
         <source>CPU FM Note: The CPU FM function has some risks, please use it carefully! After FM is completed, restarting will restore the default configuration!</source>
         <translation>CPU调频说明：CPU调频功能存在一定的风险，请谨慎操作！调频完成重启计算机将还原默认配置！</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="339"/>
         <source>Tip</source>
-        <translation>提示</translation>
+        <translation type="vanished">提示</translation>
     </message>
     <message>
-        <location filename="../../component/cpufmwidget.cpp" line="340"/>
         <source>Please select a custom frequency value</source>
-        <translation>请选择一个频率值</translation>
+        <translation type="vanished">请选择一个频率值</translation>
     </message>
 </context>
 <context>

@@ -129,7 +129,7 @@ void CpuFmwidget::InitUI()
         else if(governer_list.at(i) == "schedutil")
         {
             QRadioButton *item = new QRadioButton(h);
-            item->setText("Schedutil");
+            item->setText(tr("schedutil"));
             item->setStyleSheet("color:rgb(0,0,0,185)");
             item->setObjectName("schedutil");
             if(cur_governer == "schedutil")
