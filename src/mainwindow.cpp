@@ -163,7 +163,7 @@ MainWindow::MainWindow(QString cur_arch, int d_count, QWidget* parent/*, Qt::Win
             QString cmd = "kylin-user-guide";
             QStringList arg;
             qDebug() << Q_FUNC_INFO;
-            arg << "-A" << "kylin-assistant";
+            arg << "-A" << "toolkit";
             process->start(cmd,arg);
         }else if(action->text() == tr("Exit")){
             this->close();
@@ -240,7 +240,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
                                                          KYLIN_USER_GUIDE_INTERFACE,
                                                          QDBusConnection::sessionBus(),
                                                          this);
-        QDBusMessage msg = iface->call(QString("showGuide"), "kylin-assistant");
+        QDBusMessage msg = iface->call(QString("showGuide"), "toolkit");
 
         delete iface;
     }
