@@ -4,4 +4,4 @@ backends/kylin-assistant-daemon/dbus/com.kylin.assistant.systemdaemon.policy /us
 backends/kylin-assistant-daemon/dbus/com.kylin.assistant.systemdaemon.conf /etc/dbus-1/system.d/
 man/*.1 /usr/share/man/man1/
 src/translation/*.qm /usr/share/youker-assistant/translations/
-data/kylin-assistant/ /usr/share/kylin-user-guide/data/guide/
+data/toolkit/ /usr/share/kylin-user-guide/data/guide/
