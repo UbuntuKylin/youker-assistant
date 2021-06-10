@@ -1,3 +1,13 @@
+youker-assistant (3.0.2-0kylin6k62~rc1) v101; urgency=medium
+
+  [yangmin]
+   * Bug  :
+     - bug# 56011 【亮剑行动】【工具箱】未获取到显示器信息以及显卡型号
+   * Task :
+   * Other:
+
+ -- hebing <hebing@kylinos.cn>  Thu, 10 Jun 2021 19:27:22 +0800
+
 youker-assistant (3.0.2-0kylin6k61~rc1) v101; urgency=medium
 
   [guang tang]
