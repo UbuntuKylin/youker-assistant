@@ -1,3 +1,13 @@
+youker-assistant (3.0.2-0kylin6k61~rc1) v101; urgency=medium
+
+  [guang tang]
+   * Bug  :
+     - bug#55816/bug#55481:扫描界面的统计精度和清理完成页面的统计精度不一致
+   * Task :
+   * Other:
+
+ -- hebing <hebing@kylinos.cn>  Wed, 09 Jun 2021 11:54:30 +0800
+
 youker-assistant (3.0.2-0kylin6k60~rc1) v101; urgency=medium
 
   [guang tang]

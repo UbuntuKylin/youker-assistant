@@ -578,7 +578,7 @@ void CleandetailVeiw::setCacheTip(int cache_sum){
     if(cache_sum < 1024)
             cache_tip->setText(tr("Cleanable cache ")+QString::number(cache_sum)+" KB");
         else
-            cache_tip->setText(tr("Cleanable cache ")+QString::number(cache_sum/1024,'f',1)+" M");
+            cache_tip->setText(tr("Cleanable cache ")+QString::number(cache_sum/1024,'f',0)+" M");
 }
 
 void CleandetailVeiw::setCookieTip(int cookie_sum){
