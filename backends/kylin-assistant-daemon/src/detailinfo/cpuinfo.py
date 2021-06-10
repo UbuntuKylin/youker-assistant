@@ -1327,81 +1327,37 @@ class DetailInfo:
             ret_size, ret_in, ret_gamma, ret_maxmode = "", "", "", "", "", "", "", "", ""
         Vga_product,Vga_vendor,Vga_businfo,Vga_Drive = "", "", "", ""
         Vga_num = 0
-        ## try parse /sys/class/drm/cardX/cardX-TYPE-NUM/edid
-        if os.path.exists("/sys/class/drm"):
-            edid_files = glob.glob("/sys/class/drm/*/edid")
-            for edid_file in edid_files:
-                status, output = subprocess.getstatusoutput('edid-decode -s %s' % edid_file)
-                if status == 0:
-                    Vga_num += 1
-                    ## /sys/class/drm/cardX/cardX-TYPE-NUM/edid -> TYPE-NUM
-                    monitor_connector = edid_file.split('/')[-2].split('-', 1)[-1]
-                    ret_output += (monitor_connector + "<1_1>")
+        xrandrret = ""
+        if os.path.exists("/tmp/youker-assistant-monitorinfo.dat"):
+            status, xrandrret = subprocess.getstatusoutput('cat /tmp/youker-assistant-monitorinfo.dat')
+        value = re.findall("(.*) connected", xrandrret)
+        for monitor in value :
+            p = re.compile(r'%s connected' % monitor)
+            for m in p.finditer(xrandrret):
+                Vga_num += 1
+                ret_output += (monitor + "<1_1>")
+                localinfo = xrandrret.split("%s connected" % monitor)[1].split("connected")[0]
 
-#                result = re.findall('EDID: \s*(\w*)\s*(\w*)\s*(\w*)\s*\s*(\w*)\s*\s*(\w*)\s*\s*(\w*)\s*\s*(\w*)\s*\s*(\w*)\s*', localinfo)
-#                if result :
-#                    with open("/tmp/edid.dat", "w") as fp:
-#                        for edidinfoline in result[0] :
-#                            fp.write(edidinfoline)
-#                #   1920x1080     59.93*+
-#                result = re.findall('\s*(\d*)x(\d*)\s\s\s', localinfo)
-#                if result:
-#                    ret_maxmode += ((result[0][0] + "X" + result[0][1]) + "<1_1>")
-#                else:
-#                    ret_maxmode += ("" + "<1_1>")
+                result = re.findall('EDID: \s*(\w*)\s*(\w*)\s*(\w*)\s*\s*(\w*)\s*\s*(\w*)\s*\s*(\w*)\s*\s*(\w*)\s*\s*(\w*)\s*', localinfo)
+                if result :
+                    with open("/tmp/edid.dat", "w") as fp:
+                        for edidinfoline in result[0] :
+                            fp.write(edidinfoline)
+                #   1920x1080     59.93*+
+                result = re.findall('\s*(\d*)x(\d*)\s\s\s', localinfo)
+                if result:
+                    ret_maxmode += ((result[0][0] + "X" + result[0][1]) + "<1_1>")
+                else:
+                    ret_maxmode += ("" + "<1_1>")
 
-        # xrandrret = ""
-        # if os.path.exists("/tmp/youker-assistant-monitorinfo.dat"):
-        #     status, xrandrret = subprocess.getstatusoutput('cat /tmp/youker-assistant-monitorinfo.dat')
-        # value = re.findall("(.*) connected", xrandrret)
-        # for monitor in value :
-        #     p = re.compile(r'%s connected' % monitor)
-        #     for m in p.finditer(xrandrret):
-        #         Vga_num += 1
-        #         ret_output += (monitor + "<1_1>")
-        #         localinfo = xrandrret.split("%s connected" % monitor)[1].split("connected")[0]
-
-        #         result = re.findall('EDID: \s*(\w*)\s*(\w*)\s*(\w*)\s*\s*(\w*)\s*\s*(\w*)\s*\s*(\w*)\s*\s*(\w*)\s*\s*(\w*)\s*', localinfo)
-        #         if result :
-        #             with open("/tmp/edid.dat", "w") as fp:
-        #                 for edidinfoline in result[0] :
-        #                     fp.write(edidinfoline)
-        #         #   1920x1080     59.93*+
-        #         result = re.findall('\s*(\d*)x(\d*)\s\s\s', localinfo)
-        #         if result:
-        #             ret_maxmode += ((result[0][0] + "X" + result[0][1]) + "<1_1>")
-        #         else:
-        #             ret_maxmode += ("" + "<1_1>")
-
-        #         if os.path.exists("/tmp/edid.dat"):
-                    # status, ediddecret = subprocess.getstatusoutput('edid-decode /tmp/edid.dat')
-                    ediddecret = output
-                    #Detailed mode: Clock 138.700 MHz, 294 mm x 165 mm
-                    #   1920 1968 2000 2080 ( 48  32  80)
-                    #   1080 1083 1088 1111 (  3   5  23)
-                    #-hsync -vsync
-                    #VertFreq: 60.020 Hz, HorFreq: 66.683 kHz
-                    #1920X1080
-                    supported_modes = re.findall("\n\s+(\d+)\s+\d+\s+\d+\s+\d+\s+.*\n\s+(\d+)\s+.*", ediddecret)
-                    if supported_modes:
-                        max_mode = ('1', '1')# hhhhhhh, a pixel
-                        max_mode_product = 1
-                        for mode in supported_modes:
-                            mode_product = int(mode[0]) * int(mode[1])
-                            if mode_product > max_mode_product:
-                                max_mode_product = mode_product
-                                max_mode = mode
-                        if int(max_mode[0]) < int(max_mode[1]):
-                            max_mode[0], max_mode[1] = max_mode[1], max_mode[0]
-                        ret_maxmode += (max_mode[0] + "X" + max_mode[1] + "<1_1>")
-                    else:
-                        ret_maxmode += ("" + "<1_1>")
+                if os.path.exists("/tmp/edid.dat"):
+                    status, ediddecret = subprocess.getstatusoutput('edid-decode /tmp/edid.dat')
                     #Display Product Name: LEN T2224rbA
                     #Manufacturer: LEN Model 24810 Serial Number 16843009
                     result_bak = re.findall("Manufacturer:\s*(\w*)\s*Model\s*(\w*)", ediddecret)
                     result = re.findall('Display Product Name: \s*(\w*)\s*(\w*)', ediddecret)
                     if result: ### 笔记本没有Monitor name
-                        ret_product += (' '.join(result[0]) + "<1_1>")
+                        ret_product += (result[0][0] + "<1_1>")
                         ret_vendor += (result_bak[0][0] + "<1_1>")
                     elif result_bak:
                         ret_vendor += (result_bak[0][0] + "<1_1>")
@@ -1411,14 +1367,12 @@ class DetailInfo:
                         ret_product += ("" + "<1_1>")
                     #Made in week 26 of 2020
                     result = re.findall("Made in week\s*(\d*)\s*of\s*(\d*)", ediddecret)
-                    #Made in year 2015
-                    result_fallback = re.findall("Made in year\s*(\d*)", ediddecret)
                     if result:
                         ret_year += (result[0][1] + "<1_1>")
                         ret_week += (result[0][0] + "<1_1>")
-                    elif result_fallback:
-                        ret_year += (result_fallback[0][0] + "<1_1>")
-                        ret_week += ("0" + "<1_1>")
+                    else:
+                        ret_year += ("" + "<1_1>")
+                        ret_week += ("" + "<1_1>")
                     #Maximum image size: 48 cm x 27 cm
                     result = re.findall("Maximum image size:\s*(\d*)\s*cm\s*x\s*(\d*)\s*cm", ediddecret)
                     if result:
@@ -1435,19 +1389,6 @@ class DetailInfo:
                         ret_gamma += (result[0] + "<1_1>")
                     else:
                         ret_gamma += ("" + "<1_1>")
-                ## hack workaround for kirin 990 laptop integrated lcd screen has blank edid
-                elif (edid_file.find("card0-eDP-1") != -1) and Judgment_HW990():# edid-decode of card0-eDP-1 failed on kirin 990
-                    Vga_num += 1
-                    ret_in += ("14" + "<1_1>") # 14 inch
-                    ret_maxmode += ("2160X1440" + "<1_1>") # 2160X1440
-                    ret_product += ("LCD" + "<1_1>") # LCD
-                    ret_output += ("eDP-1" + "<1_1>") # eDP-1
-                    ## unknown infos
-                    ret_gamma += ("" + "<1_1>")
-                    ret_size += ("" + "<1_1>")
-                    ret_year += ("" + "<1_1>")
-                    ret_week += ("" + "<1_1>")
-                    ret_vendor += ("" + "<1_1>")
         ret["Mon_output"], ret["Mon_vendor"], ret["Mon_product"], ret["Mon_year"], ret["Mon_week"], ret["Mon_size"], ret["Mon_in"] = \
                 ret_output[:-5], ret_vendor[:-5], ret_product[:-5], ret_year[:-5], ret_week[:-5], ret_size[:-5], ret_in[:-5]
         ret["Mon_gamma"], ret["Mon_maxmode"] = ret_gamma[:-5], ret_maxmode[:-5]
