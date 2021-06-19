@@ -46,6 +46,7 @@ import glob
 CPU_CURRENT_FREQ = ""
 CPU_MAX_FREQ = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq"
 MEMORY = "/sys/phytium1500a_info"
+CPUINFO = "/proc/cpuinfo"
 
 subsystem_id = "LANG=en lspci -d 0731:7200 -v | sed -n '/Subsystem:/p' | awk -F: '{ print $NF }'"
 subsystem_id_old = "lspci -d 0731:7200 | awk -F: '{ print $NF }'"        #兼容旧驱动
@@ -79,6 +80,11 @@ def get_interface(com, pci_str):
     print(result)
     return result
 
+def get_cpuMHZ_from_cpuinfo():
+    with open(CPUINFO,'r') as fb:
+        for line in fb.readlines():
+            if line.startswith("cpu MHz") or line.startswith("CPU MHz"):
+                return line.split(":")[1].split(".")[0].strip() + " MHz"
 
 def get_human_read_capacity_size(size):
     size_str = ""
@@ -473,6 +479,7 @@ class DetailInfo:
 #声卡产商
            "REALTEK":["Realtek"],
            "CREATIVE":["Creative"],
+           "LOONGSON":["Loongson"],
            "HISILICON":["HiSilicon"],
 #摄像头
            "SONIX":["Sonix"],
@@ -540,6 +547,11 @@ class DetailInfo:
                 return url[0]
 
         tmp = re.findall("JingJia", p)
+        if tmp :
+            url = vendors.get(tmp[0].upper())
+            if url:
+                return url[0]
+        tmp = re.findall("Loongson", p, flags=re.IGNORECASE)
         if tmp :
             url = vendors.get(tmp[0].upper())
             if url:
@@ -725,6 +737,8 @@ class DetailInfo:
             Cpu['CpuVendor'] = 'Zhaoxin'
         elif cpuType.find('loongson') >= 0:#Loongson
             Cpu['CpuVendor'] = 'Loongson'
+            if Cpu['CpuCapacity'] == '':
+                Cpu['CpuCapacity'] = get_cpuMHZ_from_cpuinfo()
         elif cpuType.find('intel') >= 0:#Loongson
             Cpu['CpuVendor'] = 'Intel'
         elif cpuType.find('D2000') >= 0:
