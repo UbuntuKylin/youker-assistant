@@ -32,7 +32,7 @@
 #include <QProcess>
 #include <QByteArray>
 
-#include <ukui-log4qt.h>
+//#include <ukui-log4qt.h>
 #include <QtSingleApplication>
 
 #include <unistd.h>
@@ -151,7 +151,7 @@ QString getAppVersion(){
 
 int main(int argc, char *argv[])
 {
-    initUkuiLog4qt("youker-assistant");
+    //initUkuiLog4qt("youker-assistant");
 
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);

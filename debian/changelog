@@ -168,13 +168,13 @@ youker-assistant (3.0.2-0kylin6k50) v101; urgency=medium
 
   * 修复点击系统监控，应用闪退
 
- -- tang guang <tangguang@kylinos.cm>  Sat, 27 Mar 2021 15:07:20 +0800
+ -- tang guang <tangguang@kylinos.cn>  Sat, 27 Mar 2021 15:07:20 +0800
 
 youker-assistant (3.0.2-0kylin6k49) v101; urgency=medium
 
   * fixed bug#44262/bug#44244/bug#43814 by wangdi
 
- -- tang guang <tang@Kylin>  Thu, 25 Mar 2021 09:04:44 +0800
+ -- tang guang <tangguang@kylinos.cn>  Thu, 25 Mar 2021 09:04:44 +0800
 
 youker-assistant (3.0.2-0kylin6k48) v101; urgency=medium
 
