@@ -1,3 +1,0 @@
-[D-BUS Service]
-Name=com.kylin.assistant.qsessiondbus
-Exec=/usr/lib/kylin-assistant/daemon/kylin-assistant-qsessiondbus-service

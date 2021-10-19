@@ -1,0 +1,38 @@
+<RCC>
+    <qresource prefix="/qmfile">
+        <file>translation/kylin-assistant_de.qm</file>
+        <file>translation/kylin-assistant_es.qm</file>
+        <file>translation/kylin-assistant_fr.qm</file>
+        <file>translation/kylin-assistant_ru.qm</file>
+        <file>translation/kylin-assistant_zh_CN.qm</file>
+    </qresource>
+    <qresource prefix="/imgres">
+        <file>img_res/Bluetooth.svg</file>
+        <file>img_res/graphics-card.svg</file>
+        <file>img_res/hard-disk.svg</file>
+        <file>img_res/host.svg</file>
+        <file>img_res/icon-cpu.svg</file>
+        <file>img_res/iso.svg</file>
+        <file>img_res/kernel-architecture.svg</file>
+        <file>img_res/kernel-version.svg</file>
+        <file>img_res/Machine-model.svg</file>
+        <file>img_res/manufacturer.svg</file>
+        <file>img_res/memory.svg</file>
+        <file>img_res/mother-board.svg</file>
+        <file>img_res/osversion.svg</file>
+        <file>img_res/network-card.svg</file>
+        <file>img_res/monitor.svg</file>
+        <file>img_res/processor.svg</file>
+        <file>img_res/SN.svg</file>
+        <file>img_res/soundcard.svg</file>
+        <file>img_res/system-bits.svg</file>
+        <file>img_res/ukui-occupation-map.svg</file>
+        <file>img_res/drivemanager.svg</file>
+        <file>img_res/hardwareparam.svg</file>
+        <file>img_res/hardwaremonitor.svg</file>
+        <file>img_res/wired.svg</file>
+        <file>img_res/wireless.svg</file>
+        <file>img_res/machineinfo.svg</file>
+        <file>img_res/ukui-occupation-map@2x.png</file>
+    </qresource>
+</RCC>

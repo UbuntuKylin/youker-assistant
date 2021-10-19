@@ -5,38 +5,44 @@ ToolKit provides some extended functions and users can query the hardware detail
 ![Fig 1 ToolKit-big](image/1.png)
 <br>
 
-## Cleanup
-It provides "Cache", "Cookies", and "Trace". Click "Start Clean". If the scaned item exist garbages, it will show on the window.
+## MachineInformation
 
-Click the corresponding icon and check the items to be cleaned in the popup.
+As shown in Figure 2, the general information of the whole machine is displayed.
 
-![Fig 2 Scan status-big](image/2.png)
+![Fig 2 Machine Information-big](image/1.png)
 <br>
 
-## Monitoring
-The interface as shown in Fig 3.
+##  HardwareParameters 
 
-![Fig 3 Monitoring-big](image/3.png)
-<br>
+1） Processor: displays details of the computer's processor. 
 
-## Driver
-The interface as shown in Fig 4. Here are all drivers in this computer.
+![Fig 3 Processor-big](image/2.png)
 
-![Fig 4 Driver-big](image/4.png)
-<br>
+2）Memory: displays details of the computer's memory.
 
-## Sysinfo
-- Local System: Obtain computer hardware details and system informations from the bottom of the system, as shown in Fig 5. The item won't be shown if this hardware doesn't exist or doesn't obtain its information.
+![Fig 4 Memory-big](image/3.png)
 
-![Fig 5 Sysinfo-big](image/5.png)
+3）Click other items to switch to the hardware details tab.
 
-- Hardware Information: Clicking a item at the left of the window to switch to its details. Take "HD" for example:
- 
-![Fig 6 Hard disk-big](image/6.png)
+![Fig 5 MotherBoard-big](image/4.png)
 
 <br>
 
-## Toolkits
-It's developed by the form of plugin, as shown in Fig 7.
- 
-![Fig 7 Toolkits-big](image/7.png)
+## HardwareMonitoring
+
+1）Equipment monitoring, users can view the temperature and utilization of hardware equipment.
+
+![Fig 6 Device Monitor-big](image/5.png)
+
+2）CPU frequency modulation, user can set CPU management policy.
+
+![Fig 7 CPU FM-big](image/6.png)
+<br>
+
+## DriveManager
+
+The interface is shown in Figure 9, which displays each driver information in the computer.
+
+![Fig 9 Drive Manager-big](image/8.png)
+<br>
+

@@ -1,5 +1,2 @@
 man/kylin-assistant.1
-man/kylin-assistant-session.1
-man/kylin-assistant-system.1
-man/kylin-assistant-backend.1
-man/youker-assistant.1
+man/kylin-assistant-systemdaemon.1

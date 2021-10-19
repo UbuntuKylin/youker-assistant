@@ -1,5 +1,6 @@
 TEMPLATE = subdirs
 SUBDIRS = \
-#    startupmanager\
-#    systemmonitor \
-    shredmanager
+				drivemanage \
+				hwmonitor \
+				hwparam \
+				machineinfo

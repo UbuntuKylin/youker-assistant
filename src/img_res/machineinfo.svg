@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59 (86127) - https://sketch.com -->
+    <title>icon/sidebar-localinformation-b</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icon/sidebar-localinformation-b" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.75">
+        <g id="icon/sidebar-localinformation--">
+            <circle id="椭圆形" stroke="#1F2022" cx="8" cy="8" r="7.5"></circle>
+            <circle id="椭圆形备份-2" stroke="#1F2022" cx="8" cy="8" r="4.5"></circle>
+            <circle id="椭圆形备份-3" fill="#1F2022" cx="8" cy="8" r="2"></circle>
+            <rect id="矩形" fill="#1F2022" x="7" y="1" width="1" height="7"></rect>
+            <rect id="矩形备份-4" fill="#1F2022" transform="translate(11.500000, 8.500000) rotate(90.000000) translate(-11.500000, -8.500000) " x="11" y="5" width="1" height="7"></rect>
+        </g>
+    </g>
+</svg>

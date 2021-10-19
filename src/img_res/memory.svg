@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59 (86127) - https://sketch.com -->
+    <title>icon/内存</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icon/内存" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M2,16 C1.44771525,16 1,15.5522847 1,15 L1,1 C1,0.44771525 1.44771525,0 2,0 L9.58578644,0 C9.85100293,0 10.1053568,0.10535684 10.2928932,0.292893219 L14.7071068,4.70710678 C14.8946432,4.89464316 15,5.14899707 15,5.41421356 L15,15 C15,15.5522847 14.5522847,16 14,16 L2,16 Z M9.58578644,1 L2,1 L2,15 L4,15 L4,15 L4,13 C4,12.4477153 4.44771525,12 5,12 L11,12 C11.5522847,12 12,12.4477153 12,13 L12,15 L14,15 L14,5.41421356 L9.58578644,1 Z M11,13 L5,13 L5,15 L11,15 L11,13 Z" id="形状结合" fill="#3790FA" fill-rule="nonzero"></path>
+        <polygon id="矩形" fill="#3790FA" points="4 3 5 3 5 8 4 8"></polygon>
+        <polygon id="矩形备份" fill="#3790FA" points="6 3 7 3 7 8 6 8"></polygon>
+    </g>
+</svg>

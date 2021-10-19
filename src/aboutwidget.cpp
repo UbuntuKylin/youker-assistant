@@ -1,5 +1,29 @@
+/*
+ * Copyright (C) 2021 KylinSoft Co., Ltd.
+ *
+ * Authors:
+ *  Yang Min yangmin@kylinos.cn
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "aboutwidget.h"
 #include "xatom-helper.h"
+#include "commondef.h"
+
+#include <QPainter>
+#include <QPainterPath>
 
 AboutWidget::AboutWidget(QWidget *parent):
     QDialog(parent)
@@ -19,15 +43,14 @@ AboutWidget::AboutWidget(QWidget *parent):
 
 AboutWidget::~AboutWidget()
 {
-
+    if (qtSettings) {
+        delete qtSettings;
+        qtSettings = nullptr;
+    }
 }
 
 void AboutWidget::initUI()
 {
-    QPalette palette;
-    palette.setColor(QPalette::Background,QColor(Qt::white));
-    this->setPalette(palette);
-
     title_icon = new QLabel(this);
     title_icon->setGeometry(8,8,24,24);
 
@@ -65,15 +88,12 @@ void AboutWidget::initUI()
     app_version->setAlignment(Qt::AlignCenter);
     app_version->setFont(font);
 
-    palette.setColor(QPalette::WindowText,QColor(89,89,89));
-    app_version->setPalette(palette);
-
     app_description = new QTextBrowser();
     app_description->setOpenLinks(true);
     app_description->setOpenExternalLinks(true);
     app_description->setReadOnly(true);
     app_description->setContextMenuPolicy (Qt::NoContextMenu);
-    app_description->setStyleSheet("QTextBrowser{border:none;color:#595959;}");
+    app_description->setStyleSheet("QTextBrowser{border:none;}");
 
     QScrollArea *scrollarea = new QScrollArea(this);
     scrollarea->setWidgetResizable(true);
@@ -81,6 +101,8 @@ void AboutWidget::initUI()
     scrollarea->setWidget(app_description);
     scrollarea->setGeometry(32,260,356,260);
     scrollarea->setStyleSheet("QScrollArea{border:none;}");
+
+    initThemeMode();
 }
 
 void AboutWidget::setAppIcon(const QString &text)
@@ -131,3 +153,34 @@ void AboutWidget::setAppDescription(const QString &text)
 //    Q_UNUSED(event);
 //    qDebug() << Q_FUNC_INFO;
 //}
+
+void AboutWidget::initThemeMode()
+{
+    const QByteArray idd(THEME_QT_SCHEMA);
+    if(QGSettings::isSchemaInstalled(idd)) {
+        qtSettings = new QGSettings(idd);
+    }
+    if (qtSettings) {
+        //监听主题改变
+        connect(qtSettings, &QGSettings::changed, this, [=](const QString &key)
+        {
+            if (key == "styleName") {
+            } else if ("iconThemeName" == key) {
+                setAppIcon("kylin-assistant");
+            }
+        });
+    }
+}
+
+void AboutWidget::paintEvent(QPaintEvent *event)
+{
+    QPainterPath path;
+    QPainter painter(this);
+
+    path.addRect(this->rect());
+    path.setFillRule(Qt::WindingFill);
+    painter.setBrush(this->palette().base());
+    painter.setPen(Qt::transparent);
+    painter.drawPath(path);
+    QDialog::paintEvent(event);
+}

@@ -2,3022 +2,1554 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="fr_FR">
 <context>
-    <name>AboutDialog</name>
+    <name>BatteryInfo</name>
     <message>
-        <location filename="../aboutdialog.cpp" line="100"/>
-        <source>About</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="44"/>
-        <source>About us</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="94"/>
-        <source>Kylin Assistant</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="138"/>
-        <source>&lt;p style=&apos;text-indent:15px&apos;&gt;Kylin Assistant is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="139"/>
-        <source>&lt;p style=&apos;text-indent:15px&apos;&gt;The software is still under development. Please visit  kylin-assistant</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="139"/>
-        <source> for more information. Welcome everyone to join with us.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="103"/>
-        <source>Contributor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="137"/>
-        <source>Maintainer:
-tang guang &lt;tangguang@kylinos.cn&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="160"/>
-        <source>Close</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>AboutWidget</name>
-    <message>
-        <location filename="../aboutwidget.cpp" line="43"/>
-        <source>Close</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../aboutwidget.cpp" line="120"/>
-        <source>VERSION</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>AlertDialog</name>
-    <message>
-        <location filename="../../component/alertdialog.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>BoxWidget</name>
-    <message>
-        <location filename="../boxwidget.cpp" line="139"/>
-        <location filename="../boxwidget.cpp" line="141"/>
-        <source>Software Center</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../boxwidget.cpp" line="158"/>
-        <location filename="../boxwidget.cpp" line="160"/>
-        <source>System Monitor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../boxwidget.cpp" line="222"/>
-        <source>No software center was found!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../boxwidget.cpp" line="236"/>
-        <source>No systemmonitor was found!</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Chart</name>
-    <message>
-        <location filename="../../component/chartwidget.cpp" line="70"/>
-        <source>two minute</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/chartwidget.cpp" line="71"/>
-        <source>one minute</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>CleanSubGroup</name>
-    <message>
-        <location filename="../../component/cleansubgroup.cpp" line="52"/>
-        <source>Custom</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>CleandetailVeiw</name>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="99"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="337"/>
-        <source>Computer scan in progress...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="110"/>
-        <source>Cancel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="126"/>
-        <source>Cleanup</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="144"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="157"/>
-        <source>Return</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="203"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="334"/>
-        <source>System cache</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="211"/>
-        <source>Clear package、thumbnails and browser cache</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="217"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="265"/>
-        <source>Details</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="250"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="336"/>
-        <source>Cookies</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="259"/>
-        <source>Clear internet、games、shopping history, etc.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="298"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="335"/>
-        <source>Historical trace</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="306"/>
-        <source>Clear browser and system usage traces</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="585"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="765"/>
-        <source> items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="617"/>
-        <source>There&apos;s nothing to clean up.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="779"/>
-        <source> historical traces</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="953"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="954"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="955"/>
-        <source>Cleaning up</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="958"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="959"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="960"/>
-        <source>Cleaning up..</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="963"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="964"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="965"/>
-        <source>Cleaning up....</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="593"/>
-        <source> historical use traces</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="585"/>
-        <source>Cleanable cookie </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="579"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="581"/>
-        <source>Cleanable cache </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="463"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="857"/>
-        <source>Computer cleanup in progress...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="623"/>
-        <source>Complete!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="709"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="710"/>
-        <source>Cleanable Cache</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="722"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="724"/>
-        <source>Cleanable Cookie</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="779"/>
-        <source>Clear </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="765"/>
-        <source>Clear cookie </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="749"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="751"/>
-        <source>Clear cache </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="870"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="871"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="872"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="968"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="969"/>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="970"/>
-        <source>Cleaning up......</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleandetailveiw.cpp" line="886"/>
-        <source>Clearance completed!</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>CleanerMainWidget</name>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="155"/>
-        <source>Start Clean</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="163"/>
-        <source>Cleanup Package Cache</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="163"/>
-        <source>Cleanup Software Center Cache</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="163"/>
-        <source>Cleanup Thumbnails Cache</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="163"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="315"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="338"/>
-        <source>Cleanup FireFox Cache</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="163"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="267"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="290"/>
-        <source>Cleanup Chromium Cache</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="202"/>
-        <source>Cleanup makes computers safer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="554"/>
-        <source>Cache Items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="165"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="322"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="345"/>
-        <source>Cleanup the Cookies saving in Firefox</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="165"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="274"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="297"/>
-        <source>Cleanup the Cookies saving in Chromium</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="575"/>
-        <source>Cookies Items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="99"/>
-        <source>Cookies</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="61"/>
-        <source>Cache</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="67"/>
-        <source>Clear package、thumbnails and browser cache</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="104"/>
-        <source>Clear internet、games、shopping history, etc.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="136"/>
-        <source>Trace</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="141"/>
-        <source>Clear browser and system usage traces</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="163"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="363"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="386"/>
-        <source>Cleanup Qaxbrowser Cache</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="165"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="370"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="393"/>
-        <source>Cleanup the Cookies saving in Qaxbrowser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="167"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="329"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="352"/>
-        <source>Clean up the Firefox Internet records</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="167"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="281"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="304"/>
-        <source>Clean up the Chromium Internet records</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="167"/>
-        <source>Clean up the recently opened documents records</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="167"/>
-        <source>Delete the command history</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="167"/>
-        <source>Delete the debug logs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="167"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="377"/>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="400"/>
-        <source>Clean up the Qaxbrowser Internet records</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="589"/>
-        <source>Trace Items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../cleaner/cleanermainwidget.cpp" line="522"/>
-        <source>Scan args is empty!</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>CpuFmwidget</name>
-    <message>
-        <location filename="../../component/cpufmwidget.cpp" line="194"/>
-        <source>apply</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/cpufmwidget.cpp" line="217"/>
-        <source>Whether to apply?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/cpufmwidget.cpp" line="66"/>
-        <source>Current average CPU core frequency</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/cpufmwidget.cpp" line="80"/>
-        <source>CPU Management Strategy :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/cpufmwidget.cpp" line="93"/>
-        <source>performance</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/cpufmwidget.cpp" line="106"/>
-        <source>powersave</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/cpufmwidget.cpp" line="119"/>
-        <source>userspace</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/cpufmwidget.cpp" line="132"/>
-        <source>schedutil</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/cpufmwidget.cpp" line="166"/>
-        <source>Adjust the CPU frequency to:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/cpufmwidget.cpp" line="182"/>
-        <source>CPU FM Note: The CPU FM function has some risks, please use it carefully! After FM is completed, restarting will restore the default configuration!</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>DrivePageWidget</name>
-    <message>
-        <location filename="../../component/drivepagewidget.cpp" line="91"/>
-        <source>Immediately available driver information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/drivepagewidget.cpp" line="161"/>
-        <source>Total, section </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/drivepagewidget.cpp" line="161"/>
-        <source> drivers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/drivepagewidget.cpp" line="171"/>
-        <location filename="../../component/drivepagewidget.cpp" line="179"/>
-        <location filename="../../component/drivepagewidget.cpp" line="183"/>
-        <location filename="../../component/drivepagewidget.cpp" line="199"/>
-        <location filename="../../component/drivepagewidget.cpp" line="203"/>
-        <source>MotherBoard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/drivepagewidget.cpp" line="175"/>
-        <source>Graphics-Card</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/drivepagewidget.cpp" line="187"/>
-        <location filename="../../component/drivepagewidget.cpp" line="195"/>
-        <location filename="../../component/drivepagewidget.cpp" line="211"/>
-        <location filename="../../component/drivepagewidget.cpp" line="221"/>
-        <source>Other</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/drivepagewidget.cpp" line="191"/>
-        <source>Wired-Network-Card</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/drivepagewidget.cpp" line="207"/>
-        <source>Sound-Card</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/drivepagewidget.cpp" line="216"/>
-        <source>Wireless-Network-Card</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Drivewidget</name>
-    <message>
-        <location filename="../drivewidget.cpp" line="61"/>
-        <source>All Drivers</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>EnergyWidget</name>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="225"/>
-        <source>CPU FM mode:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="236"/>
-        <source>Ondemand</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="246"/>
-        <source>Powersave</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="256"/>
-        <source>Performance</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="444"/>
-        <source>Adjust gamma</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="445"/>
-        <source>Adjust brightness</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="446"/>
-        <source>Time before session is considered idle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="447"/>
-        <source>Lock screen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="448"/>
-        <source>Lock delay</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="449"/>
-        <source>Battery critical low action</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="450"/>
-        <source>Laptop lid close action on battery</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="451"/>
-        <source>Laptop lid close action on AC</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="452"/>
-        <source>Sleep timeout PC when on battery</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="453"/>
-        <source>Sleep timeout PC when on AC</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="454"/>
-        <source>Sleep timeout display when on battery</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="455"/>
-        <source>Sleep timeout display when on AC</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="456"/>
-        <location filename="../../setting/energywidget.cpp" line="458"/>
-        <location filename="../../setting/energywidget.cpp" line="460"/>
-        <source>suspend</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="457"/>
-        <source>shutdown</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="459"/>
-        <location filename="../../setting/energywidget.cpp" line="461"/>
-        <source>nothing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="677"/>
-        <location filename="../../setting/energywidget.cpp" line="699"/>
-        <location filename="../../setting/energywidget.cpp" line="737"/>
-        <location filename="../../setting/energywidget.cpp" line="772"/>
-        <location filename="../../setting/energywidget.cpp" line="822"/>
-        <location filename="../../setting/energywidget.cpp" line="844"/>
-        <source>5 minutes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="677"/>
-        <location filename="../../setting/energywidget.cpp" line="699"/>
-        <location filename="../../setting/energywidget.cpp" line="737"/>
-        <location filename="../../setting/energywidget.cpp" line="772"/>
-        <location filename="../../setting/energywidget.cpp" line="822"/>
-        <location filename="../../setting/energywidget.cpp" line="844"/>
-        <source>10 minutes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="677"/>
-        <location filename="../../setting/energywidget.cpp" line="699"/>
-        <location filename="../../setting/energywidget.cpp" line="822"/>
-        <location filename="../../setting/energywidget.cpp" line="844"/>
-        <source>20 minutes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="677"/>
-        <location filename="../../setting/energywidget.cpp" line="699"/>
-        <location filename="../../setting/energywidget.cpp" line="737"/>
-        <location filename="../../setting/energywidget.cpp" line="772"/>
-        <location filename="../../setting/energywidget.cpp" line="822"/>
-        <location filename="../../setting/energywidget.cpp" line="844"/>
-        <source>Half an hour</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="677"/>
-        <location filename="../../setting/energywidget.cpp" line="699"/>
-        <location filename="../../setting/energywidget.cpp" line="737"/>
-        <location filename="../../setting/energywidget.cpp" line="772"/>
-        <location filename="../../setting/energywidget.cpp" line="822"/>
-        <location filename="../../setting/energywidget.cpp" line="844"/>
-        <source>1 hour</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="677"/>
-        <location filename="../../setting/energywidget.cpp" line="699"/>
-        <location filename="../../setting/energywidget.cpp" line="822"/>
-        <location filename="../../setting/energywidget.cpp" line="844"/>
-        <source>2 hours</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="677"/>
-        <location filename="../../setting/energywidget.cpp" line="699"/>
-        <location filename="../../setting/energywidget.cpp" line="737"/>
-        <location filename="../../setting/energywidget.cpp" line="822"/>
-        <location filename="../../setting/energywidget.cpp" line="844"/>
-        <source>never</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="737"/>
-        <location filename="../../setting/energywidget.cpp" line="772"/>
-        <source>1 minute</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="737"/>
-        <location filename="../../setting/energywidget.cpp" line="772"/>
-        <source>2 minutes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="737"/>
-        <location filename="../../setting/energywidget.cpp" line="772"/>
-        <source>3 minutes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="772"/>
-        <source>30 seconds</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/energywidget.cpp" line="772"/>
-        <source>Turn off the screen</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Fanwidget</name>
-    <message>
-        <location filename="../../component/fanwidget.cpp" line="102"/>
-        <location filename="../../component/fanwidget.cpp" line="204"/>
-        <source>The fan is working fine, averaging </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/fanwidget.cpp" line="102"/>
-        <location filename="../../component/fanwidget.cpp" line="111"/>
-        <location filename="../../component/fanwidget.cpp" line="145"/>
-        <location filename="../../component/fanwidget.cpp" line="204"/>
-        <location filename="../../component/fanwidget.cpp" line="205"/>
-        <location filename="../../component/fanwidget.cpp" line="211"/>
-        <source> rpm/s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/fanwidget.cpp" line="111"/>
-        <location filename="../../component/fanwidget.cpp" line="205"/>
-        <source>Maximum </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/fanwidget.cpp" line="111"/>
-        <location filename="../../component/fanwidget.cpp" line="205"/>
-        <source> rpm/s, minimum </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/fanwidget.cpp" line="151"/>
-        <source>current speed</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>FileManagerWidget</name>
-    <message>
-        <location filename="../../setting/filemanagerwidget.cpp" line="239"/>
-        <source>Display entry location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/filemanagerwidget.cpp" line="240"/>
-        <source>Automatically mount media</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/filemanagerwidget.cpp" line="241"/>
-        <source>Automatically open a folder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/filemanagerwidget.cpp" line="242"/>
-        <source>Prompt autorun programs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/filemanagerwidget.cpp" line="243"/>
-        <source>Thumbnail icon size (pixels)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/filemanagerwidget.cpp" line="244"/>
-        <source>Thumbnail cache time (days)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/filemanagerwidget.cpp" line="245"/>
-        <source>Maximum thumbnail cache size (MB)</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>FontWidget</name>
-    <message>
-        <location filename="../../setting/fontwidget.cpp" line="84"/>
-        <location filename="../../setting/fontwidget.cpp" line="85"/>
-        <location filename="../../setting/fontwidget.cpp" line="86"/>
-        <location filename="../../setting/fontwidget.cpp" line="87"/>
-        <location filename="../../setting/fontwidget.cpp" line="88"/>
-        <source>Click here to change font</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/fontwidget.cpp" line="279"/>
-        <source>Default Font</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/fontwidget.cpp" line="280"/>
-        <source>Desktop Font</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/fontwidget.cpp" line="281"/>
-        <source>Monospace Font</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/fontwidget.cpp" line="282"/>
-        <source>Document Font</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/fontwidget.cpp" line="283"/>
-        <source>Titlebar Font</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/fontwidget.cpp" line="284"/>
-        <source>Global Font Scaling</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/fontwidget.cpp" line="285"/>
-        <source>Hinting</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/fontwidget.cpp" line="286"/>
-        <source>Antialiasing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/fontwidget.cpp" line="287"/>
-        <location filename="../../setting/fontwidget.cpp" line="288"/>
-        <location filename="../../setting/fontwidget.cpp" line="289"/>
-        <location filename="../../setting/fontwidget.cpp" line="290"/>
-        <location filename="../../setting/fontwidget.cpp" line="291"/>
-        <source>Restore</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>GeneralDialog</name>
-    <message>
-        <location filename="../../component/generaldialog.cpp" line="31"/>
-        <source>Kylin Assistant</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/generaldialog.cpp" line="87"/>
-        <source>Cancel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/generaldialog.cpp" line="102"/>
-        <source>OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>IconWidget</name>
-    <message>
-        <location filename="../../setting/iconwidget.cpp" line="212"/>
-        <source>Icon theme</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/iconwidget.cpp" line="214"/>
-        <source>Computer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/iconwidget.cpp" line="215"/>
-        <source>Home Folder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/iconwidget.cpp" line="216"/>
-        <source>Network</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/iconwidget.cpp" line="217"/>
-        <source>Trash</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/iconwidget.cpp" line="218"/>
-        <source>Mounted Volumes</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>InfoGui</name>
-    <message>
-        <location filename="../../info/infogui.cpp" line="105"/>
-        <source>Get Info Failed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infogui.cpp" line="105"/>
-        <source>Device not exitst or Get Device is Empty</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infogui.cpp" line="154"/>
-        <source>DisplayMemSize</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>InfoWidget</name>
-    <message>
-        <location filename="../infowidget.cpp" line="127"/>
-        <source>Desktop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="135"/>
-        <source>CPU</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="143"/>
-        <source>Memory</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="159"/>
-        <source>HD</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="167"/>
-        <source>NIC</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="183"/>
-        <source>Audio</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="191"/>
-        <source>Input</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="199"/>
-        <source>Communication</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="207"/>
-        <source>Display</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="215"/>
-        <source>Multimedia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="238"/>
-        <source>CD-ROM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="366"/>
-        <source>Computer Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="421"/>
-        <location filename="../infowidget.cpp" line="423"/>
-        <source>Desktop Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="461"/>
-        <location filename="../infowidget.cpp" line="463"/>
-        <source>CPU Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="507"/>
-        <location filename="../infowidget.cpp" line="509"/>
-        <source>Memory Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="554"/>
-        <location filename="../infowidget.cpp" line="556"/>
-        <source>Memory Info %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="591"/>
-        <location filename="../infowidget.cpp" line="593"/>
-        <source>Board Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="641"/>
-        <location filename="../infowidget.cpp" line="643"/>
-        <source>HardWare Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="688"/>
-        <location filename="../infowidget.cpp" line="690"/>
-        <source>HardWare Info %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="746"/>
-        <location filename="../infowidget.cpp" line="748"/>
-        <source>NIC Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="797"/>
-        <location filename="../infowidget.cpp" line="799"/>
-        <source>NIC Info %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="846"/>
-        <location filename="../infowidget.cpp" line="848"/>
-        <source>Monitor Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="891"/>
-        <location filename="../infowidget.cpp" line="893"/>
-        <source>Monitor Info %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="940"/>
-        <location filename="../infowidget.cpp" line="942"/>
-        <source>Audio Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="985"/>
-        <location filename="../infowidget.cpp" line="987"/>
-        <source>Audio Info %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="1027"/>
-        <location filename="../infowidget.cpp" line="1036"/>
-        <source>Input Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="1080"/>
-        <source>Bluetooth Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="1070"/>
-        <location filename="../infowidget.cpp" line="1082"/>
-        <source>Communication Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="1116"/>
-        <location filename="../infowidget.cpp" line="1125"/>
-        <source>Display Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="1159"/>
-        <location filename="../infowidget.cpp" line="1168"/>
-        <source>Multimedia Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="1214"/>
-        <source>Battery Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="1279"/>
-        <location filename="../infowidget.cpp" line="1281"/>
-        <source>CD-ROM Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="1317"/>
-        <location filename="../infowidget.cpp" line="1319"/>
-        <source>CD-ROM Info %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="1468"/>
-        <source>Driver Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../infowidget.cpp" line="223"/>
+        <location filename="../../plugins/hwparam/batteryinfo.cpp" line="122"/>
         <source>Battery</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="117"/>
-        <source>Computer</source>
+        <location filename="../../plugins/hwparam/batteryinfo.cpp" line="166"/>
+        <source>Serail Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="151"/>
-        <source>Board</source>
+        <location filename="../../plugins/hwparam/batteryinfo.cpp" line="170"/>
+        <source>Manufacturer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="175"/>
+        <location filename="../../plugins/hwparam/batteryinfo.cpp" line="174"/>
+        <source>Model</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/batteryinfo.cpp" line="178"/>
+        <source>State</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/batteryinfo.cpp" line="182"/>
+        <source>Percentage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/batteryinfo.cpp" line="186"/>
+        <source>Energy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/batteryinfo.cpp" line="190"/>
+        <source>Energy Full</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/batteryinfo.cpp" line="194"/>
+        <source>Time To Empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/batteryinfo.cpp" line="198"/>
+        <source>Used Times</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BluetoothInfo</name>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="120"/>
+        <source>Bluetooth</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="164"/>
+        <source>Bus Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="168"/>
+        <source>Function</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="172"/>
+        <source>Frequency</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="176"/>
+        <source>Configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="180"/>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="184"/>
+        <source>ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="188"/>
+        <source>Model</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="192"/>
+        <source>Resource</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="196"/>
+        <source>Manufacturer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="200"/>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="204"/>
+        <source>Data Width</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="208"/>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="212"/>
+        <source>Driver</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="216"/>
+        <source>Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="220"/>
+        <source>Serial Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="224"/>
+        <source>Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="228"/>
+        <source>Link Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="232"/>
+        <source>Link Policy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="236"/>
+        <source>Capabilities</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="240"/>
+        <source>Bus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="244"/>
+        <source>SCO MTU</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="248"/>
+        <source>ALC MTU</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="252"/>
+        <source>Packet Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="256"/>
+        <source>Features</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/bluetoothinfo.cpp" line="277"/>
+        <source>Device not exitst or Get Device is Empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CDRomInfo</name>
+    <message>
+        <location filename="../../plugins/hwparam/cdrominfo.cpp" line="123"/>
+        <source>CD-ROM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/cdrominfo.cpp" line="167"/>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/cdrominfo.cpp" line="171"/>
+        <source>Manufacturer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/cdrominfo.cpp" line="175"/>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/cdrominfo.cpp" line="179"/>
+        <source>Model</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/cdrominfo.cpp" line="183"/>
+        <source>Serail Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/cdrominfo.cpp" line="187"/>
+        <source>Bus Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/cdrominfo.cpp" line="191"/>
+        <source>Driver</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/cdrominfo.cpp" line="195"/>
+        <source>Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/cdrominfo.cpp" line="199"/>
+        <source>Device Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/cdrominfo.cpp" line="220"/>
+        <source>Device not exitst or Get Device is Empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CameraInfo</name>
+    <message>
+        <location filename="../../plugins/hwparam/camerainfo.cpp" line="119"/>
+        <source>Camera</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/camerainfo.cpp" line="163"/>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/camerainfo.cpp" line="167"/>
+        <source>Resolution</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/camerainfo.cpp" line="171"/>
+        <source>Manufacturer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/camerainfo.cpp" line="175"/>
+        <source>Model</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/camerainfo.cpp" line="179"/>
+        <source>Interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/camerainfo.cpp" line="183"/>
+        <source>Driver</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/camerainfo.cpp" line="187"/>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/camerainfo.cpp" line="191"/>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/camerainfo.cpp" line="195"/>
+        <source>Bus Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/camerainfo.cpp" line="199"/>
+        <source>Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CpuFMPage</name>
+    <message>
+        <location filename="../../plugins/hwmonitor/cpufmpage.cpp" line="89"/>
+        <source>Current average CPU core frequency</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwmonitor/cpufmpage.cpp" line="100"/>
+        <source>CPU FM Note: The CPU FM function has some risks, please use it carefully! After FM is completed, restarting will restore the default configuration!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwmonitor/cpufmpage.cpp" line="118"/>
+        <source>Device not exitst or Get Device is Empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CpuFMSetWidget</name>
+    <message>
+        <location filename="../../plugins/hwmonitor/cpufmsetwidget.cpp" line="87"/>
+        <source>CPU Management Strategy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwmonitor/cpufmsetwidget.cpp" line="95"/>
+        <source>performance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwmonitor/cpufmsetwidget.cpp" line="102"/>
+        <source>powersave</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwmonitor/cpufmsetwidget.cpp" line="109"/>
+        <source>userspace</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwmonitor/cpufmsetwidget.cpp" line="116"/>
+        <source>schedutil</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwmonitor/cpufmsetwidget.cpp" line="123"/>
+        <source>ondemand</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwmonitor/cpufmsetwidget.cpp" line="130"/>
+        <source>conservative</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DeviceMonitorPage</name>
+    <message>
+        <location filename="../../plugins/hwmonitor/devicemonitorpage.cpp" line="48"/>
+        <source>The equipment is normal and the heat dissipation is good</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwmonitor/devicemonitorpage.cpp" line="49"/>
+        <source>Equipment temperature is high, please pay attention to heat dissipation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwmonitor/devicemonitorpage.cpp" line="50"/>
+        <source>Equipment temperature is abnormal, please pay attention to heat dissipation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwmonitor/devicemonitorpage.cpp" line="174"/>
+        <source>CPU Temp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwmonitor/devicemonitorpage.cpp" line="180"/>
+        <source>HARDDISK Temp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwmonitor/devicemonitorpage.cpp" line="186"/>
+        <source>GPU Temp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwmonitor/devicemonitorpage.cpp" line="192"/>
+        <source>DEV Temp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwmonitor/devicemonitorpage.cpp" line="221"/>
+        <source>DEV Usage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwmonitor/devicemonitorpage.cpp" line="209"/>
+        <source>CPU Usage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwmonitor/devicemonitorpage.cpp" line="215"/>
+        <source>Memory Usage</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DriveInfoPage</name>
+    <message>
+        <location filename="../../plugins/drivemanage/driveinfopage.cpp" line="101"/>
+        <source>Motherboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/drivemanage/driveinfopage.cpp" line="105"/>
+        <source>Graphics Card</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/drivemanage/driveinfopage.cpp" line="109"/>
+        <source>Wired Network Card</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/drivemanage/driveinfopage.cpp" line="113"/>
+        <source>Sound Card</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/drivemanage/driveinfopage.cpp" line="117"/>
+        <source>Wireless Network Card</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/drivemanage/driveinfopage.cpp" line="123"/>
+        <location filename="../../plugins/drivemanage/driveinfopage.cpp" line="127"/>
+        <source>Other</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DriveManage</name>
+    <message>
+        <location filename="../../plugins/drivemanage/drivemanage.cpp" line="43"/>
+        <source>DriveManager</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FanInfo</name>
+    <message>
+        <location filename="../../plugins/hwparam/faninfo.cpp" line="123"/>
+        <source>Fan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/faninfo.cpp" line="167"/>
+        <source>Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/faninfo.cpp" line="188"/>
+        <source>Device not exitst or Get Device is Empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>GraphicsCardInfo</name>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="122"/>
+        <source>Graphics Card</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="166"/>
+        <source>Manufacturer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="170"/>
+        <source>SubSystem</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="174"/>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="178"/>
+        <source>IsDiscrete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="182"/>
+        <source>Memory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="186"/>
+        <source>Video Memory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="190"/>
+        <source>Memory Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="194"/>
+        <source>Model</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="198"/>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="202"/>
+        <source>Bit Width</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="206"/>
+        <source>Funtion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="210"/>
+        <source>Clock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="214"/>
+        <source>Driver</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="218"/>
+        <source>Dbus Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="222"/>
+        <source>ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="226"/>
+        <source>Device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="230"/>
+        <source>GDDR Capacity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="234"/>
+        <source>EGL Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="238"/>
+        <source>EGL Client APIs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="242"/>
+        <source>GL Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="246"/>
+        <source>GLSL Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/graphicscardinfo.cpp" line="267"/>
+        <source>Device not exitst or Get Device is Empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>HWMonitorInfo</name>
+    <message>
+        <location filename="../../plugins/hwmonitor/hwmonitor.cpp" line="32"/>
+        <source>HardwareMonitor</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>HWMonitorWidget</name>
+    <message>
+        <location filename="../../plugins/hwmonitor/hwmonitorwidget.cpp" line="70"/>
+        <source>Device Monitor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwmonitor/hwmonitorwidget.cpp" line="79"/>
+        <source>CPU FM</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>HWParam</name>
+    <message>
+        <location filename="../../plugins/hwparam/hwparam.cpp" line="34"/>
+        <source>HardwareParam</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>HardDiskInfo</name>
+    <message>
+        <location filename="../../plugins/hwparam/harddiskinfo.cpp" line="122"/>
+        <source>Hard Disk Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/harddiskinfo.cpp" line="166"/>
+        <source>Manufacturer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/harddiskinfo.cpp" line="170"/>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/harddiskinfo.cpp" line="174"/>
+        <source>Capacity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/harddiskinfo.cpp" line="178"/>
+        <source>Used Times</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/harddiskinfo.cpp" line="182"/>
+        <source>Interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/harddiskinfo.cpp" line="188"/>
+        <source>Yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/harddiskinfo.cpp" line="190"/>
+        <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/harddiskinfo.cpp" line="192"/>
+        <source>Main Disk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/harddiskinfo.cpp" line="198"/>
+        <source>SSD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/harddiskinfo.cpp" line="200"/>
+        <source>HDD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/harddiskinfo.cpp" line="202"/>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/harddiskinfo.cpp" line="206"/>
+        <source>Serial Num</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/harddiskinfo.cpp" line="210"/>
+        <source>Model</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/harddiskinfo.cpp" line="214"/>
+        <source>Transfer Rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/harddiskinfo.cpp" line="218"/>
+        <source>Read Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/harddiskinfo.cpp" line="222"/>
+        <source>Write Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/harddiskinfo.cpp" line="226"/>
+        <source>Firmware Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/harddiskinfo.cpp" line="247"/>
+        <source>Device not exitst or Get Device is Empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>InfoPage</name>
+    <message>
+        <location filename="../../plugins/machineinfo/infopage.cpp" line="142"/>
+        <source>Manufacturer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/machineinfo/infopage.cpp" line="148"/>
+        <source>Machine Model</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/machineinfo/infopage.cpp" line="154"/>
+        <source>Serial Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/machineinfo/infopage.cpp" line="160"/>
+        <source>System Bits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/machineinfo/infopage.cpp" line="166"/>
+        <source>Kernel Arch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/machineinfo/infopage.cpp" line="172"/>
+        <source>Host Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/machineinfo/infopage.cpp" line="178"/>
+        <source>OS Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/machineinfo/infopage.cpp" line="184"/>
+        <source>Kernel Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/machineinfo/infopage.cpp" line="190"/>
+        <source>Processor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/machineinfo/infopage.cpp" line="196"/>
+        <source>Memory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/machineinfo/infopage.cpp" line="202"/>
+        <source>Mother Board</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/machineinfo/infopage.cpp" line="208"/>
+        <source>Hard Disk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/machineinfo/infopage.cpp" line="214"/>
+        <source>Graphics Card</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/machineinfo/infopage.cpp" line="226"/>
+        <source>Network Card</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/machineinfo/infopage.cpp" line="232"/>
+        <source>Sound Card</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/machineinfo/infopage.cpp" line="220"/>
+        <source>Monitor</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>KAAboutDialog</name>
+    <message>
+        <location filename="../kaaboutdialog.cpp" line="117"/>
+        <location filename="../kaaboutdialog.cpp" line="143"/>
+        <source>ToolKit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../kaaboutdialog.cpp" line="148"/>
+        <source>VERSION:  </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../kaaboutdialog.cpp" line="153"/>
+        <source>ToolKit provides some extended functions and users can query the hardware details of the current computer.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../kaaboutdialog.cpp" line="176"/>
+        <source>Service &amp; Support :</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>KAUsageItem</name>
+    <message>
+        <location filename="../../plugins/hwmonitor/kausageitem.cpp" line="64"/>
+        <source>Used</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwmonitor/kausageitem.cpp" line="66"/>
+        <source>Left</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>KDriveInfoItem</name>
+    <message>
+        <location filename="../../CommonControl/kdriveinfoitem.cpp" line="133"/>
+        <source>Copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>KInfoListItem</name>
+    <message>
+        <location filename="../../CommonControl/kinfolistitem.cpp" line="121"/>
+        <source>Copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>KLeftWidget</name>
+    <message>
+        <location filename="../kleftwidget.cpp" line="64"/>
+        <source>ToolKit</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>KRightWidget</name>
+    <message>
+        <location filename="../krightwidget.cpp" line="52"/>
+        <source>menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../krightwidget.cpp" line="58"/>
+        <source>minimize</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../krightwidget.cpp" line="64"/>
+        <source>close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../krightwidget.cpp" line="75"/>
+        <location filename="../krightwidget.cpp" line="89"/>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../krightwidget.cpp" line="76"/>
+        <location filename="../krightwidget.cpp" line="83"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../krightwidget.cpp" line="77"/>
+        <location filename="../krightwidget.cpp" line="96"/>
+        <source>Exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>KeyboardInfo</name>
+    <message>
+        <location filename="../../plugins/hwparam/keyboardinfo.cpp" line="123"/>
+        <source>Keyboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/keyboardinfo.cpp" line="167"/>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/keyboardinfo.cpp" line="175"/>
+        <source>Model</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/keyboardinfo.cpp" line="179"/>
+        <source>Manufacurer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/keyboardinfo.cpp" line="183"/>
+        <source>Interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/keyboardinfo.cpp" line="187"/>
+        <source>Driver</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/keyboardinfo.cpp" line="191"/>
+        <source>Device Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/keyboardinfo.cpp" line="212"/>
+        <source>Device not exitst or Get Device is Empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>LoadingWidget</name>
+    <message>
+        <location filename="../../CommonControl/loadingwidget.cpp" line="45"/>
+        <source>Scanning, please wait</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MachineInfo</name>
+    <message>
+        <location filename="../../plugins/machineinfo/machineinfo.cpp" line="36"/>
+        <source>MachineInfo</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MainInfoPage</name>
+    <message>
+        <location filename="../../plugins/hwparam/maininfopage.cpp" line="205"/>
+        <source>Processor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/maininfopage.cpp" line="225"/>
+        <source>Memory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/maininfopage.cpp" line="245"/>
+        <source>Graphics Card</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/maininfopage.cpp" line="265"/>
+        <source>Motherboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/maininfopage.cpp" line="285"/>
+        <source>Network Card</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/maininfopage.cpp" line="305"/>
+        <source>Hard Disk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/maininfopage.cpp" line="326"/>
         <source>Monitor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../infowidget.cpp" line="231"/>
-        <source>Sensor</source>
+        <location filename="../../plugins/hwparam/maininfopage.cpp" line="346"/>
+        <source>Sound Card</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>KylinFontDialog</name>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="274"/>
-        <source>Current Font</source>
+        <location filename="../../plugins/hwparam/maininfopage.cpp" line="366"/>
+        <source>Keyboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="275"/>
-        <source>Font</source>
+        <location filename="../../plugins/hwparam/maininfopage.cpp" line="386"/>
+        <source>Mouse</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="276"/>
-        <source>Style</source>
+        <location filename="../../plugins/hwparam/maininfopage.cpp" line="406"/>
+        <source>Battery</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="277"/>
-        <source>Size</source>
+        <location filename="../../plugins/hwparam/maininfopage.cpp" line="426"/>
+        <source>CD-ROM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="278"/>
-        <source>View</source>
+        <location filename="../../plugins/hwparam/maininfopage.cpp" line="446"/>
+        <source>Camera</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="279"/>
-        <source>OK</source>
+        <location filename="../../plugins/hwparam/maininfopage.cpp" line="466"/>
+        <source>Bluetooth</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="280"/>
-        <source>Cancel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="305"/>
-        <source>Tips</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="306"/>
-        <source>You haven&apos;t change the font, please choose the font!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/kylinfontdialog.cpp" line="48"/>
-        <source>Font Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>KylinMenu</name>
-    <message>
-        <location filename="../../component/kylinmenu.cpp" line="206"/>
-        <source>Check and update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/kylinmenu.cpp" line="207"/>
-        <source>Forum Help</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/kylinmenu.cpp" line="208"/>
-        <source>Feedback</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/kylinmenu.cpp" line="209"/>
-        <source>About us</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>KylinSwitcher</name>
-    <message>
-        <location filename="../../component/kylinswitcher.cpp" line="82"/>
-        <source>ON</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../component/kylinswitcher.cpp" line="91"/>
-        <source>OFF</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MListwidget</name>
-    <message>
-        <location filename="../listwidget.cpp" line="52"/>
-        <location filename="../listwidget.cpp" line="166"/>
-        <source>Local 
-System</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../listwidget.cpp" line="59"/>
-        <location filename="../listwidget.cpp" line="162"/>
-        <source>Hardware 
-Information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../listwidget.cpp" line="192"/>
-        <source>Computer Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MainBottomWidget</name>
-    <message>
-        <location filename="../mainbottomwidget.cpp" line="216"/>
-        <source>Current Version Number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainbottomwidget.cpp" line="217"/>
-        <source>Update to the lastest version, make it work better</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainbottomwidget.cpp" line="218"/>
-        <source>updating on the backend</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainbottomwidget.cpp" line="219"/>
-        <source>Common toolbox</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainbottomwidget.cpp" line="220"/>
-        <source>Fast and practical, making the system more personalized</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainbottomwidget.cpp" line="239"/>
-        <source>Upgrade is complete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainbottomwidget.cpp" line="241"/>
-        <source>Updating on the backend</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MainTopWidget</name>
-    <message>
-        <location filename="../maintopwidget.cpp" line="71"/>
-        <location filename="../maintopwidget.cpp" line="692"/>
-        <source>The lastest cleanup time is </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="77"/>
-        <location filename="../maintopwidget.cpp" line="830"/>
-        <source>The lastest scan time is </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="81"/>
-        <source>You have not implemented the one key scan and clean-up operation.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="192"/>
-        <source>Kylin Assistant</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="390"/>
-        <source>Back</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="391"/>
-        <location filename="../maintopwidget.cpp" line="512"/>
-        <location filename="../maintopwidget.cpp" line="523"/>
-        <location filename="../maintopwidget.cpp" line="786"/>
-        <source>Scanning......</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="394"/>
-        <source>Quick clean up system trash, saving disk space and improving the system efficiency!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="395"/>
-        <source>Scan Over</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="389"/>
-        <source>Cleans up</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="388"/>
-        <source>Scans</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="398"/>
-        <source>Cleans up history and caches</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="415"/>
-        <source>Clean OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="421"/>
-        <source>Cleaning: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="425"/>
-        <source>, Percent is: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="425"/>
-        <source>%, Status is: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="434"/>
-        <source>Clean Firefox history......</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="438"/>
-        <source>Clean Chromium history......</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="442"/>
-        <source>Clean system history......</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="447"/>
-        <source>Clean apt......</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="451"/>
-        <source>Start clean apt......</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="456"/>
-        <source>Clean Firefox Cookie:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="460"/>
-        <source>Clean Chromium Cookie:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="468"/>
-        <location filename="../maintopwidget.cpp" line="553"/>
-        <source> does not exist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="473"/>
-        <source>Chromium Browser is running......</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="481"/>
-        <source>Cache Scan OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="485"/>
-        <source>Cookies Scan OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="489"/>
-        <source>History Scan OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="493"/>
-        <source>Packages Scan OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="537"/>
-        <source>Error: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="540"/>
-        <source>Firefox Browser does not be installed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="544"/>
-        <source>Chromium Browser does not be installed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="548"/>
-        <source>Chromium Browser is running</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="570"/>
-        <source>Scanning:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="587"/>
-        <location filename="../maintopwidget.cpp" line="591"/>
-        <location filename="../maintopwidget.cpp" line="602"/>
-        <source> history trace; </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="587"/>
-        <location filename="../maintopwidget.cpp" line="612"/>
-        <source> browser cookies.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="591"/>
-        <location filename="../maintopwidget.cpp" line="616"/>
-        <source> browser cookies; </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="591"/>
-        <location filename="../maintopwidget.cpp" line="602"/>
-        <location filename="../maintopwidget.cpp" line="616"/>
-        <location filename="../maintopwidget.cpp" line="627"/>
-        <source> garbage.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="598"/>
-        <source> history trace.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="632"/>
-        <source>No garbage.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="677"/>
-        <source>Cleaning......</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="681"/>
-        <source>Garbage Cleanup OK......</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="684"/>
-        <source>History Cleanup OK......</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="687"/>
-        <source>Cookies Cleanup OK......</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="693"/>
-        <source>Cleanup Cookies:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="693"/>
-        <source>; Garbage:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="693"/>
-        <source>; Historical records:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="725"/>
-        <source>Cleaning up history trace of Firefox...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="728"/>
-        <source>Firefox history trace had been cleared!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="733"/>
-        <source>Cleaning up history trace of Chromium...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="736"/>
-        <source>Chromium history trace had been cleared!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="741"/>
-        <source>Cleaning up Cookies of Firefox...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="744"/>
-        <source>Firefox Cookies had been cleared!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="749"/>
-        <source>Cleaning up Cookies of Chromium...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="752"/>
-        <source>Chromium Cookies had been cleared!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="757"/>
-        <source>Apt cache had been cleared!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="760"/>
-        <source>Cleaning up Apt cache: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="765"/>
-        <source>Software Center cache had been cleared!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="768"/>
-        <source>Cleaning up Software Center cache: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../maintopwidget.cpp" line="815"/>
-        <location filename="../maintopwidget.cpp" line="869"/>
-        <source>Ready to Cleanup......</source>
+        <location filename="../../plugins/hwparam/maininfopage.cpp" line="486"/>
+        <source>Fan</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="148"/>
-        <location filename="../mainwindow.cpp" line="161"/>
-        <source>Help</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="149"/>
-        <location filename="../mainwindow.cpp" line="154"/>
-        <source>About</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="150"/>
-        <location filename="../mainwindow.cpp" line="168"/>
-        <source>Exit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="112"/>
-        <location filename="../mainwindow.cpp" line="1253"/>
+        <location filename="../mainwindow.cpp" line="44"/>
         <source>ToolKit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="1255"/>
-        <source>&lt;p&gt;ToolKit is a powerful system supporting software which is developed by Kylin team. Mainly for the naive user, it can help users manage the system. At present, It provides system junk scanning and cleaning, viewing the system hardware and software information, task manager, and some other functions.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="1257"/>
-        <source>&lt;p&gt;Service &amp; Support : &lt;a style=&apos;color: black;&apos; href=&apos;mailto://support@kylinos.cn&apos;&gt;support@kylinos.cn&lt;/a&gt;&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>MenuWidget</name>
+    <name>MemoryInfo</name>
     <message>
-        <location filename="../../setting/menuwidget.cpp" line="289"/>
-        <source>Launcher icon size</source>
+        <location filename="../../plugins/hwparam/memoryinfo.cpp" line="120"/>
+        <source>Memory Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/menuwidget.cpp" line="290"/>
-        <source>Launcher hide mode</source>
+        <location filename="../../plugins/hwparam/memoryinfo.cpp" line="164"/>
+        <source>Slot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/menuwidget.cpp" line="291"/>
-        <source>Display desktop icon</source>
+        <location filename="../../plugins/hwparam/memoryinfo.cpp" line="168"/>
+        <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/menuwidget.cpp" line="292"/>
-        <source>Launcher Transparency</source>
+        <location filename="../../plugins/hwparam/memoryinfo.cpp" line="172"/>
+        <source>Freq</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/menuwidget.cpp" line="293"/>
-        <source>Icon Background</source>
+        <location filename="../../plugins/hwparam/memoryinfo.cpp" line="176"/>
+        <source>Bus Width</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/menuwidget.cpp" line="294"/>
-        <source>Top panel icon size</source>
+        <location filename="../../plugins/hwparam/memoryinfo.cpp" line="180"/>
+        <source>Total Capacity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/menuwidget.cpp" line="295"/>
-        <source>Top panel auto hide</source>
+        <location filename="../../plugins/hwparam/memoryinfo.cpp" line="184"/>
+        <source>Used Capacity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/menuwidget.cpp" line="296"/>
-        <source>Bottom panel icon size</source>
+        <location filename="../../plugins/hwparam/memoryinfo.cpp" line="188"/>
+        <source>Serail Num</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/menuwidget.cpp" line="297"/>
-        <source>Bottom panel auto hide</source>
+        <location filename="../../plugins/hwparam/memoryinfo.cpp" line="192"/>
+        <source>Manufacturer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/menuwidget.cpp" line="298"/>
-        <source>Launcher position</source>
+        <location filename="../../plugins/hwparam/memoryinfo.cpp" line="196"/>
+        <source>Data Width</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/memoryinfo.cpp" line="200"/>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/memoryinfo.cpp" line="204"/>
+        <source>Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/memoryinfo.cpp" line="208"/>
+        <source>Config Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/memoryinfo.cpp" line="212"/>
+        <source>Channel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/memoryinfo.cpp" line="216"/>
+        <source>Array Handle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/memoryinfo.cpp" line="220"/>
+        <source>Part Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/memoryinfo.cpp" line="224"/>
+        <source>Physical ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/memoryinfo.cpp" line="245"/>
+        <source>Device not exitst or Get Device is Empty</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>MiddleWidget</name>
+    <name>MonitorInfo</name>
     <message>
-        <location filename="../middlewidget.cpp" line="110"/>
-        <source>ToolKit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../middlewidget.cpp" line="210"/>
-        <source>Cleanup</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../middlewidget.cpp" line="216"/>
+        <location filename="../../plugins/hwparam/monitorinfo.cpp" line="172"/>
         <source>Monitor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../middlewidget.cpp" line="221"/>
-        <source>Sysinfo</source>
+        <location filename="../../plugins/hwparam/monitorinfo.cpp" line="216"/>
+        <source>Manufacturer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../middlewidget.cpp" line="221"/>
-        <source>Toolkits</source>
+        <location filename="../../plugins/hwparam/monitorinfo.cpp" line="220"/>
+        <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../middlewidget.cpp" line="221"/>
-        <source>Drive</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Monitorwidget</name>
-    <message>
-        <location filename="../monitorwidget.cpp" line="51"/>
-        <source>Temperature</source>
+        <location filename="../../plugins/hwparam/monitorinfo.cpp" line="224"/>
+        <source>Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="61"/>
-        <source>Fan Speed</source>
+        <location filename="../../plugins/hwparam/monitorinfo.cpp" line="228"/>
+        <source>Ratio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../monitorwidget.cpp" line="70"/>
-        <source>CPU FM</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>MouseWidget</name>
-    <message>
-        <location filename="../../setting/mousewidget.cpp" line="106"/>
-        <source>Mouse Pointer Theme</source>
+        <location filename="../../plugins/hwparam/monitorinfo.cpp" line="232"/>
+        <source>Resolution</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/mousewidget.cpp" line="107"/>
-        <source>Cursor Pointer Size</source>
+        <location filename="../../plugins/hwparam/monitorinfo.cpp" line="236"/>
+        <source>MAX Resolution</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/mousewidget.cpp" line="108"/>
-        <source>Small Size</source>
+        <location filename="../../plugins/hwparam/monitorinfo.cpp" line="242"/>
+        <source>Yes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/mousewidget.cpp" line="109"/>
-        <source>Big Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>OptimizedWidget</name>
-    <message>
-        <location filename="../optimizedwidget.cpp" line="47"/>
-        <source>Optimization makes computers faster.</source>
+        <location filename="../../plugins/hwparam/monitorinfo.cpp" line="244"/>
+        <source>No</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../optimizedwidget.cpp" line="52"/>
-        <source>Cancel</source>
+        <location filename="../../plugins/hwparam/monitorinfo.cpp" line="246"/>
+        <source>Main Screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../optimizedwidget.cpp" line="66"/>
-        <source>Optimization</source>
+        <location filename="../../plugins/hwparam/monitorinfo.cpp" line="250"/>
+        <source>Interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../optimizedwidget.cpp" line="113"/>
-        <source>Boot up</source>
+        <location filename="../../plugins/hwparam/monitorinfo.cpp" line="254"/>
+        <source>Visible Area</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../optimizedwidget.cpp" line="117"/>
-        <source>Optimize boot-up software</source>
+        <location filename="../../plugins/hwparam/monitorinfo.cpp" line="258"/>
+        <source>Product Week</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../optimizedwidget.cpp" line="134"/>
-        <source>System acceleration</source>
+        <location filename="../../plugins/hwparam/monitorinfo.cpp" line="262"/>
+        <source>Product Year</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../optimizedwidget.cpp" line="138"/>
-        <source>Optimize system and memory settings</source>
+        <location filename="../../plugins/hwparam/monitorinfo.cpp" line="266"/>
+        <source>Gamma</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../optimizedwidget.cpp" line="155"/>
-        <source>Software acceleration</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../optimizedwidget.cpp" line="159"/>
-        <source>Log out of software not in use</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../optimizedwidget.cpp" line="174"/>
-        <source>Accelerate now</source>
+        <location filename="../../plugins/hwparam/monitorinfo.cpp" line="287"/>
+        <source>Device not exitst or Get Device is Empty</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>PanelWidget</name>
+    <name>MotherBoardInfo</name>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="354"/>
-        <source>Dash background blur type</source>
+        <location filename="../../plugins/hwparam/motherboardinfo.cpp" line="122"/>
+        <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="355"/>
-        <source>Panel Transparency</source>
+        <location filename="../../plugins/hwparam/motherboardinfo.cpp" line="126"/>
+        <source>Manufacturer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="356"/>
-        <source>Date &amp; time format</source>
+        <location filename="../../plugins/hwparam/motherboardinfo.cpp" line="134"/>
+        <source>Chipset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="357"/>
-        <source>Display seconds</source>
+        <location filename="../../plugins/hwparam/motherboardinfo.cpp" line="138"/>
+        <source>Serial Num</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="358"/>
-        <source>Display week</source>
+        <location filename="../../plugins/hwparam/motherboardinfo.cpp" line="163"/>
+        <source>Device not exitst or Get Device is Empty</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="359"/>
-        <source>Display the date</source>
+        <location filename="../../plugins/hwparam/motherboardinfo.cpp" line="130"/>
+        <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="360"/>
-        <source>Display battery icon</source>
+        <location filename="../../plugins/hwparam/motherboardinfo.cpp" line="142"/>
+        <source>Publish Date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="361"/>
-        <source>Display battery percentage</source>
+        <location filename="../../plugins/hwparam/motherboardinfo.cpp" line="146"/>
+        <source>BIOS Manufacturer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="362"/>
-        <source>Display battery remaining time</source>
+        <location filename="../../plugins/hwparam/motherboardinfo.cpp" line="150"/>
+        <source>BIOS Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MouseInfo</name>
+    <message>
+        <location filename="../../plugins/hwparam/mouseinfo.cpp" line="123"/>
+        <source>Mouse</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="364"/>
-        <source>Smart blur</source>
+        <location filename="../../plugins/hwparam/mouseinfo.cpp" line="167"/>
+        <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="365"/>
-        <source>Static blur</source>
+        <location filename="../../plugins/hwparam/mouseinfo.cpp" line="175"/>
+        <source>Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="366"/>
-        <source>Clear</source>
+        <location filename="../../plugins/hwparam/mouseinfo.cpp" line="179"/>
+        <source>Manufacurer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="368"/>
-        <source>Show applications</source>
+        <location filename="../../plugins/hwparam/mouseinfo.cpp" line="183"/>
+        <source>Interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="369"/>
-        <source>Show system</source>
+        <location filename="../../plugins/hwparam/mouseinfo.cpp" line="187"/>
+        <source>Driver</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="371"/>
-        <source>Show places</source>
+        <location filename="../../plugins/hwparam/mouseinfo.cpp" line="191"/>
+        <source>Device Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../setting/panelwidget.cpp" line="370"/>
-        <source>Show icon</source>
+        <location filename="../../plugins/hwparam/mouseinfo.cpp" line="212"/>
+        <source>Device not exitst or Get Device is Empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NetCardInfo</name>
+    <message>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="120"/>
+        <source>Network Card</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="164"/>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="170"/>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="172"/>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="174"/>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="170"/>
+        <source>Wired</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="172"/>
+        <source>Wireless</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="179"/>
+        <source>Manufacturer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="183"/>
+        <source>Bus Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="187"/>
+        <source>MAC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="191"/>
+        <source>Driver</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="195"/>
+        <source>Link Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="199"/>
+        <source>MTU</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="203"/>
+        <source>IP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="207"/>
+        <source>Model</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="211"/>
+        <source>Subnet Mask</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="215"/>
+        <source>Gateway</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="219"/>
+        <source>DNS Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="223"/>
+        <source>Bytes Received</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="227"/>
+        <source>Bytes Sent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/netcardinfo.cpp" line="248"/>
+        <source>Device not exitst or Get Device is Empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ProcessorInfo</name>
+    <message>
+        <location filename="../../plugins/hwparam/processorinfo.cpp" line="121"/>
+        <source>Processor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/processorinfo.cpp" line="145"/>
+        <source>Slot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/processorinfo.cpp" line="125"/>
+        <source>Manufacturer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/processorinfo.cpp" line="129"/>
+        <source>Architecture</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/processorinfo.cpp" line="133"/>
+        <source>Core Num</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/processorinfo.cpp" line="137"/>
+        <source>Core Online Num</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/processorinfo.cpp" line="141"/>
+        <source>Thread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/processorinfo.cpp" line="149"/>
+        <source>Max Frequency</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/processorinfo.cpp" line="153"/>
+        <source>Frequency</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/processorinfo.cpp" line="157"/>
+        <source>L1 Cache</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/processorinfo.cpp" line="161"/>
+        <source>L1d Cache</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/processorinfo.cpp" line="165"/>
+        <source>L1i Cache</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/processorinfo.cpp" line="169"/>
+        <source>L2 Cache</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/processorinfo.cpp" line="173"/>
+        <source>L3 Cache</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/processorinfo.cpp" line="177"/>
+        <source>Instruction Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/processorinfo.cpp" line="181"/>
+        <source>EXT Instruction Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../plugins/hwparam/processorinfo.cpp" line="185"/>
+        <source>Used</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../topbasewidget.cpp" line="65"/>
-        <source>Choose the theme what you want</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="66"/>
-        <source>Set the desktop icon theme and the visibility of desktop icons</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="67"/>
-        <source>Replace the theme and size of the mouse pointer, and theme change need to restart system</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="68"/>
-        <source>Set the sound theme you want</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="69"/>
-        <source>Setting the panel mode of auto hide and icon size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="70"/>
-        <source>Manage display of the start menu</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="71"/>
-        <source>Window Manager settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="72"/>
-        <source>According to personal preferences to set the system default font, click the  &apos;Restore&apos; button, can be restored to the state before the font settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="73"/>
-        <source>Setting the relevant properties of your touchpad,make the operation more convenient</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="74"/>
-        <source>Save energy to let the computer longer standby time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="75"/>
-        <source>Manage the file manager. Tips: if the thumbnail&apos;s cache time or size is set to -1, it will not be checked</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="29"/>
-        <location filename="../../info/infoitemline.cpp" line="197"/>
-        <source>Audio Model</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="31"/>
-        <location filename="../../info/infoitemline.cpp" line="111"/>
-        <location filename="../../info/infoitemline.cpp" line="124"/>
-        <location filename="../../info/infoitemline.cpp" line="240"/>
-        <location filename="../../info/infoitemline.cpp" line="285"/>
-        <location filename="../../info/infoitemline.cpp" line="303"/>
-        <location filename="../../info/infoitemline.cpp" line="330"/>
-        <location filename="../../info/infoitemline.cpp" line="378"/>
-        <source>Vendor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="33"/>
-        <location filename="../../info/infoitemline.cpp" line="261"/>
-        <location filename="../../info/infoitemline.cpp" line="291"/>
-        <location filename="../../info/infoitemline.cpp" line="309"/>
-        <location filename="../../info/infoitemline.cpp" line="382"/>
-        <source>Bus Address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="35"/>
-        <source>Audio Driver</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="38"/>
-        <location filename="../../info/infoitemline.cpp" line="113"/>
-        <location filename="../../info/infoitemline.cpp" line="229"/>
-        <location filename="../../info/infoitemline.cpp" line="293"/>
-        <source>Device Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="40"/>
-        <location filename="../../info/infoitemline.cpp" line="424"/>
-        <source>Manufacturer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="81"/>
-        <location filename="../../info/infoitemline.cpp" line="332"/>
-        <source>Model</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="83"/>
-        <source>Technology</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="85"/>
-        <source>Voltage</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="87"/>
-        <source>Energy Designed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="89"/>
-        <source>Energy Full</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="91"/>
-        <source>Energy Now</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="93"/>
-        <location filename="../../info/infoitemline.cpp" line="100"/>
-        <location filename="../../info/infoitemline.cpp" line="117"/>
-        <location filename="../../info/infoitemline.cpp" line="126"/>
-        <location filename="../../info/infoitemline.cpp" line="233"/>
-        <location filename="../../info/infoitemline.cpp" line="242"/>
-        <location filename="../../info/infoitemline.cpp" line="313"/>
-        <location filename="../../info/infoitemline.cpp" line="336"/>
-        <source>Serial Number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="102"/>
-        <source>BIOS Vendor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="104"/>
-        <source>BIOS Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="106"/>
-        <source>Release Date</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="109"/>
-        <source>CD-ROM Model</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="115"/>
-        <location filename="../../info/infoitemline.cpp" line="231"/>
-        <source>Firmware Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="122"/>
-        <location filename="../../info/infoitemline.cpp" line="170"/>
-        <source>CPU</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="128"/>
-        <source>Socket/Slot</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="132"/>
-        <source>Current Frequency</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="134"/>
-        <source>FSB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="140"/>
-        <source>Thread</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="142"/>
-        <source>L1 Cache</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="144"/>
-        <source>L2 Cache</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="150"/>
-        <source>phytium</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="152"/>
-        <source>huawei</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="154"/>
-        <source>hygon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="156"/>
-        <source>zhaoxin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="158"/>
-        <source>loongson</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="160"/>
-        <source>4 cores</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="162"/>
-        <source>4 thread/core</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="164"/>
-        <location filename="../infowidget.cpp" line="532"/>
-        <source>Wrong info from firmware</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="96"/>
-        <source>Board Model</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="98"/>
-        <source>Board Vendor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="119"/>
-        <source>SCSI ID</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="130"/>
-        <source>Max Frequency</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="136"/>
-        <source>Core Num</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="138"/>
-        <source>Core Online Num</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="168"/>
-        <source>Environment</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="172"/>
-        <source>Host Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="174"/>
-        <source>Memory Capacity</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="176"/>
-        <source>Terminal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="178"/>
-        <source>Distribution</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="180"/>
-        <source>Language</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="182"/>
-        <source>User</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="184"/>
-        <source>Home Folder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="187"/>
-        <source>Host bridge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="189"/>
-        <source>VGA Model</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="191"/>
-        <source>USB Model</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="193"/>
-        <source>Communication Model</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="195"/>
-        <source>Ethernet Model</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="199"/>
-        <source>PCI bridge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="201"/>
-        <source>ISA bridge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="203"/>
-        <source>SATA Model</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="205"/>
-        <source>SMBus</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="207"/>
-        <source>System peripheral</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="209"/>
-        <source>Driver in use</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="211"/>
-        <source>existing drivers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="213"/>
-        <source>IDE interface</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="215"/>
-        <source>SP controller</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="217"/>
-        <source>Network controller</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="219"/>
-        <source>Multimedia audio controller</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="223"/>
-        <source>HDD Model</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="225"/>
-        <source>HDD Vendor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="227"/>
-        <source>HDD Capacity</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="236"/>
-        <source>Slot Number</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="238"/>
-        <source>Memory Model</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="244"/>
-        <source>Memory Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="246"/>
-        <source>Data Width</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="248"/>
-        <source>Memory Info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="250"/>
-        <source>Memory Speed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="253"/>
-        <source>Graphics Card Model</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="255"/>
-        <source>Current Graphics Card</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="257"/>
-        <source>Graphics Card Vendor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="259"/>
-        <source>Graphics Driver</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="263"/>
-        <source>Gamma</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="265"/>
-        <source>Screen Size(inch)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="267"/>
-        <source>Max Resolution</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="269"/>
-        <source>Current Interface</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="271"/>
-        <source>Monitor Model</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="273"/>
-        <source>Visual Area</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="275"/>
-        <source>Support Interface</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="277"/>
-        <source>Monitor Vendor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="279"/>
-        <source>Date/Week</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="281"/>
-        <source>Date/Year</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="287"/>
-        <source>NIC Model</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="289"/>
-        <source>NIC Driver</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="295"/>
-        <location filename="../../info/infoitemline.cpp" line="315"/>
-        <source>IP Address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="297"/>
-        <source>Mac Address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="299"/>
-        <source>Connection Status</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="301"/>
-        <source>Max Bandwidth</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="305"/>
-        <source>WLan NIC Driver</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="307"/>
-        <source>WLan NIC Model</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="311"/>
-        <source>Device Name:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="317"/>
-        <source>VNIC</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="320"/>
-        <source>NetType</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="323"/>
-        <source>Ethernet interface</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="326"/>
-        <source>Wireless interface</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="334"/>
-        <source>Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="338"/>
-        <source>Hostname</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="340"/>
-        <source>Running Time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="342"/>
-        <source>OS Types</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="344"/>
-        <source>OS Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="346"/>
-        <source>Kernel Bit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="348"/>
-        <source>Kernel Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="350"/>
-        <source>Kernel Arch</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="352"/>
-        <source>32bit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="354"/>
-        <source>64bit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="356"/>
-        <source>YHKylin community</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="359"/>
-        <source>Memory reference voltage</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="361"/>
-        <source>SATA controller voltage</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="363"/>
-        <source>Memory voltage</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="365"/>
-        <source>CPU pin voltage</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="367"/>
-        <source>Bridge voltage</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="369"/>
-        <source>CPU core voltage</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="371"/>
-        <source>CPU temperature</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="373"/>
-        <source>Motherboard temperature</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="375"/>
-        <source>CPU fan speed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="380"/>
-        <source>Dev Type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="384"/>
-        <source>Hardware Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="388"/>
-        <source>Product</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="402"/>
-        <source>GDDR Capacity</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="404"/>
-        <source>EGL Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="406"/>
-        <source>EGL Client API</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="408"/>
-        <source>GL Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="410"/>
-        <source>GLSL Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="414"/>
-        <source>Hardware Address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="418"/>
-        <source>Bluetooth Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="420"/>
-        <source>Bus Type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="422"/>
-        <source>Device Class</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="426"/>
-        <source>Service Classes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="386"/>
-        <source>Capabilities</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="390"/>
-        <source>Configuration</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="392"/>
-        <source>Physical ID</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="394"/>
-        <source>Clock</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="396"/>
-        <source>Resources</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../info/infoitemline.cpp" line="398"/>
-        <source>Width</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/settingdelegate.cpp" line="30"/>
-        <source>ThemeSetting</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/settingdelegate.cpp" line="33"/>
-        <source>IconSetting</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/settingdelegate.cpp" line="36"/>
-        <source>MousePointer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/settingdelegate.cpp" line="39"/>
-        <source>SoundEffect</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/settingdelegate.cpp" line="42"/>
-        <source>Panel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/settingdelegate.cpp" line="45"/>
-        <source>StartMenu</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/settingdelegate.cpp" line="48"/>
-        <source>Window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/settingdelegate.cpp" line="51"/>
-        <source>FontSetting</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/settingdelegate.cpp" line="54"/>
-        <source>Touchpad</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/settingdelegate.cpp" line="57"/>
-        <source>Energy saving</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/settingdelegate.cpp" line="60"/>
-        <source>File manager</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../main.cpp" line="182"/>
+        <location filename="../main.cpp" line="63"/>
         <source>app is already running!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>QUIBO</name>
+    <name>VoiceCardInfo</name>
     <message>
-        <location filename="../../component/quibo.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SelectListWidget</name>
-    <message>
-        <location filename="../../component/selectlistwidget.cpp" line="54"/>
-        <location filename="../../component/selectlistwidget.cpp" line="82"/>
-        <location filename="../../component/selectlistwidget.cpp" line="175"/>
-        <source>Clean Items:</source>
+        <location filename="../../plugins/hwparam/voicecardinfo.cpp" line="120"/>
+        <source>Sound Card</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../component/selectlistwidget.cpp" line="96"/>
-        <source>No items to clean</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ShredDialog</name>
-    <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="33"/>
-        <source>Kylin Shred Manager</source>
+        <location filename="../../plugins/hwparam/voicecardinfo.cpp" line="164"/>
+        <source>Bus Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="44"/>
-        <source>Shred Manager</source>
+        <location filename="../../plugins/hwparam/voicecardinfo.cpp" line="168"/>
+        <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="148"/>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="305"/>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="345"/>
-        <source>No file selected to be shredded</source>
+        <location filename="../../plugins/hwparam/voicecardinfo.cpp" line="172"/>
+        <source>Drive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="149"/>
-        <source>Shred File</source>
+        <location filename="../../plugins/hwparam/voicecardinfo.cpp" line="176"/>
+        <source>Model</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="150"/>
-        <source>Deselect</source>
+        <location filename="../../plugins/hwparam/voicecardinfo.cpp" line="180"/>
+        <source>Manufacurer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="151"/>
-        <source>Note: The file shredding process cannot be cancelled, please operate with caution!</source>
+        <location filename="../../plugins/hwparam/voicecardinfo.cpp" line="184"/>
+        <source>Clock</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="152"/>
-        <source>Shattering...</source>
+        <location filename="../../plugins/hwparam/voicecardinfo.cpp" line="188"/>
+        <source>Bit Width</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="254"/>
-        <source>Select file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="254"/>
-        <source>All Files(*)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="281"/>
-        <source>Select file!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="304"/>
-        <source>Shred successfully!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/shredmanager/shreddialog.cpp" line="315"/>
-        <source>Shred failed!</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ShredManager</name>
-    <message>
-        <location filename="../../plugins/shredmanager/shredmanager.cpp" line="50"/>
-        <source>Shred Manager</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../plugins/shredmanager/shredmanager.cpp" line="55"/>
-        <source>Delete files makes it unable to recover</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SoundWidget</name>
-    <message>
-        <location filename="../../setting/soundwidget.cpp" line="136"/>
-        <source>Sound theme</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/soundwidget.cpp" line="137"/>
-        <source>Login tone</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/soundwidget.cpp" line="138"/>
-        <source>Event sounds</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/soundwidget.cpp" line="139"/>
-        <source>Input feedback sounds</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Temperature</name>
-    <message>
-        <location filename="../../component/temperature.cpp" line="105"/>
-        <source>Normal temperature, good heat dissipation.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ThemeWidget</name>
-    <message>
-        <location filename="../../setting/themewidget.cpp" line="41"/>
-        <source>Please choose theme which you need</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>TopBaseWidget</name>
-    <message>
-        <location filename="../topbasewidget.cpp" line="230"/>
-        <source>There may be a mistake.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="246"/>
-        <source>Kylin Assistant</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../topbasewidget.cpp" line="334"/>
-        <source>Back</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>TouchpadWidget</name>
-    <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="195"/>
-        <source>Enable touchpad</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="196"/>
-        <source>Enable horizontal scrolling</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="197"/>
-        <source>Scrollbar type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="198"/>
-        <source>Touchpad scrolling mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="199"/>
-        <source>Features Type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="200"/>
-        <source>Standard Type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="201"/>
-        <source>Disabled</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="202"/>
-        <source>Edge Scrolling</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/touchpadwidget.cpp" line="203"/>
-        <source>Two-finger Scrolling</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>WindowWidget</name>
-    <message>
-        <location filename="../../setting/windowwidget.cpp" line="186"/>
-        <source>Arrangement of buttons on the titlebar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/windowwidget.cpp" line="187"/>
-        <source>Menu with icons</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/windowwidget.cpp" line="188"/>
-        <source>Titlebar mouse wheel action</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/windowwidget.cpp" line="189"/>
-        <source>Titlebar double-click action</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/windowwidget.cpp" line="190"/>
-        <source>Titlebar middle-click action</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/windowwidget.cpp" line="191"/>
-        <source>Titlebar right-click action</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/windowwidget.cpp" line="192"/>
-        <source>Left</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../setting/windowwidget.cpp" line="193"/>
-        <source>Right</source>
+        <location filename="../../plugins/hwparam/voicecardinfo.cpp" line="209"/>
+        <source>Device not exitst or Get Device is Empty</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

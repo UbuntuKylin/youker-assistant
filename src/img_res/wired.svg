@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59 (86127) - https://sketch.com -->
+    <title>icon/有线-蓝</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icon/有线-蓝" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="network-wired-symbolic" transform="translate(0.000000, 1.000000)" fill="#3790FA" fill-rule="nonzero">
+            <g id="编组">
+                <path d="M1,5 C1,4.4 1.4,4 2,4 L10,4 L10,3 L2,3 C0.9,3 0,3.9 0,5 L0,10 C0,11.1 0.9,12 2,12 L7,12 L7,14 L4,14 L4,15 L11,15 L11,14 L8,14 L8,12 L12,12 L12,11 L2,11 C1.4,11 1,10.6 1,10 L1,5 Z" id="路径"></path>
+                <rect id="矩形" x="12" y="0" width="1" height="2"></rect>
+                <rect id="矩形" x="14" y="0" width="1" height="2"></rect>
+                <path d="M15,2 L15,5 C15,5.6 14.6,6 14,6 L13,6 C12.4,6 12,5.6 12,5 L12,2 L11,2 L11,5 C11,6.1 11.9,7 13,7 L13,7 L13,15 L14,15 L14,7 L14,7 C15.1,7 16,6.1 16,5 L16,2 L15,2 Z" id="路径"></path>
+                <rect id="矩形" x="13" y="3" width="1" height="2"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

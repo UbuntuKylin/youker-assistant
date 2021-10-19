@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59 (86127) - https://sketch.com -->
+    <title>icon/主板-蓝</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icon/主板-蓝" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="显卡-蓝" transform="translate(0.000000, 2.000000)">
+            <path d="M15,0 C15.5522847,0 16,0.44771525 16,1 L16,12 C16,12.5522847 15.5522847,13 15,13 L1,13 C0.44771525,13 0,12.5522847 0,12 L0,1 C0,0.44771525 0.44771525,0 1,0 L15,0 Z M1,1 L1,12 L15,12 L15,1 L1,1 Z" id="矩形" fill="#3790FA" fill-rule="nonzero"></path>
+            <rect id="矩形" stroke="#3790FA" x="9.5" y="3.5" width="3" height="3" rx="1.5"></rect>
+            <path d="M7.5,4.5 L7.5,5.5 L-0.5,5.5 L-0.5,4.5 L7.5,4.5 Z M7,5 L6.5,5.5 L6.5,4.5 L7,5 Z" id="矩形" fill="#3790FA" fill-rule="nonzero" transform="translate(3.500000, 5.000000) rotate(90.000000) translate(-3.500000, -5.000000) "></path>
+            <path d="M10.5,4.5 L10.5,5.5 L2.5,5.5 L2.5,4.5 L10.5,4.5 Z M10,5 L9.5,5.5 L9.5,4.5 L10,5 Z" id="矩形备份" fill="#3790FA" fill-rule="nonzero" transform="translate(6.500000, 5.000000) rotate(90.000000) translate(-6.500000, -5.000000) "></path>
+            <path d="M16,9 L16,10 L1,10 L1,9 L16,9 Z M15.5,9.5 L15,10 L15,9 L15.5,9.5 Z" id="矩形备份-2" fill="#3790FA" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

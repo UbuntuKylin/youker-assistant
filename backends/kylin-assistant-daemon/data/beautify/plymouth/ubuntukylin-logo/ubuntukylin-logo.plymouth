@@ -1,8 +1,0 @@
-[Plymouth Theme]
-Name=My Theme
-Description=This theme is a template to build on
-ModuleName=script
-
-[script]
-ImageDir=/lib/plymouth/themes/ubuntukylin-logo
-ScriptFile=/lib/plymouth/themes/ubuntukylin-logo/ubuntukylin-logo.script

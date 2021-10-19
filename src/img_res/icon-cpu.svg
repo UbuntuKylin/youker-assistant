@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="42px" height="42px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59 (86127) - https://sketch.com -->
+    <title>icon-CPU</title>
+    <desc>Created with Sketch.</desc>
+    <g id="助手" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="硬件监测-CPU调频-性能模式" transform="translate(-727.000000, -381.000000)">
+            <g id="icon-CPU" transform="translate(727.000000, 381.000000)">
+                <rect id="矩形备份-10" fill="#3790FA" fill-rule="nonzero" opacity="0.196913086" x="0" y="0" width="42" height="42" rx="10"></rect>
+                <rect id="矩形" stroke="#3790FA" stroke-width="2" x="11" y="11" width="20" height="20" rx="2"></rect>
+                <rect id="矩形" fill="#3790FA" x="15" y="15" width="12" height="12" rx="1"></rect>
+                <rect id="矩形" fill="#3790FA" x="14" y="7" width="2" height="3"></rect>
+                <rect id="矩形备份-12" fill="#3790FA" x="7" y="14" width="3" height="2"></rect>
+                <rect id="矩形备份-15" fill="#3790FA" x="32" y="14" width="3" height="2"></rect>
+                <rect id="矩形备份-14" fill="#3790FA" x="7" y="20" width="3" height="2"></rect>
+                <rect id="矩形备份-16" fill="#3790FA" x="32" y="20" width="3" height="2"></rect>
+                <rect id="矩形备份-13" fill="#3790FA" x="7" y="26" width="3" height="2"></rect>
+                <rect id="矩形备份-17" fill="#3790FA" x="32" y="26" width="3" height="2"></rect>
+                <rect id="矩形备份-6" fill="#3790FA" x="14" y="32" width="2" height="3"></rect>
+                <rect id="矩形备份-5" fill="#3790FA" x="20" y="7" width="2" height="3"></rect>
+                <rect id="矩形备份-7" fill="#3790FA" x="20" y="32" width="2" height="3"></rect>
+                <rect id="矩形备份-4" fill="#3790FA" x="26" y="7" width="2" height="3"></rect>
+                <rect id="矩形备份-8" fill="#3790FA" x="26" y="32" width="2" height="3"></rect>
+            </g>
+        </g>
+    </g>
+</svg>
