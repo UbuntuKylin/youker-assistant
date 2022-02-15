@@ -21,6 +21,7 @@
 #include "kabuttonproxystyle.h"
 
 #include <QPainter>
+#include <QPainterPath>
 #include <QStyleOption>
 #include <QStyle>
 #include <QDebug>
