@@ -35,6 +35,8 @@
 #include <QDBusInterface>
 #include <QDBusConnection>
 #include <QDBusMessage>
+#include <QMouseEvent>
+#include <QKeyEvent>
 
 MainWindow::MainWindow(QWidget *parent)
     : QFrame(parent)
